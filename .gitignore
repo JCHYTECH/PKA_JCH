@@ -1,0 +1,54 @@
+# PKA_JCH security exclusions
+
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+*.pem
+*.key
+*token*
+*secret*
+*credentials*
+
+# Runtime databases and backups
+*.db
+*.sqlite
+*.sqlite3
+TEAM/backups/
+
+# Logs and temporary runtime files
+*.log
+*.pid
+*.tmp
+*.temp
+__pycache__/
+*.py[cod]
+
+# Local virtual environments
+.venv/
+venv/
+env/
+scripts/telegram-bot/venv/
+
+# OS/editor noise
+.DS_Store
+.idea/
+.vscode/
+.claude/settings.local.json
+.claude/claude-video/
+.claude/skills/
+.agents/
+skills-lock.json
+
+# Local generated media/cache
+.cache/
+tmp/
+temp/
+_local/plane-community/
+outputs/
+PHOTO/analyses/
+JCH_Inbox/03_PROJECTS/05_PHOTO_AI_JURY/analyses/
+scripts/telegram-bot/dobby.log

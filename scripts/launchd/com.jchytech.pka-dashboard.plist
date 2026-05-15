@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.jchytech.pka-dashboard</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/env</string>
+    <string>python3</string>
+    <string>/Users/jchavauxm5/PKA_JCH/scripts/dashboard_server.py</string>
+    <string>--host</string>
+    <string>127.0.0.1</string>
+    <string>--port</string>
+    <string>8787</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/jchavauxm5/PKA_JCH</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PKA_DASHBOARD_HOST</key>
+    <string>127.0.0.1</string>
+    <key>PKA_DASHBOARD_PORT</key>
+    <string>8787</string>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>StandardOutPath</key>
+  <string>/Users/jchavauxm5/PKA_JCH/tmp/dashboard.launchd.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/jchavauxm5/PKA_JCH/tmp/dashboard.launchd.log</string>
+</dict>
+</plist>

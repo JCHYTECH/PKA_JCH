@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PKA — Organigramme JCH</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%232A2420'/%3E%3Ctext x='8' y='11' font-size='7' text-anchor='middle' fill='%23C17F3A' font-family='Arial'%3EP%3C/text%3E%3C/svg%3E">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #0f1117;
+    color: #e8eaf0;
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 0.78rem;
+    color: #374151;
+    margin-bottom: 48px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── Dobby ── */
+  .dobby-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+  }
+
+  .dobby-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border: 1px solid #334155;
+    border-radius: 16px;
+    padding: 20px 36px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 40px rgba(99,102,241,0.15);
+  }
+
+  .dobby-card::after {
+    content: '';
+    position: absolute;
+    bottom: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 32px;
+    background: #334155;
+  }
+
+  .dobby-card .animal { font-size: 2.2rem; line-height: 1; margin-bottom: 6px; }
+  .dobby-card .name   { font-size: 1.1rem; font-weight: 700; color: #e2e8f0; letter-spacing: 0.05em; }
+  .dobby-card .role   { font-size: 0.72rem; color: #6366f1; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
+
+  /* ── Section row (departments layer) ── */
+  .section-row {
+    max-width: 1300px;
+    margin: 32px auto 0;
+    position: relative;
+  }
+
+  .section-row::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    height: 1px;
+    background: #334155;
+  }
+
+  /* ── Department block ── */
+  .dept {
+    margin-bottom: 32px;
+    position: relative;
+  }
+
+  .dept-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #4b5563;
+    text-align: center;
+    margin-bottom: 12px;
+    padding-top: 20px;
+    position: relative;
+  }
+
+  .dept-label::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 20px;
+    background: #334155;
+  }
+
+  .dept-clusters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  /* ── Cluster card ── */
+  .cluster {
+    border-radius: 14px;
+    padding: 16px;
+    min-width: 155px;
+    flex: 1 1 155px;
+    max-width: 190px;
+  }
+
+  .cluster-title {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* ── Empty cluster placeholder ── */
+  .cluster-empty {
+    font-size: 0.68rem;
+    color: #374151;
+    font-style: italic;
+    padding: 8px 4px;
+    text-align: center;
+  }
+
+  /* ── Member row ── */
+  .member {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 4px;
+    border-radius: 8px;
+    cursor: default;
+    transition: background 0.15s;
+    position: relative;
+  }
+
+  .member:hover { background: rgba(255,255,255,0.06); }
+
+  .member .emoji { font-size: 1.1rem; flex-shrink: 0; }
+  .member-info .mname { font-size: 0.82rem; font-weight: 600; color: #e2e8f0; }
+  .member-info .mrole { font-size: 0.65rem; color: #6b7280; line-height: 1.3; margin-top: 1px; }
+
+  /* tooltip */
+  .member[data-tip]:hover::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: #cbd5e1;
+    font-size: 0.68rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  /* ── Cluster color themes ── */
+  .c-rh         { background: #0d1f1f; border: 1px solid #134e4a; }
+  .c-rh .cluster-title { color: #2dd4bf; }
+
+  .c-research   { background: #160d24; border: 1px solid #3b1f5e; }
+  .c-research .cluster-title { color: #a78bfa; }
+
+  .c-knowledge  { background: #1c1508; border: 1px solid #5a3a05; }
+  .c-knowledge .cluster-title { color: #fbbf24; }
+
+  .c-finance    { background: #0a1f0e; border: 1px solid #14532d; }
+  .c-finance .cluster-title { color: #4ade80; }
+
+  .c-photo      { background: #1c100a; border: 1px solid #5a2d0a; }
+  .c-photo .cluster-title { color: #fb923c; }
+
+  .c-web        { background: #1a0a1a; border: 1px solid #5a1a5a; }
+  .c-web .cluster-title { color: #f472b6; }
+
+  .c-crm        { background: #0a1020; border: 1px solid #1e3a5f; }
+  .c-crm .cluster-title { color: #60a5fa; }
+
+  .c-translation{ background: #0f0a1a; border: 1px solid #312e81; }
+  .c-translation .cluster-title { color: #818cf8; }
+
+  .c-journal    { background: #1a0f1a; border: 1px solid #4a1942; }
+  .c-journal .cluster-title { color: #e879f9; }
+
+  .c-vetalyx    { background: #0a1a10; border: 1px solid #065f30; }
+  .c-vetalyx .cluster-title { color: #34d399; }
+
+  .c-energy     { background: #1a160a; border: 1px solid #5a4005; border-style: dashed; }
+  .c-energy .cluster-title { color: #fcd34d; }
+
+  /* ── Dept separator line ── */
+  .dept-divider {
+    border: none;
+    border-top: 1px solid #1f2937;
+    max-width: 1100px;
+    margin: 8px auto 0;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    margin-top: 48px;
+    font-size: 0.7rem;
+    color: #374151;
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+
+<h1>PKA — Personal Knowledge Assistant</h1>
+<p class="subtitle">Organigramme · 24 spécialistes · v15 · 2026-05-10</p>
+
+<!-- Dobby -->
+<div class="dobby-wrap">
+  <div class="dobby-card">
+    <div class="animal">🐶</div>
+    <div class="name">Dobby</div>
+    <div class="role">Orchestrator — Single point of contact</div>
+  </div>
+</div>
+
+<!-- All departments -->
+<div class="section-row">
+
+  <!-- ── TRANSVERSE ── -->
+  <div class="dept">
+    <div class="dept-label">Transverse</div>
+    <div class="dept-clusters">
+
+      <div class="cluster c-rh">
+        <div class="cluster-title">RH & Opérations</div>
+        <div class="member" data-tip="HR — Hiring & Onboarding">
+          <span class="emoji">🐕</span>
+          <div class="member-info"><div class="mname">Bouvier</div><div class="mrole">HR Specialist</div></div>
+        </div>
+        <div class="member" data-tip="Database & Schema Steward">
+          <span class="emoji">🦫</span>
+          <div class="member-info"><div class="mname">Castor</div><div class="mrole">DB & Systems</div></div>
+        </div>
+        <div class="member" data-tip="Platform Onboarding — Hostinger">
+          <span class="emoji">🐦</span>
+          <div class="member-info"><div class="mname">Ariane</div><div class="mrole">Onboarding Guide</div></div>
+        </div>
+        <div class="member" data-tip="Full-Stack Developer & Systems Integrator">
+          <span class="emoji">🦦</span>
+          <div class="member-info"><div class="mname">Forge</div><div class="mrole">Developer</div></div>
+        </div>
+      </div>
+
+      <div class="cluster c-research">
+        <div class="cluster-title">Recherche</div>
+        <div class="member" data-tip="Senior Researcher — Skill profiles">
+          <span class="emoji">🦡</span>
+          <div class="member-info"><div class="mname">Furet</div><div class="mrole">Senior Researcher</div></div>
+        </div>
+        <div class="member" data-tip="Trend Research — Macro & Sectoral">
+          <span class="emoji">🦅</span>
+          <div class="member-info"><div class="mname">Iris</div><div class="mrole">Trend Strategist</div></div>
+        </div>
+        <div class="member" data-tip="Scientific Literature Analyst">
+          <span class="emoji">🦜</span>
+          <div class="member-info"><div class="mname">Clio</div><div class="mrole">Science Literature</div></div>
+        </div>
+      </div>
+
+      <div class="cluster c-knowledge">
+        <div class="cluster-title">Connaissance</div>
+        <div class="member" data-tip="Knowledge, links, ideas, bookmarks">
+          <span class="emoji">🐦‍⬛</span>
+          <div class="member-info"><div class="mname">Corbeau</div><div class="mrole">Knowledge Curator</div></div>
+        </div>
+      </div>
+
+      <div class="cluster c-finance">
+        <div class="cluster-title">Finance & Droit</div>
+        <div class="member" data-tip="Finance & Investment Analyst">
+          <span class="emoji">🐻</span>
+          <div class="member-info"><div class="mname">Bruno</div><div class="mrole">Finance & Invest.</div></div>
+        </div>
+        <div class="member" data-tip="Financial Data Analyst — Market data">
+          <span class="emoji">🐙</span>
+          <div class="member-info"><div class="mname">Sigma</div><div class="mrole">Data Analyst</div></div>
+        </div>
+        <div class="member" data-tip="Legal Counsel — Contracts & Tax">
+          <span class="emoji">🦊</span>
+          <div class="member-info"><div class="mname">Renard</div><div class="mrole">Legal Counsel</div></div>
+        </div>
+      </div>
+
+      <div class="cluster c-crm">
+        <div class="cluster-title">CRM</div>
+        <div class="member" data-tip="Contacts, interactions, follow-ups">
+          <span class="emoji">🐬</span>
+          <div class="member-info"><div class="mname">Delphi</div><div class="mrole">CRM Manager</div></div>
+        </div>
+      </div>
+
+      <div class="cluster c-translation">
+        <div class="cluster-title">Traduction</div>
+        <div class="member" data-tip="Scientific & Legal EN↔ZH + Cultural Analyst">
+          <span class="emoji">🦩</span>
+          <div class="member-info"><div class="mname">Jade</div><div class="mrole">Translator EN↔ZH</div></div>
+        </div>
+      </div>
+
+      <div class="cluster c-journal">
+        <div class="cluster-title">Journal</div>
+        <div class="member" data-tip="Personal Journal & Goals Manager">
+          <span class="emoji">🦔</span>
+          <div class="member-info"><div class="mname">Sybil</div><div class="mrole">Journal Manager</div></div>
+        </div>
+      </div>
+
+      <div class="cluster c-crm">
+        <div class="cluster-title">Communication & SAC</div>
+        <div class="member" data-tip="Analyste Contenu Mails & SAC — FR/EN, route vers Jade si ZH">
+          <span class="emoji">🐦‍⬛</span>
+          <div class="member-info"><div class="mname">Pie</div><div class="mrole">Mails · SAC</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="dept-divider">
+
+  <!-- ── PHOTOGRAPHIE ── -->
+  <div class="dept">
+    <div class="dept-label">Photographie</div>
+    <div class="dept-clusters">
+
+      <div class="cluster c-photo">
+        <div class="cluster-title">Critique & Jury</div>
+        <div class="member" data-tip="Photo Critic & International Jury Expert — Wildlife, Paysage, Fin Art">
+          <span class="emoji">🦅</span>
+          <div class="member-info"><div class="mname">Argus</div><div class="mrole">Photo Critic</div></div>
+        </div>
+      </div>
+
+      <div class="cluster c-photo">
+        <div class="cluster-title">Édition & Impression</div>
+        <div class="member" data-tip="Photo Printing Specialist">
+          <span class="emoji">🦢</span>
+          <div class="member-info"><div class="mname">Héron</div><div class="mrole">Photo Printing</div></div>
+        </div>
+        <div class="member" data-tip="Photo Editing Specialist">
+          <span class="emoji">🐆</span>
+          <div class="member-info"><div class="mname">Lynx</div><div class="mrole">Photo Editing</div></div>
+        </div>
+      </div>
+
+      <div class="cluster c-photo">
+        <div class="cluster-title">R&D Visuelle</div>
+        <div class="member" data-tip="Photography R&D — Computational & Experimental">
+          <span class="emoji">🦋</span>
+          <div class="member-info"><div class="mname">Nova</div><div class="mrole">Photo R&D</div></div>
+        </div>
+      </div>
+
+      <div class="cluster c-web">
+        <div class="cluster-title">Web & Brand</div>
+        <div class="member" data-tip="Creative Director — Web & Brand System">
+          <span class="emoji">🦚</span>
+          <div class="member-info"><div class="mname">Vega</div><div class="mrole">Creative Director</div></div>
+        </div>
+        <div class="member" data-tip="SEO & Digital Visibility">
+          <span class="emoji">🕷️</span>
+          <div class="member-info"><div class="mname">Trace</div><div class="mrole">SEO Specialist</div></div>
+        </div>
+        <div class="member" data-tip="Community Manager — Instagram, Facebook, Newsletter">
+          <span class="emoji">🐝</span>
+          <div class="member-info"><div class="mname">Miel</div><div class="mrole">Community Manager</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="dept-divider">
+
+  <!-- ── VETALYX ── -->
+  <div class="dept">
+    <div class="dept-label">Vetalyx — Product Management</div>
+    <div class="dept-clusters">
+
+      <div class="cluster c-vetalyx">
+        <div class="cluster-title">Médecine Vétérinaire</div>
+        <div class="member" data-tip="Veterinary Product Specialist — Allergologie chats & chiens, IVD + nutraceutiques">
+          <span class="emoji">🐺</span>
+          <div class="member-info"><div class="mname">Vasco</div><div class="mrole">Vet. Product Specialist</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="dept-divider">
+
+  <!-- ── ENERGY ── -->
+  <div class="dept">
+    <div class="dept-label">Energy</div>
+    <div class="dept-clusters">
+
+      <div class="cluster c-energy">
+        <div class="cluster-title">NUANCES — Standby</div>
+        <div class="member" data-tip="Consultance BESS — solutions citoyennes mobiles · wiki posé · équipe à constituer">
+          <span class="emoji">⚡</span>
+          <div class="member-info"><div class="mname">BESS</div><div class="mrole">Wiki · stratégie à venir</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<p class="footer">PKA · JCH · Liège–Trentino · Dobby v15 · 2026-05-10</p>
+
+</body>
+</html>

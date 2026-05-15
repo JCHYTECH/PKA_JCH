@@ -1,0 +1,7 @@
+{
+  "min_confidence": 0.8,
+  "min_observations": 2,
+  "allow_scopes": ["global", "project"],
+  "allow_source_kinds": ["learned", "system"],
+  "report_dir": "TEAM_Inbox"
+}

@@ -1,0 +1,15 @@
+{
+  "gmail_account_hint": "dobby.tka.jch@gmail.com",
+  "google_secrets_dir": "~/.config/pka-jch",
+  "credentials_file": "credentials.json",
+  "token_file": "token.json",
+  "allowed_senders": [
+    "jc_havaux@yahoo.com",
+    "jc.havaux@gmail.com",
+    "jc.havaux@jchytech.be",
+    "jc.havaux@vetalyx.com"
+  ],
+  "deletion_mode": "trash",
+  "state_file": "tmp/gmail_gatekeeper_state.json",
+  "extract_root": "JCH_Inbox/00_INBOX/email_imports"
+}

@@ -1,0 +1,144 @@
+:root {
+  --pka-noir: #0d0b09;
+  --pka-ivoire: #f8f5f0;
+  --pka-ocre: #c17f3a;
+  --pka-ardoise: #4a5568;
+  --pka-sable: #e8e2da;
+  --pka-gris: #6b6560;
+  --pka-brun: #2a2420;
+  --pka-vert: #3d5a3e;
+  --pka-rouge: #c0392b;
+
+  --pka-panel: #ffffff;
+  --pka-line: #e7ded3;
+  --pka-text: var(--pka-noir);
+  --pka-muted: var(--pka-gris);
+  --pka-shadow: 0 8px 28px rgba(42, 36, 32, 0.06);
+
+  --noir: var(--pka-noir);
+  --ivoire: var(--pka-ivoire);
+  --ocre: var(--pka-ocre);
+  --ardoise: var(--pka-ardoise);
+  --sable: var(--pka-sable);
+  --gris: var(--pka-gris);
+  --brun: var(--pka-brun);
+  --vert: var(--pka-vert);
+  --rouge: var(--pka-rouge);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--pka-ivoire);
+  color: var(--pka-text);
+}
+
+.pka-shell {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 42px 48px 80px;
+}
+
+.pka-header {
+  background: var(--pka-brun);
+  color: #fff;
+  padding: 30px 48px 26px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.pka-brand {
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+}
+
+.pka-brand span {
+  color: var(--pka-ocre);
+}
+
+.pka-subtitle {
+  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.54);
+  font-size: 13px;
+}
+
+.pka-date {
+  color: rgba(255, 255, 255, 0.38);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.pka-section {
+  margin-bottom: 44px;
+}
+
+.pka-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  color: var(--pka-muted);
+  border-bottom: 1px solid var(--pka-sable);
+  padding-bottom: 10px;
+  margin-bottom: 18px;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.pka-card {
+  background: var(--pka-panel);
+  border: 1px solid var(--pka-line);
+  box-shadow: var(--pka-shadow);
+}
+
+.pka-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  background: var(--pka-brun);
+  color: rgba(255, 255, 255, 0.42);
+  padding: 14px 48px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 11px;
+}
+
+.pka-status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--pka-vert);
+}
+
+@media (max-width: 720px) {
+  .pka-header,
+  .pka-shell,
+  .pka-footer {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .pka-header,
+  .pka-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .pka-date {
+    white-space: normal;
+  }
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PKA Team Roster</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Helvetica Neue', sans-serif; background: #0D0B09; color: #F8F5F0; padding: 40px; }
+  h1 { font-size: 22px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: #C17F3A; margin-bottom: 6px; }
+  .subtitle { font-size: 12px; color: #4A5568; letter-spacing: 2px; margin-bottom: 40px; }
+  table { width: 100%; border-collapse: collapse; }
+  thead tr { border-bottom: 1px solid #C17F3A; }
+  th { text-align: left; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #C17F3A; padding: 0 0 12px 0; }
+  th:first-child { width: 40px; }
+  th:nth-child(3) { width: 220px; }
+  tbody tr { border-bottom: 1px solid #1a1814; transition: background 0.15s; }
+  tbody tr:hover { background: #1a1814; }
+  td { padding: 14px 0; font-size: 14px; }
+  td:first-child { color: #4A5568; font-size: 12px; }
+  td:nth-child(2) { font-weight: 500; color: #F8F5F0; padding-right: 20px; }
+  td:nth-child(3) { color: #E8E2DA; font-size: 13px; }
+  td:nth-child(4) { color: #4A5568; font-size: 13px; }
+  .btn { display: inline-block; margin-top: 40px; padding: 10px 24px; background: #C17F3A; color: #0D0B09; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border: none; font-weight: 600; }
+  .btn:hover { background: #E8E2DA; }
+  .count { margin-top: 40px; font-size: 11px; color: #4A5568; letter-spacing: 2px; }
+</style>
+</head>
+<body>
+
+<h1>PKA — Team Roster</h1>
+<div class="subtitle">Personal Knowledge Assistant · 2026</div>
+
+<table id="roster">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Species</th>
+      <th>Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>01</td><td>Dobby</td><td>🦉 Owl</td><td>Orchestrator</td></tr>
+    <tr><td>02</td><td>Bouvier</td><td>🐕 Bouvier des Flandres</td><td>HR Specialist — Hiring & Onboarding</td></tr>
+    <tr><td>03</td><td>Furet</td><td>🦡 Ferret</td><td>Senior Researcher</td></tr>
+    <tr><td>04</td><td>Castor</td><td>🦫 Beaver</td><td>Database & Systems Engineer</td></tr>
+    <tr><td>05</td><td>Corbeau</td><td>🐦‍⬛ Crow</td><td>Knowledge Curator</td></tr>
+    <tr><td>06</td><td>Delphi</td><td>🐬 Dolphin</td><td>CRM & Relationships Manager</td></tr>
+    <tr><td>07</td><td>Héron</td><td>🦢 Heron</td><td>Photo Printing Specialist</td></tr>
+    <tr><td>08</td><td>Lynx</td><td>🐆 Lynx</td><td>Photo Editing Specialist</td></tr>
+    <tr><td>09</td><td>Jade</td><td>🦩 Crane</td><td>Scientific Translator EN↔ZH + Cultural Analyst</td></tr>
+    <tr><td>10</td><td>Renard</td><td>🦊 Fox</td><td>Legal Counsel — Contracts & Advisory</td></tr>
+    <tr><td>11</td><td>Iris</td><td>🦅 Kestrel</td><td>Trend Research Strategist</td></tr>
+    <tr><td>12</td><td>Forge</td><td>🦦 Otter</td><td>Full-Stack Developer & Systems Integrator</td></tr>
+    <tr><td>13</td><td>Ariane</td><td>🐦 Swallow</td><td>Technical Platform Onboarding Guide</td></tr>
+    <tr><td>14</td><td>Bruno</td><td>🐻 Bear</td><td>Finance & Investment Analyst</td></tr>
+    <tr><td>15</td><td>Sybil</td><td>🦔 Hedgehog</td><td>Personal Journal Manager</td></tr>
+    <tr><td>16</td><td>Clio</td><td>🦜 Parrot</td><td>Scientific Literature Analyst</td></tr>
+    <tr><td>17</td><td>Sigma</td><td>🐙 Octopus</td><td>Financial Data Analyst</td></tr>
+    <tr><td>18</td><td>Vega</td><td>🦚 Peacock</td><td>Creative Director — Visual Arts, Web & Brand</td></tr>
+    <tr><td>19</td><td>Trace</td><td>🕷️ Spider</td><td>SEO & Digital Visibility Specialist</td></tr>
+    <tr><td>20</td><td>Miel</td><td>🐝 Bee</td><td>Community Manager & Brand Content Creator</td></tr>
+    <tr><td>21</td><td>Vasco</td><td>🐺 Wolf</td><td>Veterinary Product Specialist — Vetalyx</td></tr>
+    <tr><td>22</td><td>Nova</td><td>🦋 Butterfly</td><td>Photography R&D Specialist</td></tr>
+    <tr><td>23</td><td>Argus</td><td>🦅 Peregrine Falcon</td><td>Photo Critic & International Jury Expert</td></tr>
+    <tr><td>24</td><td>Pie</td><td>🐦‍⬛ Magpie</td><td>Mail Content Analyst & Customer Service</td></tr>
+  </tbody>
+</table>
+
+<div class="count">24 active members</div>
+
+<br>
+<button class="btn" onclick="downloadCSV()">Download CSV</button>
+
+<script>
+function downloadCSV() {
+  const rows = [["#","Name","Species","Title"]];
+  document.querySelectorAll("#roster tbody tr").forEach(tr => {
+    const cells = [...tr.querySelectorAll("td")].map(td => td.innerText.replace(/,/g, " "));
+    rows.push(cells);
+  });
+  const csv = rows.map(r => r.map(c => `"${c}"`).join(",")).join("\n");
+  const a = document.createElement("a");
+  a.href = "data:text/csv;charset=utf-8," + encodeURIComponent(csv);
+  a.download = "PKA-team-roster.csv";
+  a.click();
+}
+</script>
+
+</body>
+</html>
