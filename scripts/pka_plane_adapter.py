@@ -1,6 +1,7 @@
 import json
 import os
 from pathlib import Path
+from urllib import request
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -73,7 +74,34 @@ def normalize_issue(project_key: str, issue: dict) -> dict:
 
 
 def fetch_project_issues(project_key: str) -> list[dict]:
-    raise NotImplementedError("fetch_project_issues is not implemented yet")
+    config = load_config()
+    token = plane_token()
+    if not token:
+        raise RuntimeError("Plane API token is not configured in the environment")
+
+    project_id = _plane_project_id(config["projects"].get(project_key))
+    if project_id is None:
+        raise ValueError(f"Plane project mapping is unusable for {project_key}")
+
+    api_base = config["api_base"].rstrip("/")
+    workspace_slug = config["workspace_slug"].strip()
+    endpoint = f"{api_base}/workspaces/{workspace_slug}/projects/{project_id}/issues/"
+    plane_request = request.Request(endpoint, headers={"X-API-Key": token})
+
+    with request.urlopen(plane_request) as response:
+        payload = json.loads(response.read().decode("utf-8"))
+
+    if isinstance(payload, list):
+        issues = payload
+    elif isinstance(payload, dict):
+        issues = payload.get("results", [])
+    else:
+        raise ValueError("Plane issues response must be a JSON list or object")
+
+    if not isinstance(issues, list):
+        raise ValueError("Plane issues response.results must be a list")
+
+    return [normalize_issue(project_key, issue) for issue in issues if isinstance(issue, dict)]
 
 
 def _plane_project_id(entry: object) -> str | None:

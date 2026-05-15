@@ -16,6 +16,53 @@ class DashboardKanbanEndpointsTest(unittest.TestCase):
         self.assertEqual(health["kanban"]["blocked"], 1)
         self.assertEqual(health["kanban"]["awaitingJch"], 1)
 
+    def test_kanban_snapshot_aggregates_live_plane_cards(self):
+        config = {
+            "projects": {
+                "01_AI_IT_TOOLS": {"plane_project_id": "ai-tools"},
+                "02_ARTEON": {"plane_project_id": "arteon"},
+            }
+        }
+        cards_by_project = {
+            "01_AI_IT_TOOLS": [
+                {
+                    "title": "Spec",
+                    "project": "01_AI_IT_TOOLS",
+                    "type": "task",
+                    "owner": "Forge",
+                    "priority": "normale",
+                    "status": "En cours",
+                    "description": "Build it",
+                    "labels": ["ops"],
+                }
+            ],
+            "02_ARTEON": [
+                {
+                    "title": "Review",
+                    "project": "02_ARTEON",
+                    "type": "task",
+                    "owner": "Dobby",
+                    "priority": "normale",
+                    "status": "En validation",
+                    "description": "Check it",
+                    "labels": ["en-attente-jch"],
+                }
+            ],
+        }
+
+        with mock.patch.object(dashboard_server.pka_plane_adapter, "load_config", return_value=config):
+            with mock.patch.object(
+                dashboard_server.pka_plane_adapter,
+                "fetch_project_issues",
+                side_effect=lambda project_key: cards_by_project[project_key],
+            ):
+                summary = dashboard_server.kanban_snapshot()
+
+        self.assertEqual(summary["totals"]["En cours"], 1)
+        self.assertEqual(summary["totals"]["En validation"], 1)
+        self.assertEqual(summary["awaiting_jch"], 1)
+        self.assertEqual(summary["by_project"]["01_AI_IT_TOOLS"]["total"], 1)
+
 
 if __name__ == "__main__":
     unittest.main()

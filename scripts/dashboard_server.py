@@ -29,7 +29,9 @@ PKA_DIR = SCRIPT_DIR.parents[0]
 if str(PKA_DIR) not in sys.path:
     sys.path.insert(0, str(PKA_DIR))
 
+from scripts import pka_kanban_schema
 from scripts import pka_kanban_service
+from scripts import pka_plane_adapter
 
 JCH_INBOX_DIR = PKA_DIR / "JCH_Inbox"
 DASHBOARD_DIR = PKA_DIR / "JCH_Inbox" / "01_DASHBOARDS"
@@ -180,12 +182,23 @@ def latest_daily_note() -> str | None:
 
 
 def kanban_snapshot() -> dict:
-    return {
-        "totals": {},
+    schema = pka_kanban_schema.load_schema()
+    empty_summary = {
+        "totals": {status: 0 for status in schema["statuses"]},
         "blocked": 0,
         "awaiting_jch": 0,
         "by_project": {},
     }
+
+    try:
+        config = pka_plane_adapter.load_config()
+        cards = []
+        for project_key in sorted(config["projects"]):
+            cards.extend(pka_plane_adapter.fetch_project_issues(project_key))
+        return pka_kanban_service.build_summary(cards)
+    except Exception as exc:
+        empty_summary["error"] = str(exc)
+        return empty_summary
 
 
 def dashboard_health() -> dict:

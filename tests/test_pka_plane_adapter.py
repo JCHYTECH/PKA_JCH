@@ -142,6 +142,45 @@ class PkaPlaneAdapterTest(unittest.TestCase):
             },
         )
 
+    def test_fetch_project_issues_calls_plane_api_and_normalizes_results(self):
+        issue_payload = {
+            "results": [
+                {
+                    "name": "Live sync",
+                    "state": {"name": "En validation"},
+                    "assignee": {"display_name": "Dobby"},
+                    "label_details": [{"name": "en-attente-jch"}],
+                    "description_stripped": "Review me",
+                }
+            ]
+        }
+
+        fake_response = mock.Mock()
+        fake_response.__enter__ = mock.Mock(return_value=fake_response)
+        fake_response.__exit__ = mock.Mock(return_value=False)
+        fake_response.read.return_value = json.dumps(issue_payload).encode("utf-8")
+
+        with mock.patch.object(pka_plane_adapter, "ROOT", self.root):
+            with mock.patch.dict("os.environ", {"PKA_PLANE_API_TOKEN": "plane-secret"}, clear=True):
+                with mock.patch("urllib.request.urlopen", return_value=fake_response) as mocked_urlopen:
+                    cards = pka_plane_adapter.fetch_project_issues("02_ARTEON")
+
+        request = mocked_urlopen.call_args.args[0]
+        self.assertEqual(
+            request.full_url,
+            "http://127.0.0.1:8088/api/v1/workspaces/pka-jch/projects/arteon/issues/",
+        )
+        self.assertEqual(request.get_header("X-api-key"), "plane-secret")
+        self.assertEqual(cards[0]["project"], "02_ARTEON")
+        self.assertEqual(cards[0]["status"], "En validation")
+        self.assertEqual(cards[0]["labels"], ["en-attente-jch"])
+
+    def test_fetch_project_issues_rejects_missing_plane_token(self):
+        with mock.patch.object(pka_plane_adapter, "ROOT", self.root):
+            with mock.patch.dict("os.environ", {}, clear=True):
+                with self.assertRaisesRegex(RuntimeError, "Plane API token"):
+                    pka_plane_adapter.fetch_project_issues("02_ARTEON")
+
 
 if __name__ == "__main__":
     unittest.main()
