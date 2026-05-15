@@ -191,6 +191,7 @@ def kanban_snapshot() -> dict:
     }
 
     try:
+        ensure_plane_api_token()
         config = pka_plane_adapter.load_config()
         cards = []
         for project_key in sorted(config["projects"]):
@@ -298,6 +299,19 @@ def read_secret_value(env_name: str, file_candidates: tuple[Path, ...] = ()) -> 
             else:
                 return candidate.read_text(encoding="utf-8", errors="replace").strip()
     return None
+
+
+def ensure_plane_api_token() -> str | None:
+    token = read_secret_value(
+        "PKA_PLANE_API_TOKEN",
+        (
+            Path.home() / ".config" / "pka-jch" / "plane_api_token.txt",
+            Path.home() / ".config" / "pka-jch" / "plane_token.txt",
+        ),
+    )
+    if token:
+        os.environ["PKA_PLANE_API_TOKEN"] = token
+    return token
 
 
 def json_request(url: str, headers: dict[str, str], timeout: int = 12) -> tuple[int, dict | None, str | None]:
