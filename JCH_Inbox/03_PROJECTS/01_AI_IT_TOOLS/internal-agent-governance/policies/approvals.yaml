@@ -1,0 +1,29 @@
+# Politique documentaire d'approbation des actions sensibles.
+# Statut: approved
+# Decision source: security.sensitive_action_approvals
+
+status: approved
+owner: JCH
+last_review: 2026-05-13
+
+requires_explicit_approval:
+  - recursive_or_mass_delete
+  - critical_config_edit
+  - secret_access_or_exposure
+  - unnecessary_network_call
+  - dependency_installation
+  - deployment
+  - scheduled_automation
+  - active_memory_change
+  - active_skill_change
+
+blocked_by_default:
+  - workspace_wipe
+  - unaudited_remote_script_execution
+  - sending_secrets_to_external_service
+  - autonomous_mode_without_limits
+
+notes:
+  - "Application documentaire dans un premier temps."
+  - "Toute automatisation de cette politique devra faire l'objet d'une proposition separee."
+

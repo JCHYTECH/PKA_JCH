@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARTEON — Propositions logo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --noir:   #0D0B09;
+    --ivoire: #F8F5F0;
+    --ocre:   #C17F3A;
+    --sable:  #E8E2DA;
+    --gris:   #6B6560;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Space Grotesk', sans-serif; background: var(--ivoire); color: var(--noir); }
+
+  .page { max-width: 1100px; margin: 0 auto; padding: 60px 40px; }
+
+  h1 { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gris); border-bottom: 1px solid var(--sable); padding-bottom: 12px; margin-bottom: 60px; }
+
+  .intro { font-family: 'Lora', serif; font-size: 16px; line-height: 1.7; color: var(--gris); max-width: 600px; margin-bottom: 60px; }
+
+  /* Grille propositions */
+  .logo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 60px; }
+
+  .logo-card { background: white; padding: 50px 40px; }
+  .logo-card.dark { background: var(--noir); }
+  .logo-card.ocre { background: var(--ocre); }
+
+  .logo-id { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gris); margin-bottom: 32px; }
+  .logo-id.light { color: rgba(248,245,240,0.5); }
+
+  .logo-display { margin-bottom: 32px; min-height: 100px; display: flex; align-items: center; }
+
+  .logo-desc { font-size: 13px; line-height: 1.6; color: var(--gris); }
+  .logo-desc.light { color: rgba(248,245,240,0.7); }
+
+  .logo-verdict { display: inline-block; margin-top: 16px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border: 1px solid var(--sable); color: var(--gris); }
+  .logo-verdict.existant { border-color: var(--ocre); color: var(--ocre); }
+
+  /* Context strip */
+  .context-strip { margin-top: 60px; }
+  .context-title { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gris); border-bottom: 1px solid var(--sable); padding-bottom: 12px; margin-bottom: 40px; }
+
+  .nav-sim { background: var(--ivoire); border-bottom: 1px solid var(--sable); padding: 18px 40px; display: flex; align-items: center; gap: 40px; margin-bottom: 2px; font-size: 14px; font-weight: 500; }
+  .nav-sim.dark { background: var(--noir); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-cta { background: var(--ocre); color: white; padding: 9px 18px; font-weight: 600; font-size: 13px; }
+  .nav-lang { color: var(--gris); font-size: 12px; letter-spacing: 0.05em; margin-left: auto; }
+
+  /* Tailles */
+  .sizes-row { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; padding: 30px; background: white; margin-top: 2px; }
+  .sizes-row.dark { background: var(--noir); }
+  .size-label { font-size: 10px; color: var(--gris); text-align: center; margin-top: 8px; }
+
+  /* SVG logos */
+  svg { display: block; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>ARTEON · Propositions logo · 2026-05-02</h1>
+  <p class="intro">Quatre directions. La A est l'existant — référence de travail. Les B, C, D sont des alternatives. Chaque direction est montrée sur fond clair et foncé, puis en contexte navigation.</p>
+
+  <div class="logo-grid">
+
+    <!-- Direction A — Existant -->
+    <div class="logo-card" style="border-top: 3px solid var(--ocre);">
+      <div class="logo-id">Direction A — Existant (référence)</div>
+      <div class="logo-display">
+        <img src="assets/Logo Arteon.png" style="height:48px;" alt="Arteon logo existant">
+      </div>
+      <div class="logo-desc">Wordmark géométrique avec découpes stencil. Caractère architectural, précision scientifique. Symbole A+cercle ouvert disponible en version icône.</div>
+      <div class="logo-verdict existant">Logo actuel</div>
+    </div>
+
+    <div class="logo-card dark" style="border-top: 3px solid var(--ocre);">
+      <div class="logo-id light">Direction A — Sur fond sombre</div>
+      <div class="logo-display">
+        <img src="assets/Logo Arteon.png" style="height:48px; filter: invert(1);" alt="Arteon logo existant inversé">
+      </div>
+      <div class="logo-desc light">Version blanche sur noir — footer, header sombre, overlay photo.</div>
+    </div>
+
+    <!-- Direction B — Wordmark épuré + ligne -->
+    <div class="logo-card" style="border-top: 3px solid var(--sable);">
+      <div class="logo-id">Direction B — Wordmark épuré + ligne</div>
+      <div class="logo-display">
+        <svg width="260" height="60" viewBox="0 0 260 60">
+          <text x="0" y="44" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="44" fill="#0D0B09" letter-spacing="-1">ARTEON</text>
+          <line x1="0" y1="56" x2="180" y2="56" stroke="#C17F3A" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="logo-desc">Wordmark en capitales, Space Grotesk Bold. Ligne ocre sous le nom — évoque l'horizon, la ligne de terrain, le seuil entre l'instant et le mouvement. Sobre, galerie contemporaine.</div>
+      <div class="logo-verdict">Proposition B</div>
+    </div>
+
+    <div class="logo-card dark" style="border-top: 3px solid var(--sable);">
+      <div class="logo-id light">Direction B — Sur fond sombre</div>
+      <div class="logo-display">
+        <svg width="260" height="60" viewBox="0 0 260 60">
+          <text x="0" y="44" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="44" fill="#F8F5F0" letter-spacing="-1">ARTEON</text>
+          <line x1="0" y1="56" x2="180" y2="56" stroke="#C17F3A" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="logo-desc light">La ligne ocre persiste — seul élément coloré sur fond sombre. Très propre.</div>
+    </div>
+
+    <!-- Direction C — Symbole diaphragme + wordmark -->
+    <div class="logo-card" style="border-top: 3px solid var(--sable);">
+      <div class="logo-id">Direction C — Symbole diaphragme + wordmark</div>
+      <div class="logo-display">
+        <svg width="300" height="60" viewBox="0 0 300 60">
+          <!-- Diaphragme simplifié : cercle + A intérieur + lames -->
+          <g transform="translate(0,4)">
+            <!-- Cercle extérieur -->
+            <circle cx="26" cy="26" r="24" fill="none" stroke="#0D0B09" stroke-width="2.5"/>
+            <!-- Lames diaphragme (6 traits rayonnants depuis le centre) -->
+            <line x1="26" y1="4" x2="26" y2="12" stroke="#0D0B09" stroke-width="2"/>
+            <line x1="40.9" y1="11.1" x2="35.7" y2="17.9" stroke="#0D0B09" stroke-width="2"/>
+            <line x1="47.9" y1="26" x2="40" y2="26" stroke="#0D0B09" stroke-width="2"/>
+            <!-- A intérieur -->
+            <text x="26" y="35" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="22" fill="#0D0B09" text-anchor="middle">A</text>
+          </g>
+          <!-- Wordmark -->
+          <text x="66" y="42" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="32" fill="#0D0B09" letter-spacing="-0.5">rteon</text>
+        </svg>
+      </div>
+      <div class="logo-desc">Le A dans un cercle avec des lames de diaphragme — référence directe à l'objectif photo et au regard naturaliste. Plus photographique que l'existant. Le symbole fonctionne seul en favicon.</div>
+      <div class="logo-verdict">Proposition C</div>
+    </div>
+
+    <div class="logo-card dark" style="border-top: 3px solid var(--sable);">
+      <div class="logo-id light">Direction C — Sur fond sombre</div>
+      <div class="logo-display">
+        <svg width="300" height="60" viewBox="0 0 300 60">
+          <g transform="translate(0,4)">
+            <circle cx="26" cy="26" r="24" fill="none" stroke="#F8F5F0" stroke-width="2.5"/>
+            <line x1="26" y1="4" x2="26" y2="12" stroke="#F8F5F0" stroke-width="2"/>
+            <line x1="40.9" y1="11.1" x2="35.7" y2="17.9" stroke="#F8F5F0" stroke-width="2"/>
+            <line x1="47.9" y1="26" x2="40" y2="26" stroke="#F8F5F0" stroke-width="2"/>
+            <text x="26" y="35" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="22" fill="#F8F5F0" text-anchor="middle">A</text>
+          </g>
+          <text x="66" y="42" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="32" fill="#F8F5F0" letter-spacing="-0.5">rteon</text>
+        </svg>
+      </div>
+      <div class="logo-desc light">Version claire sur noir. Le cercle-diaphragme évoque aussi un œil, une lune — forte ambiguïté positive.</div>
+    </div>
+
+    <!-- Direction D — Minimaliste typographique -->
+    <div class="logo-card" style="border-top: 3px solid var(--sable);">
+      <div class="logo-id">Direction D — Minimaliste / ligature A·R</div>
+      <div class="logo-display">
+        <svg width="280" height="70" viewBox="0 0 280 70">
+          <!-- Arteon avec A stylisé : jambe gauche prolongée vers le bas -->
+          <text x="0" y="52" font-family="Space Grotesk, sans-serif" font-weight="300" font-size="52" fill="#0D0B09" letter-spacing="2">Arteon</text>
+          <!-- Point médian ocre discret -->
+          <circle cx="267" cy="38" r="3.5" fill="#C17F3A"/>
+        </svg>
+      </div>
+      <div class="logo-desc">Wordmark fin (weight 300) avec point médian ocre — cohérent avec "L'Instant Lu·". Direction galerie d'art haut de gamme, très sobre. Le poids léger contraste avec l'épaisseur de l'existant.</div>
+      <div class="logo-verdict">Proposition D</div>
+    </div>
+
+    <div class="logo-card dark" style="border-top: 3px solid var(--sable);">
+      <div class="logo-id light">Direction D — Sur fond sombre</div>
+      <div class="logo-display">
+        <svg width="280" height="70" viewBox="0 0 280 70">
+          <text x="0" y="52" font-family="Space Grotesk, sans-serif" font-weight="300" font-size="52" fill="#F8F5F0" letter-spacing="2">Arteon</text>
+          <circle cx="267" cy="38" r="3.5" fill="#C17F3A"/>
+        </svg>
+      </div>
+      <div class="logo-desc light">Le point ocre est le seul élément coloré — très élégant. Direction la plus luxueuse des quatre.</div>
+    </div>
+
+  </div>
+
+  <!-- En contexte navigation -->
+  <div class="context-strip">
+    <div class="context-title">En contexte — Navigation (fond clair)</div>
+
+    <div class="nav-sim" style="margin-bottom:2px;">
+      <img src="assets/Logo Arteon.png" style="height:28px;" alt="A">
+      <div class="nav-links" style="color:#6B6560; font-size:13px;"><span>Manifeste</span><span>Shop</span><span>WildLens</span></div>
+      <div class="nav-cta" style="margin-left:auto; margin-right:16px;">L'Instant Lu</div>
+      <div class="nav-lang">FR</div>
+    </div>
+    <div style="font-size:10px; color:var(--gris); padding: 4px 0 16px; letter-spacing:0.08em; text-transform:uppercase;">Direction A — existant</div>
+
+    <div class="nav-sim" style="margin-bottom:2px;">
+      <svg width="130" height="28" viewBox="0 0 260 56"><text x="0" y="42" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="42" fill="#0D0B09" letter-spacing="-1">ARTEON</text><line x1="0" y1="52" x2="172" y2="52" stroke="#C17F3A" stroke-width="2"/></svg>
+      <div class="nav-links" style="color:#6B6560; font-size:13px;"><span>Manifeste</span><span>Shop</span><span>WildLens</span></div>
+      <div class="nav-cta" style="margin-left:auto; margin-right:16px;">L'Instant Lu</div>
+      <div class="nav-lang">FR</div>
+    </div>
+    <div style="font-size:10px; color:var(--gris); padding: 4px 0 16px; letter-spacing:0.08em; text-transform:uppercase;">Direction B — ligne ocre</div>
+
+    <div class="nav-sim" style="margin-bottom:2px;">
+      <svg width="160" height="32" viewBox="0 0 300 56">
+        <g transform="translate(0,2)"><circle cx="22" cy="22" r="20" fill="none" stroke="#0D0B09" stroke-width="2"/><line x1="22" y1="4" x2="22" y2="10" stroke="#0D0B09" stroke-width="1.5"/><line x1="34" y1="8.5" x2="29.5" y2="14" stroke="#0D0B09" stroke-width="1.5"/><line x1="40" y1="22" x2="34" y2="22" stroke="#0D0B09" stroke-width="1.5"/><text x="22" y="30" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="18" fill="#0D0B09" text-anchor="middle">A</text></g>
+        <text x="54" y="36" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="26" fill="#0D0B09" letter-spacing="-0.5">rteon</text>
+      </svg>
+      <div class="nav-links" style="color:#6B6560; font-size:13px;"><span>Manifeste</span><span>Shop</span><span>WildLens</span></div>
+      <div class="nav-cta" style="margin-left:auto; margin-right:16px;">L'Instant Lu</div>
+      <div class="nav-lang">FR</div>
+    </div>
+    <div style="font-size:10px; color:var(--gris); padding: 4px 0 16px; letter-spacing:0.08em; text-transform:uppercase;">Direction C — diaphragme</div>
+
+    <div class="nav-sim" style="margin-bottom:2px;">
+      <svg width="140" height="32" viewBox="0 0 270 60">
+        <text x="0" y="46" font-family="Space Grotesk, sans-serif" font-weight="300" font-size="44" fill="#0D0B09" letter-spacing="2">Arteon</text>
+        <circle cx="254" cy="32" r="3" fill="#C17F3A"/>
+      </svg>
+      <div class="nav-links" style="color:#6B6560; font-size:13px;"><span>Manifeste</span><span>Shop</span><span>WildLens</span></div>
+      <div class="nav-cta" style="margin-left:auto; margin-right:16px;">L'Instant Lu</div>
+      <div class="nav-lang">FR</div>
+    </div>
+    <div style="font-size:10px; color:var(--gris); padding: 4px 0 36px; letter-spacing:0.08em; text-transform:uppercase;">Direction D — minimaliste</div>
+
+    <!-- Sur fond sombre -->
+    <div class="context-title">En contexte — Navigation (fond sombre)</div>
+
+    <div class="nav-sim dark" style="margin-bottom:2px;">
+      <img src="assets/Logo Arteon.png" style="height:28px; filter:invert(1);" alt="A">
+      <div class="nav-links" style="color:rgba(248,245,240,0.5); font-size:13px;"><span>Manifeste</span><span>Shop</span><span>WildLens</span></div>
+      <div class="nav-cta" style="margin-left:auto; margin-right:16px;">L'Instant Lu</div>
+      <div style="color:rgba(248,245,240,0.4); font-size:12px; letter-spacing:0.05em;">FR</div>
+    </div>
+    <div style="font-size:10px; color:var(--gris); padding: 4px 0 16px; letter-spacing:0.08em; text-transform:uppercase;">Direction A — existant sur fond sombre</div>
+
+    <div class="nav-sim dark" style="margin-bottom:2px;">
+      <svg width="130" height="28" viewBox="0 0 260 56"><text x="0" y="42" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="42" fill="#F8F5F0" letter-spacing="-1">ARTEON</text><line x1="0" y1="52" x2="172" y2="52" stroke="#C17F3A" stroke-width="2"/></svg>
+      <div class="nav-links" style="color:rgba(248,245,240,0.5); font-size:13px;"><span>Manifeste</span><span>Shop</span><span>WildLens</span></div>
+      <div class="nav-cta" style="margin-left:auto; margin-right:16px;">L'Instant Lu</div>
+      <div style="color:rgba(248,245,240,0.4); font-size:12px; letter-spacing:0.05em;">FR</div>
+    </div>
+    <div style="font-size:10px; color:var(--gris); padding: 4px 0 36px; letter-spacing:0.08em; text-transform:uppercase;">Direction B — sur fond sombre</div>
+
+  </div>
+
+  <!-- Synthèse -->
+  <div style="background:var(--sable); padding:40px; margin-top:60px;">
+    <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gris); margin-bottom:24px;">Synthèse des 4 directions</div>
+    <table style="width:100%; border-collapse:collapse; font-size:13px;">
+      <tr style="border-bottom:1px solid var(--ivoire);">
+        <td style="padding:12px 0; font-weight:600; width:100px;">Direction A</td>
+        <td style="padding:12px 16px;">Logo existant — stencil géométrique</td>
+        <td style="padding:12px 0; color:var(--gris);">Architecture, précision scientifique. Reconnaissable, déjà existant.</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--ivoire);">
+        <td style="padding:12px 0; font-weight:600;">Direction B</td>
+        <td style="padding:12px 16px;">Capitales + ligne ocre</td>
+        <td style="padding:12px 0; color:var(--gris);">Galerie contemporaine. La ligne évoque l'horizon, le terrain.</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--ivoire);">
+        <td style="padding:12px 0; font-weight:600;">Direction C</td>
+        <td style="padding:12px 16px;">Cercle-diaphragme + A</td>
+        <td style="padding:12px 0; color:var(--gris);">Référence photographique directe. Symbole fort pour favicon et badge.</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 0; font-weight:600;">Direction D</td>
+        <td style="padding:12px 16px;">Minimaliste weight 300 + point</td>
+        <td style="padding:12px 0; color:var(--gris);">Le plus luxueux. Cohérent avec "L'Instant Lu·". Haut de gamme.</td>
+      </tr>
+    </table>
+    <div style="margin-top:24px; font-family:'Lora',serif; font-style:italic; font-size:14px; color:var(--gris);">
+      Note : les directions B, C, D sont des explorations conceptuelles rendues en CSS/SVG. Une version définitive nécessiterait un travail vectoriel Illustrator/Figma avant usage print ou web.
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

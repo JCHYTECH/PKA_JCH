@@ -1,0 +1,44 @@
+{
+  "profiles": [
+    {
+      "project_key": "PKA",
+      "label": "PKA Core",
+      "trigger_terms": ["pka", "dobby", "system", "workflow", "overlay", "skills", "memory", "harness"],
+      "specialist_hint": "Forge",
+      "roots": ["scripts", "TEAM", "JCH_Inbox/99_SYSTEM", "docs/superpowers"],
+      "paired_skills": ["pka-system-improvement"]
+    },
+    {
+      "project_key": "02_ARTEON",
+      "label": "ARTEON",
+      "trigger_terms": ["arteon", "wildlens", "whitewall", "shopify", "ghost", "brand"],
+      "specialist_hint": "Vega",
+      "roots": ["JCH_Inbox/03_PROJECTS/02_ARTEON"],
+      "paired_skills": ["pka-system-improvement"]
+    },
+    {
+      "project_key": "03_FAUNE_AUTOUR",
+      "label": "Faune Autour",
+      "trigger_terms": ["faune autour", "gbif", "bioacoustic", "local fauna", "app"],
+      "specialist_hint": "Forge",
+      "roots": ["JCH_Inbox/03_PROJECTS/03_FAUNE_AUTOUR"],
+      "paired_skills": []
+    },
+    {
+      "project_key": "06_PHOTO_NATURE",
+      "label": "Photo Nature",
+      "trigger_terms": ["photo nature", "lightroom", "printing", "epson", "wildlife", "photo"],
+      "specialist_hint": "Argus",
+      "roots": ["JCH_Inbox/03_PROJECTS/06_PHOTO_NATURE"],
+      "paired_skills": []
+    },
+    {
+      "project_key": "08_VETALYX",
+      "label": "Vetalyx",
+      "trigger_terms": ["vetalyx", "diaho", "veterinary", "allergy", "diagnostic"],
+      "specialist_hint": "Vasco",
+      "roots": ["JCH_Inbox/03_PROJECTS/08_VETALYX"],
+      "paired_skills": []
+    }
+  ]
+}

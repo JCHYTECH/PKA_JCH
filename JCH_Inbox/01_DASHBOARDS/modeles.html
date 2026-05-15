@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PKA · Modeles de discussion</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%232A2420'/%3E%3Ctext x='8' y='11' font-size='7' text-anchor='middle' fill='%23C17F3A' font-family='Arial'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/pka-theme.css">
+<style>
+  :root {
+    --ink: #17120d;
+    --paper: #f8f5f0;
+    --panel: #ffffff;
+    --line: #e7ded3;
+    --muted: #706a62;
+    --brand: #c17f3a;
+    --deep: #2a2420;
+    --green: #2f6b4f;
+    --blue: #365f91;
+    --red: #a8443a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  header {
+    background: var(--deep);
+    color: white;
+    padding: 30px 48px 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+
+  .brand {
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+  }
+
+  .brand span { color: var(--brand); }
+
+  .subtitle {
+    margin-top: 6px;
+    color: rgba(255,255,255,0.54);
+    font-size: 13px;
+  }
+
+  .date {
+    color: rgba(255,255,255,0.38);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  main {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 42px 48px 74px;
+  }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 26px;
+  }
+
+  .back {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    border-bottom: 1px solid transparent;
+  }
+
+  .back:hover { color: var(--ink); border-bottom-color: var(--brand); }
+
+  h1 {
+    font-size: 26px;
+    font-weight: 650;
+    letter-spacing: 0;
+  }
+
+  .intro {
+    max-width: 760px;
+    color: var(--muted);
+    line-height: 1.65;
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+
+  .notice {
+    background: #fff7ea;
+    border-left: 4px solid var(--brand);
+    padding: 14px 16px;
+    color: #5e4730;
+    font-size: 13px;
+    line-height: 1.55;
+    margin-bottom: 30px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 14px;
+  }
+
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--brand);
+    min-height: 265px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0 8px 28px rgba(42,36,32,0.06);
+  }
+
+  .card.local { border-left-color: var(--green); }
+  .card.google { border-left-color: var(--blue); }
+  .card.openai { border-left-color: #111827; }
+  .card.deepseek { border-left-color: var(--red); }
+  .card[data-color] { border-left-color: var(--model-color); }
+
+  .card-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .model {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .provider {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .badge {
+    flex: 0 0 auto;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    border-radius: 999px;
+    padding: 5px 9px;
+    font-size: 10px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .swatch {
+    width: 74px;
+    height: 13px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--model-color) 0 42%, var(--terminal-bg) 42% 100%);
+    box-shadow: inset 0 0 0 1px rgba(42,36,32,0.16);
+    margin-top: 9px;
+  }
+
+  .desc {
+    color: var(--muted);
+    line-height: 1.58;
+    font-size: 13px;
+  }
+
+  .fit {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto;
+  }
+
+  .pill {
+    background: #f1ece5;
+    color: #554a40;
+    border-radius: 999px;
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+
+  code {
+    display: block;
+    width: 100%;
+    overflow-wrap: anywhere;
+    background: #191510;
+    color: #f3eadf;
+    padding: 11px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    line-height: 1.45;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr 42px;
+    gap: 8px;
+  }
+
+  .launch,
+  .copy {
+    border: 0;
+    background: var(--deep);
+    color: white;
+    min-height: 42px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 650;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .launch {
+    background: var(--model-color);
+    color: var(--button-text, white);
+  }
+
+  .copy {
+    background: #ebe3d8;
+    color: var(--ink);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  .launch:hover {
+    filter: brightness(0.92);
+  }
+  .copy:hover { background: #ded3c5; }
+
+  .launch[disabled] {
+    cursor: wait;
+    opacity: 0.68;
+  }
+
+  .status {
+    min-height: 20px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .status.ok { color: var(--green); }
+  .status.error { color: var(--red); }
+
+  .route {
+    margin-top: 34px;
+    background: white;
+    border: 1px solid var(--line);
+    padding: 20px;
+  }
+
+  .route h2 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 13px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 10px 8px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  th {
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  td:last-child {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 12px;
+  }
+
+  footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--deep);
+    color: rgba(255,255,255,0.42);
+    padding: 14px 48px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 11px;
+  }
+
+  @media (max-width: 720px) {
+    header, main, footer { padding-left: 22px; padding-right: 22px; }
+    header, .topbar, footer { align-items: flex-start; flex-direction: column; }
+    .date { white-space: normal; }
+    .grid { grid-template-columns: 1fr; }
+    .card { min-height: 0; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <div class="brand">PKA · JCH<span>·</span></div>
+    <div class="subtitle">Modeles de discussion et lanceurs Dobby</div>
+  </div>
+  <div class="date" id="today"></div>
+</header>
+
+<main>
+  <div class="topbar">
+    <h1>Choisir un modele</h1>
+    <a class="back" href="hub.html">Retour au hub</a>
+  </div>
+
+  <p class="intro">
+    Chaque carte lance une session Dobby dans le dossier PKA avec le runtime choisi.
+    Les commandes passent par <strong>dobby.sh</strong>, donc le contexte AGENTS/GEMINI/GEMMA/QWEN reste centralise.
+  </p>
+
+  <div class="notice">
+    Depuis <strong>http://127.0.0.1:8787</strong>, les boutons demandent au serveur local d'ouvrir Terminal dans une nouvelle fenetre.
+    Si cette page est ouverte en fichier direct, lance d'abord <strong>./dashboard.sh</strong>.
+  </div>
+
+  <section class="grid" aria-label="Modeles disponibles">
+    <article class="card" data-color style="--model-color:#c17f3a;--terminal-bg:#30200f;--button-text:#ffffff">
+      <div class="card-head">
+        <div>
+          <div class="model">Claude Code</div>
+          <div class="provider">Anthropic · Claude Sonnet/Opus</div>
+        </div>
+        <div class="badge">defaut</div>
+      </div>
+      <div class="swatch" title="Couleur Terminal"></div>
+      <p class="desc">Runtime principal pour orchestration PKA, gros travaux de code, synthese longue et workflows avec outils.</p>
+      <div class="fit"><span class="pill">PKA general</span><span class="pill">code</span><span class="pill">rapports</span></div>
+      <code>./dobby.sh --model claude</code>
+      <div class="actions">
+        <button class="launch" data-model="claude">Lancer la discussion</button>
+        <button class="copy" data-command="./dobby.sh --model claude" title="Copier la commande">⌘</button>
+      </div>
+      <div class="status" aria-live="polite"></div>
+    </article>
+
+    <article class="card openai" data-color style="--model-color:#4a5568;--terminal-bg:#131520;--button-text:#ffffff">
+      <div class="card-head">
+        <div>
+          <div class="model">Codex CLI</div>
+          <div class="provider">OpenAI · GPT-5</div>
+        </div>
+        <div class="badge">agent</div>
+      </div>
+      <div class="swatch" title="Couleur Terminal"></div>
+      <p class="desc">Session orientee developpement, inspection de repo, modifications de fichiers et verification technique.</p>
+      <div class="fit"><span class="pill">codebase</span><span class="pill">debug</span><span class="pill">frontend</span></div>
+      <code>./dobby.sh --model codex</code>
+      <div class="actions">
+        <button class="launch" data-model="codex">Lancer la discussion</button>
+        <button class="copy" data-command="./dobby.sh --model codex" title="Copier la commande">⌘</button>
+      </div>
+      <div class="status" aria-live="polite"></div>
+    </article>
+
+    <article class="card google" data-color style="--model-color:#3d5a3e;--terminal-bg:#0f1710;--button-text:#ffffff">
+      <div class="card-head">
+        <div>
+          <div class="model">Gemini CLI</div>
+          <div class="provider">Google · Gemini</div>
+        </div>
+        <div class="badge">google</div>
+      </div>
+      <div class="swatch" title="Couleur Terminal"></div>
+      <p class="desc">Alternative generaliste avec acces workspace, utile pour comparaison de raisonnement ou execution via Gemini CLI.</p>
+      <div class="fit"><span class="pill">comparaison</span><span class="pill">long contexte</span><span class="pill">tests</span></div>
+      <code>./dobby.sh --model gemini</code>
+      <div class="actions">
+        <button class="launch" data-model="gemini">Lancer la discussion</button>
+        <button class="copy" data-command="./dobby.sh --model gemini" title="Copier la commande">⌘</button>
+      </div>
+      <div class="status" aria-live="polite"></div>
+    </article>
+
+    <article class="card deepseek" data-color style="--model-color:#c0392b;--terminal-bg:#30100b;--button-text:#ffffff">
+      <div class="card-head">
+        <div>
+          <div class="model">DeepSeek Chat</div>
+          <div class="provider">DeepSeek · API</div>
+        </div>
+        <div class="badge">api</div>
+      </div>
+      <div class="swatch" title="Couleur Terminal"></div>
+      <p class="desc">Mode conversation API via le client local, utile pour avis secondaire et generation texte a cout controle.</p>
+      <div class="fit"><span class="pill">avis second</span><span class="pill">texte</span><span class="pill">cout</span></div>
+      <code>./dobby.sh --model deepseek</code>
+      <div class="actions">
+        <button class="launch" data-model="deepseek">Lancer la discussion</button>
+        <button class="copy" data-command="./dobby.sh --model deepseek" title="Copier la commande">⌘</button>
+      </div>
+      <div class="status" aria-live="polite"></div>
+    </article>
+
+    <article class="card deepseek" data-color style="--model-color:#2a2420;--terminal-bg:#0b0908;--button-text:#ffffff">
+      <div class="card-head">
+        <div>
+          <div class="model">DeepSeek R1</div>
+          <div class="provider">DeepSeek · reasoner</div>
+        </div>
+        <div class="badge">raisonnement</div>
+      </div>
+      <div class="swatch" title="Couleur Terminal"></div>
+      <p class="desc">Mode raisonnement DeepSeek pour analyse structuree, arbitrage ou verification conceptuelle.</p>
+      <div class="fit"><span class="pill">analyse</span><span class="pill">strategie</span><span class="pill">arbitrage</span></div>
+      <code>./dobby.sh --model deepseek-r1</code>
+      <div class="actions">
+        <button class="launch" data-model="deepseek-r1">Lancer la discussion</button>
+        <button class="copy" data-command="./dobby.sh --model deepseek-r1" title="Copier la commande">⌘</button>
+      </div>
+      <div class="status" aria-live="polite"></div>
+    </article>
+
+    <article class="card local" data-color style="--model-color:#6b6560;--terminal-bg:#1b1918;--button-text:#ffffff">
+      <div class="card-head">
+        <div>
+          <div class="model">Gemma 4</div>
+          <div class="provider">Ollama · local</div>
+        </div>
+        <div class="badge">local</div>
+      </div>
+      <div class="swatch" title="Couleur Terminal"></div>
+      <p class="desc">Mode local pour memoire de skills et petites taches hors cloud. Acces fichiers limite au chat Ollama.</p>
+      <div class="fit"><span class="pill">local</span><span class="pill">skills</span><span class="pill">offline</span></div>
+      <code>./dobby.sh --model gemma4</code>
+      <div class="actions">
+        <button class="launch" data-model="gemma4">Lancer la discussion</button>
+        <button class="copy" data-command="./dobby.sh --model gemma4" title="Copier la commande">⌘</button>
+      </div>
+      <div class="status" aria-live="polite"></div>
+    </article>
+
+    <article class="card local" data-color style="--model-color:#e8e2da;--terminal-bg:#3a3937;--button-text:#17120d">
+      <div class="card-head">
+        <div>
+          <div class="model">Qwen 3.6</div>
+          <div class="provider">Ollama · local</div>
+        </div>
+        <div class="badge">local</div>
+      </div>
+      <div class="swatch" title="Couleur Terminal"></div>
+      <p class="desc">Mode local privilegie pour journal, retrospectives et syntheses internes simples.</p>
+      <div class="fit"><span class="pill">journal</span><span class="pill">retro</span><span class="pill">local</span></div>
+      <code>./dobby.sh --model qwen3</code>
+      <div class="actions">
+        <button class="launch" data-model="qwen3">Lancer la discussion</button>
+        <button class="copy" data-command="./dobby.sh --model qwen3" title="Copier la commande">⌘</button>
+      </div>
+      <div class="status" aria-live="polite"></div>
+    </article>
+  </section>
+
+  <section class="route">
+    <h2>Routing automatique actuel</h2>
+    <table>
+      <thead>
+        <tr><th>Tache</th><th>Provider</th><th>Modele</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>journal</td><td>ollama</td><td>qwen3.6:latest</td></tr>
+        <tr><td>retro</td><td>ollama</td><td>qwen3.6:latest</td></tr>
+        <tr><td>weekly_report</td><td>anthropic</td><td>claude-sonnet-4-6</td></tr>
+        <tr><td>email_digest</td><td>anthropic</td><td>claude-haiku-4-5-20251001</td></tr>
+        <tr><td>telegram_bot</td><td>anthropic</td><td>claude-sonnet-4-6</td></tr>
+        <tr><td>skill_write</td><td>ollama</td><td>gemma4:latest</td></tr>
+        <tr><td>skill_search</td><td>ollama</td><td>gemma4:latest</td></tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<footer>
+  <div>PKA · Dobby · Lanceurs modeles</div>
+  <div>Source : dobby.sh + scripts/model_config.json</div>
+</footer>
+
+<script>
+  const d = new Date();
+  document.getElementById('today').textContent = d.toLocaleDateString('fr-BE', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+
+  document.querySelectorAll('.copy').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const command = button.dataset.command;
+      try {
+        await navigator.clipboard.writeText(command);
+        const old = button.textContent;
+        button.textContent = 'OK';
+        window.setTimeout(() => { button.textContent = old; }, 900);
+      } catch {
+        window.prompt('Commande a copier', command);
+      }
+    });
+  });
+
+  document.querySelectorAll('.launch').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const model = button.dataset.model;
+      const card = button.closest('.card');
+      const status = card.querySelector('.status');
+      button.disabled = true;
+      status.className = 'status';
+      status.textContent = 'Ouverture de Terminal...';
+
+      try {
+        const response = await fetch(`/launch/${encodeURIComponent(model)}`, {
+          method: 'POST',
+          headers: { 'X-PKA-Dashboard': '1' }
+        });
+        const payload = await response.json();
+        if (!response.ok || !payload.ok) {
+          throw new Error(payload.error || 'Lancement impossible');
+        }
+        status.className = 'status ok';
+        status.textContent = `${payload.label} lance dans Terminal.`;
+      } catch (error) {
+        status.className = 'status error';
+        status.textContent = `Serveur local indisponible ou erreur: ${error.message}`;
+      } finally {
+        button.disabled = false;
+      }
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "workspace_slug": "pka-jch",
+  "api_base": "http://127.0.0.1:8088/api/v1",
+  "api_token_env": "PKA_PLANE_API_TOKEN",
+  "projects": {
+    "01_AI_IT_TOOLS": { "plane_project_id": "7124a48d-8cc0-41cc-b035-87192f2b6f92" },
+    "02_ARTEON": { "plane_project_id": "4e2dc77c-ce1c-4d4e-bbc1-bb63894d145a" },
+    "03_FAUNE_AUTOUR": { "plane_project_id": "8a3ac90c-605e-48c4-a315-833c329e92e7" },
+    "04_NUANCES": { "plane_project_id": "0a461d9a-d394-4345-9ab4-fb71ef5025a9" },
+    "05_PHOTO_AI_JURY": { "plane_project_id": "e3e5dc70-0781-4f7a-9495-36278d1ee3cd" },
+    "06_PHOTO_NATURE": { "plane_project_id": "80d1dded-b5b2-4485-8623-5390320d02c6" },
+    "07_TRAVELS": { "plane_project_id": "446e58cd-0c6f-4b74-8e14-fd1026eb47f4" },
+    "08_VETALYX": { "plane_project_id": "072aa0a3-d4c8-4b30-b595-685ee120b095" }
+  }
+}

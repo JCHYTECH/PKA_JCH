@@ -1,0 +1,37 @@
+{
+  "statuses": [
+    "A qualifier",
+    "Pret",
+    "En cours",
+    "En attente",
+    "En validation",
+    "Termine",
+    "Archive"
+  ],
+  "types": [
+    "task",
+    "decision",
+    "document",
+    "bug",
+    "idea",
+    "follow-up",
+    "deliverable"
+  ],
+  "required_fields": [
+    "title",
+    "project",
+    "type",
+    "owner",
+    "priority",
+    "status",
+    "description"
+  ],
+  "recommended_fields": [
+    "lead_specialist",
+    "model_used",
+    "decision_owner",
+    "blocking_reason",
+    "expected_outcome",
+    "source_link"
+  ]
+}

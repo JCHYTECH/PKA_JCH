@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'Instant Lu — 3 propositions rapport PDF</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --noir:    #0D0B09;
+    --ivoire:  #F8F5F0;
+    --ocre:    #C17F3A;
+    --sable:   #E8E2DA;
+    --gris:    #6B6560;
+    --brun:    #2A2420;
+    --ardoise: #4A5568;
+    --gris-ep: #D4D4D4;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Space Grotesk', sans-serif; background: #CFCFCF; padding: 40px; }
+
+  /* ─── Bandeau navigation ─── */
+  .nav-bar {
+    background: var(--brun); color: white;
+    padding: 12px 32px; margin-bottom: 40px; display: flex; gap: 32px; align-items: center;
+    position: sticky; top: 0; z-index: 99;
+  }
+  .nav-bar-title { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; flex: 1; }
+  .nav-bar a { color: rgba(255,255,255,0.7); font-size: 13px; text-decoration: none; padding: 6px 16px; }
+  .nav-bar a:hover, .nav-bar a.active { color: white; background: rgba(255,255,255,0.1); }
+
+  /* ─── Intro ─── */
+  .intro-block { max-width: 860px; margin: 0 auto 60px; background: white; padding: 32px 40px; }
+  .intro-title { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gris); margin-bottom: 8px; }
+  .intro-body { font-family: 'Lora', serif; font-size: 15px; line-height: 1.7; color: var(--gris); }
+
+  /* ─── Wrapper proposition ─── */
+  .proposition { max-width: 860px; margin: 0 auto 80px; }
+  .prop-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 16px; }
+  .prop-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gris); }
+  .prop-name { font-size: 22px; font-weight: 700; }
+  .prop-tagline { font-family: 'Lora', serif; font-style: italic; font-size: 14px; color: var(--gris); margin-bottom: 24px; }
+  .prop-desc { font-family: 'Lora', serif; font-size: 14px; color: var(--gris); line-height: 1.65; margin-bottom: 24px; max-width: 600px; }
+
+  /* ─── Page A4 simulation ─── */
+  .a4 {
+    width: 794px; /* A4 @ 96dpi */
+    background: white;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+    margin-bottom: 8px;
+    overflow: hidden;
+    page-break-inside: avoid;
+  }
+  .a4-page-num {
+    font-size: 10px; color: var(--gris); font-family: 'IBM Plex Mono', monospace;
+    text-align: right; padding: 6px 16px; background: #f0f0f0; letter-spacing: 0.06em;
+  }
+
+  /* ══════════════════════════════════
+     DIRECTION A — ÉDITORIAL
+  ══════════════════════════════════ */
+  .a-cover { position: relative; height: 420px; overflow: hidden; }
+  .a-cover-photo { position: absolute; inset: 0; background: linear-gradient(160deg,#1A2018,#0D1A0F); }
+  .a-cover-frame { position: absolute; inset: 20px; border: 1px solid var(--gris-ep); }
+  .a-cover-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(13,11,9,0.92) 0%, transparent 100%);
+    padding: 40px 40px 32px;
+  }
+  .a-cover-species { font-family: 'Lora', serif; font-style: italic; font-size: 26px; color: white; margin-bottom: 6px; }
+  .a-cover-meta { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; }
+  .a-cover-score {
+    position: absolute; top: 32px; right: 32px;
+    background: var(--ocre); color: white; padding: 16px 20px; text-align: center;
+  }
+  .a-cover-score-val { font-family: 'IBM Plex Mono', monospace; font-size: 32px; font-weight: 500; line-height: 1; }
+  .a-cover-score-tier { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; opacity: 0.85; }
+
+  .a-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 40px; border-bottom: 1px solid var(--sable); }
+  .a-logo { font-weight: 300; font-size: 16px; letter-spacing: 0.08em; }
+  .a-logo span { color: var(--ocre); }
+  .a-header-right { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gris); text-align: right; line-height: 1.6; }
+
+  .a-body { padding: 36px 40px; }
+  .a-scores-row { display: grid; grid-template-columns: repeat(5,1fr); gap: 2px; margin-bottom: 32px; }
+  .a-score-cell { text-align: center; padding: 16px 8px; background: var(--ivoire); }
+  .a-score-axis { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gris); margin-bottom: 8px; }
+  .a-score-val { font-family: 'IBM Plex Mono', monospace; font-size: 28px; color: var(--ocre); font-weight: 500; line-height: 1; }
+  .a-score-denom { font-size: 10px; color: var(--gris); }
+  .a-score-bar { height: 3px; background: var(--sable); margin-top: 8px; }
+  .a-score-bar-fill { height: 3px; background: var(--ocre); }
+
+  .a-critique-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 32px; margin-bottom: 28px; }
+  .a-critique-item {}
+  .a-critique-axis { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ocre); margin-bottom: 6px; font-weight: 600; }
+  .a-critique-text { font-family: 'Lora', serif; font-size: 11.5px; line-height: 1.65; color: var(--noir); }
+
+  .a-lr-title { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gris); margin-bottom: 12px; padding-top: 20px; border-top: 1px solid var(--sable); }
+  .a-lr-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; }
+  .a-lr-param { background: var(--ivoire); padding: 10px 12px; }
+  .a-lr-name { font-size: 9px; color: var(--gris); letter-spacing: 0.06em; margin-bottom: 3px; }
+  .a-lr-val { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ocre); }
+
+  .a-footer { display: flex; align-items: center; justify-content: space-between; padding: 14px 40px; background: var(--noir); }
+  .a-footer-brand { font-weight: 300; font-size: 13px; letter-spacing: 0.08em; color: white; }
+  .a-footer-brand span { color: var(--ocre); }
+  .a-footer-slogan { font-family: 'Lora', serif; font-style: italic; font-size: 11px; color: rgba(255,255,255,0.4); }
+  .a-footer-page { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.3); }
+
+  /* Modifs badges */
+  .a-modifs { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .a-modif-badge { font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 4px 10px; }
+  .a-modif-badge.preset { background: var(--ocre); color: white; }
+  .a-modif-badge.masque { background: var(--ardoise); color: white; }
+  .a-modifs-label { font-size: 9px; color: var(--gris); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* Score synthèse + modifs agrandis — Direction A */
+  .a-score-summary { display:flex; align-items:center; gap:28px; padding:18px 24px; background:var(--ivoire); margin-bottom:20px; border-left:4px solid var(--ocre); }
+  .a-score-summary-val { font-family:'IBM Plex Mono',monospace; font-size:46px; color:var(--ocre); font-weight:500; line-height:1; }
+  .a-score-summary-tier { font-size:12px; letter-spacing:0.15em; text-transform:uppercase; font-weight:600; color:var(--noir); }
+  .a-modif-badge-lg { font-family:'IBM Plex Mono',monospace; font-size:13px; padding:8px 18px; font-weight:500; }
+  .a-modif-badge-lg.preset { background:var(--ocre); color:white; }
+  .a-modif-badge-lg.masque { background:var(--ardoise); color:white; }
+  .a-lr-val-change { display:flex; align-items:baseline; gap:5px; flex-wrap:wrap; }
+  .a-lr-val-from { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--gris); text-decoration:line-through; }
+  .a-lr-val-to { font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--ocre); font-weight:500; }
+
+  /* ══════════════════════════════════
+     DIRECTION B — TECHNIQUE
+  ══════════════════════════════════ */
+  .b-header { background: var(--ardoise); padding: 20px 36px; display: flex; align-items: center; justify-content: space-between; }
+  .b-logo { font-weight: 300; font-size: 17px; letter-spacing: 0.08em; color: white; }
+  .b-logo span { color: var(--ocre); }
+  .b-header-right { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.5); text-align: right; line-height: 1.6; }
+
+  .b-top { display: grid; grid-template-columns: 200px 1fr; }
+  .b-photo-col { background: var(--gris-ep); padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+  .b-photo { height: 200px; background: linear-gradient(160deg,#1A2018,#0D1A0F); }
+  .b-photo-meta { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: var(--gris); line-height: 1.8; }
+  .b-photo-colors { display: flex; gap: 6px; }
+  .b-color-chip { height: 20px; flex: 1; }
+
+  .b-scores-col { padding: 20px 28px; }
+  .b-species { font-family: 'Lora', serif; font-weight: 600; font-size: 18px; margin-bottom: 4px; }
+  .b-date { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gris); margin-bottom: 16px; }
+  .b-score-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .b-score-label { font-size: 11px; font-weight: 500; width: 90px; }
+  .b-score-bar-wrap { flex: 1; background: var(--sable); height: 5px; }
+  .b-score-bar { height: 5px; background: var(--ocre); }
+  .b-score-val { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ardoise); width: 36px; text-align: right; }
+  .b-total-row { display: flex; align-items: baseline; gap: 12px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--sable); }
+  .b-total-val { font-family: 'IBM Plex Mono', monospace; font-size: 36px; color: var(--ocre); font-weight: 500; line-height: 1; }
+  .b-total-tier { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gris); }
+  .b-modifs-row { display: flex; gap: 8px; margin-top: 10px; }
+
+  .b-body { padding: 20px 28px; }
+  .b-section-title { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ardoise); font-weight: 600; margin-bottom: 12px; margin-top: 16px; padding-bottom: 6px; border-bottom: 1px solid var(--sable); }
+  .b-critique-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
+  .b-critique-item-title { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ocre); margin-bottom: 4px; font-weight: 600; }
+  .b-critique-text { font-family: 'Lora', serif; font-size: 11px; line-height: 1.6; color: var(--noir); }
+
+  .b-lr-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 6px; }
+  .b-lr-cell { border-left: 2px solid var(--ocre); padding: 6px 8px; }
+  .b-lr-name { font-size: 9px; color: var(--gris); letter-spacing: 0.06em; }
+  .b-lr-val { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--noir); font-weight: 500; }
+
+  .b-amelio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .b-amelio-item { background: var(--ivoire); padding: 10px 12px; }
+  .b-amelio-title { font-size: 10px; font-weight: 600; margin-bottom: 3px; }
+  .b-amelio-desc { font-family: 'Lora', serif; font-size: 10px; color: var(--gris); line-height: 1.5; }
+
+  .b-footer { display: flex; align-items: center; justify-content: space-between; padding: 10px 28px; border-top: 1px solid var(--sable); }
+  .b-footer-brand { font-weight: 300; font-size: 12px; letter-spacing: 0.08em; color: var(--gris); }
+  .b-footer-brand span { color: var(--ocre); }
+  .b-footer-page { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gris); }
+
+  /* ══════════════════════════════════
+     DIRECTION C — NATURALISTE
+  ══════════════════════════════════ */
+  .c-cover-strip { background: var(--noir); height: 8px; }
+  .c-header { padding: 24px 44px 16px; border-bottom: 1px solid var(--sable); }
+  .c-header-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
+  .c-logo { font-weight: 300; font-size: 16px; letter-spacing: 0.08em; }
+  .c-logo span { color: var(--ocre); }
+  .c-header-date { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gris); text-align: right; line-height: 1.6; }
+  .c-species-line { display: flex; align-items: baseline; gap: 16px; }
+  .c-species { font-family: 'Lora', serif; font-weight: 600; font-size: 22px; }
+  .c-species-latin { font-family: 'Lora', serif; font-style: italic; font-size: 14px; color: var(--gris); }
+  .c-score-inline { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--ocre); margin-left: auto; }
+
+  .c-body { display: grid; grid-template-columns: 220px 1fr; }
+  .c-sidebar { padding: 24px 20px 24px 44px; border-right: 1px solid var(--sable); }
+  .c-photo-wrap { background: var(--gris-ep); padding: 12px; margin-bottom: 16px; }
+  .c-photo { height: 180px; background: linear-gradient(160deg,#1A2018,#0D1A0F); }
+  .c-sidebar-section { margin-bottom: 16px; }
+  .c-sidebar-title { font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gris); margin-bottom: 8px; font-weight: 600; }
+  .c-sidebar-row { display: flex; justify-content: space-between; font-size: 10px; padding: 4px 0; border-bottom: 1px solid var(--sable); }
+  .c-sidebar-label { color: var(--gris); }
+  .c-sidebar-val { font-family: 'IBM Plex Mono', monospace; font-weight: 500; font-size: 10px; }
+  .c-sidebar-score-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .c-sidebar-score-axis { font-size: 10px; }
+  .c-sidebar-score-dot { width: 24px; height: 24px; background: var(--ocre); color: white; font-family: 'IBM Plex Mono', monospace; font-size: 10px; display: flex; align-items: center; justify-content: center; font-weight: 500; }
+  .c-sidebar-modifs { display: flex; flex-direction: column; gap: 4px; }
+
+  .c-main { padding: 24px 36px 24px 28px; }
+  .c-critique-item { margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--sable); }
+  .c-critique-item:last-child { border-bottom: none; }
+  .c-critique-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; }
+  .c-critique-axis { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ocre); font-weight: 700; }
+  .c-critique-score { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ardoise); }
+  .c-critique-text { font-family: 'Lora', serif; font-size: 11px; line-height: 1.65; color: var(--noir); }
+
+  .c-lr-block { padding: 16px 0 0; }
+  .c-lr-title { font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ardoise); margin-bottom: 10px; font-weight: 600; }
+  .c-lr-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .c-lr-tag { background: var(--ivoire); padding: 5px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; }
+  .c-lr-tag span { color: var(--ocre); }
+
+  .c-footer { display: flex; align-items: center; justify-content: space-between; padding: 10px 44px; background: var(--ivoire); border-top: 1px solid var(--sable); }
+  .c-footer-slogan { font-family: 'Lora', serif; font-style: italic; font-size: 10px; color: var(--gris); }
+  .c-footer-brand { font-weight: 300; font-size: 11px; letter-spacing: 0.08em; }
+  .c-footer-brand span { color: var(--ocre); }
+  .c-footer-page { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gris); }
+</style>
+</head>
+<body>
+
+<div class="nav-bar">
+  <div class="nav-bar-title">L'Instant Lu — 3 propositions rapport PDF · 2026-05-02</div>
+  <a href="#prop-a" class="active">A — Éditorial</a>
+  <a href="#prop-b">B — Technique</a>
+  <a href="#prop-c">C — Naturaliste</a>
+</div>
+
+<div class="intro-block">
+  <div class="intro-title">Contexte</div>
+  <div class="intro-body">Trois directions pour le rapport PDF de L'Instant Lu. Chaque direction est montrée en 2 pages A4 simulées — couverture/page 1 et page de détail. La palette, les typographies et les couleurs sont celles de la charte validée. Les sauts de page sont contrôlés par section.</div>
+</div>
+
+<!-- ══════════════ DIRECTION A ══════════════ -->
+<div class="proposition" id="prop-a">
+  <div class="prop-header">
+    <div class="prop-label">Direction A — RETRAVAILLÉE</div>
+    <div style="text-align:right;">
+      <div class="prop-name">Éditorial</div>
+    </div>
+  </div>
+  <div class="prop-tagline">Couverture magazine · Score synthèse · Retouches locales en style B · 3 pages propres</div>
+  <div class="prop-desc">Page 1 : couverture pleine largeur avec identité client. Page 2 : score global + 5 axes + critiques par axe. Page 3 : corrections Lightroom (avant/après) + pistes de retouche locale. Aucun saut de page incontrôlé.</div>
+
+  <!-- Page 1 — Couverture -->
+  <div class="a4">
+    <div class="a-header">
+      <div>
+        <div class="a-logo">L'Instant Lu<span>·</span> <span style="font-size:11px;color:var(--gris);font-weight:400;letter-spacing:0.04em;">by Arteon·</span></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--gris);margin-top:3px;letter-spacing:0.04em;">Fichier : DSC_0847.dng</div>
+      </div>
+      <div class="a-header-right">Jean-Claude Havaux<br>2026-05-02 · Réf. ILU-2026-0047</div>
+    </div>
+    <div class="a-cover">
+      <div class="a-cover-photo"></div>
+      <div class="a-cover-frame"></div>
+      <div class="a-cover-score">
+        <div class="a-cover-score-val">82</div>
+        <div style="font-size:9px;color:rgba(255,255,255,0.6);margin-top:2px;">/100</div>
+        <div class="a-cover-score-tier">EXCELLENT</div>
+      </div>
+      <div class="a-cover-overlay">
+        <div class="a-cover-species">Pygargue à queue blanche</div>
+        <div class="a-cover-meta">Canon EOS R5 · EF 600mm f/4 · 1/2000s · f/5.6 · ISO 800 · Ardennes, BE · 2026-03-14</div>
+      </div>
+    </div>
+    <div class="a-footer">
+      <div class="a-footer-brand">Arteon<span>·</span></div>
+      <div class="a-footer-slogan">L'instant figé, la pensée en mouvement.</div>
+      <div class="a-footer-page">1 / 3</div>
+    </div>
+  </div>
+
+  <!-- Page 2 — Score synthèse + Axes + Critiques -->
+  <div class="a4">
+    <div class="a-header">
+      <div class="a-logo">L'Instant Lu<span>·</span></div>
+      <div class="a-header-right">Pygargue à queue blanche · 82/100 EXCELLENT<br>Jean-Claude Havaux · Réf. ILU-2026-0047</div>
+    </div>
+    <div class="a-body">
+
+      <!-- Score synthèse global + modifications -->
+      <div class="a-score-summary">
+        <div>
+          <div class="a-score-summary-val">82<span style="font-size:18px;font-weight:300;color:var(--gris);">/100</span></div>
+        </div>
+        <div style="flex:1;">
+          <div class="a-score-summary-tier">EXCELLENT</div>
+          <div style="font-size:10px;color:var(--gris);margin-top:4px;font-family:'Lora',serif;font-style:italic;">Score global · 5 axes d'analyse</div>
+        </div>
+        <div>
+          <div style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gris);margin-bottom:8px;font-weight:600;">Modifications suggérées</div>
+          <div style="display:flex;gap:10px;">
+            <div class="a-modif-badge-lg preset">8 via preset</div>
+            <div class="a-modif-badge-lg masque">3 via masque</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 axes de cotation -->
+      <div class="a-scores-row">
+        <div class="a-score-cell">
+          <div class="a-score-axis">Composition</div>
+          <div class="a-score-val">17</div>
+          <div class="a-score-denom">/20</div>
+          <div class="a-score-bar"><div class="a-score-bar-fill" style="width:85%"></div></div>
+        </div>
+        <div class="a-score-cell">
+          <div class="a-score-axis">Exposition</div>
+          <div class="a-score-val">16</div>
+          <div class="a-score-denom">/20</div>
+          <div class="a-score-bar"><div class="a-score-bar-fill" style="width:80%"></div></div>
+        </div>
+        <div class="a-score-cell">
+          <div class="a-score-axis">Netteté</div>
+          <div class="a-score-val">18</div>
+          <div class="a-score-denom">/20</div>
+          <div class="a-score-bar"><div class="a-score-bar-fill" style="width:90%"></div></div>
+        </div>
+        <div class="a-score-cell">
+          <div class="a-score-axis">Technique</div>
+          <div class="a-score-val">15</div>
+          <div class="a-score-denom">/20</div>
+          <div class="a-score-bar"><div class="a-score-bar-fill" style="width:75%"></div></div>
+        </div>
+        <div class="a-score-cell">
+          <div class="a-score-axis">Impact</div>
+          <div class="a-score-val">16</div>
+          <div class="a-score-denom">/20</div>
+          <div class="a-score-bar"><div class="a-score-bar-fill" style="width:80%"></div></div>
+        </div>
+      </div>
+
+      <!-- Critiques par axe -->
+      <div class="a-critique-grid">
+        <div class="a-critique-item">
+          <div class="a-critique-axis">Composition</div>
+          <div class="a-critique-text">Le placement du sujet respecte la règle des tiers et exploite efficacement l'espace négatif du ciel. La ligne d'horizon basse valorise la puissance de l'envergure. Un léger recadrage vers la droite renforcerait le dynamisme du vol.</div>
+        </div>
+        <div class="a-critique-item">
+          <div class="a-critique-axis">Exposition</div>
+          <div class="a-critique-text">L'exposition globale est bien maîtrisée malgré le contraste élevé entre le plumage sombre et le ciel. Les hautes lumières sur la tête blanche sont légèrement cramées — une récupération de –0,5 IL dans les hautes lumières est recommandée.</div>
+        </div>
+        <div class="a-critique-item">
+          <div class="a-critique-axis">Netteté</div>
+          <div class="a-critique-text">L'œil est net et présente un catchlight distinct — critère primordial respecté. Les rémiges primaires montrent un détail remarquable pour la vitesse d'obturation utilisée. Légère vibration dans la queue, absente de l'œil.</div>
+        </div>
+        <div class="a-critique-item">
+          <div class="a-critique-axis">Technique</div>
+          <div class="a-critique-text">Balance des blancs enregistrée à 4 200 K — réchauffement recommandé vers 5 600 K pour valoriser les teintes dorées du plumage. Bruit numérique propre, ISO 800 sans artefacts visibles à cette focale.</div>
+        </div>
+        <div class="a-critique-item" style="grid-column:1/-1;">
+          <div class="a-critique-axis">Impact</div>
+          <div class="a-critique-text">La photo transmet une puissance naturelle réelle. L'angle légèrement contre-plongée humanise le regard de l'oiseau sans anthropomorphisme. La présence est forte. Ce qui manque pour atteindre l'exceptionnel : une interaction comportementale ou un contexte environnemental plus lisible.</div>
+        </div>
+      </div>
+    </div>
+    <div class="a-footer">
+      <div class="a-footer-brand">Arteon<span>·</span></div>
+      <div class="a-footer-slogan">L'instant figé, la pensée en mouvement.</div>
+      <div class="a-footer-page">2 / 3</div>
+    </div>
+  </div>
+
+  <!-- Page 3 — Corrections LR + Retouches locales -->
+  <div class="a4">
+    <div class="a-header">
+      <div class="a-logo">L'Instant Lu<span>·</span></div>
+      <div class="a-header-right">Corrections & Retouches locales<br>DSC_0847.dng · Réf. ILU-2026-0047</div>
+    </div>
+    <div class="a-body">
+
+      <div class="a-lr-title">Corrections Lightroom recommandées · Température 4 200 K → 5 600 K ▲ · Priorité 3/5</div>
+      <div class="a-lr-grid">
+        <div class="a-lr-param">
+          <div class="a-lr-name">Température</div>
+          <div class="a-lr-val-change">
+            <div class="a-lr-val-from">4 200 K</div>
+            <div style="font-size:11px;color:var(--gris);">→</div>
+            <div class="a-lr-val-to">5 600 K</div>
+          </div>
+        </div>
+        <div class="a-lr-param"><div class="a-lr-name">Exposition</div><div class="a-lr-val">+0,35</div></div>
+        <div class="a-lr-param"><div class="a-lr-name">Hautes lumières</div><div class="a-lr-val">−55</div></div>
+        <div class="a-lr-param"><div class="a-lr-name">Ombres</div><div class="a-lr-val">+40</div></div>
+        <div class="a-lr-param"><div class="a-lr-name">Blancs</div><div class="a-lr-val">−20</div></div>
+        <div class="a-lr-param"><div class="a-lr-name">Noirs</div><div class="a-lr-val">−15</div></div>
+        <div class="a-lr-param"><div class="a-lr-name">Clarté</div><div class="a-lr-val">+22</div></div>
+        <div class="a-lr-param"><div class="a-lr-name">Vibrance</div><div class="a-lr-val">+12</div></div>
+      </div>
+
+      <div class="a-lr-title" style="margin-top:28px;padding-top:20px;border-top:1px solid var(--sable);">Pistes de retouche locale (via masque)</div>
+      <div class="b-amelio-grid" style="margin-top:0;">
+        <div class="b-amelio-item">
+          <div class="b-amelio-title">Éclaircir le sujet principal</div>
+          <div class="b-amelio-desc">Masque sur le corps de l'oiseau, +0,4 EV exposition locale. Renforce la séparation fond/sujet.</div>
+        </div>
+        <div class="b-amelio-item">
+          <div class="b-amelio-title">Assombrir les bords</div>
+          <div class="b-amelio-desc">Vignettage radial doux –0,6 EV. Concentre le regard vers le sujet sans alourdir l'image.</div>
+        </div>
+        <div class="b-amelio-item">
+          <div class="b-amelio-title">Accentuer la netteté de l'œil</div>
+          <div class="b-amelio-desc">Masque sur l'œil, netteté +30, masque 80. Ne pas toucher aux zones floues intentionnelles.</div>
+        </div>
+        <div class="b-amelio-item" style="background:var(--sable);border-left:2px solid var(--ocre);">
+          <div class="b-amelio-title">Note éthique</div>
+          <div class="b-amelio-desc">Photo conforme aux critères ARTEON. Prise de vue naturelle, aucun appâtage détecté.</div>
+        </div>
+      </div>
+    </div>
+    <div class="a-footer">
+      <div class="a-footer-brand">Arteon<span>·</span></div>
+      <div style="font-family:'Lora',serif;font-style:italic;font-size:11px;color:rgba(255,255,255,0.4);">Analysé par IA · Validé par un expert ARTEON</div>
+      <div class="a-footer-page">3 / 3</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ DIRECTION B ══════════════ -->
+<div class="proposition" id="prop-b">
+  <div class="prop-header">
+    <div class="prop-label">Direction B</div>
+    <div style="text-align:right;">
+      <div class="prop-name">Technique</div>
+    </div>
+  </div>
+  <div class="prop-tagline">Header ardoise · Photo + scores sur la même page · Dense et professionnel</div>
+  <div class="prop-desc">Rapport complet en 2 pages sans page de couverture. Page 1 : header ardoise + photo + scores côte à côte. Page 2 : critiques + corrections + pistes d'amélioration. Lecture rapide, format "rapport de jury". Le plus proche d'un document professionnel photographique.</div>
+
+  <!-- Page 1 -->
+  <div class="a4">
+    <div class="b-header">
+      <div class="b-logo">L'Instant Lu<span>·</span> <span style="font-size:11px;opacity:0.5;font-weight:300;letter-spacing:0.04em;">by Arteon·</span></div>
+      <div class="b-header-right">Rapport d'analyse photographique<br>2026-05-02 · Réf. ILU-2026-0047</div>
+    </div>
+    <div class="b-top">
+      <div class="b-photo-col">
+        <div class="b-photo"></div>
+        <div class="b-photo-meta">
+          Canon EOS R5<br>600mm f/4 IS<br>1/2000s · f/5.6<br>ISO 800<br>Ardennes, BE
+        </div>
+        <div>
+          <div style="font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gris);margin-bottom:6px;">Couleur dominante</div>
+          <div class="b-photo-colors">
+            <div class="b-color-chip" style="background:#3A4A3A;"></div>
+            <div class="b-color-chip" style="background:#C5A87A;"></div>
+          </div>
+          <div style="font-size:9px;color:var(--gris);margin-top:4px;font-family:'IBM Plex Mono',monospace;">Moy. #3A4A3A · Comp. #C5A87A</div>
+        </div>
+      </div>
+      <div class="b-scores-col">
+        <div class="b-species">Pygargue à queue blanche</div>
+        <div class="b-date">Lac de Nisramont · 2026-03-14</div>
+        <div class="b-score-row">
+          <div class="b-score-label">Composition</div>
+          <div class="b-score-bar-wrap"><div class="b-score-bar" style="width:85%"></div></div>
+          <div class="b-score-val">17/20</div>
+        </div>
+        <div class="b-score-row">
+          <div class="b-score-label">Exposition</div>
+          <div class="b-score-bar-wrap"><div class="b-score-bar" style="width:80%"></div></div>
+          <div class="b-score-val">16/20</div>
+        </div>
+        <div class="b-score-row">
+          <div class="b-score-label">Netteté</div>
+          <div class="b-score-bar-wrap"><div class="b-score-bar" style="width:90%"></div></div>
+          <div class="b-score-val">18/20</div>
+        </div>
+        <div class="b-score-row">
+          <div class="b-score-label">Technique</div>
+          <div class="b-score-bar-wrap"><div class="b-score-bar" style="width:75%"></div></div>
+          <div class="b-score-val">15/20</div>
+        </div>
+        <div class="b-score-row">
+          <div class="b-score-label">Impact</div>
+          <div class="b-score-bar-wrap"><div class="b-score-bar" style="width:80%"></div></div>
+          <div class="b-score-val">16/20</div>
+        </div>
+        <div class="b-total-row">
+          <div class="b-total-val">82</div>
+          <div>
+            <div style="font-size:11px;color:var(--gris);">/100</div>
+            <div class="b-total-tier">EXCELLENT</div>
+          </div>
+        </div>
+        <div class="b-modifs-row">
+          <div class="a-modif-badge preset" style="font-size:9px;padding:3px 8px;">8 via preset</div>
+          <div class="a-modif-badge masque" style="font-size:9px;padding:3px 8px;">3 via masque</div>
+        </div>
+      </div>
+    </div>
+    <div class="b-body">
+      <div class="b-section-title">Analyse détaillée</div>
+      <div class="b-critique-grid">
+        <div>
+          <div class="b-critique-item-title">Composition</div>
+          <div class="b-critique-text">Placement aux tiers respecté, espace négatif valorisant l'envergure. Légère tension positive grâce au regard hors-champ. Recadrage conseillé vers la droite.</div>
+        </div>
+        <div>
+          <div class="b-critique-item-title">Exposition</div>
+          <div class="b-critique-text">Gestion du contraste convaincante. Hautes lumières sur la tête blanche légèrement cramées. Récupération –0,5 IL dans les HL recommandée.</div>
+        </div>
+        <div>
+          <div class="b-critique-item-title">Netteté</div>
+          <div class="b-critique-text">Œil net avec catchlight distinct. Rémiges primaires excellentes. Légère vibration dans la queue — non pénalisante.</div>
+        </div>
+        <div>
+          <div class="b-critique-item-title">Technique</div>
+          <div class="b-critique-text">Balance des blancs froide (4 200 K). Réchauffement vers 5 600 K conseillé. Bruit propre à ISO 800.</div>
+        </div>
+        <div style="grid-column:1/-1;">
+          <div class="b-critique-item-title">Impact</div>
+          <div class="b-critique-text">Puissance naturelle transmise, angle contre-plongée efficace. Pour atteindre l'exceptionnel : contexte comportemental ou interaction environnementale plus lisible.</div>
+        </div>
+      </div>
+    </div>
+    <div class="b-footer">
+      <div class="b-footer-brand">Arteon<span>·</span></div>
+      <div class="b-footer-page">1 / 2</div>
+    </div>
+  </div>
+
+  <!-- Page 2 -->
+  <div class="a4">
+    <div class="b-header">
+      <div class="b-logo">L'Instant Lu<span>·</span></div>
+      <div class="b-header-right">Pygargue à queue blanche · 82/100 · 2026-05-02</div>
+    </div>
+    <div class="b-body" style="padding-top:24px;">
+      <div class="b-section-title">Corrections Lightroom · 4 200 K → 5 600 K ▲ 3/5</div>
+      <div class="b-lr-grid">
+        <div class="b-lr-cell"><div class="b-lr-name">Température</div><div class="b-lr-val">5 600 K</div></div>
+        <div class="b-lr-cell"><div class="b-lr-name">Teinte</div><div class="b-lr-val">+3</div></div>
+        <div class="b-lr-cell"><div class="b-lr-name">Exposition</div><div class="b-lr-val">+0,35</div></div>
+        <div class="b-lr-cell"><div class="b-lr-name">Contraste</div><div class="b-lr-val">+22</div></div>
+        <div class="b-lr-cell"><div class="b-lr-name">Hautes lumières</div><div class="b-lr-val">−55</div></div>
+        <div class="b-lr-cell"><div class="b-lr-name">Ombres</div><div class="b-lr-val">+40</div></div>
+        <div class="b-lr-cell"><div class="b-lr-name">Clarté</div><div class="b-lr-val">+22</div></div>
+        <div class="b-lr-cell"><div class="b-lr-name">Vibrance</div><div class="b-lr-val">+12</div></div>
+      </div>
+
+      <div class="b-section-title" style="margin-top:20px;">Pistes de retouche locale (via masque)</div>
+      <div class="b-amelio-grid">
+        <div class="b-amelio-item">
+          <div class="b-amelio-title">Éclaircir le sujet principal</div>
+          <div class="b-amelio-desc">Masque sur le corps de l'oiseau, +0,4 EV exposition locale. Renforce la séparation fond/sujet.</div>
+        </div>
+        <div class="b-amelio-item">
+          <div class="b-amelio-title">Assombrir les bords</div>
+          <div class="b-amelio-desc">Vignettage radial doux –0,6 EV. Concentre le regard vers le sujet sans alourdir.</div>
+        </div>
+        <div class="b-amelio-item">
+          <div class="b-amelio-title">Accentuer la netteté de l'œil</div>
+          <div class="b-amelio-desc">Masque sur l'œil, netteté +30, masque 80. Ne pas toucher aux zones floues intentionnelles.</div>
+        </div>
+        <div class="b-amelio-item" style="background:var(--sable); border-left:2px solid var(--ocre);">
+          <div class="b-amelio-title">Note éthique</div>
+          <div class="b-amelio-desc">Photo conforme aux critères ARTEON. Prise de vue naturelle, aucun appâtage détecté.</div>
+        </div>
+      </div>
+    </div>
+    <div class="b-footer">
+      <div class="b-footer-brand">Arteon<span>·</span></div>
+      <div style="font-family:'Lora',serif;font-style:italic;font-size:10px;color:var(--gris);">Analysé par IA · Validé par un expert ARTEON</div>
+      <div class="b-footer-page">2 / 2</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ DIRECTION C ══════════════ -->
+<div class="proposition" id="prop-c">
+  <div class="prop-header">
+    <div class="prop-label">Direction C</div>
+    <div style="text-align:right;">
+      <div class="prop-name">Naturaliste</div>
+    </div>
+  </div>
+  <div class="prop-tagline">Sidebar fiche technique · Corps Lora · Esprit carnet de terrain</div>
+  <div class="prop-desc">Inspiré du carnet naturaliste et de la fiche taxonomique. Sidebar gauche avec photo + données techniques. Corps principal en Lora pour les critiques — lecture longue agréable. Esprit "field guide". Le plus cohérent avec la ligne éditoriale WildLens.</div>
+
+  <!-- Page 1 -->
+  <div class="a4">
+    <div class="c-cover-strip"></div>
+    <div class="c-header">
+      <div class="c-header-top">
+        <div>
+          <div class="c-logo">L'Instant Lu<span>·</span></div>
+          <div style="font-size:10px;color:var(--gris);margin-top:2px;letter-spacing:0.04em;">Rapport d'analyse photographique</div>
+        </div>
+        <div class="c-header-date">Réf. ILU-2026-0047<br>2026-05-02</div>
+      </div>
+      <div class="c-species-line">
+        <div class="c-species">Pygargue à queue blanche</div>
+        <div class="c-species-latin">Haliaeetus albicilla</div>
+        <div class="c-score-inline">82/100 · EXCELLENT</div>
+      </div>
+    </div>
+    <div class="c-body">
+      <div class="c-sidebar">
+        <div class="c-photo-wrap">
+          <div class="c-photo"></div>
+        </div>
+        <div class="c-sidebar-section">
+          <div class="c-sidebar-title">Fiche technique</div>
+          <div class="c-sidebar-row"><span class="c-sidebar-label">Boîtier</span><span class="c-sidebar-val">Canon R5</span></div>
+          <div class="c-sidebar-row"><span class="c-sidebar-label">Focale</span><span class="c-sidebar-val">600mm f/4</span></div>
+          <div class="c-sidebar-row"><span class="c-sidebar-label">Vitesse</span><span class="c-sidebar-val">1/2000s</span></div>
+          <div class="c-sidebar-row"><span class="c-sidebar-label">Ouverture</span><span class="c-sidebar-val">f/5.6</span></div>
+          <div class="c-sidebar-row"><span class="c-sidebar-label">ISO</span><span class="c-sidebar-val">800</span></div>
+          <div class="c-sidebar-row"><span class="c-sidebar-label">Lieu</span><span class="c-sidebar-val">Ardennes</span></div>
+        </div>
+        <div class="c-sidebar-section">
+          <div class="c-sidebar-title">Scores</div>
+          <div class="c-sidebar-score-row"><span>Composition</span><div class="c-sidebar-score-dot">17</div></div>
+          <div class="c-sidebar-score-row"><span>Exposition</span><div class="c-sidebar-score-dot">16</div></div>
+          <div class="c-sidebar-score-row"><span>Netteté</span><div class="c-sidebar-score-dot">18</div></div>
+          <div class="c-sidebar-score-row"><span>Technique</span><div class="c-sidebar-score-dot">15</div></div>
+          <div class="c-sidebar-score-row"><span>Impact</span><div class="c-sidebar-score-dot">16</div></div>
+        </div>
+        <div class="c-sidebar-section">
+          <div class="c-sidebar-title">Modifications</div>
+          <div class="c-sidebar-modifs">
+            <div class="a-modif-badge preset" style="font-size:9px;padding:3px 8px;text-align:center;">8 via preset</div>
+            <div class="a-modif-badge masque" style="font-size:9px;padding:3px 8px;text-align:center;">3 via masque</div>
+          </div>
+        </div>
+      </div>
+      <div class="c-main">
+        <div class="c-critique-item">
+          <div class="c-critique-head">
+            <div class="c-critique-axis">Composition</div>
+            <div class="c-critique-score">17/20</div>
+          </div>
+          <div class="c-critique-text">Le placement du sujet respecte la règle des tiers et exploite efficacement l'espace négatif du ciel. La ligne d'horizon basse valorise la puissance de l'envergure. Le regard de l'oiseau vers le hors-champ gauche génère une tension positive. Un léger recadrage vers la droite renforcerait le dynamisme du vol.</div>
+        </div>
+        <div class="c-critique-item">
+          <div class="c-critique-head">
+            <div class="c-critique-axis">Exposition</div>
+            <div class="c-critique-score">16/20</div>
+          </div>
+          <div class="c-critique-text">Gestion du contraste convaincante pour un sujet en contre-jour partiel. Les hautes lumières sur la tête blanche sont légèrement cramées — une récupération de –0,5 IL dans les hautes lumières est recommandée. Le plumage sombre retient bien le détail.</div>
+        </div>
+        <div class="c-critique-item">
+          <div class="c-critique-head">
+            <div class="c-critique-axis">Netteté</div>
+            <div class="c-critique-score">18/20</div>
+          </div>
+          <div class="c-critique-text">L'œil est net et présente un catchlight distinct — critère primordial respecté. Les rémiges primaires montrent un détail remarquable. Légère vibration dans la queue, absente de la zone de mise au point principale.</div>
+        </div>
+        <div class="c-critique-item">
+          <div class="c-critique-head">
+            <div class="c-critique-axis">Technique</div>
+            <div class="c-critique-score">15/20</div>
+          </div>
+          <div class="c-critique-text">Balance des blancs légèrement froide (4 200 K enregistrée). Réchauffement vers 5 600 K améliorera le rendu des teintes dorées. Bruit numérique propre, ISO 800 sans artefacts visibles à cette focale.</div>
+        </div>
+        <div class="c-critique-item">
+          <div class="c-critique-head">
+            <div class="c-critique-axis">Impact</div>
+            <div class="c-critique-score">16/20</div>
+          </div>
+          <div class="c-critique-text">La photo transmet une puissance naturelle réelle. L'angle légèrement contre-plongée humanise le regard sans anthropomorphisme excessif. Ce qui manque pour l'exceptionnel : une interaction comportementale ou un contexte environnemental plus lisible.</div>
+        </div>
+        <div class="c-lr-block">
+          <div class="c-lr-title">Corrections Lightroom · 4 200 K → 5 600 K ▲ 3/5</div>
+          <div class="c-lr-row">
+            <div class="c-lr-tag">Temp <span>5 600K</span></div>
+            <div class="c-lr-tag">Expo <span>+0,35</span></div>
+            <div class="c-lr-tag">HL <span>−55</span></div>
+            <div class="c-lr-tag">Ombres <span>+40</span></div>
+            <div class="c-lr-tag">Blancs <span>−20</span></div>
+            <div class="c-lr-tag">Noirs <span>−15</span></div>
+            <div class="c-lr-tag">Clarté <span>+22</span></div>
+            <div class="c-lr-tag">Vibrance <span>+12</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="c-footer">
+      <div class="c-footer-slogan">L'instant figé, la pensée en mouvement.</div>
+      <div class="c-footer-brand">Arteon<span>·</span></div>
+      <div class="c-footer-page">1 / 1</div>
+    </div>
+  </div>
+  <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--gris); margin-top:8px; padding-left:4px;">↑ Direction C tient en 1 page — pas de saut de page.</div>
+</div>
+
+</body>
+</html>

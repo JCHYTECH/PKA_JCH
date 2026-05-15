@@ -1,0 +1,41 @@
+{
+  "_comment": "Routing modèle par tâche. provider: anthropic | openai | google | ollama",
+
+  "default": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-6"
+  },
+
+  "tasks": {
+    "journal":        { "provider": "ollama",    "model": "qwen3.6:latest" },
+    "retro":          { "provider": "ollama",    "model": "qwen3.6:latest" },
+    "weekly_report":  { "provider": "anthropic", "model": "claude-sonnet-4-6" },
+    "email_digest":   { "provider": "anthropic", "model": "claude-haiku-4-5-20251001" },
+    "telegram_bot":   { "provider": "anthropic", "model": "claude-sonnet-4-6" },
+    "skill_write":    { "provider": "ollama",    "model": "gemma4:latest" },
+    "skill_search":   { "provider": "ollama",    "model": "gemma4:latest" }
+  },
+
+  "providers": {
+    "deepseek": {
+      "base_url": "https://api.deepseek.com/v1",
+      "key_env": "DEEPSEEK_API_KEY"
+    },
+    "anthropic": {
+      "base_url": null,
+      "key_file": "~/.config/pka-jch/anthropic_key.txt"
+    },
+    "openai": {
+      "base_url": null,
+      "key_file": "~/.config/pka-jch/openai_key.txt"
+    },
+    "google": {
+      "base_url": null,
+      "key_file": "~/.config/pka-jch/google_key.txt"
+    },
+    "ollama": {
+      "base_url": "http://localhost:11434/v1",
+      "api_key": "ollama"
+    }
+  }
+}
