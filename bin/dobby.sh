@@ -3,7 +3,7 @@
 # Usage : ./dobby.sh [--model claude|codex|gemini|gemma4|qwen3]
 # Sans argument : lance Claude Code (défaut)
 
-PKA_DIR="$(cd "$(dirname "$0")" && pwd)"
+PKA_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 MODEL="claude"
 
 # Parse arguments

@@ -1,21 +1,43 @@
 {
-  "_comment": "Routing modèle par tâche. provider: anthropic | openai | google | ollama",
-
+  "_comment": "Routing mod\u00e8le par t\u00e2che. provider: anthropic | openai | google | ollama",
   "default": {
     "provider": "anthropic",
     "model": "claude-sonnet-4-6"
   },
-
   "tasks": {
-    "journal":        { "provider": "ollama",    "model": "qwen3.6:latest" },
-    "retro":          { "provider": "ollama",    "model": "qwen3.6:latest" },
-    "weekly_report":  { "provider": "anthropic", "model": "claude-sonnet-4-6" },
-    "email_digest":   { "provider": "anthropic", "model": "claude-haiku-4-5-20251001" },
-    "telegram_bot":   { "provider": "anthropic", "model": "claude-sonnet-4-6" },
-    "skill_write":    { "provider": "ollama",    "model": "gemma4:latest" },
-    "skill_search":   { "provider": "ollama",    "model": "gemma4:latest" }
+    "journal": {
+      "provider": "ollama",
+      "model": "qwen3.6:latest"
+    },
+    "retro": {
+      "provider": "ollama",
+      "model": "qwen3.6:latest"
+    },
+    "weekly_report": {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6"
+    },
+    "email_digest": {
+      "provider": "anthropic",
+      "model": "claude-haiku-4-5-20251001"
+    },
+    "telegram_bot": {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6"
+    },
+    "skill_write": {
+      "provider": "ollama",
+      "model": "gemma4:latest"
+    },
+    "skill_search": {
+      "provider": "ollama",
+      "model": "gemma4:latest"
+    },
+    "nvidia": {
+      "provider": "openrouter",
+      "model": "nvidia/nemotron-3-super-120b-a12b:free"
+    }
   },
-
   "providers": {
     "deepseek": {
       "base_url": "https://api.deepseek.com/v1",
@@ -36,6 +58,14 @@
     "ollama": {
       "base_url": "http://localhost:11434/v1",
       "api_key": "ollama"
+    },
+    "kimi": {
+      "base_url": "https://api.moonshot.cn/v1",
+      "key_file": "~/.config/pka-jch/kimi_key.txt"
+    },
+    "openrouter": {
+      "base_url": "https://openrouter.ai/api/v1",
+      "key_file": "~/.config/pka-jch/openrouter_key.txt"
     }
   }
 }

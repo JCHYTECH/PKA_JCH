@@ -2,6 +2,11 @@
 
 ---
 
+2026-05-17 — Save (session 2) : Atlas #27 onboardé — document fondateur WildNexus v0.1 assemblé (15 sections, 9 NN, 14 OBJ, 6 WP, 4 jalons) — wildnexus-founding-document-v0.1.md créé
+2026-05-17 — Save : daily note créée (WildNexus agents — camera-imaging créé — hardware-physical fusion — PM leader harmonisé — cross-refs tous agents — dashboard statique wildnexus-dashboard.html)
+
+2026-05-15 — Save : daily note créée (skills.sh ecosystem — find-skills — SEO pack Trace — figma Vega — code-review-pro Forge — audit SKILL.md — Trail of Bits durcissement settings.json — insecure-defaults — supply-chain-risk-auditor)
+
 2026-05-14 (2) — Save : session 2 ajoutée à la daily (NUANCES deck 20 slides — correction Jade — diagnostic PPTX — directive versionnage fichiers)
 
 2026-05-14 — Save : daily note créée (skill /modele — benchmarks Anthropic — mémoire transversale MEMORY.md — model tagging — memory_log DB — compliance check — MEMORY-ARCHITECTURE.md)

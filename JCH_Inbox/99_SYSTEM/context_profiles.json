@@ -17,11 +17,11 @@
       "paired_skills": ["pka-system-improvement"]
     },
     {
-      "project_key": "03_FAUNE_AUTOUR",
-      "label": "Faune Autour",
-      "trigger_terms": ["faune autour", "gbif", "bioacoustic", "local fauna", "app"],
+      "project_key": "03_WILDNEXUS",
+      "label": "WildNexus",
+      "trigger_terms": ["wildnexus", "faune autour", "gbif", "bioacoustic", "birdnet", "local fauna", "app"],
       "specialist_hint": "Forge",
-      "roots": ["JCH_Inbox/03_PROJECTS/03_FAUNE_AUTOUR"],
+      "roots": ["JCH_Inbox/03_PROJECTS/03_WILDNEXUS"],
       "paired_skills": []
     },
     {

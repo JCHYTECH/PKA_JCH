@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PKA · Kanban</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/pka-theme.css">
+<style>
+  body { margin: 0; font-family: 'Space Grotesk', sans-serif; }
+  .header { background: var(--brun); color: var(--texte-clair); padding: 28px 40px; display: flex; justify-content: space-between; align-items: end; gap: 20px; border-bottom: 1px solid var(--bordure); }
+  .header-title { font-size: 28px; font-weight: 300; letter-spacing: 0.08em; }
+  .header-sub { margin-top: 6px; color: var(--texte-gris); font-size: 13px; }
+  .main { max-width: 1200px; margin: 0 auto; padding: 40px 40px 72px; }
+  .toolbar { display: grid; grid-template-columns: minmax(220px, 1fr) repeat(3, minmax(180px, 0.7fr)); gap: 10px; margin-bottom: 18px; }
+  .field { display: grid; gap: 6px; }
+  .label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gris); text-transform: uppercase; letter-spacing: 0.08em; }
+  select, input { min-height: 40px; border: 1px solid var(--sable); background: var(--fond-global); color: var(--texte-clair); padding: 0 12px; font: inherit; border-radius: 4px; }
+  select:focus, input:focus { outline: none; border-color: var(--ocre); }
+  .toggle { display: flex; align-items: center; gap: 8px; padding-top: 24px; font-size: 12px; color: var(--gris); }
+  .statusline { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--ocre); margin-bottom: 14px; min-height: 14px; }
+  .cards { display: grid; gap: 10px; }
+  .card { background: var(--brun); border: 1px solid var(--sable); border-left: 4px solid var(--sable); padding: 16px; border-radius: 6px; transition: transform 0.15s, border-left-color 0.15s; }
+  .card:hover { border-left-color: var(--ocre); transform: translateY(-1px); }
+  .card.blocked { border-left-color: var(--rouge); }
+  .card.awaiting-jch { border-left-color: var(--ocre); }
+  .card-head { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+  .card-title { font-size: 15px; font-weight: 700; color: var(--texte-clair); }
+  .meta { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { font-family: 'IBM Plex Mono', monospace; font-size: 9px; background: var(--fond-global); color: var(--texte-gris); border: 1px solid var(--sable); border-radius: 999px; padding: 4px 7px; text-transform: uppercase; }
+  .desc { color: var(--texte-gris); font-size: 12px; line-height: 1.55; margin-bottom: 10px; }
+  .labels { display: flex; gap: 6px; flex-wrap: wrap; }
+  .empty { background: var(--fond-global); border: 1px dashed var(--sable); color: var(--gris); padding: 16px; border-radius: 6px; text-align: center; }
+  .back { color: var(--texte-gris); text-decoration: none; font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 6px 12px; border: 1px solid var(--sable); border-radius: 4px; }
+  .back:hover { color: var(--texte-clair); border-color: var(--texte-clair); }
+  @media (max-width: 840px) {
+    .toolbar { grid-template-columns: 1fr; }
+    .header { padding-left: 22px; padding-right: 22px; align-items: flex-start; flex-direction: column; }
+    .main { padding-left: 22px; padding-right: 22px; }
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <div>
+      <div class="header-title">PKA · Kanban</div>
+      <div class="header-sub">Vue liste transversale des cartes Plane normalisées</div>
+    </div>
+    <a class="back" href="hub.html">retour hub</a>
+  </div>
+  <main class="main">
+    <div class="toolbar">
+      <label class="field">
+        <span class="label">Projet</span>
+        <select id="filter-project"><option value="">Tous les projets</option></select>
+      </label>
+      <label class="field">
+        <span class="label">Statut</span>
+        <select id="filter-status"><option value="">Tous les statuts</option></select>
+      </label>
+      <label class="field">
+        <span class="label">Owner</span>
+        <select id="filter-owner"><option value="">Tous les owners</option></select>
+      </label>
+      <label class="toggle">
+        <input id="filter-awaiting-jch" type="checkbox">
+        <span>Attente JCH uniquement</span>
+      </label>
+    </div>
+    <div class="statusline" id="kanban-status">Chargement...</div>
+    <div class="cards" id="kanban-cards">
+      <div class="empty">Chargement des cartes...</div>
+    </div>
+  </main>
+  <script>
+    function escapeHtml(value) {
+      return String(value || "").replace(/[&<>"']/g, character => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+      }[character]));
+    }
+
+    function renderCards(payload) {
+      const statusline = document.getElementById("kanban-status");
+      const container = document.getElementById("kanban-cards");
+      if (!payload.ok) {
+        statusline.textContent = "Erreur";
+        container.innerHTML = `<div class="empty">${escapeHtml(payload.error || "Kanban indisponible")}</div>`;
+        return;
+      }
+      const cards = payload.cards || [];
+      statusline.textContent = `${cards.length} carte${cards.length > 1 ? "s" : ""}`;
+      if (!cards.length) {
+        container.innerHTML = `<div class="empty">Aucune carte correspondant aux filtres.</div>`;
+        return;
+      }
+      container.innerHTML = cards.map(card => `
+        <article class="card ${card.blocked ? "blocked" : ""} ${card.awaiting_jch ? "awaiting-jch" : ""}">
+          <div class="card-head">
+            <div class="card-title">${escapeHtml(card.title)}</div>
+            <div class="meta">
+              <span class="chip">${escapeHtml(card.project)}</span>
+              <span class="chip">${escapeHtml(card.status)}</span>
+              <span class="chip">${escapeHtml(card.owner)}</span>
+            </div>
+          </div>
+          <div class="desc">${escapeHtml(card.description || "Sans description")}</div>
+          <div class="labels">
+            ${(card.labels || []).map(label => `<span class="chip">${escapeHtml(label)}</span>`).join("")}
+          </div>
+        </article>
+      `).join("");
+    }
+
+    async function loadFilters() {
+      const response = await fetch("/api/kanban/filters");
+      const payload = await response.json();
+      if (!response.ok || !payload.ok) {
+        throw new Error(payload.error || "Filtres indisponibles");
+      }
+      document.getElementById("filter-project").innerHTML =
+        `<option value="">Tous les projets</option>` +
+        (payload.projects || []).map(project => `<option value="${escapeHtml(project)}">${escapeHtml(project)}</option>`).join("");
+      document.getElementById("filter-status").innerHTML =
+        `<option value="">Tous les statuts</option>` +
+        (payload.statuses || []).map(status => `<option value="${escapeHtml(status)}">${escapeHtml(status)}</option>`).join("");
+      document.getElementById("filter-owner").innerHTML =
+        `<option value="">Tous les owners</option>` +
+        (payload.owners || []).map(owner => `<option value="${escapeHtml(owner)}">${escapeHtml(owner)}</option>`).join("");
+    }
+
+    async function loadCards() {
+      const params = new URLSearchParams();
+      const project = document.getElementById("filter-project").value;
+      const status = document.getElementById("filter-status").value;
+      const owner = document.getElementById("filter-owner").value;
+      const awaiting = document.getElementById("filter-awaiting-jch").checked;
+      if (project) params.set("project", project);
+      if (status) params.set("status", status);
+      if (owner) params.set("owner", owner);
+      if (awaiting) params.set("awaiting_jch", "1");
+      document.getElementById("kanban-status").textContent = "Chargement...";
+      const response = await fetch(`/api/kanban/cards?${params.toString()}`);
+      const payload = await response.json();
+      renderCards(payload);
+    }
+
+    async function boot() {
+      try {
+        await loadFilters();
+        await loadCards();
+      } catch (error) {
+        renderCards({ ok: false, error: String(error) });
+      }
+    }
+
+    document.getElementById("filter-project").addEventListener("change", () => { loadCards().catch(() => {}); });
+    document.getElementById("filter-status").addEventListener("change", () => { loadCards().catch(() => {}); });
+    document.getElementById("filter-owner").addEventListener("change", () => { loadCards().catch(() => {}); });
+    document.getElementById("filter-awaiting-jch").addEventListener("change", () => { loadCards().catch(() => {}); });
+    boot().catch(() => {});
+  </script>
+</body>
+</html>

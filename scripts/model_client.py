@@ -45,16 +45,18 @@ def get_client(task: str):
         api_key = key_file.read_text().strip()
         return anthropic.Anthropic(api_key=api_key)
 
-    if provider in ("openai", "ollama"):
+    if provider not in ("anthropic", "google"):
+        # tous les providers OpenAI-compatibles (openai, ollama, kimi, deepseek…)
         import openai
-        if provider == "ollama":
-            return openai.OpenAI(
-                base_url=provider_cfg["base_url"],
-                api_key=provider_cfg["api_key"],
-            )
-        key_file = Path(provider_cfg["key_file"].replace("~", str(Path.home())))
-        api_key = key_file.read_text().strip()
-        return openai.OpenAI(api_key=api_key)
+        if "key_file" in provider_cfg:
+            key_file = Path(provider_cfg["key_file"].replace("~", str(Path.home())))
+            api_key = key_file.read_text().strip()
+        else:
+            api_key = provider_cfg.get("api_key", "none")
+        kwargs = {"api_key": api_key}
+        if provider_cfg.get("base_url"):
+            kwargs["base_url"] = provider_cfg["base_url"]
+        return openai.OpenAI(**kwargs)
 
     if provider == "google":
         import google.generativeai as genai
@@ -83,7 +85,7 @@ def chat(task: str, messages: list[dict], system: str = None, **kwargs) -> str:
         response = client.messages.create(**params)
         return response.content[0].text
 
-    if provider in ("openai", "ollama"):
+    if provider not in ("anthropic", "google"):
         all_messages = []
         if system:
             all_messages.append({"role": "system", "content": system})

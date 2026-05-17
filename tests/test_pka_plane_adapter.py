@@ -13,7 +13,7 @@ class PkaPlaneAdapterTest(unittest.TestCase):
         self.root = Path(self.tmpdir.name)
         (self.root / "JCH_Inbox" / "99_SYSTEM").mkdir(parents=True)
         (self.root / "JCH_Inbox" / "03_PROJECTS").mkdir(parents=True)
-        for key in ("01_AI_IT_TOOLS", "02_ARTEON", "03_FAUNE_AUTOUR", "08_VETALYX"):
+        for key in ("01_AI_IT_TOOLS", "02_ARTEON", "03_WILDNEXUS", "08_VETALYX"):
             (self.root / "JCH_Inbox" / "03_PROJECTS" / key).mkdir()
         self.write_config(
             {
@@ -58,7 +58,7 @@ class PkaPlaneAdapterTest(unittest.TestCase):
         with mock.patch.object(pka_plane_adapter, "ROOT", self.root):
             self.assertEqual(
                 pka_plane_adapter.validate_project_registry(),
-                ["03_PROJECTS project directory missing from Plane config: 03_FAUNE_AUTOUR"],
+                ["03_PROJECTS project directory missing from Plane config: 03_WILDNEXUS"],
             )
 
     def test_validate_project_registry_reports_blank_and_malformed_mappings(self):
@@ -66,7 +66,7 @@ class PkaPlaneAdapterTest(unittest.TestCase):
             {
                 "01_AI_IT_TOOLS": {"plane_project_id": ""},
                 "02_ARTEON": {"plane_project_id": "arteon"},
-                "03_FAUNE_AUTOUR": "not-a-mapping",
+                "03_WILDNEXUS": "not-a-mapping",
                 "08_VETALYX": {"plane_project_id": "vetalyx"},
             }
         )
@@ -75,7 +75,7 @@ class PkaPlaneAdapterTest(unittest.TestCase):
             findings = pka_plane_adapter.validate_project_registry()
 
         self.assertIn("03_PROJECTS project directory has unusable Plane mapping: 01_AI_IT_TOOLS", findings)
-        self.assertIn("03_PROJECTS project directory has unusable Plane mapping: 03_FAUNE_AUTOUR", findings)
+        self.assertIn("03_PROJECTS project directory has unusable Plane mapping: 03_WILDNEXUS", findings)
 
     def test_real_repo_config_has_non_empty_plane_ids_for_active_projects(self):
         config = pka_plane_adapter.load_config()
@@ -180,6 +180,86 @@ class PkaPlaneAdapterTest(unittest.TestCase):
             with mock.patch.dict("os.environ", {}, clear=True):
                 with self.assertRaisesRegex(RuntimeError, "Plane API token"):
                     pka_plane_adapter.fetch_project_issues("02_ARTEON")
+
+    def test_list_project_work_items_uses_work_items_endpoint(self):
+        payload = {"results": [{"id": "wi-1", "name": "Seed item"}]}
+
+        fake_response = mock.Mock()
+        fake_response.__enter__ = mock.Mock(return_value=fake_response)
+        fake_response.__exit__ = mock.Mock(return_value=False)
+        fake_response.read.return_value = json.dumps(payload).encode("utf-8")
+
+        with mock.patch.object(pka_plane_adapter, "ROOT", self.root):
+            with mock.patch.dict("os.environ", {"PKA_PLANE_API_TOKEN": "plane-secret"}, clear=True):
+                with mock.patch("urllib.request.urlopen", return_value=fake_response) as mocked_urlopen:
+                    items = pka_plane_adapter.list_project_work_items("02_ARTEON")
+
+        plane_request = mocked_urlopen.call_args.args[0]
+        self.assertEqual(
+            plane_request.full_url,
+            "http://127.0.0.1:8088/api/v1/workspaces/pka-jch/projects/arteon/work-items/",
+        )
+        self.assertEqual(items, [{"id": "wi-1", "name": "Seed item"}])
+
+    def test_create_project_module_posts_expected_payload(self):
+        payload = {"id": "mod-1", "name": "WP01 - Conception & Architecture"}
+
+        fake_response = mock.Mock()
+        fake_response.__enter__ = mock.Mock(return_value=fake_response)
+        fake_response.__exit__ = mock.Mock(return_value=False)
+        fake_response.read.return_value = json.dumps(payload).encode("utf-8")
+
+        with mock.patch.object(pka_plane_adapter, "ROOT", self.root):
+            with mock.patch.dict("os.environ", {"PKA_PLANE_API_TOKEN": "plane-secret"}, clear=True):
+                with mock.patch("urllib.request.urlopen", return_value=fake_response) as mocked_urlopen:
+                    created = pka_plane_adapter.create_project_module(
+                        "02_ARTEON",
+                        name="WP01 - Conception & Architecture",
+                        description="WildNexus P0 module",
+                    )
+
+        plane_request = mocked_urlopen.call_args.args[0]
+        self.assertEqual(plane_request.method, "POST")
+        self.assertEqual(
+            plane_request.full_url,
+            "http://127.0.0.1:8088/api/v1/workspaces/pka-jch/projects/arteon/modules/",
+        )
+        self.assertEqual(json.loads(plane_request.data.decode("utf-8"))["name"], "WP01 - Conception & Architecture")
+        self.assertEqual(created["id"], "mod-1")
+
+    def test_create_project_work_item_posts_expected_payload(self):
+        payload = {"id": "wi-2", "name": "T01.3 Campagne mesures RF terrain"}
+
+        fake_response = mock.Mock()
+        fake_response.__enter__ = mock.Mock(return_value=fake_response)
+        fake_response.__exit__ = mock.Mock(return_value=False)
+        fake_response.read.return_value = json.dumps(payload).encode("utf-8")
+
+        with mock.patch.object(pka_plane_adapter, "ROOT", self.root):
+            with mock.patch.dict("os.environ", {"PKA_PLANE_API_TOKEN": "plane-secret"}, clear=True):
+                with mock.patch("urllib.request.urlopen", return_value=fake_response) as mocked_urlopen:
+                    created = pka_plane_adapter.create_project_work_item(
+                        "02_ARTEON",
+                        name="T01.3 Campagne mesures RF terrain",
+                        description_html="<p>RF benchmark</p>",
+                        type_id="type-default",
+                        module_id="module-1",
+                        parent_id="epic-1",
+                        priority="high",
+                    )
+
+        plane_request = mocked_urlopen.call_args.args[0]
+        self.assertEqual(plane_request.method, "POST")
+        self.assertEqual(
+            plane_request.full_url,
+            "http://127.0.0.1:8088/api/v1/workspaces/pka-jch/projects/arteon/work-items/",
+        )
+        sent = json.loads(plane_request.data.decode("utf-8"))
+        self.assertEqual(sent["name"], "T01.3 Campagne mesures RF terrain")
+        self.assertEqual(sent["type"], "type-default")
+        self.assertEqual(sent["module"], "module-1")
+        self.assertEqual(sent["parent"], "epic-1")
+        self.assertEqual(created["id"], "wi-2")
 
 
 if __name__ == "__main__":

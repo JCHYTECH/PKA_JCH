@@ -3,878 +3,615 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JCH · PKA Hub</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%232A2420'/%3E%3Ctext x='8' y='11' font-size='7' text-anchor='middle' fill='%23C17F3A' font-family='Arial'%3EP%3C/text%3E%3C/svg%3E">
+<title>JCH · PKA Hub (Dark)</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%231E1A17'/%3E%3Ctext x='8' y='11' font-size='7' text-anchor='middle' fill='%23C17F3A' font-family='Arial'%3EP%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Lora:ital,wght@1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Lora:ital,wght@1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/pka-theme.css">
 <style>
   :root {
-    --noir:    #0D0B09;
-    --ivoire:  #F8F5F0;
-    --ocre:    #C17F3A;
-    --ardoise: #4A5568;
-    --sable:   #E8E2DA;
-    --gris:    #6B6560;
-    --brun:    #2A2420;
-    --vert:    #3D5A3E;
-    --rouge:   #C0392B;
+    /* Palette Dark Mode Adoucie */
+    --fond-global: #1a1816;
+    --carte-bg:    #24211e;
+    --carte-hover: #2d2926;
+    --bordure:     #3a3530;
+    
+    --texte-clair: #e8e4de;
+    --texte-gris:  #9ca3af;
+    --texte-mute:  #6b7280;
+    
+    --ocre:        #b8824a;
+    --ocre-glow:   rgba(184, 130, 74, 0.15);
+    
+    --rouge-alert: #d9534f;
+    --rouge-glow:  rgba(217, 83, 79, 0.15);
+    
+    --vert-ok:     #4ade80;
+    --bleu-info:   #60a5fa;
   }
+  
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Space Grotesk', sans-serif; background: var(--ivoire); color: var(--noir); min-height: 100vh; }
+  body { font-family: 'Space Grotesk', sans-serif; background: var(--fond-global); color: var(--texte-clair); min-height: 100vh; }
+  a { text-decoration: none; color: inherit; }
 
   /* ── Header ── */
   .header {
-    background: var(--brun); padding: 32px 48px 28px;
+    background: var(--carte-bg); padding: 24px 48px;
     display: flex; align-items: flex-end; justify-content: space-between;
+    border-bottom: 1px solid var(--bordure);
   }
-  .header-left {}
-  .header-logo { font-size: 28px; font-weight: 300; letter-spacing: 0.1em; color: white; }
+  .header-logo { font-size: 24px; font-weight: 300; letter-spacing: 0.1em; color: var(--texte-clair); }
   .header-logo span { color: var(--ocre); }
-  .header-sub { font-family: 'Lora', serif; font-style: italic; font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 4px; }
-  .header-date { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.3); }
+  .header-sub { font-family: 'Lora', serif; font-style: italic; font-size: 13px; color: var(--texte-gris); margin-top: 4px; }
+  .header-date { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--texte-mute); }
 
   /* ── Main layout ── */
-  .main { max-width: 1200px; margin: 0 auto; padding: 48px 48px 80px; }
+  .main { max-width: 1200px; margin: 0 auto; padding: 48px 48px 100px; }
 
+  /* ── Cockpit de Pilotage ── */
   .command-panel {
     display: grid;
-    grid-template-columns: minmax(280px, 1.15fr) minmax(220px, 0.85fr);
-    gap: 14px;
-    margin-bottom: 42px;
+    grid-template-columns: minmax(350px, 1.2fr) minmax(280px, 0.8fr);
+    gap: 24px;
+    margin-bottom: 48px;
   }
 
   .command-primary,
   .command-side {
-    background: white;
-    border: 1px solid var(--sable);
-    box-shadow: 0 8px 28px rgba(42,36,32,0.06);
-    padding: 24px;
+    background: var(--carte-bg);
+    border: 1px solid var(--bordure);
+    border-radius: 8px;
+    padding: 28px;
   }
 
-  .command-primary {
-    border-left: 4px solid var(--ocre);
-  }
+  .command-primary { border-left: 4px solid var(--ocre); }
+  .command-side { display: flex; flex-direction: column; justify-content: center; }
 
   .command-kicker {
-    font-family: 'IBM Plex Mono', monospace;
-    color: var(--ocre);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    margin-bottom: 10px;
+    font-family: 'IBM Plex Mono', monospace; color: var(--ocre);
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 12px;
   }
 
-  .command-title {
-    font-size: 24px;
-    font-weight: 650;
-    margin-bottom: 10px;
+  .command-title { font-size: 28px; font-weight: 600; margin-bottom: 12px; color: var(--texte-clair); }
+  
+  .quick-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+  
+  .quick-action-btn {
+    padding: 8px 16px; border-radius: 6px; font-size: 12px; font-weight: 600;
+    background: var(--fond-global); border: 1px solid var(--bordure); color: var(--texte-clair);
+    cursor: pointer; transition: all 0.2s;
   }
+  .quick-action-btn:hover { background: var(--bordure); border-color: var(--texte-gris); }
 
-  .command-copy {
-    color: var(--gris);
-    font-size: 13px;
-    line-height: 1.6;
-    max-width: 680px;
-  }
-
-  .command-trace {
-    display: grid;
-    gap: 6px;
-    margin-top: 16px;
-    color: var(--gris);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    line-height: 1.5;
-  }
-
-  .command-trace strong {
-    color: var(--brun);
-    font-weight: 600;
-  }
-
-  .quick-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 22px;
-  }
-
-  .quick-action {
-    min-height: 38px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 14px;
-    border-radius: 6px;
-    background: var(--brun);
-    color: white;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 650;
-    border: 0;
-    cursor: pointer;
-    font-family: inherit;
-  }
-
-  .quick-action.ocre { background: var(--ocre); }
-  .quick-action.vert { background: var(--vert); }
-  .quick-action.ardoise { background: var(--ardoise); }
-
-  .metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-  }
-
-  .metric {
-    border-top: 3px solid var(--sable);
-    background: #fbfaf8;
-    padding: 14px;
-    min-height: 78px;
-  }
-
-  .metric.ocre { border-top-color: var(--ocre); }
-  .metric.vert { border-top-color: var(--vert); }
-  .metric.ardoise { border-top-color: var(--ardoise); }
-  .metric.rouge { border-top-color: var(--rouge); }
-  .metric-value {
-    font-size: 22px;
-    font-weight: 700;
-  }
-  .metric-label {
-    color: var(--gris);
-    font-size: 10px;
-    line-height: 1.4;
-    margin-top: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  /* ── Section ── */
-  .section { margin-bottom: 52px; }
-  .section-title {
-    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--gris); font-weight: 600; margin-bottom: 20px;
-    padding-bottom: 10px; border-bottom: 1px solid var(--sable);
+  /* ── Le Container Tâches Interactif ── */
+  .tasks-container {
     display: flex; align-items: center; justify-content: space-between;
+    background: linear-gradient(145deg, var(--carte-bg), var(--fond-global));
+    border: 1px solid var(--bordure); border-radius: 8px;
+    padding: 20px 24px; margin-top: 24px;
   }
+  
+  .tasks-container.has-alerts {
+    border-color: var(--rouge-alert);
+  }
+  
+  .tasks-main { 
+    display: flex; align-items: center; gap: 16px; 
+    text-decoration: none; color: inherit;
+  }
+  .tasks-main:hover .tasks-text { color: var(--ocre); }
+  .tasks-icon { font-size: 24px; }
+  .tasks-text { font-size: 18px; font-weight: 600; color: var(--texte-clair); transition: color 0.2s; }
+  
+  .tasks-stats { display: flex; gap: 12px; flex-wrap: wrap; }
+  
+  /* Les stat-pills deviennent des liens cliquables */
+  .stat-pill {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--fond-global); padding: 8px 14px; border-radius: 6px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px; 
+    border: 1px solid var(--bordure);
+    text-decoration: none; color: var(--texte-clair);
+    transition: all 0.15s;
+  }
+  .stat-pill:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+  
+  .stat-pill.normal:hover { border-color: var(--texte-gris); }
+  .stat-pill.alert { border-color: var(--rouge-alert); color: var(--rouge-alert); font-weight: 600; }
+  .stat-pill.alert:hover { background: var(--rouge-glow); }
+  .stat-pill.warning { border-color: var(--ocre); color: var(--ocre); }
+  .stat-pill.warning:hover { background: var(--ocre-glow); }
 
-  /* ── Dashboard cards ── */
-  .dash-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  /* ── Radar d'Attention (Panneau de Droite) ── */
+  .radar-title {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--texte-gris);
+    text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px;
+    display: flex; justify-content: space-between;
+  }
+  .radar-grid { display: grid; gap: 12px; }
+  
+  .radar-item {
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--fond-global); padding: 14px 16px; border-radius: 6px;
+    border-left: 3px solid var(--bordure); text-decoration: none;
+    transition: background 0.2s;
+  }
+  .radar-item:hover { background: var(--bordure); }
+  .radar-item.active { border-left-color: var(--ocre); }
+  .radar-item.critical { border-left-color: var(--rouge-alert); }
+  
+  .radar-label { font-size: 13px; font-weight: 500; color: var(--texte-clair); }
+  .radar-value { font-family: 'IBM Plex Mono', monospace; font-size: 16px; font-weight: 600; }
+  .radar-value.alert { color: var(--rouge-alert); }
+  
+  .radar-signal {
+    margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--bordure);
+    font-size: 12px; color: var(--texte-gris); line-height: 1.5;
+  }
+  .radar-signal strong { color: var(--ocre); font-weight: 500; }
 
-  .dash-card {
-    background: white; padding: 24px 24px 20px;
-    border-left: 3px solid var(--sable); text-decoration: none; color: inherit;
+  /* ── Split Vue (Kanban & Recherche) ── */
+  .split-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  
+  .panel {
+    background: var(--carte-bg); border: 1px solid var(--bordure);
+    border-radius: 8px; padding: 24px;
+    display: flex; flex-direction: column;
+  }
+  
+  .panel-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--bordure);
+  }
+  .panel-title { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--texte-gris); }
+  
+  /* Kanban Mini-Grid */
+  .mini-kanban { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .k-card {
+    background: var(--fond-global); border: 1px solid var(--bordure);
+    padding: 16px; border-radius: 6px; text-align: center;
+  }
+  .k-card.rouge { border-top: 3px solid var(--rouge-alert); }
+  .k-card.vert { border-top: 3px solid var(--vert-ok); }
+  .k-card.bleu { border-top: 3px solid var(--bleu-info); }
+  .k-card.ocre { border-top: 3px solid var(--ocre); }
+  
+  .k-val { font-size: 24px; font-weight: 700; color: var(--texte-clair); margin-bottom: 4px; }
+  .k-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--texte-gris); }
+
+  /* Recherche Compacte */
+  .search-input-wrap { position: relative; margin-bottom: 16px; }
+  .search-input {
+    width: 100%; padding: 14px 16px; font-size: 14px; font-family: inherit;
+    background: var(--fond-global); border: 1px solid var(--bordure);
+    color: var(--texte-clair); border-radius: 6px;
+  }
+  .search-input:focus { outline: none; border-color: var(--ocre); }
+  
+  .search-filters { display: flex; gap: 10px; margin-bottom: 16px; }
+  .search-select {
+    flex: 1; padding: 10px; background: var(--fond-global); border: 1px solid var(--bordure);
+    color: var(--texte-gris); border-radius: 4px; font-size: 12px;
+  }
+  .search-select:focus { border-color: var(--ocre); outline: none; color: var(--texte-clair); }
+  
+  .search-results-area {
+    flex-grow: 1; background: var(--fond-global); border: 1px dashed var(--bordure);
+    border-radius: 6px; padding: 16px;
     display: flex; flex-direction: column; gap: 10px;
-    transition: border-color 0.15s, box-shadow 0.15s;
-  }
-  .dash-card:hover { border-left-color: var(--ocre); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-  .dash-card-icon { font-size: 24px; line-height: 1; }
-  .dash-card-title { font-size: 15px; font-weight: 600; }
-  .dash-card-desc { font-size: 12px; color: var(--gris); line-height: 1.55; }
-  .dash-card-tag {
-    font-family: 'IBM Plex Mono', monospace; font-size: 10px;
-    color: var(--ocre); letter-spacing: 0.06em; margin-top: auto; padding-top: 4px;
+    font-size: 12px; color: var(--texte-mute);
+    max-height: 250px; overflow-y: auto;
   }
 
-  .dash-card.accent { border-left-color: var(--ocre); background: var(--brun); color: white; }
-  .dash-card.accent .dash-card-desc { color: rgba(255,255,255,0.5); }
-  .dash-card.accent .dash-card-tag { color: var(--ocre); }
-  .dash-card.accent:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+  /* Résultat de recherche */
+  .file-index-result {
+    border: 1px solid var(--bordure); border-left: 4px solid var(--bordure);
+    background: var(--carte-bg); padding: 12px 14px; text-align: left;
+    border-radius: 4px;
+  }
+  .file-index-result:hover { border-left-color: var(--ocre); }
+  .file-index-result-head {
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 8px;
+  }
+  .file-index-result-name { font-size: 14px; font-weight: 700; color: var(--texte-clair); }
+  .file-index-chip {
+    font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.06em;
+    text-transform: uppercase; border-radius: 999px; padding: 4px 7px;
+    background: var(--fond-global); color: var(--texte-gris); border: 1px solid var(--bordure);
+  }
+  .file-index-result-path {
+    font-family: 'IBM Plex Mono', monospace; color: var(--texte-mute);
+    font-size: 10px; line-height: 1.5; margin-bottom: 10px; word-break: break-word;
+  }
+  .file-index-link {
+    display: inline-flex; align-items: center; min-height: 24px; padding: 0 9px;
+    border-radius: 4px; text-decoration: none; font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; border: 1px solid var(--bordure); color: var(--texte-gris);
+    background: var(--fond-global);
+  }
+  .file-index-link.primary { border-color: var(--ocre); color: var(--ocre); }
+  .file-index-link:hover { background: var(--bordure); color: var(--texte-clair); }
 
-  /* ── Team grid ── */
-  .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
 
-  .team-card {
-    background: white; padding: 14px 16px;
-    border-left: 3px solid var(--sable);
-    display: flex; align-items: center; gap: 12px;
-    transition: border-color 0.15s;
-  }
-  .team-card:hover { border-left-color: var(--ocre); }
-  .team-card-emoji { font-size: 22px; flex-shrink: 0; }
-  .team-card-info {}
-  .team-card-name { font-size: 13px; font-weight: 600; }
-  .team-card-role { font-size: 10px; color: var(--gris); line-height: 1.4; margin-top: 2px; }
-
-  /* ── Projects strip ── */
-  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
-  .project-card {
-    background: white; padding: 18px 20px;
-    border-top: 3px solid var(--sable);
-    color: inherit;
-    text-decoration: none;
-    display: block;
-    box-shadow: 0 8px 28px rgba(42,36,32,0.06);
-    transition: transform 0.15s, box-shadow 0.15s, border-top-color 0.15s;
-  }
-  .project-card:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(42,36,32,0.1); }
-  .project-card.active { border-top-color: var(--ocre); }
-  .project-card.active-vert { border-top-color: var(--vert); }
-  .project-card.active-ardoise { border-top-color: var(--ardoise); }
-  .project-name { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
-  .project-status {
-    font-family: 'IBM Plex Mono', monospace; font-size: 9px;
-    letter-spacing: 0.08em; text-transform: uppercase; color: var(--gris);
-    margin-bottom: 8px;
-  }
-  .project-desc { font-size: 11px; color: var(--gris); line-height: 1.5; }
-
-  /* ── Executive routines ── */
-  .routine-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px;
-  }
-  .routine-card {
-    background: white;
-    border-top: 3px solid var(--sable);
-    padding: 18px 18px 16px;
-    box-shadow: 0 8px 28px rgba(42,36,32,0.06);
-  }
-  .routine-card.ocre { border-top-color: var(--ocre); }
-  .routine-card.vert { border-top-color: var(--vert); }
-  .routine-card.ardoise { border-top-color: var(--ardoise); }
-  .routine-card.rouge { border-top-color: var(--rouge); }
-  .routine-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 8px;
-    margin-bottom: 14px;
-  }
-  .routine-title {
-    font-size: 15px;
-    font-weight: 650;
-  }
-  .routine-tag {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--gris);
-  }
-  .routine-list {
-    list-style: none;
-    display: grid;
-    gap: 10px;
-  }
-  .routine-item {
-    padding-top: 10px;
-    border-top: 1px solid var(--sable);
-  }
-  .routine-item:first-child {
-    padding-top: 0;
-    border-top: 0;
-  }
-  .routine-who {
-    font-size: 12px;
-    font-weight: 650;
-    color: var(--brun);
-    margin-bottom: 3px;
-  }
-  .routine-what {
-    font-size: 11px;
-    line-height: 1.5;
-    color: var(--gris);
+  /* ── Grilles Classiques (Dashboards / Projets) ── */
+  .section-title {
+    font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--texte-gris); font-weight: 600; margin-bottom: 20px;
+    padding-bottom: 10px; border-bottom: 1px solid var(--bordure);
   }
 
-  /* ── Provider balances ── */
-  .provider-toolbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-    margin-bottom: 14px;
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-bottom: 48px; }
+
+  .card {
+    background: var(--carte-bg); padding: 20px; border-radius: 8px;
+    border: 1px solid var(--bordure); border-left: 3px solid var(--bordure);
+    display: flex; flex-direction: column; gap: 8px;
+    transition: all 0.2s;
   }
-  .provider-note {
-    color: var(--gris);
-    font-size: 12px;
-    line-height: 1.5;
-  }
-  .provider-refresh {
-    min-height: 34px;
-    border: 0;
-    border-radius: 6px;
-    background: var(--brun);
-    color: white;
-    font: inherit;
-    font-size: 12px;
-    font-weight: 650;
-    padding: 0 14px;
-    cursor: pointer;
-    white-space: nowrap;
-  }
-  .provider-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-    gap: 10px;
-  }
-  .provider-card {
-    background: white;
-    border: 1px solid var(--sable);
-    border-left: 4px solid var(--sable);
-    padding: 16px;
-    min-height: 132px;
-  }
-  .provider-card.ok { border-left-color: var(--vert); }
-  .provider-card.warning,
-  .provider-card.limited,
-  .provider-card.manual { border-left-color: var(--ocre); }
-  .provider-card.error,
-  .provider-card.missing { border-left-color: var(--rouge); }
-  .provider-card.local { border-left-color: var(--ardoise); }
-  .provider-head {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 12px;
-  }
-  .provider-name { font-size: 14px; font-weight: 700; }
-  .provider-kind {
-    font-family: 'IBM Plex Mono', monospace;
-    color: var(--gris);
-    font-size: 9px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-top: 3px;
-  }
-  .provider-status {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 9px;
-    color: white;
-    background: var(--ardoise);
-    border-radius: 999px;
-    padding: 4px 7px;
-    text-transform: uppercase;
-  }
-  .provider-status.ok,
-  .provider-status.local { background: var(--vert); }
-  .provider-status.warning,
-  .provider-status.limited,
-  .provider-status.manual { background: var(--ocre); }
-  .provider-status.error,
-  .provider-status.missing { background: var(--rouge); }
-  .provider-value {
-    font-size: 22px;
-    font-weight: 750;
-    margin-bottom: 8px;
-  }
-  .provider-detail {
-    color: var(--gris);
-    font-size: 11px;
-    line-height: 1.45;
-  }
-  .provider-links { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
-  .provider-console-link, .provider-topup-link {
-    display: inline-block;
-    font-size: 11px;
-    font-family: 'IBM Plex Mono', monospace;
-    text-decoration: none;
-    border-radius: 3px;
-    padding: 2px 7px;
-  }
-  .provider-console-link {
-    color: var(--ocre);
-    border: 1px solid var(--ocre);
-  }
-  .provider-console-link:hover { background: var(--ocre); color: white; }
-  .provider-topup-link {
-    color: var(--vert);
-    border: 1px solid var(--vert);
-  }
-  .provider-topup-link:hover { background: var(--vert); color: white; }
+  .card:hover { border-left-color: var(--ocre); background: var(--carte-hover); transform: translateY(-2px); }
+  .card.active { border-left-color: var(--vert-ok); }
+  
+  .card-icon { font-size: 20px; margin-bottom: 4px; }
+  .card-title { font-size: 15px; font-weight: 600; color: var(--texte-clair); }
+  .card-desc { font-size: 12px; color: var(--texte-gris); line-height: 1.5; }
+  .card-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--ocre); margin-top: auto; padding-top: 8px; }
 
   /* ── Footer ── */
   .footer {
-    background: var(--brun); padding: 16px 48px;
+    border-top: 1px solid var(--bordure); padding-top: 24px;
     display: flex; align-items: center; justify-content: space-between;
-    position: fixed; bottom: 0; left: 0; right: 0;
+    font-size: 11px; color: var(--texte-mute);
   }
-  .footer-brand { font-size: 13px; font-weight: 300; letter-spacing: 0.08em; color: rgba(255,255,255,0.5); }
-  .footer-brand span { color: var(--ocre); }
-  .footer-info { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.25); }
 
-  @media (max-width: 820px) {
-    .command-panel { grid-template-columns: 1fr; }
-    .routine-grid { grid-template-columns: 1fr; }
-    .provider-toolbar { align-items: flex-start; flex-direction: column; }
-    .main { padding-left: 22px; padding-right: 22px; }
-    .header { padding-left: 22px; padding-right: 22px; }
-    .footer { position: static; flex-direction: column; align-items: flex-start; }
+  @media (max-width: 900px) {
+    .command-panel, .split-section { grid-template-columns: 1fr; }
+    .tasks-container { flex-direction: column; align-items: flex-start; gap: 16px; }
   }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="header-left">
+  <div>
     <div class="header-logo">PKA · JCH<span>·</span></div>
-    <div class="header-sub">Personal Knowledge Assistant — Hub de navigation</div>
+    <div class="header-sub">Superviseur Système</div>
   </div>
-  <div class="header-date" id="today"></div>
+  <div class="header-date" id="today">--</div>
 </div>
 
 <div class="main">
 
+  <!-- ── COCKPIT ── -->
   <div class="command-panel">
     <div class="command-primary">
-      <div class="command-kicker"><span class="pka-status-dot"></span> Poste de pilotage</div>
-      <div class="command-title">Dobby · Hub superviseur PKA</div>
-      <div class="command-copy">
-        Vue de supervision du système JCH : projets, inbox, livrables récents et accès de pilotage. Les compteurs ci-contre sont lus depuis le serveur local.
+      <div class="command-kicker"><span style="color:var(--vert-ok);">●</span> Poste de pilotage</div>
+      <div class="command-title">Tâches</div>
+      
+      <!-- LE CONTAINER TACHES INTERACTIF -->
+      <div class="tasks-container" id="hub-tasks-container">
+        <a href="/todo-jch.html" class="tasks-main">
+          <div class="tasks-icon">📋</div>
+          <div class="tasks-text">Ouvrir tout</div>
+        </a>
+        <div class="tasks-stats">
+          <a href="/todo-jch.html?filter=active" class="stat-pill normal">
+            <span id="task-total">X</span> Actives
+          </a>
+          <a href="/todo-jch.html?filter=waiting" class="stat-pill warning">
+            ⏳ <span id="task-waiting">X</span> Attente JCH
+          </a>
+          <a href="/kanban.html?filter=blocked" class="stat-pill alert">
+            🔴 <span id="task-urgent">X</span> Urgences
+          </a>
+        </div>
       </div>
-      <div class="command-trace">
-        <div><strong>Daily :</strong> <span id="latest-daily">chargement...</span></div>
-        <div><strong>Livrable :</strong> <span id="latest-deliverable">chargement...</span></div>
-      </div>
+
       <div class="quick-actions">
-        <a class="quick-action ocre" href="modeles.html">Lancer un modèle</a>
-        <a class="quick-action vert" href="dobby-live.html">Dobby Live</a>
-        <a class="quick-action ardoise" href="organigramme.html">Voir l'équipe</a>
-        <a class="quick-action" href="../todo-jch.html">Ouvrir les tâches</a>
-        <button class="quick-action" id="save-session" type="button">Sauver session</button>
-        <a class="quick-action" href="../00_INBOX/">Voir l'inbox</a>
+        <a href="organigramme.html" class="quick-action-btn">Voir l'Organigramme</a>
+        <a href="dobby-live.html" class="quick-action-btn">Dobby Live 🎙️</a>
+        <a href="modeles.html" class="quick-action-btn">Modèles</a>
+        <button class="quick-action-btn" id="save-session">Sauver Session Terminal</button>
       </div>
     </div>
 
+    <!-- RADAR D'ATTENTION -->
     <div class="command-side">
-      <div class="metrics-grid">
-        <div class="metric ocre">
-          <div class="metric-value" id="metric-team">--</div>
-          <div class="metric-label">Membres actifs</div>
-        </div>
-        <div class="metric rouge">
-          <div class="metric-value" id="metric-inbox">--</div>
-          <div class="metric-label">Fichiers inbox</div>
-        </div>
-        <div class="metric vert">
-          <div class="metric-value" id="metric-projects">--</div>
-          <div class="metric-label">Projets actifs</div>
-        </div>
-        <div class="metric ardoise">
-          <div class="metric-value" id="metric-server">OK</div>
-          <div class="metric-label">Serveur local</div>
-        </div>
+      <div class="radar-title">
+        Radar d'Attention
+        <span style="color:var(--vert-ok);">Serveur: OK</span>
+      </div>
+      
+      <div class="radar-grid">
+        <a href="../00_INBOX/" class="radar-item active">
+          <span class="radar-label">📥 Fichiers en Inbox</span>
+          <span class="radar-value" id="radar-inbox">--</span>
+        </a>
+        <a href="kanban.html" class="radar-item critical">
+          <span class="radar-label">⚠️ Équipe Bloquée</span>
+          <span class="radar-value alert" id="radar-blocked">--</span>
+        </a>
+      </div>
+
+      <div class="radar-signal">
+        <strong>📡 Signal Récent :</strong> 
+        <span id="latest-deliverable">Chargement...</span>
       </div>
     </div>
   </div>
 
-  <section class="section" id="kanban-overview">
-    <div class="section-title">
-      <span>Kanban PKA</span>
-    </div>
-    <div class="metrics-grid" id="kanban-metrics">
-      <article class="metric ocre">
-        <div class="metric-value" id="kanban-blocked">0</div>
-        <div class="metric-label">Cartes bloquees</div>
-      </article>
-      <article class="metric vert">
-        <div class="metric-value" id="kanban-validation">0</div>
-        <div class="metric-label">En validation JCH</div>
-      </article>
-      <article class="metric ardoise">
-        <div class="metric-value" id="kanban-in-progress">0</div>
-        <div class="metric-label">En cours</div>
-      </article>
-      <article class="metric rouge">
-        <div class="metric-value" id="kanban-ready">0</div>
-        <div class="metric-label">Pret</div>
-      </article>
-    </div>
-  </section>
-
-  <!-- ── Routines executive ── -->
-  <div class="section">
-    <div class="section-title">
-      <span>Routines executive</span>
-      <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ocre);">Pilotage récurrent</span>
-    </div>
-    <div class="routine-grid">
-
-      <div class="routine-card ocre">
-        <div class="routine-head">
-          <div class="routine-title">Quotidien</div>
-          <div class="routine-tag">Daily</div>
-        </div>
-        <ul class="routine-list">
-          <li class="routine-item">
-            <div class="routine-who">Dobby 🦉</div>
-            <div class="routine-what">Charge `MEMORY.md`, vérifie `00_INBOX`, confirme l’activation et route les nouvelles demandes.</div>
-          </li>
-          <li class="routine-item">
-            <div class="routine-who">Sybil 🦔</div>
-            <div class="routine-what">Crée ou complète l’entrée journal du jour avec ancrage énergie/humeur et clôture.</div>
-          </li>
-          <li class="routine-item">
-            <div class="routine-who">Pie 🐦‍⬛</div>
-            <div class="routine-what">Trie les mails entrants, qualifie l’intention et route sans laisser d’ambiguïté dormir.</div>
-          </li>
-          <li class="routine-item">
-            <div class="routine-who">Iris 🦅</div>
-            <div class="routine-what">Scanne les signaux utiles et pousse les briefs courts dès qu’un vrai signal apparaît.</div>
-          </li>
-        </ul>
+  <!-- ── SPLIT : KANBAN & RECHERCHE ── -->
+  <div class="split-section">
+    
+    <!-- KANBAN MINI -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">État du Kanban PKA</div>
+        <a href="kanban.html" style="font-size:12px; color:var(--ocre);">Vue complète →</a>
       </div>
-
-      <div class="routine-card vert">
-        <div class="routine-head">
-          <div class="routine-title">Hebdomadaire</div>
-          <div class="routine-tag">Weekly</div>
+      <div class="mini-kanban">
+        <div class="k-card rouge">
+          <div class="k-val" id="k-blocked">0</div>
+          <div class="k-label">Bloquées</div>
         </div>
-        <ul class="routine-list">
-          <li class="routine-item">
-            <div class="routine-who">Sybil 🦔</div>
-            <div class="routine-what">Livre un brief de patterns agrégé à Dobby sur humeur, énergie et thèmes récurrents.</div>
-          </li>
-          <li class="routine-item">
-            <div class="routine-who">Corbeau 🐦‍⬛</div>
-            <div class="routine-what">Absorbe les sorties de connaissance reçues et les reconnecte à la base vivante.</div>
-          </li>
-        </ul>
-      </div>
-
-      <div class="routine-card ardoise">
-        <div class="routine-head">
-          <div class="routine-title">Mensuel</div>
-          <div class="routine-tag">Monthly</div>
+        <div class="k-card ocre">
+          <div class="k-val" id="k-val-jch">0</div>
+          <div class="k-label">Attente JCH</div>
         </div>
-        <ul class="routine-list">
-          <li class="routine-item">
-            <div class="routine-who">Miel 🐝</div>
-            <div class="routine-what">Prépare le calendrier éditorial et le rapport communauté par marque.</div>
-          </li>
-          <li class="routine-item">
-            <div class="routine-who">Trace 🕷️</div>
-            <div class="routine-what">Livre le rapport SEO de visibilité et les actions recommandées.</div>
-          </li>
-          <li class="routine-item">
-            <div class="routine-who">Vasco 🐺 · Nova 🦋 · Sybil 🦔</div>
-            <div class="routine-what">Livrent respectivement rapport scientifique Vetalyx, rapport R&D photo et rétrospective du mois.</div>
-          </li>
-        </ul>
-      </div>
-
-      <div class="routine-card rouge">
-        <div class="routine-head">
-          <div class="routine-title">Sur événement</div>
-          <div class="routine-tag">Triggered</div>
+        <div class="k-card bleu">
+          <div class="k-val" id="k-progress">0</div>
+          <div class="k-label">En cours</div>
         </div>
-        <ul class="routine-list">
-          <li class="routine-item">
-            <div class="routine-who">Forge 🦦</div>
-            <div class="routine-what">Met à jour `hub.html` et `organigramme.html` après tout changement structurel.</div>
-          </li>
-          <li class="routine-item">
-            <div class="routine-who">Furet 🦡 → Bouvier 🐕</div>
-            <div class="routine-what">Déclenchent le pipeline de recrutement si Dobby détecte un vrai gap de compétence.</div>
-          </li>
-          <li class="routine-item">
-            <div class="routine-who">Jade 🦩 + Renard 🦊</div>
-            <div class="routine-what">Produisent les documents Vetalyx / DIAHO en bilingue FR/ZH dès qu’un document concerné entre.</div>
-          </li>
-          <li class="routine-item">
-            <div class="routine-who">Dobby 🦉</div>
-            <div class="routine-what">Met à jour mémoire, skills et routage système dès qu’une règle durable ou une procédure réutilisable apparaît.</div>
-          </li>
-        </ul>
+        <div class="k-card vert">
+          <div class="k-val" id="k-ready">0</div>
+          <div class="k-label">Prêt</div>
+        </div>
       </div>
-
     </div>
+
+    <!-- RECHERCHE RAPIDE -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">Retrouver un fichier</div>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--texte-mute);" id="file-index-status">Attente</span>
+      </div>
+      <div class="search-input-wrap">
+        <input type="text" class="search-input" id="file-index-query" placeholder="Nom de fichier, projet, mot-clé...">
+      </div>
+      <div class="search-filters">
+        <select class="search-select" id="file-index-project">
+          <option value="">Tous les projets</option>
+        </select>
+        <select class="search-select" id="file-index-component" disabled>
+          <option value="">Tous les composants</option>
+        </select>
+      </div>
+      <div class="search-results-area" id="file-index-results">
+        Tape au moins 2 caractères pour chercher.
+      </div>
+    </div>
+    
   </div>
 
-  <!-- ── Soldes fournisseurs ── -->
-  <div class="section">
-    <div class="section-title">
-      <span>Soldes fournisseurs modèles</span>
-      <span id="provider-balance-time" style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ocre);">non rafraîchi</span>
-    </div>
-    <div class="provider-toolbar">
-      <div class="provider-note">
-        Contrôle non destructif côté serveur. Les clés restent locales; seul le solde, la dépense ou l'état d'accès est affiché.
-      </div>
-      <button class="provider-refresh" id="refresh-provider-balances" type="button">Rafraîchir</button>
-    </div>
-    <div class="provider-grid" id="provider-balances">
-      <div class="provider-card">
-        <div class="provider-name">En attente</div>
-        <div class="provider-detail">Clique sur rafraîchir pour interroger les fournisseurs configurés.</div>
-      </div>
-    </div>
+  <!-- ── PORTEFEUILLE PROJETS ── -->
+  <div class="section-title">Portefeuille Projets 03</div>
+  <div class="grid">
+    <a class="card active" href="../03_PROJECTS/01_AI_IT_TOOLS/INDEX.md">
+      <div class="card-title">AI_IT_TOOLS</div>
+      <div class="card-desc">Outils AI et ressources techniques transversaux.</div>
+      <div class="card-tag">● Actif</div>
+    </a>
+    <a class="card active" href="../03_PROJECTS/02_ARTEON/INDEX.md">
+      <div class="card-title">ARTEON</div>
+      <div class="card-desc">Plateforme éditoriale photographique naturaliste.</div>
+      <div class="card-tag">● Actif</div>
+    </a>
+    <a class="card active" href="../03_PROJECTS/03_WILDNEXUS/INDEX.md">
+      <div class="card-title">WILDNEXUS</div>
+      <div class="card-desc">Observation ecologique, bioacoustique.</div>
+      <div class="card-tag">● Actif</div>
+    </a>
+    <a class="card" href="../03_PROJECTS/04_NUANCES/INDEX.md">
+      <div class="card-title">NUANCES</div>
+      <div class="card-desc">Consultance stratégique BESS.</div>
+      <div class="card-tag" style="color:var(--texte-mute)">○ Standby</div>
+    </a>
+    <a class="card active" href="../03_PROJECTS/05_PHOTO_AI_JURY/">
+      <div class="card-title">PHOTO_AI_JURY</div>
+      <div class="card-desc">Jury critique photo et workflows d'évaluation IA.</div>
+      <div class="card-tag">● Actif</div>
+    </a>
+    <a class="card active" href="../03_PROJECTS/06_PHOTO_NATURE/INDEX.md">
+      <div class="card-title">PHOTO_NATURE</div>
+      <div class="card-desc">Wildlife, impression, post-traitement, terrain.</div>
+      <div class="card-tag">● Actif</div>
+    </a>
+    <a class="card active" href="../03_PROJECTS/07_TRAVELS/INDEX.md">
+      <div class="card-title">TRAVELS</div>
+      <div class="card-desc">Voyages nature, logistique van.</div>
+      <div class="card-tag">● Actif</div>
+    </a>
+    <a class="card active" href="../03_PROJECTS/08_VETALYX/INDEX.md">
+      <div class="card-title">VETALYX</div>
+      <div class="card-desc">Allergies animales : stratégie, marché, réglementaire.</div>
+      <div class="card-tag">● Actif</div>
+    </a>
   </div>
 
-  <!-- ── Dashboards ── -->
-  <div class="section">
-    <div class="section-title">Navigation superviseur</div>
-    <div class="dash-grid">
-
-      <a class="dash-card accent" href="../todo-jch.html">
-        <div class="dash-card-icon">📋</div>
-        <div class="dash-card-title">Tâches JCH</div>
-        <div class="dash-card-desc">Tâches actives · filtres par urgence et projet</div>
-        <div class="dash-card-tag">todo-jch.html</div>
-      </a>
-
-      <a class="dash-card" href="modeles.html">
-        <div class="dash-card-icon">⚙️</div>
-        <div class="dash-card-title">Modèles Dobby</div>
-        <div class="dash-card-desc">Claude · Codex · Gemini · DeepSeek · Gemma · Qwen</div>
-        <div class="dash-card-tag">modeles.html</div>
-      </a>
-
-      <a class="dash-card accent" href="dobby-live.html">
-        <div class="dash-card-icon">🎙️</div>
-        <div class="dash-card-title">Dobby Live</div>
-        <div class="dash-card-desc">Prototype Realtime 2 · voix WebRTC · tools PKA locaux</div>
-        <div class="dash-card-tag">dobby-live.html</div>
-      </a>
-
-      <a class="dash-card" href="../00_INBOX/">
-        <div class="dash-card-icon">📥</div>
-        <div class="dash-card-title">Inbox JCH</div>
-        <div class="dash-card-desc">Entrants à traiter, documents à router et matière brute à qualifier</div>
-        <div class="dash-card-tag">00_INBOX/</div>
-      </a>
-
-      <a class="dash-card" href="../03_PROJECTS/">
-        <div class="dash-card-icon">🗂️</div>
-        <div class="dash-card-title">Dossiers projets</div>
-        <div class="dash-card-desc">Accès direct aux projets actifs et à leur structure documentaire</div>
-        <div class="dash-card-tag">03_PROJECTS/</div>
-      </a>
-
-      <a class="dash-card" href="../07_ARCHIVES/">
-        <div class="dash-card-icon">🧱</div>
-        <div class="dash-card-title">Archives</div>
-        <div class="dash-card-desc">Projets sortis du pilotage actif, historiques et matière à conserver</div>
-        <div class="dash-card-tag">07_ARCHIVES/</div>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- ── Projets actifs ── -->
-  <div class="section">
-    <div class="section-title">Portefeuille projets 03</div>
-    <div class="projects-grid">
-
-      <a class="project-card active" href="../03_PROJECTS/01_AI_IT_TOOLS/INDEX.md">
-        <div class="project-name">AI_IT_TOOLS</div>
-        <div class="project-status">● Actif</div>
-        <div class="project-desc">Outils AI et ressources techniques transversaux aux projets JCH et ARTEON.</div>
-      </a>
-
-      <a class="project-card active" href="../03_PROJECTS/02_ARTEON/INDEX.md">
-        <div class="project-name">ARTEON</div>
-        <div class="project-status">● Actif</div>
-        <div class="project-desc">Plateforme éditoriale photographique naturaliste : brand, strategy, legal, WildLens et L'Instant Lu.</div>
-      </a>
-
-      <a class="project-card active-vert" href="../03_PROJECTS/03_FAUNE_AUTOUR/INDEX.md">
-        <div class="project-name">FAUNE_AUTOUR</div>
-        <div class="project-status">● Actif</div>
-        <div class="project-desc">Projet faune locale : bioacoustique, app, docs, data et socle technique terrain.</div>
-      </a>
-
-      <a class="project-card" href="../03_PROJECTS/04_NUANCES/INDEX.md">
-        <div class="project-name">NUANCES</div>
-        <div class="project-status">○ Standby</div>
-        <div class="project-desc">Consultance stratégique BESS. Veille, concurrence, cadre légal et opportunités de collaboration.</div>
-      </a>
-
-      <a class="project-card active-ardoise" href="../03_PROJECTS/05_PHOTO_AI_JURY/">
-        <div class="project-name">PHOTO_AI_JURY</div>
-        <div class="project-status">● Actif</div>
-        <div class="project-desc">Analyses, exports et sources autour du jury critique photo et des workflows d'évaluation IA.</div>
-      </a>
-
-      <a class="project-card active" href="../03_PROJECTS/06_PHOTO_NATURE/INDEX.md">
-        <div class="project-name">PHOTO_NATURE</div>
-        <div class="project-status">● Actif</div>
-        <div class="project-desc">Activités wildlife, impression, post-traitement, terrain et socle documentaire naturaliste.</div>
-      </a>
-
-      <a class="project-card" href="../03_PROJECTS/07_TRAVELS/INDEX.md">
-        <div class="project-name">TRAVELS</div>
-        <div class="project-status">● Actif</div>
-        <div class="project-desc">Voyages nature, logistique van et repérages photo à intégrer au pilotage long terme.</div>
-      </a>
-
-      <a class="project-card active-vert" href="../03_PROJECTS/08_VETALYX/INDEX.md">
-        <div class="project-name">VETALYX</div>
-        <div class="project-status">● Actif</div>
-        <div class="project-desc">Diagnostic allergies animales : stratégie, marché, contrats, réglementation et investisseurs.</div>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- ── Équipe ── -->
-  <div class="section">
-    <div class="section-title">
-      <span>Équipe PKA — 25 membres actifs</span>
-      <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ocre);">Recrutement sur analyse</span>
-    </div>
-    <div class="team-grid">
-      <div class="team-card"><div class="team-card-emoji">🦉</div><div class="team-card-info"><div class="team-card-name">Dobby</div><div class="team-card-role">Orchestrateur</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🐕</div><div class="team-card-info"><div class="team-card-name">Bouvier</div><div class="team-card-role">RH · Onboarding</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🦡</div><div class="team-card-info"><div class="team-card-name">Furet</div><div class="team-card-role">Chercheur senior</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🦫</div><div class="team-card-info"><div class="team-card-name">Castor</div><div class="team-card-role">DB & Systèmes</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🐦‍⬛</div><div class="team-card-info"><div class="team-card-name">Corbeau</div><div class="team-card-role">Curateur savoirs</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🐬</div><div class="team-card-info"><div class="team-card-name">Delphi</div><div class="team-card-role">CRM & Relations</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🦢</div><div class="team-card-info"><div class="team-card-name">Héron</div><div class="team-card-role">Impression photo</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🐆</div><div class="team-card-info"><div class="team-card-name">Lynx</div><div class="team-card-role">Retouche photo</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🦩</div><div class="team-card-info"><div class="team-card-name">Jade</div><div class="team-card-role">Traductrice EN↔ZH</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🦊</div><div class="team-card-info"><div class="team-card-name">Renard</div><div class="team-card-role">Conseil juridique</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🦅</div><div class="team-card-info"><div class="team-card-name">Iris</div><div class="team-card-role">Tendances & Stratégie</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🦦</div><div class="team-card-info"><div class="team-card-name">Forge</div><div class="team-card-role">Dev Full-Stack</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🐦</div><div class="team-card-info"><div class="team-card-name">Ariane</div><div class="team-card-role">Onboarding Plateforme</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🐻</div><div class="team-card-info"><div class="team-card-name">Bruno</div><div class="team-card-role">Finance & Investissement</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🦔</div><div class="team-card-info"><div class="team-card-name">Sybil</div><div class="team-card-role">Journal personnel</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🦜</div><div class="team-card-info"><div class="team-card-name">Clio</div><div class="team-card-role">Littérature scientifique</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🐙</div><div class="team-card-info"><div class="team-card-name">Sigma</div><div class="team-card-role">Data financière</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🦚</div><div class="team-card-info"><div class="team-card-name">Vega</div><div class="team-card-role">Direction artistique</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🕷️</div><div class="team-card-info"><div class="team-card-name">Trace</div><div class="team-card-role">SEO & Visibilité</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🐝</div><div class="team-card-info"><div class="team-card-name">Miel</div><div class="team-card-role">Community Manager</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🐺</div><div class="team-card-info"><div class="team-card-name">Vasco</div><div class="team-card-role">Produit Vetalyx</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🦋</div><div class="team-card-info"><div class="team-card-name">Nova</div><div class="team-card-role">R&D Photo</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🦅</div><div class="team-card-info"><div class="team-card-name">Argus</div><div class="team-card-role">Critique photo · Jury</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🐦‍⬛</div><div class="team-card-info"><div class="team-card-name">Pie</div><div class="team-card-role">Analyste mails · SAC</div></div></div>
-      <div class="team-card"><div class="team-card-emoji">🦉</div><div class="team-card-info"><div class="team-card-name">Chouette</div><div class="team-card-role">Setup terrain photo</div></div></div>
-    </div>
+  <div class="footer">
+    <div>PKA · JCH — V2 Dark Cockpit</div>
+    <div>JCHYTECH · Rue des Renards 4, 4130 Tilff</div>
   </div>
 
 </div>
 
-<div class="footer">
-  <div class="footer-brand">PKA · JCH<span>·</span></div>
-  <div class="footer-info">JCHYTECH · BCE BE 0680.640.981 · Rue des Renards 4, 4130 Tilff</div>
-</div>
-
+<!-- Scripts pour le fonctionnement dynamique -->
 <script>
   const d = new Date();
-  const opts = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
-  document.getElementById('today').textContent = d.toLocaleDateString('fr-BE', opts);
+  document.getElementById('today').textContent = d.toLocaleDateString('fr-BE', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
 
-  async function loadHealth() {
+  // ===== 1. CHARGEMENT DES METRIQUES GLOBALES =====
+  async function loadMetrics() {
     try {
-      const response = await fetch('/api/health');
-      const health = await response.json();
-      document.getElementById('metric-team').textContent = health.teamActive ?? '--';
-      document.getElementById('metric-inbox').textContent = health.inboxPending ?? '--';
-      document.getElementById('metric-projects').textContent = health.projectsActive ?? '--';
-      document.getElementById('metric-server').textContent = health.ok ? 'OK' : '!';
-      document.getElementById('latest-daily').textContent = health.latestDaily || 'aucune note';
-      document.getElementById('latest-deliverable').textContent = health.latestDeliverable || 'aucun livrable';
-    } catch {
-      document.getElementById('metric-server').textContent = 'OFF';
-      document.getElementById('latest-daily').textContent = 'serveur indisponible';
-      document.getElementById('latest-deliverable').textContent = 'serveur indisponible';
+      const resHealth = await fetch('/api/health');
+      const health = await resHealth.json();
+      document.getElementById('radar-inbox').textContent = health.inboxPending ?? '0';
+      document.getElementById('latest-deliverable').textContent = health.latestDeliverable || 'Aucun signal récent.';
+      
+      const resKanban = await fetch("/api/kanban/summary");
+      const summary = await resKanban.json();
+      
+      const blocked = summary.blocked || 0;
+      document.getElementById("k-blocked").textContent = String(blocked);
+      document.getElementById("radar-blocked").textContent = String(blocked);
+      
+      document.getElementById("k-val-jch").textContent = String(summary.awaiting_jch || 0);
+      document.getElementById("k-progress").textContent = String((summary.totals || {})["En cours"] || 0);
+      document.getElementById("k-ready").textContent = String((summary.totals || {})["Pret"] || 0);
+
+      // --- LOGIQUE VISUELLE DU SUPER-BOUTON TACHES (Simulation basée sur le Kanban) ---
+      // Dans le futur, il faudra un endpoint spécifique /api/tasks pour ces chiffres précis.
+      const taskWaiting = summary.awaiting_jch || 0;
+      document.getElementById("task-total").textContent = String( (summary.totals || {})["En cours"] || 0 );
+      document.getElementById("task-waiting").textContent = String(taskWaiting);
+      document.getElementById("task-urgent").textContent = String(blocked); // On utilise blocked comme urgence ici temporairement
+      
+      const btn = document.getElementById('hub-tasks-container');
+      if (blocked > 0 || taskWaiting > 0) {
+        btn.classList.add('has-alerts');
+      } else {
+        btn.classList.remove('has-alerts');
+      }
+
+    } catch(e) {
+      console.log("Erreur API", e);
     }
   }
 
-  loadHealth();
+  // ===== 2. RECHERCHE DE FICHIERS (Reprise de l'ancien script) =====
+  const fileIndexState = {
+    filters: { projects: [], components: {} },
+    debounceId: null
+  };
 
-  async function loadKanbanSummary() {
-    const response = await fetch("/api/kanban/summary");
-    const summary = await response.json();
-    document.getElementById("kanban-blocked").textContent = String(summary.blocked || 0);
-    document.getElementById("kanban-validation").textContent = String(summary.awaiting_jch || 0);
-    document.getElementById("kanban-in-progress").textContent = String((summary.totals || {})["En cours"] || 0);
-    document.getElementById("kanban-ready").textContent = String((summary.totals || {})["Pret"] || 0);
+  function escapeHtml(value) {
+    return String(value || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+  
+  function shortenIndexedPath(path) {
+    return String(path || '').replace(/^JCH_Inbox\//, '').replace(/^TEAM_Inbox\//, 'TEAM_Inbox/');
   }
 
-  loadKanbanSummary().catch(() => {});
-
-  function providerStatusLabel(status) {
-    const labels = {
-      ok: 'OK',
-      warning: 'Alerte',
-      limited: 'Limité',
-      error: 'Erreur',
-      missing: 'Absent',
-      manual: 'Manuel',
-      local: 'Local'
-    };
-    return labels[status] || status || 'Inconnu';
+  function buildFileIndexHref(path, parent = false) {
+    const query = new URLSearchParams({ path });
+    if (parent) query.set('parent', '1');
+    return `/open?${query.toString()}`;
   }
 
-  function renderProviderBalances(payload) {
-    const grid = document.getElementById('provider-balances');
-    const providers = payload.providers || [];
-    if (!providers.length) {
-      grid.innerHTML = '<div class="provider-card error"><div class="provider-name">Aucun fournisseur</div><div class="provider-detail">Le serveur n’a retourné aucun fournisseur.</div></div>';
+  function renderFileIndexResults(payload) {
+    const status = document.getElementById('file-index-status');
+    const area = document.getElementById('file-index-results');
+    
+    if (!payload.ok) {
+      status.textContent = 'Index indisponible';
+      area.innerHTML = `<div>${escapeHtml(payload.error || 'Erreur de lecture')}</div>`;
       return;
     }
-    grid.innerHTML = providers.map(provider => {
-      const status = provider.status || 'missing';
-      return `
-        <div class="provider-card ${status}">
-          <div class="provider-head">
-            <div>
-              <div class="provider-name">${provider.label}</div>
-              <div class="provider-kind">${provider.kind}</div>
-            </div>
-            <div class="provider-status ${status}">${providerStatusLabel(status)}</div>
-          </div>
-          <div class="provider-value">${provider.value || '--'}</div>
-          <div class="provider-detail">${provider.detail || ''}</div>
-          ${(provider.console_url || provider.topup_url) ? `
-            <div class="provider-links">
-              ${provider.console_url ? `<a class="provider-console-link" href="${provider.console_url}" target="_blank" rel="noopener">→ console</a>` : ''}
-              ${provider.topup_url ? `<a class="provider-topup-link" href="${provider.topup_url}" target="_blank" rel="noopener">+ recharger</a>` : ''}
-            </div>` : ''}
+    
+    const results = payload.results || [];
+    status.textContent = `${results.length} rés.`;
+    
+    if (!results.length) {
+      area.innerHTML = '<div>Aucun résultat.</div>';
+      return;
+    }
+    
+    area.innerHTML = results.map(result => `
+      <article class="file-index-result">
+        <div class="file-index-result-head">
+          <div class="file-index-result-name">${escapeHtml(result.filename || 'fichier')}</div>
+          <div>${result.project_key ? `<span class="file-index-chip">${escapeHtml(result.project_key)}</span>` : ''}</div>
         </div>
-      `;
-    }).join('');
+        <div class="file-index-result-path">${escapeHtml(shortenIndexedPath(result.file_path || ''))}</div>
+        <div>
+          <a class="file-index-link primary" href="${buildFileIndexHref(result.file_path || '')}" target="_blank">Ouvrir</a>
+        </div>
+      </article>
+    `).join('');
   }
 
-  async function loadProviderBalances() {
-    const button = document.getElementById('refresh-provider-balances');
-    const previous = button.textContent;
-    button.textContent = 'Contrôle...';
-    button.disabled = true;
+  async function loadFileIndexFilters() {
     try {
-      const response = await fetch('/api/provider-balances');
+      const response = await fetch('/api/file-index/filters');
       const payload = await response.json();
-      if (!response.ok || !payload.ok) {
-        throw new Error(payload.error || 'Contrôle impossible');
-      }
-      renderProviderBalances(payload);
-      const date = payload.generatedAt ? new Date(payload.generatedAt) : new Date();
-      document.getElementById('provider-balance-time').textContent = date.toLocaleTimeString('fr-BE', { hour: '2-digit', minute: '2-digit' });
+      if (!response.ok || !payload.ok) throw new Error();
+      
+      fileIndexState.filters = { projects: payload.projects || [], components: payload.components || {} };
+      const projectSelect = document.getElementById('file-index-project');
+      projectSelect.innerHTML = `<option value="">Tous les projets</option>${fileIndexState.filters.projects.map(p => `<option value="${escapeHtml(p)}">${escapeHtml(p)}</option>`).join('')}`;
     } catch {
-      document.getElementById('provider-balances').innerHTML = '<div class="provider-card error"><div class="provider-name">Erreur</div><div class="provider-detail">Impossible de lire les soldes fournisseurs depuis le serveur local.</div></div>';
-      document.getElementById('provider-balance-time').textContent = 'erreur';
-    } finally {
-      button.disabled = false;
-      button.textContent = previous;
+      document.getElementById('file-index-status').textContent = 'Filtres HS';
     }
   }
 
-  document.getElementById('refresh-provider-balances').addEventListener('click', loadProviderBalances);
-
-  document.getElementById('save-session').addEventListener('click', async () => {
-    const button = document.getElementById('save-session');
-    const previous = button.textContent;
-    button.textContent = 'Ouverture...';
-    try {
-      const response = await fetch('/save', {
-        method: 'POST',
-        headers: { 'X-PKA-Dashboard': '1' }
-      });
-      const payload = await response.json();
-      if (!response.ok || !payload.ok) {
-        throw new Error(payload.error || 'Sauvegarde impossible');
-      }
-      button.textContent = 'Terminal ouvert';
-    } catch {
-      button.textContent = 'Erreur';
-    } finally {
-      window.setTimeout(() => { button.textContent = previous; }, 1600);
+  async function runFileIndexSearch() {
+    const query = document.getElementById('file-index-query').value.trim();
+    const projectKey = document.getElementById('file-index-project').value;
+    const component = document.getElementById('file-index-component').value;
+    const status = document.getElementById('file-index-status');
+    
+    if (query.length < 2) {
+      status.textContent = 'Attente';
+      document.getElementById('file-index-results').innerHTML = 'Tape au moins 2 caractères.';
+      return;
     }
+    
+    status.textContent = 'Recherche...';
+    try {
+      const params = new URLSearchParams({ q: query, limit: '5' });
+      if (projectKey) params.set('project_key', projectKey);
+      if (component) params.set('component', component);
+      
+      const response = await fetch(`/api/file-index/search?${params.toString()}`);
+      const payload = await response.json();
+      renderFileIndexResults(payload);
+    } catch {
+      status.textContent = 'Erreur';
+    }
+  }
+
+  document.getElementById('file-index-query').addEventListener('input', () => {
+    clearTimeout(fileIndexState.debounceId);
+    fileIndexState.debounceId = setTimeout(runFileIndexSearch, 200);
+  });
+  
+  document.getElementById('file-index-project').addEventListener('change', () => {
+    const projectSelect = document.getElementById('file-index-project');
+    const componentSelect = document.getElementById('file-index-component');
+    const projectKey = projectSelect.value;
+    const components = projectKey ? (fileIndexState.filters.components[projectKey] || []) : [];
+    
+    componentSelect.innerHTML = `<option value="">Tous les composants</option>${components.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('')}`;
+    componentSelect.disabled = !components.length;
+    runFileIndexSearch();
+  });
+
+  // Init
+  loadMetrics();
+  loadFileIndexFilters();
+
+  document.getElementById('save-session').addEventListener('click', async (e) => {
+    const btn = e.target;
+    btn.textContent = '...';
+    try {
+      await fetch('/save', { method: 'POST', headers: { 'X-PKA-Dashboard': '1' }});
+      btn.textContent = 'Terminal Ouvert';
+    } catch { btn.textContent = 'Erreur'; }
+    setTimeout(() => btn.textContent = 'Sauver Session Terminal', 2000);
   });
 </script>
 

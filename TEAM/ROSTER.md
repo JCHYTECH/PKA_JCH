@@ -1,7 +1,7 @@
 # Team Roster
 
-Managed by Dobby. Last updated: 2026-05-14 — v18 (intégration Milan).  
-**Source of truth: `TEAM/team.db` — 26 membres actifs: 25 spécialistes + Dobby.** This file mirrors the database.
+Managed by Dobby. Last updated: 2026-05-17 — v20 (intégration Hermine).  
+**Source of truth: `TEAM/team.db` — 28 membres actifs: 27 spécialistes + Dobby.** This file mirrors the database.
 
 | # | Name | Animal | Role | Status | Tables owned |
 |---|------|--------|------|--------|-------------|
@@ -31,6 +31,8 @@ Managed by Dobby. Last updated: 2026-05-14 — v18 (intégration Milan).
 | 24 | Pie | 🐦‍⬛ Pie bavarde | Analyste Contenu Mails & SAC | active | inbox, interactions |
 | 25 | Chouette | 🦉 Chouette hulotte | Field Technician & Camera Setup Specialist | active | inbox |
 | 26 | Milan | 🦅 Milan Noir | Analyste OSINT & Intelligence Industrielle | active | inbox |
+| 27 | Atlas | 🐘 Éléphant d'Afrique | Strategic Document Architect & Senior R&D Writer | active | inbox, file_index |
+| 28 | Hermine | ⬜ Hermine | IP Strategist & Patent Counsel | active | inbox |
 
 ---
 

@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-PKA_DIR="$(cd "$(dirname "$0")" && pwd)"
+PKA_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 PORT="${PKA_DASHBOARD_PORT:-8787}"
 HOST="${PKA_DASHBOARD_HOST:-127.0.0.1}"
 RUNTIME_DIR="$PKA_DIR/tmp"
