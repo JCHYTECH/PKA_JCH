@@ -32,6 +32,7 @@ if str(PKA_DIR) not in sys.path:
 from scripts import pka_kanban_schema
 from scripts import pka_kanban_service
 from scripts import pka_plane_adapter
+from scripts import rebuild_file_index
 
 JCH_INBOX_DIR = PKA_DIR / "JCH_Inbox"
 DASHBOARD_DIR = PKA_DIR / "JCH_Inbox" / "01_DASHBOARDS"
@@ -61,54 +62,61 @@ REALTIME_DEFAULT_VOICE = os.environ.get("PKA_REALTIME_VOICE", "marin")
 MODELS = {
     "claude": {
         "label": "Claude Code",
-        "command": ["./dobby.sh", "--model", "claude"],
+        "command": ["./bin/dobby.sh", "--model", "claude"],
         "bg": "#30200f",
         "fg": "#f8f5f0",
         "cursor": "#c17f3a",
     },
     "codex": {
         "label": "Codex CLI",
-        "command": ["./dobby.sh", "--model", "codex"],
+        "command": ["./bin/dobby.sh", "--model", "codex"],
         "bg": "#131520",
         "fg": "#f8f5f0",
         "cursor": "#4a5568",
     },
     "gemini": {
         "label": "Gemini CLI",
-        "command": ["./dobby.sh", "--model", "gemini"],
+        "command": ["./bin/dobby.sh", "--model", "gemini"],
         "bg": "#0f1710",
         "fg": "#f8f5f0",
         "cursor": "#3d5a3e",
     },
     "deepseek": {
         "label": "DeepSeek Chat",
-        "command": ["./dobby.sh", "--model", "deepseek"],
+        "command": ["./bin/dobby.sh", "--model", "deepseek"],
         "bg": "#30100b",
         "fg": "#f8f5f0",
         "cursor": "#c0392b",
     },
     "deepseek-r1": {
         "label": "DeepSeek R1",
-        "command": ["./dobby.sh", "--model", "deepseek-r1"],
+        "command": ["./bin/dobby.sh", "--model", "deepseek-r1"],
         "bg": "#0b0908",
         "fg": "#f8f5f0",
         "cursor": "#2a2420",
     },
     "gemma4": {
         "label": "Gemma 4",
-        "command": ["./dobby.sh", "--model", "gemma4"],
+        "command": ["./bin/dobby.sh", "--model", "gemma4"],
         "bg": "#1b1918",
         "fg": "#f8f5f0",
         "cursor": "#6b6560",
     },
     "qwen3": {
         "label": "Qwen 3.6",
-        "command": ["./dobby.sh", "--model", "qwen3"],
+        "command": ["./bin/dobby.sh", "--model", "qwen3"],
         "bg": "#3a3937",
         "fg": "#0d0b09",
         "cursor": "#e8e2da",
     },
 }
+
+ALLOWED_FILE_INDEX_ROOTS = (
+    "JCH_Inbox",
+    "TEAM_Inbox",
+    "TEAM",
+    "wiki",
+)
 
 
 def terminal_command(model: str) -> str:
@@ -126,6 +134,49 @@ def terminal_command(model: str) -> str:
 
 def quote_for_shell(path: Path) -> str:
     return "'" + str(path).replace("'", "'\\''") + "'"
+
+
+def pka_relative_path(path: Path) -> str:
+    return path.relative_to(PKA_DIR).as_posix()
+
+
+def resolve_file_index_path(raw_path: str) -> Path | None:
+    relative = raw_path.strip().lstrip("/")
+    if not relative:
+        return None
+    candidate = (PKA_DIR / relative).resolve()
+    try:
+        relative_path = pka_relative_path(candidate)
+    except ValueError:
+        return None
+    if not any(relative_path == root or relative_path.startswith(f"{root}/") for root in ALLOWED_FILE_INDEX_ROOTS):
+        return None
+    return candidate
+
+
+def file_index_search_payload(query: str, project_key: str | None, component: str | None, limit: int = 20) -> dict:
+    cleaned_query = query.strip()
+    if len(cleaned_query) < 2:
+        return {"ok": True, "results": []}
+    try:
+        results = rebuild_file_index.search_index(
+            TEAM_DB,
+            cleaned_query,
+            project_key=project_key or None,
+            component=component or None,
+            limit=max(1, min(int(limit), 50)),
+        )
+    except (OSError, sqlite3.DatabaseError) as exc:
+        return {"ok": False, "error": f"Index indisponible: {exc}"}
+    return {"ok": True, "results": results}
+
+
+def file_index_filters_payload() -> dict:
+    try:
+        filters = rebuild_file_index.available_filters(TEAM_DB)
+    except (OSError, sqlite3.DatabaseError) as exc:
+        return {"ok": False, "error": f"Index indisponible: {exc}", "projects": [], "components": {}}
+    return {"ok": True, **filters}
 
 
 def launch_terminal(model: str) -> None:
@@ -181,6 +232,15 @@ def latest_daily_note() -> str | None:
     return max(notes, key=lambda item: item.stat().st_mtime).name
 
 
+def _all_kanban_cards() -> list[dict]:
+    ensure_plane_api_token()
+    config = pka_plane_adapter.load_config()
+    cards = []
+    for project_key in sorted(config["projects"]):
+        cards.extend(pka_plane_adapter.fetch_project_issues(project_key))
+    return cards
+
+
 def kanban_snapshot() -> dict:
     schema = pka_kanban_schema.load_schema()
     empty_summary = {
@@ -191,15 +251,44 @@ def kanban_snapshot() -> dict:
     }
 
     try:
-        ensure_plane_api_token()
-        config = pka_plane_adapter.load_config()
-        cards = []
-        for project_key in sorted(config["projects"]):
-            cards.extend(pka_plane_adapter.fetch_project_issues(project_key))
-        return pka_kanban_service.build_summary(cards)
+        return pka_kanban_service.build_summary(_all_kanban_cards())
     except Exception as exc:
         empty_summary["error"] = str(exc)
         return empty_summary
+
+
+def kanban_cards_payload(
+    project: str | None,
+    status: str | None,
+    owner: str | None,
+    awaiting_jch_only: bool,
+) -> dict:
+    try:
+        cards = _all_kanban_cards()
+        return {
+            "ok": True,
+            "cards": pka_kanban_service.build_card_list(
+                cards,
+                project=project or None,
+                status=status or None,
+                owner=owner or None,
+                awaiting_jch_only=awaiting_jch_only,
+            ),
+        }
+    except Exception as exc:
+        return {"ok": False, "error": str(exc), "cards": []}
+
+
+def kanban_filters_payload() -> dict:
+    try:
+        cards = _all_kanban_cards()
+        return {"ok": True, **pka_kanban_service.available_card_filters(cards)}
+    except Exception as exc:
+        return {"ok": False, "error": str(exc), "projects": [], "statuses": [], "owners": []}
+
+
+def _truthy_query_flag(value: str) -> bool:
+    return value.strip().lower() in {"1", "true", "yes", "on"}
 
 
 def dashboard_health() -> dict:
@@ -880,6 +969,23 @@ class DashboardHandler(BaseHTTPRequestHandler):
             self.send_json(kanban_snapshot())
             return
 
+        if path == "/api/kanban/cards":
+            params = parse_qs(parsed.query)
+            awaiting_jch = _truthy_query_flag(params.get("awaiting_jch", ["0"])[0])
+            payload = kanban_cards_payload(
+                params.get("project", [""])[0].strip() or None,
+                params.get("status", [""])[0].strip() or None,
+                params.get("owner", [""])[0].strip() or None,
+                awaiting_jch,
+            )
+            self.send_json(payload, HTTPStatus.OK if payload.get("ok", True) else HTTPStatus.SERVICE_UNAVAILABLE)
+            return
+
+        if path == "/api/kanban/filters":
+            payload = kanban_filters_payload()
+            self.send_json(payload, HTTPStatus.OK if payload.get("ok", True) else HTTPStatus.SERVICE_UNAVAILABLE)
+            return
+
         if path == "/api/provider-balances":
             self.send_json(provider_balance_status())
             return
@@ -894,6 +1000,41 @@ class DashboardHandler(BaseHTTPRequestHandler):
 
         if path == "/api/latest":
             self.send_json({"items": directory_items(PKA_DIR / "TEAM_Inbox", limit=8)})
+            return
+
+        if path == "/api/file-index/search":
+            params = parse_qs(parsed.query)
+            limit_raw = params.get("limit", ["20"])[0] or "20"
+            try:
+                limit = int(limit_raw)
+            except ValueError:
+                limit = 20
+            payload = file_index_search_payload(
+                params.get("q", [""])[0],
+                params.get("project_key", [""])[0] or None,
+                params.get("component", [""])[0] or None,
+                limit,
+            )
+            status = HTTPStatus.OK if payload.get("ok", True) else HTTPStatus.SERVICE_UNAVAILABLE
+            self.send_json(payload, status)
+            return
+
+        if path == "/api/file-index/filters":
+            payload = file_index_filters_payload()
+            status = HTTPStatus.OK if payload.get("ok", True) else HTTPStatus.SERVICE_UNAVAILABLE
+            self.send_json(payload, status)
+            return
+
+        if path == "/open":
+            params = parse_qs(parsed.query)
+            raw_path = params.get("path", [""])[0]
+            candidate = resolve_file_index_path(raw_path)
+            if candidate is None:
+                self.send_error(HTTPStatus.FORBIDDEN)
+                return
+            if params.get("parent", ["0"])[0] == "1":
+                candidate = candidate.parent
+            self.serve_workspace_path(candidate)
             return
 
         if path == "/api/live/config":
@@ -1057,6 +1198,15 @@ button {{ width: 100%; min-height: 42px; margin-top: 12px; border: 0; border-rad
             self.send_error(HTTPStatus.FORBIDDEN)
             return
 
+        self.serve_workspace_path(candidate)
+
+    def serve_workspace_path(self, candidate: Path) -> None:
+        try:
+            relative = pka_relative_path(candidate)
+        except ValueError:
+            self.send_error(HTTPStatus.FORBIDDEN)
+            return
+
         if candidate.is_dir():
             self.send_directory_index(candidate)
             return
@@ -1076,12 +1226,13 @@ button {{ width: 100%; min-height: 42px; margin-top: 12px; border: 0; border-rad
 
     def send_directory_index(self, directory: Path) -> None:
         entries = [item for item in sorted(directory.iterdir(), key=lambda item: (not item.is_dir(), item.name.lower())) if item.name != ".DS_Store"]
-        relative = directory.relative_to(JCH_INBOX_DIR)
+        relative = pka_relative_path(directory)
         rows = []
         for item in entries:
-            href = "/" + str(item.relative_to(JCH_INBOX_DIR))
+            child_path = pka_relative_path(item)
+            href = f"/open?{urlencode({'path': child_path})}"
             if item.is_dir():
-                href += "/"
+                href += "&parent=0"
             rows.append(
                 "<a class='row' href='{}'><span>{}</span><small>{}</small></a>".format(
                     href.replace("'", "%27"),
@@ -1098,20 +1249,21 @@ button {{ width: 100%; min-height: 42px; margin-top: 12px; border: 0; border-rad
 <title>PKA · {relative}</title>
 <link rel="stylesheet" href="/01_DASHBOARDS/assets/pka-theme.css">
 <style>
-body {{ font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; }}
+body {{ font-family: 'Space Grotesk', sans-serif; margin: 0; background: var(--fond-global); color: var(--texte-clair); }}
 main {{ max-width: 980px; margin: 0 auto; padding: 42px 48px 80px; }}
 h1 {{ font-size: 24px; margin: 0 0 8px; }}
-.path {{ color: var(--pka-muted); font-size: 13px; margin-bottom: 26px; }}
-.row {{ display: flex; justify-content: space-between; gap: 20px; padding: 14px 16px; background: white; border: 1px solid var(--pka-line); border-left: 4px solid var(--pka-sable); color: var(--pka-text); text-decoration: none; margin-bottom: 8px; }}
-.row:hover {{ border-left-color: var(--pka-ocre); }}
-small {{ color: var(--pka-muted); text-transform: uppercase; letter-spacing: 0.08em; font-size: 10px; }}
-.empty {{ background: white; border: 1px solid var(--pka-line); padding: 18px; color: var(--pka-muted); }}
-.back {{ display: inline-block; margin-bottom: 24px; color: var(--pka-muted); text-decoration: none; }}
+.path {{ color: var(--texte-mute); font-size: 13px; margin-bottom: 26px; font-family: ui-monospace, monospace; }}
+.row {{ display: flex; justify-content: space-between; gap: 20px; padding: 14px 16px; background: var(--carte-bg); border: 1px solid var(--bordure); border-left: 4px solid var(--bordure); color: var(--texte-clair); text-decoration: none; margin-bottom: 8px; border-radius: 6px; }}
+.row:hover {{ border-left-color: var(--ocre); background: var(--carte-hover); }}
+small {{ color: var(--texte-mute); text-transform: uppercase; letter-spacing: 0.08em; font-size: 10px; }}
+.empty {{ background: var(--carte-bg); border: 1px dashed var(--bordure); padding: 18px; color: var(--texte-mute); border-radius: 6px; }}
+.back {{ display: inline-block; margin-bottom: 24px; color: var(--ocre); text-decoration: none; font-size: 13px; font-weight: 500; }}
+.back:hover {{ text-decoration: underline; }}
 </style>
 </head>
 <body>
 <main>
-<a class="back" href="/hub.html">Retour au hub</a>
+<a class="back" href="/hub.html">← Retour au hub</a>
 <h1>Index dossier</h1>
 <div class="path">{relative}</div>
 {body}

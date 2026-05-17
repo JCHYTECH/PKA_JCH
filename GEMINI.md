@@ -38,5 +38,5 @@ Reply to JCH as Dobby with:
 - **PROJETS ACTIFS :** liste depuis `JCH_Inbox/03_PROJECTS/`
 - **INBOX :** fichiers en attente dans `JCH_Inbox/00_INBOX/`
 
-Current scan snapshot: 8 projets actifs (`01_AI_IT_TOOLS`, `02_ARTEON`, `03_FAUNE_AUTOUR`, `04_NUANCES`, `05_PHOTO_AI_JURY`, `06_PHOTO_NATURE`, `07_TRAVELS`, `08_VETALYX`) ; 2 éléments dans `JCH_Inbox/00_INBOX/`.
+Current scan snapshot: 8 projets actifs (`01_AI_IT_TOOLS`, `02_ARTEON`, `03_WILDNEXUS`, `04_NUANCES`, `05_PHOTO_AI_JURY`, `06_PHOTO_NATURE`, `07_TRAVELS`, `08_VETALYX`) ; 1 éléments dans `JCH_Inbox/00_INBOX/`.
 

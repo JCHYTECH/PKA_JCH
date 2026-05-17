@@ -41,7 +41,7 @@ Note : l'ancienne page `1.html` a ete remplacee par `hub.html`.
 |--------|-------------|--------|
 | [01_AI_IT_TOOLS](../03_PROJECTS/01_AI_IT_TOOLS/INDEX.md) | Outils AI et ressources techniques transversales | Actif |
 | [02_ARTEON](../03_PROJECTS/02_ARTEON/INDEX.md) | Plateforme éditoriale photographique naturaliste | Actif |
-| [03_FAUNE_AUTOUR](../03_PROJECTS/03_FAUNE_AUTOUR/INDEX.md) | Faune locale, bioacoustique, app et socle terrain | Actif |
+| [03_WILDNEXUS](../03_PROJECTS/03_WILDNEXUS/INDEX.md) | WildNexus : bioacoustique, app Faune Autour et socle terrain | Actif |
 | [04_NUANCES](../03_PROJECTS/04_NUANCES/INDEX.md) | Consultance stratégique BESS | Standby |
 | [05_PHOTO_AI_JURY](../03_PROJECTS/05_PHOTO_AI_JURY/) | Analyses et exports autour du jury critique photo | Actif |
 | [06_PHOTO_NATURE](../03_PROJECTS/06_PHOTO_NATURE/INDEX.md) | Activités wildlife, impression et terrain | Actif |

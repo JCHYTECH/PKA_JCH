@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JCH — Things To Do</title>
+<link rel="stylesheet" href="01_DASHBOARDS/assets/pka-theme.css">
+<style>
+  :root {
+    /* Variables locales synchronisées avec le thème */
+    --critique: var(--rouge-alert);
+    --urgent:   #e67e22;
+    --important:#d4ac0d;
+    --long:     var(--vert-ok);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Space Grotesk', sans-serif; background: var(--fond-global); color: var(--texte-clair); min-height: 100vh; }
+
+  /* ── Header ── */
+  .header {
+    background: var(--carte-bg); color: var(--texte-clair);
+    padding: 24px 40px; display: flex; align-items: baseline; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--bordure);
+  }
+  .header-title { font-size: 18px; font-weight: 300; letter-spacing: 0.1em; }
+  .header-title span { color: var(--ocre); }
+  .header-count { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--texte-mute); }
+
+  /* ── Toolbar ── */
+  .toolbar {
+    background: var(--fond-global); border-bottom: 1px solid var(--bordure);
+    padding: 14px 40px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+  }
+  .toolbar-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--texte-mute); margin-right: 4px; }
+  .filter-btn {
+    font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 500;
+    padding: 5px 14px; border: 1px solid var(--bordure); background: var(--carte-bg); color: var(--texte-gris);
+    cursor: pointer; letter-spacing: 0.04em; transition: all 0.15s; border-radius: 4px;
+  }
+  .filter-btn:hover { background: var(--bordure); color: var(--texte-clair); }
+  .filter-btn.active { background: var(--bordure); color: var(--texte-clair); border-color: var(--texte-gris); }
+  
+  .filter-btn.u-critique.active { background: var(--rouge-alert); color: white; border-color: var(--rouge-alert); }
+  .filter-btn.u-urgent.active { background: #E67E22; color: white; border-color: #E67E22; }
+  .filter-btn.u-important.active { background: #D4AC0D; border-color: #D4AC0D; color: var(--fond-global); }
+  .filter-btn.u-long.active { background: var(--vert-ok); border-color: var(--vert-ok); color: var(--fond-global); }
+  
+  .sep { width: 1px; height: 24px; background: var(--bordure); margin: 0 4px; }
+
+  /* ── Grid ── */
+  .grid { padding: 32px 40px; display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+
+  /* ── Card ── */
+  .card {
+    background: var(--carte-bg); padding: 20px 22px; cursor: default;
+    border: 1px solid var(--bordure);
+    border-left: 4px solid var(--bordure); transition: opacity 0.2s, transform 0.2s;
+    display: flex; flex-direction: column; gap: 12px; border-radius: 8px;
+  }
+  .card:hover { transform: translateY(-2px); border-color: var(--texte-mute); }
+  .card.hidden { display: none; }
+  .card.done { opacity: 0.4; border-left-color: var(--bordure) !important; }
+  .card.done .card-title { text-decoration: line-through; color: var(--texte-mute); }
+
+  .card[data-urgency="critique"] { border-left-color: var(--rouge-alert); }
+  .card[data-urgency="urgent"]   { border-left-color: #E67E22; }
+  .card[data-urgency="important"]{ border-left-color: #D4AC0D; }
+  .card[data-urgency="long"]     { border-left-color: var(--vert-ok); }
+
+  .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+  .card-title { font-size: 14px; font-weight: 600; color: var(--texte-clair); line-height: 1.4; flex: 1; }
+
+  .badge-urgency {
+    font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 500;
+    padding: 3px 8px; white-space: nowrap; flex-shrink: 0;
+    letter-spacing: 0.06em; text-transform: uppercase; border-radius: 3px;
+  }
+  .badge-urgency.critique { background: var(--rouge-alert); color: white; }
+  .badge-urgency.urgent   { background: #E67E22; color: white; }
+  .badge-urgency.important{ background: #D4AC0D; color: var(--fond-global); }
+  .badge-urgency.long     { background: var(--vert-ok); color: var(--fond-global); }
+
+  .card-context {
+    font-family: 'Lora', serif; font-style: italic; font-size: 12px;
+    color: var(--texte-gris); line-height: 1.6;
+  }
+
+  .card-meta { display: flex; flex-direction: column; gap: 6px; }
+  .card-project {
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ocre); font-weight: 600;
+  }
+
+  .card-deps { display: flex; flex-wrap: wrap; gap: 4px; }
+  .dep-tag {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+    background: var(--fond-global); color: var(--texte-gris); padding: 2px 8px; border: 1px solid var(--bordure); border-radius: 4px;
+  }
+
+  .card-who {
+    font-size: 10px; color: var(--texte-mute); letter-spacing: 0.04em;
+  }
+  .card-who strong { color: var(--texte-gris); }
+
+  .card-check {
+    display: flex; align-items: center; gap: 8px; padding-top: 8px;
+    border-top: 1px solid var(--bordure); cursor: pointer;
+  }
+  .card-check input[type="checkbox"] { width: 14px; height: 14px; accent-color: var(--ocre); cursor: pointer; }
+  .card-check label { font-size: 11px; color: var(--texte-mute); cursor: pointer; letter-spacing: 0.04em; }
+
+  /* ── Stats bar ── */
+  .statsbar {
+    background: var(--carte-bg); border-top: 1px solid var(--bordure);
+    padding: 12px 40px; display: flex; gap: 24px; align-items: center;
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+  }
+  .stat { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--texte-mute); }
+  .stat strong { color: var(--texte-clair); }
+  .stat-dot { width: 8px; height: 8px; display: inline-block; margin-right: 4px; border-radius: 50%; }
+  .stat-dot.critique { background: var(--rouge-alert); }
+  .stat-dot.urgent   { background: #E67E22; }
+  .stat-dot.important{ background: #D4AC0D; }
+  .stat-dot.long     { background: var(--vert-ok); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-title">JCH · Things To Do<span>·</span></div>
+  <div class="header-count" id="visible-count">— tâches</div>
+</div>
+
+<div class="toolbar">
+  <span class="toolbar-label">Urgence</span>
+  <button class="filter-btn u-critique active" data-filter="urgency" data-value="critique" onclick="toggleFilter(this)">🔴 Critique</button>
+  <button class="filter-btn u-urgent active"   data-filter="urgency" data-value="urgent"   onclick="toggleFilter(this)">🟠 Urgent</button>
+  <button class="filter-btn u-important active" data-filter="urgency" data-value="important" onclick="toggleFilter(this)">🟡 Important</button>
+  <button class="filter-btn u-long active"     data-filter="urgency" data-value="long"     onclick="toggleFilter(this)">🟢 Long terme</button>
+  <div class="sep"></div>
+  <span class="toolbar-label">Projet</span>
+  <button class="filter-btn active" data-filter="project" data-value="all"      onclick="filterProject(this)">Tous</button>
+  <button class="filter-btn"        data-filter="project" data-value="ARTEON"   onclick="filterProject(this)">ARTEON</button>
+  <button class="filter-btn"        data-filter="project" data-value="LEGAL"    onclick="filterProject(this)">Juridique</button>
+  <button class="filter-btn"        data-filter="project" data-value="ARGUS"    onclick="filterProject(this)">Argus / Pipeline</button>
+  <button class="filter-btn"        data-filter="project" data-value="JCHYTECH" onclick="filterProject(this)">JCHYTECH</button>
+  <button class="filter-btn"        data-filter="project" data-value="INFRA"    onclick="filterProject(this)">Infra / Email</button>
+  <div class="sep"></div>
+  <button class="filter-btn" onclick="toggleDone()">Masquer terminées</button>
+</div>
+
+<div class="grid" id="grid">
+
+  <!-- ══ CRITIQUE ══ -->
+
+  <div class="card" data-urgency="critique" data-project="LEGAL">
+    <div class="card-top">
+      <div class="card-title">Signer le DPA Anthropic</div>
+      <div class="badge-urgency critique">Critique</div>
+    </div>
+    <div class="card-context">Avant tout traitement de données via l'API Claude. Sans ce contrat, le transfert UE → USA de données utilisateurs est sans base légale (RGPD art. 28). 10 minutes sur le portail API Anthropic (trust.anthropic.com).</div>
+    <div class="card-meta">
+      <div class="card-project">LEGAL · RGPD</div>
+      <div class="card-deps"><div class="dep-tag">Compte API Anthropic actif</div></div>
+      <div class="card-who">Responsable : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t1" onchange="toggleDoneCard(this)"><label for="t1">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="critique" data-project="LEGAL">
+    <div class="card-top">
+      <div class="card-title">Valider et publier les CGU L'Instant Lu</div>
+      <div class="badge-urgency critique">Critique</div>
+    </div>
+    <div class="card-context">Les CGU rédigées par Renard sont dans docs/legal/CGU-instant-lu.md. À lire, valider, puis confier à Forge pour publication sur arteon.be/legal. Sans CGU publiées, le service ne peut pas ouvrir à la beta.</div>
+    <div class="card-meta">
+      <div class="card-project">LEGAL · ARTEON</div>
+      <div class="card-deps"><div class="dep-tag">CGU-instant-lu.md rédigé ✓</div><div class="dep-tag">Page /legal (Forge)</div></div>
+      <div class="card-who">Validation : <strong>JCH</strong> → Publication : <strong>Forge</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t2" onchange="toggleDoneCard(this)"><label for="t2">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="critique" data-project="LEGAL">
+    <div class="card-top">
+      <div class="card-title">Ouvrir un compte bancaire professionnel JCHYTECH</div>
+      <div class="badge-urgency critique">Critique</div>
+    </div>
+    <div class="card-context">L'IBAN est requis dans les contrats B2B clubs et badge. Sans compte pro séparé, la comptabilité ARTEON/L'Instant Lu ne peut pas être proprement tracée. BCE et TVA déjà disponibles.</div>
+    <div class="card-meta">
+      <div class="card-project">JCHYTECH · LEGAL</div>
+      <div class="card-deps"><div class="dep-tag">BCE BE 0680.640.981 ✓</div><div class="dep-tag">TVA BE0680640981 ✓</div></div>
+      <div class="card-who">Responsable : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t3" onchange="toggleDoneCard(this)"><label for="t3">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="critique" data-project="ARTEON">
+    <div class="card-top">
+      <div class="card-title">Case de renonciation au droit de rétractation — flow Stripe</div>
+      <div class="badge-urgency critique">Critique</div>
+    </div>
+    <div class="card-context">Obligatoire légalement (directive 2011/83/UE). Sans cette case cochée par le client avant paiement, il conserve 14 jours pour demander remboursement après avoir reçu son rapport. Forge doit l'intégrer dans le flow de commande.</div>
+    <div class="card-meta">
+      <div class="card-project">ARTEON · LEGAL</div>
+      <div class="card-deps"><div class="dep-tag">CGU validées</div><div class="dep-tag">Intégration Stripe (Forge)</div></div>
+      <div class="card-who">Responsable : <strong>Forge</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t4" onchange="toggleDoneCard(this)"><label for="t4">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="critique" data-project="ARGUS">
+    <div class="card-top">
+      <div class="card-title">Confirmer : filtrage éthique AVANT capture Stripe</div>
+      <div class="badge-urgency critique">Critique</div>
+    </div>
+    <div class="card-context">Architecture validée en session : zéro débit si photo refusée. Forge doit confirmer que la capture Stripe n'intervient qu'après validation du filtre, pas au moment de l'upload. Point critique CGU art. 4.</div>
+    <div class="card-meta">
+      <div class="card-project">ARGUS · ARTEON</div>
+      <div class="card-deps"><div class="dep-tag">filter_ethics.py ✓</div><div class="dep-tag">Intégration Stripe</div></div>
+      <div class="card-who">Responsable : <strong>Forge</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t5" onchange="toggleDoneCard(this)"><label for="t5">Marquer comme fait</label></div>
+  </div>
+
+  <!-- ══ URGENT ══ -->
+
+  <div class="card" data-urgency="urgent" data-project="LEGAL">
+    <div class="card-top">
+      <div class="card-title">Mandater un conseil PI — recherche d'antériorités marque ARTEON</div>
+      <div class="badge-urgency urgent">Urgent</div>
+    </div>
+    <div class="card-context">Renard recommande une recherche professionnelle sur eSearch EUIPO + BOIP avant tout dépôt. Budget ~300–600€. Permet de confirmer l'absence de VW dans les classes 35/42 et de valider les classes 41/16.</div>
+    <div class="card-meta">
+      <div class="card-project">LEGAL · ARTEON</div>
+      <div class="card-deps"><div class="dep-tag">Analyse Renard ✓</div></div>
+      <div class="card-who">Responsable : <strong>JCH</strong> — déléguer à un agent de marques belge</div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t6" onchange="toggleDoneCard(this)"><label for="t6">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="urgent" data-project="LEGAL">
+    <div class="card-top">
+      <div class="card-title">Consulter un comptable belge — structure juridique optimale</div>
+      <div class="badge-urgency urgent">Urgent</div>
+    </div>
+    <div class="card-context">Renard recommande de valider le choix indépendant vs SRL avec un comptable belge avant le lancement commercial. Réévaluation si CA > 40 000€/an. La structure impacte la TVA, les charges sociales et la responsabilité.</div>
+    <div class="card-meta">
+      <div class="card-project">JCHYTECH · LEGAL</div>
+      <div class="card-deps"><div class="dep-tag">BCE ✓</div><div class="dep-tag">TVA ✓</div></div>
+      <div class="card-who">Responsable : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t7" onchange="toggleDoneCard(this)"><label for="t7">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="urgent" data-project="ARTEON">
+    <div class="card-top">
+      <div class="card-title">Page arteon.be/legal — documents publics en ligne</div>
+      <div class="badge-urgency urgent">Urgent</div>
+    </div>
+    <div class="card-context">CGU et politique de confidentialité doivent être accessibles publiquement avant la beta. Le lien arteon.be/legal est déjà référencé dans le texte "Vos droits sur vos images".</div>
+    <div class="card-meta">
+      <div class="card-project">ARTEON · LEGAL</div>
+      <div class="card-deps"><div class="dep-tag">CGU validées par JCH</div><div class="dep-tag">Politique confidentialité validée</div></div>
+      <div class="card-who">Responsable : <strong>Forge</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t8" onchange="toggleDoneCard(this)"><label for="t8">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="urgent" data-project="ARGUS">
+    <div class="card-top">
+      <div class="card-title">Phase 0 — sélectionner 50 photos JCH pour valider le pipeline Argus</div>
+      <div class="badge-urgency urgent">Urgent</div>
+    </div>
+    <div class="card-context">Avant beta : valider le pipeline complet (upload → filtre éthique → analyse Claude → rapport PDF → XMP) sur des photos personnelles de JCH. Zéro risque RGPD, calibrage optimal avant ouverture à des clients externes.</div>
+    <div class="card-meta">
+      <div class="card-project">ARGUS · ARTEON</div>
+      <div class="card-deps"><div class="dep-tag">filter_ethics.py ✓</div><div class="dep-tag">pdf_report.py ✓</div><div class="dep-tag">run_analysis.py ✓</div></div>
+      <div class="card-who">Responsable : <strong>JCH</strong> (sélection photos) + <strong>Forge</strong> (tests pipeline)</div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t9" onchange="toggleDoneCard(this)"><label for="t9">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card done" data-urgency="urgent" data-project="INFRA">
+    <div class="card-top">
+      <div class="card-title">Connecter jc.havaux@jchytech.be à Gmail</div>
+      <div class="badge-urgency urgent">Urgent</div>
+    </div>
+    <div class="card-context">Règle de transfert Outlook configurée le 2026-05-10. Testé et fonctionnel.</div>
+    <div class="card-meta">
+      <div class="card-project">INFRA · JCHYTECH</div>
+      <div class="card-who">Responsable : <strong>JCH</strong> ✓</div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t10" checked onchange="toggleDoneCard(this)"><label for="t10">Terminée ✓</label></div>
+  </div>
+
+  <!-- ══ IMPORTANT ══ -->
+
+  <div class="card" data-urgency="important" data-project="LEGAL">
+    <div class="card-top">
+      <div class="card-title">Dépôt EUTM marque ARTEON — classes 41 + 16</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">Après recherche d'antériorités. Priorité classes 41 (culture/photo) et 16 (publications) — risque VW faible. Classes 35 et 42 à ajouter selon résultats. Budget officiel EUIPO ~1 000–1 200€ pour 4 classes + honoraires conseil ~1 500–2 500€.</div>
+    <div class="card-meta">
+      <div class="card-project">LEGAL · ARTEON</div>
+      <div class="card-deps"><div class="dep-tag">Recherche antériorités PI</div><div class="dep-tag">Conseil PI mandaté</div></div>
+      <div class="card-who">Responsable : <strong>JCH</strong> + conseil PI</div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t11" onchange="toggleDoneCard(this)"><label for="t11">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="important" data-project="ARTEON">
+    <div class="card-top">
+      <div class="card-title">URL arteon.be/certification/[id] — vérification badges B2B</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">Renard recommande cette URL pour que les éditeurs puissent vérifier publiquement la validité d'un badge "Vérifié L'Instant Lu". Renforce la crédibilité du programme B2B. Décision : go ou pas ?</div>
+    <div class="card-meta">
+      <div class="card-project">ARTEON · ARGUS</div>
+      <div class="card-deps"><div class="dep-tag">Décision JCH sur le principe</div><div class="dep-tag">Forge (implémentation)</div></div>
+      <div class="card-who">Décision : <strong>JCH</strong> → Dev : <strong>Forge</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t12" onchange="toggleDoneCard(this)"><label for="t12">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="important" data-project="ARTEON">
+    <div class="card-top">
+      <div class="card-title">Durée de validité du badge "Vérifié L'Instant Lu" — 12 ou 24 mois ?</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">À décider avant la première approche B2B éditeurs. Renard recommande 12 mois (standard). 24 mois serait plus attractif commercialement mais réduit la récurrence. Ce choix doit être inscrit dans le contrat de licence badge.</div>
+    <div class="card-meta">
+      <div class="card-project">ARTEON · LEGAL</div>
+      <div class="card-deps"><div class="dep-tag">contrat-licence-badge.md ✓</div></div>
+      <div class="card-who">Décision : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t13" onchange="toggleDoneCard(this)"><label for="t13">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="important" data-project="ARTEON">
+    <div class="card-top">
+      <div class="card-title">Brief Nova — séquence photo combat d'oiseaux</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">Nova (Photography R&D) attend un brief pour une séquence spécifique de photos de combat d'oiseaux. Définir le sujet, les contraintes techniques, les objectifs éditoriaux.</div>
+    <div class="card-meta">
+      <div class="card-project">ARTEON · WILDLENS</div>
+      <div class="card-deps"></div>
+      <div class="card-who">Brief : <strong>JCH → Dobby → Nova</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t14" onchange="toggleDoneCard(this)"><label for="t14">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="important" data-project="JCHYTECH">
+    <div class="card-top">
+      <div class="card-title">Brief Vasco — produit Vetalyx spécifique</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">Vasco (Veterinary Product Specialist) attend un brief sur un produit Vetalyx spécifique. Pacte d'actionnaires fondateurs en cours (4 × 25%). Expertise IVD de JCH directement applicable.</div>
+    <div class="card-meta">
+      <div class="card-project">JCHYTECH · VETALYX</div>
+      <div class="card-deps"><div class="dep-tag">Pacte actionnaires en cours</div></div>
+      <div class="card-who">Brief : <strong>JCH → Dobby → Vasco</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t15" onchange="toggleDoneCard(this)"><label for="t15">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="important" data-project="ARTEON">
+    <div class="card-top">
+      <div class="card-title">Article Miel — "Comment l'IA juge votre photo" pour WildLens</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">Miel (Community Manager) doit rédiger un article de fond pour WildLens expliquant le service L'Instant Lu de façon accessible et engageante. Contenu marketing + éducatif. Priorité avant le lancement de la beta.</div>
+    <div class="card-meta">
+      <div class="card-project">ARTEON · WILDLENS</div>
+      <div class="card-deps"><div class="dep-tag">Charte L'Instant Lu validée ✓</div><div class="dep-tag">Texte droits images ✓</div></div>
+      <div class="card-who">Responsable : <strong>Miel</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t16" onchange="toggleDoneCard(this)"><label for="t16">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="important" data-project="LEGAL">
+    <div class="card-top">
+      <div class="card-title">Dépôt Benelux marque "L'Instant Lu" + badge</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">~240€ Benelux pour 10 ans. Protection suffisante pour la phase de lancement. À faire après validation du visuel final du badge par Vega. Indépendant du dépôt EUTM ARTEON.</div>
+    <div class="card-meta">
+      <div class="card-project">LEGAL · ARTEON</div>
+      <div class="card-deps"><div class="dep-tag">Visuel badge finalisé (Vega)</div><div class="dep-tag">Nom "L'Instant Lu" confirmé ✓</div></div>
+      <div class="card-who">Responsable : <strong>JCH</strong> + conseil PI</div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t17" onchange="toggleDoneCard(this)"><label for="t17">Marquer comme fait</label></div>
+  </div>
+
+  <!-- ══ LONG TERME ══ -->
+
+  <div class="card" data-urgency="long" data-project="ARTEON">
+    <div class="card-top">
+      <div class="card-title">Configurer wildlens.arteon.be comme domaine Ghost custom</div>
+      <div class="badge-urgency long">Long terme</div>
+    </div>
+    <div class="card-context">WildLens reste sur Ghost (réseau de recommandation à préserver). Subdomain wildlens.arteon.be à configurer comme custom domain dans Ghost. Ariane gère la partie Hostinger DNS.</div>
+    <div class="card-meta">
+      <div class="card-project">ARTEON · WILDLENS</div>
+      <div class="card-deps"><div class="dep-tag">arteon.be live</div><div class="dep-tag">Ghost Pro actif</div></div>
+      <div class="card-who">Responsable : <strong>Ariane</strong> (DNS) + <strong>Forge</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t18" onchange="toggleDoneCard(this)"><label for="t18">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="long" data-project="ARTEON">
+    <div class="card-top">
+      <div class="card-title">Tester l'offre DNG full-service</div>
+      <div class="badge-urgency long">Long terme</div>
+    </div>
+    <div class="card-context">Idée Phase 0 : ARTEON réalise toutes les corrections Lightroom pour le client si celui-ci livre en DNG professionnel. Offre premium distincte (~€9,90 TTC). Tester sur les photos JCH en Phase 0 avant d'ouvrir à la beta.</div>
+    <div class="card-meta">
+      <div class="card-project">ARTEON · ARGUS</div>
+      <div class="card-deps"><div class="dep-tag">Phase 0 validée</div><div class="dep-tag">Infrastructure stockage DNG (Forge)</div></div>
+      <div class="card-who">Décision : <strong>JCH</strong> après Phase 0</div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t19" onchange="toggleDoneCard(this)"><label for="t19">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="long" data-project="JCHYTECH">
+    <div class="card-top">
+      <div class="card-title">Réévaluation structure SRL si CA > 40 000€/an</div>
+      <div class="badge-urgency long">Long terme</div>
+    </div>
+    <div class="card-context">Renard recommande de rester indépendant jusqu'à CA ~40 000€/an. Au-delà, la SRL devient fiscalement avantageuse (IS 20% vs IPP jusqu'à 50%). Révision annuelle avec le comptable.</div>
+    <div class="card-meta">
+      <div class="card-project">JCHYTECH · LEGAL</div>
+      <div class="card-deps"><div class="dep-tag">CA > 40 000€/an</div><div class="dep-tag">Comptable mandaté</div></div>
+      <div class="card-who">Responsable : <strong>JCH</strong> + comptable belge</div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t20" onchange="toggleDoneCard(this)"><label for="t20">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card done" data-urgency="long" data-project="ARGUS">
+    <div class="card-top">
+      <div class="card-title">Interface admin modération queue (animaux en captivité)</div>
+      <div class="badge-urgency long">Long terme</div>
+    </div>
+    <div class="card-context">moderation_admin.py livré le 2026-05-10. Serveur local Python, zéro dépendance. Lancer : python3 moderation_admin.py → http://localhost:8765</div>
+    <div class="card-meta">
+      <div class="card-project">ARGUS · ARTEON</div>
+      <div class="card-who">Responsable : <strong>Forge</strong> ✓</div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t21" checked onchange="toggleDoneCard(this)"><label for="t21">Terminée ✓</label></div>
+  </div>
+
+  <div class="card" data-urgency="long" data-project="JCHYTECH">
+    <div class="card-top">
+      <div class="card-title">Finaliser le pacte d'actionnaires Vetalyx (4 fondateurs 25/25/25/25)</div>
+      <div class="badge-urgency long">Long terme</div>
+    </div>
+    <div class="card-context">Vetalyx (diagnostics allergie animale) a 4 fondateurs à parité. Le pacte d'actionnaires est en cours. Renard peut assister sur les clauses juridiques si nécessaire.</div>
+    <div class="card-meta">
+      <div class="card-project">JCHYTECH · VETALYX</div>
+      <div class="card-deps"><div class="dep-tag">Vasco briefé</div></div>
+      <div class="card-who">Responsable : <strong>JCH</strong> + Renard</div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t22" onchange="toggleDoneCard(this)"><label for="t22">Marquer comme fait</label></div>
+  </div>
+
+</div>
+
+<div class="statsbar">
+  <div class="stat"><span class="stat-dot critique"></span><strong id="cnt-critique">—</strong> critiques</div>
+  <div class="stat"><span class="stat-dot urgent"></span><strong id="cnt-urgent">—</strong> urgentes</div>
+  <div class="stat"><span class="stat-dot important"></span><strong id="cnt-important">—</strong> importantes</div>
+  <div class="stat"><span class="stat-dot long"></span><strong id="cnt-long">—</strong> long terme</div>
+  <div class="stat" style="margin-left:auto;">Mis à jour : 2026-05-03</div>
+</div>
+
+<script>
+  // Active urgency filters
+  const activeUrgency = new Set(['critique','urgent','important','long']);
+  let activeProject = 'all';
+  let hideDone = false;
+
+  function toggleFilter(btn) {
+    const val = btn.dataset.value;
+    if (activeUrgency.has(val)) {
+      if (activeUrgency.size === 1) return; // keep at least one
+      activeUrgency.delete(val);
+      btn.classList.remove('active');
+    } else {
+      activeUrgency.add(val);
+      btn.classList.add('active');
+    }
+    applyFilters();
+  }
+
+  function filterProject(btn) {
+    document.querySelectorAll('[data-filter="project"]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeProject = btn.dataset.value;
+    applyFilters();
+  }
+
+  function toggleDone() {
+    hideDone = !hideDone;
+    applyFilters();
+  }
+
+  function applyFilters() {
+    const cards = document.querySelectorAll('.card');
+    let visible = 0;
+    const counts = {critique:0, urgent:0, important:0, long:0};
+
+    cards.forEach(card => {
+      const u = card.dataset.urgency;
+      const p = card.dataset.project;
+      const isDone = card.classList.contains('done');
+
+      const urgencyOk = activeUrgency.has(u);
+      const projectOk = activeProject === 'all' || p.includes(activeProject);
+      const doneOk = !hideDone || !isDone;
+
+      if (urgencyOk && projectOk && doneOk) {
+        card.classList.remove('hidden');
+        visible++;
+        if (!isDone) counts[u]++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    document.getElementById('visible-count').textContent = visible + ' tâche' + (visible > 1 ? 's' : '');
+    document.getElementById('cnt-critique').textContent = counts.critique;
+    document.getElementById('cnt-urgent').textContent = counts.urgent;
+    document.getElementById('cnt-important').textContent = counts.important;
+    document.getElementById('cnt-long').textContent = counts.long;
+  }
+
+  function toggleDoneCard(checkbox) {
+    const card = checkbox.closest('.card');
+    if (checkbox.checked) {
+      card.classList.add('done');
+      checkbox.nextElementSibling.textContent = 'Terminée ✓';
+    } else {
+      card.classList.remove('done');
+      checkbox.nextElementSibling.textContent = 'Marquer comme fait';
+    }
+    applyFilters();
+  }
+
+  // Init
+  applyFilters();
+</script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 # Lance le serveur local des dashboards PKA.
 
-PKA_DIR="$(cd "$(dirname "$0")" && pwd)"
+PKA_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 PORT="${PKA_DASHBOARD_PORT:-8787}"
 
 cd "$PKA_DIR"

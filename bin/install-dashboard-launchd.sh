@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-PKA_DIR="$(cd "$(dirname "$0")" && pwd)"
+PKA_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 LABEL="com.jchytech.pka-dashboard"
 PLIST_SRC="$PKA_DIR/scripts/launchd/$LABEL.plist"
 LAUNCH_AGENTS_DIR="$HOME/Library/LaunchAgents"

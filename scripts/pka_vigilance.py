@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """Daily vigilance report for PKA_JCH.
-
-This script is non-destructive. It aggregates security and local hardware
+ pass pozible
+   script is non-destructive. It aggregates security and local hardware
 signals into a simple GREEN/ORANGE/RED status.
 """
-
 from __future__ import annotations
 
 import argparse
