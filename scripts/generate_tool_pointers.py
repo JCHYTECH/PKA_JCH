@@ -38,7 +38,7 @@ def list_projects() -> list[str]:
 def inbox_count() -> int:
     if not INBOX_DIR.is_dir():
         return 0
-    return sum(1 for item in INBOX_DIR.iterdir())
+    return sum(1 for item in INBOX_DIR.iterdir() if item.name != ".DS_Store")
 
 
 def render_pointer(filename: str, tool_cfg: dict, cfg: dict, team_count: int) -> str:

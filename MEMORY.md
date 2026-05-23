@@ -1,6 +1,6 @@
 # MEMORY — PKA_JCH
 > Miroir portable de la mémoire accumulée par Dobby. Charger ce fichier dans tout outil non-Claude Code pour restaurer le contexte sessions.
-> Dernière mise à jour : 2026-05-14
+> Dernière mise à jour : 2026-05-23
 
 ---
 
@@ -45,6 +45,9 @@ Tout PowerPoint, deck, document de présentation ou support assimilé doit parti
 ### Dashboards après changement structurel
 Après tout changement (membres, chemins, statuts projets) → vérifier `01_DASHBOARDS/hub.html` et `01_DASHBOARDS/organigramme.html`. Si délégué à Forge, inclure ce brief dans le mandat.
 
+### Lutter contre le "not invented here"
+Pour les projets hardware, software ou systèmes, vérifier explicitement s'il existe déjà un produit, module, service ou fabricant qui couvre le besoin avant de pousser une solution custom. Fermer les portes non utiles par comparaison documentée : adéquation aux critères, écarts, risques, coût, dépendances, souveraineté, disponibilité. Le custom reste valable seulement après cette passe "marché / existant".
+
 ---
 
 ## Règles projets spécifiques
@@ -62,5 +65,5 @@ Cron digest suspendu au 2026-05-11. Ne pas relancer sans amélioration préalabl
 
 ## État équipe
 
-- **26 membres actifs** (source : `team.db`) — Milan #26 (🦅 Analyste OSINT & Intelligence Industrielle) ajouté en dernier
+- **28 membres actifs** (source : `team.db`) — 27 spécialistes + Dobby. Derniers ajouts : Atlas #27 (Strategic Document Architect & Senior R&D Writer) et Hermine #28 (IP Strategist & Patent Counsel).
 - **Recrutement gelé** depuis 2026-05-09. Reprise uniquement sur analyse révélant un vide fonctionnel ou nouveau projet hors compétences existantes — soumettre proposition à JCH avant de lancer le pipeline.
