@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WildNexus — Logigramme multi-etages</title>
+  <style>
+    :root {
+      --bg: #f5f7f2;
+      --paper: #ffffff;
+      --ink: #162018;
+      --muted: #5d6b61;
+      --line: #ccd8c7;
+      --forest: #24543f;
+      --moss: #6f8b4e;
+      --clay: #b46b47;
+      --sky: #dbe8ed;
+      --amber: #d8a84f;
+      --danger: #9b4b45;
+      --shadow: 0 16px 40px rgba(24, 43, 30, 0.10);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.45;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      min-height: 100vh;
+    }
+
+    aside {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 24px 20px;
+      background: #e9efe4;
+      border-right: 1px solid var(--line);
+      overflow: auto;
+    }
+
+    main {
+      padding: 40px;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      font-size: 34px;
+      line-height: 1.08;
+      margin-bottom: 12px;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .eyebrow {
+      color: var(--forest);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .lede {
+      max-width: 900px;
+      color: var(--muted);
+      font-size: 18px;
+      margin-bottom: 22px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #edf3e9;
+      border: 1px solid var(--line);
+      color: var(--forest);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    nav a {
+      display: block;
+      padding: 9px 10px;
+      margin: 3px 0;
+      border-radius: 8px;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      background: #dce8d5;
+    }
+
+    .side-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .section {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 26px;
+      margin-bottom: 24px;
+    }
+
+    .note {
+      color: var(--muted);
+      max-width: 860px;
+      margin-bottom: 22px;
+    }
+
+    .flow-row {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(120px, 1fr));
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .flow-row.compact {
+      grid-template-columns: repeat(4, minmax(140px, 1fr));
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfa;
+      padding: 14px;
+      min-height: 94px;
+      position: relative;
+    }
+
+    .card strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .card span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .card.p0 { border-top: 5px solid var(--forest); }
+    .card.p1 { border-top: 5px solid var(--moss); }
+    .card.p2 { border-top: 5px solid var(--amber); }
+    .card.lock { border-top: 5px solid var(--danger); }
+    .card.decision { border-top: 5px solid var(--clay); }
+    .card.field { border-top: 5px solid #47758a; }
+
+    .arrow {
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-weight: 900;
+      font-size: 20px;
+    }
+
+    .phase-grid,
+    .tech-grid,
+    .decision-grid,
+    .routing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .tech-grid,
+    .decision-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .routing-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .lane {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfa;
+      overflow: hidden;
+    }
+
+    .lane header {
+      padding: 12px 14px;
+      color: #fff;
+      font-weight: 800;
+      background: var(--forest);
+    }
+
+    .lane.p1 header { background: var(--moss); }
+    .lane.p2 header { background: var(--amber); color: #2b220e; }
+
+    .lane ul {
+      margin: 0;
+      padding: 12px 16px 16px 28px;
+    }
+
+    .lane li { margin: 7px 0; }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(130px, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .sources {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .sources a {
+      color: var(--forest);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    .sources a:hover { border-color: var(--forest); }
+
+    .footer {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 1100px) {
+      .shell { grid-template-columns: 1fr; }
+      aside {
+        position: static;
+        height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+      main { padding: 24px; }
+      .flow-row,
+      .flow-row.compact,
+      .phase-grid,
+      .tech-grid,
+      .decision-grid,
+      .routing-grid,
+      .process,
+      .sources {
+        grid-template-columns: 1fr;
+      }
+      .arrow { transform: rotate(90deg); min-height: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside>
+      <div class="side-title">WildNexus Flowmap</div>
+      <nav>
+        <a href="#niveau-0">Niveau 0 — Executive</a>
+        <a href="#niveau-1">Niveau 1 — Scope P0/P1/P2</a>
+        <a href="#niveau-2">Niveau 2 — Flux terrain P0</a>
+        <a href="#niveau-3">Niveau 3 — Architecture P0</a>
+        <a href="#niveau-4">Niveau 4 — M-01</a>
+        <a href="#niveau-5">Niveau 5 — Gouvernance</a>
+        <a href="#sources">Sources</a>
+      </nav>
+    </aside>
+
+    <main>
+      <div class="eyebrow">Infrastructure distribuee d'observation ecologique</div>
+      <h1>WildNexus — logigramme multi-etages</h1>
+      <p class="lede">Carte interne pour naviguer du recit strategique jusqu'aux decisions P0. Le fil conducteur est volontairement strict : prouver d'abord le noeud camera autonome, puis ouvrir P1/P2 sans diluer M-01, M-02 et M-03.</p>
+      <div class="meta">
+        <span class="pill">v0.1</span>
+        <span class="pill">2026-05-18</span>
+        <span class="pill">P0 strict</span>
+        <span class="pill">Mermaid source: WILDNEXUS_FLOWMAP.md</span>
+      </div>
+
+      <section class="section" id="niveau-0">
+        <h2>Niveau 0 — Carte executive</h2>
+        <p class="note">WildNexus n'est pas un piege photo ameliore. Le projet vise une infrastructure d'observation ecologique distribuee, mais le premier passage oblige par un noeud camera autonome validable sur le terrain.</p>
+        <div class="flow-row">
+          <div class="card"><strong>Vision</strong><span>Observation ecologique distribuee, modulaire, non intrusive.</span></div>
+          <div class="arrow">→</div>
+          <div class="card p0"><strong>P0</strong><span>Noeud camera autonome, robuste, basse consommation.</span></div>
+          <div class="arrow">→</div>
+          <div class="card field"><strong>Preuve terrain</strong><span>3 noeuds actifs pendant 30 jours sur site belge.</span></div>
+          <div class="card p1"><strong>P1/P2</strong><span>Bioacoustique, IA avancee, API, communaute, ecosysteme.</span></div>
+        </div>
+      </section>
+
+      <section class="section" id="niveau-1">
+        <h2>Niveau 1 — Phases et frontieres de scope</h2>
+        <p class="note">Ce niveau est le garde-fou. Les composants P1/P2 sont conserves comme trajectoire, mais ils ne doivent pas devenir des dependances de fabrication ou de validation P0.</p>
+        <div class="phase-grid">
+          <div class="lane">
+            <header>P0 — engage</header>
+            <ul>
+              <li>Capture image jour / nuit</li>
+              <li>Detection evenementielle</li>
+              <li>Filtre animal / non-animal</li>
+              <li>LPWAN evenementiel</li>
+              <li>Stockage local</li>
+              <li>Configuration terrain simple</li>
+              <li>Autonomie 60 jours batterie seule</li>
+              <li>Boitier IP67</li>
+            </ul>
+          </div>
+          <div class="lane p1">
+            <header>P1 — a preserver</header>
+            <ul>
+              <li>Bioacoustique</li>
+              <li>Classification espece</li>
+              <li>Reconnaissance individuelle</li>
+              <li>Gateways locales</li>
+              <li>Exports scientifiques</li>
+            </ul>
+          </div>
+          <div class="lane p2">
+            <header>P2 — ecosysteme</header>
+            <ul>
+              <li>API publique</li>
+              <li>SDK et plugins</li>
+              <li>Reseau collaboratif</li>
+              <li>Cloud scientifique</li>
+              <li>Orchestration multi-sites</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="niveau-2">
+        <h2>Niveau 2 — Flux operationnel P0</h2>
+        <p class="note">Le noeud dort presque tout le temps. Il ne reveille les composants couteux qu'a l'evenement, filtre localement, stocke completement et transmet seulement une alerte ou des metadonnees.</p>
+        <div class="process">
+          <div class="card p0"><strong>1. Veille ULP</strong><span>MCU en basse consommation, surveillance evenementielle.</span></div>
+          <div class="card"><strong>2. Reveil</strong><span>Capture courte via camera et IR si necessaire.</span></div>
+          <div class="card decision"><strong>3. Filtre IA</strong><span>Animal / non-animal, sans classification espece P0.</span></div>
+          <div class="card"><strong>4. Stockage</strong><span>Image et metadonnees conservees localement.</span></div>
+          <div class="card field"><strong>5. Transmission</strong><span>LPWAN evenementiel : alerte, batterie, sante noeud.</span></div>
+        </div>
+      </section>
+
+      <section class="section" id="niveau-3">
+        <h2>Niveau 3 — Architecture technique P0</h2>
+        <p class="note">Chaque bloc ci-dessous correspond a une decision architecturale attendue ou a une specification courte avant le gel M-01.</p>
+        <div class="tech-grid">
+          <div class="card decision"><strong>ADR-001 MCU</strong><span>Ultra low power, reveil, scheduling, interfaces.</span></div>
+          <div class="card decision"><strong>ADR-002 Camera / IR</strong><span>Qualite image exploitable de jour et de nuit.</span></div>
+          <div class="card decision"><strong>ADR-003 Radio</strong><span>LPWAN prioritaire, portee forestiere, duty-cycle.</span></div>
+          <div class="card decision"><strong>ADR-004 Stockage</strong><span>Local, robuste, recuperation terrain.</span></div>
+          <div class="card decision"><strong>ADR-005 Energie</strong><span>Budget 60 jours, froid, batterie, solaire optionnel.</span></div>
+          <div class="card decision"><strong>ADR-006 Boitier</strong><span>IP67, montage terrain, maintenance semestrielle.</span></div>
+          <div class="card decision"><strong>ADR-007 Detection</strong><span>Evenement + modele binaire quantise.</span></div>
+          <div class="card decision"><strong>ADR-008 Extension</strong><span>Bus ou port capteurs pour ne pas bloquer P1/P2.</span></div>
+        </div>
+      </section>
+
+      <section class="section" id="niveau-4">
+        <h2>Niveau 4 — Chemin vers M-01</h2>
+        <p class="note">M-01 n'est pas une fabrication. C'est le moment ou les choix P0 sont assez solides pour demarrer le prototype banc sans engager de depense majeure sur des hypotheses faibles.</p>
+        <div class="decision-grid">
+          <div class="card lock"><strong>Licence / FTO</strong><span>Pas de blocage prototypage interne.</span></div>
+          <div class="card lock"><strong>Radio / LPWAN</strong><span>Option choisie et protocole de mesure terrain.</span></div>
+          <div class="card lock"><strong>Camera</strong><span>Candidate selectionnee et benchmark planifie.</span></div>
+          <div class="card lock"><strong>MCU</strong><span>Candidate choisi avec marge energie.</span></div>
+          <div class="card lock"><strong>Budget P0</strong><span>Enveloppe confirmee ou reduite.</span></div>
+          <div class="card lock"><strong>Supply</strong><span>Alternatives listees pour composants bloquants.</span></div>
+          <div class="card lock"><strong>RGPD EVT</strong><span>Owner, signaletique, procedure image humaine.</span></div>
+          <div class="card p0"><strong>M-01 ready</strong><span>Architecture P0 gelee, passage vers M-02.</span></div>
+        </div>
+      </section>
+
+      <section class="section" id="niveau-5">
+        <h2>Niveau 5 — Gouvernance et routage</h2>
+        <p class="note">Les agents WildNexus produisent l'expertise. Les specialistes PKA gardent la memoire, la qualite du livrable et l'escalade vers JCH.</p>
+        <div class="routing-grid">
+          <div class="card p0"><strong>Dobby</strong><span>Orchestration, arbitrage, scope P0/P1/P2.</span></div>
+          <div class="card"><strong>Atlas</strong><span>Dossiers R&D, syntheses, architecture documentaire.</span></div>
+          <div class="card"><strong>Forge + Castor</strong><span>Firmware, integration, schemas, automatisation.</span></div>
+          <div class="card"><strong>Nova + Lynx</strong><span>Camera, IR, image, benchmark capteur.</span></div>
+          <div class="card"><strong>Chouette</strong><span>Terrain, boitier, installation, maintenance.</span></div>
+          <div class="card"><strong>Bruno</strong><span>Budget, supply, soutenabilite economique.</span></div>
+          <div class="card"><strong>Renard + Hermine</strong><span>Licence, RGPD, FTO, propriete intellectuelle.</span></div>
+          <div class="card"><strong>Miel + Trace</strong><span>Communaute, visibilite, publication apres feu vert juridique.</span></div>
+        </div>
+      </section>
+
+      <section class="section" id="sources">
+        <h2>Sources</h2>
+        <div class="sources">
+          <a href="../INDEX.md">INDEX.md</a>
+          <a href="../01_FOUNDATION/WildNexus_MASTER_ARCHITECTURE.md">WildNexus_MASTER_ARCHITECTURE.md</a>
+          <a href="../01_FOUNDATION/wildnexus-founding-document-v0.2.md">wildnexus-founding-document-v0.2.md</a>
+          <a href="../01_FOUNDATION/WILDNEXUS_P0_SCOPE_LOCK.md">WILDNEXUS_P0_SCOPE_LOCK.md</a>
+          <a href="../00_GOVERNANCE/WILDNEXUS_CYCLE_01_M01_READINESS.md">WILDNEXUS_CYCLE_01_M01_READINESS.md</a>
+          <a href="../02_DECISIONS/WILDNEXUS_ADR_INDEX.md">WILDNEXUS_ADR_INDEX.md</a>
+          <a href="../00_GOVERNANCE/WILDNEXUS_AGENT_MAPPING.md">WILDNEXUS_AGENT_MAPPING.md</a>
+          <a href="WILDNEXUS_FLOWMAP.md">WILDNEXUS_FLOWMAP.md</a>
+        </div>
+        <p class="footer">Version interne v0.1 — Dobby, avec routage Atlas / Forge / Vega.</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

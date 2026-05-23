@@ -15,17 +15,17 @@
 | 1 | Carte d'identité | JCH · Dobby | Propriétaire · Orchestration |
 | 2 | Contexte et origine | JCH | Source narrative — non délégable |
 | 3 | Vision et ambition | JCH · wildnexus-program-manager-system-architect | Vision (JCH) · Cohérence scope P0/P1/P2 |
-| 4 | Rationale stratégique | wildnexus-program-manager-system-architect · wildnexus-scientific-data-protocols · Furet | Arbitrage · Positionnement scientifique · Analyse concurrents |
+| 4 | Rationale stratégique | wildnexus-program-manager-system-architect · wildnexus-scientific-advisor · Furet | Arbitrage · Positionnement scientifique · Analyse concurrents |
 | 5 | Non-négociables | JCH · Renard · conseil PI externe si nécessaire | Validation obligatoire JCH · Clauses contractuelles et licence (Renard) · Compatibilité brevets/FTO |
 | 6 | Objectifs | wildnexus-program-manager-system-architect · tous agents domaine | Scoping P0/P1/P2 · Vérification faisabilité par domaine |
-| 7 | État de l'art | wildnexus-scientific-data-protocols · Furet · wildnexus-edge-ai-cv | Standards scientifiques · Recherche concurrents · IA existante |
-| 8 | Méthodologie | wildnexus-program-manager-system-architect · wildnexus-embedded-platform-engineer · wildnexus-imaging-systems-engineer · wildnexus-mechanical-reliability-engineer · wildnexus-power-systems-engineer · wildnexus-rf-propagation · wildnexus-edge-ai-cv · wildnexus-bioacoustics-dsp | Arbitrage système · Plateforme embarquée · Capteur/IR · Enclos · Énergie · Radio · IA · Acoustique |
+| 7 | État de l'art | wildnexus-scientific-advisor · Furet · wildnexus-edge-ai-cv | Standards scientifiques · Recherche concurrents · IA existante |
+| 8 | Méthodologie | wildnexus-program-manager-system-architect · wildnexus-firmware-ulp · wildnexus-camera-imaging · wildnexus-hardware-physical · wildnexus-rf-propagation · wildnexus-edge-ai-cv · wildnexus-bioacoustics-dsp | Arbitrage système · Plateforme embarquée · Capteur/IR · Enclos · Énergie · Radio · IA · Acoustique |
 | 9 | Propriété intellectuelle | Renard · JCH · conseil PI externe si nécessaire | Contrats et licences · Validation stratégie · Appui FTO/brevets |
 | 10 | Work packages | wildnexus-program-manager-system-architect · tous agents domaine | Séquençage · Livrables et jalons par domaine |
-| 11 | Plan de validation | wildnexus-scientific-data-protocols · wildnexus-embedded-platform-engineer · wildnexus-imaging-systems-engineer · wildnexus-mechanical-reliability-engineer · wildnexus-power-systems-engineer | Standards mesure · Plateforme · Image · Enclos · Énergie |
+| 11 | Plan de validation | wildnexus-scientific-advisor · wildnexus-firmware-ulp · wildnexus-camera-imaging · wildnexus-hardware-physical | Standards mesure · Plateforme · Image · Enclos · Énergie |
 | 12 | Registre des risques | wildnexus-program-manager-system-architect · tous agents domaine | Identification · Mitigation par domaine |
 | 13 | Budget | JCH · Bruno | Décision financement · Analyse ressources |
-| 14 | Outputs et impact | wildnexus-scientific-data-protocols · wildnexus-program-manager-system-architect · Miel | Valeur scientifique · Scope · Communauté |
+| 14 | Outputs et impact | wildnexus-scientific-advisor · wildnexus-program-manager-system-architect · Miel | Valeur scientifique · Scope · Communauté |
 | 15 | Conditions de sortie | JCH · wildnexus-program-manager-system-architect | Décision finale · Arbitrage technique |
 
 **Légende :** JCH est validateur obligatoire de §2, §3, §5, §9, §13, §15 — ces sections ne sont pas gelées sans sa confirmation explicite.
@@ -220,7 +220,7 @@ Trois cibles distinctes doivent être comprises séparément :
 - **Critère de validation P0** : 30 jours de mesure EVT terrain avec extrapolation à 60 jours — méthode de preuve, pas l'ambition.
 - **Ambition produit** : 6 mois avec apport solaire et maintenance semestrielle planifiée — cible commerciale, non engagée à P0.
 **Justification** : Confondre ces trois cibles produit des promesses non vérifiables ou des critères de validation irréalistes. Le plancher 60 jours batterie-seule est le seul engagement hard de P0.
-**Vérifiable par** : budget énergie validé par wildnexus-embedded-platform-engineer et wildnexus-power-systems-engineer avant gel feature P0 ; mesure terrain EVT avec extrapolation documentée.
+**Vérifiable par** : budget énergie validé par wildnexus-firmware-ulp et wildnexus-hardware-physical avant gel feature P0 ; mesure terrain EVT avec extrapolation documentée.
 
 **NN-08 — Indépendance financière durant la phase de conception**
 Aucune dépendance à un financement externe n'est acceptée pendant la phase de conception et de développement P0.
@@ -231,13 +231,13 @@ Aucune dépendance à un financement externe n'est acceptée pendant la phase de
 WildNexus sera inévitablement amené à capturer des images de personnes (randonneurs, propriétaires, chasseurs, techniciens). Ces images constituent des données personnelles au sens du RGPD dès lors qu'elles permettent l'identification directe ou indirecte d'un individu. Le système doit être conçu pour minimiser ce risque dès P0.
 **Engagements de conception** : détection locale des silhouettes humaines avec suppression ou floutage avant toute transmission ; aucune image contenant une personne identifiable n'est transmise par défaut ; stockage local chiffré ; durée de rétention limitée et définie ; affichage d'une signalétique conforme au RGPD sur chaque zone déployée.
 **Justification** : En l'absence de base légale explicite (consentement, intérêt légitime documenté, mission d'intérêt public), la captation et le traitement d'images de personnes expose JCHYTECH à des sanctions RGPD. Ce risque est gérable par la conception — il ne peut pas être ignoré.
-**Owner** : Renard (base légale, signalétique) + wildnexus-embedded-platform-engineer (détection et suppression embarquée) + wildnexus-program-manager-system-architect (intégration système).
+**Owner** : Renard (base légale, signalétique) + wildnexus-firmware-ulp (détection et suppression embarquée) + wildnexus-program-manager-system-architect (intégration système).
 **Vérifiable par** : procédure de détection/suppression humaine documentée et testée avant EVT ; signalétique conforme sur le site EVT.
 
 **NN-10 — Mission de revivification, pas de conservation passive**
 WildNexus produit des données structurées pour l'action, pas seulement pour l'observation. Les schémas de données, outputs et interfaces doivent permettre à un utilisateur d'agir sur son territoire en réponse à ce qu'il observe.
 **Justification** : La différence entre "conserver" et "revivifier" est la différence entre documenter et intervenir. Un système qui ne produit que des listes d'observations sans contexte d'action reproduit les limites des outils existants.
-**Vérifiable par** : au moins un output P1 conçu pour l'aide à la décision ; consultation de wildnexus-scientific-data-protocols sur la structure des données dès P0.
+**Vérifiable par** : au moins un output P1 conçu pour l'aide à la décision ; consultation de wildnexus-scientific-advisor sur la structure des données dès P0.
 
 ---
 
@@ -417,7 +417,7 @@ Même si l'export Camtrap-DP est P1, le schéma de données P0 doit être conçu
 | `mediaPath` | Chemin relatif du fichier image sur SD |
 | `humanDetected` | Booléen — suppression activée si true (RGPD NN-09) |
 
-Ce schéma est défini par wildnexus-scientific-data-protocols et freezé avant WP03 pour garantir la compatibilité Camtrap-DP en P1.
+Ce schéma est défini par wildnexus-scientific-advisor et freezé avant WP03 pour garantir la compatibilité Camtrap-DP en P1.
 
 ### 8.8 Sécurité du système P0
 
@@ -432,7 +432,7 @@ La sécurité est une spécification P0, pas une option P1. Les exigences minima
 | Clés | Stockage en zone sécurisée MCU (secure element ou eFuse) ; non extractibles |
 | Comportement anti-falsification | Log d'intégrité ; alerte transmission si falsification détectée |
 
-Owner : wildnexus-embedded-platform-engineer (implémentation) + Renard (obligations légales et cohérence contractuelle).
+Owner : wildnexus-firmware-ulp (implémentation) + Renard (obligations légales et cohérence contractuelle).
 
 ---
 
@@ -509,7 +509,7 @@ L'analyse FTO est un livrable de WP01, conduite avant M-01. Confiée à Renard a
 - T01.2 — Analyse FTO sur composants critiques (Renard)
 - T01.3 — Campagne mesures RF terrain : portée LPWAN réelle, sélection standard
 - T01.4 — Benchmark module caméra IMX462 vs IMX327 : boot time mesuré, courant actif
-- T01.5 — Sélection MCU : arbitrage wildnexus-embedded-platform-engineer
+- T01.5 — Sélection MCU : arbitrage wildnexus-firmware-ulp
 
 **Livrables :** D01.1 Tableau comparatif concurrents · D01.2 Rapport FTO · D01.3 Rapport RF + standard retenu · D01.4 Fiche benchmark caméra · D01.5 Architecture P0 gelée
 
@@ -524,7 +524,7 @@ L'analyse FTO est un livrable de WP01, conduite avant M-01. Confiée à Renard a
 | **Objectif** | Concevoir et fabriquer le premier prototype PCB fonctionnel en boîtier IP67 |
 | **Durée** | 3 mois |
 | **Dépendances** | M-01 |
-| **Owner** | wildnexus-mechanical-reliability-engineer + wildnexus-imaging-systems-engineer + wildnexus-power-systems-engineer |
+| **Owner** | wildnexus-hardware-physical + wildnexus-camera-imaging + wildnexus-firmware-ulp |
 
 **Tâches :**
 - T02.1 — Schéma électronique : alimentation, rails caméra, IR pulsé, LPWAN, BLE, capteurs env.
@@ -546,7 +546,7 @@ L'analyse FTO est un livrable de WP01, conduite avant M-01. Confiée à Renard a
 | **Objectif** | Firmware P0 : veille, déclenchement, capture, IA binaire, transmission, OTA |
 | **Durée** | 3 mois (parallèle WP02) |
 | **Dépendances** | M-01 |
-| **Owner** | wildnexus-embedded-platform-engineer |
+| **Owner** | wildnexus-firmware-ulp |
 
 **Tâches :**
 - T03.1 — Machine à états : sleep / wake / PIR / boot caméra / capture / inférence / transmit / sleep
@@ -585,7 +585,7 @@ L'analyse FTO est un livrable de WP01, conduite avant M-01. Confiée à Renard a
 | **Objectif** | Valider le prototype P0 en conditions réelles, 30 jours minimum, site belge |
 | **Durée** | 2 mois |
 | **Dépendances** | M-02 |
-| **Owner** | JCH + wildnexus-scientific-data-protocols |
+| **Owner** | JCH + wildnexus-scientific-advisor |
 
 **Tâches :**
 - T05.1 — Sélection et préparation site EVT

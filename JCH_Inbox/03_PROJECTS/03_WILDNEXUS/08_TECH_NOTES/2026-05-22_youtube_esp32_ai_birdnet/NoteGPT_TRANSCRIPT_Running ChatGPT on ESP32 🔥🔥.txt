@@ -1,0 +1,72 @@
+00:00:00
+such antibody is something which everyone watching this video must have heard of and maybe you already used it using your mobile phones and computers but what if I say you can now use chat GPD in your esp32 board as well yes like you can ask the question to esp32 board and it will respond you via chat Deputy Ai and you can use the similar method for any of the microcontroller mode that has Wi-Fi connectivity in it and not only that you can use the same method for building your own mobile applications so basically we'll be using
+
+00:00:33
+the chat GPT apis for making this and in this video I'll be guiding you about how to use the chat gbd API and initially we'll be using it with the postman application and then I will teach you how to use that API in re sp32 board to get all the answers viach rgbt AI so stick around with this video to learn something new and we'll be starting this video after short and informative ad this video is sponsored by LTM and they came up with an amazing product called as ldm 365. so ldm 365 is an Electronics
+
+00:01:05
+product design platform that unites PCB design mcad data management and teamwork so with LTM 365 you can do the PCB designing task you can share your projects over web for review purposes it do cover sharing your PCB file to Mechanical team so that they can create the mechanical product package based on your PCB then it also provides the centralized cloud storage so you don't need to rely on one single computer for your files it also helps you with managing your components and get real-time supply chain data for your
+
+00:01:38
+components it also allows multiple people to work on single project and in the end it also helps you with sending your design to final manufacturing units so Altium 365 takes care of all other tasks so you put more time and effort in making something creative and useful and the good part is you can try out its free version as well I'll leave its free trial version link down in the description of this video so do check that out and now let's start with this video so first we need to make
+
+00:02:07
+an account on open Ai and for that you need to go to platform.openei.com and here you need to make your account I'll simply log in with my Google account after that provide couple of your basic details verify your phone number and we are done with it so for new users openai provides a five dollar Credit in their account and to check that out you have to click here and click on manage account after that go to usage and here as you can see I got five dollar in my open AI account through which I can use the apis
+
+00:02:38
+and it will be expired on September 2023 and now to know the charges of that GPD you need to go to this page so it will be charging you around 0.002 dollars per thousand token and if you ask what does a token means then it is mentioned here so it is assumed that thousand token will be around 750 words and these words are nothing but the total words used to ask the question and getting the response from AI so that was the pricing structure of chat GPT and now to use this API we first need to generate the
+
+00:03:09
+API key and for that go to API keys and click on create new secret key here give a random name and click on create just copy this key and paste it in your computer as we will require it later so now we are ready to test the API so let's first test with the postman application so here is my Postman application now Postman is a tool using which we can test out our apis and see the responses I'll be laying away its download link down in the description of this video so after opening that Postman uh first of
+
+00:03:40
+all we'll be selecting the post method for this API and we're pasting this URL now this URL is common for all the uh chat jbd users after that we'll go to the headers and here we need to provide two key value pairs first is content uh hyphen type and here the content type is nothing but application forward slash Json okay the next token key value pair is authorization and here you first need to type as Bearer space here you need to provide your API key so I'll paste my API key great so these two key value
+
+00:04:12
+pass me to provide inside the headers after that go inside the body click on raw and paste this Json formatted data which contains four key value pairs model prompt temperature and Max token here model is nothing but the AI model which we'll be using then prompt is nothing but what question we need to ask to chat GPD here I have written as who are you temperature is an interesting parameter so to clarify what temperature actually is uh here is the definition so temperature actually controls the
+
+00:04:41
+randomness and creativity of generated text lower values result in more focused outputs while higher value yield diverse and creative text and temperature range is from 0 to 1 okay so here I have provided as 0 as I want more focused output after that Max tokens is written as 5 which means I want the response with maximum five tokens only maybe less but not more than five here you can change the number of token to get the you know a big answer or bigger response but like for testing purpose let's just
+
+00:05:12
+keep it 5 and let and then we'll be you know changing this number and testing what a difference we are getting okay so simply we need to provide this body these two headers and this URL and with the help of this we can easily access that GPD from any devices so let us try to send this a API request and see what we are getting in response it's a sending request and yeah the status is 200 okay it means it was a successful communication and we got this much data in response and the main uh thing which
+
+00:05:42
+we need to focus is the text so text contains the response from the server and text is nothing but I am a now here with the IMA response five tokens were utilized hence we are not getting the other data so if I change the token uh from five to let's say 10 and if I resend this request now we are getting a proper answer it which is I am a person who is interested in well the answer is way bigger so if I increase this to 50 I'll be getting the complete answer I'm a person who is interested in
+
+00:06:15
+learning and exploring new things this was the complete answer and this answer utilized total 20 tokens now I guess prom tokens are nothing but the number of words used for asking the question and completion domus are nothing but the number of words which we are getting from the response or from the AI side okay so in the N20 tokens we'll utilized for this single API request and uh we all know the relation between the tokens and the amount in dollars that we already discussed okay now let us try to
+
+00:06:44
+change the temperature as well and let's see what difference we are getting so if I put the temperature as 0.5 I'm getting a creative answer called as I am a software engineer so the answer got changed the way of you know giving the answer changed okay so this is how you can you know play with the temperature for different different responses and here you can provide the maximum tokens to be sure that not more than this amount of tokens will be utilized per API click okay so this is how we tested
+
+00:07:10
+it on Postman app and it is working fine and now you let us see how we can request the same post request method in our esp32 board to get all the answers from chat gpts we are just requesting one link which is this after that we are adding the header which are the two headers content type which is application Json and the second is authorization which is nothing but our token key after that we are adding the payload which contains the like four Json key value pairs model prompt temperature and Max tokens and after
+
+00:07:42
+that we are requesting it via post request method and whatever response we are getting it is simply printed on the CL Monitor and that's this simple code okay so I already uploaded this code into my esp32 UK V1 but you can use any of the esp3 code and also you can use the esp8266 uh boards yeah so the code is already uploaded open the serial monitor here and it is saying that connecting to SMS geofi it's connected acidable link is requested and here is the response that we are getting and our
+
+00:08:09
+and complete answer is written inside the text okay so it says I am a person who is interested in learning new things and exploring the world the same response which we were getting inside the postman application and that's how you can use chat GPD on your esp32 board now let me take you through another example which is complete uh chat GPD it is tested on the Xiao esp32 C3 development board and yeah it can work on the esp2k V1 Moda as well and we are selling both the boards through our website so you can buy it if you don't
+
+00:08:40
+have the link is in the description by the way yeah so I'll simply copy this code okay I'll create a new uh Arduino sketch and I'll paste that code here here I'll simply provide my Sid name and password then we need to provide the API key which I will copy from the previous code grade and that's it we don't need to do anything so yeah that's the only thing we need to provide in this code and what this code does is it is creating a server onto the csp32 board and we're connecting our clients
+
+00:09:07
+to this server and it will be getting I know we'll be getting a web page from the server and through that web page we can you know ask any question to chat the video okay so I'll simply upload this code onto my esp3 board and let's just visualize everything practically okay so code is successfully uploaded I'll open the serial monitor uh it is connecting to a Wi-Fi network and it is connected and we also got this local IP address so I will copy this local IPA address and I'll paste it in my web
+
+00:09:33
+browser okay so we got the web page so we are getting the Seed Studio branding because it was tested on Xiao C3 board and here is uh you know web interface where we can ask the question so let us ask the same question as who are you and I'll click on the submit button and I'll be getting the answer here on to the serial monitor okay it says I am a human being so it is a kind of a filtered answer we are getting we are not getting the complete response in the Json format we just can't take a text formatted data
+
+00:10:04
+which says I am a human being it would be great if we can get the answers straight in this web page only let's just ask any other question like uh who is techy SMS let's just try it out and click on the submit button and let's just wait for the answer here and yeah we got the answer technology is a technology block that provides news reviews tutorials about the latest tech products and services it is run by a team of tech enthusiasts who are passionate about helping people stay up to date with the latest technology
+
+00:10:32
+somewhat right and somewhat weird as well because we don't review no we do review and we provide news kind of news I don't nobody this is how you can use the you know web interface this code to start using chat GPD on your esp32 board how was this video according to you I was really surprised to know like we can use chat depending on our esp32 board and not only esp3 board but you can use this API in any of the embedded boards that has internet connectivity or you can develop your own mobile application
+
+00:11:03
+and in the back end you can run this apis for making your own AI based chat bots so do drop a like to this video If you really like the concept and I am thinking a step ahead to make something interesting using it well I'm thinking to make something in which I can type the question it will be given to the ASPCA board and in the end I am getting an audio result like there will be a speaker we will speak out the complete answer well that will be interesting project isn't it do let me know your
+
+00:11:30
+suggestions about this new idea down in the comments of the video and let me know if should I make that kind of project video or not let me know in the comments and yeah subscribe our channel to see more Selena video project tutorials in the field of iot electronics and AI as well and yeah that being said I'm just ending this video here and now just wait for my next video Until Then explore learn share with me SMS [Music]
+

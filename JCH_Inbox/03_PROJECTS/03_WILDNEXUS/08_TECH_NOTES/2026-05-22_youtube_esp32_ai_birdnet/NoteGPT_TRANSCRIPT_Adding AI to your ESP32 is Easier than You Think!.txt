@@ -1,0 +1,33 @@
+00:00:33
+I’ll be using StickC Plus2, Seeeduino  XIAO ESP32S3 and Unit-Camera OV2640, links in the description! What I will be saying is  more or less applicable to any of the ESP chips, although some of them are more suitable  for machine learning tasks than the others. We will run four different types of machine  learning tasks: gesture recognition, keyword spotting, image recognition and object detection  - and a bonus one! I will focus strictly on running inference on the board, and give you the  links to the resources for training the models.
+
+00:01:11
+For gesture recognition, the task is to classify  accelerometer data into one of the movement categories. It does not have to be accelerometer  data, basically any other sensor data, apart from audio and images, you might have, would fall  into this category. Let’s open an example project in Edge Impulse and go to the deployment tab,  choose Arduino deployment and then unzip and drop it into the Arduino libraries folder. Open the  ESP32 sensor fusion example. There is a bunch of code here, but it all comes to a few important  parts: data acquisition, inference and result
+
+00:02:13
+output. The inference and result output will not  differ from board to board, but we need to modify the data acquisition code, so it would use an  accelerometer on StickC Plus2. Usually you’d go to an example for your sensor, and see how  the data is received from the sensor. Okay, compile and upload. You can see that I'm seemingly  getting wrong, but very confident results - this is because the accelerometer position is different  on this board from the one where the dataset was created. You can fix it by training your  own model - for relatively slow sensors,
+
+00:03:37
+such as an accelerometer, you can use the  Data Forwarder tool to sample the data. I'm leaving the link to both documentation  and video tutorial on how to do that. Audio data is tricker, since it needs to  be sampled with the frequency of at least 8 KHz per second, so 8000 times per second. Let’s  take another sample project for keyword spotting and download the Arduino library deployment.  Open the microphone sketch. Similar to what we did before, we need to modify microphone  data acquisition code. In this case I'm
+
+00:04:23
+not using one of the M5Stack libraries,  but rather directly using the I2S class from ESP IDF. Run the inference and test. Now  the tricky part here is when you need to sample the data with this board, since you cannot use  Data Forwarder: the UART data transfer is not fast enough to transmit the audio data. We will  need to modify the Edge Impulse ESP32 firmware to support the microphone on StickC, specifically the  ei_microphone.cpp. I have a branch in the ESP32 firmware repository, which I made a while ago.  Let's take a look at the changes I made. After
+
+00:05:50
+you apply similar modifications depending on  the board you use, compile with ESP IDF 4.4 and upload. Run edge-impulse-daemon  and sample the data. Easy peasy. For these two examples we used Edge Impulse  trained models. If you are developing a project for personal or research use, there  is no reason not to use Edge Impulse, as these are supported by the Free Tier.  However, if you want to know how to use Tensorflow Lite for Microcontrollers, I got you  covered as well. I want to preface it by saying
+
+00:06:25
+that the current official Arduino Tensorflow  Lite Micro library is in the state of FUBAR, I spent hours fixing it and got nowhere.  But there is at least one maintained fork, which compiled and worked with zero  issues, Chirale_TensorFlowLite. Git clone that to your Arduino libraries folder. For the Image  Recognition task, I have created a sample Colab Notebook, where I train a tiny MobileNet v1 model  to distinguish between cats and dogs. In the end you’ll get a .h file with the neural network model  inside of it. Grab an Arduino sketch from a Github
+
+00:07:18
+gist I shared and take a look at it. There is a  bit more boilerplate code, including Tflite micro interpreter instantiation, model preparation  and data quantization. The general idea is the same though: we get the data from the camera,  feed it into the model inputs, run the neural network inference and read the model  outputs, then pick the highest prediction. Finally, for the object detection task, we will  use Seeeduino XIAO ESP32-S3, which is based on ESP32-S3 with vector extensions for accelerated  neural network inference. Grab the Arduino
+
+00:08:45
+library and open the CameraWebInference sketch  I shared. It is based on the CameraWebServer example for ESP32, which I heavily  modified to instead work with any of the Edge Impulse models and XIAO ESP32-S3. The  modifications were too many to explain here, but if you are interested, you can use the  compare files function in your favorite IDE, for example, here is how to do it in VSCode.  Upload the sketch, let the board connect to WiFi and then go to the displayed web address.  Start the stream and enable Face Detection. Neat!
+
+00:09:31
+With so much talk about Large Language Models,  someone would inevitably ask “Can I run LLM on ESP32?”. The answer is “You can, but it  won’t be very useful”. Using code by DaveBen, I ran the extremely tiny version of LLaMA on  ESP32-S3, which outputs semi-coherent text, generating children's stories as it  is trained on the TinyStories dataset. Take a look at how I was teaching my toaster  to talk by training and running extremely small language models on Raspberry Pi. Or  watch a video about running a bit larger,
+
+00:10:20
+but infinitely more useful TinyLLaMA on  Raspberry Pi - it is both coherent and fast.
+
