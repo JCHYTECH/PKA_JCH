@@ -1,5 +1,5 @@
 {
-  "_comment": "Routing mod\u00e8le par t\u00e2che. provider: anthropic | openai | google | ollama",
+  "_comment": "Routing mod\u00e8le par t\u00e2che. provider: anthropic | openai | google | ollama | nvidia",
   "default": {
     "provider": "anthropic",
     "model": "claude-sonnet-4-6"
@@ -34,14 +34,19 @@
       "model": "gemma4:latest"
     },
     "nvidia": {
-      "provider": "openrouter",
-      "model": "nvidia/nemotron-3-super-120b-a12b:free"
+      "provider": "nvidia",
+      "model": "deepseek-v4-pro"
     }
   },
   "providers": {
     "deepseek": {
       "base_url": "https://api.deepseek.com/v1",
       "key_env": "DEEPSEEK_API_KEY"
+    },
+    "nvidia": {
+      "base_url": "https://integrate.api.nvidia.com/v1",
+      "key_env": "NVIDIA_API_KEY",
+      "key_file": "~/.config/pka-jch/nvidia_key.txt"
     },
     "anthropic": {
       "base_url": null,

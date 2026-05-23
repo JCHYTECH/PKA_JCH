@@ -99,10 +99,14 @@ def normalize_issue(project_key: str, issue: dict) -> dict:
 
     description = issue.get("description_html") or issue.get("description_stripped") or ""
 
+    status_map = load_config().get("status_map", {})
+    plane_state_name = state.get("name", "")
+    mapped_status = status_map.get(plane_state_name, plane_state_name)
+
     return {
         "title": issue.get("name", ""),
         "project": project_key,
-        "status": state.get("name", ""),
+        "status": mapped_status,
         "owner": assignee.get("display_name") or "Unassigned",
         "labels": [label.get("name") for label in label_details if isinstance(label, dict) and label.get("name")],
         "type": "task",
@@ -113,7 +117,7 @@ def normalize_issue(project_key: str, issue: dict) -> dict:
 
 def fetch_project_issues(project_key: str) -> list[dict]:
     api_base, workspace_slug, project_id, token = _project_context(project_key)
-    endpoint = f"{api_base}/workspaces/{workspace_slug}/projects/{project_id}/issues/"
+    endpoint = f"{api_base}/workspaces/{workspace_slug}/projects/{project_id}/issues/?expand=state,assignee"
     payload = _plane_request(endpoint, token)
 
     if isinstance(payload, list):

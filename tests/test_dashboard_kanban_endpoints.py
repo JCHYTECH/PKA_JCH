@@ -65,6 +65,7 @@ class DashboardKanbanEndpointsTest(unittest.TestCase):
         self.assertEqual(summary["by_project"]["01_AI_IT_TOOLS"]["total"], 1)
 
     def test_kanban_snapshot_loads_plane_token_from_local_secret_file_fallback(self):
+        dashboard_server.clear_kanban_cache()
         config = {"projects": {"01_AI_IT_TOOLS": {"plane_project_id": "ai-tools"}}}
         cards = [
             {
@@ -92,6 +93,36 @@ class DashboardKanbanEndpointsTest(unittest.TestCase):
                         self.assertEqual(os.environ.get("PKA_PLANE_API_TOKEN"), "plane-secret")
 
         self.assertEqual(summary["totals"]["En cours"], 1)
+
+    def test_all_kanban_cards_reuses_short_lived_cache(self):
+        dashboard_server.clear_kanban_cache()
+        config = {"projects": {"03_WILDNEXUS": {"plane_project_id": "wildnexus"}}}
+        cards = [
+            {
+                "title": "Cached task",
+                "project": "03_WILDNEXUS",
+                "type": "task",
+                "owner": "Forge",
+                "priority": "normale",
+                "status": "A qualifier",
+                "description": "",
+                "labels": [],
+            }
+        ]
+
+        with mock.patch.object(dashboard_server.pka_plane_adapter, "load_config", return_value=config):
+            with mock.patch.object(
+                dashboard_server.pka_plane_adapter,
+                "fetch_project_issues",
+                return_value=cards,
+            ) as fetch_mock:
+                first = dashboard_server._all_kanban_cards()
+                second = dashboard_server._all_kanban_cards()
+
+        self.assertEqual(first, cards)
+        self.assertEqual(second, cards)
+        fetch_mock.assert_called_once_with("03_WILDNEXUS")
+        dashboard_server.clear_kanban_cache()
 
     def test_kanban_cards_endpoint_returns_filtered_card_list(self):
         handler = object.__new__(dashboard_server.DashboardHandler)

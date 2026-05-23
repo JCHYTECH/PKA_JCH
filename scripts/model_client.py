@@ -26,6 +26,28 @@ def get_model(task: str) -> str:
     return get_task_config(task)["model"]
 
 
+def _get_api_key(provider_cfg: dict) -> str:
+    key_env = provider_cfg.get("key_env")
+    if key_env and os.environ.get(key_env):
+        return os.environ[key_env]
+
+    key_file = provider_cfg.get("key_file")
+    if key_file:
+        path = Path(key_file.replace("~", str(Path.home())))
+        if path.exists():
+            return path.read_text().strip()
+
+    if key_env or key_file:
+        locations = []
+        if key_env:
+            locations.append(f"${key_env}")
+        if key_file:
+            locations.append(key_file)
+        raise RuntimeError(f"API key missing. Configure one of: {', '.join(locations)}")
+
+    return provider_cfg.get("api_key", "none")
+
+
 def get_client(task: str):
     """
     Retourne un client prêt à l'emploi pour la tâche.
@@ -48,11 +70,7 @@ def get_client(task: str):
     if provider not in ("anthropic", "google"):
         # tous les providers OpenAI-compatibles (openai, ollama, kimi, deepseek…)
         import openai
-        if "key_file" in provider_cfg:
-            key_file = Path(provider_cfg["key_file"].replace("~", str(Path.home())))
-            api_key = key_file.read_text().strip()
-        else:
-            api_key = provider_cfg.get("api_key", "none")
+        api_key = _get_api_key(provider_cfg)
         kwargs = {"api_key": api_key}
         if provider_cfg.get("base_url"):
             kwargs["base_url"] = provider_cfg["base_url"]
