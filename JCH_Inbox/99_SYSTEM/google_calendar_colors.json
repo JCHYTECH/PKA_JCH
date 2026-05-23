@@ -1,0 +1,62 @@
+{
+  "PRIVE": {
+    "colorId": "7",
+    "label": "Prive",
+    "background": "#039BE5",
+    "foreground": "#ffffff"
+  },
+  "ADMIN": {
+    "colorId": "8",
+    "label": "Admin / Sante",
+    "background": "#616161",
+    "foreground": "#ffffff"
+  },
+  "WORK": {
+    "colorId": "10",
+    "label": "Work",
+    "background": "#0B8043",
+    "foreground": "#ffffff"
+  },
+  "TRAVEL": {
+    "colorId": "9",
+    "label": "Travel",
+    "background": "#3F51B5",
+    "foreground": "#ffffff"
+  },
+  "ARTEON": {
+    "colorId": "5",
+    "label": "ARTEON",
+    "background": "#F6BF26",
+    "foreground": "#000000"
+  },
+  "WILDNEXUS": {
+    "colorId": "2",
+    "label": "WildNexus",
+    "background": "#33B679",
+    "foreground": "#ffffff"
+  },
+  "VETALYX": {
+    "colorId": "11",
+    "label": "Vetalyx",
+    "background": "#D50000",
+    "foreground": "#ffffff"
+  },
+  "PHOTO": {
+    "colorId": "3",
+    "label": "Photo",
+    "background": "#8E24AA",
+    "foreground": "#ffffff"
+  },
+  "AI_IT": {
+    "colorId": "6",
+    "label": "AI / IT Tools",
+    "background": "#F4511E",
+    "foreground": "#ffffff"
+  },
+  "NUANCES": {
+    "colorId": "4",
+    "label": "Nuances",
+    "background": "#E67C73",
+    "foreground": "#000000"
+  }
+}
