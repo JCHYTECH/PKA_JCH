@@ -29,10 +29,14 @@ Purpose: Initial Plane backlog derived from the founding document.
 - `T01.3 Campagne mesures RF terrain`
 - `T01.4 Benchmark module camera IMX462 vs IMX327`
 - `T01.5 Selection MCU`
+- `T01.6 Budget P0 ordre de grandeur`
 - `DECISION: Confirm P0 autonomy ladder`
 - `DECISION: Confirm P0 product boundary`
 - `LEGAL: Resolve open-source and usage-restriction strategy`
 - `RISK: Define privacy baseline for human captures`
+- `GOV-01 Mapping agents WildNexus vers specialistes PKA`
+- `DOC-01 Annexes operatoires v0.3`
+- `SUPPLY-01 Registre composants critiques et fournisseurs alternatifs`
 
 ### WP02
 
@@ -49,6 +53,7 @@ Purpose: Initial Plane backlog derived from the founding document.
 - `T03.3 Gestion alimentation et undervoltage lockout`
 - `T03.4 Interface BLE configuration terrain`
 - `T03.5 Mecanisme OTA`
+- `T03.6 Tests firmware et simulation etats critiques`
 
 ### WP04
 
@@ -56,6 +61,7 @@ Purpose: Initial Plane backlog derived from the founding document.
 - `T04.2 Entrainement et quantisation modele binaire`
 - `T04.3 Validation detection, faux positifs, latence`
 - `T04.4 Integration firmware`
+- `T04.5 Pipeline evaluation automatise du classifieur`
 
 ### WP05
 
@@ -78,6 +84,10 @@ Purpose: Initial Plane backlog derived from the founding document.
 - `T01.3` -> `rf`, `benchmark`, `validation`, `P0`
 - `T01.4` -> `camera-imaging`, `benchmark`, `validation`, `P0`
 - `T01.5` -> `firmware`, `decision`, `P0`
+- `T01.6` -> `budget`, `decision`, `P0`
+- `GOV-01` -> `documentation`, `decision`, `P0`
+- `DOC-01` -> `documentation`, `P0`
+- `SUPPLY-01` -> `hardware-physical`, `risk`, `P0`
 - `T02.x` -> `hardware-physical`, `P0`
 - `T03.x` -> `firmware`, `P0`
 - `T04.x` -> `edge-ai`, `P0`
@@ -90,6 +100,11 @@ Purpose: Initial Plane backlog derived from the founding document.
 - `T01.3` -> `M-01`
 - `T01.4` -> `M-01`
 - `T01.5` depends on `T01.3` and `T01.4` inputs
+- `T01.6` -> `M-01`
+- `GOV-01` -> `M-01`
+- `SUPPLY-01` starts before `T02.1`
+- `T03.6` starts with `T03.1`
+- `T04.5` starts with `T04.2`
 - `M-01` unlocks `WP02`, `WP03`, `WP04`
 - `M-02` depends on `T02.5`, `T03.5`, `T04.4`
 - `WP05` starts after `M-02`
@@ -98,7 +113,7 @@ Purpose: Initial Plane backlog derived from the founding document.
 
 ## Suggested Acceptance Criteria for Milestones
 
-- `M-01`: radio candidate chosen, camera module chosen, MCU chosen, legal/FTO review not blocking
+- `M-01`: radio candidate chosen, camera module chosen, MCU chosen, budget P0 framed, agent mapping complete, legal/FTO review not blocking
 - `M-02`: prototype boots, captures, transmits, and has a credible energy budget
 - `M-03`: EVT completed with no critical failure and acceptable autonomy/image/filtering behavior
 - `M-04`: public repo, contribution docs, and community entry channel available

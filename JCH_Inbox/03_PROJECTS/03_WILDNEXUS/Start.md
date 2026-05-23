@@ -1,11 +1,10 @@
 # WildNexus — Protocole de lancement
 
 **Version :** v0.1  
-**Date :** 2026-05-17  
-**Statut :** Variante de comparaison modèle  
+**Date :** 2026-05-18  
+**Statut :** Protocole operationnel pre-go  
 **Propriétaire :** Jean-Claude Havaux — JCHYTECH  
 **Pilotage :** Dobby  
-**Document comparé à :** `Start.md`
 
 ---
 
@@ -32,6 +31,9 @@ Au lancement, Dobby travaille depuis ces références :
 - `wildnexus-founding-document-v0.2.md`
 - `wildnexus-plane-operating-model.md`
 - `wildnexus-plane-seed-backlog.md`
+- `WILDNEXUS_AGENT_MAPPING.md`
+- `WILDNEXUS_P0_SCOPE_LOCK.md`
+- `WILDNEXUS_P0_BUDGET_RANGE.md`
 - `wildnexus-usage-policy-and-license-principles.md`
 - `wildnexus-usage-matrix.md`
 - `WildNexus_MASTER_ARCHITECTURE.md`
@@ -92,13 +94,12 @@ Les fronts lancés en priorité sont :
 
 Dobby active d'abord :
 - `wildnexus-program-manager-system-architect`
-- `wildnexus-imaging-systems-engineer`
-- `wildnexus-embedded-platform-engineer`
-- `wildnexus-power-systems-engineer`
-- `wildnexus-mechanical-reliability-engineer`
-- `wildnexus-scientific-data-protocols`
+- `wildnexus-camera-imaging`
+- `wildnexus-firmware-ulp`
+- `wildnexus-hardware-physical`
+- `wildnexus-scientific-advisor`
 
-Ces agents couvrent le système P0 minimal : architecture, image, firmware, énergie, mécanique et valeur scientifique des données.
+Ces agents couvrent le système P0 minimal : architecture, image, firmware, énergie, mécanique, terrain et valeur scientifique des données.
 
 ### 4.2 Agents À La Demande
 

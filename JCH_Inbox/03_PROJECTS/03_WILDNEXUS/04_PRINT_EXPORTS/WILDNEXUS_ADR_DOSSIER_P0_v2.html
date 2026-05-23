@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WildNexus — Dossier ADR P0 v2</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Lora:ital,wght@0,400;1,400&display=swap');
+
+  :root {
+    --brun:    #1E1A17;
+    --ocre:    #C17F3A;
+    --sable:   #3A332B;
+    --texte:   #E8E0D0;
+    --gris:    #9A9080;
+    --vert:    #4A7C59;
+    --rouge:   #C0392B;
+    --fond:    #ffffff;
+    --encart:  #f7f4f0;
+    --bordure: #d8cfc4;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.65;
+    color: #1a1714;
+    background: white;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 40px;
+  }
+
+  /* ── COUVERTURE ── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 3px solid var(--ocre);
+    padding-bottom: 60px;
+    page-break-after: always;
+  }
+
+  .cover-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9pt;
+    color: var(--ocre);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 24px;
+  }
+
+  .cover-title {
+    font-size: 32pt;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    line-height: 1.15;
+    color: #1a1714;
+    margin-bottom: 16px;
+  }
+
+  .cover-title strong { color: var(--ocre); font-weight: 600; }
+
+  .cover-sub {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 13pt;
+    color: #6b6055;
+    margin-bottom: 48px;
+  }
+
+  .cover-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 32px;
+    border-top: 1px solid var(--bordure);
+    padding-top: 24px;
+    margin-bottom: 48px;
+  }
+
+  .cover-meta-item { display: flex; flex-direction: column; gap: 3px; }
+  .cover-meta-label { font-family: 'IBM Plex Mono', monospace; font-size: 8pt; color: var(--gris); text-transform: uppercase; letter-spacing: 0.1em; }
+  .cover-meta-value { font-size: 10pt; font-weight: 500; }
+
+  /* ── SOMMAIRE ── */
+  .toc { page-break-after: always; padding: 40px 0; }
+  .toc h2 { font-size: 11pt; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gris); margin-bottom: 24px; }
+
+  .toc-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--bordure);
+    gap: 16px;
+  }
+
+  .toc-left { display: flex; align-items: center; gap: 12px; }
+  .toc-num { font-family: 'IBM Plex Mono', monospace; font-size: 9pt; color: var(--ocre); min-width: 60px; }
+  .toc-title { font-size: 10.5pt; font-weight: 500; }
+  .badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8pt;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .badge-ok   { background: #e8f5ec; color: #2e7d4f; }
+  .badge-prop { background: #fef3e2; color: #b45309; }
+
+  /* ── SECTION ADR ── */
+  .adr-section {
+    page-break-before: always;
+    padding-top: 40px;
+  }
+
+  .adr-header {
+    border-left: 5px solid var(--ocre);
+    padding: 20px 24px;
+    background: var(--encart);
+    margin-bottom: 32px;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .adr-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+
+  .adr-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9pt;
+    color: var(--ocre);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 6px;
+  }
+
+  .adr-title { font-size: 17pt; font-weight: 600; line-height: 1.2; color: #1a1714; }
+
+  .adr-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--bordure);
+  }
+
+  .adr-meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .adr-meta-label { font-family: 'IBM Plex Mono', monospace; font-size: 7.5pt; color: var(--gris); text-transform: uppercase; letter-spacing: 0.1em; }
+  .adr-meta-value { font-size: 9.5pt; font-weight: 500; }
+
+  /* ── CONTENU ── */
+  h2 {
+    font-size: 11pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gris);
+    margin: 28px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--bordure);
+  }
+
+  h3 {
+    font-size: 11pt;
+    font-weight: 600;
+    color: #1a1714;
+    margin: 20px 0 8px;
+  }
+
+  p { margin-bottom: 10px; }
+
+  ul, ol { padding-left: 20px; margin-bottom: 10px; }
+  li { margin-bottom: 4px; }
+
+  /* ── TABLES ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 9.5pt;
+  }
+
+  th {
+    background: var(--encart);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 8px 10px;
+    text-align: left;
+    border: 1px solid var(--bordure);
+    color: #4a4038;
+  }
+
+  td {
+    padding: 7px 10px;
+    border: 1px solid var(--bordure);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  tr:nth-child(even) td { background: #faf8f6; }
+
+  /* Colonne Statut */
+  td.retenu { color: #2e7d4f; font-weight: 600; }
+  td.ecarté { color: #b45309; }
+  td.rejeté  { color: var(--rouge); }
+
+  /* ── ENCARTS ── */
+  .decision-box {
+    background: #f0f7f2;
+    border: 1px solid #a8d5b5;
+    border-left: 4px solid var(--vert);
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin: 16px 0;
+  }
+
+  .decision-box strong { color: var(--vert); }
+
+  .warning-box {
+    background: #fff8ed;
+    border: 1px solid #f5c96a;
+    border-left: 4px solid #e6a817;
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 9.5pt;
+  }
+
+  .warning-box strong { color: #b45309; }
+
+  code {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9pt;
+    background: var(--encart);
+    padding: 1px 5px;
+    border-radius: 3px;
+    border: 1px solid var(--bordure);
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { padding: 20px 32px; font-size: 10pt; }
+    .cover { min-height: auto; padding-bottom: 40px; }
+    .no-print { display: none; }
+    table { page-break-inside: avoid; }
+    .adr-header { page-break-inside: avoid; }
+    h2, h3 { page-break-after: avoid; }
+  }
+
+  /* ── PRINT BUTTON ── */
+  .print-btn {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    background: var(--ocre);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10pt;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 100;
+  }
+  .print-btn:hover { background: #a86d2e; }
+  @media print { .print-btn { display: none; } }
+
+  /* ── SÉPARATEUR ── */
+  .divider {
+    border: none;
+    border-top: 1px dashed var(--bordure);
+    margin: 24px 0;
+  }
+
+  .mono { font-family: 'IBM Plex Mono', monospace; font-size: 9pt; }
+</style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">⎙ Imprimer / PDF</button>
+
+<!-- ══════════════════════ COUVERTURE ══════════════════════ -->
+<div class="cover">
+  <div class="cover-eyebrow">WildNexus · Architecture P0 · Dossier décisionnel</div>
+  <div class="cover-title">Architecture<br><strong>Decision Records</strong><br>Prototype P0</div>
+  <div class="cover-sub">Dossier de référence — décisions d'architecture gelées pour le jalon M-01</div>
+
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Version</span>
+      <span class="cover-meta-value">v2 — 2026-05-18</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Jalon</span>
+      <span class="cover-meta-value">M-01 Architecture P0 gelée</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">ADR inclus</span>
+      <span class="cover-meta-value">001 · 002 · 003 · 005 · 006</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Statut global</span>
+      <span class="cover-meta-value">3 acceptés · 2 à accepter</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Owner</span>
+      <span class="cover-meta-value">Dobby — PKA</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Terrain EVT</span>
+      <span class="cover-meta-value">Bois feuillus — Belgique</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ SOMMAIRE ══════════════════════ -->
+<div class="toc">
+  <h2>Sommaire</h2>
+  <div class="toc-item">
+    <div class="toc-left">
+      <span class="toc-num">ADR-001</span>
+      <span class="toc-title">Choix MCU P0</span>
+    </div>
+    <span class="badge badge-ok">Accepté</span>
+  </div>
+  <div class="toc-item">
+    <div class="toc-left">
+      <span class="toc-num">ADR-002</span>
+      <span class="toc-title">Choix caméra / IR P0</span>
+    </div>
+    <span class="badge badge-ok">Accepté</span>
+  </div>
+  <div class="toc-item">
+    <div class="toc-left">
+      <span class="toc-num">ADR-003</span>
+      <span class="toc-title">Choix radio / LPWAN P0</span>
+    </div>
+    <span class="badge badge-ok">Accepté</span>
+  </div>
+  <div class="toc-item">
+    <div class="toc-left">
+      <span class="toc-num">ADR-005</span>
+      <span class="toc-title">Énergie et autonomie P0</span>
+    </div>
+    <span class="badge badge-prop">À accepter</span>
+  </div>
+  <div class="toc-item">
+    <div class="toc-left">
+      <span class="toc-num">ADR-006</span>
+      <span class="toc-title">Boîtier IP67 et montage terrain</span>
+    </div>
+    <span class="badge badge-prop">À accepter</span>
+  </div>
+</div>
+
+<!-- ══════════════════════ ADR-001 ══════════════════════ -->
+<div class="adr-section">
+  <div class="adr-header">
+    <div class="adr-header-top">
+      <div>
+        <div class="adr-num">ADR-001</div>
+        <div class="adr-title">Choix MCU P0</div>
+      </div>
+      <span class="badge badge-ok">Accepté — 2026-05-18</span>
+    </div>
+    <div class="adr-meta-grid">
+      <div class="adr-meta-item"><span class="adr-meta-label">Owner PKA</span><span class="adr-meta-value">Castor + Forge</span></div>
+      <div class="adr-meta-item"><span class="adr-meta-label">Agent</span><span class="adr-meta-value">wildnexus-firmware-ulp</span></div>
+      <div class="adr-meta-item"><span class="adr-meta-label">Jalon</span><span class="adr-meta-value">M-01</span></div>
+      <div class="adr-meta-item"><span class="adr-meta-label">Confirmation</span><span class="adr-meta-value">JCH — coût / perfs / dispo / communauté</span></div>
+    </div>
+  </div>
+
+  <h2>Contexte</h2>
+  <p>P0 doit prouver un nœud caméra autonome : veille basse consommation, réveil événementiel, capture image, filtre animal / non-animal, stockage local, configuration terrain simple et transmission LPWAN événementielle.</p>
+  <p>Le MCU doit couvrir trois contraintes qui tirent dans des directions différentes : basse consommation réelle sur cycle complet ; intégration caméra / stockage / radio sans complexité excessive ; vitesse de prototypage suffisante pour M-02. Le P0 ne doit pas dépendre d'un Raspberry Pi ou d'un Linux permanent.</p>
+
+  <h2>Décision</h2>
+  <div class="decision-box">
+    <strong>ESP32-S3 retenu comme MCU P0.</strong> Combinaison unique d'interface caméra DVP documentée, BLE/Wi-Fi utiles au provisioning, sécurité embarquée, écosystème communautaire mature et vitesse de prototypage. Confirmé par JCH sur les critères coût / performances / disponibilité / communauté.
+  </div>
+  <p><strong>WiFi désactivé</strong> en usage terrain. <strong>STM32U5</strong> reste le fallback si l'ESP32-S3 échoue sur le budget énergie mesuré en M-02.</p>
+
+  <h2>Alternatives considérées</h2>
+  <table>
+    <tr><th>Option</th><th>Pour</th><th>Contre</th><th>Statut</th></tr>
+    <tr><td><strong>ESP32-S3</strong></td><td>Interface caméra, BLE/Wi-Fi, ULP, secure boot, écosystème rapide</td><td>WiFi à désactiver terrain ; PSRAM probable</td><td class="retenu">Retenu P0</td></tr>
+    <tr><td>STM32U5</td><td>Très basse consommation, sécurité, mémoire</td><td>Intégration caméra plus exigeante ; prototypage plus lent</td><td class="ecarté">Fallback énergie</td></tr>
+    <tr><td>nRF54L15</td><td>BLE basse conso, sécurité</td><td>2.4 GHz seulement ; caméra moins directe</td><td class="ecarté">Option future</td></tr>
+    <tr><td>Raspberry Pi</td><td>Développement rapide, IA confortable</td><td>Consommation, boot, maintenance incompatibles P0</td><td class="rejeté">Rejeté</td></tr>
+  </table>
+
+  <h2>Tests obligatoires avant M-02</h2>
+  <table>
+    <tr><th>Test</th><th>Critère minimal</th></tr>
+    <tr><td>Courant deep sleep carte complète</td><td>Compatible budget 60 jours batterie seule</td></tr>
+    <tr><td>Réveil → capture → stockage → sommeil</td><td>Cycle stable sur 1 000 répétitions banc</td></tr>
+    <tr><td>Capture image utilisable</td><td>Image exploitable à 5 m de jour et de nuit</td></tr>
+    <tr><td>Transmission LPWAN courte</td><td>Paquet événement transmis puis retour sommeil</td></tr>
+    <tr><td>Provisioning terrain</td><td>Configuration BLE sans ordinateur portable</td></tr>
+  </table>
+</div>
+
+<!-- ══════════════════════ ADR-002 ══════════════════════ -->
+<div class="adr-section">
+  <div class="adr-header">
+    <div class="adr-header-top">
+      <div>
+        <div class="adr-num">ADR-002</div>
+        <div class="adr-title">Choix caméra / IR P0</div>
+      </div>
+      <span class="badge badge-ok">Accepté — 2026-05-18</span>
+    </div>
+    <div class="adr-meta-grid">
+      <div class="adr-meta-item"><span class="adr-meta-label">Owner PKA</span><span class="adr-meta-value">Nova + Lynx</span></div>
+      <div class="adr-meta-item"><span class="adr-meta-label">Agent</span><span class="adr-meta-value">wildnexus-camera-imaging</span></div>
+      <div class="adr-meta-item"><span class="adr-meta-label">Jalon</span><span class="adr-meta-value">M-01</span></div>
+      <div class="adr-meta-item"><span class="adr-meta-label">Portée nocturne</span><span class="adr-meta-value">3–5 m (OV5640 — limite assumée P0)</span></div>
+    </div>
+  </div>
+
+  <h2>Contexte</h2>
+  <p>P0 doit produire une image de qualité équivalente aux meilleurs pièges photographiques (Reconyx, Browning haut de gamme), de jour comme de nuit, sans architecture Linux permanente. Les meilleurs pièges reposent sur un capteur 5–12 MP réels couplé à une optique de qualité — pas sur des mégapixels interpolés.</p>
+  <div class="warning-box"><strong>⚠ Limite assumée :</strong> l'OV5640 plafonne la vision nocturne à <strong>3–5 m</strong> quelle que soit la puissance LED. Le paramètre limitant est la sensibilité du capteur aux longueurs d'onde IR (~20–30 % d'efficacité quantique @ 850 nm), pas la puissance d'éclairage. L'IMX462 Sony STARVIS (~65 %) permettrait 8–10 m mais impose une interface MIPI non native ESP32-S3. Décision P1.</div>
+
+  <h2>Décision — deux composants distincts</h2>
+
+  <h3>Capteur : OV5640 5 MP — module M12 mount — interface DVP</h3>
+  <table>
+    <tr><th>Paramètre</th><th>Valeur</th></tr>
+    <tr><td>Capteur</td><td>OmniVision OV5640</td></tr>
+    <tr><td>Résolution max</td><td>5 MP (2592 × 1944) — configurable par firmware</td></tr>
+    <tr><td>Interface hôte</td><td>DVP (Digital Video Port) — natif ESP32-S3</td></tr>
+    <tr><td>Format monture</td><td>M12 (S-mount) — lentille interchangeable</td></tr>
+    <tr><td>Fournisseur primaire</td><td>Arducam OV5640 M12 DVP</td></tr>
+  </table>
+
+  <h3>Lentille : M12 IR-corrigée f/1.8 — sourcing séparé</h3>
+  <div class="warning-box"><strong>Correction IR obligatoire.</strong> Sans elle, le plan focal se décale entre lumière visible (jour) et IR 850/940 nm (nuit) → images nocturnes floues quelle que soit la qualité du capteur. Ne pas descendre sous 30 €/lentille.</div>
+  <table>
+    <tr><th>Paramètre</th><th>Valeur cible</th></tr>
+    <tr><td>Monture</td><td>M12 (S-mount)</td></tr>
+    <tr><td>Ouverture</td><td>f/1.8 minimum</td></tr>
+    <tr><td>Distance focale</td><td>4–6 mm (champ ~60–90°)</td></tr>
+    <tr><td>Fournisseur primaire</td><td>Lensation (DE) ou Evetar (EU) — 25–50 €</td></tr>
+  </table>
+
+  <h3>Éclairage IR nocturne</h3>
+  <p>LEDs IR <strong>850 nm en mode pulsé uniquement</strong> (< 5 s par capture). Le choix 850 nm vs 940 nm est tranché sur test terrain avant M-02 — pas bloquant pour M-01.</p>
+
+  <h2>Alternatives considérées</h2>
+  <table>
+    <tr><th>Option</th><th>Pour</th><th>Contre</th><th>Statut</th></tr>
+    <tr><td><strong>OV5640 M12 DVP + lentille qualité</strong></td><td>Natif ESP32-S3, résolution configurable, lentille interchangeable</td><td>Portée nocturne 3–5 m max</td><td class="retenu">Retenu P0</td></tr>
+    <tr><td>IMX462 MIPI Sony STARVIS</td><td>Excellente basse lumière, 8–10 m nocturne</td><td>MIPI non natif ESP32-S3, ISP dédié requis</td><td class="ecarté">P1</td></tr>
+    <tr><td>OV5640 monobloc (lentille fixe)</td><td>Moins cher</td><td>Lentille non remplaçable, pas IR-corrigé</td><td class="rejeté">Rejeté</td></tr>
+    <tr><td>OV2640 2 MP</td><td>Très simple</td><td>Résolution insuffisante</td><td class="rejeté">Baseline ref.</td></tr>
+  </table>
+
+  <h2>Tests obligatoires avant M-02</h2>
+  <table>
+    <tr><th>Test</th><th>Critère minimal</th></tr>
+    <tr><td>Image jour à 5 m</td><td>Animal ou mire naturaliste nettement identifiable</td></tr>
+    <tr><td>Image nuit IR 850 nm à 5 m</td><td>Détail suffisant pour valider présence animal / non-animal</td></tr>
+    <tr><td>Mise au point jour vs nuit</td><td>Pas de dérive entre modes visible et IR</td></tr>
+    <tr><td>Cycle réveil → capture → stockage → extinction</td><td>Énergie < 1.5 mAh par cycle</td></tr>
+  </table>
+</div>
+
+<!-- ══════════════════════ ADR-003 ══════════════════════ -->
+<div class="adr-section">
+  <div class="adr-header">
+    <div class="adr-header-top">
+      <div>
+        <div class="adr-num">ADR-003</div>
+        <div class="adr-title">Choix radio / LPWAN P0</div>
+      </div>
+      <span class="badge badge-ok">Accepté — 2026-05-18</span>
+    </div>
+    <div class="adr-meta-grid">
+      <div class="adr-meta-item"><span class="adr-meta-label">Owner PKA</span><span class="adr-meta-value">Forge + Chouette</span></div>
+      <div class="adr-meta-item"><span class="adr-meta-label">Agent</span><span class="adr-meta-value">wildnexus-rf-propagation</span></div>
+      <div class="adr-meta-item"><span class="adr-meta-label">Jalon</span><span class="adr-meta-value">M-01</span></div>
+      <div class="adr-meta-item"><span class="adr-meta-label">Architecture EVT</span><span class="adr-meta-value">LoRa P2P + LTE-M on-demand</span></div>
+    </div>
+  </div>
+
+  <h2>Contexte</h2>
+  <p>P0 transmet des événements et métadonnées depuis des nœuds en forêt belge. Les images ne transitent <strong>pas</strong> par LoRa — une image 5 MP = 3–5 Mo, soit plusieurs heures de transmission et un dépassement massif du duty cycle réglementaire EU868 (1 % sur les canaux principaux).</p>
+  <p>Exigence terrain identifiée : permettre à l'utilisateur de télécharger une image spécifique à la demande, après consultation des métadonnées LoRa d'un événement jugé intéressant.</p>
+
+  <h2>Décision — architecture hybride</h2>
+
+  <div class="decision-box">
+    <strong>LoRa EU868 P2P (SX1262) + LTE-M on-demand (SIM7080G + SIM 1NCE).</strong><br>
+    LoRa = métadonnées événement en continu. LTE-M = image téléchargée à la demande uniquement. Le modem cellulaire est éteint 99,9 % du temps.
+  </div>
+
+  <h3>Flux de données</h3>
+  <table>
+    <tr><th>Canal</th><th>Direction</th><th>Contenu</th><th>Fréquence</th></tr>
+    <tr><td>LoRa EU868 SF7–SF9</td><td>Nœud → Gateway</td><td>Métadonnées 50 octets (timestamp, score IA, batterie, RSSI)</td><td>Chaque événement</td></tr>
+    <tr><td>LoRa EU868 downlink</td><td>Gateway → Nœud</td><td>Commande upload image (~10 octets)</td><td>À la demande JCH</td></tr>
+    <tr><td>LTE-M (SIM7080G)</td><td>Nœud → Cloud PKA</td><td>Image JPEG 3 MP (~1 Mo) en ~30 s</td><td>À la demande uniquement</td></tr>
+  </table>
+
+  <h3>Architecture terrain EVT</h3>
+  <table>
+    <tr><th>Composant</th><th>Rôle</th><th>Coût</th></tr>
+    <tr><td>ESP32-S3 + SX1262 breakout</td><td>Gateway LoRa P2P</td><td>~25 €</td></tr>
+    <tr><td>GL-iNet Mango GL-MT300N-V2</td><td>Routeur WiFi → 5G</td><td>Déjà disponible</td></tr>
+    <tr><td>Power bank 20 000 mAh</td><td>Alimentation Mango (~50h @ 400 mA)</td><td>Déjà disponible</td></tr>
+    <tr><td>Quectel SIM7080G (sur nœud)</td><td>LTE-M upload image on-demand</td><td>~15–20 € / nœud</td></tr>
+    <tr><td>SIM 1NCE</td><td>10 ans / 500 Mo — ~500 images</td><td>10 € one-shot / nœud</td></tr>
+  </table>
+
+  <h3>Réglementation EU868</h3>
+  <table>
+    <tr><th>Contrainte</th><th>Valeur</th><th>Impact P0</th></tr>
+    <tr><td>Duty cycle canal principal</td><td>1 % (max 36 s/heure)</td><td>OK jusqu'à ~12 événements/heure à SF12 — aucun problème à SF7</td></tr>
+    <tr><td>Puissance max</td><td>25 mW / 14 dBm ERP</td><td>RAK3172 CE certifié — conforme</td></tr>
+    <tr><td>Licence</td><td>Aucune requise (ISM)</td><td>Sans impact</td></tr>
+  </table>
+
+  <h2>Alternatives considérées</h2>
+  <table>
+    <tr><th>Option</th><th>Motif d'écart</th><th>Statut</th></tr>
+    <tr><td><strong>LoRa P2P + LTE-M on-demand</strong></td><td>—</td><td class="retenu">Retenu P0</td></tr>
+    <tr><td>LoRaWAN TTN</td><td>Dépendance réseau tiers</td><td class="ecarté">Écarté</td></tr>
+    <tr><td>NB-IoT / LTE-M seul</td><td>Abonnement mensuel + consommation veille</td><td class="ecarté">Écarté</td></tr>
+    <tr><td>Sigfox</td><td>Réseau en déclin, pérennité</td><td class="rejeté">Rejeté</td></tr>
+    <tr><td>LoRa mesh</td><td>Duty-cycle + collisions + consommation relayage</td><td class="rejeté">Rejeté P0</td></tr>
+  </table>
+
+  <h2>Tests obligatoires avant M-02</h2>
+  <table>
+    <tr><th>Test</th><th>Critère minimal</th></tr>
+    <tr><td>Portée LoRa terrain forêt belge SF7</td><td>RSSI/SNR documenté à 500 m, 1 km, 2 km</td></tr>
+    <tr><td>Commande downlink reçue</td><td>Nœud interprète la commande en &lt; 5 s</td></tr>
+    <tr><td>Wake modem LTE-M sur commande</td><td>SIM7080G opérationnel en &lt; 15 s depuis deep sleep</td></tr>
+    <tr><td>Upload image LTE-M</td><td>Image 3 MP reçue intègre côté serveur en &lt; 60 s</td></tr>
+    <tr><td>Retour sleep modem</td><td>SIM7080G &lt; 20 µA après upload</td></tr>
+  </table>
+</div>
+
+<!-- ══════════════════════ ADR-005 ══════════════════════ -->
+<div class="adr-section">
+  <div class="adr-header">
+    <div class="adr-header-top">
+      <div>
+        <div class="adr-num">ADR-005</div>
+        <div class="adr-title">Énergie et autonomie P0</div>
+      </div>
+      <span class="badge badge-prop">À accepter</span>
+    </div>
+    <div class="adr-meta-grid">
+      <div class="adr-meta-item"><span class="adr-meta-label">Owner PKA</span><span class="adr-meta-value">Bruno + Chouette</span></div>
+      <div class="adr-meta-item"><span class="adr-meta-label">Agent</span><span class="adr-meta-value">wildnexus-hardware-physical</span></div>
+      <div class="adr-meta-item"><span class="adr-meta-label">Jalon</span><span class="adr-meta-value">M-01</span></div>
+      <div class="adr-meta-item"><span class="adr-meta-label">Objectif</span><span class="adr-meta-value">60 jours batterie seule</span></div>
+    </div>
+  </div>
+
+  <h2>Contexte</h2>
+  <p>Le système est <strong>event-driven</strong> : la pleine charge (450–630 mA sans IR, 800–1100 mA avec IR) ne dure que 10–30 s par événement. Le courant moyen sur cycle complet est le paramètre déterminant.</p>
+
+  <table>
+    <tr><th>Fréquence</th><th>Consommation / jour</th><th>Autonomie 4 Ah LiFePO4</th></tr>
+    <tr><td>1 événement / heure</td><td>~29 mAh</td><td class="retenu">~138 jours ✅</td></tr>
+    <tr><td>3 événements / heure</td><td>~87 mAh</td><td>~46 jours ⚠️</td></tr>
+    <tr><td>5 événements / heure</td><td>~145 mAh</td><td class="rejeté">~27 jours ❌</td></tr>
+  </table>
+
+  <h2>Décision</h2>
+
+  <h3>Batterie — 2 × 18650 LiFePO4 (~4 Ah)</h3>
+  <div class="decision-box">LiFePO4 retenu pour sa résistance au gel belge (-20 °C à +60 °C), l'absence de risque thermique en boîtier IP67, sa tension de décharge plate et ses 2 000+ cycles de charge.</div>
+
+  <h3>Gestion périphériques — coupure MOSFET obligatoire</h3>
+  <p>Chaque périphérique (caméra, LoRa, microSD, LEDs IR) est <strong>coupé physiquement via MOSFET P-channel</strong> entre les cycles. La veille logicielle seule laisse 1–5 mA de leakage par composant — incompatible avec l'objectif 60 jours.</p>
+  <p><strong>Objectif deep sleep carte complète : &lt; 100 µA.</strong> Mesuré au Nordic PPK2 — test prioritaire M-02.</p>
+
+  <h3>LEDs IR — mode pulsé uniquement</h3>
+  <p>Flash IR &lt; 5 s par capture. Aucun éclairage continu.</p>
+
+  <h3>Panneau solaire — option P0+ à préparer dès le PCB</h3>
+  <table>
+    <tr><th>Élément</th><th>Valeur</th></tr>
+    <tr><td>Panneau</td><td>6 V / 2 W (~110 × 69 mm)</td></tr>
+    <tr><td>Contrôleur MPPT</td><td>CN3791</td></tr>
+    <tr><td>Apport hivernal (forêt belge)</td><td>~0.8–1.5 Wh/jour</td></tr>
+    <tr><td>Apport estival (forêt belge)</td><td>~4–8 Wh/jour</td></tr>
+  </table>
+  <p>Le footprint CN3791 et le connecteur panneau sont réservés sur le PCB P0 même si non câblés.</p>
+
+  <h2>Tests obligatoires avant acceptation</h2>
+  <table>
+    <tr><th>Test</th><th>Critère minimal</th></tr>
+    <tr><td>Deep sleep carte complète (MOSFET coupés)</td><td>&lt; 100 µA au Nordic PPK2</td></tr>
+    <tr><td>Cycle complet réveil → capture → LoRa TX → sommeil</td><td>Énergie totale &lt; 1.5 mAh par événement</td></tr>
+    <tr><td>LEDs IR mode pulsé</td><td>Durée flash ≤ 5 s, courant pic documenté</td></tr>
+    <tr><td>Charge solaire sur banc</td><td>Montée en charge confirmée CN3791 + LiFePO4</td></tr>
+  </table>
+</div>
+
+<!-- ══════════════════════ ADR-006 ══════════════════════ -->
+<div class="adr-section">
+  <div class="adr-header">
+    <div class="adr-header-top">
+      <div>
+        <div class="adr-num">ADR-006</div>
+        <div class="adr-title">Boîtier IP67 et montage terrain</div>
+      </div>
+      <span class="badge badge-prop">À accepter</span>
+    </div>
+    <div class="adr-meta-grid">
+      <div class="adr-meta-item"><span class="adr-meta-label">Owner PKA</span><span class="adr-meta-value">Chouette</span></div>
+      <div class="adr-meta-item"><span class="adr-meta-label">Agent</span><span class="adr-meta-value">wildnexus-hardware-physical</span></div>
+      <div class="adr-meta-item"><span class="adr-meta-label">Jalon</span><span class="adr-meta-value">M-01</span></div>
+      <div class="adr-meta-item"><span class="adr-meta-label">Terrain</span><span class="adr-meta-value">Bois feuillus — Belgique</span></div>
+    </div>
+  </div>
+
+  <h2>Contexte</h2>
+  <p>Le nœud opère en milieu naturel belge : -10 °C à +45 °C, humidité relative proche de 100 %, pluie, gel/dégel. Interventions terrain rares — visite tous les 2 jours en EVT.</p>
+  <p>Risque principal à long terme : <strong>condensation interne</strong> par cycles thermiques. La stratégie retenue est passive — aucun chauffage actif (incompatible budget énergie ADR-005).</p>
+
+  <h2>Décision</h2>
+
+  <h3>Boîtier — ABS ou PC IP67 du commerce</h3>
+  <table>
+    <tr><th>Critère</th><th>Valeur cible</th></tr>
+    <tr><td>Étanchéité</td><td>IP67 minimum</td></tr>
+    <tr><td>Volume interne</td><td>150–250 cm³</td></tr>
+    <tr><td>Dimensions externes</td><td>≤ 150 × 100 × 60 mm</td></tr>
+    <tr><td>Couleur</td><td>Sombre (anthracite ou vert forêt) — absorption solaire + camouflage</td></tr>
+    <tr><td>Presse-étoupes</td><td>2 minimum — antenne LoRa + câble panneau solaire</td></tr>
+    <tr><td>Face plane externe</td><td>≥ 110 × 75 mm pour panneau solaire 2 W</td></tr>
+    <tr><td>Fournisseur</td><td>Hammond 1555 / 1591 ou Spelsberg TK — coût &lt; 20 €</td></tr>
+  </table>
+
+  <h3>Stratégie anti-condensation — chaleur passive ESP32-S3</h3>
+  <div class="decision-box">
+    Lors de chaque cycle actif (~1.3 W pendant 10–30 s), l'ESP32-S3 et la caméra chauffent l'air interne. Le volume réduit et l'isolation thermique minimale des parois maintiennent la température intérieure au-dessus du point de rosée entre les cycles. <strong>Zéro composant supplémentaire, zéro coût énergie.</strong>
+  </div>
+
+  <table>
+    <tr><th>Élément</th><th>Rôle</th><th>Maintenance</th></tr>
+    <tr><td>Chaleur passive ESP32-S3</td><td>Maintien température &gt; point de rosée</td><td>Aucune</td></tr>
+    <tr><td>Silica gel 5 g</td><td>Absorption humidité résiduelle</td><td>À chaque visite terrain (~J+2 en EVT)</td></tr>
+    <tr><td>Joint torique silicone</td><td>Étanchéité couvercle</td><td>Inspection annuelle</td></tr>
+    <tr><td>Conformal coating PCB (acrylique)</td><td>Protection condensation résiduelle</td><td>Application avant assemblage</td></tr>
+  </table>
+
+  <h3>Montage terrain</h3>
+  <p>Sangle réglable UV-résistante sur tronc Ø 10–40 cm. Hauteur : 40–80 cm (faune au sol) ou 150–200 cm (oiseaux). Face panneau exposée au sud, caméra vers la zone d'observation.</p>
+
+  <h2>Alternatives considérées</h2>
+  <table>
+    <tr><th>Option</th><th>Motif d'écart</th><th>Statut</th></tr>
+    <tr><td><strong>Boîtier IP67 ABS/PC du commerce</strong></td><td>—</td><td class="retenu">Retenu P0</td></tr>
+    <tr><td>Impression 3D PETG + joint</td><td>IP67 long terme non garanti + vieillissement UV</td><td class="ecarté">Rejeté P0</td></tr>
+    <tr><td>Boîtier moulé sur-mesure</td><td>Délai + coût outillage hors scope P0</td><td class="ecarté">P1/P2</td></tr>
+    <tr><td>Chauffage actif PTC</td><td>+0.5–1 W permanent → incompatible autonomie 60 jours</td><td class="rejeté">Rejeté</td></tr>
+  </table>
+
+  <h2>Tests obligatoires avant acceptation</h2>
+  <table>
+    <tr><th>Test</th><th>Critère minimal</th></tr>
+    <tr><td>Étanchéité IP67</td><td>Immersion 1 m / 30 min sans infiltration</td></tr>
+    <tr><td>Condensation simulée</td><td>Cycle -5 °C → +35 °C × 10 répétitions, pas de condensation sur PCB</td></tr>
+    <tr><td>Chaleur passive ESP32-S3</td><td>Température interne &gt; point de rosée après 10 cycles actifs à -5 °C ambiant</td></tr>
+    <tr><td>Montage terrain</td><td>Sangle stable sur tronc Ø 10–40 cm sans glissement 72 h</td></tr>
+    <tr><td>Température interne max soleil d'été</td><td>&lt; 60 °C avec composants actifs + absorption solaire boîtier sombre</td></tr>
+  </table>
+</div>
+
+</body>
+</html>

@@ -201,6 +201,9 @@ Minimum dependency chain:
 - `T01.2 FTO` -> `M-01`
 - `T01.3 RF terrain` -> `M-01`
 - `T01.4 Benchmark camera` -> `M-01`
+- `T01.6 Budget P0 ordre de grandeur` -> `M-01`
+- `GOV-01 Mapping agents WildNexus vers specialistes PKA` -> `M-01`
+- `SUPPLY-01 Registre composants critiques et fournisseurs alternatifs` -> `T02.1`
 - `M-01` -> `WP02`, `WP03`, `WP04`
 - `M-02` -> `WP05`
 - `M-03` -> correction loop or P1 decision

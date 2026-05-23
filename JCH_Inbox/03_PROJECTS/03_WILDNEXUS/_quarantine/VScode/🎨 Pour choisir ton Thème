@@ -1,0 +1,18 @@
+ 🎨 Pour choisir ton Thème
+   * Ouvrir le menu des thèmes : Cmd + K puis Cmd + T (ou Cmd + Shift + P et tape Color Theme)
+   * Aperçu : Utilise les Flèches ⬆️ ⬇️ de ton clavier pour voir le résultat en direct.
+
+  🧭 La Navigation Rapide (Sans souris)
+   * Chercher un fichier (Téléporteur) : Cmd + P
+   * Recherche Globale (Dans tout le projet) : Cmd + Shift + F
+   * Changer d'onglet ouvert (Alt-Tab) : Ctrl + Tab
+   * Cacher/Afficher la barre latérale (Explorer) : Cmd + B
+
+  ✏️ L'Édition Multiple (Multi-curseurs)
+   * Sélectionner l'occurrence suivante (Duplicateur) : Cmd + D
+   * Ajouter des curseurs en haut/bas : Option (Alt) + Cmd + Flèche Haut/Bas
+   * Annuler le dernier curseur ajouté : Cmd + U
+
+  💻 Le Terminal
+   * Ouvrir/Fermer le terminal : Ctrl + \` (Control + l'accent grave/backtick)
+   * Diviser le terminal en deux (Split) : Cmd + \

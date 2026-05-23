@@ -1,0 +1,15 @@
+00:00:00
+so I wanted to see if it was possible to run a large language model on a tiny ESP 32 microcontroller it turns out it is and the results are pretty interesting but why would anyone want to run a large language model on the ESP 32 well for me it's all about pushing limits of resource constrainted systems to get this working on an esp32 I needed to start off with the smallest model I could find insert a tiny llam repo and Huggy face it offers a model that's so small it only has 260,000 parameters
+
+00:00:32
+just to give you some context GPT 4 has over 1 trillion parameters but even at 260,000 parameters this model was still around 1 mgab in size which is a lot for microcontrollers but I found an esp32 S3 with 2 MB of psram and 4 MB of flash storage that should be able to handle this to run a model I use a Pure C infr script from the Llama 2 repo built by the legendary Andre K who by the way also co-founded open AI adapting his script for the esp32 was surprisingly straightforward I swapped out the map
+
+00:01:06
+calls from Malik and loaded the model using the ESP spiffs file system at this point the model was running but it was slow and I mean really slow so I wanted to see how much I could speed it up first I went into the ESP mini config and cranked up the CPU and psram to their Max speeds 240 MHz and 80 MHz respectively then I used the esp32 second core to off flad some the heavy lifting like the matrix multiplication and attention calculations I also discovered that the esp32 has some Nifty simd instructions through his DSP
+
+00:01:39
+Library including an optimized do product function after these optimizations I managed to get an output of 19 tokens per second of course this llm is super limited compared to what you get from something like chat GPT it's small and is train only on Tiny stories so don't expect it to write emails or generate code anytime soon but for specific use cases like generating fortune cookies or holiday cards these micro llms could be pretty fun and practical so guys there you have it a local llm running on an ESP 32 I really
+
+00:02:11
+enjoyed this project as it was a way to kind of bring AI into the world of embedded systems so guys as always thanks for watching and stay tuned for another galvanizing video thanks
+
