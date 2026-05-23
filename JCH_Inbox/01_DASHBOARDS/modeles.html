@@ -264,11 +264,92 @@
     padding: 20px;
   }
 
-  .route h2 {
+  .route h2,
+  .balances h2 {
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
     color: var(--muted);
+    margin-bottom: 13px;
+  }
+
+  .balances {
+    margin-top: 34px;
+    background: white;
+    border: 1px solid var(--line);
+    padding: 20px;
+  }
+
+  .balance-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+    gap: 12px;
+  }
+
+  .balance-card {
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--muted);
+    padding: 14px;
+    min-height: 138px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .balance-card.ok { border-left-color: var(--green); }
+  .balance-card.warning,
+  .balance-card.manual { border-left-color: var(--brand); }
+  .balance-card.error,
+  .balance-card.missing { border-left-color: var(--red); }
+  .balance-card.local { border-left-color: var(--blue); }
+
+  .balance-label {
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .balance-kind,
+  .balance-detail,
+  .balance-time {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .balance-value {
+    font-size: 20px;
+    font-weight: 750;
+  }
+
+  .balance-actions {
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .balance-actions a,
+  .refresh-balances {
+    border: 1px solid var(--line);
+    background: #f1ece5;
+    color: var(--ink);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 12px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .balance-actions a:hover,
+  .refresh-balances:hover {
+    background: #e5dbcf;
+  }
+
+  .balance-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
     margin-bottom: 13px;
   }
 
@@ -479,6 +560,15 @@
     </article>
   </section>
 
+  <section class="balances" id="soldes-modeles">
+    <div class="balance-head">
+      <h2>Soldes modèles</h2>
+      <button class="refresh-balances" id="refresh-balances" type="button">Rafraîchir</button>
+    </div>
+    <div class="balance-time" id="balances-time">Chargement...</div>
+    <div class="balance-grid" id="balances-grid" aria-live="polite"></div>
+  </section>
+
   <section class="route">
     <h2>Routing automatique actuel</h2>
     <table>
@@ -554,6 +644,89 @@
       }
     });
   });
+
+  const statusLabels = {
+    ok: 'OK',
+    warning: 'Attention',
+    manual: 'Console',
+    missing: 'Absent',
+    error: 'Erreur',
+    local: 'Local'
+  };
+
+  function providerCard(provider) {
+    const card = document.createElement('article');
+    card.className = `balance-card ${provider.status || 'manual'}`;
+
+    const label = document.createElement('div');
+    label.className = 'balance-label';
+    label.textContent = provider.label || provider.id;
+
+    const kind = document.createElement('div');
+    kind.className = 'balance-kind';
+    kind.textContent = `${provider.kind || ''} · ${statusLabels[provider.status] || provider.status || 'etat inconnu'}`;
+
+    const value = document.createElement('div');
+    value.className = 'balance-value';
+    value.textContent = provider.value || '--';
+
+    const detail = document.createElement('div');
+    detail.className = 'balance-detail';
+    detail.textContent = provider.detail || '';
+
+    const actions = document.createElement('div');
+    actions.className = 'balance-actions';
+    if (provider.console_url) {
+      const consoleLink = document.createElement('a');
+      consoleLink.href = provider.console_url;
+      consoleLink.target = '_blank';
+      consoleLink.rel = 'noreferrer';
+      consoleLink.textContent = 'Console';
+      actions.appendChild(consoleLink);
+    }
+    if (provider.topup_url) {
+      const topupLink = document.createElement('a');
+      topupLink.href = provider.topup_url;
+      topupLink.target = '_blank';
+      topupLink.rel = 'noreferrer';
+      topupLink.textContent = 'Recharge';
+      actions.appendChild(topupLink);
+    }
+
+    card.append(label, kind, value, detail, actions);
+    return card;
+  }
+
+  async function loadBalances() {
+    const grid = document.getElementById('balances-grid');
+    const time = document.getElementById('balances-time');
+    grid.innerHTML = '';
+    time.textContent = 'Chargement...';
+    try {
+      const apiBase = window.location.protocol === 'file:' ? 'http://127.0.0.1:8787' : '';
+      const response = await fetch(`${apiBase}/api/provider-balances`);
+      const payload = await response.json();
+      if (!response.ok || !payload.ok) {
+        throw new Error(payload.error || 'Lecture impossible');
+      }
+      payload.providers.forEach((provider) => grid.appendChild(providerCard(provider)));
+      const generated = payload.generatedAt ? new Date(payload.generatedAt) : new Date();
+      time.textContent = `Derniere lecture : ${generated.toLocaleString('fr-BE')}`;
+    } catch (error) {
+      const card = document.createElement('article');
+      card.className = 'balance-card error';
+      card.innerHTML = `
+        <div class="balance-label">Serveur local</div>
+        <div class="balance-value">Indisponible</div>
+        <div class="balance-detail">Ouvre cette page via http://127.0.0.1:8787/modeles.html pour lire les soldes. ${error.message}</div>
+      `;
+      grid.appendChild(card);
+      time.textContent = 'Lecture non disponible';
+    }
+  }
+
+  document.getElementById('refresh-balances').addEventListener('click', loadBalances);
+  loadBalances();
 </script>
 </body>
 </html>

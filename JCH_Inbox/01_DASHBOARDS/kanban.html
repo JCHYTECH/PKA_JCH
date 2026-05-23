@@ -149,9 +149,25 @@
       renderCards(payload);
     }
 
+    function applyUrlParams() {
+      const params = new URLSearchParams(window.location.search);
+      const status = params.get("status");
+      const awaiting = params.get("awaiting_jch");
+      if (status) {
+        const select = document.getElementById("filter-status");
+        for (const option of select.options) {
+          if (option.value === status) { option.selected = true; break; }
+        }
+      }
+      if (awaiting === "1") {
+        document.getElementById("filter-awaiting-jch").checked = true;
+      }
+    }
+
     async function boot() {
       try {
         await loadFilters();
+        applyUrlParams();
         await loadCards();
       } catch (error) {
         renderCards({ ok: false, error: String(error) });

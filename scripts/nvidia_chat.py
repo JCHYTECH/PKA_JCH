@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Chat interactif terminal — Nvidia via OpenRouter, initialisé avec le contexte PKA."""
+"""Chat interactif terminal — NVIDIA API, initialisé avec le contexte PKA."""
 
 import sys
 from pathlib import Path
@@ -19,7 +19,11 @@ def _load_system_prompt() -> str:
 
 
 MODEL = get_model("nvidia")
-client = get_client("nvidia")
+try:
+    client = get_client("nvidia")
+except Exception as exc:
+    print(f"Erreur configuration NVIDIA : {exc}", file=sys.stderr)
+    sys.exit(1)
 SYSTEM = _load_system_prompt()
 messages = [{"role": "system", "content": SYSTEM}]
 

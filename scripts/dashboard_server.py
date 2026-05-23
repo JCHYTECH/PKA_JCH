@@ -18,6 +18,7 @@ import sqlite3
 import subprocess
 import sys
 import tempfile
+import time
 import uuid
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -58,6 +59,8 @@ REALTIME_VOICES = {
     "cedar",
 }
 REALTIME_DEFAULT_VOICE = os.environ.get("PKA_REALTIME_VOICE", "marin")
+KANBAN_CACHE_TTL_SECONDS = 60
+_KANBAN_CARDS_CACHE: dict[str, object] = {"timestamp": 0.0, "cards": None}
 
 MODELS = {
     "claude": {
@@ -232,12 +235,24 @@ def latest_daily_note() -> str | None:
     return max(notes, key=lambda item: item.stat().st_mtime).name
 
 
+def clear_kanban_cache() -> None:
+    _KANBAN_CARDS_CACHE["timestamp"] = 0.0
+    _KANBAN_CARDS_CACHE["cards"] = None
+
+
 def _all_kanban_cards() -> list[dict]:
+    cached_cards = _KANBAN_CARDS_CACHE.get("cards")
+    cached_at = float(_KANBAN_CARDS_CACHE.get("timestamp") or 0.0)
+    if isinstance(cached_cards, list) and time.monotonic() - cached_at < KANBAN_CACHE_TTL_SECONDS:
+        return list(cached_cards)
+
     ensure_plane_api_token()
     config = pka_plane_adapter.load_config()
     cards = []
     for project_key in sorted(config["projects"]):
         cards.extend(pka_plane_adapter.fetch_project_issues(project_key))
+    _KANBAN_CARDS_CACHE["timestamp"] = time.monotonic()
+    _KANBAN_CARDS_CACHE["cards"] = list(cards)
     return cards
 
 
@@ -1296,6 +1311,8 @@ small {{ color: var(--texte-mute); text-transform: uppercase; letter-spacing: 0.
         self.send_header("Content-Type", content_type)
         self.send_header("Content-Length", str(len(data)))
         self.send_header("Cache-Control", "no-store")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type, X-PKA-Dashboard")
         self.end_headers()
         self.wfile.write(data)
 

@@ -294,18 +294,18 @@
       
       <!-- LE CONTAINER TACHES INTERACTIF -->
       <div class="tasks-container" id="hub-tasks-container">
-        <a href="/todo-jch.html" class="tasks-main">
+        <a href="/kanban.html" class="tasks-main">
           <div class="tasks-icon">📋</div>
           <div class="tasks-text">Ouvrir tout</div>
         </a>
         <div class="tasks-stats">
-          <a href="/todo-jch.html?filter=active" class="stat-pill normal">
+          <a href="/kanban.html?status=En%20cours" class="stat-pill normal">
             <span id="task-total">X</span> Actives
           </a>
-          <a href="/todo-jch.html?filter=waiting" class="stat-pill warning">
+          <a href="/kanban.html?awaiting_jch=1" class="stat-pill warning">
             ⏳ <span id="task-waiting">X</span> Attente JCH
           </a>
-          <a href="/kanban.html?filter=blocked" class="stat-pill alert">
+          <a href="/kanban.html?status=En%20attente" class="stat-pill alert">
             🔴 <span id="task-urgent">X</span> Urgences
           </a>
         </div>
@@ -315,6 +315,8 @@
         <a href="organigramme.html" class="quick-action-btn">Voir l'Organigramme</a>
         <a href="dobby-live.html" class="quick-action-btn">Dobby Live 🎙️</a>
         <a href="modeles.html" class="quick-action-btn">Modèles</a>
+        <a href="modeles.html#soldes-modeles" class="quick-action-btn">Soldes modèles</a>
+        <a href="../03_PROJECTS/03_WILDNEXUS/01_FOUNDATION/WILDNEXUS_GLOSSAIRE.md" class="quick-action-btn">Glossaire WildNexus</a>
         <button class="quick-action-btn" id="save-session">Sauver Session Terminal</button>
       </div>
     </div>
@@ -412,7 +414,7 @@
     </a>
     <a class="card active" href="../03_PROJECTS/03_WILDNEXUS/INDEX.md">
       <div class="card-title">WILDNEXUS</div>
-      <div class="card-desc">Observation ecologique, bioacoustique.</div>
+      <div class="card-desc">Noeud camera autonome P0.</div>
       <div class="card-tag">● Actif</div>
     </a>
     <a class="card" href="../03_PROJECTS/04_NUANCES/INDEX.md">
@@ -476,7 +478,10 @@
       // --- LOGIQUE VISUELLE DU SUPER-BOUTON TACHES (Simulation basée sur le Kanban) ---
       // Dans le futur, il faudra un endpoint spécifique /api/tasks pour ces chiffres précis.
       const taskWaiting = summary.awaiting_jch || 0;
-      document.getElementById("task-total").textContent = String( (summary.totals || {})["En cours"] || 0 );
+      const activeStatuses = Object.entries(summary.totals || {})
+        .filter(([status]) => !["Termine", "Archive"].includes(status))
+        .reduce((total, [, count]) => total + Number(count || 0), 0);
+      document.getElementById("task-total").textContent = String(activeStatuses);
       document.getElementById("task-waiting").textContent = String(taskWaiting);
       document.getElementById("task-urgent").textContent = String(blocked); // On utilise blocked comme urgence ici temporairement
       
