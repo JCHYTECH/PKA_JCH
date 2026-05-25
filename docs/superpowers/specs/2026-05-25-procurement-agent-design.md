@@ -16,14 +16,21 @@ Créer un agent procurement semi-autonome capable de lire une BOM (Bill of Mater
 ## 2. Architecture générale
 
 ```
-JCH → Dobby → /procurement [projet] [bom_file]
-                    ↓
-                  Forge (subagent Claude — orchestrateur)
-                    ↓
-        ┌─────────────┬─────────────┬─────────────┐
-   bom_parser    api_client    bom_writer   report_writer
-   (.xlsx/.csv)  (Mouser/DK)  (BOM enrichi) (TEAM_Inbox)
+JCH → Dobby (Mac) → /procurement [projet] [bom_file]
+                          ↓ SSH
+                    RPi tkajch.local (192.168.1.48)
+                    └── Forge (subagent Claude — orchestrateur)
+                              ↓
+              ┌─────────────┬─────────────┬─────────────┐
+         bom_parser    api_client    bom_writer   report_writer
+         (.xlsx/.csv)  (Mouser/DK)  (BOM enrichi) (TEAM_Inbox)
 ```
+
+**Environnement d'exécution : Raspberry Pi** (`tkajch.local` / `192.168.1.48`)
+- Les scripts Python tournent sur le RPi
+- L'IP publique de la box est enregistrée chez Mouser (whitelisting API)
+- Avantage sécurité : la clé API Mouser ne réside que sur le RPi, jamais sur le Mac
+- Fichiers BOM transmis par SSH/SCP ou depuis un dossier partagé réseau
 
 ### Composants
 
@@ -106,12 +113,13 @@ JCH → Dobby → /procurement [projet] [bom_file]
 | Fournisseur | API | Quota gratuit |
 |---|---|---|
 | Mouser | Search API v2 | 1 000 req/jour |
+| Mouser | Cart API | Préparation panier post-validation JCH |
 | DigiKey | Product Search API v4 | Sandbox disponible |
 
 ### 5.2 Configuration (`.env` local, jamais commité)
 
 ```env
-MOUSER_API_KEY=xxx
+MOUSER_API_KEY=xxx          # Search + Cart
 DIGIKEY_CLIENT_ID=xxx
 DIGIKEY_CLIENT_SECRET=xxx
 ```
@@ -230,6 +238,7 @@ Si aucun argument : Dobby demande le projet et le fichier BOM à JCH.
 ## 11. Hors périmètre (v1)
 
 - Commande automatique (jamais, par design)
+- Mouser Order API + Order history (v2 — historique pour détecter les doublons)
 - Intégration Farnell / RS / TME (v2)
 - Comparaison multi-fournisseurs automatique (v2 — Forge compare manuellement en v1)
 - Interface web ou dashboard (hors PKA CLI)
