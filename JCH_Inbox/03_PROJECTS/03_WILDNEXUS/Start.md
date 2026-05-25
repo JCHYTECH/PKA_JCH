@@ -36,8 +36,8 @@ Au lancement, Dobby travaille depuis ces références :
 - `WILDNEXUS_P0_BUDGET_RANGE.md`
 - `wildnexus-usage-policy-and-license-principles.md`
 - `wildnexus-usage-matrix.md`
-- `WildNexus_MASTER_ARCHITECTURE.md`
-- `Agents/*/SKILL.md`
+- `MASTER_ARCHITECTURE_WN.md`
+- `07_AGENTS/README.md`
 
 Ordre d'autorité en cas de contradiction :
 - décision explicite JCH ;

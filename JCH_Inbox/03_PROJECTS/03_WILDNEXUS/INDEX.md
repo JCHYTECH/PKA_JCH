@@ -6,12 +6,12 @@ Sous-titre : **infrastructure distribuee d'observation ecologique**
 ## Lecture rapide
 
 - [Start.md](Start.md) : protocole de demarrage operationnel.
-- [01_FOUNDATION/WildNexus_MASTER_ARCHITECTURE.md](01_FOUNDATION/WildNexus_MASTER_ARCHITECTURE.md) : vision produit, architecture et cadrage.
+- [01_FOUNDATION/MASTER_ARCHITECTURE_WN.md](01_FOUNDATION/MASTER_ARCHITECTURE_WN.md) : vision produit, architecture et cadrage.
 - [01_FOUNDATION/wildnexus-founding-document-v0.2.md](01_FOUNDATION/wildnexus-founding-document-v0.2.md) : document fondateur consolide.
-- [01_FOUNDATION/WILDNEXUS_GLOSSAIRE.md](01_FOUNDATION/WILDNEXUS_GLOSSAIRE.md) : glossaire humain pour nouveaux entrants.
+- [01_FOUNDATION/GLOSSAIRE_WN.md](01_FOUNDATION/GLOSSAIRE_WN.md) : glossaire humain pour nouveaux entrants.
 - [01_FOUNDATION/WILDNEXUS_P0_SCOPE_LOCK.md](01_FOUNDATION/WILDNEXUS_P0_SCOPE_LOCK.md) : verrou de perimetre P0.
 - [05_VISUALS_DASHBOARDS/WILDNEXUS_FLOWMAP.md](05_VISUALS_DASHBOARDS/WILDNEXUS_FLOWMAP.md) : logigramme multi-etages.
-- [04_PRINT_EXPORTS/WILDNEXUS_ADR_001_003_DOSSIER_IMPRESSION.pdf](04_PRINT_EXPORTS/WILDNEXUS_ADR_001_003_DOSSIER_IMPRESSION.pdf) : dossier imprimable ADR-001 a ADR-003.
+- [archive/2026-05-23_pre_p0_lock](archive/2026-05-23_pre_p0_lock/) : livrables et explorations pre-verrouillage P0.
 
 ## Structure du dossier
 
@@ -21,11 +21,11 @@ Sous-titre : **infrastructure distribuee d'observation ecologique**
 | [01_FOUNDATION](01_FOUNDATION/) | documents fondateurs, scope, usage policy, diagnostic |
 | [02_DECISIONS](02_DECISIONS/) | index ADR et decisions architecturales |
 | [03_P0_ENGINEERING](03_P0_ENGINEERING/) | budget P0, registre supply, templates WP |
-| [04_PRINT_EXPORTS](04_PRINT_EXPORTS/) | PDF, HTML et dossiers consolidés imprimables |
+| [04_PRINT_EXPORTS](04_PRINT_EXPORTS/) | exports actifs a regenerer apres verrou P0 |
 | [05_VISUALS_DASHBOARDS](05_VISUALS_DASHBOARDS/) | flowmaps, dashboards, vues HTML |
 | [06_COMPONENTS](06_COMPONENTS/) | composants adjacents ou futurs : bioacoustique, Faune Autour |
 | [07_AGENTS](07_AGENTS/) | agents WildNexus locaux et leurs `SKILL.md` |
-| [08_TECH_NOTES](08_TECH_NOTES/) | notes techniques, graphify-notes, API, logique exploratoire |
+| [08_TECH_NOTES](08_TECH_NOTES/) | notes techniques actives, graphify-notes, API |
 | [data](data/) | donnees projet |
 | [exports](exports/) | exports historiques ou externes |
 | [archive](archive/) | contenus inactifs |
@@ -38,17 +38,15 @@ Sous-titre : **infrastructure distribuee d'observation ecologique**
 - [00_GOVERNANCE/wildnexus-plane-operating-model.md](00_GOVERNANCE/wildnexus-plane-operating-model.md)
 - [00_GOVERNANCE/wildnexus-plane-seed-backlog.md](00_GOVERNANCE/wildnexus-plane-seed-backlog.md)
 - [00_GOVERNANCE/WILDNEXUS_GLOSSARY_WEEKLY_CHECK.md](00_GOVERNANCE/WILDNEXUS_GLOSSARY_WEEKLY_CHECK.md)
-- [00_GOVERNANCE/REORG_2026-05-18.md](00_GOVERNANCE/REORG_2026-05-18.md)
 
 ## Foundation
 
-- [01_FOUNDATION/WildNexus_MASTER_ARCHITECTURE.md](01_FOUNDATION/WildNexus_MASTER_ARCHITECTURE.md)
+- [01_FOUNDATION/MASTER_ARCHITECTURE_WN.md](01_FOUNDATION/MASTER_ARCHITECTURE_WN.md)
 - [01_FOUNDATION/wildnexus-founding-document-v0.2.md](01_FOUNDATION/wildnexus-founding-document-v0.2.md)
-- [01_FOUNDATION/WILDNEXUS_GLOSSAIRE.md](01_FOUNDATION/WILDNEXUS_GLOSSAIRE.md)
+- [01_FOUNDATION/GLOSSAIRE_WN.md](01_FOUNDATION/GLOSSAIRE_WN.md)
 - [01_FOUNDATION/WILDNEXUS_P0_SCOPE_LOCK.md](01_FOUNDATION/WILDNEXUS_P0_SCOPE_LOCK.md)
 - [01_FOUNDATION/wildnexus-usage-policy-and-license-principles.md](01_FOUNDATION/wildnexus-usage-policy-and-license-principles.md)
 - [01_FOUNDATION/wildnexus-usage-matrix.md](01_FOUNDATION/wildnexus-usage-matrix.md)
-- [01_FOUNDATION/2026-05-18_dobby_wildnexus-diagnostic.md](01_FOUNDATION/2026-05-18_dobby_wildnexus-diagnostic.md)
 
 ## Decisions et P0
 
@@ -56,16 +54,24 @@ Sous-titre : **infrastructure distribuee d'observation ecologique**
 - [02_DECISIONS/ADR/ADR-001-choix-mcu-p0.md](02_DECISIONS/ADR/ADR-001-choix-mcu-p0.md)
 - [02_DECISIONS/ADR/ADR-002-choix-camera-ir-p0.md](02_DECISIONS/ADR/ADR-002-choix-camera-ir-p0.md)
 - [02_DECISIONS/ADR/ADR-003-choix-radio-lpwan-p0.md](02_DECISIONS/ADR/ADR-003-choix-radio-lpwan-p0.md)
+- [02_DECISIONS/ADR/ADR-004-stockage-local-p0.md](02_DECISIONS/ADR/ADR-004-stockage-local-p0.md)
+- [02_DECISIONS/ADR/ADR-005-energie-autonomie-p0.md](02_DECISIONS/ADR/ADR-005-energie-autonomie-p0.md)
+- [02_DECISIONS/ADR/ADR-006-boitier-ip67-montage-terrain.md](02_DECISIONS/ADR/ADR-006-boitier-ip67-montage-terrain.md)
+- [02_DECISIONS/ADR/ADR-007-detection-evenementielle-p0.md](02_DECISIONS/ADR/ADR-007-detection-evenementielle-p0.md)
+- [02_DECISIONS/ADR/ADR-008-interface-capteurs-extensible-p0.md](02_DECISIONS/ADR/ADR-008-interface-capteurs-extensible-p0.md)
+- [02_DECISIONS/ADR/ADR-009-architecture-satellite-base-cloud.md](02_DECISIONS/ADR/ADR-009-architecture-satellite-base-cloud.md)
+- [03_P0_ENGINEERING/2026-05-23_WP01_architecture_freeze_summary.md](03_P0_ENGINEERING/2026-05-23_WP01_architecture_freeze_summary.md)
 - [03_P0_ENGINEERING/WILDNEXUS_P0_BUDGET_RANGE.md](03_P0_ENGINEERING/WILDNEXUS_P0_BUDGET_RANGE.md)
 - [03_P0_ENGINEERING/WILDNEXUS_SUPPLY_REGISTER.md](03_P0_ENGINEERING/WILDNEXUS_SUPPLY_REGISTER.md)
+- [03_P0_ENGINEERING/WildNexus_P0_Autonomy_Model.xlsx](03_P0_ENGINEERING/WildNexus_P0_Autonomy_Model.xlsx)
+- [03_P0_ENGINEERING/2026-05-23_WP02_hardware_matrix_encombrement_v0.1.md](03_P0_ENGINEERING/2026-05-23_WP02_hardware_matrix_encombrement_v0.1.md)
 
 ## Supports visuels et imprimables
 
-- [04_PRINT_EXPORTS/WILDNEXUS_ADR_001_003_DOSSIER_IMPRESSION.pdf](04_PRINT_EXPORTS/WILDNEXUS_ADR_001_003_DOSSIER_IMPRESSION.pdf)
-- [04_PRINT_EXPORTS/WILDNEXUS_ADR_001_003_DOSSIER_IMPRESSION.md](04_PRINT_EXPORTS/WILDNEXUS_ADR_001_003_DOSSIER_IMPRESSION.md)
-- [04_PRINT_EXPORTS/WILDNEXUS_CYCLE_01_M01_READINESS.pdf](04_PRINT_EXPORTS/WILDNEXUS_CYCLE_01_M01_READINESS.pdf)
+- [../../99_SYSTEM/diagramming-standard.md](../../99_SYSTEM/diagramming-standard.md) : standard commun pour croquis et logigrammes.
 - [05_VISUALS_DASHBOARDS/wildnexus-flowmap.html](05_VISUALS_DASHBOARDS/wildnexus-flowmap.html)
 - [05_VISUALS_DASHBOARDS/wildnexus-dashboard.html](05_VISUALS_DASHBOARDS/wildnexus-dashboard.html)
+- Les exports imprimables pre-verrouillage P0 sont archives dans [archive/2026-05-23_pre_p0_lock/04_PRINT_EXPORTS](archive/2026-05-23_pre_p0_lock/04_PRINT_EXPORTS/).
 
 ## Composants adjacents
 

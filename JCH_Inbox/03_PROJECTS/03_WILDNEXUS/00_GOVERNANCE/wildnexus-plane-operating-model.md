@@ -223,7 +223,7 @@ Each milestone-critical item should contain:
 Examples of evidence paths:
 
 - `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/wildnexus-founding-document-v0.1.md`
-- `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WildNexus_MASTER_ARCHITECTURE.md`
+- `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/01_FOUNDATION/MASTER_ARCHITECTURE_WN.md`
 - future lab reports, RF reports, or EVT reports
 
 ## 10. Views to Create in Plane

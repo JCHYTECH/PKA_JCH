@@ -1,7 +1,7 @@
 # WildNexus — Verrou de périmètre P0
 
-**Version :** v0.1  
-**Date :** 2026-05-18  
+**Version :** v0.2  
+**Date :** 2026-05-23  
 **Statut :** Pré-go opérationnel  
 **Owner :** Dobby  
 
@@ -17,6 +17,7 @@ P0 couvre uniquement :
 
 - un nœud caméra autonome ;
 - capture image exploitable de jour et de nuit ;
+- capture audio locale courte via micro mono ;
 - détection événementielle ;
 - filtre embarqué animal / non-animal ;
 - transmission LPWAN événementielle de métadonnées ou alerte ;
@@ -32,7 +33,7 @@ Ces éléments sont hors P0, sauf contrainte d'interface minimale :
 
 | Sujet | Statut | Raison |
 |---|---|---|
-| Bioacoustique | P1 deferred | Travail sérieux existant, mais non nécessaire pour prouver le nœud caméra P0 |
+| Reconnaissance bioacoustique / BirdNET | P1 deferred | Le micro mono est P0 pour capture locale, mais l'analyse d'espèces reste hors P0 |
 | Faune Autour PWA | Projet adjacent ou P2 | Application utile, mais non requise pour prototype caméra P0 |
 | Reconnaissance espèce fine | P1 | P0 se limite au filtre animal / non-animal |
 | Reconnaissance individuelle | P1/P2 | Valeur forte mais dépend d'un corpus et de modèles plus avancés |
@@ -53,11 +54,11 @@ P0 ne développe pas les modules P1/P2, mais doit éviter de les bloquer :
 
 ## 5. Relation avec les composants existants
 
-### 03.01 BIOACOUSTIC
+### 06_COMPONENTS/BIOACOUSTIC
 
-Le répertoire bioacoustique est conservé comme matière P1. Il ne doit pas créer de tâche bloquante pour M-01, M-02 ou M-03, sauf si une décision d'interface P0 doit être prise pour ne pas fermer l'extension future.
+Le répertoire bioacoustique est conservé comme matière P1. Le P0 intègre seulement un micro mono et l'enregistrement de clips courts locaux. Il ne doit pas créer de tâche bloquante pour M-01, M-02 ou M-03 sur la reconnaissance d'espèces, BirdNET, DSP avancé ou analyse scientifique.
 
-### 03.02 FAUNE_AUTOUR_APP
+### 06_COMPONENTS/FAUNE_AUTOUR_APP
 
 Faune Autour est un projet adjacent à forte synergie. Il peut devenir une interface ou une extension WildNexus en P2, mais n'est pas un livrable P0. Son évolution ne doit pas bloquer le prototype caméra.
 

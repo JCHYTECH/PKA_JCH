@@ -42,7 +42,7 @@ Cette section explique les codes utilisés dans les fichiers, décisions, tâche
 | `ADR` | Architecture Decision Record | `ADR-001-choix-mcu-p0.md` | Décision technique structurante : contexte, options, choix, conséquences, critères de révision. |
 | `WILDNEXUS_` | Document projet transverse | `WILDNEXUS_P0_SCOPE_LOCK.md` | Document de référence interne WildNexus. |
 | `WP` | Work Package | `WP02 Hardware & Enclos` | Lot de travail organisé par domaine et jalon. |
-| `REORG` | Trace de reclassement | `REORG_2026-05-18.md` | Note expliquant un changement de structure documentaire. |
+| `REORG` | Trace de reclassement | `archive/2026-05-23_pre_p0_lock/00_GOVERNANCE/REORG_2026-05-18.md` | Note historique expliquant un changement de structure documentaire. |
 
 ### Préfixes de jalons et tâches
 
@@ -99,6 +99,17 @@ Cette section explique les codes utilisés dans les fichiers, décisions, tâche
 | `fait` | Livrable produit ou tâche clôturée. |
 | `à produire` | Document attendu mais non encore rédigé. |
 | `à affiner` | Première version existante, précision insuffisante pour gel. |
+
+### Commandes de session PKA
+
+| Commande | Sens opérationnel | Usage |
+|---|---|---|
+| `/save` | Clôture interactive d'une session PKA. | À utiliser quand une session produit une décision, un déplacement de fichiers, une modification système ou une avancée projet. Si le client ne fournit pas de slash command native, exécuter `./bin/pka`. |
+| `./bin/pka` | Raccourci court universel vers la sauvegarde interactive PKA. | Forme recommandée. Fonctionne quel que soit le modèle utilisé : Codex, Claude, Gemini, DeepSeek ou autre. |
+| `./bin/pka-save` | Alias explicite vers `scripts/pka_save.py --interactive`. | Même usage que `./bin/pka`, conservé pour lisibilité et compatibilité. Capture titre, modèle, projet, résumé, actions, décisions et prochaines étapes. |
+| `scripts/pka_save.py --model <modele> --project <projet>` | Sauvegarde non interactive ou semi-scriptable avec contexte modèle/projet. | À privilégier quand on veut tracer explicitement une session multi-modèles dans `wiki/Daily/` et `wiki/log.md`. |
+
+Règle : la mémoire commune vit dans les fichiers PKA, pas dans le transcript d'un modèle. Sybil consolide automatiquement le soir, mais ne remplace pas la clôture explicite des décisions.
 
 ---
 
@@ -224,7 +235,7 @@ Cette section explique les codes utilisés dans les fichiers, décisions, tâche
 | `00_GOVERNANCE/` | Pilotage projet : mapping agents, readiness M-01, backlog Plane, réorganisation. |
 | `01_FOUNDATION/` | Documents fondateurs : architecture, scope, document fondateur, usage policy, glossaire. |
 | `02_DECISIONS/` | ADR et décisions techniques. |
-| `03_P0_ENGINEERING/` | Budget, registre composants, templates de work packages. |
+| `03_P0_ENGINEERING/` | Ingénierie P0 structurée par domaines : architecture système, hardware satellite, énergie/autonomie, connectivité, IA edge/cloud, procurement/BOM, budget, benchmarks et registres. |
 | `04_PRINT_EXPORTS/` | Supports imprimables ou consolidés pour travail papier. |
 | `05_VISUALS_DASHBOARDS/` | Logigrammes, dashboards, vues HTML. |
 | `06_COMPONENTS/BIOACOUSTIC/` | Matière bioacoustique P1, hors P0 strict. |
@@ -238,7 +249,7 @@ Cette section explique les codes utilisés dans les fichiers, décisions, tâche
 ## 9. Références internes
 
 - [INDEX.md](../INDEX.md)
-- [WildNexus_MASTER_ARCHITECTURE.md](WildNexus_MASTER_ARCHITECTURE.md)
+- [MASTER_ARCHITECTURE_WN.md](MASTER_ARCHITECTURE_WN.md)
 - [wildnexus-founding-document-v0.2.md](wildnexus-founding-document-v0.2.md)
 - [WILDNEXUS_P0_SCOPE_LOCK.md](WILDNEXUS_P0_SCOPE_LOCK.md)
 - [../02_DECISIONS/WILDNEXUS_ADR_INDEX.md](../02_DECISIONS/WILDNEXUS_ADR_INDEX.md)
