@@ -17,8 +17,9 @@ Ce document fournit une carte logique de WildNexus a plusieurs niveaux de detail
 
 Sources principales :
 
+- [99_SYSTEM/diagramming-standard.md](../../../99_SYSTEM/diagramming-standard.md)
 - [INDEX.md](../INDEX.md)
-- [WildNexus_MASTER_ARCHITECTURE.md](../01_FOUNDATION/WildNexus_MASTER_ARCHITECTURE.md)
+- [MASTER_ARCHITECTURE_WN.md](../01_FOUNDATION/MASTER_ARCHITECTURE_WN.md)
 - [wildnexus-founding-document-v0.2.md](../01_FOUNDATION/wildnexus-founding-document-v0.2.md)
 - [WILDNEXUS_P0_SCOPE_LOCK.md](../01_FOUNDATION/WILDNEXUS_P0_SCOPE_LOCK.md)
 - [WILDNEXUS_CYCLE_01_M01_READINESS.md](../00_GOVERNANCE/WILDNEXUS_CYCLE_01_M01_READINESS.md)
