@@ -37,6 +37,7 @@ scripts/telegram-bot/venv/
 .DS_Store
 .idea/
 .vscode/
+.obsidian/workspace.json
 .claude/settings.local.json
 .claude/claude-video/
 .claude/skills/
