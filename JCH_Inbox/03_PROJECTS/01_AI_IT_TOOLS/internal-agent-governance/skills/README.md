@@ -4,6 +4,9 @@ Statut: `draft`
 
 Ce dossier contiendra les procedures reutilisables validees par JCH.
 
+La vue commune des skills et de leurs runtimes est maintenue dans
+`wiki/Guidelines/GL-002-skill-inventory.md`.
+
 ## Statuts de skill
 
 - `draft`: proposition non active.
