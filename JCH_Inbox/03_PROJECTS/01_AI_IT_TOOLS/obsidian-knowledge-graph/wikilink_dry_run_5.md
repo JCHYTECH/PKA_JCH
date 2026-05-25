@@ -9,7 +9,7 @@ status: proposal
 
 > Proposal only. No source note has been modified.
 
-- scanned notes: 706
+- scanned notes: 708
 - files with suggestions: 5
 - line suggestions: 111
 
