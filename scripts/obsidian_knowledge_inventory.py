@@ -307,6 +307,31 @@ def render_technology_index(inventory: Inventory) -> str:
     return "\n".join(lines)
 
 
+def representative_folder(name: str, category: str, notes: list[NoteRecord]) -> str:
+    if not notes:
+        return ""
+
+    if category == "agent":
+        if any(note.folder == "TEAM" for note in notes):
+            return "TEAM"
+        for note in notes:
+            if note.folder.startswith("TEAM_Inbox"):
+                return note.folder
+
+    if category == "project":
+        for note in notes:
+            if project_name_for(note) == name and len(note.path.parts) >= 3:
+                return "/".join(note.path.parts[:3])
+
+    stable_folders = [
+        note.folder
+        for note in notes
+        if note.folder and note.folder != "." and not note.folder.startswith("wiki/Daily")
+    ]
+    folders = Counter(stable_folders or [note.folder for note in notes])
+    return folders.most_common(1)[0][0]
+
+
 def render_knowledge_dictionary(inventory: Inventory) -> str:
     lines = [
         "---",
@@ -333,8 +358,7 @@ def render_knowledge_dictionary(inventory: Inventory) -> str:
         if key in seen:
             continue
         seen.add(key)
-        folders = Counter(note.folder for note in notes)
-        folder = folders.most_common(1)[0][0] if folders else ""
+        folder = representative_folder(name, category, notes)
         lines.extend(
             [
                 f"## {name}",
