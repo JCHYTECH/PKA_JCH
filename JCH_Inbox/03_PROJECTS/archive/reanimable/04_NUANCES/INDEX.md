@@ -1,6 +1,6 @@
 # 04 — NUANCES
 
-**Statut:** Standby  
+**Statut:** Archive reanimable  
 **Domaine:** Consultance stratégique — BESS (Battery Energy Storage Systems)  
 **Spécialiste:** Furet (recherche) → Dobby (stratégie)
 
