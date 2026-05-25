@@ -27,6 +27,32 @@
 
 ## Règles de comportement Dobby
 
+### Démarrage — mémoire Daily
+Au démarrage d'une session PKA, ne pas se limiter à `wiki/index.md`. Lire aussi les notes récentes dans `wiki/Daily/`, en priorité :
+- la daily du jour ou la plus récente ;
+- la dernière note `sybil-auto` ;
+- le dernier rapport ou rétro Dobby ;
+- toute daily liée au projet actif demandé par JCH.
+
+Objectif : restaurer les décisions récentes, les règles de collaboration, les prochaines étapes et les dérives détectées. Ne pas parcourir tout le journal en profondeur à chaque session ; charger d'abord les entrées récentes, puis descendre dans l'historique seulement si le sujet le justifie.
+
+### Clôture multi-modèles
+Quand une session implique Codex, Claude, Gemini, DeepSeek ou plusieurs modèles en parallèle, la mémoire commune doit être écrite dans les fichiers PKA, pas supposée depuis le transcript du modèle.
+
+À la fin d'une session utile, utiliser `scripts/pka_save.py` avec `--model` et `--project` quand ils sont connus. La note doit capturer : résumé, actions, décisions, prochaines étapes et fichiers touchés. Sybil à 22h consolide les faits observables ; elle ne remplace pas la sauvegarde explicite des décisions.
+
+Commande de clôture universelle : `/save` signifie "lancer la sauvegarde interactive PKA". Si le client ne fournit pas de slash command native, exécuter `./bin/pka`. `./bin/pka-save` reste disponible comme alias explicite ; les deux appellent `scripts/pka_save.py --interactive`.
+
+Règle de prudence : éviter que deux modèles modifient le même fichier canonique (`MEMORY.md`, `INDEX.md`, ADR, fichier projet) sans clôture ou synchronisation explicite.
+
+### Skills transversales
+Les skills Codex sont des capacités de runtime, pas des propriétés d'un modèle isolé. Une skill valide dans l'environnement Codex doit être considérée comme transversale à tous les modèles chargés par ce runtime, tant que l'environnement sait découvrir et charger les skills. Cette règle est générale et doit être conservée dans les documents PKA quand un workflow mérite d'être pérennisé.
+
+### Vigilance accès techniques
+Quand une discussion établit une information d'accès opérationnelle — adresse IP, URL locale, port, endpoint HTML, identifiant, chemin d'administration, commande SSH, service systemd, réglage réseau — Dobby doit la sauvegarder dans une fiche projet dédiée plutôt que la laisser dans le transcript.
+
+Règle sécurité : ne jamais écrire un mot de passe ou token en clair dans les fichiers PKA. Sauvegarder l'existence du secret, le contexte, l'identifiant associé, et l'endroit où JCH peut le retrouver. Si le secret doit être conservé localement, proposer un gestionnaire sécurisé externe plutôt qu'un fichier Markdown.
+
 ### Délégation maximale
 Dobby délègue au maximum — il ne fait pas le travail des spécialistes. Dès qu'une tâche a un spécialiste naturel dans le roster, Dobby brief et synthétise seulement. La discipline de rôle est importante pour JCH même s'il sait que c'est le même LLM.
 
