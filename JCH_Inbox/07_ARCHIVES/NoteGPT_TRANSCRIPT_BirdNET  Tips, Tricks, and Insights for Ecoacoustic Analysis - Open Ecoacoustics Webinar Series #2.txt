@@ -1,0 +1,276 @@
+00:00:00
+We're going to talk a bit about um sort of bird net and analyzing your um acoustic data. Really happy to have you all here. Really pleased to get feedback on this and other topics um that you would like. Um we've got a bit of a code of conduct which uh Andy mentioned earlier which is in the next sort of slide. So sort of have a look at that. We just want people to be uh sort of respectful in terms of their um communications and things. Um and what I'd like to uh start off with is by acknowledging uh the uh
+
+00:00:32
+traditional owners. Um so in particular today um I'm coming from um the uh traditional custodians are the Turbal and Yagura. Uh the first nations owners of the lands where um QT is uh the lands wherein is where Brisbane is. We'd like to pay our respects to their um elders, laws, customs and creation spirits and recognize that these have always been places of um science, teaching and research. Um and to acknowledge the important role that Aboriginal and Toristra Islander people have always
+
+00:01:03
+played in terms of conver conservation and safeguarding the um the land and sea. Okay. So, uh next slide. So, um the purpose of these webinar series is to build the eco acoustics community in Australia and we've got other events sort of coming like the um eco acoustics um uh symposium uh in Perth later in the year and also um we've just been informed that we are going to be hosting the uh international eco acoustics eco acoustics congress in July of um 2026. So there's lots of things going on. This
+
+00:01:43
+is just the latest uh in our sort of series of ideas about how to sort of communicate and um build community in particular to sort of share and build sort of knowledge and expertise. So this is meant to be interactive. So if you do have sort of any um questions, please ask them. If you've got anything to share, then um please ask them. But please do so in a respectful um way. And so it's really about developing best practice and sort of standards uh in eco acoustics. Uh so today we've got um three uh
+
+00:02:14
+speakers uh Philosinsky from um Qout uh Nina Scarpelli uh from uh well she was from Syra now V museums Victoria and Kellen Alexander from Qout and Bird Life Australia and each of the speakers are going to talk a bit about um uh BirdNet um about sort of how it works tips and tricks and how to get the best out of BirdNet in order to sort of analyze your sound data um to sort of understand uh who's calling. So um we'll have uh a series of these sort of short uh talks. I think they're sort of 10 10 minutes or so, perhaps a
+
+00:02:50
+bit less sort of each. And then we'll open it up for Q&A and open discussion. And please do let us know if this is useful. We're really keen. We've got a sort of survey at the end. Uh we're really keen to sort of hear your thoughts to find out if this is useful. If you'd like more of this, if there's not enough time, then we're happy to sort of, you know, run the further sessions to talk more about sort of birdn net um or monitoring protocols or whatever um is interesting for you.
+
+00:03:16
+Okay. So, I'd now like to uh hand over to uh Phil, Dr. Oshinsky uh who's going to uh lead the first talk about uh BirdNet. >> So, um hi everyone, my name is Phil. I work at at Qout uh as a research software engineer. So as I was saying um I work research software engineer I spend most of my time developing recognizers for birds and also uh creating systems so that I can run those recognizers and other people's recognizers on scale on ecos and the Australian acoustic observation data
+
+00:03:46
+sets and uh that includes creating some uh software some adapter scripts um for running birdnet at scale on those systems and making it fit in with our software. So that's where my experience with birdnet comes from. And what I'll be talking about is um what it is from a high level what are CNN's what are embeddings and how that relates to the birdnet built-in classifier um custom classifiers and uh uh saving and using embeddings um outside of like using them outside of the um birdnet system.
+
+00:04:22
+So birdnet is a convolutional neural network which just like any other machine learning model is a function that maps an input to an output and it can be thought of as a machine where data goes in one end and some transformations and calculations are done and then output comes out the other end. Um and without giving much importance at the moment to what's happening inside the machine, um it's just worth noting that there are some parameters which on this picture of the the machine or the function um are
+
+00:04:51
+represented by all these knobs and dials on the front. And um in general in in machine learning the uh not just CNN but other things like linear regression, decision trees, random forests, etc. um the position of these dials on the machine are learned through observing examples where the output is known and an algorithm figures out what the positions of all of those knobs and dials um so that the inputs match their um desired outputs. Now Bernet is a convolutional neural network and in the case of CNN's if we
+
+00:05:26
+look inside this machine we find that it's actually lots of little machines which are chain together and feed into each other. Um now these each of these little machines or functions have their own learned parameters. Um and these blue boxes between each of these steps uh represent um we call them activation maps and um each of those functions has their own little uh learn parameters. Now these blue activation maps at each step um take the input from the pre previous step and um figure out what's relevant
+
+00:06:03
+to distinguishing between species and which bits it can ignore, which bits are not relevant or redundant. And uh eventually it gets to a final activation map and puts that into a a different function that takes in the um final activation map as an input and outputs uh predictions. In the case of birdnet, a prediction for uh every one of the 6,000 odd species that it's been trained on. Um so these uh top layer of or top set of um layers are called convolutional layers. And then that final activation
+
+00:06:41
+map is called the embedding. And then the final function after that is uh called the classifier head. And these things all have different names, but that's what we'll stick with for now. Um so uh embeddings are a long list of numbers that represent a point in an embedding space, which you can think about like points on a map. Um this diagram only has two dimensions. Um but the actual embeddings are much higher dimensional like a,024 dimensions which is hard to visualize. So we'll stick
+
+00:07:14
+with a two-dimensional map. Um so the role of the convolutional layers is to take your input spectrograms and position them somewhere on this map on this embedding space. And then the role of the classifier head is to look at the map and look at where your points are and um figure out which class um those examples come from based on the position of the map. Um and the embeddings have been learned by the um birdet training such that uh similar call types land in similar positions on the map which
+
+00:07:49
+allows the classifier head to do its job. So for example, this unknown example, it could figure out, oh, it's probably more likely to be this orange class than this blue clasp. Um, so birdnet has the convolutional layers, an embedding classifier head, and then the output from the classifier head, the raw output is or the direct output is um what's called logets. Now these are um arbitrary size. They can be negative, positive and they can be used um if you want but most people seem more comfortable with uh numbers that lie
+
+00:08:25
+between zero and one. So these are transformed into scores between zero and one through a sigmoid function um with some influence from a sensitivity parameter which you can provide and then you get a score for every one of those 6,000ish species and then that uh set of scores is filtered down to what's actually saved as output by your min minimum confidence parameter and a species list if you provide it. Um so just a bit more about the transformation between the raw logets and the output scores. Um
+
+00:09:04
+you uh this goes through something called a sigmoid function and you can uh modify how that's done based on this sensitivity. So increasing the sensitivity effectively increases the loget score before the sigmoid transformation and um and that increases the score which has the effect of um sliding this sigmoid left or right and then the uh minimum confidence that is determines what's actually saved um will will can be say the same or you can also change that and these two things um influence how
+
+00:09:43
+many um outputs are are saved for how many of the um the species. So, BirdNet um as I mentioned has um 6,000 odd species, 6,522 to be exact. And most of these aren't going to be relevant to your particular task because they come from all over the world. So you can prevent irrelevant species from showing up in the results by providing a species list or bird net can generate that species list for you um if it's given a like a a latitude and longitude. Um so how this actually works um previously uh it directly looked up an
+
+00:10:26
+e-ird database and um the the more recent version of birdnet uses a trained neural network just for this process that's independent of the actual like bird net species classifier um to to give a a likelihood that the species appears and then you can give it a a threshold of um species above a certain likelihood will be included included, but that doesn't actually influence the scores. Um, it's just used as a as a mask between um producing scores for everything and then just saving what's um of interest to you.
+
+00:11:04
+Um, so that's uh the birdet built-in classifier head. What you can also do is train a custom classifier. So, what that does is take all of the uh convolutional layers and embeddings just the same as for the um built-in classifier, but instead of it passing it through that last function to get predictions, um it gets rid of that, makes a brand new function. Oh, sorry, makes makes a brand new classifier head. Um and you train that on your own examples and the number of outputs from that are the number of
+
+00:11:39
+species that you're interested in. Uh you can see it's got less fewer dials on the front because it's a smaller model with because of the fewer outputs. So why would you want to do this? Um uh it might be that your species of interest isn't one of those 6,000 odd species. Um especially if it's rare, if it's not a bird, that those sort of things. And the other reason is because um often it's uh you get improved results by giving it data from the region that you're
+
+00:12:09
+actually analyzing um because of things like um uh species uh regional variation or um the the similarities or differences between um confusing species or background noise, that sort of thing. Um I think Nina and and Kellen will both talk about that a bit more. Uh and then the other thing you can do is um not use a classification head from birdnet at all and just save those output embeddings as um like to to use however you like. So you can import them into R or another program um train your own
+
+00:12:50
+model do clustering on them. And the reason that that is useful and works is because remember the embeddings are generated in such a way that similar call types um produce similar um positions on this on this map. Um so that's all I've got time to talk about. Um and I'll hand it over to the next speaker. Thanks very much. >> Cool. Uh so hi everyone. My name is Nin Capelli. I'm a post-doctoral fellow at the museum's Victoria and I used to yeah just recently I moved jobs so I'm going
+
+00:13:26
+to present a bit of work that I did while um at Cyro and it's just some tips and tricks when using birdnet custom recognizer and species list um I just want to start by acknowledging the traditional owners of the land where I live where I work where my research is conducted and extend my acknowledgement to other traditional owners across Australia and pay my respects to others past, present and emerging. Uh so I just want to get everyone on the same page. This is not a guide on how to do anything with birdnet. The goal here is
+
+00:14:02
+just to showcase some things that I came across uh when I was doing uh birdnet stuff uh and that it could influence the recognized performance and the ecological inference that we do based on those results of birdnet. Um so the first work that I did was creating my own uh recognizers recognizer for ferro pigs in far north Queensland and we were testing the use of acoustics for ferro pig detection. So to do that we deployed camera traps and AC and acoustic sensors together so that I could check if a pig was there if we
+
+00:14:38
+could detect them using acoustics. And to prevent in case we didn't get a lot of pigs around the property, uh we also deployed sensors on locations where the reserve managers were um trapping pigs. So just to make sure that we had enough, um training data. As predicted, there were not a lot of pigs around. So that meant that I didn't have a lot of training data. And um pigs don't make what we call stereotypical calls. What this means is that when you have a bird song or a bird call, you have a sort of
+
+00:15:15
+pattern. Pigs don't do that. They grunt and squeal at they see as they see fit. So it's really hard to get a pattern for a call that doesn't have a pattern. So this made um a little bit of a challenge to create the recognizer. So, as I said, initially I didn't have pigs on um all of my my sites. I only had pigs on the trapping sites. And hopefully you can see here from this plot. So, the the plot on the right shows all the detections from uh initial version of birdnet that I created um for
+
+00:15:53
+the trapping sites and on the left you have the the calls the detections from non-trapping sites. So hopefully uh and the green means that it was positive and the the red ones means it was a negative detection. So uh as you can see here I created the recognizer that was really good at detecting pigs at traps and that was not very useful. So, um, what made me realize that the big behavior and the sounds that they make around the traps are different from the non-trapping sites. Even though they were not necessarily inside the trap, so
+
+00:16:30
+even if they just were going around and eating um the the feed, the the the food that was given to them, they were still making different sounds. So, what I want to say um with this sort of example is that you have to consider where the training data is from. And it's something that um few mentioned before that depending um the region that you're developing the recognizer for and the species behavior that you want to capture with your recognizer, you have to make sure that the training data is
+
+00:17:02
+matching what you want as a result and what you get in the natural environment. So it's just something um to be aware of. So to try and enhance the the training data that I had, I um used some very low confidence scores and I manually validated a lot of detections. So again, if you see on this plot here on the left on the low confidence, I had some pigs outside of the traps. They were just hidden. So I had to manually validate um these detections to be able to find them. So what I want to say here is that
+
+00:17:43
+don't be scared of the data. Don't don't fear interacting with the data because it's really important to understand what's going on and and get to know how you recognize it's working. What's the output actually being from the input that you gave. Um, another example from this in the same property in Yorker, we were having lots of detections from the bird net of the shelf, even using a custom species list, we were getting detections of pelicons and we never saw pelicans there. So when we went to look
+
+00:18:17
+at what was happening, every time that there was water splashing, Bernnet was thinking that it was a pelican. probably because from Bernet training data every time that there is a pelican there is water splashing. So the model learned that pelican equals water splashing which is not true. So just go and check the the result and make sure that what you're inputting is what you're getting what you want as an output is what you're getting. Um the other thing that I did was to include species that it was
+
+00:18:49
+that the recognizer was getting confused with. So I was getting koalas mixed up with pigs. The recognizer thought that a koala co was actually a pig. So even though for this work I I didn't care about koalas. I didn't want to know where they were. I included them as a class of my recognizer and that improved um the the results because then the model learned oh this is a pig and this is a koala. So it was better at distinguishing the two classes that it was getting confused with. Um, regarding the amount of training data
+
+00:19:22
+that you need, it's going to depend on uh the type of species, the type of environment, lots of um different things. As like a general rule, what I found in my work was that those stereotypical calls, so calls that have a pattern, need less training data than um calls that don't have a pattern. So, for example, with the Koalas, I only needed like 39 calls to 39 3 second segments to to get a good recognizer. Uh, can toads same amount like 35 noisy minus uh even less with five calls only.
+
+00:20:02
+I was able to get pretty good results. But then for the pigs, I needed 119. So, it's going to um depend on the species, the behavior, and the types of calls that you have. Another way of enhancing the training data is to use the A2O search. So, you can put I put some of my uh calls from pigs on the on the the search tool and then I was able to find calls from completely different locations uh big calls from different locations that I could put on my recognizer. And I know this may seem a bit counterintuitive
+
+00:20:41
+with what I said before that you have to have training data from uh the locations and what you want to detect. But at the same time, it's really easy to overfeit this model. So this means that what you're going to find is uh only the data that you was trained for. Your recognizer is going to be really good at recognizing the pigs in York at those sites that I that I trained for. And one way for preventing this is to use using locations from using calls from different locations and the H2O search
+
+00:21:16
+can can help with that. Uh when it comes to training the recognizer, I had many many versions and I was just running the recognizer and getting more and more training data. Uh some very smart people came up with better faster ways to do that. So have a look on those papers and those use the embeddings that Phil was saying before. Um but yeah, I didn't know about this before. So I had like 30 plus versions of the recognizer. And I guess it's really important to keep track of the versions and the training data that you
+
+00:21:52
+use for each version and the recognizer output because then it's easy to know um what you did from one version to the other to make it better or worse. And it's also easier to go back. So if your new version is worse than the than the previous version, you can always go back to a better version. So it's good to keep track of things. Um when it comes to choosing the best recognizer, there are different ways that you can do this. There are lots of metrics that you can use to select the
+
+00:22:25
+best recognizer. So recall and precision are some of these metrics that are used in machine learning. Um, in my case, I had some versions that were better for precision and some versions that were better for recall. And so I guess sometimes you cannot choose just one single best. And there are like little questions or little things that you can think about to to see which uh of these metrics better represents or better helps you to answer the question that you're asking. So things like do I need to detect the
+
+00:23:02
+species every time that it's present or just I'm just worried about presence absence or and what is the res resolution of the presence absence. Do I need one presence per site, one presence per day, one presence per hour? And this is all going to influence um what type of these metrics that you choose to then select the best model. Combining the models and the results can also be a solution, especially if uh there are different behaviors uh on on your training data on or on the species that
+
+00:23:37
+you're trying to to detect. In my case, pigs had a different behavior during the dry season during the wet season. And that's why I had a better precision recognizer was detecting pigs better on the dry and better uh recall was better on the wet. So combining the results can be a solution as well. You can use confidence scores to filter the false positives but you need some stats to back it up and yeah have a look on those papers as well and make sure that you understand what the scores are doing uh
+
+00:24:12
+so that you use them appropriately. And I guess just some other technical considerations when using the species list. This was another project um that we're detecting babblers in ber and um the first thing when you're using species list is to make sure that the uh species that you're looking for is on the bird net species list check the spelling um even for the common names UK and US spelling can be different and that's going to make uh your recognizer not detecting uh the species if you if
+
+00:24:47
+you misspell even the common names and the character encoding. So if you can see here, this whole bab the inverted comma is different than this one. And for the recognizer, it makes a difference. So the best way to prevent that is to copy and paste the names from birdnet list on your species list species list just to be safe. Um so just to finalize uh be aware of the models biases and the technical issues that can influence the result because um using the appropriate spatial temporal resolution for your
+
+00:25:24
+detections is going to um make you have a good result and that's going to uh help you with having good ecological inference based on the results that you're getting from the model. Thank you. >> Fantastic. Thank you very much. Na. >> Yeah. Hello everyone. My name is Kellen. I am um hopefully nearing the end of a PhD at QUT and I also do some work for Bird Life Australia on a bunch of different acoustics projects. And yeah, I'm just going to share some things uh that I found useful when working with
+
+00:26:00
+BirdNet and hopefully they are useful for you also. Um yes. So Nina and Phil have explained thresholds and confidence scores really really well, but I guess I just wanted to note that especially when you're using multiclass um multiclass recognizes like the ones that sort of come with Bernet out of the box, it's the key thing to understand is that the optimal confidence score threshold is going to be completely different for each species. So confidence scores are not comparable between species. Um, and so there's
+
+00:26:34
+going to be an optimal confidence score for each species, and that's the place where you'll have the best balance between precision and recall or your best F1 score. So you can see, I don't know if you can see my mouse, but the the red um the red there, that species, the best threshold for it will be at 0.15. And another species, the best threshold might be at 0.5 and some might be all the way up at 0.95. So it just um confidence scores are not transferable between species. So you do have to think
+
+00:27:04
+about that when you're sort of using bird net. Um and so what you can do is you can tune your thresholds. So it's pretty common just to set a blanket threshold and then just look at everything above that like uh 0.8 is quite common perfectly fine for some projects depending on what you're doing. But I think for a lot of projects it's really important to understand what is happening underneath your threshold or across all thresholds. So for example in this um in this figure here it shows and
+
+00:27:34
+again I don't know if you can see my mouse but um the blue line is true positives at a bunch of different confidence thresholds and the red line is um false positives at a bunch of different confidence thresholds. So if you set your confidence to 0.8 for that particular model or species um that's great. you'll have a low amount of false positives, but you might have been better off just setting it a bit lower, get a lot more detections, um, and still have a relatively manageable amount of
+
+00:28:01
+false positives. Um, and there's a when you're dealing with lots of species, there's a few potential approaches for threshold tuning, one of the easiest ones to implement is just a precision target where you're like, okay, I want high precision for all my species. So, I'm just going to validate until I know that this is the threshold where I'm getting a precision of 0.9 or 0.99 or whatever it is that you want. But you do then have to understand that your recall is going to be very different at those
+
+00:28:28
+different precision scores for different species. um you can calculate the optimal threshold for every single species. It's quite time inensive because you need a test data set where you can also investigate recall. Um and then I highly recommend that you read this all thresholds bar paper which talks about breaking your detection into confidence bins. So a bin like 0.0 to 0.1.2 0.3. Um so yeah I've been I've been doing that. So I will run my models at the lowest possible threshold and try
+
+00:28:57
+and look at try and look at everything wherever I can. Um and yeah, so using bird net for species lists. Um I think Nina's touched on this and I think most people have used birdnet will have seen this but highly inadvisable to rely on bird net for a species list without some level of expert validation. And by that I mean setting the latitude and longitude and then just taking the species that it says at face value. Um definitely get an expert to go through your data if if you can. This plot over here shows um a
+
+00:29:32
+fairly large acoustic data set, but bird net just run over it and how many species it would say was present at different confidence thresholds. So even at a very high confidence score compared to how many species are actually there when we validated it. Um it it overestimates species richness a bit. Uh so yeah, get someone to look at it before you rely on those species lists. Um, a good way to start is to sort of look at the species that have the lowest number of detections and then look at the highest confidence of those
+
+00:30:02
+detections. But the tricky thing arises is that often confidence score patterns may not be consistent. So for some species, the most confident detections might be false positives and there'll be true positives hiding somewhere in the middle in like 0.4 0.5. So that throws a bit of a spanner in the works and I'll I'll talk a little bit about that later. Um, for those of you who are like me, excuse me, who are doing a lot of validation. So, validation involves working with the sound segments that BirdNet spits out.
+
+00:30:33
+You can use birdnet to generate those segments directly or you can use a script from a selection table, whatever works for you. Um, there's lots of really good validation interfaces popping up now. Uh, BirdNet has one in built, ecosounds has one. Uh, there's one an interface within Raven. My preference still for large scale validation is actually just still to use the the default interface in Raven. And what I like to do is I like to drag in thousands of segments at once. And for those people who use Raven, my favorite
+
+00:31:04
+discovery ever was this choose measurements begin file. And what that does is in each of your selection tables, it adds the file name that you annotate. So, for example, this here is a couple thousand eastern bristle bird detections dragged in. And most of those detections are bristle birds. I don't want to manually label every single true positive bristle bird cuz that's going to take me forever. Um, and I can usually tell just by looking at it if it is or isn't a bristle bird. But every
+
+00:31:35
+now and then a mistletoe bird pops up, a brown thorn bill pops up, a rufus strikethrush. Um, and I do want to label those false positives. So what I can do is I can just annotate the false positives. It will include the file name in my annotation column and then I have a little script. If anyone wants it, just email me. Um I have a little script that will then filter. It will pull out all the false positives and then I'll just have all my true positives in one folder and my false positives in
+
+00:32:04
+another. And yeah, that's how I like to do validation at scale. Um if anyone has any better methods, would love to know. Um, yes. So, Phil did an awesome job of explaining embeddings. It I wish I'd seen that talk a few years ago, Phil. Um, because it took me a long time to wrap my head around what an embedding was, but this is what an embedding actually looks like when you you can generate them in the BirdNet GUI now, which is really nice. You don't have to to script them. Um, but why are
+
+00:32:34
+embeddings useful? Bill uh Phil sort of hinted at some of this but these the models like Bernet and Perch are particularly useful for bio acoustics tasks and if you read that Ghani at al paper it explains why a lot better than I can. Um but yeah the embeddings generated by bet and perch are really great for clustering or um fshot learning. for training a custom classifier on a small number of small number of examples or similarity searches like the the acoustic observatory and I like to use embeddings
+
+00:33:06
+for clustering in particular the the birdnet and perch embeddings there's quite a few people using them for this um they're great for grouping similar sounds together uh I like to use um combined with HDB scan because HDB scan is really good at throwing out noise points that you may not be interested in and I I like to use clustering as sort of a post hawk test to search across all the models uh all the thresholds of a model. Um particularly for species where I think it should be there but maybe
+
+00:33:35
+bird net's not finding it or the models not finding it or you have a lot of false positives. Um I won't go into too much detail cuz I'm probably running out of time but the the methodology is is in this paper. In that paper I use acoustic features rather than embeddings but the method is is kind of the same. Uh it's a good way also to find training data to build your your custom models. Um and so in a nutshell basically clustering can sometimes find the true positives and false positives better than your model
+
+00:34:03
+can. So here for example the the clustering process the the pink and the brown everything that's circled is is mostly true positives and it's split out all of the false positives. um and it's outperformed the optimal threshold for that particular model which um which is nice and then you can go and collect all your true positive and use them for training data that's a bit confusing so in practice this is a common minor from birdnet run over a very large data set and when I was validating I couldn't
+
+00:34:36
+find any particular pattern in the confidence score so there were a lot of false positives at high confidence true positives at low confidence didn't know what was going on So, for those who aren't familiar with this sort of plot, every single point here is 3 seconds of audio. Um, and I've colored it by confidence score. And you can see that there's not really any pattern. Um, and so that there's no pattern in the confidence scores in what's going on there. Um, but when I throw HDB scan
+
+00:35:06
+over it, it splits out all of the common min or almost all of the common minor vocalizations on the right and it throws out all the rubbish on the left. And I I use a little tool um other people have similar tools. There's a there's a draft version of it in that that call the power paper. Um but you can click on points and then um you can in sort of inspect your clusters and so yeah all the common miners are on the right and it's thrown all the nonsense out to the left and that's really great for then
+
+00:35:41
+collecting training data and building new new classifiers. Um, I'm running out of time, but yeah, the same thing happened with Eastn Bar now. We had thousands of detections, um, even at high confidence scores, mostly false positives, and it threw all of the actual bar now calls into cluster 8, and then we could build a custom classifier. Um, oh yeah, skip through that. But yeah, um, in conclusion, Bernett's super useful. Common species work incredibly well out of the box. Um, please manually
+
+00:36:11
+v please manually validate your data. And yeah, good to understand what's happening underneath your thresholds. Happy to chat anytime. Thanks. >> Thanks for the presentations everyone. Um we've got a few questions in the chat. Uh we might and we also had a few um questions submitted um in the registration process. If we don't get through all the questions, we'll we'll answer them via email um after the session. Um but we have one here from Joseph Jenke. Um hello, I'm wondering
+
+00:36:50
+whether people who have been using bird net to create custom classifiers for bird species not included in the original data set have had trouble processing their data into the exact input expected by the model. Um, is there somewhere to find the exact parameters for the meta spectrograms the model expects? >> I think um the model expects just three second wave files. Well, yeah, I'm pretty sure. So, I'm I'm not sure like what do you mean about the parameters of the mouse spectrograms?
+
+00:37:26
+Don't know if you can manually um change those things, but yeah, the model only wants you to chop recordings into 3 second segments that contain your your target call. And there are ways on the that you can select which um which bit of your 3 seconds. So if you are a bit over the 3 seconds, it can chop from the first the the beginning of the 3 seconds or the middle or the end. So there are some of these things that you can select uh on birdnet, but it's only like 3 second wave files that it takes as an input.
+
+00:38:09
+>> Yeah, I think that's right. Um the the conversion to the spectrogram, as far as I know, is actually done inside a TensorFlow layer by TensorFlow. Yeah. >> Um so first it first it it resamples everything to 48 kHz um and then converts it to a spectrogram representation before feeding it into the first layer of the convolutional network from my understanding. >> Thanks. Thanks. >> Yeah. >> Uh we have another question here um from Daniel on triing a bird weather device
+
+00:38:48
+that uses bird net. Has anyone got any feedback on these devices? I guess that's a general question for probably everyone. >> Yeah. Um I know some people that have used and I guess it's going to be because it's the Bernet model, it's going to be Bernet off the shelf that it's going to work under. So I guess um Colin, do you have anything to say off the shelf? >> I I haven't I haven't used them personally, but yeah, I would imagine that um relying on them without
+
+00:39:25
+validation is going to be the same as relying on birdnet without validation. So there's probably going to be a lot of species that um it says or there that aren't actually there would be my guess. Yeah, it's probably probably works well for common species like you said and then um yeah, just going to have some weird things in there. Thank you. And uh Gregory uh was happy with uh your explanation, Philip. um it's the best he he'sard or seen anywhere which is >> uh I should actually probably um mention
+
+00:40:10
+that was inspired a little bit by a talk from um Vincent Deon from Google Deepmind. Um we did a workshop together last year and he uh decided to use the metaphor of the treasure map. Now, Robert, did you want to ask your question? >> Um, yeah. Hi, thank you. Great presentations. Um, I'm really just confused about when we're making individual species, classifiers, embeddings, um, how we can join those together with other other embeddings, if we can at all. And if you need a single model that's trained on like in the in
+
+00:40:59
+the typed example, if you include the koalas as a as a null sample, then it'll set pigs to zero. But I'm confused about where how we could combine custom embeddings or the core model to is that even possible? >> Yeah. So with the koalas and the pigs for example, what I ended up with I wanted I was just interested in the pigs but I ended up with a multiecies model. So when you're doing that the way it works you can um you set up your folders with the training data those um wave files that we were talking about
+
+00:41:39
+before the 3se secondond wave files. So I had one for pigs, one for koalas, one for the cane toads, and one for um whatever else, noisy miners and stuff. And um now I think when you're doing that with uh birdnet, you can have a um folder, for example, for pigs and then one folder for minus pigs. So you can tell it what is not a pig, but it can include examples of your other species. Uh, and then you can also have a folder with noise that it just includes everything else. I don't know, crickets.
+
+00:42:17
+Let's say that it's getting it's thinking it's crickets. So, you just put it in there. So, that's how you set up uh the folders. There is a good video from the BirdNet team that tells you how to set up uh how to build the the classifiers and how to set up the folders. And when I was doing my stuff, that's what I used. And um with the embeddings I think you use the embeddings to do the search and get more of the training data. And then I think if you want to build your own classifier
+
+00:42:51
+then you use those the the embed not the embeddings itself but those embeddings corresponds to a timestamp on your audio file and then you use that time stamp as in your training data to build your own recognizer. So, it's a bit of a two-step sort of process. I think that's Yeah, that's how it works as far as I understand. And so, if everybody in the audience today was to potter off and create a single recognizer for a single species that hasn't been classified yet, could we bring those all back together and run
+
+00:43:25
+them as a single model, or would be we be running them stepwise? >> I don't think you can put them together. Um, I think what we could do is everyone just brings that training data together and we build a classifier with the training data from everyone. I don't think we can combine the TensorFlow. Maybe Phil will know better. I'm not that sure. I don't have much experience um building the custom classifiers. Um, but I think what Nina said is correct here. So, uh, to sort of
+
+00:44:05
+pull efforts, a lot of a lot of the effort is going into the, um, building a good set of data for your for your species. Um, and then the training is sort of easy once you've got that nice data set. Um, during the process of of of training, you you'll probably end up adding more examples um, to improve it little by little. So, you you put your own effort into that part of it. And then the effort or the the real valuable thing out of that is the um that set of examples that work really well to make a
+
+00:44:37
+um a a good model for your species and then yeah a way to pull efforts from that would be to um pull the training data. So so you have not good examples and um and then just train it from scratch using that that training data. That's what um that's what I feel anyway. Um but again there are regional differences and and and things like that. So um yeah if it comes from all over the place it it might not work as well sort of somewhere else as it does for where you've actually put that
+
+00:45:14
+effort into building that training set. >> So perhaps as a crowd sourcing exercise it's more valuable to pull the snips the 3se secondond web files than it Yeah. Cool. Thank you. We might have time to get through one more. Michael Honey, did you want to Are you Did were your questions answered? >> Oh, well, I suppose my question has been answered. Yes. Um, it's just a question about the number of number of calls you would need to be able to train a a recognizer. Um but as Sebastian said
+
+00:45:52
+like in some cases it can be just a very small number of calls and I think Anina used for the noisy minor as a small number very distinctive where it's some more yeah a bird that sounds like every other bird like distinguish between rosellas or something like that might be much harder and thank you for the link Sebastian. >> Yeah I think it's going to depend a lot on the species and yeah the types of calls that you're looking for. I I suspect I don't know because I didn't
+
+00:46:23
+have lots of birds on my on my classifier but um yeah birds could be easier just because birdnet has been heavily trained on birds and those things that I was mentioning with like the stereotypical calls again I don't know how it would work if you have a species that mimics other species and all those things so yeah it's going to depend a lot I think um but yeah I think for birds You probably don't need a lot. And then yeah, the further away you go from the birds probably harder. I think
+
+00:47:00
+>> I've just got one question. I didn't someone didn't get to it. It's just is there any worth doing any pre-processing of audio files? Um like there's options to run it at different speeds and things like that on in birdnet or is it worth switching to mono and normalizing it somehow? Has anyone tried that or is it is it worth doing? >> Uh, I haven't tried to play around with the speed and stuff like this. Um, I did play mostly with the the confidence. Like I said, I just put the confidence
+
+00:47:30
+really low to try and get more um examples, but I guess with embeddings, you don't need to do that anymore. >> Um, but yeah, I haven't played with those settings, so yeah, I'm not really sure. Sorry. I just had one other question as well with the um the issue with the pelicans like detecting water splashing like in training. Um because some of the data we're doing we're picking up species during high water events when there's a lot of echoes on the water and stuff like that. Um I'm
+
+00:48:00
+just wondering if we use our locationational data and seasonal data of those birds is it does that has anyone had issue with echoes and things like that? Is that the kind of thing that that messes up um training and stuff? I don't want to sort of just detect, okay, that's another high water event because there's echoes across a lot of water. >> Yeah. I don't know. Um it's a bit like what Colin was saying that um you have to have some validation. Yeah. >> So the the manual validation it's a
+
+00:48:31
+really important step if you're using just the off the shelf and they will tell you if you know all the >> I think for a lot of water birds that seem to happen if you have water splashing >> lots of water birds get detected where they shouldn't be. >> Yeah. >> But that's um yeah that's a bit of a gut feeling type of guess like I haven't measured that. So >> yeah. Thanks, >> Colin. You have any? >> I think that's I think that's right. But
+
+00:49:03
+yeah, if you're building your own classifiers and uh all of your training data has has water in it or all of your training data has a particular insect in the background and then you try and run that on a site where there's not that insect or there's no water, it sometimes it will generalize okay and other times it it won't. It's really the only way to figure that out is to test it on your own specific circumstances. >> Is frequency filtering worth it for that sort of thing? Does anyone or is it too
+
+00:49:34
+time prohibitive? >> Um, depends on your your species and what your >> um Yeah, it like I find for nocturnal sometimes frequency filtering can be good if it's like ours and you're looking right in the the very low frequencies. >> Yeah. Um, but again, you you probably won't know if it's worth it until you've tested it in your own particular circumstances. >> Yeah. >> So, we've reached time unfortunately. I'm We could have probably gone for
+
+00:50:08
+another half an hour. There's so many great questions. We didn't get to everything. Um if people are interested in a um a longer session or a um conversation on on analysis or more details um let us know. It'd be great to get your um feedback um in this survey and um to understand you know topics that you'd like to hear about. So if you could just take one minute say now um to just fill in that it will really only take a minute. Um, and while you're doing that, I want to let you know about
+
+00:50:43
+a the open acoustics workshop that will be happening the 17th of November in Perth. That's hot off the press. We've just opened up registrations for that. So, it would be great to um see some people there. Um, it should be a great session. Um, there's more information there. There's also a few other upcoming events. We've got International Data Week coming up, conference in Brisbane. We got Eco Acoustics um 2025 and um AOC as well. And um feel free to sign up for the planet research.com and you'll get lots
+
+00:51:21
+of um useful information, tips and tools and um happenings on what is going on in the world of um the planet and ecology. So just want to thank everyone. We want to thank our speakers for today and the great tips and tricks and uh information they've been able to provide and um we hope to see you for the next this is the second in the third um of our series um and we should have another session in September. I might pass it over to all close. >> Thanks everyone. It's been really great.
+
+00:52:02
+Thanks all of our speakers. You're absolutely wonderful. Please do fill out that um survey. We're really keen to get your feedback. Uh we're happy to we you know if people want we can run a sort of a follow-up um birdet um webinar. Um and we've also got the sort of the physical face toface sort of event in sort of Perth. So yeah, thanks everyone for attending. Please give us feedback. Let us know if you want more of these, what we can improve and what you like. Um so thanks everyone. Have a uh wonderful
+
+00:52:33
+afternoon.
+
