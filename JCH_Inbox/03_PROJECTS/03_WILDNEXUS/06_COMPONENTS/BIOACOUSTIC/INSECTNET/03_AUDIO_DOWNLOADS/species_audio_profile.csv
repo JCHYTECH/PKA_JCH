@@ -1,0 +1,6 @@
+species_latin,species_audio_status,species_audio_threshold_hz,species_audio_median_hz,species_audio_mean_hz,species_audio_min_hz,species_audio_max_hz,species_audio_count
+Gryllus campestris,audible_list_keep,28000.0,4783.5000,5179.9190,3956.0000,18345.0000,210
+Leptophyes punctatissima,audible_list_keep,28000.0,10167.5000,10891.6398,1.0000,17443.5000,93
+Pholidoptera griseoaptera,audible_list_keep,28000.0,13261.0000,13944.2661,7048.5000,21649.0000,62
+Roeseliana roeselii,audible_list_keep,28000.0,19673.7500,18704.2123,0.5000,22129.5000,106
+Tettigonia viridissima,audible_list_keep,28000.0,9704.7500,9674.5511,8281.0000,11996.5000,88
