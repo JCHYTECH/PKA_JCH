@@ -92,8 +92,6 @@ SKIP_PARTS = {
 }
 
 GENERATED_OUTPUT_NAMES = {"knowledge_dictionary.md", "review_queue.md"}
-
-
 @dataclass(frozen=True)
 class NoteRecord:
     path: Path
@@ -115,13 +113,22 @@ class Inventory:
     ambiguous_terms: dict[str, list[NoteRecord]]
 
 
+@dataclass(frozen=True)
+class WikilinkSuggestion:
+    note_path: Path
+    line_number: int
+    terms: list[str]
+    original: str
+    proposed: str
+
+
 def should_scan(path: Path) -> bool:
     parts = path.parts
     if "obsidian-knowledge-graph" in parts:
         graph_index = parts.index("obsidian-knowledge-graph")
         if len(parts) > graph_index + 1 and parts[graph_index + 1] == "indexes":
             return False
-        if path.name in GENERATED_OUTPUT_NAMES:
+        if path.name in GENERATED_OUTPUT_NAMES or path.name.startswith("wikilink_dry_run"):
             return False
     return (
         path.suffix.lower() == ".md"
@@ -410,6 +417,139 @@ def render_review_queue(inventory: Inventory) -> str:
     return "\n".join(lines)
 
 
+def linkable_terms(inventory: Inventory) -> list[str]:
+    terms = set(inventory.projects) | set(inventory.agents) | set(inventory.technologies)
+    terms -= set(AMBIGUOUS_TERMS)
+    return sorted(terms, key=lambda term: (-len(term), term.lower()))
+
+
+def wiki_link_spans(line: str) -> list[tuple[int, int]]:
+    return [(match.start(), match.end()) for match in re.finditer(r"\[\[[^\]]+\]\]", line)]
+
+
+def markdown_code_spans(line: str) -> list[tuple[int, int]]:
+    return [(match.start(), match.end()) for match in re.finditer(r"`[^`]*`", line)]
+
+
+def overlaps(start: int, end: int, spans: list[tuple[int, int]]) -> bool:
+    return any(start < span_end and end > span_start for span_start, span_end in spans)
+
+
+def propose_line(line: str, terms: list[str]) -> tuple[str, list[str]]:
+    blocked_spans = wiki_link_spans(line) + markdown_code_spans(line)
+    replacements: list[tuple[int, int, str]] = []
+
+    for term in terms:
+        pattern = r"(?<![\w-])" + re.escape(term) + r"(?![\w-])"
+        for match in re.finditer(pattern, line, flags=re.IGNORECASE):
+            if overlaps(match.start(), match.end(), blocked_spans):
+                continue
+            if overlaps(match.start(), match.end(), [(start, end) for start, end, _ in replacements]):
+                continue
+            replacements.append((match.start(), match.end(), term))
+
+    if not replacements:
+        return line, []
+
+    replacements.sort(key=lambda item: item[0])
+    chunks: list[str] = []
+    cursor = 0
+    used_terms: list[str] = []
+    for start, end, term in replacements:
+        chunks.append(line[cursor:start])
+        chunks.append(f"[[{term}]]")
+        used_terms.append(term)
+        cursor = end
+    chunks.append(line[cursor:])
+    return "".join(chunks), used_terms
+
+
+def is_wikilink_dry_run_candidate(note: NoteRecord) -> bool:
+    return len(note.path.parts) > 1
+
+
+def propose_wikilinks(inventory: Inventory, max_files: int = 5) -> list[WikilinkSuggestion]:
+    terms = linkable_terms(inventory)
+    suggestions: list[WikilinkSuggestion] = []
+    files_with_suggestions: set[Path] = set()
+
+    for note in inventory.notes:
+        if not is_wikilink_dry_run_candidate(note):
+            continue
+        if len(files_with_suggestions) >= max_files and note.path not in files_with_suggestions:
+            break
+
+        text = (inventory.root / note.path).read_text(encoding="utf-8", errors="ignore")
+        in_code_block = False
+        note_suggestions: list[WikilinkSuggestion] = []
+        for line_number, line in enumerate(text.splitlines(), start=1):
+            if line.strip().startswith("```"):
+                in_code_block = not in_code_block
+                continue
+            if in_code_block:
+                continue
+            proposed, used_terms = propose_line(line, terms)
+            if used_terms:
+                note_suggestions.append(
+                    WikilinkSuggestion(
+                        note_path=note.path,
+                        line_number=line_number,
+                        terms=used_terms,
+                        original=line,
+                        proposed=proposed,
+                    )
+                )
+
+        if note_suggestions:
+            files_with_suggestions.add(note.path)
+            suggestions.extend(note_suggestions)
+
+    return suggestions
+
+
+def render_wikilink_dry_run(inventory: Inventory, suggestions: list[WikilinkSuggestion], max_files: int = 5) -> str:
+    lines = [
+        "---",
+        f"date: {date.today().isoformat()}",
+        "model: GPT-5 Codex",
+        "type: wikilink-dry-run",
+        "status: proposal",
+        "---",
+        "",
+        f"# Wikilink Dry Run - {max_files} files",
+        "",
+        "> Proposal only. No source note has been modified.",
+        "",
+        f"- scanned notes: {len(inventory.notes)}",
+        f"- files with suggestions: {len({suggestion.note_path for suggestion in suggestions})}",
+        f"- line suggestions: {len(suggestions)}",
+        "",
+    ]
+
+    by_file: dict[Path, list[WikilinkSuggestion]] = defaultdict(list)
+    for suggestion in suggestions:
+        by_file[suggestion.note_path].append(suggestion)
+
+    for note_path, file_suggestions in by_file.items():
+        lines.extend([f"## `{note_path}`", ""])
+        for suggestion in file_suggestions:
+            terms = ", ".join(suggestion.terms)
+            lines.extend(
+                [
+                    f"### Line {suggestion.line_number}",
+                    "",
+                    f"- terms: {terms}",
+                    "- before:",
+                    f"  `{suggestion.original}`",
+                    "- after:",
+                    f"  `{suggestion.proposed}`",
+                    "",
+                ]
+            )
+
+    return "\n".join(lines)
+
+
 def write_outputs(inventory: Inventory, output_dir: Path = OUTPUT_DIR) -> None:
     index_dir = output_dir / "indexes"
     index_dir.mkdir(parents=True, exist_ok=True)
@@ -419,6 +559,8 @@ def write_outputs(inventory: Inventory, output_dir: Path = OUTPUT_DIR) -> None:
     (index_dir / "technology_index.md").write_text(render_technology_index(inventory), encoding="utf-8")
     (output_dir / "knowledge_dictionary.md").write_text(render_knowledge_dictionary(inventory), encoding="utf-8")
     (output_dir / "review_queue.md").write_text(render_review_queue(inventory), encoding="utf-8")
+    suggestions = propose_wikilinks(inventory, max_files=5)
+    (output_dir / "wikilink_dry_run_5.md").write_text(render_wikilink_dry_run(inventory, suggestions, max_files=5), encoding="utf-8")
 
 
 def main() -> int:
