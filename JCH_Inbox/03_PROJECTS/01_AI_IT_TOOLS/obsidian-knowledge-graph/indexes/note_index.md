@@ -68,6 +68,7 @@ status: generated
 | Project Brief — Obsidian Knowledge Graph | brief | active |  | `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/obsidian-knowledge-graph/PROJECT_BRIEF.md` |
 | Obsidian Knowledge Graph | project | active |  | `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/obsidian-knowledge-graph/README.md` |
 | Roadmap — Obsidian Knowledge Graph | roadmap | active |  | `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/obsidian-knowledge-graph/ROADMAP.md` |
+| Validation Phase 2 - Dictionnaire Obsidian | validation-report | draft |  | `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/obsidian-knowledge-graph/VALIDATION_PHASE_2.md` |
 | PKA_JCH – Protocole de Wikilinking Automatique pour Dobby |  |  |  | `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/obsidian-knowledge-graph/source/Wikilink_PKA_JCH_Protocol.md` |
 | Do Not Copy | guardrails | active |  | `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/pka-hermisation/DO_NOT_COPY.md` |
 | Hermes Concepts To Adapt | concept-register | active |  | `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/pka-hermisation/HERMES_CONCEPTS_TO_ADAPT.md` |

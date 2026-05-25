@@ -15,7 +15,7 @@ status: draft
 - aliases:
   - Argus
 - category: agent
-- folder: `wiki/Daily/2026/05`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## Ariane
@@ -24,7 +24,7 @@ status: draft
 - aliases:
   - Ariane
 - category: agent
-- folder: `.`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## Atlas
@@ -33,7 +33,7 @@ status: draft
 - aliases:
   - Atlas
 - category: agent
-- folder: `.`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## Bouvier
@@ -51,7 +51,7 @@ status: draft
 - aliases:
   - Bruno
 - category: agent
-- folder: `.`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## Castor
@@ -60,7 +60,7 @@ status: draft
 - aliases:
   - Castor
 - category: agent
-- folder: `.`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## Chouette
@@ -69,7 +69,7 @@ status: draft
 - aliases:
   - Chouette
 - category: agent
-- folder: `.`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## Clio
@@ -78,7 +78,7 @@ status: draft
 - aliases:
   - Clio
 - category: agent
-- folder: `.`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## Corbeau
@@ -96,7 +96,7 @@ status: draft
 - aliases:
   - Delphi
 - category: agent
-- folder: `.`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## Dobby
@@ -105,7 +105,7 @@ status: draft
 - aliases:
   - Dobby
 - category: agent
-- folder: `wiki/Daily/2026/05`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## Forge
@@ -132,7 +132,7 @@ status: draft
 - aliases:
   - Hermine
 - category: agent
-- folder: `.`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## Heron
@@ -150,7 +150,7 @@ status: draft
 - aliases:
   - Héron
 - category: agent
-- folder: `.`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## Iris
@@ -159,7 +159,7 @@ status: draft
 - aliases:
   - Iris
 - category: agent
-- folder: `.`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## Jade
@@ -168,7 +168,7 @@ status: draft
 - aliases:
   - Jade
 - category: agent
-- folder: `.`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## Lynx
@@ -186,7 +186,7 @@ status: draft
 - aliases:
   - Miel
 - category: agent
-- folder: `.`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## Milan
@@ -195,7 +195,7 @@ status: draft
 - aliases:
   - Milan
 - category: agent
-- folder: `.`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## Nova
@@ -204,7 +204,7 @@ status: draft
 - aliases:
   - Nova
 - category: agent
-- folder: `.`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## Pie
@@ -213,7 +213,7 @@ status: draft
 - aliases:
   - Pie
 - category: agent
-- folder: `TEAM_Inbox/pie`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## Renard
@@ -222,7 +222,7 @@ status: draft
 - aliases:
   - Renard
 - category: agent
-- folder: `.`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## Sigma
@@ -231,7 +231,7 @@ status: draft
 - aliases:
   - Sigma
 - category: agent
-- folder: `.`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## Sybil
@@ -240,7 +240,7 @@ status: draft
 - aliases:
   - Sybil
 - category: agent
-- folder: `wiki/Daily/2026/05`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## Trace
@@ -249,7 +249,7 @@ status: draft
 - aliases:
   - Trace
 - category: agent
-- folder: `.`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## Vasco
@@ -258,7 +258,7 @@ status: draft
 - aliases:
   - Vasco
 - category: agent
-- folder: `.`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## Vega
@@ -267,7 +267,7 @@ status: draft
 - aliases:
   - Vega
 - category: agent
-- folder: `.`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## 01_AI_IT_TOOLS
@@ -276,7 +276,7 @@ status: draft
 - aliases:
   - 01_AI_IT_TOOLS
 - category: project
-- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/docs`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS`
 - ambiguity: none recorded
 
 ## 02_ARTEON
@@ -285,7 +285,7 @@ status: draft
 - aliases:
   - 02_ARTEON
 - category: project
-- folder: `JCH_Inbox/03_PROJECTS/02_ARTEON/legal`
+- folder: `JCH_Inbox/03_PROJECTS/02_ARTEON`
 - ambiguity: none recorded
 
 ## 03_WILDNEXUS
@@ -294,7 +294,7 @@ status: draft
 - aliases:
   - 03_WILDNEXUS
 - category: project
-- folder: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/08_TECH_NOTES/tech/graphify-notes`
+- folder: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS`
 - ambiguity: none recorded
 
 ## 06_PHOTO_NATURE
@@ -303,7 +303,7 @@ status: draft
 - aliases:
   - 06_PHOTO_NATURE
 - category: project
-- folder: `JCH_Inbox/03_PROJECTS/06_PHOTO_NATURE/tech/editing`
+- folder: `JCH_Inbox/03_PROJECTS/06_PHOTO_NATURE`
 - ambiguity: none recorded
 
 ## 07_TRAVELS
@@ -312,7 +312,7 @@ status: draft
 - aliases:
   - 07_TRAVELS
 - category: project
-- folder: `JCH_Inbox/03_PROJECTS/07_TRAVELS/docs`
+- folder: `JCH_Inbox/03_PROJECTS/07_TRAVELS`
 - ambiguity: none recorded
 
 ## 08_VETALYX
@@ -321,7 +321,7 @@ status: draft
 - aliases:
   - 08_VETALYX
 - category: project
-- folder: `JCH_Inbox/03_PROJECTS/08_VETALYX/docs`
+- folder: `JCH_Inbox/03_PROJECTS/08_VETALYX`
 - ambiguity: none recorded
 
 ## archive
@@ -330,7 +330,7 @@ status: draft
 - aliases:
   - archive
 - category: project
-- folder: `JCH_Inbox/03_PROJECTS/archive/reanimable/04_NUANCES/docs/02_working_notes`
+- folder: `JCH_Inbox/03_PROJECTS/archive`
 - ambiguity: none recorded
 
 ## Arduino
@@ -366,7 +366,7 @@ status: draft
 - aliases:
   - Claude
 - category: technology
-- folder: `wiki/Daily/2026/05`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/docs`
 - ambiguity: none recorded
 
 ## Codex
@@ -375,7 +375,7 @@ status: draft
 - aliases:
   - Codex
 - category: technology
-- folder: `wiki/Daily/2026/05`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/pka-hermisation`
 - ambiguity: none recorded
 
 ## Docker
@@ -456,7 +456,7 @@ status: draft
 - aliases:
   - Obsidian
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/docs`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/obsidian-knowledge-graph`
 - ambiguity: none recorded
 
 ## PostgreSQL
@@ -510,7 +510,7 @@ status: draft
 - aliases:
   - SQLite
 - category: technology
-- folder: `.`
+- folder: `TEAM`
 - ambiguity: none recorded
 
 ## Tailscale

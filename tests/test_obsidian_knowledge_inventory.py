@@ -95,3 +95,32 @@ def test_review_queue_flags_ambiguous_aliases(tmp_path):
     assert "# Review Queue" in review_queue
     assert "Claude" in review_queue
     assert "Ambiguous runtime or model reference" in review_queue
+
+
+def test_dictionary_prefers_team_folder_for_agents(tmp_path):
+    write(tmp_path / "TEAM/dobby.md", "# Dobby\n\nDobby profile.")
+    write(tmp_path / "wiki/Daily/2026/05/2026-05-25.md", "# Daily\n\nDobby worked on Obsidian.")
+    write(tmp_path / "wiki/Daily/2026/05/2026-05-26.md", "# Daily\n\nDobby worked on WildNexus.")
+    write(tmp_path / "wiki/Daily/2026/05/2026-05-27.md", "# Daily\n\nDobby worked on PKA.")
+
+    inventory = build_inventory(tmp_path)
+    dictionary = render_knowledge_dictionary(inventory)
+
+    assert "## Dobby" in dictionary
+    assert "- folder: `TEAM`" in dictionary
+
+
+def test_generated_inventory_files_are_not_scanned(tmp_path):
+    write(
+        tmp_path / "JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/obsidian-knowledge-graph/indexes/technology_index.md",
+        "# Technology Index\n\nGraphify should not count from generated output.",
+    )
+    write(
+        tmp_path / "JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/obsidian-knowledge-graph/knowledge_dictionary.md",
+        "# Knowledge Dictionary\n\nGraphify should not count from generated output.",
+    )
+
+    inventory = build_inventory(tmp_path)
+
+    assert inventory.notes == []
+    assert "Graphify" not in inventory.technologies
