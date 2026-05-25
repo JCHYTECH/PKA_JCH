@@ -42,7 +42,7 @@ Note : l'ancienne page `1.html` a ete remplacee par `hub.html`.
 | [01_AI_IT_TOOLS](../03_PROJECTS/01_AI_IT_TOOLS/INDEX.md) | Outils AI et ressources techniques transversales | Actif |
 | [02_ARTEON](../03_PROJECTS/02_ARTEON/INDEX.md) | Plateforme éditoriale photographique naturaliste | Actif |
 | [03_WILDNEXUS](../03_PROJECTS/03_WILDNEXUS/INDEX.md) | WildNexus : nœud caméra autonome P0 et observation écologique distribuée | Actif |
-| [04_NUANCES](../03_PROJECTS/04_NUANCES/INDEX.md) | Consultance stratégique BESS | Standby |
+| [04_NUANCES](../03_PROJECTS/archive/reanimable/04_NUANCES/INDEX.md) | Consultance stratégique BESS | Archive reactivable |
 | [05_PHOTO_AI_JURY](../03_PROJECTS/05_PHOTO_AI_JURY/) | Analyses et exports autour du jury critique photo | Actif |
 | [06_PHOTO_NATURE](../03_PROJECTS/06_PHOTO_NATURE/INDEX.md) | Activités wildlife, impression et terrain | Actif |
 | [07_TRAVELS](../03_PROJECTS/07_TRAVELS/INDEX.md) | Voyages, logistique van et repérages photo | Actif |

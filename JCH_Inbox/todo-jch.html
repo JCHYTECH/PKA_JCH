@@ -465,6 +465,34 @@
     <div class="card-check"><input type="checkbox" id="t22" onchange="toggleDoneCard(this)"><label for="t22">Marquer comme fait</label></div>
   </div>
 
+  <div class="card" data-urgency="important" data-project="WILDNEXUS">
+    <div class="card-top">
+      <div class="card-title">📥 Télécharger les fiches techniques composants WildNexus P0</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">Depuis l'index <code>datasheets/INDEX_DATASHEETS_ROHS.md</code> — 16 composants Option A + 9 Option B. URLs directes fournies. Priorité : ESP32-S3, OV5640 (demander Arducam), EKMB1303111, LoRa RAK3172, BME688. Mouser et DigiKey affichent aussi les fiches + RoHS.</div>
+    <div class="card-meta">
+      <div class="card-project">WILDNEXUS · WP02</div>
+      <div class="card-deps"><div class="dep-tag">INDEX_DATASHEETS_ROHS.md ✓</div><div class="dep-tag">Dossier datasheets/ prêt</div></div>
+      <div class="card-who">Responsable : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t23" onchange="toggleDoneCard(this)"><label for="t23">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="important" data-project="WILDNEXUS">
+    <div class="card-top">
+      <div class="card-title">📥 Re-télécharger fiche TPS62840 complète (TI.com)</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">La version stockée dans <code>datasheets/TI_TPS62840_datasheet.pdf</code> est tronquée (955 KB au lieu de 3.17 MB). Télécharger le PDF complet depuis <a href="https://www.ti.com/lit/ds/symlink/tps62840.pdf">ti.com/lit/ds/symlink/tps62840.pdf</a> et remplacer le fichier.</div>
+    <div class="card-meta">
+      <div class="card-project">WILDNEXUS · WP02</div>
+      <div class="card-deps"><div class="dep-tag">Composant critique buck</div></div>
+      <div class="card-who">Responsable : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t24" onchange="toggleDoneCard(this)"><label for="t24">Marquer comme fait</label></div>
+  </div>
+
 </div>
 
 <div class="statsbar">
@@ -472,7 +500,7 @@
   <div class="stat"><span class="stat-dot urgent"></span><strong id="cnt-urgent">—</strong> urgentes</div>
   <div class="stat"><span class="stat-dot important"></span><strong id="cnt-important">—</strong> importantes</div>
   <div class="stat"><span class="stat-dot long"></span><strong id="cnt-long">—</strong> long terme</div>
-  <div class="stat" style="margin-left:auto;">Mis à jour : 2026-05-03</div>
+  <div class="stat" style="margin-left:auto;">Mis à jour : 2026-05-25</div>
 </div>
 
 <script>
