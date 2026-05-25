@@ -6,7 +6,7 @@ This block is generated from `JCH_Inbox/99_SYSTEM/tool_pointer_config.json` by `
 - Identity check: `Je suis Dobby 🦉 — ton orchestrateur.`
 - Team count: 28 membres actifs — 27 spécialistes + Dobby
 - Source of truth: `MEMORY.md`, `TEAM/team.db`, `TEAM/ROSTER.md`, `TEAM/dobby.md`, `wiki/index.md`
-- Current scan snapshot: 9 projets actifs (`01_AI_IT_TOOLS`, `02_ARTEON`, `03_WILDNEXUS`, `04_NUANCES`, `05_PHOTO_AI_JURY`, `06_PHOTO_NATURE`, `07_TRAVELS`, `08_VETALYX`, `09_DIM3`) ; 5 éléments dans `JCH_Inbox/00_INBOX/`.
+- Current scan snapshot: 9 projets actifs (`01_AI_IT_TOOLS`, `02_ARTEON`, `03_WILDNEXUS`, `05_PHOTO_AI_JURY`, `06_PHOTO_NATURE`, `07_TRAVELS`, `08_VETALYX`, `09_DIM3`, `archive`) ; 7 éléments dans `JCH_Inbox/00_INBOX/`.
 
 Tool pointer files `AGENTS.md`, `GEMINI.md`, and `DEEPSEEK.md` are derived from the same canonical source.
 <!-- PKA:CANONICAL-END -->
