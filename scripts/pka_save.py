@@ -54,13 +54,31 @@ def daily_path(day: datetime, title: str) -> Path:
     return dest_dir / f"{day.strftime('%Y-%m-%d')}-{slugify(title)}.md"
 
 
-def build_section(now: datetime, title: str, summary: str, actions: str, decisions: str, next_steps: str) -> str:
+def build_section(
+    now: datetime,
+    title: str,
+    summary: str,
+    actions: str,
+    decisions: str,
+    next_steps: str,
+    model: str = "",
+    project: str = "",
+) -> str:
     parts = [
         f"## Session — {now.strftime('%H:%M')} — {title}",
         "",
+    ]
+    context = []
+    if model:
+        context.append(f"- Modèle : {model}")
+    if project:
+        context.append(f"- Projet : {project}")
+    if context:
+        parts.extend(["### Contexte", *context, ""])
+    parts.extend([
         "### Résumé",
         summary or "- À compléter.",
-    ]
+    ])
     if actions:
         parts.extend(["", "### Actions", actions])
     if decisions:
@@ -87,7 +105,7 @@ def ensure_daily_file(path: Path, now: datetime, title: str) -> None:
     path.write_text(header, encoding="utf-8")
 
 
-def append_log(now: datetime, title: str, summary: str, path: Path) -> None:
+def append_log(now: datetime, title: str, summary: str, path: Path, model: str = "", project: str = "") -> None:
     LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
     if not LOG_PATH.exists():
         LOG_PATH.write_text("# Log PKA\n\n---\n", encoding="utf-8")
@@ -95,7 +113,13 @@ def append_log(now: datetime, title: str, summary: str, path: Path) -> None:
     if len(one_line) > 180:
         one_line = one_line[:177].rstrip() + "..."
     rel = path.relative_to(PKA_DIR)
-    entry = f"\n{now.strftime('%Y-%m-%d %H:%M')} — Save Codex : {title} ({one_line}) — `{rel}`\n"
+    context = []
+    if model:
+        context.append(f"model={model}")
+    if project:
+        context.append(f"project={project}")
+    context_text = f" [{' ; '.join(context)}]" if context else ""
+    entry = f"\n{now.strftime('%Y-%m-%d %H:%M')} — Save Codex{context_text} : {title} ({one_line}) — `{rel}`\n"
     with LOG_PATH.open("a", encoding="utf-8") as fh:
         fh.write(entry)
 
@@ -107,10 +131,14 @@ def save_session(args: argparse.Namespace) -> Path:
     actions = args.actions
     decisions = args.decisions
     next_steps = args.next_steps
+    model = args.model
+    project = args.project
 
     if args.interactive or not title:
         print("Dobby — sauvegarde session PKA")
         title = prompt_single("Titre", title or "session-codex")
+        model = prompt_single("Modèle", model)
+        project = prompt_single("Projet", project)
         summary = summary or prompt_multiline("Résumé")
         actions = actions or prompt_multiline("Actions réalisées")
         decisions = decisions or prompt_multiline("Décisions")
@@ -129,15 +157,15 @@ def save_session(args: argparse.Namespace) -> Path:
     if args.dry_run:
         print("DRY RUN — aucune écriture.")
         print(f"Fichier cible : {path}")
-        print(build_section(now, title, summary, actions, decisions, next_steps))
+        print(build_section(now, title, summary, actions, decisions, next_steps, model=model, project=project))
         return path
 
     ensure_daily_file(path, now, title)
-    section = build_section(now, title, summary, actions, decisions, next_steps)
+    section = build_section(now, title, summary, actions, decisions, next_steps, model=model, project=project)
     with path.open("a", encoding="utf-8") as fh:
         fh.write("\n" + section)
 
-    append_log(now, title, summary, path)
+    append_log(now, title, summary, path, model=model, project=project)
     return path
 
 
@@ -148,6 +176,8 @@ def main() -> None:
     parser.add_argument("--actions", default="")
     parser.add_argument("--decisions", default="")
     parser.add_argument("--next-steps", default="")
+    parser.add_argument("--model", default="", help="Modèle ou runtime utilisé: codex, claude, gemini, deepseek...")
+    parser.add_argument("--project", default="", help="Projet PKA concerné: WILDNEXUS, ARTEON, VETALYX...")
     parser.add_argument("--file", help="Chemin daily note cible. Défaut: wiki/Daily/YYYY/MM/date-title.md")
     parser.add_argument("-i", "--interactive", action="store_true", help="Mode interactif")
     parser.add_argument("--dry-run", action="store_true", help="Affiche la sauvegarde sans écrire")

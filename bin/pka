@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+# Alias court pour la cloture interactive PKA.
+
+set -euo pipefail
+
+PKA_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$PKA_DIR"
+
+exec "$PKA_DIR/bin/pka-save"
