@@ -24,6 +24,7 @@ class EnrichedComponent:
     obsolete: bool = False
     alternatives: List[str] = field(default_factory=list)
     supplier_url: str = ""
+    found_mpn: str = ""  # MPN retourné par Mouser (peut différer du MPN BOM)
     simulation: bool = False
     error: str = ""
     flag: str = ""  # "", "⚠️ MANUEL", "🔴 OBSOLETE"

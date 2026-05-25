@@ -15,19 +15,21 @@ def push_cart(result: ProcurementResult, cart_name: str = "PKA_Procurement") -> 
     Retourne une string décrivant le résultat (URL panier ou message d'erreur).
     Jamais de commande automatique.
     """
-    if cfg.SIMULATION_MODE:
+    cart_key_to_use = cfg.MOUSER_CART_API_KEY or cfg.MOUSER_API_KEY
+    if not cart_key_to_use:
         return (
             "⚠️ Mode simulation — panier non créé. "
-            "Ajouter MOUSER_API_KEY dans .procurement.env pour activer."
+            "Ajouter MOUSER_CART_API_KEY dans .procurement.env pour activer."
         )
 
     items = []
     for e in result.enriched:
-        # Exclure les composants sans MPN ou non trouvés
-        if not e.component.mpn or e.flag == "⚠️ MANUEL":
+        # Utilise found_mpn (retourné par Mouser) ou le mpn BOM
+        mpn = e.found_mpn or e.component.mpn
+        if not mpn or e.flag == "⚠️ MANUEL":
             continue
         items.append({
-            "MouserPartNumber": e.component.mpn,
+            "MouserPartNumber": mpn,
             "Quantity": str(e.component.qty),
             "CustomerPartNumber": e.component.ref,
         })
@@ -39,7 +41,7 @@ def push_cart(result: ProcurementResult, cart_name: str = "PKA_Procurement") -> 
         "CartKey": "",  # vide = nouveau panier
         "CartItems": items,
     }
-    url = f"{cfg.MOUSER_CART_URL}?apiKey={cfg.MOUSER_API_KEY}"
+    url = f"{cfg.MOUSER_CART_URL}?apiKey={cart_key_to_use}"
 
     try:
         resp = requests.post(url, json=payload, timeout=15)

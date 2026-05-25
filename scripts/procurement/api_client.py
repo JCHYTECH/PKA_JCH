@@ -102,6 +102,7 @@ class MouserClient:
                     obsolete=obsolete,
                     flag="🔴 OBSOLETE" if obsolete else "",
                     supplier_url=part.get("ProductDetailUrl", ""),
+                    found_mpn=part.get("ManufacturerPartNumber", ""),
                     simulation=False,
                 )
             except Exception as exc:
