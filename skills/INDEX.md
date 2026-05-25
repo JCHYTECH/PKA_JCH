@@ -22,6 +22,7 @@
 | [pka-file-versioning](pka-file-versioning/SKILL.md) | Automatique — avant toute modif significative BOM/ADR/registre | Sauvegarder la version précédente d'un fichier itératif |
 | [pka-pointer-sync](pka-pointer-sync/SKILL.md) | "mets à jour les pointers", "l'équipe a changé" | Resynchroniser CLAUDE.md, AGENTS.md, GEMINI.md, DEEPSEEK.md |
 | [bioacoustics-qc-playbook](bioacoustics-qc-playbook/SKILL.md) | "bioacoustics QC", "segment triage", "spectrogram review", "insect dataset" | Curation datasets bioacoustiques, QC spectrogrammes, profils espèces audio |
+| [obsidian-knowledge-graph](obsidian-knowledge-graph/SKILL.md) | "wikilink le vault", "dry-run obsidian", "mets à jour le knowledge graph" | Inventaire Obsidian, dictionnaire, dry-run wikilinks et application contrôlée |
 
 ---
 

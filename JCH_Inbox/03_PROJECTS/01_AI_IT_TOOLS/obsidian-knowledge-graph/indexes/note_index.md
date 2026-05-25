@@ -640,6 +640,8 @@ status: generated
 | PKA Skills — Index transversal |  |  |  | `skills/INDEX.md` |
 | Bioacoustics QC Playbook |  |  |  | `skills/bioacoustics-qc-playbook/SKILL.md` |
 | Bioacoustics QC Reference |  |  |  | `skills/bioacoustics-qc-playbook/references/bioacoustics-qc-reference.md` |
+| Skill - obsidian-knowledge-graph |  |  |  | `skills/obsidian-knowledge-graph/SKILL.md` |
+| Regles de validation - Obsidian Knowledge Graph |  |  |  | `skills/obsidian-knowledge-graph/references/validation_rules.md` |
 | Skill — onboarding-specialiste |  |  |  | `skills/onboarding-specialiste/SKILL.md` |
 | Skill — pka-file-versioning |  |  |  | `skills/pka-file-versioning/SKILL.md` |
 | Skill — pka-pointer-sync |  |  |  | `skills/pka-pointer-sync/SKILL.md` |
