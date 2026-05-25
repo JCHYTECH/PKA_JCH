@@ -87,10 +87,14 @@ def run(project: str, bom_path: Path, output_dir: Path, push_cart_flag: bool = F
     print(f"{'='*60}")
 
     if push_cart_flag:
-        from .cart_client import push_cart
-        print("\n🛒 Création panier Mouser...")
-        cart_result = push_cart(result)
-        print(f"   {cart_result}")
+        try:
+            from .cart_client import push_cart
+            print("\n🛒 Création panier Mouser...")
+            cart_result = push_cart(result)
+            print(f"   {cart_result}")
+        except ImportError:
+            print("\n⚠️  Cart API non encore disponible (cart_client.py manquant).")
+            print("   Lance Task 8 pour activer cette fonctionnalité.")
     else:
         print("\n⏳ En attente de validation JCH avant préparation panier.")
         print("   Relancer avec --push-cart pour créer le panier Mouser.")
