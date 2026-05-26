@@ -1,6 +1,6 @@
 ---
 date: 2026-04-30
-specialist: Renard
+specialist: [[Renard]]
 topic: Pacte d'Actionnaires Fondateurs VETALYX — Version consolidée (draft)
 version: v2 — 9 modifications intégrées + Annexe 3
 statut: DRAFT — adresse siège / RCS / lieu de signature à compléter avant finalisation
@@ -407,7 +407,7 @@ Toute absence injustifiée à plus d'une réunion consécutive du Comité décle
 
 ---
 
-> **Note Renard — Champs restants avant finalisation**
+> **Note [[Renard]] — Champs restants avant finalisation**
 >
 > - Adresse du siège social (Arts. préambule, 32 et page de signature)
 > - Numéro RCS (préambule)

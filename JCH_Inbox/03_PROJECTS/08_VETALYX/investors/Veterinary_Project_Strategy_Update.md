@@ -1153,7 +1153,7 @@ I will immediately adapt (ZIP packaging, alternative export, or slide-by-slide r
 ## Human
 *2025-12-24 10:10*
 
-I have several chatgpt account we are working with which one ?
+I have several [[ChatGPT]] account we are working with which one ?
 
 ---
 
@@ -1162,16 +1162,16 @@ I have several chatgpt account we are working with which one ?
 
 **Time reference: 11:18 (CET)**
 
-Short answer: **this file is attached to the ChatGPT account and session you are using right now in this conversation.**
+Short answer: **this file is attached to the [[ChatGPT]] account and session you are using right now in this conversation.**
 
 Here is the precise breakdown, because this point is important.
 
 ---
 
-## How ChatGPT handles files (critical clarification)
+## How [[ChatGPT]] handles files (critical clarification)
 
 ### 1. Files are **not shared across accounts**
-Each ChatGPT account is **fully isolated**:
+Each [[ChatGPT]] account is **fully isolated**:
 - Different email = different workspace
 - Files generated in one account **do not exist** in another
 
@@ -1197,7 +1197,7 @@ This means:
 ## What this means for your PowerPoint
 
 The PowerPoint is available **only if**:
-1. You are logged into **the same ChatGPT account**
+1. You are logged into **the same [[ChatGPT]] account**
 2. You are in **this exact conversation**
 3. You use the **web interface** (desktop works best)
 
@@ -1228,7 +1228,7 @@ I will regenerate **everything cleanly** in that account.
 
 ## My recommendation (given your workflow)
 For strategic / board / investor material:
-- **Use one single ChatGPT account**
+- **Use one single [[ChatGPT]] account**
 - Keep **one master chat per project**
 - Treat it like a project room
 
@@ -1257,7 +1257,7 @@ what address do I use here
 
 **Time reference: 11:21 (CET)**
 
-I cannot see your email address from my side. ChatGPT does **not expose the account email to the assistant**, for privacy reasons.  
+I cannot see your email address from my side. [[ChatGPT]] does **not expose the account email to the assistant**, for privacy reasons.  
 However, you can identify it yourself in **30 seconds**. Here is the exact, reliable method.
 
 ---
@@ -1265,7 +1265,7 @@ However, you can identify it yourself in **30 seconds**. Here is the exact, reli
 ## How to know **which email address you are using right now**
 
 ### On desktop (recommended)
-1. Look at the **bottom-left corner** of the ChatGPT interface  
+1. Look at the **bottom-left corner** of the [[ChatGPT]] interface  
 2. Click on your **profile picture or initials**
 3. Select **“Settings”**
 4. Go to **“Account”**
@@ -1275,7 +1275,7 @@ You will see:
 - Whether it is:
   - email/password
   - Google login
-  - Microsoft / Apple login
+  - Microsoft / [[Apple]] login
 
 👉 **That email is the address used “here”.**
 
@@ -1288,10 +1288,10 @@ You may think you are using:
 
 But you are actually logged in via:
 - Google → `gmail.com`
-- Apple ID → private relay address
+- [[Apple]] ID → private relay address
 - Another browser profile (Safari vs Chrome)
 
-Each one = **different ChatGPT account**.
+Each one = **different [[ChatGPT]] account**.
 
 ---
 
