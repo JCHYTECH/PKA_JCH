@@ -2404,7 +2404,7 @@ Whenever you’re ready, we can:
 - turn this into a **Gantt or investor pack**,  
 - or polish the **PowerPoint** into your final board presentation.  
 
-Would you like me to archive this whole “JCHYTECH Market Launch Pack” in memory, so you can resume it instantly later?
+Would you like me to [[archive]] this whole “JCHYTECH Market Launch Pack” in memory, so you can resume it instantly later?
 
 ---
 

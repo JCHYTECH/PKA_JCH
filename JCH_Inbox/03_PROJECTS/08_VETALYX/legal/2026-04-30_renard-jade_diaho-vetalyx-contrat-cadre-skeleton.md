@@ -1,6 +1,6 @@
 ---
 date: 2026-04-30
-specialists: Renard + Jade
+specialists: [[Renard]] + [[Jade]]
 topic: Contrat Cadre DIAHO / VETALYX — Squelette v1 (draft)
 status: SKELETON — questions de clarification en attente de réponse
 langue: FR + ZH (bilingue dès v1)
@@ -211,7 +211,7 @@ Le présent Contrat est rédigé en français et en chinois. En cas de divergenc
 
 ---
 
-## QUESTIONS DE CLARIFICATION — RENARD
+## QUESTIONS DE CLARIFICATION — [[Renard]]
 ## 待澄清问题 — 法律顾问
 
 *À soumettre à JCH avant de passer à la version v2*
@@ -247,7 +247,7 @@ Le présent Contrat est rédigé en français et en chinois. En cas de divergenc
 
 ---
 
-## NOTE DE JADE — TERMES SANS ÉQUIVALENT PROPRE EN CHINOIS JURIDIQUE
+## NOTE DE [[Jade]] — TERMES SANS ÉQUIVALENT PROPRE EN CHINOIS JURIDIQUE
 
 *Signalés pour discussion avant finalisation*
 
@@ -264,4 +264,4 @@ Le présent Contrat est rédigé en français et en chinois. En cas de divergenc
 
 *— Fin du squelette v1 —*
 
-*Prochaine étape : réponses de JCH aux questions de clarification → Renard rédige v2 complète*
+*Prochaine étape : réponses de JCH aux questions de clarification → [[Renard]] rédige v2 complète*

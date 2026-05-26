@@ -138,12 +138,12 @@ Votre demande (“rechercher les cliniques vétérinaires” en France, Allemagn
 Cela dit, je peux vous donner (1) les meilleurs annuaires/registries nationaux pour obtenir la liste des établissements, et (2) une estimation “nombre de structures” issue de sources publiées (avec l’année et le périmètre).
 
 France
-Pour trouver les cliniques (annuaire/registre) : l’Ordre des vétérinaires publie l’Atlas démographique et met à disposition des outils/annuaires via son site.
-Nombre de structures : au 31/12/2022, l’Atlas (relayé par la presse professionnelle) mentionne 8 215 “établissements vétérinaires” dont 6 662 “établissements de soins vétérinaires” (cabinets + cliniques + centres hospitaliers, etc.). citeturn8search12
+Pour trouver les cliniques (annuaire/registre) : l’Ordre des vétérinaires publie l’[[Atlas]] démographique et met à disposition des outils/annuaires via son site.
+Nombre de structures : au 31/12/2022, l’[[Atlas]] (relayé par la presse professionnelle) mentionne 8 215 “établissements vétérinaires” dont 6 662 “établissements de soins vétérinaires” (cabinets + cliniques + centres hospitaliers, etc.). citeturn8search12
 
 Allemagne
 Pour trouver les cliniques (annuaire/registre) : la Bundestierärztekammer (BTK) est la porte d’entrée la plus standard (références et publications de la profession).
-Nombre de structures : la BTK (via son “Tierärzte Atlas”) parle d’environ 10 000 “Tierarztpraxen und Tierkliniken” (cabinets et cliniques). citeturn2search25  
+Nombre de structures : la BTK (via son “Tierärzte [[Atlas]]”) parle d’environ 10 000 “Tierarztpraxen und Tierkliniken” (cabinets et cliniques). citeturn2search25  
 Une source marché allemande cite 10 428 “Tierarztpraxen” (au 31/12/2023) en se référant à la BTK. citeturn2search15
 
 Espagne
@@ -156,10 +156,10 @@ Nombre de structures : plusieurs sources convergent vers ~8 400 à ~8 600 “str
 
 Belgique
 Pour trouver les cliniques : l’Ordre des médecins vétérinaires de Belgique permet la recherche d’un vétérinaire et sert de point d’entrée institutionnel. citeturn4search13  
-Nombre de structures : je n’ai pas trouvé, dans les sources institutionnelles facilement citables en accès direct, un chiffre national “nombre de cliniques/cabinets” publié de façon stable et comparable (comme l’Atlas en France). La voie la plus robuste consiste à utiliser une statistique d’entreprises par code d’activité (NACE 75 “Activités vétérinaires”) via Statbel/be.STAT, mais l’extraction “clé en main” du sous-code exact (et sa correspondance “cabinet/clinique”) n’est pas fournie sous forme d’un chiffre unique dans les pages consultées. citeturn5view0turn9view0
+Nombre de structures : je n’ai pas trouvé, dans les sources institutionnelles facilement citables en accès direct, un chiffre national “nombre de cliniques/cabinets” publié de façon stable et comparable (comme l’[[Atlas]] en France). La voie la plus robuste consiste à utiliser une statistique d’entreprises par code d’activité (NACE 75 “Activités vétérinaires”) via Statbel/be.STAT, mais l’extraction “clé en main” du sous-code exact (et sa correspondance “cabinet/clinique”) n’est pas fournie sous forme d’un chiffre unique dans les pages consultées. citeturn5view0turn9view0
 
 Tableau récapitulatif (ordre de grandeur)
-France : 6 662 établissements de soins vétérinaires (31/12/2022, définition Atlas) citeturn8search12  
+France : 6 662 établissements de soins vétérinaires (31/12/2022, définition [[Atlas]]) citeturn8search12  
 Allemagne : ~10 000 cabinets/clinique (BTK, ordre de grandeur) ; 10 428 cabinets (source marché citant BTK, 31/12/2023) citeturn2search25turn2search15  
 Espagne : ~7 100 cliniques/centres ; 7 126 centres (2023) selon une source de recensement sectoriel citeturn10search14turn10search13  
 Italie : ~8 400–8 600 structures vétérinaires (selon périmètre) citeturn10search8turn10search2  

@@ -914,7 +914,7 @@ I can now:
 
 ### **1. Insert visual placeholders** (graphs, maps, country flags, competitor matrices)  
 ### **2. Add DIATECH branding elements** (logo, colors, consistent typography)  
-### **3. Integrate real data charts** (bar charts, pie charts, volumes, pricing curves)  
+### **3. Integrate real data charts** (bar charts, [[Pie]] charts, volumes, pricing curves)  
 ### **4. Import and merge slides from your 4 uploaded decks**  
 ### **5. Polish the decks to investor-level final quality**
 
@@ -1016,7 +1016,7 @@ output
 ## Assistant
 *2025-11-13 18:21*
 
-It looks like the Python environment was fully reset — this means **all previously generated PPT files are no longer present in /mnt/data**, so any attempt to load them fails.
+It looks like the [[Python]] environment was fully reset — this means **all previously generated PPT files are no longer present in /mnt/data**, so any attempt to load them fails.
 
 Before I can integrate your original slides into the structured decks, I need to **re-create or re-upload** the three new decks:
 
@@ -1608,7 +1608,7 @@ Je peux maintenant :
 - `DIATECH_INVESTOR_FINAL.pptx`  
 - `DIATECH_MARKET_SALES_FINAL.pptx`
 
-⚠️ **Mais** : la copie *fidèle* de slides entières (avec mise en page intacte) via Python est impossible —  
+⚠️ **Mais** : la copie *fidèle* de slides entières (avec mise en page intacte) via [[Python]] est impossible —  
 → **il faut que je les assemble manuellement au bon endroit en utilisant ta structure**.
 
 💡 **Solution** :  
@@ -1756,7 +1756,7 @@ market.save(market_path)
 ## Assistant
 *2025-11-13 19:00*
 
-It looks like the execution environment reset **again** — meaning Python cannot yet run to generate the 3 PPTX structure files.
+It looks like the execution environment reset **again** — meaning [[Python]] cannot yet run to generate the 3 PPTX structure files.
 
 Before retrying the code, I need to **safely re-establish the environment** so the save paths actually work.
 
@@ -2413,7 +2413,7 @@ Parfait, merci pour ta patience — voici ce qui se passe techniquement, et comm
 ---
 
 # ❗ 1. Sur le PDF :  
-Le module Python disponible ici **ne peut pas générer de PDF**, car Pandoc → PDF nécessite *latex* (pdflatex, xelatex), qui **n’est pas installé** dans l’environnement.  
+Le module [[Python]] disponible ici **ne peut pas générer de PDF**, car Pandoc → PDF nécessite *latex* (pdflatex, xelatex), qui **n’est pas installé** dans l’environnement.  
 👉 C’est une *limitation technique stricte* de l’environnement Jupyter fourni.
 
 📌 **Solution** :  

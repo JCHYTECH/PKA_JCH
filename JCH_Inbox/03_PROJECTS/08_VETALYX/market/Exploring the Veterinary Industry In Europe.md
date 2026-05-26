@@ -1,6 +1,6 @@
 ---
 title: Exploring the Veterinary Industry In Europe
-source: https://www.eurodev.com/blog/veterinary-industry-in-europe-trends?utm_source=chatgpt.com
+source: https://www.eurodev.com/blog/veterinary-industry-in-europe-trends?utm_source=[[ChatGPT]].com
 author:
   - "[[EuroDev]]"
 published: 2023-05-14
