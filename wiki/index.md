@@ -1,7 +1,7 @@
 # Wiki — Index
 
 > Point d'entrée du système de connaissance de JCH.  
-> Dernière mise à jour : 2026-05-25 (Dobby — skill inventory cross-runtime · bioacoustics playbook)
+> Dernière mise à jour : 2026-05-26 ([[Dobby]] — agent procurement semi-autonome · debug Cart API Mouser)
 
 ---
 
@@ -36,7 +36,7 @@
 
 ## Statistiques
 
-- Daily notes : 8 (mise à jour 2026-05-11 session 2)
+- Daily notes : 9 (mise à jour 2026-05-26 — procurement agent)
 - Articles knowledge : 2 (AI-Tools)
 - SOPs : 1 — Workstreams : 1 — Guidelines : 2
 - Fichiers raw en attente : 0
