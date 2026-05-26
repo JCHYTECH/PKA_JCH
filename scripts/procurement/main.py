@@ -27,7 +27,7 @@ def compute_total(enriched: list) -> float:
     return total
 
 
-def run(project: str, bom_path: Path, output_dir: Path, push_cart_flag: bool = False) -> None:
+def run(project: str, bom_path: Path, output_dir: Path, push_cart_flag: bool = False, push_digikey_flag: bool = False) -> None:
     print(f"\n🦦 Forge — Procurement Agent — {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     print(f"   Projet : {project}")
     print(f"   BOM    : {bom_path}")
@@ -98,6 +98,13 @@ def run(project: str, bom_path: Path, output_dir: Path, push_cart_flag: bool = F
     else:
         print("\n⏳ En attente de validation JCH avant préparation panier.")
         print("   Relancer avec --push-cart pour créer le panier Mouser.")
+        print("   Relancer avec --push-digikey pour créer la MyList DigiKey.")
+
+    if push_digikey_flag:
+        from .digikey_client import push_digikey_list
+        print("\n🛒 Création MyList DigiKey...")
+        dk_result = push_digikey_list(result)
+        print(f"   {dk_result}")
 
 
 def main():
@@ -115,6 +122,11 @@ def main():
         action="store_true",
         help="Pousse le panier Mouser après validation JCH (requiert MOUSER_API_KEY)",
     )
+    parser.add_argument(
+        "--push-digikey",
+        action="store_true",
+        help="Crée une MyList DigiKey après validation JCH (requiert DIGIKEY_CLIENT_ID/SECRET)",
+    )
     args = parser.parse_args()
 
     if not args.bom.exists():
@@ -126,6 +138,7 @@ def main():
         bom_path=args.bom,
         output_dir=args.output,
         push_cart_flag=args.push_cart,
+        push_digikey_flag=args.push_digikey,
     )
 
 
