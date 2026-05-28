@@ -1,7 +1,7 @@
 # Wiki — Index
 
 > Point d'entrée du système de connaissance de JCH.  
-> Dernière mise à jour : 2026-05-28 ([[Dobby]] — Maintenance nocturne vault PKA_JCH)
+> Dernière mise à jour : 2026-05-29 ([[Dobby]] — Hermisation complète, réorganisation vault)
 
 ---
 
