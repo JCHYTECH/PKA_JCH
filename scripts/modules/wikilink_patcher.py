@@ -101,6 +101,9 @@ def patch_file(path: Path, members: list[str], known_files: list[str]) -> bool:
 
     Exclut les fichiers dans EXCLUDED_FILES.
     """
+    if path.suffix != ".md":
+        return False
+
     if path.name in EXCLUDED_FILES:
         return False
 
