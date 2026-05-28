@@ -337,6 +337,18 @@
           <span class="radar-label">⚠️ Équipe Bloquée</span>
           <span class="radar-value alert" id="radar-blocked">--</span>
         </a>
+        <div class="radar-item">
+          <span class="radar-label">🔄 En cours (équipe)</span>
+          <span class="radar-value" id="radar-in-progress">--</span>
+        </div>
+        <div class="radar-item">
+          <span class="radar-label">📬 En attente validation</span>
+          <span class="radar-value alert" id="radar-delivered">--</span>
+        </div>
+        <div class="radar-item">
+          <span class="radar-label">❌ Rejetés non retraités</span>
+          <span class="radar-value alert" id="radar-rejected">--</span>
+        </div>
       </div>
 
       <div class="radar-signal">
@@ -463,6 +475,13 @@
       const health = await resHealth.json();
       document.getElementById('radar-inbox').textContent = health.inboxPending ?? '0';
       document.getElementById('latest-deliverable').textContent = health.latestDeliverable || 'Aucun signal récent.';
+      document.getElementById('radar-in-progress').textContent = health.inboxInProgress ?? '0';
+      const delivered = health.inboxDelivered ?? 0;
+      const rejected = health.inboxRejected ?? 0;
+      document.getElementById('radar-delivered').textContent = String(delivered);
+      document.getElementById('radar-rejected').textContent = String(rejected);
+      document.getElementById('radar-delivered').parentElement.classList.toggle('critical', delivered > 0);
+      document.getElementById('radar-rejected').parentElement.classList.toggle('critical', rejected > 0);
       
       const resKanban = await fetch("/api/kanban/summary");
       const summary = await resKanban.json();
