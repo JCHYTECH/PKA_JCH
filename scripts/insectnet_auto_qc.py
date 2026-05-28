@@ -10,6 +10,7 @@ import statistics
 import wave
 import sys
 from collections import defaultdict
+from pka_memory_log import log_run
 from pathlib import Path
 
 from PIL import Image
@@ -355,8 +356,10 @@ def main(argv: list[str] | None = None) -> int:
     for row in rows:
         counts[row["auto_qc"]] = counts.get(row["auto_qc"], 0) + 1
     summary = ", ".join(f"{key}={value}" for key, value in sorted(counts.items()))
+    msg = f"InsectNet auto-QC: {len(rows)} segments — {summary}"
     print(f"Wrote {len(rows)} auto-QC rows to {args.output}")
     print(summary)
+    log_run("insectnet_auto_qc", "ok", msg, project_key="03_WILDNEXUS")
     return 0
 
 
