@@ -8,6 +8,7 @@ Tourne tous les dimanches à 19h.
 """
 
 import base64
+from pka_memory_log import log_run
 import email.mime.text
 import json
 import sqlite3
@@ -199,7 +200,12 @@ def main():
     filepath = save_report_md(today_str, report)
     send_email(report, week_str)
     print(f"[Dobby] Rapport écrit → {filepath}")
+    log_run("dobby_weekly_report", "ok", f"Rapport {week_str} — {len(exchanges_by_day)} jours, {total} échanges → {filepath}")
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as exc:
+        log_run("dobby_weekly_report", "error", str(exc))
+        raise

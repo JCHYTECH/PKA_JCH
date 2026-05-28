@@ -8,6 +8,7 @@ Tourne à 23h après Sybil.
 
 import json
 import sqlite3
+from pka_memory_log import log_run
 from datetime import date, datetime, timezone
 from pathlib import Path
 
@@ -159,7 +160,12 @@ def main():
     save_retro_db(today_str, retro)
 
     print(f"[Dobby] Rétrospective écrite → {filepath}")
+    log_run("dobby_retro", "ok", f"Rétrospective {today_str} — {len(exchanges)} échanges → {filepath}")
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as exc:
+        log_run("dobby_retro", "error", str(exc))
+        raise

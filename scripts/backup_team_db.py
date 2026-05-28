@@ -6,6 +6,8 @@ import sqlite3
 from datetime import datetime, timedelta
 from pathlib import Path
 
+from pka_memory_log import log_run
+
 DB    = Path(__file__).resolve().parent.parent / "TEAM" / "team.db"
 DEST  = Path(__file__).resolve().parent.parent / "TEAM" / "backups"
 KEEP  = 30  # days
@@ -52,7 +54,13 @@ def main() -> None:
             f.unlink()
             pruned += 1
 
-    print(f"Backup written: {target.name} size={target.stat().st_size} mode=0600 pruned={pruned}")
+    msg = f"Backup written: {target.name} size={target.stat().st_size} mode=0600 pruned={pruned}"
+    print(msg)
+    log_run("backup_team_db", "ok", msg)
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as exc:
+        log_run("backup_team_db", "error", str(exc))
+        raise
