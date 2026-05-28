@@ -64,8 +64,9 @@ def run(
         return {"committed": False, "reason": "dry_run", "would_commit": date_str}
 
     try:
+        add_cmd = ["git", "add", "--"] + build_add_args() + [":(exclude)JCH_Inbox/99_SYSTEM/security/"]
         subprocess.run(
-            ["git", "add"] + build_add_args(),
+            add_cmd,
             cwd=root,
             check=True,
         )

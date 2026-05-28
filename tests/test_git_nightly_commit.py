@@ -56,3 +56,12 @@ class GitNightlyCommitTest(unittest.TestCase):
             result = git_nightly_commit.run()
         # Juste vérifier que ça ne plante pas sans date_str
         self.assertFalse(result["committed"])
+
+    def test_add_cmd_includes_security_pathspec_exclusion(self):
+        """Vérifie que l'exclusion security est effectivement passée à git add via pathspec."""
+        with mock.patch("scripts.modules.git_nightly_commit._git_status_empty", return_value=False), \
+             mock.patch("subprocess.run") as mock_run:
+            mock_run.return_value = mock.Mock(returncode=0)
+            git_nightly_commit.run(date_str="2026-05-28", dry_run=False)
+        add_call_args = mock_run.call_args_list[0].args[0]
+        self.assertIn(":(exclude)JCH_Inbox/99_SYSTEM/security/", add_call_args)
