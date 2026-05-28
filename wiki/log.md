@@ -104,3 +104,5 @@
 
 2026-05-28 09:19 — Save [model=claude-sonnet-4-6 ; project=VETALYX] : daily note créée (2026-05-28), index vérifié — session VETALYX Dossier DIXUN : reformatage rapport final, HTML interactif, évaluation technico-scientifique kits DIXUN (Vasco + Clio + Dobby)
 2026-05-28 20:09 — Save [model=claude-sonnet-4-6 ; project=PKA_JCH] : daily note créée (2026-05-28), index mis à jour — session PKA vault maintenance : wikilink_patcher + file_placement_checker + git_nightly_commit + launchd 02:00 installé (29 tests, 9 commits)
+2026-05-28 21:51 — Save [model=claude-sonnet-4-6 ; project=PKA_JCH] : daily note mise à jour (2026-05-28), index vérifié — fix VS Code .env Read Only
+2026-05-28 21:51 — Save [model=claude-sonnet-4-6 ; project=PKA_JCH] : daily note mise à jour (2026-05-28), index vérifié — fix VS Code .env Read Only
