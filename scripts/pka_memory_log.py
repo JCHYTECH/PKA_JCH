@@ -27,6 +27,7 @@ def log_run(
     event_type = "cron_ok" if status == "ok" else "cron_error"
     try:
         with sqlite3.connect(DB) as con:
+            con.execute("PRAGMA foreign_keys=ON")
             con.execute(
                 """INSERT INTO memory_log
                    (memory_file, memory_name, memory_type, model,

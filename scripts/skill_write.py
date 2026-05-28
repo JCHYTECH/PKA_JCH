@@ -24,6 +24,7 @@ def write_skill(title: str, trigger_pattern: str, procedure: str,
                 scope: str = "global", project_key: str = None,
                 model: str = None) -> int:
     con = sqlite3.connect(DB_PATH)
+    con.execute("PRAGMA foreign_keys=ON")
     cur = con.cursor()
     columns = get_columns(cur)
     today = date.today().isoformat()
