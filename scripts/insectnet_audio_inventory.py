@@ -11,6 +11,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+from pka_memory_log import log_run
+
 
 ROOT = Path(__file__).resolve().parent.parent
 BASE_DIR = (
@@ -214,9 +216,12 @@ def main(argv: list[str] | None = None) -> int:
     for row in rows:
         statuses[row["probe_status"]] = statuses.get(row["probe_status"], 0) + 1
     summary = ", ".join(f"{key}={value}" for key, value in sorted(statuses.items()))
-    print(f"Processed {len(rows)} rows: {summary}")
+    msg = f"InsectNet inventory: {len(rows)} fichiers — {summary}"
+    print(msg)
     print(f"Inventory: {args.output}")
-    return 1 if statuses.get("error") or statuses.get("missing") else 0
+    status = "error" if statuses.get("error") or statuses.get("missing") else "ok"
+    log_run("insectnet_audio_inventory", status, msg, project_key="03_WILDNEXUS")
+    return 1 if status == "error" else 0
 
 
 if __name__ == "__main__":
