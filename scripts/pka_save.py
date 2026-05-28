@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import re
+import sqlite3
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -18,6 +19,7 @@ from pathlib import Path
 PKA_DIR = Path(__file__).resolve().parents[1]
 DAILY_DIR = PKA_DIR / "wiki" / "Daily"
 LOG_PATH = PKA_DIR / "wiki" / "log.md"
+TEAM_DB = PKA_DIR / "TEAM" / "team.db"
 
 
 def slugify(text: str) -> str:
@@ -166,7 +168,41 @@ def save_session(args: argparse.Namespace) -> Path:
         fh.write("\n" + section)
 
     append_log(now, title, summary, path, model=model, project=project)
+    _log_to_memory_log(now, title, summary, decisions, model=model, project=project)
     return path
+
+
+def _log_to_memory_log(
+    now: datetime,
+    title: str,
+    summary: str,
+    decisions: str,
+    model: str = "",
+    project: str = "",
+) -> None:
+    body_parts = [summary]
+    if decisions:
+        body_parts.append(f"Décisions: {decisions}")
+    body = " | ".join(p.strip() for p in body_parts if p.strip())
+    if len(body) > 500:
+        body = body[:497] + "..."
+    try:
+        with sqlite3.connect(TEAM_DB) as con:
+            con.execute(
+                """INSERT INTO memory_log
+                   (memory_file, memory_name, memory_type, model, event_type, body, project_key, created_at)
+                   VALUES (?, ?, 'session', ?, 'save', ?, ?, ?)""",
+                (
+                    f"wiki/Daily/{now.strftime('%Y/%m/%Y-%m-%d')}-{title}.md",
+                    f"save-{now.strftime('%Y%m%d-%H%M')}",
+                    model or "unknown",
+                    body,
+                    project or None,
+                    now.strftime("%Y-%m-%d"),
+                ),
+            )
+    except (OSError, sqlite3.DatabaseError):
+        pass
 
 
 def main() -> None:
