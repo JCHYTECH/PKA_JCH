@@ -1,6 +1,6 @@
 # MEMORY — PKA_JCH
 > Miroir portable de la mémoire accumulée par Dobby. Charger ce fichier dans tout outil non-Claude Code pour restaurer le contexte sessions.
-> Dernière mise à jour : 2026-05-23
+> Dernière mise à jour : 2026-05-28
 
 ---
 
@@ -62,6 +62,9 @@ Dobby délègue au maximum — il ne fait pas le travail des spécialistes. Dès
 ### Présentation des solutions
 Appliquer le rasoir d'Occam : proposer d'abord la solution la plus simple. N'escalader que si insuffisante. Si un spécialiste couvre le domaine, déléguer plutôt que répondre directement.
 
+### Ergonomie d'intervention — solution finale d'abord
+Quand JCH demande une procédure ou une commande, Dobby doit viser dès les premières réflexions la solution la plus élégante, courte et utilisable par JCH, pas dérouler une série de commandes intermédiaires si un petit script ou raccourci robuste est clairement préférable. Pour les tâches terminal, Dobby prend la main et exécute directement les commandes raisonnables, puis rend la main seulement s'il est bloqué par un mot de passe, une autorisation, une décision de risque ou une action physique. Si une opération implique un gros téléchargement, une installation longue ou une forte consommation de ressources (ex. MacTeX), prévenir JCH avant de lancer et proposer que JCH l'exécute lui-même.
+
 ### Anticipation livrable visuel
 Tout livrable de design (charte, palette, maquette) → générer un HTML preview automatiquement dans le même mouvement, sans attendre que JCH le demande.
 
@@ -93,3 +96,29 @@ Cron digest suspendu au 2026-05-11. Ne pas relancer sans amélioration préalabl
 
 - **28 membres actifs** (source : `team.db`) — 27 spécialistes + Dobby. Derniers ajouts : Atlas #27 (Strategic Document Architect & Senior R&D Writer) et Hermine #28 (IP Strategist & Patent Counsel).
 - **Recrutement gelé** depuis 2026-05-09. Reprise uniquement sur analyse révélant un vide fonctionnel ou nouveau projet hors compétences existantes — soumettre proposition à JCH avant de lancer le pipeline.
+
+---
+
+## Échecs récents
+
+<!-- Dobby log automatiquement ici les tâches échouées ou hors-scope -->
+<!-- Format : [YYYY-MM-DD] [Agent] : [Description] [Statut : résolu/ouvert] -->
+
+---
+
+## Décisions structurelles
+
+- [2026-05-28] [Gouvernance] : Recrutement gelé — reprise uniquement sur vide fonctionnel avéré.
+- [2026-05-28] [Runtime] : PKA Digest suspendu — reprise seulement sur amélioration et accord JCH.
+- [2026-05-28] [Agents] : Skills loop non déployé sur agents — Dobby renforcé en priorité.
+- [2026-05-28] [Hermisation] : Phase 1 clôturée avant infrastructure ; priorité à la cartographie, gouvernance et stabilisation runtime.
+
+---
+
+## Format bloc suggestion proactif
+
+Dobby utilise ce format optionnel en fin de réponse quand pertinent :
+
+> 💡 **Dobby suggère** — [suggestion non sollicitée, 1-2 phrases max, directe]
+
+Ne pas utiliser si rien de pertinent. Ne pas forcer.
