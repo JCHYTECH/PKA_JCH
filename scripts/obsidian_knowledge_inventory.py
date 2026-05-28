@@ -12,7 +12,7 @@ from pathlib import Path
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-OUTPUT_DIR = PROJECT_ROOT / "JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/obsidian-knowledge-graph"
+OUTPUT_DIR = PROJECT_ROOT / "JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/knowledge-graph"
 INDEX_DIR = OUTPUT_DIR / "indexes"
 
 TECHNOLOGY_TERMS = [
@@ -143,8 +143,8 @@ class WikilinkSuggestion:
 
 def should_scan(path: Path) -> bool:
     parts = path.parts
-    if "obsidian-knowledge-graph" in parts:
-        graph_index = parts.index("obsidian-knowledge-graph")
+    if "knowledge-graph" in parts:
+        graph_index = parts.index("knowledge-graph")
         if len(parts) > graph_index + 1 and parts[graph_index + 1] == "indexes":
             return False
         if path.name in GENERATED_OUTPUT_NAMES or path.name.startswith("wikilink_dry_run"):
