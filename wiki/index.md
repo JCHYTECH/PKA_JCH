@@ -1,7 +1,7 @@
 # Wiki — Index
 
 > Point d'entrée du système de connaissance de JCH.  
-> Dernière mise à jour : 2026-05-26 ([[Dobby]] — agent procurement semi-autonome · debug Cart API Mouser)
+> Dernière mise à jour : 2026-05-28 ([[Dobby]] — Maintenance nocturne vault PKA_JCH)
 
 ---
 
@@ -18,10 +18,14 @@
 ## SOPs (Procédures)
 
 - [[SOPs/SOP-005-checklist-terrain-bioacoustique|SOP-005 — Checklist Terrain Bioacoustique RPi 5]]
+- [[SOPs/SOP-006-travail-obsidian-vscode-pka|SOP-006 — Travail Obsidian + VS Code dans PKA_JCH]]
+- [[SOPs/SOP-007-test-terrain-birdnet-mobile-24h|SOP-007 — Test terrain BirdNET-Go mobile 24 h]]
 
 ## Guidelines
 
 - [[Guidelines/GL-002-skill-inventory|GL-002 — Skill Inventory and Runtime Map]]
+- [[Guidelines/GL-003-obsidian-graph-project-view|GL-003 — Vue Graphe Obsidian projets uniquement]]
+- [[Guidelines/GL-004-ergonomie-intervention-dobby|GL-004 — Ergonomie d'intervention Dobby]]
 
 ---
 
@@ -36,9 +40,9 @@
 
 ## Statistiques
 
-- Daily notes : 9 (mise à jour 2026-05-26 — procurement agent)
+- Daily notes : 10 (mise à jour 2026-05-28 — vault maintenance nocturne)
 - Articles knowledge : 2 (AI-Tools)
-- SOPs : 1 — Workstreams : 1 — Guidelines : 2
+- SOPs : 7 — Workstreams : 1 — Guidelines : 4
 - Fichiers raw en attente : 0
 
 *Mis à jour automatiquement par `/save` et `/lint`.*
