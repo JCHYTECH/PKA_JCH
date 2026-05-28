@@ -306,11 +306,28 @@ def _truthy_query_flag(value: str) -> bool:
     return value.strip().lower() in {"1", "true", "yes", "on"}
 
 
+def inbox_db_counts() -> dict:
+    try:
+        with sqlite3.connect(TEAM_DB) as conn:
+            rows = conn.execute(
+                "SELECT status, COUNT(*) FROM inbox GROUP BY status"
+            ).fetchall()
+        counts = {row[0]: row[1] for row in rows}
+        return {
+            "inProgress": counts.get("in_progress", 0),
+            "delivered": counts.get("delivered", 0),
+            "rejected": counts.get("rejected", 0),
+        }
+    except (OSError, sqlite3.DatabaseError):
+        return {"inProgress": 0, "delivered": 0, "rejected": 0}
+
+
 def dashboard_health() -> dict:
     inbox = [item for item in (JCH_INBOX_DIR / "00_INBOX").iterdir() if item.name != ".DS_Store"] if (JCH_INBOX_DIR / "00_INBOX").exists() else []
     projects = [item for item in (JCH_INBOX_DIR / "03_PROJECTS").iterdir() if item.is_dir()] if (JCH_INBOX_DIR / "03_PROJECTS").exists() else []
     latest = directory_items(PKA_DIR / "TEAM_Inbox", limit=1)
     kanban = kanban_snapshot()
+    db_inbox = inbox_db_counts()
     return {
         "ok": True,
         "teamActive": active_team_count(),
@@ -318,6 +335,9 @@ def dashboard_health() -> dict:
         "projectsActive": len(projects),
         "latestDaily": latest_daily_note(),
         "latestDeliverable": latest[0]["name"] if latest else None,
+        "inboxInProgress": db_inbox["inProgress"],
+        "inboxDelivered": db_inbox["delivered"],
+        "inboxRejected": db_inbox["rejected"],
         "kanban": {
             "blocked": kanban["blocked"],
             "awaitingJch": kanban["awaiting_jch"],
