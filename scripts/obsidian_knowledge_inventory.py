@@ -39,6 +39,9 @@ TECHNOLOGY_TERMS = [
     "Tailscale",
     "Whisper",
     "Xeno-Canto",
+    "Python",
+    "Apple",
+    "Pi",
 ]
 
 AGENT_NAMES = [
@@ -74,12 +77,28 @@ AGENT_NAMES = [
 ]
 
 AMBIGUOUS_TERMS = {
-    "Claude": "Ambiguous runtime or model reference",
-    "ChatGPT": "Ambiguous runtime or product reference",
-    "Python": "Ambiguous language, script, or runtime reference",
-    "Apple": "Ambiguous company, device, or ecosystem reference",
-    "Pi": "Ambiguous shorthand; prefer Raspberry Pi 5 when intended",
+    # All previously ambiguous terms resolved by JCH on 2026-05-25.
+    # New ambiguities will be added here as they are discovered.
 }
+
+# Terms explicitly excluded from wikilinking — validated by JCH 2026-05-29
+WIKILINK_EXCLUDED: dict[str, str] = {
+    "Apple":   "trop de faux positifs",
+    "ChatGPT": "terme trop générique",
+    "Claude":  "aussi un prénom",
+    "Pi":      "raccourci trop vague — préférer Raspberry Pi 5",
+    "Python":  "trop générique",
+}
+
+# Alias resolution — validated by JCH 2026-05-29
+CANONICAL_ALIASES: dict[str, str] = {
+    "Héron": "Heron",  # forme sans accent retenue
+}
+
+# Files excluded from wikilink dry-run (transcripts, raw data, etc.)
+SKIP_DRY_RUN_PATTERNS = [
+    "httpswww.youtube.com",
+]
 
 SKIP_PARTS = {
     ".git",
@@ -345,12 +364,13 @@ def render_knowledge_dictionary(inventory: Inventory) -> str:
         f"date: {date.today().isoformat()}",
         "model: GPT-5 Codex",
         "type: dictionary",
-        "status: draft",
+        "status: validated",
+        "validated: 2026-05-29",
         "---",
         "",
         "# Knowledge Dictionary",
         "",
-        "> Draft dictionary for JCH validation before automated wikilinking.",
+        "> Validé par JCH le 2026-05-29. Phase 3 (dry-run wikilinks) autorisée.",
         "",
     ]
 
@@ -361,24 +381,39 @@ def render_knowledge_dictionary(inventory: Inventory) -> str:
 
     seen: set[str] = set()
     for name, category, notes in sorted(entries, key=lambda item: (item[1], item[0].lower())):
-        key = f"{category}:{name}"
+        # Résoudre les alias vers leur forme canonique
+        canonical = CANONICAL_ALIASES.get(name, name)
+        key = f"{category}:{canonical}"
         if key in seen:
             continue
         seen.add(key)
-        folder = representative_folder(name, category, notes)
-        lines.extend(
-            [
-                f"## {name}",
-                "",
-                f"- canonical: {name}",
-                "- aliases:",
-                f"  - {name}",
-                f"- category: {category}",
-                f"- folder: `{folder}`",
-                "- ambiguity: none recorded",
-                "",
-            ]
-        )
+        folder = representative_folder(canonical, category, notes)
+
+        # Construire les aliases (inclure la variante originale si différente)
+        aliases = [canonical]
+        if name != canonical:
+            aliases.append(name)
+
+        entry = [
+            f"## {canonical}",
+            "",
+            f"- canonical: {canonical}",
+            "- aliases:",
+        ]
+        for alias in aliases:
+            entry.append(f"  - {alias}")
+        entry.append(f"- category: {category}")
+        entry.append(f"- folder: `{folder}`")
+
+        if canonical in WIKILINK_EXCLUDED:
+            reason = WIKILINK_EXCLUDED[canonical]
+            entry.append(f"- ambiguity: excluded — {reason}, validé JCH 2026-05-29")
+            entry.append("- wikilink: false")
+        else:
+            entry.append("- ambiguity: none recorded")
+
+        entry.append("")
+        lines.extend(entry)
     return "\n".join(lines)
 
 
@@ -431,12 +466,17 @@ def markdown_code_spans(line: str) -> list[tuple[int, int]]:
     return [(match.start(), match.end()) for match in re.finditer(r"`[^`]*`", line)]
 
 
+def markdown_link_spans(line: str) -> list[tuple[int, int]]:
+    """Return spans of standard Markdown link syntax [text](url)."""
+    return [(match.start(), match.end()) for match in re.finditer(r"\[[^\[\]]+\]\([^)]+\)", line)]
+
+
 def overlaps(start: int, end: int, spans: list[tuple[int, int]]) -> bool:
     return any(start < span_end and end > span_start for span_start, span_end in spans)
 
 
 def propose_line(line: str, terms: list[str]) -> tuple[str, list[str]]:
-    blocked_spans = wiki_link_spans(line) + markdown_code_spans(line)
+    blocked_spans = wiki_link_spans(line) + markdown_code_spans(line) + markdown_link_spans(line)
     replacements: list[tuple[int, int, str]] = []
 
     for term in terms:
@@ -475,6 +515,8 @@ def propose_wikilinks(inventory: Inventory, max_files: int = 5) -> list[Wikilink
 
     for note in inventory.notes:
         if not is_wikilink_dry_run_candidate(note):
+            continue
+        if any(pattern in str(note.path) for pattern in SKIP_DRY_RUN_PATTERNS):
             continue
         if len(files_with_suggestions) >= max_files and note.path not in files_with_suggestions:
             break
@@ -559,8 +601,8 @@ def write_outputs(inventory: Inventory, output_dir: Path = OUTPUT_DIR) -> None:
     (index_dir / "technology_index.md").write_text(render_technology_index(inventory), encoding="utf-8")
     (output_dir / "knowledge_dictionary.md").write_text(render_knowledge_dictionary(inventory), encoding="utf-8")
     (output_dir / "review_queue.md").write_text(render_review_queue(inventory), encoding="utf-8")
-    suggestions = propose_wikilinks(inventory, max_files=5)
-    (output_dir / "wikilink_dry_run_5.md").write_text(render_wikilink_dry_run(inventory, suggestions, max_files=5), encoding="utf-8")
+    suggestions = propose_wikilinks(inventory, max_files=25)
+    (output_dir / "wikilink_dry_run.md").write_text(render_wikilink_dry_run(inventory, suggestions, max_files=25), encoding="utf-8")
 
 
 def main() -> int:
