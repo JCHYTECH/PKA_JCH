@@ -322,6 +322,33 @@ def inbox_db_counts() -> dict:
         return {"inProgress": 0, "delivered": 0, "rejected": 0}
 
 
+def automation_log(limit: int = 20) -> dict:
+    try:
+        with sqlite3.connect(TEAM_DB) as conn:
+            rows = conn.execute(
+                """SELECT memory_name, event_type, body, project_key, created_at
+                   FROM memory_log
+                   WHERE event_type IN ('cron_ok','cron_error','save','action','decision','deliverable')
+                   ORDER BY id DESC LIMIT ?""",
+                (limit,),
+            ).fetchall()
+        return {
+            "ok": True,
+            "runs": [
+                {
+                    "name": r[0],
+                    "event": r[1],
+                    "body": r[2],
+                    "project": r[3],
+                    "date": r[4],
+                }
+                for r in rows
+            ],
+        }
+    except (OSError, sqlite3.DatabaseError) as exc:
+        return {"ok": False, "error": str(exc), "runs": []}
+
+
 def dashboard_health() -> dict:
     inbox = [item for item in (JCH_INBOX_DIR / "00_INBOX").iterdir() if item.name != ".DS_Store"] if (JCH_INBOX_DIR / "00_INBOX").exists() else []
     projects = [item for item in (JCH_INBOX_DIR / "03_PROJECTS").iterdir() if item.is_dir()] if (JCH_INBOX_DIR / "03_PROJECTS").exists() else []
@@ -998,6 +1025,10 @@ class DashboardHandler(BaseHTTPRequestHandler):
 
         if path == "/api/health":
             self.send_json(dashboard_health())
+            return
+
+        if path == "/api/automation":
+            self.send_json(automation_log())
             return
 
         if path == "/api/kanban/summary":

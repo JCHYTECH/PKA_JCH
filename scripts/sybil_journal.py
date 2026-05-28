@@ -8,6 +8,7 @@ Collecte : digest du jour, agenda, activité team.db, fichiers modifiés.
 
 import os
 import re
+from pka_memory_log import log_run
 import sqlite3
 from datetime import datetime, date, timezone, timedelta
 from pathlib import Path
@@ -243,7 +244,12 @@ def main():
     save_journal_db(today_str, journal_text)
 
     print(f"[Sybil] Journal écrit → {filepath}")
+    log_run("sybil_journal", "ok", f"Journal {today_str} écrit → {filepath}")
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as exc:
+        log_run("sybil_journal", "error", str(exc))
+        raise

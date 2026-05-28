@@ -358,6 +358,15 @@
     </div>
   </div>
 
+  <!-- ── AUTOMATION LOG ── -->
+  <div class="panel" style="margin: 0 0 18px 0;">
+    <div class="panel-header">
+      <div class="panel-title">⚙️ Dernières exécutions automatisées</div>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--texte-mute);" id="automation-status">Chargement...</span>
+    </div>
+    <div id="automation-list" style="font-size:12px;font-family:'IBM Plex Mono',monospace;max-height:160px;overflow-y:auto;"></div>
+  </div>
+
   <!-- ── SPLIT : KANBAN & RECHERCHE ── -->
   <div class="split-section">
     
@@ -475,6 +484,7 @@
       const health = await resHealth.json();
       document.getElementById('radar-inbox').textContent = health.inboxPending ?? '0';
       document.getElementById('latest-deliverable').textContent = health.latestDeliverable || 'Aucun signal récent.';
+      loadAutomationLog();
       document.getElementById('radar-in-progress').textContent = health.inboxInProgress ?? '0';
       const delivered = health.inboxDelivered ?? 0;
       const rejected = health.inboxRejected ?? 0;
@@ -516,7 +526,35 @@
     }
   }
 
-  // ===== 2. RECHERCHE DE FICHIERS (Reprise de l'ancien script) =====
+  // ===== 2. AUTOMATION LOG =====
+  const EVENT_ICONS = { cron_ok: '✅', cron_error: '❌', save: '💾', action: '⚡', decision: '🔵', deliverable: '📦' };
+
+  async function loadAutomationLog() {
+    try {
+      const res = await fetch('/api/automation');
+      const data = await res.json();
+      const el = document.getElementById('automation-list');
+      const status = document.getElementById('automation-status');
+      if (!data.ok || !data.runs.length) {
+        el.textContent = 'Aucune exécution enregistrée.';
+        status.textContent = '0 entrées';
+        return;
+      }
+      status.textContent = `${data.runs.length} entrées`;
+      el.innerHTML = data.runs.map(r => {
+        const icon = EVENT_ICONS[r.event] || '•';
+        const body = String(r.body || '').slice(0, 100);
+        const proj = r.project ? ` <span style="color:var(--ocre)">[${r.project}]</span>` : '';
+        return `<div style="padding:3px 0;border-bottom:1px solid var(--bord-panel);color:var(--texte-mute)">
+          ${icon} <strong style="color:var(--texte)">${r.date}</strong>${proj} — ${escapeHtml(body)}
+        </div>`;
+      }).join('');
+    } catch(e) {
+      document.getElementById('automation-status').textContent = 'indisponible';
+    }
+  }
+
+  // ===== 3. RECHERCHE DE FICHIERS (Reprise de l'ancien script) =====
   const fileIndexState = {
     filters: { projects: [], components: {} },
     debounceId: null
