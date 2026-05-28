@@ -1,6 +1,6 @@
 ---
 name: obsidian-knowledge-graph
-description: Piloter l'inventaire, le dictionnaire, les dry-runs et l'application controlee des wikilinks Obsidian pour le vault PKA_JCH. Declencher sur "wikilink le vault", "dry-run obsidian", "mets a jour le knowledge graph", "genere le dictionnaire Obsidian", "applique les wikilinks valides".
+description: Piloter l'inventaire, le dictionnaire, les dry-runs et l'application controlee des wikilinks [[Obsidian]] pour le vault PKA_JCH. Declencher sur "wikilink le vault", "dry-run [[Obsidian]]", "mets a jour le knowledge graph", "genere le dictionnaire [[Obsidian]]", "applique les wikilinks valides".
 ---
 
 # Skill - obsidian-knowledge-graph
@@ -8,9 +8,9 @@ description: Piloter l'inventaire, le dictionnaire, les dry-runs et l'applicatio
 ## Declencheurs
 
 - "wikilink le vault"
-- "dry-run obsidian"
+- "dry-run [[Obsidian]]"
 - "mets a jour le knowledge graph"
-- "genere le dictionnaire Obsidian"
+- "genere le dictionnaire [[Obsidian]]"
 - "applique les wikilinks valides"
 - "teste 5 fichiers"
 
@@ -22,7 +22,7 @@ description: Piloter l'inventaire, le dictionnaire, les dry-runs et l'applicatio
 
 ## Principe
 
-Le skill orchestre le graphe Obsidian, mais ne remplace pas le script.
+Le skill orchestre le graphe [[Obsidian]], mais ne remplace pas le script.
 
 Par defaut :
 
@@ -33,14 +33,14 @@ Par defaut :
 
 ## Procedure
 
-### 1. Verifier l'etat Git
+### 1. Verifier l'etat [[Git]]
 
 ```bash
 cd /Users/jchavauxm5/PKA_JCH
 git status --short
 ```
 
-Si le worktree contient des changements non lies, les ignorer sauf s'ils touchent le script, les tests ou le projet Obsidian.
+Si le worktree contient des changements non lies, les ignorer sauf s'ils touchent le script, les tests ou le projet [[Obsidian]].
 
 ### 2. Regenerer l'inventaire
 

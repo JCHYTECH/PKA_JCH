@@ -19,7 +19,7 @@ Le backup est planifié par cron :
 
 Le script :
 
-- crée un snapshot SQLite cohérent via l'API SQLite Online Backup ;
+- crée un snapshot [[SQLite]] cohérent via l'API [[SQLite]] Online Backup ;
 - écrit dans `TEAM/backups/team_YYYY-MM-DD_HHMM.db` ;
 - applique `chmod 600` au fichier généré ;
 - vérifie `PRAGMA integrity_check`;
@@ -69,7 +69,7 @@ Ne pas passer à la restauration réelle si l'intégrité n'est pas `ok`.
 
 Préconditions :
 
-- Dobby et les scripts pouvant écrire dans `TEAM/team.db` sont arrêtés ou suspendus.
+- [[Dobby]] et les scripts pouvant écrire dans `TEAM/team.db` sont arrêtés ou suspendus.
 - Un backup récent a été vérifié avec `PRAGMA integrity_check`.
 - JCH valide explicitement l'écrasement de `TEAM/team.db`.
 
@@ -105,7 +105,7 @@ Résultats :
 - intégrité backup : `ok`;
 - copie de restauration à blanc : `tmp/restore_rehearsal/team_restored_test.db`;
 - intégrité copie restaurée : `ok`;
-- tables SQLite visibles.
+- tables [[SQLite]] visibles.
 - copie temporaire supprimée après validation pour éviter une base sensible en double.
 
 ## Limites

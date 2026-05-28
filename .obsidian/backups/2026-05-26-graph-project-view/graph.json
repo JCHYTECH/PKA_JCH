@@ -1,0 +1,58 @@
+{
+  "collapse-filter": true,
+  "search": "",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:JCH_Inbox/03_PROJECTS/",
+      "color": {
+        "a": 1,
+        "rgb": 43775
+      }
+    },
+    {
+      "query": "path:wiki/Daily/",
+      "color": {
+        "a": 1,
+        "rgb": 14524637
+      }
+    },
+    {
+      "query": "path:wiki/Knowledge/",
+      "color": {
+        "a": 1,
+        "rgb": 6737151
+      }
+    },
+    {
+      "query": "path:wiki/SOPs/ OR path:wiki/Workstreams/",
+      "color": {
+        "a": 1,
+        "rgb": 16098851
+      }
+    },
+    {
+      "query": "wildnexus",
+      "color": {
+        "a": 1,
+        "rgb": 14488339
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": false,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1.30245659722222,
+  "lineSizeMultiplier": 1.52661458333333,
+  "collapse-forces": false,
+  "centerStrength": 0.518713248970312,
+  "repelStrength": 10,
+  "linkStrength": 0.907595486111111,
+  "linkDistance": 216,
+  "scale": 0.432382629966132,
+  "close": false
+}

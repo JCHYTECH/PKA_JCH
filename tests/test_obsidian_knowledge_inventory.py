@@ -88,6 +88,8 @@ def test_renderers_create_expected_sections(tmp_path):
 
 
 def test_review_queue_flags_ambiguous_aliases(tmp_path):
+    # All previously ambiguous terms resolved by JCH on 2026-05-25.
+    # When AMBIGUOUS_TERMS is empty, review_queue shows no ambiguous candidates.
     write(tmp_path / "TEAM/dobby.md", "# Dobby\n\nClaude and Dobby.")
     write(tmp_path / "JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/docs/ai.md", "# AI\n\nClaude and ChatGPT.")
 
@@ -95,8 +97,7 @@ def test_review_queue_flags_ambiguous_aliases(tmp_path):
     review_queue = render_review_queue(inventory)
 
     assert "# Review Queue" in review_queue
-    assert "Claude" in review_queue
-    assert "Ambiguous runtime or model reference" in review_queue
+    assert "No ambiguous candidates detected." in review_queue
 
 
 def test_dictionary_prefers_team_folder_for_agents(tmp_path):
@@ -143,8 +144,8 @@ def test_wikilink_dry_run_limits_files_and_skips_ambiguous_terms(tmp_path):
 
     assert len({suggestion.note_path for suggestion in suggestions}) == 5
     assert "notes/note-6.md" not in report
-    assert "[[Dobby]] uses [[Obsidian]] and Claude here." in report
-    assert "[[Claude]]" not in report
+    # Claude is now linkable (resolved from ambiguous by JCH on 2026-05-25)
+    assert "[[Dobby]] uses [[Obsidian]] and [[Claude]] here." in report
 
 
 def test_wikilink_dry_run_keeps_existing_links_untouched(tmp_path):
@@ -171,3 +172,17 @@ def test_wikilink_dry_run_skips_inline_code_and_root_pointer_files(tmp_path):
     assert "ADAPTER-PROMPT.md" not in report
     assert "`TEAM/dobby.md` before [[Obsidian]]." in report
     assert "`TEAM/[[Dobby]].md`" not in report
+
+
+def test_wikilink_dry_run_skips_markdown_link_syntax(tmp_path):
+    write(tmp_path / "TEAM/dobby.md", "# Dobby\n\nDobby profile.")
+    write(tmp_path / "notes/dash.md", "# Dash\n\n| [Modeles Dobby](modeles.html) |\n| [02_ARTEON](../03_PROJECTS/02_ARTEON/INDEX.md) |")
+
+    inventory = build_inventory(tmp_path)
+    suggestions = propose_wikilinks(inventory, max_files=5)
+    report = render_wikilink_dry_run(inventory, suggestions, max_files=5)
+
+    # Dobby should NOT be wikilinked inside markdown link syntax [text](url)
+    assert "[Modeles [[Dobby]]](modeles.html)" not in report
+    assert "[[[02_ARTEON]]]" not in report
+    assert "[02_ARTEON](../03_PROJECTS/[[02_ARTEON]]/INDEX.md)" not in report

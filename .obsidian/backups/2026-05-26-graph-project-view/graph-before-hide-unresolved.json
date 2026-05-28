@@ -1,0 +1,72 @@
+{
+  "collapse-filter": false,
+  "search": "path:JCH_Inbox/03_PROJECTS/ -path:JCH_Inbox/03_PROJECTS/archive/",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": false,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/",
+      "color": {
+        "a": 1,
+        "rgb": 39423
+      }
+    },
+    {
+      "query": "path:JCH_Inbox/03_PROJECTS/02_ARTEON/",
+      "color": {
+        "a": 1,
+        "rgb": 16737792
+      }
+    },
+    {
+      "query": "path:JCH_Inbox/03_PROJECTS/03_WILDNEXUS/",
+      "color": {
+        "a": 1,
+        "rgb": 14488339
+      }
+    },
+    {
+      "query": "path:JCH_Inbox/03_PROJECTS/05_PHOTO_AI_JURY/ OR path:JCH_Inbox/03_PROJECTS/06_PHOTO_NATURE/",
+      "color": {
+        "a": 1,
+        "rgb": 11193411
+      }
+    },
+    {
+      "query": "path:JCH_Inbox/03_PROJECTS/07_TRAVELS/",
+      "color": {
+        "a": 1,
+        "rgb": 11829830
+      }
+    },
+    {
+      "query": "path:JCH_Inbox/03_PROJECTS/08_VETALYX/",
+      "color": {
+        "a": 1,
+        "rgb": 15757363
+      }
+    },
+    {
+      "query": "path:JCH_Inbox/03_PROJECTS/09_DIM3/",
+      "color": {
+        "a": 1,
+        "rgb": 16098851
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": false,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1.12,
+  "lineSizeMultiplier": 1.2,
+  "collapse-forces": false,
+  "centerStrength": 0.518713248970312,
+  "repelStrength": 13,
+  "linkStrength": 0.72,
+  "linkDistance": 165,
+  "scale": 0.32,
+  "close": true
+}

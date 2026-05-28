@@ -14,7 +14,7 @@ Le vault `PKA_JCH` accumule des dérives au fil du temps : wikilinks manquants, 
 
 ## Architecture
 
-```
+```text
 scripts/pka_vault_maintenance.py          ← entry point unique
 scripts/modules/wikilink_patcher.py       ← détecte + corrige wikilinks manquants
 scripts/modules/file_placement_checker.py ← détecte fichiers mal placés
@@ -39,7 +39,7 @@ scripts/logs/vault_maintenance.log        ← log erreurs critiques uniquement
 ### Règles de détection et correction
 
 | Cas | Action |
-|-----|--------|
+| --- | --- |
 | Membre équipe mentionné en prose sans `[[...]]` | Wrap → `[[NomMembre]]` |
 | Nom de fichier `.md` existant cité sans wikilink | Wrap → `[[nom-fichier\|Titre]]` |
 | Fin de fichier sans `## Voir aussi` alors que cross-refs existent | Ajoute la section |
@@ -66,7 +66,7 @@ Scan récursif de `JCH_Inbox/`, `TEAM/`, `TEAM_Inbox/`, `docs/`.
 ### Règles de placement
 
 | Pattern | Dossier attendu |
-|---------|----------------|
+| --- | --- |
 | `YYYY-MM-DD_*.md` (daily notes) | `JCH_Inbox/01_DASHBOARDS/` |
 | `*_rapport_*.md`, `*_delivery_*.md` | `TEAM_Inbox/` |
 | `*.py` hors `scripts/` | Anomalie signalée |
@@ -75,11 +75,11 @@ Scan récursif de `JCH_Inbox/`, `TEAM/`, `TEAM_Inbox/`, `docs/`.
 
 ### Action
 
-Détection + log uniquement — **pas de déplacement automatique**. Déplacer un fichier peut briser des wikilinks Obsidian, des imports Python, ou des launchd plists. Le log liste : chemin actuel, dossier attendu.
+Détection + log uniquement — **pas de déplacement automatique**. Déplacer un fichier peut briser des wikilinks [[Obsidian]], des imports [[Python]], ou des launchd plists. Le log liste : chemin actuel, dossier attendu.
 
 ---
 
-## Module 3 — Git Nightly Commit
+## Module 3 — [[Git]] Nightly Commit
 
 ### Commandes
 
@@ -88,7 +88,7 @@ git add JCH_Inbox/ TEAM/ TEAM_Inbox/ docs/ scripts/
 git commit -m "chore(vault): nightly maintenance YYYY-MM-DD"
 ```
 
-### Garde-fous
+### Exclusions [[Git]]
 
 - Exclusions absolues : `JCH_Inbox/99_SYSTEM/security/`, `*.env`, `*.token`, `*credentials*`, `*_token.json`
 - Si 0 fichier modifié → skip silencieux, pas de commit vide
@@ -108,7 +108,7 @@ git commit -m "chore(vault): nightly maintenance YYYY-MM-DD"
 ## Seuils configurables
 
 | Paramètre | Défaut | Description |
-|-----------|--------|-------------|
+| --- | --- | --- |
 | `max_files_silent` | 50 | Au-delà, log le nombre de fichiers commités |
 | `scan_paths` | `["JCH_Inbox", "TEAM", "TEAM_Inbox", "docs"]` | Dossiers scannés |
 | `excluded_files` | voir garde-fous | Fichiers système exclus du wikilink patch |

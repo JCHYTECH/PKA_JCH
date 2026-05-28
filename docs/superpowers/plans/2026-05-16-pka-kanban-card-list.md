@@ -4,9 +4,9 @@
 
 **Goal:** Add an operable card-list view for the PKA kanban so JCH can inspect normalized Plane cards with filters by project, status, owner, and JCH decision queue.
 
-**Architecture:** Reuse Plane as the external source of truth and extend the current local read-only kanban stack. Add one service-layer list builder in Python, expose lightweight JSON endpoints from the dashboard server, then add a dedicated dashboard page that renders a compact, filterable card list without introducing a second task database.
+**Architecture:** Reuse Plane as the external source of truth and extend the current local read-only kanban stack. Add one service-layer list builder in [[Python]], expose lightweight JSON endpoints from the dashboard server, then add a dedicated dashboard page that renders a compact, filterable card list without introducing a second task database.
 
-**Tech Stack:** Python 3 standard library, existing `scripts/pka_plane_adapter.py`, `scripts/pka_kanban_service.py`, `scripts/dashboard_server.py`, vanilla HTML/CSS/JS, `unittest`
+**Tech Stack:** [[Python]] 3 standard library, existing 
 
 ---
 

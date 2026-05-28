@@ -2,11 +2,11 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Stabilize the PKA_JCH vault and Git worktree before expanding Obsidian and Hermisation automation.
+**Goal:** Stabilize the PKA_JCH vault and [[Git]] worktree before expanding [[Obsidian]] and Hermisation automation.
 
 **Architecture:** Use a non-destructive audit-first workflow. Separate unrelated changes into reviewable batches, then commit or ignore each batch only after classification.
 
-**Tech Stack:** Git, shell inventory commands, Markdown reports, PKA vault conventions.
+**Tech Stack:** [[Git]], shell inventory commands, Markdown reports, PKA vault conventions.
 
 ---
 
@@ -116,7 +116,7 @@ git ls-files --deleted JCH_Inbox/03_PROJECTS/03_WILDNEXUS | wc -l
 git ls-files --others --exclude-standard JCH_Inbox/03_PROJECTS/03_WILDNEXUS | wc -l
 ```
 
-- [ ] **Step 4: Classify batch D — Nuances archive**
+- [ ] **Step 4: Classify batch D — Nuances [[archive]]**
 
 Scope:
 
@@ -125,7 +125,7 @@ JCH_Inbox/03_PROJECTS/04_NUANCES/
 JCH_Inbox/03_PROJECTS/archive/reanimable/04_NUANCES/
 ```
 
-Action: treat as a likely project archival move. Verify matching basenames, then commit deletion plus archive addition together if confirmed.
+Action: treat as a likely project archival move. Verify matching basenames, then commit deletion plus [[archive]] addition together if confirmed.
 
 - [ ] **Step 5: Classify batch E — InsectNet generated data**
 
@@ -135,9 +135,9 @@ Scope:
 JCH_Inbox/03_PROJECTS/03_WILDNEXUS/06_COMPONENTS/BIOACOUSTIC/INSECTNET/
 ```
 
-Action: decide whether `.wav` and generated `.png` spectrograms belong in Git, Git LFS, NAS, or `.gitignore`. Do not add 1.7 GB of data by default.
+Action: decide whether 
 
-- [ ] **Step 6: Classify batch F — Obsidian and Hermisation scaffolds**
+- [ ] **Step 6: Classify batch F — [[Obsidian]] and Hermisation scaffolds**
 
 Scope:
 
@@ -150,7 +150,7 @@ JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/INDEX.md
 
 Action: commit as its own docs scaffold after the vault stabilization policy is confirmed.
 
-### Task 3: Establish Git Hygiene
+### Task 3: Establish [[Git]] Hygiene
 
 **Files:**
 - Possibly modify: `.gitignore`
@@ -179,7 +179,7 @@ JCH_Inbox/03_PROJECTS/03_WILDNEXUS/06_COMPONENTS/BIOACOUSTIC/INSECTNET/03_AUDIO_
 ### Task 4: Commit in Thematic Order
 
 **Files:**
-- Use Git staging only after each batch is verified.
+- Use [[Git]] staging only after each batch is verified.
 
 - [ ] **Step 1: Commit system pointers**
 
@@ -236,4 +236,4 @@ Record:
 - committed batches;
 - deferred batches;
 - unresolved decisions;
-- next safe step for Obsidian/Hermisation.
+- next safe step for [[Obsidian]]/Hermisation.

@@ -1,7 +1,7 @@
 # PKA Kanban Transverse with Plane - Design
 
 Date: 2026-05-14
-Owner: Dobby
+Owner: [[Dobby]]
 Status: Validated in chat, pending final user review of written spec
 
 ## Goal
@@ -10,7 +10,7 @@ Provide a stable, long-lived kanban operating model for all active PKA projects.
 The system must support:
 
 - one coherent workflow vocabulary across projects
-- transverse visibility for Dobby and JCH
+- transverse visibility for [[Dobby]] and JCH
 - compatibility across multiple models and tools
 - project-specific process nuance without fragmenting board structure
 - future automation and dashboard consolidation
@@ -54,7 +54,7 @@ The PKA layer sits above Plane and defines:
 - the mapping between cards and specialists/models
 - the rules for dashboard aggregation
 
-This layer must be tool-agnostic so Codex, Claude, Gemini, and future models all act on the same semantics.
+This layer must be tool-agnostic so [[Codex]], [[Claude]], Gemini, and future models all act on the same semantics.
 
 ### Dashboard role
 
@@ -88,7 +88,7 @@ Every project board uses the same seven statuses:
 4. En attente
 5. En validation
 6. Termine
-7. Archive
+7. [[archive]]
 
 ### Status semantics
 
@@ -133,7 +133,7 @@ The work product exists and now waits for:
 
 The deliverable is accepted or the decision is considered complete.
 
-#### Archive
+#### [[archive]]
 
 The item is closed and removed from the active operational flow while remaining available for traceability.
 
@@ -234,7 +234,7 @@ Level:
 ### Anti-drift rules
 
 1. A master label catalog must exist.
-2. Only Dobby and Forge may create, rename, or remove transverse labels.
+2. Only [[Dobby]] and [[Forge]] may create, rename, or remove transverse labels.
 3. A new label is allowed only if the need cannot be represented by a status, type, field, or checklist.
 4. Labels describing workflow state are forbidden because state belongs in statuses.
 5. A periodic audit must detect:
@@ -250,7 +250,7 @@ For example, if `bloque-externe` is canonical, alternatives like `blocked`, `wai
 
 ## Specialist and Model Mapping
 
-Cards may be assigned operationally to a human role, Dobby, or a specialist.
+Cards may be assigned operationally to a human role, [[Dobby]], or a specialist.
 
 The PKA layer should preserve at least:
 
@@ -259,7 +259,7 @@ The PKA layer should preserve at least:
 - lead specialist
 - model/runtime used where relevant
 
-This allows Dobby to orchestrate work consistently across different model runtimes.
+This allows [[Dobby]] to orchestrate work consistently across different model runtimes.
 
 ## Operating Rules
 

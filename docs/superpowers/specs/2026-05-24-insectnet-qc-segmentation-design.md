@@ -11,7 +11,7 @@ Two small scripts keep responsibilities separate:
 - `scripts/insectnet_audio_inventory.py` reads the download manifest, probes local audio files with `ffprobe`, and writes `audio-inventory.csv`.
 - `scripts/insectnet_segment_audio.py` reads the inventory, keeps only usable audio rows, uses `ffmpeg` to extract fixed-length WAV segments, and writes `segments-manifest.csv`.
 
-The implementation uses Python standard library plus the installed `ffprobe` and `ffmpeg` binaries. This avoids adding scientific audio dependencies before the pipeline proves useful.
+The implementation uses [[Python]] standard library plus the installed 
 
 ## Data Flow
 

@@ -4,17 +4,17 @@
 - **Non lus filtrés :** 61  |  **Nouveaux :** 10
 
 **Top emails :**
-- [?] **Apple** — Your invoice from Apple. (score 0)
+- [?] **[[Apple]]** — Your invoice from [[Apple]]. (score 0)
 - [?] **Pinterest** — Contre toute attente, vous avez besoin de ceci (score 0)
 - [?] **AliExpress** — De l'électronique de pointe (score 0)
 - [?] **jc.havaux@gmail.com** — Test PKA Digest (score 0)
-- [?] **Delhaize** — Merci pour votre commande jean claude. (score 0)
+- [?] **Delhaize** — Merci pour votre commande jean [[Claude]]. (score 0)
 
 **Routing :**
-- Apple → Delphi?
-- Pinterest → Delphi?
-- AliExpress → Delphi?
-- jc.havaux@gmail.com → Delphi?
+- [[Apple]] → [[Delphi]]?
+- Pinterest → [[Delphi]]?
+- AliExpress → [[Delphi]]?
+- jc.havaux@gmail.com → [[Delphi]]?
 
 ---
 
@@ -29,10 +29,10 @@
 - [?] **jc.havaux@gmail.com** — 📬 PKA Digest — Matin 2026-05-02 09:00 · 61 email(s) · 10 nou… (score 0)
 
 **Routing :**
-- Hostinger → Delphi?
-- Temu → Delphi?
-- AliExpress → Delphi?
-- Delhaize → Delphi?
+- Hostinger → [[Delphi]]?
+- Temu → [[Delphi]]?
+- AliExpress → [[Delphi]]?
+- Delhaize → [[Delphi]]?
 
 ---
 
@@ -44,17 +44,17 @@
 - [?] **Laser Map Maker** — Whoops! One more thing about bathymetry (score 0)
 - [?] **Wild Spirit** — The 4 chaotic animals (score 0)
 - [?] **Laser Map Maker** — We’re launching bathymetry (score 0)
-- [?] **National Audubon Society** — jean claude's Bird Guide for Spring Migration (score 0)
+- [?] **National Audubon Society** — jean [[Claude]]'s Bird Guide for Spring Migration (score 0)
 
 **Routing :**
-- Temu → Delphi?
-- Laser Map Maker → Delphi?
-- Wild Spirit → Delphi?
-- Laser Map Maker → Delphi?
-- National Audubon Society → Delphi?
-- UniFormation 3D Printer → Delphi?
-- Tom from myICOR → Vasco, Delphi?
-- Olga from Luminar Marketplace → Delphi?
+- Temu → [[Delphi]]?
+- Laser Map Maker → [[Delphi]]?
+- Wild Spirit → [[Delphi]]?
+- Laser Map Maker → [[Delphi]]?
+- National Audubon Society → [[Delphi]]?
+- UniFormation 3D Printer → [[Delphi]]?
+- Tom from myICOR → [[Vasco]], [[Delphi]]?
+- Olga from Luminar Marketplace → [[Delphi]]?
 
 ---
 
@@ -69,10 +69,10 @@
 - [?] **AliExpress** — Prix en baisse dans votre panier (score 0)
 
 **Routing :**
-- AliExpress → Delphi?
-- AliExpress → Delphi?
-- Mélanie sur Facebook → Delphi?
-- AliExpress → Delphi?
+- AliExpress → [[Delphi]]?
+- AliExpress → [[Delphi]]?
+- Mélanie sur Facebook → [[Delphi]]?
+- AliExpress → [[Delphi]]?
 
 ---
 
@@ -87,11 +87,11 @@
 - [?] **Ghost Resources** — 🌱 Grasping your growth (score 0)
 
 **Routing :**
-- Cornell Lab of Ornithology → Delphi?
-- AliExpress → Delphi?
-- Cuisine&Nous → Delphi?
-- Ghost Resources → Delphi?
-- Temu → Delphi?
+- Cornell Lab of Ornithology → [[Delphi]]?
+- AliExpress → [[Delphi]]?
+- Cuisine&Nous → [[Delphi]]?
+- Ghost Resources → [[Delphi]]?
+- Temu → [[Delphi]]?
 
 **Analyses sauvegardées :**
 - `2026-05-03_pie_email-cornell-lab-enews--helping-you-have-a-ma.md`
@@ -135,7 +135,7 @@
 
 **Top emails :**
 - [?] **Laser Map Maker** — WHOOPS! We forgot the links previously 😅 (score 0)
-- [?] **Tom at myICOR** — You found us, Jean Claude. Come in. (score 0)
+- [?] **Tom at myICOR** — You found us, Jean [[Claude]]. Come in. (score 0)
 - [?] **Amazon.com.be** — Commandé : « Buzzy Organic Phacelia (BIO) » (score 0)
 - [?] **Candlelight by Fever** — 👀 Notre parcours jusqu'à la Tour Eiffel (score 0)
 - [?] **Laser Map Maker** — Bathymetry is almost here! (score 0)
@@ -205,7 +205,7 @@
 
 **Top emails :**
 - [?] **Patrick sur Facebook** — 💬 Patrick Di Stefano a commenté une publication (score 0)
-- [?] **Decathlon** — JEAN CLAUDE, partagez-nous votre avis sur votre expérience e… (score 0)
+- [?] **Decathlon** — JEAN [[Claude]], partagez-nous votre avis sur votre expérience e… (score 0)
 - [?] **IKEA Family** — -15 % pour profiter du plein air cet été (score 0)
 - [?] **Olga from Luminar Marketplace** — 80% OFF Spring Bundle by Jakub Bors 🌱 (score 0)
 - [?] **reMarkable** — Something new is landing tomorrow (score 0)
@@ -241,7 +241,7 @@
 **Top emails :**
 - [?] **vendezvotrevoiture.be** — Obtenez votre prix de vente actualisé (score 0)
 - [?] **IKEA Family** — Un webinar culinaire gratuit exclusif avec Colruyt Group Aca… (score 0)
-- [?] **Apple** — Votre reçu Apple (score 0)
+- [?] **[[Apple]]** — Votre reçu [[Apple]] (score 0)
 - [?] **Yassine Sdiri** — Les experts IA sont foutus ? (score 0)
 - [?] **reMarkable** — NEW: reMarkable Paper Pure (score 0)
 
@@ -293,7 +293,7 @@
 - **Non lus filtrés :** 49  |  **Nouveaux :** 8
 
 **Top emails :**
-- [?] **Apple** — Votre reçu Apple (score 0)
+- [?] **[[Apple]]** — Votre reçu [[Apple]] (score 0)
 - [?] **National Audubon Society** — It’s almost World Migratory Bird Day! Double your impact now… (score 0)
 - [?] **Tom at myICOR** — Why AI alone will not fix your productivity (score 0)
 - [?] **Facebook** — Échangez avec d’autres personnes dans des groupes comme Comm… (score 0)
@@ -330,7 +330,7 @@
 - [?] **jc.havaux@gmail.com** — 📬 PKA Digest — Après-midi 2026-05-08 14:00 · 40 email(s) · 4… (score 0)
 
 **Routing :**
-- National Audubon Society → Delphi?
+- National Audubon Society → [[Delphi]]?
 
 **Analyses sauvegardées :**
 - `2026-05-08_pie_email-deadline-approaching--help-the-birds-yo.md`
@@ -351,8 +351,8 @@
 - [?] **Facebook Marketplace** — Imprimante Scanner Epson ET4810 + 3 set d'encre sur Marketpl… (score 0)
 
 **Routing :**
-- National Audubon Society → Delphi?
-- Pinterest → Renard
+- National Audubon Society → [[Delphi]]?
+- Pinterest → [[Renard]]
 
 **Analyses sauvegardées :**
 - `2026-05-09_pie_email-match-deadline--make-double-the-differen.md`
@@ -384,7 +384,7 @@
 
 **Top emails :**
 - [?] **National Audubon Society** — [Deadline Approaching] Help the birds you love take flight a… (score 2)
-- [?] **Decathlon** — JEAN CLAUDE, il est encore temps de partager votre avis suit… (score 0)
+- [?] **Decathlon** — JEAN [[Claude]], il est encore temps de partager votre avis suit… (score 0)
 - [?] **National Audubon Society** — Watch Now: "Birds on the Move" (score 0)
 - [?] **jc.havaux@gmail.com** — 📬 PKA Digest — Après-midi 2026-05-09 14:00 · 38 email(s) · 7… (score 0)
 - [?] **HUGGYS NEWS** — Un cocktail offert ! 🍹 (score 0)
@@ -403,7 +403,7 @@
 - [?] **Amazon.com.be** — Commandé : « Moi, ce que j'aime, c'est... » et 1 articles su… (score 5)
 - [?] **Amazon.com.be** — Expédié : « JETech Protection D'écran... » (score 5)
 - [?] **Amazon.com.be** — Expédié : « ESR Coque pour iPhone 17... » (score 5)
-- [?] **Apple** — Your Subscription is Confirmed (score 5)
+- [?] **[[Apple]]** — Your Subscription is Confirmed (score 5)
 
 **Analyses sauvegardées :**
 - `2026-05-10_pie_email-je-suis-de-retour.md`
@@ -422,8 +422,8 @@
 - [?] **Amazon.com.be** — Expédié : « JETech Protection D'écran... » (score 5)
 
 **Routing :**
-- Hostinger → Delphi?
-- Hostinger → Delphi?
+- Hostinger → [[Delphi]]?
+- Hostinger → [[Delphi]]?
 
 **Analyses sauvegardées :**
 - `2026-05-10_pie_email-remboursement-initié.md`

@@ -1,0 +1,5 @@
+{
+  "client_id": "À_COMPLÉTER — ID application Azure AD",
+  "tenant_id": "À_COMPLÉTER — ID tenant (ou 'common' pour comptes perso)",
+  "note": "Voir instructions dans docs/system/outlook-setup.md"
+}

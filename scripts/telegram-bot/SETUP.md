@@ -1,4 +1,4 @@
-# 🐶 Dobby — Bot Telegram PKA
+# 🐶 [[Dobby]] — Bot Telegram PKA
 ## Guide d'installation complet
 
 > **Prérequis :** Tu as déjà un bot Telegram créé (via @BotFather) avec son token et ton user ID.  
@@ -8,10 +8,10 @@
 
 ## Ce que tu vas installer
 
-Un service qui tourne en arrière-plan sur ton Mac et te permet de parler à Dobby via Telegram :
-- Messages texte → Dobby répond
-- Messages vocaux → transcription automatique → Dobby répond
-- Photos → analyse visuelle → Dobby répond
+Un service qui tourne en arrière-plan sur ton Mac et te permet de parler à [[Dobby]] via Telegram :
+- Messages texte → [[Dobby]] répond
+- Messages vocaux → transcription automatique → [[Dobby]] répond
+- Photos → analyse visuelle → [[Dobby]] répond
 
 ---
 
@@ -36,7 +36,7 @@ Tu as besoin de ton **User ID numérique** Telegram (différent de ton nom d'uti
 4. Copie la clé (commence par `sk-`)
 5. Note-la — elle n'est visible qu'une fois
 
-> **Coût voix :** Whisper coûte $0.006/minute audio. Pour un usage personnel, compte €1-2/mois max.
+> **Coût voix :** [[Whisper]] coûte $0.006/minute audio. Pour un usage personnel, compte €1-2/mois max.
 
 ---
 
@@ -78,14 +78,14 @@ bash install.sh
 ```
 
 Le script fait automatiquement :
-1. Vérifie que Python est installé
+1. Vérifie que [[Python]] est installé
 2. Crée un environnement virtuel isolé (`venv/`)
 3. Installe toutes les bibliothèques nécessaires
 4. Vérifie ton fichier `.env`
 5. Crée le service de démarrage automatique
-6. Démarre Dobby
+6. Démarre [[Dobby]]
 
-Si tu vois ✅ **Dobby est en ligne !** → c'est bon.
+Si tu vois ✅ **[[Dobby]] est en ligne !** → c'est bon.
 
 ---
 
@@ -94,13 +94,13 @@ Si tu vois ✅ **Dobby est en ligne !** → c'est bon.
 1. Ouvre Telegram
 2. Trouve ton bot (celui que tu as créé avec @BotFather)
 3. Envoie `/start`
-4. Dobby doit répondre : "🐶 Dobby en ligne. Parle — je t'écoute."
+4. [[Dobby]] doit répondre : "🐶 [[Dobby]] en ligne. Parle — je t'écoute."
 
 Test voix :
-- Envoie un message vocal → Dobby transcrit et répond
+- Envoie un message vocal → [[Dobby]] transcrit et répond
 
 Test photo :
-- Envoie une photo (avec ou sans légende) → Dobby analyse
+- Envoie une photo (avec ou sans légende) → [[Dobby]] analyse
 
 ---
 
@@ -108,7 +108,7 @@ Test photo :
 
 | Commande | Action |
 |----------|--------|
-| `/start` | Démarrer / vérifier que Dobby tourne |
+| 
 | `/status` | État du système PKA (membres actifs, contexte) |
 | `/clear` | Effacer l'historique de conversation |
 | `/help` | Afficher l'aide |
@@ -117,7 +117,7 @@ Test photo :
 
 ## Gestion du service (après installation)
 
-### Vérifier que Dobby tourne
+### Vérifier que [[Dobby]] tourne
 ```bash
 launchctl list | grep dobby
 ```
@@ -129,12 +129,12 @@ tail -f /Users/jchavauxm5/PKA_JCH/scripts/telegram-bot/dobby.log
 ```
 Très utile pour déboguer. `Ctrl+C` pour quitter.
 
-### Arrêter Dobby
+### Arrêter [[Dobby]]
 ```bash
 launchctl unload ~/Library/LaunchAgents/com.pka.dobby.plist
 ```
 
-### Redémarrer Dobby
+### Redémarrer [[Dobby]]
 ```bash
 launchctl kickstart -k gui/$(id -u)/com.pka.dobby
 ```
@@ -166,8 +166,8 @@ telegram-bot/
 
 ## Comportement automatique
 
-- **Au démarrage du Mac** → Dobby démarre automatiquement
-- **Si Dobby plante** → il redémarre automatiquement après 10 secondes
+- **Au démarrage du Mac** → [[Dobby]] démarre automatiquement
+- **Si [[Dobby]] plante** → il redémarre automatiquement après 10 secondes
 - **Quand le Mac dort** → les messages arrivent en attente, traités au réveil
 - **Historique** → les 20 derniers échanges sont conservés entre sessions
 
@@ -175,7 +175,7 @@ telegram-bot/
 
 ## Problèmes courants
 
-### "Erreur Claude" dans la réponse
+### "Erreur [[Claude]]" dans la réponse
 → Vérifie que `ANTHROPIC_API_KEY` est correct dans `.env`  
 → Vérifie que tu as du crédit sur ton compte Anthropic
 
@@ -203,11 +203,11 @@ Quand l'équipe évolue ou qu'un projet change de statut :
 
 1. Ouvre `dobby_context.py`
 2. Modifie la section correspondante dans `SYSTEM_PROMPT`
-3. Redémarre Dobby :
+3. Redémarre [[Dobby]] :
 ```bash
 launchctl kickstart -k gui/$(id -u)/com.pka.dobby
 ```
 
 ---
 
-*Installé par Forge · PKA JCH · 2026-05-10*
+*Installé par [[Forge]] · PKA JCH · 2026-05-10*

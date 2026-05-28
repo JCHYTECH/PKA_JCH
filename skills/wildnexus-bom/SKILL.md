@@ -65,7 +65,7 @@ python3 generate_bom_excel.py
 - Ne jamais acheter microSD consumer — industrial grade uniquement
 - Lentille : ne pas descendre sous 30 €/pièce
 - PPK2 : non négociable, priorité absolue dans Option A
-- Toujours vérifier EU868 pour modules LoRa
+- Toujours vérifier EU868 pour modules [[LoRa]]
 
 ### 8. Rapport à JCH
 Après génération :

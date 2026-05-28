@@ -4,9 +4,9 @@
 
 **Goal:** Construire un agent procurement semi-autonome PKA qui lit une BOM (Excel/CSV/MD), interroge l'API Mouser (Search + Cart), enrichit la BOM, génère un rapport Markdown, et attend la validation JCH avant toute action.
 
-**Architecture:** Scripts Python sur RPi (`192.168.1.48`) orchestrés par Forge (Anthropic API). Cinq modules avec responsabilité unique : parser BOM, client API, raisonneur LLM, writer BOM, writer rapport. CLI `main.py` orchestre le pipeline.
+**Architecture:** Scripts [[Python]] sur RPi (
 
-**Tech Stack:** Python 3.11+, openpyxl, requests, anthropic SDK, python-dotenv, pytest, responses (mock HTTP)
+**Tech Stack:** [[Python]] 3.11+, openpyxl, requests, anthropic SDK, python-dotenv, pytest, responses (mock HTTP)
 
 **Spec:** `docs/superpowers/specs/2026-05-25-procurement-agent-design.md`
 
@@ -685,7 +685,7 @@ git commit -m "feat(procurement): Mouser Search API client + simulation mode"
 
 ---
 
-## Task 4 : LLM Reasoner (Forge via Anthropic API)
+## Task 4 : LLM Reasoner ([[Forge]] via Anthropic API)
 
 **Files:**
 - Create: `scripts/procurement/llm_reasoner.py`
