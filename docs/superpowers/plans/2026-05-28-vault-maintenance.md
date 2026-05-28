@@ -6,7 +6,7 @@
 
 **Architecture:** Trois modules indépendants (`wikilink_patcher`, `file_placement_checker`, `git_nightly_commit`) orchestrés par un entry point `pka_vault_maintenance.py`. Chaque module est fail-safe : une exception dans un module n'arrête pas les suivants. Log uniquement si erreur critique.
 
-**Tech Stack:** Python 3.13, `sqlite3` (TEAM/team.db), `subprocess` (git), `unittest` + `tempfile` pour les tests, `launchd` pour la planification macOS.
+**Tech Stack:** [[Python]] 3.13, `sqlite3` (TEAM/team.db), `subprocess` ([[Git]]), `unittest` + `tempfile` pour les tests, `launchd` pour la planification macOS.
 
 ---
 

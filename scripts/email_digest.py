@@ -774,6 +774,17 @@ def apply_label(service, msg_id, label_id):
         pass
 
 
+def archive_from_inbox(service, msg_id):
+    """Remove the INBOX label — archives the message out of the inbox."""
+    try:
+        service.users().messages().modify(
+            userId="me", id=msg_id,
+            body={"removeLabelIds": ["INBOX"]}
+        ).execute()
+    except Exception:
+        pass
+
+
 def main():
     last_run = get_last_run()
     creds    = get_credentials()
@@ -813,6 +824,7 @@ def main():
                     label_key = f"!PKA/{projet}" if projet else None
                     if label_key and label_key in pka_labels and e.get("msg_id"):
                         apply_label(gmail_service, e["msg_id"], pka_labels[label_key])
+                        archive_from_inbox(gmail_service, e["msg_id"])
                         labels_applied.append((e["sender_name"], label_key))
                     # Route vers Jade si langue non FR/EN
                     if pie_data.get("langue", "FR") not in ("FR", "EN"):

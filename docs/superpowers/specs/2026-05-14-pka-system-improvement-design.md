@@ -1,12 +1,12 @@
 # PKA System Improvement Design
 
 Date: 2026-05-14
-Author: Dobby
+Author: [[Dobby]]
 Status: Draft approved in chat, pending final file review
 
 ## Goal
 
-Adapt the useful parts of Everything Claude Code to PKA_JCH without importing its bulk or complexity.
+Adapt the useful parts of Everything [[Claude]] Code to PKA_JCH without importing its bulk or complexity.
 
 The target is a focused intermediate evolution:
 
@@ -21,7 +21,7 @@ Three options were considered:
 
 1. Pragmatic: too limited, does not address the real system gaps.
 2. Intermediate: best tradeoff between daily usefulness and implementation risk.
-3. Ambitious: too much infrastructure too early, with a real risk of slowing down Dobby.
+3. Ambitious: too much infrastructure too early, with a real risk of slowing down [[Dobby]].
 
 The selected approach is the intermediate one.
 
@@ -91,7 +91,7 @@ This skill should activate for requests about:
 
 - improving PKA_JCH itself
 - adapting useful patterns from external repos or frameworks
-- improving Dobby's operating efficiency
+- improving [[Dobby]]'s operating efficiency
 - reworking memory, hooks, overlays, or skills
 - auditing the PKA system as a system
 
@@ -149,7 +149,7 @@ It should not duplicate them. Its role is to answer:
 
 - where PKA is drifting
 - where PKA is inefficient
-- where small changes would meaningfully improve Dobby's work
+- where small changes would meaningfully improve [[Dobby]]'s work
 
 ### Skills Evolution Philosophy
 
@@ -172,7 +172,7 @@ Its purpose is not to copy external systems. Its purpose is to:
 
 - extract leverage
 - reject noise
-- protect Dobby's clarity
+- protect [[Dobby]]'s clarity
 - improve the real operating system around JCH's work
 
 ## Error Handling
@@ -204,7 +204,7 @@ This cycle should include lightweight verification at three levels:
 
 This implementation is successful if:
 
-- Dobby can run a dedicated PKA improvement audit
+- [[Dobby]] can run a dedicated PKA improvement audit
 - the skills system stores richer but still lightweight metadata
 - a future "improve our PKA system" request can load a dedicated skill
 - the system becomes more governable without becoming heavier to operate

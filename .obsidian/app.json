@@ -1,1 +1,9 @@
-{}
+{
+  "safeMode": false,
+  "useMarkdownLinks": false,
+  "newFileLocation": "folder",
+  "newFileFolderPath": "JCH_Inbox/00_INBOX",
+  "attachmentFolderPath": "wiki/images",
+  "alwaysUpdateLinks": true,
+  "showUnsupportedFiles": true
+}

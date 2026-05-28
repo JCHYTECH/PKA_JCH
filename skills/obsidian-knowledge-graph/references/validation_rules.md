@@ -1,16 +1,10 @@
-# Regles de validation - Obsidian Knowledge Graph
+# Regles de validation - [[Obsidian]] Knowledge Graph
 
 ## Interdits par defaut
 
-Ne jamais wikilinker automatiquement :
+Aucun. Tous les termes historiquement ambigus ont ete resolus par JCH le 2026-05-25.
 
-- `Claude`
-- `ChatGPT`
-- `Python`
-- `Apple`
-- `Pi`
-
-Ces termes restent en file de revue tant que JCH n'a pas donne une decision canonique.
+Tout nouveau terme ambigu decouvert sera ajoute a `review_queue.md` pour decision.
 
 ## Cibles canoniques
 
@@ -35,7 +29,7 @@ Ne pas proposer de remplacement dans :
 
 - blocs de code Markdown ;
 - spans inline entre backticks ;
-- liens Obsidian deja existants `[[...]]` ;
+- liens [[Obsidian]] deja existants 
 - fichiers racine de configuration ou pointeurs systeme, sauf demande explicite.
 
 ## Workflow de modification reelle

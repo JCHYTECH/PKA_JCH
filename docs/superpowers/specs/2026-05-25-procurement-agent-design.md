@@ -1,7 +1,7 @@
 # Design — Agent Procurement Semi-Autonome PKA
 
 **Date :** 2026-05-25  
-**Auteur :** Dobby 🦉 (claude-sonnet-4-6)  
+**Auteur :** [[Dobby]] 🦉 (claude-sonnet-4-6)  
 **Statut :** Approuvé par JCH  
 **Projet :** Générique PKA — applicable à WildNexus, DIM3, Vetalyx et tout projet avec BOM
 
@@ -26,8 +26,8 @@ JCH → Dobby (Mac) → /procurement [projet] [bom_file]
          (.xlsx/.csv)  (Mouser/DK)  (BOM enrichi) (TEAM_Inbox)
 ```
 
-**Environnement d'exécution : Raspberry Pi** (`tkajch.local` / `192.168.1.48`)
-- Les scripts Python tournent sur le RPi
+**Environnement d'exécution : [[Raspberry Pi]]** (
+- Les scripts [[Python]] tournent sur le RPi
 - L'IP publique de la box est enregistrée chez Mouser (whitelisting API)
 - Avantage sécurité : la clé API Mouser ne réside que sur le RPi, jamais sur le Mac
 - Fichiers BOM transmis par SSH/SCP ou depuis un dossier partagé réseau
@@ -41,8 +41,8 @@ JCH → Dobby (Mac) → /procurement [projet] [bom_file]
 | `bom_writer.py` | `scripts/procurement/` | Réécrit le BOM source avec colonnes enrichies |
 | `report_writer.py` | `scripts/procurement/` | Génère le rapport Markdown daté dans `TEAM_Inbox/` |
 
-**Forge** reçoit le JSON normalisé, raisonne sur les alternatives et l'obsolescence, orchestre les scripts d'écriture.  
-**Dobby** invoque Forge, présente le rapport à JCH, attend la validation avant toute action suivante.
+**[[Forge]]** reçoit le JSON normalisé, raisonne sur les alternatives et l'obsolescence, orchestre les scripts d'écriture.  
+**[[Dobby]]** invoque [[Forge]], présente le rapport à JCH, attend la validation avant toute action suivante.
 
 ---
 
@@ -140,9 +140,9 @@ DIGIKEY_CLIENT_SECRET=xxx
 
 ---
 
-## 6. Logique Forge (raisonnement LLM)
+## 6. Logique [[Forge]] (raisonnement LLM)
 
-Forge reçoit le JSON normalisé complet et exécute dans l'ordre :
+[[Forge]] reçoit le JSON normalisé complet et exécute dans l'ordre :
 
 1. **Détection obsolescence** — composant marqué EOL ou stock = 0 depuis > 3 mois → flag `🔴 OBSOLETE`
 2. **Génération alternatives** — pour tout composant obsolète ou rupture stock : 2 alternatives minimum, même footprint si possible
@@ -210,10 +210,10 @@ La validation JCH est un **point de non-retour explicite**. L'agent ne génère 
 
 | Cas | Comportement |
 |---|---|
-| Composant non trouvé par MPN | Forge cherche par description, sinon flag `⚠️ MANUEL` |
+| Composant non trouvé par MPN | [[Forge]] cherche par description, sinon flag 
 | Stock = 0 | 2 alternatives minimum obligatoires |
 | Obsolescence détectée | Flag `🔴 OBSOLETE` + alternative obligatoire |
-| Budget dépassé | Signalement Dobby avant validation, ligne rouge dans rapport |
+| Budget dépassé | Signalement [[Dobby]] avant validation, ligne rouge dans rapport |
 | API timeout | Retry ×2, puis mode simulation partielle pour ce composant |
 | Format BOM non reconnu | Erreur explicite avec liste des colonnes manquantes |
 
@@ -231,7 +231,7 @@ Exemples :
 /procurement DIM3 JCH_Inbox/09_DIM3/bom_dim3_v1.csv
 ```
 
-Si aucun argument : Dobby demande le projet et le fichier BOM à JCH.
+Si aucun argument : [[Dobby]] demande le projet et le fichier BOM à JCH.
 
 ---
 
@@ -240,6 +240,6 @@ Si aucun argument : Dobby demande le projet et le fichier BOM à JCH.
 - Commande automatique (jamais, par design)
 - Mouser Order API + Order history (v2 — historique pour détecter les doublons)
 - Intégration Farnell / RS / TME (v2)
-- Comparaison multi-fournisseurs automatique (v2 — Forge compare manuellement en v1)
+- Comparaison multi-fournisseurs automatique (v2 — [[Forge]] compare manuellement en v1)
 - Interface web ou dashboard (hors PKA CLI)
 - Gestion des délais douaniers / taxes import (hors UE)

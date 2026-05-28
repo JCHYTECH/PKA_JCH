@@ -1,6 +1,6 @@
 ---
 date: 2026-05-25
-model: GPT-5 Codex
+model: GPT-5 [[Codex]]
 type: design
 status: approved
 project: AI_IT_TOOLS
@@ -15,11 +15,11 @@ Create two sibling projects in `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/`:
 - `obsidian-knowledge-graph/`
 - `pka-hermisation/`
 
-The two projects are linked but independent. Obsidian is the governed documentary graph layer. Hermisation is the progressive adaptation of useful Hermes Agent concepts into PKA_JCH.
+The two projects are linked but independent. [[Obsidian]] is the governed documentary graph layer. Hermisation is the progressive adaptation of useful Hermes Agent concepts into PKA_JCH.
 
-## Project 1 — Obsidian Knowledge Graph
+## Project 1 — [[Obsidian]] Knowledge Graph
 
-Mission: connect PKA_JCH to Obsidian as a governed, human-readable, AI-usable knowledge graph.
+Mission: connect PKA_JCH to [[Obsidian]] as a governed, human-readable, AI-usable knowledge graph.
 
 Initial scope:
 
@@ -42,14 +42,14 @@ Initial deliverables:
 
 ## Project 2 — PKA Hermisation
 
-Mission: adapt useful Hermes Agent concepts into a PKA-native architecture without replacing Dobby, multiplying agents blindly, or adding opaque framework complexity.
+Mission: adapt useful Hermes Agent concepts into a PKA-native architecture without replacing [[Dobby]], multiplying agents blindly, or adding opaque framework complexity.
 
 Initial scope:
 
 - extract useful Hermes concepts;
 - define what must not be copied;
 - define a limited pilot scope;
-- keep Dobby as central orchestrator;
+- keep [[Dobby]] as central orchestrator;
 - preserve human validation for critical actions;
 - progress one technical layer at a time.
 

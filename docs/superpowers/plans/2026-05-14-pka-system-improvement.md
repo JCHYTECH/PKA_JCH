@@ -4,9 +4,9 @@
 
 **Goal:** Add a transversal PKA system-improvement audit, enrich the skills metadata model, and register a reusable skill for future PKA evolution requests.
 
-**Architecture:** Keep the current PKA structure intact and extend it with one focused audit script, one backward-compatible SQLite migration, small updates to the existing skill read/write scripts, and one registered skill row in `TEAM/team.db`. Verification should rely on local CLI commands and small Python unit tests covering the new and changed behavior.
+**Architecture:** Keep the current PKA structure intact and extend it with one focused audit script, one backward-compatible [[SQLite]] migration, small updates to the existing skill read/write scripts, and one registered skill row in 
 
-**Tech Stack:** Python 3, SQLite, Markdown specs/plans, existing PKA scripts in `scripts/`
+**Tech Stack:** [[Python]] 3, [[SQLite]], Markdown specs/plans, existing PKA scripts in 
 
 ---
 

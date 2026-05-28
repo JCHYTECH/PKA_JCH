@@ -1,6 +1,6 @@
 ---
 name: pka-pointer-sync
-description: Resynchroniser les fichiers pointers PKA (CLAUDE.md, AGENTS.md, GEMINI.md, DEEPSEEK.md) après un changement d'équipe ou de structure. Déclencher sur "mets à jour les pointers", "l'équipe a changé", "synchronise les fichiers système".
+description: Resynchroniser les fichiers pointers PKA ([[Claude]].md, AGENTS.md, GEMINI.md, DEEPSEEK.md) après un changement d'équipe ou de structure. Déclencher sur "mets à jour les pointers", "l'équipe a changé", "synchronise les fichiers système".
 ---
 
 # Skill — pka-pointer-sync
@@ -8,7 +8,7 @@ description: Resynchroniser les fichiers pointers PKA (CLAUDE.md, AGENTS.md, GEM
 ## Déclencheurs
 - Après tout recrutement (skill `onboarding-specialiste`)
 - "mets à jour les pointers"
-- "synchronise CLAUDE.md / AGENTS.md"
+- "synchronise [[Claude]].md / AGENTS.md"
 - "l'équipe a changé"
 - Drift détecté entre les fichiers pointers (comptes membres différents)
 
@@ -37,7 +37,7 @@ Ce chiffre doit être cohérent avec :
 ### 3. Mettre à jour `tool_pointer_config.json` si nécessaire
 Si le compte DB diffère du fichier config, mettre à jour `tool_pointer_config.json` :
 - Champ `team_count` : nombre total membres actifs
-- Champ `specialist_count` : team_count - 1 (Dobby non compté)
+- Champ 
 - Champ `active_projects` : liste des projets actifs dans `JCH_Inbox/03_PROJECTS/`
 
 ### 4. Exécuter le générateur

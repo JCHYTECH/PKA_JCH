@@ -4,9 +4,9 @@
 
 **Goal:** Build a reproducible QC and segmentation pipeline for the InsectNet V0.1 audio lot.
 
-**Architecture:** Add two focused Python scripts. The inventory script maps manifest rows to downloaded files and probes technical metadata with `ffprobe`; the segmentation script reads that inventory and extracts fixed-length WAV segments with `ffmpeg`.
+**Architecture:** Add two focused [[Python]] scripts. The inventory script maps manifest rows to downloaded files and probes technical metadata with 
 
-**Tech Stack:** Python standard library, `ffprobe`, `ffmpeg`, pytest/unittest-compatible tests.
+**Tech Stack:** [[Python]] standard library, 
 
 ---
 

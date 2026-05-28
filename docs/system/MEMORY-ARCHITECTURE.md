@@ -1,17 +1,17 @@
 # MEMORY-ARCHITECTURE — Mémoire transversale PKA_JCH
-> Décision architecturale du 2026-05-14. Auteur : Dobby 🦉 (claude-sonnet-4-6)
+> Décision architecturale du 2026-05-14. Auteur : [[Dobby]] 🦉 (claude-sonnet-4-6)
 
 ---
 
 ## Problème identifié
 
-La mémoire accumulée par Dobby lors des sessions Claude Code était **invisible depuis tout autre outil** (Gemini CLI, Codex CLI, ChatGPT, DeepSeek). Elle était stockée dans un chemin Claude Code-specific :
+La mémoire accumulée par [[Dobby]] lors des sessions [[Claude]] Code était **invisible depuis tout autre outil** (Gemini CLI, [[Codex]] CLI, [[ChatGPT]], DeepSeek). Elle était stockée dans un chemin [[Claude]] Code-specific :
 
 ```
 ~/.claude/projects/-Users-jchavauxm5-PKA-JCH/memory/
 ```
 
-Ce chemin n'est ni portable ni accessible hors du harness Claude Code. Résultat : chaque changement de modèle ou d'outil repartait de zéro, sans contexte JCH, sans règles de comportement Dobby, sans état des projets.
+Ce chemin n'est ni portable ni accessible hors du harness [[Claude]] Code. Résultat : chaque changement de modèle ou d'outil repartait de zéro, sans contexte JCH, sans règles de comportement [[Dobby]], sans état des projets.
 
 Problème secondaire : aucune mémoire n'était taguée avec le modèle qui l'avait générée — impossible de savoir quelle part du contexte venait de quel LLM.
 
@@ -24,10 +24,10 @@ Problème secondaire : aucune mémoire n'était taguée avec le modèle qui l'av
 Créé à la racine de `PKA_JCH/`, ce fichier est un résumé structuré de toutes les mémoires accumulées :
 
 - Profil JCH (identité, projets actifs, setup, valeurs)
-- Règles de comportement Dobby (délégation, attribution, rasoir d'Occam…)
+- Règles de comportement [[Dobby]] (délégation, attribution, rasoir d'Occam…)
 - États projets (ARTEON, Vetalyx, PKA Digest, recrutement…)
 
-Il est mis à jour manuellement à chaque évolution significative de la mémoire. Contrairement aux fichiers mémoire natifs de Claude Code, il est lisible par n'importe quel outil.
+Il est mis à jour manuellement à chaque évolution significative de la mémoire. Contrairement aux fichiers mémoire natifs de [[Claude]] Code, il est lisible par n'importe quel outil.
 
 ### 2. Champ `model` dans chaque entrée mémoire
 
@@ -46,7 +46,7 @@ Ce tag permet de savoir quel modèle a généré chaque règle ou connaissance. 
 
 ### 3. Session Start Protocol dans les fichiers pointeurs
 
-À chaque démarrage de session, Dobby :
+À chaque démarrage de session, [[Dobby]] :
 1. Identifie le modèle actif
 2. Charge `MEMORY.md` comme bootstrap portable principal
 3. Scanne `JCH_Inbox/00_INBOX/`
@@ -56,7 +56,7 @@ Tout nouveau fichier mémoire créé hérite du tag `model:` du modèle actif.
 
 ### 4. Compliance check dans `ADAPTER-PROMPT.md`
 
-Pour les outils hors Claude Code, une question de vérification permet de confirmer que le contexte a bien été chargé avant de commencer à travailler :
+Pour les outils hors [[Claude]] Code, une question de vérification permet de confirmer que le contexte a bien été chargé avant de commencer à travailler :
 
 > "Qui es-tu, combien de spécialistes dans l'équipe, et quel est ton modèle actif ?"
 
@@ -89,15 +89,15 @@ TEAM/team.db
 
 ## Flux de mise à jour
 
-Quand une nouvelle mémoire est écrite en session Claude Code :
+Quand une nouvelle mémoire est écrite en session [[Claude]] Code :
 1. Fichier créé dans `~/.claude/projects/-Users-jchavauxm5-PKA-JCH/memory/` avec `model: <actif>`
 2. Entrée insérée dans `memory_log` (team.db)
 3. `MEMORY.md` mis à jour si la mémoire est structurellement importante
 
-Quand une session se déroule hors Claude Code :
+Quand une session se déroule hors [[Claude]] Code :
 1. ADAPTER-PROMPT collé → compliance check effectué
 2. Nouvelles mémoires écrites directement dans `MEMORY.md`
-3. À synchroniser dans `~/.claude/projects/-Users-jchavauxm5-PKA-JCH/memory/` lors du retour sur Claude Code si une granularité fichier est requise
+3. À synchroniser dans 
 
 ---
 
@@ -105,8 +105,8 @@ Quand une session se déroule hors Claude Code :
 
 | Outil | Chargement auto | Certitude |
 |-------|----------------|-----------|
-| Claude Code | ✅ Harness garanti | Certaine |
-| Codex CLI | ✅ AGENTS.md | Élevée |
+| [[Claude]] Code | ✅ Harness garanti | Certaine |
+| [[Codex]] CLI | ✅ AGENTS.md | Élevée |
 | Gemini CLI | ✅ GEMINI.md | Élevée |
 | DeepSeek API / web | ❌ Prompt manuel | Moyenne / Faible |
-| ChatGPT web | ❌ Prompt manuel | Moyenne / Faible |
+| [[ChatGPT]] web | ❌ Prompt manuel | Moyenne / Faible |

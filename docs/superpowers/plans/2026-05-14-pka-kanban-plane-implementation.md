@@ -4,9 +4,9 @@
 
 **Goal:** Add a Plane-backed transversal kanban layer to PKA with one canonical workflow, governed labels, project mappings, and dashboard visibility.
 
-**Architecture:** Keep Plane as the external source of truth, but codify all PKA semantics locally in versioned schema/config files plus a small Python adapter/service layer. Extend the existing dashboard server to expose kanban summary APIs and update the hub UI to display normalized project and validation/blocker views without inventing a second task database.
+**Architecture:** Keep Plane as the external source of truth, but codify all PKA semantics locally in versioned schema/config files plus a small [[Python]] adapter/service layer. Extend the existing dashboard server to expose kanban summary APIs and update the hub UI to display normalized project and validation/blocker views without inventing a second task database.
 
-**Tech Stack:** Python 3 standard library, JSON config files in `JCH_Inbox/99_SYSTEM/`, existing `scripts/dashboard_server.py`, HTML/CSS dashboard files in `JCH_Inbox/01_DASHBOARDS/`, `unittest`
+**Tech Stack:** [[Python]] 3 standard library, JSON config files in 
 
 ---
 

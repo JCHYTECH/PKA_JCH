@@ -6,7 +6,7 @@
 
 **Architecture:** Extend `scripts/dashboard_server.py` with small JSON endpoints backed by `scripts/rebuild_file_index.py`, then render a compact search section inside `JCH_Inbox/01_DASHBOARDS/hub.html` with lightweight client-side filtering state. Keep the backend authoritative for result ranking and keep the frontend focused on presentation and interaction.
 
-**Tech Stack:** Python 3, SQLite, `http.server`, vanilla HTML/CSS/JS, unittest
+**Tech Stack:** [[Python]] 3, [[SQLite]], 
 
 ---
 
