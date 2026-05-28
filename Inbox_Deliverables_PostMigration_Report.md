@@ -1,7 +1,7 @@
 # Inbox Deliverables — Rapport Post-Migration
 
 Date : 2026-05-28
-Statut : migration appliquée et vérifiée
+Statut : migration appliquée, vérifiée et triage partiel effectué
 
 ## 1. Résumé
 
@@ -14,6 +14,7 @@ Objectif atteint :
 - conservation des 235 entrées existantes ;
 - aucune conversion automatique des anciens statuts ;
 - aucune modification dashboard dans cette étape.
+- triage WildNexus appliqué sur les entrées `232-234`.
 
 ## 2. Sauvegarde
 
@@ -68,22 +69,24 @@ Répartition post-migration :
 | Statut | Nombre |
 |---|---:|
 | `cancelled` | 224 |
+| `delivered` | 2 |
 | `done` | 2 |
-| `pending` | 9 |
+| `pending` | 6 |
+| `validated` | 1 |
 
 ## 5. Pending à traiter
 
-| ID | Spécialiste | Sujet | Créé | Fichier |
-|---:|---|---|---|---|
-| 20 | Vasco | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | 2026-05-01 12:59:28 |  |
-| 83 | Vasco | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | 2026-05-01 13:00:50 |  |
-| 128 | Renard | `[EMAIL] Re: contrat type` | 2026-05-01 13:02:58 |  |
-| 147 | Vasco | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | 2026-05-01 13:03:05 |  |
-| 214 | Vasco | `[EMAIL] These are not quizzes. They are diagnostic tools.` | 2026-05-02 18:00:14 |  |
-| 228 | Renard | `[EMAIL] Jean-Claude, tatouage Thaïlandais, Tatouage Japonaise et plus d'idées à explorer` | 2026-05-09 07:00:19 |  |
-| 232 | Chouette | `WildNexus — déterminer longueur d'onde LED IR non visible/non perturbante faune` | 2026-05-18 18:52:08 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/02_DECISIONS/ADR/ADR-002-choix-camera-ir-p0.md` |
-| 233 | Forge | `WildNexus — revue Meshnology N35 ESP32 LoRa V3/V4` | 2026-05-18 19:53:20 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/2026-05-18_product-review-meshnology-n35.md` |
-| 234 | Milan | `WildNexus — scan fabricants produit intégré P0` | 2026-05-18 19:57:03 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/2026-05-18_market-scan-integrated-p0-products.md` |
+| ID | Spécialiste | Sujet | Statut | Créé | Fichier |
+|---:|---|---|---|---|---|
+| 20 | Vasco | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | `pending` | 2026-05-01 12:59:28 |  |
+| 83 | Vasco | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | `pending` | 2026-05-01 13:00:50 |  |
+| 128 | Renard | `[EMAIL] Re: contrat type` | `pending` | 2026-05-01 13:02:58 |  |
+| 147 | Vasco | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | `pending` | 2026-05-01 13:03:05 |  |
+| 214 | Vasco | `[EMAIL] These are not quizzes. They are diagnostic tools.` | `pending` | 2026-05-02 18:00:14 |  |
+| 228 | Renard | `[EMAIL] Jean-Claude, tatouage Thaïlandais, Tatouage Japonaise et plus d'idées à explorer` | `pending` | 2026-05-09 07:00:19 |  |
+| 232 | Chouette | `WildNexus — déterminer longueur d'onde LED IR non visible/non perturbante faune` | `validated` | 2026-05-18 18:52:08 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/02_DECISIONS/ADR/ADR-002-choix-camera-ir-p0.md` |
+| 233 | Forge | `WildNexus — revue Meshnology N35 ESP32 LoRa V3/V4` | `delivered` | 2026-05-18 19:53:20 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/2026-05-18_product-review-meshnology-n35.md` |
+| 234 | Milan | `WildNexus — scan fabricants produit intégré P0` | `delivered` | 2026-05-18 19:57:03 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/2026-05-18_market-scan-integrated-p0-products.md` |
 
 ## 6. Règle opérationnelle Dobby
 
@@ -101,7 +104,7 @@ Répartition post-migration :
 | Sujet | Décision attendue |
 |---|---|
 | 6 vieux pending email sans fichier | Maintenir, annuler, ou rechercher livrable correspondant |
-| 3 pending WildNexus avec fichier | Vérifier si livrables déjà traités puis passer à `done`, `delivered`, `validated` ou `cancelled` |
+| 3 pending WildNexus avec fichier | Déjà triés : `232` validé, `233-234` livrés |
 | Dashboard | Mettre à jour seulement après validation JCH |
 
 ## 8. Prochaine étape
