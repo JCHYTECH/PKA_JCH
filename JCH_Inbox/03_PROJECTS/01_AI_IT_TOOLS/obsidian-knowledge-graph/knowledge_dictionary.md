@@ -1,13 +1,14 @@
 ---
-date: 2026-05-25
+date: 2026-05-29
 model: GPT-5 Codex
 type: dictionary
-status: draft
+status: validated
+validated: 2026-05-29
 ---
 
 # Knowledge Dictionary
 
-> Draft dictionary for JCH validation before automated wikilinking.
+> Validé par JCH le 2026-05-29. Phase 3 (dry-run wikilinks) autorisée.
 
 ## Argus
 
@@ -140,15 +141,6 @@ status: draft
 - canonical: Heron
 - aliases:
   - Heron
-- category: agent
-- folder: `TEAM`
-- ambiguity: none recorded
-
-## Héron
-
-- canonical: Héron
-- aliases:
-  - Héron
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
@@ -333,6 +325,16 @@ status: draft
 - folder: `JCH_Inbox/03_PROJECTS/archive`
 - ambiguity: none recorded
 
+## Apple
+
+- canonical: Apple
+- aliases:
+  - Apple
+- category: technology
+- folder: `JCH_Inbox/03_PROJECTS/06_PHOTO_NATURE/tech/printing`
+- ambiguity: excluded — trop de faux positifs, validé JCH 2026-05-29
+- wikilink: false
+
 ## Arduino
 
 - canonical: Arduino
@@ -358,7 +360,8 @@ status: draft
   - ChatGPT
 - category: technology
 - folder: `JCH_Inbox/03_PROJECTS/06_PHOTO_NATURE/tech/printing`
-- ambiguity: none recorded
+- ambiguity: excluded — terme trop générique, validé JCH 2026-05-29
+- wikilink: false
 
 ## Claude
 
@@ -367,7 +370,8 @@ status: draft
   - Claude
 - category: technology
 - folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/docs`
-- ambiguity: none recorded
+- ambiguity: excluded — aussi un prénom, validé JCH 2026-05-29
+- wikilink: false
 
 ## Codex
 
@@ -384,7 +388,7 @@ status: draft
 - aliases:
   - Docker
 - category: technology
-- folder: `JCH_Inbox/00_INBOX`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/pka-hermisation`
 - ambiguity: none recorded
 
 ## ESP32
@@ -393,7 +397,7 @@ status: draft
 - aliases:
   - ESP32
 - category: technology
-- folder: `JCH_Inbox/00_INBOX`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/pka-hermisation`
 - ambiguity: none recorded
 
 ## ESP32-S3
@@ -447,7 +451,7 @@ status: draft
 - aliases:
   - n8n
 - category: technology
-- folder: `JCH_Inbox/00_INBOX`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/pka-hermisation`
 - ambiguity: none recorded
 
 ## Obsidian
@@ -459,14 +463,34 @@ status: draft
 - folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/obsidian-knowledge-graph`
 - ambiguity: none recorded
 
+## Pi
+
+- canonical: Pi
+- aliases:
+  - Pi
+- category: technology
+- folder: `TEAM_Inbox/pie`
+- ambiguity: excluded — raccourci trop vague — préférer Raspberry Pi 5, validé JCH 2026-05-29
+- wikilink: false
+
 ## PostgreSQL
 
 - canonical: PostgreSQL
 - aliases:
   - PostgreSQL
 - category: technology
-- folder: `JCH_Inbox/00_INBOX`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/pka-hermisation`
 - ambiguity: none recorded
+
+## Python
+
+- canonical: Python
+- aliases:
+  - Python
+- category: technology
+- folder: `docs/superpowers/plans`
+- ambiguity: excluded — trop générique, validé JCH 2026-05-29
+- wikilink: false
 
 ## Qdrant
 
@@ -474,7 +498,7 @@ status: draft
 - aliases:
   - Qdrant
 - category: technology
-- folder: `JCH_Inbox/00_INBOX`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/pka-hermisation`
 - ambiguity: none recorded
 
 ## Raspberry Pi
@@ -492,7 +516,7 @@ status: draft
 - aliases:
   - Raspberry Pi 5
 - category: technology
-- folder: `JCH_Inbox/00_INBOX`
+- folder: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/06_COMPONENTS/BIOACOUSTIC/hardware`
 - ambiguity: none recorded
 
 ## Redis
@@ -501,7 +525,7 @@ status: draft
 - aliases:
   - Redis
 - category: technology
-- folder: `JCH_Inbox/00_INBOX`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/pka-hermisation`
 - ambiguity: none recorded
 
 ## SQLite
@@ -519,7 +543,7 @@ status: draft
 - aliases:
   - Tailscale
 - category: technology
-- folder: `JCH_Inbox/00_INBOX`
+- folder: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/06_COMPONENTS/BIOACOUSTIC/hardware`
 - ambiguity: none recorded
 
 ## Whisper
@@ -528,7 +552,7 @@ status: draft
 - aliases:
   - Whisper
 - category: technology
-- folder: `JCH_Inbox/00_INBOX`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/pka-hermisation`
 - ambiguity: none recorded
 
 ## Xeno-Canto
