@@ -50,15 +50,46 @@ tts_enabled = os.getenv("TTS_ENABLED", "true").lower() == "true"
 
 # ── Logging ──────────────────────────────────────────────────────────────────
 
+TOKEN_REDACTIONS = [
+    (re.compile(r"(https://api\.telegram\.org/bot)[^/\s\"]+"), r"\1<redacted>"),
+    (re.compile(r"(https://api\.telegram\.org/file/bot)[^/\s\"]+"), r"\1<redacted>"),
+    (re.compile(r"\bbot\d+:[A-Za-z0-9_-]+"), "bot<redacted>"),
+    (re.compile(r"\bbot\d+%3A[A-Za-z0-9_-]+"), "bot<redacted>"),
+]
+
+
+def redact_secrets(value: object) -> str:
+    text = str(value)
+    for pattern, replacement in TOKEN_REDACTIONS:
+        text = pattern.sub(replacement, text)
+    return text
+
+
+class RedactingFilter(logging.Filter):
+    def filter(self, record: logging.LogRecord) -> bool:
+        record.msg = redact_secrets(record.msg)
+        if isinstance(record.args, tuple):
+            record.args = tuple(redact_secrets(arg) for arg in record.args)
+        elif isinstance(record.args, dict):
+            record.args = {key: redact_secrets(value) for key, value in record.args.items()}
+        return True
+
+
+log_file = Path(__file__).parent / "dobby.log"
+file_handler = logging.FileHandler(log_file)
+file_handler.addFilter(RedactingFilter())
+
 logging.basicConfig(
     format="%(asctime)s [%(levelname)s] %(message)s",
     level=logging.INFO,
-    handlers=[
-        logging.FileHandler(Path(__file__).parent / "dobby.log"),
-        logging.StreamHandler(),
-    ],
+    handlers=[file_handler],
+    force=True,
 )
 log = logging.getLogger(__name__)
+
+for noisy_logger in ("httpx", "httpcore", "telegram"):
+    logging.getLogger(noisy_logger).addFilter(RedactingFilter())
+    logging.getLogger(noisy_logger).setLevel(logging.WARNING)
 
 # ── Clients API ──────────────────────────────────────────────────────────────
 
