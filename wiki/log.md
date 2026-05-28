@@ -83,3 +83,24 @@
 
 2026-05-25 20:08 — Save [[Codex]] [model=deepseek ; project=WILDNEXUS] : 25-5-2026 Deep (Session WildNexus — ingestion INBOX ([[BirdNET]] + Pep Ventosa), rapport série/parallèle WP02, collecte datasheets + RoHS, indexation file_index. INBOX vidé.) — 
 2026-05-26 00:35 — Save [[Dobby]] [model=claude-sonnet-4-6 ; project=WILDNEXUS+procurement] : Agent procurement semi-autonome (Forge/Python) — BOM parser, Mouser Search API (réelle), LLM reasoner, bom_writer, report_writer, cart_client. 19 tests pass. Debug Cart API : endpoint /items/insert + gestion 302 (IP whitelist RPi requise). Commits sur main.
+
+2026-05-26 12:11 — Save Codex [model=codex-gpt-5 ; project=PKA_JCH] : obsidian-plugins-pka (Installation prudente du premier lot de plugins Obsidian pour le vault PKA_JCH : Dataview, Templater, QuickAdd, Linter et Obsidian Git.) — `wiki/Daily/2026/05/2026-05-26-obsidian-plugins-pka.md`
+
+2026-05-26 12:20 — Save Codex [model=codex-gpt-5 ; project=PKA_JCH] : sop-obsidian-vscode (Ajout de la procedure de travail PKA_JCH pour utiliser Obsidian et VS Code sans collision de fichiers.) — `wiki/Daily/2026/05/2026-05-26-sop-obsidian-vscode.md`
+
+2026-05-26 12:28 — Save Codex [model=codex-gpt-5 ; project=PKA_JCH] : obsidian-graph-project-view (Modification de la vue Graphe Obsidian pour que la lecture globale soit centree sur les projets et l'organisation du vault plutot que sur les agents.) — `wiki/Daily/2026/05/2026-05-26-obsidian-graph-project-view.md`
+
+2026-05-26 12:37 — Save Codex [model=codex-gpt-5 ; project=PKA_JCH] : obsidian-graph-projects-only (Ajustement de la vue Graphe Obsidian pour n'afficher que les projets actifs PKA_JCH.) — `wiki/Daily/2026/05/2026-05-26-obsidian-graph-projects-only.md`
+
+2026-05-26 13:25 — Save Codex [model=codex-gpt-5 ; project=PKA_JCH] : session-obsidian-graph-vscode (Session de configuration Obsidian du vault PKA_JCH : installation du noyau de plugins, procedure de travail Obsidian/VS Code, puis recentrage de la vue Graphe sur les projets un...) — `wiki/Daily/2026/05/2026-05-26-session-obsidian-graph-vscode.md`
+
+2026-05-26 13:28 — Save Codex [model=codex-gpt-5 ; project=WILDNEXUS] : wildnexus-mf833u1-reception (JCH a reçu le modem USB LTE MF833U1 pour WildNexus. L'élément est cadré comme outil de banc/Base Nexus/backhaul terrain, sans modification du scope Satellite Lite P0.) — `wiki/Daily/2026/05/2026-05-26-wildnexus-mf833u1-reception.md`
+
+2026-05-26 13:29 — Save Codex [model=codex-gpt-5 ; project=WILDNEXUS] : wildnexus-mf833u1-birdnet-mobile (Correction du cadrage du modem MF833U1 : il sera utilise avec Raspberry Pi + BirdNET-Go en configuration mobile.) — `wiki/Daily/2026/05/2026-05-26-wildnexus-mf833u1-birdnet-mobile.md`
+
+2026-05-26 13:45 — Save : daily note mise à jour (session DigiKey MyLists API + OAuth2), index vérifié, skill #7 indexé, mémoire project_digikey_integration.md créée
+
+2026-05-26 16:58 — Save Codex [model=codex-gpt-5 ; project=PKA_JCH] : ergonomie-intervention-dobby (JCH a demandé d'inscrire une règle de comportement : proposer plus tôt la solution finale élégante et facile d'usage, prendre la main sur les commandes terminal raisonnables, et...) — `wiki/Daily/2026/05/2026-05-26-ergonomie-intervention-dobby.md`
+
+2026-05-28 09:19 — Save [model=claude-sonnet-4-6 ; project=VETALYX] : daily note créée (2026-05-28), index vérifié — session VETALYX Dossier DIXUN : reformatage rapport final, HTML interactif, évaluation technico-scientifique kits DIXUN (Vasco + Clio + Dobby)
+2026-05-28 20:09 — Save [model=claude-sonnet-4-6 ; project=PKA_JCH] : daily note créée (2026-05-28), index mis à jour — session PKA vault maintenance : wikilink_patcher + file_placement_checker + git_nightly_commit + launchd 02:00 installé (29 tests, 9 commits)
