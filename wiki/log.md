@@ -110,3 +110,5 @@
 2026-05-29 00:18 — Save [[Codex]] [model=claude-sonnet-4-6 ; project=[[01_AI_IT_TOOLS]]] : hermisation-phase-3-4a (Phase 3 clôturée (Local_Infrastructure_Setup.md). Phase 4a lancée : skills 10 entrées, memory_log actif, knowledge 19 entrées, /save branché sur memory_log.) — `wiki/Daily/2026/05/2026-05-29-hermisation-phase-3-4a.md`
 
 2026-05-29 01:45 — Save Codex [model=claude-sonnet-4-6 ; project=01_AI_IT_TOOLS] : hermisation-complete (Hermisation PKA_JCH complète. 5 phases + 3 pilotes livrés. Infrastructure opérationnelle : memory_log, skills, knowledge, audit log dashboard, wikilinks vault appliqués (356 sur...) — `wiki/Daily/2026/05/2026-05-29-hermisation-complete.md`
+
+2026-05-29 01:55 — Save : daily note 2026-05-29.md créée, index mis à jour — session hermisation complète (5 phases + 3 pilotes + réorganisation vault)
