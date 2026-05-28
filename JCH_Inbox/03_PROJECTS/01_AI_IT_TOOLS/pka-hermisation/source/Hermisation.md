@@ -76,7 +76,7 @@ Le système doit progressivement apprendre :
 - les structures de documents ;
 - les workflows répétitifs ;
 - les procédures techniques ;
-- les conventions Obsidian ;
+- les conventions [[Obsidian]] ;
 - les méthodes de gestion projet.
 
 ---
@@ -120,16 +120,16 @@ Le système doit être :
 
 # 4. Principes fondamentaux
 
-## 4.1 Dobby reste central
+## 4.1 [[Dobby]] reste central
 
-Dobby reste :
+[[Dobby]] reste :
 
 - coordinateur principal ;
 - superviseur ;
 - répartiteur ;
 - couche décisionnelle.
 
-PKA-Hermes ne remplace pas Dobby.
+PKA-Hermes ne remplace pas [[Dobby]].
 
 ---
 
@@ -178,7 +178,7 @@ Toute fonctionnalité ajoutée doit être :
 
 Fonctions :
 
-- Obsidian ;
+- [[Obsidian]] ;
 - coordination ;
 - supervision ;
 - développement ;
@@ -203,13 +203,13 @@ Fonctions :
 
 Technologies possibles :
 
-- Docker ;
-- PostgreSQL ;
-- Redis ;
-- Qdrant ;
-- FastAPI ;
-- n8n ;
-- Tailscale.
+- [[Docker]] ;
+- [[PostgreSQL]] ;
+- [[Redis]] ;
+- [[Qdrant]] ;
+- [[FastAPI]] ;
+- [[n8n]] ;
+- [[Tailscale]].
 
 ---
 
@@ -231,11 +231,11 @@ Fonctions :
 
 ## 5.4 Couche terrain
 
-### Raspberry / ESP32
+### Raspberry / [[ESP32]]
 
 Fonctions :
 
-- BirdNET ;
+- [[BirdNET]] ;
 - capteurs ;
 - bioacoustique ;
 - météo ;
@@ -258,8 +258,8 @@ Contenu :
 Localisation :
 
 - VPS ;
-- PostgreSQL ;
-- Redis.
+- [[PostgreSQL]] ;
+- [[Redis]].
 
 ---
 
@@ -276,15 +276,15 @@ Contenu :
 
 Localisation :
 
-- Obsidian ;
+- [[Obsidian]] ;
 - NAS ;
-- Git privé.
+- [[Git]] privé.
 
 ---
 
 # 7. Système documentaire
 
-## 7.1 Obsidian comme mémoire humaine principale
+## 7.1 [[Obsidian]] comme mémoire humaine principale
 
 Le vault principal reste :
 
@@ -336,7 +336,7 @@ Chaque workflow validé doit devenir :
 - génération fichier Markdown ;
 - création commande Terminal ;
 - création BOM ;
-- workflow BirdNET ;
+- workflow [[BirdNET]] ;
 - installation Raspberry ;
 - préparation VPS ;
 - génération rapports ;
@@ -374,7 +374,7 @@ Validation humaine obligatoire.
 
 Utilisation recommandée :
 
-- Tailscale ;
+- [[Tailscale]] ;
 - VPN ;
 - accès privés ;
 - zéro exposition inutile.
@@ -385,8 +385,8 @@ Utilisation recommandée :
 
 Sauvegardes automatiques obligatoires :
 
-- Obsidian ;
-- PostgreSQL ;
+- [[Obsidian]] ;
+- [[PostgreSQL]] ;
 - workflows ;
 - agents ;
 - configurations.
@@ -435,8 +435,8 @@ mettre en place le socle technique.
 Actions :
 
 - VPS ;
-- Docker ;
-- PostgreSQL ;
+- [[Docker]] ;
+- [[PostgreSQL]] ;
 - APIs ;
 - monitoring.
 
@@ -465,7 +465,7 @@ augmenter les capacités après validation.
 
 Extensions possibles :
 
-- BirdNET ;
+- [[BirdNET]] ;
 - automatisations ;
 - workflows terrain ;
 - audio ;

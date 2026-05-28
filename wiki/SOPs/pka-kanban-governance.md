@@ -7,10 +7,10 @@
 - En attente
 - En validation
 - Termine
-- Archive
+- [[archive]]
 
 ## Label governance
-- Only Dobby and Forge may create, rename, or delete transverse labels.
+- Only [[Dobby]] and [[Forge]] may create, rename, or delete transverse labels.
 - Labels describing workflow state are forbidden.
 - New labels require proof that status, type, field, or checklist cannot express the need.
 - Monthly audit: duplicates, dead labels, synonyms, project-only drift.

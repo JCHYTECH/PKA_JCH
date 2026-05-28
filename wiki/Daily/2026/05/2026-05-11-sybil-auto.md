@@ -15,7 +15,7 @@ Documentation mise à jour sur quatre modèles :
 - QWEN.md
 - GEMMA.md
 - GEMINI.md
-- CLAUDE.md
+- [[Claude]].md
 
 Révision du fichier central AGENTS.md reflétant les capacités disponibles.
 
@@ -23,11 +23,11 @@ Révision du fichier central AGENTS.md reflétant les capacités disponibles.
 
 Modification des scripts d'exécution :
 - dashboard.sh
-- dobby.sh
+- [[Dobby]].sh
 
 Création d'un prototype en cours : *dobby-live-realtime2-prototype.md* consigné dans TEAM_Inbox.
 
-Configuration locale Claude synchronisée (.claude/settings.local.json).
+Configuration locale [[Claude]] synchronisée (.[[Claude]]/settings.local.json).
 
 ## Gestion de wiki et documentation
 
@@ -36,7 +36,7 @@ Index wiki (wiki/index.md) et log (wiki/log.md) mis à jour.
 ## Équipe et collaboration
 
 Base de données équipe actualisée (TEAM/team.db).
-Évolution du document chouette.md dans l'espace TEAM.
+Évolution du document [[Chouette]].md dans l'espace TEAM.
 
 ## Travail photographique
 

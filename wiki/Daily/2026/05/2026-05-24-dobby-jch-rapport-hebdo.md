@@ -1,11 +1,11 @@
 ---
 date: 2026-05-24
 type: rapport-hebdo
-author: Dobby
+author: [[Dobby]]
 tags: [rapport, jch, collaboration, meta]
 ---
 
-# Rapport Dobby — Semaine du 17 au 24 mai 2026
+# Rapport [[Dobby]] — Semaine du 17 au 24 mai 2026
 ### Comment mieux collaborer avec ton équipe PKA
 
 ---
@@ -36,7 +36,7 @@ Tu as écrit `dobby ?` sans que la session soit initialisée. Le système a rép
 
 Ce n'est pas un problème ponctuel : c'est un **réflexe de démarrage incomplet**. Tu lances avant que l'environnement soit allumé, puis tu abortes au premier obstacle sans troubleshooting.
 
-**Impact** : session perdue, zéro travail produit, et aucune trace de ce qui a bloqué.
+**Impact** : session perdue, zéro travail produit, et aucune [[Trace]] de ce qui a bloqué.
 
 ---
 
@@ -48,7 +48,7 @@ Tu es parti avec `/exit` sans laisser de note sur ce qui t'avait bloqué. Ni dan
 
 ---
 
-### 🟡 Pattern 3 — La semaine n'a pas produit de trace de travail
+### 🟡 Pattern 3 — La semaine n'a pas produit de [[Trace]] de travail
 
 Je n'ai qu'un seul transcript sur l'ensemble de la semaine 17-24 mai. Soit tu n'as pas travaillé avec l'équipe PKA, soit les sessions ne sont pas arrivées jusqu'à moi. Les deux sont problématiques :
 
@@ -61,7 +61,7 @@ Je n'ai qu'un seul transcript sur l'ensemble de la semaine 17-24 mai. Soit tu n'
 
 ### ✅ Habitude 1 — Checklist de démarrage en 30 secondes
 
-Avant d'appeler Dobby, vérifie mentalement (ou visuellement) :
+Avant d'appeler [[Dobby]], vérifie mentalement (ou visuellement) :
 
 ```
 □ Je suis authentifié dans le système ?
@@ -85,7 +85,7 @@ Même une ligne. Cela me permet de reconstruire le contexte, et toi de reprendre
 
 ### ✅ Habitude 3 — Une session par jour, même courte, plutôt qu'un silence de semaine
 
-Une session de 10 minutes avec un livrable clair (une décision prise, un document mis à jour, une tâche assignée) vaut infiniment plus qu'une semaine sans trace. Le système PKA ne peut t'aider que s'il est alimenté.
+Une session de 10 minutes avec un livrable clair (une décision prise, un document mis à jour, une tâche assignée) vaut infiniment plus qu'une semaine sans [[Trace]]. Le système PKA ne peut t'aider que s'il est alimenté.
 
 ---
 
@@ -107,7 +107,7 @@ Trente secondes de diagnostic t'éviteront de répéter le même scénario.
 
 Concrètement :
 
-- **Chaque session que tu ouvres doit produire au moins une trace écrite** : une décision, un compte-rendu de deux lignes, une tâche mise à jour.
+- **Chaque session que tu ouvres doit produire au moins une [[Trace]] écrite** : une décision, un compte-rendu de deux lignes, une tâche mise à jour.
 - Si tu dois quitter avant d'avoir produit quoi que ce soit → tu laisses une note de contexte avant de fermer.
 - À la fin de la semaine, tu dois pouvoir me montrer **au moins 3 sessions documentées**.
 
@@ -115,6 +115,6 @@ Ce n'est pas un objectif ambitieux. C'est le minimum pour qu'on puisse travaille
 
 ---
 
-*Rapport généré par Dobby · Semaine 2026-05-17 → 2026-05-24*
+*Rapport généré par [[Dobby]] · Semaine 2026-05-17 → 2026-05-24*
 *Données disponibles : 1 transcript · 1 rétrospective partielle*
 *Niveau de confiance de l'analyse : faible — à réévaluer semaine prochaine avec plus de matière*

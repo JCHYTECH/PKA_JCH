@@ -13,7 +13,7 @@ const genus = await tp.system.prompt("Genre");
 const species = await tp.system.prompt("Espèce (ex: Acrida ungarica)");
 const common = await tp.system.prompt("Noms communs");
 const location = await tp.system.prompt("Lieu d'observation");
-const imageName = await tp.system.prompt("Nom du fichier image déjà importé dans Obsidian (ex: acrida.jpg)");
+const imageName = await tp.system.prompt("Nom du fichier image déjà importé dans [[Obsidian]] (ex: acrida.jpg)");
 
 const safeName = (scientific + (subspecies ? "_" + subspecies : "")).replace(/\s+/g, "_");
 await tp.file.rename(safeName);

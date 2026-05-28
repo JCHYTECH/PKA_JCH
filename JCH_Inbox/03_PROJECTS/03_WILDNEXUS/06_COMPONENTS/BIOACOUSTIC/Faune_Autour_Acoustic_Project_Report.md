@@ -13,17 +13,17 @@
 
 The Faune Autour acoustic biodiversity project aims to create a connected field device and digital platform capable of listening to the surrounding environment, recognizing animal species by sound, storing detections locally, transmitting structured data to a server, and displaying biodiversity information in a map-based application.
 
-The first technical target is a bird-focused acoustic station based on Raspberry Pi and BirdNET-Go, connected to a Faune Autour backend and dashboard. The broader strategic vision is to evolve toward a multi-taxon biodiversity radar able to detect, interpret and map biological activity around a user or fixed location.
+The first technical target is a bird-focused acoustic station based on [[Raspberry Pi]] and BirdNET-Go, connected to a Faune Autour backend and dashboard. The broader strategic vision is to evolve toward a multi-taxon biodiversity radar able to detect, interpret and map biological activity around a user or fixed location.
 
 The project should be developed progressively through three coordinated workstreams:
 
 1. **Scientific workstream** — species, bioacoustics, validation, ecology and interpretation.
-2. **Technical workstream** — Raspberry Pi, AI recognition, API, database, app and external data integrations.
+2. **Technical workstream** — [[Raspberry Pi]], AI recognition, API, database, app and external data integrations.
 3. **Hardware workstream** — microphone, power, enclosure, connectivity and outdoor robustness.
 
 The first decisive milestone is simple and concrete:
 
-> A Raspberry Pi listens in a real location, identifies bird vocalizations, sends structured detections to a Faune Autour server, and displays them on a map/dashboard.
+> A [[Raspberry Pi]] listens in a real location, identifies bird vocalizations, sends structured detections to a Faune Autour server, and displays them on a map/dashboard.
 
 Once this milestone is achieved, the project becomes scalable toward field stations, multi-site biodiversity networks, citizen-science contribution, nature reserve monitoring, photographic field assistance and ecological intelligence.
 
@@ -41,7 +41,7 @@ Acoustic monitoring adds a real-time observational layer. Many animals are easie
 
 The project belongs to the field of **Passive Acoustic Monitoring**. In such systems, microphones capture the soundscape, algorithms detect biological signals, and recognition models classify probable species.
 
-Existing technologies such as BirdNET, BirdNET-Go, BirdWeather, Haikubox, AudioMoth and Wildlife Acoustics systems show that bioacoustic monitoring is technically mature enough to support a Faune Autour prototype. The opportunity is not merely to duplicate these tools, but to create a European, geospatial, field-oriented and user-friendly biodiversity interpretation layer.
+Existing technologies such as [[BirdNET]], BirdNET-Go, BirdWeather, Haikubox, AudioMoth and Wildlife Acoustics systems show that bioacoustic monitoring is technically mature enough to support a Faune Autour prototype. The opportunity is not merely to duplicate these tools, but to create a European, geospatial, field-oriented and user-friendly biodiversity interpretation layer.
 
 ---
 
@@ -122,7 +122,7 @@ The physical device captures sound in the field.
 
 Prototype components:
 
-- Raspberry Pi 4 or Raspberry Pi 5;
+- [[Raspberry Pi]] 4 or [[Raspberry Pi 5]];
 - USB microphone or external audio interface;
 - optional GPS module;
 - optional 4G/LTE modem;
@@ -231,7 +231,7 @@ Required functions:
 Required competences:
 
 - audio hardware selection;
-- Raspberry Pi audio configuration;
+- [[Raspberry Pi]] audio configuration;
 - Linux sound-card configuration;
 - signal-to-noise testing;
 - outdoor microphone protection.
@@ -282,7 +282,7 @@ Required functions:
 
 Required competences:
 
-- SQLite;
+- [[SQLite]];
 - Linux services;
 - data schema design;
 - error handling;
@@ -338,7 +338,7 @@ Required competences:
 
 - backend development;
 - API architecture;
-- PostgreSQL;
+- [[PostgreSQL]];
 - PostGIS;
 - authentication;
 - cloud/server deployment;
@@ -543,7 +543,7 @@ Requirements:
 Required competences:
 
 - backend architecture;
-- PostgreSQL/PostGIS optimization;
+- [[PostgreSQL]]/PostGIS optimization;
 - cloud deployment;
 - API security;
 - DevOps.
@@ -586,7 +586,7 @@ Required competences:
 
 - DevOps;
 - Linux packaging;
-- Docker;
+- [[Docker]];
 - technical writing;
 - field support design.
 
@@ -618,13 +618,13 @@ Importance: **Critical**
 
 ---
 
-## 6.2 Raspberry Pi / Linux edge computing
+## 6.2 [[Raspberry Pi]] / Linux edge computing
 
 Role: build the local recognition station.
 
 Tasks:
 
-- install Raspberry Pi OS;
+- install [[Raspberry Pi]] OS;
 - configure microphone;
 - install BirdNET-Go;
 - configure startup services;
@@ -634,7 +634,7 @@ Tasks:
 
 Profile:
 
-- Linux/Raspberry Pi developer;
+- Linux/[[Raspberry Pi]] developer;
 - embedded Linux technician.
 
 Importance: **Critical for prototype**
@@ -695,7 +695,7 @@ Role: structure and query biodiversity data.
 Tasks:
 
 - design detection schema;
-- use PostgreSQL/PostGIS;
+- use [[PostgreSQL]]/PostGIS;
 - store coordinates;
 - query observations by radius;
 - export GeoJSON;
@@ -843,7 +843,7 @@ Responsibilities:
 - prioritize features;
 - test in real field conditions.
 
-### Raspberry Pi / Linux developer
+### [[Raspberry Pi]] / Linux developer
 
 Responsibilities:
 
@@ -935,13 +935,13 @@ Recommended decision:
 
 ## Phase 1 — Technical proof of concept
 
-Objective: make one Raspberry Pi identify birds and store detections.
+Objective: make one [[Raspberry Pi]] identify birds and store detections.
 
 Tasks:
 
-1. Buy Raspberry Pi 4 or 5.
+1. Buy [[Raspberry Pi]] 4 or 5.
 2. Buy and test USB microphone.
-3. Install Raspberry Pi OS.
+3. Install [[Raspberry Pi]] OS.
 4. Install BirdNET-Go.
 5. Configure location and species language.
 6. Run a 24-hour acoustic test.
@@ -951,7 +951,7 @@ Tasks:
 
 Deliverables:
 
-- working Raspberry Pi recognition station;
+- working [[Raspberry Pi]] recognition station;
 - local detection database;
 - first species detection report;
 - list of hardware issues;
@@ -959,7 +959,7 @@ Deliverables:
 
 Required competences:
 
-- Raspberry Pi/Linux developer;
+- [[Raspberry Pi]]/Linux developer;
 - audio hardware tester;
 - bioacoustics evaluator.
 
@@ -977,7 +977,7 @@ Tasks:
 
 1. Define detection JSON format.
 2. Create device ID.
-3. Create local SQLite schema.
+3. Create local [[SQLite]] schema.
 4. Build connector script.
 5. Read BirdNET-Go detections.
 6. Add metadata: location, confidence, timestamp, model version.
@@ -993,7 +993,7 @@ Deliverables:
 
 Required competences:
 
-- Python or Go developer;
+- [[Python]] or Go developer;
 - data architect;
 - Linux service developer.
 
@@ -1012,7 +1012,7 @@ Tasks:
 1. Create backend project.
 2. Define API endpoints.
 3. Create authentication token for device.
-4. Create PostgreSQL/PostGIS database.
+4. Create [[PostgreSQL]]/PostGIS database.
 5. Create detection ingestion endpoint.
 6. Create station table.
 7. Create species table.
@@ -1035,7 +1035,7 @@ Required competences:
 
 Success criterion:
 
-> A Raspberry Pi can send a detection to the server and the server can return it as map data.
+> A [[Raspberry Pi]] can send a detection to the server and the server can return it as map data.
 
 ---
 
@@ -1298,7 +1298,7 @@ The project has strong technical dependencies. The correct sequence avoids waste
 
 ## 10.1 Must-have for first prototype
 
-- Raspberry Pi station;
+- [[Raspberry Pi]] station;
 - microphone;
 - BirdNET-Go;
 - local detection storage;
@@ -1329,7 +1329,7 @@ The project has strong technical dependencies. The correct sequence avoids waste
 - community-science publication;
 - soundscape biodiversity index;
 - camera trap integration;
-- Obsidian field notebook export.
+- [[Obsidian]] field notebook export.
 
 ## 10.4 Not recommended for first version
 
@@ -1447,7 +1447,7 @@ Recommended setup:
 
 - mains power;
 - Wi-Fi;
-- Raspberry Pi;
+- [[Raspberry Pi]];
 - USB microphone;
 - local storage;
 - cloud upload.
@@ -1536,7 +1536,7 @@ Possible functions:
 - dawn chorus intensity;
 - repeated detection zones;
 - sound-triggered field notes;
-- export to Obsidian photographic journal.
+- export to [[Obsidian]] photographic journal.
 
 ### 14.4 Conservation mode
 
@@ -1586,10 +1586,10 @@ Recommended immediate sequence:
    - fixed station;
    - birds only;
    - Wi-Fi;
-   - Raspberry Pi;
+   - [[Raspberry Pi]];
    - dashboard with map/list/timeline.
 
-2. Build first Raspberry Pi BirdNET-Go station.
+2. Build first [[Raspberry Pi]] BirdNET-Go station.
 
 3. Test microphone and detection accuracy for one week.
 
@@ -1660,7 +1660,7 @@ Recommended documents:
 
 The project is technically realistic and strategically interesting. The strongest path is not to build a complex multi-species autonomous product immediately. The correct path is progressive:
 
-1. prove bird detection on Raspberry Pi;
+1. prove bird detection on [[Raspberry Pi]];
 2. create a clean Faune Autour data pipeline;
 3. display detections on a dashboard;
 4. add ecological intelligence;
@@ -1673,6 +1673,6 @@ The essential product vision can be summarized as:
 
 The first milestone remains the critical one:
 
-> **One Raspberry Pi, one microphone, one real place, real bird detections, structured upload, and a map/dashboard.**
+> **One [[Raspberry Pi]], one microphone, one real place, real bird detections, structured upload, and a map/dashboard.**
 
 Once this works, the project can evolve into a field product, a naturalist tool, a photographic assistant, an educational platform, a municipal biodiversity monitor and eventually a European distributed acoustic biodiversity network.

@@ -602,9 +602,9 @@ You may wish to consider these alternative products:
 
 [Excire](https://www.excire.com/) is a sophisticated AI application that integrates with Lightroom. It has keywording and search capabilities similar to **Classify** plus much more. It doesn’t use the cloud and it has a much higher one-time upfront cost with no recurring charges.
 
-[LrGeniustagAI](https://lrgenius.com/) uses Google Gemini, ChatGPT, or Ollama to generate keywords, titles, and captions. The plugin costs $15, and you’ll need a free or paid Gemini, ChatGPT, or Ollama license.
+[LrGeniustagAI](https://lrgenius.com/) uses Google Gemini, [[ChatGPT]], or Ollama to generate keywords, titles, and captions. The plugin costs $15, and you’ll need a free or paid Gemini, [[ChatGPT]], or Ollama license.
 
-[MetaMagic](https://www.metamagicplugin.com/) uses OpenAI (ChatGPT) to generate keywords, titles, and captions. It charges per photo.
+[MetaMagic](https://www.metamagicplugin.com/) uses OpenAI ([[ChatGPT]]) to generate keywords, titles, and captions. It charges per photo.
 
 [LrTag](https://lrtag.com/) tags your photos like **Classify**, but it has a monthly charge.
 

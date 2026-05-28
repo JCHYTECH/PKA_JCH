@@ -1,10 +1,10 @@
 ---
-source_file: "git/faune-autour-logo.png"
+source_file: "[[Git]]/faune-autour-logo.png"
 type: "image"
 community: "Brand & Visual Identity"
 tags:
-  - graphify/image
-  - graphify/INFERRED
+  - [[Graphify]]/image
+  - [[Graphify]]/INFERRED
   - community/Brand_&_Visual_Identity
 ---
 
@@ -16,4 +16,4 @@ tags:
 - [[Location Pin Symbol]] - `conceptually_related_to` [INFERRED]
 - [[Nature Motifs (Leaves, Antlers, Paw Print)]] - `conceptually_related_to` [INFERRED]
 
-#graphify/image #graphify/INFERRED #community/Brand_&_Visual_Identity
+#[[Graphify]]/image #[[Graphify]]/INFERRED #community/Brand_&_Visual_Identity

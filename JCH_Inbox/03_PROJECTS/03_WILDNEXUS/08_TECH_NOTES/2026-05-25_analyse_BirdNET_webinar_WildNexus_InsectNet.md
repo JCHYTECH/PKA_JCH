@@ -1,22 +1,22 @@
-# Analyse BirdNET — Webinar Open Ecoacoustics #2
+# Analyse [[BirdNET]] — Webinar Open Ecoacoustics #2
 
 > **Date :** 2026-05-25
-> **Source :** Transcript NoteGPT — « BirdNET: Tips, Tricks, and Insights for Ecoacoustic Analysis »
+> **Source :** Transcript NoteGPT — « [[BirdNET]]: Tips, Tricks, and Insights for Ecoacoustic Analysis »
 > **Intervenants :** Phil Eichinski (QUT), Nina Scarpelli (Museums Victoria), Kellen Alexander (QUT / BirdLife Australia)
-> **Analyse par :** Furet 🦡 (recherche) — pour l'équipe WildNexus + InsectNet
-> **Tags :** #birdnet #ecoacoustics #embeddings #classification #insectnet #bioacoustique #machine-learning #validation
+> **Analyse par :** [[Furet]] 🦡 (recherche) — pour l'équipe WildNexus + InsectNet
+> **Tags :** #[[BirdNET]] #ecoacoustics #embeddings #classification #insectnet #bioacoustique #machine-learning #validation
 
 ---
 
 ## Résumé exécutif
 
-Ce webinar de l'Open Ecoacoustics Community (Australie) livre un retour d'expérience concret sur BirdNET — le modèle de classification acoustique le plus utilisé en écoacoustique. Trois chercheurs partagent leurs astuces, leurs échecs et leurs workflows. Les points saillants pour nos projets sont : **(1)** la supériorité du clustering d'embeddings sur les scores de confiance bruts, **(2)** l'importance critique de faire matcher les données d'entraînement avec l'environnement de déploiement, et **(3)** le pipeline de validation manuelle pragmatique qui change tout.
+Ce webinar de l'Open Ecoacoustics Community (Australie) livre un retour d'expérience concret sur [[BirdNET]] — le modèle de classification acoustique le plus utilisé en écoacoustique. Trois chercheurs partagent leurs astuces, leurs échecs et leurs workflows. Les points saillants pour nos projets sont : **(1)** la supériorité du clustering d'embeddings sur les scores de confiance bruts, **(2)** l'importance critique de faire matcher les données d'entraînement avec l'environnement de déploiement, et **(3)** le pipeline de validation manuelle pragmatique qui change tout.
 
 ---
 
 ## 1. Ce qu'il faut retenir pour WildNexus
 
-### 1.1 Architecture BirdNET — rappel utile
+### 1.1 Architecture [[BirdNET]] — rappel utile
 
 ```
 Audio → segmentation 3s → embeddings (espace latent) → classification head → espèce + score
@@ -32,7 +32,7 @@ Les **embeddings** sont la représentation interne du modèle : des vecteurs où
 | **Faux positifs par corrélation parasite** | « Eau qui clapote = pélican » parce que dans les données d'entraînement, les pélicans étaient toujours près de l'eau | Validation manuelle systématique des espèces rares/inattendues |
 | **Espèces confusibles non incluses** | Koala confondu avec cochon → ajouter le koala comme classe améliore les deux | Inclure les espèces confusibles connues dans le recognizer, même si on ne les cible pas |
 | **Scores de confiance non fiables** | Des vrais positifs à 0.4, des faux positifs à 0.9 — aucun seuil magique | Ne pas se fier au score seul. Utiliser le **clustering d'embeddings (HDBSCAN)** |
-| **Surestimation de la richesse spécifique** | Même à haut seuil de confiance, BirdNET surestime le nombre d'espèces présentes | Validation experte avant toute publication de liste d'espèces |
+| **Surestimation de la richesse spécifique** | Même à haut seuil de confiance, [[BirdNET]] surestime le nombre d'espèces présentes | Validation experte avant toute publication de liste d'espèces |
 | **Appels stéréotypés vs non-stéréotypés** | Koala : 39 segments suffisent. Cochon : beaucoup plus. Les sons sans pattern demandent plus de données. | Anticiper plus de données d'entraînement pour les espèces à vocalises variables |
 
 ### 1.3 Le workflow de validation qui change tout (Kellen Alexander)
@@ -57,13 +57,13 @@ Plusieurs cas concrets où le clustering HDBSCAN sur les embeddings a surpassé 
 
 ## 2. Ce qu'il faut retenir pour InsectNet
 
-### 2.1 Le pipeline BirdNET est transposable à l'insecte
+### 2.1 Le pipeline [[BirdNET]] est transposable à l'insecte
 
 Le cœur du message : **le modèle d'embeddings + classification head n'est pas limité aux oiseaux.** Phil Eichinski le dit explicitement : on peut entraîner un recognizer pour n'importe quelle espèce, y compris non-oiseau, si on a des données d'entraînement.
 
 Points directement applicables à InsectNet :
 
-| Enseignement BirdNET | Application InsectNet |
+| Enseignement [[BirdNET]] | Application InsectNet |
 |----------------------|----------------------|
 | Les **appels non-stéréotypés** demandent plus de données d'entraînement | Les stridulations d'insectes sont souvent stéréotypées (orthoptères) → bon candidat. Mais les sons de vol ou de déplacement sont variables → prévoir plus de données |
 | **3 secondes** est le format d'entrée standard | Segmenter les enregistrements InsectNet en fenêtres de 3s pour compatibilité |
@@ -82,24 +82,24 @@ Points directement applicables à InsectNet :
 
 ### Pour WildNexus (priorité immédiate)
 
-1. **Intégrer le clustering HDBSCAN** dans le pipeline de post-traitement audio — ne pas se contenter des scores BirdNET bruts
+1. **Intégrer le clustering HDBSCAN** dans le pipeline de post-traitement audio — ne pas se contenter des scores [[BirdNET]] bruts
 2. **Adopter le workflow Raven** de Kellen Alexander pour la validation à grande échelle (script false-positive dispo sur demande)
 3. **Documenter les espèces confusibles** par région dans notre base de connaissances — les inclure systématiquement dans les recognizers
 4. **Former les recognizers sur des données locales** — éviter de déployer un modèle entraîné sur données australiennes sans validation sur nos sites
-5. **Ne jamais publier de liste d'espèces** sans validation experte — BirdNET surestime systématiquement
+5. **Ne jamais publier de liste d'espèces** sans validation experte — [[BirdNET]] surestime systématiquement
 
 ### Pour InsectNet (exploration)
 
-1. **Tester BirdNET avec des stridulations d'orthoptères** — utiliser le mode custom recognizer pour entraîner sur quelques espèces cibles
+1. **Tester [[BirdNET]] avec des stridulations d'orthoptères** — utiliser le mode custom recognizer pour entraîner sur quelques espèces cibles
 2. **Expérimenter le clustering d'embeddings** sur les enregistrements InsectNet existants — voir si ça sépare proprement les signaux du bruit
-3. **Segmenter en fenêtres de 3 secondes** pour compatibilité avec le pipeline BirdNET standard
+3. **Segmenter en fenêtres de 3 secondes** pour compatibilité avec le pipeline [[BirdNET]] standard
 4. **Cartographier les espèces confusibles** insectes par site — le problème « koala vs cochon » aura son équivalent insecte
 
 ---
 
 ## 4. Ressources mentionnées
 
-- **BirdNET GUI** : permet d'extraire les embeddings sans coder
+- **[[BirdNET]] GUI** : permet d'extraire les embeddings sans coder
 - **HDBSCAN** : algorithme de clustering utilisé pour les embeddings
 - **Raven (Cornell)** : interface de validation avec « Choose Measurements → Begin File »
 - **Script false-positive Kellen Alexander** : dispo sur demande par email

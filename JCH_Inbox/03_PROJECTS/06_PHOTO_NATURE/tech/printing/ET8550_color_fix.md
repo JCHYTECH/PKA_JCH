@@ -40,7 +40,7 @@ tags:
 ## macOS-Specific Risks
 
 ### AirPrint Driver Replacement
-macOS system updates silently replace the Epson driver with Apple's generic AirPrint driver. AirPrint does not handle custom ICC profiles correctly.
+macOS system updates silently replace the Epson driver with [[Apple]]'s generic AirPrint driver. AirPrint does not handle custom ICC profiles correctly.
 
 **Check:** System Settings > Printers — driver must say **Epson**, not AirPrint.
 

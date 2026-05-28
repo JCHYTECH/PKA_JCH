@@ -11,7 +11,7 @@ Le schema sert de garde-fou : le P0 doit rester validable sans Base/Master et sa
 - S2 : declenchement evenementiel local, sans analyse lourde obligatoire.
 - S3 : stockage local complet des donnees utiles sur microSD.
 - S4 : etat batterie, sante du noeud, signaux de fonctionnement.
-- S5 : transmission LoRa limitee aux alertes, statuts et metadonnees courtes.
+- S5 : transmission [[LoRa]] limitee aux alertes, statuts et metadonnees courtes.
 - S6 : acces Wi-Fi local pour configuration, maintenance et extraction terrain.
 - B1 : collecte locale par Base/Master Nexus.
 - B2 : indexation des evenements recuperes.
@@ -26,7 +26,7 @@ Le schema sert de garde-fou : le P0 doit rester validable sans Base/Master et sa
 ## Hypotheses
 
 - Le satellite P0 doit survivre et produire des donnees utiles seul.
-- LoRa ne transporte pas de flux raw continu.
+- [[LoRa]] ne transporte pas de flux raw continu.
 - Les images, sons ou videos complets restent locaux jusqu'a extraction ou passage par une base.
 - La Base/Master peut etre prototypée en parallele, mais elle ne conditionne pas M-03.
 - Le cloud est un prolongement produit, pas une dependance terrain minimale.
@@ -39,7 +39,7 @@ Le schema sert de garde-fou : le P0 doit rester validable sans Base/Master et sa
 
 ## Questions ouvertes
 
-- Format exact des metadonnees LoRa minimales.
+- Format exact des metadonnees [[LoRa]] minimales.
 - Frequence acceptable des statuts batterie/sante.
 - Interface de maintenance locale : Wi-Fi direct, BLE, ou combinaison.
 - Schema d'export scientifique cible pour P1/P2.

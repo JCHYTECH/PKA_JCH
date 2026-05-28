@@ -1,29 +1,29 @@
 ---
 date: 2026-05-25
-model: GPT-5 Codex
+model: GPT-5 [[Codex]]
 type: audit
 status: draft
 scope: vault-worktree-stabilization
 ---
 
-# Dobby — Vault and Worktree Stabilization Report
+# [[Dobby]] — Vault and Worktree Stabilization Report
 
 ## Objective
 
-Stabilize PKA_JCH before deeper Obsidian and Hermisation work.
+Stabilize PKA_JCH before deeper [[Obsidian]] and Hermisation work.
 
 No destructive cleanup has been performed in this pass.
 
 ## Specialists Routed
 
-- Dobby: orchestration and arbitration.
-- Forge: Git hygiene, tooling, worktree structure.
-- Corbeau: vault coherence and documentary governance.
-- Castor: memory and database consistency.
+- [[Dobby]]: orchestration and arbitration.
+- [[Forge]]: [[Git]] hygiene, tooling, worktree structure.
+- [[Corbeau]]: vault coherence and documentary governance.
+- [[Castor]]: memory and database consistency.
 
-## Current Git Baseline
+## Current [[Git]] Baseline
 
-Fresh inventory from `git status`, `git diff --stat`, and Git file lists:
+Fresh inventory from 
 
 | Category | Count / Signal |
 |---|---:|
@@ -34,7 +34,7 @@ Fresh inventory from `git status`, `git diff --stat`, and Git file lists:
 
 ## Main Risk
 
-The worktree is not ready for broad automation. The largest risk is not the new Obsidian/Hermisation scaffold; it is the combination of:
+The worktree is not ready for broad automation. The largest risk is not the new [[Obsidian]]/Hermisation scaffold; it is the combination of:
 
 - 80 tracked deletions;
 - a likely WildNexus reorganization;
@@ -83,7 +83,7 @@ Observed:
 
 Recommended action: inspect and commit as a reorganization batch only after confirming no important tracked content was lost.
 
-### Batch D — Nuances Archive
+### Batch D — Nuances [[archive]]
 
 Scope:
 
@@ -94,9 +94,9 @@ Observed:
 
 - `04_NUANCES` has no current files at shallow scan.
 - 33 files exist under `archive/reanimable/04_NUANCES`.
-- 32 deleted Nuances basenames match files in the archive path.
+- 32 deleted Nuances basenames match files in the [[archive]] path.
 
-Recommended action: treat as a likely intentional archive move. Commit deletion plus archive addition together if JCH confirms `04_NUANCES` should be archived.
+Recommended action: treat as a likely intentional [[archive]] move. Commit deletion plus [[archive]] addition together if JCH confirms 
 
 ### Batch E — InsectNet Data
 
@@ -109,9 +109,9 @@ Observed:
 - 1.7 GB total.
 - Untracked file types include 659 `.wav`, 564 `.png`, 16 `.csv`, 13 `.md`, 2 `.html`.
 
-Recommended action: do not add all generated audio/spectrogram data to normal Git. Track metadata, manifests, scripts, and curated notes. Store heavy audio/spectrogram artifacts outside normal Git or ignore generated folders.
+Recommended action: do not add all generated audio/spectrogram data to normal [[Git]]. Track metadata, manifests, scripts, and curated notes. Store heavy audio/spectrogram artifacts outside normal [[Git]] or ignore generated folders.
 
-### Batch F — Obsidian and Hermisation Scaffolds
+### Batch F — [[Obsidian]] and Hermisation Scaffolds
 
 Scope:
 
@@ -126,8 +126,8 @@ Recommended action: commit as a small standalone docs scaffold after the cleanup
 
 1. System pointers and skills.
 2. Save tooling after tests.
-3. AI_IT_TOOLS Obsidian/Hermisation scaffold.
-4. Nuances archive move, if confirmed.
+3. AI_IT_TOOLS [[Obsidian]]/Hermisation scaffold.
+4. Nuances [[archive]] move, if confirmed.
 5. WildNexus reorganization, after targeted review.
 6. InsectNet scripts/tests/metadata, excluding heavy generated data unless a dedicated data strategy is chosen.
 
@@ -135,6 +135,6 @@ Recommended action: commit as a small standalone docs scaffold after the cleanup
 
 The one decision that affects the next safe action:
 
-Should the 1.7 GB InsectNet audio/spectrogram data be excluded from normal Git and represented by manifests plus curated metadata?
+Should the 1.7 GB InsectNet audio/spectrogram data be excluded from normal [[Git]] and represented by manifests plus curated metadata?
 
 Recommended answer: yes.

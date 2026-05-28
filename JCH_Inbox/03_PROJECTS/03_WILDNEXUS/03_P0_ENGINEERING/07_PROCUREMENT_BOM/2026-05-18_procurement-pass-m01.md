@@ -7,7 +7,7 @@
 
 Créer deux paniers principaux :
 
-1. **Mouser Belgique** — panier électronique principal : ESP32-S3, capteurs Sensirion/Panasonic, LEDs IR Vishay/Würth, composants de puissance, éventuellement boîtier.
+1. **Mouser Belgique** — panier électronique principal : [[ESP32-S3]], capteurs Sensirion/Panasonic, LEDs IR Vishay/Würth, composants de puissance, éventuellement boîtier.
 2. **DigiKey Belgique** — panier complémentaire : microSD industrielle Swissbit, SIM7080G, composants indisponibles/restrictifs chez Mouser.
 
 Exceptions fabricants officiels :
@@ -23,9 +23,9 @@ Exceptions fabricants officiels :
 | Sujet | Source | Donnée utile |
 |---|---|---|
 | DigiKey Belgique | https://www.digikey.be/en/help-support/delivery-information/delivery-time-and-cost | livraison gratuite Belgique >= 50 EUR, sinon 18 EUR ; livraison typique 48 h |
-| Mouser ESP32-S3 DevKit | https://www.mouser.be/ProductDetail/Espressif-Systems/ESP32-S3-DevKitC-1-N8R8 | ESP32-S3-WROOM-1, 8 MB flash + 8 MB PSRAM, stock élevé, ~11.44 EUR |
-| Mouser ESP32-S3 module | https://www.mouser.be/ProductDetail/Espressif-Systems/ESP32-S3-WROOM-1U-N8R8 | module officiel, 8 MB PSRAM + 8 MB flash, IPEX, stock élevé, ~5.36 EUR |
-| RAK3172 officiel | https://www.rakwireless.com/en-us/products/lpwan-modules/rak3172-wisduo-lpwan-module | LoRa P2P, EU868 supporté, STM32WLE5CC, module basse conso |
+| Mouser [[ESP32-S3]] DevKit | https://www.mouser.be/ProductDetail/Espressif-Systems/ESP32-S3-DevKitC-1-N8R8 | ESP32-S3-WROOM-1, 8 MB flash + 8 MB PSRAM, stock élevé, ~11.44 EUR |
+| Mouser [[ESP32-S3]] module | https://www.mouser.be/ProductDetail/Espressif-Systems/ESP32-S3-WROOM-1U-N8R8 | module officiel, 8 MB PSRAM + 8 MB flash, IPEX, stock élevé, ~5.36 EUR |
+| RAK3172 officiel | https://www.rakwireless.com/en-us/products/lpwan-modules/rak3172-wisduo-lpwan-module | [[LoRa]] P2P, EU868 supporté, STM32WLE5CC, module basse conso |
 | RAK Store WisDuo | https://store.rakwireless.com/collections/wisduo | RAK3172 module, breakout, evaluation board ; prix indicatifs officiels |
 | RAK3172 EU revendeur | https://industry-electronics.com/rak-wireless/305017-lora-wisduo-stm32wl-module-rak3172-ipex-eu868-lieske_1890276.htm | variante EU868 avec IPEX, prix indicatif ~10.29 EUR TTC, délai à vérifier |
 | DigiKey SIM7080G | https://www.digikey.nl/nl/products/detail/simcom-wireless-solutions-limited/SIM7080G/15841448 | module actif, RF TXRX cellular/GNSS, 3 semaines lead time constructeur |
@@ -67,5 +67,5 @@ Exceptions fabricants officiels :
 1. architecture batterie : 1S/2P LiFePO4 vs pack série + régulation ;
 2. caméra exacte : OV5640 DVP M12 NoIR / IR-cut motorisé ;
 3. IR : 850 + 940 nm pour test, puis décision faune ;
-4. LoRa : RAK3172 module nu vs breakout/eval board pour M-02 ;
+4. [[LoRa]] : RAK3172 module nu vs breakout/eval board pour M-02 ;
 5. boîtier : layout interne avant achat boîtier final.

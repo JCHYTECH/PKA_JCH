@@ -1,12 +1,12 @@
 ---
 date: 2026-04-30
-specialist: Renard
+specialist: [[Renard]]
 topic: Analyse Pacte d'Actionnaires Fondateurs VETALYX
 source_file: JCH_Inbox/00_INBOX/Vetalyx Pacte Actionnaires.docx
 status: delivered
 ---
 
-# Renard — Analyse Pacte d'Actionnaires Fondateurs VETALYX
+# [[Renard]] — Analyse Pacte d'Actionnaires Fondateurs VETALYX
 
 ## SUMMARY
 
@@ -61,6 +61,6 @@ Document non signable en l'état.
 ## DECISION POINTS
 
 1. Structure 25/25/25/25 définitive ?
-2. Renard rédige les modifications identifiées ?
-3. Renard rédige l'Annexe 3 (rôles fondateurs) ?
+2. [[Renard]] rédige les modifications identifiées ?
+3. [[Renard]] rédige l'Annexe 3 (rôles fondateurs) ?
 4. Tribunal de Commerce / CCI / double seuil ?

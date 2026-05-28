@@ -605,15 +605,57 @@ def write_outputs(inventory: Inventory, output_dir: Path = OUTPUT_DIR) -> None:
     (output_dir / "wikilink_dry_run.md").write_text(render_wikilink_dry_run(inventory, suggestions, max_files=25), encoding="utf-8")
 
 
+def apply_wikilinks(inventory: Inventory, suggestions: list[WikilinkSuggestion]) -> int:
+    """Applique les suggestions de wikilinks aux fichiers source. Retourne le nombre de fichiers modifiés."""
+    by_file: dict[Path, list[WikilinkSuggestion]] = {}
+    for s in suggestions:
+        by_file.setdefault(s.note_path, []).append(s)
+
+    modified = 0
+    for rel_path, file_suggestions in by_file.items():
+        abs_path = inventory.root / rel_path
+        if not abs_path.exists():
+            continue
+        lines = abs_path.read_text(encoding="utf-8", errors="ignore").splitlines(keepends=True)
+        changed = False
+        line_map = {s.line_number: s for s in file_suggestions}
+        for i, line in enumerate(lines):
+            lineno = i + 1
+            if lineno in line_map:
+                proposed = line_map[lineno].proposed
+                if line.rstrip("\n") != proposed:
+                    lines[i] = proposed + ("\n" if line.endswith("\n") else "")
+                    changed = True
+        if changed:
+            abs_path.write_text("".join(lines), encoding="utf-8")
+            modified += 1
+    return modified
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Generate Obsidian knowledge graph inventory files.")
     parser.add_argument("--root", type=Path, default=PROJECT_ROOT)
     parser.add_argument("--output", type=Path, default=OUTPUT_DIR)
+    parser.add_argument("--apply", action="store_true", help="Appliquer les wikilinks aux fichiers source (après dry-run validé)")
     args = parser.parse_args()
 
     inventory = build_inventory(args.root)
     write_outputs(inventory, args.output)
     print(f"notes={len(inventory.notes)} projects={len(inventory.projects)} agents={len(inventory.agents)} technologies={len(inventory.technologies)}")
+
+    if args.apply:
+        suggestions = propose_wikilinks(inventory, max_files=999)
+        modified = apply_wikilinks(inventory, suggestions)
+        print(f"apply: {len(suggestions)} suggestions appliquées sur {modified} fichiers.")
+        log_run = None
+        try:
+            from pka_memory_log import log_run
+        except ImportError:
+            pass
+        if log_run:
+            log_run("obsidian_wikilink_apply", "ok",
+                    f"{len(suggestions)} wikilinks appliqués sur {modified} fichiers",
+                    project_key="01_AI_IT_TOOLS")
     return 0
 
 

@@ -1,15 +1,15 @@
 ---
 date: 2026-05-14
 type: retro
-author: Dobby
+author: [[Dobby]]
 tags: [retro, gmail, oauth, workflow, organisation]
 ---
 
-# Rétrospective — Gmail Gatekeeper Dobby
+# Rétrospective — Gmail Gatekeeper [[Dobby]]
 
 ## Ce que nous avons mis en place
 
-- Intégration Gmail fonctionnelle pour l'adresse dédiée de Dobby.
+- Intégration Gmail fonctionnelle pour l'adresse dédiée de [[Dobby]].
 - Flux strict de garde-barrière :
   - whitelist explicite des expéditeurs autorisés
   - élimination des autres messages sans lecture du corps
@@ -31,7 +31,7 @@ tags: [retro, gmail, oauth, workflow, organisation]
   - test user
   - scopes
   - activation de l'API Gmail
-- Erreur d'implémentation côté Dobby :
+- Erreur d'implémentation côté [[Dobby]] :
   - ouverture initiale de Chrome avec une URL OAuth différente de celle attendue par la librairie
   - conséquence : erreurs `mismatching_state`
 - Changement de projet OAuth en cours de route (`jch-pka` vers `extended-argon-496307-j3`) sans verrouillage immédiat du contexte.
@@ -45,7 +45,7 @@ tags: [retro, gmail, oauth, workflow, organisation]
   - création de projet
   - consentement navigateur
   - récupération éventuelle des fichiers client OAuth
-- Dobby prend en charge :
+- [[Dobby]] prend en charge :
   - scripts
   - configuration locale
   - validation technique

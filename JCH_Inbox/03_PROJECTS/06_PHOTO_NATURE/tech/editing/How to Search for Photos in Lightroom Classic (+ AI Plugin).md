@@ -21,7 +21,7 @@ But while Lightroom Classic offers a great set of [editing tools](https://excire
 
 Photo search.
 
-Yes, Lightroom lets you organize thousands, or hundreds of thousands, or (at least in my case) millions of photos in a single archive. It’s a [very nice photo organizer](https://excire.com/en/best-photo-organizing-software/), and it’s used by millions of photographers, from beginners all the way to professionals. But finding specific files in Lightroom, *especially* as your image library grows, can be *really, really hard*.
+Yes, Lightroom lets you organize thousands, or hundreds of thousands, or (at least in my case) millions of photos in a single [[archive]]. It’s a [very nice photo organizer](https://excire.com/en/best-photo-organizing-software/), and it’s used by millions of photographers, from beginners all the way to professionals. But finding specific files in Lightroom, *especially* as your image library grows, can be *really, really hard*.
 
 Fortunately, if you’re struggling to search your Lightroom Classic catalog for particular images (or particular sets of images), all is not lost. Adobe has incorporated a few basic search features, which allow you to sort and filter images based on various characteristics (keywords, filenames, metadata, etc).
 

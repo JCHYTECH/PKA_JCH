@@ -203,7 +203,7 @@ The profile for Epson Premium Glossy Photo Paper on the ET-8550 is `JN_E_ET8550_
 
 **Two additional issues specific to the ET-8550 on macOS worth knowing:**
 
-1. macOS system updates can silently replace the official Epson driver with Apple's generic AirPrint driver. When this happens, custom ICC profiles stop working correctly. The fix is to remove the printer, reinstall the Epson driver, re-add the printer, and reboot.
+1. macOS system updates can silently replace the official Epson driver with [[Apple]]'s generic AirPrint driver. When this happens, custom ICC profiles stop working correctly. The fix is to remove the printer, reinstall the Epson driver, re-add the printer, and reboot.
 
 2. You do not want "Managed by Printer" selected in ColorSync — that passes color control to Epson's own printer profiles rather than your chosen ICC profile.
 

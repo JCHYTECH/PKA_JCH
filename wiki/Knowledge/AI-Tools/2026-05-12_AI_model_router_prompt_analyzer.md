@@ -1,6 +1,6 @@
 ---
 type: note
-source: chatgpt
+source: [[ChatGPT]]
 date: 2026-05-12
 status: inbox
 tags:
@@ -131,7 +131,7 @@ Ensuite, un modèle IA peut être ajouté pour améliorer le scoring et la refor
 
 Ce module pourrait devenir une brique d’un système plus large :
 
-- routage entre GPT, Claude, Gemini, DeepSeek ou modèle local ;
+- routage entre GPT, [[Claude]], Gemini, DeepSeek ou modèle local ;
 - suivi des coûts ;
 - suivi qualité ;
 - suivi des prompts ;

@@ -89,13 +89,13 @@ Réfléchir à l'adaptation de la gamme :
 
 ---
 
-## Actions recommandées (Vasco → Dobby)
+## Actions recommandées ([[Vasco]] → [[Dobby]])
 
 | Priorité | Action | Responsable |
 |----------|--------|-------------|
 | 🔴 Critique | Décision sur adaptation composition allergènes gamme EU | JCH + partenaires |
 | 🔴 Critique | Planifier rencontre KOL identifiés (protocole + budget) | JCH |
-| 🟠 Haute | Documenter les performances analytiques (sensibilité/spécificité) pour répondre à la préoccupation faux positifs | [[Clio]] + Vasco |
+| 🟠 Haute | Documenter les performances analytiques (sensibilité/spécificité) pour répondre à la préoccupation faux positifs | [[Clio]] + [[Vasco]] |
 | 🟡 Moyenne | Étude de faisabilité prélèvement papier (DBS) chez l'animal | [[Clio]] / partenaire recherche |
 | 🟡 Moyenne | Améliorer l'ergonomie de la pipette de prélèvement | Retour industriel |
 

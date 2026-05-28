@@ -1,12 +1,12 @@
 ---
 date: 2026-05-02
-tags: [plugin, lightroom, argus, photo, claude-api, workflow]
+tags: [plugin, lightroom, [[Argus]], photo, claude-api, workflow]
 type: knowledge
 domain: AI-Tools
 status: stable
 ---
 
-# Argus — Plugin Lightroom Classic
+# [[Argus]] — Plugin Lightroom Classic
 
 Plugin d'analyse photographique IA intégré directement dans Lightroom Classic. Un clic droit → rapport PDF professionnel + preset XMP appliqué automatiquement en Develop.
 
@@ -33,7 +33,7 @@ ArgusAnalysis.lua          ← Plugin LR (Lua 5.1, SDK LR 6.0)
 
 1. Sélectionner une photo dans LR (JPEG, RAW, CR3, NEF, ARW…)
 2. `Cmd+'` — créer la copie virtuelle manuellement
-3. **Extras → Analyser avec Argus**
+3. **Extras → Analyser avec [[Argus]]**
 4. Valider le dialog de rappel
 5. ~20-25 sec → réglages Develop appliqués + dialog résultat
 
@@ -141,7 +141,7 @@ PKA_JCH/PHOTO/plugin/argus.lrplugin/
 
 | Date | Version | Changement |
 |------|---------|------------|
-| 2026-05-01 | v0.1 | Prototype — CLI Python seul |
+| 2026-05-01 | v0.1 | Prototype — CLI [[Python]] seul |
 | 2026-05-01 | v0.5 | Plugin LR intégré, premier test Bernache du Canada (76/100) |
 | 2026-05-02 | v1.0 | XMP corrigé (WhiteBalance=Custom), use_defaults=False, workflow Cmd+' stabilisé |
 | 2026-05-02 | v1.1 | Support CR3 (exiftool), temp_level -5/+5, JPEG Temperature fix, tous formats RAW |

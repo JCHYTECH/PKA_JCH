@@ -3,8 +3,8 @@ source_file: "API_pour_observations_be.md"
 type: "document"
 community: "GBIF Data Sources & APIs"
 tags:
-  - graphify/document
-  - graphify/EXTRACTED
+  - [[Graphify]]/document
+  - [[Graphify]]/EXTRACTED
   - community/GBIF_Data_Sources_&_APIs
 ---
 
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[GBIF — Global Biodiversity Information Facility]] - `rationale_for` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/GBIF_Data_Sources_&_APIs
+#[[Graphify]]/document #[[Graphify]]/EXTRACTED #community/GBIF_Data_Sources_&_APIs

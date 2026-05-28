@@ -5,9 +5,9 @@ type: daily
 status: active
 ---
 
-# 2026-05-11 — Session Codex
+# 2026-05-11 — Session [[Codex]]
 
-## Session — 13:25 — Session Codex
+## Session — 13:25 — Session [[Codex]]
 
 ### Résumé
 tableau de board
@@ -25,7 +25,7 @@ tableau de board
 - Le dashboard local devient le point d'entrée opérationnel PKA.
 - Les lancements de modèles passent par une allowlist serveur locale plutôt que par des fichiers .command depuis le navigateur.
 - La palette PKA est centralisée dans un CSS commun.
-- La sauvegarde Codex reste explicite et semi-manuelle, contrairement au /save Claude.
+- La sauvegarde [[Codex]] reste explicite et semi-manuelle, contrairement au /save [[Claude]].
 
 ### Prochaines étapes
 - Rendre les cartes projets et derniers livrables dynamiques dans le hub.

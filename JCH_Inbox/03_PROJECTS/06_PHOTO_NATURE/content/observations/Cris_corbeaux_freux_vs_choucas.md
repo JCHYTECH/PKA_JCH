@@ -23,7 +23,7 @@ J’ai observé des corbeaux freux. On est en periode de reproduction et il m’
 
 Oui, c’est tout à fait plausible, et pas forcément une erreur.
 
-Chez le corbeau freux, on retient surtout le grand “craa” rauque, mais en période de reproduction le répertoire vocal devient plus varié. Dans une colonie, on peut entendre des appels plus brefs, plus nasillards, plus aigus, parfois assez proches de certains sons du choucas, surtout dans les interactions de couple, de voisinage, d’excitation ou de mendicité des jeunes.
+Chez le [[Corbeau]] freux, on retient surtout le grand “craa” rauque, mais en période de reproduction le répertoire vocal devient plus varié. Dans une colonie, on peut entendre des appels plus brefs, plus nasillards, plus aigus, parfois assez proches de certains sons du choucas, surtout dans les interactions de couple, de voisinage, d’excitation ou de mendicité des jeunes.
 
 Il y a aussi une autre possibilité très fréquente : les freux et les choucas sont souvent associés autour des mêmes sites, parfois même dans ou près des colonies. Du coup, on croit entendre un freux “faire le choucas”, alors qu’un choucas vocalise juste à côté ou en surimpression sonore.
 

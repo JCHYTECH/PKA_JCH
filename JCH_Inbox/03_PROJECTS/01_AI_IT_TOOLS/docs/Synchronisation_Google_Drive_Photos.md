@@ -27,7 +27,7 @@ Oui. Sur Mac, cela se change dans **Google Drive for desktop**.
 
 Le plus direct est ceci : cliquez l’icône **Google Drive** dans la barre des menus, puis **Paramètres / Settings → Préférences**. Si c’est un dossier de votre Mac qui envoie automatiquement ses photos, sélectionnez ce dossier et **décochez “Drive” et/ou “Photos”** pour arrêter la synchronisation ou la sauvegarde de ce dossier. Google indique aussi qu’on peut ajouter un dossier photo depuis ces préférences, ce qui confirme que ce réglage se gère bien à cet endroit. citeturn705751view2turn705751view0
 
-Si le problème vient de la **photothèque Apple Photos** elle-même, allez dans **Google Drive → Préférences → Settings** puis, dans la section **Google Photos**, repérez **System Photo Library** et désactivez **Upload photos and videos to Google Photos**. Selon la version de Drive, Google mentionne aussi une option équivalente dans **Advanced Settings**, où il faut **décocher “System(s) Photo Library”**. citeturn705751view0turn705751view1
+Si le problème vient de la **photothèque [[Apple]] Photos** elle-même, allez dans **Google Drive → Préférences → Settings** puis, dans la section **Google Photos**, repérez **System Photo Library** et désactivez **Upload photos and videos to Google Photos**. Selon la version de Drive, Google mentionne aussi une option équivalente dans **Advanced Settings**, où il faut **décocher “System(s) Photo Library”**. citeturn705751view0turn705751view1
 
 Si vous voulez seulement arrêter l’envoi pendant un moment, sans modifier les réglages, vous pouvez faire **Google Drive → Settings → Pause syncing**. citeturn705751view1
 

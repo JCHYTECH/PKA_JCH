@@ -1,16 +1,16 @@
 # WildNexus - Resume de chat hardware, architecture et choix strategiques
 
 **Date :** 2026-05-22  
-**Auteur :** Dobby  
-**Objet :** synthese lisible de la discussion recente sur WildNexus, les capteurs, l'architecture satellite/base, les alternatives a ESP32, et l'ouverture vers les producteurs chinois.  
+**Auteur :** [[Dobby]]  
+**Objet :** synthese lisible de la discussion recente sur WildNexus, les capteurs, l'architecture satellite/base, les alternatives a [[ESP32]], et l'ouverture vers les producteurs chinois.  
 
 ## 1. Le point de depart
 
-Tu es revenu avec une nouvelle masse d'informations issue de documents, de discussions avec des experts, d'observations marche et de contenus autour de BirdNET, ESP32, BirdWeather et des usages terrain.
+Tu es revenu avec une nouvelle masse d'informations issue de documents, de discussions avec des experts, d'observations marche et de contenus autour de [[BirdNET]], [[ESP32]], BirdWeather et des usages terrain.
 
 Le message principal etait clair : **il ne fallait pas proteger l'ancien setup WildNexus par habitude**. Il fallait accepter de revoir les positions fondamentales si les nouvelles donnees montraient que le projet devait changer.
 
-La conclusion de Dobby est que WildNexus ne doit plus etre pense comme un simple piege photo ameliore. Il doit etre pense comme une **machine d'observation ecologique multimodale**, capable de combiner :
+La conclusion de [[Dobby]] est que WildNexus ne doit plus etre pense comme un simple piege photo ameliore. Il doit etre pense comme une **machine d'observation ecologique multimodale**, capable de combiner :
 
 - image ;
 - video ;
@@ -59,7 +59,7 @@ Donc ton intuition etait correcte : **BirdWeather devait etre reconsidere comme 
 BirdWeather montre qu'il existe un public pour :
 
 - un objet terrain dedie a l'ecoute des oiseaux ;
-- une integration avec BirdNET ;
+- une integration avec [[BirdNET]] ;
 - une contribution vers une plateforme cloud ;
 - une experience utilisateur simple ;
 - des donnees audio naturalistes automatisees.
@@ -75,34 +75,34 @@ BirdWeather reste surtout centre sur la bioacoustique. WildNexus peut se differe
 - fonctionnement possible sans cloud permanent ;
 - logique d'evenements croises : son + mouvement + image + contexte.
 
-## 4. Le probleme ESP32
+## 4. Le probleme [[ESP32]]
 
-Ton inquietude principale est juste : **ESP32 ne tient pas la route comme cerveau principal WildNexus** si WildNexus devient une machine multimodale serieuse.
+Ton inquietude principale est juste : **[[ESP32]] ne tient pas la route comme cerveau principal WildNexus** si WildNexus devient une machine multimodale serieuse.
 
-ESP32 reste utile, mais pas comme coeur du produit final.
+[[ESP32]] reste utile, mais pas comme coeur du produit final.
 
-### ESP32 : ce qu'il peut faire
+### [[ESP32]] : ce qu'il peut faire
 
 | Usage | Pertinence |
 |---|---|
 | Prototype rapide | Bonne |
 | Capteurs simples | Bonne |
-| LoRa / Wi-Fi / BLE | Bonne |
+| [[LoRa]] / Wi-Fi / BLE | Bonne |
 | Camera basique | Possible mais limite |
 | TinyML tres leger | Possible |
 | Controle d'energie simple | Possible |
 
-### ESP32 : ce qu'il ne doit pas porter
+### [[ESP32]] : ce qu'il ne doit pas porter
 
 | Usage | Probleme |
 |---|---|
-| BirdNET complet | Compute/RAM insuffisants |
+| [[BirdNET]] complet | Compute/RAM insuffisants |
 | Vision IA serieuse | Trop limite |
 | Multimodalite lourde | Pas assez robuste |
 | Produit industriel ambitieux | Trop fragile comme coeur unique |
 | Audio + image + decision locale avancee | Mauvais fit |
 
-Verdict : **garder ESP32 comme outil de prototype ou sous-module, mais ne plus le mettre au centre de WildNexus.**
+Verdict : **garder [[ESP32]] comme outil de prototype ou sous-module, mais ne plus le mettre au centre de WildNexus.**
 
 ## 5. Trois architectures discutees
 
@@ -148,13 +148,13 @@ Pour WildNexus, cela peut donner :
 
 ## 7. Architecture WildNexus recommandee
 
-Dobby recommande une architecture a trois niveaux.
+[[Dobby]] recommande une architecture a trois niveaux.
 
 | Niveau | Role | Exemple hardware |
 |---|---|---|
-| Satellite Lite | veille, capteurs, PIR, audio leger, LoRa, stockage simple | STM32U5, Apollo510 |
+| Satellite Lite | veille, capteurs, PIR, audio leger, [[LoRa]], stockage simple | STM32U5, Apollo510 |
 | Satellite Smart | camera, audio plus riche, detection locale, prefiltrage IA | STM32N6, Rockchip RV1106, Axera AX630C |
-| Base Nexus | stockage lourd, IA locale, BirdNET, orchestration, 4G/5G, dashboard | Raspberry Pi 5, RK3588, NXP i.MX 8M Plus |
+| Base Nexus | stockage lourd, IA locale, [[BirdNET]], orchestration, 4G/5G, dashboard | [[Raspberry Pi 5]], RK3588, NXP i.MX 8M Plus |
 
 Cette architecture evite l'erreur classique : vouloir qu'un seul boitier fasse tout.
 
@@ -175,7 +175,7 @@ La conclusion importante : **il ne faut pas mettre tous les capteurs dans tous l
 | Mesure batterie | Energie, maintenance, prediction autonomie | Haute | Obligatoire |
 | RTC | Horodatage fiable | Haute | Obligatoire terrain |
 | Carte SD ou eMMC | Stockage local | Haute | SD pour proto, eMMC preferable si industrialise |
-| LoRa | Alerte et metadata | Haute si satellites | Pas pour audio/video lourd |
+| [[LoRa]] | Alerte et metadata | Haute si satellites | Pas pour audio/video lourd |
 | 4G/5G | Backhaul | Haute pour base, option satellite premium | Cher en energie et abonnement |
 
 ### Capteurs optionnels
@@ -200,9 +200,9 @@ Voici le resume des plateformes occidentales ou classiques et leur role possible
 | STM32U5 | Satellite Lite basse consommation | Tres bon choix industriel pour capteurs/veille |
 | Ambiq Apollo510 | Satellite Lite audio/IA ultra basse conso | Tres interessant pour always-on audio, ecosysteme plus niche |
 | STM32N6 | Satellite Smart avec camera + NPU | Candidat prioritaire hors Chine |
-| Raspberry Pi 5 | Base prototype, apprentissage, BirdNET-Go | Excellent pour demarrer, pas satellite autonome |
-| Raspberry Pi AI HAT+ | Acceleration IA sur base prototype | Tres bon banc vision |
-| Raspberry Pi AI Camera | Test in-sensor AI | Pedagogique, pas baseline terrain |
+| [[Raspberry Pi 5]] | Base prototype, apprentissage, BirdNET-Go | Excellent pour demarrer, pas satellite autonome |
+| [[Raspberry Pi]] AI HAT+ | Acceleration IA sur base prototype | Tres bon banc vision |
+| [[Raspberry Pi]] AI Camera | Test in-sensor AI | Pedagogique, pas baseline terrain |
 | NXP i.MX 8M Plus | Base industrielle | Robuste et credible, plus cher |
 | Quectel EG916Q | 4G Cat 1 bis | Bon module backhaul base/smart |
 | Nordic nRF9161 | LTE-M/NB-IoT metadata | Utile pour telemetrie, pas medias lourds |
@@ -236,7 +236,7 @@ Mais il y a des risques :
 | Plateforme | Producteur / ecosysteme | Role possible | Verdict |
 |---|---|---|---|
 | Rockchip RV1106 / RV1103 | Rockchip, Luckfox, Waveshare | Satellite Camera Smart low-cost | A tester en priorite |
-| Rockchip RK3588 / RK3588S | Rockchip, Orange Pi, Radxa, Firefly | Base Nexus puissante | Tres bon challenger Raspberry Pi |
+| Rockchip RK3588 / RK3588S | Rockchip, Orange [[Pi]], Radxa, Firefly | Base Nexus puissante | Tres bon challenger [[Raspberry Pi]] |
 | Axera AX630C | Axera, Sipeed MaixCAM2 | Camera IA compacte | Tres prometteur, maturite a valider |
 | Axera AX650N | Axera | Vision premium / surveillance | Potentiel si acces fournisseur direct |
 | Sophgo SG2002 / SG2000 | Sophgo, Milk-V, Sipeed | Apprentissage IA vision low-cost | Excellent pour R&D |
@@ -256,7 +256,7 @@ La conclusion n'est pas "choisir Chine" ou "choisir Europe/US". La conclusion es
 | STM32U5 | Satellite Lite sobre |
 | Apollo510 | Audio always-on basse conso |
 | STM32N6 | Satellite Smart avec NPU |
-| Raspberry Pi 5 | Base prototype rapide |
+| [[Raspberry Pi 5]] | Base prototype rapide |
 | NXP i.MX 8M Plus | Base industrielle robuste |
 
 ### Lot B - Chine offensive
@@ -271,9 +271,9 @@ La conclusion n'est pas "choisir Chine" ou "choisir Europe/US". La conclusion es
 
 ## 12. Decisions techniques importantes
 
-### LoRa
+### [[LoRa]]
 
-LoRa est utile pour :
+[[LoRa]] est utile pour :
 
 - alerte ;
 - metadata ;
@@ -281,14 +281,14 @@ LoRa est utile pour :
 - commande courte ;
 - signalement d'evenement.
 
-LoRa n'est pas fait pour :
+[[LoRa]] n'est pas fait pour :
 
 - audio brut ;
 - photo lourde ;
 - video ;
 - transfert massif.
 
-Donc LoRa doit etre vu comme le reseau nerveux du systeme, pas comme son canal media principal.
+Donc [[LoRa]] doit etre vu comme le reseau nerveux du systeme, pas comme son canal media principal.
 
 ### 4G/5G
 
@@ -338,25 +338,25 @@ La carte SD est acceptable pour apprendre et prototyper. Pour une version terrai
 Les idees vraiment interessantes sorties du chat :
 
 - La structure satellite/base est probablement plus forte qu'un boitier unique.
-- ESP32 doit etre declasse, pas abandonne.
+- [[ESP32]] doit etre declasse, pas abandonne.
 - BirdWeather valide un segment bioacoustique mais ne couvre pas toute l'ambition WildNexus.
-- LoRa est excellent pour l'alerte, mauvais pour les medias.
+- [[LoRa]] est excellent pour l'alerte, mauvais pour les medias.
 - STM32U5 est solide pour le satellite sobre.
 - STM32N6 est le candidat occidental le plus interessant pour satellite smart.
 - Apollo510 merite une evaluation audio/always-on.
-- Raspberry Pi 5 est le meilleur outil d'apprentissage/base prototype.
+- [[Raspberry Pi 5]] est le meilleur outil d'apprentissage/base prototype.
 - NXP i.MX 8M Plus est credible pour une base industrielle.
 - Rockchip RV1106 pourrait etre un vrai choc positif pour camera IA low-cost.
-- RK3588 peut challenger Raspberry Pi 5 pour la base.
+- RK3588 peut challenger [[Raspberry Pi 5]] pour la base.
 - Axera est une piste Chine a ouvrir serieusement.
 
 ## 15. Ce qui est moins interessant ou dangereux
 
 | Idee | Probleme |
 |---|---|
-| Tout faire sur ESP32 | Trop limite pour WildNexus reel |
-| Mettre BirdNET complet dans chaque satellite | Trop lourd pour petits MCU |
-| Envoyer toutes les videos par LoRa | Techniquement incoherent |
+| Tout faire sur [[ESP32]] | Trop limite pour WildNexus reel |
+| Mettre [[BirdNET]] complet dans chaque satellite | Trop lourd pour petits MCU |
+| Envoyer toutes les videos par [[LoRa]] | Techniquement incoherent |
 | Mettre 4G partout | Cout/energie/maintenance explosent |
 | Acheter toutes les cartes possibles | Dispersion |
 | Choisir seulement sur les TOPS | Les TOPS ne disent rien de l'ecosysteme camera/audio/SDK |
@@ -369,7 +369,7 @@ Les idees vraiment interessantes sorties du chat :
 
 Acheter ou reunir peu de plateformes, mais bien choisies :
 
-1. Raspberry Pi 5 + SSD : base prototype, BirdNET-Go, stockage, dashboard.
+1. [[Raspberry Pi 5]] + SSD : base prototype, BirdNET-Go, stockage, dashboard.
 2. STM32U5 devkit : satellite sobre.
 3. STM32N6 devkit + camera : satellite smart occidental.
 4. Rockchip RV1106 board : satellite camera Chine low-cost.
@@ -398,14 +398,14 @@ Une fois les mesures reelles faites, figer :
 - role exact du Satellite Lite ;
 - role exact du Satellite Smart ;
 - role exact de la Base Nexus ;
-- protocole LoRa ;
+- protocole [[LoRa]] ;
 - strategie 4G/5G ;
 - capteurs baseline ;
 - capteurs optionnels ;
 - boitier ;
 - cout cible.
 
-## 17. Recommandation finale Dobby
+## 17. Recommandation finale [[Dobby]]
 
 Ne pas chercher le "cerveau unique" de WildNexus.
 
@@ -418,7 +418,7 @@ Le choix le plus prudent serait :
 - **STM32U5** pour Satellite Lite ;
 - **STM32N6** comme candidat occidental Satellite Smart ;
 - **Rockchip RV1106** comme challenger Chine Satellite Smart ;
-- **Raspberry Pi 5** pour apprendre et prototyper la Base Nexus ;
+- **[[Raspberry Pi 5]]** pour apprendre et prototyper la Base Nexus ;
 - **RK3588** comme challenger Chine Base Nexus ;
 - **NXP i.MX 8M Plus** comme option base industrielle robuste.
 
@@ -430,7 +430,7 @@ Le point de vigilance majeur : **ne pas se faire hypnotiser par les fiches techn
 |---|---|
 | `2026-05-22_dobby_wildnexus-multimodal-reset.md` | Redefinition de WildNexus comme machine multimodale |
 | `2026-05-22_dobby_wildnexus-satellite-base-market-scan.md` | Analyse marche de la logique satellite/base |
-| `2026-05-22_dobby_wildnexus-hardware-architecture-study.md` | Etude critique hardware et declassement ESP32 |
+| 
 | `2026-05-22_dobby_wildnexus-onboard-sensor-matrix.md` | Matrice des capteurs embarques possibles |
 | `2026-05-22_dobby_wildnexus-hardware-chine-norton-safe.md` | Extension Chine du comparatif hardware, sans URL brutes |
 

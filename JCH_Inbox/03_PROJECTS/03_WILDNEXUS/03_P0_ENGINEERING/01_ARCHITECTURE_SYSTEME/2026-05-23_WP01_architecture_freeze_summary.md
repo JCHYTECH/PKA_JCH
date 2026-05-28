@@ -2,8 +2,8 @@
 
 **Date :** 2026-05-23  
 **Statut :** reference de transition M-01 -> WP02  
-**Owner :** Dobby + Castor  
-**Equipe mobilisee :** Forge, Chouette, Bruno, Nova, Lynx, Hermine, Renard  
+**Owner :** [[Dobby]] + [[Castor]]  
+**Equipe mobilisee :** [[Forge]], [[Chouette]], [[Bruno]], [[Nova]], [[Lynx]], [[Hermine]], [[Renard]]  
 
 ## 1. Objet
 
@@ -17,25 +17,25 @@ Le P0 est un **Satellite Lite autonome**.
 
 Composition fonctionnelle :
 
-- ESP32-S3 ;
+- [[ESP32-S3]] ;
 - camera OV5640/IR + lentille M12 ;
 - PIR ;
 - micro mono pour clips audio courts locaux ;
 - microSD industrielle ;
-- LoRa P2P EU868 pour metadonnees/statuts/commandes courtes ;
+- [[LoRa]] P2P EU868 pour metadonnees/statuts/commandes courtes ;
 - Wi-Fi local pour maintenance et extraction ;
 - holder AA + buck faible Iq ;
 - bloc capteurs reserve dans l'encombrement ;
 - boitier IP67, vert, discret, calage support rond ;
-- antenne LoRa interne ou camouflee en priorite.
+- antenne [[LoRa]] interne ou camouflee en priorite.
 
 Exclusions P0 :
 
-- Raspberry Pi dans le satellite ;
-- BirdNET embarque ;
+- [[Raspberry Pi]] dans le satellite ;
+- [[BirdNET]] embarque ;
 - YOLO embarque lourd ;
 - cloud obligatoire ;
-- mesh LoRa ;
+- mesh [[LoRa]] ;
 - flux raw continu ;
 - LTE-M actif dans le satellite P0 ;
 - boitier imprime 3D IP67 comme exigence P0.
@@ -47,8 +47,8 @@ WildNexus est structure en trois niveaux :
 | Niveau | Statut | Role |
 |---|---|---|
 | Satellite Lite | P0 | capter, stocker, survivre dehors, transmettre seulement alertes/metadonnees |
-| Base/Master Nexus | P1 parallele | Raspberry Pi 5, SSD, BirdNET-Go, YOLO, indexation, orchestration locale |
-| Cloud | P1/P2 | archive selective, acces distant, partage controle |
+| Base/Master Nexus | P1 parallele | [[Raspberry Pi 5]], SSD, BirdNET-Go, YOLO, indexation, orchestration locale |
+| Cloud | P1/P2 | [[archive]] selective, acces distant, partage controle |
 
 Decision cle : le Satellite Lite P0 doit rester utile sans Base/Master et sans cloud.
 
@@ -56,9 +56,9 @@ Decision cle : le Satellite Lite P0 doit rester utile sans Base/Master et sans c
 
 | ADR | Sujet | Statut WP01 |
 |---|---|---|
-| ADR-001 | MCU ESP32-S3 | accepte |
+| ADR-001 | MCU [[ESP32-S3]] | accepte |
 | ADR-002 | camera OV5640/IR | accepte |
-| ADR-003 | LoRa P2P EU868 | accepte |
+| ADR-003 | [[LoRa]] P2P EU868 | accepte |
 | ADR-004 | stockage local microSD | accepte |
 | ADR-005 | energie AA + buck | accepte |
 | ADR-006 | boitier IP67 / terrain | propose, non bloquant WP02 |
@@ -66,7 +66,7 @@ Decision cle : le Satellite Lite P0 doit rester utile sans Base/Master et sans c
 | ADR-008 | interface capteurs extensible | accepte |
 | ADR-009 | architecture Satellite/Base/Cloud | accepte |
 
-ADR-006 reste propose volontairement : le modele exact du boitier depend du choix hardware, de la batterie 4 AA vs 8 AA, de l'antenne LoRa et de l'encombrement capteurs.
+ADR-006 reste propose volontairement : le modele exact du boitier depend du choix hardware, de la batterie 4 AA vs 8 AA, de l'antenne [[LoRa]] et de l'encombrement capteurs.
 
 ## 5. Decisions critiques prises
 
@@ -86,7 +86,7 @@ Regle :
 
 Le micro mono est integre au P0 pour capture locale de clips courts. Il ne transforme pas P0 en station bioacoustique.
 
-BirdNET, reconnaissance espece et DSP avance restent P1 via Base/Master Nexus.
+[[BirdNET]], reconnaissance espece et DSP avance restent P1 via Base/Master Nexus.
 
 ### 5.3 Capteurs
 
@@ -102,19 +102,19 @@ Le boitier P0 doit deja anticiper :
 - silhouette moins detectable qu'une camera de chasse classique ;
 - calage sur supports ronds ;
 - sangle discrete ;
-- antenne LoRa interne ou camouflee ;
+- antenne [[LoRa]] interne ou camouflee ;
 - reserve skin camouflage.
 
-### 5.5 Raspberry Pi
+### 5.5 [[Raspberry Pi]]
 
-Le Raspberry Pi 5 doit etre considere maintenant pour Base/Master Nexus P1. Il est exclu du satellite P0.
+Le [[Raspberry Pi 5]] doit etre considere maintenant pour Base/Master Nexus P1. Il est exclu du satellite P0.
 
 ## 6. WP01 — livrables couverts
 
 | Livrable WP01 | Statut | Reference |
 |---|---|---|
 | D01.1 comparaison/concurrence | partiel/historique | notes marche et produits dans `03_P0_ENGINEERING` |
-| D01.2 FTO / licence / usage | ouvert | `wildnexus-usage-policy-and-license-principles.md` + Renard |
+| D01.2 FTO / licence / usage | ouvert | 
 | D01.3 RF / standard radio | accepte architecture | ADR-003 ; mesures terrain restent WP05/M-02 |
 | D01.4 camera | accepte architecture | ADR-002 ; benchmark terrain reste M-02 |
 | D01.5 architecture P0 gelee | produit | ce document + ADR index |
@@ -133,7 +133,7 @@ WP02 doit produire rapidement :
 2. estimation encombrement v0.2 ;
 3. comparaison 4 AA vs 8 AA avec le modele autonomie ;
 4. choix de 1-2 boitiers candidats ;
-5. strategie antenne LoRa discrete ;
+5. strategie antenne [[LoRa]] discrete ;
 6. architecture PCB v0.1 ;
 7. liste des mesures M-02 au PPK2.
 
@@ -141,21 +141,21 @@ Deux options a suivre en parallele :
 
 | Option | But | Contenu |
 |---|---|---|
-| A — banc rapide | mesurer vite | DevKit ESP32-S3, module camera, LoRa dev/breakout, PIR, micro, microSD, buck, batteries |
+| A — banc rapide | mesurer vite | DevKit [[ESP32-S3]], module camera, [[LoRa]] dev/breakout, PIR, micro, microSD, buck, batteries |
 | B — proto terrain compact | converger boitier | composants proches PCB final, holder AA, boitier IP67, antenne discrete, fenetres camera/PIR/micro |
 
 ## 8. Anticipation WP03
 
 WP03 doit demarrer sans attendre le PCB final sur dev board :
 
-- machine d'etats sleep -> wake -> capture -> stockage -> LoRa -> sleep ;
-- power gating camera/microSD/IR/LoRa ;
+- machine d'etats sleep -> wake -> capture -> stockage -> [[LoRa]] -> sleep ;
+- power gating camera/microSD/IR/[[LoRa]] ;
 - gestion undervoltage ;
 - logs energie par evenement ;
 - configuration Wi-Fi locale minimale ;
 - format metadata extensible.
 
-WP03 ne doit pas demarrer BirdNET/YOLO embarque.
+WP03 ne doit pas demarrer [[BirdNET]]/YOLO embarque.
 
 ## 9. Anticipation WP04
 
@@ -170,7 +170,7 @@ Pas de reconnaissance espece fine dans le satellite P0.
 
 ## 10. Passage recommande
 
-Decision Dobby/equipe :
+Decision [[Dobby]]/equipe :
 
 **WP01 peut etre considere comme suffisamment gelee pour lancer WP02/WP03/WP04 en parallele controle.**
 

@@ -335,7 +335,7 @@ oui ok pour le zip
 *2025-08-15 21:54*
 
 Parfait ✅  
-Voici l’archive contenant **les 4 presets complets** et **les 4 presets souples** :  
+Voici l’[[archive]] contenant **les 4 presets complets** et **les 4 presets souples** :  
 
 [📦 Télécharger Presets_Salgado_Complets_et_Soft.zip](sandbox:/mnt/data/Presets_Salgado_Complets_et_Soft.zip)  
 

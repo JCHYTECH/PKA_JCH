@@ -1,6 +1,6 @@
 ---
 date: 2026-04-17
-source: chat Claude — "Points d'amélioration pour l'application Faune"
+source: chat [[Claude]] — "Points d'amélioration pour l'application Faune"
 domain: Faune Autour / design
 tags: [prompt, image-generation, logo, faune-autour, design]
 status: ready
@@ -14,7 +14,7 @@ Prompt à fournir à un générateur d'images (Midjourney, DALL·E, Adobe Firefl
 
 ## Prompt principal (EN)
 
-Logo for "Faune Autour", a wildlife observation app. Circular emblem featuring a stylized silhouette of a bird in flight (e.g. a heron or falcon) combined with a GPS location pin, surrounded by subtle concentric circles suggesting a radar or search radius. Behind the bird, hints of European forest wildlife — a deer antler outline, a leaf, a paw print — kept minimal and clean. Color palette: forest green, earth brown, and white. Modern flat design with slight organic texture. No photorealism. Transparent background. Suitable for display on a mobile app header at small size.
+Logo for "Faune Autour", a wildlife observation app. Circular emblem featuring a stylized silhouette of a bird in flight (e.g. a [[Heron]] or falcon) combined with a GPS location pin, surrounded by subtle concentric circles suggesting a radar or search radius. Behind the bird, hints of European forest wildlife — a deer antler outline, a leaf, a paw print — kept minimal and clean. Color palette: forest green, earth brown, and white. Modern flat design with slight organic texture. No photorealism. Transparent background. Suitable for display on a mobile app header at small size.
 
 ---
 

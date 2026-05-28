@@ -3,7 +3,7 @@
 **Version :** v0.2
 **Date :** 2026-05-18
 **Statut :** Enveloppe ferme — 1 000 € maximum
-**Owner :** Bruno
+**Owner :** [[Bruno]]
 
 ## 1. Contrainte
 
@@ -19,7 +19,7 @@ Enveloppe globale P0 fixée à **1 000 €** — volontairement serrée pour for
 |-------------------|---------|
 | Nombre de nœuds | **2 nœuds** (au lieu de 3–5 prévu initialement) |
 | PCB | **DevKit + breakout boards** — pas de PCB dédié P0 |
-| FTO / licence externe | **Analyse interne uniquement** — pas de conseil PI externe |
+| FTO / licence externe | **Analyse interne uniquement** — pas de conseil [[Pi]] externe |
 | Dataset IA | **Terrain JCH uniquement** — pas de dataset commercial |
 | Déplacements EVT | **Belgique locale** — pas de déplacement longue distance |
 
@@ -31,11 +31,11 @@ Enveloppe globale P0 fixée à **1 000 €** — volontairement serrée pour for
 
 | Poste | Unité | × 2 nœuds | Sous-total |
 |-------|------:|----------:|-----------:|
-| ESP32-S3 DevKit | ~12 € | × 2 | ~24 € |
+| [[ESP32-S3]] DevKit | ~12 € | × 2 | ~24 € |
 | OV5640 M12 DVP (Arducam) | ~20 € | × 2 | ~40 € |
 | Lentille M12 IR-corrigée f/1.8 | ~35 € | × 2 | **~70 €** |
 | LED IR 850 nm × 4 | ~8 € | × 2 | ~16 € |
-| LoRa RAK3172 ou Murata 1SJ | ~12 € | × 2 | ~24 € |
+| [[LoRa]] RAK3172 ou Murata 1SJ | ~12 € | × 2 | ~24 € |
 | microSD 16 GB industrielle | ~12 € | × 2 | ~24 € |
 | 2× 18650 LiFePO4 | ~12 € | × 2 | ~24 € |
 | Panneau solaire 6V 2W + CN3791 | ~12 € | × 2 | ~24 € |
@@ -117,7 +117,7 @@ Ces postes sont **exclus** de l'enveloppe et nécessitent une décision séparé
 
 | Poste exclu | Estimation | Condition de réintégration |
 |-------------|----------:|---------------------------|
-| Avis FTO / PI externe | 500–3 000 € | Si partenariat industriel ou levée envisagée |
+| Avis FTO / [[Pi]] externe | 500–3 000 € | Si partenariat industriel ou levée envisagée |
 | PCB dédié P0 (au lieu de DevKit) | 200–400 € | Si DevKit s'avère incompatible avec le boîtier IP67 |
 | 3e nœud complet | ~175 € | Si les 2 nœuds tombent en panne simultanément terrain |
 | Dataset IR externe | 200–1 000 € | Si dataset terrain insuffisant pour entraîner le classifieur |

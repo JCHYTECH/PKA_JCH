@@ -899,7 +899,7 @@ I cannot switch those notification settings from here.
 
 To enable them, open the scheduled item and edit its delivery settings in the app. In practice, go to your scheduled tasks or reminders area, open “Review photography novelties,” then turn on notifications. If the interface also offers email delivery, enable email there as well.
 
-If notifications still do not arrive, also check your device and browser permissions for ChatGPT notifications, because the task itself can be enabled while system notifications remain blocked.
+If notifications still do not arrive, also check your device and browser permissions for [[ChatGPT]] notifications, because the task itself can be enabled while system notifications remain blocked.
 
 ---
 
@@ -922,16 +922,16 @@ I’m checking the official OpenAI help material first so I can give you accurat
 
 Here is the deeper path.
 
-ChatGPT’s scheduled tasks can be managed from two places. The official help article says you can open them from **Settings → Notifications → Manage tasks**, and it also notes you can reach the full task list from an individual task via the **three-dot menu**. Tasks are supported on Web, iOS, Android, and macOS. citeturn717066search0turn717066search9turn717066search11
+[[ChatGPT]]’s scheduled tasks can be managed from two places. The official help article says you can open them from **Settings → Notifications → Manage tasks**, and it also notes you can reach the full task list from an individual task via the **three-dot menu**. Tasks are supported on Web, iOS, Android, and macOS. citeturn717066search0turn717066search9turn717066search11
 
-For your case, do this on the web app first, because the help article explicitly mentions notification controls there. Open ChatGPT, go to **Settings**, then **Notifications**. In that section, look for the task notification setting. From there, you should see **Manage tasks**, which opens the list of your scheduled items. Open **Review photography novelties** and check whether task notifications are turned on. The help article also indicates that push notifications, email, or both can be controlled from ChatGPT Web. citeturn717066search7turn717066search9
+For your case, do this on the web app first, because the help article explicitly mentions notification controls there. Open [[ChatGPT]], go to **Settings**, then **Notifications**. In that section, look for the task notification setting. From there, you should see **Manage tasks**, which opens the list of your scheduled items. Open **Review photography novelties** and check whether task notifications are turned on. The help article also indicates that push notifications, email, or both can be controlled from [[ChatGPT]] Web. citeturn717066search7turn717066search9
 
-There is a second route if you are already inside the conversation where the task was created. Open that chat, find the scheduled task card or the related conversation header, click the **…** menu, and choose **Manage tasks** or **Edit schedule**. Open the photography task there and review its delivery options. Official OpenAI guidance also mentions that recurring tasks can be reviewed and managed at **chatgpt.com/schedules**. citeturn717066search5turn717066search11
+There is a second route if you are already inside the conversation where the task was created. Open that chat, find the scheduled task card or the related conversation header, click the **…** menu, and choose **Manage tasks** or **Edit schedule**. Open the photography task there and review its delivery options. Official OpenAI guidance also mentions that recurring tasks can be reviewed and managed at **[[ChatGPT]].com/schedules**. citeturn717066search5turn717066search11
 
-If you enable notifications there but still receive nothing, the next issue is usually outside the task itself. The task may run, but the device/browser can still block alerts. So also verify that your browser allows notifications for ChatGPT, and on Mac check the system notification permission for your browser or the ChatGPT app. The help page’s wording makes an important distinction here: the task can exist and run independently of whether push or email delivery is enabled. citeturn717066search0turn717066search7
+If you enable notifications there but still receive nothing, the next issue is usually outside the task itself. The task may run, but the device/browser can still block alerts. So also verify that your browser allows notifications for [[ChatGPT]], and on Mac check the system notification permission for your browser or the [[ChatGPT]] app. The help page’s wording makes an important distinction here: the task can exist and run independently of whether push or email delivery is enabled. citeturn717066search0turn717066search7
 
 A practical sequence for you would be:
-Open ChatGPT on the web, go to **Settings → Notifications → Manage tasks**, open **Review photography novelties**, enable task notifications, then test on the next run. If available in your interface, also enable email delivery as a backup. citeturn717066search9turn717066search11
+Open [[ChatGPT]] on the web, go to **Settings → Notifications → Manage tasks**, open **Review photography novelties**, enable task notifications, then test on the next run. If available in your interface, also enable email delivery as a backup. citeturn717066search9turn717066search11
 
 If you want, I can also tell you exactly what to check on macOS and in Safari, since that is often where the block actually happens.
 
@@ -947,7 +947,7 @@ Show
 ## Assistant
 *2026-04-12 18:59*
 
-I’m pulling the official steps for ChatGPT task notifications and the current Safari/macOS notification path so I can show the exact places to check.
+I’m pulling the official steps for [[ChatGPT]] task notifications and the current Safari/macOS notification path so I can show the exact places to check.
 
 ---
 
@@ -956,22 +956,22 @@ I’m pulling the official steps for ChatGPT task notifications and the current 
 
 Yes. On Mac with Safari, check three places.
 
-First, confirm the task itself in ChatGPT. Open **ChatGPT → Settings → Notifications → Manage tasks**, then open **Review photography novelties**. OpenAI’s help says this is the place to view and manage all scheduled tasks, and you can also reach the task list from the task’s **three-dot menu** inside chat. citeturn177199search0
+First, confirm the task itself in [[ChatGPT]]. Open **[[ChatGPT]] → Settings → Notifications → Manage tasks**, then open **Review photography novelties**. OpenAI’s help says this is the place to view and manage all scheduled tasks, and you can also reach the task list from the task’s **three-dot menu** inside chat. citeturn177199search0
 
-Second, allow Safari website notifications. In **Safari**, go to **Safari → Settings → Websites → Notifications**. Apple says this is where notification permissions for websites are controlled. For ChatGPT to notify you, the site needs to be allowed there. If you previously blocked it, change ChatGPT’s website permission to **Allow**. Also make sure Safari is permitted to ask for website notifications, otherwise the permission prompt may never appear. citeturn177199search1turn177199search14
+Second, allow Safari website notifications. In **Safari**, go to **Safari → Settings → Websites → Notifications**. [[Apple]] says this is where notification permissions for websites are controlled. For [[ChatGPT]] to notify you, the site needs to be allowed there. If you previously blocked it, change [[ChatGPT]]’s website permission to **Allow**. Also make sure Safari is permitted to ask for website notifications, otherwise the permission prompt may never appear. citeturn177199search1turn177199search14
 
-Third, allow notifications at the macOS level. Go to **Apple menu → System Settings → Notifications**, then find **Safari** in the app list and turn **Allow notifications** on. Apple also notes that this is where you choose the alert style and related options, so set it to a visible style that you will actually notice. citeturn177199search2turn177199search5
+Third, allow notifications at the macOS level. Go to **[[Apple]] menu → System Settings → Notifications**, then find **Safari** in the app list and turn **Allow notifications** on. [[Apple]] also notes that this is where you choose the alert style and related options, so set it to a visible style that you will actually notice. citeturn177199search2turn177199search5
 
 A practical check sequence is this:
 
-1. Open ChatGPT on the web.
+1. Open [[ChatGPT]] on the web.
 2. Go to **Settings → Notifications → Manage tasks**.
 3. Open **Review photography novelties** and make sure task notifications are enabled there. citeturn177199search0
 4. In Safari, open **Safari → Settings → Websites → Notifications**.
-5. Look for **chatgpt.com** and set it to **Allow**. If ChatGPT is not listed, enable Safari’s option to let websites ask for notification permission, then reload ChatGPT so the permission request can appear. citeturn177199search1
+5. Look for **[[ChatGPT]].com** and set it to **Allow**. If [[ChatGPT]] is not listed, enable Safari’s option to let websites ask for notification permission, then reload [[ChatGPT]] so the permission request can appear. citeturn177199search1
 6. In macOS, open **System Settings → Notifications → Safari** and turn on **Allow notifications**. Choose banners or alerts, and enable sounds if you want a stronger signal. citeturn177199search2
 
-Two common reasons it still fails are straightforward. Either ChatGPT’s task runs but Safari/macOS is blocking the notification, or Safari never got permission for the website in the first place. Both have to be enabled for the alerts to appear reliably. citeturn177199search0turn177199search1turn177199search2
+Two common reasons it still fails are straightforward. Either [[ChatGPT]]’s task runs but Safari/macOS is blocking the notification, or Safari never got permission for the website in the first place. Both have to be enabled for the alerts to appear reliably. citeturn177199search0turn177199search1turn177199search2
 
 If you want, I can give you the same steps in French, in a very short checklist you can follow screen by screen.
 

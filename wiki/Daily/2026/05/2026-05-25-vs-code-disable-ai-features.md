@@ -10,8 +10,8 @@ status: active
 ## Session — 11:11 — vs-code-disable-ai-features
 
 ### Contexte
-- Modèle : codex
-- Projet : 01_AI_IT_TOOLS
+- Modèle : [[Codex]]
+- Projet : [[01_AI_IT_TOOLS]]
 
 ### Résumé
 Disabled VS Code built-in AI features after voice and MCP guardrails did not stop the activation loop.

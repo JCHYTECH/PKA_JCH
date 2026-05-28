@@ -149,7 +149,7 @@ sorry no upload possible
 ## Assistant
 *2026-03-31 07:51*
 
-No worries! This is a known limitation of the Claude.ai artifact environment — file uploads can be tricky there. Let me switch the approach to use a **URL input** instead, so you can paste a link to any image from the web.
+No worries! This is a known limitation of the [[Claude]].ai artifact environment — file uploads can be tricky there. Let me switch the approach to use a **URL input** instead, so you can paste a link to any image from the web.
 ```
 Viewing artifacts created via the Analysis Tool web feature preview isn’t yet supported on mobile.
 ```
@@ -228,13 +228,13 @@ how to acces in the future at this artifact ?
 
 Unfortunately, **there's no direct link** you can save to an artifact. But here are your options:
 
-1. **Find it in your chat history** — this conversation is saved in Claude's sidebar. Just reopen it and the artifact will be there on the right.
+1. **Find it in your chat history** — this conversation is saved in [[Claude]]'s sidebar. Just reopen it and the artifact will be there on the right.
 
-2. **Copy the code** — click the artifact's **copy/download button** (top-right corner of the artifact panel) to save the code locally. You can then paste it back into a new chat anytime by asking Claude to *"run this React component"*.
+2. **Copy the code** — click the artifact's **copy/download button** (top-right corner of the artifact panel) to save the code locally. You can then paste it back into a new chat anytime by asking [[Claude]] to *"run this React component"*.
 
 3. **Bookmark this conversation** — in your browser, just bookmark the current page URL. It'll bring you straight back here.
 
-The easiest option is probably **option 1 or 3**. Would you like me to also export it as a standalone HTML file that you can save and open directly in your browser, with no Claude needed?
+The easiest option is probably **option 1 or 3**. Would you like me to also export it as a standalone HTML file that you can save and open directly in your browser, with no [[Claude]] needed?
 
 ---
 
@@ -252,7 +252,7 @@ Here's the plan for the standalone HTML version:
 
 1. I'll create a **single `.html` file** with everything built in
 2. You **save it** to your hard drive
-3. You **double-click** it anytime to open it in your browser — no internet, no Claude needed ✅
+3. You **double-click** it anytime to open it in your browser — no internet, no [[Claude]] needed ✅
 
 To save it:
 - Click the **download button** (↓) in the top-right corner of the artifact panel
@@ -269,7 +269,7 @@ Here's your standalone HTML file! To save and use it:
 1. **Click the download button** (↓ icon) in the top-right corner of the artifact panel
 2. Save it as **`color-determinator.html`** somewhere easy (Desktop, Documents, etc.)
 3. **Double-click the file** anytime to open it in your browser
-4. It works **100% offline** — no internet, no Claude needed
+4. It works **100% offline** — no internet, no [[Claude]] needed
 
 That's it! The file is yours forever. 🎨
 

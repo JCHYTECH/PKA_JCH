@@ -82,7 +82,7 @@ Fonctions :
 - piège photo/vidéo,
 - capteurs environnementaux,
 - détection mouvement,
-- transmission LoRa événementielle,
+- transmission [[LoRa]] événementielle,
 - stockage local,
 - configuration smartphone,
 - autonomie longue durée.
@@ -144,7 +144,7 @@ Les composants énergivores doivent être activés uniquement lors d’événeme
 
 MCU recommandé :
 
-- ESP32-S3,
+- [[ESP32-S3]],
 - STM32U5,
 - Nordic nRF54.
 
@@ -152,7 +152,7 @@ Fonctions :
 
 - veille,
 - scheduling,
-- LoRa,
+- [[LoRa]],
 - détection primaire,
 - gestion énergétique,
 - réveil sous-systèmes.
@@ -176,9 +176,9 @@ Activés uniquement si nécessaire :
 
 ---
 
-# 6. Attention au piège Raspberry Pi
+# 6. Attention au piège [[Raspberry Pi]]
 
-Le Raspberry Pi est excellent pour :
+Le [[Raspberry Pi]] est excellent pour :
 
 - prototypage,
 - validation rapide,
@@ -199,13 +199,13 @@ La version finale terrain ne devrait probablement pas reposer entièrement sur u
 
 # 7. Réseau et communications
 
-## 7.1 LoRa : prudence sur le mesh
+## 7.1 [[LoRa]] : prudence sur le mesh
 
 L’héritage conceptuel de WildMesh suggère naturellement une logique mesh.
 
 Cependant :
 
-LoRa n’est pas naturellement idéal pour un mesh dense et fortement routé.
+[[LoRa]] n’est pas naturellement idéal pour un mesh dense et fortement routé.
 
 Limitations réelles :
 
@@ -229,7 +229,7 @@ Limitations réelles :
 
 ---
 
-### Mode B — LoRa événementiel
+### Mode B — [[LoRa]] événementiel
 
 Transmission :
 
@@ -563,7 +563,7 @@ Compétences :
 
 Mission :
 
-- LoRa terrain forêt,
+- [[LoRa]] terrain forêt,
 - antennes,
 - propagation humide,
 - optimisation réseau.

@@ -252,7 +252,7 @@ souvent des oiseaux aquatiques
 Parfait. Les **oiseaux aquatiques** posent des contraintes très spécifiques (réflexions d’eau, dominantes vert/bleu, blancs fragiles des plumages, micro-variations d’exposition en rafale).  
 Voici une **méthode d’harmonisation optimisée spécifiquement pour l’avifaune aquatique**, pensée pour être **répétable** et **industrielle** dans ton flux Lightroom → IA → Photoshop.
 
-image_group{"query":["water birds photography","heron fishing water","duck water reflection","egret white plumage water"]}
+image_group{"query":["water birds photography","[[Heron]] fishing water","duck water reflection","egret white plumage water"]}
 
 ---
 
@@ -484,7 +484,7 @@ generalement en affut
 
 Très bien. Le **travail en affût** sur les oiseaux aquatiques est un contexte idéal pour une **standardisation avancée** : angle constant, arrière-plan stable, lumière évoluant lentement. Cela permet de mettre en place un **flux quasi industriel**, avec très peu de corrections image par image.
 
-image_group{"query":["bird hide photography water birds","wetland bird hide photography","aquatic birds hide reflection water","heron egret hide photography"]}
+image_group{"query":["bird hide photography water birds","wetland bird hide photography","aquatic birds hide reflection water","[[Heron]] egret hide photography"]}
 
 Ci-dessous, je te propose **LA méthode “Affût – Oiseaux aquatiques”**, pensée pour être utilisée **systématiquement**, séance après séance.
 
@@ -1144,7 +1144,7 @@ Ces presets sont **chirurgicaux** : ils corrigent le **sujet uniquement**, sans 
 ---
 
 ## 04_01_White_Plume_Protect  
-### (aigrette, spatule, cygne, héron garde-bœufs)
+### (aigrette, spatule, cygne, [[Héron]] garde-bœufs)
 
 **Objectif**
 - Protéger les blancs

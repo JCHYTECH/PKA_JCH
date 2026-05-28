@@ -90,9 +90,9 @@ Le propriétaire du système :
 
 ---
 
-# 5. Rôle de Dobby
+# 5. Rôle de [[Dobby]]
 
-Dobby est :
+[[Dobby]] est :
 
 - coordinateur général ;
 - superviseur ;
@@ -111,12 +111,12 @@ Dobby est :
 Rôle :
 
 - cockpit principal ;
-- Obsidian ;
+- [[Obsidian]] ;
 - supervision ;
 - coordination ;
 - validation humaine ;
-- ChatGPT ;
-- Claude ;
+- [[ChatGPT]] ;
+- [[Claude]] ;
 - gestion documentaire.
 
 ---
@@ -126,17 +126,17 @@ Rôle :
 Rôle :
 
 - serveur local permanent ;
-- Docker ;
-- PostgreSQL ;
-- Redis ;
-- Qdrant léger ;
-- n8n ;
+- [[Docker]] ;
+- [[PostgreSQL]] ;
+- [[Redis]] ;
+- [[Qdrant]] léger ;
+- [[n8n]] ;
 - APIs locales ;
 - logs ;
 - mémoire runtime ;
 - agents persistants ;
 - workflows ;
-- tests BirdNET ;
+- tests [[BirdNET]] ;
 - traitement local.
 
 ---
@@ -162,7 +162,7 @@ Fonctions :
 - classement ;
 - templates ;
 - vérification YAML ;
-- cohérence Obsidian ;
+- cohérence [[Obsidian]] ;
 - indexation ;
 - logs.
 
@@ -172,8 +172,8 @@ Fonctions :
 
 Fonctions :
 
-- Docker ;
-- PostgreSQL ;
+- [[Docker]] ;
+- [[PostgreSQL]] ;
 - sauvegardes ;
 - monitoring ;
 - sécurité ;
@@ -185,9 +185,9 @@ Fonctions :
 
 Fonctions :
 
-- BirdNET ;
+- [[BirdNET]] ;
 - Raspberry ;
-- ESP32 ;
+- [[ESP32]] ;
 - capteurs ;
 - audio ;
 - datasets ;
@@ -197,7 +197,7 @@ Fonctions :
 
 # 9. Modèles AI recommandés
 
-## ChatGPT
+## [[ChatGPT]]
 
 - coordination ;
 - structuration ;
@@ -206,7 +206,7 @@ Fonctions :
 - procédures ;
 - documents.
 
-## Claude
+## [[Claude]]
 
 - architecture logicielle ;
 - raisonnement long ;
@@ -263,11 +263,11 @@ Livrables :
 
 ## Phase 3 — Infrastructure locale minimale
 
-- Docker ;
-- Git ;
-- Python ;
+- [[Docker]] ;
+- [[Git]] ;
+- [[Python]] ;
 - sauvegardes ;
-- Tailscale.
+- [[Tailscale]].
 
 Livrable :
 
@@ -277,8 +277,8 @@ Livrable :
 
 ## Phase 4 — Mémoire persistante
 
-- PostgreSQL ;
-- Redis ;
+- [[PostgreSQL]] ;
+- [[Redis]] ;
 - logs ;
 - stockage états agents.
 
@@ -290,7 +290,7 @@ Livrable :
 
 ## Phase 5 — Orchestration légère
 
-- n8n ;
+- [[n8n]] ;
 - queues ;
 - automatisations limitées ;
 - journalisation.

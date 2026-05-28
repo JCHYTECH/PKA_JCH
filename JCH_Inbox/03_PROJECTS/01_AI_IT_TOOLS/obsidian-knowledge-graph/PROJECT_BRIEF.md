@@ -1,12 +1,12 @@
 ---
 date: 2026-05-25
-model: GPT-5 Codex
+model: GPT-5 [[Codex]]
 type: brief
 status: active
-domain: obsidian
+domain: [[Obsidian]]
 ---
 
-# Project Brief — Obsidian Knowledge Graph
+# Project Brief — [[Obsidian]] Knowledge Graph
 
 ## Objective
 
@@ -57,6 +57,6 @@ JCH validates:
 - the first central dictionary;
 - important ambiguities;
 - conventions;
-- any mass rename, move, deletion, or archive operation.
+- any mass rename, move, deletion, or [[archive]] operation.
 
 JCH should not perform manual mass wikilinking.

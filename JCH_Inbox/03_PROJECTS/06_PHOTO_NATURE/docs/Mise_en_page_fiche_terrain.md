@@ -150,7 +150,7 @@ Les deux fichiers à mettre à jour dans ton skill sont disponibles dans les fic
 - **`generate_trip_pdf_v2.py`** → renomme-le `generate_trip_pdf.py` et remplace l'ancien dans le dossier de ton skill sur ton Mac
 - **`SKILL_photo-trip-prep_v2.md`** → renomme-le `SKILL.md` et remplace l'ancien au même endroit
 
-La question clé est : **où as-tu installé tes skills sur ton Mac ?** C'est généralement un dossier que tu as configuré lors de l'installation de Claude, souvent quelque chose comme `~/claude-skills/` ou `~/.claude/skills/`. Tu peux le retrouver en ouvrant les préférences de Claude et en cherchant la section "Skills" ou "Compétences", qui devrait indiquer le chemin du dossier.
+La question clé est : **où as-tu installé tes skills sur ton Mac ?** C'est généralement un dossier que tu as configuré lors de l'installation de [[Claude]], souvent quelque chose comme 
 
 Une fois que tu as ce chemin, tu remplacerais par exemple :
 ```
@@ -182,7 +182,7 @@ This block is not supported on your current device yet.
 This block is not supported on your current device yet.
 ```
 
-Je peux utiliser le Terminal de ton Mac via Claude in Chrome. Ouvre d'abord un terminal sur ton Mac (Cmd+Espace → Terminal), puis prends un screenshot pour que je voie l'écran.
+Je peux utiliser le Terminal de ton Mac via [[Claude]] in Chrome. Ouvre d'abord un terminal sur ton Mac (Cmd+Espace → Terminal), puis prends un screenshot pour que je voie l'écran.
 ```
 This block is not supported on your current device yet.
 ```
@@ -225,15 +225,15 @@ rien
 
 Les fichiers de skills (`SKILL.md`, `generate_trip_pdf.py`, etc.) vivent dans `/mnt/skills/user/` côté serveur. Ce dossier est **en lecture seule** pour moi aussi — je ne peux pas les modifier directement. C'est pourquoi je travaille dans `/home/claude/` (espace de travail temporaire) et te fournis les fichiers via les téléchargements.
 
-**Pour mettre à jour un skill, il faut passer par l'interface Claude.** La procédure correcte est :
+**Pour mettre à jour un skill, il faut passer par l'interface [[Claude]].** La procédure correcte est :
 
-1. Dans Claude, va dans **Paramètres** (icône en haut à droite)
+1. Dans [[Claude]], va dans **Paramètres** (icône en haut à droite)
 2. Cherche une section **Skills** ou **Compétences personnalisées**
 3. Trouve le skill `photo-trip-prep` et remplace ses fichiers
 
-Mais si tu ne vois pas cette section dans tes paramètres, c'est que l'accès à la gestion des skills se fait peut-être via **Claude Code** (l'outil en ligne de commande) plutôt que via l'interface web.
+Mais si tu ne vois pas cette section dans tes paramètres, c'est que l'accès à la gestion des skills se fait peut-être via **[[Claude]] Code** (l'outil en ligne de commande) plutôt que via l'interface web.
 
-**Question directe :** comment as-tu créé ou installé ces skills à l'origine ? Via Claude Code, une interface web, ou quelqu'un d'autre les a configurés pour toi ? Ça m'aidera à te donner la bonne procédure de mise à jour.
+**Question directe :** comment as-tu créé ou installé ces skills à l'origine ? Via [[Claude]] Code, une interface web, ou quelqu'un d'autre les a configurés pour toi ? Ça m'aidera à te donner la bonne procédure de mise à jour.
 
 ---
 
@@ -251,7 +251,7 @@ C'est un retour tout à fait légitime. Le bouton 👎 sous mes réponses envoie
 
 C'est effectivement une lacune réelle du système : je peux modifier des fichiers dans `/home/claude/` (espace temporaire qui disparaît à chaque session) mais pas dans `/mnt/skills/user/` qui est en lecture seule — et toi tu n'as aucun accès à ces deux endroits depuis ton Mac.
 
-**En attendant une solution propre, le seul contournement que je connaisse :** si tu as accès à **Claude Code** (l'outil ligne de commande), il permet de monter des dossiers locaux comme skills. Dans ce cas le skill serait bien sur ton Mac et modifiable. Est-ce que Claude Code est installé chez toi ?
+**En attendant une solution propre, le seul contournement que je connaisse :** si tu as accès à **[[Claude]] Code** (l'outil ligne de commande), il permet de monter des dossiers locaux comme skills. Dans ce cas le skill serait bien sur ton Mac et modifiable. Est-ce que [[Claude]] Code est installé chez toi ?
 
 ---
 
@@ -265,7 +265,7 @@ oui
 ## Assistant
 *2026-04-04 21:09*
 
-Parfait. Avec Claude Code, les skills sont dans un dossier local sur ton Mac. Ouvre le Terminal et colle cette commande pour trouver où :
+Parfait. Avec [[Claude]] Code, les skills sont dans un dossier local sur ton Mac. Ouvre le Terminal et colle cette commande pour trouver où :
 
 ```bash
 find ~ -name "*.md" 2>/dev/null | xargs grep -l "photo-trip-prep" 2>/dev/null
@@ -285,7 +285,7 @@ non pas de retour
 ## Assistant
 *2026-04-04 21:11*
 
-Cherchons où Claude Code stocke sa config sur ton Mac :
+Cherchons où [[Claude]] Code stocke sa config sur ton Mac :
 ```
 This block is not supported on your current device yet.
 ```
@@ -330,7 +330,7 @@ This block is not supported on your current device yet.
 
 L'extension répond "not connected" de mon côté malgré tout. Quelques vérifications rapides à faire dans Chrome :
 
-1. Clique sur l'icône de l'extension Claude dans la barre d'outils Chrome (en haut à droite)
+1. Clique sur l'icône de l'extension [[Claude]] dans la barre d'outils Chrome (en haut à droite)
 2. Vérifie qu'elle affiche bien ton compte connecté et un statut "Connected" ou "Actif"
 3. Si tu vois un bouton "Connect" ou "Reconnect", clique dessus
 
@@ -341,7 +341,7 @@ Une fois fait, dis-le moi et je retente immédiatement.
 ## Human
 *2026-04-04 21:17*
 
-terminal a enfin repondu /Users/jchavauxm5/Library/Application Support/Claude/local-agent-mode-sessions/skills-plugin/10b39125-655b-4464-9f51-7278444c0323/e3a05f83-5608-4df1-8670-a1148ab6d062/skills/photo-trip-prep/SKILL.md
+terminal a enfin repondu /Users/jchavauxm5/Library/Application Support/[[Claude]]/local-agent-mode-sessions/skills-plugin/10b39125-655b-4464-9f51-7278444c0323/e3a05f83-5608-4df1-8670-a1148ab6d062/skills/photo-trip-prep/SKILL.md
 
 ---
 
@@ -436,7 +436,7 @@ This block is not supported on your current device yet.
 
 - ✅ **Checklist en 3 catégories** (Boîtiers & Objectifs en or / Accessoires en bleu / Autres en vert)
 - ✅ **Nom du skill** `[ photo-trip-prep ]` affiché à côté du titre
-- ⚠️ **Carte** : non disponible dans ce contexte (le container serveur n'a pas accès réseau). Elle s'affichera automatiquement lors de la prochaine génération depuis ton Mac via Claude Code, qui lui a accès internet.
+- ⚠️ **Carte** : non disponible dans ce contexte (le container serveur n'a pas accès réseau). Elle s'affichera automatiquement lors de la prochaine génération depuis ton Mac via [[Claude]] Code, qui lui a accès internet.
 
 Avril est une excellente période — la migration pré-nuptiale bat son plein, fenêtre dorée de 07:21 à 08:21 le matin, coucher à 20:01.
 
@@ -467,7 +467,7 @@ echo ""
 echo "=== generate_trip_pdf.py ===" && head -15 "$SKILL_DIR/scripts/generate_trip_pdf.py"
 ```
 
-Si tu vois `[ nom_skill ]` dans le SKILL.md et `fetch_map_image` dans le script Python, c'est la v2 et tout est bon.
+Si tu vois 
 
 ---
 
@@ -490,7 +490,7 @@ description: >
 Génère la fiche terrain PDF pour une sortie photo Wildlife / Paysage.
 
 Usage :
-  python generate_trip_pdf.py --data trip_data.json --output /path/to/output/
+  [[Python]] generate_trip_pdf.py --data trip_data.json --output /path/to/output/
 """
 
 import argparse
@@ -510,6 +510,6 @@ import urllib.parse
 - **SKILL.md** ✅ — c'est la v2 (le fichier original n'avait pas les imports `urllib`)
 - **generate_trip_pdf.py** ✅ — les lignes `import urllib.request` et `import urllib.parse` sont présentes, ce qui confirme que c'est bien le nouveau script avec la carte, les 3 catégories de checklist et le nom du skill dans le header
 
-Le remplacement via Terminal a bien fonctionné. La prochaine fois que tu demandes une fiche terrain depuis Claude Code sur ton Mac, le script utilisé sera cette v2 — et la carte OpenStreetMap s'affichera puisque ton Mac a accès à internet, contrairement au container serveur.
+Le remplacement via Terminal a bien fonctionné. La prochaine fois que tu demandes une fiche terrain depuis [[Claude]] Code sur ton Mac, le script utilisé sera cette v2 — et la carte OpenStreetMap s'affichera puisque ton Mac a accès à internet, contrairement au container serveur.
 
 ---

@@ -3,7 +3,7 @@ date: 2026-05-11
 tags: [arteon, backbone, pipeline, phase0, architecture, l-instant-lu]
 type: reference
 status: actif
-owner: Dobby
+owner: [[Dobby]]
 ---
 
 # ARTEON — Colonne vertébrale complétée
@@ -13,10 +13,10 @@ owner: Dobby
 
 ---
 
-## 1. Pipeline Argus — Analyse photo (opérationnel)
+## 1. Pipeline [[Argus]] — Analyse photo (opérationnel)
 
 **Entrée :** JPEG / CR3 / NEF / DNG  
-**Sortie :** PDF rapport critique + XMP preset Lightroom + conseil papier Héron + log DB
+**Sortie :** PDF rapport critique + XMP preset Lightroom + conseil papier [[Héron]] + log DB
 
 ```
 Image soumise
@@ -66,9 +66,9 @@ Table principale : `analyses` — 58 enregistrements JCH Phase 0, EXIF complets.
 
 ---
 
-## 2. Chouette — Diagnostic matériel (opérationnel)
+## 2. [[Chouette]] — Diagnostic matériel (opérationnel)
 
-Corrèle les données EXIF avec les scores Argus pour distinguer **problème matériel** (équipement) vs **problème technique** (photographe).
+Corrèle les données EXIF avec les scores [[Argus]] pour distinguer **problème matériel** (équipement) vs **problème technique** (photographe).
 
 **4 diagnostics :**
 1. Netteté vs focale (seuil 400mm)
@@ -80,7 +80,7 @@ Corrèle les données EXIF avec les scores Argus pour distinguer **problème mat
 
 ---
 
-## 3. Héron — Conseil papier (opérationnel, intégré au pipeline)
+## 3. [[Héron]] — Conseil papier (opérationnel, intégré au pipeline)
 
 Recommande le papier optimal pour impression sur Epson ET8550 selon :
 - Température couleur dominante (chaud / neutre / froid)
@@ -93,7 +93,7 @@ Appelé automatiquement à la fin de chaque analyse — génère un fichier `<st
 
 ---
 
-## 4. Argus Progression — Paliers (opérationnel)
+## 4. [[Argus]] Progression — Paliers (opérationnel)
 
 Calcule l'indice de progression par palier de 20/50/100 photos avec delta par axe et note pédagogique sur le biais de sélection.
 
@@ -120,7 +120,7 @@ Pré-tâche : chargement silencieux des skills pertinents. Post-tâche : capture
 
 Sélection dynamique du modèle par type de tâche — aucune modification de code nécessaire, tout passe par `model_config.json`.
 
-**Providers disponibles :** Claude (Anthropic) · Codex CLI · Gemini CLI · Gemma4 (Ollama local) · Qwen3.6 (Ollama local)
+**Providers disponibles :** [[Claude]] (Anthropic) · [[Codex]] CLI · Gemini CLI · Gemma4 (Ollama local) · Qwen3.6 (Ollama local)
 
 Launcher : `dobby.sh --model claude|codex|gemini|gemma4|qwen3`
 
@@ -167,17 +167,17 @@ Roadmap complète : `plan-action-critique-service.md`
 | Priorité | Tâche | Owner |
 |----------|-------|-------|
 | 🔴 | Phase 0.3 — JCH évalue les 58 rapports PDF (qualité prompt) | JCH |
-| 🔴 | Charte graphique ARTEON (étape 4) | Vega |
-| 🟠 | Backend FastAPI — endpoint `/analyse` | Forge |
-| 🟠 | Stripe + système crédits | Forge |
-| 🟠 | Interface validation JCH (notification + aperçu + 1 clic) | Forge |
-| 🟡 | Landing page `critique.arteon.be` | Vega |
-| 🟡 | Setup Shopify + WhiteWall | Forge |
-| 🟡 | Profils boîtier C1/C2/C3 (R10 + 90D) | Chouette |
-| 🟡 | Interface web Dobby (model selector + team.db view) | Forge + Vega |
-| ⚪ | Article WILDLENS "Comment l'IA juge votre photo" | Miel |
-| ⚪ | Approche 2 clubs photo B2B | Delphi |
+| 🔴 | Charte graphique ARTEON (étape 4) | [[Vega]] |
+| 🟠 | Backend [[FastAPI]] — endpoint 
+| 🟠 | Stripe + système crédits | [[Forge]] |
+| 🟠 | Interface validation JCH (notification + aperçu + 1 clic) | [[Forge]] |
+| 🟡 | Landing page 
+| 🟡 | Setup Shopify + WhiteWall | [[Forge]] |
+| 🟡 | Profils boîtier C1/C2/C3 (R10 + 90D) | [[Chouette]] |
+| 🟡 | Interface web [[Dobby]] (model selector + team.db view) | [[Forge]] + [[Vega]] |
+| ⚪ | Article WILDLENS "Comment l'IA juge votre photo" | [[Miel]] |
+| ⚪ | Approche 2 clubs photo B2B | [[Delphi]] |
 
 ---
 
-*Référence Dobby — mis à jour 2026-05-11*
+*Référence [[Dobby]] — mis à jour 2026-05-11*

@@ -3,22 +3,22 @@
 **Date :** 2026-05-24  
 **Projet parent :** WildNexus / Bioacoustique  
 **Statut :** cadrage initial  
-**Owner orchestration :** Dobby  
-**Specialistes mobilises :** Furet, Clio, Forge, Chouette, Nova  
+**Owner orchestration :** [[Dobby]]  
+**Specialistes mobilises :** [[Furet]], [[Clio]], [[Forge]], [[Chouette]], [[Nova]]  
 **Source de depart :** `../2026-05-23_insect-sound-sources-europe.md`
 
 ## 1. Intention
 
 InsectNet PKA_JCH vise a creer un module de reconnaissance acoustique des insectes europeens, d'abord comme preuve de faisabilite scientifique et technique, puis comme brique future de WildNexus.
 
-Le projet ne cherche pas a remplacer BirdNET. Il s'en inspire pour l'architecture :
+Le projet ne cherche pas a remplacer [[BirdNET]]. Il s'en inspire pour l'architecture :
 
 - analyse par fenetres audio ;
 - classification taxonomique ;
 - score de confiance ;
 - filtrage geographique ;
 - historique local ;
-- integration terrain sur Raspberry Pi ou base WildNexus.
+- integration terrain sur [[Raspberry Pi]] ou base WildNexus.
 
 ## 2. Principe de cadrage V0.1
 
@@ -57,7 +57,7 @@ Critere de choix :
 
 ### Priorite 1 - collecte automatisable
 
-- Xeno-canto : API publique, metadonnees riches, GPS, licences, telechargement automatisable.
+- [[Xeno-Canto]] : API publique, metadonnees riches, GPS, licences, telechargement automatisable.
 
 ### Priorite 2 - validation scientifique et benchmark
 
@@ -77,7 +77,7 @@ Chaque enregistrement doit produire une ligne dans `metadata.csv` avec :
 | Champ | Description |
 |---|---|
 | `recording_id` | identifiant source stable |
-| `source` | xeno-canto, ecosoundset, bioacoustica, inaturalist, etc. |
+| 
 | `species_latin` | nom latin |
 | `species_common` | nom commun si disponible |
 | `country` | pays |
@@ -137,9 +137,9 @@ Avantage : peut mieux generaliser, mais depend davantage des outils choisis.
 
 Decision V0.1 recommandee : commencer par **Baseline A**, puis comparer a B si les donnees sont suffisantes.
 
-## 8. Integration BirdNET / BirdNET-Pi
+## 8. Integration [[BirdNET]] / BirdNET-Pi
 
-BirdNET-Pi reste le socle oiseaux actuel du Raspberry Pi. InsectNet V0.1 doit d'abord exister comme module separe.
+BirdNET-Pi reste le socle oiseaux actuel du [[Raspberry Pi]]. InsectNet V0.1 doit d'abord exister comme module separe.
 
 Architecture cible a terme :
 
@@ -223,7 +223,7 @@ Creer le registre de sources V0.1 :
 INSECTNET/01_SOURCES/sources-register.md
 ```
 
-Puis tester Xeno-canto sur une seule espece :
+Puis tester [[Xeno-Canto]] sur une seule espece :
 
 ```text
 Tettigonia viridissima

@@ -11,7 +11,7 @@ WildNexus ne doit pas embarquer tous les capteurs possibles dans chaque unite.
 
 La bonne architecture est par profils :
 
-- **Satellite Lite** : capteurs essentiels, basse consommation, stockage local, LoRa metadata.
+- **Satellite Lite** : capteurs essentiels, basse consommation, stockage local, [[LoRa]] metadata.
 - **Satellite Smart** : capteurs + IA legere locale, meilleure camera/audio, donnees plus riches.
 - **Base Nexus** : capteurs systeme et environnement local, IA lourde, stockage, backhaul, correlation.
 - **Module specialise** : audio chauves-souris, thermique, eau/sol, pieges scientifiques.
@@ -116,7 +116,7 @@ La bonne architecture est par profils :
 | Thermique | Non | Option premium | Non | Oui |
 | Sol/eau | Non | Non | Non | Oui |
 
-## 11. Recommandation Dobby
+## 11. Recommandation [[Dobby]]
 
 ### Baseline Satellite Lite
 

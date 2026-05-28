@@ -69,7 +69,7 @@ Diagnostics d'allergie animale pour le marché européen. SRL à 4 fondateurs (2
 Marque de photographie naturaliste éditoriale. Positionnement : rigueur scientifique + éthique documentaire + beauté du vivant. Site : arteon.be. Stack : Shopify + Ghost (WILDLENS) + WhiteWall. Trilingue FR/EN/IT.
 
 ### WILDMESH
-Réseau LoRa mesh pour caméras-pièges en forêt. Observation faune sans dérangement.
+Réseau [[LoRa]] mesh pour caméras-pièges en forêt. Observation faune sans dérangement.
 
 ### Faune Autour
 PWA basée sur GBIF pour repérage de la faune locale en temps réel.
@@ -115,9 +115,9 @@ Les valeurs ne sont pas dans les discours — elles sont dans les règles. Les r
 
 ## Outils de travail
 
-macOS · Obsidian (vaults : JCH VAULT, BRAIN, FAUNE) · Claude Code · Graphify · Scripts zsh · Shortcuts macOS
+macOS · [[Obsidian]] (vaults : JCH VAULT, BRAIN, FAUNE) · [[Claude]] Code · [[Graphify]] · Scripts zsh · Shortcuts macOS
 
 ---
 
-*Synthèse établie par Dobby — PKA JCH — 2026-05-01*
+*Synthèse établie par [[Dobby]] — PKA JCH — 2026-05-01*
 *Sources : CV, document "JCH qui est ce", Arteon manifeste, corrections directes de JCH*

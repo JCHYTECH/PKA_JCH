@@ -2,7 +2,7 @@
 
 **Date :** 2026-05-25
 **Statut :** collecte batch — à compléter
-**Owner :** Dobby + Forge
+**Owner :** [[Dobby]] + [[Forge]]
 **Dossier :** `03_P0_ENGINEERING/07_PROCUREMENT_BOM/datasheets/`
 
 ---
@@ -48,8 +48,8 @@
 | # | Composant | Réf. fabricant | Fiche technique | RoHS | Mouser/DigiKey |
 |---|-----------|---------------|-----------------|------|----------------|
 | B01 | Lentille M12 IR | **Lensation LS-6028** / **Evetar M12B0618W-IR** | 🔗 Lensation — demander devis + fiche | ✅ Oui | lensation.de |
-| B02 | Module LoRa | **RAK3172-T EU868** (SX1262) | [🔗 RAKwireless](https://docs.rakwireless.com/Product-Categories/WisDuo/RAK3172-Module/Datasheet/) | ✅ Oui (CE) | RAK Store EU |
-| B03 | Antenne LoRa 868 | **Molex 0213980100** | [🔗 Molex](https://www.molex.com/en-us/products/part-detail/0213980100) | ✅ Oui | Mouser |
+| B02 | Module [[LoRa]] | **RAK3172-T EU868** (SX1262) | [🔗 RAKwireless](https://docs.rakwireless.com/Product-Categories/WisDuo/RAK3172-Module/Datasheet/) | ✅ Oui (CE) | RAK Store EU |
+| B03 | Antenne [[LoRa]] 868 | **Molex 0213980100** | [🔗 Molex](https://www.molex.com/en-us/products/part-detail/0213980100) | ✅ Oui | Mouser |
 | B04 | Boîtier IP67 | **Hammond 1554B** | [🔗 Hammond](https://www.hammfg.com/electronics/small-case/plastic/1554) | ✅ Oui | RS Belgium / Mouser |
 | B05 | Capteur env. | **Bosch BME688** | [🔗 Bosch](https://www.bosch-sensortec.com/products/environmental-sensors/gas-sensors/bme688/) | ✅ Oui | Mouser BME688 |
 | B06 | Humidité/Temp | **Sensirion SHT31-DIS-B** | [🔗 Sensirion](https://sensirion.com/products/catalog/SHT31-DIS-B/) | ✅ Oui | Mouser SHT31-DIS-B |
@@ -72,5 +72,5 @@ Seuls points d'attention :
 ## Prochaine étape
 
 1. JCH télécharge les fiches 🔗 depuis les URLs ci-dessus et les place dans `datasheets/`
-2. Forge vérifie les disponibilités Mouser/DigiKey à date
+2. [[Forge]] vérifie les disponibilités Mouser/DigiKey à date
 3. Ajouter les certificats RoHS formatels si nécessaire pour l'enregistrement produit final (les fiches techniques suffisent généralement)

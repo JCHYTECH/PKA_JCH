@@ -1,4 +1,4 @@
-# YOLO sur ESP32 pour détection d’oiseaux — WildNexus 2
+# YOLO sur [[ESP32]] pour détection d’oiseaux — WildNexus 2
 
 [[wildnexus]]
 
@@ -6,23 +6,23 @@ Date : 2026-05-23
 
 ## Question de départ
 
-YOLO pourrait-il être installé sur ESP32 pour faire une détection d’oiseau dans X images extraites d’une vidéo stockée sur carte SD ?
+YOLO pourrait-il être installé sur [[ESP32]] pour faire une détection d’oiseau dans X images extraites d’une vidéo stockée sur carte SD ?
 
 ## Réponse synthétique
 
-Oui, mais pas de façon réaliste avec un vrai YOLO moderne sur ESP32.
+Oui, mais pas de façon réaliste avec un vrai YOLO moderne sur [[ESP32]].
 
-Sur un ESP32 ou ESP32-CAM classique, YOLO est trop lourd : la mémoire RAM est très limitée, le processeur est lent pour de l’inférence image, et la taille des images utilisables est fortement contrainte. Même avec un ESP32-S3 équipé de PSRAM, on reste dans le domaine de la TinyML très contrainte : modèle fortement réduit, quantifié, basse résolution et nombre de classes limité.
+Sur un [[ESP32]] ou ESP32-CAM classique, YOLO est trop lourd : la mémoire RAM est très limitée, le processeur est lent pour de l’inférence image, et la taille des images utilisables est fortement contrainte. Même avec un [[ESP32-S3]] équipé de PSRAM, on reste dans le domaine de la TinyML très contrainte : modèle fortement réduit, quantifié, basse résolution et nombre de classes limité.
 
 Pour le projet WildNexus, il faut distinguer trois niveaux :
 
-1. ESP32 seul : non recommandé pour YOLO réel.
-2. ESP32-S3 + PSRAM : envisageable pour un mini-modèle “oiseau / pas oiseau”, mais avec précision limitée.
-3. Raspberry Pi : architecture recommandée pour YOLO, extraction d’images depuis vidéo et analyse plus fiable.
+1. [[ESP32]] seul : non recommandé pour YOLO réel.
+2. [[ESP32-S3]] + PSRAM : envisageable pour un mini-modèle “oiseau / pas oiseau”, mais avec précision limitée.
+3. [[Raspberry Pi]] : architecture recommandée pour YOLO, extraction d’images depuis vidéo et analyse plus fiable.
 
-## Faisabilité sur ESP32 classique
+## Faisabilité sur [[ESP32]] classique
 
-Un ESP32 classique dispose de ressources trop limitées pour exécuter correctement YOLO.
+Un [[ESP32]] classique dispose de ressources trop limitées pour exécuter correctement YOLO.
 
 Les contraintes principales sont :
 
@@ -33,7 +33,7 @@ Les contraintes principales sont :
 - difficulté à charger un modèle YOLO même réduit ;
 - impossibilité pratique de traiter des images naturelles complexes avec précision.
 
-Dans ce contexte, l’ESP32 peut éventuellement servir à :
+Dans ce contexte, l’[[ESP32]] peut éventuellement servir à :
 
 - déclencher une caméra ;
 - gérer des capteurs environnementaux ;
@@ -45,9 +45,9 @@ Dans ce contexte, l’ESP32 peut éventuellement servir à :
 
 Mais il ne doit pas être considéré comme le processeur principal pour une vraie détection d’oiseaux par vision artificielle.
 
-## Cas ESP32-S3 avec PSRAM
+## Cas [[ESP32-S3]] avec PSRAM
 
-L’ESP32-S3 est plus intéressant car il peut disposer de PSRAM et d’instructions plus adaptées à certains traitements embarqués.
+L’[[ESP32-S3]] est plus intéressant car il peut disposer de PSRAM et d’instructions plus adaptées à certains traitements embarqués.
 
 Il peut éventuellement exécuter :
 
@@ -66,7 +66,7 @@ Mais il faut accepter de fortes limites :
 - précision variable en conditions naturelles ;
 - difficulté avec arrière-plans complexes, branches, feuilles, contre-jour, oiseaux partiellement visibles.
 
-Donc l’ESP32-S3 pourrait servir à faire un préfiltrage, mais pas à produire une détection fiable de type YOLO moderne.
+Donc l’[[ESP32-S3]] pourrait servir à faire un préfiltrage, mais pas à produire une détection fiable de type YOLO moderne.
 
 ## Détection dans X images extraites d’une vidéo
 
@@ -78,7 +78,7 @@ Le scénario envisagé est :
 4. le système décide si un oiseau est présent ;
 5. les images positives sont conservées ou transmises.
 
-Sur ESP32, ce flux est problématique, car :
+Sur [[ESP32]], ce flux est problématique, car :
 
 - décoder une vidéo est déjà coûteux ;
 - extraire des frames demande du CPU et de la mémoire ;
@@ -86,15 +86,15 @@ Sur ESP32, ce flux est problématique, car :
 - la carte SD ajoute des accès lents ;
 - la consommation énergétique augmente fortement.
 
-Le traitement vidéo + extraction de frames + YOLO n’est donc pas une bonne mission pour l’ESP32.
+Le traitement vidéo + extraction de frames + YOLO n’est donc pas une bonne mission pour l’[[ESP32]].
 
 ## Architecture recommandée pour WildNexus
 
 La meilleure architecture est hybride.
 
-### Rôle de l’ESP32
+### Rôle de l’[[ESP32]]
 
-L’ESP32 doit gérer les fonctions légères :
+L’[[ESP32]] doit gérer les fonctions légères :
 
 - gestion de l’énergie ;
 - mise en veille et réveil ;
@@ -109,9 +109,9 @@ L’ESP32 doit gérer les fonctions légères :
 - communication avec le module principal ;
 - watchdog et redémarrage si blocage.
 
-### Rôle du Raspberry Pi
+### Rôle du [[Raspberry Pi]]
 
-Le Raspberry Pi doit gérer les fonctions lourdes :
+Le [[Raspberry Pi]] doit gérer les fonctions lourdes :
 
 - caméra ;
 - enregistrement vidéo ;
@@ -119,7 +119,7 @@ Le Raspberry Pi doit gérer les fonctions lourdes :
 - extraction de frames ;
 - analyse image ;
 - YOLO ou modèle équivalent ;
-- BirdNET ou BirdNET-Go pour l’audio ;
+- [[BirdNET]] ou BirdNET-Go pour l’audio ;
 - stockage structuré des résultats ;
 - interface locale ;
 - synchronisation éventuelle vers cloud.
@@ -141,15 +141,15 @@ Mais le cloud ne doit pas être obligatoire si l’objectif est de garder un app
 
 Pour WildNexus, la décision recommandée est :
 
-- ne pas installer YOLO sur ESP32 comme moteur principal ;
-- utiliser l’ESP32 comme microcontrôleur de terrain ;
-- utiliser un Raspberry Pi Zero 2 W, Raspberry Pi 4 ou Raspberry Pi 5 pour l’analyse image ;
-- réserver l’ESP32-S3 à un éventuel prototype de préfiltrage très simple ;
-- garder YOLO sur Raspberry Pi ou cloud.
+- ne pas installer YOLO sur [[ESP32]] comme moteur principal ;
+- utiliser l’[[ESP32]] comme microcontrôleur de terrain ;
+- utiliser un [[Raspberry Pi]] Zero 2 W, [[Raspberry Pi]] 4 ou [[Raspberry Pi 5]] pour l’analyse image ;
+- réserver l’[[ESP32-S3]] à un éventuel prototype de préfiltrage très simple ;
+- garder YOLO sur [[Raspberry Pi]] ou cloud.
 
 ## Options possibles
 
-### Option A — ESP32 seul
+### Option A — [[ESP32]] seul
 
 Non recommandée.
 
@@ -165,7 +165,7 @@ Limite :
 
 - pas de vraie détection fiable d’oiseaux.
 
-### Option B — ESP32-S3 avec modèle TinyML
+### Option B — [[ESP32-S3]] avec modèle TinyML
 
 Possible pour expérimentation.
 
@@ -182,18 +182,18 @@ Limite :
 - faible résolution ;
 - performances incertaines en forêt.
 
-### Option C — ESP32 + Raspberry Pi
+### Option C — [[ESP32]] + [[Raspberry Pi]]
 
 Recommandée.
 
 Usage possible :
 
-- ESP32 pour gestion bas niveau ;
-- Raspberry Pi pour caméra, vidéo, IA, audio et stockage ;
+- [[ESP32]] pour gestion bas niveau ;
+- [[Raspberry Pi]] pour caméra, vidéo, IA, audio et stockage ;
 - analyse locale plus fiable ;
 - architecture évolutive.
 
-### Option D — ESP32 + Raspberry Pi + Cloud
+### Option D — [[ESP32]] + [[Raspberry Pi]] + Cloud
 
 Recommandée pour version avancée.
 
@@ -207,22 +207,22 @@ Usage possible :
 
 ## Conclusion
 
-YOLO sur ESP32 n’est pas la bonne voie pour WildNexus si l’objectif est une détection fiable d’oiseaux dans des images extraites d’une vidéo.
+YOLO sur [[ESP32]] n’est pas la bonne voie pour WildNexus si l’objectif est une détection fiable d’oiseaux dans des images extraites d’une vidéo.
 
-L’ESP32 doit rester un contrôleur intelligent de terrain, sobre et robuste. La vision artificielle sérieuse doit être confiée à un Raspberry Pi ou à un service cloud.
+L’[[ESP32]] doit rester un contrôleur intelligent de terrain, sobre et robuste. La vision artificielle sérieuse doit être confiée à un [[Raspberry Pi]] ou à un service cloud.
 
 La meilleure architecture pour WildNexus est donc :
 
-ESP32 = énergie, capteurs, réveil, Wi-Fi local  
-Raspberry Pi = vidéo, extraction d’images, YOLO, BirdNET  
+[[ESP32]] = énergie, capteurs, réveil, Wi-Fi local  
+[[Raspberry Pi]] = vidéo, extraction d’images, YOLO, [[BirdNET]]  
 Cloud = analyse avancée optionnelle et centralisation
 
 ## Formule de décision
 
-Si l’objectif est simplement de savoir qu’un événement a eu lieu : ESP32 possible.
+Si l’objectif est simplement de savoir qu’un événement a eu lieu : [[ESP32]] possible.
 
-Si l’objectif est de savoir s’il y a probablement un oiseau : ESP32-S3 possible mais expérimental.
+Si l’objectif est de savoir s’il y a probablement un oiseau : [[ESP32-S3]] possible mais expérimental.
 
-Si l’objectif est de détecter correctement un oiseau dans des images naturelles : Raspberry Pi recommandé.
+Si l’objectif est de détecter correctement un oiseau dans des images naturelles : [[Raspberry Pi]] recommandé.
 
-Si l’objectif est d’identifier, classer, archiver et exploiter les données : Raspberry Pi + cloud recommandé.
+Si l’objectif est d’identifier, classer, archiver et exploiter les données : [[Raspberry Pi]] + cloud recommandé.

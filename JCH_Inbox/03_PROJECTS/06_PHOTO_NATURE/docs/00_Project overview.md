@@ -75,7 +75,7 @@ Dossiers utiles au projet, indiqués ici comme repères mais sans lien direct af
 - 02_Photo
 - 10_KNOWLEDGE_BASE
 - TaskNotes
-- 99_SYSTEM/Graphify
+- 99_SYSTEM/[[Graphify]]
 
 ## 5. Notes pivots recommandées
 
@@ -94,8 +94,8 @@ Créer progressivement les notes pivots suivantes si elles n'existent pas encore
 - [ ] Identifier les 10 espèces prioritaires à documenter.
 - [ ] Relier les photos existantes aux notes espèces.
 - [ ] Tester le Local Graph depuis cette note.
-- [ ] Lancer Graphify uniquement sur le dossier du projet.
-- [ ] Nettoyer les liens faibles proposés par Graphify.
+- [ ] Lancer [[Graphify]] uniquement sur le dossier du projet.
+- [ ] Nettoyer les liens faibles proposés par [[Graphify]].
 
 ## 7. Tâches TaskNotes liées
 
@@ -175,8 +175,8 @@ Relier ici les notes utiles venant de `10_KNOWLEDGE_BASE`.
 |---|---|---|
 | Mauvaise identification | élevé | Vérification par sources fiables ou expert |
 | Photos non reliées aux notes | moyen | Ajouter liens entre photo, espèce et lieu |
-| Trop de notes isolées | moyen | Utiliser notes pivots et Graphify |
-| Graphe trop bruyant | moyen | Valider manuellement les liens Graphify |
+| Trop de notes isolées | moyen | Utiliser notes pivots et [[Graphify]] |
+| Graphe trop bruyant | moyen | Valider manuellement les liens [[Graphify]] |
 
 ## 15. Workflow recommandé
 
@@ -191,9 +191,9 @@ Observation terrain
 → mise à jour des notes pivots
 ```
 
-## 16. Graphify
+## 16. [[Graphify]]
 
-Pour ce projet, Graphify doit être lancé seulement sur le périmètre :
+Pour ce projet, [[Graphify]] doit être lancé seulement sur le périmètre :
 
 ```text
 03_PROJECTS/Projets actifs/08_PROJET faune-autour

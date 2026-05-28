@@ -1,9 +1,9 @@
 ---
 type: procedure
-domain: birdnet
+domain: [[BirdNET]]
 dateCreated: 2026-05-16
 tags:
-  - birdnet
+  - [[BirdNET]]
   - raspberrypi
   - wifi
   - iphone
@@ -16,7 +16,7 @@ tags:
 
 ## Objectif
 
-Configurer un Raspberry Pi utilisant BirdNET-Go afin de :
+Configurer un [[Raspberry Pi]] utilisant BirdNET-Go afin de :
 
 - fonctionner automatiquement sur le Wi‑Fi maison
 - basculer sur le hotspot iPhone lorsqu’aucun Wi‑Fi fixe n’est disponible
@@ -26,7 +26,7 @@ Configurer un Raspberry Pi utilisant BirdNET-Go afin de :
 
 # 1. Vérifier le gestionnaire réseau
 
-Ouvrir le Terminal du Raspberry Pi :
+Ouvrir le Terminal du [[Raspberry Pi]] :
 
 ```bash
 nmcli device status
@@ -58,7 +58,7 @@ Exemple :
 
 ---
 
-# 3. Connecter le Raspberry Pi au hotspot
+# 3. Connecter le [[Raspberry Pi]] au hotspot
 
 Lister les réseaux :
 
@@ -136,7 +136,7 @@ http://raspberrypi.local:8080
 
 # 8. Vérifier BirdNET-Go
 
-Docker :
+[[Docker]] :
 
 ```bash
 docker ps
@@ -152,8 +152,8 @@ systemctl status birdnet-go
 
 # 9. Configuration recommandée terrain
 
-- Raspberry Pi 5
-- BirdNET-Go sous Docker
+- [[Raspberry Pi 5]]
+- BirdNET-Go sous [[Docker]]
 - hotspot iPhone
 - powerbank USB-C PD
 - accès via Safari iPhone
@@ -164,7 +164,7 @@ systemctl status birdnet-go
 
 Installer :
 
-- Tailscale
+- [[Tailscale]]
 - ou Zerotier
 
-Pour retrouver facilement le Raspberry Pi à distance.
+Pour retrouver facilement le [[Raspberry Pi]] à distance.

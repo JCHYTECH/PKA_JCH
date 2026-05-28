@@ -1,19 +1,19 @@
 ---
-title: Graphify — Workflow JCH
+title: [[Graphify]] — Workflow JCH
 type: reference
 created: 2026-04-24
-tags: [graphify, workflow, obsidian, claude-code, jch-vault]
+tags: [[[Graphify]], workflow, [[Obsidian]], claude-code, jch-vault]
 ---
 
-# Graphify — Workflow JCH
+# [[Graphify]] — Workflow JCH
 
-Document de référence pour l'utilisation de Graphify avec ton JCH VAULT, issu de la session d'installation du 2026-04-24.
+Document de référence pour l'utilisation de [[Graphify]] avec ton JCH VAULT, issu de la session d'installation du 2026-04-24.
 
 ## Contexte et choix d'architecture
 
-### Ce qu'est Graphify
+### Ce qu'est [[Graphify]]
 
-Skill pour Claude Code (et d'autres assistants IA) qui transforme un dossier de fichiers (code, docs, PDFs, images) en graphe de connaissances interrogeable. Produit :
+Skill pour [[Claude]] Code (et d'autres assistants IA) qui transforme un dossier de fichiers (code, docs, PDFs, images) en graphe de connaissances interrogeable. Produit :
 - `graph.html` — graphe interactif navigable dans un navigateur
 - `GRAPH_REPORT.md` — résumé plain-text des god nodes, communautés, connexions surprenantes
 - `graph.json` — graphe persistant interrogeable via `graphify query`
@@ -21,8 +21,8 @@ Skill pour Claude Code (et d'autres assistants IA) qui transforme un dossier de 
 
 ### Ce qu'il n'est pas
 
-- **Pas un plugin Obsidian.** Il peut seulement exporter un vault Obsidian via le flag `--obsidian`.
-- **Pas de sync bidirectionnelle.** L'export Obsidian est un snapshot écrasé à chaque run.
+- **Pas un plugin [[Obsidian]].** Il peut seulement exporter un vault [[Obsidian]] via le flag 
+- **Pas de sync bidirectionnelle.** L'export [[Obsidian]] est un snapshot écrasé à chaque run.
 - **Pas un outil de code distant.** Il scanne des fichiers locaux uniquement.
 
 ### Package installé
@@ -36,7 +36,7 @@ Skill pour Claude Code (et d'autres assistants IA) qui transforme un dossier de 
 
 ### Principe
 
-Le JCH VAULT iCloud reste source de vérité. Les outputs lourds de Graphify (cache, HTML, JSON) restent **hors iCloud**. Seul l'export Obsidian (fichiers `.md` propres) revient dans le vault.
+Le JCH VAULT iCloud reste source de vérité. Les outputs lourds de [[Graphify]] (cache, HTML, JSON) restent **hors iCloud**. Seul l'export [[Obsidian]] (fichiers 
 
 ### Structure
 
@@ -101,7 +101,7 @@ rsync -av --delete \
 ```
 
 Points clés :
-- `-av` : archive + verbose
+- 
 - `--delete` : supprime dans la destination ce qui n'est plus dans la source
 - Le slash final après `faune-autour/` est **crucial** (copie le contenu, pas le dossier)
 
@@ -110,14 +110,14 @@ Vérifier :
 ls ~/Documents/graphify-work/faune-autour/
 ```
 
-### Phase 4. Lancer Graphify
+### Phase 4. Lancer [[Graphify]]
 
 ```bash
 cd ~/Documents/graphify-work/faune-autour
 graphify . --obsidian --obsidian-dir "/Users/jchavauxm5/Library/Mobile Documents/iCloud~md~obsidian/Documents/JCH VAULT/0-ai-it-tools/PROJET faune-autour/graphify-notes"
 ```
 
-Note : on utilise `graphify` (shell zsh), pas `/graphify` (Claude Code). Les deux fonctionnent, la syntaxe diffère selon le contexte d'appel.
+Note : on utilise 
 
 ### Phase 5. Vérification
 
@@ -132,11 +132,11 @@ ls "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/JCH VAULT/0-ai-i
 open ~/Documents/graphify-work/faune-autour/graphify-out/graph.html
 ```
 
-Dans Obsidian : `JCH VAULT → 0-ai-it-tools → PROJET faune-autour → graphify-notes`. Tu dois voir des notes liées par `[[...]]`. `Cmd+G` pour le graphe natif Obsidian.
+Dans [[Obsidian]] : 
 
 ## Workflow récurrent
 
-Quand des notes ont été modifiées dans Obsidian et que tu veux régénérer :
+Quand des notes ont été modifiées dans [[Obsidian]] et que tu veux régénérer :
 
 ```bash
 # 1. Re-sync vault → local
@@ -190,20 +190,20 @@ Et adapter les chemins dans les commandes ci-dessus. Les conventions retenues :
 ## Pièges rencontrés et règles à retenir
 
 ### Distinction `/graphify` vs `graphify`
-- **Dans Claude Code (session interactive)** : `/graphify .` avec slash initial
+- **Dans [[Claude]] Code (session interactive)** : 
 - **Dans shell zsh** : `graphify .` sans slash
 - Si on tape `/graphify` dans zsh, zsh cherche un fichier à la racine `/` et échoue avec `no such file or directory: /graphify`
 
-### Graphify ne scanne que du local
-Graphify ne sait pas lire un repo GitHub distant. Pour analyser un repo :
+### [[Graphify]] ne scanne que du local
+[[Graphify]] ne sait pas lire un repo GitHub distant. Pour analyser un repo :
 - Soit cloner localement : `git clone https://github.com/.../repo.git`
 - Soit utiliser `graphify add <url>` pour ajouter des fichiers ponctuels (papers, tweets)
 
 ### `graphify-out/` toujours placé dans le dossier scanné
 Depuis la v0.4.32, `graphify-out/` est toujours créé **à l'intérieur** du dossier passé en argument. On ne peut pas le rediriger ailleurs. C'est la raison pour laquelle on scanne depuis `~/Documents/graphify-work/` (hors iCloud) et pas directement depuis le vault.
 
-### Sortir de Claude Code avant les commandes shell de vérification
-Dans une session Claude Code, les commandes comme `head`, `ls`, `cat` sont interprétées comme des outils Claude Code, pas comme des commandes shell. Pour avoir la sortie brute, taper `/exit` (ou `Ctrl+D`) d'abord.
+### Sortir de [[Claude]] Code avant les commandes shell de vérification
+Dans une session [[Claude]] Code, les commandes comme 
 
 ### Ne jamais lancer `graphify .` dans `~`
 Scannerait tout le home, consommation API massive, probable échec. Toujours vérifier le `pwd` avant.
@@ -215,12 +215,12 @@ Contient la liste des fichiers effectivement scannés. Permet de confirmer que l
 
 - `uv` installé et opérationnel
 - `graphifyy` installé via `uv tool install`, CLI `graphify` sur le PATH
-- Skill Claude Code installé (`graphify install` exécuté)
+- Skill [[Claude]] Code installé (
 - Un premier run a été fait dans `JCH VAULT/0-ai-it-tools/PROJET faune-autour/` (corpus = notes projet, pas code source)
 - Workflow Option B pas encore appliqué — à faire au prochain créneau
 
 ## Références
 
-- Doc officielle : https://graphify.net/
-- Repo : https://github.com/safishamsi/graphify
+- Doc officielle : https://[[Graphify]].net/
+- Repo : https://github.com/safishamsi/[[Graphify]]
 - PyPI : https://pypi.org/project/graphifyy/

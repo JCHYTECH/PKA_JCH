@@ -1,6 +1,6 @@
 ---
 date: 2026-04-19
-source: chat Claude — "Send chat to Obsidian : Md creation"
+source: chat [[Claude]] — "Send chat to [[Obsidian]] : Md creation"
 domain: Photographie / Canon / configuration
 tags: [prompt, system-prompt, canon, r10, wildlife, sport, photography]
 status: ready

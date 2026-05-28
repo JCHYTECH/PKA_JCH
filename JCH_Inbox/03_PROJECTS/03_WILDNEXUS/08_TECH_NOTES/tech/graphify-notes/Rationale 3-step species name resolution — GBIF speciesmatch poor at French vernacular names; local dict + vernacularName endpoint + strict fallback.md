@@ -3,8 +3,8 @@ source_file: "API_pour_observations_be.md"
 type: "document"
 community: "Species Search & Geolocation Logic"
 tags:
-  - graphify/document
-  - graphify/EXTRACTED
+  - [[Graphify]]/document
+  - [[Graphify]]/EXTRACTED
   - community/Species_Search_&_Geolocation_Logic
 ---
 
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[doSearch() — async function 3-step name resolution + GBIF occurrence fetch]] - `rationale_for` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Species_Search_&_Geolocation_Logic
+#[[Graphify]]/document #[[Graphify]]/EXTRACTED #community/Species_Search_&_Geolocation_Logic

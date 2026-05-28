@@ -1,7 +1,7 @@
 # InsectNet - Metadata Schema V0.1
 
 **Date :** 2026-05-24  
-**Source initiale validee :** Xeno-canto API v3  
+**Source initiale validee :** [[Xeno-Canto]] API v3  
 **Espece test :** `Tettigonia viridissima`  
 **Statut :** schema initial
 
@@ -20,7 +20,7 @@ Le schema doit conserver :
 
 ## Colonnes obligatoires
 
-| Colonne | Type | Source Xeno-canto | Description |
+| Colonne | Type | Source [[Xeno-Canto]] | Description |
 |---|---|---|---|
 | `recording_id` | string | `id` | Identifiant source stable |
 | `source` | string | constant | Source, ex. `xeno-canto` |
@@ -32,7 +32,7 @@ Le schema doit conserver :
 | `species` | string | `sp` | Espece |
 | `species_latin` | string | `gen` + `sp` | Nom latin complet |
 | `species_common_en` | string | `en` | Nom anglais si disponible |
-| `group` | string | `grp` | Groupe Xeno-canto, ex. `grasshoppers` |
+| 
 | `country` | string | `cnt` | Pays |
 | `location` | string | `loc` | Localite |
 | `latitude` | float/null | `lat` | Latitude |
@@ -43,7 +43,7 @@ Le schema doit conserver :
 | `uploaded_date` | date/null | `uploaded` | Date upload |
 | `recordist` | string | `rec` | Auteur |
 | `license_url` | string | `lic` | Licence |
-| `quality` | string | `q` | Qualite Xeno-canto |
+| 
 | `sound_type` | string | `type` | Type sonore |
 | `sex` | string/null | `sex` | Sexe |
 | `life_stage` | string/null | `stage` | Stade |
@@ -110,5 +110,5 @@ Le champ `quality_flag` et les champs de licence decident de l'usage :
 
 - `ok` : utilisable dans le premier dataset ;
 - `review` : a verifier manuellement ;
-- `reject` : conserve en trace mais exclu.
+- 
 

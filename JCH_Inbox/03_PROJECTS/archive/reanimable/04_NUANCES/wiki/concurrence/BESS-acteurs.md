@@ -1,7 +1,7 @@
 ---
 projet: NUANCES
 domaine: Paysage concurrentiel BESS
-auteur: Furet
+auteur: [[Furet]]
 date: 2026-05-10
 statut: draft
 ---

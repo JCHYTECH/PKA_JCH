@@ -3,8 +3,8 @@ source_file: "API_pour_observations_be.md"
 type: "document"
 community: "GBIF Data Sources & APIs"
 tags:
-  - graphify/document
-  - graphify/EXTRACTED
+  - [[Graphify]]/document
+  - [[Graphify]]/EXTRACTED
   - community/GBIF_Data_Sources_&_APIs
 ---
 
@@ -19,4 +19,4 @@ tags:
 - [[iNaturalist — alternative data source (open API, near real-time)]] - `semantically_similar_to` [INFERRED]
 - [[pygbif — Python client for GBIF API]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/GBIF_Data_Sources_&_APIs
+#[[Graphify]]/document #[[Graphify]]/EXTRACTED #community/GBIF_Data_Sources_&_APIs

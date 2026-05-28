@@ -44,7 +44,7 @@ Please do explore, and if you’ve any questions, just ask…
 - *Jan 2025 Added [fine detail test pdf](#detail)*
 - *Jan 2024 [Why you should not use CMYK](#cmyk)*
 - *Dec 2022 Colour test image for selecting colours for bright text \[see linked video for explanation\]*
-- *Dec 2021 updated links (archive.org)*
+- *Dec 2021 updated links ([[archive]].org)*
 - *Apr 2021 Image for [testing greeting card stock](#cards).  
 	*
 - Aug 2025 Expanded Adobe98 and sRGB versions of the datacolor image
@@ -81,7 +81,7 @@ We also have affiliate links for:
 
 If you have any test images on your site that you’d like me to mention, please feel free to drop me an email.
 
-*When updating this page for the new site, I found quite a few broken links. Where possible I’ve included archive.org links instead, but some files may be difficult to track down. I may have copies, but since they are not my files, I’m loathe to put them here for download – give me a call… Some images may also have restrictions for commercial use.*
+*When updating this page for the new site, I found quite a few broken links. Where possible I’ve included [[archive]].org links instead, but some files may be difficult to track down. I may have copies, but since they are not my files, I’m loathe to put them here for download – give me a call… Some images may also have restrictions for commercial use.*
 
 I’ve also some [test images specially for media selection](https://www.northlight-images.co.uk/media-settings-printer-test-images/) when creating printer profiles.
 
@@ -191,7 +191,7 @@ See also the newer test image and explanation below from Datacolor
 - Good deep tone detail in the purple sand in the fish bowl and the background of the tapestry.
 - Bright sunflower yellows in the sunflower, distinct from the lemon yellows of the lemon.
 - Good saturated blues in the vase and its stem.
-- No problem tones in the dark areas of the lemon, the peach, the orange, and the apple.
+- No problem tones in the dark areas of the lemon, the peach, the orange, and the [[Apple]].
 - A rich range of greens in the cactus and the sunflower leaves.
 - Rich brown tones in the binocular case, transitioning well into the dark areas.
 - A good range of varying warm highlights in most areas.
@@ -492,20 +492,20 @@ There are also some of his profiles and profiling test targets
 
 This version, and a guide to using it could be found at [Outback Print](http://www.outbackprint.com/printinginsights/pi049/essay.html) but (2016) the site has vanished.
 
-There is a [copy of the notes about how to use this image](https://web.archive.org/web/20150315195404/http://outbackprint.outbackphoto.com/printinginsights/pi049/essay.html) at archive.org
+There is a [copy of the notes about how to use this image](https://web.archive.org/web/20150315195404/http://outbackprint.outbackphoto.com/printinginsights/pi049/essay.html) at [[archive]].org
 
 The image itself was able to be downloaded at:
 
 [http://www.jirvana.com/printer\_tests/PrinterEvaluationImage\_V002.zip](http://www.jirvana.com/printer_tests/PrinterEvaluationImage_V002.zip)
 
-*However \[2020\] it’s gone – once again I have a copy, but see the collection linked further down the page or you could use Archive.org, where the full file can be found at:  
+*However \[2020\] it’s gone – once again I have a copy, but see the collection linked further down the page or you could use [[archive]].org, where the full file can be found at:  
 [https://web.archive.org/web/20100103025218/http://www.jirvana.com/printer\_tests/](https://web.archive.org/web/20100103025218/http://www.jirvana.com/printer_tests/)*
 
 #### Other assorted test images
 
 ![printer test](https://www.northlight-images.co.uk/content_images_2/test_images/darlow.jpg) This one was available in several colour spaces and looks to include corrected parts of the Fuji test image mentioned earlier.
 
-The original link has expired, but the page and files are available via archive.org
+The original link has expired, but the page and files are available via [[archive]].org
 
 http://www.andrewdarlow.com/calib.html
 
@@ -517,7 +517,7 @@ IMPORTANT – see the [notes on this image above](#fuji)
 
 ![CSC test image](https://www.northlight-images.co.uk/content_images_2/test_images/csc_image.jpg) Test Image was from from http://www.colour-science.com
 
-However the site is \[2020\] defunct but the image can still be found via archive.org
+However the site is \[2020\] defunct but the image can still be found via [[archive]].org
 
 [https://web.archive.org/web/20160412132148/http://www.colour-science.com/quality%20test%20tools/test%20files/test%20files%20overview.htm](https://web.archive.org/web/20160412132148/http://www.colour-science.com/quality%20test%20tools/test%20files/test%20files%20overview.htm)
 

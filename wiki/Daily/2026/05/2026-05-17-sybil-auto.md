@@ -12,18 +12,18 @@ tags: [dashboard, wildnexus, infrastructure, team]
 La journée a porté sur la stabilisation de l'écosystème d'outils. Plusieurs scripts de gestion dashboard ont été modifiés :
 
 - **bin/dashboard.sh**, **bin/dashboardctl.sh** : scripts de contrôle du dashboard
-- **bin/dobby.sh** : agent système
+- **bin/[[Dobby]].sh** : agent système
 - **bin/install-dashboard-launchd.sh** : installation de la tâche planifiée
 
-Les fichiers de configuration système ont été mis à jour (**.claude/settings.local.json**), ainsi que les logs d'exécution du launchd et de la passerelle Gmail.
+Les fichiers de configuration système ont été mis à jour (**.[[Claude]]/settings.local.json**), ainsi que les logs d'exécution du launchd et de la passerelle Gmail.
 
 ## Système de rapports et documentation
 
 La structure documentaire s'est enrichie :
 
-- Rapport hebdomadaire Dobby généré : *wiki/Daily/2026/05/2026-05-17-dobby-jch-rapport-hebdo.md*
+- Rapport hebdomadaire [[Dobby]] généré : *wiki/Daily/2026/05/2026-05-17-dobby-jch-rapport-hebdo.md*
 - Entrée quotidienne : *wiki/Daily/2026-05-17.md*
-- Vérification système Dobby enregistrée : *TEAM_Inbox/dobby/2026-05-17_dobby_system_check.md*
+- Vérification système [[Dobby]] enregistrée : *TEAM_Inbox/[[Dobby]]/2026-05-17_dobby_system_check.md*
 
 Les fichiers de log (Gmail Gatekeeper, dashboard launchd) indiquent une activité de monitoring continu.
 
@@ -56,8 +56,8 @@ Base de données et artefacts team modifiés :
 
 - **TEAM/team.db** : données mise à jour
 - **TEAM/ROSTER.md** : effectifs
-- **TEAM/atlas.md** : cartographie d'équipe
-- **TEAM/hermine.md** : profil ou documentation partenaire
+- **TEAM/[[Atlas]].md** : cartographie d'équipe
+- **TEAM/[[Hermine]].md** : profil ou documentation partenaire
 
 ## Synthèse
 

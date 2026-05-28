@@ -11,7 +11,7 @@ members: 2
 
 ## Members
 - [[Haversine distance calculation — observation-to-user distance]] - document - faune-autour.md
-- [[haversineKm() — great-circle distance calculation]] - document - git/faune-autour_13.html
+- [[haversineKm() — great-circle distance calculation]] - document - [[Git]]/faune-autour_13.html
 
 ## Live Query (requires Dataview plugin)
 

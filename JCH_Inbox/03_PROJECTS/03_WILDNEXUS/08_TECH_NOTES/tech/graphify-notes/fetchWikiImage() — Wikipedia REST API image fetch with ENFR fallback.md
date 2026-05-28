@@ -1,10 +1,10 @@
 ---
-source_file: "git/faune-autour_13.html"
+source_file: "[[Git]]/faune-autour_13.html"
 type: "document"
 community: "Map & Detail Display"
 tags:
-  - graphify/document
-  - graphify/EXTRACTED
+  - [[Graphify]]/document
+  - [[Graphify]]/EXTRACTED
   - community/Map_&_Detail_Display
 ---
 
@@ -14,4 +14,4 @@ tags:
 - [[Wikipedia Action API — species images]] - `calls` [EXTRACTED]
 - [[openDrawer() — show detail drawer with Wikipedia image + mini Leaflet map]] - `calls` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Map_&_Detail_Display
+#[[Graphify]]/document #[[Graphify]]/EXTRACTED #community/Map_&_Detail_Display

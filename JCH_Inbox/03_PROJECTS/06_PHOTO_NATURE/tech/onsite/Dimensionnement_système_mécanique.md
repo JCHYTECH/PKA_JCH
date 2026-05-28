@@ -31,7 +31,7 @@ Ce que tu veux faire, en clair
 Contrôleur conseillé (3 options, du plus simple au plus robuste)
 
 Option A – La plus simple et très fiable : microcontrôleur + driver stepper “STEP/DIR”
-- Contrôleur : Arduino Nano / Uno (ou un ESP32 si tu veux écran/Wi-Fi plus tard).
+- Contrôleur : [[Arduino]] Nano / Uno (ou un [[ESP32]] si tu veux écran/Wi-Fi plus tard).
 - Driver : TMC2209 (silencieux, micro-pas fins, très bon pour du stacking) ou DRV8825 (moins cher, plus bruyant).
 - Avantages : tu maîtrises exactement “X pas, à telle vitesse”, tu peux faire une pause, gérer un déclencheur appareil, ajouter un écran/encodeur.
 - Inconvénient : il faut un petit firmware (mais c’est assez standard).
@@ -47,13 +47,13 @@ Option C – Si tu veux un truc déjà pensé pour le stacking (mais tu fais qua
 - Avantages : tout est déjà dans l’interface (pas, pause, nb de vues, déclenchement).
 - Inconvénients : tu n’es plus 100% sur du “DIY pur”, et parfois fermé/moins flexible.
 
-Si tu me dis “je veux le minimum de code”, je te pousse vers B/C. Si tu veux un outil propre, évolutif, et précis, je te pousse vers A (Arduino/ESP32 + TMC2209).
+Si tu me dis “je veux le minimum de code”, je te pousse vers B/C. Si tu veux un outil propre, évolutif, et précis, je te pousse vers A ([[Arduino]]/[[ESP32]] + TMC2209).
 
 Architecture recommandée (celle que je ferais pour un rail macro)
 - Moteur : NEMA 17 (1.8°) couple correct, ou NEMA 14 si tu es ultra léger. Pour un chariot + boîtier + objectif macro + flash, NEMA17 est généralement plus serein.
 - Driver : TMC2209 (en UART si tu veux régler le courant finement, sinon en standalone).
 - Alimentation : 12 V (souvent suffisant) ou 24 V si tu veux plus de marge en vitesse/ couple à haut régime (24 V améliore souvent la tenue en vitesse).
-- Contrôle : Arduino Nano (simple) ou ESP32 (plus confortable si écran + encodeur + menus).
+- Contrôle : [[Arduino]] Nano (simple) ou [[ESP32]] (plus confortable si écran + encodeur + menus).
 - Interface utilisateur : encodeur rotatif + écran OLED (0.96") ou écran LCD 16x2.
 - Déclenchement caméra : optocoupleur ou transistor + jack (selon Canon/Nikon/Sony). L’idée : isoler électriquement l’appareil.
 
@@ -76,7 +76,7 @@ Ce qu’il me manque pour te donner un choix “sans hésitation” (et te calcu
 6) Alimentation : secteur possible ? batterie (powerbank/12V) ? usage terrain ?
 
 Réponse directe à “quel contrôleur je dois utiliser ?”
-Sans autre contrainte : Arduino Nano + TMC2209 + NEMA17 + alim 12 V (ou 24 V si tu veux plus de vitesse). C’est le meilleur compromis précision/bruit/souplesse pour du focus stacking DIY.
+Sans autre contrainte : [[Arduino]] Nano + TMC2209 + NEMA17 + alim 12 V (ou 24 V si tu veux plus de vitesse). C’est le meilleur compromis précision/bruit/souplesse pour du focus stacking DIY.
 
 Et pour ta dernière question : oui, ta question est “complète” sur l’idée générale, mais il manque surtout (1) le pitch de la vis et (2) la charge/usage. Donne-moi ces deux infos, et je te sors une recommandation dimensionnée (moteur, courant driver, microsteps réalistes, vitesse max utile, et une logique de cycle complète avec temps de pause + déclenchement).  
 Il est 12:00 à Bruxelles.
@@ -186,11 +186,11 @@ Ce qui est parfait pour du stacking macro.
 
 5. Contrôleur conseillé
 
-Arduino Nano + TMC2209
+[[Arduino]] Nano + TMC2209
 
 Architecture :
 
-Arduino  
+[[Arduino]]  
 → STEP  
 → DIR  
 → ENABLE  
@@ -221,7 +221,7 @@ Je recommande :
 - 0,1 à 0,5 mm/s max
 - Accélération douce (rampes obligatoires)
 
-Bibliothèque Arduino idéale :
+Bibliothèque [[Arduino]] idéale :
 AccelStepper
 
 Elle gère :
@@ -292,7 +292,7 @@ Conversions utiles (micro-pas 16)
 En pratique, je te conseille de travailler par pas “ronds” en micro-pas, typiquement 16, 32, 64, 80, 96, 128… selon le rapport de grandissement.
 
 Le contrôleur que je te recommande (choix “sans regret”)
-1) Arduino Nano (ou Pro Mini 5V si tu veux compact)  
+1) [[Arduino]] Nano (ou Pro Mini 5V si tu veux compact)  
 2) Driver TMC2209 (en STEP/DIR; UART optionnel)  
 3) Moteur NEMA17 40 mm, ~0,45 Nm, 1.5–1.7 A nominal  
 4) Alimentation 12 V 3 A (ou 24 V 2–3 A si tu veux plus de marge, mais pas obligatoire en macro lente)
@@ -322,7 +322,7 @@ Réglages de départ (qui marchent bien)
 - Step size : 10 µm (32 micro-pas) pour macro “standard”; 5 µm (16 micro-pas) si très fort grossissement
 
 Électronique pratique : câblage minimal
-- Arduino → TMC2209 : STEP, DIR, EN
+- [[Arduino]] → TMC2209 : STEP, DIR, EN
 - Alim 12 V → VMOT du driver + GND
 - Condensateur près du driver (ex: 100 µF à 470 µF) entre VMOT et GND (important)
 - Moteur 4 fils → A1/A2/B1/B2
@@ -398,7 +398,7 @@ uhmmm . j'hésite pour la solution A es tu en mesure de faire une liste d'achat 
 ## Assistant
 *2026-02-17 11:49*
 
-Oui. Si tu reviens vers la solution A (Arduino + driver), je peux te faire une liste d’achat cohérente, simple, sans exotisme, adaptée à ton Canon 90D et R10.
+Oui. Si tu reviens vers la solution A ([[Arduino]] + driver), je peux te faire une liste d’achat cohérente, simple, sans exotisme, adaptée à ton Canon 90D et R10.
 
 Je te propose une architecture robuste, stable et suffisamment “propre” pour du stacking macro sérieux, sans surcomplexité.
 
@@ -447,7 +447,7 @@ Prévoir :
 
 3) Contrôleur
 
-Arduino Nano (ATmega328P, version classique 5V)
+[[Arduino]] Nano (ATmega328P, version classique 5V)
 
 Pourquoi :
 - Compact
@@ -455,7 +455,7 @@ Pourquoi :
 - Stable
 - Suffisant pour ton usage
 
-Alternative plus moderne : ESP32 (si un jour tu veux WiFi/écran tactile), mais Nano suffit.
+Alternative plus moderne : [[ESP32]] (si un jour tu veux WiFi/écran tactile), mais Nano suffit.
 
 ────────────────────────
 
@@ -482,12 +482,12 @@ Il te faut :
 
 - 1 câble télécommande Canon E3 vers jack 2.5 mm
 - 1 optocoupleur PC817 (ou équivalent)
-- 1 résistance 220–330 Ω côté Arduino
+- 1 résistance 220–330 Ω côté [[Arduino]]
 - 1 transistor ou second optocoupleur si tu veux gérer focus + shutter séparément
 
 Le schéma simple :
 
-Arduino → résistance → LED interne optocoupleur  
+[[Arduino]] → résistance → LED interne optocoupleur  
 Sortie optocoupleur → court-circuite shutter à GND
 
 Avantage :
@@ -544,8 +544,8 @@ Ce que je peux te fournir ensuite
 
 Si tu veux continuer :
 
-1) Schéma de câblage clair (moteur + driver + Arduino + Canon)
-2) Code Arduino prêt à charger (avec AccelStepper)
+1) Schéma de câblage clair (moteur + driver + [[Arduino]] + Canon)
+2) Code [[Arduino]] prêt à charger (avec AccelStepper)
 3) Table µm ↔ micro-pas pour ton rail 1 mm/tour
 4) Recommandation de courant exact à régler sur le TMC2209
 5) Option “retour automatique en position initiale”

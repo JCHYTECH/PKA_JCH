@@ -3,8 +3,8 @@ source_file: "faune-autour.md"
 type: "document"
 community: "PWA App & Deployment"
 tags:
-  - graphify/document
-  - graphify/EXTRACTED
+  - [[Graphify]]/document
+  - [[Graphify]]/EXTRACTED
   - community/PWA_App_&_Deployment
 ---
 
@@ -17,4 +17,4 @@ tags:
 - [[Mode Explorer Autour — list all animal observations in GPS radius by period]] - `references` [EXTRACTED]
 - [[Mode Par Espèce — search observations by species name (FR or Latin)]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/PWA_App_&_Deployment
+#[[Graphify]]/document #[[Graphify]]/EXTRACTED #community/PWA_App_&_Deployment

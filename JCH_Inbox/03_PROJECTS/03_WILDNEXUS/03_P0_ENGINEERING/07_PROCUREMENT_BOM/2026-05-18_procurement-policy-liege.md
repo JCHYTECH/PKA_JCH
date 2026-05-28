@@ -56,10 +56,10 @@ Si un produit Amazon/AliExpress semble intéressant, l'équipe doit d'abord cher
 
 ## Mandat équipe
 
-- **Bruno** : coût total livré, seuils livraison gratuite, consolidation panier.
-- **Forge** : compatibilité technique, variantes, documentation, références exactes.
-- **Milan** : qualité fournisseur, disponibilité EU, risque contrefaçon / clone.
-- **Chouette** : adéquation terrain et accessoires nécessaires.
+- **[[Bruno]]** : coût total livré, seuils livraison gratuite, consolidation panier.
+- **[[Forge]]** : compatibilité technique, variantes, documentation, références exactes.
+- **[[Milan]]** : qualité fournisseur, disponibilité EU, risque contrefaçon / clone.
+- **[[Chouette]]** : adéquation terrain et accessoires nécessaires.
 
 ## Livrable attendu
 

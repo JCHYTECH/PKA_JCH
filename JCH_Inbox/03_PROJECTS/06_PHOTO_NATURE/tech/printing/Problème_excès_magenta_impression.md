@@ -2638,7 +2638,7 @@ add_paragraphs("12. Professional Workflow Checklist",
 4. Print with Photoshop managing colors.
 5. Disable color correction in the printer driver.
 6. Evaluate the print under neutral lighting.
-7. Archive the print settings for reproducibility.""")
+7. [[archive]] the print settings for reproducibility.""")
 
 add_paragraphs("13. Training Exercise",
 """Students should print the grayscale chart and color chart included in this manual. 
@@ -5513,13 +5513,13 @@ Il sert donc de **document unique de référence** pour clôturer ce projet.
 
 ---
 
-Si vous le souhaitez, je peux aussi créer **une vraie “archive complète de la conversation” (beaucoup plus longue)** :
+Si vous le souhaitez, je peux aussi créer **une vraie “[[archive]] complète de la conversation” (beaucoup plus longue)** :
 
 - **transcription complète structurée**
 - intégration de **tous les guides générés**
 - images et schémas
 - pack formation intégré
 
-Cela donnerait un **document final unique d’environ 150–200 pages** qui archive entièrement ce projet.
+Cela donnerait un **document final unique d’environ 150–200 pages** qui [[archive]] entièrement ce projet.
 
 ---

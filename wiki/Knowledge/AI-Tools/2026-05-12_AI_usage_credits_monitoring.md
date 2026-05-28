@@ -1,6 +1,6 @@
 ---
 type: note
-source: chatgpt
+source: [[ChatGPT]]
 date: 2026-05-12
 status: inbox
 tags:
@@ -17,23 +17,23 @@ tags:
 
 ## Contexte
 
-La question posée concernait la possibilité de connaître le nombre de crédits restants chez ChatGPT, puis de savoir si des outils ou « skills » permettent d’accéder à ces informations, y compris pour Claude, Anthropic, Gemini, DeepSeek et d’autres modèles.
+La question posée concernait la possibilité de connaître le nombre de crédits restants chez [[ChatGPT]], puis de savoir si des outils ou « skills » permettent d’accéder à ces informations, y compris pour [[Claude]], Anthropic, Gemini, DeepSeek et d’autres modèles.
 
 ## Distinction importante
 
 Il faut distinguer :
 
-- l’abonnement ChatGPT Plus ou Pro ;
-- les crédits ou limites d’usage dans l’application ChatGPT ;
+- l’abonnement [[ChatGPT]] Plus ou Pro ;
+- les crédits ou limites d’usage dans l’application [[ChatGPT]] ;
 - les crédits API OpenAI ;
 - les dashboards d’usage des autres fournisseurs ;
 - les plateformes tierces de monitoring multi-modèles.
 
-ChatGPT Plus et l’API OpenAI sont deux systèmes séparés. Un abonnement ChatGPT Plus ne donne pas automatiquement des crédits API.
+[[ChatGPT]] Plus et l’API OpenAI sont deux systèmes séparés. Un abonnement [[ChatGPT]] Plus ne donne pas automatiquement des crédits API.
 
-## ChatGPT application
+## [[ChatGPT]] application
 
-Dans l’application ChatGPT, les limites sont souvent partiellement visibles via :
+Dans l’application [[ChatGPT]], les limites sont souvent partiellement visibles via :
 
 - paramètres du compte ;
 - section plan ou abonnement ;
@@ -61,7 +61,7 @@ On peut suivre :
 - alertes de dépassement ;
 - budget par agent ou application.
 
-## Anthropic / Claude
+## Anthropic / [[Claude]]
 
 Anthropic propose aussi des outils de suivi d’usage et de coûts pour son API.
 
@@ -152,4 +152,4 @@ Les solutions à privilégier :
 
 ## Conclusion
 
-Pour l’application ChatGPT classique, le suivi des crédits reste limité. Pour les API OpenAI, Anthropic, Gemini ou DeepSeek, un monitoring détaillé est techniquement faisable et peut être centralisé dans un tableau de bord multi-modèles.
+Pour l’application [[ChatGPT]] classique, le suivi des crédits reste limité. Pour les API OpenAI, Anthropic, Gemini ou DeepSeek, un monitoring détaillé est techniquement faisable et peut être centralisé dans un tableau de bord multi-modèles.

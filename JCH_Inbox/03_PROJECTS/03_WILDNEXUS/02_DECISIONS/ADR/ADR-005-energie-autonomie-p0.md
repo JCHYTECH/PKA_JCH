@@ -2,7 +2,7 @@
 
 **Date :** 2026-05-18  
 **Statut :** accepté — 2026-05-18 (révision v0.2 — décision JCH : batteries AA standard, modèle industrie caméra de chasse)  
-**Owner PKA :** Bruno + Chouette  
+**Owner PKA :** [[Bruno]] + [[Chouette]]  
 **Agent WildNexus :** `wildnexus-hardware-physical`  
 **Jalon :** M-01 Architecture P0 gelée
 
@@ -10,14 +10,14 @@
 
 P0 doit démontrer un nœud caméra autonome opérationnel 60 jours sans intervention humaine, sur batterie seule, en milieu naturel belge (température : -10 °C à +45 °C, humidité élevée).
 
-Le MCU retenu est l'ESP32-S3 (ADR-001). Profil énergétique :
+Le MCU retenu est l'[[ESP32-S3]] (ADR-001). Profil énergétique :
 
 | Mode | Courant @ 3.3 V |
 |------|----------------|
 | CPU actif @ 240 MHz | 240–300 mA |
 | Deep sleep ULP | 10–20 µA (MCU seul) |
 
-Consommateurs externes principaux : caméra (~50–80 mA), LoRa TX (~120 mA, ~2 s), microSD (~50–100 mA), LEDs IR (~300–500 mA, pulsé < 5 s). Système event-driven : pleine charge 10–30 s par événement seulement.
+Consommateurs externes principaux : caméra (~50–80 mA), [[LoRa]] TX (~120 mA, ~2 s), microSD (~50–100 mA), LEDs IR (~300–500 mA, pulsé < 5 s). Système event-driven : pleine charge 10–30 s par événement seulement.
 
 ## Décision
 
@@ -61,12 +61,12 @@ L'objectif 60 jours est atteint confortablement jusqu'à 3 événements/heure av
 | Entrée | 4.0–6.5 V (couvre NiMH déchargé à alcaline neuf) |
 | Sortie | 3.3 V régulé |
 | Composant recommandé | TPS62840 (Texas Instruments) — Iq = 5 µA, rendement > 90 % |
-| Courant de sortie max | 750 mA — suffisant pour pic ESP32-S3 + périphériques |
+| Courant de sortie max | 750 mA — suffisant pour pic [[ESP32-S3]] + périphériques |
 | Courant quiescent | 5 µA — négligeable sur budget deep sleep |
 
 ### Gestion des périphériques — coupure MOSFET individuelle
 
-Inchangé : chaque périphérique à forte consommation (caméra, LoRa, microSD, LEDs IR) coupé physiquement via MOSFET P-channel entre les cycles actifs.
+Inchangé : chaque périphérique à forte consommation (caméra, [[LoRa]], microSD, LEDs IR) coupé physiquement via MOSFET P-channel entre les cycles actifs.
 
 Objectif deep sleep carte complète : **< 100 µA** (MCU + buck converter + leakage MOSFETs).
 
@@ -92,7 +92,7 @@ Le solaire n'est pas dans le scope P0. Le boîtier (ADR-006) prévoit mécanique
 
 - **WP02 (hardware)** : supprimer BMS, CN3791, connecteur de charge du schéma. Ajouter TPS62840 (ou équivalent) + support 8× AA 4S2P. Conserver MOSFET de coupure périphériques.
 - **ADR-006 (boîtier)** : prévoir compartiment AA accessible sans outil côté terrain — dimension standard holder 4×AA × 2 groupes.
-- **WP03 (firmware)** : monitoring tension batterie via ADC ESP32-S3 sur diviseur résistif (4.8 V → 3.3 V plage ADC). Seuils d'alerte : < 4.0 V = batterie faible, < 3.6 V = coupure préventive.
+- **WP03 (firmware)** : monitoring tension batterie via ADC [[ESP32-S3]] sur diviseur résistif (4.8 V → 3.3 V plage ADC). Seuils d'alerte : < 4.0 V = batterie faible, < 3.6 V = coupure préventive.
 - **Supply register** : remplacer LiFePO4 18650 + CN3791 par holders AA + TPS62840. Piles non achetées par le projet.
 - **Budget** : économie ~30–40 € sur composants batterie/charge. Les piles ne sont pas dans l'enveloppe 1 000 €.
 - Le benchmark M-02 mesure le courant deep sleep carte complète avant tout autre test.
@@ -103,7 +103,7 @@ Le solaire n'est pas dans le scope P0. Le boîtier (ADR-006) prévoit mécanique
 |------|----------------|
 | Courant deep sleep carte complète (tous MOSFET coupés) | < 100 µA mesuré au Nordic PPK2 |
 | Courant deep sleep sans MOSFET (référence) | documenté |
-| Cycle complet réveil → capture → stockage → LoRa TX → sommeil | énergie totale < 1.5 mAh par événement |
+| Cycle complet réveil → capture → stockage → [[LoRa]] TX → sommeil | énergie totale < 1.5 mAh par événement |
 | Autonomie simulée 1 événement/heure | calcul vérifié par mesure capacité résiduelle J+7 |
 | LEDs IR en mode pulsé | durée flash ≤ 5 s, courant pic documenté |
 | Tension buck converter sous charge pic | régulation stable 3.3 V ± 3 % pendant cycle actif |

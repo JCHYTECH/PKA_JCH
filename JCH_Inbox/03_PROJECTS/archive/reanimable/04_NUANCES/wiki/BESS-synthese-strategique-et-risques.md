@@ -1,7 +1,7 @@
 ---
 projet: NUANCES
 domaine: Synthese strategique BESS
-auteur: Furet + Iris + Dobby
+auteur: [[Furet]] + [[Iris]] + [[Dobby]]
 date: 2026-05-14
 statut: draft
 sources:

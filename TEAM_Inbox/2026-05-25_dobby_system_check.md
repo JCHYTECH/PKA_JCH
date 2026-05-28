@@ -16,7 +16,7 @@ _Status: RED_
 
 ## Improvement Findings
 
-- `medium` `pointer-generation` CLAUDE.md / AGENTS.md / GEMINI.md / DEEPSEEK.md: generated pointer surfaces are drifting from the canonical config
+- 
 
 ## Pointer Drift
 

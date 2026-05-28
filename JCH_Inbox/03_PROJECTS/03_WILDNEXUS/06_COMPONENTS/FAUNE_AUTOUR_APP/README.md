@@ -15,7 +15,7 @@ je veux que
 * on puisse taper le nom d'un animal (francais et nom latin) et voir les observations autour du point actuel à une distance que l'utilsateur determine de 1 à 10 km
 * autre choix, je demande à l'app de me lister les animaux observés autour de moi à une distance que l'utilisateur determine de 1 à 10 km et dans une fourchette dec temps : semaine/mois/année au choix
 *si cette app est vraiment utile, on en fera une extension pour d'autres pays et d'autres langues. (pas necessaire de developper maintenant)
-* on aimera liér cette app a des app d'observations animalières ou guide app telles que Birdnet/Collins bird etc (pas necessaire de developper maintenant)
+* on aimera liér cette app a des app d'observations animalières ou guide app telles que [[BirdNET]]/Collins bird etc (pas necessaire de developper maintenant)
 
 
 

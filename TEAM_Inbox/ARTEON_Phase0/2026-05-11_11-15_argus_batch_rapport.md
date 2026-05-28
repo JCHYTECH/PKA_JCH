@@ -1,4 +1,4 @@
-# Argus — Rapport Batch ARTEON Phase 0
+# [[Argus]] — Rapport Batch ARTEON Phase 0
 
 **Date :** 2026-05-11 11:15  
 **Source :** `/Users/jchavauxm5/Desktop/LrC To /Dobby select`  
@@ -60,9 +60,9 @@
 | LrC to-6.jpg | Rouge-gorge familier (Erithacus rubecula) | 81/100 — EXCELLENT | LrC to-6_analyse.pdf | LrC to-6.xmp | 25.1s |
 | LrC to-7.jpg | Rouge-gorge familier (Erithacus rubecula) | 82/100 — EXCELLENT | LrC to-7_analyse.pdf | LrC to-7.xmp | 25.4s |
 | LrC to-8.jpg | Rouge-gorge familier (Erithacus rubecula) | 81/100 — EXCELLENT | LrC to-8_analyse.pdf | LrC to-8.xmp | 25.6s |
-| LrC to-9.jpg | Héron cendré (Ardea cinerea) | 86/100 — EXCELLENT | LrC to-9_analyse.pdf | LrC to-9.xmp | 26.9s |
+| LrC to-9.jpg | [[Héron]] cendré (Ardea cinerea) | 86/100 — EXCELLENT | LrC to-9_analyse.pdf | LrC to-9.xmp | 26.9s |
 | LrC to.jpg | Paysage lacustre alpin avec givre | 84/100 — EXCELLENT | LrC to_analyse.pdf | LrC to.xmp | 23.7s |
 
 ---
 
-*Généré par Argus 🦅 via argus_batch.py — PKA ARTEON Phase 0*
+*Généré par [[Argus]] 🦅 via argus_batch.py — PKA ARTEON Phase 0*

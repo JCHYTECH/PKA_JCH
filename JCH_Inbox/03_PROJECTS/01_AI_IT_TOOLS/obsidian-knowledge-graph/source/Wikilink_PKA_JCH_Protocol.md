@@ -1,9 +1,9 @@
-# PKA_JCH – Protocole de Wikilinking Automatique pour Dobby
+# PKA_JCH – Protocole de Wikilinking Automatique pour [[Dobby]]
 
 ## Objectif général
 
 Ce document définit précisément :
-- le rôle de Dobby dans la gestion des wikilinks,
+- le rôle de [[Dobby]] dans la gestion des wikilinks,
 - les procédures automatiques à appliquer,
 - les contrôles qualité,
 - les moments où JC doit intervenir,
@@ -36,16 +36,16 @@ Le système doit rester :
 
 ---
 
-# 2. RÔLE DE DOBBY
+# 2. RÔLE DE [[Dobby]]
 
-Dobby devient :
+[[Dobby]] devient :
 
 - coordinateur documentaire,
 - superviseur du graphe de connaissances,
 - gestionnaire des relations documentaires,
 - contrôleur qualité des liens.
 
-Dobby NE DOIT PAS :
+[[Dobby]] NE DOIT PAS :
 - modifier massivement sans validation,
 - créer des milliers de liens aveugles,
 - créer des liens ambigus,
@@ -129,7 +129,7 @@ Ces liens peuvent être suggérés mais non imposés.
 
 ## ÉTAPE 1 — INVENTAIRE GLOBAL
 
-Dobby doit :
+[[Dobby]] doit :
 
 1. Scanner tous les fichiers .md
 2. Construire une liste de :
@@ -168,7 +168,7 @@ Contenu :
 
 Exemple :
 
-BirdNET:
+[[BirdNET]]:
 - aliases:
   - BirdNET-Go
 - category:
@@ -186,7 +186,7 @@ Cette étape est la principale intervention humaine.
 
 ## ÉTAPE 3 — PREMIER PASSAGE AUTOMATIQUE
 
-Dobby doit :
+[[Dobby]] doit :
 
 1. Lire chaque note
 2. Détecter concepts connus
@@ -196,7 +196,7 @@ Dobby doit :
 Exemple :
 
 Avant :
-BirdNET tourne sur Raspberry Pi.
+[[BirdNET]] tourne sur [[Raspberry Pi]].
 
 Après :
 [[BirdNET]] tourne sur [[Raspberry Pi 5]].
@@ -215,10 +215,10 @@ Créer :
 
 Format :
 
-- "Apple"
+- "[[Apple]]"
 Possible matches:
-- Apple Inc
-- Apple Fruit
+- [[Apple]] Inc
+- [[Apple]] Fruit
 
 JC :
 - validation ponctuelle uniquement.
@@ -227,7 +227,7 @@ JC :
 
 ## ÉTAPE 5 — CONTRÔLE QUALITÉ
 
-Dobby doit vérifier :
+[[Dobby]] doit vérifier :
 
 - liens cassés,
 - doublons,
@@ -257,7 +257,7 @@ Tout nouveau document DOIT passer par pipeline de normalisation.
 
 Quand nouveau fichier apparaît :
 
-Dobby :
+[[Dobby]] :
 - détecte création,
 - identifie dossier,
 - identifie type.
@@ -280,7 +280,7 @@ tags:
 
 ## ÉTAPE 3 — EXTRACTION DES ENTITÉS
 
-Dobby extrait :
+[[Dobby]] extrait :
 
 - projets,
 - technologies,
@@ -329,7 +329,7 @@ Ajouter éventuellement :
 
 ## INTERDICTIONS
 
-Dobby NE DOIT PAS :
+[[Dobby]] NE DOIT PAS :
 
 - créer des liens vers des notes inexistantes,
 - créer des milliers de micro-notes,
@@ -341,7 +341,7 @@ Dobby NE DOIT PAS :
 
 ## AUTORISATIONS
 
-Dobby PEUT :
+[[Dobby]] PEUT :
 
 - ajouter wikilinks,
 - ajouter aliases,
@@ -446,7 +446,7 @@ Ajouter :
 
 ## PHASE 4
 
-Dobby orchestre :
+[[Dobby]] orchestre :
 - circulation connaissance,
 - enrichissement documentaire,
 - propagation inter-projets,
@@ -454,7 +454,7 @@ Dobby orchestre :
 
 ---
 
-# 13. CONSIGNE FINALE À DOBBY
+# 13. CONSIGNE FINALE À [[Dobby]]
 
 Le système documentaire doit toujours privilégier :
 
@@ -525,7 +525,7 @@ Autres fichiers = ressources liées
 
 # 16. CRÉATION AUTOMATIQUE DE NOTES HUB
 
-Quand un fichier non-MD important est détecté, Dobby doit :
+Quand un fichier non-MD important est détecté, [[Dobby]] doit :
 
 1. identifier le projet associé,
 2. rechercher une note hub existante,
@@ -569,7 +569,7 @@ doit contenir :
 
 # 17. EMBED DES IMAGES ET SCHÉMAS
 
-Dobby doit privilégier les embeds pour :
+[[Dobby]] doit privilégier les embeds pour :
 
 - schémas,
 - PCB,
@@ -598,7 +598,7 @@ Lorsqu’un nouveau fichier non-MD apparaît :
 
 ## ÉTAPE 1 — DÉTECTION
 
-Dobby :
+[[Dobby]] :
 - détecte extension,
 - identifie projet probable,
 - identifie catégorie.
@@ -624,7 +624,7 @@ Catégories possibles :
 
 ## ÉTAPE 3 — RECHERCHE HUB
 
-Dobby cherche :
+[[Dobby]] cherche :
 - note projet,
 - note technologie,
 - note système,
@@ -634,7 +634,7 @@ Dobby cherche :
 
 ## ÉTAPE 4 — INSERTION AUTOMATIQUE
 
-Dobby ajoute :
+[[Dobby]] ajoute :
 
 ```md
 [[nom_fichier.pdf]]
@@ -652,7 +652,7 @@ selon type.
 
 ## ÉTAPE 5 — ENRICHISSEMENT
 
-Dobby peut ajouter :
+[[Dobby]] peut ajouter :
 
 - description,
 - date,
@@ -665,7 +665,7 @@ Dobby peut ajouter :
 
 # 19. RÈGLES IMPORTANTES
 
-Dobby NE DOIT PAS :
+[[Dobby]] NE DOIT PAS :
 
 - créer des milliers de fichiers hub inutiles,
 - dupliquer assets,

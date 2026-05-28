@@ -1918,7 +1918,7 @@ workflow = [
     "Préparation et harmonisation des images",
     "Construction du canvas dans le gabarit PSD",
     "Validation de la lecture temporelle",
-    "Export et diffusion (livre, exposition, archive)",
+    "Export et diffusion (livre, exposition, [[archive]])",
 ]
 story.append(ListFlowable(
     [ListItem(Paragraph(w, styles["BodyStyle"])) for w in workflow],
@@ -2786,7 +2786,7 @@ Le manuel acte clairement que :
 - elle devient :
   - variante,
   - diptyque,
-  - archive active.
+  - [[archive]] active.
 
 👉 Cela enlève toute ambiguïté intellectuelle à votre démarche.
 

@@ -55,7 +55,7 @@ Flag any component that is:
 - On end-of-life notice
 - Available only from Chinese domestic market (geopolitical supply risk)
 
-For WildNexus, high-risk components include: LoRa SoC (Semtech SX1262), camera sensor, IR cut filter, battery management IC.
+For WildNexus, high-risk components include: [[LoRa]] SoC (Semtech SX1262), camera sensor, IR cut filter, battery management IC.
 
 ---
 
@@ -67,7 +67,7 @@ For WildNexus main board:
 - 4-layer minimum: signal / ground / power / signal
 - FR4 TG150 or higher (better thermal stability)
 - ENIG (Electroless Nickel Immersion Gold) surface finish — corrosion resistant, required for conformal coating adhesion
-- Minimum trace/space: 0.15mm/0.15mm (allows most EMS partners)
+- Minimum [[Trace]]/space: 0.15mm/0.15mm (allows most EMS partners)
 - Via minimum: 0.2mm drill, 0.4mm pad
 
 ### DFM checklist
@@ -160,7 +160,7 @@ Every unit must be tested before shipment. Define the test pyramid.
 
 For WildNexus, the functional test fixture must verify:
 - MCU boot and firmware checksum
-- LoRa TX/RX (loopback test)
+- [[LoRa]] TX/RX (loopback test)
 - Camera capture (frame validation)
 - PIR trigger response
 - Environmental sensor readings (temperature, humidity plausible)
@@ -190,7 +190,7 @@ Define the AQL (Acceptable Quality Level) for each defect category. Recommend AQ
 | Enclosure (vacuum cast pilot) | 20–30% | Drops sharply at injection moulding scale |
 | Camera module | 10–15% | Fixed cost per module |
 | Battery + charging | 8–12% | LiFePO4 preferred |
-| LoRa module | 5–8% | SX1262-based module |
+| [[LoRa]] module | 5–8% | SX1262-based module |
 | Antenna + connectors | 3–5% | |
 | Fasteners + gaskets + misc | 3–5% | |
 | Test + QC | 5–8% | Increases at low volumes |
@@ -215,15 +215,15 @@ The enclosure cost dominates at low volume (vacuum casting). Injection mould too
 
 - Subscribe to manufacturer end-of-life (EOL) notifications via Octopart, SiliconExpert, or direct manufacturer portal
 - Define approved alternates for every critical component before production release
-- Buffer stock strategy: maintain 18–24 months of critical long-lead components (LoRa SoC, camera sensor, MCU)
+- Buffer stock strategy: maintain 18–24 months of critical long-lead components ([[LoRa]] SoC, camera sensor, MCU)
 - Avoid components in last-time-buy status for any P0 design
 
 ### Geopolitical risk
 
 Components with single-source manufacture in Taiwan or mainland China carry supply disruption risk. For WildNexus:
 - Camera sensor (primarily Sony / OmniVision — Taiwan/Japan): medium risk, buffer stock
-- MCU (STM32, ESP32): dual sourcing where possible
-- LoRa SoC (Semtech, now owned by Microchip): US/EU owned, lower geopolitical risk than purely Asian supply
+- MCU (STM32, [[ESP32]]): dual sourcing where possible
+- [[LoRa]] SoC (Semtech, now owned by Microchip): US/EU owned, lower geopolitical risk than purely Asian supply
 
 ---
 

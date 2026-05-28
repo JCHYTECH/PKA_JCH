@@ -4,13 +4,13 @@
 **Date :** 2026-05-18  
 **Statut :** Protocole operationnel pre-go  
 **Propriétaire :** Jean-Claude Havaux — JCHYTECH  
-**Pilotage :** Dobby  
+**Pilotage :** [[Dobby]]  
 
 ---
 
 ## 1. Intention
 
-Ce document définit le comportement attendu de Dobby quand JCH donne le `go` pour démarrer WildNexus.
+Ce document définit le comportement attendu de [[Dobby]] quand JCH donne le 
 
 L'objectif n'est pas de décrire le projet. Les documents fondateurs le font déjà. L'objectif est de préciser le mode d'exécution :
 - quoi démarre ;
@@ -21,13 +21,13 @@ L'objectif n'est pas de décrire le projet. Les documents fondateurs le font dé
 
 Principe directeur :
 
-> JCH doit voir les décisions, les risques et les preuves. Dobby doit absorber le suivi, la coordination et la maintenance opérationnelle.
+> JCH doit voir les décisions, les risques et les preuves. [[Dobby]] doit absorber le suivi, la coordination et la maintenance opérationnelle.
 
 ---
 
 ## 2. Sources De Vérité
 
-Au lancement, Dobby travaille depuis ces références :
+Au lancement, [[Dobby]] travaille depuis ces références :
 - `wildnexus-founding-document-v0.2.md`
 - `wildnexus-plane-operating-model.md`
 - `wildnexus-plane-seed-backlog.md`
@@ -54,18 +54,18 @@ Toute contradiction détectée doit devenir une décision documentée, pas une d
 
 ### 3.1 Contrôle Initial
 
-Dobby commence par vérifier :
+[[Dobby]] commence par vérifier :
 - que Plane répond ;
 - que le projet `03_WILDNEXUS` est joignable ;
 - que le backlog seed est déjà injecté ou peut être synchronisé ;
 - que les documents de référence existent ;
 - que la page web de pilotage est disponible ou doit être mise à jour.
 
-Si un élément technique bloque le démarrage, Dobby corrige ce qui peut l'être et ne sollicite JCH que si une action externe est nécessaire.
+Si un élément technique bloque le démarrage, [[Dobby]] corrige ce qui peut l'être et ne sollicite JCH que si une action externe est nécessaire.
 
 ### 3.2 Synchronisation Projet
 
-Dobby synchronise :
+[[Dobby]] synchronise :
 - milestones `M-01` à `M-04` ;
 - items `WP01` à `WP06` ;
 - tâches `T01.1` à `T06.4` ;
@@ -92,7 +92,7 @@ Les fronts lancés en priorité sont :
 
 ### 4.1 Noyau Actif
 
-Dobby active d'abord :
+[[Dobby]] active d'abord :
 - `wildnexus-program-manager-system-architect`
 - `wildnexus-camera-imaging`
 - `wildnexus-firmware-ulp`
@@ -103,7 +103,7 @@ Ces agents couvrent le système P0 minimal : architecture, image, firmware, éne
 
 ### 4.2 Agents À La Demande
 
-Dobby active seulement si nécessaire :
+[[Dobby]] active seulement si nécessaire :
 - `wildnexus-rf-propagation`
 - `wildnexus-edge-ai-cv`
 - `wildnexus-industrialisation`
@@ -118,7 +118,7 @@ Ces rôles ne doivent pas créer de complexité prématurée. Ils interviennent 
 
 ### 5.1 Automates De Routine
 
-Dobby automatise par défaut :
+[[Dobby]] automatise par défaut :
 - lecture de l'état Plane ;
 - détection des tâches bloquées ;
 - synthèse des décisions ouvertes ;
@@ -129,25 +129,25 @@ Dobby automatise par défaut :
 
 ### 5.2 Automates De Preuve
 
-Chaque livrable doit laisser une trace :
+Chaque livrable doit laisser une [[Trace]] :
 - document créé ou mis à jour ;
 - lien vers fichier source ;
 - item Plane associé ;
 - statut du livrable ;
 - décision ou prochaine action.
 
-Un travail important sans trace dans le repo est considéré incomplet.
+Un travail important sans [[Trace]] dans le repo est considéré incomplet.
 
 ### 5.3 Automates De Cohérence
 
-Dobby surveille :
+[[Dobby]] surveille :
 - anciennes références d'agents ;
 - contradictions de version ;
 - écarts entre `Start`, backlog et document fondateur ;
 - décisions prises mais non propagées ;
 - risques identifiés sans owner.
 
-Quand l'écart est mécanique, Dobby corrige. Quand l'écart implique une décision de fond, Dobby escalade.
+Quand l'écart est mécanique, [[Dobby]] corrige. Quand l'écart implique une décision de fond, [[Dobby]] escalade.
 
 ---
 
@@ -194,7 +194,7 @@ Une décision critique doit apparaître dans les deux :
 
 ## 7. Quand JCH Est Sollicité
 
-Dobby sollicite JCH uniquement pour :
+[[Dobby]] sollicite JCH uniquement pour :
 - modifier un non-négociable ;
 - choisir entre deux options stratégiques réelles ;
 - accepter un compromis coût / délai / performance ;
@@ -202,7 +202,7 @@ Dobby sollicite JCH uniquement pour :
 - autoriser une action externe ou engageante ;
 - arbitrer un conflit entre agents ou domaines.
 
-Dobby ne sollicite pas JCH pour :
+[[Dobby]] ne sollicite pas JCH pour :
 - renommer ou nettoyer un document ;
 - synchroniser Plane ;
 - produire une synthèse ;
@@ -239,7 +239,7 @@ La phase de lancement est terminée quand :
 - les premières tâches critiques ont un owner ;
 - les décisions JCH en attente sont visibles ;
 - le repo contient les documents de référence à jour ;
-- Dobby peut produire un statut fiable sans relire toute l'arborescence.
+- [[Dobby]] peut produire un statut fiable sans relire toute l'arborescence.
 
 À partir de là, WildNexus fonctionne en cycle d'exécution.
 
@@ -247,14 +247,14 @@ La phase de lancement est terminée quand :
 
 ## 10. Résumé
 
-Au `go`, Dobby ne démarre pas une conversation de planification. Il démarre un système de pilotage.
+Au 
 
 Ce système :
 - synchronise Plane ;
 - lance `WP01` ;
 - active les bons agents ;
 - met à jour la page web ;
-- archive les preuves ;
+- [[archive]] les preuves ;
 - isole les décisions JCH ;
 - automatise le reste.
 

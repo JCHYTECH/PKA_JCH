@@ -3,7 +3,7 @@ date: 2026-05-02
 tags: [arteon, architecture, charte-graphique, wildlens, l-instant-lu, design]
 type: project-plan
 status: actif
-owner: Vega 🦚
+owner: [[Vega]] 🦚
 ---
 
 # ARTEON — Architecture & Charte graphique
@@ -23,7 +23,7 @@ owner: Vega 🦚
 | `arteon.be` | Shopify | Site principal — shop, manifeste, artistes, services |
 | `wildlens.arteon.be` | Ghost (domaine custom) | Journal naturaliste — articles, newsletter |
 | `arteon.be/wildlens` | Shopify (vitrine) | 3 derniers articles + CTA abonnement WildLens |
-| `arteon.be/critique` | Shopify + backend Python | L'Instant Lu — landing + upload + paiement |
+| 
 
 ### 1.2 Sitemap complet
 
@@ -124,12 +124,12 @@ arteon.be/
 | Rôle | Famille | Style | Source |
 |------|---------|-------|--------|
 | Titres & navigation | **Space Grotesk** | Bold / SemiBold | Google Fonts (gratuit) |
-| Corps de texte | **Lora** | Regular / Italic | Google Fonts (gratuit) |
+| Corps de texte | **[[LoRa]]** | Regular / Italic | Google Fonts (gratuit) |
 | Données & scores | **IBM Plex Mono** | Regular / Medium | Google Fonts (gratuit) |
 
 **Rationale :**
 - Space Grotesk : géométrique, rappelle les découpes du logo, moderne sans être techno
-- Lora : serif élégant à l'italique expressif — ton éditorial, scientifique, Despret/Tesson
+- [[LoRa]] : serif élégant à l'italique expressif — ton éditorial, scientifique, Despret/Tesson
 - IBM Plex Mono : pour les scores `/20`, températures Kelvin, paramètres LR dans L'Instant Lu
 
 **Hiérarchie typographique :**
@@ -166,7 +166,7 @@ Arteon·
 - Lettre `A` seule, Space Grotesk Bold, sur fond `#0D0B09`
 - Le point ocre en bas à droite du carré favicon
 
-**Livrable Vega :** finaliser en SVG vectoriel propre (Illustrator ou Figma) — les rendus actuels sont CSS/SVG de référence uniquement.
+**Livrable [[Vega]] :** finaliser en SVG vectoriel propre (Illustrator ou Figma) — les rendus actuels sont CSS/SVG de référence uniquement.
 
 ### 2.4 Composants UI
 
@@ -202,7 +202,7 @@ Utilisé sur : masthead Ghost, tags, liens actifs, bordure newsletter.
 
 ### 3.2 Typographie WildLens
 
-Identique à ARTEON + un usage plus fort de **Lora Italic** pour les chapeaux d'articles et citations de terrain — ça renforce le ton carnet de terrain.
+Identique à ARTEON + un usage plus fort de **[[LoRa]] Italic** pour les chapeaux d'articles et citations de terrain — ça renforce le ton carnet de terrain.
 
 ### 3.3 Structure Ghost (wildlens.arteon.be)
 
@@ -385,7 +385,7 @@ FR · EN · IT
 | **Accent** | Ocre `#C17F3A` | Vert Terrain `#3D5A3E` | Ardoise `#4A5568` |
 | **Ton** | Galerie · éditorial | Terrain · journal | Outil · expertise |
 | **Typo titre** | Space Grotesk | Space Grotesk | Space Grotesk |
-| **Typo corps** | Lora | Lora Italic ++ | Lora + IBM Mono |
+| **Typo corps** | [[LoRa]] | [[LoRa]] Italic ++ | [[LoRa]] + IBM Mono |
 | **Forme** | Carré net | Organique | Structuré |
 | **Photo** | Contemplative | Documentaire | Technique (analyse) |
 
@@ -393,7 +393,7 @@ FR · EN · IT
 
 ---
 
-## 8. Prochaines étapes Vega
+## 8. Prochaines étapes [[Vega]]
 
 | # | Livrable | Format | Priorité |
 |---|---------|--------|----------|
@@ -409,13 +409,13 @@ FR · EN · IT
 
 ## 9. Ce que ce document ne décide pas encore
 
-- Police définitive si Vega propose une alternative à Space Grotesk / Lora
+- Police définitive si [[Vega]] propose une alternative à Space Grotesk / [[LoRa]]
 - Logo final (le current est solide, des variantes restent ouvertes)
-- Contenu exact des pages (relève du copywriting — Miel + JCH)
+- Contenu exact des pages (relève du copywriting — [[Miel]] + JCH)
 - Animations et micro-interactions (hors scope charte — phase développement)
 
 ---
 
-*Document établi le 2026-05-02 — Vega 🦚 · Dobby 🦉*  
+*Document établi le 2026-05-02 — [[Vega]] 🦚 · [[Dobby]] 🦉*  
 *Charte validée par JCH le 2026-05-02 — "harmonieuse, calme" ✓*  
 *Prochaine étape : wireframes home + L'Instant Lu landing*

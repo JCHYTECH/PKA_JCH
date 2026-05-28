@@ -3,8 +3,8 @@ source_file: "API_pour_observations_be.md"
 type: "document"
 community: "GBIF Data Sources & APIs"
 tags:
-  - graphify/document
-  - graphify/EXTRACTED
+  - [[Graphify]]/document
+  - [[Graphify]]/EXTRACTED
   - community/GBIF_Data_Sources_&_APIs
 ---
 
@@ -17,4 +17,4 @@ tags:
 - [[doSearch() — async function 3-step name resolution + GBIF occurrence fetch]] - `calls` [EXTRACTED]
 - [[gbif_wildlife_scout.py — Python script for local wildlife querying via pygbif]] - `calls` [INFERRED]
 
-#graphify/document #graphify/EXTRACTED #community/GBIF_Data_Sources_&_APIs
+#[[Graphify]]/document #[[Graphify]]/EXTRACTED #community/GBIF_Data_Sources_&_APIs

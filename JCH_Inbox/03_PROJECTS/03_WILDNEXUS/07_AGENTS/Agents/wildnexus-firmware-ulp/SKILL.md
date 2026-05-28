@@ -1,6 +1,6 @@
 ---
 name: wildnexus-firmware-ulp
-description: Expert agent in ultra low power embedded firmware for the WildNexus ecological monitoring platform. Trigger this skill whenever the user asks about MCU selection, deep sleep architecture, power state machines, wake-up strategies, subsystem power gating, energy budgeting, LoRa firmware integration, OTA update strategy, RTOS selection, SD card reliability, watchdog design, or any embedded firmware question in the WildNexus context. Also trigger for any question involving ESP32-S3, STM32U5, nRF54, FreeRTOS, Zephyr, or bare-metal ULP design for autonomous outdoor devices. Use this skill even if the user only mentions autonomy targets, battery sizing, or consumption estimates for WildNexus hardware.
+description: Expert agent in ultra low power embedded firmware for the WildNexus ecological monitoring platform. Trigger this skill whenever the user asks about MCU selection, deep sleep architecture, power state machines, wake-up strategies, subsystem power gating, energy budgeting, [[LoRa]] firmware integration, OTA update strategy, RTOS selection, SD card reliability, watchdog design, or any embedded firmware question in the WildNexus context. Also trigger for any question involving [[ESP32-S3]], STM32U5, nRF54, FreeRTOS, Zephyr, or bare-metal ULP design for autonomous outdoor devices. Use this skill even if the user only mentions autonomy targets, battery sizing, or consumption estimates for WildNexus hardware.
 ---
 
 # WildNexus — Firmware Ultra Low Power Agent
@@ -17,11 +17,11 @@ In the WildNexus context: design firmware architectures that keep the system ope
 
 | MCU | Architecture | Sleep current | Key strengths | Recommended use |
 |-----|-------------|---------------|---------------|-----------------|
-| ESP32-S3 | Xtensa LX7 dual-core | ~7µA deep sleep | Wi-Fi/BLE, AI/vector extensions, mature ecosystem | P0 if BLE config or Wi-Fi sync needed |
+| [[ESP32-S3]] | Xtensa LX7 dual-core | ~7µA deep sleep | Wi-Fi/BLE, AI/vector extensions, mature ecosystem | P0 if BLE config or Wi-Fi sync needed |
 | STM32U5 | Cortex-M33 | <300nA Stop3 | Exceptional ULP, rich peripheral set | Pure MCU controller role, no radio |
 | Nordic nRF54 | Cortex-M33 | ~1µA | BLE 5.4, strong ULP, integrated radio | P0 if BLE config interface is priority |
 
-MCU selection is contingent on radio integration strategy. If LoRa is handled by a dedicated module (e.g., SX1262), the MCU radio capability is less critical and STM32U5 becomes more attractive for its ULP floor.
+MCU selection is contingent on radio integration strategy. If [[LoRa]] is handled by a dedicated module (e.g., SX1262), the MCU radio capability is less critical and STM32U5 becomes more attractive for its ULP floor.
 
 ---
 
@@ -39,7 +39,7 @@ Active states must be event-triggered, time-bounded, and explicitly terminated.
 |-------|-----|-------------|----------------|----------|
 | Deep sleep | Off / RTC only | All gated | 5–50 µA | Minutes to hours |
 | Light sleep / standby | Low-power, RAM retained | Minimal | 1–5 mA | Seconds |
-| Active MCU only | Running | LoRa, sensors | 10–50 mA | Seconds |
+| Active MCU only | Running | [[LoRa]], sensors | 10–50 mA | Seconds |
 | Active event | Running | Camera, IR, storage | 200–800 mA peak | 5–30s |
 
 Firmware must enforce strict, explicit state transitions. Any code path that can block in Active state without a WDT-enforced timeout is a design defect.
@@ -51,11 +51,11 @@ Firmware must enforce strict, explicit state transitions. Any code path that can
 ### P0 mandatory sources
 
 - **PIR interrupt** — Hardware motion detection. Zero MCU current during wait. Primary trigger for camera events.
-- **RTC alarm** — Periodic housekeeping: battery check, LoRa heartbeat, environmental sensor read, daily schedule evaluation.
+- **RTC alarm** — Periodic housekeeping: battery check, [[LoRa]] heartbeat, environmental sensor read, daily schedule evaluation.
 
 ### P1 optional sources
 
-- **LoRa DIO interrupt** — Incoming downlink: remote config, OTA trigger, sync command.
+- **[[LoRa]] DIO interrupt** — Incoming downlink: remote config, OTA trigger, sync command.
 - **Light threshold** — Dawn/dusk detection for schedule adaptation (e.g., suppress IR during daylight).
 - **Acoustic threshold** — Requires dedicated low-power DSP or always-on audio MCU. Not suitable for main MCU wake if bioacoustics is continuous.
 
@@ -69,7 +69,7 @@ Each subsystem must be independently power-gatable via load switch or MOSFET. No
 |-----------|-------------|-----------|-------|
 | Camera module | Load switch (e.g., TPS22918) | 200–800 ms | Account for boot time in PIR-to-capture latency budget |
 | IR illuminator | GPIO + N-MOSFET | <1 ms | High current burst — verify gate drive |
-| LoRa module (SX1262) | Sleep mode preferred | 10–50 ms | Power gate only if duty cycle allows; sleep mode otherwise |
+| [[LoRa]] module (SX1262) | Sleep mode preferred | 10–50 ms | Power gate only if duty cycle allows; sleep mode otherwise |
 | SD card | Load switch | 50–200 ms | Gate after write flush; never remove power mid-write |
 | Environmental sensors | GPIO power rail (grouped) | <10 ms | One power line per I2C/SPI bus grouping |
 | AI accelerator | Dedicated power domain | 500 ms–2 s | P1 only; never active during P0 baseline |
@@ -96,7 +96,7 @@ DoD factor: 0.8 for Li-Ion, 0.9 for LiFePO4.
 |-----------|-------|---------|----------|--------|
 | System sleep (23h) | Deep sleep | 30 µA | 82800 s | 0.69 mAh |
 | PIR processing + camera (10×) | Active event | 400 mA | 30 s each | 33.3 mAh |
-| LoRa TX (10×) | Active TX | 25 mA | 2 s each | 0.14 mAh |
+| [[LoRa]] TX (10×) | Active TX | 25 mA | 2 s each | 0.14 mAh |
 | Housekeeping (4×/day) | Light sleep | 5 mA | 60 s each | 0.33 mAh |
 | **Total daily** | | | | **~34.5 mAh** |
 
@@ -106,16 +106,16 @@ IR illumination is the dominant variable. Night-heavy event profiles can 2× to 
 
 ---
 
-## LoRa firmware integration
+## [[LoRa]] firmware integration
 
-WildNexus uses LoRa in strictly event-driven mode.
+WildNexus uses [[LoRa]] in strictly event-driven mode.
 
 ### Non-negotiables
 
-- LoRa module in sleep between events. Never idle mode during standby.
+- [[LoRa]] module in sleep between events. Never idle mode during standby.
 - EU868 duty cycle compliance is mandatory in firmware (1% per sub-band). The firmware must track air time per sub-band, not delegate this to the stack silently.
 - Packet design: metadata-only uplinks (event type, timestamp, battery voltage, GPS fix if available, thumbnail if bandwidth allows).
-- Never attempt bulk image transfer over LoRa. Images are retrieved via Wi-Fi/BLE gateway or physical SD retrieval.
+- Never attempt bulk image transfer over [[LoRa]]. Images are retrieved via Wi-Fi/BLE gateway or physical SD retrieval.
 
 ### Reliability design
 
@@ -129,13 +129,13 @@ WildNexus uses LoRa in strictly event-driven mode.
 
 Requirements for WildNexus:
 
-- Triggered by: LoRa downlink command, BLE session, or Wi-Fi gateway sync
+- Triggered by: [[LoRa]] downlink command, BLE session, or Wi-Fi gateway sync
 - Resumable: interrupted transfer must not brick device (chunk-based with progress stored in NV memory)
 - Validated before application: SHA-256 hash + firmware signature verification
 - A/B partition scheme: bootloader selects bank; failed boot automatically reverts to previous image
 
 Recommended stacks:
-- ESP32-S3: ESP-IDF native OTA (two OTA partitions + factory partition)
+- [[ESP32-S3]]: ESP-IDF native OTA (two OTA partitions + factory partition)
 - nRF54 / STM32: Zephyr + MCUboot (industry standard, well-tested)
 
 ---
@@ -145,7 +145,7 @@ Recommended stacks:
 | Option | ULP support | Complexity | Recommended for |
 |--------|-------------|------------|-----------------|
 | Zephyr RTOS | Excellent (power management API, device PM) | High initial | nRF54, STM32U5 targets |
-| ESP-IDF (FreeRTOS) | Good (ULP coprocessor, light/deep sleep API) | Medium | ESP32-S3 target |
+| ESP-IDF (FreeRTOS) | Good (ULP coprocessor, light/deep sleep API) | Medium | [[ESP32-S3]] target |
 | Bare-metal | Maximum control, zero overhead | High ongoing | STM32U5 pure-MCU role only |
 
 Avoid mixing RTOS and bare-metal across subsystems on the same MCU.
@@ -159,7 +159,7 @@ Avoid mixing RTOS and bare-metal across subsystems on the same MCU.
 - **Hardware watchdog** — Must cover all active states. Feeding the WDT is a deliberate, explicit act. Never disable. Timeout: 30–60s for event processing, 5s for housekeeping.
 - **Power-loss safe storage** — Use littlefs (not FAT) for configuration and event log. FAT is acceptable for image storage only if the SD is power-gated after verified flush.
 - **Camera boot failure** — Retry limit: 3 attempts. On failure: log event, skip image capture, transmit metadata-only alert. Never block in retry loop.
-- **LoRa TX failure** — Queue event metadata locally. Retry on next scheduled uplink. Do not retry indefinitely in the same wake cycle.
+- **[[LoRa]] TX failure** — Queue event metadata locally. Retry on next scheduled uplink. Do not retry indefinitely in the same wake cycle.
 - **Battery undervoltage lockout** — Define cutoff threshold above SD write corruption voltage. Typical: 3.0V for Li-Ion. At threshold: flush SD, enter deep sleep indefinitely, wake only for battery check.
 
 ### Temperature range
@@ -227,7 +227,7 @@ Ne pas déléguer uniquement au firmware — un circuit hardware garantit le com
 | wildnexus-camera-imaging | Temps de boot caméra | Mesuré empiriquement, intégré dans le budget énergie wake-cycle |
 | wildnexus-camera-imaging | Power gate caméra | Rail dédié via load switch — jamais partagé avec le MCU |
 | wildnexus-camera-imaging | Synchronisation IR pulsé | Signal shutter → driver IR LED géré par firmware |
-| wildnexus-rf-propagation | Tracking duty cycle EU868 | Firmware suit l'air time par sous-bande — ne pas déléguer au stack LoRa |
+| wildnexus-rf-propagation | Tracking duty cycle EU868 | Firmware suit l'air time par sous-bande — ne pas déléguer au stack [[LoRa]] |
 | wildnexus-edge-ai-cv | Budget partition flash modèle | ≤4 MB INT8 — firmware-ulp gère l'allocation des partitions flash |
 | wildnexus-edge-ai-cv | Latence inférence | Comptabilisée dans l'énergie du wake-cycle — pas ignorée dans le budget |
 | wildnexus-edge-ai-cv | OTA modèle | Partition flash séparée du firmware — validations indépendantes |

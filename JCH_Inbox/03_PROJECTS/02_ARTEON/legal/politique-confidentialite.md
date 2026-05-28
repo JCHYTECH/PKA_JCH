@@ -4,7 +4,7 @@ tags: [legal, RGPD, confidentialite, arteon, l-instant-lu, belgique]
 type: legal-document
 version: 1.0
 status: draft
-owner: Renard 🦊
+owner: [[Renard]] 🦊
 ---
 
 # Politique de Confidentialité — ARTEON / L'Instant Lu
@@ -122,7 +122,7 @@ Adresse IP, navigateur, pages visitées — collectés automatiquement par l'hé
 
 ARTEON fait appel aux prestataires suivants, tous encadrés par des accords de traitement des données (DPA — Data Processing Agreement) :
 
-### 5.1 Anthropic (Claude API) — Analyse IA
+### 5.1 Anthropic ([[Claude]] API) — Analyse IA
 
 | Élément | Information |
 |---------|-------------|
@@ -215,6 +215,6 @@ La version en vigueur est toujours accessible à `arteon.be/legal/confidentialit
 
 ---
 
-*Document rédigé par Renard 🦊, conseiller juridique ARTEON*  
+*Document rédigé par [[Renard]] 🦊, conseiller juridique ARTEON*  
 *Version 1.0 — 2026-05-02 — À valider par JCH avant mise en ligne*  
 *Contact RGPD : donnees@arteon.be*

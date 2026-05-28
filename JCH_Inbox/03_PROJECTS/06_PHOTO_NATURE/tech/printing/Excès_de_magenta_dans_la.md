@@ -228,7 +228,7 @@ Passe en sonnet
 
 Compris, je continue en Sonnet.
 
-Je ne peux pas changer de modèle moi-même — c'est un réglage que tu contrôles côté interface. Sur l'app Claude ou claude.ai, tu peux sélectionner le modèle (Opus, Sonnet, Haiku) dans le sélecteur en haut de la conversation.
+Je ne peux pas changer de modèle moi-même — c'est un réglage que tu contrôles côté interface. Sur l'app [[Claude]] ou [[Claude]].ai, tu peux sélectionner le modèle (Opus, Sonnet, Haiku) dans le sélecteur en haut de la conversation.
 
 En attendant, envoie les captures d'écran quand tu les as, quel que soit le modèle actif — l'analyse sera la même.
 
@@ -249,14 +249,14 @@ Let me read the uploaded file to understand its contents.
 This block is not supported on your current device yet.
 ```
 
-Le fichier est une sauvegarde HTML d'une conversation ChatGPT. Le contenu utile est tronqué — je n'ai que le code HTML/CSS/JS de l'interface ChatGPT, pas le texte de la conversation elle-même.
+Le fichier est une sauvegarde HTML d'une conversation [[ChatGPT]]. Le contenu utile est tronqué — je n'ai que le code HTML/CSS/JS de l'interface [[ChatGPT]], pas le texte de la conversation elle-même.
 
 Laisse-moi essayer d'extraire le texte utile.
 ```
 This block is not supported on your current device yet.
 ```
 
-J'ai pu extraire le contenu. C'est une conversation ChatGPT sur l'automatisation d'un rendu mosaïque/collage pour photos — pas directement liée au problème de dérive jaune dans les ombres à l'impression.
+J'ai pu extraire le contenu. C'est une conversation [[ChatGPT]] sur l'automatisation d'un rendu mosaïque/collage pour photos — pas directement liée au problème de dérive jaune dans les ombres à l'impression.
 
 C'est ce fichier que tu voulais me soumettre, ou tu comptais m'envoyer des captures d'écran de ton setup Epson Print Layout sur papier Premium Glossy ?
 

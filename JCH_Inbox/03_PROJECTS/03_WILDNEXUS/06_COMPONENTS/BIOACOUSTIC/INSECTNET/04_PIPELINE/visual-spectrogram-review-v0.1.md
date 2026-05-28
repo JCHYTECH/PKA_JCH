@@ -3,7 +3,7 @@
 **Date:** 2026-05-24  
 **Input:** `INSECTNET/03_AUDIO_DOWNLOADS/contact_sheets/`  
 **Review scope:** first 25 spectrogram segments per species, generated from 3-second WAV segments.  
-**Reviewer:** Dobby orchestration, with Chouette field-signal reading and Clio scientific caution.
+**Reviewer:** [[Dobby]] orchestration, with [[Chouette]] field-signal reading and [[Clio]] scientific caution.
 
 ## Summary
 
@@ -181,7 +181,7 @@ Suggested fields:
 | `recording_id` | XC recording ID |
 | `visual_qc` | keep, review, reject |
 | `qc_reason` | low_signal, silence, noise, saturation, good_pattern |
-| `reviewed_by` | Dobby/JCH/manual |
+| 
 
 Initial rule-based bootstrap:
 

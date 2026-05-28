@@ -103,7 +103,7 @@ Pour prévenir le braconnage ou la perturbation des espèces rares, les informat
 
 ## Alternative si l'accès API est refusé ou inexistant : GBIF
 
-Les observations validées de waarnemingen.be/observations.be sont publiées en open data sur le Global Biodiversity Information Facility (GBIF), standardisées en Darwin Core Archive. GBIF, lui, a une API publique et bien documentée, avec des filtres géographiques précis (latitude/longitude + rayon). C'est une voie de secours solide, mais avec un délai : les données GBIF ne sont pas temps réel, elles sont synchronisées périodiquement.
+Les observations validées de waarnemingen.be/observations.be sont publiées en open data sur le Global Biodiversity Information Facility (GBIF), standardisées en Darwin Core [[archive]]. GBIF, lui, a une API publique et bien documentée, avec des filtres géographiques précis (latitude/longitude + rayon). C'est une voie de secours solide, mais avec un délai : les données GBIF ne sont pas temps réel, elles sont synchronisées périodiquement.
 
 ---
 
@@ -283,7 +283,7 @@ une native. je veux que
 * on puisse taper le nom d'un animal (francais et nom latin) et voir les observations autour du point actuel à une distance que l'utilsateur determine de 1 à 10 km
 * autre choix, je demande à l'app de me lister les animaux observés autour de moi à une distance que l'utilisateur determine de 1 à 10 km et dans une fourchette dec temps : semaine/mois/année au choix
 * Tiens compte que si cette app est vraiment utile, on en fera une extension pour d'autres pays et d'autres langues. (pas necessaire de developper maintenant)
-* Tiens compte qu'on aimera liér cette app a des app d'observations animalières ou guide app telles que Birdnet/Collins bird etc (pas necessaire de developper maintenant)
+* Tiens compte qu'on aimera liér cette app a des app d'observations animalières ou guide app telles que [[BirdNET]]/Collins bird etc (pas necessaire de developper maintenant)
 
 Est ce que il faut passer à Code pour ce codage ou tu t'en occupe à prtir d'ici ?
 
@@ -294,22 +294,22 @@ Est ce que il faut passer à Code pour ce codage ou tu t'en occupe à prtir d'ic
 
 Bonne question à poser avant de commencer.
 
-## Claude.ai vs Claude Code
+## [[Claude]].ai vs [[Claude]] Code
 
-**D'ici (claude.ai) :** je peux générer les fichiers Swift complets, la structure du projet, et tout le code. Tu copies-colles dans Xcode. Ça fonctionne pour un projet de cette taille.
+**D'ici ([[Claude]].ai) :** je peux générer les fichiers Swift complets, la structure du projet, et tout le code. Tu copies-colles dans Xcode. Ça fonctionne pour un projet de cette taille.
 
-**Claude Code :** outil en ligne de commande qui travaille directement dans ton dossier Xcode sur ton Mac — il crée les fichiers, les modifie, exécute les builds. Plus efficace pour les itérations et corrections d'erreurs de compilation.
+**[[Claude]] Code :** outil en ligne de commande qui travaille directement dans ton dossier Xcode sur ton Mac — il crée les fichiers, les modifie, exécute les builds. Plus efficace pour les itérations et corrections d'erreurs de compilation.
 
-**Ma recommandation :** commence par Claude Code. Le projet va impliquer plusieurs fichiers Swift interdépendants (vues, modèles, appels API, gestion GPS), et corriger des erreurs de build en copiant-collant manuellement devient vite laborieux.
+**Ma recommandation :** commence par [[Claude]] Code. Le projet va impliquer plusieurs fichiers Swift interdépendants (vues, modèles, appels API, gestion GPS), et corriger des erreurs de build en copiant-collant manuellement devient vite laborieux.
 
 ---
 
 ## Ce qu'il faut avoir avant de commencer
 
-Que tu utilises Claude Code ou claude.ai :
+Que tu utilises [[Claude]] Code ou [[Claude]].ai :
 
 1. **Xcode installé** (version 15 minimum pour SwiftUI moderne) — tu l'as ?
-2. **Un compte Apple Developer** — pas obligatoire pour tester sur simulateur, mais nécessaire pour tester sur iPhone réel
+2. **Un compte [[Apple]] Developer** — pas obligatoire pour tester sur simulateur, mais nécessaire pour tester sur iPhone réel
 3. **Un compte GBIF** — gratuit sur gbif.org, nécessaire si on veut dépasser les limites de rate sur l'API (lecture anonyme est libre mais limitée)
 
 ---
@@ -327,7 +327,7 @@ Avant de coder, voici l'architecture que je propose — dis-moi si tu veux modif
 - CoreLocation (GPS iPhone)
 - URLSession (appels GBIF API)
 - MapKit (carte des observations)
-- Pas de dépendances externes — tout en natif Apple
+- Pas de dépendances externes — tout en natif [[Apple]]
 
 **Extensibilité prévue mais non développée maintenant :**
 - Champ `datasetKey` dans les requêtes GBIF prévu pour filtrer par pays/dataset
@@ -349,7 +349,7 @@ euh c'est quoi xcode ?
 ## Assistant
 *2026-04-09 07:25*
 
-Xcode est l'environnement de développement d'Apple — l'outil obligatoire pour créer des apps iOS. Sans lui, impossible de compiler du Swift ni de déployer sur iPhone.
+Xcode est l'environnement de développement d'[[Apple]] — l'outil obligatoire pour créer des apps iOS. Sans lui, impossible de compiler du Swift ni de déployer sur iPhone.
 
 C'est gratuit, téléchargeable depuis le Mac App Store, mais il pèse environ 15 Go et nécessite macOS relativement récent.
 
@@ -360,10 +360,10 @@ C'est gratuit, téléchargeable depuis le Mac App Store, mais il pèse environ 1
 Tu n'as jamais développé d'app iOS. Ça change l'équation. Voici les options réalistes :
 
 **Option 1 — Tu apprends et tu développes toi-même**
-Courbe d'apprentissage réelle : Xcode + Swift + SwiftUI. Plusieurs semaines avant d'avoir quelque chose de fonctionnel. Claude Code ou claude.ai peuvent générer le code, mais tu devras comprendre suffisamment pour déboguer et maintenir.
+Courbe d'apprentissage réelle : Xcode + Swift + SwiftUI. Plusieurs semaines avant d'avoir quelque chose de fonctionnel. [[Claude]] Code ou [[Claude]].ai peuvent générer le code, mais tu devras comprendre suffisamment pour déboguer et maintenir.
 
 **Option 2 — App web progressive (PWA) dans Safari**
-Fonctionne sur iPhone sans App Store ni Xcode. HTML + JavaScript, accès GPS via navigateur, carte interactive. Je peux construire ça entièrement ici sur claude.ai, tu l'héberges sur une URL simple (GitHub Pages, gratuit), et tu l'ajoutes à ton écran d'accueil iPhone — elle se comporte comme une app. Délai : quelques heures.
+Fonctionne sur iPhone sans App Store ni Xcode. HTML + JavaScript, accès GPS via navigateur, carte interactive. Je peux construire ça entièrement ici sur [[Claude]].ai, tu l'héberges sur une URL simple (GitHub Pages, gratuit), et tu l'ajoutes à ton écran d'accueil iPhone — elle se comporte comme une app. Délai : quelques heures.
 
 **Option 3 — Tu fais développer par quelqu'un**
 Tu fournis le cahier des charges (qu'on a déjà structuré), un développeur iOS l'implémente.
@@ -690,7 +690,7 @@ Si de ton côté le clic sur le lien ouvre le fichier dans le navigateur au lieu
 ## Assistant
 *2026-04-09 08:15*
 
-Compris. Le bouton "Open in Google Chrome" est ce que Claude.ai affiche pour les fichiers HTML — c'est le comportement de l'interface, pas un choix de ma part. Il n'y a pas de bouton "Télécharger" direct pour ce type de fichier.
+Compris. Le bouton "Open in Google Chrome" est ce que [[Claude]].ai affiche pour les fichiers HTML — c'est le comportement de l'interface, pas un choix de ma part. Il n'y a pas de bouton "Télécharger" direct pour ce type de fichier.
 
 **Solution :** clique sur "Open in Google Chrome", le fichier s'ouvre dans Chrome, puis :
 
@@ -741,14 +741,14 @@ Le correctif bloque maintenant tout résultat qui n'est pas au rang `SPECIES` ou
 ## Human
 *2026-04-10 09:58*
 
-explique le soucis. Renard est un terme précis et pourtant la réponse est étonnante
+explique le soucis. [[Renard]] est un terme précis et pourtant la réponse est étonnante
 
 ---
 
 ## Assistant
 *2026-04-10 09:59*
 
-Le problème vient de l'API GBIF `species/match`. Quand on envoie "Renard", elle retourne un match au niveau `KINGDOM` (Animalia) — ce qui est absurde. Cela signifie qu'elle ne reconnaît pas "Renard" comme nom vernaculaire français et remonte jusqu'au niveau le plus haut par défaut.
+Le problème vient de l'API GBIF 
 
 **Cause réelle :** l'API `species/match` de GBIF est optimisée pour les noms latins. Les noms vernaculaires français sont mal supportés — elle les résout de façon peu fiable.
 
@@ -779,11 +779,11 @@ This block is not supported on your current device yet.
 
 Corrigé. La résolution du nom se fait maintenant en deux étapes :
 
-**Étape 1** — recherche dans les noms vernaculaires français via `/species/search?vernacularName=Renard&language=fra`. Si GBIF connaît "Renard" en français, il retourne directement *Vulpes vulpes* au rang espèce.
+**Étape 1** — recherche dans les noms vernaculaires français via 
 
 **Étape 2** — si rien en français, fallback sur `/species/match` avec le paramètre `strict=true`, qui est plus exigeant et refuse les matchs vagues. C'est la voie pour les noms latins.
 
-Teste avec "Renard", "Chevreuil", "Blaireau" — ça devrait fonctionner. Et si un nom français est vraiment inconnu de GBIF, le message d'erreur sera clair.
+Teste avec "[[Renard]]", "Chevreuil", "Blaireau" — ça devrait fonctionner. Et si un nom français est vraiment inconnu de GBIF, le message d'erreur sera clair.
 
 ---
 
@@ -797,7 +797,7 @@ ca a l'air ok. question est ce la casse est importante ? sinon vu la difficuté 
 ## Assistant
 *2026-04-10 10:30*
 
-**Sur la casse :** non, l'API GBIF est insensible à la casse. "renard", "Renard", "RENARD" donnent le même résultat.
+**Sur la casse :** non, l'API GBIF est insensible à la casse. "[[Renard]]", "[[Renard]]", "[[Renard]]" donnent le même résultat.
 
 **Sur le dictionnaire :** c'est une excellente idée, et c'est plus simple qu'il n'y paraît. Un fichier JSON embarqué directement dans le HTML — pas de serveur, pas de dépendance externe. Tu le maintiens toi-même, tu ajoutes des espèces au fur et à mesure.
 
@@ -848,9 +848,9 @@ This block is not supported on your current device yet.
 
 Version 3 prête. Ce qui a changé :
 
-**Dictionnaire embarqué** — ~110 entrées couvrant mammifères, oiseaux, reptiles, amphibiens, poissons, insectes notables de Belgique/France. Noms courts ("Renard") et noms complets ("Renard roux") pointent tous vers la bonne espèce.
+**Dictionnaire embarqué** — ~110 entrées couvrant mammifères, oiseaux, reptiles, amphibiens, poissons, insectes notables de Belgique/France. Noms courts ("[[Renard]]") et noms complets ("[[Renard]] roux") pointent tous vers la bonne espèce.
 
-**Priorité de résolution :** dictionnaire local → GBIF vernacularName français → GBIF species/match latin. "Renard" trouve *Vulpes vulpes* instantanément sans appel réseau.
+**Priorité de résolution :** dictionnaire local → GBIF vernacularName français → GBIF species/match latin. "[[Renard]]" trouve *Vulpes vulpes* instantanément sans appel réseau.
 
 **Autocomplétion** — dès 2 caractères tapés, une liste de suggestions apparaît avec nom français + latin. Navigation clavier (flèches + Entrée) et tap sur iPhone.
 
@@ -1104,7 +1104,7 @@ Upload sur GitHub et teste le tap sur une carte.
 ## Human
 *2026-04-10 11:12*
 
-ok ca marche mais meme pour renard ou chevreuil il ne trouve pas de photo
+ok ca marche mais meme pour [[Renard]] ou chevreuil il ne trouve pas de photo
 
 ---
 

@@ -520,6 +520,7 @@ status: generated
 | QWEN.md — PKA_JCH System Pointer (Qwen 3 local via Ollama) |  |  |  | `QWEN.md` |
 | Runbook PKA MacBook |  |  |  | `RUNBOOK_PKA_MACBOOK.md` |
 | Runtime Service Register — PKA_JCH | runtime-service-register | draft |  | `Runtime_Service_Register.md` |
+| System Architecture Report — PKA_JCH | architecture-report | validated |  | `System_Architecture_Report.md` |
 | Template — Profil membre PKA | template |  |  | `TEAM/PROFIL-TEMPLATE.md` |
 | Restauration TEAM/team.db |  |  |  | `TEAM/RESTORE_TEAM_DB.md` |
 | Team Roster |  |  |  | `TEAM/ROSTER.md` |

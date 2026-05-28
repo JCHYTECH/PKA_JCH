@@ -10,7 +10,7 @@ status: active
 ## Session — 21:59 — insectnet-qc-app-auto-filter
 
 ### Contexte
-- Modèle : codex
+- Modèle : [[Codex]]
 - Projet : WILDNEXUS
 
 ### Résumé

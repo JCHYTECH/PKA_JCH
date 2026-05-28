@@ -1,6 +1,6 @@
 ---
 date: 2026-05-25
-model: GPT-5 Codex
+model: GPT-5 [[Codex]]
 type: roadmap
 status: active
 domain: ai-system
@@ -45,10 +45,10 @@ Deliverables:
 
 Prepare a stable base:
 
-- Docker;
-- Git;
-- Python;
-- Tailscale;
+- [[Docker]];
+- [[Git]];
+- [[Python]];
+- [[Tailscale]];
 - backups.
 
 Deliverable:
@@ -59,9 +59,9 @@ Deliverable:
 
 Evaluate:
 
-- PostgreSQL;
-- Redis;
-- Qdrant light;
+- [[PostgreSQL]];
+- [[Redis]];
+- [[Qdrant]] light;
 - logs;
 - agent state storage.
 
@@ -73,7 +73,7 @@ Deliverable:
 
 Evaluate:
 
-- n8n;
+- [[n8n]];
 - queues;
 - limited workflows;
 - monitoring;

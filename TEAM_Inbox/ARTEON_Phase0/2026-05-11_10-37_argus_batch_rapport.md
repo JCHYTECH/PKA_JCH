@@ -1,4 +1,4 @@
-# Argus — Rapport Batch ARTEON Phase 0
+# [[Argus]] — Rapport Batch ARTEON Phase 0
 
 **Date :** 2026-05-11 10:37  
 **Source :** `/Users/jchavauxm5/Desktop/LrC To /Dobby select`  
@@ -24,4 +24,4 @@ MESSAGE: Votre photo est actuellement examinée par notre équipe de modération
 
 ---
 
-*Généré par Argus 🦅 via argus_batch.py — PKA ARTEON Phase 0*
+*Généré par [[Argus]] 🦅 via argus_batch.py — PKA ARTEON Phase 0*

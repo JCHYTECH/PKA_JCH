@@ -10,7 +10,7 @@ Couvre la technique photo, le post-traitement, l'impression, les observations te
 | Dossier | Contenu |
 |---|---|
 | `docs/` | Synthèses, guides fiches terrain, projet faune-autour, templates |
-| `docs/templates/` | Templates fiches Obsidian (oiseau, templater v2) |
+| 
 | `content/faune-autour/` | 7 fiches projet Faune-Autour (espèces, lieux, sorties, matériel…) |
 | `content/fiches/` | Fiches espèces (grenouille rousse, Acrida ungarica, arbres Wallonie…) |
 | `content/observations/` | Observations terrain (canard colvert, corbeaux, grenouille rousse…) |
@@ -21,7 +21,7 @@ Couvre la technique photo, le post-traitement, l'impression, les observations te
 | `tech/printing/` | Impression ET8550 : workflows, color fix, papiers, drivers |
 | `tech/matos/` | Équipement JCH, objectifs, accessoires macro |
 | `tech/onsite/` | Techniques terrain : macro, chronophotographie, voie lactée, WeMacro |
-| `tech/obsidian/` | Configuration Obsidian + plugin Templater |
+| 
 | `tech/` | API observations.be, workflow import, HTML faune-autour |
 | `media/assets/` | Logo faune-autour |
 | `comms/` | Correspondance (Natagora 2026-04-16) |

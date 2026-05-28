@@ -5,7 +5,7 @@ Fichier source : `Meeting Nuances 12_5_26.m4a`
 Transcription source : `Meeting Nuances 12_5_26.txt`  
 Participants mentionnes : Jean-Claude Chavaux, Guylain Lacrosse, Cedric Lacrosse, Maxime Lacrosse.
 
-Note qualite : compte rendu base sur une transcription automatique Whisper. Certains termes ont ete corriges lorsqu'ils etaient evidents : B2C, B2B, BESS, batteries, terres rares, ecretage. Les points incertains sont signales en fin de document.
+Note qualite : compte rendu base sur une transcription automatique [[Whisper]]. Certains termes ont ete corriges lorsqu'ils etaient evidents : B2C, B2B, BESS, batteries, terres rares, ecretage. Les points incertains sont signales en fin de document.
 
 ## 1. Objet de la reunion
 

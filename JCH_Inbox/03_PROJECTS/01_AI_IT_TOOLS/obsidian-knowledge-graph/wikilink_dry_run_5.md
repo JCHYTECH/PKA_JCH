@@ -9,904 +9,256 @@ status: proposal
 
 > Proposal only. No source note has been modified.
 
-- scanned notes: 708
+- scanned notes: 710
 - files with suggestions: 5
-- line suggestions: 111
+- line suggestions: 30
 
-## `JCH_Inbox/00_INBOX/Hermes_ouinon.md`
+## `JCH_Inbox/00_INBOX/httpswww.youtube.comwatchv=Cd_yplR1hcI&t=56s.md`
 
-### Line 14
+### Line 17
 
-- terms: Dobby
+- terms: Raspberry Pi, Raspberry Pi
 - before:
-  `- un agent coordinateur appelé Dobby ;`
+  `technically now I'm Dr Luke uh was it worth it we'll see in any case let's see what changes I've made and what we've done here so one of the biggest changes you'll note is that I've switched now to using the raspberry pi and the Raspberry Pi ecosystem in that first video I talked about the limitations of that system you know power consumption lack of compute I was using quite old Jetson model since that video raspberry play has actually come out with a couple of bits of AI Hardware that is really  `
 - after:
-  `- un agent coordinateur appelé [[Dobby]] ;`
-
-### Line 42
-
-- terms: Dobby
-- before:
-  `**Oui, mais pas comme remplacement de Dobby, ChatGPT ou Claude.**`
-- after:
-  `**Oui, mais pas comme remplacement de [[Dobby]], ChatGPT ou Claude.**`
-
-### Line 63
-
-- terms: Obsidian
-- before:
-  `- règles de création de fichiers Markdown pour Obsidian ;`
-- after:
-  `- règles de création de fichiers Markdown pour [[Obsidian]] ;`
-
-### Line 68
-
-- terms: BirdNET, ESP32
-- before:
-  `- workflows BirdNET / Raspberry / ESP32 ;`
-- after:
-  `- workflows [[BirdNET]] / Raspberry / [[ESP32]] ;`
-
-### Line 80
-
-- terms: Obsidian
-- before:
-  `- générer une commande Terminal pour installer une note dans Obsidian ;`
-- after:
-  `- générer une commande Terminal pour installer une note dans [[Obsidian]] ;`
-
-### Line 96
-
-- terms: ESP32
-- before:
-  `- réception de données envoyées par des Raspberry ou ESP32 ;`
-- after:
-  `- réception de données envoyées par des Raspberry ou [[ESP32]] ;`
-
-### Line 99
-
-- terms: n8n
-- before:
-  `- déclenchement de workflows n8n ;`
-- after:
-  `- déclenchement de workflows [[n8n]] ;`
-
-### Line 101
-
-- terms: PostgreSQL, Qdrant
-- before:
-  `- interaction avec une base PostgreSQL ou Qdrant.`
-- after:
-  `- interaction avec une base [[PostgreSQL]] ou [[Qdrant]].`
-
-### Line 113
-
-- terms: Dobby
-- before:
-  `- **Dobby** : coordinateur métier et orchestrateur conceptuel.`
-- after:
-  `- **[[Dobby]]** : coordinateur métier et orchestrateur conceptuel.`
-
-### Line 146
-
-- terms: Obsidian
-- before:
-  `1. Agent documentation / Obsidian.`
-- after:
-  `1. Agent documentation / [[Obsidian]].`
-
-### Line 166
-
-- terms: Obsidian
-- before:
-  `- Obsidian ;`
-- after:
-  `- [[Obsidian]] ;`
-
-### Line 169
-
-- terms: Dobby
-- before:
-  `- Dobby ;`
-- after:
-  `- [[Dobby]] ;`
-
-### Line 187
-
-- terms: n8n
-- before:
-  `- faire tourner n8n ;`
-- after:
-  `- faire tourner [[n8n]] ;`
-
-### Line 188
-
-- terms: PostgreSQL, Redis, Qdrant
-- before:
-  `- héberger PostgreSQL, Redis ou Qdrant léger ;`
-- after:
-  `- héberger [[PostgreSQL]], [[Redis]] ou [[Qdrant]] léger ;`
-
-### Line 198
-
-- terms: Docker
-- before:
-  `- Docker ;`
-- after:
-  `- [[Docker]] ;`
-
-### Line 199
-
-- terms: Tailscale
-- before:
-  `- Tailscale ;`
-- after:
-  `- [[Tailscale]] ;`
-
-### Line 220
-
-- terms: BirdNET
-- before:
-  `- BirdNET ;`
-- after:
-  `- [[BirdNET]] ;`
-
-### Line 221
-
-- terms: Whisper
-- before:
-  `- Whisper ;`
-- after:
-  `- [[Whisper]] ;`
-
-### Line 244
-
-- terms: Obsidian
-- before:
-  `- sauvegardes Obsidian ;`
-- after:
-  `- sauvegardes [[Obsidian]] ;`
-
-### Line 263
-
-- terms: Obsidian
-- before:
-  `- Obsidian principal ;`
-- after:
-  `- [[Obsidian]] principal ;`
-
-### Line 282
-
-- terms: PostgreSQL
-- before:
-  `- PostgreSQL ;`
-- after:
-  `- [[PostgreSQL]] ;`
-
-### Line 283
-
-- terms: Redis
-- before:
-  `- Redis ;`
-- after:
-  `- [[Redis]] ;`
-
-### Line 284
-
-- terms: Qdrant
-- before:
-  `- Qdrant léger ;`
-- after:
-  `- [[Qdrant]] léger ;`
-
-### Line 287
-
-- terms: n8n
-- before:
-  `- workflows n8n ;`
-- after:
-  `- workflows [[n8n]] ;`
-
-### Line 315
-
-- terms: Git
-- before:
-  `**Git privé + copie NAS**`
-- after:
-  `**[[Git]] privé + copie NAS**`
-
-### Line 324
-
-- terms: Docker
-- before:
-  `- configurations Docker ;`
-- after:
-  `- configurations [[Docker]] ;`
-
-### Line 325
-
-- terms: Dobby
-- before:
-  `- versions de Dobby.`
-- after:
-  `- versions de [[Dobby]].`
-
-### Line 383
-
-- terms: Docker
-- before:
-  `- installer Docker ;`
-- after:
-  `- installer [[Docker]] ;`
-
-### Line 384
-
-- terms: Tailscale
-- before:
-  `- installer Tailscale ;`
-- after:
-  `- installer [[Tailscale]] ;`
-
-### Line 387
-
-- terms: PostgreSQL
-- before:
-  `- déployer PostgreSQL ;`
-- after:
-  `- déployer [[PostgreSQL]] ;`
-
-### Line 388
-
-- terms: n8n
-- before:
-  `- déployer n8n ;`
-- after:
-  `- déployer [[n8n]] ;`
-
-### Line 409
-
-- terms: Obsidian
-- before:
-  `- organiser Obsidian ;`
-- after:
-  `- organiser [[Obsidian]] ;`
-
-## `JCH_Inbox/00_INBOX/Hermisation.md`
-
-### Line 79
-
-- terms: Obsidian
-- before:
-  `- les conventions Obsidian ;`
-- after:
-  `- les conventions [[Obsidian]] ;`
-
-### Line 123
-
-- terms: Dobby
-- before:
-  `## 4.1 Dobby reste central`
-- after:
-  `## 4.1 [[Dobby]] reste central`
-
-### Line 125
-
-- terms: Dobby
-- before:
-  `Dobby reste :`
-- after:
-  `[[Dobby]] reste :`
-
-### Line 132
-
-- terms: Dobby
-- before:
-  `PKA-Hermes ne remplace pas Dobby.`
-- after:
-  `PKA-Hermes ne remplace pas [[Dobby]].`
-
-### Line 181
-
-- terms: Obsidian
-- before:
-  `- Obsidian ;`
-- after:
-  `- [[Obsidian]] ;`
-
-### Line 206
-
-- terms: Docker
-- before:
-  `- Docker ;`
-- after:
-  `- [[Docker]] ;`
-
-### Line 207
-
-- terms: PostgreSQL
-- before:
-  `- PostgreSQL ;`
-- after:
-  `- [[PostgreSQL]] ;`
-
-### Line 208
-
-- terms: Redis
-- before:
-  `- Redis ;`
-- after:
-  `- [[Redis]] ;`
-
-### Line 209
-
-- terms: Qdrant
-- before:
-  `- Qdrant ;`
-- after:
-  `- [[Qdrant]] ;`
-
-### Line 210
-
-- terms: FastAPI
-- before:
-  `- FastAPI ;`
-- after:
-  `- [[FastAPI]] ;`
-
-### Line 211
-
-- terms: n8n
-- before:
-  `- n8n ;`
-- after:
-  `- [[n8n]] ;`
-
-### Line 212
-
-- terms: Tailscale
-- before:
-  `- Tailscale.`
-- after:
-  `- [[Tailscale]].`
-
-### Line 234
-
-- terms: ESP32
-- before:
-  `### Raspberry / ESP32`
-- after:
-  `### Raspberry / [[ESP32]]`
-
-### Line 238
-
-- terms: BirdNET
-- before:
-  `- BirdNET ;`
-- after:
-  `- [[BirdNET]] ;`
-
-### Line 261
-
-- terms: PostgreSQL
-- before:
-  `- PostgreSQL ;`
-- after:
-  `- [[PostgreSQL]] ;`
-
-### Line 262
-
-- terms: Redis
-- before:
-  `- Redis.`
-- after:
-  `- [[Redis]].`
-
-### Line 279
-
-- terms: Obsidian
-- before:
-  `- Obsidian ;`
-- after:
-  `- [[Obsidian]] ;`
-
-### Line 281
-
-- terms: Git
-- before:
-  `- Git privé.`
-- after:
-  `- [[Git]] privé.`
-
-### Line 287
-
-- terms: Obsidian
-- before:
-  `## 7.1 Obsidian comme mémoire humaine principale`
-- after:
-  `## 7.1 [[Obsidian]] comme mémoire humaine principale`
-
-### Line 339
-
-- terms: BirdNET
-- before:
-  `- workflow BirdNET ;`
-- after:
-  `- workflow [[BirdNET]] ;`
-
-### Line 377
-
-- terms: Tailscale
-- before:
-  `- Tailscale ;`
-- after:
-  `- [[Tailscale]] ;`
-
-### Line 388
-
-- terms: Obsidian
-- before:
-  `- Obsidian ;`
-- after:
-  `- [[Obsidian]] ;`
-
-### Line 389
-
-- terms: PostgreSQL
-- before:
-  `- PostgreSQL ;`
-- after:
-  `- [[PostgreSQL]] ;`
-
-### Line 438
-
-- terms: Docker
-- before:
-  `- Docker ;`
-- after:
-  `- [[Docker]] ;`
-
-### Line 439
-
-- terms: PostgreSQL
-- before:
-  `- PostgreSQL ;`
-- after:
-  `- [[PostgreSQL]] ;`
-
-### Line 468
-
-- terms: BirdNET
-- before:
-  `- BirdNET ;`
-- after:
-  `- [[BirdNET]] ;`
-
-## `JCH_Inbox/00_INBOX/Insectes vol.md`
-
-### Line 6
-
-- terms: BirdNET
-- before:
-  `Approche inspirée de BirdNET appliquée aux insectes européens.`
-- after:
-  `Approche inspirée de [[BirdNET]] appliquée aux insectes européens.`
+  `technically now I'm Dr Luke uh was it worth it we'll see in any case let's see what changes I've made and what we've done here so one of the biggest changes you'll note is that I've switched now to using the [[Raspberry Pi]] and the [[Raspberry Pi]] ecosystem in that first video I talked about the limitations of that system you know power consumption lack of compute I was using quite old Jetson model since that video raspberry play has actually come out with a couple of bits of AI Hardware that is really  `
 
 ### Line 20
 
-- terms: Raspberry Pi
+- terms: Pi, Pi
 - before:
-  `- fonctionner sur matériel léger type Raspberry Pi ;`
+  `useful for what I'm doing here that being both the AI hat or the Halo accelerator and also the raspber pi AI camera which actually uses that Sony IMX 500 intelligent image sensor that I talked about so it's a bit of a coincidence that they happen to produce this right after I talked about it in that video so with that I've also switched the raspby pi 5 which is needed for that AI hat in some of those shorts I talked about why I'm not using the AI camera for now I am limited by the  `
 - after:
-  `- fonctionner sur matériel léger type [[Raspberry Pi]] ;`
+  `useful for what I'm doing here that being both the AI hat or the Halo accelerator and also the raspber [[Pi]] AI camera which actually uses that Sony IMX 500 intelligent image sensor that I talked about so it's a bit of a coincidence that they happen to produce this right after I talked about it in that video so with that I've also switched the raspby [[Pi]] 5 which is needed for that AI hat in some of those shorts I talked about why I'm not using the AI camera for now I am limited by the  `
 
-### Line 32
-
-- terms: BirdNET
-- before:
-  `# 2. Différence fondamentale avec BirdNET`
-- after:
-  `# 2. Différence fondamentale avec [[BirdNET]]`
-
-### Line 34
-
-- terms: BirdNET
-- before:
-  `BirdNET reconnaît principalement :`
-- after:
-  `[[BirdNET]] reconnaît principalement :`
-
-### Line 253
-
-- terms: Raspberry Pi
-- before:
-  `## 8.1 Raspberry Pi`
-- after:
-  `## 8.1 [[Raspberry Pi]]`
-
-### Line 265
+### Line 23
 
 - terms: Raspberry Pi 5
 - before:
-  `- Raspberry Pi 5.`
+  `resolution that I can put through the model even though this is a high resolution camera the model on here can only run at 4 640x 640 whereas I can kind of choose any resolution for this one I'm still using the high quality camera same as before so that gives me access to potentially up to 4K resolution images you can see now the whole design is a lot smaller and more compact I've got this UPS here for the Raspberry Pi 5 that I've got off the shelf one of the issues with the old design was that I had all this custom  `
 - after:
-  `- [[Raspberry Pi 5]].`
+  `resolution that I can put through the model even though this is a high resolution camera the model on here can only run at 4 640x 640 whereas I can kind of choose any resolution for this one I'm still using the high quality camera same as before so that gives me access to potentially up to 4K resolution images you can see now the whole design is a lot smaller and more compact I've got this UPS here for the [[Raspberry Pi 5]] that I've got off the shelf one of the issues with the old design was that I had all this custom  `
 
-### Line 269
+### Line 29
 
-- terms: ESP32
+- terms: Raspberry Pi, Raspberry Pi, Raspberry Pi, Raspberry Pi 5, Raspberry Pi
 - before:
-  `## 8.2 ESP32`
+  `you can see it actually mounts to the top of the Raspberry Pi but it also blocks the GPI op pins for the Raspberry Pi meaning I can't put any more hats on top so a lot of the UPS's or power supplies for the Raspberry Pi that might be more suitable than what I'm using here can't use because they mount on the top and I chose this UPS which is just some generic sort of Raspberry Pi 5 UPS because it has batteries in the back and also the Raspberry Pi mounts on top and has a DC Supply input and some output  `
 - after:
-  `## 8.2 [[ESP32]]`
+  `you can see it actually mounts to the top of the [[Raspberry Pi]] but it also blocks the GPI op pins for the [[Raspberry Pi]] meaning I can't put any more hats on top so a lot of the UPS's or power supplies for the [[Raspberry Pi]] that might be more suitable than what I'm using here can't use because they mount on the top and I chose this UPS which is just some generic sort of [[Raspberry Pi 5]] UPS because it has batteries in the back and also the [[Raspberry Pi]] mounts on top and has a DC Supply input and some output  `
 
-### Line 346
+### Line 32
+
+- terms: Raspberry Pi, Raspberry Pi, Raspberry Pi, Pi, Pi
+- before:
+  `5vt power as well that I can run my fan with and while this does has some basic battery monitoring it doesn't monitor power consumption or charge power from the solar panel and it also can't wake up to Raspberry Pi and as I've mentioned some of those shorts for some reason it has the feature that when the Raspberry Pi shuts down the butt converter that supplies the Raspberry Pi with power also shuts down so it means that the raspby pi 5 which is the first raspby pi to have a real time clock and can reboot  `
+- after:
+  `5vt power as well that I can run my fan with and while this does has some basic battery monitoring it doesn't monitor power consumption or charge power from the solar panel and it also can't wake up to [[Raspberry Pi]] and as I've mentioned some of those shorts for some reason it has the feature that when the [[Raspberry Pi]] shuts down the butt converter that supplies the [[Raspberry Pi]] with power also shuts down so it means that the raspby [[Pi]] 5 which is the first raspby [[Pi]] to have a real time clock and can reboot  `
+
+### Line 38
 
 - terms: Raspberry Pi
 - before:
-  `Déploiement Raspberry Pi.`
+  `operation is that just after Sunset the Raspberry Pi shuts itself down and I'm currently relying on the sun to come out in the morning start supplying enough power that the buuck converter switches on and start supplying a charge current so the whole thing boots up and at the moment it's summer here in Australia so that actually kind of works reliably and it's running from like 6:30 to 9:00 at night but obviously in a lot of situations that's just not going to cut it and so I'm still working on trying to  `
 - after:
-  `Déploiement [[Raspberry Pi]].`
+  `operation is that just after Sunset the [[Raspberry Pi]] shuts itself down and I'm currently relying on the sun to come out in the morning start supplying enough power that the buuck converter switches on and start supplying a charge current so the whole thing boots up and at the moment it's summer here in Australia so that actually kind of works reliably and it's running from like 6:30 to 9:00 at night but obviously in a lot of situations that's just not going to cut it and so I'm still working on trying to  `
 
-### Line 377
+### Line 50
+
+- terms: Pi
+- before:
+  `just relying on that gbif database and Hope Hing that all the birds of that species that I downloaded and put in that directory only contain birds of that species it doesn't and then just any bird I detect in that is going to be a bird of that species it's not perfect but it works okay and I'm kind of working on some other tricks as well in order to train the YOLO model I'm just using ultral litics at the moment a lot of the demos for this AI accelerator and this rasby Pi AI camera use ultral litic  `
+- after:
+  `just relying on that gbif database and Hope Hing that all the birds of that species that I downloaded and put in that directory only contain birds of that species it doesn't and then just any bird I detect in that is going to be a bird of that species it's not perfect but it works okay and I'm kind of working on some other tricks as well in order to train the YOLO model I'm just using ultral litics at the moment a lot of the demos for this AI accelerator and this rasby [[Pi]] AI camera use ultral litic  `
+
+### Line 56
+
+- terms: Pi
+- before:
+  `basically exports it straight into a format that you can put on your R pi and convert but for other custom models it's a bit more difficult and for the actual Halo accelerator it just seems unnecessarily difficult this company seems to be a sort of hardware company that hasn't really spent too much time working on their software their data flow compiler which is what you use to compile and Export the model for the actual Hardware I think it only got released like mid last year even though  `
+- after:
+  `basically exports it straight into a format that you can put on your R [[Pi]] and convert but for other custom models it's a bit more difficult and for the actual Halo accelerator it just seems unnecessarily difficult this company seems to be a sort of hardware company that hasn't really spent too much time working on their software their data flow compiler which is what you use to compile and Export the model for the actual Hardware I think it only got released like mid last year even though  `
+
+### Line 65
+
+- terms: Pie, Pie
+- before:
+  `ground that big heavy umbrella stand was just way too cumbersome to try and haul around so this new design is much easier and I can kind of put it in more locations but as I mentioned there's still work to be done there is still no Laura or long range Communications which is kind of one of the main features I wanted to include in this and again it's been difficult to incorporate that because a lot of the raspby pie hats sit on top of the raspby pie which I just can't use here and I didn't really want  `
+- after:
+  `ground that big heavy umbrella stand was just way too cumbersome to try and haul around so this new design is much easier and I can kind of put it in more locations but as I mentioned there's still work to be done there is still no Laura or long range Communications which is kind of one of the main features I wanted to include in this and again it's been difficult to incorporate that because a lot of the raspby [[Pie]] hats sit on top of the raspby [[Pie]] which I just can't use here and I didn't really want  `
+
+### Line 68
+
+- terms: Pie
+- before:
+  `to hack around tacking on solder wires and everything to a module so I've kind of put that on hold for now so the next Grand Step potenti entally is to design and create a custom PCB that not only does the power supply the battery management the solar charging with proper solar charging it has a microcontroller on board to manage the actual shutdown and reboot of the rasp pie correctly and also has allowances for Aura module or potentially even 4G LTE to transmit any detections that have occurred and there are also other  `
+- after:
+  `to hack around tacking on solder wires and everything to a module so I've kind of put that on hold for now so the next Grand Step potenti entally is to design and create a custom PCB that not only does the power supply the battery management the solar charging with proper solar charging it has a microcontroller on board to manage the actual shutdown and reboot of the rasp [[Pie]] correctly and also has allowances for Aura module or potentially even 4G LTE to transmit any detections that have occurred and there are also other  `
+
+### Line 74
 
 - terms: Raspberry Pi
 - before:
-  `- Raspberry Pi ;`
+  `sign on to be our PCB sponsor all PCB will handle all of your PCB manufacturing and assembly needs all you need to do is upload your gerbal files choose the number of layers so thanks to all PCB you can check them out in the links in the description if you think you're interested in having that PCB power supply with Communications for the Raspberry Pi in order to build your own Edge computer device let me know I'm interested to see who else might be interested in wanting something like this and who knows we might develop it  `
 - after:
-  `- [[Raspberry Pi]] ;`
+  `sign on to be our PCB sponsor all PCB will handle all of your PCB manufacturing and assembly needs all you need to do is upload your gerbal files choose the number of layers so thanks to all PCB you can check them out in the links in the description if you think you're interested in having that PCB power supply with Communications for the [[Raspberry Pi]] in order to build your own Edge computer device let me know I'm interested to see who else might be interested in wanting something like this and who knows we might develop it  `
 
-### Line 455
+## `JCH_Inbox/01_DASHBOARDS/INDEX.md`
 
-- terms: Raspberry Pi
+### Line 45
+
+- terms: archive
 - before:
-  `1. Prototype Raspberry Pi ;`
+  `| [04_NUANCES](../03_PROJECTS/archive/reanimable/04_NUANCES/INDEX.md) | Consultance stratégique BESS | Archive reactivable |`
 - after:
-  `1. Prototype [[Raspberry Pi]] ;`
+  `| [04_NUANCES](../03_PROJECTS/archive/reanimable/04_NUANCES/INDEX.md) | Consultance stratégique BESS | [[archive]] reactivable |`
 
-## `JCH_Inbox/00_INBOX/PKA_Hermisation_Master_Project.md`
+### Line 51
 
-### Line 93
-
-- terms: Dobby
+- terms: archive
 - before:
-  `# 5. Rôle de Dobby`
+  `## Archive recente`
 - after:
-  `# 5. Rôle de [[Dobby]]`
+  `## [[archive]] recente`
 
-### Line 95
+### Line 52
 
-- terms: Dobby
+- terms: archive
 - before:
-  `Dobby est :`
+  `- [09_BOIS_CHEVREUILS](../07_ARCHIVES/09_BOIS_CHEVREUILS/INDEX.md) — archive projet de gestion forestiere`
 - after:
-  `[[Dobby]] est :`
+  `- [09_BOIS_CHEVREUILS](../07_ARCHIVES/09_BOIS_CHEVREUILS/INDEX.md) — [[archive]] projet de gestion forestiere`
 
-### Line 114
+## `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/INDEX.md`
+
+### Line 7
+
+- terms: Claude, Obsidian
+- before:
+  `Prompts Claude, guides how-to, scripts, workflows Obsidian, configurations apps.`
+- after:
+  `Prompts [[Claude]], guides how-to, scripts, workflows [[Obsidian]], configurations apps.`
+
+### Line 12
+
+- terms: Graphify, Obsidian
+- before:
+  `| `docs/` | Guides et how-to : API, exports, mémoire, NocoDB, graphify, Obsidian |`
+- after:
+  `| `docs/` | Guides et how-to : API, exports, mémoire, NocoDB, [[Graphify]], [[Obsidian]] |`
+
+### Line 13
+
+- terms: Claude
+- before:
+  `| `content/Prompts/` | Prompts Claude — photo wildlife, logo faune-autour, PowerPoint |`
+- after:
+  `| `content/Prompts/` | Prompts [[Claude]] — photo wildlife, logo faune-autour, PowerPoint |`
+
+### Line 15
 
 - terms: Obsidian
 - before:
-  `- Obsidian ;`
+  `| `content/App/` | Vues Obsidian configurées (.base) — agenda, kanban, calendar, relations |`
 - after:
-  `- [[Obsidian]] ;`
+  `| `content/App/` | Vues [[Obsidian]] configurées (.base) — agenda, kanban, calendar, relations |`
 
-### Line 129
-
-- terms: Docker
-- before:
-  `- Docker ;`
-- after:
-  `- [[Docker]] ;`
-
-### Line 130
-
-- terms: PostgreSQL
-- before:
-  `- PostgreSQL ;`
-- after:
-  `- [[PostgreSQL]] ;`
-
-### Line 131
-
-- terms: Redis
-- before:
-  `- Redis ;`
-- after:
-  `- [[Redis]] ;`
-
-### Line 132
-
-- terms: Qdrant
-- before:
-  `- Qdrant léger ;`
-- after:
-  `- [[Qdrant]] léger ;`
-
-### Line 133
-
-- terms: n8n
-- before:
-  `- n8n ;`
-- after:
-  `- [[n8n]] ;`
-
-### Line 139
-
-- terms: BirdNET
-- before:
-  `- tests BirdNET ;`
-- after:
-  `- tests [[BirdNET]] ;`
-
-### Line 165
+### Line 22
 
 - terms: Obsidian
 - before:
-  `- cohérence Obsidian ;`
+  `| `obsidian-knowledge-graph/` | Connexion Obsidian, wikilinking gouverné, indexes, review queue |`
 - after:
-  `- cohérence [[Obsidian]] ;`
+  `| `obsidian-knowledge-graph/` | Connexion [[Obsidian]], wikilinking gouverné, indexes, review queue |`
 
-### Line 175
+### Line 24
 
-- terms: Docker
+- terms: Obsidian
 - before:
-  `- Docker ;`
+  `| `archive/` | Notes de tâches personnelles archivées (taskNotes Obsidian) |`
 - after:
-  `- [[Docker]] ;`
+  `| `archive/` | Notes de tâches personnelles archivées (taskNotes [[Obsidian]]) |`
 
-### Line 176
+### Line 27
 
-- terms: PostgreSQL
+- terms: Graphify
 - before:
-  `- PostgreSQL ;`
+  `- `docs/graphify-workflow-jch.md` — Workflow graphify JCH`
 - after:
-  `- [[PostgreSQL]] ;`
+  `- `docs/graphify-workflow-jch.md` — Workflow [[Graphify]] JCH`
 
-### Line 188
+### Line 28
 
-- terms: BirdNET
+- terms: Claude
 - before:
-  `- BirdNET ;`
+  `- `docs/Commands.md` — Référence commandes Claude Code`
 - after:
-  `- [[BirdNET]] ;`
+  `- `docs/Commands.md` — Référence commandes [[Claude]] Code`
 
-### Line 190
+### Line 29
 
-- terms: ESP32
+- terms: Obsidian, Graphify
 - before:
-  `- ESP32 ;`
+  `- `docs/pack-minimal-obsidian-graphify.md` — Pack Obsidian minimal + graphify`
 - after:
-  `- [[ESP32]] ;`
+  `- `docs/pack-minimal-obsidian-graphify.md` — Pack [[Obsidian]] minimal + [[Graphify]]`
 
-### Line 266
+### Line 30
 
-- terms: Docker
+- terms: Claude
 - before:
-  `- Docker ;`
+  `- `docs/Memory_update_review.md` — Procédure mise à jour mémoire Claude`
 - after:
-  `- [[Docker]] ;`
+  `- `docs/Memory_update_review.md` — Procédure mise à jour mémoire [[Claude]]`
 
-### Line 267
+### Line 31
 
-- terms: Git
+- terms: Obsidian
 - before:
-  `- Git ;`
+  `- `obsidian-knowledge-graph/README.md` — Projet de knowledge graph Obsidian gouverné`
 - after:
-  `- [[Git]] ;`
+  `- `obsidian-knowledge-graph/README.md` — Projet de knowledge graph [[Obsidian]] gouverné`
 
-### Line 270
+### Line 35
 
-- terms: Tailscale
+- terms: Obsidian
 - before:
-  `- Tailscale.`
+  `- `content/App/` — 6 vues Obsidian prêtes à l'emploi (agenda, kanban, calendar, tasks, relations)`
 - after:
-  `- [[Tailscale]].`
+  `- `content/App/` — 6 vues [[Obsidian]] prêtes à l'emploi (agenda, kanban, calendar, tasks, relations)`
 
-### Line 280
+## `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/content/Prompts/meta/reverse-prompt-vault.md`
 
-- terms: PostgreSQL
+### Line 3
+
+- terms: Claude
 - before:
-  `- PostgreSQL ;`
+  `source: chat Claude — méta-prompt`
 - after:
-  `- [[PostgreSQL]] ;`
+  `source: chat [[Claude]] — méta-prompt`
 
-### Line 281
+### Line 11
 
-- terms: Redis
+- terms: Claude
 - before:
-  `- Redis ;`
+  `Méta-prompt à coller en fin de conversation Claude pour obtenir le prompt unique qui aurait conduit au même résultat sans itérations.`
 - after:
-  `- [[Redis]] ;`
+  `Méta-prompt à coller en fin de conversation [[Claude]] pour obtenir le prompt unique qui aurait conduit au même résultat sans itérations.`
 
-### Line 293
+### Line 68
 
-- terms: n8n
+- terms: Claude
 - before:
-  `- n8n ;`
+  `- Version slash command installée à `~/.claude/commands/reverse-prompt.md` (déclenchable via `/reverse-prompt` dans Claude Code)`
 - after:
-  `- [[n8n]] ;`
+  `- Version slash command installée à `~/.claude/commands/reverse-prompt.md` (déclenchable via `/reverse-prompt` dans [[Claude]] Code)`
 
-## `JCH_Inbox/00_INBOX/Wikilink_PKA_JCH_Protocol.md`
+## `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/content/Prompts/prompt-expert-canon-wildlife.md`
 
-### Line 1
+### Line 3
 
-- terms: Dobby
+- terms: Claude, Obsidian
 - before:
-  `# PKA_JCH – Protocole de Wikilinking Automatique pour Dobby`
+  `source: chat Claude — "Send chat to Obsidian : Md creation"`
 - after:
-  `# PKA_JCH – Protocole de Wikilinking Automatique pour [[Dobby]]`
-
-### Line 6
-
-- terms: Dobby
-- before:
-  `- le rôle de Dobby dans la gestion des wikilinks,`
-- after:
-  `- le rôle de [[Dobby]] dans la gestion des wikilinks,`
-
-### Line 39
-
-- terms: Dobby
-- before:
-  `# 2. RÔLE DE DOBBY`
-- after:
-  `# 2. RÔLE DE [[Dobby]]`
-
-### Line 41
-
-- terms: Dobby
-- before:
-  `Dobby devient :`
-- after:
-  `[[Dobby]] devient :`
-
-### Line 48
-
-- terms: Dobby
-- before:
-  `Dobby NE DOIT PAS :`
-- after:
-  `[[Dobby]] NE DOIT PAS :`
-
-### Line 132
-
-- terms: Dobby
-- before:
-  `Dobby doit :`
-- after:
-  `[[Dobby]] doit :`
-
-### Line 171
-
-- terms: BirdNET
-- before:
-  `BirdNET:`
-- after:
-  `[[BirdNET]]:`
-
-### Line 189
-
-- terms: Dobby
-- before:
-  `Dobby doit :`
-- after:
-  `[[Dobby]] doit :`
-
-### Line 199
-
-- terms: BirdNET, Raspberry Pi
-- before:
-  `BirdNET tourne sur Raspberry Pi.`
-- after:
-  `[[BirdNET]] tourne sur [[Raspberry Pi]].`
-
-### Line 230
-
-- terms: Dobby
-- before:
-  `Dobby doit vérifier :`
-- after:
-  `[[Dobby]] doit vérifier :`
-
-### Line 260
-
-- terms: Dobby
-- before:
-  `Dobby :`
-- after:
-  `[[Dobby]] :`
-
-### Line 283
-
-- terms: Dobby
-- before:
-  `Dobby extrait :`
-- after:
-  `[[Dobby]] extrait :`
-
-### Line 332
-
-- terms: Dobby
-- before:
-  `Dobby NE DOIT PAS :`
-- after:
-  `[[Dobby]] NE DOIT PAS :`
-
-### Line 344
-
-- terms: Dobby
-- before:
-  `Dobby PEUT :`
-- after:
-  `[[Dobby]] PEUT :`
-
-### Line 449
-
-- terms: Dobby
-- before:
-  `Dobby orchestre :`
-- after:
-  `[[Dobby]] orchestre :`
-
-### Line 457
-
-- terms: Dobby
-- before:
-  `# 13. CONSIGNE FINALE À DOBBY`
-- after:
-  `# 13. CONSIGNE FINALE À [[Dobby]]`
-
-### Line 528
-
-- terms: Dobby
-- before:
-  `Quand un fichier non-MD important est détecté, Dobby doit :`
-- after:
-  `Quand un fichier non-MD important est détecté, [[Dobby]] doit :`
-
-### Line 572
-
-- terms: Dobby
-- before:
-  `Dobby doit privilégier les embeds pour :`
-- after:
-  `[[Dobby]] doit privilégier les embeds pour :`
-
-### Line 601
-
-- terms: Dobby
-- before:
-  `Dobby :`
-- after:
-  `[[Dobby]] :`
-
-### Line 627
-
-- terms: Dobby
-- before:
-  `Dobby cherche :`
-- after:
-  `[[Dobby]] cherche :`
-
-### Line 637
-
-- terms: Dobby
-- before:
-  `Dobby ajoute :`
-- after:
-  `[[Dobby]] ajoute :`
-
-### Line 655
-
-- terms: Dobby
-- before:
-  `Dobby peut ajouter :`
-- after:
-  `[[Dobby]] peut ajouter :`
-
-### Line 668
-
-- terms: Dobby
-- before:
-  `Dobby NE DOIT PAS :`
-- after:
-  `[[Dobby]] NE DOIT PAS :`
+  `source: chat [[Claude]] — "Send chat to [[Obsidian]] : Md creation"`

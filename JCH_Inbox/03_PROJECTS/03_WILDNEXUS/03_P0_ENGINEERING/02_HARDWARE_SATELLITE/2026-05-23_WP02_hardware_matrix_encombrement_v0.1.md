@@ -2,31 +2,31 @@
 
 **Date :** 2026-05-23  
 **Statut :** travail — base pour shortlist achat et fermeture ADR-006  
-**Owner :** Dobby + Forge + Chouette + Castor  
+**Owner :** [[Dobby]] + [[Forge]] + [[Chouette]] + [[Castor]]  
 
 ## 1. Decision de cadrage
 
 Le P0 reste un **Satellite Lite autonome** :
 
-- ESP32-S3 ;
+- [[ESP32-S3]] ;
 - camera OV5640/IR + lentille M12 ;
 - PIR ;
 - micro mono ;
 - microSD ;
-- LoRa metadata ;
+- [[LoRa]] metadata ;
 - Wi-Fi local maintenance/extraction ;
 - holder AA ;
 - bloc capteurs reserve ;
-- antenne LoRa la moins visible possible.
+- antenne [[LoRa]] la moins visible possible.
 
-Le **Raspberry Pi 5** est considere maintenant, mais uniquement comme **Base/Master Nexus P1**. Il ne rentre pas dans le satellite terrain P0.
+Le **[[Raspberry Pi 5]]** est considere maintenant, mais uniquement comme **Base/Master Nexus P1**. Il ne rentre pas dans le satellite terrain P0.
 
 ## 2. Principe mecanique
 
 Le P0 doit etre fonctionnellement simple, mais mecaniquement prevoyant. Le boitier et le PCB doivent eviter de fermer trop tot :
 
 - reserve bloc capteurs environnementaux ;
-- antenne LoRa interne ou camouflee ;
+- antenne [[LoRa]] interne ou camouflee ;
 - acces microSD ;
 - passage micro acoustique et membrane/protection ;
 - calage sur support rond ;
@@ -44,10 +44,10 @@ Objectif JCH : **moins on change de choses apres P0, mieux c'est**.
 | Lentille | M12 IR-corrigee f/1.8, 4-6 mm | qualite image et focus jour/nuit | profondeur lentille + reglage focus + protection fenetre | Lensation/Evetar priorites ; eviter lentille collee |
 | IR | 850 nm + 940 nm en test | eclairage nocturne pulse | cluster LED + dissip/driver + angle | decision finale apres test faune/portee |
 | PIR | Panasonic EKMB low-power ou equivalent | declenchement basse conso | fenetre PIR + volume Fresnel + orientation | FOV a choisir avec boitier |
-| Micro mono | MEMS I2S/PDM type SPH0645 ou equivalent | clips audio courts locaux | port acoustique + membrane/protection eau + decouplage bruit boitier | standard P0, sans BirdNET embarque |
+| Micro mono | MEMS I2S/PDM type SPH0645 ou equivalent | clips audio courts locaux | port acoustique + membrane/protection eau + decouplage bruit boitier | standard P0, sans [[BirdNET]] embarque |
 | Stockage | microSD industrielle 8-16 GB | raws image/audio, logs, index | socket accessible ou trappe service | attention coupure propre et etancheite acces |
-| Radio | RAK3172/RAK3172-T EU868 ou SX1262 equivalent | LoRa P2P metadata | module + zone RF + antenne interne/camouflee | RF a tester dans boitier final |
-| Antenne | interne prioritaire ; camouflee branche si besoin | portee LoRa discrete | volume RF sans metal proche ; option relief boitier | antenne fouet visible = dernier recours |
+| Radio | RAK3172/RAK3172-T EU868 ou SX1262 equivalent | [[LoRa]] P2P metadata | module + zone RF + antenne interne/camouflee | RF a tester dans boitier final |
+| Antenne | interne prioritaire ; camouflee branche si besoin | portee [[LoRa]] discrete | volume RF sans metal proche ; option relief boitier | antenne fouet visible = dernier recours |
 | Batterie | 8x AA 4S2P reference mecanique ; 4x AA a tester | autonomie terrain | holder 8x AA ou 2x holder 4x AA | 8x AA peut etre surdimensionne ; decision apres modele + mesures |
 | Buck | TPS62840 ou equivalent faible Iq | conversion 4-6 V vers 3.3 V | petite zone PCB + inductance | pic courant carte complete a verifier |
 | Bloc capteurs | BME688/AS7341 reserve ; GPS reserve P1 | environnement, lumiere, extension | petit module expose/ventile + chemin optique si AS7341 | reserve mecanique P0, montage fonctionnel optionnel |
@@ -62,7 +62,7 @@ Cette estimation est volontairement conservatrice. Elle sert a comparer 4 AA vs 
 |---|---:|---|
 | Holder 8x AA | ~110 x 60 x 20 mm | bloc dominant ; reference mecanique prudente |
 | Holder 4x AA | ~60 x 60 x 20 mm | variante compacte a tester energie |
-| PCB principal custom | cible 80 x 55 mm | ESP32-S3, buck, LoRa, microSD, connecteurs, MOSFET |
+| PCB principal custom | cible 80 x 55 mm | [[ESP32-S3]], buck, [[LoRa]], microSD, connecteurs, MOSFET |
 | Camera + M12 + fenetre | ~30 x 30 x 25 mm | profondeur optique importante |
 | PIR + fenetre | ~25 x 25 x 15 mm | depend du Fresnel/FOV |
 | Micro + protection | ~15 x 15 x 8 mm | inclut port acoustique et membrane |
@@ -101,12 +101,12 @@ Decision recommandee a ce stade :
 
 | Bloc | Choix v0.1 | Role | Statut |
 |---|---|---|---|
-| Compute | Raspberry Pi 5 | BirdNET-Go, YOLO, indexation, gateway locale | P1 parallele |
+| Compute | [[Raspberry Pi 5]] | BirdNET-Go, YOLO, indexation, gateway locale | P1 parallele |
 | Stockage | SSD USB/NVMe | raws, index, dataset terrain | P1 |
 | Reseau | Wi-Fi/Ethernet, 4G optionnelle | synchro locale/cloud | P1 |
 | Alimentation | secteur/powerbank/solaire P1 | station fixe ou semi-fixe | hors satellite |
 
-Raison : le Pi est excellent pour accelerer l'intelligence WildNexus, mais mauvais comme coeur d'un satellite 60 jours.
+Raison : le [[Pi]] est excellent pour accelerer l'intelligence WildNexus, mais mauvais comme coeur d'un satellite 60 jours.
 
 ## 7. Points a verifier avant achat
 
@@ -115,7 +115,7 @@ Raison : le Pi est excellent pour accelerer l'intelligence WildNexus, mais mauva
 3. Boitier candidat : volume utile reel, pas seulement dimensions externes.
 4. PIR : FOV compatible hauteur de pose et fenetre boitier.
 5. Micro : protection eau/vent et bruit mecanique du boitier.
-6. Antenne LoRa : interne/camouflee vs fouet visible, test RF obligatoire.
+6. Antenne [[LoRa]] : interne/camouflee vs fouet visible, test RF obligatoire.
 7. Bloc capteurs : BME688/AS7341 reserve sans complexifier le P0.
 
 ## 8. Sources techniques consultees
@@ -125,7 +125,7 @@ Raison : le Pi est excellent pour accelerer l'intelligence WildNexus, mais mauva
 - Bosch BME688 : https://www.bosch-sensortec.com/products/environmental-sensors/gas-sensors/bme688/
 - ams OSRAM AS7341 : https://ams-osram.com/products/sensor-solutions/ambient-light-color-spectral-proximity-sensors/ams-as7341-11-channel-spectral-color-sensor
 - Knowles SPH0645LM4H-B : https://www.digikey.com/htmldatasheets/production/1794128/0/0/1/sph0645lm4h-b-datasheet.html
-- Raspberry Pi 5 mechanical drawing : https://datasheets.raspberrypi.com/rpi5/raspberry-pi-5-mechanical-drawing.pdf
+- [[Raspberry Pi 5]] mechanical drawing : https://datasheets.raspberrypi.com/rpi5/raspberry-pi-5-mechanical-drawing.pdf
 
 ## 9. Prochaine action
 

@@ -4,7 +4,7 @@ Orchestrations récurrentes impliquant plusieurs spécialistes. La chorégraphie
 
 | # | Fichier | Sujet | Owners | Déclencheur |
 |---|---------|-------|--------|-------------|
-| WS-001 | [WS-001-journal-quotidien](WS-001-journal-quotidien.md) | Capture et structuration du journal quotidien | Sybil + Dobby | Tout input JCH destiné au journal |
+| WS-001 | [WS-001-journal-quotidien](WS-001-journal-quotidien.md) | Capture et structuration du journal quotidien | [[Sybil]] + [[Dobby]] | Tout input JCH destiné au journal |
 
 ---
 

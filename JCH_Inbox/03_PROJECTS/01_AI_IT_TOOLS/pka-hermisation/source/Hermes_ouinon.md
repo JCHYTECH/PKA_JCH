@@ -11,7 +11,7 @@ Objet : décision préliminaire sur l’intérêt d’intégrer Hermes Agent dan
 Le système actuel repose sur :
 
 - un MacBook M5 comme poste principal ;
-- un agent coordinateur appelé Dobby ;
+- un agent coordinateur appelé [[Dobby]] ;
 - environ 26 agents spécialisés ;
 - plusieurs projets à gérer :
   - développement d’appareillages ;
@@ -19,7 +19,7 @@ Le système actuel repose sur :
   - projets wildlife / bioacoustique ;
   - gestion documentaire ;
   - projet de société de commercialisation ;
-- utilisation de plusieurs modèles AI, notamment ChatGPT et Claude ;
+- utilisation de plusieurs modèles AI, notamment [[ChatGPT]] et [[Claude]] ;
 - volonté de structurer progressivement une infrastructure persistante, exploitable et durable.
 
 La difficulté actuelle n’est pas seulement technique. Elle concerne surtout :
@@ -39,7 +39,7 @@ Hermes Agent doit-il être intégré dans ce système ?
 
 Réponse courte :
 
-**Oui, mais pas comme remplacement de Dobby, ChatGPT ou Claude.**
+**Oui, mais pas comme remplacement de [[Dobby]], [[ChatGPT]] ou [[Claude]].**
 
 Hermes doit être considéré comme une **couche de mémoire persistante, d’orchestration légère et d’automatisation continue**, à tester progressivement.
 
@@ -60,12 +60,12 @@ Intérêt pour les projets :
 
 Exemples utiles :
 
-- règles de création de fichiers Markdown pour Obsidian ;
+- règles de création de fichiers Markdown pour [[Obsidian]] ;
 - conventions de classement des projets ;
 - historiques de décisions techniques ;
 - choix hardware validés ;
 - architecture des agents ;
-- workflows BirdNET / Raspberry / ESP32 ;
+- workflows [[BirdNET]] / Raspberry / [[ESP32]] ;
 - gestion des BOM et roadmaps.
 
 ---
@@ -77,12 +77,12 @@ Hermes peut transformer certains processus répétés en compétences ou routine
 Exemples :
 
 - créer un rapport `.md` téléchargeable ;
-- générer une commande Terminal pour installer une note dans Obsidian ;
+- générer une commande Terminal pour installer une note dans [[Obsidian]] ;
 - structurer une fiche projet ;
 - produire une BOM ;
 - faire une revue d’architecture ;
 - classer un document dans le bon dossier ;
-- préparer un briefing pour Claude ou ChatGPT.
+- préparer un briefing pour [[Claude]] ou [[ChatGPT]].
 
 ---
 
@@ -93,24 +93,24 @@ Hermes peut être utile pour des tâches qui doivent continuer même lorsque le 
 Exemples :
 
 - surveillance de dossiers ;
-- réception de données envoyées par des Raspberry ou ESP32 ;
+- réception de données envoyées par des Raspberry ou [[ESP32]] ;
 - indexation de documents ;
 - génération périodique de synthèses ;
-- déclenchement de workflows n8n ;
+- déclenchement de workflows [[n8n]] ;
 - préparation de rapports ;
-- interaction avec une base PostgreSQL ou Qdrant.
+- interaction avec une base [[PostgreSQL]] ou [[Qdrant]].
 
 ---
 
-### 3.4 Complémentarité avec ChatGPT et Claude
+### 3.4 Complémentarité avec [[ChatGPT]] et [[Claude]]
 
 Hermes ne remplace pas les modèles de raisonnement avancé.
 
 Répartition recommandée :
 
-- **ChatGPT** : coordination générale, analyse transversale, multimodal, génération de documents.
-- **Claude** : architecture logicielle, refactoring, raisonnement long, analyse critique.
-- **Dobby** : coordinateur métier et orchestrateur conceptuel.
+- **[[ChatGPT]]** : coordination générale, analyse transversale, multimodal, génération de documents.
+- **[[Claude]]** : architecture logicielle, refactoring, raisonnement long, analyse critique.
+- **[[Dobby]]** : coordinateur métier et orchestrateur conceptuel.
 - **Hermes** : mémoire persistante, routines, automatisation, exécution continue.
 - **Agents spécialisés** : exécution de tâches précises.
 
@@ -143,7 +143,7 @@ Ne pas connecter directement les 26 agents.
 
 Commencer avec 3 agents maximum :
 
-1. Agent documentation / Obsidian.
+1. Agent documentation / [[Obsidian]].
 2. Agent architecture système.
 3. Agent projet wildlife / bioacoustique.
 
@@ -163,10 +163,10 @@ Objectif du pilote :
 
 Utiliser le MacBook M5 comme cockpit principal :
 
-- Obsidian ;
-- ChatGPT ;
-- Claude ;
-- Dobby ;
+- [[Obsidian]] ;
+- [[ChatGPT]] ;
+- [[Claude]] ;
+- [[Dobby]] ;
 - VSCode ;
 - supervision des agents ;
 - documents actifs.
@@ -184,8 +184,8 @@ Rôle du VPS :
 - héberger Hermes ;
 - héberger des APIs légères ;
 - recevoir des données depuis des appareils terrain ;
-- faire tourner n8n ;
-- héberger PostgreSQL, Redis ou Qdrant léger ;
+- faire tourner [[n8n]] ;
+- héberger [[PostgreSQL]], [[Redis]] ou [[Qdrant]] léger ;
 - servir de point de coordination Internet ;
 - permettre une activité 24/7.
 
@@ -195,8 +195,8 @@ Configuration VPS conseillée pour commencer :
 - 16 Go RAM ;
 - 160 à 320 Go SSD NVMe ;
 - Ubuntu Server LTS ;
-- Docker ;
-- Tailscale ;
+- [[Docker]] ;
+- [[Tailscale]] ;
 - Portainer ;
 - sauvegarde automatique.
 
@@ -217,8 +217,8 @@ Rôle :
 - bases vectorielles plus lourdes ;
 - agents persistants ;
 - traitement audio ;
-- BirdNET ;
-- Whisper ;
+- [[BirdNET]] ;
+- [[Whisper]] ;
 - indexation documentaire ;
 - automatisations locales.
 
@@ -241,7 +241,7 @@ Rôle :
 - sons ;
 - vidéos ;
 - datasets ;
-- sauvegardes Obsidian ;
+- sauvegardes [[Obsidian]] ;
 - rapports ;
 - historiques ;
 - backups des bases.
@@ -260,7 +260,7 @@ Localisation recommandée :
 
 Contenu :
 
-- Obsidian principal ;
+- [[Obsidian]] principal ;
 - notes en cours ;
 - documents actifs ;
 - scripts ;
@@ -279,12 +279,12 @@ Localisation recommandée :
 Contenu :
 
 - mémoire active Hermes ;
-- PostgreSQL ;
-- Redis ;
-- Qdrant léger ;
+- [[PostgreSQL]] ;
+- [[Redis]] ;
+- [[Qdrant]] léger ;
 - logs ;
 - queues ;
-- workflows n8n ;
+- workflows [[n8n]] ;
 - APIs.
 
 ---
@@ -312,7 +312,7 @@ Contenu :
 
 Localisation recommandée :
 
-**Git privé + copie NAS**
+**[[Git]] privé + copie NAS**
 
 Contenu :
 
@@ -321,8 +321,8 @@ Contenu :
 - prompts système ;
 - workflows ;
 - API ;
-- configurations Docker ;
-- versions de Dobby.
+- configurations [[Docker]] ;
+- versions de [[Dobby]].
 
 ---
 
@@ -380,12 +380,12 @@ Actions :
 
 - choisir Hostinger, Hetzner ou OVHcloud ;
 - installer Ubuntu Server ;
-- installer Docker ;
-- installer Tailscale ;
+- installer [[Docker]] ;
+- installer [[Tailscale]] ;
 - installer Portainer ;
 - déployer Hermes ;
-- déployer PostgreSQL ;
-- déployer n8n ;
+- déployer [[PostgreSQL]] ;
+- déployer [[n8n]] ;
 - définir les sauvegardes.
 
 Livrable :
@@ -406,7 +406,7 @@ Actions :
 - définir les dossiers maîtres ;
 - définir les permissions d’écriture des agents ;
 - interdire l’écriture libre partout ;
-- organiser Obsidian ;
+- organiser [[Obsidian]] ;
 - créer un registre des fichiers critiques.
 
 Livrable :

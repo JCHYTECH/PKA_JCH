@@ -1,7 +1,7 @@
 ---
 date: 2026-05-12
 type: retrospective
-author: Dobby
+author: [[Dobby]]
 tags: [retro, meta]
 ---
 
@@ -18,11 +18,11 @@ tags: [retro, meta]
 
 ## Inefficacités détectées
 
-1. **Demande floue initiale** : `"prends les fichiers dans inbox et deplace les dans les directory qui te semble adequat"` → pas de règles de routage explicites fournies d'emblée. Claude a dû *deviner* les destinations logiques (wiki/Knowledge/AI-Tools/). Risque : mauvais classement ou hésitations.
+1. **Demande floue initiale** : 
 
 2. **Trois questions séquentielles sur l'architecture existante** : JCH a questonné successivement `todo-jch.html`, puis `dashboard.sh`/`dobby.sh`, puis `team.db`. Ces questions auraient pu être posées *avant* l'ingest, pas après. Délai d'exécution allongé.
 
-3. **État fantôme non exploré proactivement** : Claude a détecté que `file_index` n'existait pas, mais n'a pas :
+3. **État fantôme non exploré proactivement** : [[Claude]] a détecté que 
    - Proposé de créer le schéma attendu *immédiatement*
    - Signalé le risque d'une base vide à la racine (dette technique)
    - Demandé si cette table était censée exister d'après les specs du PKA
@@ -33,9 +33,9 @@ tags: [retro, meta]
 
 ## Causes racines identifiées
 
-1. **Manque de spécification préalable** : Pas de "routing rules" fourni avant l'ingest. Claude a accepté une tâche sous-spécifiée au lieu de demander les critères.
+1. **Manque de spécification préalable** : Pas de "routing rules" fourni avant l'ingest. [[Claude]] a accepté une tâche sous-spécifiée au lieu de demander les critères.
 
-2. **Architecture PKA partiellement initialisée** : `team.db` existe mais vide. Cela crée des zones grises où Claude doit *deviner* s'il faut initialiser, patienter, ou ignorer.
+2. **Architecture PKA partiellement initialisée** : 
 
 3. **Communication asynchrone des besoins** : JCH découvre les problèmes d'emplacement pendant la tâche, pas avant. Suggère un manque de review de structure PKA *avant* d'ingester.
 
@@ -43,7 +43,7 @@ tags: [retro, meta]
 
 ## Règles à mémoriser pour les prochaines sessions
 
-1. **Avant tout ingest : spécifier les règles de routage** → JCH doit fournir un dictionnaire type → destination. Si absent, Claude demande explicitement au lieu d'assumer.
+1. **Avant tout ingest : spécifier les règles de routage** → JCH doit fournir un dictionnaire type → destination. Si absent, [[Claude]] demande explicitement au lieu d'assumer.
 
 2. **Complément pre-flight check** : Avant de toucher à l'inbox, valider :
    - L'existence et l'intégrité des répertoires cibles

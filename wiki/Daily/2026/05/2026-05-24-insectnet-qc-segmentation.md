@@ -10,7 +10,7 @@ status: active
 ## Session — 19:54 — insectnet-qc-segmentation
 
 ### Contexte
-- Modèle : codex
+- Modèle : [[Codex]]
 - Projet : WILDNEXUS
 
 ### Résumé

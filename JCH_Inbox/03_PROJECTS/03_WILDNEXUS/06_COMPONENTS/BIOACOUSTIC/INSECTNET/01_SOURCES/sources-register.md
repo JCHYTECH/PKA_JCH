@@ -20,14 +20,14 @@ Identifier les sources audio exploitables pour InsectNet V0.1, avec un statut cl
 
 | Priorite | Source | Usage V0.1 | Statut |
 |---:|---|---|---|
-| 1 | Xeno-canto | collecte automatisable principale si cle API disponible | API v3 a cle requise |
+| 1 | [[Xeno-Canto]] | collecte automatisable principale si cle API disponible | API v3 a cle requise |
 | 2 | ECOSoundSet | benchmark / validation Orthoptera-Cicadidae Europe | a localiser et verifier |
 | 3 | InsectSet459 | dataset ML large, baseline possible | a localiser et verifier |
 | 4 | BioAcoustica | validation scientifique, complements propres | a verifier |
 | 5 | iNaturalist | enrichissement opportuniste | filtrage licence/qualite requis |
 | 6 | Freesound / Pixabay / LaSonotheque | fonds sonores, demo, exemples negatifs | non primaire |
 
-## 1. Xeno-canto
+## 1. [[Xeno-Canto]]
 
 URL :
 
@@ -70,7 +70,7 @@ Contraintes v3 observees dans la documentation :
 - `key` obligatoire ;
 - requetes par tags de recherche, pas par texte libre generique ;
 - `per_page` optionnel, 50 a 500 ;
-- cle disponible pour les comptes Xeno-canto avec email verifie ;
+- cle disponible pour les comptes [[Xeno-Canto]] avec email verifie ;
 - ne pas publier la cle dans un depot.
 
 ### Requete cible V0.1
@@ -106,7 +106,7 @@ Champs a mapper vers `metadata.csv` :
 
 ### Decision
 
-Xeno-canto reste la source prioritaire, mais InsectNet V0.1 depend maintenant d'une etape explicite :
+[[Xeno-Canto]] reste la source prioritaire, mais InsectNet V0.1 depend maintenant d'une etape explicite :
 
 ```text
 obtenir une cle API Xeno-canto
@@ -234,7 +234,7 @@ ne pas melanger aux sons scientifiques positifs avant le premier baseline
 
 ## Prochaine action
 
-1. Obtenir ou creer une cle API Xeno-canto.
+1. Obtenir ou creer une cle API [[Xeno-Canto]].
 2. Tester `gen:Tettigonia sp:viridissima`.
 3. Capturer un echantillon JSON.
 4. Definir le mapping exact vers `metadata.csv`.

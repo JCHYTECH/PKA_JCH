@@ -3,18 +3,18 @@
 **Date :** 2026-05-22  
 **Objet :** relancer le choix hardware apres pivot multimodal et hypothese satellites + base  
 **Statut :** etude v0.1, a transformer en ADR apres validation JCH  
-**Orchestration :** Dobby  
-**Equipe mobilisee :** Forge, Chouette, Furet, Clio, Atlas, Renard
+**Orchestration :** [[Dobby]]  
+**Equipe mobilisee :** [[Forge]], [[Chouette]], [[Furet]], [[Clio]], [[Atlas]], [[Renard]]
 
 ## 1. Decision a prendre
 
-La question n'est plus : faut-il remplacer ESP32 ?
+La question n'est plus : faut-il remplacer [[ESP32]] ?
 
 La question correcte est :
 
 > quelle intelligence vit dans le satellite, quelle intelligence vit dans la base, et quels liens transportent seulement des evenements versus des donnees lourdes ?
 
-ESP32-S3 ne doit plus etre le cerveau WildNexus. Il peut rester un controleur simple dans certains prototypes, mais il ne doit pas porter l'ambition multimodale.
+[[ESP32-S3]] ne doit plus etre le cerveau WildNexus. Il peut rester un controleur simple dans certains prototypes, mais il ne doit pas porter l'ambition multimodale.
 
 ## 2. Hypotheses fonctionnelles
 
@@ -31,7 +31,7 @@ WildNexus doit gerer :
 - IA locale ou proche du terrain ;
 - fonctionnement sans retour terrain frequent.
 
-Les donnees lourdes ne passent pas par LoRa. LoRa transporte statut, alerte, index, commande, demande de transfert, metadata.
+Les donnees lourdes ne passent pas par [[LoRa]]. [[LoRa]] transporte statut, alerte, index, commande, demande de transfert, metadata.
 
 ## 3. Architecture produit recommandee
 
@@ -44,7 +44,7 @@ Fonctions :
 - capture image/audio selon evenement ;
 - stockage microSD industriel ;
 - capteurs environnementaux ;
-- LoRa/LoRaWAN pour alerte et metadata ;
+- [[LoRa]]/LoRaWAN pour alerte et metadata ;
 - Wi-Fi local court pour maintenance/telechargement ;
 - pas d'IA lourde.
 
@@ -52,7 +52,7 @@ Hardware candidat :
 
 - STM32U5 pour ultra-low-power pur ;
 - Ambiq Apollo510/Apollo510B si audio/IA legere always-on devient critique ;
-- ESP32-S3 seulement pour prototype rapide ou provisioning Wi-Fi/BLE, pas comme choix final par defaut.
+- [[ESP32-S3]] seulement pour prototype rapide ou provisioning Wi-Fi/BLE, pas comme choix final par defaut.
 
 ### 3.2 Satellite Smart
 
@@ -77,7 +77,7 @@ Rationale :
 - pipeline camera MIPI CSI-2 + ISP ;
 - H264 hardware ;
 - RAM embarquee 4.2 MB + memoires externes rapides ;
-- meilleur alignement avec camera/vision que ESP32-S3.
+- meilleur alignement avec camera/vision que [[ESP32-S3]].
 
 Risque :
 
@@ -103,7 +103,7 @@ Fonctions :
 
 Hardware candidat :
 
-- Raspberry Pi 5 + AI HAT+ pour prototype rapide ;
+- [[Raspberry Pi 5]] + AI HAT+ pour prototype rapide ;
 - NXP i.MX 8M Plus SOM industriel pour version robuste ;
 - Hailo-8L/Hailo-8 si vision lourde necessaire ;
 - SSD/eMMC plutot que microSD pour la base.
@@ -112,13 +112,13 @@ Hardware candidat :
 
 | Plateforme | Role possible | Force | Faiblesse | Verdict |
 |---|---|---|---|---|
-| ESP32-S3 | Satellite Lite prototype | cout, communaute, Wi-Fi/BLE, camera DVP simple | IA limitee, memoire, camera qualite, audio lourd | Declasser comme cerveau |
+| [[ESP32-S3]] | Satellite Lite prototype | cout, communaute, Wi-Fi/BLE, camera DVP simple | IA limitee, memoire, camera qualite, audio lourd | Declasser comme cerveau |
 | STM32U5 | Satellite Lite final | ultra basse consommation, industriel, securite | pas IA/camera lourde native | Tres bon controleur sobre |
 | Ambiq Apollo510/B | Satellite Lite audio/always-on | tres basse conso edge AI, Cortex-M55 Helium, BLE sur 510B | moins mature pour camera lourde WildNexus | Candidat audio/veille IA |
 | Sony Spresense | Prototype audio/GPS/camera | audio hi-res, GPS, camera, LTE option, faible conso | ecosysteme niche, industrialisation a verifier | Banc interessant, pas choix central |
 | STM32N6 | Satellite Smart | NPU 600 GOPS, MIPI CSI-2, ISP, H264, MCU industriel | ecosysteme jeune, integration exigeante | Candidat prioritaire Smart |
-| Raspberry Pi 5 | Base prototype | vitesse dev, Linux, BirdNET-Go, communautaire | conso, SD, boot, robustesse terrain | Base proto seulement |
-| Raspberry Pi 5 + Hailo | Base IA proto | 13/26 TOPS, vision temps reel | conso/thermique, Linux | Excellent banc IA |
+| [[Raspberry Pi 5]] | Base prototype | vitesse dev, Linux, BirdNET-Go, communautaire | conso, SD, boot, robustesse terrain | Base proto seulement |
+| [[Raspberry Pi 5]] + Hailo | Base IA proto | 13/26 TOPS, vision temps reel | conso/thermique, Linux | Excellent banc IA |
 | NXP i.MX 8M Plus | Base industrielle | NPU 2.3 TOPS, dual ISP, audio, Linux industriel, eMMC/SOM | cout, complexite, conso | Candidat base finale |
 | Hailo-8L/8 | Coprocesseur base | 13/26 TOPS, edge vision mature | depend host Linux/PCIe, audio pas coeur | Pour base, pas satellite lite |
 | Quectel EG916Q | Backhaul base/smart | LTE Cat 1 bis 10/5 Mbps, global, temperature -40/+85 | pas low-power extreme | Bon pour data lourde ponctuelle |
@@ -126,7 +126,7 @@ Hardware candidat :
 
 ## 5. Modes de communication
 
-### LoRa / LoRaWAN
+### [[LoRa]] / LoRaWAN
 
 Bon pour :
 
@@ -240,15 +240,15 @@ La meme architecture existe en UGS defense : capteurs acoustiques/sismiques/PIR/
 
 Raspberry accelere le prototype mais ne doit pas enfermer la version finale.
 
-## 9. Recommandation Dobby
+## 9. Recommandation [[Dobby]]
 
 Je recommande de geler provisoirement cette architecture :
 
-1. **Satellite Lite v0** : STM32U5 ou ESP32-S3 de prototypage, capteurs, LoRa, SD, audio/image capture, pas IA lourde.
+1. **Satellite Lite v0** : STM32U5 ou [[ESP32-S3]] de prototypage, capteurs, [[LoRa]], SD, audio/image capture, pas IA lourde.
 2. **Satellite Smart v0** : STM32N6, camera MIPI, IA image/audio legere, stockage local.
-3. **Base Nexus v0** : Raspberry Pi 5 + SSD + 4G + BirdNET-Go, puis migration vers NXP i.MX 8M Plus si le concept est valide.
+3. **Base Nexus v0** : [[Raspberry Pi 5]] + SSD + 4G + BirdNET-Go, puis migration vers NXP i.MX 8M Plus si le concept est valide.
 
-ESP32-S3 reste dans le laboratoire, pas au centre du produit final.
+[[ESP32-S3]] reste dans le laboratoire, pas au centre du produit final.
 
 ## 10. Prochaines actions
 
@@ -265,12 +265,12 @@ ESP32-S3 reste dans le laboratoire, pas au centre du produit final.
    - robustesse coupure ;
    - temperature/humidite.
 4. Acheter ou preparer trois bancs :
-   - Raspberry Pi 5 + SSD + modem 4G pour Base Nexus prototype ;
+   - [[Raspberry Pi 5]] + SSD + modem 4G pour Base Nexus prototype ;
    - STM32N6 devkit/camera pour Satellite Smart ;
-   - STM32U5 ou ESP32-S3 pour Satellite Lite.
+   - STM32U5 ou [[ESP32-S3]] pour Satellite Lite.
 5. Tester un scenario simple :
    - satellite detecte evenement ;
-   - envoie metadata LoRa ;
+   - envoie metadata [[LoRa]] ;
    - base decide si fichier lourd necessaire ;
    - satellite transfere par Wi-Fi local ou liaison haut debit ponctuelle ;
    - base analyse et pousse un resume utilisateur.
@@ -280,9 +280,9 @@ ESP32-S3 reste dans le laboratoire, pas au centre du produit final.
 - CuddeLink : https://www.cuddeback.com/cuddelink
 - STM32N6 : https://www.st.com/en/microcontrollers-microprocessors/stm32n6-series.html
 - NXP i.MX 8M Plus : https://www.nxp.com/products/i.MX8MPLUS
-- Raspberry Pi AI HAT+ : https://www.raspberrypi.com/news/raspberry-pi-ai-hat/
+- [[Raspberry Pi]] AI HAT+ : https://www.raspberrypi.com/news/raspberry-pi-ai-hat/
 - Hailo AI accelerators : https://hailo.ai/products/ai-accelerators/
-- Raspberry Pi AI Camera : https://www.raspberrypi.com/products/ai-camera/
+- [[Raspberry Pi]] AI Camera : https://www.raspberrypi.com/products/ai-camera/
 - Sony Spresense : https://developer.sony.com/spresense
 - Ambiq Apollo510 : https://ambiq.com/product/apollo510/
 - Quectel EG916Q-GL : https://www.quectel.com/product/lte-cat-1-bis-eg916q-gl/

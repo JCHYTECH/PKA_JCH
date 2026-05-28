@@ -29,12 +29,12 @@ Le Mac principal est correctement protege cote disque systeme : FileVault est ac
 
 | Processus | Ports | Bind | Analyse |
 |---|---:|---|---|
-| Apple ControlCenter | 5000, 7000 | `*` IPv4/IPv6 | Apple Continuity/AirPlay probable; a surveiller si inutile sur reseau public |
-| `rapportd` | 49154 | `*` IPv4/IPv6 | Apple Handoff/Continuity; exposition LAN possible |
+| [[Apple]] ControlCenter | 5000, 7000 | 
+| 
 | Epson Event Manager | 2968 | `*` IPv4 | Service imprimante/scanner; fermer si non utilise |
 | Dropbox | 17600, 17603 | `127.0.0.1` | Local uniquement |
 | Ollama | 11434, 49155 | `127.0.0.1` | Local uniquement, bon |
-| VASCO Digipass bridge | 42579, 42580 | `127.0.0.1` | Local uniquement |
+| [[Vasco]] Digipass bridge | 42579, 42580 | 
 | Adobe Desktop / Creative Cloud | ports divers | `127.0.0.1` | Local uniquement |
 | OneDrive | 42050 | `::1` | Local IPv6 uniquement |
 

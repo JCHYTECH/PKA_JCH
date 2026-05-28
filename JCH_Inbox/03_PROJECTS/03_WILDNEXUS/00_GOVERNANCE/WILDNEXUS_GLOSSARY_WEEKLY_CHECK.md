@@ -3,9 +3,9 @@
 **Version :** v0.1  
 **Date :** 2026-05-18  
 **Statut :** actif — phase 1 manuelle  
-**Owner principal :** Atlas  
-**Reviewers :** Corbeau + Dobby  
-**Support automation :** Forge  
+**Owner principal :** [[Atlas]]  
+**Reviewers :** [[Corbeau]] + [[Dobby]]  
+**Support automation :** [[Forge]]  
 **Fréquence cible :** hebdomadaire, idéalement lundi  
 
 ## 1. Objet
@@ -32,10 +32,10 @@ Raison : éviter les rapports automatiques bruyants tant que le vocabulaire et l
 
 | Rôle | Responsable | Mission |
 |---|---|---|
-| Owner glossaire | Atlas | Proposer les ajouts, reformuler pour humains non spécialistes, garder la structure lisible |
-| Qualité connaissance | Corbeau | Détecter doublons, incohérences, termes ambigus ou définitions contradictoires |
-| Validation | Dobby | Arbitrer ce qui entre dans le glossaire, éviter l'inflation inutile |
-| Automatisation future | Forge | Créer un script de scan seulement si la phase 1 montre un besoin réel |
+| Owner glossaire | [[Atlas]] | Proposer les ajouts, reformuler pour humains non spécialistes, garder la structure lisible |
+| Qualité connaissance | [[Corbeau]] | Détecter doublons, incohérences, termes ambigus ou définitions contradictoires |
+| Validation | [[Dobby]] | Arbitrer ce qui entre dans le glossaire, éviter l'inflation inutile |
+| Automatisation future | [[Forge]] | Créer un script de scan seulement si la phase 1 montre un besoin réel |
 
 ## 4. Sources à vérifier chaque semaine
 
@@ -90,10 +90,10 @@ Pour repérer rapidement les acronymes et codes probables :
 rg -n "\\b[A-Z][A-Z0-9-]{2,}\\b|\\b[A-Z]{1,3}-[0-9]{2}\\b|\\bT[0-9]{2}\\.[0-9]\\b|\\bD[0-9]{2}\\.[0-9]\\b" JCH_Inbox/03_PROJECTS/03_WILDNEXUS --glob '*.md'
 ```
 
-Cette commande est indicative. Atlas décide ensuite ce qui mérite vraiment d'entrer dans le glossaire.
+Cette commande est indicative. [[Atlas]] décide ensuite ce qui mérite vraiment d'entrer dans le glossaire.
 
 ## 8. Journal de check
 
 | Date | Responsable | Résultat | Action |
 |---|---|---|---|
-| 2026-05-18 | Dobby | Routine créée ; phase 1 manuelle retenue | Prochain check hebdomadaire à lancer après nouvelles ADR ou nouveaux livrables |
+| 2026-05-18 | [[Dobby]] | Routine créée ; phase 1 manuelle retenue | Prochain check hebdomadaire à lancer après nouvelles ADR ou nouveaux livrables |

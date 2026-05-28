@@ -993,7 +993,7 @@ Champs recommandés :
 - `Weather` (lien vers Conditions)
 - `Observation_Notes` (long texte)
 - `Ethics_Flags` (disturbance? yes/no + note)
-- `Select_Status` (Candidate / Shortlist / Book / Exhibition / Archive)
+- 
 - `Rating_Technical` (1–5) ; `Rating_Artistic` (1–5)
 - `Keywords_LR` (texte import LR)
 - `Develop_Preset` (lien vers Presets/Recettes)
@@ -1220,7 +1220,7 @@ Heure actuelle : **13:41 (CET)**
 - `Weather` → Link to *Conditions*
 - `Observation_Notes` → Long text
 - `Ethics_Flag` → Checkbox
-- `Select_Status` → Single select (Candidate / Shortlist / Book / Exhibition / Archive)
+- 
 - `Rating_Technical` → Rating (1–5)
 - `Rating_Artistic` → Rating (1–5)
 - `Develop_Preset` → Link to *Presets*

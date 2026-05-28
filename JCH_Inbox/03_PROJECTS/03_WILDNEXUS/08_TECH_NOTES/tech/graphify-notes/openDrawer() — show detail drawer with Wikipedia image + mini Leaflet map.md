@@ -1,10 +1,10 @@
 ---
-source_file: "git/faune-autour_13.html"
+source_file: "[[Git]]/faune-autour_13.html"
 type: "document"
 community: "Map & Detail Display"
 tags:
-  - graphify/document
-  - graphify/EXTRACTED
+  - [[Graphify]]/document
+  - [[Graphify]]/EXTRACTED
   - community/Map_&_Detail_Display
 ---
 
@@ -16,4 +16,4 @@ tags:
 - [[fetchWikiImage() — Wikipedia REST API image fetch with ENFR fallback]] - `calls` [EXTRACTED]
 - [[window._cardData index pattern — fix for JSON.stringify in onclick attrs breaking iPhone tap]] - `rationale_for` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Map_&_Detail_Display
+#[[Graphify]]/document #[[Graphify]]/EXTRACTED #community/Map_&_Detail_Display

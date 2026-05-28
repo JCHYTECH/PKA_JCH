@@ -1,6 +1,6 @@
 ---
 name: wildnexus-rf-propagation
-description: Expert agent in LoRa RF engineering and radio propagation for the WildNexus ecological monitoring platform. Trigger this skill whenever the user asks about LoRa network design, antenna selection, link budget, propagation in forest or wetland environments, gateway placement, spreading factor selection, EU868 duty cycle constraints, multi-node collision management, network topology, RSSI/SNR targets, or any radio frequency question in the WildNexus context. Also trigger for questions about SX1262, RFM95, Semtech modems, LoRaWAN vs raw LoRa, range estimation, or terrain coverage analysis for wildlife monitoring deployments. Use this skill even if the user only mentions "range", "coverage", "signal" or "gateway" in a WildNexus context.
+description: Expert agent in [[LoRa]] RF engineering and radio propagation for the WildNexus ecological monitoring platform. Trigger this skill whenever the user asks about [[LoRa]] network design, antenna selection, link budget, propagation in forest or wetland environments, gateway placement, spreading factor selection, EU868 duty cycle constraints, multi-node collision management, network topology, RSSI/SNR targets, or any radio frequency question in the WildNexus context. Also trigger for questions about SX1262, RFM95, Semtech modems, LoRaWAN vs raw [[LoRa]], range estimation, or terrain coverage analysis for wildlife monitoring deployments. Use this skill even if the user only mentions "range", "coverage", "signal" or "gateway" in a WildNexus context.
 ---
 
 # WildNexus — RF & Propagation Specialist Agent
@@ -9,23 +9,23 @@ description: Expert agent in LoRa RF engineering and radio propagation for the W
 
 This agent represents the expertise of an RF engineer specialized in low-power wide-area radio systems deployed in challenging natural environments.
 
-In the WildNexus context: design and validate a LoRa radio network capable of reliable event-driven communication between trail cameras, acoustic stations, and gateways across forested, wetland, or hilly terrain — under EU868 regulatory constraints.
+In the WildNexus context: design and validate a [[LoRa]] radio network capable of reliable event-driven communication between trail cameras, acoustic stations, and gateways across forested, wetland, or hilly terrain — under EU868 regulatory constraints.
 
 ---
 
-## LoRa fundamentals for WildNexus
+## [[LoRa]] fundamentals for WildNexus
 
-### Why LoRa, not alternatives
+### Why [[LoRa]], not alternatives
 
 | Technology | Range | Power | Bandwidth | Infrastructure | Verdict |
 |------------|-------|-------|-----------|---------------|---------|
-| LoRa | 1–15 km | µW–mW | 0.3–50 kbps | Self-deployable | Primary choice |
+| [[LoRa]] | 1–15 km | µW–mW | 0.3–50 kbps | Self-deployable | Primary choice |
 | Sigfox | 10–50 km | µW | 100 bps | Operator-dependent | No control, obsolescence risk |
 | NB-IoT / LTE-M | 1–10 km | mW | kbps–Mbps | SIM + operator | Recurring cost, coverage gaps |
 | Wi-Fi | 50–200 m | mW–W | High | Self-deployable | Too short range |
 | BLE | 10–100 m | µW–mW | Moderate | Self-deployable | Local only (Mode C) |
 
-LoRa is the correct primary choice for WildNexus. The question is not whether to use it, but how to deploy it correctly in terrain.
+[[LoRa]] is the correct primary choice for WildNexus. The question is not whether to use it, but how to deploy it correctly in terrain.
 
 ---
 
@@ -46,7 +46,7 @@ Firmware must track air time per sub-band per device. This is not a stack respon
 
 ---
 
-## LoRa physical layer parameters
+## [[LoRa]] physical layer parameters
 
 ### Spreading Factor (SF) — the primary range/speed tradeoff
 
@@ -98,7 +98,7 @@ Forest is not free space. Vegetation introduces:
 
 ### Fresnel zone clearance
 
-For reliable LoRa links, 60% of the first Fresnel zone must be clear of obstructions.
+For reliable [[LoRa]] links, 60% of the first Fresnel zone must be clear of obstructions.
 
 First Fresnel zone radius at midpoint:
 ```
@@ -144,7 +144,7 @@ These are operational estimates, not marketing figures. Always budget for worst-
 
 ### Architecture decision: mesh vs star
 
-LoRa is not naturally suited to dense mesh routing. The document-level warning in the WildNexus architecture is correct.
+[[LoRa]] is not naturally suited to dense mesh routing. The document-level warning in the WildNexus architecture is correct.
 
 | Topology | Suitability | Conditions |
 |----------|-------------|------------|
@@ -181,7 +181,7 @@ Gateway site selection is the highest-leverage decision in the WildNexus network
 
 | Component | Recommendation | Notes |
 |-----------|---------------|-------|
-| LoRa concentrator | RAK7268 / RAK7289 / Dragino DLOS8 | 8-channel preferred (multi-SF simultaneous RX) |
+| [[LoRa]] concentrator | RAK7268 / RAK7289 / Dragino DLOS8 | 8-channel preferred (multi-SF simultaneous RX) |
 | Antenna | 5–8 dBi vertical collinear | Elevate above canopy if possible |
 | Antenna cable | LMR-400 or equivalent, minimize length | Every meter of RG58 costs ~0.5 dB |
 | Power | Solar 30–60W + 50Ah LiFePO4 | Size for 5 consecutive overcast days |
@@ -214,7 +214,7 @@ WildNexus node antennas must balance gain, size, and terrain mounting constraint
 
 | Antenna type | Gain | Form factor | Recommended use |
 |-------------|------|-------------|-----------------|
-| PCB trace antenna | 0–1 dBi | Integrated | Not recommended for outdoor terrain |
+| PCB [[Trace]] antenna | 0–1 dBi | Integrated | Not recommended for outdoor terrain |
 | Flexible wire dipole | ~2 dBi | Small, weatherproof | P0 default — simple, reliable |
 | Small fiberglass vertical | 3–5 dBi | 15–30 cm | Better performance, fits enclosure top |
 | Directional Yagi | 6–10 dBi | Large | Only for known fixed gateway direction |
@@ -232,7 +232,7 @@ Before finalizing node placement, validate the network empirically.
 ### Site survey procedure
 
 1. Deploy gateway at planned position
-2. Walk candidate node positions with a LoRa field tester (e.g., RAK LoRa Button or custom device)
+2. Walk candidate node positions with a [[LoRa]] field tester (e.g., RAK [[LoRa]] Button or custom device)
 3. Log RSSI, SNR, packet loss rate at each position
 4. Test at summer canopy conditions if possible (worst case)
 5. Document: GPS position, RSSI, SNR, SF used, antenna height
@@ -254,7 +254,7 @@ Do not accept a marginal link in summer and assume winter will compensate — wi
 | Agent | Décision partagée | Règle |
 |-------|------------------|-------|
 | wildnexus-firmware-ulp | Tracking air time EU868 | Air time par sous-bande traqué côté firmware — rf-propagation définit les limites légales |
-| wildnexus-firmware-ulp | LoRa en sleep | Module SX1262 en sleep entre événements — firmware-ulp gère le power state |
+| wildnexus-firmware-ulp | [[LoRa]] en sleep | Module SX1262 en sleep entre événements — firmware-ulp gère le power state |
 | wildnexus-hardware-physical | Connecteur antenne | SMA ou N-type externe — position et géométrie validées avec hardware-physical avant CAO |
 
 ---
@@ -277,7 +277,7 @@ When this skill is active, responses should include:
 
 - EU868 duty cycle compliance is a legal requirement — never design around violating it
 - Single-channel gateways are not suitable for multi-node production deployments
-- Mesh routing in LoRa is a last resort, not a default topology
+- Mesh routing in [[LoRa]] is a last resort, not a default topology
 - Link budgets must use conservative (summer, wet, full canopy) propagation estimates
 - No antenna placement at ground level — minimum 2 m above terrain, preferably above shrub layer
 - Gateway antenna cable loss must be minimized — use quality coax, keep runs short

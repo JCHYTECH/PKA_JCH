@@ -1,6 +1,6 @@
-# Mandat Forge — Skill /ingest
+# Mandat [[Forge]] — Skill /ingest
 
-**From:** Dobby 🦉 | **To:** Forge 🦦 | **Date:** 2026-05-01
+**From:** [[Dobby]] 🦉 | **To:** [[Forge]] 🦦 | **Date:** 2026-05-01
 
 ## Objectif
 
@@ -23,8 +23,8 @@ Formaliser le processus de traitement de l'inbox JCH. Le skill `/ingest` doit pe
 
 | Fichier | Routing prévu |
 |---------|--------------|
-| `CV JC.pdf` | → `05_CONTEXT/` — linked_member: Dobby |
-| `arteon-manifeste-long.md` | → `03_PROJECTS/ARTEON/docs/` — linked_member: Vega |
+| 
+| 
 
 ## Table file_index — rappel schéma
 
@@ -45,4 +45,4 @@ file_index (
 
 ## Propriété
 
-Ce skill appartient à Forge. Toute évolution des règles de routing passe par un brief à Dobby → Forge.
+Ce skill appartient à [[Forge]]. Toute évolution des règles de routing passe par un brief à [[Dobby]] → [[Forge]].

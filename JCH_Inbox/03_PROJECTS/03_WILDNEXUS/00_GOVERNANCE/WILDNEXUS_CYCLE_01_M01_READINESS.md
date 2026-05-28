@@ -3,7 +3,7 @@
 **Version :** v0.1  
 **Date :** 2026-05-18  
 **Statut :** Cycle 01 lancé — Plane synchronisé  
-**Owner :** Dobby  
+**Owner :** [[Dobby]]  
 
 ## 1. Objectif du cycle
 
@@ -19,7 +19,7 @@ Le cycle est terminé quand les choix caméra, MCU, radio, budget, gouvernance d
 | Mapping agents | Cadré | `WILDNEXUS_AGENT_MAPPING.md` relie agents WildNexus et PKA |
 | Budget P0 | Première fourchette | `../03_P0_ENGINEERING/WILDNEXUS_P0_BUDGET_RANGE.md`, précision cible ±30% |
 | Plane | Synchronisé | API locale revenue après installation du service `com.jchytech.pka-plane-autostart` |
-| Docker | Relancé automatiquement | service launchd PKA installé pour démarrer Docker Desktop puis Plane |
+| [[Docker]] | Relancé automatiquement | service launchd PKA installé pour démarrer [[Docker]] Desktop puis Plane |
 | Backlog | Synchronisé | nouveaux items Cycle 01 créés dans Plane le 2026-05-18 |
 | Données projet | Initialisé | `data/README.md` créé |
 
@@ -27,16 +27,16 @@ Le cycle est terminé quand les choix caméra, MCU, radio, budget, gouvernance d
 
 | Item | Front | Owner PKA | Agent WildNexus | Livrable attendu | Statut |
 |---|---|---|---|---|---|
-| `GOV-01` | Mapping agents / PKA | Dobby | `wildnexus-program-manager-system-architect` | `WILDNEXUS_AGENT_MAPPING.md` | Fait v0.1 |
-| `DECISION` | Périmètre P0 | Dobby | `wildnexus-program-manager-system-architect` | `../01_FOUNDATION/WILDNEXUS_P0_SCOPE_LOCK.md` | Fait v0.1 |
-| `T01.6` | Budget P0 | Bruno | `wildnexus-industrialisation` | budget achat affiné avec références | À affiner |
-| `SUPPLY-01` | Composants critiques | Bruno + Forge | `wildnexus-industrialisation` | `../03_P0_ENGINEERING/WILDNEXUS_SUPPLY_REGISTER.md` | Ouvert |
-| `T01.2` | Licence / FTO | Renard + Hermine | juridico-PI | note FTO et usage policy v0.2 | Ouvert |
-| `T01.3` | Radio / LPWAN | Forge + Chouette | `wildnexus-rf-propagation` | ADR radio + protocole terrain | Ouvert |
-| `T01.4` | Caméra | Nova + Lynx | `wildnexus-camera-imaging` | ADR caméra + benchmark | Ouvert |
-| `T01.5` | MCU | Castor + Forge | `wildnexus-firmware-ulp` | ADR MCU | Ouvert |
-| `T03.6` | Tests firmware | Forge + Castor | `wildnexus-firmware-ulp` | stratégie tests firmware minimale | À préparer |
-| `T04.5` | Évaluation classifieur | Nova + Clio | `wildnexus-edge-ai-cv` | pipeline évaluation P0 | À préparer |
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
 
 ## 4. Définition de `M-01 ready`
 
@@ -50,24 +50,24 @@ Le cycle est terminé quand les choix caméra, MCU, radio, budget, gouvernance d
 - la licence / FTO ne bloque pas le prototypage interne ;
 - le périmètre P0 reste strict ;
 - les risques RGPD terrain ont un owner et un livrable concret ;
-- Plane est synchronisé ou la trace offline est complète.
+- Plane est synchronisé ou la [[Trace]] offline est complète.
 
 ## 5. Risques actifs
 
 | Risque | Niveau | Owner | Mitigation immédiate |
 |---|---|---|---|
-| Plane local indisponible au redémarrage | Réduit | Forge | service launchd `com.jchytech.pka-plane-autostart` installé |
-| Scope creep bioacoustique / Faune Autour | Élevé | Dobby | verrou P0 déjà écrit |
-| Budget P0 sous-estimé | Élevé | Bruno | passer du pré-budget aux références fournisseurs |
-| FTO / licence retardée | Élevé | Renard + Hermine | cadrer prototypage interne vs publication publique |
-| Disponibilité composants | Élevé | Bruno + Forge | registre supply avec alternatives |
-| RGPD terrain EVT | Moyen | Renard | modèle signalétique + procédure floutage/suppression |
+| Plane local indisponible au redémarrage | Réduit | [[Forge]] | service launchd 
+| Scope creep bioacoustique / Faune Autour | Élevé | [[Dobby]] | verrou P0 déjà écrit |
+| Budget P0 sous-estimé | Élevé | [[Bruno]] | passer du pré-budget aux références fournisseurs |
+| FTO / licence retardée | Élevé | [[Renard]] + [[Hermine]] | cadrer prototypage interne vs publication publique |
+| Disponibilité composants | Élevé | [[Bruno]] + [[Forge]] | registre supply avec alternatives |
+| RGPD terrain EVT | Moyen | [[Renard]] | modèle signalétique + procédure floutage/suppression |
 
-## 6. Prochaines actions Dobby
+## 6. Prochaines actions [[Dobby]]
 
 1. Produire ou compléter `../03_P0_ENGINEERING/WILDNEXUS_SUPPLY_REGISTER.md`.
 2. Préparer les trois ADR de départ : MCU, caméra, radio.
-3. Préparer la note juridique initiale FTO/licence avec Renard + Hermine.
+3. Préparer la note juridique initiale FTO/licence avec [[Renard]] + [[Hermine]].
 4. Surveiller le service autostart Plane après le prochain redémarrage macOS.
 
 ## 7. Commandes de synchronisation

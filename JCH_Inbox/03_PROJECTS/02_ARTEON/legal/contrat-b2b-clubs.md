@@ -4,7 +4,7 @@ tags: [legal, B2B, contrat, clubs-photo, arteon, l-instant-lu]
 type: legal-document
 version: 1.0
 status: draft-template
-owner: Renard 🦊
+owner: [[Renard]] 🦊
 ---
 
 # Contrat d'Abonnement B2B — L'Instant Lu · Clubs Photographiques
@@ -207,6 +207,6 @@ Signature :
 
 ---
 
-*Document rédigé par Renard 🦊, conseiller juridique ARTEON*  
+*Document rédigé par [[Renard]] 🦊, conseiller juridique ARTEON*  
 *Version 1.0 — 2026-05-02 — À compléter et valider avant premier usage B2B*  
 *Contact : service@arteon.be*

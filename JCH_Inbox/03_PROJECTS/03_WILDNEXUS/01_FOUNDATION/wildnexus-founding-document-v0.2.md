@@ -3,7 +3,7 @@
 **Version :** v0.2 DRAFT
 **Date :** 2026-05-17
 **Statut :** DRAFT — Pour validation JCH
-**Rédigé par :** Dobby 🦉 — orchestration et consolidation documentaire PKA_JCH
+**Rédigé par :** [[Dobby]] 🦉 — orchestration et consolidation documentaire PKA_JCH
 **Propriétaire :** Jean-Claude Havaux — JCHYTECH
 
 ---
@@ -12,20 +12,20 @@
 
 | § | Section | Agents concernés | Rôle |
 |---|---------|-----------------|------|
-| 1 | Carte d'identité | JCH · Dobby | Propriétaire · Orchestration |
+| 1 | Carte d'identité | JCH · [[Dobby]] | Propriétaire · Orchestration |
 | 2 | Contexte et origine | JCH | Source narrative — non délégable |
 | 3 | Vision et ambition | JCH · wildnexus-program-manager-system-architect | Vision (JCH) · Cohérence scope P0/P1/P2 |
-| 4 | Rationale stratégique | wildnexus-program-manager-system-architect · wildnexus-scientific-advisor · Furet | Arbitrage · Positionnement scientifique · Analyse concurrents |
-| 5 | Non-négociables | JCH · Renard · conseil PI externe si nécessaire | Validation obligatoire JCH · Clauses contractuelles et licence (Renard) · Compatibilité brevets/FTO |
+| 4 | Rationale stratégique | wildnexus-program-manager-system-architect · wildnexus-scientific-advisor · [[Furet]] | Arbitrage · Positionnement scientifique · Analyse concurrents |
+| 5 | Non-négociables | JCH · [[Renard]] · conseil [[Pi]] externe si nécessaire | Validation obligatoire JCH · Clauses contractuelles et licence ([[Renard]]) · Compatibilité brevets/FTO |
 | 6 | Objectifs | wildnexus-program-manager-system-architect · tous agents domaine | Scoping P0/P1/P2 · Vérification faisabilité par domaine |
-| 7 | État de l'art | wildnexus-scientific-advisor · Furet · wildnexus-edge-ai-cv | Standards scientifiques · Recherche concurrents · IA existante |
+| 7 | État de l'art | wildnexus-scientific-advisor · [[Furet]] · wildnexus-edge-ai-cv | Standards scientifiques · Recherche concurrents · IA existante |
 | 8 | Méthodologie | wildnexus-program-manager-system-architect · wildnexus-firmware-ulp · wildnexus-camera-imaging · wildnexus-hardware-physical · wildnexus-rf-propagation · wildnexus-edge-ai-cv · wildnexus-bioacoustics-dsp | Arbitrage système · Plateforme embarquée · Capteur/IR · Enclos · Énergie · Radio · IA · Acoustique |
-| 9 | Propriété intellectuelle | Renard · JCH · conseil PI externe si nécessaire | Contrats et licences · Validation stratégie · Appui FTO/brevets |
+| 9 | Propriété intellectuelle | [[Renard]] · JCH · conseil [[Pi]] externe si nécessaire | Contrats et licences · Validation stratégie · Appui FTO/brevets |
 | 10 | Work packages | wildnexus-program-manager-system-architect · tous agents domaine | Séquençage · Livrables et jalons par domaine |
 | 11 | Plan de validation | wildnexus-scientific-advisor · wildnexus-firmware-ulp · wildnexus-camera-imaging · wildnexus-hardware-physical | Standards mesure · Plateforme · Image · Enclos · Énergie |
 | 12 | Registre des risques | wildnexus-program-manager-system-architect · tous agents domaine | Identification · Mitigation par domaine |
-| 13 | Budget | JCH · Bruno | Décision financement · Analyse ressources |
-| 14 | Outputs et impact | wildnexus-scientific-advisor · wildnexus-program-manager-system-architect · Miel | Valeur scientifique · Scope · Communauté |
+| 13 | Budget | JCH · [[Bruno]] | Décision financement · Analyse ressources |
+| 14 | Outputs et impact | wildnexus-scientific-advisor · wildnexus-program-manager-system-architect · [[Miel]] | Valeur scientifique · Scope · Communauté |
 | 15 | Conditions de sortie | JCH · wildnexus-program-manager-system-architect | Décision finale · Arbitrage technique |
 
 **Légende :** JCH est validateur obligatoire de §2, §3, §5, §9, §13, §15 — ces sections ne sont pas gelées sans sa confirmation explicite.
@@ -34,7 +34,7 @@
 
 **Sections à affiner après actions en cours :**
 - §7 : T01.1 analyse comparative concurrents
-- §9 : Renard — arbitrage licence + politique contractuelle d'usage
+- §9 : [[Renard]] — arbitrage licence + politique contractuelle d'usage
 - §11 : seuils quantitatifs à confirmer après T01.3 (RF) et T01.4 (caméra)
 
 ---
@@ -51,7 +51,7 @@
 | **Statut** | Actif — Phase P0 Design |
 | **Version document** | v0.2 DRAFT |
 | **Date** | 2026-05-17 |
-| **Rédigé par** | Dobby 🦉 — orchestration et consolidation documentaire PKA_JCH |
+| **Rédigé par** | [[Dobby]] 🦉 — orchestration et consolidation documentaire PKA_JCH |
 | **Validé par** | JCH (en cours) |
 | **Définition du succès** | Un naturaliste amateur peut déployer seul un réseau de nœuds WildNexus sur sa zone d'observation, le laisser fonctionner six mois avec maintenance semestrielle planifiée, et recevoir des données suffisamment riches pour prendre des décisions concrètes de gestion ou de restauration de son territoire |
 | **Autonomie P0** | 60 jours sur batterie seule (minimum garanti) · 6 mois avec apport solaire + maintenance semestrielle planifiée (ambition produit) · 30 jours EVT terrain avec extrapolation (critère de validation P0) |
@@ -211,7 +211,7 @@ Aucun usage de WildNexus — matériel, logiciel, données, API — n'est autori
 **Vérifiable par** : clause d'exclusion dans le dispositif juridique retenu ; refus documenté de toute demande partenariat ou financement à provenance militaire ou défense.
 
 **NN-06 — Exclusion des usages non conformes aux valeurs environnementales via politique de licence**
-La licence WildNexus exclut contractuellement les usages contraires aux valeurs environnementales et éthiques du projet. La liste des secteurs et usages exclus est définie et maintenue dans la politique de licence — document séparé géré par Renard, opposable aux tiers.
+La licence WildNexus exclut contractuellement les usages contraires aux valeurs environnementales et éthiques du projet. La liste des secteurs et usages exclus est définie et maintenue dans la politique de licence — document séparé géré par [[Renard]], opposable aux tiers.
 **Vérifiable par** : politique d'usage publiée et référencée dans les distributions ou contrats pertinents, selon le modèle juridique retenu.
 
 **NN-07 — Autonomie terrain — hiérarchie des cibles**
@@ -231,7 +231,7 @@ Aucune dépendance à un financement externe n'est acceptée pendant la phase de
 WildNexus sera inévitablement amené à capturer des images de personnes (randonneurs, propriétaires, chasseurs, techniciens). Ces images constituent des données personnelles au sens du RGPD dès lors qu'elles permettent l'identification directe ou indirecte d'un individu. Le système doit être conçu pour minimiser ce risque dès P0.
 **Engagements de conception** : détection locale des silhouettes humaines avec suppression ou floutage avant toute transmission ; aucune image contenant une personne identifiable n'est transmise par défaut ; stockage local chiffré ; durée de rétention limitée et définie ; affichage d'une signalétique conforme au RGPD sur chaque zone déployée.
 **Justification** : En l'absence de base légale explicite (consentement, intérêt légitime documenté, mission d'intérêt public), la captation et le traitement d'images de personnes expose JCHYTECH à des sanctions RGPD. Ce risque est gérable par la conception — il ne peut pas être ignoré.
-**Owner** : Renard (base légale, signalétique) + wildnexus-firmware-ulp (détection et suppression embarquée) + wildnexus-program-manager-system-architect (intégration système).
+**Owner** : [[Renard]] (base légale, signalétique) + wildnexus-firmware-ulp (détection et suppression embarquée) + wildnexus-program-manager-system-architect (intégration système).
 **Vérifiable par** : procédure de détection/suppression humaine documentée et testée avant EVT ; signalétique conforme sur le site EVT.
 
 **NN-10 — Mission de revivification, pas de conservation passive**
@@ -346,8 +346,8 @@ WildNexus est une plateforme distribuée composée de trois types de nœuds dist
 
 ### 8.3 Choix techniques clés et justifications
 
-**Connectivité — LPWAN (candidat prioritaire P0 : LoRa)**
-Standard longue portée basse consommation retenu pour le transport des événements. LoRa/LoRaWAN est le candidat prioritaire P0 pour sa portée en milieu forestier (2-5 km) et sa consommation compatible avec le budget énergie. Ce choix sera validé par une campagne de mesures RF terrain avant M-01. L'interface firmware/radio est abstraite pour permettre la substitution du standard sans refonte système.
+**Connectivité — LPWAN (candidat prioritaire P0 : [[LoRa]])**
+Standard longue portée basse consommation retenu pour le transport des événements. [[LoRa]]/LoRaWAN est le candidat prioritaire P0 pour sa portée en milieu forestier (2-5 km) et sa consommation compatible avec le budget énergie. Ce choix sera validé par une campagne de mesures RF terrain avant M-01. L'interface firmware/radio est abstraite pour permettre la substitution du standard sans refonte système.
 
 **Capteur image — Sony IMX462 ou IMX327 (à confirmer)**
 Capteur CMOS haute sensibilité en faible luminosité, compatible imagerie IR nocturne. Le choix final est conditionné à la mesure empirique du temps de boot et du courant actif — les deux variables qui déterminent le budget énergie par événement.
@@ -432,7 +432,7 @@ La sécurité est une spécification P0, pas une option P1. Les exigences minima
 | Clés | Stockage en zone sécurisée MCU (secure element ou eFuse) ; non extractibles |
 | Comportement anti-falsification | Log d'intégrité ; alerte transmission si falsification détectée |
 
-Owner : wildnexus-firmware-ulp (implémentation) + Renard (obligations légales et cohérence contractuelle).
+Owner : wildnexus-firmware-ulp (implémentation) + [[Renard]] (obligations légales et cohérence contractuelle).
 
 ---
 
@@ -455,7 +455,7 @@ Avant tout développement engageant sur les composants critiques, une analyse FT
 | Communication LPWAN | Architecture réseau événementiel longue portée pour monitoring environnemental |
 | Enclos autonome terrain | Alimentation hybride batterie/solaire pour capteurs déployés |
 
-L'analyse FTO est un livrable de WP01, conduite avant M-01. Confiée à Renard avec appui cabinet spécialisé si nécessaire. Aucun composant litigieux n'est intégré sans avis FTO favorable ou contournement documenté.
+L'analyse FTO est un livrable de WP01, conduite avant M-01. Confiée à [[Renard]] avec appui cabinet spécialisé si nécessaire. Aucun composant litigieux n'est intégré sans avis FTO favorable ou contournement documenté.
 
 ### 9.3 Stratégie brevet — défensive et éthique
 
@@ -469,7 +469,7 @@ L'analyse FTO est un livrable de WP01, conduite avant M-01. Confiée à Renard a
 - Générer des revenus de licence comme modèle principal
 - Créer une barrière à l'entrée communautaire
 
-**Périmètre de dépôt envisagé** (à affiner après FTO et conseil Renard) : couche IA embarquée faune, architecture de communication événementielle basse consommation, mécanismes d'extensibilité capteurs.
+**Périmètre de dépôt envisagé** (à affiner après FTO et conseil [[Renard]]) : couche IA embarquée faune, architecture de communication événementielle basse consommation, mécanismes d'extensibilité capteurs.
 
 ### 9.4 Politique de licence
 
@@ -481,11 +481,11 @@ L'analyse FTO est un livrable de WP01, conduite avant M-01. Confiée à Renard a
 
 ### 9.5 Gouvernance IP et FTO
 
-**Renard** pilote la rédaction contractuelle, la politique de diffusion, les accords partenaires et distributeurs, ainsi que la base légale RGPD liée aux usages terrain.
+**[[Renard]]** pilote la rédaction contractuelle, la politique de diffusion, les accords partenaires et distributeurs, ainsi que la base légale RGPD liée aux usages terrain.
 
-**Conseil PI externe** : mobilisé si nécessaire pour T01.2, pour l'analyse FTO, la stratégie de dépôt défensif post-POC et la surveillance du portefeuille.
+**Conseil [[Pi]] externe** : mobilisé si nécessaire pour T01.2, pour l'analyse FTO, la stratégie de dépôt défensif post-POC et la surveillance du portefeuille.
 
-**Partition claire** : Renard structure le dispositif juridique et contractuel ; le conseil PI externe intervient comme expertise spécialisée sur les brevets et la FTO ; JCH valide toute décision qui modifie l'équilibre entre diffusion, exclusions d'usage et protection de la mission.
+**Partition claire** : [[Renard]] structure le dispositif juridique et contractuel ; le conseil [[Pi]] externe intervient comme expertise spécialisée sur les brevets et la FTO ; JCH valide toute décision qui modifie l'équilibre entre diffusion, exclusions d'usage et protection de la mission.
 
 **Première mission avant M-01** : formaliser le modèle `source-available / ethical-source` retenu, avec vocabulaire public, licences, contrats et politique d'usage alignés.
 
@@ -506,7 +506,7 @@ L'analyse FTO est un livrable de WP01, conduite avant M-01. Confiée à Renard a
 
 **Tâches :**
 - T01.1 — Analyse comparative des spécifications concurrentes → tableau comparatif consolidé (calibration §6 et §11)
-- T01.2 — Analyse FTO sur composants critiques (Renard)
+- T01.2 — Analyse FTO sur composants critiques ([[Renard]])
 - T01.3 — Campagne mesures RF terrain : portée LPWAN réelle, sélection standard
 - T01.4 — Benchmark module caméra IMX462 vs IMX327 : boot time mesuré, courant actif
 - T01.5 — Sélection MCU : arbitrage wildnexus-firmware-ulp
@@ -613,7 +613,7 @@ L'analyse FTO est un livrable de WP01, conduite avant M-01. Confiée à Renard a
 - T06.1 — Création dépôt public : firmware, schémas, BOM, documentation
 - T06.2 — Documentation contribution (CONTRIBUTING.md, interface capteur)
 - T06.3 — Canal communautaire (forum, Discord, ou équivalent)
-- T06.4 — Stratégie visibilité sociale (Miel) : EVT documenté comme contenu communautaire
+- T06.4 — Stratégie visibilité sociale ([[Miel]]) : EVT documenté comme contenu communautaire
 
 **Livrables :** D06.1 Dépôt open source public · D06.2 Documentation contribution · D06.3 Canal communautaire actif
 
@@ -697,11 +697,11 @@ Décision entrée P1
 
 | Risque | P | I | Mitigation | Fallback |
 |--------|---|---|-----------|---------|
-| Dévoiement militaire ou para-militaire | L | H | Clause d'exclusion dans le dispositif juridique retenu dès D06.1 ; Renard + validation JCH | Révocation licence ou rupture contractuelle ; action juridique |
+| Dévoiement militaire ou para-militaire | L | H | Clause d'exclusion dans le dispositif juridique retenu dès D06.1 ; [[Renard]] + validation JCH | Révocation licence ou rupture contractuelle ; action juridique |
 | Appropriation open source refermée | M | M | Modèle de diffusion clarifié avant M-01 | Surveillance forks ; réaction communautaire |
-| Absence adoption communautaire | M | M | Canal actif avant publication ; EVT documenté (Miel) | Réseau bêta-testeurs naturalistes ciblés |
+| Absence adoption communautaire | M | M | Canal actif avant publication ; EVT documenté ([[Miel]]) | Réseau bêta-testeurs naturalistes ciblés |
 | Concurrent direct open source avant M-04 | L | M | Publication anticipée dès FTO validé | Contribution au projet concurrent si supérieur |
-| Non-conformité RGPD (capture de personnes) | M | H | NN-09 : détection + suppression embarquée avant transmission ; signalétique EVT ; avis Renard | Désactivation transmission images jusqu'à conformité documentée |
+| Non-conformité RGPD (capture de personnes) | M | H | NN-09 : détection + suppression embarquée avant transmission ; signalétique EVT ; avis [[Renard]] | Désactivation transmission images jusqu'à conformité documentée |
 | Tension NN-02 / NN-05/06 non résolue avant publication | M | H | Arbitrage licence prioritaire avant M-01 | Publication différée jusqu'à arbitrage juridique documenté |
 
 ---
@@ -716,7 +716,7 @@ WildNexus est intégralement autofinancé par JCHYTECH durant la phase P0, confo
 
 | WP | Catégorie | Poste dominant | Ordre de grandeur |
 |----|-----------|----------------|------------------|
-| WP01 | Études & conseil | FTO (Renard + cabinet) + benchmark | Moyen |
+| WP01 | Études & conseil | FTO ([[Renard]] + cabinet) + benchmark | Moyen |
 | WP02 | Hardware | Fabrication PCB + enclos prototype | Élevé |
 | WP03 | Développement | Temps JCH + outillage firmware | Faible |
 | WP04 | IA & données | Dataset + compute entraînement | Moyen |
@@ -810,7 +810,7 @@ Un pivot radical est déclenché si :
 ---
 
 *Document fondateur WildNexus — DRAFT v0.2 — 2026-05-17*
-*Consolidé par Dobby 🦉 — orchestration documentaire PKA_JCH*
+*Consolidé par [[Dobby]] 🦉 — orchestration documentaire PKA_JCH*
 *Propriétaire : Jean-Claude Havaux — JCHYTECH*
 
 **Changelog v0.1 → v0.2 :**
@@ -824,8 +824,8 @@ Un pivot radical est déclenché si :
 - §8.6 ajouté : périmètre P0 (ce que P0 est / n'est pas)
 - §8.7 ajouté : modèle de données minimum P0 (12 champs)
 - §8.8 ajouté : sécurité système P0 (firmware signé, OTA chiffré, BLE auth, stockage)
-- §9 : gouvernance IP recentrée sur Renard + conseil PI externe si nécessaire
+- §9 : gouvernance IP recentrée sur [[Renard]] + conseil [[Pi]] externe si nécessaire
 - §12 : 2 nouveaux risques (RGPD, tension licence)
 - §13 : note modèle de coût lié au prix cible 900 €
 - Table des matières et owners alignés sur les agents WildNexus cibles
-*Prochaine révision v0.3 : après T01.1 (analyse concurrents), D01.2 (FTO/conseil PI), T01.3 (RF terrain), D02.2 (BOM → modèle coût §13)*
+*Prochaine révision v0.3 : après T01.1 (analyse concurrents), D01.2 (FTO/conseil [[Pi]]), T01.3 (RF terrain), D02.2 (BOM → modèle coût §13)*

@@ -1,7 +1,7 @@
 # InsectNet - Dataset Summary: Tettigonia viridissima
 
 **Date :** 2026-05-24  
-**Source :** Xeno-canto API v3  
+**Source :** [[Xeno-Canto]] API v3  
 **Fichier :** `metadata.csv`  
 **Statut :** espece pilote validee
 
@@ -16,7 +16,7 @@ Review/reject candidate: 125
 
 ## Qualite
 
-| Qualite Xeno-canto | Nombre |
+| Qualite [[Xeno-Canto]] | Nombre |
 |---|---:|
 | A | 61 |
 | B | 475 |
@@ -79,7 +79,7 @@ Review/reject candidate: 125
 
 Le corpus est particulierement interessant pour InsectNet car une grande partie des enregistrements est en sample rate eleve.
 
-Cela confirme que la bioacoustique insectes ne doit pas etre traitee exactement comme BirdNET oiseaux :
+Cela confirme que la bioacoustique insectes ne doit pas etre traitee exactement comme [[BirdNET]] oiseaux :
 
 - beaucoup d'information utile peut se trouver haut en frequence ;
 - les choix micro et sample rate terrain seront structurants ;

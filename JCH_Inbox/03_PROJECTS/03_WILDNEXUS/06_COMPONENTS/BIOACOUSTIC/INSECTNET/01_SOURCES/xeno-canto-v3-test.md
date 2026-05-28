@@ -1,4 +1,4 @@
-# InsectNet - Test Xeno-canto API v3
+# InsectNet - Test [[Xeno-Canto]] API v3
 
 **Date :** 2026-05-24  
 **Espece cible :** `Tettigonia viridissima`  
@@ -33,13 +33,13 @@ https://xeno-canto.org/api/3/recordings
 
 ## Contraintes API v3
 
-D'apres la documentation Xeno-canto API v3 :
+D'apres la documentation [[Xeno-Canto]] API v3 :
 
 - `query` est obligatoire ;
 - `key` est obligatoire ;
-- les requetes doivent utiliser les tags de recherche Xeno-canto ;
+- les requetes doivent utiliser les tags de recherche [[Xeno-Canto]] ;
 - `per_page` est optionnel ;
-- l'API exige une cle liee a un compte Xeno-canto avec email verifie ;
+- l'API exige une cle liee a un compte [[Xeno-Canto]] avec email verifie ;
 - la cle ne doit pas etre publiee dans un depot.
 
 ## Requete cible a tester avec cle
@@ -61,7 +61,7 @@ Ne pas ecrire `<XC_API_KEY>` dans les fichiers PKA.
 Options propres :
 
 - variable d'environnement locale `XC_API_KEY` ;
-- fichier `.env` ignore par git ;
+- fichier 
 - gestionnaire de mots de passe externe.
 
 ## Etat
@@ -130,7 +130,7 @@ Champs confirmes dans la reponse :
 
 ## Implications InsectNet
 
-Xeno-canto est confirme comme source exploitable pour la V0.1.
+[[Xeno-Canto]] est confirme comme source exploitable pour la V0.1.
 
 Points d'attention :
 

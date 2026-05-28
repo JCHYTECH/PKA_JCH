@@ -1,12 +1,12 @@
 ---
 date: 2026-05-10
 type: rapport-hebdo
-author: Dobby
+author: [[Dobby]]
 tags: [rapport, jch, collaboration, meta]
 ---
 
 # Rapport hebdomadaire — Comment mieux collaborer avec ton équipe PKA
-**Semaine du 3 → 10 mai 2026 · Rédigé par Dobby**
+**Semaine du 3 → 10 mai 2026 · Rédigé par [[Dobby]]**
 
 ---
 
@@ -35,7 +35,7 @@ La session du 9 mai démarre par `cd /Users/jchavauxm5/PKA_JCH` puis "on a des f
 Plusieurs fois dans la session : j'affiche une analyse détaillée, tu réponds "ok" ou "oui" en 10 secondes. Soit tu fais confiance aveuglément — ce qui est risqué quand je propose une restructuration de fichiers réels — soit tu lis en diagonale. Dans les deux cas, si je me suis trompé dans mon interprétation, tu ne le rattraperas pas avant que les dégâts soient faits.
 
 **4. Tu lances de nouveaux sujets avant que le précédent soit clos.**
-Le renommage `PHOTO` → `PHOTO_AI_JURY`, les crons, le journal Sybil, la rétrospective Dobby, ce rapport — tous ont émergé en cascade dans la même session. Chaque dérivation est intéressante, mais aucune n'avait été préparée. Résultat : on fait beaucoup, on documente peu, et il est difficile de savoir en fin de session ce qui est vraiment terminé versus ce qui est "en route".
+Le renommage 
 
 **5. La demande "souviens-toi" est fragile.**
 Tu as écrit "tu te souviendra" à propos de la structure standard des projets. Je n'ai pas de mémoire persistante entre les sessions sauf si on écrit explicitement la règle dans un fichier de référence. Cette semaine, plusieurs règles ont été verbalisées mais je ne suis pas certain que toutes aient été ancrées dans le système de façon durable.
@@ -80,4 +80,4 @@ L'objectif n'est pas d'être rigide — c'est de rendre intentionnel ce qui est 
 
 ---
 
-*Rapport généré par Dobby · Semaine 2026-05-03 → 10 · Prochaine édition : dimanche 17 mai 2026*
+*Rapport généré par [[Dobby]] · Semaine 2026-05-03 → 10 · Prochaine édition : dimanche 17 mai 2026*

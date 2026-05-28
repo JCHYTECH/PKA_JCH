@@ -1,6 +1,6 @@
 ---
 date: 2026-04-22
-source: chat Claude — méta-prompt
+source: chat [[Claude]] — méta-prompt
 domain: Prompts / méta
 tags: [prompt, meta, reverse-engineering, template, workflow]
 status: ready
@@ -8,7 +8,7 @@ status: ready
 
 # Reverse Prompt — Reconstruire le prompt idéal d'un chat
 
-Méta-prompt à coller en fin de conversation Claude pour obtenir le prompt unique qui aurait conduit au même résultat sans itérations.
+Méta-prompt à coller en fin de conversation [[Claude]] pour obtenir le prompt unique qui aurait conduit au même résultat sans itérations.
 
 ## Quand l'utiliser
 
@@ -65,6 +65,6 @@ en une seule passe.
 
 ## Notes
 
-- Version slash command installée à `~/.claude/commands/reverse-prompt.md` (déclenchable via `/reverse-prompt` dans Claude Code)
+- Version slash command installée à 
 - Les prompts reconstruits peuvent être archivés dans `JCH VAULT/Prompts/` selon leur domaine
 - Limite connue : le prompt généré reflète l'état final ; il ne capture pas le cheminement d'apprentissage si celui-ci faisait partie de la valeur du chat

@@ -2,7 +2,7 @@
 
 **Date :** 2026-05-23  
 **Statut :** accepté  
-**Owner PKA :** Castor  
+**Owner PKA :** [[Castor]]  
 **Agent WildNexus :** `wildnexus-program-manager-system-architect`  
 **Jalon :** M-01 Architecture P0 gelée
 

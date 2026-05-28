@@ -3,8 +3,8 @@ source_file: "API_pour_observations_be.md"
 type: "document"
 community: "PWA App & Deployment"
 tags:
-  - graphify/document
-  - graphify/EXTRACTED
+  - [[Graphify]]/document
+  - [[Graphify]]/EXTRACTED
   - community/PWA_App_&_Deployment
 ---
 
@@ -22,4 +22,4 @@ tags:
 - [[faune-autour_13.html — v13 single-file PWA source]] - `implements` [EXTRACTED]
 - [[gbif_wildlife_scout.py — Python script for local wildlife querying via pygbif]] - `semantically_similar_to` [INFERRED]
 
-#graphify/document #graphify/EXTRACTED #community/PWA_App_&_Deployment
+#[[Graphify]]/document #[[Graphify]]/EXTRACTED #community/PWA_App_&_Deployment

@@ -15,7 +15,7 @@ members: 6
 - [[GitHub Pages — jchytechfaune-autour]] - document - API_pour_observations_be.md
 - [[Local Species Dictionary (FR ↔ Latin, ~110 entries)]] - document - API_pour_observations_be.md
 - [[Rationale PWA chosen over native iOS app — no Xcode required, rapid delivery, GPS via browser]] - document - API_pour_observations_be.md
-- [[faune-autour_13.html — v13 single-file PWA source]] - document - git/faune-autour_13.html
+- [[faune-autour_13.html — v13 single-file PWA source]] - document - [[Git]]/faune-autour_13.html
 
 ## Live Query (requires Dataview plugin)
 

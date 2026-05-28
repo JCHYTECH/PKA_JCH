@@ -62,7 +62,7 @@ contrôle artistique élevé.
 
 ---
 
-### 2. Script automatisé (Photoshop JSX ou Python)
+### 2. Script automatisé (Photoshop JSX ou [[Python]])
 
 On peut automatiser complètement :
 
@@ -77,7 +77,7 @@ Processus :
 6 tracer lignes connectrices
 ```
 
-Exemple conceptuel Python :
+Exemple conceptuel [[Python]] :
 
 ```python
 from PIL import Image, ImageDraw

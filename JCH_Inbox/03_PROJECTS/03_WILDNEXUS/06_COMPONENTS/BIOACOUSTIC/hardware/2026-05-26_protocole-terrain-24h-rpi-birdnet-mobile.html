@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protocole terrain 24 h — RPi 5 + BirdNET-Go mobile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Variables ── */
+    :root {
+      --noir:     #0D0B09;
+      --ivoire:   #F8F5F0;
+      --ocre:     #C17F3A;
+      --sable:    #E8E2DA;
+      --gris:     #6B6560;
+      --brun:     #2A2420;
+      --vert:     #3D5A3E;
+      --vert-l:   #4e7250;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--ivoire);
+      color: var(--noir);
+      font-family: 'Lora', Georgia, serif;
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--noir);
+      color: var(--ivoire);
+      padding: 56px 0 48px;
+      position: relative;
+    }
+    .header-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .header-brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gris);
+      margin-bottom: 28px;
+    }
+    .header-brand span { color: var(--ocre); }
+    .header-tag {
+      display: inline-block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: var(--vert);
+      color: #fff;
+      padding: 4px 10px;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(26px, 4vw, 40px);
+      line-height: 1.15;
+      color: var(--ivoire);
+      margin-bottom: 16px;
+    }
+    header h1 span { color: var(--ocre); }
+    .header-meta {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      color: var(--gris);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .header-meta span::before {
+      content: '— ';
+      color: var(--ocre);
+    }
+
+    /* ── Nav phases ── */
+    nav.phases {
+      background: var(--brun);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid var(--ocre);
+    }
+    .phases-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .phases-inner::-webkit-scrollbar { display: none; }
+    nav.phases a {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gris);
+      text-decoration: none;
+      padding: 14px 16px;
+      white-space: nowrap;
+      transition: color .2s;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+    }
+    nav.phases a:hover { color: var(--ivoire); }
+    nav.phases a.active { color: var(--ocre); border-bottom-color: var(--ocre); }
+
+    /* ── Layout ── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 64px 40px 100px;
+    }
+
+    /* ── Sections ── */
+    section { margin-bottom: 72px; }
+    section:last-child { margin-bottom: 0; }
+
+    /* ── Phase header ── */
+    .phase-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 36px;
+    }
+    .phase-badge {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: var(--ocre);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 500;
+      font-size: 14px;
+      color: #fff;
+    }
+    .phase-title-wrap {}
+    .phase-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gris);
+      display: block;
+      margin-bottom: 4px;
+    }
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(20px, 3vw, 26px);
+      line-height: 1.2;
+      color: var(--noir);
+    }
+
+    /* ── Intro block ── */
+    .intro-block {
+      background: var(--sable);
+      padding: 28px 32px;
+      margin-bottom: 48px;
+      border-left: 3px solid var(--vert);
+    }
+    .intro-block p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--noir);
+      margin-bottom: 12px;
+    }
+    .intro-block p:last-child { margin-bottom: 0; }
+    .intro-block strong {
+      font-weight: 600;
+      color: var(--vert);
+    }
+
+    /* ── Hypothesis ── */
+    .hypothesis {
+      background: var(--brun);
+      color: var(--ivoire);
+      padding: 24px 28px;
+      margin-bottom: 48px;
+      border-left: 3px solid var(--ocre);
+    }
+    .hypothesis p {
+      font-size: 15px;
+      line-height: 1.75;
+      margin-bottom: 8px;
+      color: var(--sable);
+    }
+    .hypothesis p:last-child { margin-bottom: 0; }
+    .hypothesis strong { color: var(--ocre); font-weight: 600; }
+
+    /* ── H3 ── */
+    h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 17px;
+      color: var(--noir);
+      margin: 40px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--sable);
+    }
+
+    /* ── Paragraphes ── */
+    p { margin-bottom: 16px; color: var(--noir); }
+
+    /* ── Listes ── */
+    ul, ol {
+      padding-left: 0;
+      margin-bottom: 20px;
+      list-style: none;
+    }
+    li {
+      font-size: 15px;
+      line-height: 1.7;
+      padding: 5px 0 5px 20px;
+      position: relative;
+      color: var(--noir);
+    }
+    li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--ocre);
+      font-weight: 600;
+    }
+
+    /* ── Code ── */
+    pre {
+      background: var(--brun);
+      color: #cfc9c1;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      padding: 20px 24px;
+      margin: 20px 0 24px;
+      overflow-x: auto;
+      border-left: 3px solid var(--ocre);
+    }
+    code {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      background: var(--sable);
+      color: var(--brun);
+      padding: 2px 6px;
+    }
+    pre code {
+      background: none;
+      color: inherit;
+      padding: 0;
+    }
+
+    /* ── Tables ── */
+    .table-wrap { overflow-x: auto; margin: 24px 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+    }
+    thead tr {
+      background: var(--noir);
+      color: var(--ivoire);
+    }
+    thead th {
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 11px;
+      padding: 12px 16px;
+      text-align: left;
+    }
+    tbody tr { border-bottom: 1px solid var(--sable); }
+    tbody tr:nth-child(even) { background: rgba(232,226,218,.35); }
+    tbody td {
+      padding: 11px 16px;
+      vertical-align: top;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--noir);
+    }
+    tbody td:first-child { font-weight: 500; }
+
+    /* ── Critères ── */
+    .criteria-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .criteria-card {
+      padding: 24px 20px;
+      border-top: 3px solid var(--sable);
+    }
+    .criteria-card.success { border-color: var(--vert); }
+    .criteria-card.partial  { border-color: var(--ocre); }
+    .criteria-card.failure  { border-color: var(--gris); }
+    .criteria-card h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .criteria-card.success h4 { color: var(--vert); }
+    .criteria-card.partial  h4 { color: var(--ocre); }
+    .criteria-card.failure  h4 { color: var(--gris); }
+    .criteria-card ul { margin: 0; }
+    .criteria-card li { font-size: 13px; }
+
+    /* ── Architecture text block ── */
+    .arch-block {
+      background: var(--sable);
+      padding: 20px 24px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12.5px;
+      line-height: 1.8;
+      color: var(--brun);
+      margin: 20px 0;
+    }
+
+    /* ── Séparateur ── */
+    hr {
+      border: none;
+      border-top: 1px solid var(--sable);
+      margin: 64px 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--brun);
+      padding: 32px 40px;
+      text-align: center;
+    }
+    footer p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: var(--gris);
+      margin: 0;
+    }
+    footer span { color: var(--ocre); }
+
+    /* ── Responsive ── */
+    @media (max-width: 680px) {
+      .header-inner, main { padding-left: 24px; padding-right: 24px; }
+      .phases-inner { padding: 0 16px; }
+      .criteria-grid { grid-template-columns: 1fr; }
+      .phase-badge { width: 40px; height: 40px; font-size: 12px; }
+      nav.phases a { padding: 12px 12px; font-size: 11px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-inner">
+    <p class="header-brand">Arteon<span>·</span> &nbsp;/&nbsp; WildNexus &nbsp;/&nbsp; Bioacoustique</p>
+    <div class="header-tag">Protocole terrain</div>
+    <h1>Protocole terrain 24 h<br><span>Raspberry Pi 5 + BirdNET-Go mobile</span></h1>
+    <div class="header-meta">
+      <span>2026-05-26</span>
+      <span>Banc mobile bioacoustique</span>
+      <span>Chouette 🦉</span>
+      <span>WILDNEXUS</span>
+    </div>
+  </div>
+</header>
+
+<!-- ── NAV PHASES ── -->
+<nav class="phases">
+  <div class="phases-inner">
+    <a href="#objectif" class="active">Objectif</a>
+    <a href="#materiel">Matériel</a>
+    <a href="#phase0">Phase 0</a>
+    <a href="#phase1">Phase 1</a>
+    <a href="#phase2">Phase 2</a>
+    <a href="#phase3">Phase 3</a>
+    <a href="#phase4">Phase 4</a>
+    <a href="#phase5">Phase 5</a>
+    <a href="#criteres">Critères</a>
+    <a href="#risques">Risques</a>
+  </div>
+</nav>
+
+<!-- ── MAIN ── -->
+<main>
+
+  <!-- OBJECTIF -->
+  <section id="objectif">
+    <div class="intro-block">
+      <p>Tester si un système mobile composé d'un <strong>Raspberry Pi 5</strong> avec <strong>BirdNET-Go</strong>, d'un micro BOYA BY-MM1, d'un powerbank Anker 20100 mAh / 72,36 Wh et d'une connexion via iPhone peut fonctionner en continu dans un site riche en oiseaux et éloigné pendant une <strong>période cible de 24 heures</strong>.</p>
+      <p>Le test doit mesurer : autonomie réelle · stabilité BirdNET-Go · stabilité audio · stabilité réseau via hotspot iPhone ou connexion mobile · capacité à consulter l'interface depuis iPhone ou MacBook · qualité et quantité des détections BirdNET.</p>
+    </div>
+
+    <div class="hypothesis">
+      <p>La batterie Anker 72,36 Wh <strong>peut ne pas suffire pour 24 h</strong> si le Raspberry Pi 5, BirdNET-Go, l'audio USB et le réseau mobile consomment trop.</p>
+      <p>Le critère important du premier test n'est donc pas seulement "tenir 24 h", mais : mesurer la durée réelle · identifier le maillon limitant · vérifier que la capture BirdNET reste propre jusqu'à extinction ou récupération.</p>
+    </div>
+
+    <h3>Cadrage WildNexus</h3>
+    <p>Ce protocole concerne le banc mobile BirdNET-Go / bioacoustique. Il <strong>ne modifie pas</strong> l'architecture Satellite Lite P0 :</p>
+    <ul>
+      <li><strong>Satellite Lite P0</strong> : AA, frugal, local, LoRa / statuts / métadonnées</li>
+      <li><strong>Banc BirdNET mobile</strong> : Raspberry Pi, BirdNET-Go, powerbank, hotspot/LTE, test terrain 24 h</li>
+    </ul>
+  </section>
+
+  <!-- MATÉRIEL -->
+  <section id="materiel">
+    <div class="phase-header">
+      <div class="phase-badge">📦</div>
+      <div class="phase-title-wrap">
+        <span class="phase-label">Inventaire</span>
+        <h2>Matériel</h2>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Élément</th><th>Rôle</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Raspberry Pi 5</td><td>Calcul BirdNET-Go</td></tr>
+          <tr><td>Micro BOYA BY-MM1</td><td>Capture audio directionnelle</td></tr>
+          <tr><td>Adaptateur audio USB UGREEN</td><td>Entrée micro vers Raspberry Pi</td></tr>
+          <tr><td>Powerbank Anker 20100 mAh / 72,36 Wh</td><td>Alimentation terrain</td></tr>
+          <tr><td>Câble USB-C haute puissance</td><td>Alimentation Raspberry Pi</td></tr>
+          <tr><td>iPhone</td><td>Hotspot, consultation, secours terrain</td></tr>
+          <tr><td>MacBook</td><td>Configuration et contrôle avant départ</td></tr>
+          <tr><td>Boîtier / protection pluie temporaire</td><td>Protection terrain hors pluie directe</td></tr>
+          <tr><td>Carte microSD suffisante</td><td>Système + logs + captures BirdNET</td></tr>
+          <tr><td>MF833U1 LTE USB (option)</td><td>Connectivité mobile alternative ou complémentaire</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Architecture de test</h3>
+    <div class="arch-block">
+BOYA BY-MM1<br>
+&nbsp;&nbsp;→ adaptateur audio USB<br>
+&nbsp;&nbsp;→ Raspberry Pi 5<br>
+&nbsp;&nbsp;→ BirdNET-Go<br>
+&nbsp;&nbsp;→ réseau maison avant départ<br>
+&nbsp;&nbsp;→ hotspot iPhone ou modem LTE en terrain<br>
+&nbsp;&nbsp;→ consultation iPhone / MacBook<br>
+<br>
+Powerbank Anker<br>
+&nbsp;&nbsp;→ alimentation Raspberry Pi 5<br>
+&nbsp;&nbsp;→ alimentation indirecte des périphériques USB via Raspberry Pi
+    </div>
+    <p style="font-size:14px; color:var(--gris); font-style:italic;">Si le modem MF833U1 est utilisé, il doit rester connecté au Raspberry Pi pour les données. Une clé USB LTE ne peut pas communiquer avec le Raspberry Pi si elle est seulement branchée au powerbank.</p>
+  </section>
+
+  <!-- PHASE 0 -->
+  <section id="phase0">
+    <div class="phase-header">
+      <div class="phase-badge">P0</div>
+      <div class="phase-title-wrap">
+        <span class="phase-label">Avant départ</span>
+        <h2>Préparation maison</h2>
+      </div>
+    </div>
+
+    <h3>0.1 Vérifier que BirdNET-Go tourne sur le réseau maison</h3>
+    <p>Depuis MacBook ou iPhone connecté au Wi-Fi maison :</p>
+    <pre><code>http://birdnetpi.local
+http://birdnetpi.local:8080
+http://192.168.1.48
+http://192.168.1.48:8080</code></pre>
+
+    <p>Depuis le Raspberry Pi :</p>
+    <pre><code>hostname
+hostname -I
+nmcli device status
+docker ps</code></pre>
+
+    <p>Si BirdNET-Go tourne comme service systemd :</p>
+    <pre><code>systemctl status birdnet-go</code></pre>
+
+    <p>Si BirdNET-Pi est utilisé :</p>
+    <pre><code>cd ~/BirdNET-Pi
+git branch --show-current</code></pre>
+
+    <h3>0.2 Vérifier l'audio</h3>
+    <pre><code>arecord -l
+arecord -L</code></pre>
+
+    <p>Enregistrement court de test :</p>
+    <pre><code>mkdir -p ~/birdnet-field-test
+arecord -D plughw:1,0 -f S16_LE -r 48000 -c 1 -d 20 ~/birdnet-field-test/audio-test.wav
+aplay ~/birdnet-field-test/audio-test.wav</code></pre>
+
+    <p style="font-size:14px; color:var(--gris);">Si <code>plughw:1,0</code> ne correspond pas à l'adaptateur USB, adapter selon <code>arecord -l</code>. Contrôle attendu : signal audible · pas de saturation · pas de craquements · BirdNET-Go continue à recevoir l'audio après test.</p>
+
+    <h3>0.3 Vérifier le hotspot iPhone</h3>
+    <p>Sur iPhone : Réglages → Partage de connexion → Activer "Autoriser les autres utilisateurs" → Activer "Maximiser la compatibilité" → Garder l'écran sur cette page pendant le démarrage du Raspberry Pi.</p>
+    <pre><code>nmcli dev wifi list
+sudo nmcli dev wifi connect "NOM_HOTSPOT_IPHONE" password "MOT_DE_PASSE"
+nmcli connection show</code></pre>
+
+    <p>Définir les priorités :</p>
+    <pre><code>sudo nmcli connection modify "NOM_WIFI_MAISON" connection.autoconnect-priority 20
+sudo nmcli connection modify "NOM_HOTSPOT_IPHONE" connection.autoconnect-priority 10</code></pre>
+
+    <p style="font-size:14px; color:var(--gris);">Test de bascule : éteindre le Wi-Fi maison → activer hotspot iPhone → redémarrer le Raspberry Pi → vérifier que l'iPhone indique une connexion → ouvrir l'interface BirdNET depuis Safari.</p>
+
+    <h3>0.4 Option — vérifier Tailscale</h3>
+    <pre><code>tailscale status
+tailscale ip -4</code></pre>
+    <p>Sur iPhone : ouvrir Tailscale · vérifier que le VPN est connecté · tester l'URL ou l'IP Tailscale du Raspberry Pi. Tailscale est préférable pour éviter les changements d'IP du hotspot.</p>
+
+    <h3>0.5 Option — vérifier le modem MF833U1 LTE</h3>
+    <pre><code>lsusb
+ip addr
+nmcli device
+dmesg | tail -80</code></pre>
+    <p>Vérifier : détection USB · création d'une interface réseau · SIM et APN · route Internet · stabilité après reboot · coexistence avec l'adaptateur audio USB.</p>
+  </section>
+
+  <!-- PHASE 1 -->
+  <section id="phase1">
+    <div class="phase-header">
+      <div class="phase-badge">P1</div>
+      <div class="phase-title-wrap">
+        <span class="phase-label">Avant terrain</span>
+        <h2>Test maison 2 heures</h2>
+      </div>
+    </div>
+
+    <p>Avant toute sortie 24 h, faire un test complet à la maison pendant <strong>2 heures</strong> : Raspberry Pi alimenté par le powerbank · BOYA BY-MM1 branché via adaptateur audio USB · réseau via hotspot iPhone ou MF833U1 (pas Wi-Fi maison) · BirdNET-Go lancé et consultable.</p>
+
+    <h3>Relevés au démarrage</h3>
+    <pre><code>date
+hostname -I
+nmcli device status
+docker ps
+vcgencmd measure_temp
+uptime
+df -h</code></pre>
+
+    <p>Si disponible :</p>
+    <pre><code>vcgencmd get_throttled</code></pre>
+
+    <h3>Relevés après 30, 60 et 120 minutes</h3>
+    <pre><code>date
+uptime
+vcgencmd measure_temp
+vcgencmd get_throttled
+df -h
+nmcli device status
+dmesg | tail -40</code></pre>
+
+    <p>Noter : pourcentage restant du powerbank · accès interface BirdNET · nombre de détections · présence de coupures audio · température · erreurs réseau.</p>
+
+    <p><strong>Critère de passage terrain :</strong> aucun reboot, interface accessible, audio stable, température acceptable, au moins 2 h continues.</p>
+  </section>
+
+  <!-- PHASE 2 -->
+  <section id="phase2">
+    <div class="phase-header">
+      <div class="phase-badge">P2</div>
+      <div class="phase-title-wrap">
+        <span class="phase-label">Sur site</span>
+        <h2>Installation terrain</h2>
+      </div>
+    </div>
+
+    <h3>Choix du site</h3>
+    <ul>
+      <li>Riche en oiseaux</li>
+      <li>Éloigné des routes et machines</li>
+      <li>Sans risque de vol évident</li>
+      <li>Hors pluie directe</li>
+      <li>Support stable pour le micro</li>
+      <li>Réception mobile suffisante si suivi distant requis</li>
+    </ul>
+
+    <h3>Placement micro — BOYA BY-MM1</h3>
+    <ul>
+      <li>Orienté vers la zone d'activité aviaire</li>
+      <li>Protégé du vent direct</li>
+      <li>Éloigné du Raspberry Pi et du powerbank autant que le câble le permet</li>
+      <li>Pas enfermé dans le même boîtier que le ventilateur du Raspberry Pi</li>
+      <li>Éviter contact direct avec branches, herbes ou surfaces vibrantes</li>
+    </ul>
+
+    <h3>Placement Raspberry Pi / powerbank</h3>
+    <ul>
+      <li>Placer dans une boîte ou sac de protection vent/pluie, sans étouffer la ventilation</li>
+      <li>Laisser une circulation d'air minimale</li>
+      <li>Protéger les connexions USB</li>
+      <li>Éviter condensation directe</li>
+      <li>Sur-élever du sol</li>
+      <li>Éviter exposition solaire directe</li>
+    </ul>
+  </section>
+
+  <!-- PHASE 3 -->
+  <section id="phase3">
+    <div class="phase-header">
+      <div class="phase-badge">P3</div>
+      <div class="phase-title-wrap">
+        <span class="phase-label">Lancement</span>
+        <h2>Démarrage terrain</h2>
+      </div>
+    </div>
+
+    <ol style="list-style:none; counter-reset: steps;">
+      <li style="counter-increment:steps; padding-left:48px; position:relative; margin-bottom:12px;">
+        <span style="position:absolute;left:0;top:2px;width:28px;height:28px;background:var(--ocre);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#fff;font-weight:500;">1</span>
+        Activer hotspot iPhone ou brancher le MF833U1
+      </li>
+      <li style="counter-increment:steps; padding-left:48px; position:relative; margin-bottom:12px;">
+        <span style="position:absolute;left:0;top:2px;width:28px;height:28px;background:var(--ocre);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#fff;font-weight:500;">2</span>
+        Brancher le micro / adaptateur audio
+      </li>
+      <li style="counter-increment:steps; padding-left:48px; position:relative; margin-bottom:12px;">
+        <span style="position:absolute;left:0;top:2px;width:28px;height:28px;background:var(--ocre);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#fff;font-weight:500;">3</span>
+        Brancher le Raspberry Pi au powerbank
+      </li>
+      <li style="counter-increment:steps; padding-left:48px; position:relative; margin-bottom:12px;">
+        <span style="position:absolute;left:0;top:2px;width:28px;height:28px;background:var(--ocre);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#fff;font-weight:500;">4</span>
+        Attendre 2 minutes
+      </li>
+      <li style="counter-increment:steps; padding-left:48px; position:relative; margin-bottom:12px;">
+        <span style="position:absolute;left:0;top:2px;width:28px;height:28px;background:var(--ocre);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#fff;font-weight:500;">5</span>
+        Vérifier sur iPhone qu'une connexion est active
+      </li>
+      <li style="counter-increment:steps; padding-left:48px; position:relative; margin-bottom:12px;">
+        <span style="position:absolute;left:0;top:2px;width:28px;height:28px;background:var(--ocre);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#fff;font-weight:500;">6</span>
+        Ouvrir BirdNET
+      </li>
+    </ol>
+
+    <pre><code>http://birdnetpi.local:8080
+http://100.84.45.93:8080
+http://172.20.10.2:8080</code></pre>
+
+    <ol style="list-style:none; counter-reset: steps 6;">
+      <li style="counter-increment:steps; padding-left:48px; position:relative; margin-bottom:12px;">
+        <span style="position:absolute;left:0;top:2px;width:28px;height:28px;background:var(--ocre);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#fff;font-weight:500;">7</span>
+        Vérifier les détections ou l'état live
+      </li>
+      <li style="counter-increment:steps; padding-left:48px; position:relative; margin-bottom:12px;">
+        <span style="position:absolute;left:0;top:2px;width:28px;height:28px;background:var(--ocre);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#fff;font-weight:500;">8</span>
+        <strong>Noter l'heure exacte de début</strong>
+      </li>
+    </ol>
+  </section>
+
+  <!-- PHASE 4 -->
+  <section id="phase4">
+    <div class="phase-header">
+      <div class="phase-badge">P4</div>
+      <div class="phase-title-wrap">
+        <span class="phase-label">En cours</span>
+        <h2>Suivi pendant 24 h</h2>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Moment</th><th>Contrôle</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>T0</td><td>Démarrage, accès interface, audio, batterie</td></tr>
+          <tr><td>T + 30 min</td><td>Interface, température, détections</td></tr>
+          <tr><td>T + 2 h</td><td>Stabilité, batterie, réseau</td></tr>
+          <tr><td>T + 6 h</td><td>Si possible : interface, batterie</td></tr>
+          <tr><td>T + 12 h</td><td>Si possible : interface, batterie</td></tr>
+          <tr><td>T + 24 h</td><td>Récupération, logs, état final</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="font-size:14px; color:var(--gris); margin-top:12px;">Si le site est éloigné et non visité pendant 24 h : faire au minimum T0 complet + T+24 récupération complète.</p>
+
+    <h3>Journal terrain</h3>
+    <ul>
+      <li>Lieu approximatif</li>
+      <li>Météo, vent, pluie</li>
+      <li>Heure début</li>
+      <li>Orientation micro</li>
+      <li>Réseau utilisé</li>
+      <li>Niveau batterie initial / à récupération</li>
+      <li>Heure d'arrêt si le système est éteint</li>
+      <li>Observations oiseaux visibles / audibles</li>
+    </ul>
+  </section>
+
+  <!-- PHASE 5 -->
+  <section id="phase5">
+    <div class="phase-header">
+      <div class="phase-badge">P5</div>
+      <div class="phase-title-wrap">
+        <span class="phase-label">Au retour</span>
+        <h2>Récupération</h2>
+      </div>
+    </div>
+
+    <pre><code>date
+uptime
+hostname -I
+docker ps
+vcgencmd measure_temp
+vcgencmd get_throttled
+df -h
+dmesg | tail -120</code></pre>
+
+    <h3>Exporter et sauvegarder</h3>
+    <ul>
+      <li>Logs BirdNET-Go</li>
+      <li>Détections</li>
+      <li>Extraits audio si disponibles</li>
+      <li>Captures d'écran interface</li>
+      <li>Notes terrain</li>
+    </ul>
+
+    <h3>Vérifier</h3>
+    <ul>
+      <li>Durée exacte avant extinction ou récupération</li>
+      <li>Nombre total de détections</li>
+      <li>Distribution horaire</li>
+      <li>Coupures réseau / audio</li>
+      <li>Température maximale observée</li>
+      <li>Espace disque restant</li>
+    </ul>
+
+    <h3>Note de retour à créer</h3>
+    <pre><code>JCH_Inbox/03_PROJECTS/03_WILDNEXUS/06_COMPONENTS/BIOACOUSTIC/hardware/
+YYYY-MM-DD_retour-test-terrain-birdnet-mobile.md</code></pre>
+    <p style="font-size:14px; color:var(--gris);">Structure : contexte · matériel · lieu · météo · durée · réseau · alimentation · résultats BirdNET · incidents · décision prochaine itération.</p>
+  </section>
+
+  <!-- CRITÈRES -->
+  <section id="criteres">
+    <div class="phase-header">
+      <div class="phase-badge">✓</div>
+      <div class="phase-title-wrap">
+        <span class="phase-label">Évaluation</span>
+        <h2>Critères de réussite</h2>
+      </div>
+    </div>
+
+    <div class="criteria-grid">
+      <div class="criteria-card success">
+        <h4>Réussite complète</h4>
+        <ul>
+          <li>24 h de fonctionnement</li>
+          <li>BirdNET-Go actif jusqu'à la récupération</li>
+          <li>Audio stable</li>
+          <li>Réseau consultable au moins au démarrage et à la récupération</li>
+          <li>Pas de reboot non désiré</li>
+          <li>Données exploitables</li>
+        </ul>
+      </div>
+      <div class="criteria-card partial">
+        <h4>Réussite partielle</h4>
+        <ul>
+          <li>Autonomie entre 6 h et 24 h</li>
+          <li>Données audio / détections exploitables</li>
+          <li>Cause probable identifiée : batterie, réseau, température, stockage ou audio</li>
+        </ul>
+      </div>
+      <div class="criteria-card failure">
+        <h4>Échec utile</h4>
+        <ul>
+          <li>Système arrêté avant 6 h</li>
+          <li>Logs suffisants pour identifier la cause</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- RISQUES -->
+  <section id="risques">
+    <div class="phase-header">
+      <div class="phase-badge">⚠</div>
+      <div class="phase-title-wrap">
+        <span class="phase-label">Anticipation</span>
+        <h2>Risques et parades</h2>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Risque</th><th>Cause probable</th><th>Parade</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Autonomie &lt; 24 h</td>
+            <td>RPi 5 + BirdNET + LTE trop consommateurs</td>
+            <td>Mesurer durée réelle, prévoir powerbank plus grand ou double alimentation</td>
+          </tr>
+          <tr>
+            <td>Reboot</td>
+            <td>Sous-alimentation ou câble faible</td>
+            <td>Câble USB-C haute puissance, port powerbank haute sortie</td>
+          </tr>
+          <tr>
+            <td>Audio absent</td>
+            <td>Mauvais device ALSA</td>
+            <td>Vérifier <code>arecord -l</code>, figer device dans BirdNET-Go</td>
+          </tr>
+          <tr>
+            <td>Bruit mécanique</td>
+            <td>Micro trop proche du RPi / fan</td>
+            <td>Éloigner micro, protéger du vent</td>
+          </tr>
+          <tr>
+            <td>Perte hotspot</td>
+            <td>iPhone verrouillé / éloigné / 5 GHz instable</td>
+            <td>Maximiser compatibilité, garder iPhone proche, Tailscale si possible</td>
+          </tr>
+          <tr>
+            <td>Modem LTE instable</td>
+            <td>APN / SIM / driver / alimentation</td>
+            <td>Test maison 2 h avant terrain</td>
+          </tr>
+          <tr>
+            <td>Stockage plein</td>
+            <td>Captures / logs trop volumineux</td>
+            <td>Vérifier <code>df -h</code>, limiter rétention si nécessaire</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- DÉCISION -->
+  <section>
+    <div class="intro-block" style="border-left-color: var(--ocre);">
+      <p><strong>Décision</strong> — Le test terrain 24 h est validé comme essai BirdNET-Go mobile. Il doit être précédé d'un test maison 2 h sur powerbank et réseau mobile / hotspot. Le résultat attendu est une mesure d'autonomie et de stabilité, pas une validation définitive du Satellite Lite P0.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>Arteon<span>·</span> &nbsp;/&nbsp; WildNexus &nbsp;/&nbsp; Protocole bioacoustique &nbsp;/&nbsp; 2026-05-26</p>
+</footer>
+
+<script>
+  // Highlight nav item on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('nav.phases a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const link = document.querySelector(`nav.phases a[href="#${e.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>

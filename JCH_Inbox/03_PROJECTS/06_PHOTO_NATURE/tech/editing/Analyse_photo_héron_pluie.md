@@ -3,7 +3,7 @@ tags:
   - type/project
   - status/active
 ---
-# Analyse photo héron pluie
+# Analyse photo [[Héron]] pluie
 
 **Created:** 2026-03-11 09:28  
 **Updated:** 2026-03-11 09:52  
@@ -22,16 +22,16 @@ comment
 ## Assistant
 *2026-03-11 09:28*
 
-09:00 — Très belle image. Elle fonctionne immédiatement, parce qu’elle combine trois choses fortes : la posture immobile du héron, la pluie visible, et ce fond automnal très doux qui isole bien le sujet.
+09:00 — Très belle image. Elle fonctionne immédiatement, parce qu’elle combine trois choses fortes : la posture immobile du [[Héron]], la pluie visible, et ce fond automnal très doux qui isole bien le sujet.
 
-Le point le plus réussi est l’ambiance. La pluie donne de la matière à toute l’image sans noyer l’oiseau, et le contraste entre les gris froids du héron et les tons chauds du fond est excellent. Le regard ressort bien, la tête est lisible, et la silhouette reste élégante malgré la posture un peu tassée par le mauvais temps. C’est une photo qui raconte quelque chose.
+Le point le plus réussi est l’ambiance. La pluie donne de la matière à toute l’image sans noyer l’oiseau, et le contraste entre les gris froids du [[Héron]] et les tons chauds du fond est excellent. Le regard ressort bien, la tête est lisible, et la silhouette reste élégante malgré la posture un peu tassée par le mauvais temps. C’est une photo qui raconte quelque chose.
 
-Compositionnellement, le placement du héron à droite marche bien. Tu laisses de l’espace devant le bec, ce qui donne de la respiration. Le fond est assez uniforme pour ne pas distraire, mais pas au point d’être plat. La pluie répartie dans tout le cadre crée un rythme visuel intéressant.
+Compositionnellement, le placement du [[Héron]] à droite marche bien. Tu laisses de l’espace devant le bec, ce qui donne de la respiration. Le fond est assez uniforme pour ne pas distraire, mais pas au point d’être plat. La pluie répartie dans tout le cadre crée un rythme visuel intéressant.
 
-Là où je serais un peu plus critique, c’est sur trois points. D’abord, le support en bas à droite attire un peu trop l’œil, surtout avec la mousse verte assez vive. Ensuite, le héron paraît légèrement clair sur certaines zones du plumage gris, comme si le traitement avait un peu ouvert les tons moyens et hautes lumières. Enfin, la pluie est belle, mais elle crée aussi beaucoup de micro-points lumineux partout dans l’image, ce qui peut légèrement concurrencer la tête si on pousse trop la netteté globale.
+Là où je serais un peu plus critique, c’est sur trois points. D’abord, le support en bas à droite attire un peu trop l’œil, surtout avec la mousse verte assez vive. Ensuite, le [[Héron]] paraît légèrement clair sur certaines zones du plumage gris, comme si le traitement avait un peu ouvert les tons moyens et hautes lumières. Enfin, la pluie est belle, mais elle crée aussi beaucoup de micro-points lumineux partout dans l’image, ce qui peut légèrement concurrencer la tête si on pousse trop la netteté globale.
 
 Si tu veux améliorer cette version en post-traitement, je ferais ceci :
-un masque sujet sur le héron avec un très léger gain de texture sur la tête et le cou, pas sur tout le corps ;
+un masque sujet sur le [[Héron]] avec un très léger gain de texture sur la tête et le cou, pas sur tout le corps ;
 une petite baisse de saturation/luminance des verts en bas à droite ;
 un assombrissement discret du support pour qu’il “disparaisse” davantage ;
 éventuellement un renforcement local très fin de l’œil et du masque noir de la tête ;

@@ -2,13 +2,13 @@
 
 **Date :** 2026-05-23  
 **Statut :** accepté  
-**Owner PKA :** Castor + Forge  
+**Owner PKA :** [[Castor]] + [[Forge]]  
 **Agent WildNexus :** `wildnexus-firmware-ulp`  
 **Jalon :** M-01 Architecture P0 gelée
 
 ## Contexte
 
-Le Satellite Lite P0 doit conserver les données natives localement. LoRa ne transporte pas les images, l'audio ou les flux lourds.
+Le Satellite Lite P0 doit conserver les données natives localement. [[LoRa]] ne transporte pas les images, l'audio ou les flux lourds.
 
 ## Décision
 

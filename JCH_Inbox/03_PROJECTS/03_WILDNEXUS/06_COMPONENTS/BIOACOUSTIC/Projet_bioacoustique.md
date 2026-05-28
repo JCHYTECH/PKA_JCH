@@ -34,8 +34,8 @@ Cette section est un contrat. Tout ajout non listé ici est **hors périmètre**
 ### Must Have (Pour le jalon des 6 mois - *Le système est utilisable*)
 
 - **F-MVP-01 :** La station RPi (fixe, secteur, Wi-Fi) exécute BirdNET-Go 24h/24.
-- **F-MVP-02 :** Le RPi stocke les détections localement (SQLite) et les envoie au serveur dès que le réseau est disponible.
-- **F-MVP-03 :** L'API backend reçoit, stocke (PostgreSQL + PostGIS) et expose les détections.
+- **F-MVP-02 :** Le RPi stocke les détections localement ([[SQLite]]) et les envoie au serveur dès que le réseau est disponible.
+- **F-MVP-03 :** L'API backend reçoit, stocke ([[PostgreSQL]] + PostGIS) et expose les détections.
 - **F-MVP-04 :** Le dashboard (PWA enrichie) affiche la carte avec la position de la station, une liste des dernières détections avec le score de confiance, et une timeline.
 - **NF-MVP-01 :** Fiabilité : le système redémarre automatiquement après une coupure.
 - **NF-MVP-02 :** Données Audio : AUCUN fichier audio brut n'est envoyé au serveur par défaut (seulement les métadonnées).
@@ -58,7 +58,7 @@ Cette section est un contrat. Tout ajout non listé ici est **hors périmètre**
 ### Won't Have (Ce qu'on ne fera PAS)
 
 - Développer une application native iOS/Android (la PWA suffit).
-- Entraîner un modèle IA personnalisé (on utilise BirdNET tel quel).
+- Entraîner un modèle IA personnalisé (on utilise [[BirdNET]] tel quel).
 - Créer un réseau public de stations avant la validation scientifique.
 
 ---

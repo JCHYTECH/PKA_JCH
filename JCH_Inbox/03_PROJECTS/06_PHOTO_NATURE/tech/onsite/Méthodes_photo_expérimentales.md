@@ -619,7 +619,7 @@ Définition. La photographie minimaliste cherche à réduire le sujet à son ess
 
 Effet artistique recherché. Silence, élégance, isolement, respiration visuelle.
 
-Photo exemplative type. Oiseau minuscule dans le ciel, héron dans la brume, mammifère solitaire dans une étendue claire, branche nue, sujet très décentré.
+Photo exemplative type. Oiseau minuscule dans le ciel, [[Héron]] dans la brume, mammifère solitaire dans une étendue claire, branche nue, sujet très décentré.
 
 Quand l’utiliser. Oiseaux, ciel, neige, eau calme, brouillard, sujets isolés.
 

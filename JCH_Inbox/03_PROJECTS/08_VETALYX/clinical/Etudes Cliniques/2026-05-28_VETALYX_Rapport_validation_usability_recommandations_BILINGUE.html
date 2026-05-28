@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VETALYX — Rapport validation usability & 使用验证报告</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand: #1a3d5c;
+    --brand-light: #2a5580;
+    --accent: #c8873a;
+    --ok: #2d6a4f;
+    --ok-bg: #d8f3dc;
+    --warn-bg: #fde8e8;
+    --warn: #8b3a3a;
+    --note-bg: #fff3cd;
+    --border: #dde3ec;
+    --bg: #f7f9fc;
+    --shadow: 0 2px 12px rgba(26,61,92,0.10);
+    --radius: 8px;
+    --font-fr: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    --font-zh: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: #2d3748; font-size: 14px; line-height: 1.7; }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-light) 100%);
+    color: white; padding: 32px 48px 24px;
+  }
+  .header-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .brand-icon {
+    width: 40px; height: 40px; background: var(--accent); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 900; color: white; letter-spacing: -1px;
+  }
+  .brand-name { font-size: 20px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+  .header h1 { font-size: 1.45em; font-weight: 700; line-height: 1.25; margin-bottom: 4px; color: #ffffff; }
+  .header h2 { font-size: 0.95em; font-weight: 400; color: #ffffff; margin-bottom: 20px; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .meta-item { background: rgba(255,255,255,0.13); border-radius: 6px; padding: 7px 14px; font-size: 0.82em; }
+  .meta-label { display: block; font-size: 0.72em; text-transform: uppercase; letter-spacing: 0.8px; opacity: 0.7; margin-bottom: 2px; }
+
+  /* LANGUAGE TABS */
+  .tab-bar {
+    background: white; border-bottom: 2px solid var(--border);
+    display: flex; align-items: center; padding: 0 48px;
+    position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .tab-btn {
+    padding: 14px 28px; font-size: 0.95em; font-weight: 600;
+    border: none; background: none; cursor: pointer; color: #666;
+    border-bottom: 3px solid transparent; margin-bottom: -2px;
+    transition: all 0.2s; letter-spacing: 0.3px;
+  }
+  .tab-btn.active { color: var(--brand); border-bottom-color: var(--brand); }
+  .tab-btn:hover:not(.active) { color: var(--brand-light); }
+  .tab-lang { font-size: 0.78em; opacity: 0.7; margin-left: 6px; }
+  .print-btn {
+    margin-left: auto; padding: 8px 18px; background: var(--accent); color: white;
+    border: none; border-radius: 6px; cursor: pointer; font-size: 0.82em; font-weight: 600;
+  }
+  .print-btn:hover { background: #b8762a; }
+
+  /* CONTENT PANELS */
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  .container { max-width: 920px; margin: 0 auto; padding: 32px 24px 48px; }
+
+  /* FRENCH FONT */
+  #panel-fr { font-family: var(--font-fr); }
+  /* CHINESE FONT */
+  #panel-zh { font-family: var(--font-zh); line-height: 1.85; }
+  #panel-zh h1, #panel-zh h2, #panel-zh h3, #panel-zh h4 { font-family: var(--font-zh); }
+
+  /* SECTIONS */
+  .section { background: white; border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 20px; box-shadow: var(--shadow); overflow: hidden; }
+  .section-head { background: var(--brand); color: white; padding: 12px 22px; display: flex; align-items: center; gap: 10px; }
+  .section-num { background: rgba(255,255,255,0.2); border-radius: 50%; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: 0.8em; font-weight: 700; flex-shrink: 0; }
+  .section-head h2 { font-size: 1em; font-weight: 600; }
+  .section-body { padding: 20px 24px; }
+
+  /* EXECUTIVE SUMMARY */
+  .exec { background: white; border: 1px solid var(--border); border-left: 5px solid var(--brand); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 20px; box-shadow: var(--shadow); }
+  .exec-label { color: var(--brand); font-size: 0.78em; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 10px; }
+  .exec p { margin-bottom: 8px; color: #3d4a5a; }
+
+  /* HEADINGS */
+  h1 { font-size: 1.5em; margin-bottom: 12px; color: var(--brand); }
+  h2 { font-size: 1.1em; margin: 18px 0 8px; color: var(--brand); }
+  h3 { font-size: 1em; margin: 14px 0 6px; color: #4a5568; border-left: 3px solid var(--accent); padding-left: 10px; }
+  h4 { font-size: 0.93em; margin: 12px 0 6px; color: #5a6578; font-style: italic; }
+  p { margin-bottom: 8px; }
+  p:last-child { margin-bottom: 0; }
+  ul, ol { padding-left: 20px; margin: 6px 0 10px; }
+  li { margin-bottom: 4px; }
+  strong { color: #1a2d3a; }
+  em { color: #3a5a3a; font-style: italic; }
+
+  /* BLOCKQUOTE */
+  blockquote {
+    border-left: 4px solid var(--accent); background: #fff8f0;
+    margin: 12px 0; padding: 12px 18px; border-radius: 0 6px 6px 0;
+    color: #5a3a1a; font-style: italic;
+  }
+
+  /* TABLES */
+  table { width: 100%; border-collapse: collapse; font-size: 0.87em; margin: 12px 0; }
+  th { background: #eef2f7; color: var(--brand); font-weight: 600; text-align: left; padding: 9px 12px; border-bottom: 2px solid var(--border); }
+  td { padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f7faff; }
+  td:first-child { text-align: center; font-weight: 700; color: var(--brand); width: 48px; }
+
+  /* PRIORITY TABLE */
+  .p0 { background: #fff5f5; }
+  .p1 { background: #fffbf0; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; font-weight: 700; }
+  .badge-red { background: #fde8e8; color: #8b3a3a; }
+  .badge-orange { background: #fff3cd; color: #856404; }
+  .badge-blue { background: #e8f0f8; color: #1a3d5c; }
+
+  /* CALLOUT */
+  .callout { border-radius: 6px; padding: 12px 16px; margin: 10px 0; font-size: 0.92em; }
+  .callout-ok { background: var(--ok-bg); border-left: 4px solid var(--ok); color: #1a4a2e; }
+  .callout-warn { background: var(--warn-bg); border-left: 4px solid var(--warn); color: #5a1a1a; }
+  .callout-note { background: var(--note-bg); border-left: 4px solid var(--accent); color: #5a4a1a; }
+
+  /* DIVIDER */
+  hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+  /* FOOTER */
+  .doc-footer { text-align: center; color: #999; font-size: 0.78em; padding: 20px; border-top: 1px solid var(--border); margin-top: 8px; }
+
+  /* PRINT */
+  @media print {
+    body { background: white; font-size: 11px; }
+    .tab-bar { display: none !important; }
+    .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; padding: 20px 32px; }
+    .section { break-inside: avoid; box-shadow: none; }
+    .tab-panel { display: none !important; }
+    .tab-panel.active { display: block !important; }
+    .container { padding: 16px 0; }
+    .exec { box-shadow: none; }
+    table { font-size: 9px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-brand">
+    <div class="brand-icon">V</div>
+    <div class="brand-name">Vetalyx</div>
+  </div>
+  <h1>Rapport de validation usability kits &amp; recommandations panels<br>
+  <span style="font-size:0.75em;color:#ffffff;">快速过敏检测套件使用验证报告及面板推荐方案</span></h1>
+  <h2>Tests rapides IgE allergie chien et chat — retour terrain + spécification panels 6 lignes<br>
+  <span style="font-size:0.9em;color:#ffffff;">犬猫IgE快速检测 — 实地反馈与六线面板规范</span></h2>
+  <div class="meta-row">
+    <div class="meta-item"><span class="meta-label">Date / 日期</span>28 mai 2026 · 2026年5月28日</div>
+    <div class="meta-item"><span class="meta-label">Auteurs / 作者</span>JCH · Vasco · Clio · Jade · Dobby</div>
+    <div class="meta-item"><span class="meta-label">Destinataire / 接收方</span>DIXUN</div>
+    <div class="meta-item"><span class="meta-label">Statut / 状态</span>v1 confidentiel · 保密v1版本</div>
+  </div>
+</div>
+
+<!-- TAB BAR -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('fr', this)">🇫🇷 Français <span class="tab-lang">Version française</span></button>
+  <button class="tab-btn" onclick="switchTab('zh', this)">🇨🇳 中文 <span class="tab-lang">中文版本</span></button>
+  <button class="print-btn" onclick="window.print()">⎙ Imprimer / 打印</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  PANEL FRANÇAIS                                         -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="panel-fr" class="tab-panel active">
+<div class="container">
+
+  <div class="exec">
+    <div class="exec-label">Résumé exécutif</div>
+    <p>Un essai d'utilisabilité mené à la clinique vétérinaire Simon (Liège) confirme que les kits sont bien acceptés en pratique quotidienne et perçus comme pertinents. Toutefois, deux points de friction majeurs ont été identifiés : <strong>la composition allergénique des panels ne correspond pas aux attentes des vétérinaires européens</strong>, et <strong>la documentation des performances du kit (dossier DIXUN) est jugée insuffisante</strong> pour justifier les décisions cliniques.</p>
+    <p>Ces retours terrain corroborent et renforcent les recommandations issues de la revue scientifique : priorité aux allergènes européens à forte prévalence, lignes mixtes par famille, et validation KOL indispensable avant toute démarche commerciale à grande échelle.</p>
+  </div>
+
+  <!-- PARTIE 1 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><h2>Validation terrain — Essai d'utilisabilité (Clinique Simon, Liège)</h2></div>
+    <div class="section-body">
+
+      <h2>1.1 Configuration de la clinique</h2>
+      <p>L'essai a été conduit à la <strong>clinique vétérinaire du Dr Simon à Liège</strong> (Belgique), composée de 3 vétérinaires et 2 assistants, spécialisée chiens, chats et chevaux.</p>
+      <p>Cette clinique a été choisie en raison de la <strong>qualité des relations personnelles avec la directrice</strong>, permettant de réaliser les tests sans financement — les kits ont été fournis en don.</p>
+
+      <h2>1.2 Protocole de l'essai</h2>
+      <p><strong>Kits utilisés :</strong> Panels inhalants (ISC) et alimentaires (FSC) chien et chat.</p>
+      <p><strong>Usage :</strong> 2 vétérinaires sur 3 ont utilisé les kits à un rythme de 2–3 animaux/jour (le 3ᵉ est exclusivement dédié aux urgences).</p>
+      <p><strong>Objectifs :</strong> retour qualitatif sur l'utilisabilité en pratique quotidienne et perception du produit — non constitution d'une cohorte statistique.</p>
+
+      <h2>1.3 Résultats — Utilisabilité</h2>
+      <div class="callout callout-ok">Résultats <strong>très positifs</strong> — aucune remarque négative.</div>
+      <p><strong>Seul point d'amélioration :</strong> la pipette de prélèvement, petite et transparente, est difficile à manipuler avec des gants. Aucune demande de lecteur automatique.</p>
+
+      <h2>1.4 Résultats — Perception clinique</h2>
+      <p><strong>15 % de résultats positifs</strong> — sans valeur statistique (animaux testés sans suspicion d'allergie avérée).</p>
+      <div class="callout callout-warn"><strong>Préoccupation principale :</strong> risque de faux positifs entraînant des frais complémentaires (envoi en laboratoire). Les vétérinaires demandent une meilleure documentation des performances. <strong>Les dossiers DIXUN actuels sont jugés insuffisants.</strong></div>
+
+      <h2>1.5 Composition allergénique — Point de friction majeur</h2>
+      <blockquote>La composition du panel allergénique n'est pas à la hauteur des attentes et de la pratique journalière.</blockquote>
+      <p>Les vétérinaires attendent des <strong>allergènes européens à forte prévalence</strong>. Si la composition ne répond pas à cette demande de base, la difficulté commerciale sera significative.</p>
+
+      <h2>1.6 Traitement et revendications d'utilisation</h2>
+      <p>Le test est <strong>uniquement à valeur indicative</strong> — pas un outil diagnostique.</p>
+      <ul>
+        <li><strong>Allergie alimentaire :</strong> régime d'éviction.</li>
+        <li><strong>Allergènes environnementaux :</strong> traitement prophylactique ou de fond, incluant oméga-3.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PARTIE 2 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><h2>Spécification des panels recommandés</h2></div>
+    <div class="section-body">
+
+      <div class="callout callout-note">
+        <strong>Recommandation stratégique centrale</strong><br>
+        La question n'est plus de savoir si les kits sont utilisables — ils le sont. La question est de savoir si leur composition allergénique est adaptée au marché européen. C'est là que se joue le succès commercial. La recommandation est d'<strong>analyser la faisabilité d'adapter la gamme actuelle</strong>, en priorité pour les panels inhalants, avant toute démarche commerciale à grande échelle.
+      </div>
+
+      <p><strong>Conclusions convergentes</strong> (vétérinaires terrain + experts ULiège + revue IA) : 1–2 lignes supplémentaires nécessaires ; lignes mixtes par famille ; allergènes à prévalence européenne ; outil de dépistage uniquement.</p>
+
+      <h2>2.1 Décision centrale</h2>
+      <p>Les tests rapides doivent utiliser des <strong>lignes mixtes par familles allergéniques</strong>. Priorité P0 : test environnemental/dermatologique. Panels alimentaires en P2.</p>
+
+      <h2>2.2 Règles d'interprétation</h2>
+      <ul>
+        <li>Lignes mixtes recommandées pour acariens, pollens et moisissures.</li>
+        <li>Résultat positif à interpréter dans le contexte clinique complet.</li>
+        <li>Immunothérapie spécifique : panel laboratoire plus détaillé requis après le test rapide.</li>
+        <li>IgE alimentaires seules ne diagnostiquent pas une allergie alimentaire.</li>
+      </ul>
+
+      <h2>2.3 Panels chien</h2>
+
+      <h3>Chien — IgE respiratoire / aéroallergènes</h3>
+      <table>
+        <thead><tr><th>#</th><th>Nom affiché</th><th>Composition recommandée</th><th>Rationale</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>House dust mites</td><td><em>D. farinae</em> + <em>D. pteronyssinus</em></td><td>Groupe le plus robuste en dermatite atopique canine.</td></tr>
+          <tr><td>2</td><td>Storage mites</td><td><em>Tyrophagus</em> + <em>Acarus</em> + <em>Lepidoglyphus</em></td><td>Fréquent en environnement domestique ; utile en screening EU.</td></tr>
+          <tr><td>3</td><td>Grass pollen mix</td><td><em>Phleum</em> + <em>Lolium</em> + <em>Dactylis</em> + <em>Festuca</em> + <em>Poa</em></td><td>Graminées très pertinentes en Europe.</td></tr>
+          <tr><td>4</td><td>Weed pollen mix</td><td><em>Artemisia</em> + <em>Ambrosia</em> + <em>Plantago</em> + <em>Parietaria</em></td><td><em>Parietaria</em> prioritaire Sud/Méditerranée.</td></tr>
+          <tr><td>5</td><td>Tree pollen mix</td><td><em>Betula</em> + <em>Alnus</em> + <em>Corylus</em> + <em>Quercus</em> + <em>Fraxinus</em></td><td>Arbres européens ; option olive/cyprès au Sud.</td></tr>
+          <tr><td>6</td><td>Mould mix</td><td><em>Alternaria</em> + <em>Cladosporium</em> + <em>Aspergillus</em> + <em>Penicillium</em></td><td>Pertinence variable ; utile en ligne groupée.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Chien — IgE dermique / dermatite allergique</h3>
+      <table>
+        <thead><tr><th>#</th><th>Nom affiché</th><th>Composition recommandée</th><th>Rationale</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Flea allergy</td><td><em>Ctenocephalides felis</em> / flea saliva</td><td>Cause majeure ; ligne prioritaire.</td></tr>
+          <tr><td>2</td><td>House dust mites</td><td><em>D. farinae</em> + <em>D. pteronyssinus</em></td><td>Fort rendement pour dermatite atopique canine.</td></tr>
+          <tr><td>3</td><td>Storage mites</td><td><em>Tyrophagus</em> + <em>Acarus</em> + <em>Lepidoglyphus</em></td><td>Complète HDM ; utile en Europe.</td></tr>
+          <tr><td>4</td><td>Malassezia</td><td><em>Malassezia pachydermatis</em></td><td>Sensibilisation possible chez chiens atopiques.</td></tr>
+          <tr><td>5</td><td>Atopic pollen mix</td><td>Grass mix + <em>Artemisia/Plantago/Parietaria</em></td><td>Pollens cutanéo-atopiques les plus actionnables.</td></tr>
+          <tr><td>6</td><td>Mould mix</td><td><em>Alternaria</em> + <em>Cladosporium</em> + <em>Aspergillus</em> + <em>Penicillium</em></td><td>Complément environnemental.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Chien — IgE alimentaire</h3>
+      <table>
+        <thead><tr><th>#</th><th>Allergène</th><th>Composition</th><th>Rationale</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Beef</td><td>Protéines de bœuf / BSA</td><td>Source fréquemment rapportée chez le chien.</td></tr>
+          <tr><td>2</td><td>Dairy</td><td>Protéines de lait de vache</td><td>Allergène fréquent ; exposition courante.</td></tr>
+          <tr><td>3</td><td>Chicken</td><td>Protéines de poulet</td><td>Ingrédient très exposé dans les régimes canins.</td></tr>
+          <tr><td>4</td><td>Wheat/cereal</td><td>Blé +/- céréales</td><td>Utile pour orienter l'éviction.</td></tr>
+          <tr><td>5</td><td>Egg</td><td>Protéines de blanc d'œuf</td><td>Source alimentaire courante.</td></tr>
+          <tr><td>6</td><td>Soy</td><td>Protéines de soja</td><td>Pertinence moyenne ; utile si ligne disponible.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>2.4 Panels chat</h2>
+
+      <h3>Chat — IgE respiratoire / aéroallergènes</h3>
+      <table>
+        <thead><tr><th>#</th><th>Nom affiché</th><th>Composition recommandée</th><th>Rationale</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>House dust mites</td><td><em>D. farinae</em> + <em>D. pteronyssinus</em></td><td>Fréquents dans réactions IgE félines ; interpréter avec prudence.</td></tr>
+          <tr><td>2</td><td>Storage mites</td><td><em>Tyrophagus</em> + <em>Acarus</em> + <em>Lepidoglyphus</em></td><td>Complément intérieur/alimentation sèche.</td></tr>
+          <tr><td>3</td><td>Grass pollen mix</td><td><em>Phleum</em> + <em>Lolium</em> + <em>Dactylis</em> + <em>Poa</em></td><td>Couverture pollens de base en Europe.</td></tr>
+          <tr><td>4</td><td>Regional tree/weed mix</td><td><em>Betula/Alnus</em> ou olive/<em>Parietaria</em> selon zone</td><td>À adapter géographiquement.</td></tr>
+          <tr><td>5</td><td>Mould mix</td><td><em>Alternaria</em> + <em>Cladosporium</em> + <em>Aspergillus</em> + <em>Penicillium</em></td><td>Utile en screening respiratoire.</td></tr>
+          <tr><td>6</td><td>Indoor insects</td><td>Cockroach +/- insect mix</td><td>Intérieur urbain ; support non diagnostique.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Chat — IgE dermique</h3>
+      <table>
+        <thead><tr><th>#</th><th>Nom affiché</th><th>Composition recommandée</th><th>Rationale</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Flea allergy</td><td><em>Ctenocephalides felis</em> / flea saliva</td><td>Priorité clinique féline.</td></tr>
+          <tr><td>2</td><td>House dust mites</td><td><em>D. farinae</em> + <em>D. pteronyssinus</em></td><td>Pertinent dans FASS.</td></tr>
+          <tr><td>3</td><td>Storage mites</td><td><em>Tyrophagus</em> + <em>Acarus</em> + <em>Lepidoglyphus</em></td><td>Couverture intérieur/alimentation sèche.</td></tr>
+          <tr><td>4</td><td>Regional pollen mix</td><td>Graminées + weed/tree régional</td><td>Aide si saisonnalité compatible.</td></tr>
+          <tr><td>5</td><td>Mould mix</td><td><em>Alternaria</em> + <em>Cladosporium</em> + <em>Aspergillus</em> + <em>Penicillium</em></td><td>Complément environnemental prudent.</td></tr>
+          <tr><td>6</td><td>Biting insects</td><td>Moustique/insect bite mix ; sinon cockroach</td><td>Utile si disponible.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Chat — IgE alimentaire</h3>
+      <table>
+        <thead><tr><th>#</th><th>Allergène</th><th>Composition</th><th>Rationale</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Beef</td><td>Protéines de bœuf</td><td>Source fréquemment rapportée.</td></tr>
+          <tr><td>2</td><td>Fish</td><td>Poisson blanc + saumon/thon</td><td>Important chez le chat.</td></tr>
+          <tr><td>3</td><td>Chicken</td><td>Protéines de poulet</td><td>Exposition alimentaire très fréquente.</td></tr>
+          <tr><td>4</td><td>Dairy</td><td>Protéines de lait de vache</td><td>Interprétable seulement en support.</td></tr>
+          <tr><td>5</td><td>Egg</td><td>Protéines d'œuf</td><td>Pertinent mais non diagnostique seul.</td></tr>
+          <tr><td>6</td><td>Wheat / soy</td><td>Blé + soja groupés</td><td>Compromis si seulement 6 lignes.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>2.5 Claims recommandés</h2>
+      <div class="callout callout-ok"><strong>Claim autorisé :</strong> Test rapide de sensibilisation IgE à des groupes d'allergènes fréquents, destiné à appuyer l'orientation clinique par le vétérinaire.</div>
+      <div class="callout callout-warn"><strong>Claims à éviter :</strong> diagnostic alimentaire rapide · détecte les intolérances · identifie la cause de l'allergie · remplace le régime d'éviction · remplace le diagnostic vétérinaire.</div>
+    </div>
+  </div>
+
+  <!-- PARTIE 3 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><h2>Recommandations et prochaines étapes</h2></div>
+    <div class="section-body">
+
+      <h2>3.1 Actions fournisseur DIXUN</h2>
+      <ul>
+        <li>Confirmer la faisabilité technique de <strong>lignes mixtes standardisées</strong> par famille allergénique.</li>
+        <li>Fournir validation chien/chat séparée avec matrice positive/négative et reproductibilité par ligne.</li>
+        <li>Clarifier la nature des extraits (natifs/recombinants/mixtes) et fournir les contrôles qualité lot à lot.</li>
+        <li>Prévoir une <strong>option régionale</strong> Nord/Ouest Europe et Méditerranée pour les pollens.</li>
+        <li><strong>Fournir une documentation de performances adéquate</strong> (sensibilité/spécificité) — le dossier actuel est insuffisant.</li>
+      </ul>
+
+      <h2>3.2 Validation KOL</h2>
+      <p>Une validation par des leaders d'opinion est <strong>impérativement nécessaire</strong>. Deux KOLs identifiés, leurs départements sont ouverts à une rencontre pour définir protocole, calendrier et budget.</p>
+
+      <h2>3.3 Protocole d'étude clinique</h2>
+      <p><strong>Contrainte :</strong> prélèvements sanguins coûteux ; protocole &gt;150 animaux. <strong>Piste DBS</strong> (dried blood spot) sur papier buvard à explorer — prouvée chez l'humain, pas encore chez l'animal. Fragilité des IgE = contrainte de conservation majeure.</p>
+
+      <h2>3.4 Plan d'action</h2>
+      <table>
+        <thead><tr><th>Priorité</th><th>Action</th><th>Responsable</th></tr></thead>
+        <tbody>
+          <tr class="p0"><td><span class="badge badge-red">P0</span></td><td>Documentation performances DIXUN (sensibilité/spécificité)</td><td>Vasco + DIXUN</td></tr>
+          <tr class="p0"><td><span class="badge badge-red">P0</span></td><td>Adapter composition allergénique aux prévalences européennes</td><td>Clio + DIXUN</td></tr>
+          <tr class="p1"><td><span class="badge badge-orange">P1</span></td><td>Organiser rencontres avec les 2 KOLs identifiés</td><td>JCH + Vasco</td></tr>
+          <tr class="p1"><td><span class="badge badge-orange">P1</span></td><td>Définir protocole étude clinique (&gt;150 animaux, faisabilité DBS)</td><td>Vasco + Clio</td></tr>
+          <tr><td><span class="badge badge-blue">P2</span></td><td>Explorer gamme régionale européenne (Nord/Méditerranée)</td><td>Clio + DIXUN</td></tr>
+          <tr><td><span class="badge badge-blue">P2</span></td><td>Améliorer ergonomie pipette (taille, visibilité sous gants)</td><td>JCH + DIXUN</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="doc-footer">
+    VETALYX | Rapport de validation usability &amp; recommandations panels<br>
+    Vasco · Clio · Jade · Dobby · JCH — 28 mai 2026 · <strong>Confidentiel</strong>
+  </div>
+
+</div><!-- /container fr -->
+</div><!-- /panel-fr -->
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  PANEL CHINOIS                                          -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="panel-zh" class="tab-panel">
+<div class="container">
+
+  <div class="exec">
+    <div class="exec-label">摘要</div>
+    <p>在列日Simon博士兽医诊所开展的可用性试验证实，检测套件在日常实践中获得良好接受度并被认为具有临床相关性。然而，实地发现了两个主要摩擦点：<strong>面板的过敏原组成未能满足欧洲兽医的期望</strong>，且<strong>DIXUN套件性能文件被认为不足</strong>以支撑临床决策。</p>
+    <p>这些实地反馈证实并强化了科学评审的建议：优先选用高流行率的欧洲过敏原、按家族设置混合线条，以及在大规模商业推广前必须进行KOL（关键意见领袖）验证。</p>
+  </div>
+
+  <!-- 第一部分 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">1</div><h2>第一部分 — 实地验证：可用性试验（Simon诊所，列日）</h2></div>
+    <div class="section-body">
+
+      <h2>1.1 诊所基本情况</h2>
+      <p>试验在<strong>比利时列日Simon博士兽医诊所</strong>开展，由3名兽医和2名助理组成，专注于犬、猫及马匹诊治，急诊病例较多。</p>
+      <p>选择该诊所的原因是<strong>与负责人的良好个人关系</strong>，使得在无资金支持的条件下顺利完成测试——检测套件以捐赠形式提供。</p>
+
+      <h2>1.2 试验方案</h2>
+      <p><strong>使用的套件：</strong>犬猫吸入性过敏原面板（ISC）及食物过敏原面板（FSC）。</p>
+      <p><strong>使用情况：</strong>3名兽医中，2名以每天2–3只动物的频率使用套件（第3名专职急诊，未定期使用）。</p>
+      <p><strong>试验目标：</strong>获取日常实践中可用性的定性反馈，而非积累统计病例。</p>
+
+      <h2>1.3 结果 — 可用性</h2>
+      <div class="callout callout-ok">结果<strong>非常积极</strong>——未收到任何负面评价。</div>
+      <p><strong>唯一改进点：</strong>采样移液管体积小且透明，戴手套时操作不便。未表达对自动读取设备的需求。</p>
+
+      <h2>1.4 结果 — 临床感知</h2>
+      <p><strong>15%的结果被判定为阳性</strong>——无统计学价值（测试对象为无明显过敏症状的动物）。</p>
+      <div class="callout callout-warn"><strong>主要顾虑：</strong>假阳性风险导致动物主人额外费用（送实验室检测）。兽医要求更好的性能文件。<strong>DIXUN当前文档被认为不足以满足此需求。</strong></div>
+
+      <h2>1.5 过敏原组成 — 主要摩擦点</h2>
+      <blockquote>过敏原面板的组成未达到日常实践的期望和要求。</blockquote>
+      <p>兽医期望<strong>高流行率的欧洲过敏原</strong>。若组成无法满足这一基本需求，商业推广将面临重大困难。</p>
+
+      <h2>1.6 治疗与使用声明</h2>
+      <p>该检测<strong>仅具指示性价值</strong>——不是诊断工具。</p>
+      <ul>
+        <li><strong>食物过敏：</strong>主要治疗为回避饮食。</li>
+        <li><strong>环境过敏原：</strong>预防性或基础性管理，包括使用omega-3。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 第二部分 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">2</div><h2>第二部分 — 推荐面板规范</h2></div>
+    <div class="section-body">
+
+      <div class="callout callout-note">
+        <strong>核心战略建议</strong><br>
+        核心问题不再是套件是否可用——它确实可用。问题在于其过敏原组成是否适应欧洲市场。这才是决定商业成功的关键所在。建议<strong>分析将现有产品系列适应欧洲市场的可行性</strong>，优先针对吸入性面板，然后再进行大规模商业推广。
+      </div>
+
+      <p><strong>各来源一致结论</strong>（实地兽医 + 列日大学专家 + AI综述）：需增加1–2条检测线；按家族混合线；符合欧洲流行率的过敏原；仅作筛查工具定位。</p>
+
+      <h2>2.1 核心决策</h2>
+      <p>快速检测必须使用<strong>按过敏原家族划分的混合线</strong>。P0优先级为犬猫环境/皮肤病检测；食物面板保持P2级。</p>
+
+      <h2>2.2 结果解读规则</h2>
+      <ul>
+        <li>建议对螨虫、花粉和霉菌使用混合线。</li>
+        <li>阳性结果必须结合完整临床背景解读。</li>
+        <li>特异性免疫治疗需后续更详细的实验室面板。</li>
+        <li>仅凭食物IgE不能诊断食物过敏。</li>
+      </ul>
+
+      <h2>2.3 犬用面板</h2>
+
+      <h3>犬 — 吸入性IgE / 气传过敏原</h3>
+      <table>
+        <thead><tr><th>线序</th><th>显示名称</th><th>推荐组成</th><th>依据</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>屋尘螨</td><td><em>D. farinae</em> + <em>D. pteronyssinus</em></td><td>犬特应性皮炎中最稳健的组合。</td></tr>
+          <tr><td>2</td><td>储存螨</td><td><em>Tyrophagus</em> + <em>Acarus</em> + <em>Lepidoglyphus</em></td><td>常见于家庭环境；欧洲筛查适用。</td></tr>
+          <tr><td>3</td><td>禾草花粉混合</td><td><em>Phleum</em> + <em>Lolium</em> + <em>Dactylis</em> + <em>Festuca</em> + <em>Poa</em></td><td>欧洲高度相关，季节性可用于临床判断。</td></tr>
+          <tr><td>4</td><td>杂草花粉混合</td><td><em>Artemisia</em> + <em>Ambrosia</em> + <em>Plantago</em> + <em>Parietaria</em></td><td><em>Parietaria</em>在南部/地中海地区为优先。</td></tr>
+          <tr><td>5</td><td>树木花粉混合</td><td><em>Betula</em> + <em>Alnus</em> + <em>Corylus</em> + <em>Quercus</em> + <em>Fraxinus</em></td><td>欧洲树木；南部可选橄榄/柏树。</td></tr>
+          <tr><td>6</td><td>霉菌混合</td><td><em>Alternaria</em> + <em>Cladosporium</em> + <em>Aspergillus</em> + <em>Penicillium</em></td><td>作为混合线具有参考价值。</td></tr>
+        </tbody>
+      </table>
+
+      <h3>犬 — 皮肤性IgE / 过敏性皮炎</h3>
+      <table>
+        <thead><tr><th>线序</th><th>显示名称</th><th>推荐组成</th><th>依据</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>跳蚤过敏</td><td><em>Ctenocephalides felis</em> / 跳蚤唾液</td><td>过敏性皮炎主要原因；优先线条。</td></tr>
+          <tr><td>2</td><td>屋尘螨</td><td><em>D. farinae</em> + <em>D. pteronyssinus</em></td><td>犬特应性皮炎高产出率。</td></tr>
+          <tr><td>3</td><td>储存螨</td><td><em>Tyrophagus</em> + <em>Acarus</em> + <em>Lepidoglyphus</em></td><td>补充HDM线；欧洲适用。</td></tr>
+          <tr><td>4</td><td>马拉色菌</td><td><em>Malassezia pachydermatis</em></td><td>特应性犬伴皮炎/耳炎时可能存在致敏。</td></tr>
+          <tr><td>5</td><td>特应性花粉混合</td><td>禾草混合 + <em>Artemisia/Plantago/Parietaria</em></td><td>最具临床意义的皮肤特应性花粉。</td></tr>
+          <tr><td>6</td><td>霉菌混合</td><td><em>Alternaria</em> + <em>Cladosporium</em> + <em>Aspergillus</em> + <em>Penicillium</em></td><td>慢性或季节性皮炎的环境补充。</td></tr>
+        </tbody>
+      </table>
+
+      <h3>犬 — 食物性IgE</h3>
+      <table>
+        <thead><tr><th>线序</th><th>过敏原</th><th>组成</th><th>依据</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>牛肉</td><td>牛蛋白 / BSA</td><td>犬最常见食物过敏原之一。</td></tr>
+          <tr><td>2</td><td>乳制品</td><td>牛奶蛋白</td><td>常见过敏原；广泛接触。</td></tr>
+          <tr><td>3</td><td>鸡肉</td><td>鸡蛋白</td><td>犬粮中高频成分。</td></tr>
+          <tr><td>4</td><td>小麦/谷物</td><td>小麦 +/- 谷物</td><td>有助于指导回避饮食。</td></tr>
+          <tr><td>5</td><td>鸡蛋</td><td>蛋清蛋白</td><td>常见食物来源。</td></tr>
+          <tr><td>6</td><td>大豆</td><td>大豆蛋白</td><td>中等相关性；有线条可用时建议保留。</td></tr>
+        </tbody>
+      </table>
+
+      <h2>2.4 猫用面板</h2>
+
+      <h3>猫 — 吸入性IgE / 气传过敏原</h3>
+      <table>
+        <thead><tr><th>线序</th><th>显示名称</th><th>推荐组成</th><th>依据</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>屋尘螨</td><td><em>D. farinae</em> + <em>D. pteronyssinus</em></td><td>猫IgE/皮内试验常见；解读需审慎。</td></tr>
+          <tr><td>2</td><td>储存螨</td><td><em>Tyrophagus</em> + <em>Acarus</em> + <em>Lepidoglyphus</em></td><td>室内及干粮环境的重要补充。</td></tr>
+          <tr><td>3</td><td>禾草花粉混合</td><td><em>Phleum</em> + <em>Lolium</em> + <em>Dactylis</em> + <em>Poa</em></td><td>欧洲基础花粉覆盖。</td></tr>
+          <tr><td>4</td><td>区域树木/杂草混合</td><td><em>Betula/Alnus</em> 或橄榄/<em>Parietaria</em>（按地区）</td><td>按地理区域调整。</td></tr>
+          <tr><td>5</td><td>霉菌混合</td><td><em>Alternaria</em> + <em>Cladosporium</em> + <em>Aspergillus</em> + <em>Penicillium</em></td><td>呼吸道/环境筛查有用。</td></tr>
+          <tr><td>6</td><td>室内昆虫</td><td>蟑螂 +/- 蚊虫混合</td><td>城市室内；支持工具，非诊断依据。</td></tr>
+        </tbody>
+      </table>
+
+      <h3>猫 — 皮肤性IgE / 过敏性皮炎</h3>
+      <table>
+        <thead><tr><th>线序</th><th>显示名称</th><th>推荐组成</th><th>依据</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>跳蚤过敏</td><td><em>Ctenocephalides felis</em> / 跳蚤唾液</td><td>猫临床首要优先；须始终排除/处置。</td></tr>
+          <tr><td>2</td><td>屋尘螨</td><td><em>D. farinae</em> + <em>D. pteronyssinus</em></td><td>FASS/非跳蚤非食物高敏反应中相关。</td></tr>
+          <tr><td>3</td><td>储存螨</td><td><em>Tyrophagus</em> + <em>Acarus</em> + <em>Lepidoglyphus</em></td><td>室内/干粮覆盖。</td></tr>
+          <tr><td>4</td><td>区域花粉混合</td><td>禾草 + 区域杂草/树木混合</td><td>季节性或环境相符时有参考价值。</td></tr>
+          <tr><td>5</td><td>霉菌混合</td><td><em>Alternaria</em> + <em>Cladosporium</em> + <em>Aspergillus</em> + <em>Penicillium</em></td><td>审慎的环境补充。</td></tr>
+          <tr><td>6</td><td>叮咬昆虫</td><td>蚊虫/叮咬昆虫混合；备选蟑螂</td><td>可获得时有用。</td></tr>
+        </tbody>
+      </table>
+
+      <h3>猫 — 食物性IgE</h3>
+      <table>
+        <thead><tr><th>线序</th><th>过敏原</th><th>组成</th><th>依据</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>牛肉</td><td>牛蛋白</td><td>常见食物过敏原。</td></tr>
+          <tr><td>2</td><td>鱼类</td><td>白鱼 + 三文鱼/金枪鱼</td><td>猫粮常见，重要性高。</td></tr>
+          <tr><td>3</td><td>鸡肉</td><td>鸡蛋白</td><td>食物接触频率极高。</td></tr>
+          <tr><td>4</td><td>乳制品</td><td>牛奶蛋白</td><td>仅作辅助参考。</td></tr>
+          <tr><td>5</td><td>鸡蛋</td><td>蛋蛋白</td><td>相关但不具单独诊断意义。</td></tr>
+          <tr><td>6</td><td>小麦/大豆</td><td>小麦+大豆合并</td><td>仅6线时的折中方案。</td></tr>
+        </tbody>
+      </table>
+
+      <h2>2.5 推荐使用声明</h2>
+      <div class="callout callout-ok"><strong>允许的声明：</strong>兽医快速IgE致敏筛查检测，旨在支持兽医的临床诊疗方向判断。</div>
+      <div class="callout callout-warn"><strong>应避免的声明：</strong>食物过敏快速诊断 · 检测食物不耐受 · 确认过敏原因 · 替代回避饮食 · 替代兽医诊断。</div>
+    </div>
+  </div>
+
+  <!-- 第三部分 -->
+  <div class="section">
+    <div class="section-head"><div class="section-num">3</div><h2>第三部分 — 建议与后续步骤</h2></div>
+    <div class="section-body">
+
+      <h2>3.1 DIXUN供应商行动事项</h2>
+      <ul>
+        <li>确认按过敏原家族设置<strong>标准化混合线</strong>的技术可行性。</li>
+        <li>要求分别进行犬/猫验证，包含阳性/阴性矩阵及每线重现性数据。</li>
+        <li>明确提取物来源（天然/重组/混合）并提供批次质量控制资料。</li>
+        <li>为花粉提供北/西欧及地中海地区<strong>区域选项</strong>。</li>
+        <li><strong>提供充分的性能文件</strong>（灵敏度/特异性）——当前文档不足以支撑临床决策。</li>
+      </ul>
+
+      <h2>3.2 KOL验证</h2>
+      <p>关键意见领袖验证是<strong>迫切必要的</strong>。已识别并联系两位KOL，其科室愿意会面以确定方案、时间表和预算。</p>
+
+      <h2>3.3 临床研究方案</h2>
+      <p><strong>约束：</strong>血液采集困难且成本高；方案需纳入超过150只动物。<strong>创新路径：</strong>干血斑（DBS）滤纸采样——在人类中已验证，尚未在动物中验证；IgE易降解是主要保存挑战。</p>
+
+      <h2>3.4 综合行动计划</h2>
+      <table>
+        <thead><tr><th>优先级</th><th>行动事项</th><th>负责方</th></tr></thead>
+        <tbody>
+          <tr class="p0"><td><span class="badge badge-red">P0</span></td><td>要求DIXUN提供充分的性能文件（灵敏度/特异性）</td><td>Vasco + DIXUN</td></tr>
+          <tr class="p0"><td><span class="badge badge-red">P0</span></td><td>将过敏原组成适应欧洲高流行率过敏原</td><td>Clio + DIXUN</td></tr>
+          <tr class="p1"><td><span class="badge badge-orange">P1</span></td><td>安排与2位已识别KOL的会面</td><td>JCH + Vasco</td></tr>
+          <tr class="p1"><td><span class="badge badge-orange">P1</span></td><td>制定临床研究方案（>150只动物，DBS可行性）</td><td>Vasco + Clio</td></tr>
+          <tr><td><span class="badge badge-blue">P2</span></td><td>探索欧洲区域产品线（北部/地中海）</td><td>Clio + DIXUN</td></tr>
+          <tr><td><span class="badge badge-blue">P2</span></td><td>改进移液管人体工学（尺寸、戴手套时的可见性）</td><td>JCH + DIXUN</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="doc-footer">
+    VETALYX | 快速过敏检测套件使用验证报告及面板推荐方案<br>
+    Vasco · Clio · Jade · Dobby · JCH — 2026年5月28日 · <strong>保密文件</strong>
+  </div>
+
+</div><!-- /container zh -->
+</div><!-- /panel-zh -->
+
+<script>
+function switchTab(lang, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + lang).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>

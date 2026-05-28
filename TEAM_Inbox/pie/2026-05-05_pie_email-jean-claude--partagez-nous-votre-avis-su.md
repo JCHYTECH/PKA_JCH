@@ -1,8 +1,8 @@
-# 🐦‍⬛ Pie — Analyse email
+# 🐦‍⬛ [[Pie]] — Analyse email
 
 **Date :** 2026-05-05  
 **De :** Decathlon  
-**Objet :** JEAN CLAUDE, partagez-nous votre avis sur votre expérience en magasin - 2 minutes  
+**Objet :** JEAN [[Claude]], partagez-nous votre avis sur votre expérience en magasin - 2 minutes  
 
 ---
 

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RPi + ZTE MF833U1 + Proximus LTE — Guide de setup complet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --noir:   #0D0B09;
+      --ivoire: #F8F5F0;
+      --ocre:   #C17F3A;
+      --sable:  #E8E2DA;
+      --gris:   #6B6560;
+      --brun:   #2A2420;
+      --vert:   #3D5A3E;
+      --rouge:  #8B2E2E;
+      --bleu:   #2E5C8B;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--ivoire); color: var(--noir); font-family: 'Lora', serif; font-size: 16px; line-height: 1.75; }
+
+    /* HEADER */
+    header { background: var(--noir); color: var(--ivoire); padding: 56px 0 48px; }
+    .inner { max-width: 880px; margin: 0 auto; padding: 0 40px; }
+    .brand { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--gris); margin-bottom: 24px; }
+    .brand span { color: var(--ocre); }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .tag { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; }
+    .tag-rpi  { background: var(--vert); color: #fff; }
+    .tag-lte  { background: var(--bleu); color: #fff; }
+    .tag-proc { background: var(--ocre); color: #fff; }
+    header h1 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(24px, 3.5vw, 38px); line-height: 1.15; margin-bottom: 16px; }
+    header h1 span { color: var(--ocre); }
+    .meta { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--gris); display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; }
+    .meta span::before { content: '— '; color: var(--ocre); }
+
+    /* NAV */
+    nav { background: var(--brun); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--ocre); }
+    .nav-inner { max-width: 880px; margin: 0 auto; padding: 0 40px; display: flex; overflow-x: auto; scrollbar-width: none; }
+    .nav-inner::-webkit-scrollbar { display: none; }
+    nav a { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--gris); text-decoration: none; padding: 13px 14px; white-space: nowrap; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: color .2s; }
+    nav a:hover, nav a.active { color: var(--ocre); border-bottom-color: var(--ocre); }
+
+    /* MAIN */
+    main { max-width: 880px; margin: 0 auto; padding: 64px 40px 100px; }
+    section { margin-bottom: 72px; }
+
+    /* SECTION HEADER */
+    .sec-header { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 32px; }
+    .sec-badge { flex-shrink: 0; width: 44px; height: 44px; background: var(--ocre); display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500; color: #fff; }
+    .sec-badge.warn { background: var(--rouge); }
+    .sec-badge.info { background: var(--bleu); }
+    .sec-badge.ok   { background: var(--vert); }
+    .sec-label { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gris); display: block; margin-bottom: 4px; }
+    h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(19px, 2.5vw, 25px); color: var(--noir); }
+    h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 16px; color: var(--noir); margin: 36px 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--sable); }
+
+    /* CALLOUTS */
+    .callout { padding: 22px 28px; margin: 24px 0; border-left: 3px solid var(--ocre); }
+    .callout-warn { background: #f9f0e8; border-color: var(--ocre); }
+    .callout-ok   { background: #edf2ed; border-color: var(--vert); }
+    .callout-info { background: #e8eef4; border-color: var(--bleu); }
+    .callout-dark { background: var(--brun); border-color: var(--ocre); color: var(--sable); }
+    .callout p { font-size: 15px; line-height: 1.7; margin-bottom: 8px; }
+    .callout p:last-child { margin-bottom: 0; }
+    .callout strong { color: var(--ocre); font-weight: 600; }
+    .callout-ok strong { color: var(--vert); }
+    .callout-dark strong { color: var(--ocre); }
+
+    /* LISTES */
+    ul, ol { list-style: none; padding: 0; margin-bottom: 20px; }
+    li { font-size: 15px; line-height: 1.7; padding: 5px 0 5px 22px; position: relative; }
+    li::before { content: '–'; position: absolute; left: 0; color: var(--ocre); font-weight: 600; }
+    ol { counter-reset: steps; }
+    ol li { counter-increment: steps; }
+    ol li::before { content: counter(steps); font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; background: var(--ocre); color: #fff; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; top: 7px; }
+
+    p { margin-bottom: 16px; }
+
+    /* CODE */
+    pre { background: var(--brun); color: #cfc9c1; font-family: 'IBM Plex Mono', monospace; font-size: 13px; line-height: 1.65; padding: 20px 24px; margin: 16px 0 24px; overflow-x: auto; border-left: 3px solid var(--ocre); }
+    code { font-family: 'IBM Plex Mono', monospace; font-size: 13px; background: var(--sable); color: var(--brun); padding: 2px 6px; }
+    pre code { background: none; color: inherit; padding: 0; }
+    .comment { color: #7a7060; }
+
+    /* TABLES */
+    .tw { overflow-x: auto; margin: 20px 0; }
+    table { width: 100%; border-collapse: collapse; font-family: 'Space Grotesk', sans-serif; font-size: 14px; }
+    thead tr { background: var(--noir); color: var(--ivoire); }
+    thead th { font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 11px; padding: 11px 16px; text-align: left; }
+    tbody tr { border-bottom: 1px solid var(--sable); }
+    tbody tr:nth-child(even) { background: rgba(232,226,218,.3); }
+    tbody td { padding: 10px 16px; font-size: 14px; line-height: 1.5; vertical-align: top; }
+    td.ok  { color: var(--vert); font-weight: 600; }
+    td.warn{ color: var(--ocre); font-weight: 600; }
+    td.ko  { color: var(--rouge); font-weight: 600; }
+
+    /* SIGNAL GAUGE */
+    .signal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+    .signal-card { padding: 16px; text-align: center; }
+    .signal-val { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500; display: block; margin-bottom: 4px; }
+    .signal-label { font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+    .s-green  { border-top: 3px solid var(--vert);  } .s-green  .signal-val { color: var(--vert);  }
+    .s-orange { border-top: 3px solid var(--ocre);  } .s-orange .signal-val { color: var(--ocre);  }
+    .s-red    { border-top: 3px solid var(--rouge); } .s-red    .signal-val { color: var(--rouge); }
+
+    /* ARCH BLOCK */
+    .arch { background: var(--sable); padding: 20px 24px; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; line-height: 1.9; color: var(--brun); margin: 16px 0 24px; }
+
+    hr { border: none; border-top: 1px solid var(--sable); margin: 64px 0; }
+
+    /* FOOTER */
+    footer { background: var(--brun); padding: 28px 40px; text-align: center; }
+    footer p { font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: 1px; color: var(--gris); }
+    footer span { color: var(--ocre); }
+
+    @media (max-width: 640px) {
+      .inner, main { padding-left: 20px; padding-right: 20px; }
+      .nav-inner { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <p class="brand">Arteon<span>·</span> &nbsp;/&nbsp; PKA Knowledge Base &nbsp;/&nbsp; Infrastructure RPi</p>
+    <div class="tags">
+      <span class="tag tag-rpi">Raspberry Pi</span>
+      <span class="tag tag-lte">LTE / 4G</span>
+      <span class="tag tag-proc">Procédure validée</span>
+    </div>
+    <h1>RPi 5 + ZTE MF833U1<br><span>+ Proximus Pay&amp;Go LTE</span></h1>
+    <p style="color:var(--sable); font-family:'Lora',serif; font-size:15px; margin-top:12px;">Guide de setup complet — validé en session live 2026-05-27/28. Inclut tous les pièges rencontrés et leurs solutions.</p>
+    <div class="meta">
+      <span>2026-05-28</span>
+      <span>Validé terrain</span>
+      <span>Chouette 🦉 + Forge 🦦</span>
+      <span>Applicable à tout projet RPi</span>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#contexte" class="active">Contexte</a>
+    <a href="#prerequis">Prérequis</a>
+    <a href="#materiel">Matériel</a>
+    <a href="#setup">Setup</a>
+    <a href="#connexion">Connexion</a>
+    <a href="#verification">Vérification</a>
+    <a href="#pieges">Pièges</a>
+    <a href="#signal">Signal</a>
+    <a href="#bilan">Bilan</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- CONTEXTE -->
+  <section id="contexte">
+    <div class="sec-header">
+      <div class="sec-badge info">ℹ</div>
+      <div>
+        <span class="sec-label">Architecture</span>
+        <h2>Comment ça fonctionne</h2>
+      </div>
+    </div>
+
+    <div class="callout callout-ok">
+      <p><strong>Bonne nouvelle :</strong> le kernel Linux moderne charge automatiquement le driver <code>cdc_ether</code> sur la ZTE MF833U1. Le modem apparaît comme une interface réseau Ethernet (<code>eth1</code>) — <strong>pas besoin de PPP, wvdial, ou chat script</strong>. La documentation en ligne est souvent obsolète sur ce point.</p>
+    </div>
+
+    <div class="arch">
+iPhone (hotspot) ──┐<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──▶ Raspberry Pi 5 ──▶ BirdNET-Go / services<br>
+ZTE MF833U1 (LTE) ─┘<br>
+&nbsp;&nbsp;│<br>
+&nbsp;&nbsp;└── eth1 (cdc_ether) — IP DHCP 192.168.0.x<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gateway modem : 192.168.0.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Internet : TCP/HTTP ✅ — ICMP/ping ❌ (bloqué Proximus)
+    </div>
+
+    <p>Le modem ZTE gère lui-même la connexion cellulaire et fait du NAT. Il fournit une IP locale au RPi via DHCP. Le RPi voit internet via <code>eth1</code> exactement comme avec un câble Ethernet.</p>
+  </section>
+
+  <!-- PRÉREQUIS -->
+  <section id="prerequis">
+    <div class="sec-header">
+      <div class="sec-badge warn">!</div>
+      <div>
+        <span class="sec-label">Avant de commencer</span>
+        <h2>Prérequis — à faire une seule fois</h2>
+      </div>
+    </div>
+
+    <h3>1. Activer la carte SIM Proximus Pay&amp;Go</h3>
+    <div class="callout callout-warn">
+      <p><strong>Piège :</strong> sans activation, le modem semble fonctionner (DHCP, IP locale, 1 ping sur 20 passe) mais toutes les requêtes HTTP sont interceptées par le portail captif Proximus. L'activation est obligatoire avant tout usage data.</p>
+    </div>
+    <ol>
+      <li>Insérer la SIM dans un téléphone (pas dans la ZTE)</li>
+      <li>Appeler le <strong>1911</strong> depuis cette carte SIM — activation automatique, message en 3 langues, ~30 secondes</li>
+      <li>Après confirmation, retirer la SIM du téléphone</li>
+    </ol>
+
+    <h3>2. Désactiver le PIN de la SIM</h3>
+    <div class="callout callout-warn">
+      <p><strong>Piège :</strong> à chaque redémarrage du modem ZTE avec une SIM protégée par PIN, l'interface web demande le PIN manuellement. En déploiement terrain autonome, le modem reste bloqué sans connexion data.</p>
+    </div>
+    <ol>
+      <li>SIM dans l'iPhone</li>
+      <li>Réglages → Téléphone → PIN de la carte SIM → Désactiver le PIN</li>
+      <li>Entrer le PIN pour confirmer (PIN Proximus par défaut imprimé sur la pochette SIM)</li>
+      <li>Retirer la SIM — elle démarrera désormais sans PIN dans la ZTE</li>
+    </ol>
+  </section>
+
+  <!-- MATÉRIEL -->
+  <section id="materiel">
+    <div class="sec-header">
+      <div class="sec-badge">📦</div>
+      <div>
+        <span class="sec-label">Inventaire</span>
+        <h2>Matériel testé</h2>
+      </div>
+    </div>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>Élément</th><th>Détail</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Raspberry Pi 5</td><td>Debian Trixie aarch64</td><td>Kernel 6.18 — driver cdc_ether natif</td></tr>
+          <tr><td>Modem ZTE MF833U1</td><td>ID USB : 19d2:1706 (mode DEMO au boot)</td><td>USB 2.0 (port noir) recommandé</td></tr>
+          <tr><td>SIM Proximus Pay&amp;Go</td><td>APN : internet.proximus.be</td><td>Activation 1911 obligatoire</td></tr>
+          <tr><td>Câble USB-A → USB-A</td><td>Port USB 2.0 noir du RPi</td><td>Pas le port bleu USB 3.0</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-warn">
+      <p><strong>Port USB :</strong> brancher la ZTE sur le port <strong>USB 2.0 noir</strong>, pas le bleu (USB 3.0). Meilleure compatibilité avec <code>usb-modeswitch</code> et moins de risque de pic de courant.</p>
+    </div>
+  </section>
+
+  <!-- SETUP -->
+  <section id="setup">
+    <div class="sec-header">
+      <div class="sec-badge">01</div>
+      <div>
+        <span class="sec-label">Installation</span>
+        <h2>Setup RPi</h2>
+      </div>
+    </div>
+
+    <h3>Ordre de démarrage — important</h3>
+    <ol>
+      <li>Démarrer le RPi <strong>sans</strong> la ZTE branchée — attendre le boot complet (~45s)</li>
+      <li>Brancher la ZTE sur le port USB noir</li>
+      <li>Attendre 10 secondes</li>
+    </ol>
+    <div class="callout callout-warn">
+      <p><strong>Piège confirmé :</strong> brancher la ZTE pendant le boot du RPi peut provoquer un crash (pic de courant USB). Le RPi redémarre ou freeze, perd le réseau Wi-Fi. Toujours brancher la ZTE <em>après</em> le boot.</p>
+    </div>
+
+    <h3>Installer les paquets nécessaires (une seule fois)</h3>
+    <pre><code>sudo apt update && sudo apt install -y usb-modeswitch usb-modeswitch-data ppp wvdial</code></pre>
+    <p style="font-size:14px;color:var(--gris);">Sur Debian Trixie, <code>usb-modeswitch</code> et <code>ppp</code> sont souvent déjà présents. Seul <code>wvdial</code> peut manquer — mais il ne sera pas utilisé (cdc_ether rend PPP inutile).</p>
+
+    <h3>Vérifier la détection de la ZTE</h3>
+    <pre><code>lsusb | grep -i zte
+<span class="comment"># Attendu : Bus 003 Device 003: ID 19d2:1706 ZTE WCDMA ... DEMO Mobile Boardband</span>
+<span class="comment"># Le mode DEMO est normal — le kernel charge cdc_ether automatiquement</span></code></pre>
+
+    <pre><code>ip addr show eth1
+<span class="comment"># Attendu : inet 192.168.0.xxx/24 — IP DHCP du modem</span></code></pre>
+
+    <pre><code>ip route show
+<span class="comment"># Attendu : default via 192.168.0.1 dev eth1 (route vers internet via modem)</span>
+<span class="comment">#           default via 192.168.1.1 dev wlan0 (route Wi-Fi maison)</span></code></pre>
+  </section>
+
+  <!-- CONNEXION -->
+  <section id="connexion">
+    <div class="sec-header">
+      <div class="sec-badge">02</div>
+      <div>
+        <span class="sec-label">Interface web ZTE</span>
+        <h2>Configurer et connecter le modem</h2>
+      </div>
+    </div>
+
+    <h3>Accéder à l'interface ZTE depuis le Mac</h3>
+    <p>Le modem a une interface web sur <code>192.168.0.1</code> — accessible uniquement depuis le RPi. Créer un tunnel SSH depuis le Mac :</p>
+    <pre><code><span class="comment"># [Mac] — ouvrir dans un terminal séparé, laisser tourner</span>
+ssh -L 8181:192.168.0.1:80 jchavaux@192.168.1.48 -N</code></pre>
+    <p>Puis ouvrir <code>http://localhost:8181</code> dans le navigateur.</p>
+
+    <h3>Entrer le PIN SIM (si non désactivé)</h3>
+    <p>Au premier accès, l'interface demande le PIN. L'entrer une fois. <strong>Idéalement, désactiver le PIN en amont</strong> (voir Prérequis) pour éviter cette étape à chaque redémarrage terrain.</p>
+
+    <h3>Vérifier l'APN</h3>
+    <p>Navigation : Settings → APN. L'interface ZTE détecte Proximus automatiquement :</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Paramètre</th><th>Valeur attendue</th></tr></thead>
+        <tbody>
+          <tr><td>Current APN</td><td>Proximus Internet</td></tr>
+          <tr><td>Mode</td><td>Auto</td></tr>
+          <tr><td>APN</td><td>internet.proximus.be</td></tr>
+          <tr><td>Authentication</td><td>NONE</td></tr>
+          <tr><td>User Name</td><td>(vide)</td></tr>
+          <tr><td>Password</td><td>(vide)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Forcer la connexion data via API (si nécessaire)</h3>
+    <p>Si la connexion n'est pas établie automatiquement, depuis le RPi :</p>
+    <pre><code><span class="comment"># Déconnecter</span>
+curl -s -X POST -H 'Referer: http://192.168.0.1/index.html' \
+  -d 'isTest=false&goformId=DISCONNECT_NETWORK' \
+  'http://192.168.0.1/goform/goform_set_cmd_process'
+
+sleep 4
+
+<span class="comment"># Reconnecter</span>
+curl -s -X POST -H 'Referer: http://192.168.0.1/index.html' \
+  -d 'isTest=false&goformId=CONNECT_NETWORK' \
+  'http://192.168.0.1/goform/goform_set_cmd_process'</code></pre>
+  </section>
+
+  <!-- VÉRIFICATION -->
+  <section id="verification">
+    <div class="sec-header">
+      <div class="sec-badge ok">✓</div>
+      <div>
+        <span class="sec-label">Tests</span>
+        <h2>Vérifier la connectivité</h2>
+      </div>
+    </div>
+
+    <div class="callout callout-info">
+      <p><strong>Ne pas utiliser ping pour tester.</strong> Proximus LTE bloque l'ICMP. Un ping qui échoue ne signifie pas que la connexion est morte — utiliser exclusivement <code>curl</code> HTTP.</p>
+    </div>
+
+    <h3>Test de connectivité HTTP (référence)</h3>
+    <pre><code><span class="comment"># Test rapide — doit retourner "success" ou HTTP 200</span>
+curl -s --interface eth1 --max-time 10 http://detectportal.firefox.com/success.txt
+
+<span class="comment"># Test avec métriques</span>
+curl -s --interface eth1 --max-time 15 \
+  -o /dev/null \
+  -w 'HTTP %{http_code} — %{time_total}s — %{speed_download} B/s\n' \
+  http://detectportal.firefox.com/success.txt</code></pre>
+
+    <h3>Résultats attendus</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Test</th><th>Résultat OK</th><th>Résultat KO</th></tr></thead>
+        <tbody>
+          <tr><td><code>ping 192.168.0.1</code></td><td class="ok">0% perte, &lt;1ms</td><td class="ko">Modem non détecté</td></tr>
+          <tr><td><code>ping 8.8.8.8</code></td><td class="warn">Toujours bloqué</td><td class="warn">Normal sur Proximus LTE</td></tr>
+          <tr><td><code>curl detectportal...</code></td><td class="ok">HTTP 200 "success"</td><td class="ko">SIM non activée ou portail captif</td></tr>
+          <tr><td>Interface ZTE home</td><td class="ok">LTE ON + timer Net surfing</td><td class="ko">SIM locked / pas de signal</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Portail captif — comment le reconnaître</h3>
+    <p>Si la SIM n'est pas activée, toutes les requêtes HTTP retournent le HTML du modem :</p>
+    <pre><code><span class="comment"># Portail captif — mauvais</span>
+&lt;html&gt;&lt;head&gt;&lt;title&gt;Document Error: Site or Page Not Found&lt;/title&gt;&lt;/head&gt;...
+
+<span class="comment"># Connexion réelle — bon</span>
+success</code></pre>
+  </section>
+
+  <!-- PIÈGES -->
+  <section id="pieges">
+    <div class="sec-header">
+      <div class="sec-badge warn">⚠</div>
+      <div>
+        <span class="sec-label">Retour d'expérience</span>
+        <h2>Pièges et solutions</h2>
+      </div>
+    </div>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>Piège</th><th>Symptôme</th><th>Solution</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>ZTE branchée pendant le boot RPi</td>
+            <td>RPi freeze ou reboot, SSH coupé, Wi-Fi perdu</td>
+            <td>Toujours booter le RPi sans la ZTE, puis brancher la ZTE après</td>
+          </tr>
+          <tr>
+            <td>SIM non activée</td>
+            <td>1 ping sur 20 passe, HTTP retourne portail captif ZTE</td>
+            <td>Appeler le 1911 depuis la SIM dans un téléphone</td>
+          </tr>
+          <tr>
+            <td>PIN SIM non désactivé</td>
+            <td>Interface ZTE bloque au démarrage, pas de connexion data</td>
+            <td>Désactiver le PIN depuis iPhone avant déploiement terrain</td>
+          </tr>
+          <tr>
+            <td>Test avec ping</td>
+            <td>100% perte → fausse alarme "pas de connexion"</td>
+            <td>Toujours tester avec <code>curl</code> HTTP, jamais ping sur LTE Proximus</td>
+          </tr>
+          <tr>
+            <td>Port USB bleu (3.0)</td>
+            <td>Problèmes de reconnaissance, pics de courant</td>
+            <td>Utiliser le port USB 2.0 noir</td>
+          </tr>
+          <tr>
+            <td>PPP / wvdial inutile</td>
+            <td>Doc en ligne obsolète — <code>ttyUSB*</code> absent</td>
+            <td>Ignorer — le kernel charge <code>cdc_ether</code> directement sur <code>eth1</code></td>
+          </tr>
+          <tr>
+            <td>SSH tunnel échoue (Connection refused)</td>
+            <td>L'interface web ZTE n'est pas accessible depuis Mac</td>
+            <td>Relancer le tunnel <code>ssh -L 8181:192.168.0.1:80 ...</code> après reconnexion RPi</td>
+          </tr>
+          <tr>
+            <td>DNS RPi via Tailscale</td>
+            <td>DNS <code>100.100.100.100</code> — résolution peut échouer sur eth1 si Tailscale est down</td>
+            <td>DNS du modem disponible sur <code>192.168.0.1</code> via nmcli</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SIGNAL -->
+  <section id="signal">
+    <div class="sec-header">
+      <div class="sec-badge info">📶</div>
+      <div>
+        <span class="sec-label">LTE</span>
+        <h2>Qualité de signal</h2>
+      </div>
+    </div>
+
+    <div class="signal-grid">
+      <div class="signal-card s-green">
+        <span class="signal-val">&gt; −85</span>
+        <span class="signal-label">Excellent</span>
+      </div>
+      <div class="signal-card s-green">
+        <span class="signal-val">−85 à −95</span>
+        <span class="signal-label">Bon</span>
+      </div>
+      <div class="signal-card s-orange">
+        <span class="signal-val">−95 à −105</span>
+        <span class="signal-label">Acceptable</span>
+      </div>
+      <div class="signal-card s-red">
+        <span class="signal-val">−105 à −115</span>
+        <span class="signal-label">Limite</span>
+      </div>
+      <div class="signal-card s-red">
+        <span class="signal-val">&lt; −115</span>
+        <span class="signal-label">Inutilisable</span>
+      </div>
+    </div>
+
+    <p>Valeur mesurée en intérieur lors du setup : <strong>−107 à −110 dBm</strong>. En extérieur ou près d'une fenêtre, attendre <strong>−95 à −99 dBm</strong> minimum pour un usage terrain stable.</p>
+
+    <h3>Vérifier le signal depuis le RPi</h3>
+    <pre><code><span class="comment"># Via l'interface web ZTE — valeur en bas à droite "Signal Strength"</span>
+<span class="comment"># Accessible via le tunnel SSH : http://localhost:8181</span>
+
+<span class="comment"># Ou via nmcli</span>
+nmcli device show eth1 | grep -i signal</code></pre>
+  </section>
+
+  <!-- BILAN -->
+  <section id="bilan">
+    <div class="sec-header">
+      <div class="sec-badge ok">✅</div>
+      <div>
+        <span class="sec-label">Résultat</span>
+        <h2>Bilan du setup validé</h2>
+      </div>
+    </div>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>Élément</th><th>Statut</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Modem ZTE détecté</td><td class="ok">✅</td><td><code>cdc_ether</code> → <code>eth1</code> automatique</td></tr>
+          <tr><td>IP DHCP assignée</td><td class="ok">✅</td><td><code>192.168.0.178</code> via modem</td></tr>
+          <tr><td>SIM activée</td><td class="ok">✅</td><td>Via 1911 depuis téléphone</td></tr>
+          <tr><td>APN configuré</td><td class="ok">✅</td><td><code>internet.proximus.be</code> auto-détecté</td></tr>
+          <tr><td>Connexion LTE active</td><td class="ok">✅</td><td>HTTP 200 confirmé</td></tr>
+          <tr><td>Ping ICMP</td><td class="ko">❌</td><td>Bloqué par Proximus LTE — normal</td></tr>
+          <tr><td>Vitesse data</td><td class="warn">~10 KB/s</td><td>Signal faible en intérieur — s'améliore en extérieur</td></tr>
+          <tr><td>PIN désactivé</td><td class="warn">À faire</td><td>Obligatoire avant déploiement terrain autonome</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-ok">
+      <p><strong>Conclusion :</strong> le setup RPi 5 + ZTE MF833U1 + Proximus Pay&amp;Go est opérationnel. Le flux HTTP/TCP fonctionne normalement. Pour BirdNET-Go et les services terrain, la connexion est suffisante. Améliorer le signal en positionnant la clé ZTE en extérieur ou près d'une fenêtre côté rue.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Arteon<span>·</span> &nbsp;/&nbsp; PKA Knowledge Base &nbsp;/&nbsp; Infrastructure RPi &nbsp;/&nbsp; 2026-05-28</p>
+</footer>
+
+<script>
+  const secs = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('nav a');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const l = document.querySelector(`nav a[href="#${e.target.id}"]`);
+        if (l) l.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  secs.forEach(s => obs.observe(s));
+</script>
+
+</body>
+</html>

@@ -1,6 +1,6 @@
 ---
 name: wildnexus-bioacoustics-dsp
-description: Expert agent in bioacoustics and digital signal processing for the WildNexus ecological monitoring platform. Trigger this skill whenever the user asks about audio capture for wildlife, microphone selection, spectrogram analysis, bird or bat detection, amphibian monitoring, wind noise rejection, always-on audio architecture, DSP pipeline design, audio AI classification, BirdNET, PAMGuard, sample rate selection, audio data volume management, or any bioacoustics question in the WildNexus context. Also trigger for questions about MEMS microphones, PDM/I2S interfaces, FFT windowing, mel spectrograms, ultrasonic detection, or synchronization of audio events with camera triggers. Use this skill even if the user only mentions "sons", "chants", "acoustique", "oiseaux" or "chauves-souris" in a WildNexus deployment context.
+description: Expert agent in bioacoustics and digital signal processing for the WildNexus ecological monitoring platform. Trigger this skill whenever the user asks about audio capture for wildlife, microphone selection, spectrogram analysis, bird or bat detection, amphibian monitoring, wind noise rejection, always-on audio architecture, DSP pipeline design, audio AI classification, [[BirdNET]], PAMGuard, sample rate selection, audio data volume management, or any bioacoustics question in the WildNexus context. Also trigger for questions about MEMS microphones, PDM/I2S interfaces, FFT windowing, mel spectrograms, ultrasonic detection, or synchronization of audio events with camera triggers. Use this skill even if the user only mentions "sons", "chants", "acoustique", "oiseaux" or "chauves-souris" in a WildNexus deployment context.
 ---
 
 # WildNexus — Bioacoustics / DSP Agent
@@ -131,7 +131,7 @@ Scheduled acquisition windows are the practical P0 architecture. Target taxa (bi
 
 ### Energy budget example (scheduled windows)
 
-Dawn chorus window: 45 min/day, 32 kHz, MEMS active + ESP32-S3 processing:
+Dawn chorus window: 45 min/day, 32 kHz, MEMS active + [[ESP32-S3]] processing:
 - Active: ~40 mA × 45 min = 30 mAh/day
 - Remaining 23h15m deep sleep: ~30 µA × 83700s / 3600 = 0.7 mAh/day
 - **Total: ~30.7 mAh/day**
@@ -166,23 +166,23 @@ Implement wind detection as a quality flag on recorded segments, not as a discar
 
 ## AI audio classification
 
-### BirdNET — the practical default for birds
+### [[BirdNET]] — the practical default for birds
 
-BirdNET (Cornell Lab / Chemnitz University) is the state-of-the-art open-source bird sound classifier.
+[[BirdNET]] (Cornell Lab / Chemnitz University) is the state-of-the-art open-source bird sound classifier.
 
 | Variant | Parameters | Platform | Species coverage | Notes |
 |---------|-----------|----------|-----------------|-------|
 | BirdNET-Analyzer (full) | ~27M | PC / server | 6000+ species | Not embeddable on MCU |
-| BirdNET-Lite | ~3M | Raspberry Pi / NPU | 1000+ species | Embeddable on P1 SBC |
-| Custom distilled model | <1M | ESP32-S3 (limited) | 20–50 species | Must be purpose-trained for target region |
+| BirdNET-Lite | ~3M | [[Raspberry Pi]] / NPU | 1000+ species | Embeddable on P1 SBC |
+| Custom distilled model | <1M | [[ESP32-S3]] (limited) | 20–50 species | Must be purpose-trained for target region |
 
-For WildNexus P0 MCU: BirdNET is not deployable. Use energy-based event detection to capture audio segments, classify offline or via BirdNET on gateway.
+For WildNexus P0 MCU: [[BirdNET]] is not deployable. Use energy-based event detection to capture audio segments, classify offline or via [[BirdNET]] on gateway.
 
-For WildNexus P1 (Raspberry Pi / NPU): BirdNET-Lite with regional species filter (Belgium: ~200 relevant species) is directly applicable.
+For WildNexus P1 ([[Raspberry Pi]] / NPU): BirdNET-Lite with regional species filter (Belgium: ~200 relevant species) is directly applicable.
 
 ### Mel spectrogram as universal input
 
-Nearly all modern audio classifiers (BirdNET, PANNs, custom models) use mel spectrograms as input.
+Nearly all modern audio classifiers ([[BirdNET]], PANNs, custom models) use mel spectrograms as input.
 
 Standard parameters for bird audio:
 ```
@@ -194,7 +194,7 @@ Frequency range: 150 Hz – 15000 Hz
 Normalization: per-segment mean/std
 ```
 
-Compute mel spectrograms on-device (ESP32-S3 can handle this in real-time at 32 kHz with FFT hardware acceleration) as the primary preprocessing step, even if full classification happens elsewhere.
+Compute mel spectrograms on-device ([[ESP32-S3]] can handle this in real-time at 32 kHz with FFT hardware acceleration) as the primary preprocessing step, even if full classification happens elsewhere.
 
 ### Bat detection
 
@@ -217,7 +217,7 @@ At 32 kHz, 16-bit mono:
 - 1 hour: 230 MB
 - 1 night (8h): 1.84 GB
 
-This is unsustainable for local storage and LoRa transmission. Three-tier strategy:
+This is unsustainable for local storage and [[LoRa]] transmission. Three-tier strategy:
 
 ### Tier 1 — Event-only storage (P0)
 
@@ -227,9 +227,9 @@ Store only detected audio events (segments with energy above threshold in target
 
 FLAC lossless compression at 32 kHz: ~50% size reduction (110 MB/hour). OGG Vorbis lossy at high quality: ~80% reduction. Acceptable for archival if lossy compression is acceptable to scientific advisor.
 
-### Tier 3 — Metadata-only LoRa transmission
+### Tier 3 — Metadata-only [[LoRa]] transmission
 
-Never transmit audio over LoRa. Transmit only:
+Never transmit audio over [[LoRa]]. Transmit only:
 - Event timestamp
 - Duration
 - Peak frequency (Hz)
@@ -258,7 +258,7 @@ Correlated audio-visual events are a major scientific value-add for WildNexus.
 Audio-visual synchronization requires timestamp precision of <100ms to be scientifically meaningful. Standard RTC precision (±1s) is insufficient. Options:
 - GPS-disciplined RTC (1PPS output): <1µs precision
 - NTP over Wi-Fi at gateway sync: ~10–50ms precision
-- LoRa time beacon from gateway: ~100ms precision
+- [[LoRa]] time beacon from gateway: ~100ms precision
 
 For WildNexus P1+: GPS 1PPS sync is the recommended solution for multi-sensor correlation.
 
@@ -268,10 +268,10 @@ For WildNexus P1+: GPS 1PPS sync is the recommended solution for multi-sensor co
 
 | Standard | Application | Notes |
 |----------|------------|-------|
-| WAV (PCM) | Primary archive format | Universal, uncompressed |
-| FLAC | Compressed archive | Lossless, ~50% reduction |
-| BirdNET annotation format | Species detection output | JSON with species, confidence, time offset |
-| Xeno-canto | Reference library for training data | 800k+ recordings, CC licensed |
+| WAV (PCM) | Primary [[archive]] format | Universal, uncompressed |
+| FLAC | Compressed [[archive]] | Lossless, ~50% reduction |
+| [[BirdNET]] annotation format | Species detection output | JSON with species, confidence, time offset |
+| [[Xeno-Canto]] | Reference library for training data | 800k+ recordings, CC licensed |
 | Darwin Core (sound extension) | Scientific export | Links to GBIF/biodiversity databases |
 | Raven Pro selection tables | Manual annotation | Standard in ornithology research |
 
@@ -283,7 +283,7 @@ For WildNexus P1+: GPS 1PPS sync is the recommended solution for multi-sensor co
 |-------|------------------|-------|
 | wildnexus-firmware-ulp | Fenêtres d'acquisition | firmware-ulp implémente les RTC alarms pour dawn chorus / nuit — bioacoustics-dsp définit les plages horaires |
 | wildnexus-firmware-ulp | Power gate microphone | Rail microphone dédié — coordonné avec le budget énergie firmware-ulp |
-| wildnexus-edge-ai-cv | Séparation des pipelines IA | Pipeline IA audio (BirdNET) et pipeline CV sont indépendants — pas de modèle ni de matériel partagé |
+| wildnexus-edge-ai-cv | Séparation des pipelines IA | Pipeline IA audio ([[BirdNET]]) et pipeline CV sont indépendants — pas de modèle ni de matériel partagé |
 | wildnexus-camera-imaging | Corrélation audio-visuelle | RTC partagé obligatoire — bioacoustics-dsp définit la précision requise (<100ms), camera-imaging fournit le timestamp image |
 | wildnexus-scientific-advisor | Timestamp multi-capteur | Précision <100ms requise pour corrélation scientifique — GPS 1PPS recommandé à P1+ |
 
@@ -307,8 +307,8 @@ When this skill is active, responses should include:
 
 - Bats require dedicated ultrasonic hardware — no shared chain with standard audio
 - Wind noise mitigation must start with hardware (windscreen) before software
-- BirdNET full model is not MCU-deployable — do not propose it for P0
+- [[BirdNET]] full model is not MCU-deployable — do not propose it for P0
 - Continuous uncompressed audio at 44.1 kHz is unsustainable on battery-only nodes
-- Audio must never be transmitted over LoRa — metadata only
+- Audio must never be transmitted over [[LoRa]] — metadata only
 - Timestamp precision for multi-sensor correlation requires GPS or NTP discipline — RTC alone is insufficient
 - Camera and bioacoustic variants should be separate products at P0 — do not force a single chassis

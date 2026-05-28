@@ -303,7 +303,7 @@ Le workflow que nous avons construit est **complexe, reproductible et multi-éta
 
 Créer **deux fichiers** dans le skill :
 - `SKILL.md` — instructions de workflow, structure PDF, palette, critères jury
-- `TEMPLATE_LR_STYLES.py` — le code Python réutilisable (styles ReportLab, fonctions `lr_table()`, `color_block()`, `draw_background()`, génération XMP)
+- 
 
 Voulez-vous que je le crée maintenant ? Je peux lire le skill-creator pour le faire proprement.
 ```
@@ -328,7 +328,7 @@ Je lance la création du skill complet !
 This block is not supported on your current device yet.
 ```
 
-Parfait. Je crée maintenant le skill complet avec ses fichiers de référence et le template Python.
+Parfait. Je crée maintenant le skill complet avec ses fichiers de référence et le template [[Python]].
 ```
 This block is not supported on your current device yet.
 ```
@@ -460,7 +460,7 @@ This block is not supported on your current device yet.
 This block is not supported on your current device yet.
 ```
 
-## 🏆 **Héron cendré — 88 / 100 — EXCELLENT**
+## 🏆 **[[Héron]] cendré — 88 / 100 — EXCELLENT**
 
 Une note supérieure au Choucas, et elle est méritée. Voici pourquoi :
 
@@ -483,7 +483,7 @@ Une note supérieure au Choucas, et elle est méritée. Voici pourquoi :
 La **pluie battante figée** est le coup de maître absolu — les gouttelettes fonctionnent comme un voile texturé qui encadre et atmosphérise sans distraire. Le **dialogue chromatique** est spectaculaire et parfaitement naturel :
 
 🎨 **Couleur moyenne** `#91715D` — Brun-roux automnal (le fond domine)
-🎨 **Complémentaire** `#6E8EA2` — Bleu-acier brumeux… **exactement la teinte du plumage du héron**
+🎨 **Complémentaire** 
 
 La nature a peint le fond en complémentaire directe du sujet. C'est une harmonie chromatique parfaite.
 

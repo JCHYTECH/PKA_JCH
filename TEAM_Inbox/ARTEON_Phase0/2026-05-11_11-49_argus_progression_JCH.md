@@ -1,4 +1,4 @@
-# Argus — Indice de Progression · JCH
+# [[Argus]] — Indice de Progression · JCH
 
 **Client :** JCH  
 **Date :** 2026-05-11 11:49  
@@ -69,4 +69,4 @@ Notre équipe de conseillers techniques peut vous proposer :
 
 ---
 
-*Rapport généré par Argus 🦅 — Service ARTEON · L'Instant Lu*
+*Rapport généré par [[Argus]] 🦅 — Service ARTEON · L'Instant Lu*

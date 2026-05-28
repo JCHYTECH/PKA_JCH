@@ -1,6 +1,6 @@
 # InsectNet - Dataset Build Log
 
-## 2026-05-24 - Xeno-canto metadata page 1
+## 2026-05-24 - [[Xeno-Canto]] metadata page 1
 
 **Commande :**
 
@@ -10,7 +10,7 @@ XC_API_KEY=<secret> python3 scripts/insectnet_xc_metadata.py --limit-pages 1 --p
 
 **Secret handling :**
 
-- La cle API Xeno-canto a ete fournie en memoire uniquement.
+- La cle API [[Xeno-Canto]] a ete fournie en memoire uniquement.
 - Elle n'a pas ete ecrite dans les fichiers PKA.
 
 **Sortie :**
@@ -84,7 +84,7 @@ Points importants :
 3. Repeter sur les autres especes V0.1.
 4. Seulement ensuite telecharger un petit sous-ensemble audio sous licences compatibles.
 
-## 2026-05-24 - Xeno-canto metadata complete
+## 2026-05-24 - [[Xeno-Canto]] metadata complete
 
 **Commande :**
 
@@ -188,7 +188,7 @@ Passer a la collecte metadata des autres especes V0.1 avant de telecharger l'aud
 
 ## 2026-05-24 - Collecte metadata multi-especes V0.1
 
-Collectes Xeno-canto API v3 terminees pour les especes candidates.
+Collectes [[Xeno-Canto]] API v3 terminees pour les especes candidates.
 
 Resultats :
 

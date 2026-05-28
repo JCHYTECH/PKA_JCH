@@ -4,7 +4,7 @@
 **Date :** 2026-05-17  
 **Statut :** Draft de travail  
 **Propriétaire :** Jean-Claude Havaux — JCHYTECH  
-**Owner juridique :** Renard
+**Owner juridique :** [[Renard]]
 
 ---
 
@@ -36,13 +36,13 @@ Les trois statuts sont :
 | Contribution technique au code, hardware ou documentation | Autorisé | Respect des règles de contribution et de la licence | Communauté contributive voulue | Maintainers WildNexus |
 | Reproduction d'un nœud pour usage personnel ou recherche compatible | Autorisé | Respect intégral de la licence et de la politique d'usage | Auditabilité et reproductibilité du socle | Aucun |
 | Intégration d'un capteur additionnel orienté biodiversité | Autorisé | Documentation minimale des interfaces | Extensibilité voulue par design | Maintainers techniques |
-| Revente / distribution par partenaire commercial orienté nature | Conditionnel | Contrat, reprise des exclusions d'usage, usage de marque contrôlé | Compatible si l'alignement mission est maintenu | Renard + JCH |
-| Déploiement par bureau d'études environnementales | Conditionnel | Vérification du contexte client et des usages finaux | Peut être aligné, mais dépend des missions réelles | Renard |
-| Utilisation par administration publique non militaire | Conditionnel | Vérifier finalité réelle, gouvernance des données, cadre RGPD | Potentiellement compatible, mais sensible selon usage | Renard + JCH |
-| Intégration dans une plateforme logicielle tierce | Conditionnel | Pas de contournement des exclusions d'usage, pas de fermeture abusive | Compatible seulement si la mission et la conformité restent intactes | Renard + owner technique |
-| Hébergement ou service managé autour de WildNexus | Conditionnel | Contrat, politique de données, exclusions reprises | Acceptable si pas de dérive surveillance/fermeture | Renard + JCH |
-| Utilisation sur sites accueillant du public | Conditionnel | Signalétique, base légale, traitement des images humaines conforme | Sensibilité RGPD accrue | Renard |
-| Export ou partage de données agrégées avec tiers | Conditionnel | Pas de données humaines identifiantes, cadre d'usage clair | Compatible si gouvernance des données maîtrisée | Renard + JCH |
+| Revente / distribution par partenaire commercial orienté nature | Conditionnel | Contrat, reprise des exclusions d'usage, usage de marque contrôlé | Compatible si l'alignement mission est maintenu | [[Renard]] + JCH |
+| Déploiement par bureau d'études environnementales | Conditionnel | Vérification du contexte client et des usages finaux | Peut être aligné, mais dépend des missions réelles | [[Renard]] |
+| Utilisation par administration publique non militaire | Conditionnel | Vérifier finalité réelle, gouvernance des données, cadre RGPD | Potentiellement compatible, mais sensible selon usage | [[Renard]] + JCH |
+| Intégration dans une plateforme logicielle tierce | Conditionnel | Pas de contournement des exclusions d'usage, pas de fermeture abusive | Compatible seulement si la mission et la conformité restent intactes | [[Renard]] + owner technique |
+| Hébergement ou service managé autour de WildNexus | Conditionnel | Contrat, politique de données, exclusions reprises | Acceptable si pas de dérive surveillance/fermeture | [[Renard]] + JCH |
+| Utilisation sur sites accueillant du public | Conditionnel | Signalétique, base légale, traitement des images humaines conforme | Sensibilité RGPD accrue | [[Renard]] |
+| Export ou partage de données agrégées avec tiers | Conditionnel | Pas de données humaines identifiantes, cadre d'usage clair | Compatible si gouvernance des données maîtrisée | [[Renard]] + JCH |
 | Programme de recherche dual-use avec acteur défense | Interdit | Aucune exception | Risque de dévoiement militaire | Refus automatique |
 | Détection de drones | Interdit | Aucune exception | Explicitement contraire à NN-05 | Refus automatique |
 | Surveillance de périmètre, sécurité de site, protection d'infrastructure | Interdit | Aucune exception | Usage sécuritaire non compatible avec la mission | Refus automatique |
@@ -52,7 +52,7 @@ Les trois statuts sont :
 | Surveillance humaine générale ou profiling de personnes | Interdit | Aucune exception | Contradictoire avec NN-09 et RGPD | Refus automatique |
 | Reconnaissance faciale ou identification humaine | Interdit | Aucune exception | Hors mission, risque juridique élevé | Refus automatique |
 | Vente ou transmission d'images de personnes capturées incidentalement | Interdit | Aucune exception | Incompatible RGPD et mission | Refus automatique |
-| Fermeture propriétaire d'une version dérivée en contradiction avec la licence | Interdit | Aucune exception | Détruit le caractère publiable et auditabilité du socle | Renard |
+| Fermeture propriétaire d'une version dérivée en contradiction avec la licence | Interdit | Aucune exception | Détruit le caractère publiable et auditabilité du socle | [[Renard]] |
 
 ---
 
@@ -80,7 +80,7 @@ Un cas passe automatiquement en **Interdit** s'il présente au moins un des sign
 1. Identifier l'utilisateur réel et l'usage final, pas seulement l'intermédiaire.
 2. Qualifier le cas avec la matrice.
 3. Si `Autorisé`, appliquer le flux standard.
-4. Si `Conditionnel`, ouvrir une revue Renard avec décision documentée.
+4. Si 
 5. Si `Interdit`, refuser sans entrer en négociation sur une exception.
 
 Pour les cas `Conditionnels`, la revue documente au minimum :

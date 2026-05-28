@@ -3441,10 +3441,10 @@ Pourquoi ?
 ### 🔹 Interface Excel → IBKR
 Deux possibilités :
 
-#### Option A1 — **Excel + Python (idéal)**
+#### Option A1 — **Excel + [[Python]] (idéal)**
 - Excel reste ton fichier maître
-- Python lit Excel
-- Python crée les ordres via l’API IBKR
+- [[Python]] lit Excel
+- [[Python]] crée les ordres via l’API IBKR
 - IBKR affiche les ordres → **tu cliques “Transmit”**
 
 👉 C’est **la solution la plus utilisée par les family offices légers**.
@@ -3530,9 +3530,9 @@ Voici **la structure exacte** que je te recommande.
 
 # 4. AUTOMATISATION RÉELLE (NIVEAU PRO, MAIS ACCESSIBLE)
 
-## Avec IBKR + Python (exemple logique)
+## Avec IBKR + [[Python]] (exemple logique)
 
-1. Python lit `ORDER_BLOTTER.xlsx`
+1. [[Python]] lit 
 2. Pour chaque ligne :
    - crée un objet ordre
    - envoie à IBKR
@@ -3547,7 +3547,7 @@ Voici **la structure exacte** que je te recommande.
 
 # 5. CONTRÔLES DE SÉCURITÉ (INDISPENSABLES)
 
-À intégrer dans Excel ou Python :
+À intégrer dans Excel ou [[Python]] :
 
 - ❌ Ordre > X % du portefeuille → bloqué
 - ❌ Ordre sur ticker non autorisé → bloqué
@@ -3571,7 +3571,7 @@ Voici **la structure exacte** que je te recommande.
 # 7. MON AVIS NET (sans langue de bois)
 
 > Pour un investisseur structuré comme toi :  
-> **Excel + IBKR + Python est la meilleure solution possible aujourd’hui.**
+> **Excel + IBKR + [[Python]] est la meilleure solution possible aujourd’hui.**
 
 Saxo est plus simple.  
 IBKR est plus puissant.  
@@ -3582,12 +3582,12 @@ Les deux respectent exactement ton besoin.
 ## Prochaine étape (je peux aller encore plus loin)
 Je peux :
 1. te fournir **un modèle Excel prêt à l’emploi** (avec formules),
-2. écrire **le script Python minimal** (lisible, documenté),
+2. écrire **le script [[Python]] minimal** (lisible, documenté),
 3. adapter l’architecture **exactement à ton broker actuel**.
 
 Dis-moi :
 - ton broker actuel,
-- ton niveau de confort avec Python (aucun / basique / avancé).
+- ton niveau de confort avec [[Python]] (aucun / basique / avancé).
 
 Je m’adapte.
 
@@ -3625,14 +3625,14 @@ Pour toi, l’idéal est un broker qui combine :
 ### Pourquoi c’est le meilleur choix pour TON cas
 
 ✔ Accès à **plus de 135 marchés** dans le monde  
-✔ **API robuste** (Python, Excel, etc.)  
+✔ **API robuste** ([[Python]], Excel, etc.)  
 ✔ **Interactive Brokers Excel Tools** + intégrations de données live  
 ✔ Exécution propre, interface professionnelle  
 ✔ Possibilité de travailler avec un **order blotter automatisé**  
 ✔ Très bon pour portefeuilles multi-actifs (tes agris, MTIC, semi, etc.)
 
 ### Points forts
-- **API ouverte** : Python, Excel, Java, etc.  
+- **API ouverte** : [[Python]], Excel, Java, etc.  
 - **Exécution directe** : création d’ordres automatisée (mais validation manuelle).  
 - Couverture multi-devises avec conversion intégrée.  
 - **Cost-efficient** sur volumes moyens à élevés.
@@ -3662,7 +3662,7 @@ Pour toi, l’idéal est un broker qui combine :
 
 ### Idéal pour
 ✔ Investisseurs qui préfèrent **confort + intégration Excel**  
-✔ Pas envie de gérer un environnement API Python
+✔ Pas envie de gérer un environnement API [[Python]]
 
 ---
 
@@ -3728,10 +3728,10 @@ Tu veux :
 # Comment ça se déroule avec IBKR (workflow optimal)
 
 1. **Compte IBKR ouvert en Belgique (MiFID)**  
-2. **Connexion Excel → API ou Python**  
+2. **Connexion Excel → API ou [[Python]]**  
    - Tu maintiens ton allocation dans Excel  
    - Excel exporte l’`order blotter`  
-3. **Script Python lit Excel → génère Ordres IBKR**  
+3. **Script [[Python]] lit Excel → génère Ordres IBKR**  
 4. **Ordres apparaissent dans IBKR TWS ou Client Portal**  
 5. **Tu valides et envoies**  
 6. Exécution marché, reporting automatisé
@@ -3778,7 +3778,7 @@ Excel → création d’ordres → validation → exécution.
 Je peux te fournir :
 1. **Check-list complète d’ouverture de compte IBKR (Belgique)**  
 2. **Modèle Excel prêt à être lié à IBKR API**  
-3. **Script Python minimal + documentation pas à pas**  
+3. **Script [[Python]] minimal + documentation pas à pas**  
 4. **Workflow automatisé “Generate → Review → Execute”**
 
 Dis-moi ce que tu veux maintenant.

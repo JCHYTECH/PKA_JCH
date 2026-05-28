@@ -64,10 +64,10 @@ Input APIs → normalize taxon → merge → rank → output list
 
 ## 5. Sound Recognition
 
-Use BirdNET (not Merlin)
+Use [[BirdNET]] (not Merlin)
 
 Workflow:
-User → record sound → send → BirdNET → results → compare with local species
+User → record sound → send → [[BirdNET]] → results → compare with local species
 
 ---
 
@@ -105,7 +105,7 @@ Confidence =
 - country detection
 
 ### v9
-- sound detection (BirdNET)
+- sound detection ([[BirdNET]])
 
 ### v10
 - species profiles
@@ -144,4 +144,4 @@ GPS biodiversity engine
 1. Build backend
 2. Integrate eBird + iNaturalist
 3. Add scoring
-4. Add BirdNET
+4. Add [[BirdNET]]

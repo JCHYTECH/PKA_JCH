@@ -1,8 +1,8 @@
 # ADR-001 — Choix MCU P0
 
 **Date :** 2026-05-18  
-**Statut :** accepté — 2026-05-18 (confirmé par JCH : ESP32-S3 retenu sur coût / performances / disponibilité / communauté)  
-**Owner PKA :** Castor + Forge  
+**Statut :** accepté — 2026-05-18 (confirmé par JCH : [[ESP32-S3]] retenu sur coût / performances / disponibilité / communauté)  
+**Owner PKA :** [[Castor]] + [[Forge]]  
 **Agent WildNexus :** `wildnexus-firmware-ulp`  
 **Jalon :** M-01 Architecture P0 gelée  
 
@@ -16,30 +16,30 @@ Le MCU doit donc couvrir trois contraintes qui tirent dans des directions diffé
 - intégration caméra / stockage / radio sans complexité excessive ;
 - vitesse de prototypage suffisante pour M-02.
 
-Le P0 ne doit pas dépendre d'un Raspberry Pi ou d'un Linux permanent.
+Le P0 ne doit pas dépendre d'un [[Raspberry Pi]] ou d'un Linux permanent.
 
 ## Décision proposée
 
-Retenir **ESP32-S3 comme MCU candidat primaire pour le prototype P0 M-02**, avec une règle de sortie stricte :
+Retenir **[[ESP32-S3]] comme MCU candidat primaire pour le prototype P0 M-02**, avec une règle de sortie stricte :
 
-- ESP32-S3 reste le choix P0 si le budget énergie complet démontre l'objectif de 60 jours batterie seule ;
-- STM32U5 reste le fallback basse consommation si ESP32-S3 échoue sur autonomie, stabilité veille/réveil ou robustesse firmware ;
+- [[ESP32-S3]] reste le choix P0 si le budget énergie complet démontre l'objectif de 60 jours batterie seule ;
+- STM32U5 reste le fallback basse consommation si [[ESP32-S3]] échoue sur autonomie, stabilité veille/réveil ou robustesse firmware ;
 - nRF54L15 est conservé comme option BLE / 2.4 GHz future, mais non prioritaire P0 car il ne résout pas directement le besoin caméra + LPWAN.
 
-Raison : ESP32-S3 combine une interface caméra documentée, BLE/Wi-Fi utiles au provisioning, sécurité embarquée, outillage mature et vitesse de prototypage. Le risque principal est énergétique ; il doit être mesuré tôt, pas supposé résolu.
+Raison : [[ESP32-S3]] combine une interface caméra documentée, BLE/Wi-Fi utiles au provisioning, sécurité embarquée, outillage mature et vitesse de prototypage. Le risque principal est énergétique ; il doit être mesuré tôt, pas supposé résolu.
 
 ## Alternatives considérées
 
 | Option | Pour | Contre | Statut |
 |---|---|---|---|
-| ESP32-S3 | Interface caméra, BLE/Wi-Fi, USB, SPI/I2C/UART, ULP, secure boot, écosystème rapide | Consommation à prouver ; Wi-Fi à désactiver en usage terrain ; besoin probable de PSRAM | Candidat primaire P0 |
-| STM32U5 | Très basse consommation, sécurité, mémoire élevée selon variante, meilleure trajectoire produit terrain | Intégration caméra et stack applicative plus exigeantes ; prototypage plus lent | Fallback si ESP32-S3 échoue énergie |
+| [[ESP32-S3]] | Interface caméra, BLE/Wi-Fi, USB, SPI/I2C/UART, ULP, secure boot, écosystème rapide | Consommation à prouver ; Wi-Fi à désactiver en usage terrain ; besoin probable de PSRAM | Candidat primaire P0 |
+| STM32U5 | Très basse consommation, sécurité, mémoire élevée selon variante, meilleure trajectoire produit terrain | Intégration caméra et stack applicative plus exigeantes ; prototypage plus lent | Fallback si [[ESP32-S3]] échoue énergie |
 | nRF54L15 | Excellente trajectoire BLE basse consommation, sécurité, coprocesseur RISC-V, provisioning terrain solide | Radio 2.4 GHz seulement ; ne remplace pas LPWAN ; intégration caméra moins directe | Option future / provisioning |
-| Raspberry Pi / Linux permanent | Développement logiciel rapide, caméra facile, IA plus confortable | Consommation, boot, SD, maintenance, autonomie incompatibles avec la philosophie P0 | Rejeté pour noeud terrain P0 |
+| [[Raspberry Pi]] / Linux permanent | Développement logiciel rapide, caméra facile, IA plus confortable | Consommation, boot, SD, maintenance, autonomie incompatibles avec la philosophie P0 | Rejeté pour noeud terrain P0 |
 
 ## Sources primaires consultées
 
-- Espressif ESP32-S3 : https://www.espressif.com/en/products/socs/esp32s3/docs
+- Espressif [[ESP32-S3]] : https://www.espressif.com/en/products/socs/esp32s3/docs
 - STMicroelectronics STM32U5 : https://www.st.com/en/microcontrollers-microprocessors/stm32u5-series.html
 - Nordic nRF54L15 : https://www.nordicsemi.com/Products/nRF54L15
 
@@ -65,7 +65,7 @@ Raison : ESP32-S3 combine une interface caméra documentée, BLE/Wi-Fi utiles au
 
 Réviser cette ADR si :
 
-- ESP32-S3 ne tient pas le budget énergie complet ;
-- l'interface caméra retenue impose un host que l'ESP32-S3 ne peut pas gérer proprement ;
+- [[ESP32-S3]] ne tient pas le budget énergie complet ;
+- l'interface caméra retenue impose un host que l'[[ESP32-S3]] ne peut pas gérer proprement ;
 - STM32U5 démontre une intégration caméra/stockage/radio suffisamment rapide pour M-02 ;
-- le coût ou la disponibilité ESP32-S3 devient bloquant pour 5 prototypes.
+- le coût ou la disponibilité [[ESP32-S3]] devient bloquant pour 5 prototypes.

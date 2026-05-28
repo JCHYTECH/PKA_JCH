@@ -39,6 +39,6 @@ Le système de mémoire du projet `internal-agent-governance` a été enrichi :
 
 Les dashboards ont été mis à jour : hub.html et modeles.html dans le répertoire DASHBOARDS.
 
-Fichiers de configuration système révisés : ADAPTER-PROMPT.md, .gitignore, GEMINI.md, CLAUDE.md, AGENTS.md.
+Fichiers de configuration système révisés : ADAPTER-PROMPT.md, .gitignore, GEMINI.md, [[Claude]].md, AGENTS.md.
 
 Les rosters équipe et base de données (team.db) ont été synchronisés.

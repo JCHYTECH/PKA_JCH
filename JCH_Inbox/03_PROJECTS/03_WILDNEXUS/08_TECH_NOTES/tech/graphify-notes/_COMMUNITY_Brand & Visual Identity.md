@@ -10,13 +10,13 @@ members: 7
 **Members:** 7 nodes
 
 ## Members
-- [[Color Palette (Terracotta, Forest Green, Light Grey)]] - image - git/faune-autour-logo.png
-- [[Faune Autour Brand]] - image - git/faune-autour-logo.png
-- [[Faune Autour Visual Identity]] - image - git/faune-autour-logo.png
-- [[Flying Bird Icon (RaptorHawk)]] - image - git/faune-autour-logo.png
-- [[Location Pin Symbol]] - image - git/faune-autour-logo.png
-- [[Nature Motifs (Leaves, Antlers, Paw Print)]] - image - git/faune-autour-logo.png
-- [[Wildlife Observation Around You (App Concept)]] - image - git/faune-autour-logo.png
+- [[Color Palette (Terracotta, Forest Green, Light Grey)]] - image - [[Git]]/faune-autour-logo.png
+- [[Faune Autour Brand]] - image - [[Git]]/faune-autour-logo.png
+- [[Faune Autour Visual Identity]] - image - [[Git]]/faune-autour-logo.png
+- [[Flying Bird Icon (RaptorHawk)]] - image - [[Git]]/faune-autour-logo.png
+- [[Location Pin Symbol]] - image - [[Git]]/faune-autour-logo.png
+- [[Nature Motifs (Leaves, Antlers, Paw Print)]] - image - [[Git]]/faune-autour-logo.png
+- [[Wildlife Observation Around You (App Concept)]] - image - [[Git]]/faune-autour-logo.png
 
 ## Live Query (requires Dataview plugin)
 
