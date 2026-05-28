@@ -16,6 +16,10 @@ EXCLUDED_DIRS = {".obsidian", "__pycache__", "node_modules", ".git"}
 
 def load_active_members(db_path: Path) -> list[str]:
     """Lit TEAM/team.db → SELECT name FROM members WHERE status='active'."""
+    if not db_path.is_file():
+        import warnings
+        warnings.warn(f"team.db introuvable : {db_path}", RuntimeWarning)
+        return []
     with sqlite3.connect(db_path) as conn:
         rows = conn.execute(
             "SELECT name FROM members WHERE status='active'"
@@ -69,7 +73,7 @@ def _tokenise(text: str) -> list[tuple[str, bool]]:
         r"|(?P<fenced>```[\s\S]*?```)"                # fenced code blocks
         r"|(?P<inline>`[^`\n]+`)"                     # inline code
         r"|(?P<url>https?://\S+)"                     # URLs
-        r"|(?P<wikilink>\[\[[^\]]*\]\])",              # existing [[wikilinks]]
+        r"|(?P<wikilink>\[\[(?:[^\[\]]|\[[^\[\]]*\])*\]\])",  # existing [[wikilinks]] with optional alias
         re.MULTILINE,
     )
 
@@ -107,13 +111,21 @@ def patch_file(path: Path, members: list[str], known_files: list[str]) -> bool:
     if path.name in EXCLUDED_FILES:
         return False
 
-    original = path.read_text(encoding="utf-8")
+    try:
+        original = path.read_text(encoding="utf-8")
+    except (OSError, UnicodeDecodeError):
+        return False
+
     patched = patch_text(original, members, known_files)
 
     if patched == original:
         return False
 
-    path.write_text(patched, encoding="utf-8")
+    try:
+        path.write_text(patched, encoding="utf-8")
+    except OSError:
+        return False
+
     return True
 
 
@@ -142,7 +154,8 @@ def run(root: Path, db_path: Path | None = None) -> list[Path]:
                 continue
             all_md_files.append(md_file)
 
-    known_files = [f.stem for f in all_md_files]
+    excluded_stems = {Path(f).stem for f in EXCLUDED_FILES}
+    known_files = [p.stem for p in all_md_files if p.stem not in excluded_stems]
 
     modified: list[Path] = []
     for md_file in all_md_files:

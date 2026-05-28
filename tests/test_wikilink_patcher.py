@@ -74,3 +74,31 @@ class WikilinkPatcherTest(unittest.TestCase):
         )
         self.assertFalse(modified)
         self.assertNotIn("[[Forge]]", excluded.read_text(encoding="utf-8"))
+
+    def test_skip_frontmatter(self):
+        text = "---\ntitle: Test\nauthor: Forge\n---\nForge a livré."
+        result = wikilink_patcher.patch_text(text, members=["Forge"], known_files=[])
+        # Forge dans le body doit être wrappé, pas dans le frontmatter
+        lines = result.split("\n")
+        frontmatter_lines = lines[1:3]  # title et author
+        self.assertNotIn("[[Forge]]", "\n".join(frontmatter_lines))
+        self.assertIn("[[Forge]]", lines[-1])  # body wrappé
+
+    def test_skip_inline_code(self):
+        text = "Lance `Forge` pour démarrer."
+        result = wikilink_patcher.patch_text(text, members=["Forge"], known_files=[])
+        self.assertNotIn("[[Forge]]", result)
+
+    def test_run_excludes_excluded_dirs(self):
+        scan_path = self.root / "JCH_Inbox"
+        scan_path.mkdir(parents=True)
+        normal = scan_path / "note.md"
+        normal.write_text("Forge a livré.", encoding="utf-8")
+        cache_dir = scan_path / "__pycache__"
+        cache_dir.mkdir()
+        cached = cache_dir / "cached.md"
+        cached.write_text("Forge est ici.", encoding="utf-8")
+        (self.root / "TEAM").mkdir(exist_ok=True)
+        wikilink_patcher.run(self.root, db_path=self.db_path)
+        self.assertIn("[[Forge]]", normal.read_text(encoding="utf-8"))
+        self.assertNotIn("[[Forge]]", cached.read_text(encoding="utf-8"))
