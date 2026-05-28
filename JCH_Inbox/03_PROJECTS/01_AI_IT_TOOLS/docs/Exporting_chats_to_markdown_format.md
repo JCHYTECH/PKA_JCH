@@ -18,25 +18,25 @@ I want to export our chats in a md format. Each chat must be exported separately
 
 It's 15:42 CEST.
 
-Let me be direct: I cannot export your chat history from claude.ai into files. I don't have an API endpoint or tool that retrieves full conversation transcripts. The `conversation_search` and `recent_chats` tools I have access to return only short snippets, not complete conversations — so they're useless for a faithful export.
+Let me be direct: I cannot export your chat history from [[Claude]].ai into files. I don't have an API endpoint or tool that retrieves full conversation transcripts. The 
 
 Here are the realistic options:
 
 **1. Manual browser-based export**
 
-Claude.ai doesn't have a native bulk export feature. You can, however, manually copy-paste individual chats into `.md` files. Tedious, obviously.
+[[Claude]].ai doesn't have a native bulk export feature. You can, however, manually copy-paste individual chats into 
 
 **2. Request your data from Anthropic**
 
 Anthropic provides a data export option under **Settings → Account → Export Data** (if available in your region). This gives you a dump of your conversations. The format may be JSON rather than Markdown, but I could then convert those JSON files into individual `.md` files named from the first 5 words of each chat. That would be straightforward.
 
-**3. Browser automation via "Claude in Chrome"**
+**3. Browser automation via "[[Claude]] in Chrome"**
 
-I do have access to Claude in Chrome tools. In theory, I could navigate claude.ai in your browser, read each conversation, and save them as `.md` files. But this has practical limits — it would be slow, fragile, and depends on your browser session being active. It also wouldn't cleanly capture very long chats.
+I do have access to [[Claude]] in Chrome tools. In theory, I could navigate [[Claude]].ai in your browser, read each conversation, and save them as 
 
 **4. Anthropic API (if you have API access)**
 
-If you have API access and your conversations are accessible there, a script could pull them programmatically. But standard claude.ai conversations aren't exposed via the API.
+If you have API access and your conversations are accessible there, a script could pull them programmatically. But standard [[Claude]].ai conversations aren't exposed via the API.
 
 **My recommendation:** Start with option 2 — request your data export from Anthropic. If you get a JSON dump, upload it here and I'll convert each conversation into a separate `.md` file with the 5-word naming convention, plus generate the selection list you described so you can pick which ones to export.
 
@@ -78,7 +78,7 @@ It's 15:44 CEST.
 
 I can't trigger the data export for you — it's an action you need to perform yourself in your account settings. Here's what to do:
 
-1. Go to **claude.ai**
+1. Go to **[[Claude]].ai**
 2. Click your profile icon (bottom-left)
 3. Go to **Settings**
 4. Look for **Account** → **Export Data** (or similar wording)
@@ -118,7 +118,7 @@ It's 15:45 CEST.
 
 My mistake — the path is **Settings → Privacy**, not "Account." Here's the corrected flow:
 
-1. Click your **initials** (bottom-left corner of claude.ai)
+1. Click your **initials** (bottom-left corner of [[Claude]].ai)
 2. Select **Settings**
 3. Go to the **Privacy** tab
 4. Click **Export Data**
@@ -128,7 +128,7 @@ The export arrives as a **ZIP containing JSON files** — not Markdown. The JSON
 
 **However** — there's a faster option that gives you exactly what you want without the JSON conversion step:
 
-**AI Chat Exporter** — a free Chrome extension that exports directly to Markdown, per conversation, from the claude.ai interface. Markdown, Text, JSON, and CSV exports are completely free with no limits. You'd open each conversation and export it as `.md` individually. The downside: no bulk operation — you'd need to do it one chat at a time.
+**AI Chat Exporter** — a free Chrome extension that exports directly to Markdown, per conversation, from the [[Claude]].ai interface. Markdown, Text, JSON, and CSV exports are completely free with no limits. You'd open each conversation and export it as 
 
 There's also a **console script** approach (GitHub: `claude-chat-exporter`) — you paste a JavaScript snippet into your browser console and it automatically generates and downloads a Markdown file named after the conversation title.
 

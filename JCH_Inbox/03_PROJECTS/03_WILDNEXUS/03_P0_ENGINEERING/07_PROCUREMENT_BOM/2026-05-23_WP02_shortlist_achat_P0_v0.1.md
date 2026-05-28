@@ -2,7 +2,7 @@
 
 **Date :** 2026-05-23  
 **Statut :** actif — prix vérifiés le 2026-05-23, corrections intégrées (§10)  
-**Owner :** Dobby + Forge + Bruno  
+**Owner :** [[Dobby]] + [[Forge]] + [[Bruno]]  
 **Référence :** [WP02 hardware matrix v0.1] + [WP01 architecture freeze] + [SUPPLY_REGISTER v0.3] + [BUDGET v0.2]  
 **Enveloppe :** 1 000 € max — dépassement bloquant sauf décision JCH  
 
@@ -14,8 +14,8 @@ Ce document traduit la matrice hardware WP02 en liste d'achats concrète, organi
 
 | Option | But | Quand commander |
 |--------|-----|-----------------|
-| **A — Banc rapide** | Mesurer l'énergie réelle, valider le flux capture/stockage/LoRa/sleep sur DevKit ouvert | En premier — sans attendre le boîtier |
-| **B — Additions terrain compact** | Ajouter les composants qui convergent vers le proto terrain : lentille définitive, boîtier IP67, LoRa module final, antenne discrète | Après résultats M-02 partiels sur le banc |
+| **A — Banc rapide** | Mesurer l'énergie réelle, valider le flux capture/stockage/[[LoRa]]/sleep sur DevKit ouvert | En premier — sans attendre le boîtier |
+| **B — Additions terrain compact** | Ajouter les composants qui convergent vers le proto terrain : lentille définitive, boîtier IP67, [[LoRa]] module final, antenne discrète | Après résultats M-02 partiels sur le banc |
 
 Les deux options sont budgétées dans l'enveloppe 1 000 €.  
 L'outillage (PPK2) est prioritaire et fait partie d'Option A.
@@ -39,7 +39,7 @@ L'outillage (PPK2) est prioritaire et fait partie d'Option A.
 | A09 | Holder AA × 4 séries | **Keystone 2463** (4× AA side-by-side, 6 V, fils) × 2 par nœud | **RS Belgium ou Mouser BE** | RS ref "Keystone 2463" | 4 | ~3,50 € | ~14 € | 3–7 j | 🟢 Bas | 2 holders × 4 AA = 8 AA en 2 blocs parallèles, câblage 4S2P externe |
 | A10 | Inductance buck | **Würth 744043100** (10 µH, 1 A, 3 × 3 mm) | **Mouser BE** | Mouser ref "744043100" | 5 | ~0,60 € | ~3 € | 3–5 j | 🟢 Bas | Associée TPS62840 ; choisir selon layout PCB |
 | A11 | Capacités + résistances | Lot CMS 0402/0603 : C 100nF, 10µF, 1µF ; R 10K, 100K, 1M | **Mouser BE** | Panier passifs 0402/0603 | 1 lot | ~20 € | ~20 € | 3–5 j | 🟢 Bas | Lot prototypage — couvre buck, micro, PIR, LED driver |
-| A12 | MOSFET power gating | **Nexperia PMV16XN** (N-ch, SOT-23, 60 mA gate cap) ou **SI2302** | **Mouser BE** | Mouser "PMV16XN" | 5 | ~0,50 € | ~3 € | 3–5 j | 🟢 Bas | Power gating caméra/IR/LoRa |
+| A12 | MOSFET power gating | **Nexperia PMV16XN** (N-ch, SOT-23, 60 mA gate cap) ou **SI2302** | **Mouser BE** | Mouser "PMV16XN" | 5 | ~0,50 € | ~3 € | 3–5 j | 🟢 Bas | Power gating caméra/IR/[[LoRa]] |
 | A13 | **Nordic PPK2** (mesure courant) | **Nordic Power Profiler Kit II** | **Nordic Semi shop EU** ou **Mouser BE** | nordic.com/en/products/evaluation-tools/ppk2 | 1 | ~100 € | **~100 €** | 5–10 j | 🟢 Bas | ⚠️ **Non négociable** — sans PPK2, ADR-005 non vérifiable |
 | A14 | Breadboard + câbles Dupont | Kit proto (830 pts + câbles) | Amazon.de / Conrad | — | 2 | ~7 € | ~14 € | 3–5 j | 🟢 Bas | Banc ouvert M-02 |
 | A15 | Alimentation labo USB | **RD UM24C** ou **Ruideng RD6006** si absent | Amazon.de | — | 1 | ~20–40 € | ~35 € | 3–7 j | 🟢 Bas | Si alimentation labo inexistante chez JCH |
@@ -57,8 +57,8 @@ L'outillage (PPK2) est prioritaire et fait partie d'Option A.
 | # | Composant | Référence précise | Fournisseur recommandé | Lien / Recherche | Qté | Prix unit. livré BE (est.) | Total (est.) | Délai | Risque supply | Note |
 |---|-----------|-------------------|------------------------|------------------|-----|---------------------------|--------------|-------|----------------|------|
 | B01 | Lentille M12 IR-corrigée | **Lensation LS-6028** f/1.8, 6 mm, IR-corrected, M12 — ou **Evetar M12B0618W-IR** f/1.8, 6 mm | **Lensation.de** priorité | lensation.de "M12 f/1.8 IR" | 2 | ~35–45 € | **~80 €** | 5–10 j | 🟡 Moyen | ⚠️ **Ne pas descendre sous 30 €/lentille** — qualité nuit critique. Demander devis avant commande. Ne pas acheter lentille fixe collée sans filetage M12. |
-| B02 | Module LoRa P0 nœud | **RAK3172-T EU868** (SX1262, CE certifié, IPEX, −40/+85°C) | **RAK Store EU** (store.rakwireless.com) | RAK ref "RAK3172-T" EU868 | 2 | ~14 € | ~28 € | 5–10 j | 🟢 Bas | Vérifier variante EU868 + IPEX explicite. Alternative : Murata Type 1SJ chez Mouser si stock RAK en rupture. |
-| B03 | Antenne LoRa 868 MHz | **LoRa flex antenna 868 MHz IPEX** — Molex 0213980100 ou équivalent ~80 mm | **Mouser BE** | Mouser "LoRa antenna 868 IPEX" | 2 | ~4 € | ~8 € | 3–7 j | 🟢 Bas | Antenne interne ; alternative : câble pigtail IPEX → SMA + antenne camouflee branche si RF insuffisant |
+| B02 | Module [[LoRa]] P0 nœud | **RAK3172-T EU868** (SX1262, CE certifié, IPEX, −40/+85°C) | **RAK Store EU** (store.rakwireless.com) | RAK ref "RAK3172-T" EU868 | 2 | ~14 € | ~28 € | 5–10 j | 🟢 Bas | Vérifier variante EU868 + IPEX explicite. Alternative : Murata Type 1SJ chez Mouser si stock RAK en rupture. |
+| B03 | Antenne [[LoRa]] 868 MHz | **[[LoRa]] flex antenna 868 MHz IPEX** — Molex 0213980100 ou équivalent ~80 mm | **Mouser BE** | Mouser "[[LoRa]] antenna 868 IPEX" | 2 | ~4 € | ~8 € | 3–7 j | 🟢 Bas | Antenne interne ; alternative : câble pigtail IPEX → SMA + antenne camouflee branche si RF insuffisant |
 | B04 | Boîtier IP67 P0 | **Hammond 1554B** (188×120×78 mm) ou **Hammond 1554A** (150×100×60 mm) — ABS/PC, IP67 | **RS Belgium** ou **Mouser BE** | RS "Hammond 1554A" | 1–2 | ~16 € | ~25 € | 3–7 j | 🟡 Moyen | Commander après layout interne Option A validé. Vérifier volume utile réel (pas dimensions externes). Couleur grise ou noire en base + peinture verte terrain. Note : boîtier P1 sera impression 3D forme organique avec dos arrondi et ajouts camouflage (décision JCH 2026-05-25) — hors budget P0. |
 | B05 | BME688 (bloc capteurs réserve) | **Bosch BME688** breakout ou puce CMS | **Mouser BE** | Mouser ref "BME688" | 2 | ~9 € | ~18 € | 3–7 j | 🟢 Bas | Optionnel P0 — réserve mécanique et firmware. Ne pas complexifier M-01/M-02 si budget serré. |
 | B06 | SHT31-DIS (surveillance interne boîtier) | **Sensirion SHT31-DIS-B** (±2% RH, ±0,3°C, I2C) | **Mouser BE** | Mouser ref "SHT31-DIS-B" | 2 | ~5 € | ~10 € | 3–5 j | 🟢 Bas | Humidité interne boîtier — détection condensation/silica gel saturé |
@@ -121,7 +121,7 @@ L'outillage (PPK2) est prioritaire et fait partie d'Option A.
 | ESP32-S3-WROOM-1U module (PCB final) | Après validation DevKit banc | WP02 phase 2 / PCB v0.1 |
 | AS7341 capteur spectral | Réserve optionnelle P0 | Si BME688 insuffisant faune |
 | Quectel SIM7080G + SIM 1NCE | LTE-M différé P1 | WP05+ |
-| Raspberry Pi 5 + SSD | Base/Master Nexus P1 | WP06 |
+| [[Raspberry Pi 5]] + SSD | Base/Master Nexus P1 | WP06 |
 | Panneau solaire + CN3791 | P1 seulement | Hors P0 |
 | PCB dédié custom | WP02 phase 2 | Après mesures M-02 |
 | Impression 3D boîtier bio | P1 seulement | Hors budget P0 |
@@ -132,23 +132,23 @@ L'outillage (PPK2) est prioritaire et fait partie d'Option A.
 
 | ADR | Statut | Impact sur la shortlist |
 |-----|--------|------------------------|
-| ADR-001 ESP32-S3 | ✅ Accepté | A01 — DevKit commandé directement |
+| ADR-001 [[ESP32-S3]] | ✅ Accepté | A01 — DevKit commandé directement |
 | ADR-002 Caméra OV5640/IR | ✅ Accepté | A02 + B01 — module + lentille définitive B |
-| ADR-003 LoRa P2P EU868 | ✅ Accepté | A02 (SX1262 breakout ou DevKit LoRa) + B02 RAK3172-T |
+| ADR-003 [[LoRa]] P2P EU868 | ✅ Accepté | A02 (SX1262 breakout ou DevKit [[LoRa]]) + B02 RAK3172-T |
 | ADR-004 microSD industrielle | ✅ Accepté | A07 — Swissbit DigiKey |
 | ADR-005 AA + buck faible Iq | ✅ Accepté | A08–A10 + A09 holders + A16 piles L91 |
 | ADR-006 Boîtier IP67 | ✅ Accepté (2026-05-25) | B04 — Hammond P0 ; impression 3D forme organique retenue P1 (hors budget P0) |
 | ADR-007 Détection événementielle PIR | ✅ Accepté | A05 — Panasonic EKMB |
 | ADR-008 Interface capteurs extensible | ✅ Accepté | A06 micro + B05–B06 réserve capteurs |
-| ADR-009 Architecture Satellite/Base/Cloud | ✅ Accepté | Pas d'achat Pi/cloud P0 |
+| ADR-009 Architecture Satellite/Base/Cloud | ✅ Accepté | Pas d'achat [[Pi]]/cloud P0 |
 
 ---
 
 ## 9. Prochaine action
 
 1. **JCH valide la liste Option A** — ou signale un composant à modifier avant de commander.
-2. **Forge** groupe le panier Mouser (A01 + A03–A12 + B03 + B05–B06) et vérifie disponibilité stock à date.
-3. **Bruno** vérifie le total livré réel (frais de port, TVA, délais) avant validation financière.
+2. **[[Forge]]** groupe le panier Mouser (A01 + A03–A12 + B03 + B05–B06) et vérifie disponibilité stock à date.
+3. **[[Bruno]]** vérifie le total livré réel (frais de port, TVA, délais) avant validation financière.
 4. **Commande PPK2** (A13) en priorité absolue — Nordic Semi shop EU ou Mouser.
 5. **Contacter Arducam** pour confirmation module DVP M12 avant commande panier caméra (A02).
 6. **Demander devis Lensation** (B01) — 2 lentilles M12 f/1.8 IR-corrigées — avant tout achat lentille.

@@ -1,6 +1,6 @@
 # 04 — NUANCES
 
-Statut: archive reanimable
+Statut: [[archive]] reanimable
 
 Motif du gel:
 - projet BESS en attente de recontact client ;

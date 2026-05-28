@@ -1,10 +1,10 @@
 ---
-source_file: "git/faune-autour_13.html"
+source_file: "[[Git]]/faune-autour_13.html"
 type: "document"
 community: "Species Search & Geolocation Logic"
 tags:
-  - graphify/document
-  - graphify/EXTRACTED
+  - [[Graphify]]/document
+  - [[Graphify]]/EXTRACTED
   - community/Species_Search_&_Geolocation_Logic
 ---
 
@@ -15,4 +15,4 @@ tags:
 - [[doExplore() — async function GBIF kingdom Animalia query by WKT bbox + period]] - `calls` [EXTRACTED]
 - [[doSearch() — async function 3-step name resolution + GBIF occurrence fetch]] - `calls` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Species_Search_&_Geolocation_Logic
+#[[Graphify]]/document #[[Graphify]]/EXTRACTED #community/Species_Search_&_Geolocation_Logic

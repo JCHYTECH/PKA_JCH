@@ -1,7 +1,7 @@
 # WildNexus — Philosophie d'ingénierie P0
 
 **Date :** 2026-05-18  
-**Owner :** Dobby  
+**Owner :** [[Dobby]]  
 **Statut :** Principe actif — s'applique à tous les WP
 
 ---

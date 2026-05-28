@@ -1,4 +1,4 @@
-# Argus — Rapport Batch ARTEON Phase 0
+# [[Argus]] — Rapport Batch ARTEON Phase 0
 
 **Date :** 2026-05-11 10:45  
 **Source :** `/Users/jchavauxm5/Desktop/LrC To /Dobby select`  
@@ -14,31 +14,31 @@
 ## ❌ Erreurs (5)
 
 - **LrC to-10.jpg** — Traceback (most recent call last):
-  File "/Users/jchavauxm5/.claude/skills/photo-analyse-wildlife/scripts/run_analysis.py", line 329, in <module>
+  File "/Users/jchavauxm5/.[[Claude]]/skills/photo-analyse-wildlife/scripts/run_analysis.py", line 329, in <module>
     main()
     ~~~~^^
   File "/Users/jchavauxm5/.clau
 - **LrC to-11.jpg** — Traceback (most recent call last):
-  File "/Users/jchavauxm5/.claude/skills/photo-analyse-wildlife/scripts/run_analysis.py", line 329, in <module>
+  File "/Users/jchavauxm5/.[[Claude]]/skills/photo-analyse-wildlife/scripts/run_analysis.py", line 329, in <module>
     main()
     ~~~~^^
   File "/Users/jchavauxm5/.clau
 - **LrC to-12.jpg** — Traceback (most recent call last):
-  File "/Users/jchavauxm5/.claude/skills/photo-analyse-wildlife/scripts/run_analysis.py", line 329, in <module>
+  File "/Users/jchavauxm5/.[[Claude]]/skills/photo-analyse-wildlife/scripts/run_analysis.py", line 329, in <module>
     main()
     ~~~~^^
   File "/Users/jchavauxm5/.clau
 - **LrC to-13.jpg** — Traceback (most recent call last):
-  File "/Users/jchavauxm5/.claude/skills/photo-analyse-wildlife/scripts/run_analysis.py", line 329, in <module>
+  File "/Users/jchavauxm5/.[[Claude]]/skills/photo-analyse-wildlife/scripts/run_analysis.py", line 329, in <module>
     main()
     ~~~~^^
   File "/Users/jchavauxm5/.clau
 - **LrC to-14.jpg** — Traceback (most recent call last):
-  File "/Users/jchavauxm5/.claude/skills/photo-analyse-wildlife/scripts/run_analysis.py", line 329, in <module>
+  File "/Users/jchavauxm5/.[[Claude]]/skills/photo-analyse-wildlife/scripts/run_analysis.py", line 329, in <module>
     main()
     ~~~~^^
   File "/Users/jchavauxm5/.clau
 
 ---
 
-*Généré par Argus 🦅 via argus_batch.py — PKA ARTEON Phase 0*
+*Généré par [[Argus]] 🦅 via argus_batch.py — PKA ARTEON Phase 0*

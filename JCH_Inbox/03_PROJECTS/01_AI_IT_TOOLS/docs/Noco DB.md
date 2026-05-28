@@ -79,7 +79,7 @@ de airtable et notion , lequel est le plus user friendly avec courbe d'apprentis
 
 ## Cowork — ce que ça peut apporter
 
-Vous posez la bonne question. Cowork (Claude sur le bureau) peut intervenir sur la dimension fichiers et automatisation locale, mais il faut être précis sur ce qu'il fait et ne fait pas :
+Vous posez la bonne question. Cowork ([[Claude]] sur le bureau) peut intervenir sur la dimension fichiers et automatisation locale, mais il faut être précis sur ce qu'il fait et ne fait pas :
 
 - **Il peut** : manipuler des fichiers locaux, transformer des exports (Takeout GeoJSON/CSV), restructurer des données, générer des fichiers d'import formatés pour Airtable ou Notion
 - **Il ne peut pas** : se connecter directement à votre compte Airtable ou Google Maps pour synchroniser en temps réel, ni surveiller des changements automatiquement
@@ -87,8 +87,8 @@ Vous posez la bonne question. Cowork (Claude sur le bureau) peut intervenir sur 
 Concrètement, un workflow réaliste avec Cowork serait :
 
 1. Vous faites un Takeout Google Maps (manuel, quelques clics)
-2. Vous passez le fichier à Cowork/Claude
-3. Claude nettoie, restructure, applique votre grille de classification, et produit un CSV prêt à importer dans Airtable
+2. Vous passez le fichier à Cowork/[[Claude]]
+3. [[Claude]] nettoie, restructure, applique votre grille de classification, et produit un CSV prêt à importer dans Airtable
 4. Vous importez dans Airtable (drag & drop)
 
 Ça réduit le travail de reformatage à zéro, mais ça ne supprime pas l'étape manuelle du Takeout.
@@ -375,7 +375,7 @@ Convertis le texte de ce chat en un fichier Markdown propre, avec des titres pou
 
 Avant de lancer ça — ce chat est assez long avec beaucoup d'échanges techniques. Vous voulez :
 
-1. **L'intégralité du chat** (chaque message JC + chaque réponse Claude, verbatim) — ça fera un document conséquent
+1. **L'intégralité du chat** (chaque message JC + chaque réponse [[Claude]], verbatim) — ça fera un document conséquent
 2. **Une synthèse structurée** du parcours et des décisions prises (plus utile comme référence future, plus court)
 
 Lequel ?
@@ -499,6 +499,6 @@ Pour convertir un champ : cliquer sur l'en-tête de colonne → "Customize field
 
 ## Maintenance future
 
-- **Nouveaux lieux** : ajouter directement dans NocoDB, ou refaire un Takeout et passer le fichier à Claude pour un diff sans doublons
+- **Nouveaux lieux** : ajouter directement dans NocoDB, ou refaire un Takeout et passer le fichier à [[Claude]] pour un diff sans doublons
 - **Classification** : remplir Environnement, Espèces, Saison au fil des sorties terrain
 - **Limite** : 1 000 lignes en gratuit cloud (644 actuellement, marge de 356)

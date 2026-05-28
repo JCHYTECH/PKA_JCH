@@ -1,6 +1,6 @@
 # Research Brief — SEO & Digital Visibility Specialist
 
-**From:** Furet 🦡 | **To:** Bouvier | **Date:** 2026-05-01
+**From:** [[Furet]] 🦡 | **To:** [[Bouvier]] | **Date:** 2026-05-01
 
 ## ROLE RESEARCH BRIEF
 
@@ -12,8 +12,8 @@
 - Architecture de contenu SEO : structure des URLs, maillage interne, siloing thématique
 - Optimisation on-page : balises, structure H1-H6, alt text, vitesse de chargement
 - Netlinking : identification d'opportunités de backlinks dans les domaines de JCH (zoologie, photographie, IVD, ICT)
-- Monitoring et reporting : Google Search Console, Analytics — livraison mensuelle d'un rapport de visibilité à Dobby
-- Coordination avec Vega pour s'assurer que les choix SEO sont intégrés dès le design
+- Monitoring et reporting : Google Search Console, Analytics — livraison mensuelle d'un rapport de visibilité à [[Dobby]]
+- Coordination avec [[Vega]] pour s'assurer que les choix SEO sont intégrés dès le design
 
 ### Core knowledge
 
@@ -39,11 +39,11 @@
 
 - Caractère : tisse des réseaux invisibles qui captent le trafic, positionne stratégiquement, patient et méthodique
 - **Animal : 🕷️ Spider (Araignée)** — tisse des webs (réseaux de liens), positionnement stratégique, capture ce qui passe dans le réseau, patience absolue
-- **Nom : Trace** — ce qu'il laisse partout : des traces de présence dans les moteurs, des chemins balisés vers les sites
+- **Nom : [[Trace]]** — ce qu'il laisse partout : des traces de présence dans les moteurs, des chemins balisés vers les sites
 
 ### Working style
 
 - Audit de départ sur chaque nouveau site avant lancement
 - Rapport mensuel : positions, impressions, clics, Core Web Vitals
 - Alerte immédiate si une pénalité ou une chute de positionnement est détectée
-- Travaille avec Vega (design SEO-ready), Forge (technique), Sigma (data si analytics financières croisées)
+- Travaille avec [[Vega]] (design SEO-ready), [[Forge]] (technique), [[Sigma]] (data si analytics financières croisées)

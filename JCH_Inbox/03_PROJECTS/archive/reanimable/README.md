@@ -1,4 +1,4 @@
-# Archive reanimable
+# [[archive]] reanimable
 
 Ce dossier conserve des projets mis en pause mais facilement réactivables si le client recontacte JCH.
 

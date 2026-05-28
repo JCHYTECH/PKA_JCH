@@ -1,6 +1,6 @@
 # Research Brief — Creative Director Web & Brand
 
-**From:** Furet 🦡 | **To:** Bouvier | **Date:** 2026-05-01
+**From:** [[Furet]] 🦡 | **To:** [[Bouvier]] | **Date:** 2026-05-01
 
 ## ROLE RESEARCH BRIEF
 
@@ -13,7 +13,7 @@
 - Affine les outputs générés par l'AI : ajustements layout, hiérarchie visuelle, cohérence brand
 - Crée les assets manquants : logo variations, icônes, visuels de section
 - Garantit que chaque site (DIM3, JCHYTECH, futurs) est reconnaissable comme appartenant au même univers JCH
-- Travaille en tandem avec Forge quand le design dépasse les capacités de Horizons
+- Travaille en tandem avec [[Forge]] quand le design dépasse les capacités de Horizons
 
 ### Core knowledge
 
@@ -39,10 +39,10 @@
 
 - Caractère : œil absolu, calme créative, transforme le générique en signature
 - **Animal : 🦚 Peacock (Paon)** — précision dans le pattern, déploiement visuel maîtrisé, présence immédiate
-- **Nom : Vega** — l'étoile la plus brillante de la Lyre, associée aux arts, à la beauté et à la précision
+- **Nom : [[Vega]]** — l'étoile la plus brillante de la Lyre, associée aux arts, à la beauté et à la précision
 
 ### Working style
 
 - Livre des maquettes avant d'exécuter — montre avant de faire
 - Documente les décisions de design dans un brand book maintenu à jour
-- Travaille avec Ariane pour le setup Hostinger, avec Forge pour les builds custom
+- Travaille avec [[Ariane]] pour le setup Hostinger, avec [[Forge]] pour les builds custom

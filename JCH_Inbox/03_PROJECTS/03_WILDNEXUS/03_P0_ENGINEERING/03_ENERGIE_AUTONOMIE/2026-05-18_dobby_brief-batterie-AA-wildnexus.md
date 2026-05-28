@@ -1,6 +1,6 @@
 # Brief équipe — Changement architecture batterie WildNexus P0
 
-**De :** Dobby 🦉  
+**De :** [[Dobby]] 🦉  
 **Date :** 2026-05-18  
 **Priorité :** Haute — impacte PCB, boîtier, firmware et budget  
 **Référence :** `ADR-005 v0.2`
@@ -17,7 +17,7 @@ Fini le LiFePO4 18650 + BMS + CN3791. Le compartiment arrière du boîtier accue
 
 ## Ce qui change par WP
 
-### Forge + Castor — WP02 Hardware (IMPACT FORT)
+### [[Forge]] + [[Castor]] — WP02 Hardware (IMPACT FORT)
 
 **Supprimer du schéma PCB :**
 - Cellules 18650 LiFePO4 et leur support
@@ -28,13 +28,13 @@ Fini le LiFePO4 18650 + BMS + CN3791. Le compartiment arrière du boîtier accue
 **Ajouter au schéma PCB :**
 - Régulateur buck TPS62840 (Texas Instruments) — Iq = 5 µA, entrée 4.0–6.5 V, sortie 3.3 V
 - Connecteur vers holder 8× AA 4S2P (4 en série × 2 parallèles = 4.8–6 V)
-- Diviseur résistif ADC pour monitoring tension batterie (4.8 V → plage ESP32-S3)
+- Diviseur résistif ADC pour monitoring tension batterie (4.8 V → plage [[ESP32-S3]])
 
 Les MOSFET de coupure périphériques **restent inchangés**.
 
 ---
 
-### Chouette — ADR-006 Boîtier (IMPACT FORT)
+### [[Chouette]] — ADR-006 Boîtier (IMPACT FORT)
 
 Le compartiment batterie change complètement :
 - Prévoir logement pour **2 holders 4× AA** (standard du commerce, ~15 × 57 × 57 mm chacun)
@@ -44,7 +44,7 @@ Le compartiment batterie change complètement :
 
 ---
 
-### Forge — WP03 Firmware (IMPACT MODÉRÉ)
+### [[Forge]] — WP03 Firmware (IMPACT MODÉRÉ)
 
 - Monitoring tension batterie via ADC : seuil alerte < 4.0 V, coupure préventive < 3.6 V
 - Supprimer tout code de gestion charge / MPPT
@@ -52,7 +52,7 @@ Le compartiment batterie change complètement :
 
 ---
 
-### Bruno — Budget + Supply register (IMPACT MODÉRÉ)
+### [[Bruno]] — Budget + Supply register (IMPACT MODÉRÉ)
 
 **Retirer du supply register :**
 - 2× 18650 LiFePO4 — remplacé
@@ -67,13 +67,13 @@ Le compartiment batterie change complètement :
 
 ---
 
-### Nova + Clio — WP04 Edge AI (IMPACT NUL)
+### [[Nova]] + [[Clio]] — WP04 Edge AI (IMPACT NUL)
 
 Aucun changement sur le pipeline IA. Pour information uniquement.
 
 ---
 
-### Chouette — WP05 EVT terrain (INFORMATION)
+### [[Chouette]] — WP05 EVT terrain (INFORMATION)
 
 Le protocole terrain EVT s'en trouve simplifié : remplacement batterie = 8 piles AA standard achetées en supermarché. Prévoir un stock de piles de rechange dans le kit terrain.
 

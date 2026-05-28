@@ -1,6 +1,6 @@
 # Gmail Gatekeeper
 
-Flux Gmail dédié à Dobby.
+Flux Gmail dédié à [[Dobby]].
 
 ## Règles
 

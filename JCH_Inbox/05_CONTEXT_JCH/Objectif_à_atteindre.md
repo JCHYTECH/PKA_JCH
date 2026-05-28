@@ -53,7 +53,7 @@ Voici donc les étapes à suivre pour atteindre votre objectif. Désormais, vous
 /merci : pour arrêter la discussion et mener vous-même les actions
 /precise : pour obtenir plus de détails sur les actions à mener
 /objectif : pour travailler sur un autre objectif
-/go : pour créer une équipe d'agents IA qui va mener les actions dans ChatGPT
+/go : pour créer une équipe d'agents IA qui va mener les actions dans [[ChatGPT]]
 
 Que choisissez-vous ?
 
@@ -105,6 +105,6 @@ En suivant ces étapes, vous pourrez créer un canal de distribution efficace et
 Maintenant, que souhaitez-vous faire ?
 /merci : pour arrêter la discussion et mener vous-même les actions
 /objectif : pour travailler sur un autre objectif
-/go : pour créer une équipe d'agents IA qui va mener les actions dans ChatGPT
+/go : pour créer une équipe d'agents IA qui va mener les actions dans [[ChatGPT]]
 
 ---

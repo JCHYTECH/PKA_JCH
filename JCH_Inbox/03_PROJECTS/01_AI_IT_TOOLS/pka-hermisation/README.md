@@ -1,6 +1,6 @@
 ---
 date: 2026-05-25
-model: GPT-5 Codex
+model: GPT-5 [[Codex]]
 type: project
 status: active
 domain: ai-system
@@ -16,7 +16,7 @@ The goal is not to copy Hermes Agent. The goal is to adapt the useful concepts i
 
 ## Core Position
 
-Dobby remains the central orchestrator. Hermes-like concepts are supporting infrastructure, not a replacement for Dobby, ChatGPT, Claude, or the specialist roster.
+[[Dobby]] remains the central orchestrator. Hermes-like concepts are supporting infrastructure, not a replacement for [[Dobby]], [[ChatGPT]], [[Claude]], or the specialist roster.
 
 ## Boundaries
 

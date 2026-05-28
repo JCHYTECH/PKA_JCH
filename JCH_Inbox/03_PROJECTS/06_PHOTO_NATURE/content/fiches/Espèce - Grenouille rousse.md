@@ -51,7 +51,7 @@ Elle présente une coloration très variable : brun, roux, grisâtre, jaunâtre 
 - Peau généralement lisse à légèrement granuleuse.
 - Couleur très variable : brun roux, brun gris, jaunâtre, parfois plus sombre.
 - Pattes postérieures relativement longues, mais silhouette moins élancée que certaines grenouilles vertes.
-- Iris souvent doré ou brun doré.
+- [[Iris]] souvent doré ou brun doré.
 
 ### Points à photographier pour identification
 

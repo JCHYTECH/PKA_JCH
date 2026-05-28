@@ -1,8 +1,8 @@
-# 🐦‍⬛ Pie — Analyse email
+# 🐦‍⬛ [[Pie]] — Analyse email
 
 **Date :** 2026-05-08  
-**De :** Apple  
-**Objet :** Votre reçu Apple  
+**De :** [[Apple]]  
+**Objet :** Votre reçu [[Apple]]  
 
 ---
 

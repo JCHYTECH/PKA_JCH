@@ -1154,7 +1154,7 @@ ouvre la conversation, touche le menu en haut à droite, puis cherche une option
 Pour copier le texte brut, il n’y a pas toujours un bouton “copier toute la conversation” dans l’app. Dans ce cas, la méthode pratique est :
 appui long dans un message, puis **Sélectionner le texte** ou **Copier**, et répéter bloc par bloc. Sur de très longues conversations, c’est assez fastidieux.
 
-La solution la plus propre est souvent de passer par la version web de ChatGPT sur Mac :
+La solution la plus propre est souvent de passer par la version web de [[ChatGPT]] sur Mac :
 ouvre la conversation, puis utilise le menu de partage ou imprime la page en PDF depuis le navigateur. Sur Mac, tu peux aussi sélectionner beaucoup plus facilement de grandes portions du chat.
 
 Autre possibilité : dans l’app, si tu vois un bouton **Partager**, choisis ensuite une destination comme Notes, Mail ou Fichiers. C’est souvent le moyen le plus rapide de conserver l’ensemble.

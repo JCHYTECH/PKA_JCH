@@ -3,7 +3,7 @@
 **Version :** v0.3
 **Date :** 2026-05-23
 **Statut :** Ouvert — à compléter avant `M-01`
-**Owner :** Bruno + Forge
+**Owner :** [[Bruno]] + [[Forge]]
 
 ## 1. Objet
 
@@ -48,14 +48,14 @@ Scoring fournisseur recommandé :
 
 | Famille | Choix ADR | Fournisseur primaire | Alternative écartée (motif) | Prix unitaire cible | Délai cible | Risque | ADR |
 |---------|-----------|---------------------|-----------------------------|--------------------:|-------------|--------|-----|
-| MCU | ESP32-S3 | Mouser / Farnell EU | STM32U5 — *intégration caméra complexe* | ~4–8 € | 2–5 j | Bas | ADR-001 ✅ |
-| Caméra — capteur | OV5640 5MP M12 DVP (Arducam) | Arducam / Mouser EU | IMX462 MIPI — *interface MIPI non native ESP32-S3* | ~20 € | 3–7 j | Bas | ADR-002 ✅ |
+| MCU | [[ESP32-S3]] | Mouser / Farnell EU | STM32U5 — *intégration caméra complexe* | ~4–8 € | 2–5 j | Bas | ADR-001 ✅ |
+| Caméra — capteur | OV5640 5MP M12 DVP (Arducam) | Arducam / Mouser EU | IMX462 MIPI — *interface MIPI non native [[ESP32-S3]]* | ~20 € | 3–7 j | Bas | ADR-002 ✅ |
 | Caméra — lentille | M12 IR-corrigée f/1.8 4–6 mm | Lensation.de | Lentille fixe intégrée — *pas IR-corrigée, non remplaçable* | ~25–50 € | 3–7 j | Moyen | ADR-002 ✅ |
 | Caméra — IR LEDs | LED IR 850 nm × 4 | Mouser / AliExpress | 940 nm — *rendement capteur plus faible* | ~5–10 € | À confirmer | Bas | ADR-002 ✅ |
-| Radio LoRa | RAK3172 (SX1262, CE certifié) | RAK EU / Mouser | Murata Type 1SJ — *même gamme, second choix* | ~12–15 € | 3–7 j | Bas | ADR-003 ✅ |
+| Radio [[LoRa]] | RAK3172 (SX1262, CE certifié) | RAK EU / Mouser | Murata Type 1SJ — *même gamme, second choix* | ~12–15 € | 3–7 j | Bas | ADR-003 ✅ |
 | Radio cellulaire | Quectel SIM7080G (NB-IoT + LTE-M) | Mouser / DigiKey | SIM7070G — *NB-IoT seul, moins polyvalent* | ~15–20 € | 5–10 j | Moyen | ADR-003 — **P1 — différé, complexité firmware non justifiée P0** |
 | SIM IoT | 1NCE nano-SIM (10 ans / 500 Mo) | 1nce.com | Hologram — *pay-as-you-go plus cher à terme* | 10 € one-shot | 3–5 j | Bas | ADR-003 — **P1 — lié au cellulaire** |
-| Gateway P0 | ESP32-S3 DevKit + SX1262 breakout | Mouser / AliExpress | RAK2287 gateway complète — *surdimensionné P0* | ~25 € | 3–7 j | Bas | ADR-003 ✅ |
+| Gateway P0 | [[ESP32-S3]] DevKit + SX1262 breakout | Mouser / AliExpress | RAK2287 gateway complète — *surdimensionné P0* | ~25 € | 3–7 j | Bas | ADR-003 ✅ |
 | Stockage | microSD industrielle 8-16 GB | Mouser / DigiKey / Distrelec | flash SPI — *capacité limitée pour images et clips audio* | À chiffrer | À confirmer | Moyen | ADR-004 ✅ |
 | Batterie | Holder 8× AA en 4S2P + piles utilisateur | Mouser / Reichelt / Conrad / RS | LiFePO4 18650 — *BMS/charge/supply non nécessaires P0* | À chiffrer holder seul | À confirmer | Bas | ADR-005 ✅ |
 | Régulation énergie | TPS62840 ou équivalent buck faible Iq | Mouser / DigiKey | CN3791/MPPT — *solaire différé P1* | ~2–5 € | 2–5 j | Bas | ADR-005 ✅ |
@@ -75,15 +75,16 @@ DigiKey Belgique indique une livraison gratuite à partir de 50 EUR, sinon 18 EU
 |---|---|---|---|---|---|
 | MCU prototype | ESP32-S3-DevKitC-1-N8R8 | Mouser BE | stock élevé, 8 MB flash + 8 MB PSRAM, fournisseur fiable, prototypage immédiat | DigiKey BE ESP32-S3-WROOM module pour PCB | Acheter 2 DevKit pour banc M-02 |
 | MCU PCB | ESP32-S3-WROOM-1U-N8R8 | Mouser BE | module officiel Espressif, IPEX, 8 MB PSRAM, stock élevé, prix bas | DigiKey BE ESP32-S3-WROOM-1-N8R8 | Prévoir 5-10 modules si PCB P0 lancé |
-| Radio LoRa nœud | RAK3172 / RAK3172-T EU868 avec IPEX | RAK Store officiel ou revendeur EU | bonne variante EU868, P2P supporté, documentation RAK | Industry-Electronics / M2M Gubbins si stock EU meilleur | Vérifier variante EU868 + IPEX avant achat |
-| Gateway / banc RF | Meshnology N35 V4 / Heltec WiFi LoRa 32 V4 EU868 | Meshnology/Heltec officiel, Amazon seulement si V4 confirmée | accélère tests LoRa/gateway, pas nœud caméra | RAK3172 Evaluation Board | Acheter 1-2 seulement pour banc RF |
-| Caméra capteur | OV5640 5 MP DVP compatible ESP32, M12 si possible | Arducam officiel ou fournisseur caméra spécialisé | Mouser ne semble pas couvrir proprement le module DVP M12 voulu ; éviter variantes marketplace floues | IADIY / YXFcamera comme devis, pas achat aveugle | Demander fiche pinout + NoIR + M12 + DVP |
+| Radio [[LoRa]] nœud | RAK3172 / RAK3172-T EU868 avec IPEX | RAK Store officiel ou revendeur EU | bonne variante EU868, P2P supporté, documentation RAK | Industry-Electronics / M2M Gubbins si stock EU meilleur | Vérifier variante EU868 + IPEX avant achat |
+| Gateway / banc RF | Meshnology N35 V4 / Heltec WiFi [[LoRa]] 32 V4 EU868 | Meshnology/Heltec officiel, Amazon seulement si V4 confirmée | accélère tests [[LoRa]]/gateway, pas nœud caméra | RAK3172 Evaluation Board | Acheter 1-2 seulement pour banc RF |
+| Caméra capteur | OV5640 5 MP DVP compatible [[ESP32]], M12 si possible | Arducam officiel ou fournisseur caméra spécialisé | Mouser ne semble pas couvrir proprement le module DVP M12 voulu ; éviter variantes marketplace floues | IADIY / YXFcamera comme devis, pas achat aveugle | Demander fiche pinout + NoIR + M12 + DVP |
 | Caméra alternative rapide | Arducam Mega 5MP SPI M12 | Arducam officiel | facile à intégrer, M12, SDK, mais **IR-cut visible only** donc non conforme nuit | aucun pour décision ADR-002 | Benchmark seulement, ne pas acheter comme caméra finale |
 | Lentille | M12 IR-corrigée f/1.8 4-6 mm | Lensation ou Evetar officiel EU | qualité optique, correction IR, traçabilité | Arducam M12 IR lens si specs complètes | Demander devis 2-5 pièces |
 | LEDs IR | Vishay 940 nm haute puissance + variante 850 nm | Mouser BE | stock, datasheets, pas de risque marketplace ; permet test faune 850/940 | Würth IR LEDs chez Mouser | Acheter petit lot des deux longueurs d'onde |
 | PIR | Panasonic EKMB low-power PaPIRs | Mouser BE | courant jusqu'à 1 µA selon famille EKMB, fournisseur fiable | DigiKey BE Panasonic EKMB | Choisir FOV après design boîtier |
 | Stockage | Swissbit microSD industrielle 8-16 GB | DigiKey BE / Distrelec BE | cartes industrielles, endurance, température ; Mouser parfois restriction région | Mouser si disponibilité région OK | Acheter 2-3 cartes industrielles |
 | Modem cellulaire | SIM7080G | DigiKey BE | fiche claire, module actif, support RF/GNSS, livraison BE | Mouser si Quectel/SIMCom dispo | Vérifier opérateur/SIM/antenne avant achat |
+| Modem USB LTE [[BirdNET]] mobile | MF833U1 — reçu 2026-05-26 | JCH — matériel reçu | connectivité terrain pour [[Raspberry Pi]] + BirdNET-Go mobile ; ne modifie pas P0 satellite | SIM7080G / LTE-M pour intégration P1 embarquée | Tester détection USB, SIM/APN, stabilité reboot, consommation USB, coexistence audio USB |
 | SIM IoT | 1NCE nano-SIM | 1NCE officiel | modèle 10 ans/500 MB cohérent ADR-003 | aucun évident | Acheter direct 1NCE |
 | Batterie | Holder 8× AA 4S2P + piles AA utilisateur | RS / Reichelt / Conrad / Mouser selon format | modèle caméra de chasse, pas de BMS, maintenance terrain simple | holder 4×AA × 2 si intégration mécanique meilleure | Acheter holder après choix boîtier |
 | Buck énergie | TPS62840 ou module équivalent faible Iq | Mouser BE / DigiKey BE | faible courant de repos, cohérent autonomie P0 | autre buck faible Iq si pic courant insuffisant | Ajouter au panier composants |
@@ -103,7 +104,7 @@ DigiKey Belgique indique une livraison gratuite à partir de 50 EUR, sinon 18 EU
 
 1. MCU — **validé** (ADR-001 accepté)
 2. Module caméra + lentille — **validé** (ADR-002 accepté)
-3. Module radio LoRa
+3. Module radio [[LoRa]]
 4. Holder 8× AA + buck faible Iq
 5. Boîtier IP67
 

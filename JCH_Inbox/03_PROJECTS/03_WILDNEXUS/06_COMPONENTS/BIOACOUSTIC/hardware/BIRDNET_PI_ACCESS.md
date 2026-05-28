@@ -2,11 +2,21 @@
 
 **Date de creation :** 2026-05-24  
 **Projet :** WildNexus / Bioacoustique  
-**Machine :** Raspberry Pi BirdNET-Pi  
+**Machine :** [[Raspberry Pi]] BirdNET-Pi  
 **Owner :** JCH  
 **Regle :** ne pas stocker les mots de passe en clair dans PKA.
 
 ## Acces web BirdNET-Pi
+
+### Port correct (valide 2026-05-28)
+
+**L'interface BirdNET-Pi ecoute sur le port 80** (nginx integre).
+Le port 8080 du RPi est `gotty` (terminal web), binde sur `127.0.0.1` uniquement — inaccessible depuis l'exterieur.
+Ne pas utiliser `:8080` pour l'interface BirdNET-Pi sur cette machine.
+
+```text
+http://<ip ou hostname>       # port 80 — interface BirdNET-Pi
+```
 
 ### URL canonique cible
 
@@ -24,9 +34,9 @@ Plan de stabilisation :
 2. verifier/installer `avahi-daemon` ;
 3. utiliser `http://birdnetpi.local` comme URL principale ;
 4. conserver `192.168.1.48` comme reservation routeur maison ;
-5. utiliser Tailscale/MagicDNS si une URL stable est requise hors reseau local.
+5. utiliser [[Tailscale]]/MagicDNS si une URL stable est requise hors reseau local.
 
-### Tailscale / Tailnet
+### [[Tailscale]] / Tailnet
 
 Objectif si acces stable hors reseau local :
 
@@ -34,24 +44,24 @@ Objectif si acces stable hors reseau local :
 http://birdnetpi.<tailnet>.ts.net
 ```
 
-ou via IP Tailscale :
+ou via IP [[Tailscale]] :
 
 ```text
 http://100.x.y.z
 ```
 
-IPs Tailscale observees le 2026-05-24 :
+IPs [[Tailscale]] observees le 2026-05-28 :
 
 ```text
-iPhone : 100.75.75.90
-Raspberry Pi BirdNET-Pi : 100.84.45.93
+MacBook-Pro-de-JC-1 : 100.108.55.44
+iPhone 182 : 100.75.75.90
+tkajch (Raspberry Pi BirdNET-Pi) : 100.84.45.93
 ```
 
 URL Tailnet stable a tester pour BirdNET-Pi :
 
 ```text
 http://100.84.45.93
-http://100.84.45.93:8080
 ```
 
 Statut Mac observe le 2026-05-24 :
@@ -68,14 +78,14 @@ tailscale ip -4
 hostname
 ```
 
-Si Tailscale est absent du Raspberry :
+Si [[Tailscale]] est absent du Raspberry :
 
 ```bash
 curl -fsSL https://tailscale.com/install.sh | sh
 sudo tailscale up
 ```
 
-Ensuite activer/verifier MagicDNS dans la console Tailscale, puis tester depuis iPhone :
+Ensuite activer/verifier MagicDNS dans la console [[Tailscale]], puis tester depuis iPhone :
 
 ```text
 http://birdnetpi.<tailnet>.ts.net
@@ -117,11 +127,11 @@ URLs a tester :
 
 ```text
 http://192.168.1.48
-http://192.168.1.48:8080
+http://192.168.1.48
 http://birdnetpi.local
 ```
 
-Note : l'historique local contenait `http://192.168.1.48:8080`, ce qui indique que le port 8080 a deja ete utilise pour l'interface.
+Note 2026-05-28 : le port 80 est le port correct pour l'interface BirdNET-Pi. Le port 8080 de cette machine appartient a `gotty` (terminal web), binde sur localhost uniquement.
 
 ### Hotspot iPhone
 
@@ -167,7 +177,7 @@ Mot de passe Tools :
 vide par defaut, sauf modification ulterieure
 ```
 
-## Acces SSH Raspberry Pi
+## Acces SSH [[Raspberry Pi]]
 
 Utilisateur SSH actuel :
 
@@ -188,7 +198,7 @@ Mot de passe SSH :
 connu de JCH ; ne pas ecrire en clair dans PKA
 ```
 
-## Modele BirdNET observe
+## Modele [[BirdNET]] observe
 
 Modele en place :
 
@@ -201,11 +211,11 @@ Lecture :
 - `GLOBAL` : modele mondial.
 - `6K` : environ 6000 classes/especes.
 - `V2.4` : generation du modele.
-- `FP16` : version demi-precision, plus legere pour Raspberry Pi.
+- 
 
 ## Commandes utiles
 
-### Outil de diagnostic et réparation rapide (Dobby Tool)
+### Outil de diagnostic et réparation rapide ([[Dobby]] Tool)
 
 J'ai installé un script sur le RPi pour diagnostiquer et réparer automatiquement les problèmes de base de données ("Database is busy") ou de services plantés.
 
@@ -241,13 +251,13 @@ git branch --show-current
 git log -1 --oneline
 ```
 
-Chercher le modele BirdNET :
+Chercher le modele [[BirdNET]] :
 
 ```bash
 find ~/BirdNET-Pi -iname '*model*' -o -iname '*BirdNET*'
 ```
 
-## Regle memoire Dobby
+## Regle memoire [[Dobby]]
 
 Toute nouvelle information d'acces BirdNET-Pi doit etre ajoutee ici :
 

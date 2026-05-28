@@ -10,7 +10,7 @@ status: active
 ## Session — 09:28 — InsectNet audio-band preview
 
 ### Contexte
-- Modèle : Codex CLI / GPT-5
+- Modèle : [[Codex]] CLI / GPT-5
 - Projet : WILDNEXUS
 
 ### Résumé

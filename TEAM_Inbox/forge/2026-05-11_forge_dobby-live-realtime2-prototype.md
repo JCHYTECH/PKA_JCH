@@ -1,4 +1,4 @@
-# Dobby Live — Prototype Realtime 2
+# [[Dobby]] Live — Prototype Realtime 2
 
 ## Statut
 
@@ -16,7 +16,7 @@ Prototype local installe dans le dashboard PKA.
 - Session WebRTC vers `gpt-realtime-2` via `/api/realtime/call`
 - Cle OpenAI gardee cote serveur
 - Selection de voix : `marin`, `cedar`, `coral`, `verse`, `alloy`, `ash`, `ballad`, `echo`, `sage`, `shimmer`
-- Selection du modele cible : Auto, Claude, Gemini, Codex, OpenAI
+- Selection du modele cible : Auto, [[Claude]], Gemini, [[Codex]], OpenAI
 - Tools PKA locaux :
   - `pka_status`
   - `read_inbox`
@@ -27,7 +27,7 @@ Prototype local installe dans le dashboard PKA.
 
 ## Validation effectuee
 
-- Compilation Python : OK
+- Compilation [[Python]] : OK
 - `/api/live/config` : OK
 - `read_inbox` : OK
 - `search_wiki` : OK

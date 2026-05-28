@@ -1,6 +1,6 @@
 # PKA_JCH Security Policy
 
-_Owner: Dobby / Castor / Forge_
+_Owner: [[Dobby]] / [[Castor]] / Forge_
 _Created: 2026-05-13_
 
 ## Source of truth

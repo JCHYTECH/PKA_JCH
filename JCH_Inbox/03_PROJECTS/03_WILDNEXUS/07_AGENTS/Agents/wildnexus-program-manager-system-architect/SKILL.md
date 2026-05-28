@@ -44,7 +44,7 @@ Without a system-level decision layer, these conflicts accumulate silently until
 |-----------|-------|-----------|
 | PIR + camera capture | ✅ | — |
 | IR illumination (850/940 nm) | ✅ | — |
-| LoRa event-driven uplink | ✅ | — |
+| [[LoRa]] event-driven uplink | ✅ | — |
 | Environmental sensors (temp, humidity, pressure) | ✅ | — |
 | SD card local storage | ✅ | — |
 | BLE configuration interface | ✅ | — |
@@ -56,7 +56,7 @@ Without a system-level decision layer, these conflicts accumulate silently until
 | Thermal imaging | — | P1 |
 | GPS (continuous) | — | P1 |
 | Gateway with local Wi-Fi sync | — | P1 |
-| Multi-node LoRa mesh | — | P2 |
+| Multi-node [[LoRa]] mesh | — | P2 |
 | GBIF / Camtrap-DP export pipeline | — | P1 |
 | SDK / API publique | — | P2 |
 
@@ -103,9 +103,9 @@ WildNexus is not a single product. The architecture document is correct: camera 
 
 | Variant | Primary sensor | Secondary | Energy profile |
 |---------|---------------|-----------|---------------|
-| Camera node | PIR + optical camera + IR | Env sensors, LoRa | Event-driven, 30–50 mAh/day |
-| Acoustic node | Microphone array (scheduled) | Env sensors, LoRa | Scheduled windows, 30–40 mAh/day |
-| Gateway | LoRa concentrator | Wi-Fi/LTE backhaul, solar | Continuous, 200–500 mAh/day |
+| Camera node | PIR + optical camera + IR | Env sensors, [[LoRa]] | Event-driven, 30–50 mAh/day |
+| Acoustic node | Microphone array (scheduled) | Env sensors, [[LoRa]] | Scheduled windows, 30–40 mAh/day |
+| Gateway | [[LoRa]] concentrator | Wi-Fi/LTE backhaul, solar | Continuous, 200–500 mAh/day |
 
 **Rule**: do not merge camera and acoustic functions into a single P0 node. The energy profiles, microphone placement constraints, and enclosure acoustic requirements are incompatible with a single optimised design. A combined unit is heavier, more expensive, more complex to validate, and harder to maintain.
 
@@ -120,7 +120,7 @@ Revisit the combined unit at P1 only if field data from separate variants demons
 | MCU selection | firmware-ulp | Choice affects radio integration or AI inference |
 | Camera sensor selection | camera-imaging | — |
 | Enclosure IP rating | hardware-physical | Affects enclosure geometry shared with camera-imaging |
-| LoRa topology | rf-propagation | Mesh proposed for P0 |
+| [[LoRa]] topology | rf-propagation | Mesh proposed for P0 |
 | Audio acquisition schedule | bioacoustics-dsp | Schedule conflicts with camera node energy budget |
 | AI model tier (MCU vs NPU) | edge-ai-cv | NPU proposed for P0 |
 | Material grade in BOM | hardware-physical | Substitution proposed by industrialisation |
@@ -163,7 +163,7 @@ Shortcuts in this dependency order result in hardware respins. The PM enforces t
 |-------|--------------------|-----------------------|
 | wildnexus-firmware-ulp | MCU, power states, OTA, RTOS | Choice conflicts with radio or AI subsystem |
 | wildnexus-camera-imaging | Sensor, lens, PIR, IR, IRCF | Trigger latency vs energy trade-off spans agents |
-| wildnexus-rf-propagation | LoRa, antenna, gateway, EU868 | Mesh or relay proposed for P0 |
+| wildnexus-rf-propagation | [[LoRa]], antenna, gateway, EU868 | Mesh or relay proposed for P0 |
 | wildnexus-bioacoustics-dsp | Microphone, DSP, audio AI | Acoustic feature requested for camera node |
 | wildnexus-edge-ai-cv | AI model, quantization, training | NPU or species-level ID proposed for P0 |
 | wildnexus-hardware-physical | Enclosure, sealing, materials, durability | Enclosure geometry conflict with camera or antenna |

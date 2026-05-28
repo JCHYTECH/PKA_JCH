@@ -1,10 +1,10 @@
 ---
-source_file: "git/faune-autour_13.html"
+source_file: "[[Git]]/faune-autour_13.html"
 type: "document"
 community: "Distance Calculation"
 tags:
-  - graphify/document
-  - graphify/EXTRACTED
+  - [[Graphify]]/document
+  - [[Graphify]]/EXTRACTED
   - community/Distance_Calculation
 ---
 
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Haversine distance calculation — observation-to-user distance]] - `implements` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Distance_Calculation
+#[[Graphify]]/document #[[Graphify]]/EXTRACTED #community/Distance_Calculation

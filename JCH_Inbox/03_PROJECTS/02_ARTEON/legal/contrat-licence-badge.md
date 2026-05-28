@@ -4,7 +4,7 @@ tags: [legal, licence, badge, B2B, editeurs, arteon, l-instant-lu]
 type: legal-document
 version: 1.0
 status: draft-template
-owner: Renard 🦊
+owner: [[Renard]] 🦊
 ---
 
 # Contrat de Licence — Badge « Vérifié L'Instant Lu »
@@ -225,6 +225,6 @@ Signature :
 
 ---
 
-*Document rédigé par Renard 🦊, conseiller juridique ARTEON*  
+*Document rédigé par [[Renard]] 🦊, conseiller juridique ARTEON*  
 *Version 1.0 — 2026-05-02 — À valider par JCH avant premier usage éditeur*  
 *Contact : service@arteon.be*

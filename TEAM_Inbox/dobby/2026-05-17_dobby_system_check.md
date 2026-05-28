@@ -21,12 +21,12 @@ _Status: RED_
 
 ## Improvement Findings
 
-- `medium` `instruction-surface` CLAUDE.md: overlay does not mention active roster count 28
+- 
 - `medium` `instruction-surface` AGENTS.md: overlay does not mention active roster count 28
 - `medium` `instruction-surface` GEMINI.md: overlay does not mention active roster count 28
 - `medium` `instruction-surface` DEEPSEEK.md: overlay does not mention active roster count 28
 - `medium` `instruction-surface` ADAPTER-PROMPT.md: overlay does not mention active roster count 28
-- `medium` `pointer-generation` CLAUDE.md / AGENTS.md / GEMINI.md / DEEPSEEK.md: generated pointer surfaces are drifting from the canonical config
+- 
 
 ## Pointer Drift
 

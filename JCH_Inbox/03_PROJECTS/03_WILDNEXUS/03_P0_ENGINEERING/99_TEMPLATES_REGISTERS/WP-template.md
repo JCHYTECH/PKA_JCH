@@ -4,7 +4,7 @@
 **Date :** {YYYY-MM-DD}  
 **Statut :** {Brouillon | Actif | Bloqué | Clôturé}  
 **Owner :** {Agent principal responsable}  
-**Pilotage :** Dobby 🦉
+**Pilotage :** [[Dobby]] 🦉
 
 ---
 
@@ -42,7 +42,7 @@ Avant toute action, vérifier :
 - {Condition technique 2}
 - {Dépendance externe}
 
-Si un élément bloque, Dobby corrige ce qui peut l'être et sollicite JCH uniquement si une action externe est nécessaire.
+Si un élément bloque, [[Dobby]] corrige ce qui peut l'être et sollicite JCH uniquement si une action externe est nécessaire.
 
 ### 3.2 Synchronisation
 
@@ -78,28 +78,28 @@ Activés uniquement si une tâche ou un risque le justifie :
 
 ### 5.1 Routine
 
-Dobby automatise sans solliciter JCH :
+[[Dobby]] automatise sans solliciter JCH :
 - {Action récurrente 1}
 - {Action récurrente 2}
 
 ### 5.2 Preuve
 
-Chaque livrable doit laisser une trace dans le repo :
+Chaque livrable doit laisser une [[Trace]] dans le repo :
 - Document créé ou mis à jour
 - Lien vers fichier source
 - Item Plane associé
 - Statut et décision ou prochaine action
 
-Un travail important sans trace est considéré incomplet.
+Un travail important sans [[Trace]] est considéré incomplet.
 
 ### 5.3 Cohérence
 
-Dobby surveille :
+[[Dobby]] surveille :
 - {Écart type 1 à détecter}
 - {Écart type 2 à détecter}
 - Contradictions entre documents de référence
 
-Écart mécanique → Dobby corrige. Écart décisionnel → Dobby escalade.
+Écart mécanique → [[Dobby]] corrige. Écart décisionnel → [[Dobby]] escalade.
 
 ---
 
@@ -114,13 +114,13 @@ Dobby surveille :
 
 ## 7. Escalade vers JCH
 
-**Dobby sollicite JCH pour :**
+**[[Dobby]] sollicite JCH pour :**
 - {Arbitrage stratégique spécifique à ce WP}
 - Compromis coût / délai / performance
 - Conflit entre non-négociables
 - Dépendance externe bloquante
 
-**Dobby ne sollicite pas JCH pour :**
+**[[Dobby]] ne sollicite pas JCH pour :**
 - Synchronisation Plane et repo
 - Production de synthèses de routine
 - Correction d'incohérences mécaniques
@@ -147,7 +147,7 @@ Ce WP est terminé quand :
 - [ ] {Livrable 2} reflété dans Plane
 - [ ] Décisions JCH en attente visibles sur la page web
 - [ ] Agents du noyau ont rendu leurs livrables
-- [ ] Dobby peut produire un statut fiable sans relire toute l'arborescence
+- [ ] [[Dobby]] peut produire un statut fiable sans relire toute l'arborescence
 
 ---
 

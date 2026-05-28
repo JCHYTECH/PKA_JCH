@@ -1,4 +1,4 @@
-# MANDAT DE RECHERCHE — FURET 🦡
+# MANDAT DE RECHERCHE — [[Furet]] 🦡
 
 **Date :** 2026-05-14
 **Projet :** 04_NUANCES
@@ -19,7 +19,7 @@ Nous devons évaluer la viabilité d'une collecte d'information (OSINT) basée s
 Pour chaque catégorie de source, déterminer :
 - Sont-elles accessibles publiquement en Belgique (open data, scraping possible) ?
 - Comment sont-elles structurées (PDF scannés, bases de données structurées, API) ?
-- Quel serait le niveau de difficulté pour automatiser leur extraction (pour Forge) ?
+- Quel serait le niveau de difficulté pour automatiser leur extraction (pour [[Forge]]) ?
 - Recommandation sur la source la plus "actionnable" pour un PoC (Proof of Concept).
 
-*Délivre ton analyse à Corbeau pour classement, et un résumé exécutif à Dobby.*
+*Délivre ton analyse à [[Corbeau]] pour classement, et un résumé exécutif à [[Dobby]].*

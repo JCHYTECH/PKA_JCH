@@ -271,12 +271,12 @@ Vous n’éditez pas l’image originale et vous pouvez changer le style à tout
 Si vous avez une **liste des noms + coordonnées des têtes**, on peut injecter automatiquement dans digiKam via :
 
 - un fichier **XMP sidecar**  
-- un script Python utilisant **exiv2**  
+- un script [[Python]] utilisant **exiv2**  
 
 Mais uniquement si vous souhaitez automatiser complètement (gros lot de photos).
 
 Si cela vous intéresse, je peux vous générer :
-- un **script Python prêt à l’emploi**,  
+- un **script [[Python]] prêt à l’emploi**,  
 ou  
 - un **fichier XMP modèle** dans lequel on injecte les noms des 4 rangées.
 
@@ -284,7 +284,7 @@ ou
 
 # 📌 Vous voulez quelle méthode ?
 1) **Face tags + export automatique** (le plus simple)  
-2) **Script automatique (XMP/Python)**  
+2) **Script automatique (XMP/[[Python]])**  
 3) **Inscription manuelle avec “Insert Text”**  
 4) Une combinaison ?
 

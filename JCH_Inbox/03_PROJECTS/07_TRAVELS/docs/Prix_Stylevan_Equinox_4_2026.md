@@ -103,7 +103,7 @@ Je vais te donner une décote moyenne exploitable, avec un ordre de grandeur par
 ## Assistant
 *2026-03-11 23:06*
 
-En moyenne, un camping-car compact ou mini-van aménagé décote moins qu’une voiture classique, surtout si le modèle est recherché, bien entretenu et avec un aménagement reconnu. Des sources récentes du secteur indiquent qu’un van aménagé peut encore conserver 60 à 70 % de sa valeur après 5 ans, et que les camping-cars de 3 à 5 ans se déprécient souvent d’environ 5 à 10 % par an sur cette tranche d’âge. L’Argus rappelle aussi que la décote d’un camping-car reste généralement moins forte que celle d’une automobile classique. citeturn487125search1turn487125search5turn346738search2
+En moyenne, un camping-car compact ou mini-van aménagé décote moins qu’une voiture classique, surtout si le modèle est recherché, bien entretenu et avec un aménagement reconnu. Des sources récentes du secteur indiquent qu’un van aménagé peut encore conserver 60 à 70 % de sa valeur après 5 ans, et que les camping-cars de 3 à 5 ans se déprécient souvent d’environ 5 à 10 % par an sur cette tranche d’âge. L’[[Argus]] rappelle aussi que la décote d’un camping-car reste généralement moins forte que celle d’une automobile classique. citeturn487125search1turn487125search5turn346738search2
 
 Comme ordre de grandeur pratique, tu peux retenir ceci pour un mini-van/camping-car compact acheté neuf :
 1re année : environ -10 à -20 % ;

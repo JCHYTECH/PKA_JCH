@@ -847,6 +847,6 @@ I will keep monitoring and **notify you immediately** if such an offer appears.
 ## Assistant
 *2025-11-17 08:15*
 
-This automation has been paused due to too many unread executions. You can resume it in automations settings or by asking ChatGPT.
+This automation has been paused due to too many unread executions. You can resume it in automations settings or by asking [[ChatGPT]].
 
 ---

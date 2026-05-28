@@ -10,7 +10,7 @@ status: active
 ## Session — 09:34 — InsectNet Leptophyes dedicated view
 
 ### Contexte
-- Modèle : Codex CLI / GPT-5
+- Modèle : [[Codex]] CLI / GPT-5
 - Projet : WILDNEXUS
 
 ### Résumé

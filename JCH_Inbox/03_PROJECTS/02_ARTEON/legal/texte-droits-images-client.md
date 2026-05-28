@@ -4,7 +4,7 @@ tags: [legal, droits-images, client, arteon, l-instant-lu, landing-page, email, 
 type: client-communication
 version: 1.0
 status: draft
-owner: Renard 🦊
+owner: [[Renard]] 🦊
 usage: landing-page · email-confirmation · rapport-pdf
 ---
 
@@ -47,13 +47,13 @@ Lorsque vous confiez une photo à L'Instant Lu, elle ne nous appartient pas — 
 
 | Version | Emplacement | Format suggéré | Ton |
 |---------|-------------|----------------|-----|
-| **Principale** (79 mots) | Landing page — section entre Tarifs et Éthique | Fond ivoire `#F8F5F0` · titre H3 Space Grotesk · corps Lora | Chaleureux, affirmatif |
+| **Principale** (79 mots) | Landing page — section entre Tarifs et Éthique | Fond ivoire 
 | **Email** (44 mots) | Pied d'email de confirmation, après le lien de téléchargement | Bloc séparé par ligne fine | Direct, rassurant |
 | **PDF** (14 mots) | Pied de page du rapport PDF, à côté du logo ARTEON | Italique · IBM Plex Mono · taille 10px | Factuel, minimaliste |
 
-*Note de Renard : la version principale dépasse légèrement 80 mots (79 mots hors titre). Elle respecte la consigne. Le titre est compris dans le décompte si nécessaire — une reformulation ultra-courte est disponible sur demande.*
+*Note de [[Renard]] : la version principale dépasse légèrement 80 mots (79 mots hors titre). Elle respecte la consigne. Le titre est compris dans le décompte si nécessaire — une reformulation ultra-courte est disponible sur demande.*
 
 ---
 
-*Document rédigé par Renard 🦊, conseiller juridique ARTEON*  
+*Document rédigé par [[Renard]] 🦊, conseiller juridique ARTEON*  
 *Version 1.0 — 2026-05-02*

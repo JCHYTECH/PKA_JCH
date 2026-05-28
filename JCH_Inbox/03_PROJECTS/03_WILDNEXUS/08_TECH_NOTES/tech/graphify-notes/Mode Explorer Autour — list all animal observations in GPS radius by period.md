@@ -3,8 +3,8 @@ source_file: "faune-autour.md"
 type: "document"
 community: "Species Search & Geolocation Logic"
 tags:
-  - graphify/document
-  - graphify/EXTRACTED
+  - [[Graphify]]/document
+  - [[Graphify]]/EXTRACTED
   - community/Species_Search_&_Geolocation_Logic
 ---
 
@@ -14,4 +14,4 @@ tags:
 - [[Faune Autour PWA — project synthesis document]] - `references` [EXTRACTED]
 - [[doExplore() — async function GBIF kingdom Animalia query by WKT bbox + period]] - `implements` [INFERRED]
 
-#graphify/document #graphify/EXTRACTED #community/Species_Search_&_Geolocation_Logic
+#[[Graphify]]/document #[[Graphify]]/EXTRACTED #community/Species_Search_&_Geolocation_Logic

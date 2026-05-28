@@ -15,9 +15,9 @@ members: 8
 - [[OpenStreetMap — tile layer]] - document - API_pour_observations_be.md
 - [[Rationale Leaflet+OpenStreetMap chosen over Google Maps — no API key, no credit card, free and reliable]] - document - API_pour_observations_be.md
 - [[Wikipedia Action API — species images]] - document - API_pour_observations_be.md
-- [[fetchWikiImage() — Wikipedia REST API image fetch with ENFR fallback]] - document - git/faune-autour_13.html
-- [[openDrawer() — show detail drawer with Wikipedia image + mini Leaflet map]] - document - git/faune-autour_13.html
-- [[window._cardData index pattern — fix for JSON.stringify in onclick attrs breaking iPhone tap]] - document - git/faune-autour_13.html
+- [[fetchWikiImage() — Wikipedia REST API image fetch with ENFR fallback]] - document - [[Git]]/faune-autour_13.html
+- [[openDrawer() — show detail drawer with Wikipedia image + mini Leaflet map]] - document - [[Git]]/faune-autour_13.html
+- [[window._cardData index pattern — fix for JSON.stringify in onclick attrs breaking iPhone tap]] - document - [[Git]]/faune-autour_13.html
 
 ## Live Query (requires Dataview plugin)
 

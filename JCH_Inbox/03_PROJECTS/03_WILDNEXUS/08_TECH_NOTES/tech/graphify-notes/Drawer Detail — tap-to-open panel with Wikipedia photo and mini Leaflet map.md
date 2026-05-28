@@ -3,8 +3,8 @@ source_file: "faune-autour.md"
 type: "document"
 community: "Map & Detail Display"
 tags:
-  - graphify/document
-  - graphify/EXTRACTED
+  - [[Graphify]]/document
+  - [[Graphify]]/EXTRACTED
   - community/Map_&_Detail_Display
 ---
 
@@ -14,4 +14,4 @@ tags:
 - [[Faune Autour PWA — project synthesis document]] - `references` [EXTRACTED]
 - [[openDrawer() — show detail drawer with Wikipedia image + mini Leaflet map]] - `implements` [INFERRED]
 
-#graphify/document #graphify/EXTRACTED #community/Map_&_Detail_Display
+#[[Graphify]]/document #[[Graphify]]/EXTRACTED #community/Map_&_Detail_Display

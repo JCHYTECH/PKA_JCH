@@ -1,4 +1,4 @@
-# BirdNET-Go + Raspberry Pi 5 + iPhone — Conversation Summary
+# BirdNET-Go + [[Raspberry Pi 5]] + iPhone — Conversation Summary
 
 Date: 2026-05-14
 
@@ -6,7 +6,7 @@ Date: 2026-05-14
 
 Create a bioacoustic wildlife monitoring platform based on:
 
-- Raspberry Pi 5
+- [[Raspberry Pi 5]]
 - BirdNET-Go
 - Outdoor microphones
 - Future iPhone application
@@ -21,13 +21,13 @@ Create a bioacoustic wildlife monitoring platform based on:
 
 Recommended:
 
-- Raspberry Pi 5
+- [[Raspberry Pi 5]]
 - 8 GB RAM version
 
 Reason:
 - Excellent compromise
 - Enough for BirdNET-Go
-- Good Docker support
+- Good [[Docker]] support
 - Large community
 - Stable Linux ecosystem
 
@@ -39,7 +39,7 @@ Reason:
 
 User currently owns:
 
-- iRasptek Raspberry Pi 5 Starter Kit
+- iRasptek [[Raspberry Pi 5]] Starter Kit
 - 8 GB RAM
 - 64 GB Bookworm microSD
 - Active cooling
@@ -81,7 +81,7 @@ Architecture:
 
 BOYA BY-MM1
 → UGREEN USB Audio Adapter
-→ Raspberry Pi 5
+→ [[Raspberry Pi 5]]
 → BirdNET-Go
 
 ---
@@ -96,7 +96,7 @@ Reasons:
 - Excellent Linux compatibility
 - Stable ALSA behavior
 - Better microphone handling
-- Ideal for Raspberry Pi + BirdNET-Go
+- Ideal for [[Raspberry Pi]] + BirdNET-Go
 
 Avoid:
 - Smartphone-only TRRS adapters
@@ -112,7 +112,7 @@ Recommended later:
 - EM272 / Clippy EM272Z1
 
 Reasons:
-- Very popular in BirdNET community
+- Very popular in [[BirdNET]] community
 - Excellent sensitivity
 - Low noise
 - Better long-distance bird detection
@@ -126,7 +126,7 @@ Not required initially.
 ## Community Best Practice
 
 Do NOT place:
-- Raspberry Pi
+- [[Raspberry Pi]]
 - Fan
 - Microphone
 
@@ -135,7 +135,7 @@ inside the same tiny enclosure.
 Recommended approach:
 
 - IP67 electrical enclosure
-- Microphone separated from Raspberry Pi
+- Microphone separated from [[Raspberry Pi]]
 - Silica gel against condensation
 - Cable glands
 - Light ventilation
@@ -147,7 +147,7 @@ Recommended structure:
 [cable]
     ↓
 [IP67 enclosure]
-    ├── Raspberry Pi 5
+    ├── [[Raspberry Pi 5]]
     ├── UGREEN audio
     ├── cooling
     └── power
@@ -159,7 +159,7 @@ Recommended structure:
 ## Operating System
 
 Required:
-- Raspberry Pi OS Bookworm 64-bit
+- [[Raspberry Pi]] OS Bookworm 64-bit
 
 Verify:
 
@@ -243,7 +243,7 @@ sudo systemctl restart birdnet-go.service
 
 # Access BirdNET-Go Web Interface
 
-Find Raspberry Pi IP:
+Find [[Raspberry Pi]] IP:
 
 ```bash
 hostname -I
@@ -261,15 +261,15 @@ http://YOUR_PI_IP:8080
 
 ## Hardware
 
-- Raspberry Pi 5 8 GB
+- [[Raspberry Pi 5]] 8 GB
 - BOYA BY-MM1
 - UGREEN USB Audio Adapter
 - IP67 enclosure
-- Raspberry Pi OS Bookworm 64-bit
+- [[Raspberry Pi]] OS Bookworm 64-bit
 
 ## Software
 
-- Docker
+- [[Docker]]
 - BirdNET-Go
 - Future REST API
 - Future iPhone SwiftUI application

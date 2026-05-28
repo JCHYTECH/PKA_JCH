@@ -85,10 +85,10 @@ L'API Occurrence permet de filtrer par coordonnées GPS, pays, année, altitude,
 Les résultats d'occurrence incluent souvent des liens vers des photos associées aux observations — paramètre `mediatype` dans la recherche.
 
 **4. Téléchargements massifs**
-Les téléchargements sont disponibles en trois formats principaux : Simple, Darwin Core Archive et Species List, accessibles via le site web, l'API, ou via les bibliothèques rgbif (R) et pygbif (Python).
+Les téléchargements sont disponibles en trois formats principaux : Simple, Darwin Core [[archive]] et Species List, accessibles via le site web, l'API, ou via les bibliothèques rgbif (R) et pygbif ([[Python]]).
 
-**5. Client Python : pygbif**
-pygbif est un package Python qui encapsule l'API GBIF pour accéder aux métadonnées, noms d'espèces et occurrences directement depuis Python. C'est probablement la voie la plus pratique pour toi sur macOS.
+**5. Client [[Python]] : pygbif**
+pygbif est un package [[Python]] qui encapsule l'API GBIF pour accéder aux métadonnées, noms d'espèces et occurrences directement depuis [[Python]]. C'est probablement la voie la plus pratique pour toi sur macOS.
 
 ### Exemples concrets d'usage pour toi :
 
@@ -106,23 +106,23 @@ Une équipe belge a d'ailleurs développé **GBIF Alert**, un système open-sour
 
 ---
 
-Tu veux que je te prépare un petit script Python prêt à l'emploi avec pygbif pour chercher les observations autour de tes coordonnées ? Ou que je te fasse un résumé en .md / .docx ?
+Tu veux que je te prépare un petit script [[Python]] prêt à l'emploi avec pygbif pour chercher les observations autour de tes coordonnées ? Ou que je te fasse un résumé en .md / .docx ?
 
 ---
 
 ## Human
 *2026-04-09 07:11*
 
-python
+[[Python]]
 
 ---
 
 ## Assistant
 *2026-04-09 07:13*
 
-Je vais te préparer un script Python avec pygbif. Laisse-moi d'abord vérifier les coordonnées approximatives de ton terrain pour centrer la recherche.
+Je vais te préparer un script [[Python]] avec pygbif. Laisse-moi d'abord vérifier les coordonnées approximatives de ton terrain pour centrer la recherche.
 
-Avant de créer le fichier, tu préfères le recevoir en **.md** ou **.docx** ? (Le script Python `.py` sera créé dans tous les cas, la question porte sur la documentation d'accompagnement éventuelle.)
+Avant de créer le fichier, tu préfères le recevoir en **.md** ou **.docx** ? (Le script [[Python]] 
 
 En attendant, je lance la création du script :
 ```

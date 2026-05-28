@@ -3,8 +3,8 @@ source_file: "API_pour_observations_be.md"
 type: "document"
 community: "Map & Detail Display"
 tags:
-  - graphify/document
-  - graphify/EXTRACTED
+  - [[Graphify]]/document
+  - [[Graphify]]/EXTRACTED
   - community/Map_&_Detail_Display
 ---
 
@@ -14,4 +14,4 @@ tags:
 - [[Faune Autour — Progressive Web App (PWA)]] - `calls` [EXTRACTED]
 - [[fetchWikiImage() — Wikipedia REST API image fetch with ENFR fallback]] - `calls` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Map_&_Detail_Display
+#[[Graphify]]/document #[[Graphify]]/EXTRACTED #community/Map_&_Detail_Display

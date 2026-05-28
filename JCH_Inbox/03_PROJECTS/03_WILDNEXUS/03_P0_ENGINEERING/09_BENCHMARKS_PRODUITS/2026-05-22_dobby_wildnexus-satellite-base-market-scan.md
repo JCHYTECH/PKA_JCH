@@ -62,23 +62,23 @@ Interpretation WildNexus : le pattern technique est mature et puissant. Mais il 
 
 ### Ce que le marche ne valide pas encore pour WildNexus
 
-- Envoyer sons/images/videos lourds par LoRa : non.
+- Envoyer sons/images/videos lourds par [[LoRa]] : non.
 - Faire du mesh lourd generaliste sans controle du terrain : fragile.
 - Mettre 4G/5G dans chaque petit noeud : couteux, energivore, abonnement multiple.
-- Faire du BirdNET/vision lourde sur un MCU type ESP32 : non credible comme coeur produit.
+- Faire du [[BirdNET]]/vision lourde sur un MCU type [[ESP32]] : non credible comme coeur produit.
 
 ## Recommandation provisoire
 
 WildNexus doit etudier trois gammes, pas une seule machine :
 
 1. **Satellite Lite**  
-   Petit noeud discret : camera/audio/capteurs, stockage local, LoRa evenementiel, Wi-Fi local court, pas d'IA lourde.
+   Petit noeud discret : camera/audio/capteurs, stockage local, [[LoRa]] evenementiel, Wi-Fi local court, pas d'IA lourde.
 
 2. **Satellite Smart**  
    Noeud plus cher : STM32N6 ou equivalent, IA legere image/audio, stockage local, transfert selectif vers base.
 
 3. **Base Nexus**  
-   Station cachee : Raspberry Pi / NXP i.MX / Hailo / equivalent industriel, BirdNET-Go ou modele acoustique, vision, 4G/5G, gros stockage, tableau de bord.
+   Station cachee : [[Raspberry Pi]] / NXP i.MX / Hailo / equivalent industriel, BirdNET-Go ou modele acoustique, vision, 4G/5G, gros stockage, tableau de bord.
 
 Le produit utilisateur pourrait commencer avec 1 base + 2 ou 3 satellites, plutot qu'un appareil unique.
 

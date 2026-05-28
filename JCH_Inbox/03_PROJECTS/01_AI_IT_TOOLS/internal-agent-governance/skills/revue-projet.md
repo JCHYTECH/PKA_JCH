@@ -42,7 +42,7 @@ Produire une revue utile pour piloter le projet: etat actuel, objectifs, documen
 ## Pieges connus
 
 - Ne pas tout lire sans tri.
-- Ne pas confondre archive et source active.
+- Ne pas confondre [[archive]] et source active.
 - Ne pas supprimer ou reorganiser sans validation.
 - Ne pas conclure trop vite si les documents sont contradictoires.
 

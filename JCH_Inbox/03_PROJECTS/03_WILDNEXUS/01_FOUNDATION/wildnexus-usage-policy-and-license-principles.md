@@ -4,7 +4,7 @@
 **Date :** 2026-05-17  
 **Statut :** Draft de travail  
 **Propriétaire :** Jean-Claude Havaux — JCHYTECH  
-**Owner juridique :** Renard
+**Owner juridique :** [[Renard]]
 
 ---
 
@@ -150,7 +150,7 @@ Formulations à éviter sauf changement de licence :
 
 ### 8.1 Decision Owner
 
-Renard pilote :
+[[Renard]] pilote :
 - la rédaction de la licence
 - la politique d'usage
 - les clauses contractuelles partenaires et commerciaux
@@ -158,7 +158,7 @@ Renard pilote :
 
 ### 8.2 External Counsel
 
-Un conseil PI/juridique externe peut être mobilisé pour :
+Un conseil [[Pi]]/juridique externe peut être mobilisé pour :
 - valider la robustesse des clauses
 - articuler licence, politique d'usage et contrats
 - analyser les sujets brevets/FTO

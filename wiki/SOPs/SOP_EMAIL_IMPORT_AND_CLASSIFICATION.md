@@ -6,14 +6,14 @@ Standardiser la réception, le filtrage, l'ouverture, l'import et le classement 
 
 ## Agents concernés
 
-- Dobby : arbitrage, feu vert utilisateur, classement final
-- Pie : lecture, qualification, typologie du contenu
-- Corbeau : capitalisation durable si le contenu devient connaissance récurrente
-- Forge : tuyauterie d'import et automatisation
+- [[Dobby]] : arbitrage, feu vert utilisateur, classement final
+- [[Pie]] : lecture, qualification, typologie du contenu
+- [[Corbeau]] : capitalisation durable si le contenu devient connaissance récurrente
+- [[Forge]] : tuyauterie d'import et automatisation
 
 ## Principe
 
-- La boîte mail de Dobby est un canal d'entrée contrôlé
+- La boîte mail de [[Dobby]] est un canal d'entrée contrôlé
 - Les expéditeurs non autorisés sont éliminés sans lecture du corps
 - Les emails autorisés ne sont pas ouverts sans accord explicite de JCH
 - Le contenu n'est importé localement qu'après instruction
@@ -43,17 +43,17 @@ Avant toute exploitation :
 
 ### Étape 1 — autorisation
 
-Dobby demande toujours :
+[[Dobby]] demande toujours :
 - faut-il le traiter ?
 - faut-il le traiter maintenant ou plus tard ?
 
 ### Étape 2 — qualification
 
-Pie ou Dobby qualifie le mail selon son usage dominant :
+[[Pie]] ou [[Dobby]] qualifie le mail selon son usage dominant :
 - action à faire
 - référence à conserver
 - information ponctuelle
-- archive simple
+- [[archive]] simple
 
 ### Étape 3 — destination
 
@@ -61,7 +61,7 @@ Le dossier cible est choisi selon le futur usage réel du contenu.
 
 ## Règle d'ouverture
 
-Avant toute lecture d'un mail autorisé, Dobby demande explicitement à JCH s'il faut le traiter.
+Avant toute lecture d'un mail autorisé, [[Dobby]] demande explicitement à JCH s'il faut le traiter.
 
 ## Règle de classement
 
@@ -72,7 +72,7 @@ Le classement se fait par usage final du contenu, pas par association vague.
 Avant de ranger, déterminer :
 
 1. Ce contenu sert-il à un projet précis ?
-2. Sert-il à la stratégie, au légal, au marché, à la technique, à l'édition, à la création, ou à l'archive ?
+2. Sert-il à la stratégie, au légal, au marché, à la technique, à l'édition, à la création, ou à l'[[archive]] ?
 3. Va-t-il être réutilisé comme référence durable ?
 4. Son intérêt est-il métier, artistique, technique ou administratif ?
 5. Son usage principal est-il de décider, d'exécuter, d'inspirer ou de documenter ?
@@ -152,7 +152,7 @@ Avant de considérer le traitement terminé, vérifier :
 
 ## Sortie attendue à l'écran
 
-Dobby doit toujours restituer à JCH :
+[[Dobby]] doit toujours restituer à JCH :
 
 - ce qui a été fait
 - où le contenu a été rangé

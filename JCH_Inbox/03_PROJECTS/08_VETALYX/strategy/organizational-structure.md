@@ -10,7 +10,7 @@ tags:
   - status/active
 ---
 
-# Vetalys organizational structure and launch planning
+# Vetalyx organizational structure and launch planning
 
 **Created:** 2026-04-01  
 **Updated:** 2026-04-01  
@@ -23,11 +23,11 @@ tags:
 
 Browse all the files in the project as an expert in organizing contents in adequate sections of text with a title understandable to be understood to perform work on a base document.
 
-Please note that the former name of Vetalys was Diatech
+Please note that the former name of Vetalyx was Diatech
 
 As you are an expert in launching new companies in the veterinary/medical field, generate the list of actions in a hierarchical way and with relationship of tasks or functions. 
 
-As a financial director looking efficiency of spending you will work with a human ressources expert to generate the list of functions needed to succeed with the Vetalys project.
+As a financial director looking efficiency of spending you will work with a human ressources expert to generate the list of functions needed to succeed with the Vetalyx project.
 
 ---
 
@@ -36,11 +36,11 @@ As a financial director looking efficiency of spending you will work with a huma
 
 Browse all the files in the project as an expert in organizing contents in adequate sections of text with a title understandable to be understood to perform work on a base document.
 
-Please note that the former name of Vetalys was Diatech
+Please note that the former name of Vetalyx was Diatech
 
 As you are an expert in launching new companies in the veterinary/medical field, generate the list of actions in a hierarchical way and with relationship of tasks or functions. 
 
-As a financial director looking efficiency of spending you will work with a human ressources expert to generate the list of functions needed to succeed with the Vetalys project.
+As a financial director looking efficiency of spending you will work with a human ressources expert to generate the list of functions needed to succeed with the Vetalyx project.
 
 ---
 
@@ -49,11 +49,11 @@ As a financial director looking efficiency of spending you will work with a huma
 
 Browse all the files in the project as an expert in organizing contents in adequate sections of text with a title understandable to be understood to perform work on a base document.
 
-Please note that the former name of Vetalys was Diatech
+Please note that the former name of Vetalyx was Diatech
 
 As you are an expert in launching new companies in the veterinary/medical field, generate the list of actions in a hierarchical way and with relationship of tasks or functions. 
 
-As a financial director looking efficiency of spending you will work with a human ressources expert to generate the list of functions needed to succeed with the Vetalys project.
+As a financial director looking efficiency of spending you will work with a human ressources expert to generate the list of functions needed to succeed with the Vetalyx project.
 
 ---
 
@@ -62,11 +62,11 @@ As a financial director looking efficiency of spending you will work with a huma
 
 Browse all the files in the project as an expert in organizing contents in adequate sections of text with a title understandable to be understood to perform work on a base document.
 
-Please note that the former name of Vetalys was Diatech
+Please note that the former name of Vetalyx was Diatech
 
 As you are an expert in launching new companies in the veterinary/medical field, generate the list of actions in a hierarchical way and with relationship of tasks or functions. 
 
-As a financial director looking efficiency of spending you will work with a human ressources expert to generate the list of functions needed to succeed with the Vetalys project.
+As a financial director looking efficiency of spending you will work with a human ressources expert to generate the list of functions needed to succeed with the Vetalyx project.
 
 ---
 
@@ -75,11 +75,11 @@ As a financial director looking efficiency of spending you will work with a huma
 
 Browse all the files in the project as an expert in organizing contents in adequate sections of text with a title understandable to be understood to perform work on a base document.
 
-Please note that the former name of Vetalys was Diatech
+Please note that the former name of Vetalyx was Diatech
 
 As you are an expert in launching new companies in the veterinary/medical field, generate the list of actions in a hierarchical way and with relationship of tasks or functions. 
 
-As a financial director looking efficiency of spending you will work with a human ressources expert to generate the list of functions needed to succeed with the Vetalys project.
+As a financial director looking efficiency of spending you will work with a human ressources expert to generate the list of functions needed to succeed with the Vetalyx project.
 
 ---
 
@@ -88,11 +88,11 @@ As a financial director looking efficiency of spending you will work with a huma
 
 Browse all the files in the project as an expert in organizing contents in adequate sections of text with a title understandable to be understood to perform work on a base document.
 
-Please note that the former name of Vetalys was Diatech
+Please note that the former name of Vetalyx was Diatech
 
 As you are an expert in launching new companies in the veterinary/medical field, generate the list of actions in a hierarchical way and with relationship of tasks or functions. 
 
-As a financial director looking efficiency of spending you will work with a human ressources expert to generate the list of functions needed to succeed with the Vetalys project.
+As a financial director looking efficiency of spending you will work with a human ressources expert to generate the list of functions needed to succeed with the Vetalyx project.
 
 ---
 
@@ -101,11 +101,11 @@ As a financial director looking efficiency of spending you will work with a huma
 
 Browse all the files in the project as an expert in organizing contents in adequate sections of text with a title understandable to be understood to perform work on a base document.
 
-Please note that the former name of Vetalys was Diatech
+Please note that the former name of Vetalyx was Diatech
 
 As you are an expert in launching new companies in the veterinary/medical field, generate the list of actions in a hierarchical way and with relationship of tasks or functions. 
 
-As a financial director looking efficiency of spending you will work with a human ressources expert to generate the list of functions needed to succeed with the Vetalys project.
+As a financial director looking efficiency of spending you will work with a human ressources expert to generate the list of functions needed to succeed with the Vetalyx project.
 
 ---
 
@@ -114,11 +114,11 @@ As a financial director looking efficiency of spending you will work with a huma
 
 Browse all the files in the project as an expert in organizing contents in adequate sections of text with a title understandable to be understood to perform work on a base document.
 
-Please note that the former name of Vetalys was Diatech
+Please note that the former name of Vetalyx was Diatech
 
 As you are an expert in launching new companies in the veterinary/medical field, generate the list of actions in a hierarchical way and with relationship of tasks or functions. 
 
-As a financial director looking efficiency of spending you will work with a human ressources expert to generate the list of functions needed to succeed with the Vetalys project.
+As a financial director looking efficiency of spending you will work with a human ressources expert to generate the list of functions needed to succeed with the Vetalyx project.
 
 ---
 
@@ -127,11 +127,11 @@ As a financial director looking efficiency of spending you will work with a huma
 
 Browse all the files in the project as an expert in organizing contents in adequate sections of text with a title understandable to be understood to perform work on a base document.
 
-Please note that the former name of Vetalys was Diatech
+Please note that the former name of Vetalyx was Diatech
 
 As you are an expert in launching new companies in the veterinary/medical field, generate the list of actions in a hierarchical way and with relationship of tasks or functions. 
 
-As a financial director looking efficiency of spending you will work with a human ressources expert to generate the list of functions needed to succeed with the Vetalys project.
+As a financial director looking efficiency of spending you will work with a human ressources expert to generate the list of functions needed to succeed with the Vetalyx project.
 
 ---
 

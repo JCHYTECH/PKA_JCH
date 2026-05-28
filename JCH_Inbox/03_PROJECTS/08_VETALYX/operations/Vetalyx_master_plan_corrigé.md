@@ -10,7 +10,7 @@ tags:
   - status/active
 ---
 
-# Vetalys master plan corrigé
+# Vetalyx master plan corrigé
 
 **Created:** 2026-04-03  
 **Updated:** 2026-04-03  

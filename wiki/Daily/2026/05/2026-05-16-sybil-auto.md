@@ -10,7 +10,7 @@ archive: true
 
 ## Système et configuration
 
-Mise à jour des profils de contexte IA et configuration de l'adapter Plane (PKA). Modification des fichiers de paramètres locaux Claude. Ajustement des settings de connexion (dernière connexion enregistrée à 11:48:13).
+Mise à jour des profils de contexte IA et configuration de l'adapter Plane (PKA). Modification des fichiers de paramètres locaux [[Claude]]. Ajustement des settings de connexion (dernière connexion enregistrée à 11:48:13).
 
 ## Infrastructure de dashboard
 
@@ -50,7 +50,7 @@ Deux spécifications complétées :
 Actualisation des fiches de capacités système :
 - DEEPSEEK.md
 - GEMINI.md
-- CLAUDE.md
+- [[Claude]].md
 - AGENTS.md
 
 ## Intégrations externes

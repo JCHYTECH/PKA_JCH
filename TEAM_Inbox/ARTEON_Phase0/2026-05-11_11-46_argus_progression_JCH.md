@@ -1,4 +1,4 @@
-# Argus — Indice de Progression · JCH
+# [[Argus]] — Indice de Progression · JCH
 
 **Client :** JCH  
 **Date :** 2026-05-11 11:46  
@@ -53,4 +53,4 @@
 
 ---
 
-*Généré par Argus 🦅 via argus_progression.py*
+*Généré par [[Argus]] 🦅 via argus_progression.py*

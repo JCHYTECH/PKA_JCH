@@ -1,6 +1,6 @@
-# Mandat Forge — Email Routing Intelligence
+# Mandat [[Forge]] — Email Routing Intelligence
 
-**From:** Dobby 🦉 | **To:** Forge 🦦 | **Date:** 2026-05-01  
+**From:** [[Dobby]] 🦉 | **To:** [[Forge]] 🦦 | **Date:** 2026-05-01  
 **Priorité :** Haute — extension de email_digest.py
 
 ## Objectif
@@ -23,7 +23,7 @@ Retourne une liste d'actions à exécuter (peut être vide).
 
 ## Règles de routing par spécialiste
 
-### 🦊 Renard — Legal Counsel
+### 🦊 [[Renard]] — Legal Counsel
 **Déclencheurs (subject ou body) :**
 ```python
 RENARD_KEYWORDS = [
@@ -40,7 +40,7 @@ RENARD_KEYWORDS = [
 
 ---
 
-### 🐺 Vasco — Veterinary Product Specialist
+### 🐺 [[Vasco]] — Veterinary Product Specialist
 **Déclencheurs :**
 ```python
 VASCO_KEYWORDS = [
@@ -57,7 +57,7 @@ VASCO_KEYWORDS = [
 
 ---
 
-### 🐻 Bruno — Finance & Investment
+### 🐻 [[Bruno]] — Finance & Investment
 **Déclencheurs :**
 ```python
 BRUNO_KEYWORDS = [
@@ -74,7 +74,7 @@ BRUNO_KEYWORDS = [
 
 ---
 
-### 🐬 Delphi — CRM
+### 🐬 [[Delphi]] — CRM
 
 **Cas 1 — Contact connu (email dans `contacts`)**
 - INSERT dans `interactions` : contact_id=id trouvé, type=`email`, date=aujourd'hui, summary=objet
@@ -95,17 +95,17 @@ MEETING_KEYWORDS = ["rendez-vous", "meeting", "réunion", "call", "disponible", 
 
 | Route | Priority ntfy |
 |-------|--------------|
-| Renard (légal) | 5 — urgent |
-| Vasco (Vetalyx) | 4 — high |
-| Bruno (finance) | 4 — high |
-| Delphi nouveau contact | 3 — default |
-| Delphi interaction loguée | silencieux (pas de push) |
+| [[Renard]] (légal) | 5 — urgent |
+| [[Vasco]] (Vetalyx) | 4 — high |
+| [[Bruno]] (finance) | 4 — high |
+| [[Delphi]] nouveau contact | 3 — default |
+| [[Delphi]] interaction loguée | silencieux (pas de push) |
 
 ---
 
 ## Règles d'implémentation
 
-- Un email peut déclencher **plusieurs routes** (ex: email Vetalyx avec clause contractuelle → Vasco + Renard)
+- Un email peut déclencher **plusieurs routes** (ex: email Vetalyx avec clause contractuelle → [[Vasco]] + [[Renard]])
 - Routing effectué sur `subject` + premiers 500 chars du body (si body disponible)
 - Body disponible uniquement si `score > 2` (éviter les appels API inutiles)
 - Toutes les insertions DB dans un try/except — une erreur DB ne bloque jamais la notification push

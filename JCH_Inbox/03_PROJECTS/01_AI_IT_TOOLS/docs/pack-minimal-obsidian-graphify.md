@@ -1,8 +1,8 @@
-# Pack minimal Obsidian — Automatisation du vault et amélioration de la vue graphe
+# Pack minimal [[Obsidian]] — Automatisation du vault et amélioration de la vue graphe
 [[obsidian]]
 
 Version : 1.0  
-Objectif : mettre en place une structure simple, stable et automatisable pour mieux classer les notes, améliorer la vue graphe, exploiter Graphify et préparer l’usage de Dataview / Templater / Extended Graph.
+Objectif : mettre en place une structure simple, stable et automatisable pour mieux classer les notes, améliorer la vue graphe, exploiter [[Graphify]] et préparer l’usage de Dataview / Templater / Extended Graph.
 
 ---
 
@@ -19,13 +19,13 @@ Le système repose sur cinq éléments :
 4. Des templates de notes.
 5. Des règles de couleur et de filtrage pour la vue graphe.
 
-Graphify est conservé comme moteur d’enrichissement relationnel, mais il ne doit pas remplacer votre structure personnelle.
+[[Graphify]] est conservé comme moteur d’enrichissement relationnel, mais il ne doit pas remplacer votre structure personnelle.
 
 ---
 
 ## 2. Arborescence recommandée du vault
 
-Créer les dossiers suivants dans Obsidian :
+Créer les dossiers suivants dans [[Obsidian]] :
 
 ```text
 00-INBOX/
@@ -49,7 +49,7 @@ Créer les dossiers suivants dans Obsidian :
 | `03-RESSOURCES` | Articles, livres, vidéos, documents, sources externes |
 | `04-ACTIONS` | Actions à faire, checklists, plans opérationnels |
 | `05-REFERENCES` | Fiches stables : espèces, personnes, sociétés, lieux, outils |
-| `06-GRAPHIFY` | Notes générées ou enrichies par Graphify |
+| 
 | `90-ARCHIVES` | Notes anciennes ou terminées |
 | `99-TEMPLATES` | Modèles de notes |
 
@@ -150,7 +150,7 @@ archive
 
 ## 5. Tags visuels recommandés
 
-Les tags suivants peuvent être utilisés dans le corps des notes pour faciliter la coloration dans la vue graphe native d’Obsidian :
+Les tags suivants peuvent être utilisés dans le corps des notes pour faciliter la coloration dans la vue graphe native d’[[Obsidian]] :
 
 ```text
 #hub
@@ -177,7 +177,7 @@ Conseil : garder les tags importants visibles dans le corps de la note, par exem
 
 ## 6. Règles de couleur pour la vue graphe native
 
-Dans la vue graphe d’Obsidian, ouvrir les réglages du graphe puis aller dans `Groups`.
+Dans la vue graphe d’[[Obsidian]], ouvrir les réglages du graphe puis aller dans 
 
 Créer les groupes suivants :
 
@@ -219,13 +219,13 @@ path:"01-PROJETS"
 path:"04-ACTIONS"
 ```
 
-### Masquer les notes Graphify
+### Masquer les notes [[Graphify]]
 
 ```text
 -path:"06-GRAPHIFY"
 ```
 
-### Afficher uniquement les notes Graphify
+### Afficher uniquement les notes [[Graphify]]
 
 ```text
 path:"06-GRAPHIFY"
@@ -562,7 +562,7 @@ updated: {{date}}
 
 ---
 
-## 15. Template — Graphify
+## 15. Template — [[Graphify]]
 
 À sauvegarder dans :
 
@@ -629,7 +629,7 @@ SORT file.mtime DESC
 ```dataview
 TABLE domain, priority, file.mtime
 FROM "04-ACTIONS"
-WHERE type = "action" AND status != "archive"
+WHERE type = "action" AND status != "[[archive]]"
 SORT priority DESC
 ```
 
@@ -647,7 +647,7 @@ SORT domain ASC
 ```dataview
 TABLE domain, graph_group, file.mtime
 FROM "06-GRAPHIFY"
-WHERE type = "graphify"
+WHERE type = "[[Graphify]]"
 SORT file.mtime DESC
 ```
 
@@ -679,21 +679,21 @@ SORT file.mtime DESC
 2. Vérifier le YAML.
 3. Ajouter les liens principaux.
 4. Identifier si la note est une source, une action, une décision ou un concept.
-5. Laisser Graphify enrichir les relations si utile.
+5. Laisser [[Graphify]] enrichir les relations si utile.
 
 ### Consultation du graphe
 
 1. Commencer par le graphe global.
 2. Filtrer par dossier.
 3. Filtrer par tag.
-4. Masquer Graphify si le graphe devient trop dense.
+4. Masquer [[Graphify]] si le graphe devient trop dense.
 5. Utiliser les hubs pour comprendre les grands clusters.
 
 ---
 
-## 18. Workflow Graphify recommandé
+## 18. Workflow [[Graphify]] recommandé
 
-Graphify doit rester dans son propre espace :
+[[Graphify]] doit rester dans son propre espace :
 
 ```text
 06-GRAPHIFY/
@@ -703,7 +703,7 @@ Graphify doit rester dans son propre espace :
   graphify-imports/
 ```
 
-Chaque note générée ou enrichie par Graphify doit contenir :
+Chaque note générée ou enrichie par [[Graphify]] doit contenir :
 
 ```yaml
 ---
@@ -717,13 +717,13 @@ graph_group:
 
 Règle importante :
 
-> Graphify enrichit le réseau, mais les notes humaines restent les notes de référence.
+> [[Graphify]] enrichit le réseau, mais les notes humaines restent les notes de référence.
 
 ---
 
 ## 19. Prompt IA de classification automatique
 
-À utiliser avec ChatGPT ou un assistant IA pour classer une note brute.
+À utiliser avec [[ChatGPT]] ou un assistant IA pour classer une note brute.
 
 ```text
 Tu es mon assistant d’organisation Obsidian.
@@ -761,7 +761,7 @@ Voici la note à analyser :
 5. Configurer les groupes de couleur dans la vue graphe native.
 6. Tester sur 10 notes seulement.
 7. Ajuster les valeurs de `domain` et `graph_group`.
-8. Intégrer progressivement Graphify.
+8. Intégrer progressivement [[Graphify]].
 9. Tester Extended Graph si la vue native devient insuffisante.
 
 ---
@@ -776,7 +776,7 @@ La bonne progression est :
 Standardiser → Visualiser → Contrôler → Enrichir → Automatiser en masse
 ```
 
-Un vault Obsidian devient puissant quand il reste compréhensible par son propriétaire.  
+Un vault [[Obsidian]] devient puissant quand il reste compréhensible par son propriétaire.  
 L’automatisation doit servir la lisibilité, pas produire du bruit.
 
 ---

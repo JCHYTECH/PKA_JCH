@@ -67,7 +67,7 @@ Voici une **synthèse-type** que tu pourras réutiliser pour toutes tes futures 
   - **Dos / Ailes :**  
   - **Ventre / Poitrine :**  
   - **Queue :**  
-  - **Autres signes distinctifs :** (iris, pattes, bec, etc.)  
+  - **Autres signes distinctifs :** ([[Iris]], pattes, bec, etc.)  
 - **Dimorphisme sexuel :** (différences mâle/femelle si présentes)  
 - **Voix :** (chant, cris caractéristiques)  
 

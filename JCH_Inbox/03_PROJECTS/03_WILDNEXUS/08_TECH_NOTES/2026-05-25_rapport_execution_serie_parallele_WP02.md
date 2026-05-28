@@ -2,7 +2,7 @@
 
 **Date :** 2026-05-25
 **Périmètre :** WP02 → M-02 → M-03
-**Owner :** Dobby
+**Owner :** [[Dobby]]
 **Contexte :** M-01 (architecture gelée) est atteint. WP02 (procurement) est en cours.
 
 ---
@@ -64,26 +64,26 @@ Grouper panier  →  Commande groupée  →  Réception  →  Montage banc M-02
 
 | Action | Owner | Bloquant ? | Effort |
 |--------|-------|------------|--------|
-| **Commander PPK2** | JCH / Dobby | Oui — bloque Chaîne 1 | 5 min |
-| **Contacter Arducam** (email) | Dobby / Forge | Oui — bloque Chaîne 2 | 15 min |
-| **Grouper panier Mouser** | Forge | Oui — bloque Chaîne 3 | 30 min |
-| **Demander devis Lensation** (2× M12 f/1.8 IR) | Dobby / Forge | Non | 10 min |
+| **Commander PPK2** | JCH / [[Dobby]] | Oui — bloque Chaîne 1 | 5 min |
+| **Contacter Arducam** (email) | [[Dobby]] / [[Forge]] | Oui — bloque Chaîne 2 | 15 min |
+| **Grouper panier Mouser** | [[Forge]] | Oui — bloque Chaîne 3 | 30 min |
+| **Demander devis Lensation** (2× M12 f/1.8 IR) | [[Dobby]] / [[Forge]] | Non | 10 min |
 
 ### 🟡 Priorité medium — zero impact P0, avance utile
 
 | Action | Owner | Livrable | Pourquoi maintenant |
 |--------|-------|----------|---------------------|
-| **FTO / Licence** | Renard + Hermine | Note juridique v0.2 | Bloque publication future, pas le proto — mais prend du temps |
-| **Stratégie tests firmware** (T03.6) | Forge + Castor | Plan de test nRF52840 | Peut se préparer sur DevKit sans attendre le proto |
-| **Pipeline classifieur** (T04.5) | Nova + Clio | Framework évaluation | Préparer les scripts d'évaluation avant d'avoir les données |
+| **FTO / Licence** | [[Renard]] + [[Hermine]] | Note juridique v0.2 | Bloque publication future, pas le proto — mais prend du temps |
+| **Stratégie tests firmware** (T03.6) | [[Forge]] + [[Castor]] | Plan de test nRF52840 | Peut se préparer sur DevKit sans attendre le proto |
+| **Pipeline classifieur** (T04.5) | [[Nova]] + [[Clio]] | Framework évaluation | Préparer les scripts d'évaluation avant d'avoir les données |
 
 ### 🟢 Priorité basse — activités de fond
 
 | Action | Owner | Livrable / Note |
 |--------|-------|-----------------|
-| **Supply register complet** | Forge | Documentaire, peut avancer en continu |
-| **RGPD terrain** (signalétique) | Renard | Modèle pancarte + procédure floutage |
-| **InsectNet — test validation** | Furet | Tester Raven + clustering HDBSCAN sur enregistrements existants |
+| **Supply register complet** | [[Forge]] | Documentaire, peut avancer en continu |
+| **RGPD terrain** (signalétique) | [[Renard]] | Modèle pancarte + procédure floutage |
+| **InsectNet — test validation** | [[Furet]] | Tester Raven + clustering HDBSCAN sur enregistrements existants |
 
 ---
 

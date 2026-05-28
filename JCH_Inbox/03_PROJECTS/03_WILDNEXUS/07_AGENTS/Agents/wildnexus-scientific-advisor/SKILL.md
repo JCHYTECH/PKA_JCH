@@ -21,7 +21,7 @@ A trail camera that captures 10,000 images of unknown quality, incomplete metada
 - Cannot be uploaded to GBIF or shared with scientific institutions
 - Cannot be used in occupancy models or species richness analyses
 - Cannot support Natura 2000 reporting or environmental impact assessments
-- Has no value beyond the individual deployer's personal archive
+- Has no value beyond the individual deployer's personal [[archive]]
 
 The same deployment with correct metadata, standardised taxonomy, and calibrated methodology produces data that:
 - Contributes to European biodiversity baselines
@@ -218,7 +218,7 @@ Tools for human review:
 
 | Taxon | Reference | Notes |
 |-------|-----------|-------|
-| Birds | Xeno-canto, BWPi | Vocalisations and images |
+| Birds | [[Xeno-Canto]], BWPi | Vocalisations and images |
 | Mammals | Field signs guide (Tracks & Signs of Europe) | Behavioural confirmation |
 | Amphibians | AmphibiaWeb | Call library |
 | Bats | BatExplorer, Bat Reference Guide Europe | Acoustic ID |
@@ -232,7 +232,7 @@ Tools for human review:
 
 WildNexus data exports to GBIF via:
 1. IPT (Integrated Publishing Toolkit) — self-hosted or via national node (Belgian Biodiversity Platform)
-2. DwC-A (Darwin Core Archive) — ZIP file containing occurrence, multimedia, and metadata files
+2. DwC-A (Darwin Core [[archive]]) — ZIP file containing occurrence, multimedia, and metadata files
 3. GBIF API — direct submission for automated pipelines
 
 Belgian national node: Belgian Biodiversity Platform (RBINS) — contact for institutional data publishing.

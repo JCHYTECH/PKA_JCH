@@ -1,5 +1,5 @@
 # RAPPORT DE RECHERCHE — FAISABILITÉ OSINT HT/MT
-**Auteur :** Furet 🦡 (via Dobby 🦉)
+**Auteur :** [[Furet]] 🦡 (via [[Dobby]] 🦉)
 **Projet :** 04_NUANCES
 **Date :** 2026-05-14
 
@@ -42,7 +42,7 @@ L'analyse de faisabilité confirme que la construction d'une base de données pr
 
 ## 3. Recommandations pour le PoC (Proof of Concept)
 
-Je recommande à **Forge 🦦** de concentrer le PoC sur deux axes prioritaires :
+Je recommande à **[[Forge]] 🦦** de concentrer le PoC sur deux axes prioritaires :
 
 1.  **Scraper e-Procurement** : Extraire tous les attributaires et demandeurs de marchés de maintenance HT sur les 24 derniers mois en Belgique. C'est la source la plus "propre" et structurée.
 2.  **Monitor d'Enquêtes Publiques** : Développer un script qui surveille les occurrences de "rubrique 40.10.01" sur les plateformes de publication légale wallonnes.
@@ -50,4 +50,4 @@ Je recommande à **Forge 🦦** de concentrer le PoC sur deux axes prioritaires 
 ## Conclusion
 Le pipeline OSINT est viable. La structuration des données publiques belges, bien que fragmentée par commune, offre des points d'ancrage légaux (permis uniques et RGIE) qui permettent de contourner l'absence de liste officielle des GRD.
 
-*Transmis à Corbeau pour archivage et à Forge pour évaluation technique.*
+*Transmis à [[Corbeau]] pour archivage et à [[Forge]] pour évaluation technique.*

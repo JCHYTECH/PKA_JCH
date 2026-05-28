@@ -50,13 +50,13 @@ Deux documents de planification et conception ont été créés pour la segmenta
 
 ## Rapports et suivi
 
-- Rapport hebdomadaire Dobby/JCH généré (`wiki/Daily/2026/05/2026-05-24-dobby-jch-rapport-hebdo.md`)
-- Vérification système Dobby documentée (`TEAM_Inbox/2026-05-24_dobby_system_check.md`)
+- Rapport hebdomadaire [[Dobby]]/JCH généré (
+- Vérification système [[Dobby]] documentée (
 - Mise à jour du journal wiki (`wiki/log.md`) et index (`wiki/index.md`)
 
-## BirdNet et infrastructure réseau
+## [[BirdNET]] et infrastructure réseau
 
-Travaux de connexion du Raspberry Pi BirdNet au réseau Tailnet (`wiki/Daily/2026/05/2026-05-24-birdnet-rpi-connexion-tailnet.md`).
+Travaux de connexion du [[Raspberry Pi]] [[BirdNET]] au réseau Tailnet (
 
 ## Maintenance et logs
 

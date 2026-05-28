@@ -28,7 +28,7 @@ Typographies cle :
 
 ## Cadrage d'equipe
 
-### Iris — positionnement
+### [[Iris]] — positionnement
 
 Le duo `Arteon` doit etre presente comme un binome de transformation commerciale :
 - vision strategique
@@ -41,7 +41,7 @@ Le duo doit etre visible :
 
 Les slides analytiques doivent rester sobres.
 
-### Vega — directions visuelles
+### [[Vega]] — directions visuelles
 
 Trois directions sont pertinentes et compatibles avec ARTEON :
 - une direction galerie editoriale

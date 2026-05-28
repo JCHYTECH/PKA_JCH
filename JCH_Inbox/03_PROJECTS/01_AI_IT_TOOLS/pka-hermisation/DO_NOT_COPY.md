@@ -1,6 +1,6 @@
 ---
 date: 2026-05-25
-model: GPT-5 Codex
+model: GPT-5 [[Codex]]
 type: guardrails
 status: active
 domain: ai-system
@@ -19,7 +19,7 @@ The Hermisation project must not copy these patterns from Hermes-like systems:
 - always-on automation before manual validation;
 - external network exposure without security review;
 - storing secrets in Markdown;
-- replacing Dobby as orchestrator.
+- replacing [[Dobby]] as orchestrator.
 
 ## Rule
 

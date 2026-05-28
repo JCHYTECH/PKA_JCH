@@ -1,23 +1,23 @@
 # Connexion RPI BirdNET-Pi
 
 **Date :** 2026-05-24  
-**Machine :** Raspberry Pi BirdNET-Pi  
+**Machine :** [[Raspberry Pi]] BirdNET-Pi  
 **Projet :** WildNexus / Bioacoustique  
 **Regle securite :** ne pas ecrire le mot de passe en clair dans ce fichier.
 
 ## Informations connues
 
-### Raspberry Pi
+### [[Raspberry Pi]]
 
 - Hostname cible : `birdnetpi`
 - User SSH : `jchavaux`
 - IP maison probable : `192.168.1.48`
-- IP Tailscale RPI : `100.84.45.93`
-- Modele BirdNET : `BirdNET_GLOBAL_6K_V2.4_Model_FP16`
+- IP [[Tailscale]] RPI : 
+- Modele [[BirdNET]] : 
 
 ### iPhone
 
-- IP Tailscale iPhone : `100.75.75.90`
+- IP [[Tailscale]] iPhone : 
 - Plage hotspot iPhone observee : `172.20.10.x`
 - IPs hotspot deja vues : `172.20.10.2`, `172.20.10.7`, `172.20.10.8`, `172.20.10.15`
 
@@ -49,9 +49,7 @@ Dans Safari ou Chrome sur Mac, essayer dans cet ordre :
 ```text
 http://birdnetpi.local
 http://192.168.1.48
-http://192.168.1.48:8080
 http://100.84.45.93
-http://100.84.45.93:8080
 ```
 
 ### 3. Connexion SSH depuis Terminal Mac
@@ -68,13 +66,13 @@ Si `.local` ne repond pas, utiliser l'IP maison :
 ssh jchavaux@192.168.1.48
 ```
 
-Si Tailscale est actif sur Mac et sur RPI :
+Si [[Tailscale]] est actif sur Mac et sur RPI :
 
 ```bash
 ssh jchavaux@100.84.45.93
 ```
 
-### 4. Verifier Tailscale sur Mac
+### 4. Verifier [[Tailscale]] sur Mac
 
 Application a ouvrir sur Mac :
 
@@ -88,11 +86,11 @@ Commande Terminal possible :
 /Applications/Tailscale.app/Contents/MacOS/Tailscale status
 ```
 
-Si Tailscale est arrete, le demarrer depuis l'application Tailscale Mac.
+Si [[Tailscale]] est arrete, le demarrer depuis l'application [[Tailscale]] Mac.
 
 ## Connexion depuis iPhone
 
-### 1. Ouvrir Tailscale
+### 1. Ouvrir [[Tailscale]]
 
 Application a ouvrir sur iPhone :
 
@@ -119,7 +117,7 @@ http://100.84.45.93
 Si rien ne repond :
 
 ```text
-http://100.84.45.93:8080
+http://100.84.45.93
 ```
 
 ### 3. Alternative iPhone sur reseau local ou hotspot
@@ -137,13 +135,13 @@ http://172.20.10.2/
 http://172.20.10.7/
 ```
 
-Attention : les IPs `172.20.10.x` peuvent changer a chaque reconnexion hotspot. Pour un acces stable, preferer Tailscale :
+Attention : les IPs 
 
 ```text
 http://100.84.45.93
 ```
 
-## Commandes utiles sur le Raspberry Pi
+## Commandes utiles sur le [[Raspberry Pi]]
 
 Ces commandes sont a envoyer dans le terminal apres connexion SSH.
 
@@ -173,14 +171,14 @@ nmcli device status
 nmcli connection show
 ```
 
-### Verifier Tailscale sur le RPI
+### Verifier [[Tailscale]] sur le RPI
 
 ```bash
 tailscale status
 tailscale ip -4
 ```
 
-### Installer Tailscale si absent
+### Installer [[Tailscale]] si absent
 
 ```bash
 curl -fsSL https://tailscale.com/install.sh | sh
@@ -196,7 +194,7 @@ git branch --show-current
 git log -1 --oneline
 ```
 
-### Chercher le modele BirdNET
+### Chercher le modele [[BirdNET]]
 
 ```bash
 find ~/BirdNET-Pi -iname '*model*' -o -iname '*BirdNET*'
@@ -204,16 +202,16 @@ find ~/BirdNET-Pi -iname '*model*' -o -iname '*BirdNET*'
 
 ## Ordre de diagnostic rapide
 
-1. Sur iPhone, verifier que Tailscale est connecte.
+1. Sur iPhone, verifier que [[Tailscale]] est connecte.
 2. Dans Safari iPhone, ouvrir `http://100.84.45.93`.
-3. Si echec, tester `http://100.84.45.93:8080`.
+3. Si echec, tester `http://100.84.45.93`.
 4. Depuis Mac Terminal, tester `ssh jchavaux@100.84.45.93`.
 5. Une fois connecte au RPI, lancer `tailscale status` et `hostname -I`.
-6. Si Tailscale ne marche pas, revenir au reseau local : `http://birdnetpi.local` ou `http://192.168.1.48`.
+6. Si [[Tailscale]] ne marche pas, revenir au reseau local : 
 
 ## A ne pas oublier
 
 - `birdnet` est le login de l'interface Tools, pas le user SSH.
-- `jchavaux` est le user SSH du Raspberry Pi.
-- Les IPs Tailscale `100.x.y.z` sont plus stables que les IPs hotspot `172.20.10.x`.
+- 
+- Les IPs [[Tailscale]] 
 - Le mot de passe RPI est connu de JCH mais ne doit pas etre stocke ici en clair.

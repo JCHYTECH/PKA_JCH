@@ -10,8 +10,8 @@ status: active
 ## Session — 11:07 — vs-code-speech-timeout
 
 ### Contexte
-- Modèle : codex
-- Projet : 01_AI_IT_TOOLS
+- Modèle : [[Codex]]
+- Projet : [[01_AI_IT_TOOLS]]
 
 ### Résumé
 Updated VS Code Speech to avoid auto-submit on pause during voice dictation.

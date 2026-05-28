@@ -2,7 +2,7 @@
 
 **Date :** 2026-05-18
 **Statut :** accepté — 2026-05-18
-**Owner PKA :** Nova + Lynx
+**Owner PKA :** [[Nova]] + [[Lynx]]
 **Agent WildNexus :** `wildnexus-camera-imaging`
 **Jalon :** M-01 Architecture P0 gelée
 
@@ -10,7 +10,7 @@
 
 P0 doit produire une image de qualité équivalente aux meilleurs pièges photographiques du marché (Reconyx, Browning haut de gamme), de jour comme de nuit, sans architecture Linux permanente.
 
-Les meilleurs pièges photo professionnels reposent sur un capteur 5–12 MP réels couplé à une optique de qualité — pas sur les mégapixels interpolés affichés en marketing. L'OV5640 5 MP en configuration M12 mount avec une lentille IR-corrigée f/1.8 atteint ce niveau de performance, tout en restant compatible natif avec l'ESP32-S3 via interface DVP (ADR-001 accepté).
+Les meilleurs pièges photo professionnels reposent sur un capteur 5–12 MP réels couplé à une optique de qualité — pas sur les mégapixels interpolés affichés en marketing. L'OV5640 5 MP en configuration M12 mount avec une lentille IR-corrigée f/1.8 atteint ce niveau de performance, tout en restant compatible natif avec l'[[ESP32-S3]] via interface DVP (ADR-001 accepté).
 
 La décision sépare deux composants distincts à sourcer séparément :
 
@@ -28,7 +28,7 @@ Retenir l'**OV5640 5 MP en format M12 mount avec interface DVP** comme capteur P
 | Capteur | OmniVision OV5640 |
 | Résolution max | 5 MP (2592 × 1944) |
 | Résolutions configurables | 5 MP / 3 MP / 1080p / 720p / VGA |
-| Interface hôte | DVP (Digital Video Port) — natif ESP32-S3 |
+| Interface hôte | DVP (Digital Video Port) — natif [[ESP32-S3]] |
 | Format monture | M12 (S-mount) — lentille interchangeable |
 | Sensibilité IR | capteur NoIR (sans filtre IR-cut intégré) ou avec IR-cut motorisé |
 | Fournisseur primaire | Arducam OV5640 M12 DVP |
@@ -66,8 +66,8 @@ LEDs IR en mode **pulsé uniquement** sur déclenchement (< 5 s par capture), co
 
 | Option | Pour | Contre | Statut |
 |--------|------|--------|--------|
-| OV5640 5 MP M12 DVP + lentille qualité | Natif ESP32-S3, résolution configurable, lentille interchangeable, communauté active | Sensibilité nocturne inférieure aux STARVIS Sony | **Retenu P0** |
-| IMX462 MIPI (Sony STARVIS) | Excellente basse lumière, 2 MP mais qualité image remarquable | MIPI non natif ESP32-S3, ISP dédié requis, complexité P0 | P1 si OV5640 insuffisant nuit |
+| OV5640 5 MP M12 DVP + lentille qualité | Natif [[ESP32-S3]], résolution configurable, lentille interchangeable, communauté active | Sensibilité nocturne inférieure aux STARVIS Sony | **Retenu P0** |
+| IMX462 MIPI (Sony STARVIS) | Excellente basse lumière, 2 MP mais qualité image remarquable | MIPI non natif [[ESP32-S3]], ISP dédié requis, complexité P0 | P1 si OV5640 insuffisant nuit |
 | IMX327 MIPI + ISP | Très bonne sensibilité nocturne | Même problème MIPI + ISP ; hors portée MCU seul | P1/P2 |
 | OV5640 monobloc (lentille fixe collée) | Moins cher, plus compact | Lentille non remplaçable, qualité optique limitée, pas IR-corrigé | Rejeté — qualité insuffisante |
 | OV2640 2 MP | Très simple, bon marché | Résolution insuffisante pour cible qualité piège photo | Baseline référence seulement |
@@ -79,7 +79,7 @@ LEDs IR en mode **pulsé uniquement** sur déclenchement (< 5 s par capture), co
 - Arducam OV5640 M12 DVP : https://www.arducam.com
 - Lensation M12 IR-corrected lenses : https://www.lensation.de
 - Evetar M12 lenses : https://www.evetar.com
-- Espressif ESP32-S3 camera DVP interface : https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-reference/peripherals/camera_driver.html
+- Espressif [[ESP32-S3]] camera DVP interface : https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-reference/peripherals/camera_driver.html
 
 ## Conséquences
 
@@ -108,6 +108,6 @@ Réviser cette ADR si :
 
 - l'OV5640 montre une sensibilité nocturne insuffisante pour l'identification d'espèces à 5 m ;
 - la revue faune montre que la longueur d'onde IR candidate est visible ou perturbante pour les espèces cibles ;
-- une intégration IMX462 MIPI sans ISP externe devient accessible sur ESP32-S3 ;
+- une intégration IMX462 MIPI sans ISP externe devient accessible sur [[ESP32-S3]] ;
 - la lentille M12 IR-corrigée retenue introduit une aberration chromatique mesurable à f/1.8 — les aberrations seront observées et documentées pendant le prototype ; la correction optique (profil calibration) est une tâche post-prototype ;
 - le boîtier IP67 retenu (ADR-006) ne permet pas une fenêtre optique compatible M12 sans reflets.

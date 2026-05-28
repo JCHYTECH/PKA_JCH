@@ -6,13 +6,13 @@ Sources de travail :
 - `Meeting Nuances 12_5_26.txt`
 - `Mission nuance basic doc.md`
 - `ajout a la missions .md`
-- Wiki BESS (Furet, 2026-05-10) : technologies, acteurs, légal, installation
+- Wiki BESS ([[Furet]], 2026-05-10) : technologies, acteurs, légal, installation
 - `../wiki/BESS-synthese-strategique-et-risques.md`
 
 Objectif du document :
 Structurer la mission Nuances B2B selon des thèmes directement convertibles en slides PowerPoint, afin de clarifier la vision, le besoin, le processus technico-commercial cible et les outils de vente et de pilotage.
 
-Révision : 2026-05-14 — version de référence, 18 slides, intégrant synthèse BESS et grille de risques (Dobby)
+Révision : 2026-05-14 — version de référence, 18 slides, intégrant synthèse BESS et grille de risques ([[Dobby]])
 
 ---
 

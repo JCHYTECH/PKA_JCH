@@ -1,11 +1,11 @@
 ---
 date: 2026-05-17
 type: rapport-hebdo
-author: Dobby
+author: [[Dobby]]
 tags: [rapport, jch, collaboration, meta]
 ---
 
-# Rapport Dobby — Semaine du 12 au 17 mai 2026
+# Rapport [[Dobby]] — Semaine du 12 au 17 mai 2026
 ### Comment mieux collaborer avec ton équipe PKA
 
 ---
@@ -95,5 +95,5 @@ Tu le tiens à jour. Je m'y réfère. L'ingest devient prédictible et auditable
 
 ---
 
-*Rapport généré par Dobby — Agent PKA de JCH*
+*Rapport généré par [[Dobby]] — Agent PKA de JCH*
 *Semaine 2026-05-12 → 2026-05-17 · Basé sur 17 échanges analysés*

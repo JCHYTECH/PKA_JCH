@@ -533,7 +533,7 @@ Résultat : sujet propre + fond crémeux même à ISO 12800.
 
 # 🟫 **5. WORKFLOW MACRO / DÉTAIL DU PLUMAGE**
 
-Spécial oiseaux proches (héron, pigeon, oiseaux de jardin)
+Spécial oiseaux proches ([[Héron]], pigeon, oiseaux de jardin)
 
 ## 5️⃣.1 Micro-contraste Lightroom
 Dans masque du sujet :
@@ -663,7 +663,7 @@ Merci de me donner :
 (exemples : Canon R5, R6 II, R7, Nikon Z8, Sony A1, OM-1, etc.)
 
 ### 2️⃣ **Ton téléobjectif principal**
-(exemples : RF 200-800, RF 100-500, 600 f/4, Sigma 150-600, Sony 200-600, etc.)
+(exemples : RF 200-800, RF 100-500, 600 f/4, [[Sigma]] 150-600, Sony 200-600, etc.)
 
 ### 3️⃣ **Tes situations majoritaires**
 Coche simplement ce qui s’applique :
@@ -723,7 +723,7 @@ Choisis parmi ceux-ci ou donne un autre :
 - RF **600mm f/11**
 - EF 100–400mm II  
 - EF 400mm f/5.6  
-- Sigma 150–600mm  
+- [[Sigma]] 150–600mm  
 - Tamron 150–600mm  
 - Sony/Canon compatible via adaptateur ?  
 - Autre : _______

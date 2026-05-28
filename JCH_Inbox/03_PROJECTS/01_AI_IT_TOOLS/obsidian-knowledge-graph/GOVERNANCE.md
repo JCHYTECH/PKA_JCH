@@ -1,18 +1,18 @@
 ---
 date: 2026-05-25
-model: GPT-5 Codex
+model: GPT-5 [[Codex]]
 type: governance
 status: active
-domain: obsidian
+domain: [[Obsidian]]
 ---
 
-# Governance — Obsidian Knowledge Graph
+# Governance — [[Obsidian]] Knowledge Graph
 
 ## Hard Rules
 
-Dobby may add wikilinks, aliases, YAML metadata, suggestions, and quality reports.
+[[Dobby]] may add wikilinks, aliases, YAML metadata, suggestions, and quality reports.
 
-Dobby may not:
+[[Dobby]] may not:
 
 - create links to nonexistent notes;
 - create thousands of blind links;

@@ -1,10 +1,10 @@
 ---
-source_file: "git/faune-autour_13.html"
+source_file: "[[Git]]/faune-autour_13.html"
 type: "document"
 community: "Species Search & Geolocation Logic"
 tags:
-  - graphify/document
-  - graphify/EXTRACTED
+  - [[Graphify]]/document
+  - [[Graphify]]/EXTRACTED
   - community/Species_Search_&_Geolocation_Logic
 ---
 
@@ -16,4 +16,4 @@ tags:
 - [[bboxWkt() — WKT polygon from latlon + radius (km)]] - `calls` [EXTRACTED]
 - [[gpsInit() — CoreLocation GPS via navigator.geolocation, fallback Brussels simulation]] - `shares_data_with` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Species_Search_&_Geolocation_Logic
+#[[Graphify]]/document #[[Graphify]]/EXTRACTED #community/Species_Search_&_Geolocation_Logic

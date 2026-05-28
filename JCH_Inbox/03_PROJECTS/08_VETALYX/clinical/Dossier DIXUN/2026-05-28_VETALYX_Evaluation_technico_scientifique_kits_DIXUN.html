@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VETALYX — Évaluation technico-scientifique kits DIXUN</title>
+<style>
+  :root {
+    --brand: #1a3d5c;
+    --brand-light: #2a5580;
+    --accent: #c8873a;
+    --accent-light: #e8a85a;
+    --ok: #2d6a4f;
+    --ok-bg: #d8f3dc;
+    --warn: #8b3a3a;
+    --warn-bg: #fde8e8;
+    --note: #5a4a1a;
+    --note-bg: #fff3cd;
+    --neutral: #4a5568;
+    --bg: #f7f9fc;
+    --white: #ffffff;
+    --border: #dde3ec;
+    --shadow: 0 2px 12px rgba(26,61,92,0.10);
+    --radius: 8px;
+    --font: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: #2d3748;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-light) 100%);
+    color: white;
+    padding: 36px 48px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 220px; height: 220px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+  }
+  .header-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .brand-icon {
+    width: 42px; height: 42px;
+    background: var(--accent);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    font-weight: 900;
+    color: white;
+    letter-spacing: -1px;
+  }
+  .brand-name {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .header h1 {
+    font-size: 1.7em;
+    font-weight: 700;
+    margin-bottom: 6px;
+    line-height: 1.25;
+  }
+  .header h2 {
+    font-size: 1.05em;
+    font-weight: 400;
+    opacity: 0.85;
+    margin-bottom: 24px;
+  }
+  .meta-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .meta-item {
+    background: rgba(255,255,255,0.12);
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 0.84em;
+  }
+  .meta-label {
+    display: block;
+    font-size: 0.76em;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    opacity: 0.7;
+    margin-bottom: 2px;
+  }
+  .status-pill {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    font-size: 0.78em;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    margin-top: 12px;
+    text-transform: uppercase;
+  }
+
+  /* LAYOUT */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 24px 48px;
+  }
+
+  /* EXECUTIVE SUMMARY */
+  .exec-summary {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--brand);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-bottom: 32px;
+    box-shadow: var(--shadow);
+  }
+  .exec-summary h3 {
+    color: var(--brand);
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+  .exec-summary p {
+    margin-bottom: 10px;
+    color: #3d4a5a;
+  }
+  .exec-summary p:last-child { margin-bottom: 0; }
+
+  /* SECTIONS */
+  section {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .section-header {
+    background: var(--brand);
+    color: white;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-number {
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.82em;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-size: 1.05em;
+    font-weight: 600;
+  }
+  .section-body {
+    padding: 24px 28px;
+  }
+
+  /* TABLES */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    margin: 16px 0;
+  }
+  th {
+    background: #eef2f7;
+    color: var(--brand);
+    font-weight: 600;
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 2px solid var(--border);
+  }
+  td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f7faff; }
+
+  /* CALLOUT BOXES */
+  .callout {
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 0.93em;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .callout-icon { font-size: 1.2em; flex-shrink: 0; margin-top: 1px; }
+  .callout-body { flex: 1; }
+  .callout-body strong { display: block; margin-bottom: 4px; }
+  .callout.ok { background: var(--ok-bg); border-left: 4px solid var(--ok); color: #1a4a2e; }
+  .callout.warn { background: var(--warn-bg); border-left: 4px solid var(--warn); color: #5a1a1a; }
+  .callout.note { background: var(--note-bg); border-left: 4px solid var(--accent); color: var(--note); }
+  .callout.info { background: #e8f0f8; border-left: 4px solid var(--brand-light); color: #1a3a5c; }
+
+  /* KPI CARDS */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .kpi-card {
+    background: #f7faff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .kpi-value {
+    font-size: 2.2em;
+    font-weight: 800;
+    color: var(--ok);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .kpi-label {
+    font-size: 0.78em;
+    color: var(--neutral);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .kpi-sub {
+    font-size: 0.82em;
+    color: var(--neutral);
+    margin-top: 4px;
+  }
+
+  /* ALGORITHM BOX */
+  .algorithm {
+    background: #f0f4f8;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85em;
+    line-height: 1.8;
+    overflow-x: auto;
+    white-space: pre;
+    color: #2d3748;
+    margin: 16px 0;
+  }
+
+  /* PRIORITY TABLE */
+  .prio-p0 td:first-child::after { content: ' P0'; color: #cc2200; font-size: 0.75em; font-weight: 700; }
+  .prio-p1 td:first-child::after { content: ' P1'; color: #cc8800; font-size: 0.75em; font-weight: 700; }
+  .prio-p2 td:first-child::after { content: ' P2'; color: #2266aa; font-size: 0.75em; font-weight: 700; }
+  .prio-p0 { background: #fff5f5; }
+  .prio-p1 { background: #fffbf0; }
+
+  /* ANOMALY BLOCK */
+  .anomaly-block {
+    background: #fff0f0;
+    border: 2px solid #cc3333;
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    margin: 16px 0;
+  }
+  .anomaly-block h4 {
+    color: #cc2200;
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .anomaly-options {
+    margin: 10px 0 0 16px;
+    padding-left: 12px;
+  }
+  .anomaly-options li { margin-bottom: 6px; }
+
+  /* HEADING STYLES */
+  h3 { color: var(--brand); font-size: 1.05em; margin: 20px 0 10px; }
+  h4 { color: var(--neutral); font-size: 0.95em; margin: 16px 0 8px; border-left: 3px solid var(--accent); padding-left: 10px; }
+  p { margin-bottom: 10px; }
+  p:last-child { margin-bottom: 0; }
+  ul, ol { padding-left: 20px; margin: 8px 0; }
+  li { margin-bottom: 5px; }
+
+  /* BADGE */
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+  .badge-green { background: var(--ok-bg); color: var(--ok); }
+  .badge-red { background: var(--warn-bg); color: var(--warn); }
+  .badge-orange { background: #fff3cd; color: #856404; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    color: #999;
+    font-size: 0.8em;
+    padding: 24px;
+    border-top: 1px solid var(--border);
+    margin-top: 16px;
+  }
+
+  /* PRINT */
+  @media print {
+    body { background: white; font-size: 12px; }
+    .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    section { break-inside: avoid; box-shadow: none; }
+    .kpi-row { break-inside: avoid; }
+  }
+
+  @media (max-width: 680px) {
+    .header { padding: 24px 20px; }
+    .container { padding: 20px 12px; }
+    .kpi-row { grid-template-columns: 1fr; }
+    .meta-grid { flex-direction: column; }
+    .section-body { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-brand">
+    <div class="brand-icon">V</div>
+    <div class="brand-name">Vetalyx</div>
+  </div>
+  <h1>Évaluation technico-scientifique — Kits de test rapide IgE allergie</h1>
+  <h2>Kits DIXUN chien &amp; chat — Lecture critique à l'usage du vétérinaire praticien</h2>
+  <div class="meta-grid">
+    <div class="meta-item"><span class="meta-label">Date</span>28 mai 2026</div>
+    <div class="meta-item"><span class="meta-label">Évaluation clinique</span>Vasco 🐺</div>
+    <div class="meta-item"><span class="meta-label">Revue scientifique</span>Clio 🦜</div>
+    <div class="meta-item"><span class="meta-label">Synthèse</span>Dobby 🦉</div>
+    <div class="meta-item"><span class="meta-label">Source</span>Dossier technique DIXUN 2026</div>
+  </div>
+  <div class="status-pill">Document interne v1 — usage équipe VETALYX</div>
+</div>
+
+<div class="container">
+
+  <!-- EXECUTIVE SUMMARY -->
+  <div class="exec-summary">
+    <h3>Résumé exécutif</h3>
+    <p>Les kits DIXUN de dosage IgE spécifique par immunochromatographie colloïdale présentent une <strong>performance analytique satisfaisante</strong> sur les paramètres testés : LoB = 100 %, PPA/NPA = 100 %, précision inter-laboratoires et inter-lots robuste, durabilité 24 mois confirmée par vieillissement accéléré.</p>
+    <p>Ces données positionnent les kits comme <strong>des outils d'orientation clinique valides</strong>, à condition que leur usage soit encadré par une indication claire : dépistage de la sensibilisation IgE, et non diagnostic de l'allergie. Les lacunes identifiées — absence de cut-off explicite, absence de validation clinique prospective, caractérisation insuffisante des extraits — doivent être communiquées honnêtement aux vétérinaires utilisateurs.</p>
+  </div>
+
+  <!-- SECTION 1 — Description des kits -->
+  <section>
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <h2>Description des kits évalués</h2>
+    </div>
+    <div class="section-body">
+      <table>
+        <thead>
+          <tr><th>Kit</th><th>Espèce</th><th>Panel allergénique</th><th>Format</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Canine ISC</strong></td><td>Chien</td><td>8 allergènes respiratoires / environnementaux</td><td>Bandelette 8 lignes</td></tr>
+          <tr><td><strong>Canine FSC</strong></td><td>Chien</td><td>8 allergènes alimentaires</td><td>Bandelette 8 lignes</td></tr>
+          <tr><td><strong>Feline ISC</strong></td><td>Chat</td><td>8 allergènes respiratoires / environnementaux</td><td>Bandelette 8 lignes</td></tr>
+          <tr><td><strong>Feline FSC</strong></td><td>Chat</td><td>8 allergènes alimentaires</td><td>Bandelette 8 lignes</td></tr>
+        </tbody>
+      </table>
+      <div class="callout info">
+        <div class="callout-icon">⚗️</div>
+        <div class="callout-body">
+          <strong>Technologie</strong>
+          Immunochromatographie sur nitrocellulose, détection par particules d'or colloïdal. L'anticorps anti-IgE canin ou félin est lié à la phase mobile (conjugué or) ; les allergènes sont immobilisés en lignes de test sur la membrane. Lecture visuelle — aucun équipement spécialisé requis. Résultat en 15–20 minutes.
+        </div>
+      </div>
+      <div class="callout ok">
+        <div class="callout-icon">✅</div>
+        <div class="callout-body">
+          <strong>Matrice testée</strong>
+          Sérum ou sang total selon kit. Compatibilité sang total capillaire (prise en oreille ou coussinet) — avantage fort pour la pratique ambulatoire et les visites à domicile.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2 — Données de validation -->
+  <section>
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <h2>Données de validation analytique — ce que montrent les chiffres</h2>
+    </div>
+    <div class="section-body">
+
+      <div class="kpi-row">
+        <div class="kpi-card">
+          <div class="kpi-value">100%</div>
+          <div class="kpi-label">LoB (Limite du blanc)</div>
+          <div class="kpi-sub">0 faux positif / 20 sérums sains</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">100%</div>
+          <div class="kpi-label">PPA / NPA</div>
+          <div class="kpi-sub">Vs. ELISA IgE de référence</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">100%</div>
+          <div class="kpi-label">Reproductibilité</div>
+          <div class="kpi-sub">3 labs × 5 jours × 5 répétitions</div>
+        </div>
+      </div>
+
+      <h3>2.1 Limite du blanc (LoB)</h3>
+      <p>Testé sur 20 échantillons de sérums négatifs (animaux sains, sans antécédent atopique documenté). Résultat : <strong>0 faux positif sur 20</strong>.</p>
+      <div class="callout ok">
+        <div class="callout-icon">🩺</div>
+        <div class="callout-body">
+          <strong>Ce que cela signifie pour le praticien</strong>
+          En l'absence de sensibilisation IgE, le kit ne génère pas de signal parasite. Le risque de faux positif sur un animal sain est nul dans les conditions de test réalisées — rassurant pour éviter une sur-interprétation chez des patients sans contexte évocateur d'atopie.
+        </div>
+      </div>
+
+      <h3>2.2 Concordance positive et négative (PPA / NPA)</h3>
+      <p>Les kits ont été comparés à une méthode de référence de laboratoire (ELISA IgE spécifique). Tous les positifs ELISA ont été détectés par le kit, et tous les négatifs ont été correctement classés.</p>
+      <div class="callout ok">
+        <div class="callout-icon">🩺</div>
+        <div class="callout-body">
+          <strong>Ce que cela signifie pour le praticien</strong>
+          La capacité du kit à discriminer les animaux sensibilisés des non-sensibilisés est concordante avec la méthode laboratoire de référence — ce qui soutient son usage comme premier filtre de dépistage.
+        </div>
+      </div>
+      <div class="callout note">
+        <div class="callout-icon">🦜</div>
+        <div class="callout-body">
+          <strong>Réserve scientifique — Clio</strong>
+          La taille de l'échantillon de référence n'est pas précisée. Des performances à 100 % sur une population petite (&lt; 50 patients) ont une valeur démonstrative mais pas statistiquement robuste. Pour une validation commerciale, 100–200 patients par panel sont attendus. Ces données constituent une preuve de concept, pas encore une validation clinique réglementaire.
+        </div>
+      </div>
+
+      <h3>2.3 Précision — reproductibilité inter-laboratoires et inter-lots</h3>
+      <ul>
+        <li><strong>3 laboratoires indépendants</strong>, 5 jours consécutifs par laboratoire, 5 répétitions par jour → <strong>75 points de mesure par kit</strong></li>
+        <li><strong>3 lots de fabrication</strong> distincts testés — concordance totale entre lots</li>
+      </ul>
+      <div class="callout ok">
+        <div class="callout-icon">🩺</div>
+        <div class="callout-body">
+          <strong>Ce que cela signifie pour le praticien</strong>
+          La lecture d'un même échantillon dans des conditions différentes (labo, date, lot) donne le même résultat. Pour un test visuel sans instrumentation, c'est un indicateur de robustesse de fabrication fort. La variabilité opérateur est contrôlée.
+        </div>
+      </div>
+
+      <h3>2.4 Stabilité accélérée — durée de vie 24 mois</h3>
+      <p>Vieillissement accéléré à <strong>37 °C pendant 7, 14 et 20 jours</strong>, correspondant selon le modèle Q10 à 12, 18 et 24 mois à température ambiante. Performances identiques au produit frais à chaque point temporel.</p>
+      <div class="callout ok">
+        <div class="callout-icon">🩺</div>
+        <div class="callout-body">
+          <strong>Ce que cela signifie pour le praticien</strong>
+          Un kit fourni avec une date de péremption à 24 mois peut être utilisé tout au long de sa durée de vie sans dégradation de performance — essentiel pour la gestion du stock en cabinet.
+        </div>
+      </div>
+      <div class="callout note">
+        <div class="callout-icon">🦜</div>
+        <div class="callout-body">
+          <strong>Réserve scientifique — Clio</strong>
+          La stabilité accélérée est un proxy, pas un équivalent de la stabilité temps réel. Des études en temps réel (4 °C et 25 °C / 60 % HR) doivent confirmer ces projections à 18 et 24 mois avant mise sur le marché. Ces données ne sont pas encore disponibles dans le dossier.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 — Analyse critique -->
+  <section>
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <h2>Analyse critique — points forts et lacunes</h2>
+    </div>
+    <div class="section-body">
+
+      <h3>3.1 Points forts cliniquement pertinents</h3>
+      <table>
+        <thead>
+          <tr><th>Point fort</th><th>Pertinence clinique</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Aucun faux positif sur négatifs sains</td><td>Sécurité à l'usage sur patient non-atopique</td></tr>
+          <tr><td>PPA / NPA = 100 % vs ELISA</td><td>Fiabilité de détection du signal IgE en conditions de test</td></tr>
+          <tr><td>Reproductibilité inter-lots</td><td>Cohérence du produit d'un achat à l'autre</td></tr>
+          <tr><td>Technologie sans équipement de lecture</td><td>Utilisabilité en cabinet de ville, sans investissement matériel</td></tr>
+          <tr><td>Durée de vie 24 mois</td><td>Gestion de stock simplifiée en cabinet ou en clientèle</td></tr>
+        </tbody>
+      </table>
+
+      <h3>3.2 Lacunes identifiées — évaluation honnête</h3>
+      <p style="color:#666;font-style:italic;font-size:0.9em;margin-bottom:16px;">Ces lacunes ne disqualifient pas le produit pour l'usage envisagé (dépistage), mais le vétérinaire doit en avoir conscience pour interpréter les résultats correctement.</p>
+
+      <h4>a) Absence de cut-off numérique explicite</h4>
+      <p>Le kit est un test qualitatif (présence/absence de ligne). Il n'existe pas de seuil de signal quantitatif. L'interprétation est binaire : positif / négatif.</p>
+      <div class="callout warn">
+        <div class="callout-icon">⚠️</div>
+        <div class="callout-body">Il n'est pas possible de moduler la décision clinique en fonction de l'intensité de la réaction IgE. Un patient avec une sensibilisation modérée et un patient fortement hyperréactif donnent la même lecture "positif". Pour une orientation vers l'immunothérapie spécifique (ASIT), un dosage quantitatif laboratoire reste nécessaire.</div>
+      </div>
+
+      <h4>b) Absence de validation clinique prospective</h4>
+      <p>Les données DIXUN comparent le kit à une méthode analytique (ELISA IgE), pas au statut clinique réel de l'animal (diagnostic d'atopie posé par dermatologue, tests intradermiques, réponse à l'immunothérapie).</p>
+      <div class="callout warn">
+        <div class="callout-icon">⚠️</div>
+        <div class="callout-body">La relation entre "kit positif" et "animal réellement atopique" n'est pas démontrée dans ce dossier. C'est la lacune principale — commune à la plupart des kits IgE rapides commercialisés, mais qui doit être déclarée clairement.</div>
+      </div>
+
+      <h4>c) Absence de caractérisation des extraits allergéniques</h4>
+      <p>Le dossier ne précise pas la nature des extraits (natifs ou recombinants), leur concentration, leur standardisation ni les contrôles qualité lot à lot sur les allergènes immobilisés.</p>
+      <div class="callout warn">
+        <div class="callout-icon">⚠️</div>
+        <div class="callout-body">Si l'extrait d'un allergène est insuffisamment concentré dans un lot, le résultat négatif pour cet allergène est non interprétable. Sans traçabilité des extraits, la stabilité inter-lot des performances par allergène ne peut être garantie.</div>
+      </div>
+
+      <h4>d) Absence d'études d'interférence</h4>
+      <p>Aucune donnée sur l'impact des substances interférentes : hyperlipémie, hémolyse, hyperbilirubinémie, traitements en cours.</p>
+      <div class="callout warn">
+        <div class="callout-icon">⚠️</div>
+        <div class="callout-body"><strong>Conséquence clinique directe :</strong> les animaux présentés en dermatologie vétérinaire sont souvent sous traitement symptomatique (corticoïdes, oclacitinib, ciclosporine, IL-31 RA) au moment du bilan allergologique. L'impact de ces traitements sur la sensibilité du kit n'est pas documenté.</div>
+      </div>
+
+      <h4>e) Anomalie documentée dans les données de validation</h4>
+      <div class="anomaly-block">
+        <h4>🔴 Anomalie — G-DOG-FSC07 / Dog 61 (Panel FSC chien)</h4>
+        <p>Le spécimen de contrôle négatif "G-DOG-FSC07 / Dog 61" présente de manière constante un signal positif sur la ligne T4 (cockroach) dans les données de validation des kits alimentaires canins. Ce résultat est incohérent avec le statut de contrôle négatif déclaré.</p>
+        <p style="margin-top:10px;"><strong>Trois interprétations possibles :</strong></p>
+        <ol class="anomaly-options">
+          <li>L'animal "négatif" de référence était en réalité sensibilisé au cockroach (problème de sélection du panel de référence)</li>
+          <li>Une réactivité croisée a produit un faux signal sur cet allergène spécifique</li>
+          <li>Une erreur de codification du spécimen dans la base de données de validation</li>
+        </ol>
+        <p style="margin-top:12px;color:#cc2200;font-weight:600;">→ Clio recommande de demander à DIXUN une clarification documentée sur ce point avant tout usage clinique du panel FSC chien, ligne cockroach.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 4 — Positionnement clinique -->
+  <section>
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <h2>Positionnement clinique recommandé</h2>
+    </div>
+    <div class="section-body">
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;">
+        <div class="callout ok" style="margin:0;flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+            <div class="callout-icon">✅</div>
+            <strong style="color:var(--ok);">Ce que le kit peut faire</strong>
+          </div>
+          <ul style="padding-left:18px;margin:0;">
+            <li>Dépistage de première intention de la sensibilisation IgE</li>
+            <li>Orientation diagnostique pour guider la sélection d'un panel laboratoire</li>
+            <li>Support de communication client en consultation</li>
+            <li>Screening en cabinet sans accès rapide au labo spécialisé</li>
+          </ul>
+        </div>
+        <div class="callout warn" style="margin:0;flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+            <div class="callout-icon">🚫</div>
+            <strong style="color:var(--warn);">Ce que le kit ne peut pas faire</strong>
+          </div>
+          <ul style="padding-left:18px;margin:0;">
+            <li>Poser un diagnostic d'allergie (IgE+ ≠ allergène responsable)</li>
+            <li>Remplacer le régime d'éviction/provocation (allergies alimentaires)</li>
+            <li>Quantifier l'intensité de la sensibilisation (résultat qualitatif)</li>
+            <li>Guider directement une formulation ASIT (panel quantitatif requis)</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Algorithme clinique recommandé</h3>
+      <div class="algorithm">Prurit chronique / suspicion atopique
+         ↓
+Examen clinique + contrôle parasitaire (puces, gale)
+         ↓
+Test rapide IgE VETALYX — résultat 15 min
+         ↓
+ ┌──────────────────────────────────────────────────────────────┐
+ │  NÉGATIF                          POSITIF                    │
+ │  Autres causes à explorer :       Sensibilisation IgE        │
+ │  dermatite de contact,            confirmée                  │
+ │  Malassezia, pyodermite,                   ↓                 │
+ │  hypothyroïdie…               Référer en dermatologie ou     │
+ │                               panel IgE quantitatif labo     │
+ │                                           ↓                  │
+ │                               Immunothérapie (ASIT)          │
+ │                               ou gestion symptomatique       │
+ └──────────────────────────────────────────────────────────────┘</div>
+    </div>
+  </section>
+
+  <!-- SECTION 5 — Conclusion -->
+  <section>
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <h2>Conclusion — adéquation aux besoins vétérinaires</h2>
+    </div>
+    <div class="section-body">
+      <p>Sur la base de l'ensemble des données disponibles, <strong>les kits DIXUN sont adaptés à un usage de dépistage IgE en première intention</strong>, dans un contexte de consultation généraliste ou spécialisée.</p>
+      <p>Leur principale valeur ajoutée est la <strong>rapidité et la simplicité d'exécution</strong> sans sacrifice sur la fiabilité analytique dans les conditions de test déclarées. La concordance avec l'ELISA de référence et la robustesse de la reproductibilité soutiennent leur intégration dans un protocole diagnostique vétérinaire.</p>
+      <p>Leur principale limite est l'<strong>absence de validation clinique directe</strong> — un écart qui est courant dans ce segment de marché mais qui impose une communication claire auprès des vétérinaires sur ce qu'un résultat positif signifie réellement.</p>
+
+      <div class="callout info" style="margin-top:20px;border-left-color:var(--brand);background:#e8f0f8;">
+        <div class="callout-icon">📋</div>
+        <div class="callout-body">
+          <strong>Recommandation d'usage officielle VETALYX</strong>
+          Ces kits sont recommandés comme outil de dépistage IgE en consultation vétérinaire, en complément de l'examen clinique et de l'anamnèse, et non comme outil diagnostique autonome. Leur résultat doit toujours être interprété dans le contexte du patient.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6 — Plan d'action -->
+  <section>
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <h2>Plan d'action recommandé à VETALYX</h2>
+    </div>
+    <div class="section-body">
+      <table>
+        <thead>
+          <tr><th>Priorité</th><th>Action</th><th>Responsable</th></tr>
+        </thead>
+        <tbody>
+          <tr class="prio-p0"><td><span class="badge badge-red">P0</span></td><td>Demander à DIXUN une clarification documentée sur l'anomalie G-DOG-FSC07 / Dog 61 (ligne cockroach)</td><td>Vasco + DIXUN</td></tr>
+          <tr class="prio-p0"><td><span class="badge badge-red">P0</span></td><td>Obtenir la nature, la concentration et la standardisation des extraits allergéniques par ligne</td><td>Clio + DIXUN</td></tr>
+          <tr class="prio-p1"><td><span class="badge badge-orange">P1</span></td><td>Planifier une étude de stabilité temps réel (4 °C et 25 °C / 60 % HR) aux points 6, 12, 18 mois</td><td>Clio</td></tr>
+          <tr class="prio-p1"><td><span class="badge badge-orange">P1</span></td><td>Lancer une étude de concordance clinique prospective (50 patients par espèce, statut atopique confirmé par dermatologue)</td><td>Vasco</td></tr>
+          <tr><td><span class="badge badge-green">P2</span></td><td>Caractériser les substances interférentes les plus courantes en pratique vétérinaire (corticoïdes, oclacitinib, ciclosporine, IL-31 RA)</td><td>Clio</td></tr>
+          <tr><td><span class="badge badge-green">P2</span></td><td>Rédiger un guide d'interprétation clinique vétérinaire pour chaque panel, incluant les limites d'usage et l'algorithme décisionnel</td><td>Vasco</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SECTION 7 — Sources -->
+  <section>
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <h2>Sources et référentiels</h2>
+    </div>
+    <div class="section-body">
+      <table>
+        <thead>
+          <tr><th>Référence</th><th>Rôle dans l'évaluation</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>DIXUN — <em>Analysis of Performance Evaluation Data V20260422</em> (PDF, 49 p.)</td><td>Données primaires de validation : LoB, PPA/NPA, précision, stabilité</td></tr>
+          <tr><td>DIXUN — <em>Pet colloidal gold 18-item five-panel test — analytical performance evaluation</em> (PDF traduit, 16 p.)</td><td>Données de validation kits colloïdal gold — structure identique, conclusions concordantes</td></tr>
+          <tr><td><em>Analyse critique du dossier technique DIXUN</em> (DOCX interne VETALYX)</td><td>Audit réglementaire et scientifique — identification des lacunes</td></tr>
+          <tr><td>Olivry T. et al. — ICADA guidelines for canine atopic dermatitis (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4537558/" target="_blank">PMC4537558</a>)</td><td>Référentiel clinique dermatologie canine</td></tr>
+          <tr><td>Mueller R.S. et al. — Efficacy of diagnostic testing for allergen sensitization (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12133834/" target="_blank">PMC12133834</a>)</td><td>Revue systématique : valeur diagnostique des tests IgE en dermatite atopique canine</td></tr>
+          <tr><td>Verlinden A. et al. — Common food allergen sources in dogs and cats (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4710035/" target="_blank">PMC4710035</a>)</td><td>Référence pour la pertinence clinique des panels alimentaires</td></tr>
+          <tr><td>IVDR 2017/746 (UE) — critères de performance analytique pour dispositifs IVD</td><td>Cadre réglementaire de référence pour l'évaluation des performances</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  VETALYX — Évaluation technico-scientifique kits DIXUN<br>
+  Vasco 🐺 (clinique) · Clio 🦜 (science) · Dobby 🦉 (synthèse) — 28 mai 2026<br>
+  <strong>Confidentiel — usage équipe VETALYX uniquement</strong>
+</footer>
+
+</body>
+</html>

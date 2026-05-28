@@ -11,16 +11,16 @@
 Mais un produit mérite une analyse sérieuse comme benchmark ou éventuel raccourci partiel :
 
 **Seeed SenseCAP A1102 LoRaWAN Vision AI Sensor**  
-Il coche plusieurs cases terrain : caméra 5 MP OV5647, LoRaWAN EU868, IP66, microSD 8 GB, batterie 19 Ah Li-SOCl2, Edge AI local. Il ne respecte pas l'architecture P0 au sens strict : pas ESP32-S3 comme MCU principal caméra, pas LoRa P2P SX1262 gateway propre, pas LTE-M image à la demande, pas caméra OV5640 M12 DVP, pas IR nocturne documenté, intégration cloud/SenseCraft à évaluer.
+Il coche plusieurs cases terrain : caméra 5 MP OV5647, LoRaWAN EU868, IP66, microSD 8 GB, batterie 19 Ah Li-SOCl2, Edge AI local. Il ne respecte pas l'architecture P0 au sens strict : pas [[ESP32-S3]] comme MCU principal caméra, pas [[LoRa]] P2P SX1262 gateway propre, pas LTE-M image à la demande, pas caméra OV5640 M12 DVP, pas IR nocturne documenté, intégration cloud/SenseCraft à évaluer.
 
 ## Critères P0 rappelés
 
 | Domaine | Décision P0 |
 |---|---|
-| MCU | ESP32-S3 |
+| MCU | [[ESP32-S3]] |
 | Caméra | OV5640 5 MP M12 DVP + lentille IR-corrigée |
 | Nuit | LEDs IR pulsées, longueur d'onde non visible/non perturbante faune |
-| Radio principale | LoRa EU868 P2P / SX1262, gateway propre |
+| Radio principale | [[LoRa]] EU868 P2P / SX1262, gateway propre |
 | Image à la demande | LTE-M SIM7080G éteint sauf commande |
 | Stockage | microSD industrielle locale |
 | Énergie | batterie LiFePO4, deep sleep carte complète < 100 µA, MOSFET/load-switch périphériques |
@@ -53,7 +53,7 @@ Adéquation :
 | Critère | Statut |
 |---|---|
 | Caméra 5 MP | **Partiel** — OV5647 5 MP, pas OV5640 M12 |
-| LPWAN | **Partiel** — LoRaWAN, pas LoRa P2P gateway propre |
+| LPWAN | **Partiel** — LoRaWAN, pas [[LoRa]] P2P gateway propre |
 | Terrain | **Bon** — IP66, batterie 19 Ah |
 | Stockage local | **Bon** — microSD 8 GB |
 | Edge AI | **Bon** — modèle local |
@@ -88,12 +88,12 @@ Forces :
 
 Limites :
 - ne fournit pas directement notre bloc caméra 5 MP M12 IR-corrigé ;
-- coeur souvent nRF52/STM32/RAK, pas ESP32-S3 caméra ;
+- coeur souvent nRF52/STM32/RAK, pas [[ESP32-S3]] caméra ;
 - utile comme inspiration mécanique/énergie/enclosure, moins comme produit caméra complet.
 
 Décision proposée : **référence boîtier/énergie/modularité**, pas nœud caméra P0.
 
-### 3. Heltec / Meshnology / LilyGO / Seeed XIAO ESP32-S3 + SX1262 — bons modules RF, pas caméra
+### 3. Heltec / Meshnology / LilyGO / Seeed XIAO [[ESP32-S3]] + SX1262 — bons modules RF, pas caméra
 
 Sources :
 - https://heltec.org/project/wifi-lora-32-v4/
@@ -101,9 +101,9 @@ Sources :
 - https://www.digikey.com/en/products/detail/seeed-technology-co-ltd/113110064/26553901
 
 Forces :
-- ESP32-S3 + SX1262 ;
+- [[ESP32-S3]] + SX1262 ;
 - EU868 disponible ;
-- prototypage rapide LoRa / gateway ;
+- prototypage rapide [[LoRa]] / gateway ;
 - parfois solaire et batterie.
 
 Limites :
@@ -115,7 +115,7 @@ Limites :
 
 Décision proposée : **banc RF / gateway**, pas nœud caméra.
 
-### 4. Tokay Lite / WildCAM ESP32 / projets open source caméra faune — bons apprentissages, pas produit P0 complet
+### 4. Tokay Lite / WildCAM [[ESP32]] / projets open source caméra faune — bons apprentissages, pas produit P0 complet
 
 Sources :
 - https://www.crowdsupply.com/maxlab/tokay-lite
@@ -123,13 +123,13 @@ Sources :
 - https://github.com/curiouselectric/Lapse-O-Matic
 
 Forces :
-- caméra ESP32 orientée wildlife ;
+- caméra [[ESP32]] orientée wildlife ;
 - PIR, solaire, stockage selon projet ;
 - open source utile pour firmware/power patterns.
 
 Limites :
 - souvent OV2640 / 2 MP ;
-- pas LoRa SX1262 intégré ;
+- pas [[LoRa]] SX1262 intégré ;
 - pas architecture IP67 industrielle ;
 - pas disponibilité fabricant robuste.
 
@@ -143,12 +143,12 @@ La bonne stratégie semble être :
 
 1. garder l'architecture P0 custom comme ligne principale ;
 2. acheter ou demander un devis SenseCAP A1102 uniquement comme benchmark terrain / comparaison ;
-3. continuer à utiliser Meshnology/Heltec/LilyGO comme bancs LoRa/gateway ;
+3. continuer à utiliser Meshnology/Heltec/LilyGO comme bancs [[LoRa]]/gateway ;
 4. surveiller RAK WisBlock pour boîtier, alimentation solaire et modularité.
 
 ## Mandat équipe proposé
 
-- **Milan** : contacter/qualifier Seeed, RAK, Heltec/LilyGO ; vérifier versions EU, disponibilité, prix, API, documentation.
-- **Nova** : vérifier caméra/IR/nocturne sur SenseCAP A1102 et alternatives.
-- **Forge** : vérifier ouverture API, autonomie du pipeline, export image, intégration dashboard PKA.
-- **Chouette** : évaluer terrain : IP, batterie, fixation, froid, faune, maintenance.
+- **[[Milan]]** : contacter/qualifier Seeed, RAK, Heltec/LilyGO ; vérifier versions EU, disponibilité, prix, API, documentation.
+- **[[Nova]]** : vérifier caméra/IR/nocturne sur SenseCAP A1102 et alternatives.
+- **[[Forge]]** : vérifier ouverture API, autonomie du pipeline, export image, intégration dashboard PKA.
+- **[[Chouette]]** : évaluer terrain : IP, batterie, fixation, froid, faune, maintenance.

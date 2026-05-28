@@ -1,4 +1,4 @@
-# WILDMESH — Réseau LoRa Mesh pour caméras-pièges naturalistes
+# WILDMESH — Réseau [[LoRa]] Mesh pour caméras-pièges naturalistes
 
 > *Projet open source de surveillance faunistique distribuée*
 > Initié par JC Havaux — avril 2026
@@ -11,7 +11,7 @@ Ce projet est né de la convergence de deux besoins :
 - Gérer un réseau de caméras-pièges en forêt sans déplacement physique systématique
 - Offrir à des communautés naturalistes un outil de collecte de données environnementales augmenté
 
-L'idée centrale : utiliser un réseau maillé LoRa pour relier des nœuds autonomes (caméra + capteurs environnementaux) déployés en milieu forestier, capables de remonter des métriques de télémétrie sans infrastructure cellulaire ni Wi-Fi.
+L'idée centrale : utiliser un réseau maillé [[LoRa]] pour relier des nœuds autonomes (caméra + capteurs environnementaux) déployés en milieu forestier, capables de remonter des métriques de télémétrie sans infrastructure cellulaire ni Wi-Fi.
 
 ---
 
@@ -28,7 +28,7 @@ L'idée centrale : utiliser un réseau maillé LoRa pour relier des nœuds auton
 - Maintenir un coût unitaire accessible
 
 ### Hors périmètre (V1)
-- Transmission des photos via LoRa (bande passante incompatible — max ~250 bytes/paquet)
+- Transmission des photos via [[LoRa]] (bande passante incompatible — max ~250 bytes/paquet)
 - Interface cloud propriétaire
 
 ---
@@ -36,7 +36,7 @@ L'idée centrale : utiliser un réseau maillé LoRa pour relier des nœuds auton
 ## 3. Architecture technique envisagée
 
 ### Technologie réseau
-**LoRa mesh** — protocole Meshtastic (open source, actif, communauté large)
+**[[LoRa]] mesh** — protocole Meshtastic (open source, actif, communauté large)
 
 | Paramètre | Valeur cible |
 |---|---|
@@ -50,8 +50,8 @@ L'idée centrale : utiliser un réseau maillé LoRa pour relier des nœuds auton
 
 | Composant | Référence indicative | Rôle |
 |---|---|---|
-| MCU + LoRa | ESP32 + module RA-02 / RAK3272 | Cerveau + radio |
-| Caméra trigger | Raspberry Pi Zero 2W + caméra HQ | Capture image |
+| MCU + [[LoRa]] | [[ESP32]] + module RA-02 / RAK3272 | Cerveau + radio |
+| Caméra trigger | [[Raspberry Pi]] Zero 2W + caméra HQ | Capture image |
 | Capteur env. | BME280 (temp/humidité/pression) | Données microclimat |
 | Capteur lumière | BH1750 ou VEML7700 | Luminosité lux |
 | GPS | u-blox NEO-6M ou M8N | Localisation nœud |
@@ -96,19 +96,19 @@ La gateway (nœud central ou de bordure) peut être connectée via :
 
 | Approche | Exemple | Verdict |
 |---|---|---|
-| LoRa natif propriétaire | Covert LC32 | Écarté : fermé, réseau US (AT&T/Verizon), pas de télémétrie exposée |
+| [[LoRa]] natif propriétaire | Covert LC32 | Écarté : fermé, réseau US (AT&T/Verizon), pas de télémétrie exposée |
 | Firmware hackable | Browning Recon Force / HP5 | Intéressant mais modification firmware complexe, pas de port série externe |
 | SD card intercept | Expérimental (WILDLABS) | Technique élégante mais pas mature |
-| Build custom (recommandé) | Pi Zero 2W + ESP32 + LoRa | Contrôle total, open source, extensible |
+| Build custom (recommandé) | [[Pi]] Zero 2W + [[ESP32]] + [[LoRa]] | Contrôle total, open source, extensible |
 
-**Recommandation V1 :** construction from scratch sur base Raspberry Pi Zero 2W + module LoRa externe. Donne un contrôle total sur les données et l'intégration des capteurs.
+**Recommandation V1 :** construction from scratch sur base [[Raspberry Pi]] Zero 2W + module [[LoRa]] externe. Donne un contrôle total sur les données et l'intégration des capteurs.
 
 ---
 
 ## 5. Contraintes identifiées
 
 - **Portée réelle en sous-bois** : variable selon végétation — prévoir nœuds relais intercalaires si nécessaire
-- **Consommation** : le Pi Zero 2W doit impérativement être en veille profonde entre déclenchements (gestion PIR → wake → capture → sleep)
+- **Consommation** : le [[Pi]] Zero 2W doit impérativement être en veille profonde entre déclenchements (gestion PIR → wake → capture → sleep)
 - **Synchronisation horaire** : RTC (DS3231) ou GPS nécessaire pour horodatage fiable sans réseau
 - **Résistance terrain** : boîtier IP65 minimum, condensation, insectes (joint silicone sur connecteurs)
 - **Réglementation fréquences** : 868 MHz — duty cycle max 1% en Europe (LoRaWAN), Meshtastic peer-to-peer moins contraint mais à vérifier
@@ -141,7 +141,7 @@ La gateway (nœud central ou de bordure) peut être connectée via :
 | Phase | Contenu | Statut |
 |---|---|---|
 | **P0 — Cadrage** | Brief projet, architecture, BOM | ✅ En cours |
-| **P1 — Prototype nœud unique** | 1 nœud fonctionnel : caméra + capteurs + LoRa | À faire |
+| **P1 — Prototype nœud unique** | 1 nœud fonctionnel : caméra + capteurs + [[LoRa]] | À faire |
 | **P2 — Mesh 3 nœuds** | Validation portée, relais, télémétrie | À faire |
 | **P3 — Déploiement 10 nœuds** | Terrain réel, autonomie, robustesse | À faire |
 | **P4 — Dashboard** | Visualisation métriques, alertes batterie | À faire |
@@ -162,8 +162,8 @@ La gateway (nœud central ou de bordure) peut être connectée via :
 
 ## 9. Références et ressources
 
-- [Meshtastic](https://meshtastic.org) — firmware mesh LoRa open source
-- [MeshCore](https://meshcore.co.uk) — alternative mesh LoRa
+- [Meshtastic](https://meshtastic.org) — firmware mesh [[LoRa]] open source
+- [MeshCore](https://meshcore.co.uk) — alternative mesh [[LoRa]]
 - [WILDLABS](https://wildlabs.net) — communauté tech conservation
 - [Conservation X — Camera Trap 3.0](https://conservationx.com/challenge/cameratrap/camera)
 - [Winterberry Wildlife](https://winterberrywildlife.ouroneacrefarm.com) — firmware hacking Browning

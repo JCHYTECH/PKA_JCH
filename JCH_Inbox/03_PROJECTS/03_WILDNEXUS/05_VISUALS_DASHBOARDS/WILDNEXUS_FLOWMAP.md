@@ -3,8 +3,8 @@
 **Version :** v0.1  
 **Date :** 2026-05-18  
 **Statut :** interne — premiere carte de navigation  
-**Owner :** Dobby  
-**Contributeurs :** Atlas, Forge, Vega  
+**Owner :** [[Dobby]]  
+**Contributeurs :** [[Atlas]], [[Forge]], [[Vega]]  
 
 ## Objet
 

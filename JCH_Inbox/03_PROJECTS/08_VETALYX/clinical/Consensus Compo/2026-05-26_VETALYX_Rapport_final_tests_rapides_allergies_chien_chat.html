@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VETALYX — Rapport final spécification tests rapides allergie chien/chat</title>
+  <style>
+    :root {
+      --brand: #1a3d5c;
+      --brand-light: #e8f0f7;
+      --dog: #2d6a4f;
+      --dog-light: #e9f5ee;
+      --cat: #6b3a8c;
+      --cat-light: #f2ebf9;
+      --accent: #c0392b;
+      --neutral: #f7f8fa;
+      --border: #d0d7de;
+      --text: #1c2128;
+      --text-muted: #6e7781;
+      --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      --font-mono: 'Consolas', 'SF Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font);
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text);
+      background: #f0f2f5;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 32px auto;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+      overflow: hidden;
+    }
+
+    /* ── HEADER ── */
+    .report-header {
+      background: var(--brand);
+      color: white;
+      padding: 36px 48px 28px;
+    }
+
+    .report-header .brand-line {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .brand-logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.5);
+      padding: 4px 12px;
+      border-radius: 4px;
+    }
+
+    .brand-divider {
+      height: 1px;
+      flex: 1;
+      background: rgba(255,255,255,0.2);
+    }
+
+    .report-type-badge {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.1);
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .report-header h1 {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+
+    .report-header .subtitle {
+      font-size: 13px;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 24px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .meta-item label {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 2px;
+    }
+
+    .meta-item span {
+      font-size: 13px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .status-pill {
+      display: inline-block;
+      background: rgba(46, 213, 115, 0.25);
+      color: #7dffb3;
+      border: 1px solid rgba(46, 213, 115, 0.4);
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* ── BODY ── */
+    .report-body {
+      padding: 40px 48px;
+    }
+
+    /* ── DECISION CENTRALE ── */
+    .decision-box {
+      background: var(--brand-light);
+      border-left: 4px solid var(--brand);
+      border-radius: 0 6px 6px 0;
+      padding: 20px 24px;
+      margin-bottom: 36px;
+    }
+
+    .decision-box h2 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--brand);
+      margin-bottom: 10px;
+    }
+
+    .decision-box p {
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .decision-box p:last-child { margin-bottom: 0; }
+
+    .decision-box strong { color: var(--brand); }
+
+    /* ── SECTIONS ── */
+    section { margin-bottom: 44px; }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--brand);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-number {
+      background: var(--brand);
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ── RULES LIST ── */
+    .rules-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .rules-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: var(--neutral);
+      border-radius: 6px;
+      padding: 12px 16px;
+    }
+
+    .rules-list li::before {
+      content: "⚠";
+      font-size: 14px;
+      color: #e67e22;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── SPECIES PANELS ── */
+    .species-block {
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 28px;
+      border: 1px solid var(--border);
+    }
+
+    .species-header {
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .species-header.dog {
+      background: var(--dog);
+      color: white;
+    }
+
+    .species-header.cat {
+      background: var(--cat);
+      color: white;
+    }
+
+    .species-icon { font-size: 20px; }
+
+    .species-header h3 {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .species-header .sources-badge {
+      margin-left: auto;
+      font-size: 11px;
+      opacity: 0.75;
+      font-style: italic;
+    }
+
+    /* ── PANEL TABS ── */
+    .panel-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      background: var(--neutral);
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 10px 8px;
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      border-bottom: 3px solid transparent;
+      transition: all 0.15s;
+    }
+
+    .tab-btn:hover { color: var(--text); background: rgba(0,0,0,0.03); }
+    .tab-btn.active.dog { color: var(--dog); border-bottom-color: var(--dog); background: white; }
+    .tab-btn.active.cat { color: var(--cat); border-bottom-color: var(--cat); background: white; }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* ── ALLERGEN TABLE ── */
+    .allergen-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .allergen-table thead tr {
+      background: var(--neutral);
+    }
+
+    .allergen-table th {
+      padding: 10px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .allergen-table th:first-child { width: 48px; text-align: center; }
+
+    .allergen-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .allergen-table tr:last-child td { border-bottom: none; }
+
+    .allergen-table td:first-child {
+      text-align: center;
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--brand);
+      width: 48px;
+    }
+
+    .allergen-table td.name {
+      font-weight: 600;
+      min-width: 160px;
+    }
+
+    .allergen-table td.composition {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #444;
+      min-width: 200px;
+    }
+
+    .allergen-table td.composition em { font-style: italic; }
+
+    .allergen-table td.rationale {
+      color: var(--text-muted);
+      font-size: 12.5px;
+    }
+
+    .allergen-table tr:hover td { background: rgba(0,0,0,0.015); }
+
+    /* ── LINE NUMBERS DOG/CAT ── */
+    .species-block.dog-block .allergen-table td:first-child { color: var(--dog); }
+    .species-block.cat-block .allergen-table td:first-child { color: var(--cat); }
+
+    /* ── CLAIMS ── */
+    .claim-allowed {
+      background: #eafaf1;
+      border: 1px solid #a9dfbf;
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+    }
+
+    .claim-allowed .claim-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #1e8449;
+      margin-bottom: 8px;
+    }
+
+    .claim-allowed blockquote {
+      font-size: 14px;
+      font-style: italic;
+      color: #145a32;
+      line-height: 1.5;
+    }
+
+    .claims-avoid {
+      background: #fdf2f2;
+      border: 1px solid #f5b7b1;
+      border-radius: 6px;
+      padding: 16px 20px;
+    }
+
+    .claims-avoid .claim-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .claims-avoid ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .claims-avoid li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #7b241c;
+    }
+
+    .claims-avoid li::before {
+      content: "✗";
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* ── DECISION FOURNISSEUR ── */
+    .supplier-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .supplier-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 12px 16px;
+      background: var(--neutral);
+      border-radius: 6px;
+      font-size: 13px;
+    }
+
+    .supplier-list li::before {
+      content: "→";
+      font-weight: 700;
+      color: var(--brand);
+      flex-shrink: 0;
+    }
+
+    /* ── BIBLIOGRAPHY ── */
+    .bib-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+    }
+
+    .bib-table th {
+      background: var(--neutral);
+      padding: 9px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      text-align: left;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .bib-table td {
+      padding: 9px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .bib-table tr:last-child td { border-bottom: none; }
+
+    .bib-table td:first-child {
+      font-weight: 700;
+      color: var(--brand);
+      width: 40px;
+      font-family: var(--font-mono);
+    }
+
+    .bib-table a {
+      color: var(--brand);
+      text-decoration: none;
+      font-size: 12px;
+    }
+
+    .bib-table a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    .report-footer {
+      background: var(--neutral);
+      border-top: 1px solid var(--border);
+      padding: 16px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .report-footer strong { color: var(--text); }
+
+    /* ── PRINT ── */
+    @media print {
+      body { background: white; }
+      .page { box-shadow: none; margin: 0; border-radius: 0; }
+      .tab-content { display: block !important; }
+      .panel-tabs { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="report-header">
+    <div class="brand-line">
+      <div class="brand-logo">VETALYX</div>
+      <div class="brand-divider"></div>
+      <div class="report-type-badge">Spécification produit</div>
+    </div>
+    <h1>Rapport final — Tests rapides allergie chien/chat</h1>
+    <p class="subtitle">Panels 6 lignes pour IgE respiratoire, dermique et alimentaire — version partenaire technique/scientifique</p>
+    <div class="meta-grid">
+      <div class="meta-item">
+        <label>Date</label>
+        <span>26 mai 2026</span>
+      </div>
+      <div class="meta-item">
+        <label>Auteurs</label>
+        <span>Dobby (orchestration) · Vasco (clinique) · Clio (scientifique)</span>
+      </div>
+      <div class="meta-item">
+        <label>Statut</label>
+        <span class="status-pill">Distribuable v1</span>
+      </div>
+      <div class="meta-item">
+        <label>À valider avec</label>
+        <span>KOL dermatologie vétérinaire & fournisseur</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <div class="report-body">
+
+    <!-- DÉCISION CENTRALE -->
+    <div class="decision-box">
+      <h2>Décision centrale</h2>
+      <p>Avec seulement 6 lignes, les tests rapides doivent utiliser des <strong>lignes mixtes par familles allergéniques</strong>. Une ligne positive signifie une sensibilisation IgE au groupe, pas l'identification de l'espèce allergénique exacte.</p>
+      <p>La priorité P0 recommandée est un <strong>test environnemental/dermatologique chien et chat</strong>. Les panels alimentaires doivent rester en P2, avec un claim limité à l'aide à l'orientation d'un régime d'éviction.</p>
+    </div>
+
+    <!-- SECTION 1 — RÈGLES D'INTERPRÉTATION -->
+    <section>
+      <h2 class="section-title">
+        <span class="section-number">1</span>
+        Règles d'interprétation
+      </h2>
+      <ul class="rules-list">
+        <li>Les lignes mixtes sont recommandées pour les acariens, pollens et moisissures afin d'augmenter le rendement clinique dans un format 6 lignes.</li>
+        <li>Un résultat positif doit être interprété dans le contexte clinique : prurit, saisonnalité, dermatite, contrôle parasitaire, infections secondaires et historique alimentaire.</li>
+        <li>Pour l'immunothérapie spécifique, un panel laboratoire plus détaillé peut être nécessaire après le test rapide.</li>
+        <li>Les IgE alimentaires seules ne diagnostiquent pas une allergie alimentaire : le régime d'éviction/provocation reste la référence clinique.</li>
+      </ul>
+    </section>
+
+    <!-- SECTION 2 — PANELS CHIEN -->
+    <section>
+      <h2 class="section-title">
+        <span class="section-number">2</span>
+        Panels chien
+      </h2>
+
+      <div class="species-block dog-block">
+        <div class="species-header dog">
+          <span class="species-icon">🐕</span>
+          <h3>Chien — 3 panels IgE</h3>
+        </div>
+        <div class="panel-tabs">
+          <button class="tab-btn active dog" onclick="switchTab(this, 'dog-resp')">IgE Respiratoire / Aéroallergènes</button>
+          <button class="tab-btn dog" onclick="switchTab(this, 'dog-derm')">IgE Dermique / Dermatite</button>
+          <button class="tab-btn dog" onclick="switchTab(this, 'dog-food')">IgE Alimentaire</button>
+        </div>
+
+        <!-- Dog Respiratoire -->
+        <div class="tab-content active" id="dog-resp">
+          <p style="padding:10px 20px 4px; font-size:11px; color:var(--text-muted); font-style:italic;">Sources : S1, S2, S3, S4, S5</p>
+          <table class="allergen-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nom affiché</th>
+                <th>Composition recommandée</th>
+                <th>Rationale</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td class="name">House dust mites</td>
+                <td class="composition"><em>Dermatophagoides farinae</em> + <em>D. pteronyssinus</em></td>
+                <td class="rationale">Groupe le plus robuste en dermatite atopique canine ; D. farinae seul est incomplet.</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td class="name">Storage mites</td>
+                <td class="composition"><em>Tyrophagus putrescentiae</em> + <em>Acarus siro</em> + <em>Lepidoglyphus destructor</em></td>
+                <td class="rationale">Fréquent en environnement domestique, aliments secs et zones humides ; utile en screening EU.</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td class="name">Grass pollen mix</td>
+                <td class="composition"><em>Phleum</em>/Timothy + <em>Lolium</em> + <em>Dactylis</em> + <em>Festuca</em> + <em>Poa</em></td>
+                <td class="rationale">Graminées très pertinentes en Europe ; saisonnalité exploitable cliniquement.</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td class="name">Weed pollen mix</td>
+                <td class="composition"><em>Artemisia</em> + <em>Ambrosia</em> + <em>Plantago</em> + <em>Parietaria/Urticaceae</em></td>
+                <td class="rationale">Mauvaises herbes importantes ; <em>Parietaria</em> prioritaire Sud/Méditerranée.</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td class="name">Tree pollen mix</td>
+                <td class="composition"><em>Betula</em> + <em>Alnus</em> + <em>Corylus</em> + <em>Quercus</em> + <em>Fraxinus/Platanus</em></td>
+                <td class="rationale">Arbres européens à forte variabilité régionale ; option olive/cyprès au Sud.</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td class="name">Mould mix</td>
+                <td class="composition"><em>Alternaria</em> + <em>Cladosporium</em> + <em>Aspergillus</em> + <em>Penicillium</em></td>
+                <td class="rationale">Pertinence variable mais utile en ligne groupée.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Dog Dermique -->
+        <div class="tab-content" id="dog-derm">
+          <p style="padding:10px 20px 4px; font-size:11px; color:var(--text-muted); font-style:italic;">Sources : S1, S2, S3, S5</p>
+          <table class="allergen-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nom affiché</th>
+                <th>Composition recommandée</th>
+                <th>Rationale</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td class="name">Flea allergy</td>
+                <td class="composition"><em>Ctenocephalides felis</em> / flea saliva</td>
+                <td class="rationale">Cause majeure de dermatite allergique ; ligne prioritaire même si l'interprétation IgE n'est pas parfaite.</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td class="name">House dust mites</td>
+                <td class="composition"><em>D. farinae</em> + <em>D. pteronyssinus</em></td>
+                <td class="rationale">Fort rendement pour dermatite atopique canine.</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td class="name">Storage mites</td>
+                <td class="composition"><em>Tyrophagus</em> + <em>Acarus</em> + <em>Lepidoglyphus</em></td>
+                <td class="rationale">Complète la ligne HDM ; utile en Europe.</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td class="name">Malassezia</td>
+                <td class="composition"><em>Malassezia pachydermatis</em></td>
+                <td class="rationale">Sensibilisation possible chez chiens atopiques avec dermatite/otite ; à interpréter avec infection active.</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td class="name">Atopic pollen mix</td>
+                <td class="composition">Grass mix + <em>Artemisia/Plantago/Parietaria</em> selon région</td>
+                <td class="rationale">Couvre les pollens cutanéo-atopiques les plus actionnables.</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td class="name">Mould mix</td>
+                <td class="composition"><em>Alternaria</em> + <em>Cladosporium</em> + <em>Aspergillus</em> + <em>Penicillium</em></td>
+                <td class="rationale">Complément environnemental en dermatite chronique ou saisonnière.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Dog Alimentaire -->
+        <div class="tab-content" id="dog-food">
+          <p style="padding:10px 20px 4px; font-size:11px; color:var(--text-muted); font-style:italic;">Sources : S6, S7, S8 — Usage recommandé : "food sensitization support", pas "food allergy diagnosis"</p>
+          <table class="allergen-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nom affiché</th>
+                <th>Composition recommandée</th>
+                <th>Rationale</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td class="name">Beef</td>
+                <td class="composition">Protéines de bœuf / BSA si disponible</td>
+                <td class="rationale">Source alimentaire fréquemment rapportée chez le chien.</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td class="name">Dairy</td>
+                <td class="composition">Protéines de lait de vache</td>
+                <td class="rationale">Allergène alimentaire fréquent ; exposition courante.</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td class="name">Chicken</td>
+                <td class="composition">Protéines de poulet</td>
+                <td class="rationale">Ingrédient très exposé dans les régimes canins.</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td class="name">Wheat/cereal</td>
+                <td class="composition">Blé +/- céréales selon contrainte technique</td>
+                <td class="rationale">Source rapportée ; utile pour orienter l'éviction.</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td class="name">Egg</td>
+                <td class="composition">Protéines de blanc d'œuf</td>
+                <td class="rationale">Pertinent dans les listes de sources alimentaires courantes.</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td class="name">Soy</td>
+                <td class="composition">Protéines de soja</td>
+                <td class="rationale">Pertinence moyenne mais utile si ligne disponible.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3 — PANELS CHAT -->
+    <section>
+      <h2 class="section-title">
+        <span class="section-number">3</span>
+        Panels chat
+      </h2>
+
+      <div class="species-block cat-block">
+        <div class="species-header cat">
+          <span class="species-icon">🐈</span>
+          <h3>Chat — 3 panels IgE</h3>
+        </div>
+        <div class="panel-tabs">
+          <button class="tab-btn active cat" onclick="switchTab(this, 'cat-resp')">IgE Respiratoire / Aéroallergènes</button>
+          <button class="tab-btn cat" onclick="switchTab(this, 'cat-derm')">IgE Dermique / Dermatite</button>
+          <button class="tab-btn cat" onclick="switchTab(this, 'cat-food')">IgE Alimentaire</button>
+        </div>
+
+        <!-- Cat Respiratoire -->
+        <div class="tab-content active" id="cat-resp">
+          <p style="padding:10px 20px 4px; font-size:11px; color:var(--text-muted); font-style:italic;">Sources : S5, S9, S10</p>
+          <table class="allergen-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nom affiché</th>
+                <th>Composition recommandée</th>
+                <th>Rationale</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td class="name">House dust mites</td>
+                <td class="composition"><em>D. farinae</em> + <em>D. pteronyssinus</em></td>
+                <td class="rationale">HDM ressortent souvent dans les réactions IgE/IDT féline ; interprétation plus prudente que chien.</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td class="name">Storage mites</td>
+                <td class="composition"><em>Tyrophagus</em> + <em>Acarus</em> + <em>Lepidoglyphus</em></td>
+                <td class="rationale">Complément pertinent en environnement intérieur et alimentation sèche.</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td class="name">Grass pollen mix</td>
+                <td class="composition">Timothy/<em>Phleum</em> + <em>Lolium</em> + <em>Dactylis</em> + <em>Poa</em></td>
+                <td class="rationale">Couverture pollens de base en Europe.</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td class="name">Regional tree/weed mix</td>
+                <td class="composition"><em>Betula/Alnus/Corylus</em> ou olive/cyprès/<em>Parietaria</em> selon zone</td>
+                <td class="rationale">À adapter géographiquement ; valeur surtout contextuelle.</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td class="name">Mould mix</td>
+                <td class="composition"><em>Alternaria</em> + <em>Cladosporium</em> + <em>Aspergillus</em> + <em>Penicillium</em></td>
+                <td class="rationale">Signal variable mais utile en screening respiratoire/environnemental.</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td class="name">Indoor insects</td>
+                <td class="composition">Cockroach +/- moustique/insect mix si disponible</td>
+                <td class="rationale">Intérieur urbain ; pour asthme, doit rester un support et non un diagnostic.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Cat Dermique -->
+        <div class="tab-content" id="cat-derm">
+          <p style="padding:10px 20px 4px; font-size:11px; color:var(--text-muted); font-style:italic;">Sources : S9, S10, S5</p>
+          <table class="allergen-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nom affiché</th>
+                <th>Composition recommandée</th>
+                <th>Rationale</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td class="name">Flea allergy</td>
+                <td class="composition"><em>Ctenocephalides felis</em> / flea saliva</td>
+                <td class="rationale">Priorité clinique féline ; toujours à exclure/traiter.</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td class="name">House dust mites</td>
+                <td class="composition"><em>D. farinae</em> + <em>D. pteronyssinus</em></td>
+                <td class="rationale">Pertinent dans FASS/non-flea non-food hypersensitivity.</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td class="name">Storage mites</td>
+                <td class="composition"><em>Tyrophagus</em> + <em>Acarus</em> + <em>Lepidoglyphus</em></td>
+                <td class="rationale">Ajoute une couverture intérieur/alimentation sèche.</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td class="name">Regional pollen mix</td>
+                <td class="composition">Graminées + weed/tree mix régional</td>
+                <td class="rationale">Aide si saisonnalité ou environnement compatible.</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td class="name">Mould mix</td>
+                <td class="composition"><em>Alternaria</em> + <em>Cladosporium</em> + <em>Aspergillus</em> + <em>Penicillium</em></td>
+                <td class="rationale">Complément environnemental prudent.</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td class="name">Biting insects</td>
+                <td class="composition">Moustique/insect bite mix ; sinon cockroach</td>
+                <td class="rationale">Utile si disponible ; sinon ligne insectes indoor.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Cat Alimentaire -->
+        <div class="tab-content" id="cat-food">
+          <p style="padding:10px 20px 4px; font-size:11px; color:var(--text-muted); font-style:italic;">Sources : S6, S7, S8 — Usage : aide à la discussion du régime d'éviction, jamais diagnostic autonome</p>
+          <table class="allergen-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nom affiché</th>
+                <th>Composition recommandée</th>
+                <th>Rationale</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td class="name">Beef</td>
+                <td class="composition">Protéines de bœuf</td>
+                <td class="rationale">Source alimentaire fréquemment rapportée.</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td class="name">Fish</td>
+                <td class="composition">Fish mix : poisson blanc + saumon/thon selon exposition</td>
+                <td class="rationale">Important chez le chat du fait des régimes courants.</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td class="name">Chicken</td>
+                <td class="composition">Protéines de poulet</td>
+                <td class="rationale">Exposition alimentaire très fréquente.</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td class="name">Dairy</td>
+                <td class="composition">Protéines de lait de vache</td>
+                <td class="rationale">Source rapportée ; ligne interprétable seulement en support.</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td class="name">Egg</td>
+                <td class="composition">Protéines d'œuf</td>
+                <td class="rationale">Pertinent mais non diagnostique seul.</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td class="name">Wheat / soy</td>
+                <td class="composition">Blé + soja groupés, ou ligne séparée selon contrainte</td>
+                <td class="rationale">Compromis si seulement 6 lignes.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4 — CLAIMS -->
+    <section>
+      <h2 class="section-title">
+        <span class="section-number">4</span>
+        Claims recommandés
+      </h2>
+      <div class="claim-allowed">
+        <div class="claim-label">Claim autorisé recommandé</div>
+        <blockquote>Test rapide de sensibilisation IgE à des groupes d'allergènes fréquents, destiné à appuyer l'orientation clinique par le vétérinaire.</blockquote>
+      </div>
+      <div class="claims-avoid">
+        <div class="claim-label">Claims à éviter absolument</div>
+        <ul>
+          <li>diagnostic alimentaire rapide</li>
+          <li>détecte les intolérances</li>
+          <li>identifie la cause de l'allergie</li>
+          <li>remplace le régime d'éviction</li>
+          <li>remplace le diagnostic vétérinaire</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION 5 — DÉCISION FOURNISSEUR -->
+    <section>
+      <h2 class="section-title">
+        <span class="section-number">5</span>
+        Décision fournisseur
+      </h2>
+      <ul class="supplier-list">
+        <li>Demander à DIXUN de confirmer la faisabilité technique de lignes mixtes standardisées par famille allergénique.</li>
+        <li>Exiger une validation chien/chat séparée, avec matrice positive/négative et reproductibilité par ligne.</li>
+        <li>Clarifier si les extraits sont natifs, recombinants ou mixtes, et obtenir les contrôles qualité lot à lot.</li>
+        <li>Prévoir une option régionale Nord/Ouest Europe et Méditerranée pour les pollens.</li>
+      </ul>
+    </section>
+
+    <!-- SECTION 6 — BIBLIOGRAPHIE -->
+    <section>
+      <h2 class="section-title">
+        <span class="section-number">6</span>
+        Bibliographie et sources
+      </h2>
+      <table class="bib-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Source</th>
+            <th>Lien</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>S1</td>
+            <td>ICADA canine atopic dermatitis treatment guidelines</td>
+            <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4537558/" target="_blank">PMC4537558</a></td>
+          </tr>
+          <tr>
+            <td>S2</td>
+            <td>Canine atopic dermatitis diagnosis and allergen identification guidelines</td>
+            <td><a href="https://bmcvetres.biomedcentral.com/articles/10.1186/s12917-015-0515-5" target="_blank">BMC Vet Res</a></td>
+          </tr>
+          <tr>
+            <td>S3</td>
+            <td>Efficacy of diagnostic testing for allergen sensitization in canine atopic dermatitis — systematic review</td>
+            <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12133834/" target="_blank">PMC12133834</a></td>
+          </tr>
+          <tr>
+            <td>S4</td>
+            <td>International seroprevalence survey of IgE sensitisation to <em>Dermatophagoides farinae</em> in atopic dogs</td>
+            <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9292188/" target="_blank">PMC9292188</a></td>
+          </tr>
+          <tr>
+            <td>S5</td>
+            <td>Allergens in veterinary medicine</td>
+            <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4716287/" target="_blank">PMC4716287</a></td>
+          </tr>
+          <tr>
+            <td>S6</td>
+            <td>Common food allergen sources in dogs and cats</td>
+            <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4710035/" target="_blank">PMC4710035</a></td>
+          </tr>
+          <tr>
+            <td>S7</td>
+            <td>Can in vivo or in vitro tests diagnose adverse food reactions in dogs and cats?</td>
+            <td><a href="https://link.springer.com/article/10.1186/s12917-017-1142-0" target="_blank">Springer</a></td>
+          </tr>
+          <tr>
+            <td>S8</td>
+            <td>Cutaneous manifestations of adverse food reactions in dogs and cats</td>
+            <td><a href="https://link.springer.com/article/10.1186/s12917-019-1880-2" target="_blank">Springer</a></td>
+          </tr>
+          <tr>
+            <td>S9</td>
+            <td>MSD Veterinary Manual — Feline atopic dermatitis</td>
+            <td><a href="https://www.msdvetmanual.com/integumentary-system/atopic-dermatitis/feline-atopic-dermatitis" target="_blank">MSD Vet Manual</a></td>
+          </tr>
+          <tr>
+            <td>S10</td>
+            <td>Review of feline allergic skin disease</td>
+            <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5606602/" target="_blank">PMC5606602</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </div><!-- /report-body -->
+
+  <!-- FOOTER -->
+  <footer class="report-footer">
+    <span><strong>VETALYX</strong> | Rapid allergy tests — clinical product specification</span>
+    <span>Confidentiel — version de travail partenaire — 26 mai 2026</span>
+  </footer>
+
+</div><!-- /page -->
+
+<script>
+  function switchTab(btn, targetId) {
+    const block = btn.closest('.species-block');
+    const species = block.classList.contains('dog-block') ? 'dog' : 'cat';
+
+    block.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    block.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+    btn.classList.add('active');
+    btn.classList.add(species);
+    document.getElementById(targetId).classList.add('active');
+  }
+</script>
+
+</body>
+</html>

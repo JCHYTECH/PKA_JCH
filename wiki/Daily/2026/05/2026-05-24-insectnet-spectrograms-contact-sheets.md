@@ -10,7 +10,7 @@ status: active
 ## Session — 20:04 — insectnet-spectrograms-contact-sheets
 
 ### Contexte
-- Modèle : codex
+- Modèle : [[Codex]]
 - Projet : WILDNEXUS
 
 ### Résumé

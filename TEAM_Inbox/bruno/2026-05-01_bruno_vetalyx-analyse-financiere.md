@@ -1,12 +1,12 @@
 ---
 date: 2026-05-01
-specialist: Bruno
+specialist: [[Bruno]]
 topic: Analyse financière — VETALYX SARL — Pacte d'Actionnaires Fondateurs
-source: Livrables Renard 2026-04-30 (pacte, modifications, annexe 3)
+source: Livrables [[Renard]] 2026-04-30 (pacte, modifications, annexe 3)
 status: delivered
 ---
 
-# Bruno — Analyse financière VETALYX
+# [[Bruno]] — Analyse financière VETALYX
 
 ## CONTEXTE
 
@@ -45,13 +45,13 @@ Droit français.
 
 C'est un prix dérisoire si Vetalyx a déjà développé de la valeur (IP, pipeline, partenariats). Un fondateur qui sort aujourd'hui emporte une indemnité symbolique — ou au contraire, JCH pourrait être contraint de racheter un fondateur sortant à ce prix plancher, ce qui est une opportunité à saisir.
 
-**Verdict :** La modification Renard (plancher = actif net × multiple 1–3 fixé par accord ou expert) est financièrement juste. Le multiple doit être négocié maintenant, pas en cas de crise.
+**Verdict :** La modification [[Renard]] (plancher = actif net × multiple 1–3 fixé par accord ou expert) est financièrement juste. Le multiple doit être négocié maintenant, pas en cas de crise.
 
 ---
 
 ### 2. La falaise à 51 % — modèle de dilution (Art. 5)
 
-Renard a identifié le risque juridique. Bruno modélise la mécanique financière.
+[[Renard]] a identifié le risque juridique. [[Bruno]] modélise la mécanique financière.
 
 | Tour de financement | Investisseurs (%) | Fondateurs collectifs (%) | JCH individuel (%) | Art. 5 intact ? |
 |---------------------|-------------------|--------------------------|-------------------|-----------------|
@@ -64,7 +64,7 @@ Renard a identifié le risque juridique. Bruno modélise la mécanique financiè
 **La falaise Art. 5 tombe dès qu'un tour donne >49 % aux investisseurs — soit dès un Series A classique.**  
 À ce moment, toutes les décisions à unanimité disparaissent. JCH perd ses protections de minorité au moment précis où il en a le plus besoin.
 
-**La modification Renard (protections irréductibles indépendantes du seuil) est non négociable financièrement.** Sans elle, les droits de JCH ont une date de péremption incorporée dans la structure.
+**La modification [[Renard]] (protections irréductibles indépendantes du seuil) est non négociable financièrement.** Sans elle, les droits de JCH ont une date de péremption incorporée dans la structure.
 
 ---
 
@@ -78,7 +78,7 @@ Renard a identifié le risque juridique. Bruno modélise la mécanique financiè
 
 En pratique : le pacte s'éteint dans un scénario de dilution avancée (plusieurs tours). C'est moins urgent que la falaise Art. 5, mais le moment où les fondateurs sont à 9 % est exactement le moment où une sortie est probable — et où les protections sont les plus précieuses.
 
-**Verdict :** Suppression de la clause Art. 27 (modification Renard) = correcte et impérative.
+**Verdict :** Suppression de la clause Art. 27 (modification [[Renard]]) = correcte et impérative.
 
 ---
 
@@ -118,7 +118,7 @@ Le bloc offrant fixe un prix sur la base de la valorisation Art. 11 — soit ~1 
 
 ---
 
-## DONNÉES MANQUANTES — Bruno ne peut pas modéliser sans elles
+## DONNÉES MANQUANTES — [[Bruno]] ne peut pas modéliser sans elles
 
 | Donnée | Pourquoi nécessaire |
 |--------|---------------------|
@@ -131,9 +131,9 @@ Le bloc offrant fixe un prix sur la base de la valorisation Art. 11 — soit ~1 
 
 ---
 
-## RECOMMANDATION BRUNO
+## RECOMMANDATION [[Bruno]]
 
-**Position globale : dossier structuré, risques financiers réels mais gérables avec les modifications Renard.**
+**Position globale : dossier structuré, risques financiers réels mais gérables avec les modifications [[Renard]].**
 
 Priorités financières avant signature :
 
@@ -142,7 +142,7 @@ Priorités financières avant signature :
 | 1 | **Valider la modification Art. 11** — le multiple 1–3 doit être fixé contractuellement maintenant, pas laissé à la discrétion d'un expert en cas de crise | 🔴 |
 | 2 | **Exiger la modification Art. 5** — protections irréductibles. Sans ça, les droits de JCH ont une date d'expiration incorporée | 🔴 |
 | 3 | **Supprimer Art. 27** — extinction à 10 % collectif = bombe à retardement | 🔴 |
-| 4 | **Obtenir le business plan et la valorisation pré-money** — Bruno ne peut pas donner un avis sur la valeur de 25 % sans ça | 🔴 |
+| 4 | **Obtenir le business plan et la valorisation pré-money** — [[Bruno]] ne peut pas donner un avis sur la valeur de 25 % sans ça | 🔴 |
 | 5 | **Ajouter délai de blocage Shotgun 24 mois** — protège JCH pendant la phase de construction de valeur | 🟡 |
 | 6 | **Indexer assurance homme clé sur valorisation cible révisée** — sinon la protection est symbolique | 🟡 |
 
@@ -151,4 +151,4 @@ Quelle est la valorisation pré-money négociée à l'entrée ? Si les 4 fondate
 
 ---
 
-*Questions ouvertes pour Renard : cf. section données manquantes — notamment la valorisation pré-money et les apports en compte courant. Dobby synthétise.*
+*Questions ouvertes pour [[Renard]] : cf. section données manquantes — notamment la valorisation pré-money et les apports en compte courant. [[Dobby]] synthétise.*

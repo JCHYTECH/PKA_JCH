@@ -54,7 +54,7 @@ status: raw
 - Trail cam / surveillance terrain (PIR + réveil sur interruption)
 - Streaming live spot (WiFi local, MJPEG navigateur)
 - Timelapse (très adapté, faible consommation)
-- Nœud WILDMESH léger (attention bus SPI partagé LoRa)
+- Nœud WILDMESH léger (attention bus SPI partagé [[LoRa]])
 
 ---
 

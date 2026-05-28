@@ -35,7 +35,7 @@ Modifications des profils membres :
 
 ## Tâches et tableaux de bord
 
-Dobby a produit trois livrables :
+[[Dobby]] a produit trois livrables :
 - `TEAM_Inbox/2026-05-14_dobby_tableau_taches_regulieres_simple.md` – version simplifiée
 - `TEAM_Inbox/2026-05-14_dobby_tableau_taches_regulieres.md` – version complète
 - `TEAM_Inbox/2026-05-14_dobby_system_check.md` – diagnostic système
@@ -43,9 +43,9 @@ Dobby a produit trois livrables :
 ## Analyses et mandats spécialisés
 
 Trois analyses ont été archivées :
-- `TEAM_Inbox/2026-05-14_furet_analyse-osint-htmt-nuances.md` – travail Furet sur OSINT et nuances HTML
+- 
 - `TEAM_Inbox/2026-05-14_instinct_promotion.md` – évaluation Instinct
-- `TEAM_Inbox/2026-05-14_forge_mandat-dashboard-et-poc-nuances.md` – POC dashboard Forge avec nuances contextuelles
+- 
 
 ## Tests et validation
 

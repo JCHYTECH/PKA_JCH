@@ -3,8 +3,8 @@ source_file: "faune-autour.md"
 type: "document"
 community: "Distance Calculation"
 tags:
-  - graphify/document
-  - graphify/EXTRACTED
+  - [[Graphify]]/document
+  - [[Graphify]]/EXTRACTED
   - community/Distance_Calculation
 ---
 
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[haversineKm() — great-circle distance calculation]] - `implements` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Distance_Calculation
+#[[Graphify]]/document #[[Graphify]]/EXTRACTED #community/Distance_Calculation

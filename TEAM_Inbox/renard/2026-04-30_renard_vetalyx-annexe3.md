@@ -1,6 +1,6 @@
 ---
 date: 2026-04-30
-specialist: Renard
+specialist: [[Renard]]
 topic: Annexe 3 — Identification des Fondateurs VETALYX
 source_file: JCH_Inbox/00_INBOX/Vetalyx Pacte Actionnaires.docx
 status: delivered
@@ -53,7 +53,7 @@ Toute absence injustifiée à plus d'une réunion consécutive du Comité décle
 
 ---
 
-## Note Renard — Champs restants à compléter dans le corps du Pacte
+## Note [[Renard]] — Champs restants à compléter dans le corps du Pacte
 
 Renseignés :
 - ✅ [Fondateur A/B/C/D] → Bosseloir / Havaux / Qi / Noury

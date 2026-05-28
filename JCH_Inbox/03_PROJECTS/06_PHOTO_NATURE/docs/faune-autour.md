@@ -93,8 +93,8 @@ Seuls les rangs SPECIES / SUBSPECIES / VARIETY / FORM sont acceptés — les mat
 ## 6. Dictionnaire local
 
 Embarqué directement dans le HTML. ~110 entrées couvrant :
-- Mammifères (renard, chevreuil, cerf, sanglier, blaireau, loutre, castor, chauves-souris...)
-- Oiseaux (cigogne, héron, faucon, chouette, martin-pêcheur, hirondelle...)
+- Mammifères ([[Renard]], chevreuil, cerf, sanglier, blaireau, loutre, [[Castor]], chauves-souris...)
+- Oiseaux (cigogne, [[Héron]], faucon, [[Chouette]], martin-pêcheur, hirondelle...)
 - Reptiles (lézard, couleuvre, vipère, orvet...)
 - Amphibiens (grenouille, crapaud, triton, salamandre...)
 - Poissons (saumon, truite, brochet, anguille...)
@@ -136,7 +136,7 @@ Embarqué directement dans le HTML. ~110 entrées couvrant :
 
 - **Multi-pays :** paramètre `datasetKey` GBIF prévu pour filtrer par dataset national
 - **Multi-langues :** structure dictionnaire extensible (ajouter champ `nl`, `de`...)
-- **Intégration apps tierces :** BirdNet, Collins Bird Guide — architecture URL-scheme à définir
+- **Intégration apps tierces :** [[BirdNET]], Collins Bird Guide — architecture URL-scheme à définir
 - **App native iOS :** si adoption large, migration Swift/SwiftUI possible ultérieurement
 
 ---

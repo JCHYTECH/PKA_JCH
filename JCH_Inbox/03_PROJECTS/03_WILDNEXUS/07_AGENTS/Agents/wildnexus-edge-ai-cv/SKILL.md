@@ -25,7 +25,7 @@ A PIR sensor in forest terrain triggers on:
 Without AI filtering, event rates of 50–200 false triggers per day are realistic. This directly impacts:
 - Storage consumption (SD card fills with irrelevant images)
 - Battery life (each camera activation costs 200–800 mA for 10–30s)
-- LoRa duty cycle (each alert transmission consumes air time)
+- [[LoRa]] duty cycle (each alert transmission consumes air time)
 - Downstream data quality (scientific value degraded)
 
 **AI filtering is not a feature — it is an operational necessity for long-autonomy WildNexus deployment.**
@@ -38,7 +38,7 @@ Without AI filtering, event rates of 50–200 false triggers per day are realist
 
 | Hardware | Inference capability | Power | Notes |
 |----------|---------------------|-------|-------|
-| ESP32-S3 | Small CNNs, ~1–5 TOPS equiv. | 20–50 mW active | Vector extensions, 512KB SRAM + PSRAM, TFLite Micro |
+| [[ESP32-S3]] | Small CNNs, ~1–5 TOPS equiv. | 20–50 mW active | Vector extensions, 512KB SRAM + PSRAM, TFLite Micro |
 | STM32H7 | Small CNNs via STM32Cube.AI | 15–40 mW | X-CUBE-AI toolchain, no external dependency |
 | Nordic nRF54H | Very limited, preprocessing only | <10 mW | Not suitable for image classification |
 
@@ -50,7 +50,7 @@ MCU-level inference is limited to binary classification (animal / no animal) or 
 |----------|---------------------|-------|-------|
 | Hailo-8L | 13 TOPS | 1–2.5 W | M.2 module, Linux required, high performance |
 | Google Coral (Edge TPU) | 4 TOPS | 0.5–2 W | USB or M.2, TFLite only, mature ecosystem |
-| Raspberry Pi 5 + NPU | ~varies | 3–8 W | Flexible but high idle power |
+| [[Raspberry Pi 5]] + NPU | ~varies | 3–8 W | Flexible but high idle power |
 | Qualcomm RB3 Gen 2 | High | 3–6 W | Overkill for P1, relevant for P2 only |
 
 P1 hardware enables species-level classification and multi-class detection. Power cost is significant — these subsystems must be strictly power-gated and activated only on confirmed motion events.
@@ -76,7 +76,7 @@ Do not attempt species-level classification at MCU tier. Set correct expectation
 | Architecture | Parameters | Suitable for | Notes |
 |-------------|-----------|--------------|-------|
 | MobileNetV2 | 3.4M (full) | Coarse classification, NPU | INT8 quantized: ~850KB |
-| MobileNetV3-Small | 2.5M | MCU (ESP32-S3) with PSRAM | ~600KB INT8 |
+| MobileNetV3-Small | 2.5M | MCU ([[ESP32-S3]]) with PSRAM | ~600KB INT8 |
 | EfficientNet-Lite0 | 4.7M | NPU | Better accuracy/size tradeoff than MobileNet |
 | YOLOv8 nano | 3.2M | Detection + classification | Requires NPU; overkill for pure MCU |
 | Custom shallow CNN | <500K | MCU binary classifier | Purpose-built for animal/no-animal only |
@@ -182,14 +182,14 @@ PIR trigger
 
 ### Resolution and latency targets
 
-| Resolution | Inference time (ESP32-S3, INT8 small CNN) | Notes |
+| Resolution | Inference time ([[ESP32-S3]], INT8 small CNN) | Notes |
 |------------|------------------------------------------|-------|
 | 96×96 | 50–150 ms | Fastest, coarse features only |
 | 224×224 | 200–500 ms | Recommended P0 balance |
 | 320×320 | 500 ms–1.5 s | Acceptable only with PSRAM |
 | 416×416 | 1.5–4 s | Too slow for P0 MCU; P1 NPU only |
 
-At 224×224 with a 3-layer custom CNN, P0 inference on ESP32-S3 should complete in 200–400ms — within acceptable wake latency budget.
+At 224×224 with a 3-layer custom CNN, P0 inference on [[ESP32-S3]] should complete in 200–400ms — within acceptable wake latency budget.
 
 ### Confidence threshold calibration
 
@@ -216,13 +216,13 @@ Models will degrade as deployment conditions change (new species, seasonal varia
 
 - Model stored in dedicated flash partition (separate from firmware)
 - Model version tracked in metadata alongside every inference result
-- OTA model update via LoRa downlink (header only) + Wi-Fi/BLE bulk transfer
+- OTA model update via [[LoRa]] downlink (header only) + Wi-Fi/BLE bulk transfer
 - Rollback: keep previous model version until new model validation confirms improvement
 - Validation: log per-class confidence distributions for first 7 days after model update
 
 ### Model size budget (P0 MCU)
 
-Available flash on ESP32-S3: 8–16 MB. Firmware: ~1–2 MB. Model budget: **2–4 MB maximum** for INT8 quantized model. This is a hard constraint for architecture selection.
+Available flash on [[ESP32-S3]]: 8–16 MB. Firmware: ~1–2 MB. Model budget: **2–4 MB maximum** for INT8 quantized model. This is a hard constraint for architecture selection.
 
 ---
 
@@ -233,7 +233,7 @@ WildNexus cameras will inevitably capture humans (hikers, forest workers, hunter
 ### Requirements
 
 - Human detection class must be included in the classifier
-- On human detection: do not transmit image over LoRa
+- On human detection: do not transmit image over [[LoRa]]
 - Store locally with restricted access flag
 - Consider on-device face blurring before any cloud upload (P2)
 - GDPR compliance: trail camera deployment in Belgium requires signage regardless of AI capability

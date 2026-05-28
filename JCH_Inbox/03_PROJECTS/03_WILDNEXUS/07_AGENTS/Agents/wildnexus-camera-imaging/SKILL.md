@@ -82,7 +82,7 @@ Time from animal entering detection zone to first usable image:
 | Stage | Typical duration | Notes |
 |-------|----------------|-------|
 | PIR detection + output pulse | 50–200 ms | Depends on animal speed and lens pattern |
-| MCU wake from deep sleep | 5–50 ms | ESP32-S3: ~10 ms; STM32U5: ~5 ms |
+| MCU wake from deep sleep | 5–50 ms | [[ESP32-S3]]: ~10 ms; STM32U5: ~5 ms |
 | Camera module power-up | 200–800 ms | Module-dependent — the dominant variable |
 | First frame capture | 50–200 ms | After camera ready signal |
 | **Total latency** | **300 ms – 1.25 s** | Target: <600 ms for mammals at walking pace |

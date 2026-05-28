@@ -10,9 +10,9 @@ Identify reliable and automatable sources of European insect sound recordings su
 
 ---
 
-# 1. Xeno-canto
+# 1. [[Xeno-Canto]]
 
-https://xeno-canto.org
+https://[[Xeno-Canto]].org
 
 ## Interest
 
@@ -143,7 +143,7 @@ Large insect sound dataset.
 
 ### Sources
 Compiled from:
-- Xeno-canto
+- [[Xeno-Canto]]
 - iNaturalist
 - BioAcoustica
 
@@ -180,11 +180,11 @@ Useful for:
 
 ---
 
-# 7. DASA — Digital Animal Sound Archive
+# 7. DASA — Digital Animal Sound [[archive]]
 
 https://www.dasarchive.org
 
-Academic archive.
+Academic [[archive]].
 
 ### Interest
 Potential future strategic source for:
@@ -224,7 +224,7 @@ Many insects produce high-frequency components.
 ## First Phase
 
 Dataset collection:
-- Xeno-canto
+- [[Xeno-Canto]]
 - ECOSoundSet
 - InsectSet459
 

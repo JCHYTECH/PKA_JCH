@@ -3,7 +3,7 @@
 **Version :** v0.2  
 **Date :** 2026-05-23  
 **Statut :** Pré-go opérationnel  
-**Owner :** Dobby  
+**Owner :** [[Dobby]]  
 
 ## 1. Objet
 
@@ -33,7 +33,7 @@ Ces éléments sont hors P0, sauf contrainte d'interface minimale :
 
 | Sujet | Statut | Raison |
 |---|---|---|
-| Reconnaissance bioacoustique / BirdNET | P1 deferred | Le micro mono est P0 pour capture locale, mais l'analyse d'espèces reste hors P0 |
+| Reconnaissance bioacoustique / [[BirdNET]] | P1 deferred | Le micro mono est P0 pour capture locale, mais l'analyse d'espèces reste hors P0 |
 | Faune Autour PWA | Projet adjacent ou P2 | Application utile, mais non requise pour prototype caméra P0 |
 | Reconnaissance espèce fine | P1 | P0 se limite au filtre animal / non-animal |
 | Reconnaissance individuelle | P1/P2 | Valeur forte mais dépend d'un corpus et de modèles plus avancés |
@@ -56,7 +56,7 @@ P0 ne développe pas les modules P1/P2, mais doit éviter de les bloquer :
 
 ### 06_COMPONENTS/BIOACOUSTIC
 
-Le répertoire bioacoustique est conservé comme matière P1. Le P0 intègre seulement un micro mono et l'enregistrement de clips courts locaux. Il ne doit pas créer de tâche bloquante pour M-01, M-02 ou M-03 sur la reconnaissance d'espèces, BirdNET, DSP avancé ou analyse scientifique.
+Le répertoire bioacoustique est conservé comme matière P1. Le P0 intègre seulement un micro mono et l'enregistrement de clips courts locaux. Il ne doit pas créer de tâche bloquante pour M-01, M-02 ou M-03 sur la reconnaissance d'espèces, [[BirdNET]], DSP avancé ou analyse scientifique.
 
 ### 06_COMPONENTS/FAUNE_AUTOUR_APP
 

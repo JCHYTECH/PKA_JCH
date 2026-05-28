@@ -16,7 +16,7 @@ La journée a produit **57 emails nouveaux** en deux vagues distinctes.
 ### Matin (09:00)
 - 7 nouveaux emails, 47 en attente de traitement
 - Dominante : notifications commerciales Amazon (4 notifications : expéditions Kindle Paperwhite, protection d'écran JETech, coque iPhone 17)
-- Confirmation d'abonnement Apple
+- Confirmation d'abonnement [[Apple]]
 - 2 analyses email archivées (thèmes : retour utilisateur, promotion créativité)
 
 ### Après-midi (14:00)
@@ -24,13 +24,13 @@ La journée a produit **57 emails nouveaux** en deux vagues distinctes.
 - Basculement vers infrastructure : **2 alertes Hostinger** critiques
   - Remboursement initié
   - Annulation du KVM srv1645349.hstgr.cloud
-- Routing noté vers Delphi pour traitement Hostinger
+- Routing noté vers [[Delphi]] pour traitement Hostinger
 - Poursuite des notifications Amazon (patterns similaires au matin)
 - 3 nouvelles analyses archivées (remboursement, KVM annulation, setup lecteur)
 
 ## Infrastructure & Opérations
 
-**Hostinger** : événement significatif en après-midi — annulation de serveur KVM avec remboursement initié. Routing vers Delphi suggère escalade ou transfer de responsabilité.
+**Hostinger** : événement significatif en après-midi — annulation de serveur KVM avec remboursement initié. Routing vers [[Delphi]] suggère escalade ou transfer de responsabilité.
 
 ## Base de données & Système
 
@@ -43,12 +43,12 @@ La journée a produit **57 emails nouveaux** en deux vagues distinctes.
 
 ### Archives email (TEAM_Inbox)
 - 6 documents email archivés du jour
-- 1 document forge (mandat Telegram TTS OpenAI)
+- 1 document [[Forge]] (mandat Telegram TTS OpenAI)
 
 ### Documentation opérationnelle (wiki)
 - `log.md` et `index.md` (maintenance journal général)
-- 3 rapports Daily : hebdo Dobby, session principale, setup Telegram
-- Modifications TEAM : 6 profils agents (dobby, corbeau, argus, castor, forge, pie)
+- 3 rapports Daily : hebdo [[Dobby]], session principale, setup Telegram
+- Modifications TEAM : 6 profils agents ([[Dobby]], [[Corbeau]], [[Argus]], [[Castor]], [[Forge]], [[Pie]])
 - `PROFIL-TEMPLATE.md` (gabarit de profil)
 
 ### Contexte utilisateur (JCH_Inbox/05_CONTEXT_JCH)

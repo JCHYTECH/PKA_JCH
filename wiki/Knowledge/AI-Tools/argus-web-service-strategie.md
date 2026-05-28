@@ -1,15 +1,15 @@
 ---
 date: 2026-05-02
-tags: [projet, arteon, argus, produit-web, strategie, wildlife]
+tags: [projet, arteon, [[Argus]], produit-web, strategie, wildlife]
 type: knowledge
 domain: AI-Tools
 status: réflexion
 ---
 
-# Argus Web Service — Réflexion stratégique
+# [[Argus]] Web Service — Réflexion stratégique
 
 > Service de critique photographique IA pour abonnés ARTEON.  
-> Orchestré par Dobby — contributions : Iris (marché), Vega (produit), Bruno (finance), Forge (technique), Renard (légal), Argus (contenu expert).
+> Orchestré par [[Dobby]] — contributions : [[Iris]] (marché), [[Vega]] (produit), [[Bruno]] (finance), [[Forge]] (technique), [[Renard]] (légal), [[Argus]] (contenu expert).
 
 ---
 
@@ -21,11 +21,11 @@ Un photographe naturaliste visite arteon.be, upload sa photo wildlife, paie, et 
 - Un **preset XMP Lightroom personnalisé** pour sa photo spécifique
 - Une **liste de corrections concrètes** (balance des blancs cible, exposition, etc.)
 
-Le moteur IA est Claude Opus 4.7 (vision). L'expert fictif qui signe = à définir (voir §4).
+Le moteur IA est [[Claude]] Opus 4.7 (vision). L'expert fictif qui signe = à définir (voir §4).
 
 ---
 
-## 2. Opportunité marché — Iris 🦅
+## 2. Opportunité marché — [[Iris]] 🦅
 
 ### Ce qui existe et ses lacunes
 
@@ -52,19 +52,19 @@ Le moteur IA est Claude Opus 4.7 (vision). L'expert fictif qui signe = à défin
 - Marché caméra wildlife : 612M USD (2025) → 896M USD (2030), CAGR 8%
 - Besoin non satisfait : feedback expert abordable + actionnable dans Lightroom
 
-### Conclusion Iris
+### Conclusion [[Iris]]
 
 **Opportunité claire, créneau vide.** La combinaison critique spécialisée wildlife + preset XMP + rapport PDF n'existe nulle part.
 
 ---
 
-## 3. Modèle économique — Bruno 🐻
+## 3. Modèle économique — [[Bruno]] 🐻
 
 ### Coût de revient par analyse
 
 | Poste | Coût estimé |
 |-------|-------------|
-| Claude Opus 4.7 (image ~1500px + prompt + réponse) | ~0,20–0,25€ |
+| [[Claude]] Opus 4.7 (image ~1500px + prompt + réponse) | ~0,20–0,25€ |
 | Génération PDF (serveur, CPU) | ~0,02€ |
 | Stockage + bande passante (S3/R2) | ~0,01€ |
 | **Total coût variable** | **~0,25€/analyse** |
@@ -100,7 +100,7 @@ Le moteur IA est Claude Opus 4.7 (vision). L'expert fictif qui signe = à défin
 
 ---
 
-## 4. Produit & positionnement — Vega 🦚
+## 4. Produit & positionnement — [[Vega]] 🦚
 
 ### Nom du service
 
@@ -140,11 +140,11 @@ Email ou téléchargement :
 
 ---
 
-## 5. Architecture technique — Forge 🦦
+## 5. Architecture technique — [[Forge]] 🦦
 
 ### Ce qui change vs le plugin LR
 
-Le plugin LR s'exécute **localement** (Python sur Mac de JCH). Le service web doit s'exécuter **côté serveur**.
+Le plugin LR s'exécute **localement** ([[Python]] sur Mac de JCH). Le service web doit s'exécuter **côté serveur**.
 
 ### Pipeline web
 
@@ -174,9 +174,9 @@ Le plugin LR s'exécute **localement** (Python sur Mac de JCH). Le service web d
 | Frontend | Page Shopify custom | Déjà en place sur ARTEON |
 | Paiement | Stripe (via Shopify) | Déjà configuré |
 | Upload | Cloudflare R2 (presigned URL) | Pas cher, rapide |
-| Worker | Python FastAPI sur VPS (Hetzner ~5€/mois) | Même stack que le pipeline existant |
+| Worker | [[Python]] [[FastAPI]] sur VPS (Hetzner ~5€/mois) | Même stack que le pipeline existant |
 | Email | Resend.com ou Mailgun | Simple, fiable, ~$0/mois au départ |
-| Queue | Redis simple ou job table SQLite | MVP : SQLite suffit |
+| Queue | [[Redis]] simple ou job table [[SQLite]] | MVP : [[SQLite]] suffit |
 
 ### Réutilisation du code existant
 
@@ -190,12 +190,12 @@ JPEG, PNG, WebP + tous RAW supportés (CR3, NEF, ARW, RAF, DNG, ORF, RW2, PEF, R
 
 ---
 
-## 6. Cadre légal — Renard 🦊
+## 6. Cadre légal — [[Renard]] 🦊
 
 ### Points à couvrir dans les CGU/CGV
 
 1. **Propriété intellectuelle des photos** : JCH n'acquiert aucun droit sur les photos uploadées. L'utilisateur conserve tous les droits.
-2. **Usage des photos par l'IA** : Préciser que les photos sont analysées par Claude API (Anthropic) — vérifier la politique d'Anthropic sur les images soumises (pas d'entraînement sur données client pour API payante ✓ confirmé).
+2. **Usage des photos par l'IA** : Préciser que les photos sont analysées par [[Claude]] API (Anthropic) — vérifier la politique d'Anthropic sur les images soumises (pas d'entraînement sur données client pour API payante ✓ confirmé).
 3. **Rétention des données** : Photos supprimées sous 7 jours. PDF/XMP = responsabilité de l'utilisateur après téléchargement.
 4. **RGPD** : Upload = traitement de données (image peut contenir des métadonnées GPS). Déclaration RGPD à mettre à jour sur arteon.be.
 5. **Contenu refusé** : Implémenter une clause permettant de refuser l'analyse d'images manifestement contraires à l'éthique ARTEON (appâtage documenté, détresse animale, etc.).
@@ -242,11 +242,11 @@ Recommandation : **Option A** — permet de tester le service rapidement sans at
 ### Phase 1 — Validation (2 semaines)
 - [ ] JCH choisit le nom du service
 - [ ] Tester 30 analyses sur des photos variées — valider la qualité
-- [ ] Définir les critères éthiques d'analyse (que refuse Argus ?)
-- [ ] Renard rédige les CGU/CGV du service
+- [ ] Définir les critères éthiques d'analyse (que refuse [[Argus]] ?)
+- [ ] [[Renard]] rédige les CGU/CGV du service
 
 ### Phase 2 — MVP technique (4 semaines)
-- [ ] Forge construit l'API wrapper + worker async
+- [ ] [[Forge]] construit l'API wrapper + worker async
 - [ ] Page d'upload sur Shopify (ou landing page autonome)
 - [ ] Intégration Stripe
 - [ ] Tests end-to-end
@@ -274,5 +274,5 @@ Recommandation : **Option A** — permet de tester le service rapidement sans at
 
 ---
 
-*Document de travail — Dobby · Iris · Vega · Bruno · Forge · Renard · Argus*
+*Document de travail — [[Dobby]] · [[Iris]] · [[Vega]] · [[Bruno]] · [[Forge]] · [[Renard]] · [[Argus]]*
 *Statut : réflexion initiale — à compléter après arbitrages JCH*

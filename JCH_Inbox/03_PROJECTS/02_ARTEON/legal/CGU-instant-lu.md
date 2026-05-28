@@ -4,7 +4,7 @@ tags: [legal, CGU, CGV, l-instant-lu, arteon, belgique]
 type: legal-document
 version: 1.0
 status: draft
-owner: Renard 🦊
+owner: [[Renard]] 🦊
 ---
 
 # Conditions Générales d'Utilisation et de Vente — L'Instant Lu
@@ -40,7 +40,7 @@ L'Instant Lu analyse votre photographie wildlife ou naturaliste et vous restitue
 
 **Délai de livraison annoncé :** sous 2 heures pendant les plages horaires de service (8h–22h, heure de Bruxelles). Les demandes reçues hors plage sont traitées à l'ouverture suivante.
 
-**Nature du service :** L'analyse est générée par intelligence artificielle (Claude, d'Anthropic) et **validée par un expert humain ARTEON** avant envoi. Le service se positionne donc comme « analysé par nos experts, assistés par l'IA » — pas comme un service entièrement automatique.
+**Nature du service :** L'analyse est générée par intelligence artificielle ([[Claude]], d'Anthropic) et **validée par un expert humain ARTEON** avant envoi. Le service se positionne donc comme « analysé par nos experts, assistés par l'IA » — pas comme un service entièrement automatique.
 
 ---
 
@@ -150,7 +150,7 @@ ARTEON ne publie pas vos photos (site, réseaux sociaux, supports marketing) san
 
 Conformément au **Règlement (UE) 2024/1689 sur l'intelligence artificielle (EU AI Act)**, ARTEON vous informe clairement :
 
-- L'analyse de votre photographie est **générée par un système d'intelligence artificielle** (modèle Claude d'Anthropic).
+- L'analyse de votre photographie est **générée par un système d'intelligence artificielle** (modèle [[Claude]] d'Anthropic).
 - Ce système est **supervisé par un expert humain** qui valide chaque rapport avant livraison.
 - Le rapport que vous recevez est le résultat de cette collaboration humain-IA.
 - Le service n'est **pas** un outil de prise de décision à impact juridique ou financier significatif — il s'agit d'une critique artistique et technique à titre indicatif.
@@ -169,7 +169,7 @@ En cas de manquement d'ARTEON à ses obligations contractuelles, la responsabili
 ARTEON ne peut être tenu responsable :
 - des résultats sportifs ou concours obtenus (ou non obtenus) à partir des recommandations du rapport ;
 - des pertes de données résultant d'un mauvais import ou d'une utilisation incorrecte du fichier XMP fourni ;
-- des interruptions de service liées à des tiers (Stripe, Anthropic/Claude API, Cloudflare, hébergeur) ;
+- des interruptions de service liées à des tiers (Stripe, Anthropic/[[Claude]] API, Cloudflare, hébergeur) ;
 - de tout dommage indirect, immatériel ou consécutif.
 
 ### 9.3 Force majeure
@@ -214,6 +214,6 @@ La version en vigueur est toujours accessible à `arteon.be/legal/cgu`.
 
 ---
 
-*Document rédigé par Renard 🦊, conseiller juridique ARTEON*  
+*Document rédigé par [[Renard]] 🦊, conseiller juridique ARTEON*  
 *Version 1.0 — 2026-05-02 — À valider par JCH avant mise en ligne*  
 *Contact réclamations : service@arteon.be | Contact RGPD : donnees@arteon.be*

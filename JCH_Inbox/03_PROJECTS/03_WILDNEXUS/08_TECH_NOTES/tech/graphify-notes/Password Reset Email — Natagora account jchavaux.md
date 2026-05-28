@@ -3,8 +3,8 @@ source_file: "2026-04-16 - FW_ Modification Natagora.md"
 type: "document"
 community: "Biodiversity Platforms"
 tags:
-  - graphify/document
-  - graphify/EXTRACTED
+  - [[Graphify]]/document
+  - [[Graphify]]/EXTRACTED
   - community/Biodiversity_Platforms
 ---
 
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Natagora]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Biodiversity_Platforms
+#[[Graphify]]/document #[[Graphify]]/EXTRACTED #community/Biodiversity_Platforms

@@ -10,8 +10,8 @@ status: active
 ## Session — 11:09 — vs-code-mcp-loop-guardrails
 
 ### Contexte
-- Modèle : codex
-- Projet : 01_AI_IT_TOOLS
+- Modèle : [[Codex]]
+- Projet : [[01_AI_IT_TOOLS]]
 
 ### Résumé
 Disabled VS Code MCP discovery, autostart, and apps after voice auto-submit fix did not stop the activation loop.

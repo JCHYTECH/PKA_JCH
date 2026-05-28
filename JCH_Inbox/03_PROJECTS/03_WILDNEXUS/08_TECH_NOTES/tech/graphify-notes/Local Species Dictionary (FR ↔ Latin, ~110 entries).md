@@ -3,8 +3,8 @@ source_file: "API_pour_observations_be.md"
 type: "document"
 community: "PWA App & Deployment"
 tags:
-  - graphify/document
-  - graphify/EXTRACTED
+  - [[Graphify]]/document
+  - [[Graphify]]/EXTRACTED
   - community/PWA_App_&_Deployment
 ---
 
@@ -16,4 +16,4 @@ tags:
 - [[Faune Autour — Progressive Web App (PWA)]] - `references` [EXTRACTED]
 - [[faune-autour_13.html — v13 single-file PWA source]] - `implements` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/PWA_App_&_Deployment
+#[[Graphify]]/document #[[Graphify]]/EXTRACTED #community/PWA_App_&_Deployment

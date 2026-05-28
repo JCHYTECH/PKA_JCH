@@ -3,7 +3,7 @@
 **Version :** v0.1  
 **Date :** 2026-05-18  
 **Statut :** onboarding interne — à enrichir  
-**Owner :** Dobby  
+**Owner :** [[Dobby]]  
 
 ## Objet
 
@@ -42,7 +42,7 @@ Cette section explique les codes utilisés dans les fichiers, décisions, tâche
 | `ADR` | Architecture Decision Record | `ADR-001-choix-mcu-p0.md` | Décision technique structurante : contexte, options, choix, conséquences, critères de révision. |
 | `WILDNEXUS_` | Document projet transverse | `WILDNEXUS_P0_SCOPE_LOCK.md` | Document de référence interne WildNexus. |
 | `WP` | Work Package | `WP02 Hardware & Enclos` | Lot de travail organisé par domaine et jalon. |
-| `REORG` | Trace de reclassement | `archive/2026-05-23_pre_p0_lock/00_GOVERNANCE/REORG_2026-05-18.md` | Note historique expliquant un changement de structure documentaire. |
+| 
 
 ### Préfixes de jalons et tâches
 
@@ -74,7 +74,7 @@ Cette section explique les codes utilisés dans les fichiers, décisions, tâche
 | `ULP` | Ultra Low Power | Contrainte centrale d'autonomie. |
 | `LPWAN` | Low Power Wide Area Network | Famille radio longue portée basse consommation. |
 | `LoRa` | Radio longue portée basse consommation | Candidat radio P0. |
-| `LoRaWAN` | Protocole réseau au-dessus de LoRa | Option avec gateway privée ou réseau structuré. |
+| 
 | `EU868` | Bande radio européenne 868 MHz | Bande cible pour tests radio en Belgique. |
 | `BLE` | Bluetooth Low Energy | Configuration terrain/provisioning, pas alerte longue portée. |
 | `IR` | Infrarouge | Vision nocturne. |
@@ -83,9 +83,9 @@ Cette section explique les codes utilisés dans les fichiers, décisions, tâche
 | `SPI` | Serial Peripheral Interface | Bus simple privilégié pour intégration MCU. |
 | `I2C` | Inter-Integrated Circuit | Bus léger pour capteurs et périphériques simples. |
 | `UART` | Liaison série asynchrone | Souvent utilisée pour modules radio ou debug. |
-| `PSRAM` | Pseudo-static RAM | Mémoire externe utile pour images sur ESP32-S3. |
+| 
 | `BOM` | Bill of Materials | Liste composants et coûts. |
-| `FTO` | Freedom To Operate | Analyse de liberté d'exploitation PI. |
+| 
 | `RGPD` | Règlement général sur la protection des données | Risque lié aux personnes capturées par caméra. |
 
 ### Convention de statut
@@ -105,11 +105,11 @@ Cette section explique les codes utilisés dans les fichiers, décisions, tâche
 | Commande | Sens opérationnel | Usage |
 |---|---|---|
 | `/save` | Clôture interactive d'une session PKA. | À utiliser quand une session produit une décision, un déplacement de fichiers, une modification système ou une avancée projet. Si le client ne fournit pas de slash command native, exécuter `./bin/pka`. |
-| `./bin/pka` | Raccourci court universel vers la sauvegarde interactive PKA. | Forme recommandée. Fonctionne quel que soit le modèle utilisé : Codex, Claude, Gemini, DeepSeek ou autre. |
+| 
 | `./bin/pka-save` | Alias explicite vers `scripts/pka_save.py --interactive`. | Même usage que `./bin/pka`, conservé pour lisibilité et compatibilité. Capture titre, modèle, projet, résumé, actions, décisions et prochaines étapes. |
 | `scripts/pka_save.py --model <modele> --project <projet>` | Sauvegarde non interactive ou semi-scriptable avec contexte modèle/projet. | À privilégier quand on veut tracer explicitement une session multi-modèles dans `wiki/Daily/` et `wiki/log.md`. |
 
-Règle : la mémoire commune vit dans les fichiers PKA, pas dans le transcript d'un modèle. Sybil consolide automatiquement le soir, mais ne remplace pas la clôture explicite des décisions.
+Règle : la mémoire commune vit dans les fichiers PKA, pas dans le transcript d'un modèle. [[Sybil]] consolide automatiquement le soir, mais ne remplace pas la clôture explicite des décisions.
 
 ---
 
@@ -119,12 +119,12 @@ Règle : la mémoire commune vit dans les fichiers PKA, pas dans le transcript d
 |---|---|
 | Nœud caméra | Unité terrain autonome : caméra, détection, stockage, radio, énergie et boîtier. C'est le cœur du P0. |
 | MCU | Microcontroller Unit. Microcontrôleur principal du nœud, responsable de la veille, du réveil, des interfaces et du pilotage des sous-systèmes. |
-| ESP32-S3 | MCU candidat primaire proposé pour P0. Avantage : caméra, BLE/Wi-Fi, outillage rapide. Risque : consommation à prouver. |
-| STM32U5 | MCU fallback basse consommation si ESP32-S3 échoue sur autonomie ou robustesse. |
+| [[ESP32-S3]] | MCU candidat primaire proposé pour P0. Avantage : caméra, BLE/Wi-Fi, outillage rapide. Risque : consommation à prouver. |
+| STM32U5 | MCU fallback basse consommation si [[ESP32-S3]] échoue sur autonomie ou robustesse. |
 | nRF54 / nRF54L15 | MCU/radio Nordic intéressant pour BLE basse consommation et sécurité, mais non prioritaire P0 car il ne remplace pas LPWAN et ne résout pas directement la caméra. |
-| Raspberry Pi | Plateforme Linux utile pour prototypage, mais rejetée comme cœur permanent du nœud terrain P0 pour raisons de consommation, boot, SD et maintenance. |
+| [[Raspberry Pi]] | Plateforme Linux utile pour prototypage, mais rejetée comme cœur permanent du nœud terrain P0 pour raisons de consommation, boot, SD et maintenance. |
 | ULP | Ultra Low Power. Mode ou architecture permettant au système de dormir presque tout le temps pour préserver la batterie. |
-| PSRAM | Mémoire externe rapide souvent nécessaire avec ESP32-S3 pour traiter ou bufferiser des images. |
+| PSRAM | Mémoire externe rapide souvent nécessaire avec [[ESP32-S3]] pour traiter ou bufferiser des images. |
 | SPI | Bus série simple et courant entre MCU et périphériques. Important pour caméra SPI, stockage, radio ou capteurs. |
 | I2C | Bus série léger pour capteurs et composants de configuration. |
 | UART | Liaison série simple, souvent utilisée pour modules radio ou debug. |
@@ -158,17 +158,17 @@ Règle : la mémoire commune vit dans les fichiers PKA, pas dans le transcript d
 | Terme | Définition WildNexus |
 |---|---|
 | LPWAN | Low Power Wide Area Network. Réseau longue portée basse consommation, adapté aux petits messages. |
-| LoRa | Technologie radio longue portée basse consommation. Candidate principale pour les messages événementiels P0. |
-| LoRaWAN | Protocole réseau au-dessus de LoRa. Utile avec gateways et infrastructure, mais plus complexe qu'un lien point-à-point. |
+| [[LoRa]] | Technologie radio longue portée basse consommation. Candidate principale pour les messages événementiels P0. |
+| LoRaWAN | Protocole réseau au-dessus de [[LoRa]]. Utile avec gateways et infrastructure, mais plus complexe qu'un lien point-à-point. |
 | EU868 | Bande radio européenne autour de 868 MHz. Impose des contraintes réglementaires dont le duty-cycle. |
-| SX1262 | Transceiver LoRa Semtech pris comme référence technique pour P0. |
-| Murata Type 1SJ | Module LoRa basé SX1262, candidat pour prototypage rapide. |
-| RAK3172(H) | Module LoRa/LoRaWAN compatible EU868, candidat pour prototypage rapide. |
+| SX1262 | Transceiver [[LoRa]] Semtech pris comme référence technique pour P0. |
+| Murata Type 1SJ | Module [[LoRa]] basé SX1262, candidat pour prototypage rapide. |
+| RAK3172(H) | Module [[LoRa]]/LoRaWAN compatible EU868, candidat pour prototypage rapide. |
 | Duty-cycle | Limite de temps d'émission radio autorisé. Critique en EU868 : WildNexus doit transmettre peu et court. |
 | RSSI | Indicateur de puissance du signal reçu. Utilisé pendant les tests de portée. |
 | SNR | Signal-to-noise ratio. Indique la qualité du signal radio par rapport au bruit. |
 | Gateway | Point relais ou passerelle locale qui reçoit les messages des nœuds et peut les transmettre ailleurs. Hors obligation P0 stricte. |
-| Mesh LoRa | Réseau où les nœuds relaient les messages entre eux. Rejeté pour P0 à cause de collisions, duty-cycle, latence et consommation. |
+| Mesh [[LoRa]] | Réseau où les nœuds relaient les messages entre eux. Rejeté pour P0 à cause de collisions, duty-cycle, latence et consommation. |
 | BLE | Bluetooth Low Energy. Utile pour configuration terrain ou provisioning, pas pour alerte longue portée forêt. |
 | LTE-M / NB-IoT | Connectivité cellulaire bas débit IoT. Possible P1/P2 ou sites critiques, mais pas baseline P0. |
 
@@ -188,7 +188,7 @@ Règle : la mémoire commune vit dans les fichiers PKA, pas dans le transcript d
 | Métadonnées | Données décrivant un événement : date, heure, nœud, batterie, score IA, type de capture, conditions, RSSI/SNR. |
 | Camtrap-DP | Standard de données pour pièges photographiques. Cible de compatibilité scientifique P1. |
 | GBIF | Global Biodiversity Information Facility. Plateforme mondiale de données biodiversité, cible possible pour exports P1. |
-| BirdNET | Système d'identification bioacoustique des oiseaux. Pertinent pour composant bioacoustique P1, hors P0 strict. |
+| [[BirdNET]] | Système d'identification bioacoustique des oiseaux. Pertinent pour composant bioacoustique P1, hors P0 strict. |
 
 ---
 
@@ -216,7 +216,7 @@ Règle : la mémoire commune vit dans les fichiers PKA, pas dans le transcript d
 |---|---|
 | ADR | Architecture Decision Record. Document court qui capture une décision technique : contexte, options, choix, conséquences, critères de révision. |
 | FTO | Freedom To Operate. Analyse visant à vérifier qu'un produit peut être développé/exploité sans bloquer sur des droits tiers. |
-| PI | Propriété intellectuelle. Brevets, droits, marques, licences, savoir-faire. |
+| [[Pi]] | Propriété intellectuelle. Brevets, droits, marques, licences, savoir-faire. |
 | RGPD | Règlement européen sur les données personnelles. Important car les caméras peuvent capturer accidentellement des personnes. |
 | Source-available | Code ou design consultable, mais pas forcément open source au sens OSI. |
 | Ethical-source | Licence ou politique d'usage qui impose des restrictions alignées avec des valeurs éthiques. |

@@ -26,7 +26,7 @@ Pour déterminer la **couleur globale** d’une photo et l’utiliser comme **co
 
 ---
 
-### 🧰 **Méthode (automatisée avec outils comme Photoshop, GIMP ou script Python) :**
+### 🧰 **Méthode (automatisée avec outils comme Photoshop, GIMP ou script [[Python]]) :**
 
 #### **Option 1 : Moyenne des couleurs (idéal pour un encadrement harmonieux)**
 

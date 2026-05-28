@@ -10,7 +10,7 @@ status: active
 ## Session — 21:34 — insectnet-qc-review-app
 
 ### Contexte
-- Modèle : codex
+- Modèle : [[Codex]]
 - Projet : WILDNEXUS
 
 ### Résumé

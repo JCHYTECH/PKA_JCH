@@ -1,12 +1,12 @@
 ---
 date: 2026-04-30
-specialist: Renard
+specialist: [[Renard]]
 topic: Modifications recommandées — Pacte d'Actionnaires VETALYX
 source_file: JCH_Inbox/00_INBOX/Vetalyx Pacte Actionnaires.docx
 status: delivered
 ---
 
-# Renard — Modifications recommandées — Pacte d'Actionnaires VETALYX
+# [[Renard]] — Modifications recommandées — Pacte d'Actionnaires VETALYX
 
 ## Art. 5 — Décisions réservées — Unanimité requise
 

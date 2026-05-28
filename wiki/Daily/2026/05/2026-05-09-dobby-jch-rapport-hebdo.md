@@ -1,11 +1,11 @@
 ---
 date: 2026-05-09
 type: rapport-hebdo
-author: Dobby
+author: [[Dobby]]
 tags: [rapport, jch, collaboration, meta]
 ---
 
-# 🦉 Rapport Dobby — Session du 2026-05-09
+# 🦉 Rapport [[Dobby]] — Session du 2026-05-09
 ## Comment mieux collaborer avec ton équipe PKA
 
 ---
@@ -69,5 +69,5 @@ Trois phrases maximum :
 
 ---
 
-*Rapport généré par Dobby 🦉 — PKA Orchestrator*
+*Rapport généré par [[Dobby]] 🦉 — PKA Orchestrator*
 *Session analysée : 2026-05-09 | Prochaine revue : 2026-05-16*

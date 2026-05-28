@@ -3,7 +3,7 @@
 **Date :** 2026-05-18  
 **Dernière mise à jour :** 2026-05-25  
 **Statut :** Accepté
-**Owner PKA :** Chouette
+**Owner PKA :** [[Chouette]]
 **Agent WildNexus :** `wildnexus-hardware-physical`
 **Jalon :** M-01 Architecture P0 gelée
 
@@ -24,9 +24,9 @@ L'étanchéité IP67 (immersion 1 m / 30 min) est le minimum requis. L'objectif 
 
 Le phénomène de condensation interne est le principal risque de défaillance à long terme sur un boîtier hermétique en environnement humide. Les cycles thermiques (nuit froide → jour chaud) créent une pression différentielle qui, combinée à l'humidité piégée au moment du scellage, dépose de l'eau sur les surfaces internes froides.
 
-**Stratégie de mitigation retenue : chaleur passive ESP32-S3.**
+**Stratégie de mitigation retenue : chaleur passive [[ESP32-S3]].**
 
-Lors de chaque cycle actif (capture + inférence + transmission, 10–30 s à ~1.3 W), l'ESP32-S3 et la caméra dissipent suffisamment de chaleur pour maintenir la température interne au-dessus du point de rosée ambiant, à condition que :
+Lors de chaque cycle actif (capture + inférence + transmission, 10–30 s à ~1.3 W), l'[[ESP32-S3]] et la caméra dissipent suffisamment de chaleur pour maintenir la température interne au-dessus du point de rosée ambiant, à condition que :
 
 1. le volume interne soit réduit (< 200 cm³) pour limiter la masse d'air à chauffer ;
 2. les parois aient une isolation thermique minimale (mousse intérieure ou air-gap) pour retenir la chaleur entre les cycles ;
@@ -50,10 +50,10 @@ Retenir un **boîtier ABS ou polycarbonate IP67 standard du commerce** pour le p
 | Joint torique | remplaçable, silicone |
 | Matière | ABS ou PC (résistance UV, -40 °C à +80 °C) |
 | Couleur | vert forêt prioritaire ; anthracite seulement si disponibilité/thermique meilleure |
-| Presse-étoupes | 1 minimum pour antenne LoRa externe si nécessaire ; emplacements réservés P1 possibles |
+| Presse-étoupes | 1 minimum pour antenne [[LoRa]] externe si nécessaire ; emplacements réservés P1 possibles |
 | Face plane | utile pour extension P1, mais panneau solaire non requis P0 |
 
-Le P0 doit aussi produire une **estimation sérieuse des dimensions finales** après verrouillage des choix hardware : PCB, holder 8× AA, caméra, PIR, micro, microSD, bloc capteurs, antenne LoRa, joints, accès maintenance et réserve P1. Cette estimation devient un livrable de fin M-01 avant achat boîtier définitif.
+Le P0 doit aussi produire une **estimation sérieuse des dimensions finales** après verrouillage des choix hardware : PCB, holder 8× AA, caméra, PIR, micro, microSD, bloc capteurs, antenne [[LoRa]], joints, accès maintenance et réserve P1. Cette estimation devient un livrable de fin M-01 avant achat boîtier définitif.
 
 ### Boîtier P1 — impression 3D forme organique (décision retenue)
 
@@ -78,9 +78,9 @@ Hypothèse produit à confirmer en P1 : **cœur électronique standardisé + env
 - Le dos du boîtier ou de son support doit tenir compte de la **rotondité des troncs et poteaux** : surface arrière concave, patins souples, rainures de sangle ou berceau intermédiaire pour maximiser le calage et éviter la rotation.
 - Les sangles doivent rester discrètes : couleur verte/brune/noire mate, largeur suffisante, pas de pièces brillantes visibles.
 
-### Antenne LoRa
+### Antenne [[LoRa]]
 
-L'antenne LoRa doit être **la moins visible possible**.
+L'antenne [[LoRa]] doit être **la moins visible possible**.
 
 Ordre de préférence :
 
@@ -97,7 +97,7 @@ Cette contrainte ne doit pas dégrader la conformité radio, l'étanchéité ni 
 |---------|------|------------------------|
 | Silica gel 5 g (sachet) | Absorption humidité résiduelle | À chaque intervention batterie (~60 jours P0) |
 | Joint torique silicone | Étanchéité périmètre couvercle | Inspection annuelle |
-| Chaleur passive ESP32-S3 | Maintien température interne > point de rosée | Passif — aucune maintenance |
+| Chaleur passive [[ESP32-S3]] | Maintien température interne > point de rosée | Passif — aucune maintenance |
 
 ### Conformal coating PCB
 
@@ -126,11 +126,11 @@ Le PCB P0 reçoit un **vernis de protection acrylique standard** (spray du comme
 
 - WP02 (hardware) dimensionne le PCB pour tenir dans 150 × 100 mm maximum.
 - WP02 produit une estimation dimensionnelle complète après choix hardware avant verrouillage boîtier P0, incluant la réserve capteurs définie dans ADR-008.
-- WP02 prévoit le passage antenne LoRa si nécessaire et réserve mécaniquement les extensions P1 sans les rendre obligatoires P0.
+- WP02 prévoit le passage antenne [[LoRa]] si nécessaire et réserve mécaniquement les extensions P1 sans les rendre obligatoires P0.
 - WP02 et WP05 doivent tester le calage sur supports ronds : tronc, poteau, support irrégulier.
 - WP05 doit inclure une observation de détectabilité terrain : couleur, silhouette, reflets, sangle et antenne.
 - ADR-005 (énergie) : pas de poste heater dans le budget — stratégie passive validée.
-- ADR-003 (radio) : l'antenne LoRa reste interne ou camouflée si la portée mesurée est suffisante ; presse-étoupe externe seulement si nécessaire.
+- ADR-003 (radio) : l'antenne [[LoRa]] reste interne ou camouflée si la portée mesurée est suffisante ; presse-étoupe externe seulement si nécessaire.
 - Le conformal coating doit être appliqué avant assemblage final, pas après — documenter dans procédure assemblage P0.
 - La couleur verte doit être confirmée compatible avec la plage de température boîtier en plein soleil d'été (risque surchauffe si + 45 °C ambiant + absorption solaire).
 
@@ -140,11 +140,11 @@ Le PCB P0 reçoit un **vernis de protection acrylique standard** (spray du comme
 |------|----------------|
 | Étanchéité IP67 | immersion 1 m / 30 min sans infiltration mesurable |
 | Condensation interne simulée | cycle thermique -5 °C → +35 °C × 3 répétitions, pas de condensation sur PCB — 10 cycles = critère P1 |
-| Chaleur passive ESP32-S3 | mesure température interne après 10 cycles actifs successifs à -5 °C ambiant |
+| Chaleur passive [[ESP32-S3]] | mesure température interne après 10 cycles actifs successifs à -5 °C ambiant |
 | Montage terrain | fixation sangle sur tronc Ø 10–40 cm, stable sans glissement après 72 h |
 | Calage sur support rond | pas de rotation significative après traction manuelle et 72 h de pose |
 | Détectabilité visuelle | revue terrain : couleur, silhouette, antenne et sangle non saillantes à distance d'observation raisonnable |
-| Antenne LoRa discrète | comparer antenne interne/camouflée/externe ; retenir la moins visible atteignant la portée EVT |
+| Antenne [[LoRa]] discrète | comparer antenne interne/camouflée/externe ; retenir la moins visible atteignant la portée EVT |
 | Presse-étoupe IP67 sous tension câble | pas d'infiltration après traction 5 N sur câble |
 | Température interne max (soleil d'été) | ~~test M-02~~ — différé P1 ; hors-saison en Belgique au moment du proto, non bloquant pour EVT forêt |
 
@@ -154,7 +154,7 @@ Réviser cette ADR si :
 
 - le PCB P0 final dépasse 150 × 100 mm et nécessite un boîtier plus grand ;
 - la condensation interne persiste malgré la stratégie passive (déclenche l'évaluation du chauffage actif ou d'un desiccant cartouche) ;
-- l'antenne LoRa interne ou camouflée n'atteint pas la portée terrain minimale ;
+- l'antenne [[LoRa]] interne ou camouflée n'atteint pas la portée terrain minimale ;
 - le calage sur tronc impose une géométrie arrière différente du boîtier commerce retenu ;
 - le potentiel produit "skin camouflage" justifie une ADR P1 dédiée ;
 - une extension solaire P1 impose un format ou une étanchéité incompatible avec le boîtier retenu.

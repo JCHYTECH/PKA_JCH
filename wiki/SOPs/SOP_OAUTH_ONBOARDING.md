@@ -6,9 +6,9 @@ Standardiser l'amorçage d'une intégration OAuth entre une plateforme externe (
 
 ## Agents concernés
 
-- Dobby : orchestration, séquencement, validation finale
-- Ariane : guidage pas-à-pas de plateforme et onboarding
-- Forge : intégration locale, scripts, tests, automatisation
+- [[Dobby]] : orchestration, séquencement, validation finale
+- [[Ariane]] : guidage pas-à-pas de plateforme et onboarding
+- [[Forge]] : intégration locale, scripts, tests, automatisation
 
 ## Principe de répartition
 
@@ -20,9 +20,9 @@ JCH garde la main sur :
 - consentement navigateur
 - téléchargement éventuel du fichier client OAuth
 
-### Dobby / équipe
+### [[Dobby]] / équipe
 
-Dobby et l'équipe prennent en charge :
+[[Dobby]] et l'équipe prennent en charge :
 - préparation locale
 - scripts et configuration
 - vérification technique
@@ -62,15 +62,15 @@ Si un de ces points est flou, ne pas lancer l'auth locale.
 
 ### Phase 1 — cadrage
 
-- Dobby annonce explicitement :
+- [[Dobby]] annonce explicitement :
   - ce que JCH doit faire dans la console
   - ce que l'équipe fera localement
-- Ariane donne le chemin exact dans l'interface cloud
+- [[Ariane]] donne le chemin exact dans l'interface cloud
 
 ### Phase 2 — plateforme
 
 - JCH réalise les actions console
-- Dobby ne suppose rien : il demande confirmation après chaque jalon critique
+- [[Dobby]] ne suppose rien : il demande confirmation après chaque jalon critique
   - audience
   - test user
   - client OAuth
@@ -78,13 +78,13 @@ Si un de ces points est flou, ne pas lancer l'auth locale.
 
 ### Phase 3 — local
 
-- Forge remplace les credentials si nécessaire
-- Forge supprime les tokens obsolètes si client ou scopes modifiés
-- Forge relance une auth locale propre
+- [[Forge]] remplace les credentials si nécessaire
+- [[Forge]] supprime les tokens obsolètes si client ou scopes modifiés
+- [[Forge]] relance une auth locale propre
 
 ### Phase 4 — validation
 
-- Dobby vérifie :
+- [[Dobby]] vérifie :
   - auth réussie
   - API joignable
   - action réelle réussie

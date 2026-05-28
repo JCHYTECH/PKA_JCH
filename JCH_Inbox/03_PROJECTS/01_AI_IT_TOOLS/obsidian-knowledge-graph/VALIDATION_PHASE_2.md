@@ -1,11 +1,11 @@
 ---
 date: 2026-05-25
-model: GPT-5 Codex
+model: GPT-5 [[Codex]]
 type: validation-report
 status: draft
 ---
 
-# Validation Phase 2 - Dictionnaire Obsidian
+# Validation Phase 2 - Dictionnaire [[Obsidian]]
 
 ## Statut
 
@@ -29,7 +29,7 @@ Agents :
 Projets :
 
 - source canonique : `JCH_Inbox/03_PROJECTS/<projet>/` ;
-- le dictionnaire peut servir de base pour un futur index Obsidian, mais ne remplace pas les `INDEX.md` projet.
+- le dictionnaire peut servir de base pour un futur index [[Obsidian]], mais ne remplace pas les 
 
 Technologies :
 

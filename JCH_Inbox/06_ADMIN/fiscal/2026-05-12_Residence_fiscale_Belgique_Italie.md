@@ -1,6 +1,6 @@
 ---
 type: note
-source: chatgpt
+source: [[ChatGPT]]
 date: 2026-05-12
 status: inbox
 tags:

@@ -20,8 +20,8 @@ A skill is only usable in the runtime that knows how to discover and load it.
 |---|---|---|---|---|
 | Internal agent governance skills | PKA project docs | `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/internal-agent-governance/skills/` | approved / draft mix | Human-curated skill registry; not auto-loaded as a runtime skill pack. |
 | WildNexus agent skills | PKA project docs | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/07_AGENTS/Agents/*/SKILL.md` | active project skills | Domain agents, including bioacoustics. |
-| Claude video skill | Claude runtime | `.claude/claude-video/SKILL.md` | active in Claude | Runtime-specific skill bundle for video watching. |
-| Codex bioacoustics skill | Codex runtime | `~/.codex/skills/bioacoustics-qc-playbook/SKILL.md` | active in Codex | Cross-model inside Codex, not portable by itself to other runtimes. |
+| [[Claude]] video skill | [[Claude]] runtime | 
+| [[Codex]] bioacoustics skill | [[Codex]] runtime | 
 | Gemini skills | Gemini runtime | `.gemini/` | none found in scan | No local skill pack detected in the current workspace scan. |
 | Repo-local skill packs | Workspace / repo tooling | `.agents/skills/` | mixed | Additional skill-like bundles present in the repo. Inventory separately if they become operationally important. |
 

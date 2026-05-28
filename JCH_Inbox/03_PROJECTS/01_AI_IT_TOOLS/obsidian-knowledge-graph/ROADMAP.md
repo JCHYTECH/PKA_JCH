@@ -1,12 +1,12 @@
 ---
 date: 2026-05-25
-model: GPT-5 Codex
+model: GPT-5 [[Codex]]
 type: roadmap
 status: active
-domain: obsidian
+domain: [[Obsidian]]
 ---
 
-# Roadmap — Obsidian Knowledge Graph
+# Roadmap — [[Obsidian]] Knowledge Graph
 
 ## Phase 1 — Inventory
 

@@ -122,7 +122,7 @@ modern photographers drown in image volume before they fail technically.
 
 Wildlife shooters routinely return with thousands of near-duplicates.
 Macro photographers produce huge bracketed sequences.
-Documentary photographers struggle with archive fatigue.
+Documentary photographers struggle with [[archive]] fatigue.
 
 Software is therefore evolving into an extension of editorial cognition.
 

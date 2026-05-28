@@ -8,9 +8,9 @@ Date :
 - 2026-05-14
 
 Equipe mobilisee :
-- Vega : direction visuelle
-- Iris : hierarchie narrative
-- Forge : application deck
+- [[Vega]] : direction visuelle
+- [[Iris]] : hierarchie narrative
+- [[Forge]] : application deck
 
 ---
 
@@ -206,7 +206,7 @@ Recommendation :
 
 ## 6. Recommendation finale de l'equipe
 
-Recommendation Vega + Iris :
+Recommendation [[Vega]] + [[Iris]] :
 
 Le deck doit adopter la logique suivante :
 - `Nocturne` pour les seuils du recit ;
@@ -223,7 +223,7 @@ En pratique :
 
 ## 7. Prochaine action recommandee
 
-Forge peut maintenant produire une `v2 artistique` du deck avec :
+[[Forge]] peut maintenant produire une 
 - cover en `Nocturne` plus nette ;
 - slide vision en `Aurel` ;
 - cloture en `Nocturne` plus statutaire ;

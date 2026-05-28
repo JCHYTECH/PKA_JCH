@@ -1,6 +1,6 @@
 ---
 date: 2026-05-25
-model: GPT-5 Codex
+model: GPT-5 [[Codex]]
 type: concept-register
 status: active
 domain: ai-system
@@ -25,7 +25,7 @@ Examples:
 - generate a BOM;
 - review architecture;
 - prepare a specialist brief;
-- update Obsidian metadata.
+- update [[Obsidian]] metadata.
 
 ## Light Orchestration
 
@@ -36,7 +36,7 @@ Examples:
 - folder watch;
 - periodic summaries;
 - index refresh;
-- n8n workflow trigger;
+- [[n8n]] workflow trigger;
 - report preparation.
 
 ## Runtime Logs
@@ -54,7 +54,7 @@ Every automated action should record:
 
 Start with three pilot domains:
 
-- documentation / Obsidian;
+- documentation / [[Obsidian]];
 - system architecture;
 - wildlife / bioacoustics.
 

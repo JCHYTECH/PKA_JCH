@@ -1,10 +1,10 @@
 ---
-source_file: "git/faune-autour-logo.png"
+source_file: "[[Git]]/faune-autour-logo.png"
 type: "image"
 community: "Brand & Visual Identity"
 tags:
-  - graphify/image
-  - graphify/EXTRACTED
+  - [[Graphify]]/image
+  - [[Graphify]]/EXTRACTED
   - community/Brand_&_Visual_Identity
 ---
 
@@ -17,4 +17,4 @@ tags:
 - [[Nature Motifs (Leaves, Antlers, Paw Print)]] - `references` [EXTRACTED]
 - [[Wildlife Observation Around You (App Concept)]] - `conceptually_related_to` [INFERRED]
 
-#graphify/image #graphify/EXTRACTED #community/Brand_&_Visual_Identity
+#[[Graphify]]/image #[[Graphify]]/EXTRACTED #community/Brand_&_Visual_Identity

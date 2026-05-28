@@ -57,7 +57,7 @@ Oui. Le fait d’accepter aussi les livres en anglais rend le projet nettement p
 
 La couche automatique la plus simple est Google Alerts. Google permet de régler la fréquence jusqu’à “at most once a week” et de choisir les sources, y compris News, Blogs, Web et Books. Concrètement, créez des alertes séparées en français et en anglais, par grands thèmes : “wildlife photography” / “photographie animalière”, “field guide” / “guide d’identification”, “animal behaviour” / “comportement animal”, “biodiversity” / “biodiversité”, “conservation”, “ornithology”, “mammals”, “reptiles”, etc. citeturn934411search2turn316700view9
 
-La couche spécialisée doit reposer sur quelques sources qui publient réellement des nouveautés et des titres à paraître. NHBS a une page “New Forthcoming Books” et un “Monthly Catalogue” présenté comme incluant les titres à paraître, les rééditions, les nouvelles éditions et tous les livres nouvellement ajoutés à leur catalogue. Lynx Nature Books a une section “Forthcoming”, des catégories très proches de vos besoins (Field Guides, Wildlife Monographs, Conservation & Biodiversity, Nature Art & Prose) et invite aussi à s’inscrire à sa newsletter. Princeton Nature a également un circuit catalogue/nouveautés via son réseau de diffusion UK. citeturn934411search0turn934411search9turn316700view7turn666674search8
+La couche spécialisée doit reposer sur quelques sources qui publient réellement des nouveautés et des titres à paraître. NHBS a une page “New Forthcoming Books” et un “Monthly Catalogue” présenté comme incluant les titres à paraître, les rééditions, les nouvelles éditions et tous les livres nouvellement ajoutés à leur catalogue. [[Lynx]] Nature Books a une section “Forthcoming”, des catégories très proches de vos besoins (Field Guides, Wildlife Monographs, Conservation & Biodiversity, Nature Art & Prose) et invite aussi à s’inscrire à sa newsletter. Princeton Nature a également un circuit catalogue/nouveautés via son réseau de diffusion UK. citeturn934411search0turn934411search9turn316700view7turn666674search8
 
 La troisième couche, c’est votre tri éditorial. Chaque semaine, vous faites une revue courte, par exemple 30 à 45 minutes, et vous ne gardez que 5 à 10 titres dans une base de suivi. Pour chaque livre : titre, auteur, éditeur, date, ISBN, langue, thème, niveau de public, angle de critique possible, intérêt visuel pour votre site, et liens d’achat affiliés. Ensuite vous notez chaque titre sur 5 critères simples : qualité probable du contenu, valeur photographique/graphique, originalité, pertinence pour votre audience, potentiel commercial. Ce tri-là est méthodologique, donc entièrement sous votre contrôle.
 
@@ -65,7 +65,7 @@ Pour vos requêtes d’alertes, il vaut mieux être précis. Exemples efficaces 
 “wildlife photography” AND (book OR monograph OR handbook)  
 “bird identification” AND (guide OR field guide)  
 “animal behaviour” AND (book OR handbook)  
-“biodiversity” AND (book OR atlas OR conservation)  
+“biodiversity” AND (book OR [[Atlas]] OR conservation)  
 “nature writing” AND wildlife AND book  
 et les équivalents français. L’idée est d’éviter un flux trop large et de garder des résultats exploitables chaque semaine.
 
@@ -85,7 +85,7 @@ Amazon Associates reste l’option la plus large en catalogue. Amazon UK annonce
 
 Le point important pour votre idée de “code promo + %” est le suivant : sur les pages publiques que j’ai vérifiées, le modèle standard mis en avant est surtout l’affiliation par lien tracké ou programme réseau (Bookshop, Awin, Affiliate Future, Amazon), pas nécessairement un code promo personnel systématique. En pratique, le code promo dédié arrive souvent plus tard, quand le site partenaire voit que vous apportez déjà du trafic ou des ventes régulières. citeturn589317view1turn589317view2turn589317view4turn589317view3turn523877search7
 
-Mon avis pratique pour votre site serait donc celui-ci. Pour l’anglais : Bookshop UK en priorité, Waterstones en second, Natural History Museum Shop en niche nature/photo, Amazon UK en filet de sécurité. Pour le français : Lireka en priorité internationale, Fnac.be si vous ciblez surtout la Belgique/Luxembourg, Amazon FR en complément. Et pour la veille éditoriale : Google Alerts + NHBS + Lynx + quelques éditeurs/publishers bien choisis. citeturn589317view1turn552607search0turn589317view4turn523877search3turn589317view2turn934411search2turn934411search0turn316700view7
+Mon avis pratique pour votre site serait donc celui-ci. Pour l’anglais : Bookshop UK en priorité, Waterstones en second, Natural History Museum Shop en niche nature/photo, Amazon UK en filet de sécurité. Pour le français : Lireka en priorité internationale, Fnac.be si vous ciblez surtout la Belgique/Luxembourg, Amazon FR en complément. Et pour la veille éditoriale : Google Alerts + NHBS + [[Lynx]] + quelques éditeurs/publishers bien choisis. citeturn589317view1turn552607search0turn589317view4turn523877search3turn589317view2turn934411search2turn934411search0turn316700view7
 
 Au prochain message, je peux vous faire un plan opérationnel prêt à exécuter avec la liste exacte des alertes FR/EN à créer et un classement priorisé des programmes d’affiliation à contacter.
 
@@ -117,7 +117,7 @@ J’ai les bases confirmées. Je complète surtout les options “à contacter e
 
 28/03/2026, 00:30 — Voici le plan opérationnel prêt à mettre en place.
 
-Pour la veille hebdomadaire, le socle le plus simple et le plus robuste est Google Alerts, parce que vous pouvez régler la fréquence sur “au plus une fois par semaine” et choisir les sources, notamment News, Blogs, Web et Books. En parallèle, il faut ajouter 3 à 4 sources éditoriales spécialisées qui publient réellement des nouveautés et des titres à paraître : NHBS avec son Monthly Catalogue et sa collection “new forthcoming books”, Lynx Nature Books avec ses rubriques “Forthcoming” et “New Releases”, puis quelques éditeurs/cataloques très pertinents comme Bloomsbury Nature/Wildlife Guides et Collins New Naturalist. citeturn168195search0turn168195search4turn168195search1turn168195search5turn168195search2turn168195search10turn306555search0turn306555search18turn306555search4
+Pour la veille hebdomadaire, le socle le plus simple et le plus robuste est Google Alerts, parce que vous pouvez régler la fréquence sur “au plus une fois par semaine” et choisir les sources, notamment News, Blogs, Web et Books. En parallèle, il faut ajouter 3 à 4 sources éditoriales spécialisées qui publient réellement des nouveautés et des titres à paraître : NHBS avec son Monthly Catalogue et sa collection “new forthcoming books”, [[Lynx]] Nature Books avec ses rubriques “Forthcoming” et “New Releases”, puis quelques éditeurs/cataloques très pertinents comme Bloomsbury Nature/Wildlife Guides et Collins New Naturalist. citeturn168195search0turn168195search4turn168195search1turn168195search5turn168195search2turn168195search10turn306555search0turn306555search18turn306555search4
 
 Créez ces alertes Google, une par ligne, en gardant une fréquence hebdomadaire. Les requêtes ci-dessous sont volontairement assez serrées pour éviter trop de bruit :
 
@@ -136,7 +136,7 @@ Créez ces alertes Google, une par ligne, en gardant une fréquence hebdomadaire
 
 Pour chaque alerte, choisissez la langue adaptée, “At most once a week”, et alternez selon le sujet entre “Books” et “Automatic” ou “News + Blogs + Web” quand vous voulez capter aussi les annonces, critiques et prépublications. citeturn168195search0turn168195search4
 
-Le rythme idéal pour vous serait un créneau fixe chaque samedi : 15 minutes pour lire les alertes Google, 15 minutes pour scanner NHBS et Lynx, puis 15 minutes pour qualifier les titres retenus. Dans votre base de suivi, gardez pour chaque livre : titre, auteur, éditeur, date de parution, ISBN, langue, thème, niveau de public, angle de critique possible, et liens d’achat affiliés. Ensuite, notez chaque titre sur 5 : intérêt photo, intérêt naturaliste, valeur pédagogique, originalité, potentiel commercial. Cette partie est votre couche éditoriale, celle qui fera la différence.
+Le rythme idéal pour vous serait un créneau fixe chaque samedi : 15 minutes pour lire les alertes Google, 15 minutes pour scanner NHBS et [[Lynx]], puis 15 minutes pour qualifier les titres retenus. Dans votre base de suivi, gardez pour chaque livre : titre, auteur, éditeur, date de parution, ISBN, langue, thème, niveau de public, angle de critique possible, et liens d’achat affiliés. Ensuite, notez chaque titre sur 5 : intérêt photo, intérêt naturaliste, valeur pédagogique, originalité, potentiel commercial. Cette partie est votre couche éditoriale, celle qui fera la différence.
 
 Pour les vendeurs et programmes à ouvrir en priorité, mon classement serait le suivant. En premier, Bookshop UK : c’est probablement le meilleur fit pour votre futur site, car le programme est pensé pour les médias, blogueurs, reviewers et recommandations éditoriales, avec 10% de commission sur les ventes générées. citeturn245780search0turn245780search4turn245780search14
 
@@ -154,7 +154,7 @@ Mon conseil pour votre site est de ne pas dépendre d’un seul vendeur. Pour ch
 
 Dernier point important : prévoyez dès le départ une petite mention de transparence sous vos liens d’achat. Bookshop indique explicitement qu’un site utilisant des liens affiliés doit le divulguer au visiteur. Une formule simple et propre suffit, du type : “Certains liens de cette page sont des liens partenaires ; une commission peut être perçue sans surcoût pour vous.” citeturn706985search11
 
-Ma recommandation finale est donc très simple : ouvrez d’abord Bookshop UK, Lireka, Waterstones et Fnac.be. Mettez NHBS, Lynx, Bloomsbury et Collins dans votre veille éditoriale. Puis structurez chaque semaine un mini comité éditorial personnel de 45 minutes. C’est le montage le plus crédible, le plus léger à exploiter, et le plus cohérent avec un site de critique et conseil sur les livres wildlife. citeturn168195search1turn168195search2turn306555search18turn306555search4turn245780search0turn245780search2turn245780search1turn725254search1
+Ma recommandation finale est donc très simple : ouvrez d’abord Bookshop UK, Lireka, Waterstones et Fnac.be. Mettez NHBS, [[Lynx]], Bloomsbury et Collins dans votre veille éditoriale. Puis structurez chaque semaine un mini comité éditorial personnel de 45 minutes. C’est le montage le plus crédible, le plus léger à exploiter, et le plus cohérent avec un site de critique et conseil sur les livres wildlife. citeturn168195search1turn168195search2turn306555search18turn306555search4turn245780search0turn245780search2turn245780search1turn725254search1
 
 Je peux ensuite vous préparer la suite sous forme très concrète : soit un modèle de page “critique de livre” optimisé pour affiliation, soit une liste de 20 sources exactes à surveiller chaque semaine.
 
@@ -206,7 +206,7 @@ Photographe wildlife / naturaliste / ornithologue / lecteur grand public
 
 Bloc “ce que ce livre apporte vraiment”  
 Ici vous résumez la promesse réelle du livre :
-identification terrain, comportement animal, inspiration photo, conservation, vulgarisation scientifique, atlas, monographie, etc.
+identification terrain, comportement animal, inspiration photo, conservation, vulgarisation scientifique, [[Atlas]], monographie, etc.
 
 Bloc “mes points forts / mes réserves”  
 C’est le cœur de votre valeur ajoutée.  
@@ -303,9 +303,9 @@ Les 6 priorités absolues, à voir chaque semaine :
 
 2. NHBS News / Newsletter — utile pour repérer nouvelles parutions, offres, interviews d’auteurs et actualité biodiversité autour des livres. citeturn508545search23
 
-3. Lynx Nature Books – New Releases — très fort pour ornithologie, guides d’identification et natural history. citeturn587425search6turn587425search10
+3. [[Lynx]] Nature Books – New Releases — très fort pour ornithologie, guides d’identification et natural history. citeturn587425search6turn587425search10
 
-4. Lynx Nature Books – Forthcoming — indispensable pour capter les titres avant leur sortie. citeturn587425search2
+4. [[Lynx]] Nature Books – Forthcoming — indispensable pour capter les titres avant leur sortie. citeturn587425search2
 
 5. Pelagic Publishing – New Books — très bon flux pour écologie, zoologie, conservation, natural history et méthodes de terrain. citeturn996720search1turn996720search3
 
@@ -323,7 +323,7 @@ Les 8 sources “éditeur / catalogue” à surveiller ensuite :
 
 11. NHBS Publisher Page – Princeton University Press — important pour suivre les Princeton Field Guides et les beaux livres naturalistes. citeturn508545search2
 
-12. NHBS Publisher Page – Lynx Edicions — à garder en veille permanente pour les ouvrages d’ornithologie et de natural history. citeturn508545search3
+12. NHBS Publisher Page – [[Lynx]] Edicions — à garder en veille permanente pour les ouvrages d’ornithologie et de natural history. citeturn508545search3
 
 13. Pelagic – Naturalists’ Handbooks — très utile pour les titres plus techniques, de terrain, identification et étude naturaliste. citeturn996720search5
 

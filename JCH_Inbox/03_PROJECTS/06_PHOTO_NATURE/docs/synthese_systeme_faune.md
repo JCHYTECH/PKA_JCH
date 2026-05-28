@@ -3,7 +3,7 @@ tags:
   - type/project
   - status/active
 ---
-# Synthèse – Système de fiches naturalistes (Obsidian + Squarespace)
+# Synthèse – Système de fiches naturalistes ([[Obsidian]] + Squarespace)
 
 ## Objectif
 Mettre en place un système structuré pour :
@@ -31,17 +31,17 @@ Création d’un template HTML/CSS :
 
 ## 2. Workflow recommandé
 
-Obsidian = base de travail  
+[[Obsidian]] = base de travail  
 Squarespace = publication
 
 Processus :
-1. Création fiche dans Obsidian
+1. Création fiche dans [[Obsidian]]
 2. Structuration + enrichissement
 3. Export vers site web
 
 ---
 
-## 3. Architecture Obsidian
+## 3. Architecture [[Obsidian]]
 
 Dossiers :
 
@@ -59,7 +59,7 @@ Concepts :
 
 ---
 
-## 4. Templates Obsidian
+## 4. Templates [[Obsidian]]
 
 Deux niveaux :
 

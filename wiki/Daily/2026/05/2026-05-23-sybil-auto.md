@@ -18,14 +18,14 @@ Travail de documentation sur les assistants IA :
 - DEEPSEEK.md
 - ADAPTER-PROMPT.md
 - GEMINI.md
-- CLAUDE.md
+- [[Claude]].md
 - AGENTS.md
 
 Ces fichiers reflètent probablement une phase d'alignement ou de mise à jour des configurations d'interaction avec les différentes API.
 
 ## Configuration locale
 
-Mise à jour de `.claude/settings.local.json`, indiquant une reconfiguration des paramètres Claude en environnement local.
+Mise à jour de 
 
 ## Gestion mémoire et documentation
 
@@ -37,7 +37,7 @@ Mise à jour de `.claude/settings.local.json`, indiquant une reconfiguration des
 ## Inbox et travail collaboratif
 
 ### TEAM_Inbox
-- 2026-05-23_dobby_system_check.md : contrôle système de Dobby
+- 2026-05-23_dobby_system_check.md : contrôle système de [[Dobby]]
 - 2026-05-22_dobby_gemini_4-rapports-wildnexus.xlsx : données de rapports WildNexus
 - 2026-05-23_wildnexus_arbitrage_inbox.md : arbitrage/suivi du projet WildNexus
 

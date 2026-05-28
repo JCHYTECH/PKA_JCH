@@ -1,8 +1,8 @@
-# 🐦‍⬛ Pie — Analyse email
+# 🐦‍⬛ [[Pie]] — Analyse email
 
 **Date :** 2026-05-04  
 **De :** Tom at myICOR  
-**Objet :** You found us, Jean Claude. Come in.  
+**Objet :** You found us, Jean [[Claude]]. Come in.  
 
 ---
 

@@ -1,8 +1,8 @@
-# 🐦‍⬛ Pie — Analyse email
+# 🐦‍⬛ [[Pie]] — Analyse email
 
 **Date :** 2026-05-07  
 **De :** IKEA Family  
-**Objet :** Un webinar culinaire gratuit exclusif avec Colruyt Group Academy, jean claude !  
+**Objet :** Un webinar culinaire gratuit exclusif avec Colruyt Group Academy, jean [[Claude]] !  
 
 ---
 

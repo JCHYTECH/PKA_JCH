@@ -1,7 +1,7 @@
 # BirdNET-Pi — Liste d'achat installation extérieure
 
 **Date :** 16 mai 2026  
-**Configuration :** Raspberry Pi 5 + BirdNET-Pi (fork Nachtzuster)  
+**Configuration :** [[Raspberry Pi 5]] + BirdNET-Pi (fork Nachtzuster)  
 **Localisation :** Esneux-Tilff, Belgique (50.55°N, 5.57°E)
 
 ---
@@ -31,11 +31,11 @@
 
 ## 4. Boîtier étanche — Sixfab IP65 Outdoor Enclosure
 
-- **Produit :** Sixfab IP65 Outdoor Project Enclosure for Raspberry Pi
+- **Produit :** Sixfab IP65 Outdoor Project Enclosure for [[Raspberry Pi]]
 - **Protection :** IP65 (poussière + jets d'eau)
 - **Matériau :** ABS, couvercle transparent polycarbonate, joint silicone
 - **Inclus :** Plaque de montage RPi, passe-câbles étanches (grommets), oreilles de fixation murale/poteau, visserie
-- **Compatibilité :** Raspberry Pi 5 (et tous modèles RPi)
+- **Compatibilité :** [[Raspberry Pi 5]] (et tous modèles RPi)
 - **Prix :** ~40–50€
 - **Fournisseur :** [sixfab.com](https://sixfab.com) ou Amazon UK/EU
 - **Note :** Prévoir un petit trou de drainage (1–2 mm) en bas du boîtier pour évacuer la condensation.
@@ -64,5 +64,5 @@
 
 - **Micro omnidirectionnel vs directionnel :** Pour BirdNET-Pi, un micro omni est préférable. Les oiseaux chantent de toutes les directions et un micro directionnel n'apporte pas d'avantage réel dans ce contexte.
 - **Interférences WiFi :** La capsule EM272 peut capter des interférences de transmetteurs WiFi (ex: Rode Wireless Go). Si problème, éloigner le micro de la source WiFi.
-- **Sensibilité BirdNET :** Configuration recommandée — Sigmoid Sensitivity : 1.25, Overlap : 0.5.
+- **Sensibilité [[BirdNET]] :** Configuration recommandée — Sigmoid Sensitivity : 1.25, Overlap : 0.5.
 - **Interface web :** Accessible depuis n'importe quel navigateur sur le réseau local à `http://tkajch.local`

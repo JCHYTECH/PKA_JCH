@@ -46,4 +46,4 @@ Autrement dit : charte d'abord, système visuel existant ensuite, production du 
 
 ## Statut
 Phase 0 close — 58 photos JCH analysées, pipeline opérationnel.  
-Prochaine étape : Phase 0.3 (évaluation rapports JCH) + charte graphique (Vega).
+Prochaine étape : Phase 0.3 (évaluation rapports JCH) + charte graphique ([[Vega]]).

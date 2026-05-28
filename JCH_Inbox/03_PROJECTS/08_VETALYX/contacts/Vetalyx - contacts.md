@@ -33,12 +33,11 @@ Cette note centralise les contacts importants liés au projet Vetalyx.
 
 | Nom | Organisation | Rôle | Statut | Prochaine action |
 |---|---|---|---|---|
-| Dr Morgane Cannone | Maisons-Alfort | opinion leader potentiel | à contacter |  |
-| Dr Billen | ULg | opinion leader potentiel | à contacter |  |
+| Dr Morgane Cannone | Maisons-Alfort | opinion leader potentiel | à contacter | Proposer le protocole pilote KOL : validation clinique routine test rapide IgE + sérum/plasma + sous-étude buvard DBS |
+| Dr Billen | ULg | opinion leader potentiel | à contacter | Proposer le protocole pilote KOL : site miroir Belgique/ULg, validation clinique routine + biobanque échantillons |
 
 ## Liens utiles
 
 - [[Vetalyx - commercial]]
 - [[Vetalyx - stratégie]]
 - [[Vetalyx - site web]]
-

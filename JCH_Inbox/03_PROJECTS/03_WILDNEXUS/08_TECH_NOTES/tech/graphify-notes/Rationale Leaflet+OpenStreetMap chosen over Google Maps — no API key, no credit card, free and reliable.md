@@ -3,8 +3,8 @@ source_file: "API_pour_observations_be.md"
 type: "document"
 community: "Map & Detail Display"
 tags:
-  - graphify/document
-  - graphify/EXTRACTED
+  - [[Graphify]]/document
+  - [[Graphify]]/EXTRACTED
   - community/Map_&_Detail_Display
 ---
 
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Leaflet.js — map library]] - `rationale_for` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Map_&_Detail_Display
+#[[Graphify]]/document #[[Graphify]]/EXTRACTED #community/Map_&_Detail_Display

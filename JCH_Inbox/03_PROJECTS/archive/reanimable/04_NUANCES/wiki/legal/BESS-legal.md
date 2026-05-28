@@ -1,7 +1,7 @@
 ---
 projet: NUANCES
 domaine: Cadre légal et réglementaire BESS
-auteur: Furet
+auteur: [[Furet]]
 date: 2026-05-10
 statut: draft
 ---

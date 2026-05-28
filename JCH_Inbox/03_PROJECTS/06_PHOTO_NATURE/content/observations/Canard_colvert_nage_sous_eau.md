@@ -99,18 +99,18 @@ non ok. par contre le correcteur d'orthographe est on ?
 ## Assistant
 *2026-04-01 18:54*
 
-Je vérifie si ChatGPT a un réglage propre pour l’orthographe, ou si cela dépend simplement du navigateur et de macOS.
+Je vérifie si [[ChatGPT]] a un réglage propre pour l’orthographe, ou si cela dépend simplement du navigateur et de macOS.
 
 ---
 
 ## Assistant
 *2026-04-01 18:54*
 
-Je ne peux pas voir votre interface. Mais d’après les réglages officiels de ChatGPT, OpenAI documente un paramètre de langue, pas un paramètre dédié de correcteur orthographique; j’en déduis que, sur le web, la correction dépend surtout de votre navigateur et de macOS plutôt que d’un bouton propre à ChatGPT. citeturn499195search0turn499195search1
+Je ne peux pas voir votre interface. Mais d’après les réglages officiels de [[ChatGPT]], OpenAI documente un paramètre de langue, pas un paramètre dédié de correcteur orthographique; j’en déduis que, sur le web, la correction dépend surtout de votre navigateur et de macOS plutôt que d’un bouton propre à [[ChatGPT]]. citeturn499195search0turn499195search1
 
-Sur Mac, vous pouvez vérifier ici : Réglages Système > Clavier > Saisie de texte > Modifier, puis activer « Corriger l’orthographe automatiquement ». Apple indique aussi que la vérification orthographique peut se gérer au niveau de l’app via le menu Édition > Orthographe et grammaire, quand l’app le prend en charge. citeturn499195search1turn499195search3
+Sur Mac, vous pouvez vérifier ici : Réglages Système > Clavier > Saisie de texte > Modifier, puis activer « Corriger l’orthographe automatiquement ». [[Apple]] indique aussi que la vérification orthographique peut se gérer au niveau de l’app via le menu Édition > Orthographe et grammaire, quand l’app le prend en charge. citeturn499195search1turn499195search3
 
-Donc, en pratique : oui, il peut être “on”, mais ce n’est probablement pas un switch ChatGPT. C’est surtout Safari/macOS qui fait le travail. citeturn499195search1turn499195search3
+Donc, en pratique : oui, il peut être “on”, mais ce n’est probablement pas un switch [[ChatGPT]]. C’est surtout Safari/macOS qui fait le travail. citeturn499195search1turn499195search3
 
 Si vous voulez, je peux vous donner le chemin exact pour Safari sur votre Mac.
 

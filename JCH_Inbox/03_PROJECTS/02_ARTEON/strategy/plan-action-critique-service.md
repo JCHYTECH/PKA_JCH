@@ -9,7 +9,7 @@ kpi: €1000/mois CA service critique wildlife
 # Plan d'action complet — Service Critique ARTEON + Site V1
 
 > KPI unique : **€1 000/mois de chiffre d'affaires** sur le service de critique photo wildlife.  
-> Orchestré par Dobby — équipe complète mobilisée.
+> Orchestré par [[Dobby]] — équipe complète mobilisée.
 
 ---
 
@@ -64,7 +64,7 @@ kpi: €1000/mois CA service critique wildlife
 - **Besoin** : Outil commun de notation pour leurs soirées de critique, formation des membres
 - **Valeur** : Score partagé + rapport imprimable pour chaque participant
 - **WTP** : €150-250/mois — accès illimité membres
-- **Conversion** : Approche directe via Miel/Delphi sur les fédérations photo (LPO, Natagora, clubs régionaux)
+- **Conversion** : Approche directe via [[Miel]]/[[Delphi]] sur les fédérations photo (LPO, Natagora, clubs régionaux)
 
 ### Persona D — Éditeur / Site Web Éthique (B2B — Certification)
 - **Profil** : Magazine nature en ligne, galerie wildlife, concours photo, plateforme communautaire naturaliste
@@ -72,7 +72,7 @@ kpi: €1000/mois CA service critique wildlife
 - **Valeur** : Badge **"Vérifié L'Instant Lu"** affiché sur les photos publiées — signal de confiance pour leur audience
 - **WTP** : €100-400/mois selon volume — ils paient pour la crédibilité, pas le volume
 - **Offre** : Licence mensuelle incluant X analyses + accès API + badge certifié
-- **Conversion** : Approche ciblée — 10 plateformes identifiées par Iris + Delphi, pitch sur l'éthique comme différenciation éditoriale
+- **Conversion** : Approche ciblée — 10 plateformes identifiées par [[Iris]] + [[Delphi]], pitch sur l'éthique comme différenciation éditoriale
 
 ### Funnel de conversion cible
 
@@ -121,11 +121,11 @@ WORKSTREAM 2 — ARTEON SITE V1 (arteon.be complet)
 
 | # | Tâche | Owner | Durée | Bloque |
 |---|-------|-------|-------|--------|
-| 0.1 | Sélectionner 50 photos JCH variées (oiseaux, mammifères, rapaces, eau, lumières difficiles) | JCH + Lynx | 2j | 0.2 |
-| 0.2 | Passer les 50 photos dans le pipeline Argus local (plugin LR) | Argus | 3j | 0.3 |
+| 0.1 | Sélectionner 50 photos JCH variées (oiseaux, mammifères, rapaces, eau, lumières difficiles) | JCH + [[Lynx]] | 2j | 0.2 |
+| 0.2 | Passer les 50 photos dans le pipeline [[Argus]] local (plugin LR) | [[Argus]] | 3j | 0.3 |
 | 0.3 | JCH évalue chaque rapport : pertinence critique, qualité preset XMP, cohérence scores | JCH | 2j | Calibration prompt |
-| 0.4 | Calibration prompt selon retours JCH | Argus | 2j | Backend |
-| 0.5 | ✅ Critères éthiques définis — filtre `filter_ethics.py` à coder | Forge | parallèle | Backend |
+| 0.4 | Calibration prompt selon retours JCH | [[Argus]] | 2j | Backend |
+| 0.5 | ✅ Critères éthiques définis — filtre 
 
 > **Go/No-Go phase 0** : JCH satisfait de la qualité sur ses propres photos → on passe à la suite.
 
@@ -136,10 +136,10 @@ WORKSTREAM 2 — ARTEON SITE V1 (arteon.be complet)
 | # | Tâche | Owner | Série/Parallèle | Durée | Bloque |
 |---|-------|-------|-----------------|-------|--------|
 | 1.1 | ✅ **Nom choisi : `L'Instant Lu`** — 2026-05-02 | JCH | - | ✓ | Débloqué |
-| 1.2 | ✅ **Critères éthiques définis** — voir §12 | Argus + JCH | - | ✓ | Débloqué |
-| 1.3 | Lancer la charte graphique ARTEON (étape 4) | Vega | Parallèle | 5j | Landing page |
-| 1.4 | ✅ **Prix : €1,90 TTC** + gratuit inscription + pack découverte | Bruno + JCH | - | ✓ | Débloqué |
-| 1.5 | Setup `l-instant-lu.arteon.be` (DNS, certificat SSL) | Forge | Parallèle | 1j | Backend |
+| 1.2 | ✅ **Critères éthiques définis** — voir §12 | [[Argus]] + JCH | - | ✓ | Débloqué |
+| 1.3 | Lancer la charte graphique ARTEON (étape 4) | [[Vega]] | Parallèle | 5j | Landing page |
+| 1.4 | ✅ **Prix : €1,90 TTC** + gratuit inscription + pack découverte | [[Bruno]] + JCH | - | ✓ | Débloqué |
+| 1.5 | Setup 
 
 > **Point de synchronisation S1** : Phase 0 terminée + charte lancée → go backend.
 
@@ -149,15 +149,15 @@ WORKSTREAM 2 — ARTEON SITE V1 (arteon.be complet)
 
 | # | Tâche | Owner | Série/Parallèle | Durée | Dépend de |
 |---|-------|-------|-----------------|-------|-----------|
-| 2.1 | API FastAPI — endpoint `POST /analyse` | Forge | Série | 3j | 1.6 |
-| 2.2 | Upload endpoint + stockage Cloudflare R2 | Forge | Série après 2.1 | 2j | 2.1 |
-| 2.3 | Worker async — pipeline Python → Claude → PDF + XMP | Forge | Série après 2.2 | 3j | 2.2 |
-| 2.4 | Calibration du prompt selon résultats test 50 photos | Argus | Parallèle 2.1 | 3j | 1.4 |
-| 2.5 | Stripping EXIF GPS à l'upload (RGPD) | Forge | Parallèle 2.2 | 1j | 2.2 |
-| 2.6 | CGU/CGV service critique (rédaction) | Renard | Parallèle | 4j | 1.2 |
-| 2.7 | Politique RGPD mise à jour arteon.be | Renard | Parallèle 2.6 | 2j | - |
-| 2.8 | Templates fiche artiste ARTEON (étape 5) | Vega | Parallèle | 3j | 1.3 |
-| 2.9 | Template fiche produit ARTEON (étape 6) | Vega | Parallèle 2.8 | 2j | 2.8 |
+| 2.1 | API [[FastAPI]] — endpoint 
+| 2.2 | Upload endpoint + stockage Cloudflare R2 | [[Forge]] | Série après 2.1 | 2j | 2.1 |
+| 2.3 | Worker async — pipeline [[Python]] → [[Claude]] → PDF + XMP | [[Forge]] | Série après 2.2 | 3j | 2.2 |
+| 2.4 | Calibration du prompt selon résultats test 50 photos | [[Argus]] | Parallèle 2.1 | 3j | 1.4 |
+| 2.5 | Stripping EXIF GPS à l'upload (RGPD) | [[Forge]] | Parallèle 2.2 | 1j | 2.2 |
+| 2.6 | CGU/CGV service critique (rédaction) | [[Renard]] | Parallèle | 4j | 1.2 |
+| 2.7 | Politique RGPD mise à jour arteon.be | [[Renard]] | Parallèle 2.6 | 2j | - |
+| 2.8 | Templates fiche artiste ARTEON (étape 5) | [[Vega]] | Parallèle | 3j | 1.3 |
+| 2.9 | Template fiche produit ARTEON (étape 6) | [[Vega]] | Parallèle 2.8 | 2j | 2.8 |
 
 ---
 
@@ -165,14 +165,14 @@ WORKSTREAM 2 — ARTEON SITE V1 (arteon.be complet)
 
 | # | Tâche | Owner | Série/Parallèle | Durée | Dépend de |
 |---|-------|-------|-----------------|-------|-----------|
-| 3.1 | Intégration Stripe (paiement à l'unité + packs) | Forge | Série après 2.3 | 3j | 2.3 |
-| 3.2 | Système de crédits utilisateur (base users) | Forge | Série après 3.1 | 2j | 3.1 |
-| 3.3 | Email transactionnel — livraison PDF + XMP | Forge | Parallèle 3.1 | 2j | 2.3 |
-| 3.4 | Page de résultat web (lien download sécurisé 7j) | Forge | Parallèle 3.3 | 2j | 3.3 |
-| 3.5 | Landing page `critique.arteon.be` (design + copy) | Vega | Série après charte | 4j | 1.3 |
-| 3.6 | Documentation "Comment lire votre rapport Argus" | Argus | Parallèle | 2j | 2.4 |
-| 3.7 | Setup Shopify ARTEON (étape 8) | Forge | Parallèle | 3j | 2.8 |
-| 3.8 | Formulaire affiliation ARTEON (étape 7) | Vega | Parallèle 3.5 | 2j | 2.9 |
+| 3.1 | Intégration Stripe (paiement à l'unité + packs) | [[Forge]] | Série après 2.3 | 3j | 2.3 |
+| 3.2 | Système de crédits utilisateur (base users) | [[Forge]] | Série après 3.1 | 2j | 3.1 |
+| 3.3 | Email transactionnel — livraison PDF + XMP | [[Forge]] | Parallèle 3.1 | 2j | 2.3 |
+| 3.4 | Page de résultat web (lien download sécurisé 7j) | [[Forge]] | Parallèle 3.3 | 2j | 3.3 |
+| 3.5 | Landing page 
+| 3.6 | Documentation "Comment lire votre rapport [[Argus]]" | [[Argus]] | Parallèle | 2j | 2.4 |
+| 3.7 | Setup Shopify ARTEON (étape 8) | [[Forge]] | Parallèle | 3j | 2.8 |
+| 3.8 | Formulaire affiliation ARTEON (étape 7) | [[Vega]] | Parallèle 3.5 | 2j | 2.9 |
 
 ---
 
@@ -180,13 +180,13 @@ WORKSTREAM 2 — ARTEON SITE V1 (arteon.be complet)
 
 | # | Tâche | Owner | Série/Parallèle | Durée | Dépend de |
 |---|-------|-------|-----------------|-------|-----------|
-| 4.1 | Tests end-to-end complets (JPEG + CR3 + NEF) | Forge + Argus | Série | 3j | 3.4 |
-| 4.2 | Validation CGU par JCH | JCH + Renard | Parallèle | 1j | 2.6 |
-| 4.3 | Test paiement Stripe (sandbox → live) | Forge | Après 4.1 | 1j | 4.1 |
-| 4.4 | Article WILDLENS "Comment l'IA juge votre photo" | Miel | Parallèle | 3j | 3.6 |
-| 4.5 | SEO landing page (mots-clés, meta, structure) | Trace | Parallèle | 2j | 3.5 |
-| 4.6 | Setup WhiteWall ARTEON (étape 9) | Forge | Parallèle | 2j | 3.7 |
-| 4.7 | Sélection + préparation 10 photos JC (étape 11) | JCH + Lynx | Parallèle | 4j | - |
+| 4.1 | Tests end-to-end complets (JPEG + CR3 + NEF) | [[Forge]] + [[Argus]] | Série | 3j | 3.4 |
+| 4.2 | Validation CGU par JCH | JCH + [[Renard]] | Parallèle | 1j | 2.6 |
+| 4.3 | Test paiement Stripe (sandbox → live) | [[Forge]] | Après 4.1 | 1j | 4.1 |
+| 4.4 | Article WILDLENS "Comment l'IA juge votre photo" | [[Miel]] | Parallèle | 3j | 3.6 |
+| 4.5 | SEO landing page (mots-clés, meta, structure) | [[Trace]] | Parallèle | 2j | 3.5 |
+| 4.6 | Setup WhiteWall ARTEON (étape 9) | [[Forge]] | Parallèle | 2j | 3.7 |
+| 4.7 | Sélection + préparation 10 photos JC (étape 11) | JCH + [[Lynx]] | Parallèle | 4j | - |
 
 ---
 
@@ -194,13 +194,13 @@ WORKSTREAM 2 — ARTEON SITE V1 (arteon.be complet)
 
 | # | Tâche | Owner | Série/Parallèle | Durée | Dépend de |
 |---|-------|-------|-----------------|-------|-----------|
-| 5.1 | Recrutement 15 bêta-testeurs WILDLENS | Miel + Delphi | Début S5 | 3j | 4.4 |
+| 5.1 | Recrutement 15 bêta-testeurs WILDLENS | [[Miel]] + [[Delphi]] | Début S5 | 3j | 4.4 |
 | 5.2 | Beta fermée — 15 utilisateurs, 1 analyse gratuite/personne | Tous | Série après 4.3 | 7j | 4.3 |
-| 5.3 | Collecte feedback beta (formulaire structuré) | Delphi | Parallèle 5.2 | 7j | 5.2 |
-| 5.4 | Ajustements prompt, PDF, UX selon beta | Argus + Forge | Après 5.3 | 3j | 5.3 |
-| 5.5 | Intégration WILDLENS ↔ ARTEON (étape 10) | Forge | Parallèle | 3j | 3.7 |
-| 5.6 | Approche 2 clubs photo pour offre B2B | Delphi | Parallèle | 5j | 3.2 |
-| 5.7 | Retravail 3 éditions WILDLENS (étape 12) | Miel | Parallèle | 4j | - |
+| 5.3 | Collecte feedback beta (formulaire structuré) | [[Delphi]] | Parallèle 5.2 | 7j | 5.2 |
+| 5.4 | Ajustements prompt, PDF, UX selon beta | [[Argus]] + [[Forge]] | Après 5.3 | 3j | 5.3 |
+| 5.5 | Intégration WILDLENS ↔ ARTEON (étape 10) | [[Forge]] | Parallèle | 3j | 3.7 |
+| 5.6 | Approche 2 clubs photo pour offre B2B | [[Delphi]] | Parallèle | 5j | 3.2 |
+| 5.7 | Retravail 3 éditions WILDLENS (étape 12) | [[Miel]] | Parallèle | 4j | - |
 
 ---
 
@@ -208,12 +208,12 @@ WORKSTREAM 2 — ARTEON SITE V1 (arteon.be complet)
 
 | # | Tâche | Owner | Série/Parallèle | Durée | Dépend de |
 |---|-------|-------|-----------------|-------|-----------|
-| 6.1 | **LANCEMENT critique.arteon.be** | Forge | Série après 5.4 | 1j | 5.4 |
-| 6.2 | Email WILDLENS subscribers — annonce lancement | Miel | Série après 6.1 | 1j | 6.1 |
-| 6.3 | Article WILDLENS publié (réseaux + Ghost) | Miel | Série 6.2 | 1j | 4.4 |
-| 6.4 | Monitoring coûts API en temps réel (dashboard simple) | Forge | Parallèle | 2j | 6.1 |
-| 6.5 | Activation SEO + Google Search Console | Trace | Parallèle | 1j | 6.1 |
-| 6.6 | Finalisation ARTEON V1 (étape 13) | Vega + Forge | Parallèle | 10j | 5.5 |
+| 6.1 | **LANCEMENT critique.arteon.be** | [[Forge]] | Série après 5.4 | 1j | 5.4 |
+| 6.2 | Email WILDLENS subscribers — annonce lancement | [[Miel]] | Série après 6.1 | 1j | 6.1 |
+| 6.3 | Article WILDLENS publié (réseaux + Ghost) | [[Miel]] | Série 6.2 | 1j | 4.4 |
+| 6.4 | Monitoring coûts API en temps réel (dashboard simple) | [[Forge]] | Parallèle | 2j | 6.1 |
+| 6.5 | Activation SEO + Google Search Console | [[Trace]] | Parallèle | 1j | 6.1 |
+| 6.6 | Finalisation ARTEON V1 (étape 13) | [[Vega]] + [[Forge]] | Parallèle | 10j | 5.5 |
 
 ---
 
@@ -221,12 +221,12 @@ WORKSTREAM 2 — ARTEON SITE V1 (arteon.be complet)
 
 | # | Tâche | Owner | Action | Cible |
 |---|-------|-------|--------|-------|
-| 7.1 | Conversion 1er club B2B | Delphi | Suivi + démo | +€200/mois |
-| 7.2 | Article technique Argus dans WILDLENS × 1/mois | Argus + Miel | Content régulier | +trafic organique |
-| 7.3 | Programme "1 analyse offerte si partage résultat" | Miel | Growth loop | +nouveaux users |
-| 7.4 | **LANCEMENT ARTEON V1** | Forge + Vega | Intégration critique | Audience élargie |
-| 7.5 | Analyse data `argus_critique.db` — Lynx distille 1ers presets | Lynx | Après 50 analyses | Valeur ajoutée |
-| 7.6 | Revue pricing selon volume réel | Bruno | J+70 | Optimisation |
+| 7.1 | Conversion 1er club B2B | [[Delphi]] | Suivi + démo | +€200/mois |
+| 7.2 | Article technique [[Argus]] dans WILDLENS × 1/mois | [[Argus]] + [[Miel]] | Content régulier | +trafic organique |
+| 7.3 | Programme "1 analyse offerte si partage résultat" | [[Miel]] | Growth loop | +nouveaux users |
+| 7.4 | **LANCEMENT ARTEON V1** | [[Forge]] + [[Vega]] | Intégration critique | Audience élargie |
+| 7.5 | Analyse data 
+| 7.6 | Revue pricing selon volume réel | [[Bruno]] | J+70 | Optimisation |
 
 ---
 
@@ -265,15 +265,15 @@ PARALLÈLE :
 
 | Spécialiste | Rôle dans ce projet | Charge |
 |-------------|---------------------|--------|
-| **Forge** 🦦 | Backend, API, Shopify, intégrations techniques | Fort |
-| **Vega** 🦚 | Charte graphique, landing page, UX, templates ARTEON | Fort |
-| **Argus** 🦅 | Calibration prompt, validation qualité, documentation | Moyen |
-| **Miel** 🐝 | Contenu WILDLENS, emails, réseaux, growth | Moyen |
-| **Renard** 🦊 | CGU, RGPD, mentions légales | Ponctuel |
-| **Bruno** 🐻 | Pricing, suivi coûts, revue J+70 | Ponctuel |
-| **Delphi** 🐬 | Beta recrutement, B2B clubs, CRM | Moyen |
-| **Lynx** 🐆 | Validation corrections, presets distillés (dès 50 analyses) | Ponctuel |
-| **Trace** 🕷️ | SEO landing page, Search Console | Ponctuel |
+| **[[Forge]]** 🦦 | Backend, API, Shopify, intégrations techniques | Fort |
+| **[[Vega]]** 🦚 | Charte graphique, landing page, UX, templates ARTEON | Fort |
+| **[[Argus]]** 🦅 | Calibration prompt, validation qualité, documentation | Moyen |
+| **[[Miel]]** 🐝 | Contenu WILDLENS, emails, réseaux, growth | Moyen |
+| **[[Renard]]** 🦊 | CGU, RGPD, mentions légales | Ponctuel |
+| **[[Bruno]]** 🐻 | Pricing, suivi coûts, revue J+70 | Ponctuel |
+| **[[Delphi]]** 🐬 | Beta recrutement, B2B clubs, CRM | Moyen |
+| **[[Lynx]]** 🐆 | Validation corrections, presets distillés (dès 50 analyses) | Ponctuel |
+| **[[Trace]]** 🕷️ | SEO landing page, Search Console | Ponctuel |
 
 ---
 
@@ -303,7 +303,7 @@ Délai annoncé : sous 2 heures
 **Implications :**
 - Wording site : "analysée par nos experts, assistés par l'IA" — pas "IA automatique"
 - JCH est le premier validateur au lancement (charge estimée : 5–10 min/analyse)
-- Interface de validation à construire (Forge) : notification + aperçu avant/après + bouton Valider/Corriger
+- Interface de validation à construire ([[Forge]]) : notification + aperçu avant/après + bouton Valider/Corriger
 - SLA 2h : plage horaire à définir (ex. 8h–22h) avec mention hors-horaires
 - Différenciateur fort vs concurrents 100% auto — justifie le prix et la qualité
 
@@ -355,17 +355,17 @@ Indicateurs hebdomadaires :
 
 | Motif | Détection | Action |
 |-------|-----------|--------|
-| Humain visible dans l'image | Claude Haiku vision | Refus auto + email |
-| Image générée par IA | Claude Haiku vision + métadonnées | Refus auto + email |
-| Trucage/manipulation évident | Claude Haiku vision | Refus auto + email |
+| Humain visible dans l'image | [[Claude]] Haiku vision | Refus auto + email |
+| Image générée par IA | [[Claude]] Haiku vision + métadonnées | Refus auto + email |
+| Trucage/manipulation évident | [[Claude]] Haiku vision | Refus auto + email |
 | Appâtage déclaré (titre, description, métadonnées) | Analyse texte | Refus auto + email |
 
 ### File de validation humaine (JCH décide)
 
 | Motif | Détection | Action |
 |-------|-----------|--------|
-| Animal en captivité détecté | Claude Haiku vision | Notification JCH → validation 1 clic |
-| → Jugé artistiquement intéressant | JCH approuve | Pipeline Argus normal |
+| Animal en captivité détecté | [[Claude]] Haiku vision | Notification JCH → validation 1 clic |
+| → Jugé artistiquement intéressant | JCH approuve | Pipeline [[Argus]] normal |
 | → Non retenu | JCH rejette + commentaire | Email motivé envoyé |
 
 ### Pipeline filtration
@@ -395,14 +395,14 @@ Exemple (humain visible) :
 Exemple (captivité refusée) :
 > *"Cette photo a été évaluée et ne répond pas aux critères artistiques requis pour une analyse complète. L'Instant Lu privilégie les images offrant une lecture comportementale ou une qualité visuelle distinctive."*
 
-### Nouveau composant technique (Forge)
+### Nouveau composant technique ([[Forge]])
 
-- Module `filter_ethics.py` — appel Claude Haiku, retourne `{status, motif, confidence}`
+- Module 
 - Table `moderation_queue` dans `argus_critique.db` — photos captivité en attente
 - Interface de modération minimaliste (page admin sécurisée) — JCH valide/rejette en 1 clic
 - Coût filtre : ~€0,002/image → négligeable même si 90% des uploads sont refusés
 
 ---
 
-*Plan établi le 2026-05-02 — Dobby + équipe complète*  
+*Plan établi le 2026-05-02 — [[Dobby]] + équipe complète*  
 *Révision prévue : J+49 (jour du lancement) et J+90 (vérification KPI)*

@@ -70,10 +70,10 @@ Mac avec version gratuite pour essai
 Sur **Mac** il existe plusieurs options gratuites ou avec version d’essai qui vous permettront de créer un **diaporama dynamique avec photos, transitions, durée personnalisée et musique**. Voici les solutions les plus pertinentes à tester :
 
 1. **iMovie** – gratuit et déjà installé sur la plupart des Mac.  
-   C’est un éditeur vidéo d’Apple qui permet d’importer vos photos, les placer sur une *timeline*, régler la durée de chaque diapositive, ajouter transitions, effets de mouvement (pan & zoom) et intégrer de la musique (même sur plusieurs pistes). C’est suffisant pour un diaporama rythmé et professionnel sans logiciel payant. citeturn0search16turn0search25
+   C’est un éditeur vidéo d’[[Apple]] qui permet d’importer vos photos, les placer sur une *timeline*, régler la durée de chaque diapositive, ajouter transitions, effets de mouvement (pan & zoom) et intégrer de la musique (même sur plusieurs pistes). C’est suffisant pour un diaporama rythmé et professionnel sans logiciel payant. citeturn0search16turn0search25
 
 2. **App Photos (application native)** – gratuit.  
-   L’application **Photos** d’Apple sur macOS permet de créer un **diaporama** directement depuis votre bibliothèque : choix des photos, ajout de musique, thèmes prédéfinis et réglage de la durée d’apparition des images. Ce n’est pas aussi riche qu’un montage vidéo mais c’est rapide pour un slideshow simple. citeturn0search0
+   L’application **Photos** d’[[Apple]] sur macOS permet de créer un **diaporama** directement depuis votre bibliothèque : choix des photos, ajout de musique, thèmes prédéfinis et réglage de la durée d’apparition des images. Ce n’est pas aussi riche qu’un montage vidéo mais c’est rapide pour un slideshow simple. citeturn0search0
 
 3. **Canva (en ligne, gratuit avec options payantes)** – fonctionne sur Mac via navigateur.  
    Vous pouvez créer un diaporama en ligne, ajouter vos images, appliquer transitions et animations, intégrer de la **musique** depuis leur bibliothèque, puis exporter en vidéo. La version gratuite permet déjà beaucoup de choses, avec des outils d’animation facilement paramétrables. citeturn0search12
@@ -165,9 +165,9 @@ Objectif : extraire pour chaque photo
 qui pourront ensuite guider la durée et la transition.
 
 ### Outil pour analyser les images
-Vous pouvez utiliser un script simple en Python (ou un outil de traitement par lots comme ImageMagick) pour extraire ces informations.
+Vous pouvez utiliser un script simple en [[Python]] (ou un outil de traitement par lots comme ImageMagick) pour extraire ces informations.
 
-Si vous n’êtes pas à l’aise avec Python, je peux vous fournir un petit script prêt à l’emploi.  
+Si vous n’êtes pas à l’aise avec [[Python]], je peux vous fournir un petit script prêt à l’emploi.  
 L’idée est :
 - analyser chaque photo pour calculer la **couleur dominante** (RGB),
 - calculer **luminosité moyenne** ou **contraste**,
@@ -344,7 +344,7 @@ Ou :
 Une fois ces règles définies, le montage devient **logique**, presque mécanique.
 
 Quatrième brique : l’outil (sans se perdre dedans)  
-Des logiciels comme **entity["video_editor","iMovie","apple mac video editor"]** ou **entity["video_editor","DaVinci Resolve","free professional editor"]** ne font qu’une chose :  
+Des logiciels comme **entity["video_editor","iMovie","[[Apple]] mac video editor"]** ou **entity["video_editor","DaVinci Resolve","free professional editor"]** ne font qu’une chose :  
 vous permettre d’appliquer ces règles sur une timeline.
 
 Ils ne “pensent” pas à votre place.  

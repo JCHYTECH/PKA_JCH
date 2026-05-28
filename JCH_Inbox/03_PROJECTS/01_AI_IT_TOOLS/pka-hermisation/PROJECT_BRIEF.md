@@ -1,6 +1,6 @@
 ---
 date: 2026-05-25
-model: GPT-5 Codex
+model: GPT-5 [[Codex]]
 type: brief
 status: active
 domain: ai-system
@@ -33,7 +33,7 @@ Hermisation must remain:
 
 ## What This Is Not
 
-This is not an AGI project, not a replacement for Dobby, and not a mandate to install a complex external framework before the architecture is clear.
+This is not an AGI project, not a replacement for [[Dobby]], and not a mandate to install a complex external framework before the architecture is clear.
 
 ## Human Constraints
 

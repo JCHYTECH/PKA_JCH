@@ -46,7 +46,7 @@ Identifier les sites industriels et infrastructures électriques.
 
 Technologies :
 
-* PostgreSQL + PostGIS
+* [[PostgreSQL]] + PostGIS
 * QGIS
 * OpenStreetMap
 * Orthophotos IGN
@@ -385,7 +385,7 @@ Pipeline Technique
 
 Créer :
 
-* PostgreSQL
+* [[PostgreSQL]]
 * PostGIS
 
 Importer :
@@ -400,7 +400,7 @@ Importer :
 
 Technologies :
 
-* Python
+* [[Python]]
 * BeautifulSoup
 * Scrapy
 * OCR PDF
@@ -466,8 +466,8 @@ Technologies :
 Compétences Nécessaires
 
 * GIS / QGIS
-* PostgreSQL/PostGIS
-* Python scraping
+* [[PostgreSQL]]/PostGIS
+* [[Python]] scraping
 * OCR PDF
 * OSINT
 * Analyse énergétique

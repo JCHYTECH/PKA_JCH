@@ -1,6 +1,6 @@
 # WS-001 — Journal quotidien
 
-- **Owners :** Sybil 🦔 (capture et écriture), Dobby 🦉 (routing et validation)
+- **Owners :** [[Sybil]] 🦔 (capture et écriture), [[Dobby]] 🦉 (routing et validation)
 - **Références :** GL-001-conventions-nommage, SOP-001-onboarding-nouveau-specialiste
 - **Déclencheur :** tout input JCH contenant une pensée, observation, rencontre, image ou note vocale destinée au journal.
 
@@ -24,16 +24,16 @@ Transformer les inputs quotidiens bruts en entrées PKM structurées. Le journal
 
 ## Choreography
 
-### Étape 1 — Dobby reçoit et route
+### Étape 1 — [[Dobby]] reçoit et route
 
-Dobby identifie que l'input est destiné au journal et mandate Sybil.
+[[Dobby]] identifie que l'input est destiné au journal et mandate [[Sybil]].
 
-### Étape 2 — Sybil écrit l'entrée
+### Étape 2 — [[Sybil]] écrit l'entrée
 
 - **Chemin :** `wiki/Daily/YYYY/MM/YYYY-MM-DD-<slug>.md`
-- **Auto-création :** si `YYYY/` ou `YYYY/MM/` n'existent pas, Sybil les crée.
+- **Auto-création :** si 
 - **Slug :** thème principal du jour, 2 à 5 mots, kebab-case ASCII. Voir GL-001.
-- **Format :** markdown simple. Une entrée par jour. Si le jour a déjà une entrée, Sybil ajoute une nouvelle section — elle ne crée pas un second fichier.
+- **Format :** markdown simple. Une entrée par jour. Si le jour a déjà une entrée, [[Sybil]] ajoute une nouvelle section — elle ne crée pas un second fichier.
 - **Structure minimale :**
 
 ```markdown
@@ -50,16 +50,16 @@ tags: [daily]
 [Contenu]
 ```
 
-### Étape 3 — Sybil gère les images
+### Étape 3 — [[Sybil]] gère les images
 
 - **Chemin :** `wiki/images/YYYY/MM/YYYY-MM-DD-<slug>.<ext>`
 - **Auto-création :** même règle que le journal.
 - **Embed dans l'entrée :** `![[images/YYYY/MM/YYYY-MM-DD-<slug>.<ext>]]`
 - L'image vit dans `wiki/images/`. L'entrée journal la référence. Jamais dupliquée.
 
-### Étape 4 — Sybil cross-link vers team.db et wiki
+### Étape 4 — [[Sybil]] cross-link vers team.db et wiki
 
-Pour chaque entité mentionnée dans l'input, Sybil route selon ce tableau :
+Pour chaque entité mentionnée dans l'input, [[Sybil]] route selon ce tableau :
 
 | Type de mention | Destination principale | Fichier wiki si pertinent |
 |----------------|----------------------|--------------------------|
@@ -82,9 +82,9 @@ Mention inline uniquement si la référence est ponctuelle et ne reviendra pas.
 
 En cas de doute : créer le stub. Un stub ne coûte rien. Une référence manquante détériore la connectivité du vault.
 
-### Étape 5 — Sybil écrit dans team.db (journal table)
+### Étape 5 — [[Sybil]] écrit dans team.db (journal table)
 
-En parallèle du fichier markdown, Sybil insère ou complète l'entrée du jour dans `team.db → journal` :
+En parallèle du fichier markdown, [[Sybil]] insère ou complète l'entrée du jour dans 
 
 | Champ | Contenu |
 |-------|---------|
@@ -101,9 +101,9 @@ En parallèle du fichier markdown, Sybil insère ou complète l'entrée du jour 
 
 Le fichier markdown et la table `journal` sont complémentaires — l'un est narratif, l'autre est structuré et requêtable.
 
-### Étape 6 — Passe Librarian de Dobby (fin de session)
+### Étape 6 — Passe Librarian de [[Dobby]] (fin de session)
 
-À la clôture de session, Dobby vérifie :
+À la clôture de session, [[Dobby]] vérifie :
 
 - Les liens vers `contacts`, `knowledge`, `goals` dans team.db sont cohérents.
 - Les images sont dans `wiki/images/`, pas dupliquées dans `wiki/Daily/`.
@@ -114,10 +114,10 @@ Le fichier markdown et la table `journal` sont complémentaires — l'un est nar
 
 ## Ce que ce Workstream ne fait pas
 
-- Ne produit pas de rapports de recherche — c'est Furet.
-- Ne modifie pas les fiches contacts existantes — Sybil ajoute, Delphi édite.
-- Ne traite pas les mails entrants — c'est le pipeline Pie → digest.
-- Ne remplace pas la session guidée Sybil (introspection humeur/énergie) — ce WS couvre les inputs factuels. La session guidée est un mode distinct.
+- Ne produit pas de rapports de recherche — c'est [[Furet]].
+- Ne modifie pas les fiches contacts existantes — [[Sybil]] ajoute, [[Delphi]] édite.
+- Ne traite pas les mails entrants — c'est le pipeline [[Pie]] → digest.
+- Ne remplace pas la session guidée [[Sybil]] (introspection humeur/énergie) — ce WS couvre les inputs factuels. La session guidée est un mode distinct.
 
 ---
 

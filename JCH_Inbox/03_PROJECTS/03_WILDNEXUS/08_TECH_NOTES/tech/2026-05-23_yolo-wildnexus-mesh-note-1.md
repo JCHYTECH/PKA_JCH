@@ -26,7 +26,7 @@ Cela permet de créer une architecture autonome adaptée :
 - Détection mouvement
 
 ### Niveau IA locale
-- BirdNET
+- [[BirdNET]]
 - YOLO
 - Analyse embarquée
 
@@ -45,7 +45,7 @@ Pas de :
 
 ## Technologie la plus adaptée
 
-### LoRa Mesh
+### [[LoRa]] Mesh
 
 Technologies possibles :
 - Meshtastic
@@ -61,10 +61,10 @@ Avantages :
 
 ## Architecture hybride recommandée
 
-- ESP32-S3 toujours actif
-- Raspberry Pi réveillé uniquement si nécessaire
-- BirdNET et YOLO localement
-- LoRa Mesh pour communication
+- [[ESP32-S3]] toujours actif
+- [[Raspberry Pi]] réveillé uniquement si nécessaire
+- [[BirdNET]] et YOLO localement
+- [[LoRa]] Mesh pour communication
 - Wi-Fi local pour maintenance et téléchargement
 
 ## Vision du projet
