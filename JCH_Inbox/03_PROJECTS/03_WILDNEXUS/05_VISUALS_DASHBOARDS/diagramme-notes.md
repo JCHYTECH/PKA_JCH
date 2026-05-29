@@ -1,4 +1,4 @@
-# WildNexus - Notes du diagramme Satellite / Base / Cloud
+# WildNexus - Notes du [[diagramme]] Satellite / Base / Cloud
 
 ## But
 

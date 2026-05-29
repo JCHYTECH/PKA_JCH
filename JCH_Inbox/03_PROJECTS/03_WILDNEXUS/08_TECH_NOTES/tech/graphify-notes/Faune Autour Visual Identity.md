@@ -8,7 +8,7 @@ tags:
   - community/Brand_&_Visual_Identity
 ---
 
-# Faune Autour Visual Identity
+# [[Faune Autour Visual Identity]]
 
 ## Connections
 - [[Color Palette (Terracotta, Forest Green, Light Grey)]] - `implements` [EXTRACTED]

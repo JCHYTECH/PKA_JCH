@@ -5,7 +5,7 @@ Auteur : [[Dobby]] 🦉
 
 | Qui | Ce qu’il doit faire régulièrement | Quand / déclencheur |
 |---|---|---|
-| [[Dobby]] 🦉 | Charger le contexte, vérifier l’inbox, confirmer l’activation | À chaque début de session |
+| [[Dobby]] 🦉 | Charger le contexte, vérifier l’[[inbox]], confirmer l’activation | À chaque début de session |
 | [[Dobby]] 🦉 | Trier chaque demande, mandater le bon spécialiste, synthétiser pour JCH | À chaque nouvelle demande ou fichier entrant |
 | [[Dobby]] 🦉 | Mettre à jour la mémoire structurelle et les procédures réutilisables | Quand une règle durable change ou après tâche complexe |
 | [[Sybil]] 🦔 | Créer ou compléter l’entrée journal du jour | Quotidien ou à chaque session journal |

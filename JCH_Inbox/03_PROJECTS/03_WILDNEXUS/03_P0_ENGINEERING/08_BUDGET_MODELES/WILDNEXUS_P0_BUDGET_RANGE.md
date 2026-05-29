@@ -20,7 +20,7 @@ Enveloppe globale P0 fixée à **1 000 €** — volontairement serrée pour for
 | Nombre de nœuds | **2 nœuds** (au lieu de 3–5 prévu initialement) |
 | PCB | **DevKit + breakout boards** — pas de PCB dédié P0 |
 | FTO / licence externe | **Analyse interne uniquement** — pas de conseil [[Pi]] externe |
-| Dataset IA | **Terrain JCH uniquement** — pas de dataset commercial |
+| Dataset IA | **Terrain JCH uniquement** — pas de dataset [[commercial]] |
 | Déplacements EVT | **Belgique locale** — pas de déplacement longue distance |
 
 ---

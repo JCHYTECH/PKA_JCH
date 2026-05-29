@@ -4,7 +4,7 @@
 **Date :** 2026-05-24  
 **Statut :** source canonique  
 **Scope :** WildNexus P0/P1/P2  
-**Decision liee :** [ADR-009](../02_DECISIONS/ADR/ADR-009-architecture-satellite-base-cloud.md)
+**Decision liee :** [ADR-009](../02_DECISIONS/ADR/[[ADR-009-architecture-satellite-base-cloud]].md)
 
 ## Objet
 

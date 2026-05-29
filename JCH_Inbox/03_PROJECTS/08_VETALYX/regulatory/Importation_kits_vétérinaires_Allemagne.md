@@ -317,7 +317,7 @@ countries = [
          "Scope: Veterinary tests outside IVDR; oversight for animal health via MAPA for notifiable diseases.",
          "Border: CHED-A/BCP via TRACES NT if animal-derived reagents (ABP).",
          "Languages: Label & IFU in Spanish.",
-         "EPR Packaging: Royal Decree 1055/2022 – registration in the Packaging Producer Register and participation in an EPR scheme (SCRAP) for commercial/industrial packaging.",
+         "EPR Packaging: Royal Decree 1055/2022 – registration in the Packaging Producer Register and participation in an EPR scheme (SCRAP) for [[commercial]]/industrial packaging.",
          "Official testing: Notifiable diseases follow MAPA programs; clinic allergy tests are outside official schemes."
      ]),
     ("Italy (IT)",
@@ -333,7 +333,7 @@ countries = [
          "Scope: Veterinary tests outside IVDR; authorities: FASFC/AFSCA for controls; Sciensano as reference network for animal health.",
          "Border: CHED-A/BCP via TRACES NT if animal-derived reagents (ABP).",
          "Languages: Label & IFU in French and Dutch (German optional depending on target users).",
-         "EPR Packaging: Fost Plus (household) and Valipac (industrial/commercial) producer responsibility schemes.",
+         "EPR Packaging: Fost Plus (household) and Valipac (industrial/[[commercial]]) producer responsibility schemes.",
          "Official testing: Notifiable diseases per national lists; clinic allergy tests not part of official programs."
      ])
 ]

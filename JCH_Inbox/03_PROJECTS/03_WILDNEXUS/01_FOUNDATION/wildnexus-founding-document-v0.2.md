@@ -163,7 +163,7 @@ Ces trois convergences, combinées à la maturité de l'open hardware et à une 
 Un système fermé crée une dépendance au fournisseur et plafonne l'innovation à ce que l'équipe fondatrice imagine. Un système ouvert crée un écosystème : d'autres équipes ajoutent des capteurs, des algorithmes, des interfaces que WildNexus n'aurait pas développés seul. L'open source n'est pas une concession commerciale — c'est le mécanisme d'innovation principal du projet.
 
 **Pourquoi une plateforme extensible plutôt qu'un produit fini ?**
-La biodiversité est locale, diverse, imprévisible. Un naturaliste en Ardenne a des besoins différents d'un gestionnaire de zone humide en Camargue ou d'un chercheur en forêt tropicale. Aucun produit fini ne peut les servir tous. Une plateforme avec des interfaces capteurs ouvertes peut être adaptée sans que l'équipe centrale soit impliquée dans chaque adaptation.
+La biodiversité est locale, diverse, imprévisible. Un naturaliste en Ardenne a des besoins différents d'un gestionnaire de zone humide en [[Camargue]] ou d'un chercheur en forêt tropicale. Aucun produit fini ne peut les servir tous. Une plateforme avec des interfaces capteurs ouvertes peut être adaptée sans que l'équipe centrale soit impliquée dans chaque adaptation.
 
 **Pourquoi viser l'amateur autant que le professionnel ?**
 Les données de biodiversité les plus précieuses sont souvent celles collectées à une échelle que les institutions ne peuvent pas couvrir. Un réseau de 1 000 naturalistes individuels équipés de WildNexus produit des données de présence sur des territoires que 10 équipes scientifiques ne pourraient pas surveiller. L'accessibilité au grand public n'est pas un compromis sur la qualité — c'est une stratégie de couverture.
@@ -176,7 +176,7 @@ Six mois d'autonomie sans intervention signifient six mois de données non biais
 
 ### 4.5 Le risque de ne pas faire WildNexus
 
-Sans WildNexus, le vide entre piège photo grand public et monitoring institutionnel reste structurel pour au moins cinq ans. La fenêtre technologique ouverte en 2025-2026 sera occupée. Si WildNexus ne la saisit pas, un acteur commercial — probablement avec un modèle fermé et propriétaire — le fera. L'opportunité de poser un standard ouvert pour le monitoring faunistique distribué ne restera pas disponible indéfiniment.
+Sans WildNexus, le vide entre piège photo grand public et monitoring institutionnel reste structurel pour au moins cinq ans. La fenêtre technologique ouverte en 2025-2026 sera occupée. Si WildNexus ne la saisit pas, un acteur [[commercial]] — probablement avec un modèle fermé et propriétaire — le fera. L'opportunité de poser un standard ouvert pour le monitoring faunistique distribué ne restera pas disponible indéfiniment.
 
 ---
 
@@ -212,7 +212,7 @@ Aucun usage de WildNexus — matériel, logiciel, données, API — n'est autori
 
 **NN-06 — Exclusion des usages non conformes aux valeurs environnementales via politique de licence**
 La licence WildNexus exclut contractuellement les usages contraires aux valeurs environnementales et éthiques du projet. La liste des secteurs et usages exclus est définie et maintenue dans la politique de licence — document séparé géré par [[Renard]], opposable aux tiers.
-**Vérifiable par** : politique d'usage publiée et référencée dans les distributions ou contrats pertinents, selon le modèle juridique retenu.
+**Vérifiable par** : politique d'usage publiée et référencée dans les distributions ou [[contrats]] pertinents, selon le modèle juridique retenu.
 
 **NN-07 — Autonomie terrain — hiérarchie des cibles**
 Trois cibles distinctes doivent être comprises séparément :
@@ -475,7 +475,7 @@ L'analyse FTO est un livrable de WP01, conduite avant M-01. Confiée à [[Renard
 
 **Modèle de diffusion retenu :** publication du hardware et du software sous un régime `source-available / ethical-source`. Le code, les schémas et la documentation sont publiés, consultables, auditables et modifiables, mais leur usage reste contractuellement limité par la politique WildNexus.
 
-**Exclusions d'usage :** les usages militaires, para-militaires ou contraires à la mission biodiversité sont interdits dans la licence cœur et dans la politique d'usage associée. Les contrats partenaires et commerciaux reprennent ces exclusions à l'identique.
+**Exclusions d'usage :** les usages militaires, para-militaires ou contraires à la mission biodiversité sont interdits dans la licence cœur et dans la politique d'usage associée. Les [[contrats]] partenaires et commerciaux reprennent ces exclusions à l'identique.
 
 **Licences commerciales :** possibles seulement si elles restent compatibles avec les non-négociables, reprennent les exclusions d'usage, et ne recréent pas une fermeture artificielle du socle.
 
@@ -487,7 +487,7 @@ L'analyse FTO est un livrable de WP01, conduite avant M-01. Confiée à [[Renard
 
 **Partition claire** : [[Renard]] structure le dispositif juridique et contractuel ; le conseil [[Pi]] externe intervient comme expertise spécialisée sur les brevets et la FTO ; JCH valide toute décision qui modifie l'équilibre entre diffusion, exclusions d'usage et protection de la mission.
 
-**Première mission avant M-01** : formaliser le modèle `source-available / ethical-source` retenu, avec vocabulaire public, licences, contrats et politique d'usage alignés.
+**Première mission avant M-01** : formaliser le modèle `source-available / ethical-source` retenu, avec vocabulaire public, licences, [[contrats]] et politique d'usage alignés.
 
 ---
 

@@ -6,7 +6,7 @@ status: active
 domain: ai-system
 ---
 
-# Roadmap — PKA Hermisation
+# Roadmap — PKA [[Hermisation]]
 
 ## Phase 1 — Cartography
 

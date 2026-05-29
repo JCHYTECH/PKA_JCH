@@ -133,9 +133,9 @@ Launcher : `dobby.sh --model claude|codex|gemini|gemma4|qwen3`
 | Slogan | *L'instant figé, la pensée en mouvement.* | `arteon-etat-projet.md` |
 | Manifeste | 2 versions livrées (court ~250 mots, long ~515 mots) | `arteon-manifeste-{court,long}.md` |
 | Domaine | arteon.be enregistré | — |
-| Stack | Shopify Basic + Ghost (WildLens) + WhiteWall | `arteon-architecture-charte.md` |
+| Stack | Shopify Basic + Ghost ([[WildLens]]) + WhiteWall | `arteon-architecture-charte.md` |
 | Ton | 20% militant · 30% contemplatif · 30% scientifique · 20% technicien | `arteon-etat-projet.md` |
-| Langue | FR/EN/IT (site) · EN (WildLens) | — |
+| Langue | FR/EN/IT (site) · EN ([[WildLens]]) | — |
 
 ---
 

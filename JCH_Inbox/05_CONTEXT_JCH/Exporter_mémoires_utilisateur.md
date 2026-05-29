@@ -19,7 +19,7 @@ Export all of my stored memories and any context you've learned about me from pa
 
 3. **Career**: Current and past roles, companies, and general skill areas.
 
-4. **Projects**: Projects I meaningfully built or committed to. Ideally ONE entry per project. Include what it does, current status, and any key decisions. Use the project name or a short descriptor as the first words of the entry.
+4. **Projects**: Projects I meaningfully built or committed to. Ideally ONE entry per project. Include what it does, current status, and any key [[decisions]]. Use the project name or a short descriptor as the first words of the entry.
 
 5. **Preferences**: Opinions, tastes, and working-style preferences that apply broadly.
 

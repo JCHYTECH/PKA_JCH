@@ -6,11 +6,11 @@ status: active
 domain: ai-system
 ---
 
-# Pilot Scope — PKA Hermisation
+# Pilot Scope — PKA [[Hermisation]]
 
 ## Pilot Principle
 
-Start with three controlled pilot agents or workflows. Do not connect the full specialist roster.
+[[Start]] with three controlled pilot agents or workflows. Do not connect the full specialist roster.
 
 ## Pilot 1 — Documentary Governance
 
@@ -25,7 +25,7 @@ Purpose:
 Natural routing:
 
 - [[Dobby]] orchestrates;
-- [[Corbeau]] owns knowledge coherence;
+- [[Corbeau]] owns [[knowledge]] coherence;
 - [[Forge]] implements scripts when needed.
 
 ## Pilot 2 — System Architecture
@@ -54,7 +54,7 @@ Natural routing:
 - [[Chouette]] covers field setup;
 - [[Clio]] covers literature;
 - [[Forge]] covers automation;
-- [[Corbeau]] indexes knowledge.
+- [[Corbeau]] indexes [[knowledge]].
 
 ## Success Criteria
 

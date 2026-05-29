@@ -16,7 +16,7 @@ source:
 
 # Workflow Orchestration — PKA_JCH
 
-## Position dans la Hermisation
+## Position dans la [[Hermisation]]
 
 Ce document est le livrable formel de la **Phase 5 — Orchestration légère**.
 
@@ -33,12 +33,12 @@ Il évalue n8n, les queues et les outils de monitoring au regard des workflows r
 | Service | Déclencheur | Script | Statut |
 |---------|-------------|--------|--------|
 | Backup `team.db` | Cron 08h00 quotidien | `scripts/backup_team_db.py` | ✅ Actif |
-| Journal Sybil | Cron 22h00 quotidien | `scripts/sybil_journal.py` | ✅ Actif |
-| Rétro Dobby | Cron 23h00 quotidien | `scripts/dobby_retro.py` | ✅ Actif |
+| Journal [[Sybil]] | Cron 22h00 quotidien | `scripts/sybil_journal.py` | ✅ Actif |
+| Rétro [[Dobby]] | Cron 23h00 quotidien | `scripts/dobby_retro.py` | ✅ Actif |
 | Rapport hebdomadaire | Cron 19h00 dimanche | `scripts/dobby_weekly_report.py` | ✅ Actif |
 | Dashboard PKA | LaunchAgent (PID 906) | `scripts/dashboard_server.py` | ✅ Actif |
 | Gmail gatekeeper | LaunchAgent (PID 914) | `scripts/gmail_gatekeeper.py` | ✅ Actif |
-| Bot Telegram Dobby | LaunchAgent (PID 5377) | `scripts/telegram-bot/bot.py` | ✅ Actif |
+| Bot Telegram [[Dobby]] | LaunchAgent (PID 5377) | `scripts/telegram-bot/bot.py` | ✅ Actif |
 | Dropbox watch | LaunchAgent (chargé, inactif) | `scripts/dropbox_watch.py` | ⚠️ Chargé sans PID |
 | Vault maintenance | LaunchAgent (chargé, inactif) | `scripts/vault_maintenance/` | ⚠️ Chargé sans PID |
 | System check | LaunchAgent (chargé, inactif) | — | ⚠️ Chargé sans PID |
@@ -55,8 +55,8 @@ Il évalue n8n, les queues et les outils de monitoring au regard des workflows r
 
 1. **Aucun audit log unifié** — chaque script écrit dans son propre `.log`. Impossible de voir d'un coup ce qui a tourné, réussi ou échoué.
 2. **4 LaunchAgents chargés sans PID** — Dropbox watch, vault maintenance, system check, plane autostart : chargés dans launchd mais sans processus actif. Cause inconnue, non bloquante mais non documentée.
-3. **Aucune alerte en cas d'échec silencieux** — un cron qui échoue laisse une trace dans son log mais personne ne le lit.
-4. **Workflows manuels non tracés** — les tâches Dobby (briefs, analyses, livrables) ne sont pas comptabilisées comme des exécutions d'orchestration.
+3. **Aucune alerte en cas d'échec silencieux** — un cron qui échoue laisse une [[trace]] dans son log mais personne ne le lit.
+4. **Workflows manuels non tracés** — les tâches [[Dobby]] (briefs, analyses, livrables) ne sont pas comptabilisées comme des exécutions d'orchestration.
 
 ---
 
@@ -120,7 +120,7 @@ Tous les scripts automatisés écrivent dans `memory_log` à chaque exécution (
 
 | Action | Support | Responsable |
 |--------|---------|-------------|
-| Ajouter un appel `memory_log` en fin de chaque script cron (backup, sybil, retro, weekly) | `team.db` → `memory_log` | [[Forge]] |
+| Ajouter un appel `memory_log` en fin de chaque script cron (backup, [[sybil]], retro, weekly) | `team.db` → `memory_log` | [[Forge]] |
 | Créer `/api/automation` dans `dashboard_server.py` — retourne les 20 dernières entrées `memory_log` de type `cron` | `dashboard_server.py` | [[Forge]] |
 | Ajouter un bloc "Dernières exécutions" dans `hub.html` alimenté par `/api/automation` | `hub.html` | [[Forge]] |
 | Diagnostiquer les 4 LaunchAgents chargés sans PID | launchd | [[Forge]] |
@@ -151,9 +151,9 @@ Tous les scripts automatisés écrivent dans `memory_log` à chaque exécution (
 
 | Workflow | Services impliqués | Priorité |
 |----------|--------------------|----------|
-| Ingestion inbox → classification → team.db | Dropbox/filesystem + Python + SQLite | Haute |
+| Ingestion [[inbox]] → classification → team.db | Dropbox/filesystem + Python + SQLite | Haute |
 | Alerte échec cron → Telegram | cron + Telegram bot | Moyenne |
-| Digest email → résumé → daily note | Gmail + Python + Obsidian | Faible (suspendu) |
+| Digest [[email]] → résumé → [[daily]] note | Gmail + Python + Obsidian | Faible (suspendu) |
 
 ### Règles
 
@@ -176,9 +176,9 @@ Tous les scripts automatisés écrivent dans `memory_log` à chaque exécution (
 
 La Phase 5a complète ouvre la voie aux **3 pilotes** définis dans `PILOT_SCOPE.md` :
 
-- **Pilote 1** — Gouvernance documentaire (Corbeau + Forge) : classifier notes, valider YAML, maintenir index Obsidian.
-- **Pilote 2** — Architecture système (Forge + Castor) : câbler concrètement les couches mémoire définies en Phase 4.
-- **Pilote 3** — Wildlife / Bioacoustique (Chouette + Clio + Forge + Corbeau) : connecter BirdNET, RPi, ESP32, datasets audio à la mémoire PKA.
+- **Pilote 1** — Gouvernance documentaire ([[Corbeau]] + [[Forge]]) : classifier notes, valider YAML, maintenir index Obsidian.
+- **Pilote 2** — Architecture système ([[Forge]] + [[Castor]]) : câbler concrètement les couches mémoire définies en Phase 4.
+- **Pilote 3** — Wildlife / Bioacoustique ([[Chouette]] + [[Clio]] + [[Forge]] + [[Corbeau]]) : connecter BirdNET, RPi, ESP32, datasets audio à la mémoire PKA.
 
 ---
 

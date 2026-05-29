@@ -463,7 +463,7 @@ Alternative plus moderne : [[ESP32]] (si un jour tu veux WiFi/écran tactile), m
 
 - 1 écran OLED 0.96” I2C (SSD1306)
 - 1 encodeur rotatif avec bouton intégré
-- 1 bouton Start/Stop
+- 1 bouton [[Start]]/Stop
 - 1 bouton Home (optionnel)
 
 Cela permet :

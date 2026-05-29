@@ -1,4 +1,4 @@
-# Skill: revue-projet
+# Skill: [[revue-projet]]
 
 Statut: `approved`
 Proprietaire: `JCH`
@@ -24,7 +24,7 @@ Produire une revue utile pour piloter le projet: etat actuel, objectifs, documen
 2. Identifier les documents recents et les fichiers structurants.
 3. Reconstituer l'objectif du projet et son etat actuel.
 4. Reperer:
-   - decisions deja prises;
+   - [[decisions]] deja prises;
    - actions ouvertes;
    - contradictions;
    - fichiers obsoletes;

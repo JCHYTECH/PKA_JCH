@@ -44,7 +44,7 @@ This block is not supported on your current device yet.
 This block is not supported on your current device yet.
 ```
 
-Bien. Je vais maintenant modifier le script et le SKILL.md pour implémenter les 3 changements demandés. Copions d'abord le skill dans le répertoire de travail :
+Bien. Je vais maintenant modifier le script et le [[SKILL]].md pour implémenter les 3 changements demandés. Copions d'abord le skill dans le répertoire de travail :
 ```
 This block is not supported on your current device yet.
 ```
@@ -64,7 +64,7 @@ This block is not supported on your current device yet.
 This block is not supported on your current device yet.
 ```
 
-Maintenant mettons à jour le SKILL.md pour documenter les nouvelles structures :
+Maintenant mettons à jour le [[SKILL]].md pour documenter les nouvelles structures :
 ```
 This block is not supported on your current device yet.
 ```
@@ -123,7 +123,7 @@ This block is not supported on your current device yet.
 
 Le champ `checklist` dans le JSON accepte désormais un dict avec les clés `boitiers_objectifs`, `accessoires`, `autres`. L'ancien format liste plate reste supporté (rétrocompatibilité — tout passe dans "Autres objets").
 
-**2. Nom du skill dans le header** — le titre "FICHE TERRAIN" affiche maintenant `[ photo-trip-prep ]` en gris clair à côté. Le champ `skill_name` dans le JSON permet de personnaliser ce nom. Cette logique est documentée comme **règle générale** dans le SKILL.md pour s'appliquer à tous les documents générés par des skills.
+**2. Nom du skill dans le header** — le titre "FICHE TERRAIN" affiche maintenant `[ photo-trip-prep ]` en gris clair à côté. Le champ `skill_name` dans le JSON permet de personnaliser ce nom. Cette logique est documentée comme **règle générale** dans le [[SKILL]].md pour s'appliquer à tous les documents générés par des skills.
 
 **3. Carte OpenStreetMap** — nouvelle section en haut de la fiche. Le script géocode le lieu via Nominatim puis télécharge une carte statique avec zoom 11 (~5 km de rayon). En cas d'indisponibilité réseau la fiche s'affiche normalement sans la carte.
 
@@ -341,7 +341,7 @@ Une fois fait, dis-le moi et je retente immédiatement.
 ## Human
 *2026-04-04 21:17*
 
-terminal a enfin repondu /Users/jchavauxm5/Library/Application Support/[[Claude]]/local-agent-mode-sessions/skills-plugin/10b39125-655b-4464-9f51-7278444c0323/e3a05f83-5608-4df1-8670-a1148ab6d062/skills/photo-trip-prep/SKILL.md
+terminal a enfin repondu /Users/jchavauxm5/Library/Application Support/[[Claude]]/local-agent-mode-sessions/skills-plugin/10b39125-655b-4464-9f51-7278444c0323/e3a05f83-5608-4df1-8670-a1148ab6d062/skills/photo-trip-prep/[[SKILL]].md
 
 ---
 
@@ -390,7 +390,7 @@ This block is not supported on your current device yet.
 
 Bien — le script v2 est là. Pour quelle sortie génères-tu la fiche ? Donne-moi :
 
-- **Lieu** (ex: Forêt de Soignes, Camargue…)
+- **Lieu** (ex: Forêt de Soignes, [[Camargue]]…)
 - **Date**
 - **Espèce ou sujet cible**
 - **Matériel principal** si tu veux une checklist personnalisée
@@ -407,7 +407,7 @@ camargue
 ## Assistant
 *2026-04-04 21:21*
 
-Parfait — je génère pour la Camargue avec la date d'aujourd'hui. Je calcule d'abord les heures lumière, puis je recherche les observations récentes.
+Parfait — je génère pour la [[Camargue]] avec la date d'aujourd'hui. Je calcule d'abord les heures lumière, puis je recherche les observations récentes.
 ```
 This block is not supported on your current device yet.
 ```
@@ -474,15 +474,15 @@ Si tu vois
 ## Human
 *2026-04-04 21:27*
 
-echo "=== SKILL.md ===" && head -5 "$SKILL_DIR/SKILL.md"
+echo "=== [[SKILL]].md ===" && head -5 "$SKILL_DIR/[[SKILL]].md"
 echo ""
 echo "=== generate_trip_pdf.py ===" && head -15 "$SKILL_DIR/scripts/generate_trip_pdf.py"
-=== SKILL.md ===
+=== [[SKILL]].md ===
 ---
 name: photo-trip-prep
 description: >
   Génère une fiche terrain PDF prête à imprimer pour préparer une sortie photo Wildlife ou Paysage.
-  Déclencher CE SKILL dès que l'utilisateur mentionne une sortie photo à venir, une session terrain,
+  Déclencher CE [[SKILL]] dès que l'utilisateur mentionne une sortie photo à venir, une session terrain,
 
 === generate_trip_pdf.py ===
 #!/usr/bin/env python3
@@ -507,7 +507,7 @@ import urllib.parse
 
 **21:01** — Le skill est bien mis à jour. La preuve :
 
-- **SKILL.md** ✅ — c'est la v2 (le fichier original n'avait pas les imports `urllib`)
+- **[[SKILL]].md** ✅ — c'est la v2 (le fichier original n'avait pas les imports `urllib`)
 - **generate_trip_pdf.py** ✅ — les lignes `import urllib.request` et `import urllib.parse` sont présentes, ce qui confirme que c'est bien le nouveau script avec la carte, les 3 catégories de checklist et le nom du skill dans le header
 
 Le remplacement via Terminal a bien fonctionné. La prochaine fois que tu demandes une fiche terrain depuis [[Claude]] Code sur ton Mac, le script utilisé sera cette v2 — et la carte OpenStreetMap s'affichera puisque ton Mac a accès à internet, contrairement au container serveur.

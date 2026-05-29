@@ -12,7 +12,7 @@ tags:
   - status/active
 ---
 
-# Vetalyx - commercial
+# Vetalyx - [[commercial]]
 
 ## Objectif
 

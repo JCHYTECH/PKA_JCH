@@ -154,7 +154,7 @@ Ce seul élément ne constitue pas un indice à charge. La filière forestière 
 
 En Belgique, les plaques d'immatriculation « G » désignent spécifiquement les véhicules agricoles, bénéficiant d'un régime fiscal et de circulation allégé. Leur usage est juridiquement cantonné aux opérations agricoles, horticoles, sylvicoles et aux travaux connexes. Un tracteur forestier en débardage peut légitimement porter cette plaque.
 
-En revanche, ces plaques ne couvrent pas : le transport commercial de matériaux de construction non agricoles, les travaux de génie civil (terrassement de voirie pérenne, mise en œuvre de sous-couches routières, pose de fourreaux techniques), ni le transport routier longue distance à titre commercial non agricole.
+En revanche, ces plaques ne couvrent pas : le transport [[commercial]] de matériaux de construction non agricoles, les travaux de génie civil (terrassement de voirie pérenne, mise en œuvre de sous-couches routières, pose de fourreaux techniques), ni le transport routier longue distance à titre [[commercial]] non agricole.
 
 Si un véhicule à plaque G est observé en train d'effectuer des opérations de génie civil caractérisées, la situation cumule potentiellement (a) une infraction à la réglementation de circulation (usage non conforme d'un véhicule à plaque G) et (b) un indice de requalification de la nature réelle du chantier. Le grief principal n'est pas l'infraction fiscale mineure, mais ce que l'usage révèle sur l'activité réelle.
 
@@ -183,7 +183,7 @@ Cette contrainte procédurale est également une opportunité tactique : un cons
 #### Protocole de constat ornithologique (à réaliser sans délai)
 
 - Relevé sur site à l'aube (05h30 à 08h00 en avril), plage horaire de chant territorial maximal.
-- Au moins deux observateurs indépendants, idéalement un ornithologue affilié à Natagora, à la Ligue Royale Belge pour la Protection des Oiseaux (LRBPO) ou à une association locale équivalente.
+- Au moins deux observateurs indépendants, idéalement un ornithologue affilié à [[Natagora]], à la Ligue Royale Belge pour la Protection des Oiseaux (LRBPO) ou à une association locale équivalente.
 - Enregistrements audio datés et géolocalisés, photographies des nids visibles, notes écrites sur le terrain.
 - À consigner par espèce : chant territorial, transport de matériaux, transport de becquée, comportement d'alarme, présence confirmée de nid actif.
 - Rapport signé. Un constat établi par un observateur affilié à une association naturaliste reconnue aura une valeur probatoire supérieure à un constat réalisé par le comité lui-même.
@@ -275,7 +275,7 @@ Concernant spécifiquement le Code forestier, ses règles clés applicables à u
 
 - Saisine en urgence du cantonnement DNF compétent (Liège), par téléphone puis écrit recommandé, demandant (a) si le cahier des charges intègre la restriction calendaire biodiversité, (b) une inspection urgente sur site, (c) l'ordre d'arrêt si la présence avérée d'espèces nicheuses est documentée. Modèle joint (§8.3).
 - Signalement à la Police de l'environnement et au service environnement communal, qui peuvent constater l'infraction LCN sur PV (art. 2 de la Loi du 12 juillet 1973).
-- Contact avec Natagora et la Ligue Royale Belge pour la Protection des Oiseaux (LRBPO). Ces associations disposent de juristes spécialisés, sont habilitées à relayer publiquement et peuvent, le cas échéant, se constituer partie civile.
+- Contact avec [[Natagora]] et la Ligue Royale Belge pour la Protection des Oiseaux (LRBPO). Ces associations disposent de juristes spécialisés, sont habilitées à relayer publiquement et peuvent, le cas échéant, se constituer partie civile.
 - Demande d'accès aux documents administratifs (décret du 30 mars 1995), adressée simultanément à la commune d'Esneux et au SPW-DNF. Modèle joint (§8.1). Délai de réponse légal : 30 jours.
 - Plainte au cantonnement DNF compétent pour contrôle de la régularité de la coupe et du martelage. Autorité indépendante de la commune. Modèle joint (§8.2).
 - Plainte au fonctionnaire délégué SPW-Territoire pour infraction urbanistique, si la création de voirie est caractérisée sans permis.
@@ -405,7 +405,7 @@ Département de la Nature et des Forêts
 À l'attention de Monsieur le Directeur du Cantonnement de [Liège]
 [Adresse de la Direction extérieure compétente]
 
-Copie : Unité de Police de l'environnement du SPW ; Bourgmestre de la commune d'Esneux ; Natagora ; Ligue Royale Belge pour la Protection des Oiseaux
+Copie : Unité de Police de l'environnement du SPW ; Bourgmestre de la commune d'Esneux ; [[Natagora]] ; Ligue Royale Belge pour la Protection des Oiseaux
 
 **Objet** : Demande d'arrêt immédiat des opérations d'abattage au Bois des Chevreuils — perturbation intentionnelle d'oiseaux sauvages en période de reproduction (art. 2 LCN)
 
@@ -417,7 +417,7 @@ Monsieur le Directeur,
 
 Des opérations d'abattage sont actuellement conduites dans la bande boisée dite du Bois des Chevreuils, à Tilff (commune d'Esneux). Ces opérations se déroulent en pleine période de reproduction et de dépendance de l'avifaune forestière wallonne, habitat confirmé d'espèces d'oiseaux sauvages toutes protégées par la Loi du 12 juillet 1973 sur la conservation de la nature (LCN) et par la Directive 2009/147/CE.
 
-Le comité de quartier soussigné a [documenté / fait documenter par un observateur qualifié de Natagora / de la LRBPO] la présence effective, dans la zone concernée, des espèces nicheuses suivantes, au stade comportemental indiqué :
+Le comité de quartier soussigné a [documenté / fait documenter par un observateur qualifié de [[Natagora]] / de la LRBPO] la présence effective, dans la zone concernée, des espèces nicheuses suivantes, au stade comportemental indiqué :
 
 - [espèce 1] — [chant territorial / transport de matériaux / transport de becquée / nid actif confirmé]
 - [espèce 2] — [...]
@@ -451,7 +451,7 @@ Pour le Comité de quartier du Bois des Chevreuils
 - Conserver tous les originaux photographiques, vidéographiques et documentaires en double exemplaire, dont un hors du domicile des membres actifs.
 - Désigner formellement un ou deux porte-paroles du comité, mandatés par une décision écrite de l'assemblée. Les déclarations individuelles non mandatées engagent la personne mais pas le comité.
 - Solliciter, dès que le dossier prend tournure contentieuse, un avocat spécialisé en droit administratif et droit de l'environnement. Certains barreaux disposent d'une cellule pro bono ou d'un bureau d'aide juridique.
-- Vérifier l'éligibilité à une action auprès du Fonds pour l'accès à la justice environnementale ou auprès d'associations d'appui (Inter-Environnement Wallonie, Natagora, etc.) pour relayer ou co-financer les recours.
+- Vérifier l'éligibilité à une action auprès du Fonds pour l'accès à la justice environnementale ou auprès d'associations d'appui (Inter-Environnement Wallonie, [[Natagora]], etc.) pour relayer ou co-financer les recours.
 
 > **Rappel final**
 >

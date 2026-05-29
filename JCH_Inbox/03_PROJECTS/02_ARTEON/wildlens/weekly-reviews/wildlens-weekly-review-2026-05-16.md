@@ -1,4 +1,4 @@
-# WildLens Weekly Review — 2026-05-16
+# [[WildLens]] Weekly Review — 2026-05-16
 [[wildlens]]
 
 # Analytical Brief — Photography Developments With Real Impact on Image-Making
@@ -48,7 +48,7 @@ Generic image-quality metrics handle these phenomena poorly because they were de
 That is significant because modern imaging pipelines increasingly depend on machine evaluation:
 - denoise optimization,
 - sharpening strategies,
-- stack-merging decisions,
+- stack-merging [[decisions]],
 - autofocus logic,
 - computational enhancement ranking.
 

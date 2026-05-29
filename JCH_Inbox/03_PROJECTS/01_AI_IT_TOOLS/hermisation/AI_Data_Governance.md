@@ -31,7 +31,7 @@ Principe central :
 | L0 | Lecture seule | Lire, auditer, résumer, diagnostiquer. | Non requise sauf secret ou donnée sensible. |
 | L1 | Brouillon contrôlé | Créer notes, rapports, registres, plans, livrables non actifs. | Requise avant publication ou activation. |
 | L2 | Automatisation validée | Exécuter un workflow éprouvé, borné, journalisé, réversible. | Requise avant première activation et tout changement de périmètre. |
-| L3 | Action critique | Suppression, déplacement massif, publication, email, achat, secret, réseau, DB source. | Toujours explicite et préalable. |
+| L3 | Action critique | Suppression, déplacement massif, publication, [[email]], achat, secret, réseau, DB source. | Toujours explicite et préalable. |
 
 ## 2. Zones documentaires
 
@@ -64,7 +64,7 @@ Principe central :
 | `TEAM/team.db` | Backup avant modification; vérifier avec audit. |
 | Exposition réseau `0.0.0.0`, LAN, public | Validation JCH obligatoire. |
 | Suppression récursive ou déplacement massif | Validation JCH obligatoire. |
-| Envoi email, publication, achat, commande | Validation JCH obligatoire. |
+| Envoi [[email]], publication, achat, commande | Validation JCH obligatoire. |
 
 ## 4. Politique secrets
 
@@ -126,7 +126,7 @@ Chaque automatisation L2 doit enregistrer :
 
 Les logs doivent éviter :
 
-- corps complet d'email ;
+- corps complet d'[[email]] ;
 - tokens ;
 - URLs d'API contenant secrets ;
 - données personnelles inutiles ;
@@ -146,7 +146,7 @@ Validation JCH explicite requise pour :
 - installation de dépendance ou outil ;
 - lancement de Docker/stack nouvelle ;
 - publication externe ;
-- envoi email ;
+- envoi [[email]] ;
 - achat ou engagement financier ;
 - automatisation autonome persistante.
 

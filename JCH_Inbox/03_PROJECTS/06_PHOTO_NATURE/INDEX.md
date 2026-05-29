@@ -9,22 +9,22 @@ Couvre la technique photo, le post-traitement, l'impression, les observations te
 ## Structure
 | Dossier | Contenu |
 |---|---|
-| `docs/` | Synthèses, guides fiches terrain, projet faune-autour, templates |
+| `docs/` | Synthèses, guides fiches terrain, projet [[faune-autour]], templates |
 | 
 | `content/faune-autour/` | 7 fiches projet Faune-Autour (espèces, lieux, sorties, matériel…) |
 | `content/fiches/` | Fiches espèces (grenouille rousse, Acrida ungarica, arbres Wallonie…) |
 | `content/observations/` | Observations terrain (canard colvert, corbeaux, grenouille rousse…) |
-| `content/lieux/` | Fiches sites (Camargue) |
-| `content/taxonomie/` | Fiches taxonomie (Acrididae) |
+| `content/lieux/` | Fiches sites ([[Camargue]]) |
+| `content/taxonomie/` | Fiches taxonomie ([[Acrididae]]) |
 | `content/` | Articles wildlife, projets photo (canards) |
 | `tech/editing/` | Post-traitement : Lightroom, presets, focus stack, Helicon, Zerene |
 | `tech/printing/` | Impression ET8550 : workflows, color fix, papiers, drivers |
 | `tech/matos/` | Équipement JCH, objectifs, accessoires macro |
 | `tech/onsite/` | Techniques terrain : macro, chronophotographie, voie lactée, WeMacro |
 | 
-| `tech/` | API observations.be, workflow import, HTML faune-autour |
-| `media/assets/` | Logo faune-autour |
-| `comms/` | Correspondance (Natagora 2026-04-16) |
+| `tech/` | API [[observations.be]], workflow import, HTML [[faune-autour]] |
+| `media/assets/` | Logo [[faune-autour]] |
+| `comms/` | Correspondance ([[Natagora]] 2026-04-16) |
 | `archive/` | Fichiers obsolètes |
 
 ## Fichiers clés

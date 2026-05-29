@@ -19,7 +19,7 @@ On ne repart pas d'une page blanche si une base visuelle de reference existe dej
 
 Priorite a la coherence editoriale, a la respiration et a la signature visuelle de marque.
 
-### Pour un support commercial ou dirigeant
+### Pour un support [[commercial]] ou dirigeant
 
 Priorite a la clarte, a la hierarchie de lecture et a une declinaison sobre de la charte, sans tomber dans un deck generique.
 

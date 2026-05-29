@@ -58,7 +58,7 @@ Aux fins du présent contrat, les termes suivants auront la signification indiqu
 
 **« Savoir-Faire »** désigne l’ensemble des connaissances techniques, scientifiques, industrielles, commerciales, réglementaires, documentaires et pratiques nécessaires ou utiles à la compréhension, l’enregistrement, l’adaptation, l’assemblage, le conditionnement, le contrôle qualité, la production partielle ou la production complète des Produits.
 
-**« Sociétés Liées »** désigne toute société mère, filiale, société affiliée, société contrôlée, société contrôlante, partenaire industriel, fabricant associé, distributeur, agent, représentant ou partenaire commercial de Diaho intervenant directement ou indirectement dans le développement, la fabrication, la commercialisation ou la fourniture des Produits.
+**« Sociétés Liées »** désigne toute société mère, filiale, société affiliée, société contrôlée, société contrôlante, partenaire industriel, fabricant associé, distributeur, agent, représentant ou partenaire [[commercial]] de Diaho intervenant directement ou indirectement dans le développement, la fabrication, la commercialisation ou la fourniture des Produits.
 
 ---
 
@@ -67,7 +67,7 @@ Aux fins du présent contrat, les termes suivants auront la signification indiqu
 Le présent Contrat a pour objet de définir les conditions dans lesquelles Diaho accorde à VetalyX, qui accepte, les droits suivants sur le Territoire :
 
 1. un droit exclusif de distribution des Produits ;
-2. un droit exclusif de promotion et de développement commercial des Produits ;
+2. un droit exclusif de promotion et de développement [[commercial]] des Produits ;
 3. un droit exclusif de procéder ou faire procéder aux enregistrements réglementaires nécessaires ;
 4. un mandat de Représentant Autorisé Européen ;
 5. un droit de coordination avec les autorités, organismes, clients professionnels et partenaires réglementaires ;
@@ -80,7 +80,7 @@ Le Contrat constitue un contrat-cadre stratégique et ne doit pas être interpr�
 
 ## Article 3 — Exclusivité territoriale
 
-Diaho accorde à VetalyX, pour toute la durée du Contrat, une exclusivité totale sur le Territoire pour la distribution, la promotion, la commercialisation, l’enregistrement, la représentation réglementaire et le développement commercial des Produits.
+Diaho accorde à VetalyX, pour toute la durée du Contrat, une exclusivité totale sur le Territoire pour la distribution, la promotion, la commercialisation, l’enregistrement, la représentation réglementaire et le développement [[commercial]] des Produits.
 
 En conséquence, Diaho s’interdit, directement ou indirectement, de vendre, promouvoir, distribuer, enregistrer, faire enregistrer, commercialiser ou proposer les Produits sur le Territoire autrement que par l’intermédiaire de VetalyX, sauf accord écrit préalable de VetalyX.
 
@@ -92,7 +92,7 @@ Toute demande, sollicitation, contact, commande, opportunité commerciale ou dem
 
 ## Article 4 — Absence d’objectif minimal de vente
 
-Les Parties conviennent expressément que l’exclusivité accordée à VetalyX n’est pas conditionnée à la réalisation d’un volume minimal de ventes, d’un chiffre d’affaires minimal, d’un nombre minimal de clients, d’un nombre minimal de pays ouverts ou d’un objectif commercial impératif.
+Les Parties conviennent expressément que l’exclusivité accordée à VetalyX n’est pas conditionnée à la réalisation d’un volume minimal de ventes, d’un chiffre d’affaires minimal, d’un nombre minimal de clients, d’un nombre minimal de pays ouverts ou d’un objectif [[commercial]] impératif.
 
 VetalyX s’engage à déployer des efforts raisonnables pour développer le marché des Produits sur le Territoire, compte tenu notamment des contraintes réglementaires, scientifiques, économiques, commerciales et logistiques applicables.
 
@@ -258,7 +258,7 @@ Cette phase initiale comprendra notamment :
 3. une recherche et analyse des obligations réglementaires applicables aux Produits en France et, le cas échéant, dans les autres pays européens prioritaires ;
 4. la préparation, la coordination et l’implémentation des démarches nécessaires à l’enregistrement initial de la gamme de Produits en France ;
 5. l’identification des exigences techniques, scientifiques, documentaires, commerciales et administratives nécessaires au lancement ;
-6. la mobilisation d’experts européens pouvant intervenir dans les domaines réglementaire, scientifique, vétérinaire, commercial, qualité, distribution et stratégie de marché.
+6. la mobilisation d’experts européens pouvant intervenir dans les domaines réglementaire, scientifique, vétérinaire, [[commercial]], qualité, distribution et stratégie de marché.
 
 Les Parties reconnaissent que cette phase initiale constitue une prestation spécifique fournie par VetalyX au bénéfice de Diaho, distincte de l’activité future de distribution commerciale.
 
@@ -266,11 +266,11 @@ En rémunération de cette phase initiale, Diaho versera à VetalyX un montant f
 
 Les Parties reconnaissent que ce budget a été établi sur la base des fonctions, travaux et interventions que les experts européens mandatés ou coordonnés par VetalyX devront assumer dans le cadre du lancement des Produits sur le marché français et européen.
 
-À l’issue de cette phase initiale, et sous réserve de l’avancement des démarches réglementaires et commerciales, l’activité de distribution et de développement commercial sera assurée et financée par VetalyX dans le cadre du démarrage progressif de l’activité commerciale sur le Territoire.
+À l’issue de cette phase initiale, et sous réserve de l’avancement des démarches réglementaires et commerciales, l’activité de distribution et de développement [[commercial]] sera assurée et financée par VetalyX dans le cadre du démarrage progressif de l’activité commerciale sur le Territoire.
 
-Afin de soutenir ce démarrage commercial, Diaho fournira à VetalyX, sans facturation initiale et sans paiement immédiat, des kits de diagnostic pour une valeur totale de cinquante mille euros hors taxes (50 000 EUR HT), calculée sur la base du prix de transfert applicable entre les Parties.
+Afin de soutenir ce démarrage [[commercial]], Diaho fournira à VetalyX, sans facturation initiale et sans paiement immédiat, des kits de diagnostic pour une valeur totale de cinquante mille euros hors taxes (50 000 EUR HT), calculée sur la base du prix de transfert applicable entre les Parties.
 
-Ces kits seront fournis à titre de stock initial de lancement commercial. Leur remboursement par VetalyX à Diaho sera exclusivement progressif et conditionné aux ventes effectivement réalisées par VetalyX sur le Territoire.
+Ces kits seront fournis à titre de stock initial de lancement [[commercial]]. Leur remboursement par VetalyX à Diaho sera exclusivement progressif et conditionné aux ventes effectivement réalisées par VetalyX sur le Territoire.
 
 Les modalités de remboursement seront les suivantes, sauf accord contraire écrit entre les Parties :
 
@@ -286,7 +286,7 @@ Les Parties reconnaissent que la contribution de Diaho sous forme de kits de lan
 
 Les conditions commerciales applicables aux Produits, notamment les conditions de commande, délais de livraison, incoterms, modalités de paiement, conditions de transport, minimums éventuels de commande, garanties logistiques et autres conditions commerciales, seront définies en Annexe 6.
 
-Sauf accord contraire, Diaho fournira les Produits à VetalyX à des conditions permettant une distribution économiquement viable sur le Territoire, compte tenu des coûts d’enregistrement, de représentation autorisée européenne, de promotion, de stockage, de distribution, de support technique, de conformité, de service client et de développement commercial supportés par VetalyX.
+Sauf accord contraire, Diaho fournira les Produits à VetalyX à des conditions permettant une distribution économiquement viable sur le Territoire, compte tenu des coûts d’enregistrement, de représentation autorisée européenne, de promotion, de stockage, de distribution, de support technique, de conformité, de service client et de développement [[commercial]] supportés par VetalyX.
 
 Les Parties reconnaissent que les conditions commerciales consenties à VetalyX devront tenir compte du rôle stratégique assumé par VetalyX sur le Territoire, lequel dépasse une simple activité d’achat-revente et inclut notamment la structuration réglementaire, scientifique, commerciale et industrielle du marché européen.
 
@@ -304,7 +304,7 @@ Aucune augmentation de prix ne pourra s’appliquer aux commandes déjà accept�
 
 Diaho garantit que les prix de transfert consentis à VetalyX seront au moins aussi favorables que ceux accordés à tout autre distributeur, partenaire ou client comparable pour des produits équivalents, hors différences objectivement justifiées par les volumes, conditions logistiques, obligations réglementaires ou services spécifiques assumés par VetalyX.
 
-Les Parties reconnaissent que les prix de transfert devront permettre à VetalyX de couvrir notamment les coûts d’enregistrement, de représentation autorisée européenne, d’adaptation documentaire, de promotion, de démonstration, de stockage, de distribution, de support technique, de suivi qualité, de gestion des réclamations et de développement commercial sur le Territoire.
+Les Parties reconnaissent que les prix de transfert devront permettre à VetalyX de couvrir notamment les coûts d’enregistrement, de représentation autorisée européenne, d’adaptation documentaire, de promotion, de démonstration, de stockage, de distribution, de support technique, de suivi qualité, de gestion des réclamations et de développement [[commercial]] sur le Territoire.
 
 ---
 
@@ -498,7 +498,7 @@ Chaque Partie s’engage à maintenir pendant la durée du Contrat une assurance
 
 Diaho devra notamment maintenir une assurance couvrant les risques liés à la fabrication, la qualité, la conformité et la responsabilité produit.
 
-VetalyX devra maintenir une assurance couvrant ses activités de distribution, représentation réglementaire et développement commercial.
+VetalyX devra maintenir une assurance couvrant ses activités de distribution, représentation réglementaire et développement [[commercial]].
 
 Chaque Partie fournira à l’autre, sur demande raisonnable, une attestation d’assurance.
 
@@ -693,7 +693,7 @@ Les Produits Initiaux comprennent notamment :
 
 Pour chaque Produit, les informations suivantes devront être renseignées :
 
-- nom commercial ;
+- nom [[commercial]] ;
 - référence produit ;
 - fabricant ;
 - principe du test ;

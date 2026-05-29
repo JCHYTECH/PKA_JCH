@@ -6,7 +6,7 @@ Templates réutilisables transversaux à tous les projets.
 ## Structure
 | Dossier | Contenu |
 |---|---|
-| documents/contrats/ | Templates de contrats (.docx, .md) |
+| documents/[[contrats]]/ | Templates de [[contrats]] (.docx, .md) |
 | documents/briefs/ | Templates de briefs |
 | documents/rapports/ | Templates de rapports |
 | prompts/arteon/ | Prompts [[Claude]] spécifiques Arteon |

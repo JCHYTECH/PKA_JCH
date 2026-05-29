@@ -9,7 +9,7 @@ owner: [[Vega]] 🦚
 # ARTEON — Architecture & Charte graphique
 
 > Document de référence pour toutes les décisions visuelles et structurelles.  
-> Couvre : ARTEON (site principal), WildLens (journal), L'Instant Lu (service critique).  
+> Couvre : ARTEON (site principal), [[WildLens]] (journal), L'Instant Lu (service critique).  
 > Toute décision de design s'appuie sur ce document — il prime sur les préférences ponctuelles.
 
 ---
@@ -22,7 +22,7 @@ owner: [[Vega]] 🦚
 |-----|-----------|---------|
 | `arteon.be` | Shopify | Site principal — shop, manifeste, artistes, services |
 | `wildlens.arteon.be` | Ghost (domaine custom) | Journal naturaliste — articles, newsletter |
-| `arteon.be/wildlens` | Shopify (vitrine) | 3 derniers articles + CTA abonnement WildLens |
+| `arteon.be/wildlens` | Shopify (vitrine) | 3 derniers articles + CTA abonnement [[WildLens]] |
 | 
 
 ### 1.2 Sitemap complet
@@ -188,19 +188,19 @@ Ghost     : texte Ocre #C17F3A · underline fin · pas de fond ni bordure
 
 ---
 
-## 3. Charte spécifique — WildLens
+## 3. Charte spécifique — [[WildLens]]
 
-> WildLens partage la base ARTEON mais a sa propre personnalité : terrain, immersion, journal de naturaliste.
+> [[WildLens]] partage la base ARTEON mais a sa propre personnalité : terrain, immersion, journal de naturaliste.
 
-### 3.1 Couleur accent WildLens
+### 3.1 Couleur accent [[WildLens]]
 
 | Rôle | Nom | Hex |
 |------|-----|-----|
-| Accent WildLens | Vert Terrain | `#3D5A3E` |
+| Accent [[WildLens]] | Vert Terrain | `#3D5A3E` |
 
 Utilisé sur : masthead Ghost, tags, liens actifs, bordure newsletter.
 
-### 3.2 Typographie WildLens
+### 3.2 Typographie [[WildLens]]
 
 Identique à ARTEON + un usage plus fort de **[[LoRa]] Italic** pour les chapeaux d'articles et citations de terrain — ça renforce le ton carnet de terrain.
 
@@ -223,7 +223,7 @@ wildlens.arteon.be/
 
 Le lien "by ARTEON" renvoie vers arteon.be — pont permanent entre les deux univers.
 
-### 3.4 Ce que WildLens n'est pas
+### 3.4 Ce que [[WildLens]] n'est pas
 
 - Pas un blog généraliste — chaque article a une espèce ou un comportement central identifié
 - Pas de contenu promotionnel pur — L'Instant Lu peut être mentionné dans un article technique, jamais en bannière
@@ -334,7 +334,7 @@ Instagram / Pinterest → arteon.be (home)
                 → Commande tirage WhiteWall
 ```
 
-### 5.3 Lecteur WildLens
+### 5.3 Lecteur [[WildLens]]
 
 ```
 Partage article Ghost (email · réseau)
@@ -380,7 +380,7 @@ FR · EN · IT
 
 ## 7. Famille de marques — synthèse visuelle
 
-| | ARTEON | WildLens | L'Instant Lu |
+| | ARTEON | [[WildLens]] | L'Instant Lu |
 |--|--------|----------|--------------|
 | **Accent** | Ocre `#C17F3A` | Vert Terrain `#3D5A3E` | Ardoise `#4A5568` |
 | **Ton** | Galerie · éditorial | Terrain · journal | Outil · expertise |
@@ -400,7 +400,7 @@ FR · EN · IT
 | V1 | Palette + typographie — fichier Figma ou PDF couleurs | Figma / PDF | Immédiate |
 | V2 | Maquette wireframe home arteon.be | HTML | ✅ Validé JCH 2026-05-02 |
 | V3 | Maquette landing L'Instant Lu `/critique` | Figma | S1 |
-| V4 | Header Ghost WildLens | Figma + HTML | S2 |
+| V4 | Header Ghost [[WildLens]] | Figma + HTML | S2 |
 | V5 | Rapport PDF L'Instant Lu — template final | reportlab / Figma | S2 |
 | V6 | Badge "Vérifié L'Instant Lu" SVG | SVG | S2 |
 | V7 | Variantes logo (si propositions alternatives) | Figma | S3 |

@@ -112,7 +112,7 @@ Direction la plus adaptée au consulting B2B. Lecture rapide, structure nette, f
 ### Pour quel usage
 
 - diagnostic
-- processus technico-commercial
+- processus technico-[[commercial]]
 - outils de vente
 - KPI
 - roadmap
@@ -243,7 +243,7 @@ Cette combinaison permet :
 | Vision / posture | Aurel |
 | Qui sommes-nous / role du duo Arteon | Aurel |
 | Diagnostic | Horizon |
-| Processus technico-commercial | Horizon |
+| Processus technico-[[commercial]] | Horizon |
 | Outils de vente | Horizon |
 | KPI / monitoring | Horizon |
 | Roadmap / feuille de route | Horizon |

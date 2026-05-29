@@ -10,7 +10,7 @@ scope: vault-worktree-stabilization
 
 ## Objective
 
-Stabilize PKA_JCH before deeper [[Obsidian]] and Hermisation work.
+Stabilize PKA_JCH before deeper [[Obsidian]] and [[Hermisation]] work.
 
 No destructive cleanup has been performed in this pass.
 
@@ -34,7 +34,7 @@ Fresh inventory from
 
 ## Main Risk
 
-The worktree is not ready for broad automation. The largest risk is not the new [[Obsidian]]/Hermisation scaffold; it is the combination of:
+The worktree is not ready for broad automation. The largest risk is not the new [[Obsidian]]/[[Hermisation]] scaffold; it is the combination of:
 
 - 80 tracked deletions;
 - a likely WildNexus reorganization;
@@ -111,7 +111,7 @@ Observed:
 
 Recommended action: do not add all generated audio/spectrogram data to normal [[Git]]. Track metadata, manifests, scripts, and curated notes. Store heavy audio/spectrogram artifacts outside normal [[Git]] or ignore generated folders.
 
-### Batch F — [[Obsidian]] and Hermisation Scaffolds
+### Batch F — [[Obsidian]] and [[Hermisation]] Scaffolds
 
 Scope:
 
@@ -120,13 +120,13 @@ Scope:
 - `docs/superpowers/specs/2026-05-25-pka-system-evolution-two-projects-design.md`
 - `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/INDEX.md`
 
-Recommended action: commit as a small standalone docs scaffold after the cleanup policy is agreed.
+Recommended action: commit as a small standalone docs scaffold after the cleanup [[policy]] is agreed.
 
 ## Proposed Commit Order
 
 1. System pointers and skills.
 2. Save tooling after tests.
-3. AI_IT_TOOLS [[Obsidian]]/Hermisation scaffold.
+3. AI_IT_TOOLS [[Obsidian]]/[[Hermisation]] scaffold.
 4. Nuances [[archive]] move, if confirmed.
 5. WildNexus reorganization, after targeted review.
 6. InsectNet scripts/tests/metadata, excluding heavy generated data unless a dedicated data strategy is chosen.

@@ -64,7 +64,7 @@ Un élément additionnel a été constaté en avril 2026 : la réalisation, sur 
 ### 1.2. Démarches que l'auteur peut engager
 
 1. **Constat d'huissier sur les souches sans flachis**, avant recouvrement ou broyage.
-2. **Constat ornithologique urgent** via Natagora ou LRBPO.
+2. **Constat ornithologique urgent** via [[Natagora]] ou LRBPO.
 3. **Interpellation urgente** du cantonnement DNF compétent (modèle joint §8.3).
 4. **Demandes d'accès aux documents administratifs** (décret du 30 mars 1995) adressées à la commune d'Esneux, au SPW-DNF, et au service urbanisme de Chaudfontaine (modèles §8.1 et §8.4).
 5. **Constats d'huissier complémentaires** sur l'état sanitaire de grumes et sur la structure technique de la plateforme et des mares.
@@ -174,7 +174,7 @@ Si la majorité des grumes prélevées ne présente aucune pathologie visible, l
 
 *Niveau 3 — Jurisprudence européenne.* Arrêt Voore Mets 2025 (CJUE) : lecture plus stricte de la perturbation intentionnelle.
 
-**Charge de la preuve.** Incombe au plaignant. Un constat ornithologique à l'aube par observateur qualifié (Natagora, LRBPO) suffit à renverser la charge.
+**Charge de la preuve.** Incombe au plaignant. Un constat ornithologique à l'aube par observateur qualifié ([[Natagora]], LRBPO) suffit à renverser la charge.
 
 **Protocole :** relevé à l'aube (05h30–08h00 en avril), deux observateurs indépendants, enregistrements audio datés, photos de nids visibles, consignation par espèce (chant territorial, transport de matériaux, becquée, alarme, nid actif). Rapport signé.
 
@@ -228,7 +228,7 @@ Si la majorité des grumes prélevées ne présente aucune pathologie visible, l
 
 ### 3.8. Logistique — plaques agricoles « G »
 
-Plaques G : régime fiscal et de circulation allégé, usage légalement cantonné aux opérations agricoles, horticoles, sylvicoles et travaux connexes. Ne couvrent pas : transport commercial de matériaux non agricoles, travaux de génie civil, transport routier longue distance.
+Plaques G : régime fiscal et de circulation allégé, usage légalement cantonné aux opérations agricoles, horticoles, sylvicoles et travaux connexes. Ne couvrent pas : transport [[commercial]] de matériaux non agricoles, travaux de génie civil, transport routier longue distance.
 
 Si un véhicule plaque G est observé en opération de génie civil, cumul potentiel d'une infraction à la réglementation de circulation et d'un indice de requalification de la nature réelle du chantier.
 
@@ -347,7 +347,7 @@ Plan d'action. La colonne « Opérateur » est à compléter selon les ressource
 | # | Objet | Motivation | Incidence si constat d'irrégularité | Opérateur |
 |---|---|---|---|---|
 | C1 | Constat d'huissier sur absence de flachis sur souches | Code forestier art. 81 : empreinte = seul moyen de preuve. Observation à consigner avant recouvrement. | Grief central direct. Coupe non couverte par le régime forestier. | |
-| C2 | Constat ornithologique à l'aube (Natagora, LRBPO) | LCN art. 2 : charge de la preuve sur le plaignant. | Base d'une suspension immédiate du chantier et d'un PV Police de l'environnement. | |
+| C2 | Constat ornithologique à l'aube ([[Natagora]], LRBPO) | LCN art. 2 : charge de la preuve sur le plaignant. | Base d'une suspension immédiate du chantier et d'un PV Police de l'environnement. | |
 | C3 | DAA à la commune d'Esneux — dossier complet | Décret 30 mars 1995. Délai 30 jours. | Absence de pièces = présomption de défaut procédural. | |
 | C4 | DAA au SPW-DNF | Vérification indépendante de la tutelle régionale. | Confirme ou infirme l'existence d'un acte officiel de désignation. | |
 | C5 | DAA au service urbanisme de Chaudfontaine | Vérifier l'éventualité d'un projet privé lié à l'emprise communale d'Esneux. | Coïncidence = question sur le motif réel du chantier. | |
@@ -389,7 +389,7 @@ Plan d'action. La colonne « Opérateur » est à compléter selon les ressource
 - DAA service urbanisme Chaudfontaine (modèle §8.4).
 - Plainte administrative au cantonnement DNF (modèle §8.2).
 - Plainte au fonctionnaire délégué SPW-Territoire pour infraction urbanistique si caractérisée.
-- Contact Natagora, LRBPO : appui juridique, constat ornithologique, constitution de partie civile possible.
+- Contact [[Natagora]], LRBPO : appui juridique, constat ornithologique, constitution de partie civile possible.
 
 ### 7.2. Voie contentieuse
 
@@ -526,7 +526,7 @@ SPW Agriculture, Ressources naturelles et Environnement
 Département de la Nature et des Forêts
 À l'attention de Monsieur le Directeur du Cantonnement de [Liège]
 
-Copie : Unité de Police de l'environnement du SPW ; Bourgmestre de la commune d'Esneux ; Natagora ; LRBPO
+Copie : Unité de Police de l'environnement du SPW ; Bourgmestre de la commune d'Esneux ; [[Natagora]] ; LRBPO
 
 **Objet** : Interpellation urgente concernant les opérations au Bois des Chevreuils — perturbation intentionnelle d'oiseaux sauvages en période de reproduction (art. 2 LCN)
 
@@ -536,7 +536,7 @@ Monsieur le Directeur,
 
 Des opérations d'abattage ont été conduites dans la bande boisée du Bois des Chevreuils, à Tilff, en pleine période de reproduction de l'avifaune forestière wallonne, habitat confirmé d'espèces protégées par la Loi du 12 juillet 1973 et par la Directive 2009/147/CE.
 
-J'ai [documenté / fait documenter par un observateur qualifié de Natagora / de la LRBPO] la présence effective des espèces nicheuses suivantes :
+J'ai [documenté / fait documenter par un observateur qualifié de [[Natagora]] / de la LRBPO] la présence effective des espèces nicheuses suivantes :
 
 - [espèce 1] — [observation]
 - [espèce 2] — [...]
@@ -607,7 +607,7 @@ JC Havaux
 - Conserver tous originaux photo, vidéo, documents en double exemplaire, dont un hors du domicile.
 - Pour la main courante à la police, relecture juridique impérative avant dépôt.
 - Solliciter un avocat spécialisé en droit administratif et environnemental dès que le dossier prend tournure contentieuse.
-- Vérifier l'éligibilité à un appui d'Inter-Environnement Wallonie, Natagora, LRBPO ou du Fonds pour l'accès à la justice environnementale.
+- Vérifier l'éligibilité à un appui d'Inter-Environnement Wallonie, [[Natagora]], LRBPO ou du Fonds pour l'accès à la justice environnementale.
 
 > **Rappel final**
 >

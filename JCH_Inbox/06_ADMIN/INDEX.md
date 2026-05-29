@@ -8,7 +8,7 @@ Administration transversale à toutes les activités.
 |---|---|
 | comptabilite/factures/ | Factures entrantes et sortantes |
 | comptabilite/notes-de-frais/ | Notes de frais |
-| legal/contrats/ | Contrats transversaux |
+| legal/[[contrats]]/ | Contrats transversaux |
 | legal/assurances/ | Polices d'assurance |
 | fiscal/ | Documents fiscaux, déclarations |
 

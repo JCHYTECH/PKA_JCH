@@ -291,7 +291,7 @@ Selon les circonstances du départ d'un Fondateur, sa participation est racheté
 
 Chaque Fondateur, en sa qualité d'associé, dispose d'un droit à l'information renforcé. La Société s'engage à fournir à chaque Fondateur :
 
-- **Trimestriellement :** situation de trésorerie, tableau de bord commercial, comptes de gestion, reporting des accords de représentation actifs. Lorsque le chiffre d'affaires annuel de la Société dépasse cent mille (100 000) euros, la fréquence du reporting de trésorerie et du tableau de bord commercial passe à mensuelle, les comptes de gestion restant trimestriels.
+- **Trimestriellement :** situation de trésorerie, tableau de bord [[commercial]], comptes de gestion, reporting des accords de représentation actifs. Lorsque le chiffre d'affaires annuel de la Société dépasse cent mille (100 000) euros, la fréquence du reporting de trésorerie et du tableau de bord [[commercial]] passe à mensuelle, les comptes de gestion restant trimestriels.
 - **Annuellement :** comptes sociaux définitifs, bilan des accords en cours et prospectus pour l'exercice suivant.
 
 Tout Fondateur peut demander au gérant des informations complémentaires sur tout sujet relatif à la marche de la Société. Le gérant dispose de dix (10) jours pour y répondre.
@@ -325,7 +325,7 @@ Le présent Pacte est régi par le droit français. À défaut de clause comprom
 
 ### Article 32 — Notifications
 
-Toutes les notifications prévues par le présent Pacte doivent être effectuées par lettre recommandée avec accusé de réception aux adresses indiquées en page de signature, ou par tout autre moyen permettant d'établir la date de réception avec certitude (email avec accusé de lecture horodaté accepté pour les échanges non formels).
+Toutes les notifications prévues par le présent Pacte doivent être effectuées par lettre recommandée avec accusé de réception aux adresses indiquées en page de signature, ou par tout autre moyen permettant d'établir la date de réception avec certitude ([[email]] avec accusé de lecture horodaté accepté pour les échanges non formels).
 
 ---
 

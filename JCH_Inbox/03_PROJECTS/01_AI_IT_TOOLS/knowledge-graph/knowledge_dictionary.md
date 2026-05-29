@@ -10,128 +10,128 @@ validated: 2026-05-29
 
 > Validé par JCH le 2026-05-29. Phase 3 (dry-run wikilinks) autorisée.
 
-## Argus
+## [[Argus]]
 
-- canonical: Argus
+- canonical: [[Argus]]
 - aliases:
-  - Argus
+  - [[Argus]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Ariane
+## [[Ariane]]
 
-- canonical: Ariane
+- canonical: [[Ariane]]
 - aliases:
-  - Ariane
+  - [[Ariane]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Atlas
+## [[Atlas]]
 
-- canonical: Atlas
+- canonical: [[Atlas]]
 - aliases:
-  - Atlas
+  - [[Atlas]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Bouvier
+## [[Bouvier]]
 
-- canonical: Bouvier
+- canonical: [[Bouvier]]
 - aliases:
-  - Bouvier
+  - [[Bouvier]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Bruno
+## [[Bruno]]
 
-- canonical: Bruno
+- canonical: [[Bruno]]
 - aliases:
-  - Bruno
+  - [[Bruno]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Castor
+## [[Castor]]
 
-- canonical: Castor
+- canonical: [[Castor]]
 - aliases:
-  - Castor
+  - [[Castor]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Chouette
+## [[Chouette]]
 
-- canonical: Chouette
+- canonical: [[Chouette]]
 - aliases:
-  - Chouette
+  - [[Chouette]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Clio
+## [[Clio]]
 
-- canonical: Clio
+- canonical: [[Clio]]
 - aliases:
-  - Clio
+  - [[Clio]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Corbeau
+## [[Corbeau]]
 
-- canonical: Corbeau
+- canonical: [[Corbeau]]
 - aliases:
-  - Corbeau
+  - [[Corbeau]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Delphi
+## [[Delphi]]
 
-- canonical: Delphi
+- canonical: [[Delphi]]
 - aliases:
-  - Delphi
+  - [[Delphi]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Dobby
+## [[Dobby]]
 
-- canonical: Dobby
+- canonical: [[Dobby]]
 - aliases:
-  - Dobby
+  - [[Dobby]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Forge
+## [[Forge]]
 
-- canonical: Forge
+- canonical: [[Forge]]
 - aliases:
-  - Forge
+  - [[Forge]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Furet
+## [[Furet]]
 
-- canonical: Furet
+- canonical: [[Furet]]
 - aliases:
-  - Furet
+  - [[Furet]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Hermine
+## [[Hermine]]
 
-- canonical: Hermine
+- canonical: [[Hermine]]
 - aliases:
-  - Hermine
+  - [[Hermine]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
@@ -145,119 +145,119 @@ validated: 2026-05-29
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Iris
+## [[Iris]]
 
-- canonical: Iris
+- canonical: [[Iris]]
 - aliases:
-  - Iris
+  - [[Iris]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Jade
+## [[Jade]]
 
-- canonical: Jade
+- canonical: [[Jade]]
 - aliases:
-  - Jade
+  - [[Jade]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Lynx
+## [[Lynx]]
 
-- canonical: Lynx
+- canonical: [[Lynx]]
 - aliases:
-  - Lynx
+  - [[Lynx]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Miel
+## [[Miel]]
 
-- canonical: Miel
+- canonical: [[Miel]]
 - aliases:
-  - Miel
+  - [[Miel]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Milan
+## [[Milan]]
 
-- canonical: Milan
+- canonical: [[Milan]]
 - aliases:
-  - Milan
+  - [[Milan]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Nova
+## [[Nova]]
 
-- canonical: Nova
+- canonical: [[Nova]]
 - aliases:
-  - Nova
+  - [[Nova]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Pie
+## [[Pie]]
 
-- canonical: Pie
+- canonical: [[Pie]]
 - aliases:
-  - Pie
+  - [[Pie]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Renard
+## [[Renard]]
 
-- canonical: Renard
+- canonical: [[Renard]]
 - aliases:
-  - Renard
+  - [[Renard]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Sigma
+## [[Sigma]]
 
-- canonical: Sigma
+- canonical: [[Sigma]]
 - aliases:
-  - Sigma
+  - [[Sigma]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Sybil
+## [[Sybil]]
 
-- canonical: Sybil
+- canonical: [[Sybil]]
 - aliases:
-  - Sybil
+  - [[Sybil]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Trace
+## [[Trace]]
 
-- canonical: Trace
+- canonical: [[Trace]]
 - aliases:
-  - Trace
+  - [[Trace]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Vasco
+## [[Vasco]]
 
-- canonical: Vasco
+- canonical: [[Vasco]]
 - aliases:
-  - Vasco
+  - [[Vasco]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## Vega
+## [[Vega]]
 
-- canonical: Vega
+- canonical: [[Vega]]
 - aliases:
-  - Vega
+  - [[Vega]]
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
@@ -369,7 +369,7 @@ validated: 2026-05-29
 - aliases:
   - Claude
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/docs`
+- folder: `TEAM_Inbox`
 - ambiguity: excluded — aussi un prénom, validé JCH 2026-05-29
 - wikilink: false
 
@@ -379,7 +379,7 @@ validated: 2026-05-29
 - aliases:
   - Codex
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/pka-hermisation`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation/_source`
 - ambiguity: none recorded
 
 ## Docker
@@ -388,7 +388,7 @@ validated: 2026-05-29
 - aliases:
   - Docker
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/pka-hermisation`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation`
 - ambiguity: none recorded
 
 ## ESP32
@@ -397,7 +397,7 @@ validated: 2026-05-29
 - aliases:
   - ESP32
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/pka-hermisation`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation/_source`
 - ambiguity: none recorded
 
 ## ESP32-S3
@@ -451,7 +451,7 @@ validated: 2026-05-29
 - aliases:
   - n8n
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/pka-hermisation`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation`
 - ambiguity: none recorded
 
 ## Obsidian
@@ -460,7 +460,7 @@ validated: 2026-05-29
 - aliases:
   - Obsidian
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/obsidian-knowledge-graph`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation/_source`
 - ambiguity: none recorded
 
 ## Pi
@@ -479,7 +479,7 @@ validated: 2026-05-29
 - aliases:
   - PostgreSQL
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/pka-hermisation`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation`
 - ambiguity: none recorded
 
 ## Python
@@ -488,7 +488,7 @@ validated: 2026-05-29
 - aliases:
   - Python
 - category: technology
-- folder: `docs/superpowers/plans`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation`
 - ambiguity: excluded — trop générique, validé JCH 2026-05-29
 - wikilink: false
 
@@ -498,7 +498,7 @@ validated: 2026-05-29
 - aliases:
   - Qdrant
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/pka-hermisation`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation`
 - ambiguity: none recorded
 
 ## Raspberry Pi
@@ -525,7 +525,7 @@ validated: 2026-05-29
 - aliases:
   - Redis
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/pka-hermisation`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation`
 - ambiguity: none recorded
 
 ## SQLite
@@ -534,7 +534,7 @@ validated: 2026-05-29
 - aliases:
   - SQLite
 - category: technology
-- folder: `TEAM`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation`
 - ambiguity: none recorded
 
 ## Tailscale
@@ -543,7 +543,7 @@ validated: 2026-05-29
 - aliases:
   - Tailscale
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/06_COMPONENTS/BIOACOUSTIC/hardware`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation`
 - ambiguity: none recorded
 
 ## Whisper
@@ -552,7 +552,7 @@ validated: 2026-05-29
 - aliases:
   - Whisper
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/pka-hermisation`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation/_source`
 - ambiguity: none recorded
 
 ## Xeno-Canto

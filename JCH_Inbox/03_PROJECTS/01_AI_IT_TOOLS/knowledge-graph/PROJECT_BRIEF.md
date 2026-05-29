@@ -14,10 +14,10 @@ Transform PKA_JCH into a relational documentary system that supports:
 
 - human navigation;
 - persistent AI memory;
-- knowledge graph analysis;
+- [[knowledge]] graph analysis;
 - cross-agent continuity;
 - reduced duplication;
-- controlled linking between projects, agents, technologies, decisions, suppliers, files, and workflows.
+- controlled linking between projects, agents, technologies, [[decisions]], suppliers, files, and workflows.
 
 ## Operating Principle
 
@@ -35,7 +35,7 @@ Priority entities:
 - software;
 - standards;
 - regulations;
-- decisions;
+- [[decisions]];
 - suppliers;
 - clients;
 - components;

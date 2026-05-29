@@ -77,7 +77,7 @@ Les photos qui passent le seuil [[Argus]] alimentent directement la sélection d
 ```
 Argus [patterns récurrents] → Corbeau [knowledge base]
 ```
-Les tendances détectées par [[Argus]] (ex : surexposition récurrente en contre-jour, netteté insuffisante en macro action) devraient alimenter des notes de knowledge — pas rester dans les PDFs.
+Les tendances détectées par [[Argus]] (ex : surexposition récurrente en contre-jour, netteté insuffisante en macro action) devraient alimenter des notes de [[knowledge]] — pas rester dans les PDFs.
 
 ## Frontière avec [[Lynx]]
 

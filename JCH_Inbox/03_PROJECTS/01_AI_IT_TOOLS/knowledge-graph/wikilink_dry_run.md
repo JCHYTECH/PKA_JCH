@@ -9,1720 +9,1932 @@ status: proposal
 
 > Proposal only. No source note has been modified.
 
-- scanned notes: 785
-- files with suggestions: 25
-- line suggestions: 208
+- scanned notes: 782
+- files with suggestions: 19
+- line suggestions: 236
 
-## `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/04_CONNECTIVITE_MESH_LORA_LTE/2026-05-26_mf833u1-lte-usb-modem-reception.md`
+## `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation/AI_Data_Governance.md`
 
-### Line 10
+### Line 102
 
-- terms: BirdNET
+- terms: Docker
 - before:
-  `  - birdnet`
+  `### 5.3 Docker et ports`
 - after:
-  `  - [[BirdNET]]`
+  `### 5.3 [[Docker]] et ports`
 
-### Line 17
+### Line 104
 
-- terms: BirdNET
+- terms: Docker
 - before:
-  `# MF833U1 LTE USB Modem — reception et usage RPI + BirdNET mobile`
+  `Docker est autorisé pour les services déjà existants, notamment Plane, mais ne valide pas l'ajout d'une nouvelle stack.`
 - after:
-  `# MF833U1 LTE USB Modem — reception et usage RPI + [[BirdNET]] mobile`
+  `[[Docker]] est autorisé pour les services déjà existants, notamment Plane, mais ne valide pas l'ajout d'une nouvelle stack.`
 
-### Line 25
+### Line 111
 
-- terms: Raspberry Pi
+- terms: n8n, Qdrant, Redis, PostgreSQL
 - before:
-  `Ce composant est classe comme **connectivite mobile pour Raspberry Pi + BirdNET-Go**, pas comme composant Satellite Lite P0.`
+  `- aucune nouvelle brique Hermes/n8n/Qdrant/Redis/PostgreSQL hors Plane sans phase technique validée.`
 - after:
-  `Ce composant est classe comme **connectivite mobile pour [[Raspberry Pi]] + BirdNET-Go**, pas comme composant Satellite Lite P0.`
+  `- aucune nouvelle brique Hermes/[[n8n]]/[[Qdrant]]/[[Redis]]/[[PostgreSQL]] hors Plane sans phase technique validée.`
 
-### Line 31
+### Line 147
 
-- terms: LoRa
+- terms: Docker
 - before:
-  `- la connectivite P0 satellite reste locale, frugale et orientee LoRa/statuts/metadonnees ;`
+  `- lancement de Docker/stack nouvelle ;`
 - after:
-  `- la connectivite P0 satellite reste locale, frugale et orientee [[LoRa]]/statuts/metadonnees ;`
+  `- lancement de [[Docker]]/stack nouvelle ;`
 
-### Line 38
-
-- terms: Raspberry Pi
-- before:
-  `| Connectivite mobile Raspberry Pi + BirdNET-Go | usage cible |`
-- after:
-  `| Connectivite mobile [[Raspberry Pi]] + BirdNET-Go | usage cible |`
+## `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation/AI_Runtime_Audit.md`
 
 ### Line 52
 
-- terms: Raspberry Pi
+- terms: Docker
 - before:
-  `Sur Linux / Raspberry Pi :`
+  `5. Plane tourne via Docker et expose `8088` et `4443` sur toutes les interfaces (`0.0.0.0`), ce qui contredit la préférence sécurité "local-only" sauf validation explicite.`
 - after:
-  `Sur Linux / [[Raspberry Pi]] :`
+  `5. Plane tourne via [[Docker]] et expose `8088` et `4443` sur toutes les interfaces (`0.0.0.0`), ce qui contredit la préférence sécurité "local-only" sauf validation explicite.`
 
-## `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/99_TEMPLATES_REGISTERS/WILDNEXUS_SUPPLY_REGISTER.md`
+### Line 90
 
-### Line 87
-
-- terms: BirdNET, Raspberry Pi
+- terms: [[Dobby]]
 - before:
-  `| Modem USB LTE BirdNET mobile | MF833U1 — reçu 2026-05-26 | JCH — matériel reçu | connectivité terrain pour Raspberry Pi + BirdNET-Go mobile ; ne modifie pas P0 satellite | SIM7080G / LTE-M pour intégration P1 embarquée | Tester détection USB, SIM/APN, stabilité reboot, consommation USB, coexistence audio USB |`
+  `| 1853 | `telegram-bot/bot.py` | Bot Telegram Dobby | Actif, sensible |`
 - after:
-  `| Modem USB LTE [[BirdNET]] mobile | MF833U1 — reçu 2026-05-26 | JCH — matériel reçu | connectivité terrain pour [[Raspberry Pi]] + BirdNET-Go mobile ; ne modifie pas P0 satellite | SIM7080G / LTE-M pour intégration P1 embarquée | Tester détection USB, SIM/APN, stabilité reboot, consommation USB, coexistence audio USB |`
+  `| 1853 | `telegram-bot/bot.py` | Bot Telegram [[Dobby]] | Actif, sensible |`
 
-## `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/06_COMPONENTS/BIOACOUSTIC/hardware/2026-05-26_birdnet-rpi-mobile-lte-mf833u1.md`
+### Line 91
 
-### Line 7
-
-- terms: BirdNET
+- terms: Docker, Docker
 - before:
-  `  - birdnet`
+  `| 1299 | Docker Desktop | Support Plane / Docker | Actif |`
 - after:
-  `  - [[BirdNET]]`
-
-### Line 15
-
-- terms: Raspberry Pi
-- before:
-  `# BirdNET-Go mobile — Raspberry Pi + MF833U1 LTE`
-- after:
-  `# BirdNET-Go mobile — [[Raspberry Pi]] + MF833U1 LTE`
-
-### Line 42
-
-- terms: Raspberry Pi
-- before:
-  `- Le Raspberry Pi doit pouvoir alimenter simultanement le modem LTE et l'audio USB.`
-- after:
-  `- Le [[Raspberry Pi]] doit pouvoir alimenter simultanement le modem LTE et l'audio USB.`
-
-### Line 47
-
-- terms: BirdNET
-- before:
-  `- Eviter de confondre ce banc mobile BirdNET avec le Satellite Lite P0.`
-- after:
-  `- Eviter de confondre ce banc mobile [[BirdNET]] avec le Satellite Lite P0.`
-
-### Line 51
-
-- terms: Raspberry Pi
-- before:
-  `Sur Raspberry Pi :`
-- after:
-  `Sur [[Raspberry Pi]] :`
-
-## `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/06_COMPONENTS/BIOACOUSTIC/hardware/2026-05-26_protocole-terrain-24h-rpi-birdnet-mobile.md`
-
-### Line 7
-
-- terms: BirdNET
-- before:
-  `  - birdnet`
-- after:
-  `  - [[BirdNET]]`
-
-### Line 16
-
-- terms: Raspberry Pi 5
-- before:
-  `# Protocole terrain 24 h — Raspberry Pi 5 + BirdNET-Go mobile`
-- after:
-  `# Protocole terrain 24 h — [[Raspberry Pi 5]] + BirdNET-Go mobile`
-
-### Line 29
-
-- terms: BirdNET
-- before:
-  `- qualite et quantite des detections BirdNET.`
-- after:
-  `- qualite et quantite des detections [[BirdNET]].`
-
-### Line 33
-
-- terms: Raspberry Pi 5
-- before:
-  `La batterie Anker 72.36 Wh peut ne pas suffire pour 24 h si le Raspberry Pi 5, BirdNET-Go, l'audio USB et le reseau mobile consomment trop.`
-- after:
-  `La batterie Anker 72.36 Wh peut ne pas suffire pour 24 h si le [[Raspberry Pi 5]], BirdNET-Go, l'audio USB et le reseau mobile consomment trop.`
-
-### Line 39
-
-- terms: BirdNET
-- before:
-  `- verifier que la capture BirdNET reste propre jusqu'a extinction ou recuperation.`
-- after:
-  `- verifier que la capture [[BirdNET]] reste propre jusqu'a extinction ou recuperation.`
-
-### Line 45
-
-- terms: Raspberry Pi 5
-- before:
-  `| Raspberry Pi 5 | calcul BirdNET-Go |`
-- after:
-  `| [[Raspberry Pi 5]] | calcul BirdNET-Go |`
-
-### Line 47
-
-- terms: Raspberry Pi
-- before:
-  `| adaptateur audio USB UGREEN ou equivalent | entree micro vers Raspberry Pi |`
-- after:
-  `| adaptateur audio USB UGREEN ou equivalent | entree micro vers [[Raspberry Pi]] |`
-
-### Line 49
-
-- terms: Raspberry Pi
-- before:
-  `| cable USB-C haute puissance | alimentation Raspberry Pi |`
-- after:
-  `| cable USB-C haute puissance | alimentation [[Raspberry Pi]] |`
-
-### Line 53
-
-- terms: BirdNET
-- before:
-  `| carte microSD suffisante | systeme + logs + captures BirdNET |`
-- after:
-  `| carte microSD suffisante | systeme + logs + captures [[BirdNET]] |`
-
-### Line 72
-
-- terms: Raspberry Pi, Raspberry Pi
-- before:
-  `Important : si le modem MF833U1 est utilise, il doit rester connecte au Raspberry Pi pour les donnees. Si son alimentation est separee du powerbank, utiliser un hub USB alimente ou une solution equivalente. Une cle USB LTE ne peut pas communiquer avec le Raspberry Pi si elle est seulement branchee au powerbank.`
-- after:
-  `Important : si le modem MF833U1 est utilise, il doit rester connecte au [[Raspberry Pi]] pour les donnees. Si son alimentation est separee du powerbank, utiliser un hub USB alimente ou une solution equivalente. Une cle USB LTE ne peut pas communiquer avec le [[Raspberry Pi]] si elle est seulement branchee au powerbank.`
-
-### Line 78
-
-- terms: LoRa
-- before:
-  `- Satellite Lite P0 : AA, frugal, local, LoRa/statuts/metadonnees.`
-- after:
-  `- Satellite Lite P0 : AA, frugal, local, [[LoRa]]/statuts/metadonnees.`
-
-### Line 79
-
-- terms: BirdNET, Raspberry Pi
-- before:
-  `- Banc BirdNET mobile : Raspberry Pi, BirdNET-Go, powerbank, hotspot/LTE, test terrain 24 h.`
-- after:
-  `- Banc [[BirdNET]] mobile : [[Raspberry Pi]], BirdNET-Go, powerbank, hotspot/LTE, test terrain 24 h.`
-
-### Line 94
-
-- terms: Raspberry Pi
-- before:
-  `Depuis le Raspberry Pi :`
-- after:
-  `Depuis le [[Raspberry Pi]] :`
+  `| 1299 | [[Docker]] Desktop | Support Plane / [[Docker]] | Actif |`
 
 ### Line 103
 
 - terms: Docker
 - before:
-  `Si BirdNET-Go tourne comme service systemd plutot que Docker :`
+  `| 8088 | `0.0.0.0` / IPv6 | Plane proxy Docker | À risque si non validé |`
 - after:
-  `Si BirdNET-Go tourne comme service systemd plutot que [[Docker]] :`
-
-### Line 150
-
-- terms: Raspberry Pi
-- before:
-  `5. Garder l'ecran sur cette page pendant le demarrage du Raspberry Pi.`
-- after:
-  `5. Garder l'ecran sur cette page pendant le demarrage du [[Raspberry Pi]].`
-
-### Line 152
-
-- terms: Raspberry Pi
-- before:
-  `Sur Raspberry Pi :`
-- after:
-  `Sur [[Raspberry Pi]] :`
-
-### Line 173
-
-- terms: Raspberry Pi
-- before:
-  `3. redemarrer le Raspberry Pi ;`
-- after:
-  `3. redemarrer le [[Raspberry Pi]] ;`
-
-### Line 175
-
-- terms: BirdNET
-- before:
-  `5. ouvrir l'interface BirdNET depuis Safari.`
-- after:
-  `5. ouvrir l'interface [[BirdNET]] depuis Safari.`
-
-### Line 177
-
-- terms: Tailscale
-- before:
-  `### 0.4 Option : verifier Tailscale`
-- after:
-  `### 0.4 Option : verifier [[Tailscale]]`
-
-### Line 179
-
-- terms: Raspberry Pi
-- before:
-  `Sur Raspberry Pi :`
-- after:
-  `Sur [[Raspberry Pi]] :`
-
-### Line 188
-
-- terms: Tailscale
-- before:
-  `- ouvrir Tailscale ;`
-- after:
-  `- ouvrir [[Tailscale]] ;`
-
-### Line 190
-
-- terms: Tailscale, Raspberry Pi
-- before:
-  `- tester l'URL ou l'IP Tailscale du Raspberry Pi.`
-- after:
-  `- tester l'URL ou l'IP [[Tailscale]] du [[Raspberry Pi]].`
-
-### Line 192
-
-- terms: Tailscale
-- before:
-  `Tailscale est preferable pour eviter les changements d'IP du hotspot.`
-- after:
-  `[[Tailscale]] est preferable pour eviter les changements d'IP du hotspot.`
-
-### Line 220
-
-- terms: Raspberry Pi
-- before:
-  `- Raspberry Pi alimente par le powerbank.`
-- after:
-  `- [[Raspberry Pi]] alimente par le powerbank.`
-
-### Line 258
-
-- terms: BirdNET
-- before:
-  `- acces interface BirdNET ;`
-- after:
-  `- acces interface [[BirdNET]] ;`
-
-### Line 285
-
-- terms: Raspberry Pi
-- before:
-  `- eloigne du Raspberry Pi et du powerbank autant que le cable le permet ;`
-- after:
-  `- eloigne du [[Raspberry Pi]] et du powerbank autant que le cable le permet ;`
-
-### Line 286
-
-- terms: Raspberry Pi
-- before:
-  `- pas enferme dans le meme boitier que le ventilateur du Raspberry Pi ;`
-- after:
-  `- pas enferme dans le meme boitier que le ventilateur du [[Raspberry Pi]] ;`
-
-### Line 289
-
-- terms: Raspberry Pi
-- before:
-  `### Placement Raspberry Pi / powerbank`
-- after:
-  `### Placement [[Raspberry Pi]] / powerbank`
-
-### Line 302
-
-- terms: Raspberry Pi
-- before:
-  `3. Brancher le Raspberry Pi au powerbank.`
-- after:
-  `3. Brancher le [[Raspberry Pi]] au powerbank.`
-
-### Line 305
-
-- terms: BirdNET
-- before:
-  `6. Ouvrir BirdNET :`
-- after:
-  `6. Ouvrir [[BirdNET]] :`
-
-### Line 409
-
-- terms: BirdNET
-- before:
-  `| autonomie < 24 h | RPi 5 + BirdNET + LTE trop consommateurs | mesurer duree reelle, prevoir powerbank plus grand ou double alimentation |`
-- after:
-  `| autonomie < 24 h | RPi 5 + [[BirdNET]] + LTE trop consommateurs | mesurer duree reelle, prevoir powerbank plus grand ou double alimentation |`
-
-### Line 413
-
-- terms: Tailscale
-- before:
-  `| perte hotspot | iPhone verrouille/eloigne/5 GHz instable | maximiser compatibilite, garder iPhone proche, Tailscale si possible |`
-- after:
-  `| perte hotspot | iPhone verrouille/eloigne/5 GHz instable | maximiser compatibilite, garder iPhone proche, [[Tailscale]] si possible |`
-
-### Line 434
-
-- terms: BirdNET
-- before:
-  `- resultats BirdNET ;`
-- after:
-  `- resultats [[BirdNET]] ;`
-
-## `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/06_COMPONENTS/BIOACOUSTIC/hardware/2026-05-28_retour-test-maison-rpi-birdnet-mobile.md`
-
-### Line 5
-
-- terms: Raspberry Pi 5, Tailscale
-- before:
-  `**Machine :** tkajch (Raspberry Pi 5, BirdNET-Pi, Tailscale 100.84.45.93)  `
-- after:
-  `**Machine :** tkajch ([[Raspberry Pi 5]], BirdNET-Pi, [[Tailscale]] 100.84.45.93)  `
-
-### Line 6
-
-- terms: Dobby
-- before:
-  `**Testeur :** JCH + Dobby  `
-- after:
-  `**Testeur :** JCH + [[Dobby]]  `
-
-### Line 13
-
-- terms: Tailscale
-- before:
-  `Le modem MF833U1 LTE fonctionne parfaitement. L'interface BirdNET-Pi est accessible via Tailscale. L'autonomie powerbank est excellente (10/10 LED après 2h). Trois problèmes bloquants identifiés et corrigés. Le système tourne en continu, à laisser jusqu'à demain matin.`
-- after:
-  `Le modem MF833U1 LTE fonctionne parfaitement. L'interface BirdNET-Pi est accessible via [[Tailscale]]. L'autonomie powerbank est excellente (10/10 LED après 2h). Trois problèmes bloquants identifiés et corrigés. Le système tourne en continu, à laisser jusqu'à demain matin.`
-
-### Line 27
-
-- terms: Tailscale
-- before:
-  `### Tailscale — SUCCES`
-- after:
-  `### [[Tailscale]] — SUCCES`
-
-### Line 31
-
-- terms: BirdNET
-- before:
-  `- Interface BirdNET accessible via `http://100.84.45.93``
-- after:
-  `- Interface [[BirdNET]] accessible via `http://100.84.45.93``
-
-### Line 40
-
-- terms: BirdNET
-- before:
-  `- Micro fonctionnel, BirdNET analyse en continu`
-- after:
-  `- Micro fonctionnel, [[BirdNET]] analyse en continu`
-
-### Line 56
-
-- terms: SQLite, Python
-- before:
-  `- Cause : conflit d'ownership WAL SQLite entre `jchavaux` (analyse python) et `caddy` (serveur web)`
-- after:
-  `- Cause : conflit d'ownership WAL [[SQLite]] entre `jchavaux` (analyse [[Python]]) et `caddy` (serveur web)`
-
-## `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/08_TECH_NOTES/yt_ai-wildlife-monitoring-v2_luke.md`
-
-### Line 17
-
-- terms: Raspberry Pi, Raspberry Pi
-- before:
-  `technically now I'm Dr Luke uh was it worth it we'll see in any case let's see what changes I've made and what we've done here so one of the biggest changes you'll note is that I've switched now to using the raspberry pi and the Raspberry Pi ecosystem in that first video I talked about the limitations of that system you know power consumption lack of compute I was using quite old Jetson model since that video raspberry play has actually come out with a couple of bits of AI Hardware that is really  `
-- after:
-  `technically now I'm Dr Luke uh was it worth it we'll see in any case let's see what changes I've made and what we've done here so one of the biggest changes you'll note is that I've switched now to using the [[Raspberry Pi]] and the [[Raspberry Pi]] ecosystem in that first video I talked about the limitations of that system you know power consumption lack of compute I was using quite old Jetson model since that video raspberry play has actually come out with a couple of bits of AI Hardware that is really  `
-
-### Line 20
-
-- terms: Pi, Pi
-- before:
-  `useful for what I'm doing here that being both the AI hat or the Halo accelerator and also the raspber pi AI camera which actually uses that Sony IMX 500 intelligent image sensor that I talked about so it's a bit of a coincidence that they happen to produce this right after I talked about it in that video so with that I've also switched the raspby pi 5 which is needed for that AI hat in some of those shorts I talked about why I'm not using the AI camera for now I am limited by the  `
-- after:
-  `useful for what I'm doing here that being both the AI hat or the Halo accelerator and also the raspber [[Pi]] AI camera which actually uses that Sony IMX 500 intelligent image sensor that I talked about so it's a bit of a coincidence that they happen to produce this right after I talked about it in that video so with that I've also switched the raspby [[Pi]] 5 which is needed for that AI hat in some of those shorts I talked about why I'm not using the AI camera for now I am limited by the  `
-
-### Line 23
-
-- terms: Raspberry Pi 5
-- before:
-  `resolution that I can put through the model even though this is a high resolution camera the model on here can only run at 4 640x 640 whereas I can kind of choose any resolution for this one I'm still using the high quality camera same as before so that gives me access to potentially up to 4K resolution images you can see now the whole design is a lot smaller and more compact I've got this UPS here for the Raspberry Pi 5 that I've got off the shelf one of the issues with the old design was that I had all this custom  `
-- after:
-  `resolution that I can put through the model even though this is a high resolution camera the model on here can only run at 4 640x 640 whereas I can kind of choose any resolution for this one I'm still using the high quality camera same as before so that gives me access to potentially up to 4K resolution images you can see now the whole design is a lot smaller and more compact I've got this UPS here for the [[Raspberry Pi 5]] that I've got off the shelf one of the issues with the old design was that I had all this custom  `
-
-### Line 29
-
-- terms: Raspberry Pi, Raspberry Pi, Raspberry Pi, Raspberry Pi 5, Raspberry Pi
-- before:
-  `you can see it actually mounts to the top of the Raspberry Pi but it also blocks the GPI op pins for the Raspberry Pi meaning I can't put any more hats on top so a lot of the UPS's or power supplies for the Raspberry Pi that might be more suitable than what I'm using here can't use because they mount on the top and I chose this UPS which is just some generic sort of Raspberry Pi 5 UPS because it has batteries in the back and also the Raspberry Pi mounts on top and has a DC Supply input and some output  `
-- after:
-  `you can see it actually mounts to the top of the [[Raspberry Pi]] but it also blocks the GPI op pins for the [[Raspberry Pi]] meaning I can't put any more hats on top so a lot of the UPS's or power supplies for the [[Raspberry Pi]] that might be more suitable than what I'm using here can't use because they mount on the top and I chose this UPS which is just some generic sort of [[Raspberry Pi 5]] UPS because it has batteries in the back and also the [[Raspberry Pi]] mounts on top and has a DC Supply input and some output  `
-
-### Line 32
-
-- terms: Raspberry Pi, Raspberry Pi, Raspberry Pi, Pi, Pi
-- before:
-  `5vt power as well that I can run my fan with and while this does has some basic battery monitoring it doesn't monitor power consumption or charge power from the solar panel and it also can't wake up to Raspberry Pi and as I've mentioned some of those shorts for some reason it has the feature that when the Raspberry Pi shuts down the butt converter that supplies the Raspberry Pi with power also shuts down so it means that the raspby pi 5 which is the first raspby pi to have a real time clock and can reboot  `
-- after:
-  `5vt power as well that I can run my fan with and while this does has some basic battery monitoring it doesn't monitor power consumption or charge power from the solar panel and it also can't wake up to [[Raspberry Pi]] and as I've mentioned some of those shorts for some reason it has the feature that when the [[Raspberry Pi]] shuts down the butt converter that supplies the [[Raspberry Pi]] with power also shuts down so it means that the raspby [[Pi]] 5 which is the first raspby [[Pi]] to have a real time clock and can reboot  `
-
-### Line 38
-
-- terms: Raspberry Pi
-- before:
-  `operation is that just after Sunset the Raspberry Pi shuts itself down and I'm currently relying on the sun to come out in the morning start supplying enough power that the buuck converter switches on and start supplying a charge current so the whole thing boots up and at the moment it's summer here in Australia so that actually kind of works reliably and it's running from like 6:30 to 9:00 at night but obviously in a lot of situations that's just not going to cut it and so I'm still working on trying to  `
-- after:
-  `operation is that just after Sunset the [[Raspberry Pi]] shuts itself down and I'm currently relying on the sun to come out in the morning start supplying enough power that the buuck converter switches on and start supplying a charge current so the whole thing boots up and at the moment it's summer here in Australia so that actually kind of works reliably and it's running from like 6:30 to 9:00 at night but obviously in a lot of situations that's just not going to cut it and so I'm still working on trying to  `
-
-### Line 50
-
-- terms: Pi
-- before:
-  `just relying on that gbif database and Hope Hing that all the birds of that species that I downloaded and put in that directory only contain birds of that species it doesn't and then just any bird I detect in that is going to be a bird of that species it's not perfect but it works okay and I'm kind of working on some other tricks as well in order to train the YOLO model I'm just using ultral litics at the moment a lot of the demos for this AI accelerator and this rasby Pi AI camera use ultral litic  `
-- after:
-  `just relying on that gbif database and Hope Hing that all the birds of that species that I downloaded and put in that directory only contain birds of that species it doesn't and then just any bird I detect in that is going to be a bird of that species it's not perfect but it works okay and I'm kind of working on some other tricks as well in order to train the YOLO model I'm just using ultral litics at the moment a lot of the demos for this AI accelerator and this rasby [[Pi]] AI camera use ultral litic  `
-
-### Line 56
-
-- terms: Pi
-- before:
-  `basically exports it straight into a format that you can put on your R pi and convert but for other custom models it's a bit more difficult and for the actual Halo accelerator it just seems unnecessarily difficult this company seems to be a sort of hardware company that hasn't really spent too much time working on their software their data flow compiler which is what you use to compile and Export the model for the actual Hardware I think it only got released like mid last year even though  `
-- after:
-  `basically exports it straight into a format that you can put on your R [[Pi]] and convert but for other custom models it's a bit more difficult and for the actual Halo accelerator it just seems unnecessarily difficult this company seems to be a sort of hardware company that hasn't really spent too much time working on their software their data flow compiler which is what you use to compile and Export the model for the actual Hardware I think it only got released like mid last year even though  `
-
-### Line 65
-
-- terms: Pie, Pie
-- before:
-  `ground that big heavy umbrella stand was just way too cumbersome to try and haul around so this new design is much easier and I can kind of put it in more locations but as I mentioned there's still work to be done there is still no Laura or long range Communications which is kind of one of the main features I wanted to include in this and again it's been difficult to incorporate that because a lot of the raspby pie hats sit on top of the raspby pie which I just can't use here and I didn't really want  `
-- after:
-  `ground that big heavy umbrella stand was just way too cumbersome to try and haul around so this new design is much easier and I can kind of put it in more locations but as I mentioned there's still work to be done there is still no Laura or long range Communications which is kind of one of the main features I wanted to include in this and again it's been difficult to incorporate that because a lot of the raspby [[Pie]] hats sit on top of the raspby [[Pie]] which I just can't use here and I didn't really want  `
-
-### Line 68
-
-- terms: Pie
-- before:
-  `to hack around tacking on solder wires and everything to a module so I've kind of put that on hold for now so the next Grand Step potenti entally is to design and create a custom PCB that not only does the power supply the battery management the solar charging with proper solar charging it has a microcontroller on board to manage the actual shutdown and reboot of the rasp pie correctly and also has allowances for Aura module or potentially even 4G LTE to transmit any detections that have occurred and there are also other  `
-- after:
-  `to hack around tacking on solder wires and everything to a module so I've kind of put that on hold for now so the next Grand Step potenti entally is to design and create a custom PCB that not only does the power supply the battery management the solar charging with proper solar charging it has a microcontroller on board to manage the actual shutdown and reboot of the rasp [[Pie]] correctly and also has allowances for Aura module or potentially even 4G LTE to transmit any detections that have occurred and there are also other  `
-
-### Line 74
-
-- terms: Raspberry Pi
-- before:
-  `sign on to be our PCB sponsor all PCB will handle all of your PCB manufacturing and assembly needs all you need to do is upload your gerbal files choose the number of layers so thanks to all PCB you can check them out in the links in the description if you think you're interested in having that PCB power supply with Communications for the Raspberry Pi in order to build your own Edge computer device let me know I'm interested to see who else might be interested in wanting something like this and who knows we might develop it  `
-- after:
-  `sign on to be our PCB sponsor all PCB will handle all of your PCB manufacturing and assembly needs all you need to do is upload your gerbal files choose the number of layers so thanks to all PCB you can check them out in the links in the description if you think you're interested in having that PCB power supply with Communications for the [[Raspberry Pi]] in order to build your own Edge computer device let me know I'm interested to see who else might be interested in wanting something like this and who knows we might develop it  `
-
-## `JCH_Inbox/03_PROJECTS/08_VETALYX/INDEX.md`
-
-### Line 13
-
-- terms: Renard
-- before:
-  `| `legal/` | Contrats : prestation de services, entrée capital, offre consultance, suivi contrats + brief Renard v2 |`
-- after:
-  `| `legal/` | Contrats : prestation de services, entrée capital, offre consultance, suivi contrats + brief [[Renard]] v2 |`
-
-### Line 32
-
-- terms: Renard
-- before:
-  `- `legal/2026-05-26_dobby_brief-renard_contrat-cadre-v2.md` — Brief Renard contrat-cadre v2`
-- after:
-  `- `legal/2026-05-26_dobby_brief-renard_contrat-cadre-v2.md` — Brief [[Renard]] contrat-cadre v2`
-
-## `JCH_Inbox/03_PROJECTS/08_VETALYX/clinical/Consensus Compo/2026-05-26_VETALYX_Rapport_final_tests_rapides_allergies_chien_chat.md`
-
-### Line 6
-
-- terms: Dobby
-- before:
-  `owner: Dobby`
-- after:
-  `owner: [[Dobby]]`
-
-### Line 7
-
-- terms: Vasco
-- before:
-  `clinical_lead: Vasco`
-- after:
-  `clinical_lead: [[Vasco]]`
-
-### Line 8
-
-- terms: Clio
-- before:
-  `scientific_review: Clio`
-- after:
-  `scientific_review: [[Clio]]`
-
-## `JCH_Inbox/03_PROJECTS/08_VETALYX/clinical/Consensus Compo/2026-05-26_VETALYX_Review_clinique_test_rapide_allergies_chien_chat.md`
-
-### Line 6
-
-- terms: Dobby
-- before:
-  `owner: Dobby`
-- after:
-  `owner: [[Dobby]]`
-
-### Line 7
-
-- terms: Vasco
-- before:
-  `clinical_lead: Vasco`
-- after:
-  `clinical_lead: [[Vasco]]`
-
-### Line 8
-
-- terms: Clio
-- before:
-  `scientific_review: Clio`
-- after:
-  `scientific_review: [[Clio]]`
-
-### Line 9
-
-- terms: Renard
-- before:
-  `legal_claim_review: Renard`
-- after:
-  `legal_claim_review: [[Renard]]`
-
-## `JCH_Inbox/03_PROJECTS/08_VETALYX/clinical/Consensus Compo/2026-05-26_VETALYX_Spec_6_lignes_tests_rapides_chien_chat.md`
-
-### Line 6
-
-- terms: Dobby
-- before:
-  `owner: Dobby`
-- after:
-  `owner: [[Dobby]]`
-
-### Line 7
-
-- terms: Vasco
-- before:
-  `clinical_lead: Vasco`
-- after:
-  `clinical_lead: [[Vasco]]`
-
-### Line 8
-
-- terms: Clio
-- before:
-  `scientific_review: Clio`
-- after:
-  `scientific_review: [[Clio]]`
-
-## `JCH_Inbox/03_PROJECTS/08_VETALYX/clinical/Dossier DIXUN/2026-05-28_VETALYX_Evaluation_technico_scientifique_kits_DIXUN.md`
-
-### Line 7
-
-- terms: Vasco
-- before:
-  `  clinical: Vasco`
-- after:
-  `  clinical: [[Vasco]]`
-
-### Line 8
-
-- terms: Clio
-- before:
-  `  scientific: Clio`
-- after:
-  `  scientific: [[Clio]]`
-
-### Line 9
-
-- terms: Dobby
-- before:
-  `  synthesis: Dobby`
-- after:
-  `  synthesis: [[Dobby]]`
-
-### Line 70
-
-- terms: Clio
-- before:
-  `**Réserve scientifique importante (Clio) :** La taille de l'échantillon de référence n'est pas précisée dans la documentation. Les performances PPA/NPA à 100 % sur une population de petite taille (< 50 patients) ont une valeur démonstrative mais pas statistiquement robuste. Pour des kits commerciaux, une étude sur 100 à 200 patients per panel est attendue. Ces données constituent une preuve de concept, pas encore une validation clinique au sens réglementaire.`
-- after:
-  `**Réserve scientifique importante ([[Clio]]) :** La taille de l'échantillon de référence n'est pas précisée dans la documentation. Les performances PPA/NPA à 100 % sur une population de petite taille (< 50 patients) ont une valeur démonstrative mais pas statistiquement robuste. Pour des kits commerciaux, une étude sur 100 à 200 patients per panel est attendue. Ces données constituent une preuve de concept, pas encore une validation clinique au sens réglementaire.`
-
-### Line 93
-
-- terms: Clio
-- before:
-  `**Réserve scientifique (Clio) :** La stabilité accélérée est un proxy, pas un équivalent de la stabilité temps réel. Des études en temps réel à 4 °C et à 25 °C / 60 % HR (conditions de stockage ambiant) doivent confirmer ces projections à 18 et 24 mois avant mise sur le marché. Ces données ne sont pas encore disponibles dans le dossier.`
-- after:
-  `**Réserve scientifique ([[Clio]]) :** La stabilité accélérée est un proxy, pas un équivalent de la stabilité temps réel. Des études en temps réel à 4 °C et à 25 °C / 60 % HR (conditions de stockage ambiant) doivent confirmer ces projections à 18 et 24 mois avant mise sur le marché. Ces données ne sont pas encore disponibles dans le dossier.`
-
-### Line 146
-
-- terms: Clio
-- before:
-  `**Clio recommande** de demander à DIXUN une clarification documentée sur ce point avant tout usage clinique du panel FSC chien, ligne cockroach.`
-- after:
-  `**[[Clio]] recommande** de demander à DIXUN une clarification documentée sur ce point avant tout usage clinique du panel FSC chien, ligne cockroach.`
-
-### Line 204
-
-- terms: Vasco
-- before:
-  `| P0 | Demander à DIXUN une clarification sur l'anomalie G-DOG-FSC07 / Dog 61 (ligne cockroach) | Vasco + DIXUN |`
-- after:
-  `| P0 | Demander à DIXUN une clarification sur l'anomalie G-DOG-FSC07 / Dog 61 (ligne cockroach) | [[Vasco]] + DIXUN |`
-
-### Line 205
-
-- terms: Clio
-- before:
-  `| P0 | Obtenir la nature et la concentration des extraits allergéniques par ligne | Clio + DIXUN |`
-- after:
-  `| P0 | Obtenir la nature et la concentration des extraits allergéniques par ligne | [[Clio]] + DIXUN |`
-
-### Line 206
-
-- terms: Clio
-- before:
-  `| P1 | Planifier une étude de stabilité temps réel (4 °C et 25 °C/60 % HR) à 6, 12 et 18 mois | Clio |`
-- after:
-  `| P1 | Planifier une étude de stabilité temps réel (4 °C et 25 °C/60 % HR) à 6, 12 et 18 mois | [[Clio]] |`
-
-### Line 207
-
-- terms: Vasco
-- before:
-  `| P1 | Lancer une étude de concordance clinique prospective (50 patients par espèce, statut atopique confirmé par dermatologue) | Vasco |`
-- after:
-  `| P1 | Lancer une étude de concordance clinique prospective (50 patients par espèce, statut atopique confirmé par dermatologue) | [[Vasco]] |`
-
-### Line 208
-
-- terms: Clio
-- before:
-  `| P2 | Caractériser les substances interférentes les plus courantes en pratique vétérinaire (corticoïdes, IL-31 RA, ciclosporine) | Clio |`
-- after:
-  `| P2 | Caractériser les substances interférentes les plus courantes en pratique vétérinaire (corticoïdes, IL-31 RA, ciclosporine) | [[Clio]] |`
-
-### Line 209
-
-- terms: Vasco
-- before:
-  `| P2 | Rédiger un guide d'interprétation clinique vétérinaire pour chaque panel, incluant les limites d'usage | Vasco |`
-- after:
-  `| P2 | Rédiger un guide d'interprétation clinique vétérinaire pour chaque panel, incluant les limites d'usage | [[Vasco]] |`
-
-## `JCH_Inbox/03_PROJECTS/08_VETALYX/clinical/Etudes Cliniques/2026-05-26_VETALYX_Logigrammes_validation_clinique_DBS.md`
-
-### Line 6
-
-- terms: Dobby
-- before:
-  `owner: Dobby`
-- after:
-  `owner: [[Dobby]]`
-
-### Line 7
-
-- terms: Vasco
-- before:
-  `clinical_lead: Vasco`
-- after:
-  `clinical_lead: [[Vasco]]`
-
-## `JCH_Inbox/03_PROJECTS/08_VETALYX/clinical/Etudes Cliniques/2026-05-26_VETALYX_Protocole_validation_clinique_KOL_tests_rapides_IgE.md`
-
-### Line 6
-
-- terms: Dobby
-- before:
-  `owner: Dobby`
-- after:
-  `owner: [[Dobby]]`
-
-### Line 7
-
-- terms: Vasco
-- before:
-  `clinical_lead: Vasco`
-- after:
-  `clinical_lead: [[Vasco]]`
-
-### Line 8
-
-- terms: Clio
-- before:
-  `scientific_review: Clio`
-- after:
-  `scientific_review: [[Clio]]`
-
-### Line 9
-
-- terms: Renard
-- before:
-  `legal_review: Renard`
-- after:
-  `legal_review: [[Renard]]`
-
-### Line 10
-
-- terms: Bruno
-- before:
-  `business_review: Bruno`
-- after:
-  `business_review: [[Bruno]]`
-
-### Line 336
-
-- terms: Bruno
-- before:
-  `Suggestion Bruno : commencer par une phase 0/1 a budget limite avant de promettre une validation complete. Les KOL accepteront mieux un protocole court, finance, peu invasif et publiable.`
-- after:
-  `Suggestion [[Bruno]] : commencer par une phase 0/1 a budget limite avant de promettre une validation complete. Les KOL accepteront mieux un protocole court, finance, peu invasif et publiable.`
-
-## `JCH_Inbox/03_PROJECTS/08_VETALYX/clinical/Etudes Cliniques/2026-05-28_VETALYX_Rapport_validation_usability_recommandations.md`
-
-### Line 8
-
-- terms: Vasco
-- before:
-  `  clinical: Vasco`
-- after:
-  `  clinical: [[Vasco]]`
-
-### Line 9
-
-- terms: Clio
-- before:
-  `  scientific: Clio`
-- after:
-  `  scientific: [[Clio]]`
-
-### Line 10
-
-- terms: Dobby
-- before:
-  `  synthesis: Dobby`
-- after:
-  `  synthesis: [[Dobby]]`
-
-## `JCH_Inbox/03_PROJECTS/08_VETALYX/clinical/Etudes Cliniques/2026-05-28_VETALYX_Rapport_validation_usability_recommandations_ZH.md`
-
-### Line 9
-
-- terms: Vasco
-- before:
-  `  clinical: Vasco`
-- after:
-  `  clinical: [[Vasco]]`
-
-### Line 10
-
-- terms: Clio
-- before:
-  `  scientific: Clio`
-- after:
-  `  scientific: [[Clio]]`
-
-### Line 11
-
-- terms: Jade
-- before:
-  `  translation: Jade`
-- after:
-  `  translation: [[Jade]]`
-
-### Line 12
-
-- terms: Dobby
-- before:
-  `  synthesis: Dobby`
-- after:
-  `  synthesis: [[Dobby]]`
-
-### Line 24
-
-- terms: Vasco, Clio, Jade, Dobby
-- before:
-  `| **作者** | JCH（实地）· Vasco（临床）· Clio（科学）· Jade（翻译）· Dobby（综合） |`
-- after:
-  `| **作者** | JCH（实地）· [[Vasco]]（临床）· [[Clio]]（科学）· [[Jade]]（翻译）· [[Dobby]]（综合） |`
-
-### Line 272
-
-- terms: Vasco
-- before:
-  `| P0 | 要求DIXUN提供充分的性能文件（灵敏度/特异性） | Vasco + DIXUN |`
-- after:
-  `| P0 | 要求DIXUN提供充分的性能文件（灵敏度/特异性） | [[Vasco]] + DIXUN |`
-
-### Line 273
-
-- terms: Clio
-- before:
-  `| P0 | 将过敏原组成适应欧洲高流行率过敏原 | Clio + DIXUN |`
-- after:
-  `| P0 | 将过敏原组成适应欧洲高流行率过敏原 | [[Clio]] + DIXUN |`
-
-### Line 274
-
-- terms: Vasco
-- before:
-  `| P1 | 安排与2位已识别KOL的会面 | JCH + Vasco |`
-- after:
-  `| P1 | 安排与2位已识别KOL的会面 | JCH + [[Vasco]] |`
-
-### Line 275
-
-- terms: Vasco, Clio
-- before:
-  `| P1 | 制定临床研究方案（>150只动物，DBS可行性） | Vasco + Clio |`
-- after:
-  `| P1 | 制定临床研究方案（>150只动物，DBS可行性） | [[Vasco]] + [[Clio]] |`
-
-### Line 276
-
-- terms: Clio
-- before:
-  `| P2 | 探索欧洲区域产品线（北部/地中海） | Clio + DIXUN |`
-- after:
-  `| P2 | 探索欧洲区域产品线（北部/地中海） | [[Clio]] + DIXUN |`
-
-### Line 299
-
-- terms: Vasco, Clio, Jade, Dobby
-- before:
-  `*Vasco（临床）· Clio（科学）· Jade（翻译）· Dobby（综合）· JCH（实地）— 2026年5月28日*`
-- after:
-  `*[[Vasco]]（临床）· [[Clio]]（科学）· [[Jade]]（翻译）· [[Dobby]]（综合）· JCH（实地）— 2026年5月28日*`
-
-## `JCH_Inbox/03_PROJECTS/08_VETALYX/dropbox-index.md`
-
-### Line 81
-
-- terms: ChatGPT
-- before:
-  `Logos ChatGPT non finalisés.`
-- after:
-  `Logos [[ChatGPT]] non finalisés.`
-
-### Line 85
-
-- terms: ChatGPT
-- before:
-  `| ChatGPT Image 17 avr. 2026, 10_23_24.png | 418 Ko | 24/04/2026 |`
-- after:
-  `| [[ChatGPT]] Image 17 avr. 2026, 10_23_24.png | 418 Ko | 24/04/2026 |`
-
-### Line 86
-
-- terms: ChatGPT
-- before:
-  `| ChatGPT Image Apr 24, 2026 at 05_36_28 PM.png | 318 Ko | 24/04/2026 |`
-- after:
-  `| [[ChatGPT]] Image Apr 24, 2026 at 05_36_28 PM.png | 318 Ko | 24/04/2026 |`
-
-### Line 87
-
-- terms: ChatGPT
-- before:
-  `| ChatGPT Image Apr 24, 2026 at 05_36_37 PM.png | 2.1 Mo | 24/04/2026 |`
-- after:
-  `| [[ChatGPT]] Image Apr 24, 2026 at 05_36_37 PM.png | 2.1 Mo | 24/04/2026 |`
-
-## `JCH_Inbox/03_PROJECTS/08_VETALYX/legal/2026-05-26_dobby_brief-renard_contrat-cadre-v2.md`
-
-### Line 1
-
-- terms: Renard
-- before:
-  `# Brief Renard — Contrat-cadre DIAHO/VETALYX v2`
-- after:
-  `# Brief [[Renard]] — Contrat-cadre DIAHO/VETALYX v2`
-
-### Line 4
-
-- terms: Dobby
-- before:
-  `**De :** Dobby (pour JCH)`
-- after:
-  `**De :** [[Dobby]] (pour JCH)`
-
-### Line 5
-
-- terms: Renard
-- before:
-  `**Pour :** Renard`
-- after:
-  `**Pour :** [[Renard]]`
-
-### Line 12
-
-- terms: Renard, Jade
-- before:
-  `Le squelette v1 du contrat-cadre DIAHO/VETALYX (30 avril 2026, Renard + Jade) liste 17 questions en attente. JCH a répondu à toutes. Tu as le feu vert pour rédiger la v2.`
-- after:
-  `Le squelette v1 du contrat-cadre DIAHO/VETALYX (30 avril 2026, [[Renard]] + [[Jade]]) liste 17 questions en attente. JCH a répondu à toutes. Tu as le feu vert pour rédiger la v2.`
-
-### Line 62
-
-- terms: Renard
-- before:
-  `## Points d'attention pour Renard`
-- after:
-  `## Points d'attention pour [[Renard]]`
-
-### Line 86
-
-- terms: Renard
-- before:
-  `1. Renard rédige la v2 du contrat-cadre (droit belge, réponses intégrées)`
-- after:
-  `1. [[Renard]] rédige la v2 du contrat-cadre (droit belge, réponses intégrées)`
-
-### Line 87
-
-- terms: Jade
-- before:
-  `2. Jade vérifie la terminologie FR/ZH après modifications`
-- after:
-  `2. [[Jade]] vérifie la terminologie FR/ZH après modifications`
-
-## `JCH_Inbox/03_PROJECTS/08_VETALYX/market/2026-05-26_VETALYX_Market_Evidence_Pack.md`
-
-### Line 6
-
-- terms: Dobby
-- before:
-  `owner: Dobby`
-- after:
-  `owner: [[Dobby]]`
-
-### Line 8
-
-- terms: Furet
-- before:
-  `  - Furet`
-- after:
-  `  - [[Furet]]`
-
-### Line 9
-
-- terms: Vasco
-- before:
-  `  - Vasco`
-- after:
-  `  - [[Vasco]]`
-
-### Line 10
-
-- terms: Clio
-- before:
-  `  - Clio`
-- after:
-  `  - [[Clio]]`
-
-### Line 11
-
-- terms: Milan
-- before:
-  `  - Milan`
-- after:
-  `  - [[Milan]]`
-
-### Line 12
-
-- terms: Bruno
-- before:
-  `  - Bruno`
-- after:
-  `  - [[Bruno]]`
-
-### Line 13
-
-- terms: Sigma
-- before:
-  `  - Sigma`
-- after:
-  `  - [[Sigma]]`
-
-### Line 14
-
-- terms: Renard
-- before:
-  `  - Renard`
-- after:
-  `  - [[Renard]]`
-
-### Line 15
-
-- terms: Jade
-- before:
-  `  - Jade`
-- after:
-  `  - [[Jade]]`
-
-### Line 16
-
-- terms: Trace
-- before:
-  `  - Trace`
-- after:
-  `  - [[Trace]]`
-
-### Line 17
-
-- terms: Miel
-- before:
-  `  - Miel`
-- after:
-  `  - [[Miel]]`
-
-### Line 18
-
-- terms: Vega
-- before:
-  `  - Vega`
-- after:
-  `  - [[Vega]]`
-
-### Line 19
-
-- terms: Forge
-- before:
-  `  - Forge`
-- after:
-  `  - [[Forge]]`
-
-### Line 20
-
-- terms: Atlas
-- before:
-  `  - Atlas`
-- after:
-  `  - [[Atlas]]`
-
-### Line 21
-
-- terms: Hermine
-- before:
-  `  - Hermine`
-- after:
-  `  - [[Hermine]]`
-
-### Line 352
-
-- terms: Vasco, Clio
-- before:
-  `- Vasco/Clio produce EU allergen specification v1.`
-- after:
-  `- [[Vasco]]/[[Clio]] produce EU allergen specification v1.`
-
-### Line 359
-
-- terms: Milan
-- before:
-  `- Milan maps competitors by country and product line.`
-- after:
-  `- [[Milan]] maps competitors by country and product line.`
-
-## `JCH_Inbox/03_PROJECTS/08_VETALYX/operations/2026-05-26_VETALYX_Taches_post_analyse_clinique_KOL_DBS.md`
-
-### Line 6
-
-- terms: Dobby
-- before:
-  `owner: Dobby`
-- after:
-  `owner: [[Dobby]]`
-
-### Line 21
-
-- terms: Dobby
-- before:
-  `| P0 | Valider la logique "ligne mixte" avec DIXUN : une ligne = groupe allergenique, pas allergene individuel | JCH + Dobby | Question technique envoyee |`
-- after:
-  `| P0 | Valider la logique "ligne mixte" avec DIXUN : une ligne = groupe allergenique, pas allergene individuel | JCH + [[Dobby]] | Question technique envoyee |`
-
-### Line 26
-
-- terms: Vasco, Clio
-- before:
-  `| P1 | Definir deux versions pollens : Nord/Ouest Europe et Mediterranee | Vasco + Clio | Panel regional v1 |`
-- after:
-  `| P1 | Definir deux versions pollens : Nord/Ouest Europe et Mediterranee | [[Vasco]] + [[Clio]] | Panel regional v1 |`
-
-### Line 27
-
-- terms: Vasco, Renard
-- before:
-  `| P1 | Revoir le panel alimentaire comme P2 uniquement, avec claim "support de sensibilisation" | Vasco + Renard | Claim et IFU wording |`
-- after:
-  `| P1 | Revoir le panel alimentaire comme P2 uniquement, avec claim "support de sensibilisation" | [[Vasco]] + [[Renard]] | Claim et IFU wording |`
-
-### Line 33
-
-- terms: Dobby
-- before:
-  `| P0 | Relire le rapport final DOCX pour correction style/orthographe avant envoi externe | JCH + Dobby | Version finale distribuee |`
-- after:
-  `| P0 | Relire le rapport final DOCX pour correction style/orthographe avant envoi externe | JCH + [[Dobby]] | Version finale distribuee |`
-
-### Line 34
-
-- terms: Dobby
-- before:
-  `| P0 | Ajouter logo/identite Vetalyx si necessaire | Dobby | DOCX final brandé |`
-- after:
-  `| P0 | Ajouter logo/identite Vetalyx si necessaire | [[Dobby]] | DOCX final brandé |`
-
-### Line 36
-
-- terms: Dobby, Vasco
-- before:
-  `| P1 | Preparer une version courte 2 pages pour email KOL/fournisseur | Dobby + Vasco | Brief KOL 2 pages |`
-- after:
-  `| P1 | Preparer une version courte 2 pages pour email KOL/fournisseur | [[Dobby]] + [[Vasco]] | Brief KOL 2 pages |`
-
-### Line 37
-
-- terms: Dobby
-- before:
-  `| P1 | Preparer une version anglaise pour DIXUN | Dobby | English supplier brief |`
-- after:
-  `| P1 | Preparer une version anglaise pour DIXUN | [[Dobby]] | English supplier brief |`
-
-### Line 44
-
-- terms: Furet, Dobby
-- before:
-  `| P0 | Screener chaque KOL avant contact : carriere, specialite, publications, reseaux, prises de parole, contraintes institutionnelles, centres d'interet cliniques | Furet + Dobby | Fiche KOL personnalisee |`
-- after:
-  `| P0 | Screener chaque KOL avant contact : carriere, specialite, publications, reseaux, prises de parole, contraintes institutionnelles, centres d'interet cliniques | [[Furet]] + [[Dobby]] | Fiche KOL personnalisee |`
-
-### Line 45
-
-- terms: Furet
-- before:
-  `| P0 | Verifier si le contact "Dr Billen" correspond bien a Dr Frederic Billen, ULiege/CVU, medecine interne/gastroenterologie, ou a un autre Billen | Furet + JCH | Identification confirmee |`
-- after:
-  `| P0 | Verifier si le contact "Dr Billen" correspond bien a Dr Frederic Billen, ULiege/CVU, medecine interne/gastroenterologie, ou a un autre Billen | [[Furet]] + JCH | Identification confirmee |`
-
-### Line 46
-
-- terms: Dobby, Vasco
-- before:
-  `| P0 | Adapter l'angle d'approche a chaque KOL : dermatologie/allergologie, medecine interne, recherche clinique, biobanque, innovation diagnostique | Dobby + Vasco | Message personnalise |`
-- after:
-  `| P0 | Adapter l'angle d'approche a chaque KOL : dermatologie/allergologie, medecine interne, recherche clinique, biobanque, innovation diagnostique | [[Dobby]] + [[Vasco]] | Message personnalise |`
-
-### Line 47
-
-- terms: Dobby
-- before:
-  `| P0 | Envoyer un email d'approche avec le protocole pilote | JCH + Dobby | Email envoye |`
-- after:
-  `| P0 | Envoyer un email d'approche avec le protocole pilote | JCH + [[Dobby]] | Email envoye |`
-
-### Line 51
-
-- terms: Renard
-- before:
-  `| P1 | Verifier exigences comite ethique/institutionnel Maisons-Alfort et ULg | Renard + KOL | Avis ethique requis ou non |`
-- after:
-  `| P1 | Verifier exigences comite ethique/institutionnel Maisons-Alfort et ULg | [[Renard]] + KOL | Avis ethique requis ou non |`
-
-### Line 52
-
-- terms: Bruno
-- before:
-  `| P1 | Definir compensation par cas complet et honoraires KOL | Bruno + JCH | Budget KOL |`
-- after:
-  `| P1 | Definir compensation par cas complet et honoraires KOL | [[Bruno]] + JCH | Budget KOL |`
-
-### Line 53
-
-- terms: Vasco
-- before:
-  `| P1 | Valider la faisabilite chat : recrutement, sedation/prelevement, suivi | Vasco + KOL | Faisabilite chat |`
-- after:
-  `| P1 | Valider la faisabilite chat : recrutement, sedation/prelevement, suivi | [[Vasco]] + KOL | Faisabilite chat |`
-
-### Line 88
-
-- terms: Dobby, Vasco
-- before:
-  `| P0 | Transformer le protocole actuel en synopsis 4 pages | Dobby + Vasco | Synopsis KOL |`
-- after:
-  `| P0 | Transformer le protocole actuel en synopsis 4 pages | [[Dobby]] + [[Vasco]] | Synopsis KOL |`
-
-### Line 89
-
-- terms: Vasco, Trace
-- before:
-  `| P0 | Creer CRF consultation 1 page | Vasco + Trace | CRF v1 |`
-- after:
-  `| P0 | Creer CRF consultation 1 page | [[Vasco]] + [[Trace]] | CRF v1 |`
-
-### Line 90
-
-- terms: Vasco
-- before:
-  `| P0 | Creer grille de lecture test rapide | DIXUN + Vasco | Grille interpretation |`
-- after:
-  `| P0 | Creer grille de lecture test rapide | DIXUN + [[Vasco]] | Grille interpretation |`
-
-### Line 91
-
-- terms: Sigma
-- before:
-  `| P0 | Creer plan d'analyse statistique court | Sigma | SAP v1 |`
-- after:
-  `| P0 | Creer plan d'analyse statistique court | [[Sigma]] | SAP v1 |`
-
-### Line 92
-
-- terms: Vasco, Clio
-- before:
-  `| P1 | Definir diagnostic composite pour analyse exploratoire sensibilite/specificite | Vasco + Clio | Definition endpoint |`
-- after:
-  `| P1 | Definir diagnostic composite pour analyse exploratoire sensibilite/specificite | [[Vasco]] + [[Clio]] | Definition endpoint |`
-
-### Line 93
-
-- terms: Vasco
-- before:
-  `| P1 | Definir bras controles non allergiques | Vasco | Criteres controles |`
-- after:
-  `| P1 | Definir bras controles non allergiques | [[Vasco]] | Criteres controles |`
-
-### Line 94
-
-- terms: Vasco, Trace
-- before:
-  `| P1 | Definir follow-up 4-8 semaines : contenu, modalites, charge KOL | Vasco + Trace | Follow-up form |`
-- after:
-  `| P1 | Definir follow-up 4-8 semaines : contenu, modalites, charge KOL | [[Vasco]] + [[Trace]] | Follow-up form |`
-
-### Line 100
-
-- terms: Vasco
-- before:
-  `| P0 | Choisir le laboratoire de reference IgE chien/chat | JCH + Vasco | Labo selectionne |`
-- after:
-  `| P0 | Choisir le laboratoire de reference IgE chien/chat | JCH + [[Vasco]] | Labo selectionne |`
-
-### Line 103
-
-- terms: Renard
-- before:
-  `| P1 | Definir biobanque : duree conservation, proprietaire echantillons, destruction | Renard + JCH | Politique echantillons |`
-- after:
-  `| P1 | Definir biobanque : duree conservation, proprietaire echantillons, destruction | [[Renard]] + JCH | Politique echantillons |`
+  `| 8088 | `0.0.0.0` / IPv6 | Plane proxy [[Docker]] | À risque si non validé |`
 
 ### Line 104
 
-- terms: Trace
+- terms: Docker
 - before:
-  `| P1 | Prevoir fiches de non-conformite : hemolyse, volume insuffisant, delai, temperature | Trace | Formulaire deviation |`
+  `| 4443 | `0.0.0.0` / IPv6 | Plane proxy Docker TLS | À risque si non validé |`
 - after:
-  `| P1 | Prevoir fiches de non-conformite : hemolyse, volume insuffisant, delai, temperature | [[Trace]] | Formulaire deviation |`
+  `| 4443 | `0.0.0.0` / IPv6 | Plane proxy [[Docker]] TLS | À risque si non validé |`
 
-### Line 110
+### Line 111
 
-- terms: Dobby
+- terms: Docker
 - before:
-  `| P0 | Envoyer a DIXUN la question DBS : assay compatible eluats DBS oui/non | JCH + Dobby | Reponse DIXUN |`
+  `## 5. Docker / Plane`
 - after:
-  `| P0 | Envoyer a DIXUN la question DBS : assay compatible eluats DBS oui/non | JCH + [[Dobby]] | Reponse DIXUN |`
-
-### Line 112
-
-- terms: Clio
-- before:
-  `| P0 | Confirmer papier recommande : Whatman 903 ou autre support valide | DIXUN + Clio | Choix carte DBS |`
-- after:
-  `| P0 | Confirmer papier recommande : Whatman 903 ou autre support valide | DIXUN + [[Clio]] | Choix carte DBS |`
+  `## 5. [[Docker]] / Plane`
 
 ### Line 113
 
-- terms: Clio
+- terms: Docker
 - before:
-  `| P0 | Definir volume par spot : 20/40 uL analytique ou 50-75 uL pratique | Clio + DIXUN | Specification depot |`
+  `Docker est actif. Plane tourne avec les conteneurs suivants :`
 - after:
-  `| P0 | Definir volume par spot : 20/40 uL analytique ou 50-75 uL pratique | [[Clio]] + DIXUN | Specification depot |`
-
-### Line 114
-
-- terms: Clio, Trace
-- before:
-  `| P0 | Confirmer conservation basse temperature : 2-8 C apres sechage, -20 C >72 h, -80 C biobanque | Clio + Trace | SOP stockage DBS |`
-- after:
-  `| P0 | Confirmer conservation basse temperature : 2-8 C apres sechage, -20 C >72 h, -80 C biobanque | [[Clio]] + [[Trace]] | SOP stockage DBS |`
-
-### Line 115
-
-- terms: Clio
-- before:
-  `| P0 | Definir tests de stabilite : J0/J3/J7/J14/J28, 2-8 C vs -20 C, stress temperature ambiante | Clio + DIXUN | Plan stabilite |`
-- after:
-  `| P0 | Definir tests de stabilite : J0/J3/J7/J14/J28, 2-8 C vs -20 C, stress temperature ambiante | [[Clio]] + DIXUN | Plan stabilite |`
-
-### Line 116
-
-- terms: Vasco, Sigma, Clio
-- before:
-  `| P1 | Definir criteres go/no-go DBS : exploitables >90 %, concordance >=80 %, faibles positifs | Vasco + Sigma + Clio | Decision matrix |`
-- after:
-  `| P1 | Definir criteres go/no-go DBS : exploitables >90 %, concordance >=80 %, faibles positifs | [[Vasco]] + [[Sigma]] + [[Clio]] | Decision matrix |`
-
-### Line 117
-
-- terms: Trace
-- before:
-  `| P1 | Prevoir photo/scan obligatoire du spot et indicateur humidite | Trace | Controle qualite DBS |`
-- after:
-  `| P1 | Prevoir photo/scan obligatoire du spot et indicateur humidite | [[Trace]] | Controle qualite DBS |`
-
-### Line 118
-
-- terms: Clio
-- before:
-  `| P1 | Tester full spot vs punch si volume controle | DIXUN + Clio | Comparaison extraction |`
-- after:
-  `| P1 | Tester full spot vs punch si volume controle | DIXUN + [[Clio]] | Comparaison extraction |`
-
-### Line 124
-
-- terms: Renard
-- before:
-  `| P0 | Rediger notice information proprietaire | Renard | Notice v1 |`
-- after:
-  `| P0 | Rediger notice information proprietaire | [[Renard]] | Notice v1 |`
-
-### Line 125
-
-- terms: Renard
-- before:
-  `| P0 | Rediger consentement participation et prelevement | Renard | Consentement v1 |`
-- after:
-  `| P0 | Rediger consentement participation et prelevement | [[Renard]] | Consentement v1 |`
-
-### Line 126
-
-- terms: Renard
-- before:
-  `| P0 | Ajouter consentement separe conservation/utilisation secondaire echantillons | Renard | Clause biobanque |`
-- after:
-  `| P0 | Ajouter consentement separe conservation/utilisation secondaire echantillons | [[Renard]] | Clause biobanque |`
-
-### Line 127
-
-- terms: Renard
-- before:
-  `| P0 | Definir RGPD : donnees pseudonymisees, cle chez KOL, Vetalyx sans identite proprietaire | Renard | Note RGPD |`
-- after:
-  `| P0 | Definir RGPD : donnees pseudonymisees, cle chez KOL, Vetalyx sans identite proprietaire | [[Renard]] | Note RGPD |`
+  `[[Docker]] est actif. Plane tourne avec les conteneurs suivants :`
 
 ### Line 128
 
-- terms: Renard, Bruno
+- terms: PostgreSQL, Redis, Docker
 - before:
-  `| P1 | Rediger convention KOL/site | Renard + Bruno | Convention v1 |`
+  `Observation importante : Plane utilise déjà PostgreSQL, Redis, MinIO et MQ dans Docker. Cela ne doit pas être confondu avec une validation d'infrastructure Hermes. C'est un runtime existant à gouverner, pas une permission d'ajouter une nouvelle stack.`
 - after:
-  `| P1 | Rediger convention KOL/site | [[Renard]] + [[Bruno]] | Convention v1 |`
+  `Observation importante : Plane utilise déjà [[PostgreSQL]], [[Redis]], MinIO et MQ dans [[Docker]]. Cela ne doit pas être confondu avec une validation d'infrastructure Hermes. C'est un runtime existant à gouverner, pas une permission d'ajouter une nouvelle stack.`
 
-### Line 129
+### Line 203
 
-- terms: Renard
+- terms: n8n, Redis, Qdrant
 - before:
-  `| P1 | Definir clauses publication, donnees agregées, confidentialite, conflit d'interets | Renard | Annexes contrat |`
+  `> Ne pas ajouter Hermes, n8n, Redis, Qdrant ou nouvelle orchestration tant que les P0 runtime ne sont pas résolus.`
 - after:
-  `| P1 | Definir clauses publication, donnees agregées, confidentialite, conflit d'interets | [[Renard]] | Annexes contrat |`
+  `> Ne pas ajouter Hermes, [[n8n]], [[Redis]], [[Qdrant]] ou nouvelle orchestration tant que les P0 runtime ne sont pas résolus.`
 
-### Line 135
+## `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation/AI_System_Blueprint.md`
 
-- terms: Trace, Bruno
+### Line 43
+
+- terms: [[Dobby]]
 - before:
-  `| P0 | Creer kit terrain KOL : tubes, cartes DBS, dessicants, indicateurs humidite, enveloppes, etiquettes | Trace + Bruno | Kit KOL |`
+  `| `ADAPTER-PROMPT.md`, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `Codex.md` | Pointeurs runtime et identité Dobby. | Confirmé |`
 - after:
-  `| P0 | Creer kit terrain KOL : tubes, cartes DBS, dessicants, indicateurs humidite, enveloppes, etiquettes | [[Trace]] + [[Bruno]] | Kit KOL |`
+  `| `ADAPTER-PROMPT.md`, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `Codex.md` | Pointeurs runtime et identité [[Dobby]]. | Confirmé |`
 
-### Line 136
+### Line 55
 
-- terms: Trace
+- terms: Python
 - before:
-  `| P0 | Definir circuit expedition serum/plasma sous froid | Trace | SOP transport |`
+  `- des scripts Python et shell ;`
 - after:
-  `| P0 | Definir circuit expedition serum/plasma sous froid | [[Trace]] | SOP transport |`
+  `- des scripts [[Python]] et shell ;`
 
-### Line 137
+### Line 58
 
-- terms: Trace
+- terms: Tailscale
 - before:
-  `| P0 | Definir circuit expedition DBS sous froid | Trace | SOP transport DBS |`
+  `- des connecteurs externes partiels : Dropbox, Gmail, Outlook, Google Calendar, Plane, Telegram, Tailscale ;`
 - after:
-  `| P0 | Definir circuit expedition DBS sous froid | [[Trace]] | SOP transport DBS |`
+  `- des connecteurs externes partiels : Dropbox, Gmail, Outlook, Google Calendar, Plane, Telegram, [[Tailscale]] ;`
 
-### Line 138
+### Line 70
 
-- terms: Renard
+- terms: [[Dobby]]
 - before:
-  `| P1 | Verifier classification transport : Exempt Animal Specimen vs UN3373 selon contexte | Renard + transporteur | Avis transport |`
+  `| Spécialistes PKA | 27 rôles experts dans `TEAM/`. | L0-L1, exécutés via Dobby | Confirmé |`
 - after:
-  `| P1 | Verifier classification transport : Exempt Animal Specimen vs UN3373 selon contexte | [[Renard]] + transporteur | Avis transport |`
+  `| Spécialistes PKA | 27 rôles experts dans `TEAM/`. | L0-L1, exécutés via [[Dobby]] | Confirmé |`
 
-### Line 139
+### Line 71
 
-- terms: Trace
+- terms: Python
 - before:
-  `| P1 | Prevoir tracking temperature pour les premiers envois | Trace | Tracking log |`
+  `| Scripts automatisés | Python/shell sous `scripts/` et `bin/`. | L1-L2 selon script | Confirmé |`
 - after:
-  `| P1 | Prevoir tracking temperature pour les premiers envois | [[Trace]] | Tracking log |`
+  `| Scripts automatisés | [[Python]]/shell sous `scripts/` et `bin/`. | L1-L2 selon script | Confirmé |`
 
-### Line 140
+### Line 74
 
-- terms: Vasco, Trace
+- terms: Claude
 - before:
-  `| P1 | Monitorer les 10 premiers cas pour ajuster SOP | Vasco + Trace | Rapport monitoring |`
+  `| Modèles AI | Claude, Ollama, NVIDIA/DeepSeek, OpenAI, Google, autres providers configurés. | Dépend de l'appelant | Confirmé |`
 - after:
-  `| P1 | Monitorer les 10 premiers cas pour ajuster SOP | [[Vasco]] + [[Trace]] | Rapport monitoring |`
-
-### Line 146
-
-- terms: Bruno
-- before:
-  `| P0 | Construire budget 50, 100 et 160 animaux | Bruno | Budget scenarios |`
-- after:
-  `| P0 | Construire budget 50, 100 et 160 animaux | [[Bruno]] | Budget scenarios |`
-
-### Line 147
-
-- terms: Bruno
-- before:
-  `| P0 | Chiffrer cout test de reference par animal | Bruno + laboratoire | Cout comparator |`
-- after:
-  `| P0 | Chiffrer cout test de reference par animal | [[Bruno]] + laboratoire | Cout comparator |`
-
-### Line 148
-
-- terms: Bruno
-- before:
-  `| P0 | Chiffrer compensation KOL par cas complet | Bruno + JCH | Offre KOL |`
-- after:
-  `| P0 | Chiffrer compensation KOL par cas complet | [[Bruno]] + JCH | Offre KOL |`
-
-### Line 149
-
-- terms: Bruno, Trace
-- before:
-  `| P1 | Chiffrer surcout DBS basse temperature | Bruno + Trace | Budget DBS |`
-- after:
-  `| P1 | Chiffrer surcout DBS basse temperature | [[Bruno]] + [[Trace]] | Budget DBS |`
-
-### Line 150
-
-- terms: Bruno
-- before:
-  `| P1 | Definir seuil budget go/no-go phase pilote | JCH + Bruno | Decision budget |`
-- after:
-  `| P1 | Definir seuil budget go/no-go phase pilote | JCH + [[Bruno]] | Decision budget |`
-
-## `TEAM/RESTORE_TEAM_DB.md`
-
-### Line 22
-
-- terms: SQLite, SQLite
-- before:
-  `- crée un snapshot SQLite cohérent via l'API SQLite Online Backup ;`
-- after:
-  `- crée un snapshot [[SQLite]] cohérent via l'API [[SQLite]] Online Backup ;`
-
-### Line 72
-
-- terms: Dobby
-- before:
-  `- Dobby et les scripts pouvant écrire dans `TEAM/team.db` sont arrêtés ou suspendus.`
-- after:
-  `- [[Dobby]] et les scripts pouvant écrire dans `TEAM/team.db` sont arrêtés ou suspendus.`
-
-### Line 108
-
-- terms: SQLite
-- before:
-  `- tables SQLite visibles.`
-- after:
-  `- tables [[SQLite]] visibles.`
-
-## `TEAM_Inbox/2026-05-26_Forge_procurement_WILDNEXUS.md`
-
-### Line 3
-
-- terms: Forge
-- before:
-  `**Généré par :** Forge 🦦 (PKA Procurement Agent)`
-- after:
-  `**Généré par :** [[Forge]] 🦦 (PKA Procurement Agent)`
-
-## `TEAM_Inbox/2026-05-26_dobby_obsidian_plugins_recommandations.md`
-
-### Line 1
-
-- terms: Obsidian
-- before:
-  `# 2026-05-26 — Recommandations Obsidian pour PKA_JCH`
-- after:
-  `# 2026-05-26 — Recommandations [[Obsidian]] pour PKA_JCH`
-
-### Line 5
-
-- terms: Obsidian
-- before:
-  `Analyser les plugins et configurations Obsidian utiles pour le vault PKA_JCH, maintenant que les wikilinks sont cohérents et que la vue graphe devient exploitable.`
-- after:
-  `Analyser les plugins et configurations [[Obsidian]] utiles pour le vault PKA_JCH, maintenant que les wikilinks sont cohérents et que la vue graphe devient exploitable.`
-
-### Line 13
-
-- terms: Obsidian
-- before:
-  `- [[Furet]] : veille ecosysteme plugins Obsidian.`
-- after:
-  `- [[Furet]] : veille ecosysteme plugins [[Obsidian]].`
-
-### Line 17
-
-- terms: Obsidian
-- before:
-  `Le vault utilise actuellement une configuration Obsidian minimale :`
-- after:
-  `Le vault utilise actuellement une configuration [[Obsidian]] minimale :`
-
-### Line 82
-
-- terms: Obsidian, Git
-- before:
-  `### Obsidian Git`
-- after:
-  `### [[Obsidian]] [[Git]]`
-
-### Line 84
-
-- terms: Git
-- before:
-  `Priorite : haute si Git reste le filet de securite principal.`
-- after:
-  `Priorite : haute si [[Git]] reste le filet de securite principal.`
-
-### Line 91
-
-- terms: Git
-- before:
-  `Decision : installer si le vault est gere en Git ; configurer en mode prudent.`
-- after:
-  `Decision : installer si le vault est gere en [[Git]] ; configurer en mode prudent.`
-
-### Line 101
-
-- terms: Obsidian
-- before:
-  `Decision : installer si JCH veut gerer les actions dans Obsidian plutot que dans un outil externe.`
-- after:
-  `Decision : installer si JCH veut gerer les actions dans [[Obsidian]] plutot que dans un outil externe.`
+  `| Modèles AI | [[Claude]], Ollama, NVIDIA/DeepSeek, OpenAI, Google, autres providers configurés. | Dépend de l'appelant | Confirmé |`
 
 ### Line 107
 
-- terms: Sybil
+- terms: BirdNET
 - before:
-  `- creation de notes hebdo/mensuelles si Sybil structure des revues periodiques.`
+  `| [[Chouette]] | Terrain, caméras, bioacoustique. | L1 | Élevée pour WILDNEXUS | RPi, BirdNET, terrain, matériel | Confirmé |`
 - after:
-  `- creation de notes hebdo/mensuelles si [[Sybil]] structure des revues periodiques.`
+  `| [[Chouette]] | Terrain, caméras, bioacoustique. | L1 | Élevée pour WILDNEXUS | RPi, [[BirdNET]], terrain, matériel | Confirmé |`
 
-### Line 133
+### Line 121
 
-- terms: Obsidian
+- terms: Claude
 - before:
-  `### Plugins IA dans Obsidian`
+  `| `email_digest.py` | Digest email. | Claude Haiku configuré pour `email_digest` | Emails / configs | Digest/logs | 09:00, 14:00, 20:00 | L2 | Moyenne | Observé, mais MEMORY indique digest suspendu |`
 - after:
-  `### Plugins IA dans [[Obsidian]]`
+  `| `email_digest.py` | Digest email. | [[Claude]] Haiku configuré pour `email_digest` | Emails / configs | Digest/logs | 09:00, 14:00, 20:00 | L2 | Moyenne | Observé, mais MEMORY indique digest suspendu |`
 
-### Line 135
+### Line 128
 
-- terms: Codex, Claude
+- terms: [[Dobby]], Claude, [[Dobby]]
 - before:
-  `A eviter tant que l'architecture multi-modeles PKA/Codex/Claude/Gemini n'est pas stabilisee. Les decisions et memoires doivent rester dans les fichiers PKA, pas dans des conversations ou index opaques de plugin.`
+  `| Telegram bot | Interface Dobby Telegram. | Claude Sonnet configuré pour `telegram_bot` | Telegram, contexte Dobby | Réponses, conversation DB | Potentiellement permanent | L2 | Élevée | Observé |`
 - after:
-  `A eviter tant que l'architecture multi-modeles PKA/[[Codex]]/[[Claude]]/Gemini n'est pas stabilisee. Les decisions et memoires doivent rester dans les fichiers PKA, pas dans des conversations ou index opaques de plugin.`
+  `| Telegram bot | Interface [[Dobby]] Telegram. | [[Claude]] Sonnet configuré pour `telegram_bot` | Telegram, contexte [[Dobby]] | Réponses, conversation DB | Potentiellement permanent | L2 | Élevée | Observé |`
+
+### Line 145
+
+- terms: Codex
+- before:
+  `| Codex session courante | OpenAI | GPT-5 | Confirmé par runtime |`
+- after:
+  `| [[Codex]] session courante | OpenAI | GPT-5 | Confirmé par runtime |`
+
+### Line 172
+
+- terms: Python
+- before:
+  `| `scripts/__pycache__/` | Cache Python. | Bruit documentaire | Confirmé |`
+- after:
+  `| `scripts/__pycache__/` | Cache [[Python]]. | Bruit documentaire | Confirmé |`
 
 ### Line 210
 
-- terms: Obsidian, Git, Git
+- terms: [[Dobby]], [[Dobby]]
 - before:
-  `5. Installer Obsidian Git apres verification de l'etat Git du vault.`
+  `| Activation Dobby | Lecture mémoire, roster, protocole, inbox. | `MEMORY.md`, `TEAM/`, `wiki/`, inbox | Dobby | Manuel à chaque session | Élevée | Confirmé |`
 - after:
-  `5. Installer [[Obsidian]] [[Git]] apres verification de l'etat [[Git]] du vault.`
+  `| Activation [[Dobby]] | Lecture mémoire, roster, protocole, inbox. | `MEMORY.md`, `TEAM/`, `wiki/`, inbox | [[Dobby]] | Manuel à chaque session | Élevée | Confirmé |`
+
+### Line 211
+
+- terms: [[Dobby]], [[Pie]]
+- before:
+  `| Inbox triage | Lire, loguer, router les fichiers entrants. | `JCH_Inbox/00_INBOX/`, `file_index` | Dobby, Pie, spécialistes | Partiel | Élevée | Confirmé |`
+- after:
+  `| Inbox triage | Lire, loguer, router les fichiers entrants. | `JCH_Inbox/00_INBOX/`, `file_index` | [[Dobby]], [[Pie]], spécialistes | Partiel | Élevée | Confirmé |`
+
+### Line 212
+
+- terms: [[Dobby]], [[Sybil]]
+- before:
+  `| Sauvegarde session | Capturer décisions/actions dans Daily/TEAM_Inbox. | `pka_save.py`, `wiki/Daily` | Dobby, Sybil | Manuel interactif | Élevée | Confirmé |`
+- after:
+  `| Sauvegarde session | Capturer décisions/actions dans Daily/TEAM_Inbox. | `pka_save.py`, `wiki/Daily` | [[Dobby]], [[Sybil]] | Manuel interactif | Élevée | Confirmé |`
 
 ### Line 213
 
-- terms: Dobby
+- terms: [[Dobby]], [[Castor]], [[Forge]]
 - before:
-  `## Decision Dobby`
+  `| System check | Rapport périodique santé PKA. | Vault, scripts, DB | Dobby/Castor/Forge | launchd | Élevée | Observé |`
 - after:
-  `## Decision [[Dobby]]`
+  `| System check | Rapport périodique santé PKA. | Vault, scripts, DB | [[Dobby]]/[[Castor]]/[[Forge]] | launchd | Élevée | Observé |`
 
-### Line 221
+### Line 214
 
-- terms: Obsidian, Git
+- terms: [[Forge]], [[Corbeau]]
 - before:
-  `- Obsidian Git`
+  `| Vault maintenance | Maintenance conventions et placement. | Vault Markdown | Forge/Corbeau | launchd | Élevée | Observé |`
 - after:
-  `- [[Obsidian]] [[Git]]`
+  `| Vault maintenance | Maintenance conventions et placement. | Vault Markdown | [[Forge]]/[[Corbeau]] | launchd | Élevée | Observé |`
 
-## `TEAM_Inbox/2026-05-26_dobby_system_check.md`
+### Line 215
+
+- terms: [[Forge]], [[Vasco]]
+- before:
+  `| Dropbox VETALYX | Surveiller documents Dropbox. | Dropbox VETALYX | Forge/Vasco | launchd | Élevée | Observé |`
+- after:
+  `| Dropbox VETALYX | Surveiller documents Dropbox. | Dropbox VETALYX | [[Forge]]/[[Vasco]] | launchd | Élevée | Observé |`
+
+### Line 216
+
+- terms: [[Pie]], [[Dobby]]
+- before:
+  `| Email gatekeeping | Scan Gmail/Outlook, digest. | Email, configs | Pie/Dobby | launchd | Élevée | Observé |`
+- after:
+  `| Email gatekeeping | Scan Gmail/Outlook, digest. | Email, configs | [[Pie]]/[[Dobby]] | launchd | Élevée | Observé |`
+
+### Line 217
+
+- terms: [[Forge]], [[Dobby]]
+- before:
+  `| Dashboards | Hub, organigramme, live dashboard. | `JCH_Inbox/01_DASHBOARDS/` | Forge/Dobby | Serveur local | Moyenne | Confirmé |`
+- after:
+  `| Dashboards | Hub, organigramme, live dashboard. | `JCH_Inbox/01_DASHBOARDS/` | [[Forge]]/[[Dobby]] | Serveur local | Moyenne | Confirmé |`
+
+### Line 218
+
+- terms: BirdNET, [[Chouette]], [[Clio]], [[Forge]]
+- before:
+  `| WildNexus bioacoustique | Protocoles RPi/BirdNET, QC audio, terrain. | WILDNEXUS, audio, scripts InsectNet | Chouette, Clio, Forge | Partiel | Élevée | Confirmé |`
+- after:
+  `| WildNexus bioacoustique | Protocoles RPi/[[BirdNET]], QC audio, terrain. | WILDNEXUS, audio, scripts InsectNet | [[Chouette]], [[Clio]], [[Forge]] | Partiel | Élevée | Confirmé |`
+
+### Line 219
+
+- terms: [[Vasco]], [[Clio]], [[Jade]], [[Renard]]
+- before:
+  `| VETALYX clinique | Documents techniques, DIXUN, validations. | VETALYX, PDF/DOCX/HTML | Vasco, Clio, Jade, Renard | Partiel | Élevée | Confirmé |`
+- after:
+  `| VETALYX clinique | Documents techniques, DIXUN, validations. | VETALYX, PDF/DOCX/HTML | [[Vasco]], [[Clio]], [[Jade]], [[Renard]] | Partiel | Élevée | Confirmé |`
+
+### Line 220
+
+- terms: [[Forge]], [[Bruno]], [[Chouette]]
+- before:
+  `| Procurement/BOM | BOM et paniers composants. | BOM, Digi-Key API | Forge, Bruno, Chouette | Partiel | Moyenne | Confirmé |`
+- after:
+  `| Procurement/BOM | BOM et paniers composants. | BOM, Digi-Key API | [[Forge]], [[Bruno]], [[Chouette]] | Partiel | Moyenne | Confirmé |`
+
+### Line 241
+
+- terms: Claude, Codex
+- before:
+  `| AI tools | Claude, Codex, Gemini, DeepSeek, Ollama, NVIDIA. | Modèle utilisé pas toujours tracé. | Confirmé |`
+- after:
+  `| AI tools | [[Claude]], [[Codex]], Gemini, DeepSeek, Ollama, NVIDIA. | Modèle utilisé pas toujours tracé. | Confirmé |`
+
+### Line 268
+
+- terms: Docker, PostgreSQL, Redis, Qdrant
+- before:
+  `| Surcomplexification précoce | Élevée | Docker/PostgreSQL/Redis/Qdrant/Hermes avant stabilisation | Freeze technique jusqu'à validation blueprint. |`
+- after:
+  `| Surcomplexification précoce | Élevée | [[Docker]]/[[PostgreSQL]]/[[Redis]]/[[Qdrant]]/Hermes avant stabilisation | Freeze technique jusqu'à validation blueprint. |`
+
+### Line 287
+
+- terms: [[Dobby]]
+- before:
+  `- Dobby conversationnel : L1.`
+- after:
+  `- [[Dobby]] conversationnel : L1.`
+
+### Line 288
+
+- terms: [[Dobby]]
+- before:
+  `- Dobby avec outils fichier : L1-L2 selon action.`
+- after:
+  `- [[Dobby]] avec outils fichier : L1-L2 selon action.`
+
+### Line 309
+
+- terms: [[Dobby]]
+- before:
+  `| Remplacer [[Dobby]] | Rejeté | Dobby reste orchestrateur. |`
+- after:
+  `| Remplacer [[Dobby]] | Rejeté | [[Dobby]] reste orchestrateur. |`
+
+### Line 314
+
+- terms: Docker, PostgreSQL, Redis, Qdrant, n8n
+- before:
+  `| Docker/PostgreSQL/Redis/Qdrant/n8n/Hermes | Gelé | Phase technique ultérieure seulement. |`
+- after:
+  `| [[Docker]]/[[PostgreSQL]]/[[Redis]]/[[Qdrant]]/[[n8n]]/Hermes | Gelé | Phase technique ultérieure seulement. |`
+
+### Line 322
+
+- terms: Docker
+- before:
+  `- Docker Desktop pour ce projet ;`
+- after:
+  `- [[Docker]] Desktop pour ce projet ;`
+
+### Line 323
+
+- terms: PostgreSQL
+- before:
+  `- PostgreSQL ;`
+- after:
+  `- [[PostgreSQL]] ;`
+
+### Line 324
+
+- terms: Redis
+- before:
+  `- Redis ;`
+- after:
+  `- [[Redis]] ;`
+
+### Line 325
+
+- terms: Qdrant
+- before:
+  `- Qdrant ;`
+- after:
+  `- [[Qdrant]] ;`
+
+### Line 326
+
+- terms: n8n
+- before:
+  `- n8n ;`
+- after:
+  `- [[n8n]] ;`
+
+## `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation/Inbox_Deliverables_PostMigration_Report.md`
+
+### Line 63
+
+- terms: SQLite
+- before:
+  `| Intégrité SQLite | `ok` |`
+- after:
+  `| Intégrité [[SQLite]] | `ok` |`
+
+### Line 81
+
+- terms: [[Vasco]]
+- before:
+  `| 20 | Vasco | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | `pending` | 2026-05-01 12:59:28 |  |`
+- after:
+  `| 20 | [[Vasco]] | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | `pending` | 2026-05-01 12:59:28 |  |`
+
+### Line 82
+
+- terms: [[Vasco]]
+- before:
+  `| 83 | Vasco | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | `pending` | 2026-05-01 13:00:50 |  |`
+- after:
+  `| 83 | [[Vasco]] | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | `pending` | 2026-05-01 13:00:50 |  |`
+
+### Line 83
+
+- terms: [[Renard]]
+- before:
+  `| 128 | Renard | `[EMAIL] Re: contrat type` | `pending` | 2026-05-01 13:02:58 |  |`
+- after:
+  `| 128 | [[Renard]] | `[EMAIL] Re: contrat type` | `pending` | 2026-05-01 13:02:58 |  |`
+
+### Line 84
+
+- terms: [[Vasco]]
+- before:
+  `| 147 | Vasco | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | `pending` | 2026-05-01 13:03:05 |  |`
+- after:
+  `| 147 | [[Vasco]] | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | `pending` | 2026-05-01 13:03:05 |  |`
+
+### Line 85
+
+- terms: [[Vasco]]
+- before:
+  `| 214 | Vasco | `[EMAIL] These are not quizzes. They are diagnostic tools.` | `pending` | 2026-05-02 18:00:14 |  |`
+- after:
+  `| 214 | [[Vasco]] | `[EMAIL] These are not quizzes. They are diagnostic tools.` | `pending` | 2026-05-02 18:00:14 |  |`
+
+### Line 86
+
+- terms: [[Renard]]
+- before:
+  `| 228 | Renard | `[EMAIL] Jean-Claude, tatouage Thaïlandais, Tatouage Japonaise et plus d'idées à explorer` | `pending` | 2026-05-09 07:00:19 |  |`
+- after:
+  `| 228 | [[Renard]] | `[EMAIL] Jean-Claude, tatouage Thaïlandais, Tatouage Japonaise et plus d'idées à explorer` | `pending` | 2026-05-09 07:00:19 |  |`
+
+### Line 87
+
+- terms: [[Chouette]]
+- before:
+  `| 232 | Chouette | `WildNexus — déterminer longueur d'onde LED IR non visible/non perturbante faune` | `validated` | 2026-05-18 18:52:08 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/02_DECISIONS/ADR/[[ADR-002-choix-camera-ir-p0]].md` |`
+- after:
+  `| 232 | [[Chouette]] | `WildNexus — déterminer longueur d'onde LED IR non visible/non perturbante faune` | `validated` | 2026-05-18 18:52:08 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/02_DECISIONS/ADR/[[ADR-002-choix-camera-ir-p0]].md` |`
+
+### Line 88
+
+- terms: [[Forge]]
+- before:
+  `| 233 | Forge | `WildNexus — revue Meshnology N35 ESP32 LoRa V3/V4` | `delivered` | 2026-05-18 19:53:20 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/[[2026-05-18_product-review-meshnology-n35]].md` |`
+- after:
+  `| 233 | [[Forge]] | `WildNexus — revue Meshnology N35 ESP32 LoRa V3/V4` | `delivered` | 2026-05-18 19:53:20 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/[[2026-05-18_product-review-meshnology-n35]].md` |`
+
+### Line 89
+
+- terms: [[Milan]]
+- before:
+  `| 234 | Milan | `WildNexus — scan fabricants produit intégré P0` | `delivered` | 2026-05-18 19:57:03 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/[[2026-05-18_market-scan-integrated-p0-products]].md` |`
+- after:
+  `| 234 | [[Milan]] | `WildNexus — scan fabricants produit intégré P0` | `delivered` | 2026-05-18 19:57:03 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/[[2026-05-18_market-scan-integrated-p0-products]].md` |`
+
+### Line 91
+
+- terms: [[Dobby]]
+- before:
+  `## 6. Règle opérationnelle Dobby`
+- after:
+  `## 6. Règle opérationnelle [[Dobby]]`
+
+### Line 119
+
+- terms: SQLite
+- before:
+  `Ne pas inclure les backups SQLite.`
+- after:
+  `Ne pas inclure les backups [[SQLite]].`
+
+## `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation/Inbox_Deliverables_PreMigration_Audit.md`
+
+### Line 89
+
+- terms: [[Vasco]]
+- before:
+  `| 20 | Vasco | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | 2026-05-01 12:59:28 |  |`
+- after:
+  `| 20 | [[Vasco]] | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | 2026-05-01 12:59:28 |  |`
+
+### Line 90
+
+- terms: [[Vasco]]
+- before:
+  `| 83 | Vasco | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | 2026-05-01 13:00:50 |  |`
+- after:
+  `| 83 | [[Vasco]] | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | 2026-05-01 13:00:50 |  |`
+
+### Line 91
+
+- terms: [[Renard]]
+- before:
+  `| 128 | Renard | `[EMAIL] Re: contrat type` | 2026-05-01 13:02:58 |  |`
+- after:
+  `| 128 | [[Renard]] | `[EMAIL] Re: contrat type` | 2026-05-01 13:02:58 |  |`
+
+### Line 92
+
+- terms: [[Vasco]]
+- before:
+  `| 147 | Vasco | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | 2026-05-01 13:03:05 |  |`
+- after:
+  `| 147 | [[Vasco]] | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | 2026-05-01 13:03:05 |  |`
+
+### Line 93
+
+- terms: [[Vasco]]
+- before:
+  `| 214 | Vasco | `[EMAIL] These are not quizzes. They are diagnostic tools.` | 2026-05-02 18:00:14 |  |`
+- after:
+  `| 214 | [[Vasco]] | `[EMAIL] These are not quizzes. They are diagnostic tools.` | 2026-05-02 18:00:14 |  |`
+
+### Line 94
+
+- terms: [[Renard]]
+- before:
+  `| 228 | Renard | `[EMAIL] Jean-Claude, tatouage Thaïlandais, Tatouage Japonaise et plus d'idées à explorer` | 2026-05-09 07:00:19 |  |`
+- after:
+  `| 228 | [[Renard]] | `[EMAIL] Jean-Claude, tatouage Thaïlandais, Tatouage Japonaise et plus d'idées à explorer` | 2026-05-09 07:00:19 |  |`
+
+### Line 95
+
+- terms: [[Chouette]]
+- before:
+  `| 232 | Chouette | `WildNexus — déterminer longueur d'onde LED IR non visible/non perturbante faune` | 2026-05-18 18:52:08 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/02_DECISIONS/ADR/[[ADR-002-choix-camera-ir-p0]].md` |`
+- after:
+  `| 232 | [[Chouette]] | `WildNexus — déterminer longueur d'onde LED IR non visible/non perturbante faune` | 2026-05-18 18:52:08 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/02_DECISIONS/ADR/[[ADR-002-choix-camera-ir-p0]].md` |`
+
+### Line 96
+
+- terms: [[Forge]]
+- before:
+  `| 233 | Forge | `WildNexus — revue Meshnology N35 ESP32 LoRa V3/V4` | 2026-05-18 19:53:20 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/[[2026-05-18_product-review-meshnology-n35]].md` |`
+- after:
+  `| 233 | [[Forge]] | `WildNexus — revue Meshnology N35 ESP32 LoRa V3/V4` | 2026-05-18 19:53:20 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/[[2026-05-18_product-review-meshnology-n35]].md` |`
+
+### Line 97
+
+- terms: [[Milan]]
+- before:
+  `| 234 | Milan | `WildNexus — scan fabricants produit intégré P0` | 2026-05-18 19:57:03 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/[[2026-05-18_market-scan-integrated-p0-products]].md` |`
+- after:
+  `| 234 | [[Milan]] | `WildNexus — scan fabricants produit intégré P0` | 2026-05-18 19:57:03 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/[[2026-05-18_market-scan-integrated-p0-products]].md` |`
+
+### Line 125
+
+- terms: SQLite
+- before:
+  `Un simple `ALTER TABLE ADD COLUMN` ne suffit pas. Pour autoriser les nouveaux statuts, SQLite nécessite une migration contrôlée par reconstruction de table :`
+- after:
+  `Un simple `ALTER TABLE ADD COLUMN` ne suffit pas. Pour autoriser les nouveaux statuts, [[SQLite]] nécessite une migration contrôlée par reconstruction de table :`
+
+### Line 144
+
+- terms: SQLite
+- before:
+  `3. accepter une reconstruction SQLite de la table `[[inbox]]`, pas seulement des `ALTER TABLE`;`
+- after:
+  `3. accepter une reconstruction [[SQLite]] de la table `[[inbox]]`, pas seulement des `ALTER TABLE`;`
+
+## `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation/Local_Infrastructure_Setup.md`
+
+### Line 30
+
+- terms: Git
+- before:
+  `| Git | `2.50.1 (Apple Git-155)` | `/usr/bin/git` | ✅ Validé |`
+- after:
+  `| [[Git]] | `2.50.1 (Apple Git-155)` | `/usr/bin/git` | ✅ Validé |`
+
+### Line 31
+
+- terms: Python
+- before:
+  `| Python | `3.13.13` | `/Library/Frameworks/Python.framework/Versions/3.13/bin/python3` | ✅ Validé |`
+- after:
+  `| [[Python]] | `3.13.13` | `/Library/Frameworks/Python.framework/Versions/3.13/bin/python3` | ✅ Validé |`
+
+### Line 33
+
+- terms: Docker
+- before:
+  `| Docker CLI | `29.4.3` | `/usr/local/bin/docker` | ✅ Validé |`
+- after:
+  `| [[Docker]] CLI | `29.4.3` | `/usr/local/bin/docker` | ✅ Validé |`
+
+### Line 34
+
+- terms: Docker
+- before:
+  `| Docker Desktop | — | `/Applications/Docker.app` | ✅ Validé |`
+- after:
+  `| [[Docker]] Desktop | — | `/Applications/Docker.app` | ✅ Validé |`
+
+### Line 36
+
+- terms: Tailscale
+- before:
+  `| Tailscale CLI | `1.98.2` | `/usr/local/bin/tailscale` | ✅ Validé (CLI aligné sur app) |`
+- after:
+  `| [[Tailscale]] CLI | `1.98.2` | `/usr/local/bin/tailscale` | ✅ Validé (CLI aligné sur app) |`
+
+### Line 37
+
+- terms: Tailscale
+- before:
+  `| Tailscale app | — | `/Applications/Tailscale.app` | ✅ Validé |`
+- after:
+  `| [[Tailscale]] app | — | `/Applications/Tailscale.app` | ✅ Validé |`
+
+### Line 43
+
+- terms: Tailscale
+- before:
+  `## 2. Réseau Tailscale`
+- after:
+  `## 2. Réseau [[Tailscale]]`
+
+### Line 45
+
+- terms: Tailscale
+- before:
+  `| Nœud | IP Tailscale | IP locale |`
+- after:
+  `| Nœud | IP [[Tailscale]] | IP locale |`
+
+### Line 62
+
+- terms: Docker
+- before:
+  `## 3. Docker — conteneurs actifs`
+- after:
+  `## 3. [[Docker]] — conteneurs actifs`
+
+### Line 67
+
+- terms: Redis
+- before:
+  `| Plane API / web / workers / db / redis / mq / minio | internes | Acceptés comme runtime existant |`
+- after:
+  `| Plane API / web / workers / db / [[Redis]] / mq / minio | internes | Acceptés comme runtime existant |`
+
+### Line 69
+
+- terms: PostgreSQL, Redis
+- before:
+  `**Règle ferme :** les composants internes de Plane (PostgreSQL, Redis) ne doivent pas être réutilisés comme socle Hermes. Toute Phase 4 déploiera ses propres conteneurs isolés.`
+- after:
+  `**Règle ferme :** les composants internes de Plane ([[PostgreSQL]], [[Redis]]) ne doivent pas être réutilisés comme socle Hermes. Toute Phase 4 déploiera ses propres conteneurs isolés.`
+
+### Line 110
+
+- terms: [[Dobby]]
+- before:
+  `| Bot Telegram Dobby | — |`
+- after:
+  `| Bot Telegram [[Dobby]] | — |`
+
+### Line 114
+
+- terms: [[Sybil]]
+- before:
+  `| Cron backup / Sybil / rétro / weekly | — |`
+- after:
+  `| Cron backup / [[Sybil]] / rétro / weekly | — |`
+
+### Line 129
+
+- terms: PostgreSQL, Redis, Qdrant, n8n
+- before:
+  `3. Aucune installation de PostgreSQL, Redis, Qdrant, n8n, ni agent persistant nouveau en dehors de la Phase 4 définie.`
+- after:
+  `3. Aucune installation de [[PostgreSQL]], [[Redis]], [[Qdrant]], [[n8n]], ni agent persistant nouveau en dehors de la Phase 4 définie.`
+
+## `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation/Persistent_Memory_Architecture.md`
 
 ### Line 23
 
-- terms: Claude
+- terms: PostgreSQL, Redis, Qdrant
 - before:
-  `- `medium` `pointer-generation` CLAUDE.md / AGENTS.md / GEMINI.md / DEEPSEEK.md: generated pointer surfaces are drifting from the canonical config`
+  `Il évalue PostgreSQL, Redis et Qdrant au regard des besoins réels du système PKA_JCH, et définit l'architecture de mémoire à adopter.`
 - after:
-  `- `medium` `pointer-generation` [[Claude]].md / AGENTS.md / GEMINI.md / DEEPSEEK.md: generated pointer surfaces are drifting from the canonical config`
+  `Il évalue [[PostgreSQL]], [[Redis]] et [[Qdrant]] au regard des besoins réels du système PKA_JCH, et définit l'architecture de mémoire à adopter.`
 
-## `TEAM_Inbox/2026-05-27_dobby_system_check.md`
+### Line 36
+
+- terms: SQLite
+- before:
+  `| Mémoire relationnelle | `TEAM/team.db` (SQLite) | Actif — source de vérité |`
+- after:
+  `| Mémoire relationnelle | `TEAM/team.db` ([[SQLite]]) | Actif — source de vérité |`
+
+### Line 56
+
+- terms: PostgreSQL
+- before:
+  `### 2.1 PostgreSQL`
+- after:
+  `### 2.1 [[PostgreSQL]]`
+
+### Line 61
+
+- terms: SQLite
+- before:
+  `- `TEAM/team.db` (SQLite) couvre l'intégralité des besoins relationnels actuels.`
+- after:
+  `- `TEAM/team.db` ([[SQLite]]) couvre l'intégralité des besoins relationnels actuels.`
+
+### Line 63
+
+- terms: PostgreSQL, Docker
+- before:
+  `- Plane dispose déjà de son propre PostgreSQL interne Docker — à ne pas réutiliser (règle Phase 1).`
+- after:
+  `- Plane dispose déjà de son propre [[PostgreSQL]] interne [[Docker]] — à ne pas réutiliser (règle Phase 1).`
+
+### Line 67
+
+- terms: SQLite, PostgreSQL, Docker
+- before:
+  `SQLite est suffisant pour la taille et l'usage actuel. PostgreSQL n'apporterait aucun bénéfice concret et ajouterait un conteneur Docker supplémentaire à maintenir.`
+- after:
+  `[[SQLite]] est suffisant pour la taille et l'usage actuel. [[PostgreSQL]] n'apporterait aucun bénéfice concret et ajouterait un conteneur [[Docker]] supplémentaire à maintenir.`
+
+### Line 71
+
+- terms: Redis
+- before:
+  `### 2.2 Redis`
+- after:
+  `### 2.2 [[Redis]]`
+
+### Line 78
+
+- terms: Redis, Docker
+- before:
+  `- Plane dispose déjà de son propre Redis interne Docker — à ne pas réutiliser.`
+- after:
+  `- Plane dispose déjà de son propre [[Redis]] interne [[Docker]] — à ne pas réutiliser.`
+
+### Line 79
+
+- terms: Redis
+- before:
+  `- Le problème que Redis résoudrait n'existe pas encore dans PKA.`
+- after:
+  `- Le problème que [[Redis]] résoudrait n'existe pas encore dans PKA.`
+
+### Line 87
+
+- terms: Qdrant
+- before:
+  `### 2.3 Qdrant (base vectorielle)`
+- after:
+  `### 2.3 [[Qdrant]] (base vectorielle)`
+
+### Line 94
+
+- terms: Qdrant, Docker
+- before:
+  `- Qdrant existe en version légère mono-conteneur Docker.`
+- after:
+  `- [[Qdrant]] existe en version légère mono-conteneur [[Docker]].`
+
+### Line 99
+
+- terms: Qdrant, SQLite
+- before:
+  `Qdrant devient justifié quand `[[knowledge]]` dépasse 100 entrées **et** qu'une requête sémantique concrète ne peut pas être satisfaite par SQLite `LIKE` ou `FTS5`. Déclencher l'évaluation à ce seuil.`
+- after:
+  `[[Qdrant]] devient justifié quand `[[knowledge]]` dépasse 100 entrées **et** qu'une requête sémantique concrète ne peut pas être satisfaite par [[SQLite]] `LIKE` ou `FTS5`. Déclencher l'évaluation à ce seuil.`
+
+### Line 109
+
+- terms: SQLite
+- before:
+  `La mémoire persistante de PKA repose déjà sur SQLite + fichiers Markdown. Le travail de Phase 4a consiste à **alimenter systématiquement les tables existantes** et à **rendre la mémoire procédurale active**.`
+- after:
+  `La mémoire persistante de PKA repose déjà sur [[SQLite]] + fichiers Markdown. Le travail de Phase 4a consiste à **alimenter systématiquement les tables existantes** et à **rendre la mémoire procédurale active**.`
+
+### Line 125
+
+- terms: Qdrant
+- before:
+  `| `[[knowledge]]` ≥ 100 entrées | Évaluer Qdrant light |`
+- after:
+  `| `[[knowledge]]` ≥ 100 entrées | Évaluer [[Qdrant]] light |`
+
+### Line 131
+
+- terms: Qdrant
+- before:
+  `## 4. Architecture Phase 4b (conditionnelle — Qdrant)`
+- after:
+  `## 4. Architecture Phase 4b (conditionnelle — [[Qdrant]])`
+
+### Line 139
+
+- terms: Qdrant, Docker
+- before:
+  `| Qdrant light | Stockage et recherche vectorielle sur `[[knowledge]]` | 1 conteneur Docker isolé, port `127.0.0.1:6333` |`
+- after:
+  `| [[Qdrant]] light | Stockage et recherche vectorielle sur `[[knowledge]]` | 1 conteneur [[Docker]] isolé, port `127.0.0.1:6333` |`
+
+### Line 141
+
+- terms: SQLite, Qdrant, Python
+- before:
+  `| Script d'indexation | Lit `[[knowledge]]` depuis SQLite, envoie embeddings à Qdrant | Python, [[Forge]] |`
+- after:
+  `| Script d'indexation | Lit `[[knowledge]]` depuis [[SQLite]], envoie embeddings à [[Qdrant]] | [[Python]], [[Forge]] |`
+
+### Line 145
+
+- terms: Qdrant
+- before:
+  `- Qdrant est **read-only depuis les agents** — seul le script d'indexation écrit.`
+- after:
+  `- [[Qdrant]] est **read-only depuis les agents** — seul le script d'indexation écrit.`
+
+### Line 146
+
+- terms: Qdrant
+- before:
+  `- `TEAM/team.db` reste la source de vérité — Qdrant est un index dérivé, reconstituable.`
+- after:
+  `- `TEAM/team.db` reste la source de vérité — [[Qdrant]] est un index dérivé, reconstituable.`
+
+### Line 155
+
+- terms: n8n
+- before:
+  `- Elle ne relie pas Hermes, n8n ou tout framework d'orchestration externe.`
+- after:
+  `- Elle ne relie pas Hermes, [[n8n]] ou tout framework d'orchestration externe.`
+
+## `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation/Phase_1_Closure_Report.md`
+
+### Line 25
+
+- terms: n8n, Qdrant, Redis, PostgreSQL
+- before:
+  `> Ne pas ajouter d'infrastructure Hermes, n8n, Qdrant, Redis, PostgreSQL ou agents persistants avant validation explicite de la Phase technique minimale.`
+- after:
+  `> Ne pas ajouter d'infrastructure Hermes, [[n8n]], [[Qdrant]], [[Redis]], [[PostgreSQL]] ou agents persistants avant validation explicite de la Phase technique minimale.`
+
+### Line 41
+
+- terms: Codex, Claude
+- before:
+  `| Runtimes AI | Codex/GPT-5, Claude, Ollama, NVIDIA/DeepSeek, OpenAI, Google et autres providers configurés. |`
+- after:
+  `| Runtimes AI | [[Codex]]/GPT-5, [[Claude]], Ollama, NVIDIA/DeepSeek, OpenAI, Google et autres providers configurés. |`
+
+### Line 44
+
+- terms: Docker
+- before:
+  `| Services | LaunchAgents, cron, Docker/Plane, Ollama, Dropbox client. |`
+- after:
+  `| Services | LaunchAgents, cron, [[Docker]]/Plane, Ollama, Dropbox client. |`
+
+### Line 57
+
+- terms: Docker
+- before:
+  `| Plane proxy | Ports Docker restreints à `127.0.0.1`; `plane.env` passé en `0600`. | Plane local-only sur `8088` et `4443`. |`
+- after:
+  `| Plane proxy | Ports [[Docker]] restreints à `127.0.0.1`; `plane.env` passé en `0600`. | Plane local-only sur `8088` et `4443`. |`
+
+### Line 71
+
+- terms: [[Sybil]]
+- before:
+  `| Cron backup/Sybil/retro/weekly | Actifs. |`
+- after:
+  `| Cron backup/[[Sybil]]/retro/weekly | Actifs. |`
+
+### Line 104
+
+- terms: PostgreSQL, Redis
+- before:
+  `| Plane stack complexe | Moyenne | Acceptée comme runtime existant; pas de réutilisation PostgreSQL/Redis pour Hermes. |`
+- after:
+  `| Plane stack complexe | Moyenne | Acceptée comme runtime existant; pas de réutilisation [[PostgreSQL]]/[[Redis]] pour Hermes. |`
+
+### Line 114
+
+- terms: Qdrant, Redis, PostgreSQL
+- before:
+  `3. Aucun Qdrant, Redis, PostgreSQL additionnel.`
+- after:
+  `3. Aucun [[Qdrant]], [[Redis]], [[PostgreSQL]] additionnel.`
+
+### Line 115
+
+- terms: n8n
+- before:
+  `4. Aucun n8n.`
+- after:
+  `4. Aucun [[n8n]].`
+
+### Line 117
+
+- terms: Git, Python, Docker, Tailscale
+- before:
+  `6. Vérifier seulement l'existant : Git, Python, Docker Desktop, VS Code, Tailscale, backups.`
+- after:
+  `6. Vérifier seulement l'existant : [[Git]], [[Python]], [[Docker]] Desktop, VS Code, [[Tailscale]], backups.`
+
+## `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation/Phase_Tech_Minimal_Backup_Audit.md`
+
+### Line 12
+
+- terms: Obsidian
+- before:
+  `- pas de modification Obsidian ;`
+- after:
+  `- pas de modification [[Obsidian]] ;`
+
+### Line 54
+
+- terms: SQLite
+- before:
+  `- backup via SQLite Online Backup API ;`
+- after:
+  `- backup via [[SQLite]] Online Backup API ;`
+
+### Line 75
+
+- terms: SQLite
+- before:
+  `- tables SQLite lisibles.`
+- after:
+  `- tables [[SQLite]] lisibles.`
+
+### Line 94
+
+- terms: [[Dobby]]
+- before:
+  `| Writers concurrents pendant restauration | Élevée | Arrêter ou suspendre Dobby/scripts avant restauration réelle. |`
+- after:
+  `| Writers concurrents pendant restauration | Élevée | Arrêter ou suspendre [[Dobby]]/scripts avant restauration réelle. |`
+
+## `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation/Phase_Tech_Minimal_MacBook_Audit.md`
+
+### Line 4
+
+- terms: Tailscale
+- before:
+  `Statut : socle présent ; Tailscale corrigé ; étape backup validée séparément`
+- after:
+  `Statut : socle présent ; [[Tailscale]] corrigé ; étape backup validée séparément`
+
+### Line 12
+
+- terms: Git
+- before:
+  `- Git : OK.`
+- after:
+  `- [[Git]] : OK.`
+
+### Line 13
+
+- terms: Python
+- before:
+  `- Python : OK.`
+- after:
+  `- [[Python]] : OK.`
+
+### Line 14
+
+- terms: Docker
+- before:
+  `- Docker Desktop : OK.`
+- after:
+  `- [[Docker]] Desktop : OK.`
+
+### Line 16
+
+- terms: Tailscale, Tailscale
+- before:
+  `- Tailscale : OK après réalignement du CLI sur Tailscale.app.`
+- after:
+  `- [[Tailscale]] : OK après réalignement du CLI sur [[Tailscale]].app.`
+
+### Line 19
+
+- terms: n8n, Qdrant, Redis, PostgreSQL
+- before:
+  `Cette étape ne déclenche aucune installation lourde et ne débloque pas encore Hermes, n8n, Qdrant, Redis, PostgreSQL ou agents persistants.`
+- after:
+  `Cette étape ne déclenche aucune installation lourde et ne débloque pas encore Hermes, [[n8n]], [[Qdrant]], [[Redis]], [[PostgreSQL]] ou agents persistants.`
+
+### Line 25
+
+- terms: Git
+- before:
+  `| Git | OK | `git version 2.50.1 (Apple Git-155)` ; `/usr/bin/git` | Socle valide |`
+- after:
+  `| [[Git]] | OK | `git version 2.50.1 (Apple Git-155)` ; `/usr/bin/git` | Socle valide |`
 
 ### Line 26
 
-- terms: Claude
+- terms: Python
 - before:
-  `- `medium` `pointer-generation` CLAUDE.md / AGENTS.md / GEMINI.md / DEEPSEEK.md: generated pointer surfaces are drifting from the canonical config`
+  `| Python | OK | `Python 3.13.13` ; `/Library/Frameworks/Python.framework/Versions/3.13/bin/python3` | Socle valide |`
 - after:
-  `- `medium` `pointer-generation` [[Claude]].md / AGENTS.md / GEMINI.md / DEEPSEEK.md: generated pointer surfaces are drifting from the canonical config`
+  `| [[Python]] | OK | `Python 3.13.13` ; `/Library/Frameworks/Python.framework/Versions/3.13/bin/python3` | Socle valide |`
 
-## `TEAM_Inbox/2026-05-28_dobby_system_check.md`
+### Line 27
+
+- terms: Python
+- before:
+  `| pip | OK | `pip 26.1.1` pour Python 3.13 | Socle valide |`
+- after:
+  `| pip | OK | `pip 26.1.1` pour [[Python]] 3.13 | Socle valide |`
+
+### Line 28
+
+- terms: Docker
+- before:
+  `| Docker CLI | OK | `Docker version 29.4.3` ; `/usr/local/bin/docker` | Socle valide |`
+- after:
+  `| [[Docker]] CLI | OK | `Docker version 29.4.3` ; `/usr/local/bin/docker` | Socle valide |`
+
+### Line 29
+
+- terms: Docker
+- before:
+  `| Docker Desktop | OK | `/Applications/Docker.app` présent ; daemon `Docker Desktop aarch64` | Socle valide |`
+- after:
+  `| [[Docker]] Desktop | OK | `/Applications/Docker.app` présent ; daemon `Docker Desktop aarch64` | Socle valide |`
+
+### Line 31
+
+- terms: Tailscale
+- before:
+  `| Tailscale CLI | OK | `1.98.2` ; `/usr/local/bin/tailscale` | Socle valide |`
+- after:
+  `| [[Tailscale]] CLI | OK | `1.98.2` ; `/usr/local/bin/tailscale` | Socle valide |`
+
+### Line 32
+
+- terms: Tailscale
+- before:
+  `| Tailscale app | OK | `/Applications/Tailscale.app` | App lancée, CLI aligné |`
+- after:
+  `| [[Tailscale]] app | OK | `/Applications/Tailscale.app` | App lancée, CLI aligné |`
+
+### Line 34
+
+- terms: Docker
+- before:
+  `## 3. Docker`
+- after:
+  `## 3. [[Docker]]`
+
+### Line 36
+
+- terms: Docker
+- before:
+  `Docker Desktop est fonctionnel.`
+- after:
+  `[[Docker]] Desktop est fonctionnel.`
+
+### Line 49
+
+- terms: Redis
+- before:
+  `| Plane API / web / workers / db / redis / mq / minio | Actifs dans le runtime Plane existant |`
+- after:
+  `| Plane API / web / workers / db / [[Redis]] / mq / minio | Actifs dans le runtime Plane existant |`
+
+### Line 57
+
+- terms: Tailscale
+- before:
+  `## 4. Tailscale`
+- after:
+  `## 4. [[Tailscale]]`
+
+### Line 67
+
+- terms: Tailscale
+- before:
+  `- l'application Tailscale est installée ;`
+- after:
+  `- l'application [[Tailscale]] est installée ;`
+
+### Line 68
+
+- terms: Tailscale
+- before:
+  `- un processus Tailscale est visible ;`
+- after:
+  `- un processus [[Tailscale]] est visible ;`
+
+### Line 77
+
+- terms: Tailscale
+- before:
+  `- version CLI alignée avec Tailscale.app : `1.98.2`.`
+- after:
+  `- version CLI alignée avec [[Tailscale]].app : `1.98.2`.`
+
+### Line 101
+
+- terms: Git
+- before:
+  `| Racine Git | `/Users/jchavauxm5/PKA_JCH` |`
+- after:
+  `| Racine [[Git]] | `/Users/jchavauxm5/PKA_JCH` |`
+
+### Line 127
+
+- terms: Tailscale
+- before:
+  `- Tailscale est fiable côté CLI pour l'administration distante et les tests RPI.`
+- after:
+  `- [[Tailscale]] est fiable côté CLI pour l'administration distante et les tests RPI.`
+
+## `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation/RUNBOOK_PKA_MACBOOK.md`
+
+### Line 25
+
+- terms: n8n
+- before:
+  `- n8n ;`
+- after:
+  `- [[n8n]] ;`
 
 ### Line 26
 
+- terms: Qdrant
+- before:
+  `- Qdrant ;`
+- after:
+  `- [[Qdrant]] ;`
+
+### Line 27
+
+- terms: Redis, PostgreSQL
+- before:
+  `- Redis ou PostgreSQL hors stack Plane existante ;`
+- after:
+  `- [[Redis]] ou [[PostgreSQL]] hors stack Plane existante ;`
+
+### Line 35
+
+- terms: Obsidian
+- before:
+  `- changements Obsidian non liés ;`
+- after:
+  `- changements [[Obsidian]] non liés ;`
+
+### Line 38
+
+- terms: SQLite
+- before:
+  `- backups SQLite.`
+- after:
+  `- backups [[SQLite]].`
+
+### Line 58
+
+- terms: Tailscale
+- before:
+  `Tailscale, si le daemon répond :`
+- after:
+  `[[Tailscale]], si le daemon répond :`
+
+### Line 74
+
+- terms: Docker
+- before:
+  `Docker / Plane :`
+- after:
+  `[[Docker]] / Plane :`
+
+### Line 98
+
+- terms: Git
+- before:
+  `| Git | installé |`
+- after:
+  `| [[Git]] | installé |`
+
+### Line 99
+
+- terms: Python
+- before:
+  `| Python | 3.13.x |`
+- after:
+  `| [[Python]] | 3.13.x |`
+
+### Line 101
+
+- terms: Docker
+- before:
+  `| Docker Desktop | installé, daemon actif |`
+- after:
+  `| [[Docker]] Desktop | installé, daemon actif |`
+
+### Line 103
+
+- terms: Tailscale
+- before:
+  `| Tailscale | installé ; CLI `/usr/local/bin/tailscale` version `1.98.2` ; IP MacBook `100.108.55.44` |`
+- after:
+  `| [[Tailscale]] | installé ; CLI `/usr/local/bin/tailscale` version `1.98.2` ; IP MacBook `100.108.55.44` |`
+
+### Line 111
+
+- terms: [[Dobby]]
+- before:
+  `| `com.pka.[[dobby]]` | Bot Telegram Dobby | RunAtLoad + KeepAlive | `scripts/telegram-bot/[[dobby]].log` |`
+- after:
+  `| `com.pka.[[dobby]]` | Bot Telegram [[Dobby]] | RunAtLoad + KeepAlive | `scripts/telegram-bot/[[dobby]].log` |`
+
+### Line 127
+
+- terms: archive
+- before:
+  `Archive :`
+- after:
+  `[[archive]] :`
+
+### Line 138
+
+- terms: [[Sybil]]
+- before:
+  `| 22:00 quotidien | `scripts/sybil_journal.py` | journal Sybil |`
+- after:
+  `| 22:00 quotidien | `scripts/sybil_journal.py` | journal [[Sybil]] |`
+
+### Line 139
+
+- terms: [[Dobby]]
+- before:
+  `| 23:00 quotidien | `scripts/dobby_retro.py` | rétrospective Dobby |`
+- after:
+  `| 23:00 quotidien | `scripts/dobby_retro.py` | rétrospective [[Dobby]] |`
+
+### Line 144
+
+- terms: [[Dobby]]
+- before:
+  `## 8. Dobby Telegram`
+- after:
+  `## 8. [[Dobby]] Telegram`
+
+### Line 150
+
+- terms: Python
+- before:
+  `- Python : `scripts/telegram-bot/venv/bin/python3``
+- after:
+  `- [[Python]] : `scripts/telegram-bot/venv/bin/python3``
+
+### Line 231
+
+- terms: Redis, PostgreSQL
+- before:
+  `Plane est un runtime existant. Ses Redis/PostgreSQL internes ne sont pas un socle pour Hermes.`
+- after:
+  `Plane est un runtime existant. Ses [[Redis]]/[[PostgreSQL]] internes ne sont pas un socle pour Hermes.`
+
+### Line 297
+
+- terms: Tailscale
+- before:
+  `## 15. Tailscale`
+- after:
+  `## 15. [[Tailscale]]`
+
+### Line 315
+
+- terms: Tailscale
+- before:
+  `- éviter un mismatch entre le CLI Homebrew et le daemon fourni par Tailscale.app ;`
+- after:
+  `- éviter un mismatch entre le CLI Homebrew et le daemon fourni par [[Tailscale]].app ;`
+
+### Line 316
+
+- terms: Tailscale
+- before:
+  `- faire pointer `tailscale` vers le wrapper installé par Tailscale.app.`
+- after:
+  `- faire pointer `tailscale` vers le wrapper installé par [[Tailscale]].app.`
+
+## `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation/Runtime_Service_Register.md`
+
+### Line 35
+
+- terms: Docker, Docker
+- before:
+  `| `com.jchytech.pka-plane-autostart` | `bin/plane-autostart.sh` | [[Forge]] | 300 s + RunAtLoad | Activé | Docker, Plane compose | `tmp/plane-autostart.log` | Docker local; ports restreints à loopback | `launchctl bootout gui/501/com.jchytech.pka-plane-autostart` |`
+- after:
+  `| `com.jchytech.pka-plane-autostart` | `bin/plane-autostart.sh` | [[Forge]] | 300 s + RunAtLoad | Activé | [[Docker]], Plane compose | `tmp/plane-autostart.log` | [[Docker]] local; ports restreints à loopback | `launchctl bootout gui/501/com.jchytech.pka-plane-autostart` |`
+
+### Line 51
+
+- terms: Docker
+- before:
+  `## Docker / Plane`
+- after:
+  `## [[Docker]] / Plane`
+
+### Line 55
+
+- terms: Docker
+- before:
+  `| Plane stack Docker | Actif observé 2026-05-28 | `127.0.0.1:8088`, `127.0.0.1:4443` | [[Forge]] | Local-only après remédiation | Maintenir binding loopback; validation JCH requise pour LAN. |`
+- after:
+  `| Plane stack [[Docker]] | Actif observé 2026-05-28 | `127.0.0.1:8088`, `127.0.0.1:4443` | [[Forge]] | Local-only après remédiation | Maintenir binding loopback; validation JCH requise pour LAN. |`
+
+### Line 56
+
+- terms: PostgreSQL, Docker, Docker
+- before:
+  `| Plane PostgreSQL interne | Actif dans Docker | interne Docker `5432` | [[Forge]] | Ne pas confondre avec DB PKA | Garder séparé de `TEAM/team.db`. |`
+- after:
+  `| Plane [[PostgreSQL]] interne | Actif dans [[Docker]] | interne [[Docker]] `5432` | [[Forge]] | Ne pas confondre avec DB PKA | Garder séparé de `TEAM/team.db`. |`
+
+### Line 57
+
+- terms: Redis, Docker, Docker, Redis
+- before:
+  `| Plane Redis interne | Actif dans Docker | interne Docker `6379` | [[Forge]] | Ne valide pas Redis pour Hermes | Pas de réutilisation sans phase technique. |`
+- after:
+  `| Plane [[Redis]] interne | Actif dans [[Docker]] | interne [[Docker]] `6379` | [[Forge]] | Ne valide pas [[Redis]] pour Hermes | Pas de réutilisation sans phase technique. |`
+
+### Line 58
+
+- terms: Docker, Docker
+- before:
+  `| Plane MinIO/MQ internes | Actifs dans Docker | internes Docker | [[Forge]] | Stack déjà complexe | Documenter sauvegarde/rollback Plane. |`
+- after:
+  `| Plane MinIO/MQ internes | Actifs dans [[Docker]] | internes [[Docker]] | [[Forge]] | Stack déjà complexe | Documenter sauvegarde/rollback Plane. |`
+
+### Line 78
+
+- terms: Docker
+- before:
+  `| 2026-05-28 | Plane proxy | Ajout de `host_ip: 127.0.0.1` sur les ports 80/443 publiés dans `_local/plane-community/plane-app/docker-compose.yaml`; recréation du proxy via Docker Compose; permission `0600` sur `plane.env`. | `docker ps` confirme `127.0.0.1:8088->80/tcp` et `127.0.0.1:4443->443/tcp`; `lsof` confirme loopback; `curl http://127.0.0.1:8088/` retourne `200`. |`
+- after:
+  `| 2026-05-28 | Plane proxy | Ajout de `host_ip: 127.0.0.1` sur les ports 80/443 publiés dans `_local/plane-community/plane-app/docker-compose.yaml`; recréation du proxy via [[Docker]] Compose; permission `0600` sur `plane.env`. | `docker ps` confirme `127.0.0.1:8088->80/tcp` et `127.0.0.1:4443->443/tcp`; `lsof` confirme loopback; `curl http://127.0.0.1:8088/` retourne `200`. |`
+
+## `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation/System_Architecture_Report.md`
+
+### Line 29
+
+- terms: Git
+- before:
+  `| Git | `2.50.1` | ✅ |`
+- after:
+  `| [[Git]] | `2.50.1` | ✅ |`
+
+### Line 30
+
+- terms: Python
+- before:
+  `| Python | `3.13.13` | ✅ |`
+- after:
+  `| [[Python]] | `3.13.13` | ✅ |`
+
+### Line 31
+
+- terms: Docker
+- before:
+  `| Docker Desktop | `29.4.3` | ✅ |`
+- after:
+  `| [[Docker]] Desktop | `29.4.3` | ✅ |`
+
+### Line 33
+
+- terms: Tailscale
+- before:
+  `| Tailscale | `1.98.2` | ✅ |`
+- after:
+  `| [[Tailscale]] | `1.98.2` | ✅ |`
+
+### Line 44
+
+- terms: PostgreSQL, SQLite
+- before:
+  `| PostgreSQL | ❌ Non déployé — SQLite suffisant | Jamais pour PKA mono-user |`
+- after:
+  `| [[PostgreSQL]] | ❌ Non déployé — [[SQLite]] suffisant | Jamais pour PKA mono-user |`
+
+### Line 45
+
+- terms: Redis
+- before:
+  `| Redis | ❌ Non déployé — pas d'agents concurrents | Si agents persistants multiples (Phase 6+) |`
+- after:
+  `| [[Redis]] | ❌ Non déployé — pas d'agents concurrents | Si agents persistants multiples (Phase 6+) |`
+
+### Line 46
+
+- terms: Qdrant
+- before:
+  `| Qdrant | 🟡 Différé | `[[knowledge]]` ≥ 100 entrées + besoin sémantique concret |`
+- after:
+  `| [[Qdrant]] | 🟡 Différé | `[[knowledge]]` ≥ 100 entrées + besoin sémantique concret |`
+
+### Line 47
+
+- terms: n8n
+- before:
+  `| n8n | 🟡 Différé | Workflow ≥3 services externes avec logique conditionnelle |`
+- after:
+  `| [[n8n]] | 🟡 Différé | Workflow ≥3 services externes avec logique conditionnelle |`
+
+### Line 54
+
+- terms: Docker
+- before:
+  `## 3. Conteneurs Docker actifs`
+- after:
+  `## 3. Conteneurs [[Docker]] actifs`
+
+### Line 61
+
+- terms: PostgreSQL, Redis
+- before:
+  `Règle ferme : les PostgreSQL et Redis internes de Plane ne servent pas de socle Hermes.`
+- after:
+  `Règle ferme : les [[PostgreSQL]] et [[Redis]] internes de Plane ne servent pas de socle Hermes.`
+
+### Line 126
+
+- terms: SQLite
+- before:
+  `| `TEAM/team.db` | Backup SQLite quotidien 08h00 via cron → `TEAM/backups/team_YYYY-MM-DD_HHMM.db` |`
+- after:
+  `| `TEAM/team.db` | Backup [[SQLite]] quotidien 08h00 via cron → `TEAM/backups/team_YYYY-MM-DD_HHMM.db` |`
+
+## `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation/Workflow_Orchestration.md`
+
+### Line 23
+
+- terms: n8n
+- before:
+  `Il évalue n8n, les queues et les outils de monitoring au regard des workflows réels du système PKA_JCH, et définit l'architecture d'orchestration à adopter.`
+- after:
+  `Il évalue [[n8n]], les queues et les outils de monitoring au regard des workflows réels du système PKA_JCH, et définit l'architecture d'orchestration à adopter.`
+
+### Line 36
+
+- terms: [[Sybil]]
+- before:
+  `| Journal Sybil | Cron 22h00 quotidien | `scripts/sybil_journal.py` | ✅ Actif |`
+- after:
+  `| Journal [[Sybil]] | Cron 22h00 quotidien | `scripts/sybil_journal.py` | ✅ Actif |`
+
+### Line 37
+
+- terms: [[Dobby]]
+- before:
+  `| Rétro Dobby | Cron 23h00 quotidien | `scripts/dobby_retro.py` | ✅ Actif |`
+- after:
+  `| Rétro [[Dobby]] | Cron 23h00 quotidien | `scripts/dobby_retro.py` | ✅ Actif |`
+
+### Line 41
+
+- terms: [[Dobby]]
+- before:
+  `| Bot Telegram Dobby | LaunchAgent (PID 5377) | `scripts/telegram-bot/bot.py` | ✅ Actif |`
+- after:
+  `| Bot Telegram [[Dobby]] | LaunchAgent (PID 5377) | `scripts/telegram-bot/bot.py` | ✅ Actif |`
+
+### Line 58
+
+- terms: [[Trace]]
+- before:
+  `3. **Aucune alerte en cas d'échec silencieux** — un cron qui échoue laisse une trace dans son log mais personne ne le lit.`
+- after:
+  `3. **Aucune alerte en cas d'échec silencieux** — un cron qui échoue laisse une [[Trace]] dans son log mais personne ne le lit.`
+
+### Line 59
+
+- terms: [[Dobby]]
+- before:
+  `4. **Workflows manuels non tracés** — les tâches Dobby (briefs, analyses, livrables) ne sont pas comptabilisées comme des exécutions d'orchestration.`
+- after:
+  `4. **Workflows manuels non tracés** — les tâches [[Dobby]] (briefs, analyses, livrables) ne sont pas comptabilisées comme des exécutions d'orchestration.`
+
+### Line 65
+
+- terms: n8n
+- before:
+  `### 2.1 n8n`
+- after:
+  `### 2.1 [[n8n]]`
+
+### Line 70
+
+- terms: Python
+- before:
+  `- Les workflows actuels sont des scripts Python autonomes, tous mono-service.`
+- after:
+  `- Les workflows actuels sont des scripts [[Python]] autonomes, tous mono-service.`
+
+### Line 72
+
+- terms: n8n, Docker
+- before:
+  `- n8n nécessite un conteneur Docker supplémentaire + base de données persistante propre.`
+- after:
+  `- [[n8n]] nécessite un conteneur [[Docker]] supplémentaire + base de données persistante propre.`
+
+### Line 73
+
+- terms: n8n, Python
+- before:
+  `- La valeur de n8n apparaît quand : (a) un workflow relie ≥3 services externes, (b) un utilisateur non-développeur doit modifier les conditions, (c) les scripts Python deviennent trop nombreux à maintenir.`
+- after:
+  `- La valeur de [[n8n]] apparaît quand : (a) un workflow relie ≥3 services externes, (b) un utilisateur non-développeur doit modifier les conditions, (c) les scripts [[Python]] deviennent trop nombreux à maintenir.`
+
+### Line 77
+
+- terms: n8n, Python
+- before:
+  `n8n devient justifié si un workflow doit relier Gmail + Telegram + team.db + Plane avec logique conditionnelle et sans développement Python. Aucun workflow actuel ne remplit ces critères.`
+- after:
+  `[[n8n]] devient justifié si un workflow doit relier Gmail + Telegram + team.db + Plane avec logique conditionnelle et sans développement [[Python]]. Aucun workflow actuel ne remplit ces critères.`
+
+### Line 81
+
+- terms: Redis
+- before:
+  `### 2.2 Queues (RabbitMQ, Redis Streams…)`
+- after:
+  `### 2.2 Queues (RabbitMQ, [[Redis]] Streams…)`
+
+### Line 123
+
+- terms: [[Sybil]]
+- before:
+  `| Ajouter un appel `memory_log` en fin de chaque script cron (backup, sybil, retro, weekly) | `team.db` → `memory_log` | [[Forge]] |`
+- after:
+  `| Ajouter un appel `memory_log` en fin de chaque script cron (backup, [[Sybil]], retro, weekly) | `team.db` → `memory_log` | [[Forge]] |`
+
+### Line 133
+
+- terms: n8n
+- before:
+  `| Workflow ≥3 services externes avec logique conditionnelle identifié | Évaluer n8n |`
+- after:
+  `| Workflow ≥3 services externes avec logique conditionnelle identifié | Évaluer [[n8n]] |`
+
+### Line 139
+
+- terms: n8n
+- before:
+  `## 4. Architecture Phase 5b — conditionnelle (n8n)`
+- after:
+  `## 4. Architecture Phase 5b — conditionnelle ([[n8n]])`
+
+### Line 147
+
+- terms: n8n, Docker
+- before:
+  `| n8n | Orchestration visuelle de workflows multi-services | 1 conteneur Docker, port `127.0.0.1:5678` |`
+- after:
+  `| [[n8n]] | Orchestration visuelle de workflows multi-services | 1 conteneur [[Docker]], port `127.0.0.1:5678` |`
+
+### Line 148
+
+- terms: SQLite
+- before:
+  `| SQLite (existant) | Persistence des états workflow via `memory_log` | Déjà actif |`
+- after:
+  `| [[SQLite]] (existant) | Persistence des états workflow via `memory_log` | Déjà actif |`
+
+### Line 150
+
+- terms: n8n
+- before:
+  `### Workflows candidats à migrer vers n8n`
+- after:
+  `### Workflows candidats à migrer vers [[n8n]]`
+
+### Line 154
+
+- terms: Python, SQLite
+- before:
+  `| Ingestion inbox → classification → team.db | Dropbox/filesystem + Python + SQLite | Haute |`
+- after:
+  `| Ingestion inbox → classification → team.db | Dropbox/filesystem + [[Python]] + [[SQLite]] | Haute |`
+
+### Line 156
+
+- terms: Python, Obsidian
+- before:
+  `| Digest email → résumé → daily note | Gmail + Python + Obsidian | Faible (suspendu) |`
+- after:
+  `| Digest email → résumé → daily note | Gmail + [[Python]] + [[Obsidian]] | Faible (suspendu) |`
+
+### Line 160
+
+- terms: n8n, Docker
+- before:
+  `- n8n stocke ses données dans un volume Docker isolé.`
+- after:
+  `- [[n8n]] stocke ses données dans un volume [[Docker]] isolé.`
+
+### Line 161
+
+- terms: PostgreSQL, Redis
+- before:
+  `- Aucune réutilisation du PostgreSQL ou Redis de Plane.`
+- after:
+  `- Aucune réutilisation du [[PostgreSQL]] ou [[Redis]] de Plane.`
+
+### Line 179
+
+- terms: [[Corbeau]], [[Forge]], Obsidian
+- before:
+  `- **Pilote 1** — Gouvernance documentaire (Corbeau + Forge) : classifier notes, valider YAML, maintenir index Obsidian.`
+- after:
+  `- **Pilote 1** — Gouvernance documentaire ([[Corbeau]] + [[Forge]]) : classifier notes, valider YAML, maintenir index [[Obsidian]].`
+
+### Line 180
+
+- terms: [[Forge]], [[Castor]]
+- before:
+  `- **Pilote 2** — Architecture système (Forge + Castor) : câbler concrètement les couches mémoire définies en Phase 4.`
+- after:
+  `- **Pilote 2** — Architecture système ([[Forge]] + [[Castor]]) : câbler concrètement les couches mémoire définies en Phase 4.`
+
+### Line 181
+
+- terms: [[Chouette]], [[Clio]], [[Forge]], [[Corbeau]], BirdNET, ESP32
+- before:
+  `- **Pilote 3** — Wildlife / Bioacoustique (Chouette + Clio + Forge + Corbeau) : connecter BirdNET, RPi, ESP32, datasets audio à la mémoire PKA.`
+- after:
+  `- **Pilote 3** — Wildlife / Bioacoustique ([[Chouette]] + [[Clio]] + [[Forge]] + [[Corbeau]]) : connecter [[BirdNET]], RPi, [[ESP32]], datasets audio à la mémoire PKA.`
+
+## `JCH_Inbox/07_ARCHIVES/MODEL_HANDOFF_2026-05-28.md`
+
+### Line 12
+
+- terms: [[Dobby]]
+- before:
+  `- `ADAPTER-PROMPT.md` and `MEMORY.md` were updated with Dobby operating rules and memory protocol.`
+- after:
+  `- `ADAPTER-PROMPT.md` and `MEMORY.md` were updated with [[Dobby]] operating rules and memory protocol.`
+
+### Line 19
+
+- terms: n8n, Qdrant, Redis, PostgreSQL
+- before:
+  `- No Hermes / n8n / Qdrant / Redis / PostgreSQL rollout yet.`
+- after:
+  `- No Hermes / [[n8n]] / [[Qdrant]] / [[Redis]] / [[PostgreSQL]] rollout yet.`
+
+### Line 20
+
+- terms: Obsidian
+- before:
+  `- Obsidian is not part of the current runtime work.`
+- after:
+  `- [[Obsidian]] is not part of the current runtime work.`
+
+### Line 27
+
+- terms: Tailscale
+- before:
+  `- Tailscale is operational with CLI version `1.98.2`.`
+- after:
+  `- [[Tailscale]] is operational with CLI version `1.98.2`.`
+
+### Line 50
+
+- terms: SQLite
+- before:
+  `  - creates consistent SQLite snapshots`
+- after:
+  `  - creates consistent [[SQLite]] snapshots`
+
+### Line 61
+
+- terms: [[Dobby]]
+- before:
+  `### Dobby protocol / memory`
+- after:
+  `### [[Dobby]] protocol / memory`
+
+### Line 114
+
+- terms: [[Vasco]]
+- before:
+  `- `20` Vasco`
+- after:
+  `- `20` [[Vasco]]`
+
+### Line 115
+
+- terms: [[Vasco]]
+- before:
+  `- `83` Vasco`
+- after:
+  `- `83` [[Vasco]]`
+
+### Line 116
+
+- terms: [[Renard]]
+- before:
+  `- `128` Renard`
+- after:
+  `- `128` [[Renard]]`
+
+### Line 117
+
+- terms: [[Vasco]]
+- before:
+  `- `147` Vasco`
+- after:
+  `- `147` [[Vasco]]`
+
+### Line 118
+
+- terms: [[Vasco]]
+- before:
+  `- `214` Vasco`
+- after:
+  `- `214` [[Vasco]]`
+
+### Line 119
+
+- terms: [[Renard]]
+- before:
+  `- `228` Renard`
+- after:
+  `- `228` [[Renard]]`
+
+### Line 137
+
+- terms: SQLite, Git
+- before:
+  `- Do not include SQLite backups in Git.`
+- after:
+  `- Do not include [[SQLite]] backups in [[Git]].`
+
+## `JCH_Inbox/99_SYSTEM/tool-pointers/GEMMA.md`
+
+### Line 5
+
+- terms: [[Dobby]]
+- before:
+  `You are Dobby 🦉, the team orchestrator of PKA_JCH.`
+- after:
+  `You are [[Dobby]] 🦉, the team orchestrator of PKA_JCH.`
+
+### Line 6
+
+- terms: [[Dobby]]
+- before:
+  `Dobby is your operating identity inside this folder — not a persona you switch into.`
+- after:
+  `[[Dobby]] is your operating identity inside this folder — not a persona you switch into.`
+
+### Line 10
+
+- terms: [[Bouvier]], [[Furet]], [[Castor]], [[Corbeau]], [[Delphi]], [[Héron]], [[Lynx]], [[Jade]]
+- before:
+  `The 24 specialists (Bouvier, Furet, Castor, Corbeau, Delphi, Héron, Lynx, Jade,`
+- after:
+  `The 24 specialists ([[Bouvier]], [[Furet]], [[Castor]], [[Corbeau]], [[Delphi]], [[Héron]], [[Lynx]], [[Jade]],`
+
+### Line 11
+
+- terms: [[Renard]], [[Iris]], [[Forge]], [[Ariane]], [[Bruno]], [[Sybil]], [[Clio]], [[Sigma]], [[Vega]], [[Trace]], [[Miel]], [[Vasco]]
+- before:
+  `Renard, Iris, Forge, Ariane, Bruno, Sybil, Clio, Sigma, Vega, Trace, Miel, Vasco,`
+- after:
+  `[[Renard]], [[Iris]], [[Forge]], [[Ariane]], [[Bruno]], [[Sybil]], [[Clio]], [[Sigma]], [[Vega]], [[Trace]], [[Miel]], [[Vasco]],`
+
+### Line 12
+
+- terms: [[Nova]], [[Argus]], [[Pie]]
+- before:
+  `Nova, Argus, Pie) are distinct identities you delegate to — you do NOT become them.`
+- after:
+  `[[Nova]], [[Argus]], [[Pie]]) are distinct identities you delegate to — you do NOT become them.`
+
+### Line 18
+
+- terms: SQLite
+- before:
+  `- `TEAM/team.db` — authoritative roster and all PKA data (SQLite)`
+- after:
+  `- `TEAM/team.db` — authoritative roster and all PKA data ([[SQLite]])`
+
+### Line 33
+
 - terms: Claude
 - before:
-  `- `medium` `pointer-generation` CLAUDE.md / AGENTS.md / GEMINI.md / DEEPSEEK.md: generated pointer surfaces are drifting from the canonical config`
+  `- Capacités d'orchestration réduites par rapport à Claude Sonnet — préférer les tâches structurées`
 - after:
-  `- `medium` `pointer-generation` [[Claude]].md / AGENTS.md / GEMINI.md / DEEPSEEK.md: generated pointer surfaces are drifting from the canonical config`
+  `- Capacités d'orchestration réduites par rapport à [[Claude]] Sonnet — préférer les tâches structurées`
+
+### Line 37
+
+- terms: [[Dobby]]
+- before:
+  `Reply to JCH as Dobby with:`
+- after:
+  `Reply to JCH as [[Dobby]] with:`
+
+## `JCH_Inbox/99_SYSTEM/tool-pointers/QWEN.md`
+
+### Line 5
+
+- terms: [[Dobby]]
+- before:
+  `You are Dobby 🦉, the team orchestrator of PKA_JCH.`
+- after:
+  `You are [[Dobby]] 🦉, the team orchestrator of PKA_JCH.`
+
+### Line 6
+
+- terms: [[Dobby]]
+- before:
+  `Dobby is your operating identity inside this folder — not a persona you switch into.`
+- after:
+  `[[Dobby]] is your operating identity inside this folder — not a persona you switch into.`
+
+### Line 10
+
+- terms: [[Bouvier]], [[Furet]], [[Castor]], [[Corbeau]], [[Delphi]], [[Héron]], [[Lynx]], [[Jade]]
+- before:
+  `The 24 specialists (Bouvier, Furet, Castor, Corbeau, Delphi, Héron, Lynx, Jade,`
+- after:
+  `The 24 specialists ([[Bouvier]], [[Furet]], [[Castor]], [[Corbeau]], [[Delphi]], [[Héron]], [[Lynx]], [[Jade]],`
+
+### Line 11
+
+- terms: [[Renard]], [[Iris]], [[Forge]], [[Ariane]], [[Bruno]], [[Sybil]], [[Clio]], [[Sigma]], [[Vega]], [[Trace]], [[Miel]], [[Vasco]]
+- before:
+  `Renard, Iris, Forge, Ariane, Bruno, Sybil, Clio, Sigma, Vega, Trace, Miel, Vasco,`
+- after:
+  `[[Renard]], [[Iris]], [[Forge]], [[Ariane]], [[Bruno]], [[Sybil]], [[Clio]], [[Sigma]], [[Vega]], [[Trace]], [[Miel]], [[Vasco]],`
+
+### Line 12
+
+- terms: [[Nova]], [[Argus]], [[Pie]]
+- before:
+  `Nova, Argus, Pie) are distinct identities you delegate to — you do NOT become them.`
+- after:
+  `[[Nova]], [[Argus]], [[Pie]]) are distinct identities you delegate to — you do NOT become them.`
+
+### Line 18
+
+- terms: SQLite
+- before:
+  `- `TEAM/team.db` — authoritative roster and all PKA data (SQLite)`
+- after:
+  `- `TEAM/team.db` — authoritative roster and all PKA data ([[SQLite]])`
+
+### Line 34
+
+- terms: [[Jade]]
+- before:
+  `- Capacités multilingues fortes (FR/EN/ZH) — pertinent pour les tâches Jade`
+- after:
+  `- Capacités multilingues fortes (FR/EN/ZH) — pertinent pour les tâches [[Jade]]`
+
+### Line 38
+
+- terms: [[Dobby]]
+- before:
+  `Reply to JCH as Dobby with:`
+- after:
+  `Reply to JCH as [[Dobby]] with:`
+
+## `wiki/Daily/2026/05/2026-05-29-hermisation-complete.md`
+
+### Line 14
+
+- terms: 01_AI_IT_TOOLS
+- before:
+  `- Projet : 01_AI_IT_TOOLS`
+- after:
+  `- Projet : [[01_AI_IT_TOOLS]]`
+
+### Line 20
+
+- terms: [[Chouette]], [[Clio]], [[Corbeau]]
+- before:
+  `Phase 3 Local_Infrastructure_Setup.md. Phase 4 Persistent_Memory_Architecture.md + 4a active. Phase 5 Workflow_Orchestration.md + 5a active. Pilote 1 wikilinks appliqués. Pilote 2 System_Architecture_Report.md + schema v8. Pilote 3 wildlife knowledge indexé (Chouette+Clio+Corbeau). Inbox triée, 5 livrables Vetalyx validés JCH. /save branché sur memory_log.`
+- after:
+  `Phase 3 Local_Infrastructure_Setup.md. Phase 4 Persistent_Memory_Architecture.md + 4a active. Phase 5 Workflow_Orchestration.md + 5a active. Pilote 1 wikilinks appliqués. Pilote 2 System_Architecture_Report.md + schema v8. Pilote 3 wildlife knowledge indexé ([[Chouette]]+[[Clio]]+[[Corbeau]]). Inbox triée, 5 livrables Vetalyx validés JCH. /save branché sur memory_log.`
+
+### Line 23
+
+- terms: PostgreSQL, Redis, Qdrant, n8n, Claude, ChatGPT, Python, Apple, Pi, Heron
+- before:
+  `PostgreSQL/Redis non justifiés. Qdrant différé knowledge>=100 (actuellement 28). n8n différé workflow>=3 services. Claude/ChatGPT/Python/Apple/Pi exclus wikilinks. Heron canonique sans accent. file_index_legacy_scope2 supprimée (−57% DB).`
+- after:
+  `[[PostgreSQL]]/[[Redis]] non justifiés. [[Qdrant]] différé knowledge>=100 (actuellement 28). [[n8n]] différé workflow>=3 services. [[Claude]]/[[ChatGPT]]/[[Python]]/[[Apple]]/[[Pi]] exclus wikilinks. [[Heron]] canonique sans accent. file_index_legacy_scope2 supprimée (−57% DB).`
+
+### Line 26
+
+- terms: BirdNET, Qdrant, n8n
+- before:
+  `Câble USB-C PD pour undervoltage RPi5 → protocole 24h BirdNET. Alimenter knowledge vers 100 entrées. Qdrant et n8n sur seuils mesurables.`
+- after:
+  `Câble USB-C PD pour undervoltage RPi5 → protocole 24h [[BirdNET]]. Alimenter knowledge vers 100 entrées. [[Qdrant]] et [[n8n]] sur seuils mesurables.`
+
+## `wiki/log.md`
+
+### Line 112
+
+- terms: Codex, 01_AI_IT_TOOLS
+- before:
+  `2026-05-29 01:45 — Save Codex [model=claude-sonnet-4-6 ; project=01_AI_IT_TOOLS] : hermisation-complete (Hermisation PKA_JCH complète. 5 phases + 3 pilotes livrés. Infrastructure opérationnelle : memory_log, skills, knowledge, audit log dashboard, wikilinks vault appliqués (356 sur...) — `wiki/Daily/2026/05/2026-05-29-hermisation-complete.md``
+- after:
+  `2026-05-29 01:45 — Save [[Codex]] [model=claude-sonnet-4-6 ; project=[[01_AI_IT_TOOLS]]] : hermisation-complete (Hermisation PKA_JCH complète. 5 phases + 3 pilotes livrés. Infrastructure opérationnelle : memory_log, skills, knowledge, audit log dashboard, wikilinks vault appliqués (356 sur...) — `wiki/Daily/2026/05/2026-05-29-hermisation-complete.md``

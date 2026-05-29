@@ -1,6 +1,6 @@
 # Niall Staines — référence visuelle
 
-- Source : email transféré par JCH le 2026-05-14
+- Source : [[email]] transféré par JCH le 2026-05-14
 - Expéditeur : `jc.havaux@gmail.com`
 - Objet : `FW: niall staines`
 

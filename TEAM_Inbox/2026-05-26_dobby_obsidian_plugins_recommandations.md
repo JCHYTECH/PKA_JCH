@@ -7,7 +7,7 @@ Analyser les plugins et configurations [[Obsidian]] utiles pour le vault PKA_JCH
 ## Equipe mobilisee
 
 - [[Dobby]] : orchestration et arbitrage.
-- [[Corbeau]] : coherence knowledge graph et gouvernance documentaire.
+- [[Corbeau]] : coherence [[knowledge]] graph et gouvernance documentaire.
 - [[Sybil]] : journal quotidien, captures et routines de cloture.
 - [[Forge]] : configuration technique, sauvegarde et automatisation locale.
 - [[Furet]] : veille ecosysteme plugins [[Obsidian]].
@@ -132,7 +132,7 @@ Peut etre pratique pour les URL, mais risque de creer du bruit si utilise massiv
 
 ### Plugins IA dans [[Obsidian]]
 
-A eviter tant que l'architecture multi-modeles PKA/[[Codex]]/[[Claude]]/Gemini n'est pas stabilisee. Les decisions et memoires doivent rester dans les fichiers PKA, pas dans des conversations ou index opaques de plugin.
+A eviter tant que l'architecture multi-modeles PKA/[[Codex]]/[[Claude]]/Gemini n'est pas stabilisee. Les [[decisions]] et memoires doivent rester dans les fichiers PKA, pas dans des conversations ou index opaques de plugin.
 
 ### Plugins de graph avance
 
@@ -183,19 +183,19 @@ project:
 ```
 
 Valeurs `type` initiales :
-- daily
-- knowledge
-- sop
-- workstream
+- [[daily]]
+- [[knowledge]]
+- [[sop]]
+- [[workstream]]
 - project
 - specialist
-- inbox
+- [[inbox]]
 - decision
 - vendor
 - contact
 
 Valeurs `status` initiales :
-- inbox
+- [[inbox]]
 - draft
 - review
 - active

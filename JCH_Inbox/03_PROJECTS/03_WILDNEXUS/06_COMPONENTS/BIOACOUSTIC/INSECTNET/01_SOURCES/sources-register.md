@@ -70,7 +70,7 @@ Contraintes v3 observees dans la documentation :
 - `key` obligatoire ;
 - requetes par tags de recherche, pas par texte libre generique ;
 - `per_page` optionnel, 50 a 500 ;
-- cle disponible pour les comptes [[Xeno-Canto]] avec email verifie ;
+- cle disponible pour les comptes [[Xeno-Canto]] avec [[email]] verifie ;
 - ne pas publier la cle dans un depot.
 
 ### Requete cible V0.1

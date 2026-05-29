@@ -3,7 +3,7 @@ tags:
   - type/project
   - status/active
 ---
-# Papier pour noir et blanc
+# [[Papier pour noir et blanc]]
 
 **Created:** 2026-04-12 19:04  
 **Updated:** 2026-04-12 21:05  
@@ -303,7 +303,7 @@ Point important : l’ET-8550 est très sensible au bon **media setting** associ
 
 Si tu veux, je peux maintenant te faire un tableau très concret :
 
-**Papier | rendu N&B | source ICC | media setting ET-8550 | priorité de test**.
+**[[Papier]] | rendu N&B | source ICC | media setting ET-8550 | priorité de test**.
 
 ---
 
@@ -326,7 +326,7 @@ Je vérifie les sources officielles et les bibliothèques ICC les plus utiles, p
 
 Oui. Voici un tableau de départ, centré sur des options réalistes pour du **N&B expo** avec l’**ET-8550**.
 
-| Papier | Type de rendu | Source ICC la plus pratique | Media setting / réglage papier à utiliser | Priorité |
+| [[Papier]] | Type de rendu | Source ICC la plus pratique | Media setting / réglage papier à utiliser | Priorité |
 |---|---|---|---|---|
 | **Epson Velvet Fine Art** | Mat fine art, sobre, galerie, très bon candidat pour le N&B | **Keith Cooper** ou **Epson** si le profil est installé avec le driver | **Velvet Fine Art Paper** | **1** |
 | **Epson Premium Lustre / Ultra Premium Luster** | Rendu photo expo plus classique, plus nerveux visuellement | **Keith Cooper** ou **Epson** | **Premium/Ultra Premium Luster** | **2** |
@@ -513,7 +513,7 @@ Même réglages d’impression sauf :
 3. ______________________________________
 
 **Réglages à noter pour chaque tirage**  
-Papier : _________________________________  
+[[Papier]] : _________________________________  
 Profil ICC : _____________________________  
 Media setting : __________________________  
 Mode couleur : ___________________________  
@@ -524,7 +524,7 @@ Alimentation papier : _____________________
 **Évaluation visuelle**  
 Noter de 1 à 5
 
-| Critère | Papier 1 | Papier 2 | Papier 3 |
+| Critère | [[Papier]] 1 | [[Papier]] 2 | [[Papier]] 3 |
 |---|---:|---:|---:|
 | Neutralité du N&B |  |  |  |
 | Profondeur des noirs |  |  |  |
@@ -544,15 +544,15 @@ Distance d’observation rapprochée : oui / non
 Distance d’exposition normale : oui / non
 
 **Observations libres**  
-Papier 1 :  
+[[Papier]] 1 :  
 __________________________________________________  
 __________________________________________________  
 
-Papier 2 :  
+[[Papier]] 2 :  
 __________________________________________________  
 __________________________________________________  
 
-Papier 3 :  
+[[Papier]] 3 :  
 __________________________________________________  
 __________________________________________________  
 
@@ -562,14 +562,14 @@ __________________________________________________
 3. ______________________________________  
 
 **Choix retenu pour exposition**  
-Papier : __________________________________  
+[[Papier]] : __________________________________  
 Pourquoi : ________________________________  
 __________________________________________
 
 **Configuration de départ conseillée ET-8550**  
-Papier 1 : Epson Velvet Fine Art  
-Papier 2 : Epson Premium Lustre  
-Papier 3 : baryta en comparaison seulement
+[[Papier]] 1 : Epson Velvet Fine Art  
+[[Papier]] 2 : Epson Premium Lustre  
+[[Papier]] 3 : baryta en comparaison seulement
 
 Si tu veux, je peux te la mettre aussi en **format tableau plus élégant**, prêt à copier dans Word ou à imprimer en PDF.
 
@@ -723,7 +723,7 @@ Livrables obligatoires :
 1. Une synthèse de 5 à 10 lignes
 2. Un classement des meilleurs papiers à tester
 3. Un tableau avec colonnes :
-   - Papier
+   - [[Papier]]
    - Famille de surface
    - Qualité attendue en N&B expo
    - Neutralité potentielle
@@ -790,7 +790,7 @@ Consignes impératives :
    - retours d’usage crédibles,
    - interprétations raisonnables,
    - incertitudes éventuelles.
-3. N’utilise pas un ton commercial.
+3. N’utilise pas un ton [[commercial]].
 4. Tiens compte des points suivants :
    - type d’encres
    - nombre de cartouches/réservoirs
@@ -993,7 +993,7 @@ Travail demandé :
 1. Identifier les familles de papier pertinentes
 2. Classer les meilleurs papiers à tester
 3. Donner un tableau avec :
-   - Papier
+   - [[Papier]]
    - Surface
    - Qualité attendue en N&B expo
    - Neutralité potentielle

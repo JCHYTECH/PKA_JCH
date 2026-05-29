@@ -12,7 +12,7 @@
 
 ## Pourquoi
 
-Le systeme va accumuler memoires, skills, politiques et decisions. Sans controle regulier, il peut deriver: informations obsoletes, skills redondantes, regles trop larges, exceptions oubliees ou procedures qui ne correspondent plus aux besoins de JCH.
+Le systeme va accumuler memoires, skills, politiques et [[decisions]]. Sans controle regulier, il peut deriver: informations obsoletes, skills redondantes, regles trop larges, exceptions oubliees ou procedures qui ne correspondent plus aux besoins de JCH.
 
 Gain attendu: garder un systeme stable, sobre, explicable et utile.
 
@@ -25,14 +25,14 @@ Organiser un auto-check regulier, non autonome au debut, declenche par l'assista
 Frequence proposee:
 
 - Revue legere: apres chaque serie de modifications de gouvernance.
-- Revue complete: toutes les 4 a 6 semaines ou apres 10 nouvelles decisions.
+- Revue complete: toutes les 4 a 6 semaines ou apres 10 nouvelles [[decisions]].
 
 Points a verifier:
 
 - Les fichiers `memory/` restent courts, utiles et non sensibles.
 - Les skills `approved` sont encore pertinentes.
 - Les policies ne sont pas trop larges ni contradictoires.
-- Les decisions `accepted.md` correspondent aux fichiers reellement en place.
+- Les [[decisions]] `accepted.md` correspondent aux fichiers reellement en place.
 - Les propositions anciennes en `PROPOSED` sont acceptees, rejetees ou reformulees.
 - Aucun fichier ne transforme une suggestion en permission implicite.
 

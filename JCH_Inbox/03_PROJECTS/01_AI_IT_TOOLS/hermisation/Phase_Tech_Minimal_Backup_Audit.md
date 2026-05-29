@@ -91,7 +91,7 @@ Une restauration réelle exige validation humaine explicite, arrêt ou suspensio
 |---|---|---|
 | Backups seulement locaux | Moyenne | À traiter dans une étape sauvegarde hors machine. |
 | Restauration automatisée dangereuse | Élevée | Interdite sans validation humaine. |
-| Writers concurrents pendant restauration | Élevée | Arrêter ou suspendre Dobby/scripts avant restauration réelle. |
+| Writers concurrents pendant restauration | Élevée | Arrêter ou suspendre [[Dobby]]/scripts avant restauration réelle. |
 
 ## 8. Verdict
 

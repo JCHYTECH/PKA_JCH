@@ -12,7 +12,7 @@ tags:
   - status/active
 ---
 
-# Vetalyx - contacts
+# [[Vetalyx - contacts]]
 
 ## Objectif
 

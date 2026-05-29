@@ -8,7 +8,7 @@ tags:
   - community/PWA_App_&_Deployment
 ---
 
-# Faune Autour PWA — project synthesis document
+# [[Faune Autour PWA — project synthesis document]]
 
 ## Connections
 - [[Drawer Detail — tap-to-open panel with Wikipedia photo and mini Leaflet map]] - `references` [EXTRACTED]

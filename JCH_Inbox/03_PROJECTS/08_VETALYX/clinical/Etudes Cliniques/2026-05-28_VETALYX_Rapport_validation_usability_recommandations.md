@@ -94,7 +94,7 @@ Ce retour terrain est confirmé par des échanges avec d'autres vétérinaires e
 
 Les vétérinaires attendent des **allergènes européens à forte prévalence**. Dépister des allergènes rares peu représentés dans leur clientèle n'a aucun intérêt clinique.
 
-**Risque commercial :** si la composition ne répond pas à cette demande de base, la difficulté commerciale sera significative.
+**Risque [[commercial]] :** si la composition ne répond pas à cette demande de base, la difficulté commerciale sera significative.
 
 ### 1.6 Traitement et revendications d'utilisation
 
@@ -111,7 +111,7 @@ Les vétérinaires soulignent que le test est **uniquement à valeur indicative*
 
 La conclusion majeure de l'essai d'utilisabilité et des discussions avec les vétérinaires belges, français, et les experts de l'Université de Liège est la suivante :
 
-> **La question centrale n'est plus de savoir si les kits sont utilisables — ils le sont. La question est de savoir si leur composition allergénique est adaptée au marché européen. C'est là que se joue le succès commercial.**
+> **La question centrale n'est plus de savoir si les kits sont utilisables — ils le sont. La question est de savoir si leur composition allergénique est adaptée au marché européen. C'est là que se joue le succès [[commercial]].**
 
 Il est apparu clairement que **chaque région a ses allergènes spécifiques**, et que la gamme actuelle — conçue sur un référentiel allergénique non européen — doit être revue. Le risque est réel : un kit bien accepté en termes d'usage mais dont les allergènes ne correspondent pas à la prévalence locale sera perçu comme peu pertinent, et ne sera pas prescrit en routine.
 

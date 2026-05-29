@@ -8,7 +8,7 @@ domain: ai-system
 
 # Do Not Copy
 
-The Hermisation project must not copy these patterns from Hermes-like systems:
+The [[Hermisation]] project must not copy these patterns from Hermes-like systems:
 
 - pseudo-AGI framing;
 - autonomous decision-making for critical actions;

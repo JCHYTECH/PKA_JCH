@@ -131,7 +131,7 @@ The work product exists and now waits for:
 
 #### Termine
 
-The deliverable is accepted or the decision is considered complete.
+The deliverable is [[accepted]] or the decision is considered complete.
 
 #### [[archive]]
 
@@ -165,7 +165,7 @@ The item is closed and removed from the active operational flow while remaining 
 - Labels = nature/classification of work
 - Checklists = project-specific execution steps
 - Fields = pilotage metadata
-- Comments = working history and decisions
+- Comments = working history and [[decisions]]
 
 ## Card Types
 
@@ -285,7 +285,7 @@ Completed-but-unapproved work must move to `En validation`, not `Termine`.
 
 ### Closure discipline
 
-Only accepted work or finalized decisions go to `Termine`.
+Only [[accepted]] work or finalized [[decisions]] go to `Termine`.
 
 ## Dashboard Integration Target
 
@@ -349,7 +349,7 @@ Mitigation: the PKA layer owns canonical semantics and dashboards consume them.
 
 ## Rollout Principle
 
-Start with:
+[[Start]] with:
 
 - one canonical workflow
 - one canonical card schema

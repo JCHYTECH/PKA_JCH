@@ -381,8 +381,8 @@ Cependant, NocoDB permet aussi de self-hoster la version open source gratuitemen
 **Pour démarrer sur NocoDB cloud :**
 
 1. Aller sur **nocodb.com**
-2. Cliquer "Start For Free" en haut à droite
-3. S'inscrire avec Google ou email
+2. Cliquer "[[Start]] For Free" en haut à droite
+3. S'inscrire avec Google ou [[email]]
 4. Créer un nouveau workspace → nouvelle base → importer le CSV
 
 **Pour l'import du CSV et la configuration des champs :** la logique est quasi identique à Airtable. Après import, cliquer sur l'en-tête de chaque colonne → changer le type de champ vers Multi-select, Single select, ou URL selon le cas.
@@ -462,7 +462,7 @@ Je suppose que vous demandez comment faire le Takeout Google Maps. Voici les ét
 3. Descendre jusqu'à **"Enregistrés"** (ou "Saved" en anglais) — c'est la section Google Maps — et cocher uniquement celle-là
 4. Cliquer "Étape suivante"
 5. Choisir le format d'export (laisser par défaut) et cliquer "Créer un export"
-6. Google prépare le fichier (quelques minutes) et vous envoie un lien de téléchargement par email
+6. Google prépare le fichier (quelques minutes) et vous envoie un lien de téléchargement par [[email]]
 
 Vous recevrez un fichier ZIP contenant vos lieux sauvegardés en format GeoJSON. Passez-le-moi ensuite — je le convertirai en CSV compatible avec votre structure NocoDB, colonnes pré-remplies (nom, coordonnées, adresse, lien Google Maps).
 

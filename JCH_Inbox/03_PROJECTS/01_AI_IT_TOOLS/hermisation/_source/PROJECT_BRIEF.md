@@ -6,14 +6,14 @@ status: active
 domain: ai-system
 ---
 
-# Project Brief — PKA Hermisation
+# Project Brief — PKA [[Hermisation]]
 
 ## Objective
 
 Build a durable PKA AI infrastructure that improves:
 
 - continuity between sessions;
-- memory of decisions and workflows;
+- memory of [[decisions]] and workflows;
 - procedural reuse;
 - light multi-agent orchestration;
 - system logging;
@@ -22,7 +22,7 @@ Build a durable PKA AI infrastructure that improves:
 
 ## Philosophy
 
-Hermisation must remain:
+[[Hermisation]] must remain:
 
 - pragmatic;
 - progressive;

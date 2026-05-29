@@ -133,7 +133,7 @@ WP02 doit produire rapidement :
 2. estimation encombrement v0.2 ;
 3. comparaison 4 AA vs 8 AA avec le modele autonomie ;
 4. choix de 1-2 boitiers candidats ;
-5. strategie antenne [[LoRa]] discrete ;
+5. [[strategie]] antenne [[LoRa]] discrete ;
 6. architecture PCB v0.1 ;
 7. liste des mesures M-02 au PPK2.
 

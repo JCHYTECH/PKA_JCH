@@ -51,7 +51,7 @@ Firmware must enforce strict, explicit state transitions. Any code path that can
 ### P0 mandatory sources
 
 - **PIR interrupt** — Hardware motion detection. Zero MCU current during wait. Primary trigger for camera events.
-- **RTC alarm** — Periodic housekeeping: battery check, [[LoRa]] heartbeat, environmental sensor read, daily schedule evaluation.
+- **RTC alarm** — Periodic housekeeping: battery check, [[LoRa]] heartbeat, environmental sensor read, [[daily]] schedule evaluation.
 
 ### P1 optional sources
 
@@ -98,7 +98,7 @@ DoD factor: 0.8 for Li-Ion, 0.9 for LiFePO4.
 | PIR processing + camera (10×) | Active event | 400 mA | 30 s each | 33.3 mAh |
 | [[LoRa]] TX (10×) | Active TX | 25 mA | 2 s each | 0.14 mAh |
 | Housekeeping (4×/day) | Light sleep | 5 mA | 60 s each | 0.33 mAh |
-| **Total daily** | | | | **~34.5 mAh** |
+| **Total [[daily]]** | | | | **~34.5 mAh** |
 
 At 34.5 mAh/day: 3000 mAh × 0.8 / 34.5 ≈ **69 days autonomy**, before solar contribution.
 

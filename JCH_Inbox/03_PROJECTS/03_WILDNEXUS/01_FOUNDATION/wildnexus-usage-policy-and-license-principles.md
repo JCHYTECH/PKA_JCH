@@ -15,7 +15,7 @@ Ce document fixe les principes directeurs de la future licence et de la politiqu
 Il ne remplace pas le texte juridique final. Il sert de base de cadrage pour :
 - la rédaction de la licence cœur
 - la politique d'usage opposable aux tiers
-- les contrats partenaires et commerciaux
+- les [[contrats]] partenaires et commerciaux
 - la cohérence entre la communication publique et la réalité juridique
 
 Le choix structurant déjà retenu est le suivant :
@@ -98,7 +98,7 @@ Certains usages peuvent être permis mais seulement sous conditions documentées
 Exemples :
 - recherche académique ou institutionnelle
 - déploiement par ONG, réserves, communes, associations
-- intégration par un partenaire commercial aligné avec la mission
+- intégration par un partenaire [[commercial]] aligné avec la mission
 - adaptation technique à un autre contexte écologique
 
 Conditions minimales :
@@ -160,7 +160,7 @@ Formulations à éviter sauf changement de licence :
 
 Un conseil [[Pi]]/juridique externe peut être mobilisé pour :
 - valider la robustesse des clauses
-- articuler licence, politique d'usage et contrats
+- articuler licence, politique d'usage et [[contrats]]
 - analyser les sujets brevets/FTO
 - limiter les contradictions entre ambition éthique et opposabilité réelle
 
@@ -194,4 +194,4 @@ Tout texte final devra respecter simultanément ces quatre conditions :
 
 ---
 
-*Document de principes — WildNexus usage policy and license principles — v0.1 DRAFT*
+*Document de principes — WildNexus usage [[policy]] and license principles — v0.1 DRAFT*

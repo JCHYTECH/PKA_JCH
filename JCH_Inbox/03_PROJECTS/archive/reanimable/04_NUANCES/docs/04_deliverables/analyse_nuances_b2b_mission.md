@@ -10,7 +10,7 @@ Sources de travail :
 - `../wiki/BESS-synthese-strategique-et-risques.md`
 
 Objectif du document :
-Structurer la mission Nuances B2B selon des thèmes directement convertibles en slides PowerPoint, afin de clarifier la vision, le besoin, le processus technico-commercial cible et les outils de vente et de pilotage.
+Structurer la mission Nuances B2B selon des thèmes directement convertibles en slides PowerPoint, afin de clarifier la vision, le besoin, le processus technico-[[commercial]] cible et les outils de vente et de pilotage.
 
 Révision : 2026-05-14 — version de référence, 18 slides, intégrant synthèse BESS et grille de risques ([[Dobby]])
 
@@ -35,7 +35,7 @@ Nuances n'est pas un simple installateur photovoltaïque ou de batteries. C'est 
 - optimisation de l'autoconsommation
 - écrêtage des pointes, déplacement de charge et optimisation selon les plages tarifaires
 - trading, flexibilité, réserves et injection
-- contrats énergie, leasing, tiers-investissement et financement
+- [[contrats]] énergie, leasing, tiers-investissement et financement
 
 ### Idée de slide
 
@@ -65,7 +65,7 @@ La vision B2B doit articuler ensemble :
 - la donnée
 - la technique
 - le financement
-- le commercial
+- le [[commercial]]
 - la preuve économique
 
 ### Idée de slide
@@ -142,7 +142,7 @@ Nuances dispose déjà d'une force commerciale, d'actifs techniques et d'une bas
 - rendez-vous insuffisamment préparés
 - cycle de vente plus long et plus complexe
 - besoin de prouver rapidement la rentabilité
-- besoin d'aligner commercial, technique et financement
+- besoin d'aligner [[commercial]], technique et financement
 
 ### Enjeu
 
@@ -161,7 +161,7 @@ Une slide "Pourquoi maintenant" avec :
 
 ### Besoin exprimé
 
-Préparer un processus technico-commercial qui part d'une stratégie claire et réduit le temps de signature des contrats.
+Préparer un processus technico-[[commercial]] qui part d'une stratégie claire et réduit le temps de signature des [[contrats]].
 
 ### Ce que la mission doit produire
 
@@ -228,7 +228,7 @@ Une slide "ICP / cible prioritaire" avec :
 - Nuances Brain / EMS
 - BESS industriel
 - PV / Nuances Sun
-- Nuances Energy : contrats, injection, pool énergie
+- Nuances Energy : [[contrats]], injection, pool énergie
 
 ### Logique recommandée
 
@@ -255,7 +255,7 @@ Une slide d'architecture d'offre avec les briques reliées entre elles.
 
 ---
 
-## Slide 8 — Vision du processus technico-commercial cible
+## Slide 8 — Vision du processus technico-[[commercial]] cible
 
 ### Principe
 
@@ -313,7 +313,7 @@ Une slide "6 leviers" en format visuel horizontal ou vertical.
 
 ### Objectif
 
-Donner au commercial une base solide avant le premier rendez-vous.
+Donner au [[commercial]] une base solide avant le premier rendez-vous.
 
 ### Contenu attendu
 
@@ -360,7 +360,7 @@ Une slide "Dossier de rendez-vous" avec check-list et valeur business.
 
 - centralisation des données prospect
 - scoring et pipeline
-- suivi technique, commercial et financier
+- suivi technique, [[commercial]] et financier
 - génération de dossiers préliminaires
 - suivi installation et performance
 - visualisation des KPI en temps réel
@@ -463,7 +463,7 @@ Une slide de roadmap de mission en 6 phases.
 
 ### Validation terrain
 
-Le protocole technico-commercial sera validé par des **visites chez des prospects**, effectuées par les consultants accompagnés d'un spécialiste Nuances. Le protocole sera adapté en fonction des conclusions de ces rendez-vous.
+Le protocole technico-[[commercial]] sera validé par des **visites chez des prospects**, effectuées par les consultants accompagnés d'un spécialiste Nuances. Le protocole sera adapté en fonction des conclusions de ces rendez-vous.
 
 ### Engagements de Nuances
 
@@ -475,7 +475,7 @@ Le protocole technico-commercial sera validé par des **visites chez des prospec
 ### Périmètre élargi possible
 
 - participation ou animation d'activités de **lobbying** auprès des parties prenantes amont et aval
-- rédaction de **projets de contrats**, leur évolution, leurs corrections et leurs négociations à la demande de Nuances
+- rédaction de **projets de [[contrats]]**, leur évolution, leurs corrections et leurs négociations à la demande de Nuances
 
 ### Idée de slide
 
@@ -544,12 +544,12 @@ Une slide "Ce que Nuances résout" en format tableau ou icônes, reliée au cont
 | **Réglementation installations** | Les projets > 1 MWh nécessitent des permis d'environnement en Belgique et une déclaration ICPE en France. Les commerciaux doivent savoir qualifier ce risque dès le premier rendez-vous. |
 | **Marchés de flexibilité (FCR / aFRR)** | Aucune stratégie mentionnée sur ces marchés — pourtant un levier de revenus additionnels pour le client et un argument de vente différenciateur face à un simple installateur. |
 | **Plan de transformation B2C → B2B** | Les 15 commerciaux sont formés B2C. La mission identifie le problème mais aucun plan de reconversion n'est formalisé. C'est le risque opérationnel le plus immédiat. |
-| **Maintenance et suivi post-installation** | Le modèle commercial s'arrête à la signature. Pas de SLA, pas de contrat de performance, pas de suivi défini. Un client signé sans suivi constitue un risque de réputation. |
+| **Maintenance et suivi post-installation** | Le modèle [[commercial]] s'arrête à la signature. Pas de SLA, pas de contrat de performance, pas de suivi défini. Un client signé sans suivi constitue un risque de réputation. |
 | **Structure du leasing** | Le leasing est présenté comme un levier, mais sans structure claire : qui finance ? À quel taux ? Qui porte le risque de défaut ? Ces questions doivent être résolues avant toute proposition commerciale. |
 | **Dépendance à l'investisseur suisse** | 140 M€ d'un seul investisseur non confirmé. Toute la stratégie B2B ne peut pas être conditionnée à ce signal. Un scénario sans financement externe doit exister. |
 | **Rôle exact de Nuances dans la chaîne de valeur** | Revendeur, intégrateur, assembleur, opérateur ou financeur : tant que ce rôle n'est pas fixé, le niveau de risque porté reste mal défini. |
 | **Dépendance fournisseur / OEM** | Une offre construite sur un seul partenaire expose Nuances aux délais, aux MOQ, à la marge et à une perte de contrôle. |
-| **Choix du segment initial** | Vouloir couvrir à la fois PME, citoyen, mobile, rural, communautaire et industrie diluerait l'effort commercial et technique. |
+| **Choix du segment initial** | Vouloir couvrir à la fois PME, citoyen, mobile, rural, communautaire et industrie diluerait l'effort [[commercial]] et technique. |
 | **Assurabilité et sécurité incendie** | Un incident sur un projet mal cadré peut casser rapidement la crédibilité B2B de Nuances. |
 
 ### Lecture stratégique
@@ -574,7 +574,7 @@ La mission n'a pas pour but de produire une théorie commerciale supplémentaire
 
 ### Formulation finale
 
-Nuances a besoin d'un dispositif technico-commercial qui :
+Nuances a besoin d'un dispositif technico-[[commercial]] qui :
 - clarifie son positionnement B2B
 - cible mieux
 - prépare mieux les rendez-vous

@@ -40,7 +40,7 @@ Une contradiction technique ou documentaire devient un item `decision` ou `risk`
 | 
 | 
 | 
-| Licence, FTO, usage policy | [[Renard]] + [[Hermine]] | licence source-available, exclusions d'usage, FTO, [[Pi]] | note FTO, politique d'usage, clauses licence | JCH pour tout choix juridique engageant |
+| Licence, FTO, usage [[policy]] | [[Renard]] + [[Hermine]] | licence source-available, exclusions d'usage, FTO, [[Pi]] | note FTO, politique d'usage, clauses licence | JCH pour tout choix juridique engageant |
 | Communication communauté | [[Miel]] + [[Trace]] | visibilité, page projet, canal communauté, beta interest | plan de communication EVT, page ou article, canal public | [[Dobby]] si publication avant validation juridique |
 
 ## 4. Rôles transverses PKA
@@ -50,7 +50,7 @@ Une contradiction technique ou documentaire devient un item `decision` ou `risk`
 | [[Dobby]] | orchestration, décisions, synthèse, escalade |
 | [[Forge]] | automatisation Plane, scripts, dashboards, intégration repo |
 | [[Castor]] | cohérence données, schémas, architecture technique structurée |
-| [[Renard]] | droit, contrats, RGPD, licence |
+| [[Renard]] | droit, [[contrats]], RGPD, licence |
 | [[Hermine]] | propriété intellectuelle, brevetabilité, FTO |
 | [[Bruno]] | budget, coût P0, soutenabilité financière |
 | [[Chouette]] | terrain, installation, contraintes naturalistes et maintenance |

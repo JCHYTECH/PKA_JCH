@@ -297,7 +297,7 @@ I’ll prepare:
 ## 🔹 2. Border-Control (SIVEP / CHED-A) Checklist
 
 I’ll create a table listing:
-- Required documents (e.g. sanitary certificate, commercial invoice, packing list, import license if any)
+- Required documents (e.g. sanitary certificate, [[commercial]] invoice, packing list, import license if any)
 - Responsible party (exporter, importer, freight agent)
 - Verification points at border
 - Estimated timing & cost notes

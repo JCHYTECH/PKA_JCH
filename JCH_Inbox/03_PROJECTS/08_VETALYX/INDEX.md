@@ -9,8 +9,8 @@ Fournisseurs : Zheda Dixun (CN) et partenaires. Marchés cibles : France, Italie
 ## Structure
 | Dossier | Contenu |
 |---|---|
-| `strategy/` | Notes pivot Vetalyx : overview, stratégie, commercial, décisions, site web, structure organisationnelle |
-| `legal/` | Contrats : prestation de services, entrée capital, offre consultance, suivi contrats + brief [[Renard]] v2 |
+| `strategy/` | Notes pivot Vetalyx : [[overview]], stratégie, [[commercial]], décisions, site web, structure organisationnelle |
+| `legal/` | Contrats : prestation de services, entrée capital, offre consultance, suivi [[contrats]] + brief [[Renard]] v2 |
 | `regulatory/` | Réglementation EU/FR/DE : import kits, templates, labels IFU, cadre RA/QA, note de synthèse |
 | `clinical/` | Notes et documents de référence clinique / dermatologie canine |
 | `market/` | Analyses marché et sales — decks investisseurs, épidémiologie, idées site web |
@@ -28,7 +28,7 @@ Fournisseurs : Zheda Dixun (CN) et partenaires. Marchés cibles : France, Italie
 - `strategy/decisions.md` — Journal de décisions
 - `strategy/site-web.md` — Notes site web
 - `strategy/organizational-structure.md` — Structure organisationnelle et lancement
-- `legal/contrats.md` — Suivi contrats
+- `legal/contrats.md` — Suivi [[contrats]]
 - `legal/2026-05-26_dobby_brief-renard_contrat-cadre-v2.md` — Brief [[Renard]] contrat-cadre v2
 - `regulatory/reglementation.md` — Points réglementaires clés
 - `regulatory/RA_QA_import_cadre_reglementaire_FR.docx` — Cadre RA/QA import Chine → France

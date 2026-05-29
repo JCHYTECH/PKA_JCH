@@ -221,7 +221,7 @@ Règle : la mémoire commune vit dans les fichiers PKA, pas dans le transcript d
 | Source-available | Code ou design consultable, mais pas forcément open source au sens OSI. |
 | Ethical-source | Licence ou politique d'usage qui impose des restrictions alignées avec des valeurs éthiques. |
 | Exclusion militaire | Non-négociable WildNexus : interdiction d'usage militaire ou paramilitaire du matériel, logiciel, données et API. |
-| Usage policy | Politique d'usage qui définit ce qui est autorisé, conditionnel ou interdit. |
+| Usage [[policy]] | Politique d'usage qui définit ce qui est autorisé, conditionnel ou interdit. |
 | Plane | Outil de pilotage/backlog utilisé pour suivre les tâches, jalons, owners et livrables WildNexus. |
 | Owner PKA | Spécialiste PKA responsable de la qualité et du suivi d'un livrable. |
 | Agent WildNexus | Agent local spécialisé par domaine technique. Il produit l'expertise, mais reste rattaché à un owner PKA. |
@@ -233,7 +233,7 @@ Règle : la mémoire commune vit dans les fichiers PKA, pas dans le transcript d
 | Terme | Définition WildNexus |
 |---|---|
 | `00_GOVERNANCE/` | Pilotage projet : mapping agents, readiness M-01, backlog Plane, réorganisation. |
-| `01_FOUNDATION/` | Documents fondateurs : architecture, scope, document fondateur, usage policy, glossaire. |
+| `01_FOUNDATION/` | Documents fondateurs : architecture, scope, document fondateur, usage [[policy]], glossaire. |
 | `02_DECISIONS/` | ADR et décisions techniques. |
 | `03_P0_ENGINEERING/` | Ingénierie P0 structurée par domaines : architecture système, hardware satellite, énergie/autonomie, connectivité, IA edge/cloud, procurement/BOM, budget, benchmarks et registres. |
 | `04_PRINT_EXPORTS/` | Supports imprimables ou consolidés pour travail papier. |
@@ -248,12 +248,12 @@ Règle : la mémoire commune vit dans les fichiers PKA, pas dans le transcript d
 
 ## 9. Références internes
 
-- [INDEX.md](../INDEX.md)
-- [MASTER_ARCHITECTURE_WN.md](MASTER_ARCHITECTURE_WN.md)
-- [wildnexus-founding-document-v0.2.md](wildnexus-founding-document-v0.2.md)
-- [WILDNEXUS_P0_SCOPE_LOCK.md](WILDNEXUS_P0_SCOPE_LOCK.md)
-- [../02_DECISIONS/WILDNEXUS_ADR_INDEX.md](../02_DECISIONS/WILDNEXUS_ADR_INDEX.md)
-- [../00_GOVERNANCE/WILDNEXUS_AGENT_MAPPING.md](../00_GOVERNANCE/WILDNEXUS_AGENT_MAPPING.md)
+- [INDEX.md](../[[INDEX]].md)
+- [MASTER_ARCHITECTURE_WN.md]([[MASTER_ARCHITECTURE_WN]].md)
+- [wildnexus-founding-document-v0.2.md]([[wildnexus-founding-document-v0.2]].md)
+- [WILDNEXUS_P0_SCOPE_LOCK.md]([[WILDNEXUS_P0_SCOPE_LOCK]].md)
+- [../02_DECISIONS/[[WILDNEXUS_ADR_INDEX]].md](../02_DECISIONS/[[WILDNEXUS_ADR_INDEX]].md)
+- [../00_GOVERNANCE/[[WILDNEXUS_AGENT_MAPPING]].md](../00_GOVERNANCE/[[WILDNEXUS_AGENT_MAPPING]].md)
 
 ## À enrichir ensuite
 

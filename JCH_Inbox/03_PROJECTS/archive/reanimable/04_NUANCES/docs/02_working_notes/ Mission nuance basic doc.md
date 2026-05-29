@@ -6,7 +6,7 @@ Sources integrees :
 - compte rendu de reunion : `compte_rendu_reunion_Nuancess_2026-05-13.md`
 - transcription audio : `Meeting Nuancess 12_5_26.txt`
 
-Objectif du document : constituer une base de depart pour definir la mission Artheon/Nuances, structurer l'offre B2B, preparer le dispositif commercial et technique, et identifier les points a clarifier avant formalisation du plan projet.
+Objectif du document : constituer une base de depart pour definir la mission Artheon/Nuances, structurer l'offre B2B, preparer le dispositif [[commercial]] et technique, et identifier les points a clarifier avant formalisation du plan projet.
 
 ## 1. Synthese de cadrage
 
@@ -19,11 +19,11 @@ Nuances se positionne comme le "copilote energie" des PME, industries et clients
 - optimisation de l'autoconsommation ;
 - peak shaving, demand shifting et time-of-use ;
 - trading electricite, reserves et flexibilite ;
-- valorisation de l'injection et contrats energie ;
+- valorisation de l'injection et [[contrats]] energie ;
 - leasing, tiers investissement et financement de projets ;
 - reduction des couts energetiques et des emissions CO2.
 
-La reunion a confirme que la mission attendue ne doit pas etre theorique. Elle doit produire une strategie technico-commerciale utilisable par Nuances pour lancer ou accelerer son activite B2B, preparer le travail de la force commerciale, organiser le travail technique en aval, suivre les KPI en temps reel et permettre l'ajustement des strategies commerciales et operationnelles.
+La reunion a confirme que la mission attendue ne doit pas etre theorique. Elle doit produire une [[strategie]] technico-commerciale utilisable par Nuances pour lancer ou accelerer son activite B2B, preparer le travail de la force commerciale, organiser le travail technique en aval, suivre les KPI en temps reel et permettre l'ajustement des strategies commerciales et operationnelles.
 
 Point central : la mission doit permettre de reduire les temps de prospection et d'augmenter la qualite des rendez-vous commerciaux. Le vendeur doit pouvoir arriver rapidement avec une hypothese de solution, une estimation de rentabilite et une liste precise de donnees a valider.
 
@@ -40,7 +40,7 @@ Participants mentionnes :
 
 Objectif de la reunion :
 
-- comprendre la strategie de Nuances ;
+- comprendre la [[strategie]] de Nuances ;
 - evaluer la mission de consultance strategique pouvant etre assuree par JCH/GLA ;
 - cadrer le lancement des activites B2B autour d'une approche technique, commerciale, financiere et operationnelle.
 
@@ -64,7 +64,7 @@ Implication :
 - la mission doit pouvoir servir de support a une logique investisseur ;
 - les scenarios doivent etre chiffrables, scalables et defendables ;
 - il faut formaliser les hypotheses de rentabilite, de risque, de volume, de financement et de capacite de deploiement ;
-- la strategie commerciale doit etre reliee a un modele financier exploitable.
+- la [[strategie]] commerciale doit etre reliee a un modele financier exploitable.
 
 ### 2.4 Orientation strategique confirmee
 
@@ -134,7 +134,7 @@ Valeur B2B :
 - transforme un prospect en cas d'usage chiffre ;
 - reduit le temps de qualification ;
 - permet de prioriser les prospects selon potentiel economique ;
-- sert de pont entre commercial, technique et financement.
+- sert de pont entre [[commercial]], technique et financement.
 
 Points a definir :
 
@@ -154,7 +154,7 @@ Role strategique :
 - outil de diagnostic ;
 - base de preuve rapide ;
 - outil de collecte de donnees ;
-- declencheur d'upsell vers Brain, BESS, PV, contrats energie ou leasing ;
+- declencheur d'upsell vers Brain, BESS, PV, [[contrats]] energie ou leasing ;
 - support possible a l'IA pour detection de patterns, anomalies et optimisations.
 
 Promesse :
@@ -243,7 +243,7 @@ Pre-requis identifies :
 
 Importance pour le B2B :
 
-- offre probablement prioritaire dans la strategie d'investissement ;
+- offre probablement prioritaire dans la [[strategie]] d'investissement ;
 - forte valeur differenciante ;
 - necessite un screening rigoureux pour eviter les prospects non rentables ;
 - doit etre reliee a un modele financier defensible.
@@ -274,7 +274,7 @@ Points a structurer :
 - traitement de l'injection excedentaire ;
 - financement achat/leasing/tiers investisseur.
 
-### 4.6 Nuances Energy - contrats, injection et pool energie
+### 4.6 Nuances Energy - [[contrats]], injection et pool energie
 
 Promesse :
 
@@ -295,7 +295,7 @@ Points a securiser :
 
 - cadre legal et regulatoire ;
 - role exact de Nuances : fournisseur, agregateur, intermediaire, trader, gestionnaire de communaute ;
-- contrats types ;
+- [[contrats]] types ;
 - garanties de prix ;
 - risques de mismatch ;
 - integration avec fournisseurs et gestionnaires reseau.
@@ -344,7 +344,7 @@ Le screening doit permettre de savoir rapidement si un prospect merite :
 
 - un simple rejet ;
 - un appel de qualification ;
-- un rendez-vous commercial ;
+- un rendez-vous [[commercial]] ;
 - une installation de boitier/sensors ;
 - un audit approfondi ;
 - une offre BESS/PV/Brain/Energy.
@@ -470,7 +470,7 @@ Les offres doivent etre declinees en plusieurs modes :
 La reunion souligne que le leasing est un levier cle pour :
 
 - limiter la barriere CAPEX ;
-- accelerer les decisions ;
+- accelerer les [[decisions]] ;
 - atteindre une masse critique ;
 - vendre sur cash-flow plutot que sur investissement initial.
 
@@ -577,7 +577,7 @@ Une application ou interface technique peut devenir necessaire si Nuances veut i
 - calcul CO2 ;
 - edition de dossier rendez-vous ;
 - suivi des KPI ;
-- interface entre commercial et bureau technique.
+- interface entre [[commercial]] et bureau technique.
 
 Ce besoin doit etre precise apres definition du process cible.
 
@@ -598,7 +598,7 @@ Livrables :
 
 ### Phase 2 - Screening et qualification
 
-Objectif : reduire le temps de prospection et concentrer l'effort commercial.
+Objectif : reduire le temps de prospection et concentrer l'effort [[commercial]].
 
 Livrables :
 
@@ -636,20 +636,20 @@ Livrables :
 
 ### Phase 5 - CRM, process et KPI
 
-Objectif : faire vivre la strategie dans un systeme operationnel.
+Objectif : faire vivre la [[strategie]] dans un systeme operationnel.
 
 Livrables :
 
 - pipeline CRM ;
 - statuts et criteres de passage ;
 - tableaux KPI ;
-- workflow commercial -> technique -> installation -> monitoring ;
+- workflow [[commercial]] -> technique -> installation -> monitoring ;
 - routines de pilotage ;
 - backlog d'amelioration.
 
 ### Phase 6 - Playbooks commerciaux et deploiement
 
-Objectif : rendre la strategie executable par les equipes.
+Objectif : rendre la [[strategie]] executable par les equipes.
 
 Livrables :
 
@@ -737,7 +737,7 @@ Livrables :
 - qui finance les actifs ?
 - qui porte le risque de performance ?
 - partage des gains ;
-- contrats types ;
+- [[contrats]] types ;
 - cadre Energy Pool ;
 - role de Nuances sur trading/flexibilite.
 
@@ -778,7 +778,7 @@ Ordre de priorite recommande :
 2. verrouiller les seuils techniques et economiques ;
 3. creer le scoring prospect ;
 4. definir le dossier preliminaire de rendez-vous ;
-5. relier chaque scenario commercial a une offre technique et un modele financier ;
+5. relier chaque scenario [[commercial]] a une offre technique et un modele financier ;
 6. integrer le tout dans le CRM ;
 7. definir les KPI et routines de pilotage.
 

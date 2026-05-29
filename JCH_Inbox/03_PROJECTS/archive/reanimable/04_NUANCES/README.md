@@ -11,4 +11,4 @@ Point d'entrée de reprise:
 - `INDEX.md`
 
 Règle de réactivation:
-- si le client recontacte, reprendre depuis l'INDEX et le dossier `wiki/` sans reconstruire l'historique.
+- si le client recontacte, reprendre depuis l'[[INDEX]] et le dossier `wiki/` sans reconstruire l'historique.

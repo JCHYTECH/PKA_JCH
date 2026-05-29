@@ -12,7 +12,7 @@ tags:
   - status/active
 ---
 
-# Faune autour - publications possibles
+# [[Faune autour - publications possibles]]
 
 ## Objectif
 
@@ -49,7 +49,7 @@ Cette note sert à identifier les contenus publiables ou valorisables à partir 
 - lieu ;
 - groupe d'espèces.
 
-### Newsletter / WildLens
+### Newsletter / [[WildLens]]
 
 - veille naturaliste ;
 - photographie ;

@@ -8,7 +8,7 @@ tags:
   - community/Distance_Calculation
 ---
 
-# Haversine distance calculation — observation-to-user distance
+# [[Haversine distance calculation — observation-to-user distance]]
 
 ## Connections
 - [[haversineKm() — great-circle distance calculation]] - `implements` [EXTRACTED]

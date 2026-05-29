@@ -4,17 +4,17 @@
 
 Nuances souhaite structurer et accelerer son activite B2B dans le domaine de l'optimisation energetique des PME et industries.
 
-La mission consiste a construire une strategie technico-commerciale operationnelle permettant de mieux cibler les prospects, reduire le temps de prospection, qualifier rapidement le potentiel energetique et economique des sites, preparer les rendez-vous commerciaux avec une premiere estimation de solution et de rentabilite, puis integrer l'ensemble dans un CRM et un dispositif de pilotage par KPI.
+La mission consiste a construire une [[strategie]] technico-commerciale operationnelle permettant de mieux cibler les prospects, reduire le temps de prospection, qualifier rapidement le potentiel energetique et economique des sites, preparer les rendez-vous commerciaux avec une premiere estimation de solution et de rentabilite, puis integrer l'ensemble dans un CRM et un dispositif de pilotage par KPI.
 
 ## Intitule propose
 
-Consultant senior en strategie technico-commerciale B2B energie
+Consultant senior en [[strategie]] technico-commerciale B2B energie
 
 ## Contexte
 
-Nuances dispose deja d'une base d'offres et d'actifs : audit energie, boitier de collecte de donnees, sensors, Nuance Brain / EMS, photovoltaïque, batteries industrielles BESS, contrats energie, flexibilite, valorisation de l'injection, leasing et tiers investissement.
+Nuances dispose deja d'une base d'offres et d'actifs : audit energie, boitier de collecte de donnees, sensors, Nuance Brain / EMS, photovoltaïque, batteries industrielles BESS, [[contrats]] energie, flexibilite, valorisation de l'injection, leasing et tiers investissement.
 
-L'enjeu est de transformer cette base technique en dispositif commercial B2B structuré, utilisable par les equipes commerciales et techniques, avec une logique de rentabilite client clairement demontrable.
+L'enjeu est de transformer cette base technique en dispositif [[commercial]] B2B structuré, utilisable par les equipes commerciales et techniques, avec une logique de rentabilite client clairement demontrable.
 
 ## Objectifs de la mission
 
@@ -24,11 +24,11 @@ Le consultant aura pour mission de :
 2. identifier les cibles commerciales les plus pertinentes ;
 3. construire une grille de screening rapide des prospects ;
 4. definir les criteres Go / No Go ;
-5. concevoir un dossier preliminaire de rendez-vous commercial ;
-6. relier chaque scenario commercial a une solution technique et a une rentabilite ;
+5. concevoir un dossier preliminaire de rendez-vous [[commercial]] ;
+6. relier chaque scenario [[commercial]] a une solution technique et a une rentabilite ;
 7. structurer le pipeline CRM, les champs de suivi et les KPI ;
 8. preparer les supports de travail de la force commerciale ;
-9. tester le protocole technico-commercial chez plusieurs prospects avec un specialiste Nuances ;
+9. tester le protocole technico-[[commercial]] chez plusieurs prospects avec un specialiste Nuances ;
 10. adapter le protocole sur base des retours terrain.
 
 ## Livrables attendus
@@ -44,17 +44,17 @@ Les livrables principaux sont :
 - structure du pipeline CRM ;
 - liste des champs CRM commerciaux, techniques et financiers ;
 - tableau de KPI ;
-- premier playbook commercial ;
-- protocole technico-commercial teste sur le terrain ;
+- premier playbook [[commercial]] ;
+- protocole technico-[[commercial]] teste sur le terrain ;
 - synthese des retours prospects et adaptations recommandees.
 
 ## Profil recherche
 
-Le profil attendu est un consultant senior capable de faire le lien entre strategie commerciale, technique energie, rentabilite client, CRM et execution terrain.
+Le profil attendu est un consultant senior capable de faire le lien entre [[strategie]] commerciale, technique energie, rentabilite client, CRM et execution terrain.
 
 Le profil doit combiner :
 
-- experience en strategie commerciale B2B ;
+- experience en [[strategie]] commerciale B2B ;
 - comprehension des solutions energie ;
 - capacite a structurer une offre complexe ;
 - culture terrain et force de vente ;
@@ -85,7 +85,7 @@ Competences energie :
 - flexibilite energetique ;
 - peak shaving ;
 - autoconsommation ;
-- contrats d'energie ;
+- [[contrats]] d'energie ;
 - valorisation de l'injection ;
 - contraintes de raccordement et cabines MT/HT.
 
@@ -117,7 +117,7 @@ Nuances fournira les documents, modes d'emploi, supports de formation, informati
 
 ## Validation terrain
 
-Le protocole technico-commercial devra etre valide par des visites chez un nombre defini de prospects, accompagnees par un specialiste Nuances.
+Le protocole technico-[[commercial]] devra etre valide par des visites chez un nombre defini de prospects, accompagnees par un specialiste Nuances.
 
 Ces visites permettront de tester :
 
@@ -145,5 +145,5 @@ Nuances devra :
 
 ## Formulation courte reutilisable
 
-Nuances recherche un consultant senior pour structurer sa strategie technico-commerciale B2B dans le domaine de l'optimisation energetique. La mission consiste a clarifier les offres B2B, definir les cibles prioritaires, construire une grille de qualification des prospects, preparer les dossiers commerciaux avant rendez-vous, tester le protocole chez plusieurs prospects avec un specialiste Nuances, integrer la demarche dans un CRM et definir les KPI de pilotage. Le profil attendu doit combiner experience commerciale B2B, comprehension des solutions energie, capacite d'analyse financiere et aptitude a transformer une strategie en outils operationnels pour les equipes commerciales et techniques.
+Nuances recherche un consultant senior pour structurer sa [[strategie]] technico-commerciale B2B dans le domaine de l'optimisation energetique. La mission consiste a clarifier les offres B2B, definir les cibles prioritaires, construire une grille de qualification des prospects, preparer les dossiers commerciaux avant rendez-vous, tester le protocole chez plusieurs prospects avec un specialiste Nuances, integrer la demarche dans un CRM et definir les KPI de pilotage. Le profil attendu doit combiner experience commerciale B2B, comprehension des solutions energie, capacite d'analyse financiere et aptitude a transformer une [[strategie]] en outils operationnels pour les equipes commerciales et techniques.
 

@@ -1,4 +1,4 @@
-# Hermisation du système PKA_JCH
+# [[Hermisation]] du système PKA_JCH
 
 [[PKA_JCH]]
 [[AI-system]]
@@ -10,9 +10,9 @@ Date : 2026-05-25
 
 ---
 
-# 1. Définition du concept de « Hermisation »
+# 1. Définition du concept de « [[Hermisation]] »
 
-Le terme « Hermisation » désigne le processus consistant à transformer progressivement le système PKA_JCH en une infrastructure AI :
+Le terme « [[Hermisation]] » désigne le processus consistant à transformer progressivement le système PKA_JCH en une infrastructure AI :
 
 - persistante ;
 - mémorielle ;
@@ -32,7 +32,7 @@ L’objectif est de :
 
 # 2. Philosophie générale
 
-La Hermisation doit rester :
+La [[Hermisation]] doit rester :
 
 - pragmatique ;
 - progressive ;
@@ -54,7 +54,7 @@ La priorité reste :
 
 ---
 
-# 3. Objectifs de la Hermisation
+# 3. Objectifs de la [[Hermisation]]
 
 ## 3.1 Continuité entre les sessions
 
@@ -393,7 +393,7 @@ Sauvegardes automatiques obligatoires :
 
 ---
 
-# 10. Étapes de Hermisation
+# 10. Étapes de [[Hermisation]]
 
 ## Phase 1 — Cartographie
 
@@ -491,7 +491,7 @@ Le système doit :
 
 # 12. Conclusion
 
-La Hermisation du système PKA_JCH consiste à :
+La [[Hermisation]] du système PKA_JCH consiste à :
 
 > construire progressivement une infrastructure AI persistante, gouvernée et capitalisante.
 

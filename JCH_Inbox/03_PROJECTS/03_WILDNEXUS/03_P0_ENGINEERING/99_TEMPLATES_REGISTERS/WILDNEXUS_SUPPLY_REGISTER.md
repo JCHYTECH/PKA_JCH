@@ -60,7 +60,7 @@ Scoring fournisseur recommandé :
 | Batterie | Holder 8× AA en 4S2P + piles utilisateur | Mouser / Reichelt / Conrad / RS | LiFePO4 18650 — *BMS/charge/supply non nécessaires P0* | À chiffrer holder seul | À confirmer | Bas | ADR-005 ✅ |
 | Régulation énergie | TPS62840 ou équivalent buck faible Iq | Mouser / DigiKey | CN3791/MPPT — *solaire différé P1* | ~2–5 € | 2–5 j | Bas | ADR-005 ✅ |
 | Solaire | Réserve mécanique P1 seulement | — | Panneau 6V + MPPT CN3791 — *hors P0* | 0 € P0 | — | Bas | ADR-005 — **achat différé P1** |
-| Boîtier | IP67 ABS/PC commercial ≤ 150×100×60 mm | Hammond / Spelsberg EU | Impression 3D PETG — *étanchéité IP67 non garantie long terme* | ~10–20 € | 3–7 j | Moyen | ADR-006 |
+| Boîtier | IP67 ABS/PC [[commercial]] ≤ 150×100×60 mm | Hammond / Spelsberg EU | Impression 3D PETG — *étanchéité IP67 non garantie long terme* | ~10–20 € | 3–7 j | Moyen | ADR-006 |
 | PIR / détection | PIR basse conso | À confirmer | Réveil périodique caméra — *trop consommateur* | À chiffrer | À confirmer | Moyen | ADR-007 |
 | Micro audio | Micro mono MEMS I2S/PDM ou analogique faible conso | Mouser / DigiKey | Audio scientifique avancée — *hors P0* | À chiffrer | À confirmer | Moyen | ADR-008 ✅ |
 | Capteurs env. | SHT31 (temp. + humidité interne) | Mouser / DigiKey | HDC1080 — *même gamme, second choix* | ~3–6 € | 2–5 j | Bas | ADR-008 — **optionnel P0 ; non bloquant pour M-01/M-02/M-03 ; différer si budget serré** |

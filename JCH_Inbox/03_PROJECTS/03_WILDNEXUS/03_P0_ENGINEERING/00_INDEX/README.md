@@ -4,7 +4,7 @@ Ce dossier regroupe les documents d'ingenierie du prototype P0 par domaine techn
 
 ## Structure
 
-- `01_ARCHITECTURE_SYSTEME/` — architecture SAT / master / cloud, decisions de cadrage systeme.
+- `01_ARCHITECTURE_SYSTEME/` — architecture SAT / master / cloud, [[decisions]] de cadrage systeme.
 - `02_HARDWARE_SATELLITE/` — cartes, capteurs, boitier, encombrement, matrices hardware.
 - `03_ENERGIE_AUTONOMIE/` — batteries, autonomie, alimentation, modeles de consommation.
 - 

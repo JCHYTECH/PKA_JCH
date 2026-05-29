@@ -3,7 +3,7 @@ tags:
   - type/project
   - status/active
 ---
-# WildLens Weekly Review — 2026-04-25
+# [[WildLens]] Weekly Review — 2026-04-25
 [[wildlens]]
 
 ## 1) Nikon’s Z8 firmware is turning wildlife capture into trigger-based field automation
@@ -49,7 +49,7 @@ Epson’s SureColor P7370 and P9370, announced April 23, 2025, were positioned a
 There is a parallel paper-side signal too. Hahnemühle’s Hemp Gloss Baryta, previewed in August 2025 ahead of its October 2025 launch, explicitly combines a baryta-style glossy surface with a sustainability story and was showcased through a wildlife-oriented print campaign. Whatever one thinks of the marketing, the product direction is telling: paper makers are still competing on black density, tonal depth, surface character, and the physical presence of the print.
 
 **Why it matters**  
-For wildlife and macro work, output materials are not secondary. Feather structure, insect sheen, fur separation, dark-background isolation, and subtle color transitions in foliage or iridescence all depend on paper surface, gamut, D-max behavior, and proofing speed. The notable development is not just better printers or new paper; it is that print decisions are again becoming image decisions.
+For wildlife and macro work, output materials are not secondary. Feather structure, insect sheen, fur separation, dark-background isolation, and subtle color transitions in foliage or iridescence all depend on paper surface, gamut, D-max behavior, and proofing speed. The notable development is not just better printers or new paper; it is that print [[decisions]] are again becoming image [[decisions]].
 
 **Verdict**  
 - Technical credibility: **High** for Epson; **Moderate–High** for newer paper claims pending independent testing

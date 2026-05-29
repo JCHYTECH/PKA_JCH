@@ -25,7 +25,7 @@ Cette note est le hub central du projet. Elle doit rester lisible et ne pas cont
 
 ## 2. Objectif
 
-Structurer le lancement, le positionnement, les documents, les contrats, la réglementation, le site web, les contacts et les décisions du projet Vetalyx.
+Structurer le lancement, le positionnement, les documents, les [[contrats]], la réglementation, le site web, les contacts et les décisions du projet Vetalyx.
 
 ## 3. Notes pivots
 
@@ -48,7 +48,7 @@ Tâches existantes à relier ou vérifier :
 - Vetalyx Achat nom de site Vetalyx et nom de domaine chez Hostinger
 - Vetalyx contacter opinion leaders
 - Vetalyx creer site draft
-- Vetalyx contrats chinois
+- Vetalyx [[contrats]] chinois
 - Vetalyx logo
 
 ## 5. Décisions à documenter
@@ -69,9 +69,9 @@ Décisions probables à clarifier :
 
 À compléter progressivement.
 
-- contrats corporate ;
-- contrats fournisseurs ;
-- contrats Chine ;
+- [[contrats]] corporate ;
+- [[contrats]] fournisseurs ;
+- [[contrats]] Chine ;
 - documents réglementaires ;
 - business plan ;
 - pitch deck ;
@@ -97,9 +97,9 @@ Catégories :
 | Risque | Niveau | Impact | Mesure de réduction |
 |---|---|---|---|
 | Retard réglementaire | élevé | lancement retardé | suivi dédié dans la note réglementation |
-| Contrats fournisseurs incomplets | élevé | risque commercial / légal | revue juridique |
+| Contrats fournisseurs incomplets | élevé | risque [[commercial]] / légal | revue juridique |
 | Positionnement de marque flou | moyen | communication moins efficace | clarifier stratégie et messages |
-| Site web retardé | moyen | retard commercial | lier tâches TaskNotes |
+| Site web retardé | moyen | retard [[commercial]] | lier tâches TaskNotes |
 
 ## 9. Local Graph
 

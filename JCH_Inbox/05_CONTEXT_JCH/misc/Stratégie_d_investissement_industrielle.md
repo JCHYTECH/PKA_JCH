@@ -1979,7 +1979,7 @@ La valeur est dans la chaîne aval (séparation, alliages, aimants), pas dans la
 2. Favoriser :
    - intégration aval,
    - soutien étatique,
-   - contrats long terme.
+   - [[contrats]] long terme.
 3. Alléger si :
    - Chine ouvre massivement les vannes,
    - chute durable prix Nd/Pr sans tension géopolitique.

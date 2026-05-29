@@ -1,8 +1,8 @@
 # PKA Vault Worktree Stabilization Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-[[SKILL]]: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Stabilize the PKA_JCH vault and [[Git]] worktree before expanding [[Obsidian]] and Hermisation automation.
+**Goal:** Stabilize the PKA_JCH vault and [[Git]] worktree before expanding [[Obsidian]] and [[Hermisation]] automation.
 
 **Architecture:** Use a non-destructive audit-first workflow. Separate unrelated changes into reviewable batches, then commit or ignore each batch only after classification.
 
@@ -137,7 +137,7 @@ JCH_Inbox/03_PROJECTS/03_WILDNEXUS/06_COMPONENTS/BIOACOUSTIC/INSECTNET/
 
 Action: decide whether 
 
-- [ ] **Step 6: Classify batch F — [[Obsidian]] and Hermisation scaffolds**
+- [ ] **Step 6: Classify batch F — [[Obsidian]] and [[Hermisation]] scaffolds**
 
 Scope:
 
@@ -148,7 +148,7 @@ docs/superpowers/specs/2026-05-25-pka-system-evolution-two-projects-design.md
 JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/INDEX.md
 ```
 
-Action: commit as its own docs scaffold after the vault stabilization policy is confirmed.
+Action: commit as its own docs scaffold after the vault stabilization [[policy]] is confirmed.
 
 ### Task 3: Establish [[Git]] Hygiene
 
@@ -156,9 +156,9 @@ Action: commit as its own docs scaffold after the vault stabilization policy is 
 - Possibly modify: `.gitignore`
 - Possibly modify: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/06_COMPONENTS/BIOACOUSTIC/INSECTNET/README.md`
 
-- [ ] **Step 1: Decide generated-data policy**
+- [ ] **Step 1: Decide generated-data [[policy]]**
 
-Recommended policy:
+Recommended [[policy]]:
 
 ```text
 Track small source metadata and curated review sheets.
@@ -235,5 +235,5 @@ Record:
 
 - committed batches;
 - deferred batches;
-- unresolved decisions;
-- next safe step for [[Obsidian]]/Hermisation.
+- unresolved [[decisions]];
+- next safe step for [[Obsidian]]/[[Hermisation]].

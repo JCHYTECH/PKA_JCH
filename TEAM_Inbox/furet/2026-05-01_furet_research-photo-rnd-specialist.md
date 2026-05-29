@@ -19,7 +19,7 @@
 
 ---
 
-### Core knowledge
+### Core [[knowledge]]
 
 - **Photographie computationnelle** : focus stacking, exposure stacking, image averaging, motion blur synthétique
 - **Compositing multi-frames** : alignement, masquage, fusion d'images d'une même séquence
@@ -28,7 +28,7 @@
 - **Extraction et analyse de séquences** : ffmpeg, sélection et tri de frames, analyse de mouvement
 - **Connaissance optique** : profondeur de champ, exposition, capture de mouvement — comprend la physique de l'image pour simuler ses effets
 
-### Adjacent knowledge
+### Adjacent [[knowledge]]
 
 - Connaissance des archives JCH : oiseaux, faune, paysages — sait ce que le matériel source peut donner
 - Notions d'impression (dialogue avec [[Héron]]) : ce qui fonctionne en numérique ne fonctionne pas toujours en tirage grand format

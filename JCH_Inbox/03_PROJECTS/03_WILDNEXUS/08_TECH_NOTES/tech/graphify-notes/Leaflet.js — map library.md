@@ -8,7 +8,7 @@ tags:
   - community/Map_&_Detail_Display
 ---
 
-# Leaflet.js — map library
+# [[Leaflet.js — map library]]
 
 ## Connections
 - [[Faune Autour — Progressive Web App (PWA)]] - `references` [EXTRACTED]

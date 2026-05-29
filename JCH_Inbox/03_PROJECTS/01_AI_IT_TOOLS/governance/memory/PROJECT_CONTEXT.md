@@ -1,4 +1,4 @@
-# PROJECT_CONTEXT
+# [[PROJECT_CONTEXT]]
 
 Statut: `draft`
 Derniere revue: `2026-05-13`
@@ -6,7 +6,7 @@ Taille cible: 3 000 a 5 000 caracteres maximum.
 
 ## Role
 
-Ce fichier contient le contexte stable du systeme d'agent interne: structure, conventions, decisions et limites.
+Ce fichier contient le contexte stable du systeme d'agent interne: structure, conventions, [[decisions]] et limites.
 
 ## Regles
 

@@ -215,4 +215,4 @@ Insère ces images :
 - slide 6 : orecchiette + pêcheurs de Bari
 
 Ajoute les légendes italiennes correspondantes sous chaque image.  
-Le PowerPoint doit être harmonieux, lisible, prêt à l’oral, et ne pas donner un effet commercial.
+Le PowerPoint doit être harmonieux, lisible, prêt à l’oral, et ne pas donner un effet [[commercial]].

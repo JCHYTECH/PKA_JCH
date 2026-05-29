@@ -8,7 +8,7 @@ tags:
   - community/PWA_App_&_Deployment
 ---
 
-# faune-autour_13.html — v13 single-file PWA source
+# [[faune-autour_13.html — v13 single-file PWA source]]
 
 ## Connections
 - [[Faune Autour — Progressive Web App (PWA)]] - `implements` [EXTRACTED]

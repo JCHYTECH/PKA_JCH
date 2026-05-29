@@ -15,7 +15,7 @@ _Status: RED_
 - `high` `permissions` TEAM_Inbox/dropbox_vetalyx_changes.log: mode 0644, expected 0600 or stricter
 - `high` `permissions` tmp/dropbox-watch.log: mode 0644, expected 0600 or stricter
 - `high` `permissions` tmp/outlook-gatekeeper.log: mode 0644, expected 0600 or stricter
-- `high` `permissions` tmp/email-digest.log: mode 0644, expected 0600 or stricter
+- `high` `permissions` tmp/[[email]]-digest.log: mode 0644, expected 0600 or stricter
 - `high` `permissions` TEAM/backups/team_2026-05-26_0800.db: mode 0644, expected 0600 or stricter
 - `high` `permissions` TEAM/backups/team_2026-05-25_0800.db: mode 0644, expected 0600 or stricter
 - `high` `backups` TEAM/backups/team_2026-05-26_0800.db: latest backup is 60.6 hours old

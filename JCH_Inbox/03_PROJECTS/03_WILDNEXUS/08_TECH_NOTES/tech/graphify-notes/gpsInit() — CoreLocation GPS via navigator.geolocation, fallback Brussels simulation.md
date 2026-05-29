@@ -8,7 +8,7 @@ tags:
   - community/Species_Search_&_Geolocation_Logic
 ---
 
-# gpsInit() — CoreLocation GPS via navigator.geolocation, fallback Brussels simulation
+# [[gpsInit() — CoreLocation GPS via navigator.geolocation, fallback Brussels simulation]]
 
 ## Connections
 - [[doExplore() — async function GBIF kingdom Animalia query by WKT bbox + period]] - `shares_data_with` [EXTRACTED]

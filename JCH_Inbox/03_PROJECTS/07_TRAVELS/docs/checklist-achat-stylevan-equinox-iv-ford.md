@@ -65,7 +65,7 @@ Cette checklist sert à inspecter un véhicule neuf, récent ou d’occasion ava
 - [ ] Passage intérieur suffisant pour circuler sans tout déplacer
 - [ ] Accès correct à la cuisine
 - [ ] Accès correct au lit
-- [ ] Accès correct au WC
+- [ ] Accès correct au [[WC]]
 - [ ] Possibilité de se changer à l’intérieur
 - [ ] Utilisation possible à deux sans blocage permanent
 - [ ] Hauteur debout correcte toit ouvert
@@ -75,10 +75,10 @@ Note : le “couloir” est un critère majeur. Il faut tester le van réellemen
 
 ---
 
-## 5. Douche et WC
+## 5. Douche et [[WC]]
 
-- [ ] WC propre et sans odeur suspecte
-- [ ] Système WC complet et fonctionnel
+- [ ] [[WC]] propre et sans odeur suspecte
+- [ ] Système [[WC]] complet et fonctionnel
 - [ ] Montage de la douche compréhensible
 - [ ] Montage de la douche pas trop contraignant
 - [ ] Évacuation de l’eau correcte
@@ -190,7 +190,7 @@ Les options réellement utiles peuvent justifier un prix supérieur. Les accesso
 - [ ] Prix anormalement bas
 - [ ] Véhicule ex-location non annoncé
 - [ ] Aménagement modifié ou bricolé
-- [ ] Odeur d’humidité ou de WC
+- [ ] Odeur d’humidité ou de [[WC]]
 - [ ] Batterie auxiliaire non testée
 - [ ] Douche jamais testée
 - [ ] Toit relevable manipulé trop vite par le vendeur
@@ -206,7 +206,7 @@ Les options réellement utiles peuvent justifier un prix supérieur. Les accesso
 | Batterie auxiliaire fatiguée | -1 000 € |
 | Pneus à remplacer | -600 à -1 000 € |
 | Freins à refaire | -800 à -1 500 € |
-| Défaut douche / WC | -2 000 à -5 000 € |
+| Défaut douche / [[WC]] | -2 000 à -5 000 € |
 | Entretien incomplet | -2 000 € minimum |
 | Toile de toit abîmée | -1 000 à -3 000 € |
 | Odeur persistante | prudence ou abandon |
@@ -224,7 +224,7 @@ Les options réellement utiles peuvent justifier un prix supérieur. Les accesso
 - [ ] Toit relevable sain
 - [ ] Pas d’odeur
 - [ ] Batterie correcte
-- [ ] Douche / WC utilisables
+- [ ] Douche / [[WC]] utilisables
 - [ ] Historique clair
 - [ ] Prix cohérent avec le marché
 

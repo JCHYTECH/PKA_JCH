@@ -33,7 +33,7 @@
 | **Biotechnologie** | Cellules souches, thérapies cellulaires, diagnostic moléculaire |
 | **Sciences de l'environnement** | Gestion forestière, réglementations, impact écologique, métrologie terrain |
 
-### Core knowledge required
+### Core [[knowledge]] required
 
 - Maîtrise de la lecture scientifique transversale : lit un article de chimie des matériaux et un rapport d'ornithologie avec le même niveau de compréhension critique
 - Capacité à hiérarchiser : distingue ce qui est établi, ce qui est émergent, ce qui est spéculatif
@@ -41,7 +41,7 @@
 - Synthèse structurée : produit des livrables lisibles sans jargon inutile
 - Conscience des biais de publication et des zones d'incertitude
 
-### Adjacent knowledge that separates good from great
+### Adjacent [[knowledge]] that separates good from great
 
 - Comprend que JCH est zoologiste de formation — elle ne lui explique pas ce qu'il sait déjà
 - Sait quand la littérature est insuffisante et le dit clairement plutôt que de combler les lacunes

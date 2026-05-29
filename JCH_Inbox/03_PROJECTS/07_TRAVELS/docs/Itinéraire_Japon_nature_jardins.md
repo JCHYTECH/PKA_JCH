@@ -777,7 +777,7 @@ Search for round-trip economy flights from Brussels (BRU) to Tokyo (TYO) departi
 
 No offer yet under **€850** for a round‑trip economy flight from entity["place","Brussels Airport",0] (BRU) → entity["place","Tokyo",0] (TYO) for your dates (≈ 15 Apr–1 May 2025).  
 
-I will continue to monitor daily and let you know as soon as one appears.
+I will continue to monitor [[daily]] and let you know as soon as one appears.
 
 ---
 

@@ -35,7 +35,7 @@ Collected free printer test images for download.
 This page also has links to many sites and pages where you can download printer and digital photography test images.
 
 We have 1500+ [articles/reviews](https://www.northlight-images.co.uk/keiths-photography-blog/) and now [Videos](https://www.northlight-images.co.uk/category/articles-and-reviews/video/) related to photography, printing and colour management on the site  
-[\>>> Full categorised INDEX of all my 750+ videos](https://www.northlight-images.co.uk/keith-cooper-photography-videos-index/)
+[\>>> Full categorised [[INDEX]] of all my 750+ videos](https://www.northlight-images.co.uk/keith-cooper-photography-videos-index/)
 
 Please do explore, and if you’ve any questions, just ask…
 
@@ -74,14 +74,14 @@ We also have affiliate links for:
 [Photo stuff at Amazon.com](https://www.amazon.com/b?_encoding=UTF8&tag=northligimage-20&linkCode=ur2&linkId=5a3284a25b50644b9bb53d60ff1b7278&camp=1789&creative=9325&node=13900861) and [Adorama](http://adorama.evyy.net/c/60462/51926/1036?u=http%3A%2F%2Fwww.adorama.com)
 
 *Do you print your photos? I’ve written up my [top 10 reasons prints look wrong](https://www.northlight-images.co.uk/why-prints-look-wrong/).*  
-*Based on my [30+ printer reviews](https://www.northlight-images.co.uk/category/rumours/printer-review/) and many email discussions…*  
+*Based on my [30+ printer reviews](https://www.northlight-images.co.uk/category/rumours/printer-review/) and many [[email]] discussions…*  
 *Never miss new reviews/articles with our (ad-free) [Newsletter](https://www.northlight-images.co.uk/about/sign-up-for-our-newsletter/) and [Keith’s YouTube Channel](https://www.youtube.com/c/KeithCooper/)*
 
 ### Keith’s collection of Test Images
 
-If you have any test images on your site that you’d like me to mention, please feel free to drop me an email.
+If you have any test images on your site that you’d like me to mention, please feel free to drop me an [[email]].
 
-*When updating this page for the new site, I found quite a few broken links. Where possible I’ve included [[archive]].org links instead, but some files may be difficult to track down. I may have copies, but since they are not my files, I’m loathe to put them here for download – give me a call… Some images may also have restrictions for commercial use.*
+*When updating this page for the new site, I found quite a few broken links. Where possible I’ve included [[archive]].org links instead, but some files may be difficult to track down. I may have copies, but since they are not my files, I’m loathe to put them here for download – give me a call… Some images may also have restrictions for [[commercial]] use.*
 
 I’ve also some [test images specially for media selection](https://www.northlight-images.co.uk/media-settings-printer-test-images/) when creating printer profiles.
 
@@ -472,7 +472,7 @@ If the output profile doesn’t have a homogeneous gamut mapping tone value band
 
 ### Vanishing images
 
-A lot of popular images have just vanished over time. I have copies of many of them, but since I’ve no idea who’s original images they are, I can’t offer direct links. If there’s something you need may be able to supply a copy – for non commercial educational use.
+A lot of popular images have just vanished over time. I have copies of many of them, but since I’ve no idea who’s original images they are, I can’t offer direct links. If there’s something you need may be able to supply a copy – for non [[commercial]] educational use.
 
 #### Bill Atkinson’s test images
 
@@ -599,7 +599,7 @@ I’d also note that ProPhoto is my colour space of choice when I know I’m con
 
 Above all, use synthetic images such as the rainbow with care. I’ve seen perfectly good looking prints of ‘real world’ photographs from less than optimal profiles – use tools like this to help yourself understand where there might be issues, not where there absolutely will be.
 
-*Just one other personal observation before you get too worried about gamut limits and working spaces. The majority of our commercial photography imagery is still ultimately supplied to clients in sRGB. For colour prints I generally work in Adobe 98 and have found very few natural images where I’ve felt the need to go back to try with ProPhoto. Yes, there are images which need processing in larger spaces, but you get a feel for when they do, and you also realise the potential problems if you pass them on to unprepared clients;-)*
+*Just one other personal observation before you get too worried about gamut limits and working spaces. The majority of our [[commercial]] photography imagery is still ultimately supplied to clients in sRGB. For colour prints I generally work in Adobe 98 and have found very few natural images where I’ve felt the need to go back to try with ProPhoto. Yes, there are images which need processing in larger spaces, but you get a feel for when they do, and you also realise the potential problems if you pass them on to unprepared clients;-)*
 
 **Update August 25**
 

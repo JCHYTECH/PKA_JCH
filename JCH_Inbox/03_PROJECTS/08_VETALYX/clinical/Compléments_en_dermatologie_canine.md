@@ -959,7 +959,7 @@ Entreprise plateforme santé animale : multiple supérieur.
 
 Répartition possible des fonds :
 
-• 60 % : déploiement commercial diagnostic  
+• 60 % : déploiement [[commercial]] diagnostic  
 • 20 % : développement et production gamme complément  
 • 20 % : marketing scientifique / formation  
 
@@ -1237,7 +1237,7 @@ ou
 
 Point critique :
 L’appétence est déterminante chez le chat.  
-Sans palatabilité optimale → échec commercial.
+Sans palatabilité optimale → échec [[commercial]].
 
 ---
 
@@ -2018,7 +2018,7 @@ Postes critiques :
 
 Budget réaliste :
 
-Déploiement commercial 2 ans : 350–450 K€  
+Déploiement [[commercial]] 2 ans : 350–450 K€  
 Stock et logistique : 100–150 K€  
 Structure / frais fixes : 200–300 K€  
 
@@ -2125,7 +2125,7 @@ Si vous le souhaitez, je peux maintenant :
 ## Human
 *2026-02-12 19:38*
 
-Pour le moment, restructure tout ce chat pour créer un document cohérent qui aborde les axes stratégique/produits/reglementation etc de flaçon a voir un fil de lecture lisible pour un tiers
+Pour le moment, restructure tout ce chat pour créer un document cohérent qui aborde les axes stratégique/produits/[[reglementation]] etc de flaçon a voir un fil de lecture lisible pour un tiers
 
 ---
 
@@ -2673,7 +2673,7 @@ Page 17 – Risques et mitigation
 
 Risque scientifique  
 Risque réglementaire  
-Risque commercial  
+Risque [[commercial]]  
 Plan de mitigation  
 
 ---
@@ -2867,13 +2867,13 @@ Runway cible : 30–36 mois.
 
 Risque scientifique → étude pilote  
 Risque réglementaire → communication maîtrisée  
-Risque commercial → différenciation protocolaire  
+Risque [[commercial]] → différenciation protocolaire  
 
 ---
 
 ## 9. Roadmap
 
-Année 1 : chien + lancement commercial  
+Année 1 : chien + lancement [[commercial]]  
 Année 2 : extension nutraceutique  
 Année 3 : étude clinique publiée  
 Année 4–5 : expansion Europe + diversification  

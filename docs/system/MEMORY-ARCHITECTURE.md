@@ -1,4 +1,4 @@
-# MEMORY-ARCHITECTURE — Mémoire transversale PKA_JCH
+# [[MEMORY-ARCHITECTURE]] — Mémoire transversale PKA_JCH
 > Décision architecturale du 2026-05-14. Auteur : [[Dobby]] 🦉 (claude-sonnet-4-6)
 
 ---
@@ -44,7 +44,7 @@ model: claude-sonnet-4-6
 
 Ce tag permet de savoir quel modèle a généré chaque règle ou connaissance. La table `memory_log` dans `team.db` consolide ces données pour un suivi statistique par modèle dans le temps.
 
-### 3. Session Start Protocol dans les fichiers pointeurs
+### 3. Session [[Start]] Protocol dans les fichiers pointeurs
 
 À chaque démarrage de session, [[Dobby]] :
 1. Identifie le modèle actif

@@ -22,7 +22,7 @@ The camera capture chain is not one subsystem among others. It is the primary va
 - A poor lens choice cannot be compensated by AI post-processing
 - Trigger latency failures result in empty frames — no second chance in the field
 
-Imaging decisions must be made before finalising PCB layout, enclosure dimensions, and battery sizing. They are not downstream choices.
+Imaging [[decisions]] must be made before finalising PCB layout, enclosure dimensions, and battery sizing. They are not downstream choices.
 
 ---
 

@@ -8,7 +8,7 @@ tags:
   - community/Map_&_Detail_Display
 ---
 
-# openDrawer() — show detail drawer with Wikipedia image + mini Leaflet map
+# [[openDrawer() — show detail drawer with Wikipedia image + mini Leaflet map]]
 
 ## Connections
 - [[Drawer Detail — tap-to-open panel with Wikipedia photo and mini Leaflet map]] - `implements` [INFERRED]

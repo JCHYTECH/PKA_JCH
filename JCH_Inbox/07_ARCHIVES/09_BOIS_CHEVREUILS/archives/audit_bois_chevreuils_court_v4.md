@@ -45,7 +45,7 @@ Levier immédiatement activable et accessible à la compréhension publique. Tro
 - Circulaire biodiversité en forêt du DNF — évitement 1er avril – 30 juin pour les feuillus.
 - Directive Oiseaux 2009/147/CE et arrêt CJUE Voore Mets 2025 — lecture stricte de la perturbation intentionnelle.
 
-La charge de la preuve de présence d'espèces nicheuses incombe au plaignant. Un constat ornithologique à l'aube par un observateur qualifié (Natagora, LRBPO) suffit à la renverser.
+La charge de la preuve de présence d'espèces nicheuses incombe au plaignant. Un constat ornithologique à l'aube par un observateur qualifié ([[Natagora]], LRBPO) suffit à la renverser.
 
 ### 3.3. Grief aménagement caché : les mares hydrauliques
 
@@ -82,7 +82,7 @@ Avant pièces en main :
 
 - **Constat d'huissier sur les souches**, avant broyage ou recouvrement. Pièce maîtresse du dossier.
 - **Constat d'huissier sur les mares**, documentation des dimensions, profils, digues, absence ou présence d'étanchéité, avant mise en eau complète et végétalisation.
-- **Constat ornithologique à l'aube** par Natagora ou LRBPO.
+- **Constat ornithologique à l'aube** par [[Natagora]] ou LRBPO.
 - **Interpellation urgente du cantonnement DNF.**
 - **Documentation photo/vidéo horodatée** continue du chantier, des véhicules, de la structure de la plateforme et des aménagements hydrauliques.
 - **Analyse de l'opportunité d'une main courante à la police d'Esneux** sous motif de suspicion d'irrégularités. Se faire conseiller par avocat pour le dépôt.
@@ -91,7 +91,7 @@ Avant pièces en main :
 
 - **4 courriers recommandés** : commune d'Esneux (DAA), SPW-DNF (DAA + plainte), service urbanisme de Chaudfontaine (DAA). Les demandes incluent les documents relatifs aux aménagements hydrauliques. Modèles prêts dans la version longue du rapport.
 - **Vérifications publiques** : BCE pour Yan Bois SRL, cadastre et walonmap pour l'emprise, Bulletin des adjudications pour la régularité de l'attribution, déclarations de mandats sur Cumuleo pour les élus impliqués, couche hydrographie walonmap pour le statut des anciens lits d'eau.
-- **Contact avec les alliés externes** : Natagora, Ligue Royale Belge pour la Protection des Oiseaux, Inter-Environnement Wallonie. Appui juridique, relais médiatique, possible constitution de partie civile.
+- **Contact avec les alliés externes** : [[Natagora]], Ligue Royale Belge pour la Protection des Oiseaux, Inter-Environnement Wallonie. Appui juridique, relais médiatique, possible constitution de partie civile.
 - **Avocat spécialisé** en droit administratif et environnemental, à mobiliser dès que la procédure contentieuse s'ouvre.
 - **Interpellation citoyenne au Conseil communal** (art. L1122-34 CDLD), procédure formelle avec signatures.
 

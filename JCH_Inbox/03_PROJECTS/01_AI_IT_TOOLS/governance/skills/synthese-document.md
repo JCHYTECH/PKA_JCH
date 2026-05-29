@@ -1,4 +1,4 @@
-# Skill: synthese-document
+# Skill: [[synthese-document]]
 
 Statut: `approved`
 Proprietaire: `JCH`
@@ -10,7 +10,7 @@ Utiliser cette skill quand JCH fournit ou designe un document a transformer en s
 
 ## Objectif
 
-Produire une synthese courte mais decisionnelle: faits importants, decisions, risques, actions, questions ouvertes.
+Produire une synthese courte mais decisionnelle: faits importants, [[decisions]], risques, actions, questions ouvertes.
 
 ## Entrees requises
 
@@ -21,7 +21,7 @@ Produire une synthese courte mais decisionnelle: faits importants, decisions, ri
 ## Procedure
 
 1. Identifier le type de document et son objectif probable.
-2. Extraire les faits, chiffres, noms, dates, decisions et contraintes.
+2. Extraire les faits, chiffres, noms, dates, [[decisions]] et contraintes.
 3. Distinguer clairement:
    - ce qui est certain;
    - ce qui est implicite;
@@ -40,7 +40,7 @@ Produire une synthese courte mais decisionnelle: faits importants, decisions, ri
 
 ## Pieges connus
 
-- Ne pas sur-resumer au point de perdre les decisions.
+- Ne pas sur-resumer au point de perdre les [[decisions]].
 - Ne pas inventer les informations absentes.
 - Ne pas melanger faits et interpretation.
 - Ne pas ignorer les dates, montants, obligations ou responsables.

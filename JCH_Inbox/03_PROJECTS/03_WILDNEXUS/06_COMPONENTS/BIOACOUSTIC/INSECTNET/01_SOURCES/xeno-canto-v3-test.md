@@ -39,7 +39,7 @@ D'apres la documentation [[Xeno-Canto]] API v3 :
 - `key` est obligatoire ;
 - les requetes doivent utiliser les tags de recherche [[Xeno-Canto]] ;
 - `per_page` est optionnel ;
-- l'API exige une cle liee a un compte [[Xeno-Canto]] avec email verifie ;
+- l'API exige une cle liee a un compte [[Xeno-Canto]] avec [[email]] verifie ;
 - la cle ne doit pas etre publiee dans un depot.
 
 ## Requete cible a tester avec cle

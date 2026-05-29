@@ -75,7 +75,7 @@ Respecte impérativement les règles suivantes :
 - aucun élément décoratif inutile
 
 ### D. Sobriété
-- éviter le style commercial excessif
+- éviter le style [[commercial]] excessif
 - éviter les animations inutiles
 - éviter les effets visuels agressifs
 - privilégier l’élégance et la stabilité graphique
@@ -185,7 +185,7 @@ Mettre l’accent sur :
 - interprétation
 - conclusion
 
-### Si le sujet est commercial ou stratégique
+### Si le sujet est [[commercial]] ou stratégique
 Mettre l’accent sur :
 - problème
 - marché

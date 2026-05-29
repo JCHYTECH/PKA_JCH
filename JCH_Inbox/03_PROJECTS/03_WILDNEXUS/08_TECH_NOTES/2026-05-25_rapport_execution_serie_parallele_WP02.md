@@ -65,7 +65,7 @@ Grouper panier  →  Commande groupée  →  Réception  →  Montage banc M-02
 | Action | Owner | Bloquant ? | Effort |
 |--------|-------|------------|--------|
 | **Commander PPK2** | JCH / [[Dobby]] | Oui — bloque Chaîne 1 | 5 min |
-| **Contacter Arducam** (email) | [[Dobby]] / [[Forge]] | Oui — bloque Chaîne 2 | 15 min |
+| **Contacter Arducam** ([[email]]) | [[Dobby]] / [[Forge]] | Oui — bloque Chaîne 2 | 15 min |
 | **Grouper panier Mouser** | [[Forge]] | Oui — bloque Chaîne 3 | 30 min |
 | **Demander devis Lensation** (2× M12 f/1.8 IR) | [[Dobby]] / [[Forge]] | Non | 10 min |
 

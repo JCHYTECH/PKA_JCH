@@ -10,7 +10,7 @@
 
 ## 1. Objet
 
-Maintenir [../01_FOUNDATION/GLOSSAIRE_WN.md](../01_FOUNDATION/GLOSSAIRE_WN.md) comme document d'onboarding humain.
+Maintenir [../01_FOUNDATION/[[GLOSSAIRE_WN]].md](../01_FOUNDATION/[[GLOSSAIRE_WN]].md) comme document d'onboarding humain.
 
 Le glossaire doit expliquer les termes que les nouveaux entrants risquent de rencontrer dans WildNexus : acronymes, codes projet, jalons, composants, standards, termes juridiques, termes terrain et termes IA.
 

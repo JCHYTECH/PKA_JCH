@@ -38,7 +38,7 @@ En Europe spécifiquement (2024) :
 ### 2.1 Tesla Energy (USA)
 **Produits BESS :**
 - **Megapack** : 3,9 MWh par unité (Megapack 2) / 5 MWh (Megapack 3) — marché utility-scale
-- **Powerpack** : segment commercial (retiré progressivement au profit Megapack)
+- **Powerpack** : segment [[commercial]] (retiré progressivement au profit Megapack)
 - **Powerwall 3** : 13,5 kWh — résidentiel
 
 **Positionnement :**
@@ -63,7 +63,7 @@ En Europe spécifiquement (2024) :
 **Produits BESS :**
 - **EnerC** : système BESS utility-scale, 5 MWh par container, liquid cooling
 - **Tener** : produit container 6,25 MWh annoncé 2024 — record densité 430 Wh/L
-- **EnerOne** : segment commercial/communautaire
+- **EnerOne** : segment [[commercial]]/communautaire
 
 **Positionnement :**
 - N°1 mondial de la fabrication de cellules Li-ion (EV + stationnaire)
@@ -80,7 +80,7 @@ En Europe spécifiquement (2024) :
 ### 2.3 BYD (Chine)
 **Produits BESS :**
 - **Battery-Box Premium HVS/HVM** : résidentiel (5–22 kWh)
-- **BYD MC-I / MC-II** : commercial et C&I (100–500 kWh)
+- **BYD MC-I / MC-II** : [[commercial]] et C&I (100–500 kWh)
 - **BYD Cube / BYD BESS** : utility-scale
 
 **Positionnement :**
@@ -251,7 +251,7 @@ En Europe spécifiquement (2024) :
 
 **Seuil minimal de projet :**
 - Tesla Megapack : économiquement viable à partir de ~5 MWh → ne sert pas le résidentiel, ni les communautés < 500 kWh
-- Fluence, Wärtsilä : seuil d'intérêt commercial ~1 MW
+- Fluence, Wärtsilä : seuil d'intérêt [[commercial]] ~1 MW
 - ABB : même si BESSaaS élargit l'accès, focus industrie lourde
 
 **Mobilité :**

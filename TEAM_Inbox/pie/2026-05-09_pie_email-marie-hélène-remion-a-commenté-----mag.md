@@ -1,4 +1,4 @@
-# 🐦‍⬛ [[Pie]] — Analyse email
+# 🐦‍⬛ [[Pie]] — Analyse [[email]]
 
 **Date :** 2026-05-09  
 **De :** Marie-Hélène sur Facebook  

@@ -150,7 +150,7 @@ Do not over-augment: rotation beyond ±15° is unrealistic for trail camera moun
 
 ### Transfer learning strategy
 
-1. Start from MobileNetV3 or EfficientNet-Lite pretrained on ImageNet
+1. [[Start]] from MobileNetV3 or EfficientNet-Lite pretrained on ImageNet
 2. Replace classification head with WildNexus-specific classes
 3. Fine-tune last 2–3 blocks on WildNexus data
 4. Full fine-tune if dataset is large enough (>5000 images per class)

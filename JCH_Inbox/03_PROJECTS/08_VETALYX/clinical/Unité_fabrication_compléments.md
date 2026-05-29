@@ -155,7 +155,7 @@ Voici des **prestataires reconnus** pour :
 
 **1) ETII – Bureau d’études industrie**
 - Offre : conception bâtiment, zoning hygiène, plans 2D/3D
-- Contact : via formulaire ou email  
+- Contact : via formulaire ou [[email]]  
 - Utile pour : aménagement de flux, plans techniques, intégration machines.
 
 **2) Atelier Salles Propres**
@@ -187,7 +187,7 @@ Voici des **prestataires reconnus** pour :
 
 ## 4) Mini-brief type (à envoyer aux prestataires)
 
-Copier-coller ce texte dans votre premier email contact :
+Copier-coller ce texte dans votre premier [[email]] contact :
 
 ---
 
@@ -369,7 +369,7 @@ Si votre objectif est **fabrication + conditionnement** (comprimés, gélules, b
 
 Si vous le souhaitez, je peux :
 - vous dire **qui contacter en premier selon France vs Wallonie**,  
-- préparer un **email ciblé différent pour ETII vs CoCEPTIO**,  
+- préparer un **[[email]] ciblé différent pour ETII vs CoCEPTIO**,  
 - ou vérifier **si votre process nécessite ISO 7 ou si ISO 8 suffit** (impact CAPEX majeur).
 
 Dites-moi votre priorité géographique et votre surface cible.

@@ -8,7 +8,7 @@
 
 ## Contexte
 
-P0 doit prouver un Satellite Lite autonome, pas une station d'IA complète. Les dépôts inbox confirment que YOLO moderne et [[BirdNET]] complet ne sont pas réalistes sur [[ESP32-S3]] en P0.
+P0 doit prouver un Satellite Lite autonome, pas une station d'IA complète. Les dépôts [[inbox]] confirment que YOLO moderne et [[BirdNET]] complet ne sont pas réalistes sur [[ESP32-S3]] en P0.
 
 ## Décision
 

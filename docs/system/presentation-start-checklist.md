@@ -12,13 +12,13 @@ Utiliser cette checklist avant de produire un PowerPoint, un deck, une note visu
 ## 2. Sources a ouvrir d'abord
 
 - charte graphique du projet ou de la marque ;
-- README ou INDEX du projet ;
+- [[README]] ou [[INDEX]] du projet ;
 - layouts et variantes de slides existants ;
 - livrable de reference si un document maitre existe deja.
 
 ## 3. Decision de structure
 
-- definir le type de support : analytique, narratif, commercial, dirigeant, statutaire ;
+- definir le type de support : analytique, narratif, [[commercial]], dirigeant, statutaire ;
 - choisir le systeme de layout correspondant ;
 - fixer le nombre de slides ou le niveau de densite avant de rediger.
 

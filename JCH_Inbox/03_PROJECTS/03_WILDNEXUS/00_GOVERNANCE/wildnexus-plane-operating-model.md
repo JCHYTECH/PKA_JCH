@@ -35,7 +35,7 @@ Plane is the source of truth for:
 - blockers
 - delivery evidence
 
-This split matters. The founding document should not become a live task tracker, and Plane should not become the place where mission-level decisions drift informally.
+This split matters. The founding document should not become a live task tracker, and Plane should not become the place where mission-level [[decisions]] drift informally.
 
 ## 3. Recommended Plane Structure
 
@@ -119,7 +119,7 @@ Use normal issues or tasks for:
 
 - risk actions
 - legal reviews
-- decisions requiring JCH confirmation
+- [[decisions]] requiring JCH confirmation
 - publication blockers
 
 Examples:

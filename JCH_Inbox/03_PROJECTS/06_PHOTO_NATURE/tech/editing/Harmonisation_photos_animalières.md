@@ -2674,7 +2674,7 @@ Final correction: **Exposure only**
 
 ---
 
-## Section 1 — Quick Start
+## Section 1 — Quick [[Start]]
 
 **Reference → Apply Presets → Sync → Exposure only**
 
@@ -4210,7 +4210,7 @@ la procedure et renvoie moi l'action elle n'est plus telechargeable
 ## Assistant
 *2026-01-08 16:15*
 
-# Recreate a clean ZIP with detailed README including step-by-step ATN recording procedure
+# Recreate a clean ZIP with detailed [[README]] including step-by-step ATN recording procedure
 
 import zipfile, os, textwrap
 

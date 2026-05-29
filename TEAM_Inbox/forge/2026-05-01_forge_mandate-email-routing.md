@@ -6,7 +6,7 @@
 ## Objectif
 
 Ajouter un module de routing intelligent à `email_digest.py` :
-chaque email entrant est analysé, routé vers le bon spécialiste,
+chaque [[email]] entrant est analysé, routé vers le bon spécialiste,
 et ses actions déclenchées automatiquement dans team.db.
 
 ---
@@ -35,7 +35,7 @@ RENARD_KEYWORDS = [
 ]
 ```
 **Actions :**
-- INSERT dans `inbox` : direction=`JCH→TEAM`, from=`JCH`, to=`Renard`, subject=objet email, body=résumé
+- INSERT dans `inbox` : direction=`JCH→TEAM`, from=`JCH`, to=`Renard`, subject=objet [[email]], body=résumé
 - Notification push priorité haute : `🦊 Renard — email légal détecté`
 
 ---
@@ -76,7 +76,7 @@ BRUNO_KEYWORDS = [
 
 ### 🐬 [[Delphi]] — CRM
 
-**Cas 1 — Contact connu (email dans `contacts`)**
+**Cas 1 — Contact connu ([[email]] dans `contacts`)**
 - INSERT dans `interactions` : contact_id=id trouvé, type=`email`, date=aujourd'hui, summary=objet
 - Mettre à jour `contacts.last_contact` = aujourd'hui
 
@@ -105,7 +105,7 @@ MEETING_KEYWORDS = ["rendez-vous", "meeting", "réunion", "call", "disponible", 
 
 ## Règles d'implémentation
 
-- Un email peut déclencher **plusieurs routes** (ex: email Vetalyx avec clause contractuelle → [[Vasco]] + [[Renard]])
+- Un [[email]] peut déclencher **plusieurs routes** (ex: [[email]] Vetalyx avec clause contractuelle → [[Vasco]] + [[Renard]])
 - Routing effectué sur `subject` + premiers 500 chars du body (si body disponible)
 - Body disponible uniquement si `score > 2` (éviter les appels API inutiles)
 - Toutes les insertions DB dans un try/except — une erreur DB ne bloque jamais la notification push
@@ -120,4 +120,4 @@ MEETING_KEYWORDS = ["rendez-vous", "meeting", "réunion", "call", "disponible", 
 
 ## Livrable
 
-Script mis à jour + test sur un email réel par route.
+Script mis à jour + test sur un [[email]] réel par route.

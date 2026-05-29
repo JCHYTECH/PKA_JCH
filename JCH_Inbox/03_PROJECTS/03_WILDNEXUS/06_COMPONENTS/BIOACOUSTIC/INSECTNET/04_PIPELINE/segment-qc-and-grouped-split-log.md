@@ -102,4 +102,4 @@ Manual or assisted review should update `segment_qc.csv`:
 - `visual_qc=reject` for silence, low signal, saturation, or obvious noise;
 - `visual_qc=review` for uncertain cases.
 
-After QC edits, regenerate `train-test-split.csv` so rejected segments are excluded.
+After QC edits, regenerate `train-test-split.csv` so [[rejected]] segments are excluded.
