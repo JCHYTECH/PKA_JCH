@@ -55,7 +55,7 @@ tags:
 | 2000–2022 | **ZENTECH** | CEO puis Chairman — IVD (diagnostics in vitro), pathologies pédiatriques et chroniques |
 | 1989–2000 | **RADIM SA** | CEO — filiale belge du groupe italien Radim Diagnostic, coordination R&D, filiales DE et FR |
 | 1985–1989 | **Sanders Probel Biotechnology** | Director — création de la branche biotechnologie |
-| 1982–1985 | **Merck Sharp & Dohme** | Représentant commercial |
+| 1982–1985 | **Merck Sharp & Dohme** | Représentant [[commercial]] |
 | 1979–1982 | **FAO / ONU** | Expert junior — projet pisciculture en Côte d'Ivoire + développement IVD maladies des poissons |
 
 ---
@@ -93,7 +93,7 @@ Spécialités : chronophotographie, focus stacking, comportements inter-espèces
 La nature n'est pas un décor. L'humain en fait partie. Cette conviction traverse tout — le manifeste Arteon (*"Même tissu"*), la charte éditoriale, les refus documentés, et le regard de terrain.
 
 **Rigueur sans compromis.**
-Les faits d'abord. Les sources vérifiées. L'approximation n'est pas une option — ni dans le diagnostic, ni dans la photo, ni dans les contrats.
+Les faits d'abord. Les sources vérifiées. L'approximation n'est pas une option — ni dans le diagnostic, ni dans la photo, ni dans les [[contrats]].
 
 **Autonomie.**
 Technique, énergétique, décisionnelle. Construire plutôt que dépendre. Comprendre plutôt que déléguer aveuglément.

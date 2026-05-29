@@ -1,4 +1,4 @@
-# 🦊 [[Renard]] — Analyse email
+# 🦊 [[Renard]] — Analyse [[email]]
 
 **Date :** 2026-05-01  
 **De :** Jean-Claude Havaux - JCHyTech  
@@ -6,9 +6,9 @@
 
 ---
 
-# Analyse juridique de l'email
+# Analyse juridique de l'[[email]]
 
-## 1) Nature juridique de l'email
+## 1) Nature juridique de l'[[email]]
 - **Demande interne** : JCH demande à sa propre adresse de messagerie (redirection/délégation) un brouillon de contrat
 - **Contrat B2B de location** : il s'agit d'établir les termes d'une location d'équipement photographique
 
@@ -19,7 +19,7 @@
 | **Absence de destinataire clair** | Mail envoyé à une adresse "Out of Office" - le brouillon n'atteindra probablement pas le bon interlocuteur |
 | **Contrat type manquant** | JCH ne dispose pas de modèle standardisé pour ses locations d'appareils photo |
 | **Lacunes potentielles** | Absence probable de clauses essentielles : responsabilité, assurance, conditions d'usure, garantie, modalités de paiement |
-| **Droit applicable** | Contrat soumis au droit belge (CCAG Location, droit des contrats) |
+| **Droit applicable** | Contrat soumis au droit belge (CCAG Location, droit des [[contrats]]) |
 
 ## 3) Action recommandée
 

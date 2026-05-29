@@ -9,9 +9,9 @@ Note qualite : compte rendu base sur une transcription automatique [[Whisper]]. 
 
 ## 1. Objet de la reunion
 
-La reunion visait a mieux comprendre la strategie de Nuance et a evaluer dans quelle mesure une mission de consultance strategique pouvait etre assuree par Artheon.
+La reunion visait a mieux comprendre la [[strategie]] de Nuance et a evaluer dans quelle mesure une mission de consultance strategique pouvait etre assuree par Artheon.
 
-L'enjeu principal identifie est le lancement ou l'acceleration de l'activite B2B de Nuance, avec une strategie technico-commerciale complete, operationnelle et mesurable.
+L'enjeu principal identifie est le lancement ou l'acceleration de l'activite B2B de Nuance, avec une [[strategie]] technico-commerciale complete, operationnelle et mesurable.
 
 ## 2. Positionnement general de Nuance
 
@@ -49,7 +49,7 @@ Element cle mentionne :
 
 - un investisseur suisse potentiel serait pret a investir environ 140 MEUR dans cette activite business to business.
 
-L'investisseur souhaite financer une strategie permettant de developper plusieurs services dans le domaine de l'energie et d'en tirer des benefices.
+L'investisseur souhaite financer une [[strategie]] permettant de developper plusieurs services dans le domaine de l'energie et d'en tirer des benefices.
 
 La transcription indique aussi que cet investisseur serait actif ou interesse par :
 
@@ -60,7 +60,7 @@ La transcription indique aussi que cet investisseur serait actif ou interesse pa
 
 Implication :
 
-- la mission doit etre presentee comme un dispositif de deploiement industriel et commercial, pas comme une simple analyse ;
+- la mission doit etre presentee comme un dispositif de deploiement industriel et [[commercial]], pas comme une simple analyse ;
 - l'existence d'un financement potentiel exige des scenarios structurables, mesurables et defendables devant investisseur ;
 - les modeles de rentabilite, de risque, de volume et de scalabilite doivent etre formalises.
 
@@ -79,7 +79,7 @@ Actifs mentionnes :
 
 Le boitier est un actif important car il peut jouer plusieurs roles :
 
-- produit d'entree commercial ;
+- produit d'entree [[commercial]] ;
 - outil de collecte de donnees ;
 - preuve rapide de valeur ;
 - base d'un audit energetique ;
@@ -105,14 +105,14 @@ Implication :
 
 ## 7. Mission envisagee pour Artheon
 
-La mission Artheon serait de mettre au point une strategie technico-commerciale pour le lancement des activites B2B.
+La mission Artheon serait de mettre au point une [[strategie]] technico-commerciale pour le lancement des activites B2B.
 
 La mission ne doit pas etre seulement theorique.
 
 Perimetre mentionne :
 
 - ciblage marche ;
-- strategie de prospection ;
+- [[strategie]] de prospection ;
 - accompagnement logiciel ;
 - definition des produits a proposer ;
 - constitution d'un catalogue de services ;
@@ -124,10 +124,10 @@ Perimetre mentionne :
 
 Implication :
 
-- la mission doit couvrir strategie, outils, process, CRM, documents commerciaux, donnees techniques, KPI et execution ;
+- la mission doit couvrir [[strategie]], outils, process, CRM, documents commerciaux, donnees techniques, KPI et execution ;
 - elle doit faire le lien entre prospection, diagnostic, vente, installation, suivi et optimisation.
 
-## 8. Ciblage commercial B2B initial
+## 8. Ciblage [[commercial]] B2B initial
 
 La prospection doit demarrer par un filtre technique essentiel :
 
@@ -160,7 +160,7 @@ Les donnees a obtenir en priorite sont :
 
 Ces donnees doivent alimenter un scoring de prospection et permettre de preparer le premier rendez-vous avec des hypotheses chiffrees.
 
-## 10. Role potentiel du boitier dans la strategie commerciale
+## 10. Role potentiel du boitier dans la [[strategie]] commerciale
 
 Le boitier peut etre vendu ou deploye comme offre autonome.
 
@@ -205,7 +205,7 @@ Implication :
 - Quelle priorite entre BESS, EMS, boitier, PV, fourniture energie et decarbonation ?
 - Le B2B vise-t-il d'abord les PME industrielles familiales ou d'autres segments ?
 - Quelle ambition de volume est liee a l'investissement potentiel de 140 MEUR ?
-- Quel niveau de maturite attend l'investisseur : strategie, pipeline, CRM, business plan, execution terrain ?
+- Quel niveau de maturite attend l'investisseur : [[strategie]], pipeline, CRM, business plan, execution terrain ?
 
 ### Technique
 
@@ -236,7 +236,7 @@ Implication :
 - Quel CRM utiliser ?
 - Quels KPI suivre en temps reel ?
 - Qui valide les offres techniques ?
-- Comment articuler commercial, bureau technique, installation et suivi post-installation ?
+- Comment articuler [[commercial]], bureau technique, installation et suivi post-installation ?
 - Quel dossier preliminaire doit etre produit avant rendez-vous ?
 
 ## 13. Decisions ou orientations identifiees
@@ -259,7 +259,7 @@ Implication :
 6. Definir les offres B2B prioritaires et leur ordre de vente.
 7. Integrer les options achat / leasing / tiers investisseur dans les scenarios.
 8. Construire une premiere architecture CRM : champs, pipeline, statuts, KPI.
-9. Preparer une version investisseur de la strategie si le financement de 140 MEUR se confirme.
+9. Preparer une version investisseur de la [[strategie]] si le financement de 140 MEUR se confirme.
 
 ## 15. Points incertains de transcription
 

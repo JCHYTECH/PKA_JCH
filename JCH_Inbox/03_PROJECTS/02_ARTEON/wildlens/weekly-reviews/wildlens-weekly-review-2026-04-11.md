@@ -13,7 +13,7 @@ tags:
   - status/active
 status: raw
 ---
-# WildLens Weekly Review — 2026-04-18 (Former Version)
+# [[WildLens]] Weekly Review — 2026-04-18 (Former Version)
 [[WildLens]]
 
 This week’s signal is more **coherent and directional** than incremental: the strongest developments converge on **making image formation measurable (optics, color, DOF)** while artists continue to push in the opposite direction—**intentional divergence from strict realism**. The tension between those poles is now structurally shaping practice.

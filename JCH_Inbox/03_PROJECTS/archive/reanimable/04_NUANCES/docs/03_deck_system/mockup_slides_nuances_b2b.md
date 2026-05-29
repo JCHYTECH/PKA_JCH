@@ -148,7 +148,7 @@ Diagnostiquer -> Mesurer -> Piloter -> Equiper -> Financer -> Optimiser
 - Nuances Brain / EMS
 - BESS industriel
 - PV / Nuances Sun
-- contrats énergie et financement
+- [[contrats]] énergie et financement
 
 ### Message
 
@@ -156,7 +156,7 @@ Nuances ne vend pas un catalogue. Nuances vend une progression de valeur.
 
 ---
 
-## Slide 8 — Processus technico-commercial cible
+## Slide 8 — Processus technico-[[commercial]] cible
 
 ### Pipeline
 
@@ -287,7 +287,7 @@ La mission doit produire un système de vente B2B, pas seulement une réflexion.
 ### Ce qu'apporte Artheon
 
 - cadrage stratégique
-- protocole technico-commercial
+- protocole technico-[[commercial]]
 - validation terrain
 - structuration des outils
 
@@ -301,7 +301,7 @@ La mission doit produire un système de vente B2B, pas seulement une réflexion.
 ### Périmètre élargi possible
 
 - lobbying ciblé
-- projets de contrats
+- projets de [[contrats]]
 
 ---
 
@@ -369,7 +369,7 @@ La mission n'a pas pour but de produire une théorie commerciale de plus.
 
 ### Formulation finale
 
-Nuances a besoin d'un dispositif technico-commercial qui :
+Nuances a besoin d'un dispositif technico-[[commercial]] qui :
 - clarifie son positionnement B2B
 - cible mieux
 - prépare mieux les rendez-vous

@@ -65,7 +65,7 @@ Notre équipe de conseillers techniques peut vous proposer :
 - **Profils boîtier** préconfigurés pour vos 3 situations les plus fréquentes
 - **Brief pré-sortie** personnalisé selon vos conditions de lumière habituelles
 
-📩 Répondez simplement **OUI** à cet email pour recevoir vos recommandations personnalisées sous 48h.
+📩 Répondez simplement **OUI** à cet [[email]] pour recevoir vos recommandations personnalisées sous 48h.
 
 ---
 

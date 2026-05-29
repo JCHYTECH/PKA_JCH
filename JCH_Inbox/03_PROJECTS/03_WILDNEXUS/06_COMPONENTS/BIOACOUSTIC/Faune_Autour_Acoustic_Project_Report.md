@@ -17,9 +17,9 @@ The first technical target is a bird-focused acoustic station based on [[Raspber
 
 The project should be developed progressively through three coordinated workstreams:
 
-1. **Scientific workstream** — species, bioacoustics, validation, ecology and interpretation.
-2. **Technical workstream** — [[Raspberry Pi]], AI recognition, API, database, app and external data integrations.
-3. **Hardware workstream** — microphone, power, enclosure, connectivity and outdoor robustness.
+1. **Scientific [[workstream]]** — species, bioacoustics, validation, ecology and interpretation.
+2. **Technical [[workstream]]** — [[Raspberry Pi]], AI recognition, API, database, app and external data integrations.
+3. **Hardware [[workstream]]** — microphone, power, enclosure, connectivity and outdoor robustness.
 
 The first decisive milestone is simple and concrete:
 
@@ -112,7 +112,7 @@ An expert user validates detections, exports data, analyses temporal patterns an
 
 ---
 
-## 4. Product architecture overview
+## 4. Product architecture [[overview]]
 
 The system should be designed as a modular ecosystem composed of six layers.
 
@@ -259,7 +259,7 @@ Required competences:
 - BirdNET-Go installation;
 - AI inference on edge device;
 - bioacoustics;
-- ornithology/species knowledge;
+- ornithology/species [[knowledge]];
 - model evaluation;
 - false-positive management.
 
@@ -418,7 +418,7 @@ Priority: **Phase 2**
 
 Required functions:
 
-- statuses: unverified, probable, validated, rejected;
+- statuses: unverified, probable, validated, [[rejected]];
 - expert review screen;
 - audio snippet review;
 - confidence thresholds;
@@ -523,7 +523,7 @@ Requirements:
 Required competences:
 
 - bioacoustics;
-- species distribution knowledge;
+- species distribution [[knowledge]];
 - statistical filtering;
 - AI model evaluation.
 
@@ -560,7 +560,7 @@ Requirements:
 - location privacy;
 - sensitive species masking;
 - data deletion rules;
-- privacy policy.
+- privacy [[policy]].
 
 Required competences:
 
@@ -810,7 +810,7 @@ Role: protect users, locations and sensitive species.
 
 Tasks:
 
-- define privacy policy;
+- define privacy [[policy]];
 - define audio retention rules;
 - define user consent;
 - define sensitive species masking;
@@ -929,7 +929,7 @@ Required competences:
 
 Recommended decision:
 
-> Start with a fixed Wi-Fi bird station, then move to outdoor autonomous version.
+> [[Start]] with a fixed Wi-Fi bird station, then move to outdoor autonomous version.
 
 ---
 
@@ -1236,8 +1236,8 @@ Deliverables:
 - installation manual;
 - user guide;
 - maintenance guide;
-- privacy policy;
-- commercial positioning.
+- privacy [[policy]];
+- [[commercial]] positioning.
 
 Required competences:
 
@@ -1547,7 +1547,7 @@ Possible functions:
 - mowing impact analysis;
 - amphibian breeding acoustic activity;
 - bat activity monitoring;
-- ecological evidence for land-use decisions.
+- ecological evidence for land-use [[decisions]].
 
 ### 14.5 Network effect
 
@@ -1573,7 +1573,7 @@ With multiple stations, Faune Autour can become a distributed biodiversity obser
 | Sensitive species exposure | Medium | High | Location masking, restricted access |
 | API dependency | Medium | Medium | Build own data model, cache external data |
 | Outdoor hardware failure | Medium | High | Weatherproof enclosure, condensation management |
-| Over-complex MVP | High | High | Start with bird-only fixed Wi-Fi station |
+| Over-complex MVP | High | High | [[Start]] with bird-only fixed Wi-Fi station |
 | Lack of validation credibility | Medium | High | Validation workflow and expert review |
 
 ---

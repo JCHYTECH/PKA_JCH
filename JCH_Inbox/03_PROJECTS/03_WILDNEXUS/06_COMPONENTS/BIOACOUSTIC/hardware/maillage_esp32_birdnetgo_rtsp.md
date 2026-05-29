@@ -26,7 +26,7 @@ streams:
 The central server will continuously capture the stream, automatically filter species based on your coordinates, and send detections directly to your local dashboard or Home Assistant. [15, 16, 17]
 If you would like to proceed, tell me:
 Do you already have a specific hardware board (like an [[ESP32]] or [[Raspberry Pi]])?
-Do you prefer a no-solder commercial module or a DIY component build?
+Do you prefer a no-solder [[commercial]] module or a DIY component build?
 I can provide the exact step-by-step flashing guide or wiring diagrams for your chosen route.
 
 [1] https://www.reddit.com

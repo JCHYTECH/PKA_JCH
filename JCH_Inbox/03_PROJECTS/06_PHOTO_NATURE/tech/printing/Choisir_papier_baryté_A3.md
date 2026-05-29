@@ -150,7 +150,7 @@ Ok tableau
 
 Voici le tableau de synthèse pour l’**Epson ET-8550 en A3 baryté**, en intégrant la logique de Keith Cooper : sur cette imprimante, le bon choix dépend surtout de la combinaison **papier + profil ICC + media setting**, et il vaut mieux privilégier d’abord les papiers bien supportés plutôt que les papiers “prestige” pris au hasard. citeturn0search0turn0search1
 
-| Papier A3 | Type / surface | Rendu visuel | Risque sur ET-8550 | Usage idéal en photo animalière | Rapport qualité/prix | Verdict |
+| [[Papier]] A3 | Type / surface | Rendu visuel | Risque sur ET-8550 | Usage idéal en photo animalière | Rapport qualité/prix | Verdict |
 |---|---|---|---|---|---|---|
 | **Epson Traditional Photo Paper / Exhibition Fiber** | Baryté / fibre, brillant satiné | Noirs profonds, beau contraste, rendu “tirage expo” | **Faible à modéré** : option la plus cohérente avec l’écosystème Epson, profils et comportement mieux documentés sur ET-8550 | Oiseaux sur eau, mammifères contrastés, images destinées à être encadrées | **Bon en coût global** malgré un prix feuille élevé, car moins d’essais perdus | **Choix n°1** citeturn0search1turn0search0 |
 | **PermaJet FB Gold Silk 315** | Baryté silk / semi-brillant | Très belle matière, rendu subtil, élégant, moins clinquant qu’un gloss | **Modéré** : papier excellent, mais moins “sécurisé” sur ET-8550 que l’Epson dans l’analyse finale | Plumes fines, ambiance douce, images poétiques, lumière délicate | **Très bon** si le couple profil/réglage fonctionne bien | **Choix n°2** citeturn0search2turn0search1 |
@@ -185,7 +185,7 @@ Voici le tableau plus ciblé pour l’ET-8550.
 
 Keith Cooper montre surtout trois choses utiles pour toi : l’ET-8550 peut donner d’excellents tirages photo, il faut choisir les papiers avec soin, et il vaut mieux partir d’un couple papier/profil/réglage média déjà cohérent plutôt que d’acheter directement des barytés premium “à l’aveugle”. Il rappelle aussi que, pour cette machine, certains papiers conviennent mal, et que l’alimentation droite accepte les supports jusqu’à 1,3 mm d’épaisseur. citeturn626860search0turn626860search1turn626860search6
 
-| Papier A3 | Réglage ET-8550 conseillé | Type d’images adaptées | Rendu | Risque de dominante / dérive | Niveau de risque global | Verdict |
+| [[Papier]] A3 | Réglage ET-8550 conseillé | Type d’images adaptées | Rendu | Risque de dominante / dérive | Niveau de risque global | Verdict |
 |---|---|---|---|---|---|---|
 | **Epson Traditional Photo Paper / Exhibition Fiber** | Commencer avec le **réglage média glossy/premium glossy** utilisé par Keith pour ce type de papier fibre sur ET-8550, avec profil ICC adapté | Oiseaux sur eau, mammifères en lumière rasante, images contrastées, tirages encadrés | Noirs profonds, rendu expo, belle densité | **Faible à modéré** si profil et gestion couleur sont propres ; Keith note qu’en N&B il peut y avoir de légères variations qui demandent essais | **Le plus sûr** | **Premier achat recommandé** citeturn626860search1turn626860search0 |
 | **PermaJet FB Gold Silk 315** | À tester prudemment avec un réglage photo glossy/lustre proche, puis valider par petits essais ; la qualité dépendra beaucoup du profil disponible | Plumes fines, ambiances douces, images naturalistes subtiles, fonds délicats | Plus soyeux, moins clinquant, aspect premium discret | **Modéré** : le papier est très qualitatif, mais la revue de Keith est faite sur Epson P5000, pas sur ET-8550 | **Bon second test** | **Deuxième choix** citeturn626860search2turn626860search1 |

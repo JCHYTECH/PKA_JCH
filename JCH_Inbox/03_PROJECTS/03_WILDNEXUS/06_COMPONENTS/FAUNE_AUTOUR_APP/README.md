@@ -1,7 +1,7 @@
 Mon objectif est de créer une application qui en fonction de ma position geographique fournie par le gps de  iphone
 m’indique les animaux observé 5 km à la ronde. 
 Les observations sont trouvées dans les sites répertoriant les d’observations d’animaux encodées par des observateurs. 
-J’utilise observations.be qui est un fork d’un site à plis grande couverture geographique. 
+J’utilise [[observations.be]] qui est un fork d’un site à plis grande couverture geographique. 
 la faisabilté d’une telle application qui peut ne pas avoir recu des clé d’acces API aux sites.
 REPONSE voici reponse
 

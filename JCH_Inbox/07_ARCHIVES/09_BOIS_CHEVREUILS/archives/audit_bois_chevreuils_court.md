@@ -45,7 +45,7 @@ Levier immédiatement activable et accessible à la compréhension publique. Tro
 2. Circulaire biodiversité en forêt du DNF — évitement 1er avril – 30 juin pour les feuillus.
 3. Directive Oiseaux 2009/147/CE et arrêt CJUE Voore Mets 2025 — lecture stricte de la perturbation intentionnelle.
 
-La charge de la preuve de présence d'espèces nicheuses incombe au plaignant. Un constat ornithologique à l'aube par un observateur qualifié (Natagora, LRBPO) suffit à la renverser.
+La charge de la preuve de présence d'espèces nicheuses incombe au plaignant. Un constat ornithologique à l'aube par un observateur qualifié ([[Natagora]], LRBPO) suffit à la renverser.
 
 ---
 
@@ -67,15 +67,15 @@ Registre à privilégier : « nous constatons », « nous demandons transparence
 ### Actions urgentes — cette semaine
 
 1. **Constat d'huissier sur les souches**, avant broyage ou recouvrement. Pièce maîtresse du dossier.
-2. **Constat ornithologique à l'aube** par Natagora ou LRBPO.
-3. **Saisine urgente du cantonnement DNF** (recommandé + email + appel) pour demander la suspension du chantier.
+2. **Constat ornithologique à l'aube** par [[Natagora]] ou LRBPO.
+3. **Saisine urgente du cantonnement DNF** (recommandé + [[email]] + appel) pour demander la suspension du chantier.
 4. **Documentation photo/vidéo horodatée** continue du chantier, des véhicules, de la structure de la plateforme.
 
 ### Actions structurelles — dans le mois qui vient
 
 - **4 courriers recommandés** : commune d'Esneux (DAA), SPW-DNF (DAA + plainte), service urbanisme de Chaudfontaine (DAA). Modèles prêts dans la version longue du rapport.
 - **Vérifications publiques** : BCE pour Yan Bois SRL, cadastre et walonmap pour l'emprise, Bulletin des adjudications pour la régularité de l'attribution, déclarations de mandats sur Cumuleo pour les élus impliqués.
-- **Contact avec les alliés externes** : Natagora, Ligue Royale Belge pour la Protection des Oiseaux, Inter-Environnement Wallonie. Appui juridique, relais médiatique, possible constitution de partie civile.
+- **Contact avec les alliés externes** : [[Natagora]], Ligue Royale Belge pour la Protection des Oiseaux, Inter-Environnement Wallonie. Appui juridique, relais médiatique, possible constitution de partie civile.
 - **Avocat spécialisé** en droit administratif et environnemental, à mobiliser dès que la procédure contentieuse s'ouvre.
 - **Interpellation citoyenne au Conseil communal** (art. L1122-34 CDLD), procédure formelle avec signatures.
 - **Surveillance du délai de 60 jours** pour un éventuel recours au Conseil d'État, à compter de la publication de tout acte administratif attaquable.

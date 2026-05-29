@@ -16,7 +16,7 @@ Objet : vue synthétique des tâches récurrentes déjà explicitement définies
 |---|---|---|---|---|
 | [[Dobby]] 🦉 | Chargement du contexte de session | À chaque démarrage de session | Lecture de 
 | [[Dobby]] 🦉 | Triage et délégation | À chaque nouvelle demande JCH ou fichier entrant | Brief clair vers le bon spécialiste, attribution explicite, synthèse finale | Spécialiste concerné puis JCH |
-| [[Dobby]] 🦉 | Auto-processing inbox | À chaque fichier dans 
+| [[Dobby]] 🦉 | Auto-processing [[inbox]] | À chaque fichier dans 
 | [[Dobby]] 🦉 | Capture de procédure | Après toute tâche complexe résolue | Indexation de la procédure dans 
 | [[Dobby]] 🦉 | Mise à jour mémoire structurelle | Quand une règle ou un état durable change | Mise à jour de 
 | [[Sybil]] 🦔 | Entrée journal guidée | Quotidien ou à chaque session journal | Entrée dans 

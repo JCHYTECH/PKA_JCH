@@ -8,7 +8,7 @@ tags:
   - community/Biodiversity_Platforms
 ---
 
-# observations.be
+# [[observations.be]]
 
 ## Connections
 - [[Natagora]] - `references` [INFERRED]

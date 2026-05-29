@@ -292,7 +292,7 @@ The main pattern this week is that the strongest developments are upstream rathe
 
 **2. The most important macro-relevant research item is the UniCAC benchmark on computational aberration correction.** The paper evaluates 24 restoration/CAC methods on a new photographic benchmark and introduces an Optical Degradation Evaluator intended to quantify aberration difficulty across lenses. That is not a field-ready tool, but it is unusually relevant for macro and telephoto practice because residual aberrations, field-edge softness, and lens-specific rendering flaws become painfully visible in stacked close-ups and high-detail wildlife images. My verdict: **technical credibility high** as a serious benchmark paper with a clearly defined evaluation agenda; **artistic potential moderate** because better correction expands what can be rendered cleanly without dictating style; **practical relevance medium now, high later** once these methods migrate into mainstream RAW processors or camera pipelines. citeturn686159search2turn224433view3
 
-**3. Lightroom Classic’s recent updates are modest, but Assisted Culling is the one workflow feature that actually matters for wildlife.** Adobe’s release notes show improved Assisted Culling in February 2026, along with improved Denoise quality for some Ricoh and Pentax cameras; the March 2026 point release adds Sony A7 V compressed/Compressed HQ RAW support. This is not aesthetically transformative, but it directly affects the speed of getting through burst-heavy shoots. My verdict: **technical credibility high** because the changes are documented in Adobe’s official notes; **artistic potential low to moderate** because the gain is mostly in selection speed and cleaner starting files; **practical relevance high** for bird, action, and behavior shooters who come home with hundreds of near-duplicates and need faster first-pass decisions. citeturn224433view0
+**3. Lightroom Classic’s recent updates are modest, but Assisted Culling is the one workflow feature that actually matters for wildlife.** Adobe’s release notes show improved Assisted Culling in February 2026, along with improved Denoise quality for some Ricoh and Pentax cameras; the March 2026 point release adds Sony A7 V compressed/Compressed HQ RAW support. This is not aesthetically transformative, but it directly affects the speed of getting through burst-heavy shoots. My verdict: **technical credibility high** because the changes are documented in Adobe’s official notes; **artistic potential low to moderate** because the gain is mostly in selection speed and cleaner starting files; **practical relevance high** for bird, action, and behavior shooters who come home with hundreds of near-duplicates and need faster first-pass [[decisions]]. citeturn224433view0
 
 **4. The most interesting color/output paper this week is “Too Vivid to Be Real?”.** The authors argue that current generative-image evaluation often rewards images that look striking but are chromatically implausible, and they introduce a Color Fidelity Dataset and Color Fidelity Metric aimed at measuring color authenticity more directly. Even though this is framed around generative imagery, the practical lesson extends to real-photo editing and print prep: oversaturated, contrast-pumped files can look exciting on screen yet fall apart as believable photographs or as prints. My verdict: **technical credibility fairly high** for a benchmark-style paper with a clear problem statement and dataset/metric contribution; **artistic potential high** because it pushes back against the current “more vivid equals better” bias; **practical relevance medium** today, especially for photographers who print, soft-proof, or care about naturalistic wildlife color rather than algorithmic spectacle. citeturn631463search6turn224433view4
 
@@ -448,7 +448,7 @@ Two converging signals:
 **Verdict**
 - **Technical credibility:** Medium (survey + examples, not formal research)
 - **Artistic potential:** High
-- **Practical relevance:** High (affects shooting decisions, not just editing)
+- **Practical relevance:** High (affects shooting [[decisions]], not just editing)
 
 **Implication**
 We are entering a split:
@@ -481,7 +481,7 @@ We are entering a split:
 **1) Programmable optics (SLM / deformable phase systems)**  
 If miniaturized, this will obsolete traditional DOF constraints for macro and telephoto.
 
-**2) Cross-lens correction in commercial software**  
+**2) Cross-lens correction in [[commercial]] software**  
 If UniCAC-like models reach tools (Adobe, DxO), expect **lighter lenses + heavier computation**.
 
 **3) Habitat-specific RAW pipelines**  
@@ -881,7 +881,7 @@ Yes.
 
 The weekly photography brief is active, and the scheduled job last ran on Saturday 11 April 2026 at 09:01 Brussels time. It is still enabled.
 
-One detail: notifications and email for that task are currently disabled, so it can run without actively alerting you.
+One detail: notifications and [[email]] for that task are currently disabled, so it can run without actively alerting you.
 
 ---
 
@@ -897,7 +897,7 @@ How to enable ?
 
 I cannot switch those notification settings from here.
 
-To enable them, open the scheduled item and edit its delivery settings in the app. In practice, go to your scheduled tasks or reminders area, open “Review photography novelties,” then turn on notifications. If the interface also offers email delivery, enable email there as well.
+To enable them, open the scheduled item and edit its delivery settings in the app. In practice, go to your scheduled tasks or reminders area, open “Review photography novelties,” then turn on notifications. If the interface also offers [[email]] delivery, enable [[email]] there as well.
 
 If notifications still do not arrive, also check your device and browser permissions for [[ChatGPT]] notifications, because the task itself can be enabled while system notifications remain blocked.
 
@@ -924,14 +924,14 @@ Here is the deeper path.
 
 [[ChatGPT]]’s scheduled tasks can be managed from two places. The official help article says you can open them from **Settings → Notifications → Manage tasks**, and it also notes you can reach the full task list from an individual task via the **three-dot menu**. Tasks are supported on Web, iOS, Android, and macOS. citeturn717066search0turn717066search9turn717066search11
 
-For your case, do this on the web app first, because the help article explicitly mentions notification controls there. Open [[ChatGPT]], go to **Settings**, then **Notifications**. In that section, look for the task notification setting. From there, you should see **Manage tasks**, which opens the list of your scheduled items. Open **Review photography novelties** and check whether task notifications are turned on. The help article also indicates that push notifications, email, or both can be controlled from [[ChatGPT]] Web. citeturn717066search7turn717066search9
+For your case, do this on the web app first, because the help article explicitly mentions notification controls there. Open [[ChatGPT]], go to **Settings**, then **Notifications**. In that section, look for the task notification setting. From there, you should see **Manage tasks**, which opens the list of your scheduled items. Open **Review photography novelties** and check whether task notifications are turned on. The help article also indicates that push notifications, [[email]], or both can be controlled from [[ChatGPT]] Web. citeturn717066search7turn717066search9
 
 There is a second route if you are already inside the conversation where the task was created. Open that chat, find the scheduled task card or the related conversation header, click the **…** menu, and choose **Manage tasks** or **Edit schedule**. Open the photography task there and review its delivery options. Official OpenAI guidance also mentions that recurring tasks can be reviewed and managed at **[[ChatGPT]].com/schedules**. citeturn717066search5turn717066search11
 
-If you enable notifications there but still receive nothing, the next issue is usually outside the task itself. The task may run, but the device/browser can still block alerts. So also verify that your browser allows notifications for [[ChatGPT]], and on Mac check the system notification permission for your browser or the [[ChatGPT]] app. The help page’s wording makes an important distinction here: the task can exist and run independently of whether push or email delivery is enabled. citeturn717066search0turn717066search7
+If you enable notifications there but still receive nothing, the next issue is usually outside the task itself. The task may run, but the device/browser can still block alerts. So also verify that your browser allows notifications for [[ChatGPT]], and on Mac check the system notification permission for your browser or the [[ChatGPT]] app. The help page’s wording makes an important distinction here: the task can exist and run independently of whether push or [[email]] delivery is enabled. citeturn717066search0turn717066search7
 
 A practical sequence for you would be:
-Open [[ChatGPT]] on the web, go to **Settings → Notifications → Manage tasks**, open **Review photography novelties**, enable task notifications, then test on the next run. If available in your interface, also enable email delivery as a backup. citeturn717066search9turn717066search11
+Open [[ChatGPT]] on the web, go to **Settings → Notifications → Manage tasks**, open **Review photography novelties**, enable task notifications, then test on the next run. If available in your interface, also enable [[email]] delivery as a backup. citeturn717066search9turn717066search11
 
 If you want, I can also tell you exactly what to check on macOS and in Safari, since that is often where the block actually happens.
 

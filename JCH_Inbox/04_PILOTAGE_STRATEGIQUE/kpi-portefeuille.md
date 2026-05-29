@@ -8,7 +8,7 @@ Dernière mise à jour : 2026-05-13
 - nombre de projets en standby
 - nombre de sujets archivés
 - nombre de livrables récents
-- charge inbox à traiter
+- charge [[inbox]] à traiter
 - frictions techniques bloquantes
 
 ## Note

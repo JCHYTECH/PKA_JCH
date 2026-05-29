@@ -24,7 +24,7 @@ Nuances doit etre presentee comme un operateur d'optimisation energetique B2B, e
 - collecte de donnees
 - EMS / Nuances Brain
 - PV, batteries, bornes
-- flexibilite, injection, contrats energie
+- flexibilite, injection, [[contrats]] energie
 - financement, leasing et tiers investissement
 
 ---
@@ -45,7 +45,7 @@ Construire une activite B2B qui vend de la performance energetique mesurable, et
 
 ### Idee-force
 
-La donnee, la technique, le financement et le commercial doivent etre relies dans une meme proposition de valeur.
+La donnee, la technique, le financement et le [[commercial]] doivent etre relies dans une meme proposition de valeur.
 
 ---
 
@@ -73,7 +73,7 @@ Transformer une capacite commerciale existante en machine B2B plus qualifiee, pl
 
 ### Finalite
 
-Construire un processus technico-commercial qui parte d'une strategie claire et reduise le temps de signature des contrats.
+Construire un processus technico-[[commercial]] qui parte d'une [[strategie]] claire et reduise le temps de signature des [[contrats]].
 
 ### La mission doit produire
 
@@ -81,7 +81,7 @@ Construire un processus technico-commercial qui parte d'une strategie claire et 
 - des cibles prioritaires
 - une qualification plus rapide
 - des rendez-vous mieux prepares
-- un enchainement commercial -> technique -> offre -> execution
+- un enchainement [[commercial]] -> technique -> offre -> execution
 - un pilotage par KPI
 
 ### Resultat attendu
@@ -130,7 +130,7 @@ La premiere phase doit se concentrer sur cette cible, et exclure les opportunite
 
 ### Principe cle
 
-Le commercial doit arriver en rendez-vous avec une hypothese de solution, une estimation de rentabilite et une liste de validations.
+Le [[commercial]] doit arriver en rendez-vous avec une hypothese de solution, une estimation de rentabilite et une liste de validations.
 
 ### Effet attendu
 
@@ -179,7 +179,7 @@ Le commercial doit arriver en rendez-vous avec une hypothese de solution, une es
 
 ### Idee-force
 
-Sans outils, la strategie restera theorique. Avec outils, elle devient executable et mesurable.
+Sans outils, la [[strategie]] restera theorique. Avec outils, elle devient executable et mesurable.
 
 ---
 
@@ -190,7 +190,7 @@ Sans outils, la strategie restera theorique. Avec outils, elle devient executabl
 Valider une mission de structuration B2B centree sur :
 - la clarification de l'offre
 - la priorisation des cibles
-- la creation du processus technico-commercial
+- la creation du processus technico-[[commercial]]
 - l'outillage CRM et KPI
 
 ### Feuille de route en 4 blocs

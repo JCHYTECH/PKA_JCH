@@ -10,11 +10,11 @@ members: 5
 **Members:** 5 nodes
 
 ## Members
-- [[Natagora]] - document - 2026-04-16 - FW_ Modification Natagora.md
-- [[Observation.org  Observation International]] - document - API_pour_observations_be.md
-- [[Password Reset Email — Natagora account jchavaux]] - document - 2026-04-16 - FW_ Modification Natagora.md
-- [[observations.be]] - document - API_pour_observations_be.md
-- [[waarnemingen.be]] - document - API_pour_observations_be.md
+- [[Natagora]] - document - [[2026-04-16 - FW_ Modification Natagora]].md
+- [[Observation.org  Observation International]] - document - [[API_pour_observations_be]].md
+- [[Password Reset Email — Natagora account jchavaux]] - document - [[2026-04-16 - FW_ Modification Natagora]].md
+- [[observations.be]] - document - [[API_pour_observations_be]].md
+- [[waarnemingen.be]] - document - [[API_pour_observations_be]].md
 
 ## Live Query (requires Dataview plugin)
 

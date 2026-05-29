@@ -7,7 +7,7 @@
 
 ---
 
-## 1. Ingest inbox — [[Forge]]
+## 1. Ingest [[inbox]] — [[Forge]]
 
 5 fichiers traités depuis `00_INBOX/` → routés vers `03_FAUNE_AUTOUR/` et indexés dans `file_index`.
 
@@ -56,7 +56,7 @@ NN_PROJECT/
 
 ---
 
-## 5. [[Pie]] — Nouveau système de filtrage email
+## 5. [[Pie]] — Nouveau système de filtrage [[email]]
 
 **Table `email_senders` créée dans `team.db` :**
 - 465 expéditeurs whitelistés (dont 457 contacts iOS importés)
@@ -98,7 +98,7 @@ NN_PROJECT/
 ## 8. [[Dobby]] — Rétrospective et rapport hebdo
 
 - 
-- `dobby_weekly_report.py` : rapport pour JCH sur ses patterns de collaboration, envoyé par email chaque dimanche.
+- `dobby_weekly_report.py` : rapport pour JCH sur ses patterns de collaboration, envoyé par [[email]] chaque dimanche.
 
 ---
 

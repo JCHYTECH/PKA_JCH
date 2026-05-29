@@ -292,6 +292,6 @@ Le premier essai n’a pas abouti. Je le recrée proprement.
 ## Assistant
 *2026-04-09 06:47*
 
-Voici le fichier Markdown : [epson_print_layout_reset_mac.md](sandbox:/mnt/data/epson_print_layout_reset_mac.md)
+Voici le fichier Markdown : [epson_print_layout_reset_mac.md](sandbox:/mnt/data/[[epson_print_layout_reset_mac]].md)
 
 ---

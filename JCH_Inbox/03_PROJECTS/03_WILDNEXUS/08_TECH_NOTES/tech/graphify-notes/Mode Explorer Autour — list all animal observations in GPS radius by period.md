@@ -8,7 +8,7 @@ tags:
   - community/Species_Search_&_Geolocation_Logic
 ---
 
-# Mode Explorer Autour — list all animal observations in GPS radius by period
+# [[Mode Explorer Autour — list all animal observations in GPS radius by period]]
 
 ## Connections
 - [[Faune Autour PWA — project synthesis document]] - `references` [EXTRACTED]

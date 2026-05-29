@@ -2,7 +2,7 @@ ajout a la missions :
 
 1. la disponibilté moyenne par consultant est de 4-5 jours/missions
 2. la prestations est basée sur un timesheet et le remboursement de frais inhérent à la mission.
-3. le consultant validera le protocole technco commercial mis au point par des visites chez X prospect accompagné par un spécialiste de nuances. le protocole sera adapt en fonction des conclusions de ces rendez vous
+3. le consultant validera le protocole technco [[commercial]] mis au point par des visites chez X prospect accompagné par un spécialiste de nuances. le protocole sera adapt en fonction des conclusions de ces rendez vous
 4. Nuances mettra à disposition des consultants un bureau disponible lors des présences chez nuance avec un avis préalable
 5. Nuance designera une personne contact pour interagir avec les consultants
 6. nuances fournira les informations necessaires pour une meilleure compréhension du projet notamment 

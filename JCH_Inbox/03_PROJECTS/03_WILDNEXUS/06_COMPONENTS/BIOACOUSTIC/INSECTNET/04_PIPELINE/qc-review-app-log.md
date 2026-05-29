@@ -64,7 +64,7 @@ This regenerates `train-test-split.csv` while excluding `visual_qc=reject` rows.
 
 ## Next Step
 
-Start review with the strongest species:
+[[Start]] review with the strongest species:
 
 1. `Gryllus campestris`
 2. `Tettigonia viridissima`

@@ -12,7 +12,7 @@ tags:
 ---
 Use Google’s state-of-the art AI to describe, tag, classify, and search your photos and videos.
 
-With Any Vision’s **[Prompt](#usingprompt)** command ([examples](#prompt-examples)), you can:
+With [[Any Vision]]’s **[Prompt](#usingprompt)** command ([examples](#prompt-examples)), you can:
 
 - Generate captions, headlines, and the accessibility fields Alt Text and Extended Description
 - Generate keywords and descriptions for specific uses, e.g. stock agencies
@@ -21,7 +21,7 @@ With Any Vision’s **[Prompt](#usingprompt)** command ([examples](#prompt-examp
 - Extract embedded text (OCR)
 - Generate audio transcripts of videos
 
-With Any Vision’s **[Classify](#usingclassify)** command ([examples](#classify-examples)), formerly called Analyze, you can:
+With [[Any Vision]]’s **[Classify](#usingclassify)** command ([examples](#classify-examples)), formerly called Analyze, you can:
 
 - Tag your photos with objects, activities, landmarks, logos, facial expressions, and dominant colors
 - Extract embedded text (OCR)
@@ -34,7 +34,7 @@ With both commands you can:
 - Search the tags and fields to make it much easier to find photos
 - Export the tags and text into comma-separated text files
 
-Any Vision uses Google [Gemini](https://gemini.google.com/faq) and [Cloud Vision](https://cloud.google.com/vision/), the AI technology underlying Google image search. Though you’ll have to get a Google Cloud key as well as an Any Vision license, you can use the **Prompt** command completely free, albeit slowly, or pay pennies per thousand photos to have it go very fast. You can use the **Classify** command for free on up to 212,000 photos in the first three months and then up to 1,000 photos every month thereafter. See [Google Pricing](#pricing) for details.
+[[Any Vision]] uses Google [Gemini](https://gemini.google.com/faq) and [Cloud Vision](https://cloud.google.com/vision/), the AI technology underlying Google image search. Though you’ll have to get a Google Cloud key as well as an [[Any Vision]] license, you can use the **Prompt** command completely free, albeit slowly, or pay pennies per thousand photos to have it go very fast. You can use the **Classify** command for free on up to 212,000 photos in the first three months and then up to 1,000 photos every month thereafter. See [Google Pricing](#pricing) for details.
 
 Consider [similar services](#similar) with different features and pricing.
 
@@ -70,38 +70,38 @@ Correctly recognized jersey numbers:
 
 ## Download and Install
 
-Any Vision requires Lightroom 6.14 (CC 2015) or Lightroom Classic. (The newer cloud-focused Lightroom doesn’t support plugins.)
+[[Any Vision]] requires Lightroom 6.14 (CC 2015) or Lightroom Classic. (The newer cloud-focused Lightroom doesn’t support plugins.)
 
 1. Download [anyvision.1.31.zip](https://2e343bb0.delivery.rocketcdn.me/lightroom/anyvision.1.31.zip). (What’s [changed in this version](#latest))
-2. If you’re upgrading from a previous version of Any Vision, exit Lightroom, delete the existing *anyvision.lrplugin* folder, and replace it with the new one extracted from the downloaded *.zip*. Restart Lightroom and you’re done.
+2. If you’re upgrading from a previous version of [[Any Vision]], exit Lightroom, delete the existing *anyvision.lrplugin* folder, and replace it with the new one extracted from the downloaded *.zip*. Restart Lightroom and you’re done.
 3. If this is a new installation, extract the folder anyvision.lrplugin from the downloaded *.zip* and move it to a location of your choice.
 4. In Lightroom, do **File > Plug-in Manager**.
 5. Click **Add**, browse and select the *anyvision.lrplugin* folder, and click **Select Folder** (Windows) or **Add Plug-in** (Mac OS).
 6. [Get a Google Cloud key](#getkey).
 
-The free trial is limited to analyzing 50 photos—after that, you’ll need to [buy an Any Vision license](#buylicense). Note that your Google Cloud key will allow you to process tens of thousands of photos for free ([see here for details](#pricing)).
+The free trial is limited to analyzing 50 photos—after that, you’ll need to [buy an [[Any Vision]] license](#buylicense). Note that your Google Cloud key will allow you to process tens of thousands of photos for free ([see here for details](#pricing)).
 
 ## Licensing
 
-To use Any Vision after the free trial ends, you’ll need both an [Any Vision plugin license](#buylicense) and a [Google Cloud key](#getkey) tied to a billing account you set up with Google. Google Gemini and Cloud Vision costs little or nothing for most users—see [Google Pricing](#pricing) for details.
+To use [[Any Vision]] after the free trial ends, you’ll need both an [Any Vision plugin license](#buylicense) and a [Google Cloud key](#getkey) tied to a billing account you set up with Google. Google Gemini and Cloud Vision costs little or nothing for most users—see [Google Pricing](#pricing) for details.
 
 ### Buy a License
 
 1. Buy a license for $14.95:  
 	  
 	The license includes unlimited upgrades. Make sure you’re satisfied with the free trial before buying.
-2. Copy the license key from the confirmation page or confirmation email.
-3. Do **Library > Plug-in Extras > Any Vision > Classify**.
+2. Copy the license key from the confirmation page or confirmation [[email]].
+3. Do **Library > Plug-in Extras > [[Any Vision]] > Classify**.
 4. Click **Buy**.
 5. Paste the key into the **License key** box and click **OK**.
 
 ### Get a Google Cloud Key
 
-Setting up a Google billing account and getting a Cloud key is a little tedious but straightforward if you follow these steps exactly. I recommend that you arrange arrange two browser windows to be visible. (Unfortunately, Google doesn’t provide any way for an application like Any Vision to make this simpler.)
+Setting up a Google billing account and getting a Cloud key is a little tedious but straightforward if you follow these steps exactly. I recommend that you arrange arrange two browser windows to be visible. (Unfortunately, Google doesn’t provide any way for an application like [[Any Vision]] to make this simpler.)
 
 If you previously obtained a free API key for **Prompt** and want to add a billing account to enable **Prompt** to go much faster (at as little as pennies per thousand photos), skip to [these steps](#add-billing).
 
-If you’re upgrading from an older version of Any Vision that didn’t have the **Prompt** command (version 18 or earlier) and had already obtained a Google license key, skip to [these last steps](#upgrading-api).
+If you’re upgrading from an older version of [[Any Vision]] that didn’t have the **Prompt** command (version 18 or earlier) and had already obtained a Google license key, skip to [these last steps](#upgrading-api).
 
 1. Sign in to [Google.com](https://www.google.com/) with an existing Google account (for example, your Gmail accout) or create a new one.
 2. Go to [API Keys](https://aistudio.google.com/app/api-keys).
@@ -110,9 +110,9 @@ If you’re upgrading from an older version of Any Vision that didn’t have the
 4. Agree to the terms of service.
 5. Click **Create API key**:  
 	![](https://2e343bb0.delivery.rocketcdn.me/wp-content/uploads/2025/10/create-api-key.png.webp)
-6. Enter “Any Vision” into **Name your key**:  
+6. Enter “[[Any Vision]]” into **Name your key**:  
 	![](https://2e343bb0.delivery.rocketcdn.me/wp-content/uploads/2025/10/name-your-key.png.webp)
-7. Click the **Choose an imported project** drop-down menu, select **Create project**, enter “Any Vision”, click **Create project**, and select “Any Vision” as the project:  
+7. Click the **Choose an imported project** drop-down menu, select **Create project**, enter “[[Any Vision]]”, click **Create project**, and select “[[Any Vision]]” as the project:  
 	![](https://2e343bb0.delivery.rocketcdn.me/wp-content/uploads/2025/10/create-project.png.webp)
 8. Click **Create key**:  
 	![](https://2e343bb0.delivery.rocketcdn.me/wp-content/uploads/2025/10/create-key-done.png.webp)
@@ -124,7 +124,7 @@ If you’re upgrading from an older version of Any Vision that didn’t have the
 12. Go to [API Keys](https://aistudio.google.com/app/api-keys).
 13. Click **Set up billing**:  
 	![](https://2e343bb0.delivery.rocketcdn.me/wp-content/uploads/2025/10/set-up-billing.png.webp)
-14. Complete Steps 1 and 2, entering your country, agreeing to the terms of service, and entering your contact information and payment method. Click **Start free** at the bottom of Step 2 to complete the steps:  
+14. Complete Steps 1 and 2, entering your country, agreeing to the terms of service, and entering your contact information and payment method. Click **[[Start]] free** at the bottom of Step 2 to complete the steps:  
 	![](https://2e343bb0.delivery.rocketcdn.me/wp-content/uploads/2025/10/step-2.png.webp)
 15. Go to [Cloud Vision API](https://console.developers.google.com/apis/api/vision.googleapis.com/overview) and click Enable:  
 	![](https://2e343bb0.delivery.rocketcdn.me/wp-content/uploads/2024/12/cloud-vision-enable.jpg.webp)
@@ -132,7 +132,7 @@ If you’re upgrading from an older version of Any Vision that didn’t have the
 	![](https://2e343bb0.delivery.rocketcdn.me/wp-content/uploads/2024/12/cloud-vision-activate.jpg.webp)
 17. Go to [Cloud Translation API](https://console.cloud.google.com/apis/api/translate.googleapis.com) and click Enable:  
 	![](https://2e343bb0.delivery.rocketcdn.me/wp-content/uploads/2024/12/cloud-vision-translate.jpg.webp)
-18. If you’re upgrading from an older version of Any Vision that didn’t have the **Prompt** command (version 18 or earlier), go to [Gemini API](https://console.cloud.google.com/apis/library/generativelanguage.googleapis.com) and click **Enable**, otherwise skip this step:  
+18. If you’re upgrading from an older version of [[Any Vision]] that didn’t have the **Prompt** command (version 18 or earlier), go to [Gemini API](https://console.cloud.google.com/apis/library/generativelanguage.googleapis.com) and click **Enable**, otherwise skip this step:  
 	![](https://2e343bb0.delivery.rocketcdn.me/wp-content/uploads/2024/12/gemini-enable.jpg.webp)
 19. Go to [Credentials](https://console.cloud.google.com/apis/credentials) and click the underlined API key (it may have a different name):  
 	![](https://2e343bb0.delivery.rocketcdn.me/wp-content/uploads/2025/10/credentials.png.webp)
@@ -203,7 +203,7 @@ With the **Prompt** command, you write text *prompts*, detailed instructions in 
 
 ![](https://2e343bb0.delivery.rocketcdn.me/wp-content/uploads/2024/11/headline.50.jpg.webp)
 
-Any Vision provides over a dozen built-in prompts, which you can use as-is or modify to suit your own needs.
+[[Any Vision]] provides over a dozen built-in prompts, which you can use as-is or modify to suit your own needs.
 
 To apply one or more prompts, select the desired photos and videos and do **File > Plug-in Extras > Prompt**, displaying all the currently defined prompts:
 
@@ -227,7 +227,7 @@ The result will be generally be in the same language as the text prompt. You can
 
 Test out your prompt by clicking **Preview** **Result**, which will display Google’s response for the currently selected photo, along with the estimated cost per thousand photos. Use the **<** and **\>** buttons to move to the previous or next photo and then click **Preview** **Result** again.
 
-Any Vision caches the Google result and **Preview** **Result** will resend the photo and prompt to Google only if you change the prompt or a related parameter. But rarely Google might hiccup without any indication, and if you suspect that, you can force **Preview** **Result** to resend to Google by checking **Refresh Google response**.
+[[Any Vision]] caches the Google result and **Preview** **Result** will resend the photo and prompt to Google only if you change the prompt or a related parameter. But rarely Google might hiccup without any indication, and if you suspect that, you can force **Preview** **Result** to resend to Google by checking **Refresh Google response**.
 
 You can tell Google how you’d like the output formatted, e.g. as a comma-separated list or one item per line. Google usually follows your instructions but sometimes doesn’t. If you’re technically minded, you can tell Google to generate structured output by checking **Use JSON schema for output**; [see here for details](#json).
 
@@ -345,7 +345,7 @@ To insert a token into the prompt text, use the **Insert Metadata** pop-up menu 
 
 In addition to the standard metadata fields, there are some special tokens:
 
-`{Prompt 1}` through `{Prompt 10}` return the values of those Any Vision custom metadata fields for the current photo.
+`{Prompt 1}` through `{Prompt 10}` return the values of those [[Any Vision]] custom metadata fields for the current photo.
 
 `{Child Keywords, `*parent* *keyword* `}` inserts all the photo’s keywords that are child keywords of *parent keyword*. You can specify a path instead of a single parent keyword, e.g. `dogs < mammals < animals`.
 
@@ -377,7 +377,7 @@ The Advanced tab provides these options:
 
 Google Gemini provides many AI models for executing prompts, some stable and some experimental, optimized for different combinations of cost and power. You can set the model used by default in **Prompt > Advanced**, and you can override the default for a particular prompt with the [**Changed advanced options** prompt action](#actionoptions).
 
-Google says the **flash** models are fast and cheap, with great performance for high-frequency, lower-intelligence tasks, while the **pro** models are slower and more expensive but give the best performance for a wide variety of reasoning tasks. I haven’t done rigorous testing, but anecdotally I’ve found the **flash-lite** and **flash** models give pretty good results with Any Vision’s built-in prompts, though sometimes the **pro** models do a little bit better. The **flash** and **pro** models are generally much more expensive than the **flash-lite** models—see here for [Prompt pricing.](#promptpricing)
+Google says the **flash** models are fast and cheap, with great performance for high-frequency, lower-intelligence tasks, while the **pro** models are slower and more expensive but give the best performance for a wide variety of reasoning tasks. I haven’t done rigorous testing, but anecdotally I’ve found the **flash-lite** and **flash** models give pretty good results with [[Any Vision]]’s built-in prompts, though sometimes the **pro** models do a little bit better. The **flash** and **pro** models are generally much more expensive than the **flash-lite** models—see here for [Prompt pricing.](#promptpricing)
 
 I advise always starting with the latest **flash-lite** model (the default) and only try the **flash** and **pro** model when **flash-lite** ‘s results aren’t good enough.
 
@@ -385,7 +385,7 @@ See [Google’s detailed descriptions and documentation](https://blog.google/tec
 
 ### Custom Metadata Panel Tagsets
 
-Some of the built-in prompts store their results in standard metadata fields such as Caption and Headline, and some add keywords. Many prompts store their results in custom metadata fields named **Prompt 1** through **Prompt 10**, which you can view using the **Any Vision > Prompt** tagset in the Metadata panel:
+Some of the built-in prompts store their results in standard metadata fields such as Caption and Headline, and some add keywords. Many prompts store their results in custom metadata fields named **Prompt 1** through **Prompt 10**, which you can view using the **[[Any Vision]] > Prompt** tagset in the Metadata panel:
 
 ![](https://2e343bb0.delivery.rocketcdn.me/wp-content/uploads/2024/11/prompt-tagset-1.jpg.webp)
 
@@ -406,15 +406,15 @@ You can add standard metadata fields to tagsets, and there are more options for 
 
 ## Using Classify
 
-Select the photos to be classified and do **Library > Plug-in Extras > Any Vision > Classify**. Select the features you want to tag and click **OK**:
+Select the photos to be classified and do **Library > Plug-in Extras > [[Any Vision]] > Classify**. Select the features you want to tag and click **OK**:
 
 ![](https://2e343bb0.delivery.rocketcdn.me/wp-content/uploads/2020/10/simple.png.webp)
 
-Any Vision exports reduced-size versions of the photos, sends them to Google, and processes the results. Typically it takes about 4 seconds per photo (more if you have a slower Internet connection). See [Advanced](#advanced) for how to reduce this to 1 second per photo or less, at the expense of making Lightroom less usable interactively while **Classify** is running.
+[[Any Vision]] exports reduced-size versions of the photos, sends them to Google, and processes the results. Typically it takes about 4 seconds per photo (more if you have a slower Internet connection). See [Advanced](#advanced) for how to reduce this to 1 second per photo or less, at the expense of making Lightroom less usable interactively while **Classify** is running.
 
-Once you’ve classified a photo, by default Any Vision won’t reanalyze it. So if you change the set of selected features, doing **Classify** again won’t have any effect. See [Advanced](#advanced) for how to force Any Vision to resend photos to Google to be reanalyzed (at additional cost).
+Once you’ve classified a photo, by default [[Any Vision]] won’t reanalyze it. So if you change the set of selected features, doing **Classify** again won’t have any effect. See [Advanced](#advanced) for how to force [[Any Vision]] to resend photos to Google to be reanalyzed (at additional cost).
 
-You can see the results in the Metadata panel (in the right column of Library) with the **Any Vision > Classify** tagset:
+You can see the results in the Metadata panel (in the right column of Library) with the **[[Any Vision]] > Classify** tagset:
 
 ![](https://2e343bb0.delivery.rocketcdn.me/wp-content/uploads/2024/11/metadata-panel-3.50p-1.jpg.webp)
 
@@ -424,7 +424,7 @@ Following each label and landmark is a numeric score, e.g. “mountain (85)”, 
 
 ![](https://2e343bb0.delivery.rocketcdn.me/wp-content/uploads/2022/02/keyword-hierarchy.png.webp)
 
-For example, if the photo has the label “mountain”, then the keyword Any Vision > Labels > mountain is assigned to the photo. The [Advanced tab](#advanced) lets you control whether keywords are added, specify the root keyword, and whether to put all keywords at the top level.
+For example, if the photo has the label “mountain”, then the keyword [[Any Vision]] > Labels > mountain is assigned to the photo. The [Advanced tab](#advanced) lets you control whether keywords are added, specify the root keyword, and whether to put all keywords at the top level.
 
 ### Features
 
@@ -468,7 +468,7 @@ The Advanced tab provides more flexibility for using Classify:
 
 Labels, landmarks, and logos have scores from 0 to 100, though in practice, Cloud Vision returns only those with a score of at least 50. Faces and Safety values have bucketed scores ranging from “very unlikely” to “very likely”.
 
-**Assign Keywords**:If checked, Any Vision assigns a keyword for each extracted feature. For example, if the photo has the label “mountain”, then the keyword Any Vision > Labels > mountain is assigned to the photo. You can enable or disable this on a per-feature basis.
+**Assign Keywords**:If checked, [[Any Vision]] assigns a keyword for each extracted feature. For example, if the photo has the label “mountain”, then the keyword [[Any Vision]] > Labels > mountain is assigned to the photo. You can enable or disable this on a per-feature basis.
 
 **Text (OCR) copy**: Recognized text can be copied from the Text field in the Metadata panel to any Lightroom-recognized metadata field. **copy** always copies the text, **copy if empty** copies the text only if the destination IPTC field is empty, **append** appends the text to the end of the destination IPTC field, and **don’t copy** never copies the text.
 
@@ -486,29 +486,29 @@ Also see [Recognizing Numbers on Race Bibs](#racebibs).
 
 **Include scores in fields**: If checked, then the score will be included with each extracted feature, e.g. “mountain (83)” or “Eiffel Tower (94)”.
 
-**Set “Include on Export” attribute of keywords**: If checked, then each new keyword created by Any Vision will have the Include on Export attribute set, allowing the keyword to be included in the metadata of exported photos.
+**Set “Include on Export” attribute of keywords**: If checked, then each new keyword created by [[Any Vision]] will have the Include on Export attribute set, allowing the keyword to be included in the metadata of exported photos.
 
-If you change this setting and want the change to be applied retroactively to all Any Vision keywords: Delete the root Any Vision keyword in the Keyword List panel. Select all the photos you’ve previously classified. Do **Classify**, click **Advanced**, and select the option **Reassign metadata fields**. This will recreate all the keywords with the new setting, without actually sending the photos to Cloud Vision for reanalysis.
+If you change this setting and want the change to be applied retroactively to all [[Any Vision]] keywords: Delete the root [[Any Vision]] keyword in the Keyword List panel. Select all the photos you’ve previously classified. Do **Classify**, click **Advanced**, and select the option **Reassign metadata fields**. This will recreate all the keywords with the new setting, without actually sending the photos to Cloud Vision for reanalysis.
 
-**Create keywords under root keyword:** This is the top-level root keyword of all the keywords added by Any Vision; it defaults to “Any Vision”. Uncheck this option to put all keywords at the top level.
+**Create keywords under root keyword:** This is the top-level root keyword of all the keywords added by [[Any Vision]]; it defaults to “[[Any Vision]]”. Uncheck this option to put all keywords at the top level.
 
-**Use subgroups (A, B, C, …) for Labels, Landmarks, and Logos keywords**: When checked, Any Vision will create subkeywords A, B, C, … under the parent keywords Any Vision > Labels, Any Vision > Landmarks, and Any Vison > Logos:
+**Use subgroups (A, B, C, …) for Labels, Landmarks, and Logos keywords**: When checked, [[Any Vision]] will create subkeywords A, B, C, … under the parent keywords [[Any Vision]] > Labels, [[Any Vision]] > Landmarks, and Any Vison > Logos:
 
 ![](https://2e343bb0.delivery.rocketcdn.me/wp-content/uploads/2020/10/keyword-list-subgroups.png.webp)
 
-For example, the keyword for the label “mountain” would be placed under Any Vision > Labels > M.
+For example, the keyword for the label “mountain” would be placed under [[Any Vision]] > Labels > M.
 
 This works around a longstanding (and shameful) [Lightroom bug](https://community.adobe.com/t5/lightroom-classic-bugs/p-fails-on-large-keyword-lists-windows-only/idi-p/12252283) on Windows where it chokes if it tries to display more than about 1500 keywords at once.
 
 **Copy landmark location to GPS field**: Each landmark assigned to a photo by Cloud Vision has an associated latitude/longitude, displayed in the Location field in the Metadata panel. Selecting **Always** or **When GPS field is empty** copies the latitude/longitude of the first landmark (the one with the highest score) to the EXIF GPS field. Once the GPS field is set, the photo will appear on the map in the Map module, and Lightroom will do address lookup to automatically set the photo’s Sublocation, City, State / Province, and Country.
 
-**Previously classified photos**: This option tells Any Vision how to handle selected photos that have been previously classified:
+**Previously classified photos**: This option tells [[Any Vision]] how to handle selected photos that have been previously classified:
 
 **Skip** ignores such photos.
 
 **Reclassify by sending to Google** sends the photos to Cloud Vision for reanalysis (and additional cost)—you must choose this if you’ve added a feature to be classified.
 
-**Reassign metadata fields** reassigns the Any Vision metadata fields and keywords using the previous analysis but the current options. This is useful if you’ve changed any of the options that control how the Any Vision metadata fields are set, such as **Assign Keywords** or **Include scores in fields**. This option doesn’t incur additional costs for previously classified photos.
+**Reassign metadata fields** reassigns the [[Any Vision]] metadata fields and keywords using the previous analysis but the current options. This is useful if you’ve changed any of the options that control how the [[Any Vision]] metadata fields are set, such as **Assign Keywords** or **Include scores in fields**. This option doesn’t incur additional costs for previously classified photos.
 
 **Concurrently processed photos**: This is the number of photos that will be processed in parallel by Classify and Cloud Vision. The default value of 1 will have the least impact on interactive use of Lightroom (though it could still be a little jerky). The maximum value of 8 processes photos about 4 times faster, though interactive use will likely be very jerky. (In my testing, larger values didn’t provide any more speedup.)
 
@@ -516,7 +516,7 @@ This works around a longstanding (and shameful) [Lightroom bug](https://communit
 
 By default, labels and other features are returned by **Classify** in English, but the Translation tab lets you translate them to another language. You can specify which features should be translated; features not selected will remain in English.
 
-Any Vision uses [Google Cloud Translation](https://cloud.google.com/translate/), the same technology behind [Google Translate](https://translate.google.com/). More than 100 languages are supported.Translation does [cost additional](#pricing), but it is quite inexpensive. Any Vision remembers previous translations, so you only pay once for each distinct word or phrase.
+[[Any Vision]] uses [Google Cloud Translation](https://cloud.google.com/translate/), the same technology behind [Google Translate](https://translate.google.com/). More than 100 languages are supported.Translation does [cost additional](#pricing), but it is quite inexpensive. [[Any Vision]] remembers previous translations, so you only pay once for each distinct word or phrase.
 
 You can override the translations of specific words and phrases with an overrides dictionary. Click **Edit Overrides** to open Finder or File Explorer on the dictionary for the current language (e.g. de.csv for German). The dictionary is in UTF-8 CSV format (comma-separated values), and after the header each following line contains a pair of phrases:
 
@@ -536,7 +536,7 @@ When the **Dominant Color** feature is selected, Cloud Vision finds the ten most
 
 ![](https://2e343bb0.delivery.rocketcdn.me/wp-content/uploads/2020/10/sort-by-color.90.jpg.webp)
 
-To find other photos containing a similar dominant color, select all the photos you want to search and invoke Sort by Color. Choose one of the dominant colors of the most-selected photo, or use the color picker at the bottom left to choose another color, and click OK. The current source is changed to the collection **Any Vision: Sorted by Color**, containing those photos with the most similar dominant colors. Do **View > Sort > Custom Order** to sort the collection by similarity.
+To find other photos containing a similar dominant color, select all the photos you want to search and invoke Sort by Color. Choose one of the dominant colors of the most-selected photo, or use the color picker at the bottom left to choose another color, and click OK. The current source is changed to the collection **[[Any Vision]]: Sorted by Color**, containing those photos with the most similar dominant colors. Do **View > Sort > Custom Order** to sort the collection by similarity.
 
 Here are the photos from my main catalog of 30,000 photos with dominant colors closest to the orange-brown chosen in the example photo above:
 
@@ -552,7 +552,7 @@ As another example, here are photos from my catalog labeled “sunset” by Clou
 
 ![](https://2e343bb0.delivery.rocketcdn.me/wp-content/uploads/2020/10/find.png.webp)
 
-Each group of similar photos will be placed in a separate collection in the collection set **Any Vision: Similar Labels**.
+Each group of similar photos will be placed in a separate collection in the collection set **[[Any Vision]]: Similar Labels**.
 
 To find near duplicates, set **Similarity** initially to 95. If that finds too many photos that aren’t near duplicates, try 98 or 99.
 
@@ -566,7 +566,7 @@ To export the results from **Prompt** or **Classify** to a comma-separated (CSV)
 
 ## Remove Fields
 
-The **Remove Fields** command removes from the selected photos all custom metadata fields added by Any Vision (but not any keywords). If you run this command on a large number of photos, you may wish to do **File > Optimize Catalog** afterward to shrink the size of the catalog by a modest amount.
+The **Remove Fields** command removes from the selected photos all custom metadata fields added by [[Any Vision]] (but not any keywords). If you run this command on a large number of photos, you may wish to do **File > Optimize Catalog** afterward to shrink the size of the catalog by a modest amount.
 
 ## Recognizing Numbers on Athletes’ Bibs and Cars
 
@@ -588,7 +588,7 @@ This will extract just the numbers from all the recognized text in the photos, o
 
 To search for a bib number, do the menu command **Library > Find** to open the text search in the Library Filter bar and use the criterion **Any Searchable Plug-in Field contains** *number*. Or create a smart collection with the criterion **Searchable Text contains words** *number****.***
 
-To create keywords for the bib numbers, check the option **Assign keywords from text separated by,; newline**. If you’ve checked the option **Create keywords under root keyword**, these bib-number keywords will appear under the parent keyword Any Vision > Text; otherwise, they’ll appear at the top level.
+To create keywords for the bib numbers, check the option **Assign keywords from text separated by,; newline**. If you’ve checked the option **Create keywords under root keyword**, these bib-number keywords will appear under the parent keyword [[Any Vision]] > Text; otherwise, they’ll appear at the top level.
 
 To copy the bib numbers to the Caption field, set the option:
 
@@ -616,9 +616,9 @@ Lightroom Cloud (but not Lightroom Classic) uses similar technology to search yo
 
 Use [Any Menu](https://johnrellis.com/lightroom/anymenu.htm) to invoke any plugin menu item with just a few keystrokes and assign single-letter quick keys to the most-used menu items. Alternatively:
 
-*Windows:* You can use the standard menu keystrokes to invoke the **Classify** and **Prompt** commands. ALT+L opens the **Library** menu, U selects the **Plug-in Extras** submenu, and C invokes the **Any Vision > Classify** command and P invokes **Any Vision > Prompt**.
+*Windows:* You can use the standard menu keystrokes to invoke the **Classify** and **Prompt** commands. ALT+L opens the **Library** menu, U selects the **Plug-in Extras** submenu, and C invokes the **[[Any Vision]] > Classify** command and P invokes **[[Any Vision]] > Prompt**.
 
-To reassign a different final keystroke to an Any Vision command, edit the file *Info.lua* in the plugin folder. Move the & in front of the desired letter in the menu command’s name, changing the name itself if necessary.
+To reassign a different final keystroke to an [[Any Vision]] command, edit the file *Info.lua* in the plugin folder. Move the & in front of the desired letter in the menu command’s name, changing the name itself if necessary.
 
 To assign a single keystroke as the shortcut, download and install the free, widely used [AutoHotkey](http://www.autohotkey.com/). Then, in the File Explorer, navigate to the plugin folder anyvision.lrplugin. Double-click Install-Keyboard-Shortcut.bat and restart your computer. This defines the shortcut Alt+A to invoke the **Classify** command. To change the shortcut, edit the file Any-Vision-Keyboard-Shortcut.ahk in Notepad and follow the instructions in that file.
 
@@ -632,17 +632,17 @@ I’ll gladly provide free licenses in exchange for reports of new, reproducible
 
 Known limitations and issues:
 
-- If you get the error “Google error: models/gemini-2.5-flash-preview-05-20 is not found…”, [update to the latest version of Any Vision.](#download) On 11/19/2025, Google retired older Gemini AI models, and Any Vision didn’t handle it gracefully.
-- Any Vision requires Lightroom 6.14 (CC 2015) or Lightroom Classic—it relies on features missing from earlier versions.
-- If you’re upgrading from an older version of Any Vision and see the error “Google error: Generative Language API has not been used in project…”, complete [these steps.](#upgrading-api)
+- If you get the error “Google error: models/gemini-2.5-flash-preview-05-20 is not found…”, [update to the latest version of [[Any Vision]].](#download) On 11/19/2025, Google retired older Gemini AI models, and [[Any Vision]] didn’t handle it gracefully.
+- [[Any Vision]] requires Lightroom 6.14 (CC 2015) or Lightroom Classic—it relies on features missing from earlier versions.
+- If you’re upgrading from an older version of [[Any Vision]] and see the error “Google error: Generative Language API has not been used in project…”, complete [these steps.](#upgrading-api)
 - If **Prompt** gives Gemini “recitation” errors or says the maximum number of tokens was reached, try adding the action **Change advanced options** to the prompt and increasing **Temperature** above 0. Even a small value of 0.1 might be enough to avoid the error.
 - Like other such cloud services, including Adobe Firefly, Gemini (**Prompt**) has overly sensitive filters for prohibited content, including obscenity and pornography. Lots of exposed skin and innocent photos of children are sometimes flagged incorrectly. These services would rather prohibit too much than too little, to avoid political and legal blowback.
 - As of 3/21/23, you may see the error “Google error (13): Internal server error. Unexpected feature response”. This bug has been acknowledged by Google but not yet fixed. On average, it seems to occur in about one of every couple hundred photos. You can usually avoid the bug by unchecking the Landmarks feature. On 8/22/23, Google Cloud Support said that Google engineering is still working on the issue but there is no ETA.
-- If the Any Vision window is too large for your display, with the buttons at the bottom cut off, do File > Plug-in Manager, select Any Vision, and in the Settings panel, check the option **Use Any Vision on small displays**. Unfortunately, [a bug in Lightroom](https://community.adobe.com/t5/lightroom-classic-bugs/sdk-lrsysteminfo-displayinfo-and-appwindowsize-return-wrong-units-of-pixels-on-windows/idi-p/12719960) prevents plugins from determining the correct size of the display..
+- If the [[Any Vision]] window is too large for your display, with the buttons at the bottom cut off, do File > Plug-in Manager, select [[Any Vision]], and in the Settings panel, check the option **Use [[Any Vision]] on small displays**. Unfortunately, [a bug in Lightroom](https://community.adobe.com/t5/lightroom-classic-bugs/sdk-lrsysteminfo-displayinfo-and-appwindowsize-return-wrong-units-of-pixels-on-windows/idi-p/12719960) prevents plugins from determining the correct size of the display..
 - Unlike many photo-sharing services, with Google Gemini and Cloud Vision your photos remain exclusively your photos. For free usage of Gemini (**Prompt**), Google will use your photos for [improving their products.](https://ai.google.dev/gemini-api/terms) But for paid Gemini and for Cloud Vision (**Classify**), Google promises not to process your photos for any other purpose. See their [Data Processing and Security Terms](https://cloud.google.com/terms/data-processing-terms).
 - **Classify** infrequently returns errors such as “The request timed out” and “Image processing error!”. If this occurs, just rerun **Classify**. I don’t know why these errors occur—they appear spurious.
-- When your keyword list has multiple keywords of the same name, Lightroom distinguishes them in the Keyword List panel using the notation *child-keyword < parent-keyword.* For example, if you have an existing keyword “House” and Any Vision adds the label keyword “House”, the latter will be displayed as House < Labels to distinguish it from the top-level House. But these two keywords will get exported in photo metadata simply as “House”.
-- Why is there no prompt for generating the **Title** metadata field? Any Vision follows the IPTC standard, which [defines Headline](https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#headline) as a “brief synopsis of the caption” and [defines Title](https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#title) as a “short human readable name, which can be a text and/or numeric reference”. But many use **Title** for storing a short synopsis. If you want a brief synopsis stored in the **Title** metadata field rather than **Headline**, make a copy of the built-in prompt **IPTC Headline**, edit it, and change the **Copy** action to store the result in **Title** rather than **Headline**.
+- When your keyword list has multiple keywords of the same name, Lightroom distinguishes them in the Keyword List panel using the notation *child-keyword < parent-keyword.* For example, if you have an existing keyword “House” and [[Any Vision]] adds the label keyword “House”, the latter will be displayed as House < Labels to distinguish it from the top-level House. But these two keywords will get exported in photo metadata simply as “House”.
+- Why is there no prompt for generating the **Title** metadata field? [[Any Vision]] follows the IPTC standard, which [defines Headline](https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#headline) as a “brief synopsis of the caption” and [defines Title](https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#title) as a “short human readable name, which can be a text and/or numeric reference”. But many use **Title** for storing a short synopsis. If you want a brief synopsis stored in the **Title** metadata field rather than **Headline**, make a copy of the built-in prompt **IPTC Headline**, edit it, and change the **Copy** action to store the result in **Title** rather than **Headline**.
 
 ## Version History
 
@@ -663,7 +663,7 @@ Known limitations and issues:
 
 1.5
 
-- You can now specify a root keyword other than “Any Vision” on the **Advanced** tab.
+- You can now specify a root keyword other than “[[Any Vision]]” on the **Advanced** tab.
 - Fixed a bug preventing recognized text in other languages being translated to English.
 - Now ignores missing photos instead of giving a cryptic informational message.
 - Works around obscure export bug in Lightroom 5.
@@ -679,7 +679,7 @@ Known limitations and issues:
 
 1.8
 
-- [**Remove Fields**](#remove) command removes Any Vision custom metadata from catalog.
+- [**Remove Fields**](#remove) command removes [[Any Vision]] custom metadata from catalog.
 - Better handling of spurious errors from Google Cloud Vision.
 - Increased maximum value of [**Concurrently processed photos**](#advanced) to 8.
 
@@ -698,7 +698,7 @@ Known limitations and issues:
 1.12
 
 - Worked around Lightroom bug creating keywords for labels.
-- Provided [option](#enabletranslation) for running Any Vision on small displays, necessitated by Lightroom 10’s change of fonts.
+- Provided [option](#enabletranslation) for running [[Any Vision]] on small displays, necessitated by Lightroom 10’s change of fonts.
 
 1.13
 
@@ -731,11 +731,11 @@ Known limitations and issues:
 
 1.18 *2024-09-05*
 
-- When you install the plugin, you must now [get a Google Cloud key](#getkey) to use the free trial of 50 photos. The Cloud key will let you [analyze tens of thousands of photos for free](#pricing) (after buying an Any Vision plugin license). Previous versions provided a free-trial Google Cloud key, but hackers abused that (costing me money).
+- When you install the plugin, you must now [get a Google Cloud key](#getkey) to use the free trial of 50 photos. The Cloud key will let you [analyze tens of thousands of photos for free](#pricing) (after buying an [[Any Vision]] plugin license). Previous versions provided a free-trial Google Cloud key, but hackers abused that (costing me money).
 
 1.19 *2024-12-05*
 
-- Added the [**Prompt** command](#prompt-examples), which uses Google’s Gemini AI to describe and classify photos *and videos* using text prompts you write. If you’re upgrading from an older version of Any Vision, you’ll need to [complete these steps to upgrade your Google API key](#upgrading-api).
+- Added the [**Prompt** command](#prompt-examples), which uses Google’s Gemini AI to describe and classify photos *and videos* using text prompts you write. If you’re upgrading from an older version of [[Any Vision]], you’ll need to [complete these steps to upgrade your Google API key](#upgrading-api).
 - The old **Analyze** command is now called **Classify**.
 - Increased the number of photos in the free trial to 200, to accommodate the necessary experimentation required to learn and evaluate **Prompt**.
 - The old **Export to File** command is replaced with **Export Prompt Results to File** and **Export Classify Results to File**.
@@ -752,7 +752,7 @@ Known limitations and issues:
 
 - Four new Gemini 2.0 models for **Prompt**, two stable and two experiment. The model **gemini-2.0-flash** is the new default. That model [is considerably more expensive](https://johnrellis.com/lightroom/anyvision.htm#promptpricing) than the prior default **gemini-1.5-flash-8b**, so if cost is an issue, consider, **gemini-2.0-flash-lite**. See [Google’s descriptions](https://blog.google/technology/google-deepmind/gemini-model-updates-february-2025/) of Gemini 2.0.
 - **Prompt** now defines a default model (on the [**Prompt > Advanced** tab)](#advancedprompt) used to process all prompts that don’t override the default in the prompt’s [**Change advanced options** action](#actionoptions). Prompts created prior to version 1.21 will be changed to **Model: default** unless they explicitly specified **gemini-1.5-pro**.
-- A new built-in prompt **Exposure and Focus** assigns the **Any Vision > Exposure** keywords **Well-Exposed,** **Overexposed**, or **Underexposed**, and the **Focus** keywords **In Focus**, **Slightly Blurred**, or **Very Blurred**. Click **Prompt > Add Built-in** to add the new prompt.
+- A new built-in prompt **Exposure and Focus** assigns the **[[Any Vision]] > Exposure** keywords **Well-Exposed,** **Overexposed**, or **Underexposed**, and the **Focus** keywords **In Focus**, **Slightly Blurred**, or **Very Blurred**. Click **Prompt > Add Built-in** to add the new prompt.
 - Fixed bug deleting the last prompt in the **Prompt** window.
 
 1.22 *2025-05-12*
@@ -765,7 +765,7 @@ Known limitations and issues:
 - New built-in prompts **Cat description** and **Classify cat** for describing and classifying domestic cats according to breed, fur color, paw color, eye color, hair length, and kitten/adult. The [custom metadata tagset](https://johnrellis.com/lightroom/anyvision.htm#tagsets) **Cat Description** displays the labeled fields.
 - You can have “text only” prompts that don’t send the photos to Google for processing, useful for prompts that generate output based soley on metadata fields. To prevent a photo from being sent to Google, in the **Change advanced option** action, set **Image size** to 0 pixels.
 - Added the Gemini 2.5 preview models **gemini-2.5-flash-preview-04-17** and **gemini-2.5-pro-preview-05-06**. They don’t allow free usage, and they’re subject to unannounced changes by Google.
-- Older Gemini models won’t appear in the Model drop-down menus, but if you type them in, they’ll be accepted, and prompts can still refer to them.
+- Older Gemini models won’t appear in the Model drop-down menus, but if you type them in, they’ll be [[accepted]], and prompts can still refer to them.
 - For advanced users only: You can add the most recent Gemini models by editing the file `GeminiModels.lua` in the plugin folder. I try to add the production models very soon after Google releases them, but it could take a while before I add the experimental models. See more details at the top of the file.
 
 1.23 *2025-06-12*
@@ -777,11 +777,11 @@ Known limitations and issues:
 
 1.24 *2025-06-17*
 
-- Worked around bug in the Gemini 2.5 preview models triggered by changes in Any Vision 1.23.
+- Worked around bug in the Gemini 2.5 preview models triggered by changes in [[Any Vision]] 1.23.
 
 1.25 *2025-08-18*
 
-- Added the final Gemini 2.5 models: **gemini-2.5-flash-lite**, **gemini-2.5-flash**, **gemini-2.5-pro**. The new default model is **gemini-2.5-flash**. But if you’re upgrading from a previous version of Any Vision, the default model won’t change automatically—go to the **Advanced** tab of the **Prompt** command to change your default model. The older 2.5 preview and experimental models are still available (for now), but they’re no longer visible in the **Prompt** menus.
+- Added the final Gemini 2.5 models: **gemini-2.5-flash-lite**, **gemini-2.5-flash**, **gemini-2.5-pro**. The new default model is **gemini-2.5-flash**. But if you’re upgrading from a previous version of [[Any Vision]], the default model won’t change automatically—go to the **Advanced** tab of the **Prompt** command to change your default model. The older 2.5 preview and experimental models are still available (for now), but they’re no longer visible in the **Prompt** menus.
 - New built-in prompt **Landmarks and Places with GPS** is the same as **Landmarks and Places**, except that it also sets Lightroom’s GPS field to the coordinates provided by Gemini. If Gemini guesses the write landmark or place (it often makes mistakes), then the GPS coordinates are usually accurate.
 
 1.26 *2025-08-24*
@@ -791,7 +791,7 @@ Known limitations and issues:
 1.27 *2025-08-25*
 
 - Additional corrections to the estimated cost of a prompt with the Gemini 2.5 models, working around a bug in Google documentation.
-- The default model is now **gemini-2.5-flash-lite**, which can be ten times cheaper than **gemini-2.5-flash**, which in turn can be five times cheaper than **gemini-2.5-pro**. If you’re upgrading from a previous version of Any Vision, the default model won’t change automatically—go to the **Advanced** tab of the **Prompt** command to change your default model.
+- The default model is now **gemini-2.5-flash-lite**, which can be ten times cheaper than **gemini-2.5-flash**, which in turn can be five times cheaper than **gemini-2.5-pro**. If you’re upgrading from a previous version of [[Any Vision]], the default model won’t change automatically—go to the **Advanced** tab of the **Prompt** command to change your default model.
 - Updated [the pricing information](#promptpricing) for the Gemini 2.5 models.
 
 1.28 *2025-10-01*
@@ -808,7 +808,7 @@ Known limitations and issues:
 
 1.30 *2025-11-19*
 
-- Fixed the **Prompt** error that resulted when you tried to enter a Google key. (Google decommissioned several old models today, and Any Vision was accidentally using one of them to validate Google keys.)
+- Fixed the **Prompt** error that resulted when you tried to enter a Google key. (Google decommissioned several old models today, and [[Any Vision]] was accidentally using one of them to validate Google keys.)
 
 1.31 *2026-01-17*
 

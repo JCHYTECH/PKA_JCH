@@ -102,7 +102,7 @@ Points directement applicables à InsectNet :
 - **[[BirdNET]] GUI** : permet d'extraire les embeddings sans coder
 - **HDBSCAN** : algorithme de clustering utilisé pour les embeddings
 - **Raven (Cornell)** : interface de validation avec « Choose Measurements → Begin File »
-- **Script false-positive Kellen Alexander** : dispo sur demande par email
+- **Script false-positive Kellen Alexander** : dispo sur demande par [[email]]
 - **Ecosounds** : interface de validation alternative
 - **Open Ecoacoustics Workshop** : 17 novembre, Perth — prochaine édition
 - **International Ecoacoustics Congress** : juillet 2026, Brisbane

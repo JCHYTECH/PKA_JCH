@@ -1,6 +1,6 @@
 # Procurement Agent — Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-[[SKILL]]: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Construire un agent procurement semi-autonome PKA qui lit une BOM (Excel/CSV/MD), interroge l'API Mouser (Search + Cart), enrichit la BOM, génère un rapport Markdown, et attend la validation JCH avant toute action.
 

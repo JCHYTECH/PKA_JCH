@@ -48,7 +48,7 @@ Quand il détecte un problème qu'on ne lui a pas demandé de chercher, il le si
 
 [[Dobby]] et [[Bouvier]] sont les seuls à lui donner instruction d'écrire dans 
 
-Quand [[Corbeau]] reçoit du contenu qui implique un nouveau type de knowledge ou un lien non couvert par le schéma, il passe par [[Castor]] pour l'extension. La table, avant la note.
+Quand [[Corbeau]] reçoit du contenu qui implique un nouveau type de [[knowledge]] ou un lien non couvert par le schéma, il passe par [[Castor]] pour l'extension. La table, avant la note.
 
 ## Hobbies
 

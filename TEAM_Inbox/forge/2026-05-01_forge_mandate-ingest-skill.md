@@ -4,7 +4,7 @@
 
 ## Objectif
 
-Formaliser le processus de traitement de l'inbox JCH. Le skill `/ingest` doit permettre de vider `JCH_Inbox/00_INBOX/` en routant chaque fichier vers sa destination permanente, en le déplaçant, et en l'indexant dans `file_index`.
+Formaliser le processus de traitement de l'[[inbox]] JCH. Le skill `/ingest` doit permettre de vider `JCH_Inbox/00_INBOX/` en routant chaque fichier vers sa destination permanente, en le déplaçant, et en l'indexant dans `file_index`.
 
 ## Skill créé
 
@@ -14,7 +14,7 @@ Formaliser le processus de traitement de l'inbox JCH. Le skill `/ingest` doit pe
 
 1. Scanne `JCH_Inbox/00_INBOX/`
 2. Analyse chaque fichier (nom, extension, contenu si .md/.txt)
-3. Route selon les règles de destination (voir SKILL.md)
+3. Route selon les règles de destination (voir [[SKILL]].md)
 4. Déplace vers la destination permanente
 5. Insère dans `file_index` (team.db)
 6. Rapport : tableau récapitulatif fichier → destination → statut

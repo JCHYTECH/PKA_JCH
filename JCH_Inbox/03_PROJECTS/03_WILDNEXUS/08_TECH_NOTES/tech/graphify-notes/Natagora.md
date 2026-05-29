@@ -8,7 +8,7 @@ tags:
   - community/Biodiversity_Platforms
 ---
 
-# Natagora
+# [[Natagora]]
 
 ## Connections
 - [[Password Reset Email — Natagora account jchavaux]] - `references` [EXTRACTED]

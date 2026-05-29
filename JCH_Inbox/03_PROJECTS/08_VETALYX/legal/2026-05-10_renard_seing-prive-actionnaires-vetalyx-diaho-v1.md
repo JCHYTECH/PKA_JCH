@@ -387,7 +387,7 @@ Toutefois, conformément au Pacte d'Actionnaires de VETALYX [en vigueur / à con
 
 但依据VETALYX股东协议[现行有效/同步签署——待明确]，迪奥的表决权受到如下限制：
 
-- DIAHO ne dispose **pas de droit de veto** sur les décisions relatives aux opérations courantes de VETALYX (gestion commerciale, contrats clients, recrutement, dépenses d'exploitation) ;
+- DIAHO ne dispose **pas de droit de veto** sur les décisions relatives aux opérations courantes de VETALYX (gestion commerciale, [[contrats]] clients, recrutement, dépenses d'exploitation) ;
   迪奥对VETALYX日常经营决策（商业管理、客户合同、人员招募、运营支出）**不享有否决权**；
 - DIAHO dispose d'un droit de **consultation préalable** sur les décisions stratégiques suivantes [à définir : levées de fonds, cession de tout ou partie de l'activité, fusion, changement d'objet social] ;
   迪奥对以下战略性决策享有**事先咨询权**【待定：融资、出售全部或部分业务、合并、经营范围变更】；
@@ -701,7 +701,7 @@ Détenir 40 % du capital est, dans la culture d'entreprise chinoise, souvent ass
 
 **3. La primauté du texte français (Article 16)**
 
-En Chine, les contrats avec des parties chinoises sont souvent rédigés en chinois et en anglais avec les deux versions faisant foi. La primauté de la version française peut être perçue comme un déséquilibre. Recommandation : proposer lors des négociations une clause de co-égalité des versions française et chinoise, ou a minima un mécanisme de résolution des divergences par voie de traduction officielle partagée.
+En Chine, les [[contrats]] avec des parties chinoises sont souvent rédigés en chinois et en anglais avec les deux versions faisant foi. La primauté de la version française peut être perçue comme un déséquilibre. Recommandation : proposer lors des négociations une clause de co-égalité des versions française et chinoise, ou a minima un mécanisme de résolution des divergences par voie de traduction officielle partagée.
 
 在中国，涉及中国当事方的合同通常以中英文起草，两个版本具有同等效力。法语版本的优先地位可能被视为不平等。建议：在谈判中提议约定法中两个版本具有同等效力，或至少约定通过共同委托官方翻译解决版本分歧的机制。
 

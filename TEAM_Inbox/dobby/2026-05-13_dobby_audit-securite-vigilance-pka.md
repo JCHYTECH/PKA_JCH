@@ -21,9 +21,9 @@ _Source : [[Dobby]] / [[Codex]] CLI_
 - 
 - `scripts/model_client.py` et `scripts/model_config.json` : routage multi-modeles et fichiers de cles dans `~/.config/pka-jch`.
 - 
-- `TEAM/team.db` : source structuree pour membres, inbox, file index, connaissances, CRM, journal.
+- `TEAM/team.db` : source structuree pour membres, [[inbox]], file index, connaissances, CRM, journal.
 - `TEAM/backups/` : historique de snapshots DB.
-- `wiki/index.md`, `/lint` mentionne, et daily notes : socle documentaire pour consigner audits et incidents.
+- `wiki/index.md`, `/lint` mentionne, et [[daily]] notes : socle documentaire pour consigner audits et incidents.
 - Outils CLI disponibles via l'environnement : 
 
 ## Outils a creer
@@ -52,7 +52,7 @@ _Source : [[Dobby]] / [[Codex]] CLI_
    - Liste des ports locaux autorises.
 
 5. `JCH_Inbox/99_SYSTEM/security/incident-log.md`
-   - Journal append-only des alertes et decisions de mitigation.
+   - Journal append-only des alertes et [[decisions]] de mitigation.
 
 ## Tableau des failles potentielles
 
@@ -68,8 +68,8 @@ _Source : [[Dobby]] / [[Codex]] CLI_
 | Venv versionne / surface dependances | Moyen | `scripts/telegram-bot/venv` | Le venv est dans l'arborescence de travail | Exclure via `.gitignore`, reconstruire depuis `requirements.txt`, scanner dependances avec `pip-audit` |
 | Dependances [[Python]] anciennes ou vulnerables | Moyen | 
 | Bot Telegram comme entree externe | Eleve | `bot.py` | Whitelist user id existe, mais erreurs/API et historique local persistent | Rate limit, limites de taille media, journal minimal, rotation token, tests d'autorisation |
-| Prompt injection via fichiers ou messages | Moyen | inbox, wiki, Telegram, [[Dobby]] Live | Les contenus utilisateurs peuvent devenir contexte modele | Regle d'isolation : fichiers lus comme donnees, jamais comme instructions systeme; marqueurs de confiance |
-| Perte de donnees | Eleve | `TEAM/team.db`, wiki, TEAM_Inbox | Backups DB uniquement, pas de strategie complete du vault | Backup vault complet chiffre, test restauration mensuel, retention 3-2-1 |
+| Prompt injection via fichiers ou messages | Moyen | [[inbox]], wiki, Telegram, [[Dobby]] Live | Les contenus utilisateurs peuvent devenir contexte modele | Regle d'isolation : fichiers lus comme donnees, jamais comme instructions systeme; marqueurs de confiance |
+| Perte de donnees | Eleve | `TEAM/team.db`, wiki, TEAM_Inbox | Backups DB uniquement, pas de [[strategie]] complete du vault | Backup vault complet chiffre, test restauration mensuel, retention 3-2-1 |
 | Absence de controle d'integrite | Moyen | fichiers systeme, scripts | Pas de hash baseline | Generer manifest SHA256 des fichiers critiques, alerte sur changement |
 | Absence de depot [[Git]] detecte | Moyen | tout PKA | Pas d'historique versionne visible | Initialiser depot prive ou strategy de snapshots, 
 | Donnees personnelles et emails | Eleve | TEAM_Inbox, CRM, journal | Beaucoup de contenu personnel centralise | Classification confidentialite, droits fichiers, export chiffre, politique de retention |

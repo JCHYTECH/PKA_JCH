@@ -86,15 +86,15 @@ Constat :
 
 | ID | Spécialiste | Sujet | Créé | Fichier |
 |---:|---|---|---|---|
-| 20 | Vasco | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | 2026-05-01 12:59:28 |  |
-| 83 | Vasco | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | 2026-05-01 13:00:50 |  |
-| 128 | Renard | `[EMAIL] Re: contrat type` | 2026-05-01 13:02:58 |  |
-| 147 | Vasco | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | 2026-05-01 13:03:05 |  |
-| 214 | Vasco | `[EMAIL] These are not quizzes. They are diagnostic tools.` | 2026-05-02 18:00:14 |  |
-| 228 | Renard | `[EMAIL] Jean-Claude, tatouage Thaïlandais, Tatouage Japonaise et plus d'idées à explorer` | 2026-05-09 07:00:19 |  |
-| 232 | Chouette | `WildNexus — déterminer longueur d'onde LED IR non visible/non perturbante faune` | 2026-05-18 18:52:08 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/02_DECISIONS/ADR/ADR-002-choix-camera-ir-p0.md` |
-| 233 | Forge | `WildNexus — revue Meshnology N35 ESP32 LoRa V3/V4` | 2026-05-18 19:53:20 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/2026-05-18_product-review-meshnology-n35.md` |
-| 234 | Milan | `WildNexus — scan fabricants produit intégré P0` | 2026-05-18 19:57:03 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/2026-05-18_market-scan-integrated-p0-products.md` |
+| 20 | [[Vasco]] | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | 2026-05-01 12:59:28 |  |
+| 83 | [[Vasco]] | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | 2026-05-01 13:00:50 |  |
+| 128 | [[Renard]] | `[EMAIL] Re: contrat type` | 2026-05-01 13:02:58 |  |
+| 147 | [[Vasco]] | `[EMAIL] Commandé : « Moi, ce que j'aime, c'est... » et 1 articles supplémentaires` | 2026-05-01 13:03:05 |  |
+| 214 | [[Vasco]] | `[EMAIL] These are not quizzes. They are diagnostic tools.` | 2026-05-02 18:00:14 |  |
+| 228 | [[Renard]] | `[EMAIL] Jean-Claude, tatouage Thaïlandais, Tatouage Japonaise et plus d'idées à explorer` | 2026-05-09 07:00:19 |  |
+| 232 | [[Chouette]] | `WildNexus — déterminer longueur d'onde LED IR non visible/non perturbante faune` | 2026-05-18 18:52:08 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/02_DECISIONS/ADR/ADR-002-choix-camera-ir-p0.md` |
+| 233 | [[Forge]] | `WildNexus — revue Meshnology N35 ESP32 LoRa V3/V4` | 2026-05-18 19:53:20 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/2026-05-18_product-review-meshnology-n35.md` |
+| 234 | [[Milan]] | `WildNexus — scan fabricants produit intégré P0` | 2026-05-18 19:57:03 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/2026-05-18_market-scan-integrated-p0-products.md` |
 
 ## 6. Compatibilité avec `PROMPT_DOBBY_INBOX.md`
 

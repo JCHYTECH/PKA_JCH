@@ -88,9 +88,9 @@ Lors des réunions avec ces vétérinaires, et confirmé par des échanges avec 
 
 Les vétérinaires attendent des **allergènes européens à forte prévalence**. Il n'y a aucun intérêt à dépister des allergènes rares peu représentés dans leur clientèle.
 
-**Risque commercial identifié :** si la composition du kit ne répond pas à cette demande de base, la difficulté commerciale sera significative.
+**Risque [[commercial]] identifié :** si la composition du kit ne répond pas à cette demande de base, la difficulté commerciale sera significative.
 
-**Action requise :** réfléchir ensemble à l'adaptation de la gamme actuelle pour maximiser les chances de succès commercial sur le marché européen.
+**Action requise :** réfléchir ensemble à l'adaptation de la gamme actuelle pour maximiser les chances de succès [[commercial]] sur le marché européen.
 
 ---
 
@@ -144,7 +144,7 @@ L'essai réalisé à la clinique Simon est **positif quant à l'utilisabilité e
 
 **Cependant, trois questions majeures restent ouvertes :**
 
-1. **Composition allergénique** — adapter la gamme aux allergènes européens à forte prévalence est une condition quasi-nécessaire au succès commercial.
+1. **Composition allergénique** — adapter la gamme aux allergènes européens à forte prévalence est une condition quasi-nécessaire au succès [[commercial]].
 2. **Documentation des performances** — les vétérinaires ont besoin de données claires sur la sensibilité/spécificité pour justifier l'usage et les décisions de suivi.
 3. **Validation KOL** — indispensable pour la crédibilité scientifique et l'adoption par la profession.
 

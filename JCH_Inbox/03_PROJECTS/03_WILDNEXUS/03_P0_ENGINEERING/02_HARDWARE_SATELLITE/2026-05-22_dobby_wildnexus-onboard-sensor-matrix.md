@@ -57,7 +57,7 @@ La bonne architecture est par profils :
 | Radar mmWave basse conso | Mouvement sans chaleur, vegetation, vitesse | Plus cher, conso plus haute, traitement | **P1 Smart test** |
 | Accelerometre / IMU | Anti-tamper, choc, orientation, chute branche | Tres faible conso ; simple | **Recommande systeme** |
 | Magnetometre | Orientation, detection masses metalliques | Risque dual-use ; valeur naturaliste faible | **Non baseline** |
-| Capteur ouverture boitier | Maintenance, anti-tamper civil | Simple reed/hall switch | **Recommande si produit commercial** |
+| Capteur ouverture boitier | Maintenance, anti-tamper civil | Simple reed/hall switch | **Recommande si produit [[commercial]]** |
 
 ## 6. Position et synchronisation
 
@@ -95,7 +95,7 @@ La bonne architecture est par profils :
 | Temperature PCB | Surchauffe, gel, qualite batterie | Simple | **Obligatoire** |
 | Courant par rail | Diagnostic camera/audio/modem | Fuel gauge ou sense resistor | **Recommande Smart/Base** |
 | Watchdog externe | Recuperation plantage | Pas un senseur biologique, mais critique | **Obligatoire produit** |
-| Capteur arrachement / tilt | Anti-vol, maintenance | IMU suffit souvent | **Option commercial** |
+| Capteur arrachement / tilt | Anti-vol, maintenance | IMU suffit souvent | **Option [[commercial]]** |
 
 ## 10. Tableau de choix par profil
 

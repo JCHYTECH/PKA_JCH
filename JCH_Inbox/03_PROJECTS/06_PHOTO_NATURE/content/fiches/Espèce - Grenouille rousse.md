@@ -20,7 +20,7 @@ tags:
   - status/active
 ---
 
-# Espèce - Grenouille rousse
+# [[Espèce - Grenouille rousse]]
 
 ## 1. Identification rapide
 

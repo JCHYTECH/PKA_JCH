@@ -10,7 +10,7 @@ members: 2
 **Members:** 2 nodes
 
 ## Members
-- [[Haversine distance calculation — observation-to-user distance]] - document - faune-autour.md
+- [[Haversine distance calculation — observation-to-user distance]] - document - [[faune-autour]].md
 - [[haversineKm() — great-circle distance calculation]] - document - [[Git]]/faune-autour_13.html
 
 ## Live Query (requires Dataview plugin)

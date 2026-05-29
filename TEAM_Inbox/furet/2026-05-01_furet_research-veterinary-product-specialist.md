@@ -20,7 +20,7 @@
 
 ---
 
-### Core knowledge
+### Core [[knowledge]]
 
 - **Médecine interne vétérinaire** : chats et chiens — diagnostic différentiel, gestion des cas chroniques
 - **Allergologie vétérinaire** :
@@ -34,7 +34,7 @@
 
 ---
 
-### Adjacent knowledge
+### Adjacent [[knowledge]]
 
 - Connaissance des pratiques de prescription en Belgique et en Europe (référencement, recommandations WSAVA)
 - Sensibilité aux attentes des propriétaires d'animaux : ton empathique, vulgarisation sans simplification excessive

@@ -8,7 +8,7 @@ tags:
   - community/Map_&_Detail_Display
 ---
 
-# Drawer Detail — tap-to-open panel with Wikipedia photo and mini Leaflet map
+# [[Drawer Detail — tap-to-open panel with Wikipedia photo and mini Leaflet map]]
 
 ## Connections
 - [[Faune Autour PWA — project synthesis document]] - `references` [EXTRACTED]

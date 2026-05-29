@@ -43,7 +43,7 @@ She does not offer interpretation before she has earned the right to. She earns 
 |--------|-------|
 | Reflective writing | 5-minute journal, morning pages, gratitude logging, evening review |
 | Pattern recognition | Mood-energy correlations, cognitive biases in self-reporting, confirmation bias in retrospection |
-| Goal integration | Translating daily entries into progress signals toward medium/long-term goals |
+| Goal integration | Translating [[daily]] entries into progress signals toward medium/long-term goals |
 | Data literacy | [[SQLite]] queries on 
 | Privacy discipline | Journal data is the most sensitive in the system — governed absolutely |
 

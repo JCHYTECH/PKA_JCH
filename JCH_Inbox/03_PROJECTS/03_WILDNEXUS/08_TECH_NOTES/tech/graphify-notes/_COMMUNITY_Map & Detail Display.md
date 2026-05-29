@@ -10,11 +10,11 @@ members: 8
 **Members:** 8 nodes
 
 ## Members
-- [[Drawer Detail — tap-to-open panel with Wikipedia photo and mini Leaflet map]] - document - faune-autour.md
-- [[Leaflet.js — map library]] - document - API_pour_observations_be.md
-- [[OpenStreetMap — tile layer]] - document - API_pour_observations_be.md
-- [[Rationale Leaflet+OpenStreetMap chosen over Google Maps — no API key, no credit card, free and reliable]] - document - API_pour_observations_be.md
-- [[Wikipedia Action API — species images]] - document - API_pour_observations_be.md
+- [[Drawer Detail — tap-to-open panel with Wikipedia photo and mini Leaflet map]] - document - [[faune-autour]].md
+- [[Leaflet.js — map library]] - document - [[API_pour_observations_be]].md
+- [[OpenStreetMap — tile layer]] - document - [[API_pour_observations_be]].md
+- [[Rationale Leaflet+OpenStreetMap chosen over Google Maps — no API key, no credit card, free and reliable]] - document - [[API_pour_observations_be]].md
+- [[Wikipedia Action API — species images]] - document - [[API_pour_observations_be]].md
 - [[fetchWikiImage() — Wikipedia REST API image fetch with ENFR fallback]] - document - [[Git]]/faune-autour_13.html
 - [[openDrawer() — show detail drawer with Wikipedia image + mini Leaflet map]] - document - [[Git]]/faune-autour_13.html
 - [[window._cardData index pattern — fix for JSON.stringify in onclick attrs breaking iPhone tap]] - document - [[Git]]/faune-autour_13.html

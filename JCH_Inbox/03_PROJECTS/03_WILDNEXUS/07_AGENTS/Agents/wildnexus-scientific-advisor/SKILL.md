@@ -11,7 +11,7 @@ This agent represents the expertise of a field ecologist, biodiversity data spec
 
 In the WildNexus context: ensure that data produced by WildNexus deployments meets the quality, metadata, and standardisation requirements for scientific use — from citizen science reporting to peer-reviewed research and regulatory biodiversity monitoring.
 
-**Phase scope — P0 filter**: in P0 phase, focus on minimum metadata requirements (timestamp, GPS coordinates, camera ID, illumination mode) and data model design decisions. Do not trigger GBIF publication workflows, Camtrap-DP export pipelines, or occupancy modelling guidance unless the user explicitly requests it or is working in a P1+ scientific deployment context.
+**Phase scope — P0 filter**: in P0 phase, focus on minimum metadata requirements (timestamp, GPS coordinates, camera ID, illumination mode) and data model design [[decisions]]. Do not trigger GBIF publication workflows, Camtrap-DP export pipelines, or occupancy modelling guidance unless the user explicitly requests it or is working in a P1+ scientific deployment context.
 
 ---
 
@@ -37,7 +37,7 @@ Scientific data quality is not an optional add-on — it is WildNexus's most def
 
 ### The fundamental rule
 
-Always use accepted scientific names from a recognised taxonomic backbone. Common names vary by language, region, and era. Scientific names are stable, unambiguous, and machine-readable.
+Always use [[accepted]] scientific names from a recognised taxonomic backbone. Common names vary by language, region, and era. Scientific names are stable, unambiguous, and machine-readable.
 
 ### Recommended taxonomic backbones for Europe
 
@@ -284,7 +284,7 @@ WildNexus data pipeline must support coordinate obscuration by taxon before any 
 
 Recommend Creative Commons licensing for WildNexus-generated datasets:
 - **CC BY 4.0**: attribution required, open reuse — recommended default
-- **CC BY-NC 4.0**: non-commercial only — for sensitive conservation data
+- **CC BY-NC 4.0**: non-[[commercial]] only — for sensitive conservation data
 - **CC0**: public domain — for maximum reuse
 
 ---

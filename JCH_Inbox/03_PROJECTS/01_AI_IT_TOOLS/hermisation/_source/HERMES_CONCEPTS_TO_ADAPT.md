@@ -10,7 +10,7 @@ domain: ai-system
 
 ## Memory Persistence
 
-Keep decisions, validated workflows, conventions, project state, and runtime notes available across sessions.
+Keep [[decisions]], validated workflows, conventions, project state, and runtime notes available across sessions.
 
 PKA adaptation: memory remains file-first and auditable, with databases introduced only when they solve a concrete runtime problem.
 
@@ -21,7 +21,7 @@ Turn repeated workflows into documented skills or procedures.
 Examples:
 
 - create a project brief;
-- classify an inbox document;
+- classify an [[inbox]] document;
 - generate a BOM;
 - review architecture;
 - prepare a specialist brief;
@@ -52,7 +52,7 @@ Every automated action should record:
 
 ## Limited Pilot Agents
 
-Start with three pilot domains:
+[[Start]] with three pilot domains:
 
 - documentation / [[Obsidian]];
 - system architecture;

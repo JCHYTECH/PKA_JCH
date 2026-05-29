@@ -13,7 +13,7 @@ source:
 
 # Local Infrastructure Setup — PKA_JCH
 
-## Position dans la Hermisation
+## Position dans la [[Hermisation]]
 
 Ce document est le livrable formel de la **Phase 3 — Infrastructure locale minimale**.
 
@@ -107,11 +107,11 @@ Risques résiduels acceptés :
 |---------|----------|
 | Dashboard PKA | `127.0.0.1:8787` |
 | Gmail gatekeeper | — |
-| Bot Telegram Dobby | — |
+| Bot Telegram [[Dobby]] | — |
 | Plane | `127.0.0.1:8088` / `127.0.0.1:4443` |
 | Ollama | `127.0.0.1:11434` |
 | Dropbox client | — |
-| Cron backup / Sybil / rétro / weekly | — |
+| Cron backup / [[Sybil]] / rétro / weekly | — |
 
 ### Suspendus
 

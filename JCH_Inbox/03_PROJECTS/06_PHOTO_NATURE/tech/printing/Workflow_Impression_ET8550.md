@@ -107,7 +107,7 @@ Cocher chaque élément avant de lancer un tirage :
 | ✔ | Action | Vérification |
 |---|---|---|
 | ☐ | **Écran** — Calibration à jour (< 30 jours) | Vérifier date dernière calibration |
-| ☐ | **Papier** — Type de support correct dans EPL et driver | Pas "Standard" pour du glossy |
+| ☐ | **[[Papier]]** — Type de support correct dans EPL et driver | Pas "Standard" pour du glossy |
 | ☐ | **Profil** — Profil ICC CUSTOM sélectionné dans EPL | Pas le profil usine Epson |
 | ☐ | **Driver** — PhotoEnhance et corrections couleur désactivés | Pas de double gestion |
 | ☐ | **Qualité** — Best Quality (identique au profilage) | Changer = reprofilage |

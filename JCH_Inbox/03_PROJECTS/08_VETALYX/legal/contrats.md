@@ -12,11 +12,11 @@ tags:
   - status/active
 ---
 
-# Vetalyx - contrats
+# Vetalyx - [[contrats]]
 
 ## Objectif
 
-Cette note centralise les contrats et documents juridiques liés à Vetalyx.
+Cette note centralise les [[contrats]] et documents juridiques liés à Vetalyx.
 
 ## Contrats à suivre
 

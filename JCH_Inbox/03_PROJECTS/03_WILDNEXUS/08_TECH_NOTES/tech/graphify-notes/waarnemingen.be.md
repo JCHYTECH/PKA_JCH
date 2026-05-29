@@ -8,7 +8,7 @@ tags:
   - community/Biodiversity_Platforms
 ---
 
-# waarnemingen.be
+# [[waarnemingen.be]]
 
 ## Connections
 - [[observations.be]] - `references` [EXTRACTED]

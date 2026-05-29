@@ -25,13 +25,13 @@ Créer une base de données géographique et commerciale des entreprises ayant :
 
 * une cabine HT/MT probable,
 * une forte intensité énergétique,
-* un potentiel commercial élevé.
+* un potentiel [[commercial]] élevé.
 
 Objectifs secondaires
 
 * Détecter les consommateurs énergétiques importants.
 * Identifier les entreprises sensibles à l’optimisation énergétique.
-* Construire un système de scoring énergétique et commercial.
+* Construire un système de scoring énergétique et [[commercial]].
 * Développer un pipeline OSINT automatisé.
 * Prioriser les prospects à haute valeur.
 
@@ -452,7 +452,7 @@ Fonctions :
 * carte interactive
 * filtres
 * exports CRM
-* suivi commercial
+* suivi [[commercial]]
 
 Technologies :
 

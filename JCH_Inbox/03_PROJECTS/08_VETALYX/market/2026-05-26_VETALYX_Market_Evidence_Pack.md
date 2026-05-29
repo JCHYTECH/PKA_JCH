@@ -133,12 +133,12 @@ The key clinical distinction:
 Guideline evidence:
 
 - BMC Veterinary Research guidelines state that selection of test allergens should be based on the prevalence of allergens in the specific geographical region, and that test interpretation must be combined with history and clinical presentation.
-- The same guidance states that there is no accurate commercial allergy test to diagnose canine atopic dermatitis; clinical diagnosis and exclusion of other pruritic diseases are required.
+- The same guidance states that there is no accurate [[commercial]] allergy test to diagnose canine atopic dermatitis; clinical diagnosis and exclusion of other pruritic diseases are required.
 - A 2019 Vet Journal study found saliva food IgA/IgM and serum food IgE were not reliable to diagnose adverse food reactions in dogs; elimination diets remain the reference standard.
 
 Commercial implication:
 
-> VETALYX must sell "allergen sensitization mapping to support clinical management and immunotherapy decisions", not "instant allergy diagnosis".
+> VETALYX must sell "allergen sensitization mapping to support clinical management and immunotherapy [[decisions]]", not "instant allergy diagnosis".
 
 ### Competitive benchmark
 
@@ -263,7 +263,7 @@ If DIXUN cannot reformulate rapid tests, VETALYX should launch rapid only as a l
 
 ### Minimum EU launch specification
 
-Before commercial launch, request from DIAHO/DIXUN:
+Before [[commercial]] launch, request from DIAHO/DIXUN:
 
 1. full allergen list by SKU, scientific names, extract source, supplier/source country, lot controls;
 2. analytical sensitivity/specificity, CV, repeatability, inter-lot variation;
@@ -321,7 +321,7 @@ Preferred wording:
 | Italy | Strong if Mediterranean adapted | olive, cypress, Parietaria, grasses, mites, flea, ragweed/mugwort |
 | Spain | Strong if mites + Mediterranean adapted | mites/storage mites, olive, grasses, Parietaria, cypress, moulds |
 
-## 7. Financial and commercial implications
+## 7. Financial and [[commercial]] implications
 
 The internal France revenue model can stand as a base case only if three conditions are met:
 

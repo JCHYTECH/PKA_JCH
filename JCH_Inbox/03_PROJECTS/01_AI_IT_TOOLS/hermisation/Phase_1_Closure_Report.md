@@ -39,8 +39,8 @@ Décision de clôture :
 |---|---|
 | Agents | 28 membres actifs confirmés depuis `TEAM/team.db` : 27 spécialistes + [[Dobby]]. |
 | Runtimes AI | Codex/GPT-5, Claude, Ollama, NVIDIA/DeepSeek, OpenAI, Google et autres providers configurés. |
-| Dossiers | Zones critiques, runtime, archives, secrets, inbox et projets actifs identifiés. |
-| Workflows | Inbox, sauvegarde, daily, system check, Dropbox, Gmail, Telegram, Plane, WildNexus, VETALYX. |
+| Dossiers | Zones critiques, runtime, archives, secrets, [[inbox]] et projets actifs identifiés. |
+| Workflows | Inbox, sauvegarde, [[daily]], system check, Dropbox, Gmail, Telegram, Plane, WildNexus, VETALYX. |
 | Services | LaunchAgents, cron, Docker/Plane, Ollama, Dropbox client. |
 | Risques | Secrets/logs, ports exposés, doublons cron/launchd, token expiré, backups, roster drift. |
 
@@ -68,7 +68,7 @@ Décision de clôture :
 | Plane | Actif local-only sur `127.0.0.1:8088` et `127.0.0.1:4443`. |
 | Ollama | Actif local-only sur `127.0.0.1:11434`. |
 | Dropbox client | Actif hors PKA pur. |
-| Cron backup/Sybil/retro/weekly | Actifs. |
+| Cron backup/[[Sybil]]/retro/weekly | Actifs. |
 
 ### Suspendu
 

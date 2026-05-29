@@ -6,7 +6,7 @@ status: active
 domain: ai-system
 ---
 
-# PKA Hermisation
+# PKA [[Hermisation]]
 
 ## Mission
 
@@ -29,6 +29,6 @@ The documentary graph itself belongs to `obsidian-knowledge-graph/`.
 - `PROJECT_BRIEF.md` — mission and constraints.
 - `ROADMAP.md` — staged evolution plan.
 - `HERMES_CONCEPTS_TO_ADAPT.md` — useful concepts to reinterpret.
-- `DO_NOT_COPY.md` — rejected patterns and risks.
+- `DO_NOT_COPY.md` — [[rejected]] patterns and risks.
 - `PILOT_SCOPE.md` — limited pilot design.
-- `source/` — copied source documents from inbox.
+- `source/` — copied source documents from [[inbox]].

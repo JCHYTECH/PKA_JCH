@@ -2258,7 +2258,7 @@ Heure actuelle : **21:06**
 
 Le choix du support d’impression joue un rôle majeur pour ce type de portrait animalier. Votre image, avec **fond noir profond et texture de pelage très riche**, se prête particulièrement bien à certains supports. Voici les trois options les plus adaptées.
 
-### 1. Papier baryté (le choix le plus équilibré)
+### 1. [[Papier]] baryté (le choix le plus équilibré)
 
 C’est généralement le support préféré pour les **tirages fine art animaliers**.
 
@@ -2283,7 +2283,7 @@ Types de papier souvent utilisés :
 
 C’est le choix le plus **muséal**.
 
-### 2. Papier mat coton (rendu très artistique)
+### 2. [[Papier]] mat coton (rendu très artistique)
 
 Le papier coton mat donne un rendu plus doux et pictural.
 

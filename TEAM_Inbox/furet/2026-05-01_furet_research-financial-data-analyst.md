@@ -25,7 +25,7 @@
 
 Yahoo Finance, Alpha Vantage, Morningstar, EDGAR (SEC filings), Euronext, ASX data, Boursorama, FRED (macro data), ETF.com, Bloomberg (lecture seule si accès disponible)
 
-### Core knowledge required
+### Core [[knowledge]] required
 
 - Extraction et nettoyage de données financières (API, CSV, scraping légal)
 - Ratios financiers : P/E, P/B, EV/EBITDA, dette nette, free cash flow, dividend yield
@@ -33,7 +33,7 @@ Yahoo Finance, Alpha Vantage, Morningstar, EDGAR (SEC filings), Euronext, ASX da
 - Connaissance des marchés : NYSE, NASDAQ, ASX, Euronext, LSE
 - Structuration de données pour prise de décision : tableaux comparatifs, séries temporelles, peer comparisons
 
-### Adjacent knowledge that separates good from great
+### Adjacent [[knowledge]] that separates good from great
 
 - Comprend ce que [[Bruno]] va faire des données — livre dans le format exact dont [[Bruno]] a besoin, pas un dump brut
 - Sait identifier les anomalies : données manquantes, splits d'actions non ajustés, changements de ticker

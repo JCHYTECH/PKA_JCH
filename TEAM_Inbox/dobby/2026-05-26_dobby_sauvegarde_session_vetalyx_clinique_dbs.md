@@ -65,7 +65,7 @@ status: saved
 ## Prochaines actions prioritaires
 
 1. Relire le rapport DOCX et l'exporter en PDF.
-2. Preparer un email d'approche aux deux KOL.
+2. Preparer un [[email]] d'approche aux deux KOL.
 3. Preparer un brief technique DIXUN sur :
    - lignes mixtes allergenes ;
    - faisabilite DBS ;

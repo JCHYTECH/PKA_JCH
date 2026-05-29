@@ -184,7 +184,7 @@ Si la majorité des grumes prélevées ne présente aucune pathologie visible, l
 **Protocole de constat ornithologique :**
 
 - Relevé à l'aube (05h30–08h00 en avril), plage de chant territorial maximal.
-- Au moins deux observateurs indépendants, idéalement un ornithologue affilié à Natagora ou à la LRBPO.
+- Au moins deux observateurs indépendants, idéalement un ornithologue affilié à [[Natagora]] ou à la LRBPO.
 - Enregistrements audio datés et géolocalisés, photos de nids visibles.
 - Par espèce : chant territorial, transport de matériaux, transport de becquée, comportement d'alarme, nid actif confirmé.
 - Rapport signé.
@@ -253,7 +253,7 @@ Voir §3.6. La mention antérieure de Rochefort (80 km) est à considérer comme
 
 En Belgique, les plaques « G » désignent les véhicules agricoles, bénéficiant d'un régime fiscal et de circulation allégé. Leur usage est juridiquement cantonné aux opérations agricoles, horticoles, sylvicoles et travaux connexes. Un tracteur forestier en débardage peut légitimement porter cette plaque.
 
-Ces plaques ne couvrent pas : le transport commercial de matériaux de construction non agricoles, les travaux de génie civil (terrassement de voirie pérenne, mise en œuvre de sous-couches routières, pose de fourreaux), ni le transport routier longue distance à titre commercial non agricole.
+Ces plaques ne couvrent pas : le transport [[commercial]] de matériaux de construction non agricoles, les travaux de génie civil (terrassement de voirie pérenne, mise en œuvre de sous-couches routières, pose de fourreaux), ni le transport routier longue distance à titre [[commercial]] non agricole.
 
 Si un véhicule à plaque G est observé en opération de génie civil caractérisée, la situation cumule potentiellement (a) une infraction à la réglementation de circulation et (b) un indice de requalification de la nature réelle du chantier.
 
@@ -321,7 +321,7 @@ Ce tableau constitue le plan d'action du comité. La colonne « Opérateur » es
 | # | Objet | Motivation | Incidence si constat d'irrégularité | Opérateur |
 |---|---|---|---|---|
 | C1 | Constat d'huissier sur absence de flachis sur les souches | Article 81 Code forestier : l'empreinte du marteau sur la souche est le seul moyen de preuve de la délivrance légale. Observation personnelle à consigner avant recouvrement / broyage. | Grief central direct. Caractérise une coupe non couverte par le régime forestier. Faute de l'exploitant ; question pour l'agent DNF désignateur. | |
-| C2 | Constat ornithologique à l'aube, par Natagora ou LRBPO | LCN art. 2 : la charge de la preuve de présence d'espèces protégées incombe au plaignant. Les nichées sont détruites au fur et à mesure. | Permet d'obtenir la suspension immédiate du chantier. Base d'un PV de la Police de l'environnement. | |
+| C2 | Constat ornithologique à l'aube, par [[Natagora]] ou LRBPO | LCN art. 2 : la charge de la preuve de présence d'espèces protégées incombe au plaignant. Les nichées sont détruites au fur et à mesure. | Permet d'obtenir la suspension immédiate du chantier. Base d'un PV de la Police de l'environnement. | |
 | C3 | DAA à la commune d'Esneux — pièces du dossier complet (cahier des charges, délibération, autorisation DNF, rapport sanitaire, visas financiers) | Décret du 30 mars 1995 : droit d'accès aux documents administratifs. Délai 30 jours. | Absence de pièces = présomption de défaut procédural. Présence de pièces = permet d'identifier les failles. | |
 | C4 | DAA au SPW-DNF — autorisations, procès-verbal d'adjudication, registre de martelage | Vérifie la régularité côté tutelle régionale, indépendamment de la commune. | Confirme ou infirme l'existence d'un acte officiel de désignation des bois. | |
 | C5 | DAA au service urbanisme de Chaudfontaine — permis en cours ou délivrés à proximité immédiate de la limite communale avec Esneux | Vérifier si un projet privé de l'autre côté de la limite communale utilise ou utilisera l'emprise communale d'Esneux comme accès ou servitude. | Concomitance avec le chantier forestier = question sur le motif réel de la coupe. À formuler sans nommer de promoteur. | |
@@ -360,7 +360,7 @@ Ce tableau constitue le plan d'action du comité. La colonne « Opérateur » es
 - Demande d'accès au service urbanisme de Chaudfontaine (modèle §8.4).
 - Plainte administrative au cantonnement DNF (modèle §8.2).
 - Plainte au fonctionnaire délégué SPW-Territoire pour infraction urbanistique, si création de voirie sans permis caractérisée.
-- Contact avec Natagora et LRBPO : appui juridique, constat ornithologique, possible constitution de partie civile.
+- Contact avec [[Natagora]] et LRBPO : appui juridique, constat ornithologique, possible constitution de partie civile.
 
 ### 7.2. Voie contentieuse
 
@@ -493,7 +493,7 @@ SPW Agriculture, Ressources naturelles et Environnement
 Département de la Nature et des Forêts
 À l'attention de Monsieur le Directeur du Cantonnement de [Liège]
 
-Copie : Unité de Police de l'environnement du SPW ; Bourgmestre de la commune d'Esneux ; Natagora ; Ligue Royale Belge pour la Protection des Oiseaux
+Copie : Unité de Police de l'environnement du SPW ; Bourgmestre de la commune d'Esneux ; [[Natagora]] ; Ligue Royale Belge pour la Protection des Oiseaux
 
 **Objet** : Demande d'arrêt immédiat des opérations d'abattage au Bois des Chevreuils — perturbation intentionnelle d'oiseaux sauvages en période de reproduction (art. 2 LCN)
 
@@ -505,7 +505,7 @@ Monsieur le Directeur,
 
 Des opérations d'abattage sont actuellement conduites dans la bande boisée dite du Bois des Chevreuils, à Tilff (commune d'Esneux). Ces opérations se déroulent en pleine période de reproduction et de dépendance de l'avifaune forestière wallonne, habitat confirmé d'espèces d'oiseaux sauvages toutes protégées par la Loi du 12 juillet 1973 sur la conservation de la nature (LCN) et par la Directive 2009/147/CE.
 
-Le comité de quartier soussigné a [documenté / fait documenter par un observateur qualifié de Natagora / de la LRBPO] la présence effective, dans la zone concernée, des espèces nicheuses suivantes :
+Le comité de quartier soussigné a [documenté / fait documenter par un observateur qualifié de [[Natagora]] / de la LRBPO] la présence effective, dans la zone concernée, des espèces nicheuses suivantes :
 
 - [espèce 1] — [chant territorial / transport de matériaux / transport de becquée / nid actif confirmé]
 - [espèce 2] — [...]
@@ -579,7 +579,7 @@ Pour le Comité de quartier du Bois des Chevreuils
 - Conserver tous les originaux photographiques, vidéographiques et documentaires en double exemplaire, dont un hors du domicile des membres actifs.
 - Désigner formellement un ou deux porte-paroles du comité, mandatés par décision écrite de l'assemblée.
 - Solliciter un avocat spécialisé en droit administratif et environnemental dès que le dossier prend tournure contentieuse.
-- Vérifier l'éligibilité à un appui d'Inter-Environnement Wallonie, de Natagora, de la LRBPO ou du Fonds pour l'accès à la justice environnementale.
+- Vérifier l'éligibilité à un appui d'Inter-Environnement Wallonie, de [[Natagora]], de la LRBPO ou du Fonds pour l'accès à la justice environnementale.
 
 > **Rappel final**
 >

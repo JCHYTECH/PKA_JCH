@@ -1,4 +1,4 @@
-# Skill: analyse-outil-ai
+# Skill: [[analyse-outil-ai]]
 
 Statut: `approved`
 Proprietaire: `JCH`
@@ -16,7 +16,7 @@ Produire une analyse claire, utile pour decision, avec les points positifs, poin
 
 - Nom ou URL de l'outil.
 - Besoin interne auquel l'outil pourrait repondre.
-- Contexte d'usage si connu: personnel, projet, entreprise, automatisation, dev, knowledge management.
+- Contexte d'usage si connu: personnel, projet, entreprise, automatisation, dev, [[knowledge]] management.
 
 ## Procedure
 

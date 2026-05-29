@@ -20,7 +20,7 @@ The target is a focused intermediate evolution:
 Three options were considered:
 
 1. Pragmatic: too limited, does not address the real system gaps.
-2. Intermediate: best tradeoff between daily usefulness and implementation risk.
+2. Intermediate: best tradeoff between [[daily]] usefulness and implementation risk.
 3. Ambitious: too much infrastructure too early, with a real risk of slowing down [[Dobby]].
 
 The selected approach is the intermediate one.

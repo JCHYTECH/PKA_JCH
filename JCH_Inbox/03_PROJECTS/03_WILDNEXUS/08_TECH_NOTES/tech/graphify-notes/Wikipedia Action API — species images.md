@@ -8,7 +8,7 @@ tags:
   - community/Map_&_Detail_Display
 ---
 
-# Wikipedia Action API — species images
+# [[Wikipedia Action API — species images]]
 
 ## Connections
 - [[Faune Autour — Progressive Web App (PWA)]] - `calls` [EXTRACTED]

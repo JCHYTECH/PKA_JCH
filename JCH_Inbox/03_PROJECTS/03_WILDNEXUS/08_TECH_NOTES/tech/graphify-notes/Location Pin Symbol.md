@@ -8,7 +8,7 @@ tags:
   - community/Brand_&_Visual_Identity
 ---
 
-# Location Pin Symbol
+# [[Location Pin Symbol]]
 
 ## Connections
 - [[Faune Autour Brand]] - `references` [EXTRACTED]

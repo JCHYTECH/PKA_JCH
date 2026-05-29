@@ -620,7 +620,7 @@ Contenu :
 ```dataview
 TABLE type, status, domain, graph_group
 FROM ""
-WHERE status = "a_traiter" OR status = "inbox"
+WHERE status = "a_traiter" OR status = "[[inbox]]"
 SORT file.mtime DESC
 ```
 

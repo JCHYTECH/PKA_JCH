@@ -13,7 +13,7 @@ tags:
   - status/active
 status: raw
 ---
-# WildLens Weekly Review — 2026-04-18
+# [[WildLens]] Weekly Review — 2026-04-18
 [[WildLens]]
 
 ## Nikon Z8 firmware turns “field automation” into a serious wildlife tool
@@ -82,7 +82,7 @@ ML-heavy workflows still carry fragility: denoise errors, GPU-specific issues, a
 On the output side, Epson’s SureColor P7370/P9370 launch emphasizes a wider color gamut, a redesigned printhead, and much faster exhibition-grade production, while Canson’s Baryta Photographique II line continues the push toward deeper D-Max, stronger micro-detail separation, and a more structured surface with darkroom-paper feel. Epson is clearly pushing speed-plus-gamut; Canson is pushing tactile tonal authority.
 
 **Why it matters**  
-For wildlife and macro photographers, printing evolution is not secondary. Fine feather detail, insect exoskeleton sheen, fur separation, iridescence, and dark-background subject isolation all live or die on paper/ink/surface interaction. What matters here is that output choices are again becoming image-shaping decisions, not just delivery choices. A baryta-like surface with higher perceived detail and richer blacks can materially change how close-up structure reads; a wider-gamut, faster printer lowers the threshold for iterative proofing and exhibition-scale refinement.
+For wildlife and macro photographers, printing evolution is not secondary. Fine feather detail, insect exoskeleton sheen, fur separation, iridescence, and dark-background subject isolation all live or die on paper/ink/surface interaction. What matters here is that output choices are again becoming image-shaping [[decisions]], not just delivery choices. A baryta-like surface with higher perceived detail and richer blacks can materially change how close-up structure reads; a wider-gamut, faster printer lowers the threshold for iterative proofing and exhibition-scale refinement.
 
 **Scores**  
 - Technical significance: 4/5  

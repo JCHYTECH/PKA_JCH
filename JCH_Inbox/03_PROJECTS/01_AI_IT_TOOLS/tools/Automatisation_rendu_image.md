@@ -592,7 +592,7 @@ Les lignes blanches peuvent être générées automatiquement entre les centres 
 Trois styles possibles :
 
 style minimal (design scientifique)  
-style réseau (type diagramme)  
+style réseau (type [[diagramme]])  
 style organique (lignes courbes).
 
 Pour vos images animalières, le style minimal est généralement le plus élégant.
@@ -1152,7 +1152,7 @@ Maintenant genere les outils que tu as decrit
 *2026-03-10 12:32*
 
 # Create a package of tools as described: Photoshop JSX scripts, a simple PSD-like template (using layered PNG + guide),
-# SVG overlays, and a README with instructions. Then zip them for download.
+# SVG overlays, and a [[README]] with instructions. Then zip them for download.
 
 import os, zipfile, textwrap, json
 from PIL import Image, ImageDraw
@@ -1224,7 +1224,7 @@ alert("Batch processing finished.");
 with open(os.path.join(base, "batch_generate_plates.jsx"), "w") as f:
     f.write(jsx_batch)
 
-# 5. README instructions
+# 5. [[README]] instructions
 readme = """
 Naturalist Photo Plate Generator – Tool Pack
 
@@ -1254,7 +1254,7 @@ Macro insect documentation
 Exhibition panels
 """
 
-with open(os.path.join(base, "README.txt"), "w") as f:
+with open(os.path.join(base, "[[README]].txt"), "w") as f:
     f.write(readme)
 
 # Zip everything
@@ -1289,7 +1289,7 @@ script pour traiter un dossier complet d’images
 • **connectors_overlay.svg**  
 overlay vectoriel pour le style collage avec connecteurs
 
-• **README.txt**  
+• **[[README]].txt**  
 instructions d’installation sur macOS
 
 Utilisation rapide sur votre Mac :
@@ -1472,7 +1472,7 @@ Restart Photoshop.
 Use:
 File → Scripts → generate_details
 """
-with open(os.path.join(base,"README.txt"),"w") as f:
+with open(os.path.join(base,"[[README]].txt"),"w") as f:
     f.write(readme)
 
 zip_path="/mnt/data/naturalist_photo_plate_tools_v2.zip"
@@ -1540,7 +1540,7 @@ for (var i=0;i<files.length;i++){
 alert("Batch finished");
 """)
 
-with open(os.path.join(base,"README.txt"),"w") as f:
+with open(os.path.join(base,"[[README]].txt"),"w") as f:
     f.write("Install JSX scripts into Photoshop/Presets/Scripts and restart Photoshop.")
 
 zip_path = "/mnt/data/naturalist_photo_plate_tools_v2.zip"

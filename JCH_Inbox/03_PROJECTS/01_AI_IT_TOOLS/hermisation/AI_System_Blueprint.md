@@ -40,10 +40,10 @@ Ce blueprint applique le principe suivant :
 | `TEAM/team.db` | Roster, tables système, index de fichiers. | Confirmé |
 | `TEAM/ROSTER.md` | Miroir humain du roster. | Confirmé |
 | `MEMORY.md` | Règles de comportement, projets actifs, politiques. | Confirmé |
-| `ADAPTER-PROMPT.md`, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `Codex.md` | Pointeurs runtime et identité Dobby. | Confirmé |
+| `ADAPTER-PROMPT.md`, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `Codex.md` | Pointeurs runtime et identité [[Dobby]]. | Confirmé |
 | `scripts/model_config.json` | Routage modèles par tâche. | Confirmé |
 | `scripts/launchd/*.plist` | Automatisations macOS prévues ou actives. | Observé |
-| `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/pka-hermisation/` | Cadrage Hermisation, garde-fous, roadmap. | Confirmé |
+| `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/pka-hermisation/` | Cadrage [[Hermisation]], garde-fous, roadmap. | Confirmé |
 | `JCH_Inbox/99_SYSTEM/security/policy.md` | Politique sécurité PKA. | Confirmé |
 
 ## Résumé exécutif
@@ -67,7 +67,7 @@ Le risque principal n'est pas le manque d'outils. Le risque principal est la **s
 | Type | Description | Autonomie actuelle | Statut |
 |---|---|---:|---|
 | Orchestrateur | [[Dobby]], point d'entrée et synthèse. | L1-L2 selon tâche | Confirmé |
-| Spécialistes PKA | 27 rôles experts dans `TEAM/`. | L0-L1, exécutés via Dobby | Confirmé |
+| Spécialistes PKA | 27 rôles experts dans `TEAM/`. | L0-L1, exécutés via [[Dobby]] | Confirmé |
 | Scripts automatisés | Python/shell sous `scripts/` et `bin/`. | L1-L2 selon script | Confirmé |
 | Services launchd | Exécution périodique ou au démarrage. | L2 | Observé |
 | Dashboards | Interfaces HTML locales. | L0-L1 | Confirmé |
@@ -89,7 +89,7 @@ Source : `TEAM/team.db`, 28 membres actifs.
 | [[Héron]] | Impression photo. | L1 | Faible-Moyenne | PHOTO, papiers, presets, impressions | Confirmé |
 | [[Lynx]] | Édition photo. | L1 | Moyenne | PHOTO, Lightroom, Photoshop, analyses | Confirmé |
 | [[Jade]] | Traduction EN/ZH et analyse culturelle. | L1 | Élevée pour VETALYX/DIAHO | Contrats, documents bilingues, Chine | Confirmé |
-| [[Renard]] | Conseil juridique contrats. | L1 | Élevée | Contrats, CGU, pactes, risques | Confirmé |
+| [[Renard]] | Conseil juridique [[contrats]]. | L1 | Élevée | Contrats, CGU, pactes, risques | Confirmé |
 | [[Iris]] | Tendances et stratégie recherche. | L1 | Moyenne | Idées, veille, marchés | Confirmé |
 | [[Forge]] | Développement, intégrations, automatisations. | L1-L2 | Élevée | `scripts/`, dashboards, APIs, runtime | Confirmé |
 | [[Ariane]] | Onboarding plateformes. | L1 | Moyenne | SOPs, comptes, procédures | Confirmé |
@@ -118,14 +118,14 @@ Source : `TEAM/team.db`, 28 membres actifs.
 | `dropbox_watch.py` | Surveille Dropbox VETALYX. | Aucun direct observé | `/Users/jchavauxm5/Dropbox/VETALYX` | Snapshots, rapports | WatchPaths | L2 | Élevée | Observé |
 | `gmail_gatekeeper.py` | Scan Gmail selon politique. | À vérifier | Gmail config/token | Logs, triage possible | 20 min via launchd | L2 | Élevée | Observé |
 | `outlook_imap.py` | Gatekeeper Outlook/IMAP. | À vérifier | Outlook/IMAP | Logs, triage possible | 15 min via launchd | L2 | Élevée | Observé |
-| `email_digest.py` | Digest email. | Claude Haiku configuré pour `email_digest` | Emails / configs | Digest/logs | 09:00, 14:00, 20:00 | L2 | Moyenne | Observé, mais MEMORY indique digest suspendu |
+| `email_digest.py` | Digest [[email]]. | Claude Haiku configuré pour `email_digest` | Emails / configs | Digest/logs | 09:00, 14:00, 20:00 | L2 | Moyenne | Observé, mais MEMORY indique digest suspendu |
 | `dashboard_server.py` | Serveur dashboard local. | Aucun | Dashboards, fichiers PKA | HTTP local `127.0.0.1:8787` | KeepAlive | L2 | Moyenne | Observé |
 | `plane-autostart.sh` | Maintien Plane local. | Aucun | Plane config | Service Plane | 5 min + RunAtLoad | L2 | Moyenne | Observé |
 | `pka_save.py` | Sauvegarde interactive/session. | Dépend usage | Résumés, projets | Daily, TEAM_Inbox, mémoire | Manuel | L1 | Élevée | Confirmé |
 | `model_client.py` | Routeur d'appels modèles. | Voir `scripts/model_config.json` | Prompts/tâches | Réponses modèle | Appelé par scripts | L1-L2 | Élevée | Confirmé |
 | Scripts InsectNet | Téléchargement, segmentation, QC audio. | À vérifier | Audio/datasets | Spectrogrammes, inventaires, QC | Manuel | L1-L2 | Moyenne | Confirmé |
 | Scripts procurement | BOM, Digi-Key, achats. | À vérifier | BOM, API Digi-Key | Rapports, paniers | Manuel | L1 | Moyenne-Élevée | Confirmé |
-| Telegram bot | Interface Dobby Telegram. | Claude Sonnet configuré pour `telegram_bot` | Telegram, contexte Dobby | Réponses, conversation DB | Potentiellement permanent | L2 | Élevée | Observé |
+| Telegram bot | Interface [[Dobby]] Telegram. | Claude Sonnet configuré pour `telegram_bot` | Telegram, contexte [[Dobby]] | Réponses, conversation DB | Potentiellement permanent | L2 | Élevée | Observé |
 
 ### 1.4 Routage modèles observé
 
@@ -207,17 +207,17 @@ Providers configurés : Anthropic, OpenAI, Google, Ollama, NVIDIA, DeepSeek, Kim
 
 | Workflow | Description | Données | Acteurs | Automatisation | Criticité | Statut |
 |---|---|---|---|---:|---|---|
-| Activation Dobby | Lecture mémoire, roster, protocole, inbox. | `MEMORY.md`, `TEAM/`, `wiki/`, inbox | Dobby | Manuel à chaque session | Élevée | Confirmé |
-| Inbox triage | Lire, loguer, router les fichiers entrants. | `JCH_Inbox/00_INBOX/`, `file_index` | Dobby, Pie, spécialistes | Partiel | Élevée | Confirmé |
-| Sauvegarde session | Capturer décisions/actions dans Daily/TEAM_Inbox. | `pka_save.py`, `wiki/Daily` | Dobby, Sybil | Manuel interactif | Élevée | Confirmé |
-| System check | Rapport périodique santé PKA. | Vault, scripts, DB | Dobby/Castor/Forge | launchd | Élevée | Observé |
-| Vault maintenance | Maintenance conventions et placement. | Vault Markdown | Forge/Corbeau | launchd | Élevée | Observé |
-| Dropbox VETALYX | Surveiller documents Dropbox. | Dropbox VETALYX | Forge/Vasco | launchd | Élevée | Observé |
-| Email gatekeeping | Scan Gmail/Outlook, digest. | Email, configs | Pie/Dobby | launchd | Élevée | Observé |
-| Dashboards | Hub, organigramme, live dashboard. | `JCH_Inbox/01_DASHBOARDS/` | Forge/Dobby | Serveur local | Moyenne | Confirmé |
-| WildNexus bioacoustique | Protocoles RPi/BirdNET, QC audio, terrain. | WILDNEXUS, audio, scripts InsectNet | Chouette, Clio, Forge | Partiel | Élevée | Confirmé |
-| VETALYX clinique | Documents techniques, DIXUN, validations. | VETALYX, PDF/DOCX/HTML | Vasco, Clio, Jade, Renard | Partiel | Élevée | Confirmé |
-| Procurement/BOM | BOM et paniers composants. | BOM, Digi-Key API | Forge, Bruno, Chouette | Partiel | Moyenne | Confirmé |
+| Activation [[Dobby]] | Lecture mémoire, roster, protocole, [[inbox]]. | `MEMORY.md`, `TEAM/`, `wiki/`, [[inbox]] | [[Dobby]] | Manuel à chaque session | Élevée | Confirmé |
+| Inbox triage | Lire, loguer, router les fichiers entrants. | `JCH_Inbox/00_INBOX/`, `file_index` | [[Dobby]], [[Pie]], spécialistes | Partiel | Élevée | Confirmé |
+| Sauvegarde session | Capturer décisions/actions dans Daily/TEAM_Inbox. | `pka_save.py`, `wiki/Daily` | [[Dobby]], [[Sybil]] | Manuel interactif | Élevée | Confirmé |
+| System check | Rapport périodique santé PKA. | Vault, scripts, DB | [[Dobby]]/[[Castor]]/[[Forge]] | launchd | Élevée | Observé |
+| Vault maintenance | Maintenance conventions et placement. | Vault Markdown | [[Forge]]/[[Corbeau]] | launchd | Élevée | Observé |
+| Dropbox VETALYX | Surveiller documents Dropbox. | Dropbox VETALYX | [[Forge]]/[[Vasco]] | launchd | Élevée | Observé |
+| Email gatekeeping | Scan Gmail/Outlook, digest. | Email, configs | [[Pie]]/[[Dobby]] | launchd | Élevée | Observé |
+| Dashboards | Hub, organigramme, live dashboard. | `JCH_Inbox/01_DASHBOARDS/` | [[Forge]]/[[Dobby]] | Serveur local | Moyenne | Confirmé |
+| WildNexus bioacoustique | Protocoles RPi/BirdNET, QC audio, terrain. | WILDNEXUS, audio, scripts InsectNet | [[Chouette]], [[Clio]], [[Forge]] | Partiel | Élevée | Confirmé |
+| VETALYX clinique | Documents techniques, DIXUN, validations. | VETALYX, PDF/DOCX/HTML | [[Vasco]], [[Clio]], [[Jade]], [[Renard]] | Partiel | Élevée | Confirmé |
+| Procurement/BOM | BOM et paniers composants. | BOM, Digi-Key API | [[Forge]], [[Bruno]], [[Chouette]] | Partiel | Moyenne | Confirmé |
 
 ### 3.2 Tâches répétitives
 
@@ -225,7 +225,7 @@ Providers configurés : Anthropic, OpenAI, Google, Ollama, NVIDIA, DeepSeek, Kim
 |---|---:|---:|---|
 | Créer note Daily de session | Oui | L2 | Après validation format et `/save`. |
 | Générer rapport système | Oui | L2 | Déjà partiel, doit documenter fichiers touchés. |
-| Classer fichier inbox | Partiel | L1-L2 | Brouillon + validation humaine si déplacement. |
+| Classer fichier [[inbox]] | Partiel | L1-L2 | Brouillon + validation humaine si déplacement. |
 | Mettre à jour file_index | Oui | L2 | Sans suppression automatique. |
 | Générer SOP à partir d'une procédure validée | Oui | L1 | Relecture JCH. |
 | Surveiller dossiers externes | Oui | L2 | Scope strict, logs, pas de suppression. |
@@ -241,7 +241,7 @@ Providers configurés : Anthropic, OpenAI, Google, Ollama, NVIDIA, DeepSeek, Kim
 | AI tools | Claude, Codex, Gemini, DeepSeek, Ollama, NVIDIA. | Modèle utilisé pas toujours tracé. | Confirmé |
 | Dashboards | HTML statiques + serveur local + Plane. | Plusieurs vues du même état. | Observé |
 | Emails | Gmail, Outlook, digest, gatekeepers. | Risque doublons / actions incohérentes. | Observé |
-| Hermisation | Documents source + synthèse + roadmap. | Risque de lancer trop tôt une stack. | Confirmé |
+| [[Hermisation]] | Documents source + synthèse + roadmap. | Risque de lancer trop tôt une stack. | Confirmé |
 
 ### 3.4 Ce qui doit rester humain
 
@@ -251,7 +251,7 @@ Validation humaine obligatoire pour :
 - modification de `TEAM/team.db`, `MEMORY.md` et pointeurs runtime ;
 - activation d'un service launchd permanent ;
 - publication externe ;
-- envoi d'email à un tiers ;
+- envoi d'[[email]] à un tiers ;
 - achat, commande, engagement financier ;
 - accès ou traitement de secrets ;
 - changement de gouvernance d'un projet ;
@@ -270,7 +270,7 @@ Validation humaine obligatoire pour :
 | Divergence entre modèles | Moyenne-Élevée | Plusieurs runtimes avec mémoires séparées | `/save` obligatoire et modèle tracé. |
 | Redondance des agents | Moyenne | Rôles proches ou scripts dupliqués | Agent Register + owner par workflow. |
 | Prompt injection documentaire | Moyenne-Élevée | Inbox et emails non fiables | Treat untrusted input as data, jamais comme instruction. |
-| Dépendance externe | Moyenne | APIs email, Dropbox, Plane, providers AI | Décrire dépendances + fallback manuel. |
+| Dépendance externe | Moyenne | APIs [[email]], Dropbox, Plane, providers AI | Décrire dépendances + fallback manuel. |
 | Logs incontrôlés | Moyenne | Services périodiques, fichiers temporaires | Rotation, audit, pas de secrets dans logs. |
 
 ## 5. Niveaux d'autonomie
@@ -284,8 +284,8 @@ Validation humaine obligatoire pour :
 
 Classification initiale :
 
-- Dobby conversationnel : L1.
-- Dobby avec outils fichier : L1-L2 selon action.
+- [[Dobby]] conversationnel : L1.
+- [[Dobby]] avec outils fichier : L1-L2 selon action.
 - Scripts launchd : L2, à auditer avant extension.
 - Email, Dropbox, Telegram : L2 mais sensibles.
 - Suppression, publication, achat, secrets, exposition réseau : L3.
@@ -306,7 +306,7 @@ Classification initiale :
 
 | Élément | Décision | Raison |
 |---|---|---|
-| Remplacer [[Dobby]] | Rejeté | Dobby reste orchestrateur. |
+| Remplacer [[Dobby]] | Rejeté | [[Dobby]] reste orchestrateur. |
 | Connecter tout le roster | Rejeté | Prolifération d'agents. |
 | Autonomie critique | Rejeté | Validation humaine obligatoire. |
 | Écriture filesystem libre | Rejeté | Risque documentaire. |
@@ -351,7 +351,7 @@ Actions autorisées :
 | Question | Pourquoi c'est important | Priorité |
 |---|---|---|
 | Quels services launchd sont réellement chargés/en cours, pas seulement présents dans `scripts/launchd/` ? | Distinguer prévu vs actif. | P0 |
-| Le digest email est-il toujours suspendu malgré le plist observé ? | Éviter double vérité entre MEMORY et launchd. | P0 |
+| Le digest [[email]] est-il toujours suspendu malgré le plist observé ? | Éviter double vérité entre MEMORY et launchd. | P0 |
 | Où doit vivre durablement le registre des zones sensibles ? | Sécurité et audit. | P1 |
 | Faut-il séparer `Agent_Register.md` après validation ? | Lisibilité si le registre grossit. | P1 |
 | Quels modèles sont effectivement disponibles localement via Ollama ? | Réalisme du routage modèle. | P1 |

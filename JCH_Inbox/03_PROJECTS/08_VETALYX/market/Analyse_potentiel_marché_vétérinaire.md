@@ -227,7 +227,7 @@ yes good idea. can you do the same analysis for Italy, Spain, Germany and Belgiu
 ## Assistant
 *2025-10-30 09:35*
 
-Done! I created a separate, board-ready deck covering **Italy, Spain, Germany, and Belgium** with the same structure (overview, market sizing model & assumptions, revenue chart 2025–2028, and country-specific SWOT).
+Done! I created a separate, board-ready deck covering **Italy, Spain, Germany, and Belgium** with the same structure ([[overview]], market sizing model & assumptions, revenue chart 2025–2028, and country-specific SWOT).
 
 👉 [Download: EU4_Pet_Allergy_Market_Analysis_EN.pptx](sandbox:/mnt/data/EU4_Pet_Allergy_Market_Analysis_EN.pptx)
 
@@ -357,7 +357,7 @@ Here’s the plan for your **final branded PowerPoint deck** for board presentat
    - Short regulatory note (ANSES, CE, import workflow)
 
 4. **Other EU Markets (Italy, Spain, Germany, Belgium)**  
-   - 1-slide overview per country (key data + potential chart)  
+   - 1-slide [[overview]] per country (key data + potential chart)  
    - 1-slide SWOT per country  
 
 5. **Comparative Summary Table**  
@@ -520,7 +520,7 @@ Here’s the final setup confirmed for the **JCHYTECH Board Presentation Deck (.
    - **Regulatory context** (DGCCRF, ANSES, CE marking, import workflow)  
    - Distribution and partnership strategy  
 5. **Italy, Spain, Germany, Belgium Sections**  
-   - 1 overview + 1 SWOT per country  
+   - 1 [[overview]] + 1 SWOT per country  
 6. **Comparative Summary Table**  
    - Clinics, price, adoption, 2028 potential, CAGR  
 7. **Strategic Recommendations**  
@@ -667,7 +667,7 @@ I’ll now generate the **final JCHYTECH board presentation (.pptx)** featuring:
 - English text + small Chinese subtitles  
 - Stylized maps with blue outlines & numeric markers  
 - Full JCHYTECH logo integration  
-- Expanded France section with regulatory overview  
+- Expanded France section with regulatory [[overview]]  
 - Comparative summary and 2028 projections  
 
 ⚙️ This will take a bit of processing time while I assemble and format charts, maps, and bilingual captions.  
@@ -788,10 +788,10 @@ Here’s the *final locked configuration* for your **JCHYTECH – Pet Allergy Di
    - 5-year revenue chart  
    - Regulatory compliance (DGCCRF / ANSES / CE)  
    - Distribution & partnership plan  
-5. Italy – overview, chart, SWOT  
-6. Spain – overview, chart, SWOT  
-7. Germany – overview, chart, SWOT  
-8. Belgium – overview, chart, SWOT  
+5. Italy – [[overview]], chart, SWOT  
+6. Spain – [[overview]], chart, SWOT  
+7. Germany – [[overview]], chart, SWOT  
+8. Belgium – [[overview]], chart, SWOT  
 9. Comparative summary table (all 5 countries)  
 10. European potential map (numeric bubbles)  
 11. Strategic roadmap 2025–2028  
@@ -2071,7 +2071,7 @@ Here is your consolidated Word document in English, merging all strategic and ma
 
 👉 [Download the file – JCHYTECH_European_Allergy_Market_Analysis.docx](sandbox:/mnt/data/JCHYTECH_European_Allergy_Market_Analysis.docx)
 
-It includes the full project overview, market analysis for all five EU countries, pricing benchmarks with sources, regulatory roadmap, distribution strategy, and strategic recommendations — ready for board or investor review.
+It includes the full project [[overview]], market analysis for all five EU countries, pricing benchmarks with sources, regulatory roadmap, distribution strategy, and strategic recommendations — ready for board or investor review.
 
 ---
 
@@ -2147,7 +2147,7 @@ Here’s the outline I’ll include:
 | Q4 | 1 000 clinics reached – export preparation |
 
 5️⃣ **European Expansion Timeline**
-- **2026:** Italy + Spain commercial launch.  
+- **2026:** Italy + Spain [[commercial]] launch.  
 - **2027:** Germany entry post-CE validation.  
 - **2028:** Benelux consolidation + EU logistics hub.  
 

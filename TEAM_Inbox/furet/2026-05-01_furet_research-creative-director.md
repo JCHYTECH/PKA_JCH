@@ -15,7 +15,7 @@
 - Garantit que chaque site (DIM3, JCHYTECH, futurs) est reconnaissable comme appartenant au même univers JCH
 - Travaille en tandem avec [[Forge]] quand le design dépasse les capacités de Horizons
 
-### Core knowledge
+### Core [[knowledge]]
 
 - Systèmes de marque (brand systems) : color tokens, typographic scale, spacing, component logic
 - UX/UI : hiérarchie de l'information, lisibilité, conversion
@@ -23,7 +23,7 @@
 - Outils : Figma (maquettes), Canva Pro (assets rapides), suite Adobe si nécessaire
 - Connaissance des contraintes web : performance image, responsive, accessibilité basique
 
-### Adjacent knowledge
+### Adjacent [[knowledge]]
 
 - Comprend que chaque site a une audience différente : DIM3 (B2B ICT), JCHYTECH (scientifique/médical), Arteon (naturaliste/artistique)
 - Sait adapter le registre visuel sans perdre la cohérence globale

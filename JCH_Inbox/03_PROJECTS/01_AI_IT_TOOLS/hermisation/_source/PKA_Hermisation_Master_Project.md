@@ -1,4 +1,4 @@
-# PKA_Hermisation_Master_Project
+# [[PKA_Hermisation_Master_Project]]
 
 [[PKA_JCH]]
 [[Dobby]]
@@ -13,7 +13,7 @@ Date : 2026-05-25
 
 # 1. Mission du projet
 
-Le projet « Hermisation » a pour objectif de transformer progressivement le système PKA_JCH en une infrastructure AI :
+Le projet « [[Hermisation]] » a pour objectif de transformer progressivement le système PKA_JCH en une infrastructure AI :
 
 - persistante ;
 - gouvernée ;
@@ -242,7 +242,7 @@ Validation obligatoire pour :
 
 Livrables :
 
-- AI_System_Blueprint.md
+- [[AI_System_Blueprint]].md
 - Agent_Register.md
 
 ---
@@ -256,7 +256,7 @@ Livrables :
 
 Livrables :
 
-- AI_Data_Governance.md
+- [[AI_Data_Governance]].md
 - Obsidian_Workflow.md
 
 ---
@@ -271,7 +271,7 @@ Livrables :
 
 Livrable :
 
-- Local_Infrastructure_Setup.md
+- [[Local_Infrastructure_Setup]].md
 
 ---
 
@@ -284,7 +284,7 @@ Livrable :
 
 Livrable :
 
-- Persistent_Memory_Architecture.md
+- [[Persistent_Memory_Architecture]].md
 
 ---
 
@@ -297,7 +297,7 @@ Livrable :
 
 Livrable :
 
-- Workflow_Orchestration.md
+- [[Workflow_Orchestration]].md
 
 ---
 

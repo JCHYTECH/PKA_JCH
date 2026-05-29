@@ -15,7 +15,7 @@
 - Monitoring et reporting : Google Search Console, Analytics — livraison mensuelle d'un rapport de visibilité à [[Dobby]]
 - Coordination avec [[Vega]] pour s'assurer que les choix SEO sont intégrés dès le design
 
-### Core knowledge
+### Core [[knowledge]]
 
 - SEO technique : Core Web Vitals, crawl budget, sitemap, robots.txt, données structurées (schema.org)
 - SEO sémantique : clustering de mots-clés, intention de recherche, cocon sémantique
@@ -23,7 +23,7 @@
 - Local SEO : pour les sites avec ancrage géographique (Belgique, Italie)
 - Multilingual SEO : hreflang, gestion des versions linguistiques, ciblage géographique
 
-### Adjacent knowledge
+### Adjacent [[knowledge]]
 
 - Comprend les domaines de JCH assez bien pour identifier les bons mots-clés : photographie naturaliste, IVD/biotech, ICT/eHealth, énergie
 - Connaissance des spécificités SEO par marché : Google.be, Google.it, Google.co.uk

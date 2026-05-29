@@ -8,7 +8,7 @@ tags:
   - community/Brand_&_Visual_Identity
 ---
 
-# Faune Autour Brand
+# [[Faune Autour Brand]]
 
 ## Connections
 - [[Faune Autour Visual Identity]] - `implements` [EXTRACTED]

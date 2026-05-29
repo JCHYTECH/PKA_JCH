@@ -66,7 +66,7 @@ Avec trois sous-dossiers :
 2. Ouvrir ce dossier dans **Canon DPP**.
 3. Repérer les rolls intéressants.
 4. Ouvrir un roll utile.
-5. Lancer **Tools > Start RAW Burst Image Tool**.
+5. Lancer **Tools > [[Start]] RAW Burst Image Tool**.
 6. Parcourir rapidement la séquence.
 7. Définir le début et la fin de la plage intéressante.
 8. Utiliser **Save a Range of Images Separately**.

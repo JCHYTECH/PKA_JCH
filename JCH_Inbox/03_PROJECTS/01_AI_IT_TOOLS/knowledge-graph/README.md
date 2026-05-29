@@ -10,7 +10,7 @@ domain: ai-it-tools
 
 ## Mission
 
-Connect PKA_JCH to [[Obsidian]] as a governed knowledge graph: readable by JCH, useful for [[Dobby]] and the specialists, and stable enough to support long-term memory.
+Connect PKA_JCH to [[Obsidian]] as a governed [[knowledge]] graph: readable by JCH, useful for [[Dobby]] and the specialists, and stable enough to support long-term memory.
 
 ## Role in PKA
 
@@ -39,4 +39,4 @@ Scaffold created from
 - `GOVERNANCE.md` — rules for wikilinking and metadata.
 - `review_queue.md` — ambiguities requiring validation.
 - `indexes/` — future generated indexes.
-- `source/` — copied source documents from inbox.
+- `source/` — copied source documents from [[inbox]].

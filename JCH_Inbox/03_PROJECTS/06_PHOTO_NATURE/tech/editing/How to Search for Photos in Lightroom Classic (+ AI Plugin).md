@@ -27,7 +27,7 @@ Fortunately, if you’re struggling to search your Lightroom Classic catalog for
 
 And if you want more powerful Lightroom search tools, there are [AI-powered plugins](https://excire.com/en/best-lightroom-plugins-2/) that integrate nicely with LrC’s existing interface, and which can make finding (and organizing) your photos a whole lot easier.
 
-Below, I walk you through the different search features available to you in Lightroom Classic. Then I offer a quick overview of a Lightroom plugin, [Excire Search](https://excire.com/en/excire-search/), which is now my go-to tool for finding photos in my catalog.
+Below, I walk you through the different search features available to you in Lightroom Classic. Then I offer a quick [[overview]] of a Lightroom plugin, [Excire Search](https://excire.com/en/excire-search/), which is now my go-to tool for finding photos in my catalog.
 
 Let’s dive right in!
 

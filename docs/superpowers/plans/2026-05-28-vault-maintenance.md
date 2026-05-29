@@ -1,6 +1,6 @@
 # PKA Vault Maintenance — Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-[[SKILL]]: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Script autonome de maintenance nocturne qui corrige les wikilinks manquants, détecte les fichiers mal placés, et commite automatiquement les changements via launchd à 02:00 chaque nuit.
 

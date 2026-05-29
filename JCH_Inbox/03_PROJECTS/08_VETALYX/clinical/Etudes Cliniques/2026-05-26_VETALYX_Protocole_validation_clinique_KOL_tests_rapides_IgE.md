@@ -199,7 +199,7 @@ SOP recommandee :
 
 ### Tests de stabilite DBS recommandes
 
-Comme la strategie retenue est basse temperature, les tests de stabilite doivent d'abord documenter la performance dans les conditions prevues. Sur un sous-ensemble, si le laboratoire accepte les eluats DBS :
+Comme la [[strategie]] retenue est basse temperature, les tests de stabilite doivent d'abord documenter la performance dans les conditions prevues. Sur un sous-ensemble, si le laboratoire accepte les eluats DBS :
 
 - J0 / J3 / J7 / J14 / J28 ;
 - 2-8 C versus -20 C ;
@@ -330,7 +330,7 @@ Cette version est acceptable pour une phase KOL pilote avant extension multicent
 | ASV/technicien temps prelevement | inclus dans per-case fee ou ligne separee |
 | Test reference laboratoire | cout par serum/plasma |
 | Buvards DBS + dessicants + enveloppes | cout faible par animal mais SOP stricte |
-| Transport echantillons | serum/plasma sous froid ; DBS egalement sous froid dans la strategie retenue, avec cout logistique inferieur aux liquides mais non nul |
+| Transport echantillons | serum/plasma sous froid ; DBS egalement sous froid dans la [[strategie]] retenue, avec cout logistique inferieur aux liquides mais non nul |
 | Data management | creation CRF + nettoyage donnees |
 
 Suggestion [[Bruno]] : commencer par une phase 0/1 a budget limite avant de promettre une validation complete. Les KOL accepteront mieux un protocole court, finance, peu invasif et publiable.
@@ -411,7 +411,7 @@ Seriez-vous disponible pour un echange de 30 minutes afin de valider l'interet c
 - WOAH validation of diagnostic assays, Chapter 1.1.6: https://www.woah.org/fileadmin/Home/eng/Health_standards/tahm/1.01.06_VALIDATION.pdf
 - FDA CVM GFI #282 informed consent for studies enrolling client-owned companion animals: https://www.fda.gov/regulatory-information/search-fda-guidance-documents/cvm-gfi-282-informed-consent-forms-studies-enroll-client-owned-companion-animals
 - RVC research using client-owned animals: https://www.rvc.ac.uk/research/animals-in-research/client-owned-animals
-- Veterinary Evidence informed consent policy: https://veterinaryevidence.org/index.php/ve/informed-consent-policy
+- Veterinary Evidence informed consent [[policy]]: https://veterinaryevidence.org/index.php/ve/informed-consent-policy
 - Enzyme immunoassay for total IgE in dried blood spots: https://www.scholars.northwestern.edu/en/publications/enzyme-immunoassay-for-total-immunoglobulin-e-in-dried-blood-spot
 - Detection of immunoglobulin isotypes from dried blood spots: https://pmc.ncbi.nlm.nih.gov/articles/PMC4663688/
 - Validation of a ligand binding assay using dried blood spot sampling: https://pmc.ncbi.nlm.nih.gov/articles/PMC3535112/

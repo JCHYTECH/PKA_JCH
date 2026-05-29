@@ -13,18 +13,18 @@ Ce document fournit une carte logique de WildNexus a plusieurs niveaux de detail
 - le projet complet WildNexus ;
 - le perimetre P0 strict ;
 - les extensions P1/P2 a preserver sans les faire entrer dans P0 ;
-- les decisions ouvertes qui conditionnent `M-01 Architecture P0 gelee`.
+- les [[decisions]] ouvertes qui conditionnent `M-01 Architecture P0 gelee`.
 
 Sources principales :
 
-- [99_SYSTEM/diagramming-standard.md](../../../99_SYSTEM/diagramming-standard.md)
-- [INDEX.md](../INDEX.md)
-- [MASTER_ARCHITECTURE_WN.md](../01_FOUNDATION/MASTER_ARCHITECTURE_WN.md)
-- [wildnexus-founding-document-v0.2.md](../01_FOUNDATION/wildnexus-founding-document-v0.2.md)
-- [WILDNEXUS_P0_SCOPE_LOCK.md](../01_FOUNDATION/WILDNEXUS_P0_SCOPE_LOCK.md)
-- [WILDNEXUS_CYCLE_01_M01_READINESS.md](../00_GOVERNANCE/WILDNEXUS_CYCLE_01_M01_READINESS.md)
-- [WILDNEXUS_ADR_INDEX.md](../02_DECISIONS/WILDNEXUS_ADR_INDEX.md)
-- [WILDNEXUS_AGENT_MAPPING.md](../00_GOVERNANCE/WILDNEXUS_AGENT_MAPPING.md)
+- [99_SYSTEM/[[diagramming-standard]].md](../../../99_SYSTEM/[[diagramming-standard]].md)
+- [INDEX.md](../[[INDEX]].md)
+- [MASTER_ARCHITECTURE_WN.md](../01_FOUNDATION/[[MASTER_ARCHITECTURE_WN]].md)
+- [wildnexus-founding-document-v0.2.md](../01_FOUNDATION/[[wildnexus-founding-document-v0.2]].md)
+- [WILDNEXUS_P0_SCOPE_LOCK.md](../01_FOUNDATION/[[WILDNEXUS_P0_SCOPE_LOCK]].md)
+- [WILDNEXUS_CYCLE_01_M01_READINESS.md](../00_GOVERNANCE/[[WILDNEXUS_CYCLE_01_M01_READINESS]].md)
+- [WILDNEXUS_ADR_INDEX.md](../02_DECISIONS/[[WILDNEXUS_ADR_INDEX]].md)
+- [WILDNEXUS_AGENT_MAPPING.md](../00_GOVERNANCE/[[WILDNEXUS_AGENT_MAPPING]].md)
 
 ---
 
@@ -157,7 +157,7 @@ flowchart TB
 
 ## Niveau 4 — Chemin de decision vers M-01
 
-`M-01` est pret quand les decisions structurantes sont suffisamment documentees pour autoriser le prototype banc.
+`M-01` est pret quand les [[decisions]] structurantes sont suffisamment documentees pour autoriser le prototype banc.
 
 ```mermaid
 flowchart TD

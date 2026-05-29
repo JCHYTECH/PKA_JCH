@@ -87,7 +87,7 @@ Points critiques :
 |---:|---|---|---|
 | 906 | `dashboard_server.py --host 127.0.0.1 --port 8787` | Dashboard local PKA | Actif, local-only |
 | 914 | `gmail_gatekeeper.py scan` | Gatekeeper Gmail | Actif |
-| 1853 | `telegram-bot/bot.py` | Bot Telegram Dobby | Actif, sensible |
+| 1853 | `telegram-bot/bot.py` | Bot Telegram [[Dobby]] | Actif, sensible |
 | 1299 | Docker Desktop | Support Plane / Docker | Actif |
 | 951+ | Dropbox | Synchronisation Dropbox | Actif externe |
 | 972 | Ollama | Modèles locaux | Actif, local-only `127.0.0.1:11434` |

@@ -1,7 +1,7 @@
-# 🐦‍⬛ [[Pie]] — Analyse email
+# 🐦‍⬛ [[Pie]] — Analyse [[email]]
 
 **Date :** 2026-05-03  
-**De :** Cuisine&Nous  
+**De :** [[Cuisine]]&Nous  
 **Objet :** Lunch spécial de la semaine  
 
 ---

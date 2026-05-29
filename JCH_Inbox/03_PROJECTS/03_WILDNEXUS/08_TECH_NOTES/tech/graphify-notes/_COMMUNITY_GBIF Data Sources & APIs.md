@@ -10,14 +10,14 @@ members: 8
 **Members:** 8 nodes
 
 ## Members
-- [[GBIF Alert — Belgian open-source notification system for new GBIF observations]] - document - Accès_API_et_données_de.md
-- [[GBIF Occurrence Search API (api.gbif.orgv1occurrencesearch)]] - document - API_pour_observations_be.md
-- [[GBIF Species Match API (api.gbif.orgv1speciesmatch and speciessearch)]] - document - API_pour_observations_be.md
-- [[GBIF — Global Biodiversity Information Facility]] - document - API_pour_observations_be.md
-- [[Rationale GBIF chosen over Observation.org internal API — internal API closed to third parties, GBIF is official redirect for external developers]] - document - API_pour_observations_be.md
-- [[gbif_wildlife_scout.py — Python script for local wildlife querying via pygbif]] - document - Accès_API_et_données_de.md
-- [[iNaturalist — alternative data source (open API, near real-time)]] - document - API_pour_observations_be.md
-- [[pygbif — Python client for GBIF API]] - document - Accès_API_et_données_de.md
+- [[GBIF Alert — Belgian open-source notification system for new GBIF observations]] - document - [[Accès_API_et_données_de]].md
+- [[GBIF Occurrence Search API (api.gbif.orgv1occurrencesearch)]] - document - [[API_pour_observations_be]].md
+- [[GBIF Species Match API (api.gbif.orgv1speciesmatch and speciessearch)]] - document - [[API_pour_observations_be]].md
+- [[GBIF — Global Biodiversity Information Facility]] - document - [[API_pour_observations_be]].md
+- [[Rationale GBIF chosen over Observation.org internal API — internal API closed to third parties, GBIF is official redirect for external developers]] - document - [[API_pour_observations_be]].md
+- [[gbif_wildlife_scout.py — Python script for local wildlife querying via pygbif]] - document - [[Accès_API_et_données_de]].md
+- [[iNaturalist — alternative data source (open API, near real-time)]] - document - [[API_pour_observations_be]].md
+- [[pygbif — Python client for GBIF API]] - document - [[Accès_API_et_données_de]].md
 
 ## Live Query (requires Dataview plugin)
 

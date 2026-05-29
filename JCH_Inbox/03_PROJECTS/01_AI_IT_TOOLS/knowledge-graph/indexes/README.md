@@ -8,7 +8,7 @@ domain: obsidian
 
 # Indexes
 
-This folder will hold generated or curated indexes for the Obsidian knowledge graph.
+This folder will hold generated or curated indexes for the Obsidian [[knowledge]] graph.
 
 Planned files:
 

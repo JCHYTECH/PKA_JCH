@@ -199,7 +199,7 @@ Verdict : **ne pas lancer comme diagnostic alimentaire rapide**. Au mieux, P2 co
 1. Food sensitization support panel Dog.
 2. Food sensitization support panel Cat.
 
-### A eviter en claim commercial
+### A eviter en claim [[commercial]]
 
 - "diagnostic alimentaire rapide" ;
 - "detecte les intolerances" ;

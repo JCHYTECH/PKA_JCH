@@ -108,7 +108,7 @@ crontab -l
 
 | Service | Rôle | Commande / fréquence | Logs |
 |---|---|---|---|
-| `com.pka.dobby` | Bot Telegram Dobby | RunAtLoad + KeepAlive | `scripts/telegram-bot/dobby.log` |
+| `com.pka.dobby` | Bot Telegram [[Dobby]] | RunAtLoad + KeepAlive | `scripts/telegram-bot/dobby.log` |
 | `com.jchytech.pka-dashboard` | Dashboard local | RunAtLoad + KeepAlive | voir plist |
 | `com.jchytech.pka-dropbox-watch` | Surveillance Dropbox VETALYX | WatchPaths | `tmp/dropbox-watch.log` |
 | `com.jchytech.pka-gmail-gatekeeper` | Scan Gmail | toutes les 20 min | `tmp/gmail-gatekeeper.log` |
@@ -135,13 +135,13 @@ _local/disabled_launchagents/com.jch.pka.backup.plist.disabled
 | Horaire | Script | Rôle |
 |---|---|---|
 | 08:00 quotidien | `scripts/backup_team_db.py` | backup `TEAM/team.db` |
-| 22:00 quotidien | `scripts/sybil_journal.py` | journal Sybil |
-| 23:00 quotidien | `scripts/dobby_retro.py` | rétrospective Dobby |
+| 22:00 quotidien | `scripts/sybil_journal.py` | journal [[Sybil]] |
+| 23:00 quotidien | `scripts/dobby_retro.py` | rétrospective [[Dobby]] |
 | 19:00 dimanche | `scripts/dobby_weekly_report.py` | rapport hebdo |
 
 `email_digest.py` ne doit pas être présent dans le crontab tant qu'il n'est pas réautorisé.
 
-## 8. Dobby Telegram
+## 8. [[Dobby]] Telegram
 
 Statut :
 

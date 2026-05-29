@@ -24,7 +24,7 @@
 
 ---
 
-### Core knowledge required
+### Core [[knowledge]] required
 
 - Corporate finance: DCF, comparable transactions, EV/EBITDA, revenue multiples, IRR
 - Startup financing mechanics: pre-seed to Series B, SAFE notes, convertible bonds, equity rounds, option pools
@@ -35,7 +35,7 @@
 
 ---
 
-### Adjacent knowledge that separates good from great
+### Adjacent [[knowledge]] that separates good from great
 
 - Qualitative risk modeling: team quality signals, market timing, competitive moat assessment
 - Recognizing when NOT to invest: toxic terms, cap table red flags, founder dynamics issues

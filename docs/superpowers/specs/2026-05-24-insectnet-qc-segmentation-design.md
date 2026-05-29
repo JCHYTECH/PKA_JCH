@@ -27,7 +27,7 @@ audio-download-manifest.csv
 
 - Segment length: 3 seconds.
 - Output audio: WAV, mono, 48 kHz.
-- Segment policy: skip clips shorter than one full segment.
+- Segment [[policy]]: skip clips shorter than one full segment.
 - Per-file limit: optional CLI parameter, default unlimited.
 - Existing segment files are skipped unless `--overwrite` is passed.
 

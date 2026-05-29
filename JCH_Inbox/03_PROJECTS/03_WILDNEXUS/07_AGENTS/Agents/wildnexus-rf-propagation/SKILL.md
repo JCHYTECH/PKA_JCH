@@ -265,7 +265,7 @@ When this skill is active, responses should include:
 
 - **Link budget tables** with explicit assumptions for each scenario
 - **Range estimates by terrain type** — never single-figure claims
-- **Topology diagrams** (text or Mermaid) for network architecture decisions
+- **Topology diagrams** (text or Mermaid) for network architecture [[decisions]]
 - **Duty cycle calculations** when transmission frequency or packet size is in question
 - **SF selection rationale** with air time implications stated explicitly
 - **Risk flags** when a proposed topology risks EU868 non-compliance or poor reliability

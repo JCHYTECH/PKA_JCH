@@ -109,7 +109,7 @@ Registres :
 ---
 
 Approche recommandée selon votre objectif  
-Pour un projet industriel, diagnostic ou commercial (kits, instruments, services), la bonne pratique est :
+Pour un projet industriel, diagnostic ou [[commercial]] (kits, instruments, services), la bonne pratique est :
 – cibler en priorité les groupes (accès rapide à plusieurs centaines de cliniques),
 – compléter par une extraction ciblée des registres officiels (filtrage par espèces traitées, taille de structure, région),
 – éviter les listes généralistes non qualifiées.
@@ -117,7 +117,7 @@ Pour un projet industriel, diagnostic ou commercial (kits, instruments, services
 Si vous le souhaitez, je peux, à l’étape suivante, produire :
 – une cartographie par pays (groupes vs indépendants),
 – un tableau comparatif des réseaux (nombre de cliniques, couverture géographique),
-– ou une méthodologie concrète pour constituer un fichier commercial exploitable (Excel/CRM) à partir des sources officielles.
+– ou une méthodologie concrète pour constituer un fichier [[commercial]] exploitable (Excel/CRM) à partir des sources officielles.
 
 ---
 

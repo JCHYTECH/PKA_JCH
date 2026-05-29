@@ -12,7 +12,7 @@ Ce document définit précisément :
 Le but est de transformer PKA_JCH en :
 - système documentaire relationnel,
 - mémoire persistante AI-compatible,
-- knowledge graph exploitable,
+- [[knowledge]] graph exploitable,
 - base de coordination multi-agents.
 
 ---
@@ -142,10 +142,10 @@ Ces liens peuvent être suggérés mais non imposés.
 Sortie attendue :
 
 99_SYSTEM/indexes/
-- note_index.md
-- project_index.md
-- technology_index.md
-- agent_index.md
+- [[note_index]].md
+- [[project_index]].md
+- [[technology_index]].md
+- [[agent_index]].md
 
 JC :
 - aucune intervention sauf erreur majeure.
@@ -156,7 +156,7 @@ JC :
 
 Créer :
 
-99_SYSTEM/knowledge_dictionary.md
+99_SYSTEM/[[knowledge_dictionary]].md
 
 Contenu :
 
@@ -211,7 +211,7 @@ NE PAS linker automatiquement.
 
 Créer :
 
-99_SYSTEM/review_queue.md
+99_SYSTEM/[[review_queue]].md
 
 Format :
 
@@ -295,7 +295,7 @@ tags:
 ## ÉTAPE 4 — MATCHING
 
 Comparer avec :
-knowledge_dictionary.md
+[[knowledge_dictionary]].md
 
 Si correspondance :
 → proposer wikilink.
@@ -310,7 +310,7 @@ Insertion automatique UNIQUEMENT si :
 - note cible existante.
 
 Sinon :
-→ review_queue.md
+→ [[review_queue]].md
 
 ---
 
@@ -409,7 +409,7 @@ MAUVAIS :
 Créer :
 
 - mémoire relationnelle,
-- knowledge graph exploitable,
+- [[knowledge]] graph exploitable,
 - système documentaire AI-native,
 - continuité inter-modèles,
 - plateforme R&D augmentée.
@@ -465,7 +465,7 @@ Le système documentaire doit toujours privilégier :
 5. automatisation prudente,
 6. capitalisation long terme.
 
-Le knowledge graph doit être considéré comme :
+Le [[knowledge]] graph doit être considéré comme :
 - infrastructure critique de PKA_JCH,
 - mémoire centrale,
 - et couche relationnelle commune à tous les agents AI.

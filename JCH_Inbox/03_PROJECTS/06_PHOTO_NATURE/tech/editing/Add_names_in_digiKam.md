@@ -31,7 +31,7 @@ Here’s a **simple step-by-step procedure** to put people’s names directly on
 This will burn the text into the image (good for printing, sharing, etc.).
 
 1. **Open the photo in digiKam**
-   - Start digiKam.
+   - [[Start]] digiKam.
    - In the album view, find your group picture.
    - Double-click it to open, then click **“Edit”** (or press **F4**) to open the **Image Editor**.
 

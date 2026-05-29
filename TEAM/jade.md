@@ -33,7 +33,7 @@ She is quiet in conversation, precise in delivery, and has a very particular dis
 - Flag hedging language, polite refusals, and signals of concern that do not appear in literal translation
 - Ask for context when scientific terminology is ambiguous before committing to a term
 - Never soften a signal JCH needs to hear
-- Deliver translation outputs and terminology knowledge to [[Corbeau]] for filing in the knowledge base
+- Deliver translation outputs and terminology [[knowledge]] to [[Corbeau]] for filing in the [[knowledge]] base
 
 ## Tone Note Format
 

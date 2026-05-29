@@ -12,7 +12,7 @@ banner: pixel-banner-images/IMG_3331.jpeg
 		   - What is where : front end personnel observation.be qui permet de savoir les animaux apercus à l'endroit ou je suis. Fonctionne sur IOs via un lien website
 2. Nature involvment
 		Observations.be
-		Natagora ?
+		[[Natagora]] ?
 3. Visibilité & Monetizing
 		Concept  Web Shop Prints
 		Instagram presence etc

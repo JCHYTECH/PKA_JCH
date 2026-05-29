@@ -68,10 +68,10 @@ Documents juridiques en circulation dans l'équipe.
 |---|---|---|
 | 2026-04-30_AB_vetalyx-pacte-consolide.docx | 42 Ko | 07/05/2026 |
 | 2026-04-30_AB_vetalyx-pacte-consolide.txt | 28 Ko | 10/05/2026 |
-| 2026-04-30_renard-jade_diaho-vetalyx-contrat-cadre-skeleton.md | 14 Ko | 30/04/2026 |
+| [[2026-04-30_renard-jade_diaho-vetalyx-contrat-cadre-skeleton]].md | 14 Ko | 30/04/2026 |
 | 2026-04-30_vetalyx-pacte-consolide.md | 31 Ko | 09/05/2026 |
-| 2026-05-03_premier_draft_contrat_vetalyx_diaho.md | 51 Ko | 04/05/2026 |
-| 2026-05-10_renard_seing-prive-actionnaires-vetalyx-diaho-v1.docx | 44 Ko | 10/05/2026 |
+| [[2026-05-03_premier_draft_contrat_vetalyx_diaho]].md | 51 Ko | 04/05/2026 |
+| [[2026-05-10_renard_seing-prive-actionnaires-vetalyx-diaho-v1]].docx | 44 Ko | 10/05/2026 |
 
 **Statut PKA :** Version AB du pacte et premier draft contrat importés dans PKA legal/ le 2026-05-26.
 

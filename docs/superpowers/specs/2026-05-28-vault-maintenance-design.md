@@ -67,7 +67,7 @@ Scan récursif de `JCH_Inbox/`, `TEAM/`, `TEAM_Inbox/`, `docs/`.
 
 | Pattern | Dossier attendu |
 | --- | --- |
-| `YYYY-MM-DD_*.md` (daily notes) | `JCH_Inbox/01_DASHBOARDS/` |
+| `YYYY-MM-DD_*.md` ([[daily]] notes) | `JCH_Inbox/01_DASHBOARDS/` |
 | `*_rapport_*.md`, `*_delivery_*.md` | `TEAM_Inbox/` |
 | `*.py` hors `scripts/` | Anomalie signalée |
 | `*.plist` hors `scripts/launchd/` | Anomalie signalée |

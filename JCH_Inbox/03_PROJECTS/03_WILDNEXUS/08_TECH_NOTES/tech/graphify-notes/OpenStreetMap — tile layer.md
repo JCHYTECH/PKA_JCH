@@ -8,7 +8,7 @@ tags:
   - community/Map_&_Detail_Display
 ---
 
-# OpenStreetMap — tile layer
+# [[OpenStreetMap — tile layer]]
 
 ## Connections
 - [[Leaflet.js — map library]] - `references` [EXTRACTED]

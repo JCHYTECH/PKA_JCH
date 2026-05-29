@@ -27,6 +27,6 @@ Le systeme ne doit jamais s'auto-etendre seul. Il peut suggerer une memoire, une
 ## Structure
 
 - `proposals/`: propositions individuelles a arbitrer.
-- `decisions/`: registre des decisions prises.
+- `decisions/`: registre des [[decisions]] prises.
 - `templates/`: format standard des futures propositions.
 

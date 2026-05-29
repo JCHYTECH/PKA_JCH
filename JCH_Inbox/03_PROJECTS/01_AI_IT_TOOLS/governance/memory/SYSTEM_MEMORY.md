@@ -1,4 +1,4 @@
-# SYSTEM_MEMORY
+# [[SYSTEM_MEMORY]]
 
 Statut: `draft`
 Derniere revue: `2026-05-13`

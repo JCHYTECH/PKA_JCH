@@ -36,7 +36,7 @@ Les pistes a prendre au serieux :
 | Bouffalo BL808 | Bouffalo Lab | RISC-V multimedia MCU/SoC | MIPI CSI/DVP, Wi-Fi/BLE selon design, NPU BLAI-100 | boards rares/variables | Idee camera+wireless compacte | Trop risque pour trajectoire critique |
 | GigaDevice GD32H7 | GigaDevice | MCU Cortex-M7 industriel | jusqu'a 600 MHz, 1-3.84 MB flash, env. 1 MB SRAM, camera DVP, LCD, SDIO, Ethernet | composant/devboard a verifier via canaux Chine | Alternative MCU puissante a STM32H7 | Bon plan supply, pas IA lourde |
 | WCH CH32V / CH32H | WCH | MCU RISC-V tres bas cout | RISC-V, nombreux peripheriques, ecosysteme specifique | souvent <1-5 USD selon reference/quantite | Sous-modules capteurs, auxiliaires | Pas coeur WildNexus |
-| Quectel / Fibocom / SIMCom | Producteurs cellular IoT | Modules 4G/LTE-M/NB-IoT/5G | Cat 1 bis, LTE-M, NB-IoT, GNSS selon module, temperature industrielle | Quectel EG916Q env. 30-35 USD en distribution, moins en volume possible | Backhaul base/satellite smart, telemetry | A integrer dans la strategie Chine |
+| Quectel / Fibocom / SIMCom | Producteurs cellular IoT | Modules 4G/LTE-M/NB-IoT/5G | Cat 1 bis, LTE-M, NB-IoT, GNSS selon module, temperature industrielle | Quectel EG916Q env. 30-35 USD en distribution, moins en volume possible | Backhaul base/satellite smart, telemetry | A integrer dans la [[strategie]] Chine |
 
 ## 3. Analyse critique
 

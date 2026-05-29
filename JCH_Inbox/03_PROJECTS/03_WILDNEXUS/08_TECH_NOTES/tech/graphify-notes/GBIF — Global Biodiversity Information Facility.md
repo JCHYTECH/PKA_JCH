@@ -8,7 +8,7 @@ tags:
   - community/GBIF_Data_Sources_&_APIs
 ---
 
-# GBIF — Global Biodiversity Information Facility
+# [[GBIF — Global Biodiversity Information Facility]]
 
 ## Connections
 - [[GBIF Alert — Belgian open-source notification system for new GBIF observations]] - `references` [EXTRACTED]

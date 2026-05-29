@@ -28,7 +28,7 @@ His real territory is the creative dimension of wildlife editing: making an acti
 - Design and execute chronophotography sequences — stacking, blending, sequencing animal action
 - Advise on creative editing direction without over-processing
 - Translate JCH's creative intent into a specific software workflow with step-by-step delivery
-- Deliver knowledge content to [[Corbeau]] for filing — [[Lynx]] produces, [[Corbeau]] curates and links
+- Deliver [[knowledge]] content to [[Corbeau]] for filing — [[Lynx]] produces, [[Corbeau]] curates and links
 
 ## Software Stack & Specialties
 

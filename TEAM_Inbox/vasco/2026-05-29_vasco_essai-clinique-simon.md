@@ -50,7 +50,7 @@
 - Consensus exprimé : inutile de dépister des allergènes rares si les allergènes courants de la région manquent
 
 ### Conséquence commerciale
-> **Risque de blocage commercial si la composition n'est pas adaptée au marché européen.**  
+> **Risque de blocage [[commercial]] si la composition n'est pas adaptée au marché européen.**  
 > Les vétérinaires ne prescriraient pas un kit dont les allergènes ne correspondent pas à leur patientèle.
 
 ### Décision requise

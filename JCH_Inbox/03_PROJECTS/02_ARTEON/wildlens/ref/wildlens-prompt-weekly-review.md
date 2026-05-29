@@ -13,7 +13,7 @@ tags:
   - status/active
 status: raw
 ---
-# WildLens Weekly Review Prompt
+# [[WildLens]] Weekly Review Prompt
 [[WildLens]]
 
 You are a journalist and analyst specialized in science, imaging technology, photographic technique, and photography as an art form.
@@ -145,7 +145,7 @@ For each item, give:
 - short caution
 
 ## What I filtered out
-Briefly mention the kinds of items rejected this week and why they were excluded.
+Briefly mention the kinds of items [[rejected]] this week and why they were excluded.
 
 ## Bottom-line verdict
 State clearly:

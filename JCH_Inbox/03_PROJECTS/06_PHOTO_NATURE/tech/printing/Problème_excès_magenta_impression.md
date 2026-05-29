@@ -932,7 +932,7 @@ Profil ICC
 Driver Epson  
 → **No Color Adjustment**
 
-Papier  
+[[Papier]]  
 → Premium Glossy Photo Paper
 
 ---
@@ -1421,7 +1421,7 @@ Photoshop Print
 Driver Epson  
 – **No Color Adjustment**  
 
-Papier  
+[[Papier]]  
 – **Premium Glossy Photo Paper**
 
 ---
@@ -2424,7 +2424,7 @@ out
 J’ai transformé le document en **guide de formation structuré et illustré**, avec :
 
 - schémas pédagogiques du **workflow couleur**
-- diagramme du **soft proof**
+- [[diagramme]] du **soft proof**
 - explication visuelle du **bronzing**
 - **charte de gris** pour diagnostic des dominantes
 - **mire couleur** pour contrôle de fidélité
@@ -3193,7 +3193,7 @@ Le manuel a maintenant été transformé en **version PDF type “guide de forma
 - structure pédagogique
 - schémas explicatifs
 - workflow couleur
-- diagramme de gamut
+- [[diagramme]] de gamut
 - illustration du bronzing
 - mire de gris pour diagnostic
 - mire couleur de contrôle
@@ -4124,7 +4124,7 @@ recommandé :
 
 ---
 
-# 11. Papier mal choisi
+# 11. [[Papier]] mal choisi
 
 Le papier influence énormément le rendu.
 
@@ -4578,7 +4578,7 @@ Espaces couleur
 - ProPhotoRGB
 
 Chapitre 3  
-Le diagramme **CIE Lab**
+Le [[diagramme]] **CIE Lab**
 
 Explication visuelle :
 
@@ -4710,7 +4710,7 @@ Le guide final comprendra :
 
 Je peux maintenant créer :
 
-### 1️⃣ Le **diagramme CIE Lab et les gamuts écran/imprimante**
+### 1️⃣ Le **[[diagramme]] CIE Lab et les gamuts écran/imprimante**
 
 C’est le schéma le plus important pour comprendre la couleur.
 
@@ -5118,7 +5118,7 @@ Je peux produire **le vrai guide expert complet (~120 pages)** structuré comme 
 
 ### Partie 1 — Science de la couleur
 - perception visuelle
-- diagramme **CIE Lab**
+- [[diagramme]] **CIE Lab**
 - gamuts écran / AdobeRGB / imprimante
 
 ### Partie 2 — Gestion des couleurs

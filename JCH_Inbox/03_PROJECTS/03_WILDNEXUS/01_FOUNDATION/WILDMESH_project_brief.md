@@ -156,7 +156,7 @@ La gateway (nœud central ou de bordure) peut être connectée via :
 - Gestion des images : collecte manuelle sur SD ou transmission différée via gateway 4G ?
 - Nom du projet / branding pour diffusion communautaire
 - Licence open source : MIT, GPL, CERN OHL (hardware) ?
-- Partenariats potentiels : Natagora, universités belges (ULg, UCLouvain) ?
+- Partenariats potentiels : [[Natagora]], universités belges (ULg, UCLouvain) ?
 
 ---
 

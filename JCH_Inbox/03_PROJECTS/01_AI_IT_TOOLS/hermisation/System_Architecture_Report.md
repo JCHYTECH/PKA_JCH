@@ -68,11 +68,11 @@ Règle ferme : les PostgreSQL et Redis internes de Plane ne servent pas de socle
 
 | Version | Date | Description |
 |---------|------|-------------|
-| v1 | 2026-04-29 | Initial : members, responsibilities, hiring_pipeline, inbox |
+| v1 | 2026-04-29 | Initial : members, responsibilities, hiring_pipeline, [[inbox]] |
 | v2 | 2026-04-29 | Journal, contacts, file_index |
 | v3 | 2026-04-29 | Knowledge, knowledge_links, ideas, bookmarks, goals, interactions, follow_ups |
 | v4 | 2026-04-29 | Consolidation : CHECK constraints, indexes, tables_owned |
-| v5 | 2026-05-28 | Migration inbox : deliverable_path, delivered_at, validated_at, statuts étendus |
+| v5 | 2026-05-28 | Migration [[inbox]] : deliverable_path, delivered_at, validated_at, statuts étendus |
 | v6 | 2026-05-29 | Extension memory_log + skills : event_type, body, confidence, scope, model… |
 | v7 | 2026-05-29 | Drop table vide `file_index_legacy_2026_05_16` ; 5 nouveaux indexes |
 
@@ -94,7 +94,7 @@ Règle ferme : les PostgreSQL et Redis internes de Plane ne servent pas de socle
 ### Intégrité
 
 - Orphelins `knowledge_links` : **0**
-- Foreign keys déclarées sur `knowledge_links` (from_id, to_id → knowledge.id)
+- Foreign keys déclarées sur `knowledge_links` (from_id, to_id → [[knowledge]].id)
 - FK enforcement activé sur : `pka_memory_log.py`, `skill_write.py`
 - FK enforcement à activer sur les autres scripts au fil des modifications
 
@@ -114,7 +114,7 @@ Règle ferme : les PostgreSQL et Redis internes de Plane ne servent pas de socle
 - `idx_knowledge_tags` — recherche par tags
 - `idx_skills_trigger` — lookup skills par pattern
 - `idx_memory_log_event` — filtrage par type d'événement
-- `idx_inbox_created` — tri chronologique inbox
+- `idx_inbox_created` — tri chronologique [[inbox]]
 - `idx_inbox_to` — filtrage par destinataire + statut
 
 ---

@@ -45,7 +45,7 @@ Cette note centralise les questions réglementaires et de conformité liées à 
 | Risque | Niveau | Action |
 |---|---|---|
 | Dossier incomplet | élevé | créer checklist réglementaire |
-| Allégations non vérifiées | moyen | revue du contenu commercial |
+| Allégations non vérifiées | moyen | revue du contenu [[commercial]] |
 | Fournisseur insuffisamment documenté | élevé | demander documentation technique |
 
 ## Liens utiles

@@ -56,7 +56,7 @@ Puissance nominale requise (kW) = Charge de pointe simultanée (kW)
 - Vérifier le C-rate résultant : Puissance / Capacité ≤ 1C (recommandé stationnaire)
 - Pour demand management : identifier la durée de la pointe → ajuster C-rate
 
-**Exemple commercial :**
+**Exemple [[commercial]] :**
 - Pointe de demande à écrêter : 150 kW sur 30 minutes
 - Énergie requise : 150 kW × 0,5h = 75 kWh
 - C-rate : 150/75 = 2C → acceptable pour des pointes courtes, mais accélère le vieillissement
@@ -178,7 +178,7 @@ Le BMS est le cerveau de sécurité de toute installation BESS. Il assure :
 
 ### 4.3 Thermal Management System (TMS)
 - **Passive cooling** : dissipation naturelle + ventilation — résidentiel <30 kWh
-- **Active air cooling** : ventilateurs — commercial jusqu'à ~500 kWh
+- **Active air cooling** : ventilateurs — [[commercial]] jusqu'à ~500 kWh
 - **Liquid cooling** : circuits eau/glycol — grid-scale et haute densité (Tesla Megapack, CATL EnerC)
 - Température optimale LFP : 15–35°C — au-delà de 45°C, vieillissement accéléré
 

@@ -219,7 +219,7 @@ bash ./install.sh
 
 ---
 
-# BirdNET-Go Service Commands
+# BirdNET-Go Service [[Commands]]
 
 Check status:
 

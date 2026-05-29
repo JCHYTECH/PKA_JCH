@@ -4,7 +4,7 @@ Dernière mise à jour : 2026-05-11
 
 ## Description
 Plateforme éditoriale photographique naturaliste.  
-`arteon.be` | Stack : Shopify Basic · Ghost (WildLens) · WhiteWall
+`arteon.be` | Stack : Shopify Basic · Ghost ([[WildLens]]) · WhiteWall
 
 ---
 
@@ -37,7 +37,7 @@ Plateforme éditoriale photographique naturaliste.
 | `brand/arteon-architecture-charte.md` | Charte graphique, sitemap, URLs |
 | `brand/presentation-governance.md` | Règle de base pour tout deck, PowerPoint ou support de présentation |
 | `brand/arteon-manifeste-{court,long}.md` | Textes éditoriaux finaux |
-| `wildlens/ref/WildLens.md` | Référentiel newsletter WildLens |
+| `wildlens/ref/WildLens.md` | Référentiel newsletter [[WildLens]] |
 
 ## Règle de production visuelle
 

@@ -326,7 +326,7 @@ When stacking, use:
 
 Step 1 — Zoom to 1:1  
 Step 2 — Confirm first focus plane (front-most anatomical detail)  
-Step 3 — Start rail sequence  
+Step 3 — [[Start]] rail sequence  
 Step 4 — Periodically re-check alignment without touching camera  
 
 The 5” size is sufficient; larger monitors increase wind sensitivity outdoors.
@@ -493,7 +493,7 @@ If your rail resolution is 1 mm per turn, you must subdivide motor steps accordi
 
 3. Sequence control
 
-Start sequence without touching camera.  
+[[Start]] sequence without touching camera.  
 Observe on monitor for subject movement during progression.
 
 If insect moves: abort sequence immediately. Partial stacks are rarely salvageable.

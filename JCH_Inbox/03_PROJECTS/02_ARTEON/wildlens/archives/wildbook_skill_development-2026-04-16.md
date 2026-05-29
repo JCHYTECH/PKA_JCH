@@ -89,7 +89,7 @@ Good. That completes the picture. Let me confirm what I'm building before writin
 - Output: Ghost newsletter + PDF
 - Structure to define: adapted from [[WildLens]] but book-review-native
 
-**Before I write the skill, a few remaining design decisions:**
+**Before I write the skill, a few remaining design [[decisions]]:**
 
 1. **Review depth per book** — for each of the 2–3 selected books, what's the target length? A WILDLENS section is ~300–400 words. Do you want that, or longer (600–800 words per book)?
 
@@ -127,7 +127,7 @@ For the Arteon brand credo/tagline, three options:
 ---
 
 **B — Poetic, brand-as-bridge**
-*"Between the lens and the wild, there is knowledge. Arteon puts it there."*
+*"Between the lens and the wild, there is [[knowledge]]. Arteon puts it there."*
 
 ---
 
@@ -150,7 +150,7 @@ Once you confirm, I write the WILDBOOK skill immediately.
 ## Human
 *2026-04-05 18:23*
 
-“Between Us and the wild, there is knowledge. Arteon puts it there.”
+“Between Us and the wild, there is [[knowledge]]. Arteon puts it there.”
 
 ---
 
@@ -185,7 +185,7 @@ Skill is built and packaged. Here's what it codifies:
 
 **Structure per edition**: Editorial intro (200–300w, credo once) → Main review (300w) → Second review (300w) → Optional third review (150–200w, lighter treatment).
 
-**Key design decisions baked in**:
+**Key design [[decisions]] baked in**:
 - Tone rotation each month across the three modes
 - Mandatory [[WildLens]] cross-reference when thematic overlap exists
 - SVG responds to the edition's theme, not to a book cover
@@ -234,7 +234,7 @@ Ready to run Edition 001 when you want.
 ## Human
 *2026-04-05 18:26*
 
-Sorry we maintain : “Between Us and the wild, there is knowledge. Arteon puts it there.”
+Sorry we maintain : “Between Us and the wild, there is [[knowledge]]. Arteon puts it there.”
 
 Arteon position 	C is the most editorial and combative — fits a publication that challenges readers rather than reassures them
 
@@ -270,8 +270,8 @@ This block is not supported on your current device yet.
 
 Corrected. The skill now carries:
 
-- **Credo**: *"Between Us and the wild, there is knowledge. Arteon puts it there."*
-- **Voice**: combative, challenges rather than reassures — Arteon confronts with knowledge, doesn't comfort
+- **Credo**: *"Between Us and the wild, there is [[knowledge]]. Arteon puts it there."*
+- **Voice**: combative, challenges rather than reassures — Arteon confronts with [[knowledge]], doesn't comfort
 
 Ready for Edition 001.
 
@@ -338,7 +338,7 @@ Good. I now have solid research across four confirmed 2026 releases. Here is the
 **1. *When the Forest Breathes: Renewal and Resilience in the Natural World***
 Suzanne Simard — Knopf — Published March 31, 2026
 *Category: Natural science / human-nature relationship*
-The follow-up to *Finding the Mother Tree*. Simard extends her research on forest interconnectedness into a broader argument for regenerative forestry, drawing on Indigenous knowledge systems and her own Mother Tree Project. Blends science, memoir, and conservation advocacy. Already one of the most discussed nature books of the year. Literary Hub named it among the most anticipated books of 2026.
+The follow-up to *Finding the Mother Tree*. Simard extends her research on forest interconnectedness into a broader argument for regenerative forestry, drawing on Indigenous [[knowledge]] systems and her own Mother Tree Project. Blends science, memoir, and conservation advocacy. Already one of the most discussed nature books of the year. Literary Hub named it among the most anticipated books of 2026.
 
 ---
 

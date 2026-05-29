@@ -227,7 +227,7 @@ Remplacement de l'électrolyte liquide par un électrolyte solide (céramique ox
 ### État de maturité 2025
 - Phase : laboratoire → préproduction pilote
 - Mass production : horizon 2027–2030 (Toyota, Samsung SDI, Solid Power)
-- Cycles démontrés en lab : ~1 000 cycles (insuffisant pour BESS commercial)
+- Cycles démontrés en lab : ~1 000 cycles (insuffisant pour BESS [[commercial]])
 - Densité énergétique théorique : >400 Wh/kg (anode Li métal)
 
 ### Défis techniques non résolus à l'échelle
@@ -253,7 +253,7 @@ Remplacement de l'électrolyte liquide par un électrolyte solide (céramique ox
 | Na-ion | 120–175 | 2 000–5 000 | 70–90 $ (cible) | ★★★★ | Stationnaire émergent |
 | VRFB | 20–35* | 10 000–20 000 | 300–500 $/kWh† | ★★★★★ | Long-duration grid |
 | ZnBr₂ | 60–80 | 3 000–10 000 | 200–350 $/kWh | ★★★ | C&I long-duration |
-| Solid-State | >400 (théorique) | ~1 000 (lab) | Non commercial | ★★★★★ | EV premium post-2027 |
+| Solid-State | >400 (théorique) | ~1 000 (lab) | Non [[commercial]] | ★★★★★ | EV premium post-2027 |
 
 *Densité de l'électrolyte seul
 †Coût VRFB sur durée de vie compétitif grâce aux 20 000 cycles — coût par cycle nettement inférieur

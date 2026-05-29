@@ -22,7 +22,7 @@ tags:
   - status/active
 ---
 
-# Observation - 2026-04-25 - Grenouille rousse - mare forestière
+# [[Observation - 2026-04-25 - Grenouille rousse - mare forestière]]
 
 ## 1. Résumé de l'observation
 

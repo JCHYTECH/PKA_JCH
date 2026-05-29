@@ -38,7 +38,7 @@ I do have access to [[Claude]] in Chrome tools. In theory, I could navigate [[Cl
 
 If you have API access and your conversations are accessible there, a script could pull them programmatically. But standard [[Claude]].ai conversations aren't exposed via the API.
 
-**My recommendation:** Start with option 2 — request your data export from Anthropic. If you get a JSON dump, upload it here and I'll convert each conversation into a separate `.md` file with the 5-word naming convention, plus generate the selection list you described so you can pick which ones to export.
+**My recommendation:** [[Start]] with option 2 — request your data export from Anthropic. If you get a JSON dump, upload it here and I'll convert each conversation into a separate `.md` file with the 5-word naming convention, plus generate the selection list you described so you can pick which ones to export.
 
 Want to check if the data export option is available in your account settings?
 
@@ -82,7 +82,7 @@ I can't trigger the data export for you — it's an action you need to perform y
 2. Click your profile icon (bottom-left)
 3. Go to **Settings**
 4. Look for **Account** → **Export Data** (or similar wording)
-5. Request the export — Anthropic will email you a download link
+5. Request the export — Anthropic will [[email]] you a download link
 
 Once you receive the file (likely a `.zip` containing JSON), upload it here. I'll then:
 
@@ -122,7 +122,7 @@ My mistake — the path is **Settings → Privacy**, not "Account." Here's the c
 2. Select **Settings**
 3. Go to the **Privacy** tab
 4. Click **Export Data**
-5. You'll receive an email with a download link (valid 24h)
+5. You'll receive an [[email]] with a download link (valid 24h)
 
 The export arrives as a **ZIP containing JSON files** — not Markdown. The JSON is structured but not pretty to read raw.
 

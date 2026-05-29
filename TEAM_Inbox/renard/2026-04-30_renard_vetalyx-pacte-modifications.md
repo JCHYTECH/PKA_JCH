@@ -76,7 +76,7 @@ En cas de conflit entre le présent Pacte et un pacte investisseurs postérieur,
 ## Art. 26 — Reporting trimestriel → mensuel sur seuil
 
 **Texte modifié :**
-"Trimestriellement : situation de trésorerie, tableau de bord commercial, comptes de gestion. Lorsque le chiffre d'affaires annuel dépasse cent mille (100 000) euros, la fréquence du reporting de trésorerie et du tableau de bord commercial passe à mensuelle, les comptes de gestion restant trimestriels."
+"Trimestriellement : situation de trésorerie, tableau de bord [[commercial]], comptes de gestion. Lorsque le chiffre d'affaires annuel dépasse cent mille (100 000) euros, la fréquence du reporting de trésorerie et du tableau de bord [[commercial]] passe à mensuelle, les comptes de gestion restant trimestriels."
 
 ---
 

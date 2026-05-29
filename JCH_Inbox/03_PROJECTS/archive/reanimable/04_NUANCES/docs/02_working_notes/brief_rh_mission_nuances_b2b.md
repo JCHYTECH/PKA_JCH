@@ -6,12 +6,12 @@ Source de cadrage : `analyse_nuances_b2b_mission.md`
 
 ## 1. Intitule de mission propose
 
-Consultant senior en strategie technico-commerciale B2B energie
+Consultant senior en [[strategie]] technico-commerciale B2B energie
 
 Autres intitules possibles :
 
 - Responsable mission go-to-market B2B energie ;
-- Consultant strategie commerciale et operations B2B energie ;
+- Consultant [[strategie]] commerciale et operations B2B energie ;
 - Chef de projet developpement B2B energie / EMS / BESS ;
 - Consultant transformation commerciale B2B - secteur energie.
 
@@ -19,9 +19,9 @@ Autres intitules possibles :
 
 Nuances souhaite structurer et accelerer son activite B2B autour de l'optimisation energetique des PME et industries.
 
-La societe dispose deja d'une base d'offres et d'actifs : audit energie, boitier de collecte de donnees, sensors, Nuance Brain / EMS, PV, batteries industrielles BESS, contrats energie, flexibilite, valorisation de l'injection, leasing et tiers investissement.
+La societe dispose deja d'une base d'offres et d'actifs : audit energie, boitier de collecte de donnees, sensors, Nuance Brain / EMS, PV, batteries industrielles BESS, [[contrats]] energie, flexibilite, valorisation de l'injection, leasing et tiers investissement.
 
-L'enjeu n'est pas uniquement de vendre davantage, mais de construire une strategie technico-commerciale complete permettant :
+L'enjeu n'est pas uniquement de vendre davantage, mais de construire une [[strategie]] technico-commerciale complete permettant :
 
 - de cibler les bons marches et les bons prospects ;
 - de reduire le temps de prospection ;
@@ -34,7 +34,7 @@ L'enjeu n'est pas uniquement de vendre davantage, mais de construire une strateg
 
 La mission doit produire un dispositif operationnel pour lancer ou accelerer le B2B Nuances.
 
-Le consultant devra transformer une vision strategique et technique en systeme commercial utilisable par les equipes : segmentation, scoring, qualification, dossier preliminaire, modele financier, pipeline CRM, KPI et playbooks commerciaux.
+Le consultant devra transformer une vision strategique et technique en systeme [[commercial]] utilisable par les equipes : segmentation, scoring, qualification, dossier preliminaire, modele financier, pipeline CRM, KPI et playbooks commerciaux.
 
 ## 4. Objectifs principaux
 
@@ -42,12 +42,12 @@ Le consultant devra transformer une vision strategique et technique en systeme c
 2. Definir les cibles commerciales les plus rentables.
 3. Construire une grille de screening rapide des prospects.
 4. Structurer les criteres Go / No Go.
-5. Concevoir le dossier preliminaire de rendez-vous commercial.
-6. Relier chaque scenario commercial a une solution technique et a une rentabilite.
+5. Concevoir le dossier preliminaire de rendez-vous [[commercial]].
+6. Relier chaque scenario [[commercial]] a une solution technique et a une rentabilite.
 7. Integrer la demarche dans un CRM et un processus de pilotage.
 8. Definir les KPI commerciaux, techniques et financiers.
 9. Preparer les supports necessaires a la force commerciale.
-10. Tester et valider le protocole technico-commercial sur le terrain avec Nuances.
+10. Tester et valider le protocole technico-[[commercial]] sur le terrain avec Nuances.
 11. Identifier les points juridiques, techniques et financiers a securiser.
 
 ## 5. Perimetre de responsabilite
@@ -61,7 +61,7 @@ Le consultant interviendra sur quatre dimensions.
 - definition des messages commerciaux ;
 - structuration du tunnel de vente ;
 - conception des scripts de qualification ;
-- construction d'un playbook commercial B2B.
+- construction d'un playbook [[commercial]] B2B.
 
 ### Analyse technico-economique
 
@@ -76,19 +76,19 @@ Le consultant interviendra sur quatre dimensions.
 
 - definition du pipeline CRM ;
 - champs CRM obligatoires ;
-- workflow commercial -> technique -> offre -> installation -> monitoring ;
+- workflow [[commercial]] -> technique -> offre -> installation -> monitoring ;
 - modeles de documents ;
-- repartition des roles entre commercial, technique, finance et direction ;
+- repartition des roles entre [[commercial]], technique, finance et direction ;
 - organisation du suivi des KPI.
 
 ### Pilotage de mission
 
 - animation des ateliers avec Nuances ;
-- formalisation des decisions ;
+- formalisation des [[decisions]] ;
 - suivi des points ouverts ;
 - production des livrables ;
 - preparation d'une feuille de route ;
-- validation du protocole technico-commercial par visites terrain chez des prospects ;
+- validation du protocole technico-[[commercial]] par visites terrain chez des prospects ;
 - adaptation du protocole sur base des retours de rendez-vous ;
 - alignement avec les attentes eventuelles d'un investisseur.
 
@@ -105,8 +105,8 @@ Livrables prioritaires :
 - structure du pipeline CRM ;
 - liste des champs CRM commerciaux, techniques et financiers ;
 - tableau de KPI ;
-- premier playbook commercial ;
-- protocole technico-commercial teste sur un nombre defini de prospects ;
+- premier playbook [[commercial]] ;
+- protocole technico-[[commercial]] teste sur un nombre defini de prospects ;
 - synthese des retours terrain et adaptations recommandees ;
 - backlog projet ;
 - liste des points a clarifier.
@@ -174,11 +174,11 @@ Nuances fournira les informations necessaires a la bonne comprehension du projet
 - acces ou demonstration des outils a incorporer dans le protocole ;
 - informations utiles sur les offres, prix, processus, contraintes techniques et donnees clients.
 
-Ces elements devront etre analyses afin d'etre integres dans le protocole technico-commercial cible.
+Ces elements devront etre analyses afin d'etre integres dans le protocole technico-[[commercial]] cible.
 
 ### Validation terrain du protocole
 
-Le consultant devra valider le protocole technico-commercial mis au point par des visites chez un nombre defini de prospects, accompagne par un specialiste de Nuances.
+Le consultant devra valider le protocole technico-[[commercial]] mis au point par des visites chez un nombre defini de prospects, accompagne par un specialiste de Nuances.
 
 Objectifs des visites :
 
@@ -195,11 +195,11 @@ Le nombre exact de prospects a visiter devra etre defini avec Nuances. A defaut,
 
 ## 8. Profil recherche
 
-Profil senior, capable de faire le lien entre strategie, terrain commercial, technique energie et pilotage operationnel.
+Profil senior, capable de faire le lien entre [[strategie]], terrain [[commercial]], technique energie et pilotage operationnel.
 
 Le profil ideal combine :
 
-- experience en strategie commerciale B2B ;
+- experience en [[strategie]] commerciale B2B ;
 - comprehension du secteur energie ;
 - capacite a structurer une offre complexe ;
 - culture terrain et force de vente ;
@@ -210,7 +210,7 @@ Le profil ideal combine :
 
 ## 9. Competences indispensables
 
-### Strategie et developpement commercial B2B
+### Strategie et developpement [[commercial]] B2B
 
 - segmentation de marche ;
 - qualification de prospects ;
@@ -234,7 +234,7 @@ Connaissance solide ou capacite rapide de montee en competence sur :
 - flexibilite energetique ;
 - peak shaving ;
 - autoconsommation ;
-- contrats d'energie ;
+- [[contrats]] d'energie ;
 - valorisation de l'injection ;
 - contraintes de raccordement et cabines MT/HT.
 
@@ -263,7 +263,7 @@ Connaissance solide ou capacite rapide de montee en competence sur :
 
 - cadrage de mission ;
 - animation d'ateliers ;
-- synthese de decisions ;
+- synthese de [[decisions]] ;
 - production de livrables ;
 - coordination entre metiers ;
 - formalisation de feuille de route ;
@@ -287,7 +287,7 @@ Connaissance solide ou capacite rapide de montee en competence sur :
 
 - esprit de synthese ;
 - rigueur analytique ;
-- sens commercial ;
+- sens [[commercial]] ;
 - pragmatisme ;
 - capacite a simplifier des sujets complexes ;
 - aisance avec les dirigeants ;
@@ -329,26 +329,26 @@ Le consultant devra interagir avec :
 
 Le profil ne doit pas etre uniquement :
 
-- un consultant strategie generaliste ;
-- un pur commercial sans culture technique ;
+- un consultant [[strategie]] generaliste ;
+- un pur [[commercial]] sans culture technique ;
 - un ingenieur energie sans capacite commerciale ;
 - un chef de projet CRM sans vision business ;
 - un financier sans capacite de terrain.
 
-Le besoin est hybride : strategie, commerce, energie, operations et pilotage.
+Le besoin est hybride : [[strategie]], commerce, energie, operations et pilotage.
 
 ## 15. Questions a poser aux candidats
 
 1. Avez-vous deja structure une offre B2B complexe ?
 2. Comment qualifieriez-vous rapidement un prospect industriel pour une solution energie ?
 3. Quels criteres utiliseriez-vous pour prioriser les prospects ?
-4. Comment transformer une offre technique en argumentaire commercial ?
+4. Comment transformer une offre technique en argumentaire [[commercial]] ?
 5. Comment construiriez-vous un dossier de rendez-vous avant le premier contact ?
 6. Quelle experience avez-vous avec les CRM et KPI commerciaux ?
 7. Comment reliez-vous ROI client, cash-flow et decision commerciale ?
 8. Avez-vous deja travaille sur PV, BESS, EMS, flexibilite ou efficacite energetique ?
 9. Comment gerez-vous des sujets avec incertitude technique ou juridique ?
-10. Comment testeriez-vous un protocole commercial sur quelques rendez-vous prospects ?
+10. Comment testeriez-vous un protocole [[commercial]] sur quelques rendez-vous prospects ?
 11. Comment organiseriez-vous les 30 premiers jours de mission ?
 
 ## 16. Critères d'evaluation du bon profil
@@ -387,8 +387,8 @@ Engagements attendus du consultant :
 - produire des supports directement exploitables ;
 - tester le protocole sur le terrain ;
 - adapter les recommandations sur base des retours prospects ;
-- documenter les decisions et points ouverts.
+- documenter les [[decisions]] et points ouverts.
 
 ## 18. Proposition de formulation courte pour Nuances
 
-Nuances recherche un consultant senior pour structurer sa strategie technico-commerciale B2B dans le domaine de l'optimisation energetique. La mission consiste a clarifier les offres B2B, definir les cibles prioritaires, construire une grille de qualification des prospects, preparer les dossiers commerciaux avant rendez-vous, tester le protocole chez plusieurs prospects avec un specialiste Nuances, integrer la demarche dans un CRM et definir les KPI de pilotage. Le profil attendu doit combiner experience commerciale B2B, comprehension des solutions energie, capacite d'analyse financiere et aptitude a transformer une strategie en outils operationnels pour les equipes commerciales et techniques.
+Nuances recherche un consultant senior pour structurer sa [[strategie]] technico-commerciale B2B dans le domaine de l'optimisation energetique. La mission consiste a clarifier les offres B2B, definir les cibles prioritaires, construire une grille de qualification des prospects, preparer les dossiers commerciaux avant rendez-vous, tester le protocole chez plusieurs prospects avec un specialiste Nuances, integrer la demarche dans un CRM et definir les KPI de pilotage. Le profil attendu doit combiner experience commerciale B2B, comprehension des solutions energie, capacite d'analyse financiere et aptitude a transformer une [[strategie]] en outils operationnels pour les equipes commerciales et techniques.

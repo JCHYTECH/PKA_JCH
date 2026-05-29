@@ -21,7 +21,7 @@ tags:
 ## Human
 *2025-12-24 09:41*
 
-can we go back to all the chats on the veterinary diagnostic project and market . Analyse them, upgrade them with new information you can and make a new synthesis . We have evolved in strategy and our commercial target remains the same veterinarian clinics but now we add B2B with company in the veterinary field as potential sales funnel.
+can we go back to all the chats on the veterinary diagnostic project and market . Analyse them, upgrade them with new information you can and make a new synthesis . We have evolved in strategy and our [[commercial]] target remains the same veterinarian clinics but now we add B2B with company in the veterinary field as potential sales funnel.
 
 ---
 
@@ -36,7 +36,7 @@ Below is a **consolidated, upgraded synthesis** of all prior discussions on the 
 
 ## 1. Executive Synthesis – Where We Stand Now
 
-Over the course of our exchanges, the project has evolved from a **pure B2C-to-clinic diagnostic kit model** into a **dual-channel commercial architecture**:
+Over the course of our exchanges, the project has evolved from a **pure B2C-to-clinic diagnostic kit model** into a **dual-channel [[commercial]] architecture**:
 
 - **Primary historical target (unchanged):**
   - Veterinary clinics (independent and chains)
@@ -86,7 +86,7 @@ From our past discussions, several friction points were identified:
 
 ### 3.2 Strategic Rationale for B2B Expansion
 Adding B2B channels addresses these constraints by:
-- Leveraging **existing commercial infrastructures**
+- Leveraging **existing [[commercial]] infrastructures**
 - Embedding diagnostics into **broader solutions**
 - Accelerating market penetration without linear salesforce scaling
 
@@ -261,7 +261,7 @@ produce the new doc and but in light one country pilot strategy as France. This 
 ## Assistant
 *2025-12-24 09:43*
 
-{"name":"Veterinary Diagnostic Market – Updated Strategy & France Pilot","type":"document","content":"# Veterinary Diagnostic Project – Updated Strategic Synthesis\n\nTime reference: 10:27 (CET)\n\n---\n\n## 1. Purpose of This Document\n\nThis document consolidates and upgrades all previous analyses related to the veterinary diagnostic project. It integrates the recent strategic evolution toward a **dual-channel commercial model** (direct veterinary clinics + B2B veterinary ecosystem) and proposes a **France pilot strategy** to serve as a roadmap and reference timeline for broader European deployment.\n\n---\n\n## 2. Strategic Snapshot (Updated)\n\n### 2.1 Core Mission (Unchanged)\nProvide rapid, reliable, and clinically relevant diagnostic tools that support veterinarians in first-line decision-making for companion animals (dogs and cats), with a focus on allergies and selected infectious diseases.\n\n### 2.2 Strategic Evolution (Key Update)\nThe commercial strategy now rests on two complementary pillars:\n\n- **Direct sales to veterinary clinics** (historical core)\n- **B2B partnerships within the veterinary ecosystem** (new growth accelerator)\n\nThis evolution improves scalability, reduces customer acquisition cost, and increases long-term enterprise value.\n\n---\n\n## 3. Market Foundations – Still Valid\n\n### 3.1 Structural Market Drivers\n- Rising prevalence of chronic dermatological and respiratory allergies in pets\n- Increased pet humanisation and willingness to invest in diagnostics\n- Need for rapid orientation tests prior to treatment or referral\n- Time and cost pressure on veterinary practices\n\n### 3.2 Product Role\n- Screening and orientation (not confirmatory)\n- Chair-side usability\n- Complementary to laboratory ELISA and PCR tests\n- Revenue-enabling tool for clinics (consultation, follow-up, long-term treatment)\n\n---\n\n## 4. Updated Commercial Architecture\n\n### 4.1 Channel 1 – Veterinary Clinics (Direct)\n\n**Target**\n- Independent clinics\n- Small and mid-sized veterinary groups\n\n**Value Proposition**\n- Faster clinical orientation\n- Improved client communication\n- Monetisable diagnostic act\n\n**Commercial Characteristics**\n- Standard pricing\n- Educational and clinical support\n- Country-specific sales approach\n\n---\n\n### 4.2 Channel 2 – B2B Veterinary Ecosystem (New)\n\nThis channel leverages existing infrastructures and relationships to accelerate adoption.\n\n#### B2B Target Segments\n1. Veterinary distributors and wholesalers\n2. Veterinary pharmaceutical companies\n3. Veterinary laboratory networks\n4. Veterinary service platforms and clinic groups\n\n#### B2B Value Proposition\n- Portfolio extension\n- Differentiation vs competitors\n- Bundling with treatments or services\n- Volume-based economics\n\n#### Commercial Models\n- Wholesale pricing\n- Co-branding or white-label\n- Royalty-based or transfer pricing agreements\n\n---\n\n## 5. Regulatory and Operational Considerations\n\n- Regulatory framework remains unchanged by B2B expansion\n- Clear allocation of responsibilities required in white-label or co-branding scenarios\n- Increased importance of:\n  - Quality agreements\n  - Traceability\n  - Partner onboarding SOPs\n\n---\n\n## 6. France as Pilot Country – Strategic Rationale\n\nFrance is selected as the pilot market due to:\n- Large and mature companion animal population\n- High density of veterinary clinics\n- Strong acceptance of rapid diagnostic tools\n- Structured distributor landscape\n- Predictable regulatory environment\n\n---\n\n## 7. France Pilot Strategy\n\n### 7.1 Objectives\n- Validate the dual-channel commercial model\n- Test pricing and margin structures\n- Build clinical and commercial references\n- Generate data for investor and partner discussions\n\n### 7.2 Scope of the Pilot\n\n**Products**\n- Allergy screening kits (cutaneous and/or respiratory)\n- Selected rapid infectious disease kits (if applicable)\n\n**Channels Activated**\n- Direct sales to a limited number of clinics\n- One to two B2B partners (distributor or industry player)\n\n---\n\n## 8. France Pilot Roadmap & Timeline (Indicative)\n\n### Phase 1 – Preparation (Months 0–3)\n- Finalise product portfolio for France\n- Validate regulatory and labelling compliance\n- Prepare French-language documentation\n- Identify pilot clinics and shortlist B2B partners\n\n### Phase 2 – Initial Deployment (Months 3–6)\n- Onboard pilot clinics\n- Sign first B2B partnership (distribution or co-branding)\n- Launch initial sales\n- Collect early feedback (clinical + commercial)\n\n### Phase 3 – Validation & Adjustment (Months 6–9)\n- Analyse sales performance and usage patterns\n- Adjust pricing, messaging, and training materials\n- Strengthen B2B discussions based on field data\n\n### Phase 4 – Scale Decision (Months 9–12)\n- Decide on national scale-up in France\n- Prepare replication to additional EU markets\n- Finalise long-term commercial structure\n\n---\n\n## 9. Key Success Metrics (France Pilot)\n\n- Number of active clinics\n- Average kits per clinic per month\n- B2B volume contribution\n- Gross margin by channel\n- Repeat orders and retention\n\n---\n\n## 10. Strategic Outlook\n\nThe France pilot will serve as:\n- A proof of execution for the dual-channel model\n- A commercial and regulatory reference for Europe\n- A foundation for structured partnerships or investment discussions\n\nThis approach positions the company not as a simple diagnostic kit vendor, but as a **scalable diagnostic solution provider for the veterinary ecosystem**.\n\n---\n\nEnd of document"}
+{"name":"Veterinary Diagnostic Market – Updated Strategy & France Pilot","type":"document","content":"# Veterinary Diagnostic Project – Updated Strategic Synthesis\n\nTime reference: 10:27 (CET)\n\n---\n\n## 1. Purpose of This Document\n\nThis document consolidates and upgrades all previous analyses related to the veterinary diagnostic project. It integrates the recent strategic evolution toward a **dual-channel [[commercial]] model** (direct veterinary clinics + B2B veterinary ecosystem) and proposes a **France pilot strategy** to serve as a roadmap and reference timeline for broader European deployment.\n\n---\n\n## 2. Strategic Snapshot (Updated)\n\n### 2.1 Core Mission (Unchanged)\nProvide rapid, reliable, and clinically relevant diagnostic tools that support veterinarians in first-line decision-making for companion animals (dogs and cats), with a focus on allergies and selected infectious diseases.\n\n### 2.2 Strategic Evolution (Key Update)\nThe [[commercial]] strategy now rests on two complementary pillars:\n\n- **Direct sales to veterinary clinics** (historical core)\n- **B2B partnerships within the veterinary ecosystem** (new growth accelerator)\n\nThis evolution improves scalability, reduces customer acquisition cost, and increases long-term enterprise value.\n\n---\n\n## 3. Market Foundations – Still Valid\n\n### 3.1 Structural Market Drivers\n- Rising prevalence of chronic dermatological and respiratory allergies in pets\n- Increased pet humanisation and willingness to invest in diagnostics\n- Need for rapid orientation tests prior to treatment or referral\n- Time and cost pressure on veterinary practices\n\n### 3.2 Product Role\n- Screening and orientation (not confirmatory)\n- Chair-side usability\n- Complementary to laboratory ELISA and PCR tests\n- Revenue-enabling tool for clinics (consultation, follow-up, long-term treatment)\n\n---\n\n## 4. Updated Commercial Architecture\n\n### 4.1 Channel 1 – Veterinary Clinics (Direct)\n\n**Target**\n- Independent clinics\n- Small and mid-sized veterinary groups\n\n**Value Proposition**\n- Faster clinical orientation\n- Improved client communication\n- Monetisable diagnostic act\n\n**Commercial Characteristics**\n- Standard pricing\n- Educational and clinical support\n- Country-specific sales approach\n\n---\n\n### 4.2 Channel 2 – B2B Veterinary Ecosystem (New)\n\nThis channel leverages existing infrastructures and relationships to accelerate adoption.\n\n#### B2B Target Segments\n1. Veterinary distributors and wholesalers\n2. Veterinary pharmaceutical companies\n3. Veterinary laboratory networks\n4. Veterinary service platforms and clinic groups\n\n#### B2B Value Proposition\n- Portfolio extension\n- Differentiation vs competitors\n- Bundling with treatments or services\n- Volume-based economics\n\n#### Commercial Models\n- Wholesale pricing\n- Co-branding or white-label\n- Royalty-based or transfer pricing agreements\n\n---\n\n## 5. Regulatory and Operational Considerations\n\n- Regulatory framework remains unchanged by B2B expansion\n- Clear allocation of responsibilities required in white-label or co-branding scenarios\n- Increased importance of:\n  - Quality agreements\n  - Traceability\n  - Partner onboarding SOPs\n\n---\n\n## 6. France as Pilot Country – Strategic Rationale\n\nFrance is selected as the pilot market due to:\n- Large and mature companion animal population\n- High density of veterinary clinics\n- Strong acceptance of rapid diagnostic tools\n- Structured distributor landscape\n- Predictable regulatory environment\n\n---\n\n## 7. France Pilot Strategy\n\n### 7.1 Objectives\n- Validate the dual-channel [[commercial]] model\n- Test pricing and margin structures\n- Build clinical and [[commercial]] references\n- Generate data for investor and partner discussions\n\n### 7.2 Scope of the Pilot\n\n**Products**\n- Allergy screening kits (cutaneous and/or respiratory)\n- Selected rapid infectious disease kits (if applicable)\n\n**Channels Activated**\n- Direct sales to a limited number of clinics\n- One to two B2B partners (distributor or industry player)\n\n---\n\n## 8. France Pilot Roadmap & Timeline (Indicative)\n\n### Phase 1 – Preparation (Months 0–3)\n- Finalise product portfolio for France\n- Validate regulatory and labelling compliance\n- Prepare French-language documentation\n- Identify pilot clinics and shortlist B2B partners\n\n### Phase 2 – Initial Deployment (Months 3–6)\n- Onboard pilot clinics\n- Sign first B2B partnership (distribution or co-branding)\n- Launch initial sales\n- Collect early feedback (clinical + [[commercial]])\n\n### Phase 3 – Validation & Adjustment (Months 6–9)\n- Analyse sales performance and usage patterns\n- Adjust pricing, messaging, and training materials\n- Strengthen B2B discussions based on field data\n\n### Phase 4 – Scale Decision (Months 9–12)\n- Decide on national scale-up in France\n- Prepare replication to additional EU markets\n- Finalise long-term [[commercial]] structure\n\n---\n\n## 9. Key Success Metrics (France Pilot)\n\n- Number of active clinics\n- Average kits per clinic per month\n- B2B volume contribution\n- Gross margin by channel\n- Repeat orders and retention\n\n---\n\n## 10. Strategic Outlook\n\nThe France pilot will serve as:\n- A proof of execution for the dual-channel model\n- A [[commercial]] and regulatory reference for Europe\n- A foundation for structured partnerships or investment discussions\n\nThis approach positions the company not as a simple diagnostic kit vendor, but as a **scalable diagnostic solution provider for the veterinary ecosystem**.\n\n---\n\nEnd of document"}
 
 ---
 
@@ -308,7 +308,7 @@ Tell me which of these you want to do next, and I will proceed directly without 
 ## Assistant
 *2025-12-24 09:44*
 
-{"updates":[{"pattern":"## 7. France Pilot Strategy[\\s\\S]*?## 9. Key Success Metrics \\(France Pilot\\)","replacement":"## 7. France Pilot Strategy\n\n### 7.1 Objectives\n- Validate the dual-channel commercial model\n- Test pricing and margin structures\n- Build clinical and commercial references\n- Generate data for investor and partner discussions\n\n### 7.2 Quantitative Assumptions (France Pilot)\n\n**Market Basis (Orders of Magnitude)**\n- ~7,000 veterinary clinics in France (small animals)\n- Pilot target: 1.5–2.5% of clinics in Year 1\n\n**Pilot Cohort**\n- Direct clinics: 80–120\n- B2B-activated clinics via partners: 120–180\n- Total active clinics end of pilot: 200–300\n\n**Usage Assumptions**\n- Average kits per clinic per month: 4–6\n- Average selling price per kit (blended): EUR 28–35\n\n**Annualised Pilot Revenue (Indicative)**\n- Low scenario: ~EUR 270k\n- Base scenario: ~EUR 420k\n- High scenario: ~EUR 630k\n\n---\n\n### 7.3 Scope of the Pilot\n\n**Products**\n- Allergy screening kits (cutaneous and/or respiratory)\n- Selected rapid infectious disease kits (if applicable)\n\n**Channels Activated**\n- Direct sales to a limited number of clinics\n- One to two B2B partners (distributor or industry player)\n\n---\n\n## 8. France Pilot Roadmap & Timeline (Indicative)\n\n### Phase 1 – Preparation (Months 0–3)\n- Finalise product portfolio for France\n- Validate regulatory and labelling compliance\n- Prepare French-language documentation\n- Identify pilot clinics and shortlist B2B partners\n\n### Phase 2 – Initial Deployment (Months 3–6)\n- Onboard 40–60 clinics (direct)\n- Sign first B2B partnership\n- Launch initial sales\n- Collect early clinical and commercial feedback\n\n### Phase 3 – Validation & Adjustment (Months 6–9)\n- Expand to 120–180 total clinics\n- Refine pricing, packaging, and messaging\n- Formalise second B2B agreement if relevant\n\n### Phase 4 – Scale Decision (Months 9–12)\n- Reach 200–300 active clinics\n- Decide national scale-up\n- Prepare EU replication package\n\n---\n\n## 9. Key Success Metrics (France Pilot)\n","multiple":false},{"pattern":"## 10. Strategic Outlook[\\s\\S]*$","replacement":"## 10. Strategic Outlook\n\nThe France pilot will serve as:\n- A proof of execution for the dual-channel model\n- A commercial and regulatory reference for Europe\n- A foundation for structured partnerships or investment discussions\n\nThis approach positions the company not as a simple diagnostic kit vendor, but as a **scalable diagnostic solution provider for the veterinary ecosystem**.\n\n---\n\n## 11. Replicable Country Playbook Template\n\nThis section defines a reusable structure for other EU markets (Germany, Italy, Spain, Belgium).\n\n### 11.1 Country Selection Criteria\n- Size of companion animal population\n- Density of veterinary clinics\n- Distributor maturity\n- Regulatory predictability\n\n### 11.2 Standard Pilot Structure (Per Country)\n\n**Pilot Duration**: 9–12 months\n\n**Target Clinics**\n- 1–3% of national clinic base\n\n**Channel Mix**\n- Direct clinics (40–50%)\n- B2B-driven clinics (50–60%)\n\n**Core KPIs**\n- Active clinics\n- Kits per clinic per month\n- Revenue per channel\n- Gross margin\n- Retention rate\n\n### 11.3 Roll-Out Logic\n- Start with allergy diagnostics\n- Add infectious diagnostics in Phase 2\n- Introduce white-label or co-branding once volume is validated\n\n### 11.4 Governance & Decision Gates\n- Month 6: go / no-go for expansion\n- Month 9–12: scale or pause decision\n\n---\n\nEnd of document"}]}
+{"updates":[{"pattern":"## 7. France Pilot Strategy[\\s\\S]*?## 9. Key Success Metrics \\(France Pilot\\)","replacement":"## 7. France Pilot Strategy\n\n### 7.1 Objectives\n- Validate the dual-channel [[commercial]] model\n- Test pricing and margin structures\n- Build clinical and [[commercial]] references\n- Generate data for investor and partner discussions\n\n### 7.2 Quantitative Assumptions (France Pilot)\n\n**Market Basis (Orders of Magnitude)**\n- ~7,000 veterinary clinics in France (small animals)\n- Pilot target: 1.5–2.5% of clinics in Year 1\n\n**Pilot Cohort**\n- Direct clinics: 80–120\n- B2B-activated clinics via partners: 120–180\n- Total active clinics end of pilot: 200–300\n\n**Usage Assumptions**\n- Average kits per clinic per month: 4–6\n- Average selling price per kit (blended): EUR 28–35\n\n**Annualised Pilot Revenue (Indicative)**\n- Low scenario: ~EUR 270k\n- Base scenario: ~EUR 420k\n- High scenario: ~EUR 630k\n\n---\n\n### 7.3 Scope of the Pilot\n\n**Products**\n- Allergy screening kits (cutaneous and/or respiratory)\n- Selected rapid infectious disease kits (if applicable)\n\n**Channels Activated**\n- Direct sales to a limited number of clinics\n- One to two B2B partners (distributor or industry player)\n\n---\n\n## 8. France Pilot Roadmap & Timeline (Indicative)\n\n### Phase 1 – Preparation (Months 0–3)\n- Finalise product portfolio for France\n- Validate regulatory and labelling compliance\n- Prepare French-language documentation\n- Identify pilot clinics and shortlist B2B partners\n\n### Phase 2 – Initial Deployment (Months 3–6)\n- Onboard 40–60 clinics (direct)\n- Sign first B2B partnership\n- Launch initial sales\n- Collect early clinical and [[commercial]] feedback\n\n### Phase 3 – Validation & Adjustment (Months 6–9)\n- Expand to 120–180 total clinics\n- Refine pricing, packaging, and messaging\n- Formalise second B2B agreement if relevant\n\n### Phase 4 – Scale Decision (Months 9–12)\n- Reach 200–300 active clinics\n- Decide national scale-up\n- Prepare EU replication package\n\n---\n\n## 9. Key Success Metrics (France Pilot)\n","multiple":false},{"pattern":"## 10. Strategic Outlook[\\s\\S]*$","replacement":"## 10. Strategic Outlook\n\nThe France pilot will serve as:\n- A proof of execution for the dual-channel model\n- A [[commercial]] and regulatory reference for Europe\n- A foundation for structured partnerships or investment discussions\n\nThis approach positions the company not as a simple diagnostic kit vendor, but as a **scalable diagnostic solution provider for the veterinary ecosystem**.\n\n---\n\n## 11. Replicable Country Playbook Template\n\nThis section defines a reusable structure for other EU markets (Germany, Italy, Spain, Belgium).\n\n### 11.1 Country Selection Criteria\n- Size of companion animal population\n- Density of veterinary clinics\n- Distributor maturity\n- Regulatory predictability\n\n### 11.2 Standard Pilot Structure (Per Country)\n\n**Pilot Duration**: 9–12 months\n\n**Target Clinics**\n- 1–3% of national clinic base\n\n**Channel Mix**\n- Direct clinics (40–50%)\n- B2B-driven clinics (50–60%)\n\n**Core KPIs**\n- Active clinics\n- Kits per clinic per month\n- Revenue per channel\n- Gross margin\n- Retention rate\n\n### 11.3 Roll-Out Logic\n- [[Start]] with allergy diagnostics\n- Add infectious diagnostics in Phase 2\n- Introduce white-label or co-branding once volume is validated\n\n### 11.4 Governance & Decision Gates\n- Month 6: go / no-go for expansion\n- Month 9–12: scale or pause decision\n\n---\n\nEnd of document"}]}
 
 ---
 
@@ -392,7 +392,7 @@ def add_slide(title, content):
 # Slides content
 add_slide(
     "Veterinary Diagnostic Strategy – Updated Overview",
-    "Dual-channel commercial model\nVeterinary Clinics + B2B Veterinary Ecosystem\nFrance as pilot country\nScalable European rollout strategy"
+    "Dual-channel [[commercial]] model\nVeterinary Clinics + B2B Veterinary Ecosystem\nFrance as pilot country\nScalable European rollout strategy"
 )
 
 add_slide(
@@ -477,7 +477,7 @@ It intentionally focuses on:
 ---
 
 ### Structure of the deck
-1. Strategy overview (dual-channel model)  
+1. Strategy [[overview]] (dual-channel model)  
 2. Strategic evolution (why B2B was added)  
 3. Market fundamentals  
 4. Commercial architecture (Clinics vs B2B)  
@@ -1000,7 +1000,7 @@ This is **rarely challenged** in investor or strategic partner discussions.
 
 ## Strategic Assessment (Candid)
 At this stage, your project presentation is no longer a “strategy concept”.
-It is a **controlled industrial and commercial deployment plan**, with:
+It is a **controlled industrial and [[commercial]] deployment plan**, with:
 - Measurable milestones
 - Explicit risk gates
 - Scalable architecture
@@ -1172,7 +1172,7 @@ Here is the precise breakdown, because this point is important.
 
 ### 1. Files are **not shared across accounts**
 Each [[ChatGPT]] account is **fully isolated**:
-- Different email = different workspace
+- Different [[email]] = different workspace
 - Files generated in one account **do not exist** in another
 
 If you have:
@@ -1257,12 +1257,12 @@ what address do I use here
 
 **Time reference: 11:21 (CET)**
 
-I cannot see your email address from my side. [[ChatGPT]] does **not expose the account email to the assistant**, for privacy reasons.  
+I cannot see your [[email]] address from my side. [[ChatGPT]] does **not expose the account [[email]] to the assistant**, for privacy reasons.  
 However, you can identify it yourself in **30 seconds**. Here is the exact, reliable method.
 
 ---
 
-## How to know **which email address you are using right now**
+## How to know **which [[email]] address you are using right now**
 
 ### On desktop (recommended)
 1. Look at the **bottom-left corner** of the [[ChatGPT]] interface  
@@ -1271,13 +1271,13 @@ However, you can identify it yourself in **30 seconds**. Here is the exact, reli
 4. Go to **“Account”**
 
 You will see:
-- The **email address** currently logged in  
+- The **[[email]] address** currently logged in  
 - Whether it is:
-  - email/password
+  - [[email]]/password
   - Google login
   - Microsoft / [[Apple]] login
 
-👉 **That email is the address used “here”.**
+👉 **That [[email]] is the address used “here”.**
 
 ---
 
@@ -1298,7 +1298,7 @@ Each one = **different [[ChatGPT]] account**.
 ## What I strongly recommend you do now
 
 ### Step 1 — Identify the address
-Follow the steps above and note the email.
+Follow the steps above and note the [[email]].
 
 ### Step 2 — Decide
 Ask yourself:
@@ -1793,7 +1793,7 @@ With those, I can deliver a **near-final business plan**.
 
 Tell me how you want to proceed:
 - “Finalize what you can now”
-- or “Start with minimal input set”
+- or “[[Start]] with minimal input set”
 
 ---
 
@@ -1939,7 +1939,7 @@ This positioning avoids direct confrontation with dominant lab players while ben
 
 ## 7.1 Dual-Channel Commercial Architecture
 
-The commercial strategy relies on two complementary channels:
+The [[commercial]] strategy relies on two complementary channels:
 
 ### Channel 1 – Direct Sales to Veterinary Clinics
 - Independent clinics and small groups,
@@ -2105,7 +2105,7 @@ Despite this transformation, diagnostic workflows in veterinary practice have no
 
 ## 3.2 Structural Diagnostic Constraints in Daily Practice
 
-Veterinary practitioners operate under increasingly constrained conditions. Consultation times are short, economic pressure from pet owners is high, and expectations for rapid answers continue to rise. In this context, veterinarians must make clinical decisions based on incomplete information, often relying on experience and empirical treatment rather than objective diagnostic guidance.
+Veterinary practitioners operate under increasingly constrained conditions. Consultation times are short, economic pressure from pet owners is high, and expectations for rapid answers continue to rise. In this context, veterinarians must make clinical [[decisions]] based on incomplete information, often relying on experience and empirical treatment rather than objective diagnostic guidance.
 
 Laboratory diagnostics, such as ELISA or PCR-based tests, provide high analytical accuracy and are essential for confirmatory diagnosis. However, they are not always adapted to first-line clinical situations. Laboratory testing requires sample collection, shipment, processing delays, and higher costs, which can discourage immediate use, particularly when the clinical suspicion is still broad.
 
@@ -2127,7 +2127,7 @@ As a result, there is a strong clinical need for rapid orientation diagnostics c
 
 There is a clear and persistent unmet need in veterinary practice for diagnostic solutions that are rapid, reliable, and adapted to in-clinic use. Such solutions must not aim to replace laboratory diagnostics, but rather to complement them by addressing the early stages of the diagnostic process.
 
-By enabling veterinarians to orient their clinical decisions during the first consultation, these tools can reduce uncertainty, optimize care pathways, and improve both clinical outcomes and client satisfaction. This unmet need forms the foundation of the company’s strategic positioning and value proposition.
+By enabling veterinarians to orient their clinical [[decisions]] during the first consultation, these tools can reduce uncertainty, optimize care pathways, and improve both clinical outcomes and client satisfaction. This unmet need forms the foundation of the company’s strategic positioning and value proposition.
 
 ---
 
@@ -2173,9 +2173,9 @@ The company’s go-to-market strategy is built on a dual-channel model designed 
 
 The first channel consists of direct sales to veterinary clinics, particularly independent practices and small groups. This channel emphasizes clinical utility, training, and recurring kit consumption.
 
-The second channel targets B2B partners within the veterinary ecosystem, including distributors, laboratory networks, pharmaceutical companies, and veterinary service platforms. These partners provide access to large clinic bases, established commercial infrastructures, and accelerated market penetration.
+The second channel targets B2B partners within the veterinary ecosystem, including distributors, laboratory networks, pharmaceutical companies, and veterinary service platforms. These partners provide access to large clinic bases, established [[commercial]] infrastructures, and accelerated market penetration.
 
-Together, these channels create a resilient and scalable commercial architecture.
+Together, these channels create a resilient and scalable [[commercial]] architecture.
 
 ---
 
@@ -2183,13 +2183,13 @@ Together, these channels create a resilient and scalable commercial architecture
 
 France has been selected as the reference pilot market due to its large and mature veterinary sector, high clinic density, and strong diagnostic culture. The regulatory environment is predictable, and the distribution landscape is well structured.
 
-The France pilot is designed to validate product-market fit, pricing assumptions, and channel effectiveness before broader European expansion. It serves as both an operational and commercial proof point.
+The France pilot is designed to validate product-market fit, pricing assumptions, and channel effectiveness before broader European expansion. It serves as both an operational and [[commercial]] proof point.
 
 ---
 
 ## 7.3 Controlled European Expansion
 
-European expansion will follow a staggered, country-by-country approach. This methodology allows the company to manage regulatory complexity, optimize resource allocation, and progressively refine its commercial playbook.
+European expansion will follow a staggered, country-by-country approach. This methodology allows the company to manage regulatory complexity, optimize resource allocation, and progressively refine its [[commercial]] playbook.
 
 Rather than pursuing rapid geographic expansion, the company prioritizes disciplined execution and repeatability, reducing operational risk while preserving long-term value creation.
 
@@ -2207,7 +2207,7 @@ This structured risk approach reflects a mature understanding of the sector and 
 
 From a strategic perspective, the company represents an attractive acquisition target for multiple categories of industry players, including diagnostic laboratories, animal health pharmaceutical groups, and veterinary service platforms.
 
-Its value proposition lies in early access to clinical decision points, an asset-light and scalable model, and integration into daily veterinary workflows. Potential exit scenarios include trade sales, minority strategic investments followed by integration, or portfolio acquisitions within a five- to seven-year horizon.
+Its value proposition lies in early access to clinical decision points, an asset-light and scalable model, and integration into [[daily]] veterinary workflows. Potential exit scenarios include trade sales, minority strategic investments followed by integration, or portfolio acquisitions within a five- to seven-year horizon.
 
 ---
 
@@ -2257,13 +2257,13 @@ The company’s initial product portfolio focuses exclusively on **allergy diagn
 
 Diatech’s diagnostic solutions are designed as **first-line orientation tools**, intended to complement, rather than replace, laboratory-based confirmatory diagnostics. By providing rapid, actionable information during the initial consultation, Diatech enables veterinarians to reduce diagnostic uncertainty, optimize care pathways, and improve communication and compliance with pet owners.
 
-The company operates a **dual-channel commercial model**. The first channel consists of direct sales to veterinary clinics, particularly independent practices and small groups, where in-clinic diagnostics can be rapidly integrated into daily workflows. The second channel targets B2B partners within the veterinary ecosystem, including distributors and other industry players, allowing accelerated market penetration and scalable deployment with controlled customer acquisition costs.
+The company operates a **dual-channel [[commercial]] model**. The first channel consists of direct sales to veterinary clinics, particularly independent practices and small groups, where in-clinic diagnostics can be rapidly integrated into [[daily]] workflows. The second channel targets B2B partners within the veterinary ecosystem, including distributors and other industry players, allowing accelerated market penetration and scalable deployment with controlled customer acquisition costs.
 
-Diatech is incorporated in **France** and will use the French market as its reference pilot. France offers a large and mature veterinary sector, a structured distribution landscape, and a predictable regulatory environment. The company plans to initiate commercial launch in **Q2**, following completion of the ongoing product registration process in France.
+Diatech is incorporated in **France** and will use the French market as its reference pilot. France offers a large and mature veterinary sector, a structured distribution landscape, and a predictable regulatory environment. The company plans to initiate [[commercial]] launch in **Q2**, following completion of the ongoing product registration process in France.
 
 Manufacturing is already **ready**, enabling immediate commercialization once regulatory clearance is obtained. This significantly reduces execution risk and shortens the time to first revenue.
 
-Diatech is seeking to raise **EUR 500,000** to finance its commercial launch, regulatory finalization, and early European expansion. This funding round is designed to provide a **48-month runway**, allowing the company to reach commercial maturity, validate its business model across multiple markets, and position itself for strategic partnerships or subsequent financing.
+Diatech is seeking to raise **EUR 500,000** to finance its [[commercial]] launch, regulatory finalization, and early European expansion. This funding round is designed to provide a **48-month runway**, allowing the company to reach [[commercial]] maturity, validate its business model across multiple markets, and position itself for strategic partnerships or subsequent financing.
 
 ---
 
@@ -2344,14 +2344,14 @@ The funds will be allocated across four strategic priorities:
 4. **Operational stability and working capital**  
    Inventory management, quality assurance, and general operations.
 
-This allocation ensures that the funding directly supports value creation and commercial execution.
+This allocation ensures that the funding directly supports value creation and [[commercial]] execution.
 
 ---
 
 ## 10.3 Milestones Enabled by the Funding
 
 The funding round will enable Diatech to:
-- Achieve commercial launch in France (Q2),
+- Achieve [[commercial]] launch in France (Q2),
 - Build a stable base of recurring clinic customers,
 - Secure initial B2B partnerships,
 - Prepare replication of the model in additional European markets.
@@ -2402,7 +2402,7 @@ Below is the **exact list**, grouped by section, with a **“mandatory vs option
 
 # STEP 3 – INFORMATION REQUIRED
 
-## A. TEAM & GOVERNANCE (**MANDATORY**)
+## A. TEAM & [[GOVERNANCE]] (**MANDATORY**)
 
 Investors will not accept assumptions here.
 
@@ -2412,7 +2412,7 @@ Investors will not accept assumptions here.
    - Full-time or part-time at Diatech?
 
 2. **Background (short)**
-   - Industry experience (veterinary, diagnostics, biotech, commercial, etc.)
+   - Industry experience (veterinary, diagnostics, biotech, [[commercial]], etc.)
    - Entrepreneurial or managerial experience (yes/no + brief)
 
 3. **Current governance**
@@ -2540,7 +2540,7 @@ Below is **STEP 3 completed**, ready to be inserted directly into the business p
 
 # 11. Team, Governance and Execution Capability
 
-Diatech has been structured from its inception with a clear separation between strategic governance, operational execution, and advisory expertise. This organization reflects the company’s ambition to combine scientific credibility, industrial discipline, and commercial scalability from the early stages of development.
+Diatech has been structured from its inception with a clear separation between strategic governance, operational execution, and advisory expertise. This organization reflects the company’s ambition to combine scientific credibility, industrial discipline, and [[commercial]] scalability from the early stages of development.
 
 ## 11.1 Founder and Advisory Leadership
 
@@ -2557,10 +2557,10 @@ Diatech is governed by a **four-member Board**, chaired by **Mr. Jacques Noury**
 The Board is responsible for:
 - Strategic direction,
 - Oversight of regulatory and quality priorities,
-- Validation of commercial and financial milestones,
+- Validation of [[commercial]] and financial milestones,
 - Supervision of risk management and capital allocation.
 
-This governance model ensures that key strategic decisions are reviewed collectively and that the company maintains disciplined execution as it scales.
+This governance model ensures that key strategic [[decisions]] are reviewed collectively and that the company maintains disciplined execution as it scales.
 
 ---
 
@@ -2571,7 +2571,7 @@ Diatech has adopted an **asset-light operational model**, designed to minimize f
 Manufacturing is fully **outsourced** to a **single qualified supplier**, allowing the company to:
 - Control capital expenditure,
 - Rapidly adjust production volumes,
-- Focus internal resources on regulatory, commercial, and partnership activities.
+- Focus internal resources on regulatory, [[commercial]], and partnership activities.
 
 This approach is well suited to early-stage commercialization and is consistent with industry practices in veterinary diagnostics.
 
@@ -2579,7 +2579,7 @@ This approach is well suited to early-stage commercialization and is consistent 
 
 ## 11.4 Quality and Regulatory Readiness
 
-A **basic quality assurance framework** is already in place to support manufacturing, traceability, and regulatory registration. The company plans to implement a more formalized quality system, including ISO certification, contingent upon successful commercial traction.
+A **basic quality assurance framework** is already in place to support manufacturing, traceability, and regulatory registration. The company plans to implement a more formalized quality system, including ISO certification, contingent upon successful [[commercial]] traction.
 
 This phased approach reflects a balanced strategy:
 - Ensuring regulatory compliance at launch,
@@ -2592,9 +2592,9 @@ This phased approach reflects a balanced strategy:
 
 At the time of this business plan, Diatech is in the **pre-revenue phase**.
 
-The company has initiated **commercial discussions with veterinary distributors**, demonstrating early market interest and validating the relevance of its positioning. While no letters of intent have been signed to date, these discussions confirm the attractiveness of rapid, in-clinic allergy diagnostics as a complement to existing diagnostic offerings.
+The company has initiated **[[commercial]] discussions with veterinary distributors**, demonstrating early market interest and validating the relevance of its positioning. While no letters of intent have been signed to date, these discussions confirm the attractiveness of rapid, in-clinic allergy diagnostics as a complement to existing diagnostic offerings.
 
-The absence of revenue at this stage is consistent with the company’s regulatory timeline, as commercial launch is planned for **Q2**, following completion of the ongoing registration process in France.
+The absence of revenue at this stage is consistent with the company’s regulatory timeline, as [[commercial]] launch is planned for **Q2**, following completion of the ongoing registration process in France.
 
 ---
 
@@ -2618,7 +2618,7 @@ The model emphasizes recurring revenues and predictable consumption patterns rat
 
 Operating costs are structured to scale progressively with revenue. The outsourced manufacturing model and limited fixed infrastructure enable the company to preserve flexibility while maintaining healthy gross margins over time.
 
-Hiring and operational expansion will be aligned with commercial traction, reducing execution risk and preserving cash.
+Hiring and operational expansion will be aligned with [[commercial]] traction, reducing execution risk and preserving cash.
 
 ---
 
@@ -2709,8 +2709,8 @@ sections = [
      "faster and more structured clinical decision-making at the point of care.\n\n"
      "Diatech’s solutions are positioned as first-line orientation tools, designed to complement laboratory "
      "diagnostics rather than replace them. Manufacturing is ready, regulatory registration in France is ongoing, "
-     "and commercial launch is planned for Q2.\n\n"
-     "The company operates a dual-channel commercial model, combining direct sales to veterinary clinics with "
+     "and [[commercial]] launch is planned for Q2.\n\n"
+     "The company operates a dual-channel [[commercial]] model, combining direct sales to veterinary clinics with "
      "B2B partnerships across the veterinary ecosystem. Diatech is seeking EUR 500,000 to finance its launch and "
      "provide a 48-month runway."),
 
@@ -2734,7 +2734,7 @@ sections = [
      "and operates with an asset-light, outsourced manufacturing model."),
 
     ("Financial Strategy and Funding",
-     "Diatech is seeking EUR 500,000 to fund regulatory completion, commercial launch, and early expansion. "
+     "Diatech is seeking EUR 500,000 to fund regulatory completion, [[commercial]] launch, and early expansion. "
      "The funding is designed to provide a 48-month runway under a balanced growth scenario."),
 
     ("Exit Strategy",
@@ -2836,8 +2836,8 @@ doc.add_paragraph(
     "faster and more structured clinical decision-making at the point of care.\n\n"
     "Diatech’s solutions are positioned as first-line orientation tools, designed to complement laboratory "
     "diagnostics rather than replace them. Manufacturing is ready, regulatory registration in France is ongoing, "
-    "and commercial launch is planned for Q2.\n\n"
-    "The company operates a dual-channel commercial model, combining direct sales to veterinary clinics with "
+    "and [[commercial]] launch is planned for Q2.\n\n"
+    "The company operates a dual-channel [[commercial]] model, combining direct sales to veterinary clinics with "
     "B2B partnerships across the veterinary ecosystem. Diatech is seeking EUR 500,000 to finance its launch and "
     "provide a 48-month runway."
 )
@@ -3003,7 +3003,7 @@ Allergy diagnostics are deliberately chosen because they combine:
 
 This focus allows Diatech to:
 - enter the market with a **clear and understandable use case**,
-- limit regulatory and commercial complexity,
+- limit regulatory and [[commercial]] complexity,
 - and build recurring revenues quickly.
 
 The scope is narrow at launch, but **strategically expandable** once clinical adoption is validated.
@@ -3093,7 +3093,7 @@ The current model preserves optionality without locking the company into heavy i
 It is a **controlled risk**, appropriate at this stage.
 
 The supplier has been selected for reliability and compliance.  
-Supplier diversification is planned as volumes grow and commercial traction is confirmed.
+Supplier diversification is planned as volumes grow and [[commercial]] traction is confirmed.
 
 ---
 
@@ -3227,7 +3227,7 @@ The moat is **workflow ownership and distribution**, not molecular complexity. D
 ---
 
 ### 3. *Why won’t IDEXX / Zoetis / big labs crush you?*  
-Large players are structurally optimized for centralized confirmation, not decentralized orientation. Their economic model depends on volume and infrastructure. Diatech operates upstream, accelerating decisions and often increasing downstream lab usage. This makes partnership more rational than competition.
+Large players are structurally optimized for centralized confirmation, not decentralized orientation. Their economic model depends on volume and infrastructure. Diatech operates upstream, accelerating [[decisions]] and often increasing downstream lab usage. This makes partnership more rational than competition.
 
 ---
 
@@ -3237,7 +3237,7 @@ The dual-channel model does. Direct sales validate usage; B2B partnerships scale
 ---
 
 ### 5. *What is the realistic exit size?*  
-Trade sales in veterinary diagnostics are typically driven by **strategic relevance**, not revenue alone. Controlling early diagnostic decisions materially increases strategic value, even at moderate revenue levels.
+Trade sales in veterinary diagnostics are typically driven by **strategic relevance**, not revenue alone. Controlling early diagnostic [[decisions]] materially increases strategic value, even at moderate revenue levels.
 
 ---
 
@@ -3293,7 +3293,7 @@ A: Clear strategic buyers exist; timing depends on validation, not speculation.
 
 - **VC meeting** → Use Version A answers only  
 - **Bank / Bpifrance / Region / EU grant** → Use Version B language  
-- **Data room / follow-up email** → Attach Version C as appendix  
+- **Data room / follow-up [[email]]** → Attach Version C as appendix  
 
 Do **not** mix VC aggressiveness with institutional caution in the same discussion.
 

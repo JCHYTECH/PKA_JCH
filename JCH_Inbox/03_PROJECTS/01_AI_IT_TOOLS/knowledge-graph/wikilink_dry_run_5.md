@@ -81,7 +81,7 @@ status: proposal
 
 ### Line 65
 
-- terms: Pie, Pie
+- terms: [[Pie]], [[Pie]]
 - before:
   `ground that big heavy umbrella stand was just way too cumbersome to try and haul around so this new design is much easier and I can kind of put it in more locations but as I mentioned there's still work to be done there is still no Laura or long range Communications which is kind of one of the main features I wanted to include in this and again it's been difficult to incorporate that because a lot of the raspby pie hats sit on top of the raspby pie which I just can't use here and I didn't really want  `
 - after:
@@ -89,7 +89,7 @@ status: proposal
 
 ### Line 68
 
-- terms: Pie
+- terms: [[Pie]]
 - before:
   `to hack around tacking on solder wires and everything to a module so I've kind of put that on hold for now so the next Grand Step potenti entally is to design and create a custom PCB that not only does the power supply the battery management the solar charging with proper solar charging it has a microcontroller on board to manage the actual shutdown and reboot of the rasp pie correctly and also has allowances for Aura module or potentially even 4G LTE to transmit any detections that have occurred and there are also other  `
 - after:
@@ -167,9 +167,9 @@ status: proposal
 
 - terms: Obsidian
 - before:
-  `| `obsidian-knowledge-graph/` | Connexion Obsidian, wikilinking gouverné, indexes, review queue |`
+  `| `obsidian-[[knowledge]]-graph/` | Connexion Obsidian, wikilinking gouverné, indexes, review queue |`
 - after:
-  `| `obsidian-knowledge-graph/` | Connexion [[Obsidian]], wikilinking gouverné, indexes, review queue |`
+  `| `obsidian-[[knowledge]]-graph/` | Connexion [[Obsidian]], wikilinking gouverné, indexes, review queue |`
 
 ### Line 24
 
@@ -183,41 +183,41 @@ status: proposal
 
 - terms: Graphify
 - before:
-  `- `docs/graphify-workflow-jch.md` — Workflow graphify JCH`
+  `- `docs/[[graphify-workflow-jch]].md` — Workflow graphify JCH`
 - after:
-  `- `docs/graphify-workflow-jch.md` — Workflow [[Graphify]] JCH`
+  `- `docs/[[graphify-workflow-jch]].md` — Workflow [[Graphify]] JCH`
 
 ### Line 28
 
 - terms: Claude
 - before:
-  `- `docs/Commands.md` — Référence commandes Claude Code`
+  `- `docs/[[Commands]].md` — Référence commandes Claude Code`
 - after:
-  `- `docs/Commands.md` — Référence commandes [[Claude]] Code`
+  `- `docs/[[Commands]].md` — Référence commandes [[Claude]] Code`
 
 ### Line 29
 
 - terms: Obsidian, Graphify
 - before:
-  `- `docs/pack-minimal-obsidian-graphify.md` — Pack Obsidian minimal + graphify`
+  `- `docs/[[pack-minimal-obsidian-graphify]].md` — Pack Obsidian minimal + graphify`
 - after:
-  `- `docs/pack-minimal-obsidian-graphify.md` — Pack [[Obsidian]] minimal + [[Graphify]]`
+  `- `docs/[[pack-minimal-obsidian-graphify]].md` — Pack [[Obsidian]] minimal + [[Graphify]]`
 
 ### Line 30
 
 - terms: Claude
 - before:
-  `- `docs/Memory_update_review.md` — Procédure mise à jour mémoire Claude`
+  `- `docs/[[Memory_update_review]].md` — Procédure mise à jour mémoire Claude`
 - after:
-  `- `docs/Memory_update_review.md` — Procédure mise à jour mémoire [[Claude]]`
+  `- `docs/[[Memory_update_review]].md` — Procédure mise à jour mémoire [[Claude]]`
 
 ### Line 31
 
 - terms: Obsidian
 - before:
-  `- `obsidian-knowledge-graph/README.md` — Projet de knowledge graph Obsidian gouverné`
+  `- `obsidian-[[knowledge]]-graph/[[README]].md` — Projet de knowledge graph Obsidian gouverné`
 - after:
-  `- `obsidian-knowledge-graph/README.md` — Projet de knowledge graph [[Obsidian]] gouverné`
+  `- `obsidian-[[knowledge]]-graph/[[README]].md` — Projet de knowledge graph [[Obsidian]] gouverné`
 
 ### Line 35
 

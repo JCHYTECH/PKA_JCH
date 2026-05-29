@@ -1,8 +1,8 @@
-# WildNexus — arbitrage apres nouveaux depots inbox
+# WildNexus — arbitrage apres nouveaux depots [[inbox]]
 
 Date: 2026-05-23
 Auteur: [[Dobby]]
-Sources inbox:
+Sources [[inbox]]:
 - `JCH_Inbox/00_INBOX/batteries discussion.md`
 - `JCH_Inbox/00_INBOX/birdweather compo.md`
 - `JCH_Inbox/00_INBOX/yolo wildnexus 1.md`

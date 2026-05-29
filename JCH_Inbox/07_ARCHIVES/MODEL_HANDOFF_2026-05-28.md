@@ -9,8 +9,8 @@ Purpose: compact handoff for continuing the current thread with another model wh
 - MacBook minimal tech phase has been audited.
 - Backup workflow for `TEAM/team.db` is hardened and validated.
 - `Tailscale` CLI is corrected and aligned with `Tailscale.app`.
-- `ADAPTER-PROMPT.md` and `MEMORY.md` were updated with Dobby operating rules and memory protocol.
-- `team.db` inbox migration has been applied locally.
+- `ADAPTER-PROMPT.md` and `MEMORY.md` were updated with [[Dobby]] operating rules and memory protocol.
+- `team.db` [[inbox]] migration has been applied locally.
 - `inbox` triage has been started and partially completed.
 
 ## Key Decisions Already Applied
@@ -58,7 +58,7 @@ Purpose: compact handoff for continuing the current thread with another model wh
 - `com.jch.pka.backup` LaunchAgent was booted out, disabled, and archived to:
   - `_local/disabled_launchagents/com.jch.pka.backup.plist.disabled`
 
-### Dobby protocol / memory
+### [[Dobby]] protocol / memory
 
 - `ADAPTER-PROMPT.md` updated with:
   - simplification
@@ -101,7 +101,7 @@ Purpose: compact handoff for continuing the current thread with another model wh
 
 ## Current Inbox Counts
 
-`TEAM/team.db` inbox status counts:
+`TEAM/team.db` [[inbox]] status counts:
 
 - `cancelled`: 224
 - `done`: 2
@@ -111,14 +111,14 @@ Purpose: compact handoff for continuing the current thread with another model wh
 
 ## The 6 Remaining Pending Items
 
-- `20` Vasco
-- `83` Vasco
-- `128` Renard
-- `147` Vasco
-- `214` Vasco
-- `228` Renard
+- `20` [[Vasco]]
+- `83` [[Vasco]]
+- `128` [[Renard]]
+- `147` [[Vasco]]
+- `214` [[Vasco]]
+- `228` [[Renard]]
 
-These are old email-derived entries without file paths. They still need a decision:
+These are old [[email]]-derived entries without file paths. They still need a decision:
 
 - keep pending
 - cancel
@@ -144,14 +144,14 @@ These are old email-derived entries without file paths. They still need a decisi
 
 - [ADAPTER-PROMPT.md](/Users/jchavauxm5/PKA_JCH/ADAPTER-PROMPT.md)
 - [MEMORY.md](/Users/jchavauxm5/PKA_JCH/MEMORY.md)
-- [Phase_1_Closure_Report.md](/Users/jchavauxm5/PKA_JCH/Phase_1_Closure_Report.md)
-- [RUNBOOK_PKA_MACBOOK.md](/Users/jchavauxm5/PKA_JCH/RUNBOOK_PKA_MACBOOK.md)
-- [TEAM/RESTORE_TEAM_DB.md](/Users/jchavauxm5/PKA_JCH/TEAM/RESTORE_TEAM_DB.md)
-- [Inbox_Deliverables_PreMigration_Audit.md](/Users/jchavauxm5/PKA_JCH/Inbox_Deliverables_PreMigration_Audit.md)
-- [Inbox_Deliverables_PostMigration_Report.md](/Users/jchavauxm5/PKA_JCH/Inbox_Deliverables_PostMigration_Report.md)
+- [Phase_1_Closure_Report.md](/Users/jchavauxm5/PKA_JCH/[[Phase_1_Closure_Report]].md)
+- [RUNBOOK_PKA_MACBOOK.md](/Users/jchavauxm5/PKA_JCH/[[RUNBOOK_PKA_MACBOOK]].md)
+- [TEAM/[[RESTORE_TEAM_DB]].md](/Users/jchavauxm5/PKA_JCH/TEAM/[[RESTORE_TEAM_DB]].md)
+- [Inbox_Deliverables_PreMigration_Audit.md](/Users/jchavauxm5/PKA_JCH/[[Inbox_Deliverables_PreMigration_Audit]].md)
+- [Inbox_Deliverables_PostMigration_Report.md](/Users/jchavauxm5/PKA_JCH/[[Inbox_Deliverables_PostMigration_Report]].md)
 - [scripts/migrate_inbox_deliverables.py](/Users/jchavauxm5/PKA_JCH/scripts/migrate_inbox_deliverables.py)
 - [scripts/backup_team_db.py](/Users/jchavauxm5/PKA_JCH/scripts/backup_team_db.py)
 
 ## Good Next Step
 
-Triage the 6 remaining `pending` inbox rows, one by one, before any dashboard work.
+Triage the 6 remaining `pending` [[inbox]] rows, one by one, before any dashboard work.

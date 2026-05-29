@@ -15,14 +15,14 @@
     * Removed rows where the content of the first column was "--".
     * Removed empty rows.
     * Renamed the first column to "Title".
-* 		Added New Columns: Added new columns "Status", "Priority", "Assigned To", "Start Date", "End Date", and "Description".
+* 		Added New Columns: Added new columns "Status", "Priority", "Assigned To", "[[Start]] Date", "End Date", and "Description".
 * 		Filled New Columns with Specific Data:
     * Filled the "Status" column with "Active".
     * Filled the "Priority" column with "Normal".
-    * Filled the "Start Date" with the current date, formatted to European style (DD/MM/YY).
+    * Filled the "[[Start]] Date" with the current date, formatted to European style (DD/MM/YY).
     * Filled the "End Date" with a date 10 days in the future, also in European format.
     * Filled the "Description" column with "to be described".
-    * Filled the "Assigned To" column with the email "jc.havaux@jchytech.be".
+    * Filled the "Assigned To" column with the [[email]] "jc.havaux@jchytech.be".
 * 		Handled Uppercase Content and Merging:
     * For rows where the content of the first column ("Title") was in uppercase,
     * Put a “/“ before and after the content
@@ -47,13 +47,13 @@ Based on your instructions, I will transform this text file into an Excel file a
    - Rename the first column to "Title".
 
 2. **Add new columns with specific data:**
-   - Add columns "Status", "Priority", "Assigned To", "Start Date", "End Date", and "Description".
+   - Add columns "Status", "Priority", "Assigned To", "[[Start]] Date", "End Date", and "Description".
    - Fill "Status" with "Active".
    - Fill "Priority" with "Normal".
-   - Fill "Start Date" with today's date in European format (DD/MM/YY).
+   - Fill "[[Start]] Date" with today's date in European format (DD/MM/YY).
    - Fill "End Date" with a date 10 days in the future, also in European format.
    - Fill "Description" with "to be described".
-   - Fill "Assigned To" with the email "jc.havaux@jchytech.be".
+   - Fill "Assigned To" with the [[email]] "jc.havaux@jchytech.be".
 
 3. **Handle uppercase content and merging:**
    - For rows with the "Title" in uppercase, surround the content with "/".
@@ -114,12 +114,12 @@ Certainly! Here's a detailed description of the complete process I followed to t
 
 3. **Modifying the DataFrame:**
    - I removed the first two rows as instructed.
-   - I added new columns: "Status", "Priority", "Assigned To", "Start Date", "End Date", and "Description".
+   - I added new columns: "Status", "Priority", "Assigned To", "[[Start]] Date", "End Date", and "Description".
    - I filled these columns with the specified data:
      - "Status" with "Active".
      - "Priority" with "Normal".
      - "Assigned To" with "jc.havaux@jchytech.be".
-     - "Start Date" with today's date in European format (DD/MM/YY).
+     - "[[Start]] Date" with today's date in European format (DD/MM/YY).
      - "End Date" with a date 10 days in the future, also in European format.
      - "Description" with "to be described".
    - For rows with the "Title" in uppercase, I surrounded the title with "/" and set a flag for merging cells later in the Excel file.
@@ -167,7 +167,7 @@ can you create a GPTs with this process ?
 ## Assistant
 *2023-12-02 10:43*
 
-Creating a GPT (Generative Pre-trained Transformer) model that specializes in a process similar to the one I performed on the "BREVO MOTORS" text file involves several stages, each requiring considerable expertise in machine learning, particularly in natural language processing (NLP) and data processing. Here's a high-level overview of what this process would entail:
+Creating a GPT (Generative Pre-trained Transformer) model that specializes in a process similar to the one I performed on the "BREVO MOTORS" text file involves several stages, each requiring considerable expertise in machine learning, particularly in natural language processing (NLP) and data processing. Here's a high-level [[overview]] of what this process would entail:
 
 1. **Define the Scope and Capabilities:**
    - Determine the specific tasks the GPT model should be able to perform. In this case, it would involve reading and interpreting text files, transforming them into structured formats like DataFrames, and performing specific data manipulations and formatting.

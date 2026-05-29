@@ -50,7 +50,7 @@ A good vision anchor is:
 
 Every non-trivial project will face a moment when two reasonable people disagree about a direction. The founding document resolves this by pre-committing to principles.
 
-Example: "WildNexus will always prioritise field reliability and long autonomy over feature richness. If a feature compromises either, it is deferred to P1." This sentence, written in the founding document, makes dozens of future decisions automatic.
+Example: "WildNexus will always prioritise field reliability and long autonomy over feature richness. If a feature compromises either, it is deferred to P1." This sentence, written in the founding document, makes dozens of future [[decisions]] automatic.
 
 The document should contain enough of these compass statements that the project team can navigate 80% of conflicts without escalating.
 
@@ -123,7 +123,7 @@ They must be:
 Format: numbered list, 5–12 items maximum. More than 12 suggests the project has not chosen its priorities.
 
 Example structure:
-> **NN-01 — Field autonomy floor**: No P0 feature will be accepted that reduces minimum autonomy below 60 days on battery without solar. Justification: below this threshold, the deployment model (6-month unattended) is invalid and the product has no advantage over existing solutions.
+> **NN-01 — Field autonomy floor**: No P0 feature will be [[accepted]] that reduces minimum autonomy below 60 days on battery without solar. Justification: below this threshold, the deployment model (6-month unattended) is invalid and the product has no advantage over existing solutions.
 
 ### 6. Objectives — precise, verifiable, staged
 
@@ -154,7 +154,7 @@ How the work will be done. This section is the heart of the technical credibilit
 Required sub-sections:
 - **Overall approach**: the guiding logic (e.g., "iterative field-validated development in three phases")
 - **Architecture or framework**: how the system, study, or product is structured
-- **Key technical choices and justifications**: the 3–5 most consequential technical decisions, with rationale
+- **Key technical choices and justifications**: the 3–5 most consequential technical [[decisions]], with rationale
 - **Assumptions**: what must be true for the approach to work
 - **Unknowns and how they will be resolved**: what is not yet known and how the methodology handles this
 

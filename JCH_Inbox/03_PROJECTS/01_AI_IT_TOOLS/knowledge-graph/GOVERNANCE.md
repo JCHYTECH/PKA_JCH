@@ -50,4 +50,4 @@ tags:
 3. Governance.
 4. Coherence.
 5. Prudently automated enrichment.
-6. Long-term knowledge capitalization.
+6. Long-term [[knowledge]] capitalization.

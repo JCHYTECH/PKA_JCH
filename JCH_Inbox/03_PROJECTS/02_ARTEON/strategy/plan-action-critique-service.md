@@ -64,7 +64,7 @@ kpi: €1000/mois CA service critique wildlife
 - **Besoin** : Outil commun de notation pour leurs soirées de critique, formation des membres
 - **Valeur** : Score partagé + rapport imprimable pour chaque participant
 - **WTP** : €150-250/mois — accès illimité membres
-- **Conversion** : Approche directe via [[Miel]]/[[Delphi]] sur les fédérations photo (LPO, Natagora, clubs régionaux)
+- **Conversion** : Approche directe via [[Miel]]/[[Delphi]] sur les fédérations photo (LPO, [[Natagora]], clubs régionaux)
 
 ### Persona D — Éditeur / Site Web Éthique (B2B — Certification)
 - **Profil** : Magazine nature en ligne, galerie wildlife, concours photo, plateforme communautaire naturaliste
@@ -355,10 +355,10 @@ Indicateurs hebdomadaires :
 
 | Motif | Détection | Action |
 |-------|-----------|--------|
-| Humain visible dans l'image | [[Claude]] Haiku vision | Refus auto + email |
-| Image générée par IA | [[Claude]] Haiku vision + métadonnées | Refus auto + email |
-| Trucage/manipulation évident | [[Claude]] Haiku vision | Refus auto + email |
-| Appâtage déclaré (titre, description, métadonnées) | Analyse texte | Refus auto + email |
+| Humain visible dans l'image | [[Claude]] Haiku vision | Refus auto + [[email]] |
+| Image générée par IA | [[Claude]] Haiku vision + métadonnées | Refus auto + [[email]] |
+| Trucage/manipulation évident | [[Claude]] Haiku vision | Refus auto + [[email]] |
+| Appâtage déclaré (titre, description, métadonnées) | Analyse texte | Refus auto + [[email]] |
 
 ### File de validation humaine (JCH décide)
 
@@ -384,7 +384,7 @@ Upload photo
 
 ### Emails de refus
 
-Chaque refus automatique déclenche un email :
+Chaque refus automatique déclenche un [[email]] :
 - **Motif clair** en 1-2 phrases (sans accusation)
 - **Recommandation** : ce que le photographe pourrait soumettre à la place
 - **Ton ARTEON** : bienveillant, éducatif, aligné avec le manifeste

@@ -29,7 +29,7 @@ Prompts [[Claude]], guides how-to, scripts, workflows [[Obsidian]], configuratio
 - 
 - 
 - 
-- `pka-hermisation/README.md` — Projet d'Hermisation PKA contrôlée
+- `pka-hermisation/README.md` — Projet d'[[Hermisation]] PKA contrôlée
 - `content/Prompts/prompt-expert-canon-wildlife.md` — Prompt expert photo wildlife Canon
 - `content/Prompts/reverse-prompt dans claude-command.md` — Reverse-prompt en commande CLI
 - 

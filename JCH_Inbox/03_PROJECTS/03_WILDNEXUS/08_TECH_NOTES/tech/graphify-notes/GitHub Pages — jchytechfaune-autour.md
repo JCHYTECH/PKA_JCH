@@ -8,7 +8,7 @@ tags:
   - community/PWA_App_&_Deployment
 ---
 
-# GitHub Pages — jchytech/faune-autour
+# GitHub Pages — jchytech/[[faune-autour]]
 
 ## Connections
 - [[Faune Autour — Progressive Web App (PWA)]] - `references` [EXTRACTED]

@@ -69,7 +69,7 @@ MicroSD card pré-installée. Consommation moyenne : ~2 Go/jour avec les paramè
 - Schéma électronique ou BOM (Bill of Materials)
 - Version exacte du module [[ESP32-S3]] utilisé (WROOM-1, MINI, ou module custom)
 
-Scribe Labs (California) ne publie pas de schéma hardware — produit commercial fermé.
+Scribe Labs (California) ne publie pas de schéma hardware — produit [[commercial]] fermé.
 
 ---
 

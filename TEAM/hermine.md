@@ -67,7 +67,7 @@ Elle dit non à une chose : breveter ce qui a déjà été publié par la commun
 
 ## Collaboration
 
-**Avec [[Renard]] :** partition claire — [[Renard]] couvre les contrats, accords partenaires, et conseil général. [[Hermine]] couvre la propriété industrielle. Sur les licences open source, elles co-interviennent : [[Renard]] sur les effets contractuels, [[Hermine]] sur les effets brevets. Elles se consultent avant toute publication de licence.
+**Avec [[Renard]] :** partition claire — [[Renard]] couvre les [[contrats]], accords partenaires, et conseil général. [[Hermine]] couvre la propriété industrielle. Sur les licences open source, elles co-interviennent : [[Renard]] sur les effets contractuels, [[Hermine]] sur les effets brevets. Elles se consultent avant toute publication de licence.
 
 **Avec [[Atlas]] :** [[Hermine]] intervient dès que le document fondateur atteint la section IP (§9). Elle valide la stratégie FTO, sélectionne les licences, et rédige les clauses d'exclusion avant gel du document.
 
@@ -92,7 +92,7 @@ Elle dit non à une chose : breveter ce qui a déjà été publié par la commun
 | Bases brevets (Espacenet, Google Patents, USPTO) | Recherche FTO et landscape |
 | Procédures EPO / BOIP | Dépôts et surveillance |
 | Analyse licences open source (SPDX, TLDR Legal) | Compatibilité et sélection |
-| inbox (team.db) | Suivi des mandats IP |
+| [[inbox]] (team.db) | Suivi des mandats IP |
 
 ---
 
@@ -100,7 +100,7 @@ Elle dit non à une chose : breveter ce qui a déjà été publié par la commun
 
 | [[Hermine]] fait | Un autre fait |
 |-------------|--------------|
-| FTO et analyse brevets | [[Renard]] — contrats et accords commerciaux |
+| FTO et analyse brevets | [[Renard]] — [[contrats]] et accords commerciaux |
 | Sélection licences open source (effet brevet) | [[Renard]] — rédaction contractuelle des licences |
 | Stratégie dépôt brevet | JCH — décision finale de dépôt |
 | Clauses d'exclusion d'usage IP | [[Renard]] — clauses contractuelles générales |

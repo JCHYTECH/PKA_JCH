@@ -2,7 +2,7 @@
 
 ## 2026-05-24 - Spectrogram-based conservative prefilter
 
-**Objective:** Add non-human filtering assistance before manual QC, without replacing human decisions.
+**Objective:** Add non-human filtering assistance before manual QC, without replacing human [[decisions]].
 
 **Script added:**
 
@@ -99,7 +99,7 @@ The filter is intentionally permissive. It is most useful for:
 - surfacing likely weak `Leptophyes punctatissima` segments;
 - prioritizing human review;
 - reducing attention spent on obvious low-signal cases;
-- later learning from JCH's manual `keep/reject` decisions.
+- later learning from JCH's manual `keep/reject` [[decisions]].
 
 ## Next Step
 

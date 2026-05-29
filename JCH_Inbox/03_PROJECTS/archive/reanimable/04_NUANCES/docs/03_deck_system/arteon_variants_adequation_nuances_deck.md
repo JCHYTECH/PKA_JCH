@@ -42,7 +42,7 @@ La recommandation de `arteon_slide_layout_variants.md` doit etre appliquee plus 
 | 6 | Besoin central de la mission | Horizon | Transformation attendue, encore analytique. |
 | 7 | Cibles prioritaires | Horizon | ICP et exclusions. |
 | 8 | Offres B2B a articuler | Horizon | Chaine de valeur. |
-| 9 | Processus technico-commercial cible | Horizon | Slide process pure. |
+| 9 | Processus technico-[[commercial]] cible | Horizon | Slide process pure. |
 | 10 | 6 leviers pour raccourcir la signature | Horizon | Slide mecanique / cartes. |
 | 11 | Dossier preliminaire | Horizon | Slide outil / execution. |
 | 12 | Boite a outils vente et pilotage | Horizon | Tres compatible. |

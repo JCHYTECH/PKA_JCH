@@ -81,7 +81,7 @@ Pour affiner votre stratégie de canal de distribution, en tenant compte de la s
    - Proposer des solutions de financement, surtout pour les options de location et de renting, qui peuvent être plus accessibles pour certaines écoles.
 
 3. **Communication et Marketing Digital** : 
-   - Utiliser le marketing digital (SEO, réseaux sociaux, email marketing) pour diriger le trafic vers le site.
+   - Utiliser le marketing digital (SEO, réseaux sociaux, [[email]] marketing) pour diriger le trafic vers le site.
    - Créer des contenus engageants et informatifs sur les produits et les options de commande.
 
 4. **Partenariats avec des Garages Agréés** : 

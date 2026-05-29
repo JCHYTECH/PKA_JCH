@@ -36,7 +36,7 @@ Les trois statuts sont :
 | Contribution technique au code, hardware ou documentation | Autorisé | Respect des règles de contribution et de la licence | Communauté contributive voulue | Maintainers WildNexus |
 | Reproduction d'un nœud pour usage personnel ou recherche compatible | Autorisé | Respect intégral de la licence et de la politique d'usage | Auditabilité et reproductibilité du socle | Aucun |
 | Intégration d'un capteur additionnel orienté biodiversité | Autorisé | Documentation minimale des interfaces | Extensibilité voulue par design | Maintainers techniques |
-| Revente / distribution par partenaire commercial orienté nature | Conditionnel | Contrat, reprise des exclusions d'usage, usage de marque contrôlé | Compatible si l'alignement mission est maintenu | [[Renard]] + JCH |
+| Revente / distribution par partenaire [[commercial]] orienté nature | Conditionnel | Contrat, reprise des exclusions d'usage, usage de marque contrôlé | Compatible si l'alignement mission est maintenu | [[Renard]] + JCH |
 | Déploiement par bureau d'études environnementales | Conditionnel | Vérification du contexte client et des usages finaux | Peut être aligné, mais dépend des missions réelles | [[Renard]] |
 | Utilisation par administration publique non militaire | Conditionnel | Vérifier finalité réelle, gouvernance des données, cadre RGPD | Potentiellement compatible, mais sensible selon usage | [[Renard]] + JCH |
 | Intégration dans une plateforme logicielle tierce | Conditionnel | Pas de contournement des exclusions d'usage, pas de fermeture abusive | Compatible seulement si la mission et la conformité restent intactes | [[Renard]] + owner technique |

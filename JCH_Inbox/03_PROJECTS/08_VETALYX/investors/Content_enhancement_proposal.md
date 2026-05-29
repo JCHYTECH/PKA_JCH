@@ -2,7 +2,7 @@ cssclasses:
   - bg-vetalyx
 
 
-type: knowledge
+type: [[knowledge]]
 status: active
 project: Vetalyx
 domain:
@@ -75,7 +75,7 @@ Here are suggested section outlines for each deck. You can map your existing sli
 13. Closing / Next Steps  
 
 ### B) Market & Sales Deck (Detailed)  
-**Objective**: Granular, data-rich, geared for commercial teams, sales partners, internal strategy.  
+**Objective**: Granular, data-rich, geared for [[commercial]] teams, sales partners, internal strategy.  
 **Suggested Sections**:
 1. Cover / Title  
 2. Introduction & Context – why pet‐allergy diagnostics matter  
@@ -182,7 +182,7 @@ Here is a consolidated and upgraded data block to insert into your decks.
 - Clinics prefer **single-panel blood tests** with 10–15 min readout (DIATECH strong match).  
 - Reader-assisted interpretation is increasingly expected (marketing asset for DIATECH).  
 - Preventive dermatology & pet insurance are the top adoption drivers 2026–2032.  
-- China-manufactured kits are increasingly accepted if CE-IVD & ISO documentation is strong.
+- China-manufactured kits are increasingly [[accepted]] if CE-IVD & ISO documentation is strong.
 
 Everything supports DIATECH as **the right product at the right time**.
 
@@ -397,7 +397,7 @@ Pet Allergy Diagnostics — Europe 2025–2032 Strategy
 - Present European diagnostic opportunity  
 - Show DIATECH’s differentiated product offer  
 - Detail France-first go-to-market strategy  
-- Provide investor-level overview of financial potential  
+- Provide investor-level [[overview]] of financial potential  
 - Present operational & regulatory pathway
 
 (Use slide from *Investor Deck* and harmonise.)
@@ -740,7 +740,7 @@ sections = [
 ("Executive Summary", "• Underdiagnosed market\n• €40–50M potential by 2032\n• France-first strategy"),
 ("Market Demand", "• Rising dermatology cases\n• Insurance expansion\n• Owner expectations increasing"),
 ("Epidemiology", "Dogs: 12–18%\nCats: 10–14%\n<25% tested today"),
-("Rapid Test Importance", "• Faster decisions\n• Less unnecessary treatments"),
+("Rapid Test Importance", "• Faster [[decisions]]\n• Less unnecessary treatments"),
 ("EU Allergy Diagnostics (Human)", "€2.2B 2024 → €3.7B 2030"),
 ("Pet Allergy Market", "$370M 2025 → $714M 2035"),
 ("Segmentation", "• By test type\n• By species\n• By channel"),
@@ -1220,9 +1220,9 @@ D’après l’analyse des fichiers : fileciteturn0file0turn0file1tu
 - **DIATECH_Pet_Allergy_Market_Analysis_EUROPE.pptx** (12 slides)  
   Europe, pricing, competitive, distrib, market prioritisation, FR timeline, SWOT France, strategy.
 - **DIATECH Pet_Allergy_Test_France_Market_Analysis_EN.pptx** (11 slides)  
-  France only : exec summary, market overview, potential calc, comp landscape, SWOT, GTM, reco.
+  France only : exec summary, market [[overview]], potential calc, comp landscape, SWOT, GTM, reco.
 - **DIATECH_Market_Epidemiology_Deck.pptx** (8 slides)  
-  Company overview, epidemiology (allergies + viral), why rapid tests matter, market opp, value prop.
+  Company [[overview]], epidemiology (allergies + viral), why rapid tests matter, market opp, value prop.
 - **DIATECH_European_Vet_Market_INVESTOR SLIDEDECK.pptx** (14 slides)  
   Classic investor story: exec summary, company, EU size & growth, GTM, product, regulatory, SWOT, financial, investment highlights.
 - **DIATECH_MASTER_DECK_FULL.pptx** (35 slides structurés) fileciteturn1file2  
@@ -1940,7 +1940,7 @@ Dedans tu colles seulement :
 ---
 
 ## 📊 3. DIATECH MARKET & SALES STRUCTURE  
-**For operational & commercial discussions (détaillé, pays, pricing, distrib).**  
+**For operational & [[commercial]] discussions (détaillé, pays, pricing, distrib).**  
 👉 [Download DIATECH_MARKET_STRUCTURE.pptx](sandbox:/mnt/data/DIATECH_MARKET_STRUCTURE.pptx)
 
 Dedans tu colles :
@@ -2927,11 +2927,11 @@ Si tu veux :
 ou  
 - Un **PowerPoint pré-rempli** avec toutes ces sections  
 ou  
-- Un **mode d'emploi “commercial script”** pour que ton équipe sache présenter DIATECH.
+- Un **mode d'emploi “[[commercial]] script”** pour que ton équipe sache présenter DIATECH.
 
 🕙 **(11:20)**  
 Dis-moi :  
-**DOCX**, **PPT pré-rempli**, ou **script commercial** ?
+**DOCX**, **PPT pré-rempli**, ou **script [[commercial]]** ?
 
 ---
 
@@ -3119,7 +3119,7 @@ Ce fichier contient :
 
 - Le texte structuré et propre
 - Organisé en sections prêtes pour ton PPT
-- Reprenant toute la logique du deck commercial
+- Reprenant toute la logique du deck [[commercial]]
 - Avec bullets optimisés et cohérents
 - Facilement “copier-coller” dans chaque slide du PowerPoint
 
@@ -3152,7 +3152,7 @@ Je crée un PowerPoint avec **tout le texte déjà inséré**, slide par slide.
 
 ---
 
-## 🟧 OPTION C — Générer un **script commercial complet**  
+## 🟧 OPTION C — Générer un **script [[commercial]] complet**  
 Ce que ton équipe doit dire à l’oral lors des réunions vétérinaires/distributeurs.  
 (Texte court, impactant, structurés en pitch de 5–7 minutes.)
 
@@ -3161,7 +3161,7 @@ Ce que ton équipe doit dire à l’oral lors des réunions vétérinaires/distr
 # 📣 Dis-moi simplement :  
 ### **A — PPT pré-rempli**  
 ### **B — Graphiques**  
-### **C — Script commercial**
+### **C — Script [[commercial]]**
 
 🕙 **(11:32)**
 
@@ -3283,7 +3283,7 @@ Et tout cela parfaitement aligné avec ta stratégie DIATECH.
 # 👉 Prochaine étape ?  
 Je peux te produire :
 
-### **C — Le script commercial (oral)**  
+### **C — Le script [[commercial]] (oral)**  
 Un pitch de **5 minutes**, structuré pour :  
 - Distributeurs  
 - Cliniques vétérinaires  
@@ -3440,7 +3440,7 @@ Parfait — **A + B sont réalisés**, et voici le complément :
 
 ---
 
-# ✅ **C — Script commercial (DOCX 5 minutes)**  
+# ✅ **C — Script [[commercial]] (DOCX 5 minutes)**  
 Un texte prêt à être utilisé par :  
 - commerciaux  
 - distributeurs  
@@ -3497,7 +3497,7 @@ Maintenant que tu as :
 ✔️ Un PPT pré-rempli (fonctionnel)  
 ✔️ Un modèle PPT designé (pro)  
 ✔️ Les graphiques  
-✔️ Le script commercial  
+✔️ Le script [[commercial]]  
 
 Je te propose **la dernière brique** :
 
@@ -3852,7 +3852,7 @@ investor_sections = {
 "Investment Ask": [
 "Funding for EU5 scale-up.",
 "Manufacturing ramp.",
-"Regulatory + commercial expansion."
+"Regulatory + [[commercial]] expansion."
 ]
 }
 
@@ -3881,7 +3881,7 @@ add_title(slide, "DIATECH Market & Sales – Final Designed Version", title_colo
 market_sections = {
 "Market Context": [
 "Strong rise in dermatology consultations",
-"Owners expect rapid decisions",
+"Owners expect rapid [[decisions]]",
 "Clinics shifting to in-house diagnostics"
 ],
 "Epidemiology – Allergies": [
@@ -4037,7 +4037,7 @@ Structure :
 ### ✔️ Market & Sales Final (designé)  
 ### ✔️ Investor Final  
 ### ✔️ Mini Pitch (8 slides)  
-### ✔️ Script commercial (DOCX)  
+### ✔️ Script [[commercial]] (DOCX)  
 ### ✔️ Checklist (DOCX)  
 ### ✔️ Graphiques (pricing + EU5)  
 ### ✔️ PPT pré-rempli  
@@ -4154,7 +4154,7 @@ Parfait — voici une **estimation ARPU EU5** adaptée au marché DIATECH (tests
 - prix de vente observés,  
 - taux d’adoption réalistes la 1ère et 2e année.
 
-> ⚠️ Ce ne sont **pas** des données publiques exactes mais des **modélisations réalistes pour un business plan / deck commercial**.
+> ⚠️ Ce ne sont **pas** des données publiques exactes mais des **modélisations réalistes pour un business plan / deck [[commercial]]**.
 
 ---
 

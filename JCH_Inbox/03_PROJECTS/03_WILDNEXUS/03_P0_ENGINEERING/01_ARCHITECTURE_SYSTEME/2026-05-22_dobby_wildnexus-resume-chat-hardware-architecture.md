@@ -399,7 +399,7 @@ Une fois les mesures reelles faites, figer :
 - role exact du Satellite Smart ;
 - role exact de la Base Nexus ;
 - protocole [[LoRa]] ;
-- strategie 4G/5G ;
+- [[strategie]] 4G/5G ;
 - capteurs baseline ;
 - capteurs optionnels ;
 - boitier ;

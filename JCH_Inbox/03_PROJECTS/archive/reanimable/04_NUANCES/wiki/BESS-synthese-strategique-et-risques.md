@@ -30,7 +30,7 @@ Sur le plan technologique, le marche 2025-2030 est clairement domine par le LFP 
 
 Sur le plan concurrentiel, les grands acteurs couvrent surtout le utility-scale, les grands projets industriels ou les offres standardisees. Ils laissent des espaces moins bien servis : community storage inferieur a 500 kWh, solutions agiles pour PME, services a forte composante locale, modeles cooperatifs, deploiements rapides et cas mobiles ou temporaires.
 
-Sur le plan legal et operationnel, le marche est praticable mais non trivial. Les exigences de certification, de marquage, de passeport batterie, de raccordement, d'assurabilite, de prevention incendie et de responsabilite produit imposent de choisir clairement le role de Nuances : integrateur, revendeur, assembleur, operateur de service ou simple orchestrateur commercial.
+Sur le plan legal et operationnel, le marche est praticable mais non trivial. Les exigences de certification, de marquage, de passeport batterie, de raccordement, d'assurabilite, de prevention incendie et de responsabilite produit imposent de choisir clairement le role de Nuances : integrateur, revendeur, assembleur, operateur de service ou simple orchestrateur [[commercial]].
 
 Conclusion : la reussite B2B de Nuances est plausible si l'entreprise evite de se positionner trop vite comme fabricant ou integrateur plein-risque, cible un segment initial etroit, s'appuie sur des briques certifiees, et structure tres tot le financement, le monitoring, le service et la conformite.
 
@@ -67,7 +67,7 @@ Conclusion : la reussite B2B de Nuances est plausible si l'entreprise evite de s
 #### Flow batteries
 
 - Relevantes pour du long-duration storage ou des usages industriels lourds.
-- Peu adaptees a une strategie de lancement B2B agile sur PME, communautaire ou mobile.
+- Peu adaptees a une [[strategie]] de lancement B2B agile sur PME, communautaire ou mobile.
 
 ### 3.3 Cas d'usage a plus forte coherence strategique
 
@@ -181,7 +181,7 @@ Le coeur de mitigation de Nuances tient dans trois actifs de positionnement :
 - la presence d'un dispositif de collecte et de pilotage ;
 - la possibilite de combiner energie, financement et services.
 
-Autrement dit, Nuances a deja de quoi reduire le risque commercial de base, a condition de rester disciplinee sur sa cible.
+Autrement dit, Nuances a deja de quoi reduire le risque [[commercial]] de base, a condition de rester disciplinee sur sa cible.
 
 ### 7.2 Risques qui necessitent reflexion et actions
 
@@ -191,7 +191,7 @@ Ces risques sont decisifs. S'ils ne sont pas traites, ils peuvent bloquer ou fra
 |-------|--------------------------|-------------------|
 | **Role exact de Nuances dans la chaine de valeur** | Tant que Nuances n'a pas decide si elle est revendeur, integrateur, assembleur, operateur ou financeur, elle porte un risque mal defini | Fixer un modele cible et un modele de transition par ecrit |
 | **Conformite et certification** | Si Nuances assemble, marque ou integre en son nom, elle entre dans un niveau de responsabilite technique et reglementaire beaucoup plus eleve | Privilegier au demarrage des produits et partenaires deja certifies ; definir clairement qui porte la conformite |
-| **Passeport batterie, REP et tracabilite 2027+** | Ces obligations peuvent devenir un cout cache ou un point de blocage | Cartographier les obligations selon le role retenu ; integrer la conformite dans les contrats fournisseurs |
+| **Passeport batterie, REP et tracabilite 2027+** | Ces obligations peuvent devenir un cout cache ou un point de blocage | Cartographier les obligations selon le role retenu ; integrer la conformite dans les [[contrats]] fournisseurs |
 | **Transformation de l'equipe commerciale B2C vers B2B** | Le vrai risque de lancement n'est pas la techno, mais l'execution commerciale | Former, specialiser, outiller et filtrer l'equipe avec un process de qualification strict |
 | **Modele economique du leasing** | Le leasing est cite comme solution mais sa structure n'est pas securisee | Definir qui finance, qui porte le risque de defaut, le mode de remuneration et les cas d'usage eligibles |
 | **Dependance a un investisseur unique** | Un signal investisseur n'est pas un modele d'execution | Construire un scenario operationnel sans cet investisseur ; traiter son apport comme accelerateur, pas comme prerequis |
@@ -204,7 +204,7 @@ Ces risques sont decisifs. S'ils ne sont pas traites, ils peuvent bloquer ou fra
 
 ### 7.3 Classement de priorite
 
-### Priorite 1 - a resoudre avant lancement commercial structure
+### Priorite 1 - a resoudre avant lancement [[commercial]] structure
 
 - role exact de Nuances ;
 - modele de conformite et de responsabilite ;
@@ -218,14 +218,14 @@ Ces risques sont decisifs. S'ils ne sont pas traites, ils peuvent bloquer ou fra
 - interfacage avec flexibilite et agregateurs ;
 - formalisation des KPI economiques et techniques ;
 - validation terrain des hypotheses de ROI ;
-- outillage commercial B2B.
+- outillage [[commercial]] B2B.
 
 ### Priorite 3 - a surveiller strategiquement
 
 - sodium-ion comme evolution potentielle ;
 - opportunites communautaires et cooperatives ;
 - second-life EV ;
-- extensions de la reglementation carbone et batterie.
+- extensions de la [[reglementation]] carbone et batterie.
 
 ## 8. Lecture de faisabilite
 
@@ -249,7 +249,7 @@ Ces risques sont decisifs. S'ils ne sont pas traites, ils peuvent bloquer ou fra
 
 La reussite B2B de Nuances n'est pas principalement un probleme de marche ou de technologie. C'est un probleme de focalisation, de role choisi et de discipline d'execution.
 
-Si Nuances demarre comme orchestrateur et integrateur commercial de solutions certifiees, sur un segment etroit, avec preuve economique, financement cadre et service de suivi, le risque devient gerable.
+Si Nuances demarre comme orchestrateur et integrateur [[commercial]] de solutions certifiees, sur un segment etroit, avec preuve economique, financement cadre et service de suivi, le risque devient gerable.
 
 Si Nuances tente de devenir simultanement fabricant, integrateur plein-risque, financeur et operateur multi-segments, le risque de dispersion et de non-qualite devient eleve.
 
@@ -261,13 +261,13 @@ Ordre logique recommande :
 2. choisir le role exact de Nuances ;
 3. choisir 2 a 3 partenaires technologiques et financiers ;
 4. definir une offre standard de lancement ;
-5. formaliser le process commercial B2B et le dossier de qualification ;
+5. formaliser le process [[commercial]] B2B et le dossier de qualification ;
 6. lancer 3 a 5 pilotes strictement selectionnes ;
 7. mesurer, corriger, puis seulement etendre.
 
 ## 10. Fichiers sources fusionnes
 
-- [BESS-technologies.md](techniques/BESS-technologies.md)
-- [BESS-legal.md](legal/BESS-legal.md)
-- [BESS-acteurs.md](concurrence/BESS-acteurs.md)
-- [BESS-installation.md](principes-installation/BESS-installation.md)
+- [BESS-technologies.md](techniques/[[BESS-technologies]].md)
+- [BESS-legal.md](legal/[[BESS-legal]].md)
+- [BESS-acteurs.md](concurrence/[[BESS-acteurs]].md)
+- [BESS-installation.md](principes-installation/[[BESS-installation]].md)

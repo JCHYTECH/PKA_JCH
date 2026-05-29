@@ -33,7 +33,7 @@ source:
 | P0 | Relire le rapport final DOCX pour correction style/orthographe avant envoi externe | JCH + [[Dobby]] | Version finale distribuee |
 | P0 | Ajouter logo/identite Vetalyx si necessaire | [[Dobby]] | DOCX final brandé |
 | P0 | Exporter en PDF apres verification visuelle dans Word/Pages/Google Docs | JCH | PDF partenaire |
-| P1 | Preparer une version courte 2 pages pour email KOL/fournisseur | [[Dobby]] + [[Vasco]] | Brief KOL 2 pages |
+| P1 | Preparer une version courte 2 pages pour [[email]] KOL/fournisseur | [[Dobby]] + [[Vasco]] | Brief KOL 2 pages |
 | P1 | Preparer une version anglaise pour DIXUN | [[Dobby]] | English supplier brief |
 
 ## 3. KOL - Dr Morgane Cannone et Dr Billen
@@ -44,7 +44,7 @@ source:
 | P0 | Screener chaque KOL avant contact : carriere, specialite, publications, reseaux, prises de parole, contraintes institutionnelles, centres d'interet cliniques | [[Furet]] + [[Dobby]] | Fiche KOL personnalisee |
 | P0 | Verifier si le contact "Dr Billen" correspond bien a Dr Frederic Billen, ULiege/CVU, medecine interne/gastroenterologie, ou a un autre Billen | [[Furet]] + JCH | Identification confirmee |
 | P0 | Adapter l'angle d'approche a chaque KOL : dermatologie/allergologie, medecine interne, recherche clinique, biobanque, innovation diagnostique | [[Dobby]] + [[Vasco]] | Message personnalise |
-| P0 | Envoyer un email d'approche avec le protocole pilote | JCH + [[Dobby]] | Email envoye |
+| P0 | Envoyer un [[email]] d'approche avec le protocole pilote | JCH + [[Dobby]] | Email envoye |
 | P0 | Proposer un call de 30 minutes a chaque KOL | JCH | Rendez-vous |
 | P0 | Demander leur volume mensuel de cas allergologie chien/chat | KOL | Estimation recrutement |
 | P0 | Demander leur test de reference habituel : ELISA, PAX/microarray, immunoblot, IDT | KOL | Choix comparateur |
@@ -63,7 +63,7 @@ Objectif : personnaliser la demarche pour chaque opinion leader et eviter un con
 | Publications | Articles, theses encadrees, communications, chapitres, cas cliniques | Citer un interet commun et proposer co-valorisation |
 | Reseaux | AFVAC, ESVD/ECVD, ECVIM, ENV, ULiege/CVU, groupes de formation | Identifier le levier de credibilite et diffusion |
 | Prises de parole | Congres, formations, webinars, enseignement | Evaluer appetence pour projet KOL/formation |
-| Contraintes | Comite ethique, charge clinique, statut hospitalier/universitaire, circuit contrats | Anticiper delais et documents |
+| Contraintes | Comite ethique, charge clinique, statut hospitalier/universitaire, circuit [[contrats]] | Anticiper delais et documents |
 | Passions/interets professionnels | Pedagogie, innovation diagnostique, cas complexes, chats, dermatologie, medecine interne, recherche translationnelle | Personnaliser le pitch sans etre intrusif |
 | Potentiel Vetalyx | Site recruteur, conseiller scientifique, co-auteur rapport/poster, testeur DBS, relais reseau | Definir le role propose |
 
@@ -71,7 +71,7 @@ Objectif : personnaliser la demarche pour chaque opinion leader et eviter un con
 
 | KOL | Elements observes | Angle d'approche preliminaire |
 |---|---|---|
-| Dr Morgane Cannone / Canonne-Guibert | Source publique Edimark : veterinaire a l'Ecole nationale veterinaire d'Alfort, unite pedagogique de medecine interne ; publications recentes sur la PIF feline. CV public trouve avec email ENVA. | Ne pas la cadrer uniquement dermatologie : proposer un angle medecine interne/feline medicine, validation clinique rigoureuse, echantillons conserves, chats et diagnostic differentiel. |
+| Dr Morgane Cannone / Canonne-Guibert | Source publique Edimark : veterinaire a l'Ecole nationale veterinaire d'Alfort, unite pedagogique de medecine interne ; publications recentes sur la PIF feline. CV public trouve avec [[email]] ENVA. | Ne pas la cadrer uniquement dermatologie : proposer un angle medecine interne/feline medicine, validation clinique rigoureuse, echantillons conserves, chats et diagnostic differentiel. |
 | Dr Billen | Source publique CVU Liege : Dr Frederic Billen, specialiste medecine interne petits animaux, service gastroenterologie ; les allergies alimentaires et inflammations digestives font partie du champ clinique. | Verifier l'identite exacte avant contact. Si Frederic Billen : angle medecine interne/gastroenterologie, adverse food reactions, diagnostic differentiel, comparaison IgE versus clinique. |
 
 Sources de screening initial :
@@ -149,7 +149,7 @@ Sources de screening initial :
 | P1 | Chiffrer surcout DBS basse temperature | [[Bruno]] + [[Trace]] | Budget DBS |
 | P1 | Definir seuil budget go/no-go phase pilote | JCH + [[Bruno]] | Decision budget |
 
-## 10. Prochaines decisions JCH
+## 10. Prochaines [[decisions]] JCH
 
 1. Valider si le protocole KOL vise d'abord 50, 100 ou 160 animaux.
 2. Choisir la langue du dossier KOL initial : francais uniquement ou francais + anglais.

@@ -10,7 +10,7 @@ tags:
 
 ## 1. Concept
 
-Application mobile-first (PWA) affichant les animaux observés autour de la position GPS de l'utilisateur. Données issues de GBIF (Global Biodiversity Information Facility), qui agrège notamment les observations de observations.be / waarnemingen.be.
+Application mobile-first (PWA) affichant les animaux observés autour de la position GPS de l'utilisateur. Données issues de GBIF (Global Biodiversity Information Facility), qui agrège notamment les observations de [[observations.be]] / [[waarnemingen.be]].
 
 **URL de production :** https://jchytech.github.io/faune-autour/faune-autour.html
 **Hébergement :** GitHub Pages (repository `jchytech/faune-autour`)
@@ -20,7 +20,7 @@ Application mobile-first (PWA) affichant les animaux observés autour de la posi
 
 ## 2. Historique des contacts API
 
-**Natagora (observations.be)** — contacté, pas de réponse.
+**[[Natagora]] ([[observations.be]])** — contacté, pas de réponse.
 
 **Observation International (observation.org)** — contacté à info@observation.org. Réponse de Nicoliene :
 > "Our internal API is currently intended for use in our own applications and for business partners involved in funded projects. We redirect external developers to GBIF."
@@ -37,7 +37,7 @@ Application mobile-first (PWA) affichant les animaux observés autour de la posi
 - Filtre temporel : `eventDate` (12 mois glissants)
 - Filtre taxonomique : `kingdomKey=1` (Animalia) pour le mode Explorer
 - Filtre par espèce : `taxonKey` résolu via résolution en 3 étapes (voir ci-dessous)
-- Données observations.be incluses dans GBIF avec délai de synchronisation (semaines à mois)
+- Données [[observations.be]] incluses dans GBIF avec délai de synchronisation (semaines à mois)
 
 ---
 
@@ -128,7 +128,7 @@ Embarqué directement dans le HTML. ~110 entrées couvrant :
 ### Notes techniques
 - Lenteur image Wikipedia : inhérente aux serveurs Wikimedia, non optimisable côté client
 - Noms français GBIF : le `vernacularName` n'est pas systématiquement fourni par GBIF pour toutes les espèces — le dictionnaire local compense
-- Embargo espèces rares : observations.be masque certaines localisations sensibles dans GBIF
+- Embargo espèces rares : [[observations.be]] masque certaines localisations sensibles dans GBIF
 
 ---
 

@@ -69,7 +69,7 @@ Deux éléments additionnels ont été caractérisés en avril 2026 :
 
 1. **Constat d'huissier sur les souches sans flachis**, avant recouvrement ou broyage.
 2. **Constat d'huissier sur les mares**, avant mise en eau complète et végétalisation.
-3. **Constat ornithologique urgent** via Natagora ou LRBPO.
+3. **Constat ornithologique urgent** via [[Natagora]] ou LRBPO.
 4. **Interpellation urgente** du cantonnement DNF compétent (modèle §8.3).
 5. **Demandes d'accès aux documents administratifs** à la commune d'Esneux, au SPW-DNF, et au service urbanisme de Chaudfontaine (modèles §8.1 et §8.4), avec demandes spécifiques couvrant l'intégralité de la chaîne procédurale du §4 bis.
 6. **Consultation du Bulletin des adjudications** (data.publicprocurement.be) pour déterminer le mode d'attribution.
@@ -177,7 +177,7 @@ Le Code forestier (art. 3, 8°) définit la coupe urgente comme la coupe destin�
 
 *Niveau 3 — Jurisprudence européenne.* Arrêt Voore Mets 2025 (CJUE) : lecture plus stricte de la perturbation intentionnelle.
 
-**Charge de la preuve.** Incombe au plaignant. Un constat ornithologique à l'aube par observateur qualifié (Natagora, LRBPO) suffit à renverser la charge.
+**Charge de la preuve.** Incombe au plaignant. Un constat ornithologique à l'aube par observateur qualifié ([[Natagora]], LRBPO) suffit à renverser la charge.
 
 **Protocole :** relevé à l'aube (05h30–08h00 en avril), deux observateurs indépendants, enregistrements audio datés, photos de nids visibles, consignation par espèce (chant territorial, transport de matériaux, becquée, alarme, nid actif). Rapport signé.
 
@@ -340,7 +340,7 @@ Les points à documenter dans l'ordre :
 
 ### 3.8. Logistique — plaques agricoles « G »
 
-Plaques G : régime fiscal et de circulation allégé, usage légalement cantonné aux opérations agricoles, horticoles, sylvicoles et travaux connexes. Ne couvrent pas : transport commercial de matériaux non agricoles, génie civil, transport routier longue distance.
+Plaques G : régime fiscal et de circulation allégé, usage légalement cantonné aux opérations agricoles, horticoles, sylvicoles et travaux connexes. Ne couvrent pas : transport [[commercial]] de matériaux non agricoles, génie civil, transport routier longue distance.
 
 Si un véhicule plaque G est observé en opération de génie civil, cumul potentiel d'une infraction à la réglementation et d'un indice de requalification de la nature du chantier.
 
@@ -562,7 +562,7 @@ Plan d'action. La colonne « Opérateur » est à compléter selon les ressource
 | # | Objet | Motivation | Incidence si constat d'irrégularité | Opérateur |
 |---|---|---|---|---|
 | C1 | Constat d'huissier sur absence de flachis | Code forestier art. 81 : empreinte = seul moyen de preuve. | Grief central direct. Coupe non couverte par le régime forestier. | |
-| C2 | Constat ornithologique à l'aube (Natagora, LRBPO) | LCN art. 2 : charge de la preuve sur le plaignant. | Base d'une suspension immédiate et PV Police de l'environnement. | |
+| C2 | Constat ornithologique à l'aube ([[Natagora]], LRBPO) | LCN art. 2 : charge de la preuve sur le plaignant. | Base d'une suspension immédiate et PV Police de l'environnement. | |
 | C3 | DAA commune d'Esneux — dossier complet | Décret 30 mars 1995. Délai 30 jours. | Absence = présomption de défaut procédural. | |
 | C4 | DAA au SPW-DNF | Vérification indépendante de la tutelle. | Confirme ou infirme l'acte officiel de désignation. | |
 | C5 | DAA au service urbanisme de Chaudfontaine | Vérifier lien éventuel avec un projet privé. | Coïncidence = question sur le motif réel. | |
@@ -614,7 +614,7 @@ Plan d'action. La colonne « Opérateur » est à compléter selon les ressource
 - DAA service urbanisme Chaudfontaine (modèle §8.4).
 - Plainte administrative au cantonnement DNF (modèle §8.2).
 - Plainte au fonctionnaire délégué SPW-Territoire pour infraction urbanistique si caractérisée.
-- Contact Natagora, LRBPO : appui juridique, constat ornithologique, constitution de partie civile possible.
+- Contact [[Natagora]], LRBPO : appui juridique, constat ornithologique, constitution de partie civile possible.
 
 ### 7.2. Voie contentieuse
 
@@ -782,7 +782,7 @@ JC Havaux
 SPW-ARNE, Département de la Nature et des Forêts
 À l'attention de Monsieur le Directeur du Cantonnement de [Liège]
 
-Copie : Unité de Police de l'environnement du SPW ; Bourgmestre d'Esneux ; Natagora ; LRBPO
+Copie : Unité de Police de l'environnement du SPW ; Bourgmestre d'Esneux ; [[Natagora]] ; LRBPO
 
 **Objet** : Interpellation urgente concernant les opérations au Bois des Chevreuils — perturbation intentionnelle d'oiseaux sauvages en période de reproduction (art. 2 LCN)
 
@@ -792,7 +792,7 @@ Monsieur le Directeur,
 
 Des opérations d'abattage ont été conduites dans la bande boisée du Bois des Chevreuils à Tilff, en pleine période de reproduction de l'avifaune forestière wallonne, habitat confirmé d'espèces protégées par la Loi du 12 juillet 1973 et par la Directive 2009/147/CE.
 
-J'ai [documenté / fait documenter par un observateur qualifié de Natagora / de la LRBPO] la présence effective des espèces nicheuses suivantes :
+J'ai [documenté / fait documenter par un observateur qualifié de [[Natagora]] / de la LRBPO] la présence effective des espèces nicheuses suivantes :
 
 - [espèce 1] — [observation]
 - [espèce 2] — [...]
@@ -863,7 +863,7 @@ JC Havaux
 - Conserver tous originaux photo, vidéo, documents en double exemplaire, dont un hors du domicile.
 - Pour la main courante à la police, relecture juridique impérative avant dépôt.
 - Solliciter un avocat spécialisé en droit administratif et environnemental dès que le dossier prend tournure contentieuse.
-- Vérifier l'éligibilité à un appui d'Inter-Environnement Wallonie, Natagora, LRBPO ou du Fonds pour l'accès à la justice environnementale.
+- Vérifier l'éligibilité à un appui d'Inter-Environnement Wallonie, [[Natagora]], LRBPO ou du Fonds pour l'accès à la justice environnementale.
 
 > **Rappel final**
 >

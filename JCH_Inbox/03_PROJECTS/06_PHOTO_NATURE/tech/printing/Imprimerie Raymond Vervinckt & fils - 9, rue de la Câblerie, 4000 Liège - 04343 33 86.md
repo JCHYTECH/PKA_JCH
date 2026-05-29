@@ -30,7 +30,7 @@ Plaquettes de présentation
 Brochures traditionnelles et ouvrages de luxe  
 Tracts et dépliants  
 Flyers et affiches  
-Papier à en-tête  
+[[Papier]] à en-tête  
 Blocs-notes, sous-main et sets de table  
 Tirage de photos numériques  
 Autocollants  

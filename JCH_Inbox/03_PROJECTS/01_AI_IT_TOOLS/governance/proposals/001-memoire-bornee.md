@@ -12,7 +12,7 @@
 
 ## Pourquoi
 
-Le systeme doit conserver les informations stables sans reinjecter tout l'historique des conversations. Une memoire bornee permet de garder les preferences, conventions et decisions utiles tout en evitant l'accumulation floue.
+Le systeme doit conserver les informations stables sans reinjecter tout l'historique des conversations. Une memoire bornee permet de garder les preferences, conventions et [[decisions]] utiles tout en evitant l'accumulation floue.
 
 Gain attendu: moins de repetitions, meilleure continuite, contexte plus fiable.
 
@@ -33,7 +33,7 @@ Roles:
 
 - `USER_PROFILE.md`: preferences de JCH, style attendu, contraintes personnelles stables.
 - `PROJECT_CONTEXT.md`: contexte technique et operationnel du projet actif.
-- `SYSTEM_MEMORY.md`: decisions transversales, conventions d'agent, limites, interdits.
+- `SYSTEM_MEMORY.md`: [[decisions]] transversales, conventions d'agent, limites, interdits.
 
 Regles proposees:
 

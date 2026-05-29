@@ -3,7 +3,7 @@ tags:
   - type/project
   - status/active
 ---
-# API pour observations.be
+# API pour [[observations.be]]
 
 **Created:** 2026-04-08  
 **Updated:** 2026-04-10  
@@ -14,7 +14,7 @@ tags:
 ## Human
 *2026-04-08 20:15*
 
-Avons nous discuter d’une API pour le site observations.be ?
+Avons nous discuter d’une API pour le site [[observations.be]] ?
 
 ---
 
@@ -25,7 +25,7 @@ Avons nous discuter d’une API pour le site observations.be ?
 This block is not supported on your current device yet.
 ```
 
-Non, pas de conversation sur une API pour observations.be dans l'historique. Les résultats de recherche ne contiennent rien de lié à ce site — uniquement des discussions sur WildLens, le site web local, et l'imprimante Epson.
+Non, pas de conversation sur une API pour [[observations.be]] dans l'historique. Les résultats de recherche ne contiennent rien de lié à ce site — uniquement des discussions sur [[WildLens]], le site web local, et l'imprimante Epson.
 
 Il est possible que ça ait été abordé dans une conversation effacée, ou simplement que ce sujet n'a pas encore été traité.
 
@@ -34,7 +34,7 @@ Il est possible que ça ait été abordé dans une conversation effacée, ou sim
 ## Human
 *2026-04-08 20:20*
 
-Mon objectif est de créer une application qui en fonction de ma position geographique fournie par le gps de  iphone m’indique les animaux observé 5 km à la ronde. Les observations sont trouvées dans les sites répertoriant les d’observations d’animaux encodées par des observateurs. J’utilise observations.be qui est un fork d’un site à plis grande couverture geographique. Avant de se lancer analyse la faisabilté d’une telle application qui peut ne pas avoir recu des clé d’acces API aux sites.
+Mon objectif est de créer une application qui en fonction de ma position geographique fournie par le gps de  iphone m’indique les animaux observé 5 km à la ronde. Les observations sont trouvées dans les sites répertoriant les d’observations d’animaux encodées par des observateurs. J’utilise [[observations.be]] qui est un fork d’un site à plis grande couverture geographique. Avant de se lancer analyse la faisabilté d’une telle application qui peut ne pas avoir recu des clé d’acces API aux sites.
 
 ---
 
@@ -46,7 +46,7 @@ Analyse de faisabilité d'abord, avant tout développement.
 This block is not supported on your current device yet.
 ```
 
-Aucun résultat pertinent. Cherchons directement le site mère dont observations.be est un fork.
+Aucun résultat pertinent. Cherchons directement le site mère dont [[observations.be]] est un fork.
 ```
 This block is not supported on your current device yet.
 ```
@@ -75,11 +75,11 @@ Voilà l'analyse de faisabilité. Elle est en plusieurs niveaux.
 
 ---
 
-## Ce qu'on sait sur le réseau observations.be
+## Ce qu'on sait sur le réseau [[observations.be]]
 
-**La structure du réseau :** observations.be est le nom francophone du réseau Observation.org, géré en Belgique par Natagora (Wallonie). La plateforme compte plus de 314 millions d'observations de 145 595 espèces, et le sous-site belge (waarnemingen.be + observations.be) dépasse 93 millions d'observations en 2026.
+**La structure du réseau :** [[observations.be]] est le nom francophone du réseau Observation.org, géré en Belgique par [[Natagora]] (Wallonie). La plateforme compte plus de 314 millions d'observations de 145 595 espèces, et le sous-site belge ([[waarnemingen.be]] + [[observations.be]]) dépasse 93 millions d'observations en 2026.
 
-**L'API existe.** Il existe une API documentée sur waarnemingen.be (`/api/v1/`) avec des endpoints d'observations, incluant des filtres par date, par espèce, par utilisateur, et par localisation (`/api/v1/locations/<location_id>/observations/`). Les observations retournées sont celles publiquement visibles.
+**L'API existe.** Il existe une API documentée sur [[waarnemingen.be]] (`/api/v1/`) avec des endpoints d'observations, incluant des filtres par date, par espèce, par utilisateur, et par localisation (`/api/v1/locations/<location_id>/observations/`). Les observations retournées sont celles publiquement visibles.
 
 ---
 
@@ -89,7 +89,7 @@ Voilà l'analyse de faisabilité. Elle est en plusieurs niveaux.
 
 La doc de l'API est accessible à `waarnemingen.be/api/docs/` mais quand je tente d'y accéder directement, le serveur retourne un **403** (accès refusé sans authentification). Cela indique que l'API est **authentifiée** — il faut une clé ou un token. On ne sait pas encore si cette clé est disponible librement pour des développeurs extérieurs ou seulement pour les partenaires internes.
 
-**Ce qu'il faut faire avant tout :** contacter directement Natagora/Observation International pour demander un accès développeur. Leur page de contact est sur observation.org. Sans cette étape, on ne peut pas aller plus loin légalement.
+**Ce qu'il faut faire avant tout :** contacter directement [[Natagora]]/Observation International pour demander un accès développeur. Leur page de contact est sur observation.org. Sans cette étape, on ne peut pas aller plus loin légalement.
 
 ### 2. L'endpoint géographique
 
@@ -103,7 +103,7 @@ Pour prévenir le braconnage ou la perturbation des espèces rares, les informat
 
 ## Alternative si l'accès API est refusé ou inexistant : GBIF
 
-Les observations validées de waarnemingen.be/observations.be sont publiées en open data sur le Global Biodiversity Information Facility (GBIF), standardisées en Darwin Core [[archive]]. GBIF, lui, a une API publique et bien documentée, avec des filtres géographiques précis (latitude/longitude + rayon). C'est une voie de secours solide, mais avec un délai : les données GBIF ne sont pas temps réel, elles sont synchronisées périodiquement.
+Les observations validées de [[waarnemingen.be]]/[[observations.be]] sont publiées en open data sur le Global Biodiversity Information Facility (GBIF), standardisées en Darwin Core [[archive]]. GBIF, lui, a une API publique et bien documentée, avec des filtres géographiques précis (latitude/longitude + rayon). C'est une voie de secours solide, mais avec un délai : les données GBIF ne sont pas temps réel, elles sont synchronisées périodiquement.
 
 ---
 
@@ -118,7 +118,7 @@ Les observations validées de waarnemingen.be/observations.be sont publiées en 
 | Alternative GBIF | Oui, ouverte, mais données non temps réel |
 | GPS iPhone vers app | Techniquement trivial une fois l'API résolue |
 
-**La prochaine étape concrète :** écrire à Observation International / Natagora pour demander s'ils délivrent des clés API à des développeurs tiers, et si un filtre géographique par coordonnées + rayon est disponible. Veux-tu que je prépare ce message de contact ?
+**La prochaine étape concrète :** écrire à Observation International / [[Natagora]] pour demander s'ils délivrent des clés API à des développeurs tiers, et si un filtre géographique par coordonnées + rayon est disponible. Veux-tu que je prépare ce message de contact ?
 
 ---
 
@@ -146,12 +146,12 @@ C'est l'adresse listée sur leur page GitHub officielle.
 **Site d'Observation International :**
 🌐 **observation-international.org** — ils indiquent explicitement qu'on peut les contacter pour des informations sur leurs sites, apps et technologies.
 
-**Forum technique (si pas de réponse par email) :**
+**Forum technique (si pas de réponse par [[email]]) :**
 Il existe un forum à `forum.waarneming.nl` avec une section dédiée aux questions techniques/développeurs.
 
 ---
 
-Veux-tu que je rédige le message de demande d'accès API ? Ce serait utile de le formuler clairement : usage non commercial, projet personnel de naturaliste, besoin précis d'un endpoint géographique par coordonnées GPS + rayon. Un message bien ciblé augmente les chances de réponse là où Natagora n'a pas répondu.
+Veux-tu que je rédige le message de demande d'accès API ? Ce serait utile de le formuler clairement : usage non [[commercial]], projet personnel de naturaliste, besoin précis d'un endpoint géographique par coordonnées GPS + rayon. Un message bien ciblé augmente les chances de réponse là où [[Natagora]] n'a pas répondu.
 
 ---
 
@@ -171,7 +171,7 @@ This block is not supported on your current device yet.
 
 Le message est en anglais — langue de travail d'Observation International (organisation néerlandaise). Quelques notes :
 
-- La mention de ta qualité de **contributeur à observations.be** n'est pas anodine : ça te positionne comme utilisateur existant du réseau, pas comme un inconnu qui demande un accès sans contexte.
+- La mention de ta qualité de **contributeur à [[observations.be]]** n'est pas anodine : ça te positionne comme utilisateur existant du réseau, pas comme un inconnu qui demande un accès sans contexte.
 - Les 4 questions sont volontairement précises pour éviter une réponse vague du type "consultez notre documentation".
 - Pense à remplacer `[your email address]` par ton adresse réelle en signature.
 
@@ -213,7 +213,7 @@ GBIF a une API publique, gratuite, bien documentée, sans clé requise pour les 
 
 - Requête géographique par coordonnées GPS + rayon (`decimalLatitude`, `decimalLongitude`, `distance`)
 - Filtre par pays, par groupe taxonomique (animaux uniquement par exemple)
-- Données issues d'observations.be/waarnemingen.be incluses
+- Données issues d'[[observations.be]]/[[waarnemingen.be]] incluses
 
 **La seule vraie limitation :** les données GBIF ne sont pas temps réel. Il y a un délai de synchronisation depuis observation.org — généralement de quelques semaines à quelques mois selon les lots publiés. Pour des observations très récentes (derniers jours), elles ne seront pas là.
 
@@ -223,7 +223,7 @@ GBIF a une API publique, gratuite, bien documentée, sans clé requise pour les 
 
 Ce délai est-il acceptable pour ton usage ? Concrètement : veux-tu voir "ce qui a été observé dans ce secteur ces derniers mois/années" ou "ce qui a été observé cette semaine" ?
 
-Si c'est la première option, GBIF suffit et on peut commencer à construire. Si c'est la seconde, il faudra explorer iNaturalist qui, lui, a une API ouverte avec données quasi temps réel — moins riche en Belgique qu'observations.be, mais accessible.
+Si c'est la première option, GBIF suffit et on peut commencer à construire. Si c'est la seconde, il faudra explorer iNaturalist qui, lui, a une API ouverte avec données quasi temps réel — moins riche en Belgique qu'[[observations.be]], mais accessible.
 
 ---
 
@@ -462,7 +462,7 @@ Télécharge ce fichier. Ensuite voici la procédure GitHub exacte :
 2. Clique sur **"New repository"** (bouton vert en haut à droite)
 3. Nom du repository : `faune-autour` (en minuscules, sans espaces)
 4. Laisse en **Public** — obligatoire pour GitHub Pages gratuit
-5. Coche **"Add a README file"**
+5. Coche **"Add a [[README]] file"**
 6. Clique **"Create repository"**
 
 **Upload du fichier :**

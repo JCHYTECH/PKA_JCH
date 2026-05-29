@@ -16,7 +16,7 @@ source:
 
 # Persistent Memory Architecture — PKA_JCH
 
-## Position dans la Hermisation
+## Position dans la [[Hermisation]]
 
 Ce document est le livrable formel de la **Phase 4 — Mémoire persistante**.
 

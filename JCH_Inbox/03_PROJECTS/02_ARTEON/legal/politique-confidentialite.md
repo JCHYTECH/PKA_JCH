@@ -97,7 +97,7 @@ Adresse IP, navigateur, pages visitées — collectés automatiquement par l'hé
 | Paiement et facturation | Données Stripe, e-mail | **Exécution du contrat** + **Obligation légale** (art. 6.1.b et 6.1.c) |
 | Conservation des factures (7 ans) | Données de facturation | **Obligation légale** (art. 6.1.c — droit comptable belge) |
 | Envoi d'e-mails transactionnels (confirmation, livraison, refus) | E-mail | **Exécution du contrat** (art. 6.1.b) |
-| Envoi de la newsletter ARTEON/WildLens (si abonnement distinct) | E-mail | **Consentement** (art. 6.1.a) — révocable à tout moment |
+| Envoi de la newsletter ARTEON/[[WildLens]] (si abonnement distinct) | E-mail | **Consentement** (art. 6.1.a) — révocable à tout moment |
 | Sécurité et logs techniques | Logs, IP | **Intérêt légitime** (art. 6.1.f) |
 | Amélioration du service (analyse statistique agrégée) | Données anonymisées | **Intérêt légitime** (art. 6.1.f) |
 

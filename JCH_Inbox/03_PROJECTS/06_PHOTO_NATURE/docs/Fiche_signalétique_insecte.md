@@ -25,7 +25,7 @@ En France, elle a été observée dans les Pyrénées-Orientales jusqu'aux Alpes
 Classification 
 Classe : Insecta
 Ordre : Orthoptera
-Famille : Acrididae
+Famille : [[Acrididae]]
 Sous-famille : Acridinae
 Tribu : Acridini
 Genre : Acrida
@@ -72,7 +72,7 @@ Le format est pensé pour être **agréable à lire et visuellement structuré**
 ## 📚 Classification scientifique  
 - **Classe** : Insecta  
 - **Ordre** : Orthoptera  
-- **Famille** : Acrididae  
+- **Famille** : [[Acrididae]]  
 - **Sous-famille** : Acridinae  
 - **Tribu** : Acridini  
 - **Genre** : Acrida  
