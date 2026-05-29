@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title>Normandie — Vanlife</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" /><style>  :root { --ivoire: #F8F5F0; --noir: #0D0B09; --ocre: #C17F3A; --sable: #E8E2DA; --sable-fonce: #D4CCC2; --ardoise: #4A5568; --gris: #6B7280; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--ivoire); color: var(--noir); font-family: 'Lora', Georgia, serif; font-size: 15px; line-height: 1.6; padding: 16px 14px; -webkit-text-size-adjust: 100%; }
+  h1, h2, h3, th { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+  h1 { font-size: 24px; color: var(--ocre); margin-bottom: 4px; }
+  h2 { font-size: 13px; color: var(--ocre); margin: 24px 0 8px 0; padding-bottom: 3px; border-bottom: 2px solid var(--sable); text-transform: uppercase; letter-spacing: 0.05em; }
+  h3 { font-size: 12px; color: var(--ardoise); margin: 12px 0 4px 0; font-weight: 600; }
+  .km, .price { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ardoise); }
+  .header { margin-bottom: 14px; padding-bottom: 10px; border-bottom: 3px solid var(--ocre); }
+  .header-meta { font-size: 11px; color: var(--gris); margin-top: 4px; }
+  .status { display: inline-block; background: var(--ocre); color: #fff; padding: 2px 10px; font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+  .tagline { font-family: 'Lora', serif; font-style: italic; color: var(--gris); font-size: 13px; }
+  .card { background: var(--sable); padding: 10px 14px; margin: 8px 0; font-size: 13px; }
+  .rules { background: var(--sable); padding: 10px 12px; margin: 8px 0; font-size: 12px; border-left: 4px solid var(--ocre); line-height: 1.7; }
+  .rules strong { color: var(--ocre); }
+  .boat { background: #E8F0FE; border-left: 4px solid #3B82F6; padding: 10px 12px; margin: 8px 0; font-size: 12px; line-height: 1.7; }
+  .table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 8px 0 12px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 11px; min-width: 500px; }
+  th { background: var(--sable-fonce); color: var(--noir); font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; padding: 8px 8px; text-align: left; white-space: nowrap; }
+  td { padding: 7px 8px; border-bottom: 1px solid var(--sable); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  .planning td:first-child { font-weight: 600; color: var(--ocre); white-space: nowrap; font-family: 'IBM Plex Mono', monospace; font-size: 11px; }
+  .meal { font-size: 10px; color: var(--ardoise); }
+  .link a { color: var(--ocre); text-decoration: none; font-size: 14px; padding: 4px 8px; display: inline-block; }
+  .lodging { font-weight: 700; color: var(--noir); }
+  .flex { display: flex; gap: 12px; flex-wrap: wrap; }
+  .col { flex: 1; min-width: 200px; }
+  .text-right { text-align: right; }
+  .map-container { height: 280px; margin: 10px 0; border: 2px solid var(--sable); position: relative; z-index: 1; }
+  .footer { margin-top: 24px; padding-top: 10px; border-top: 2px solid var(--sable); font-size: 10px; color: var(--gris); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px; }
+  @media screen and (min-width: 768px) { body { font-size: 13px; max-width: 750px; margin: 0 auto; padding: 24px; } h1 { font-size: 22px; } h2 { font-size: 11px; margin-top: 20px; } h3 { font-size: 11px; } .km, .price { font-size: 11px; } .map-container { height: 340px; } table { font-size: 10px; min-width: 0; } th { font-size: 9px; padding: 6px 6px; } td { font-size: 10px; padding: 5px 6px; } .table-wrap { overflow-x: visible; } .header-meta { font-size: 10px; text-align: right; } .rules { font-size: 11px; } .boat { font-size: 11px; } }
+  @media print { body { padding: 12mm; background: #fff; font-size: 9pt; } .no-print { display: none; } .map-container { height: 200px; } .table-wrap { overflow-x: visible; } }</style></head><body>
+
+<div class="header"><h1>Normandie</h1><div class="tagline">Baie du Mont-Saint-Michel &amp; Côte Fleurie + Île Chausey · printemps/automne 2026</div>
+<div class="header-meta"><span class="status">en préparation</span> &nbsp; 2026 · 3 j. + 2 étapes</div></div>
+
+<div class="rules"><strong>⏰ Départ :</strong> 10h00 · <strong>Étape :</strong> 9h00 · <strong>Retour :</strong> 9h00 · <strong>J1 :</strong> max 4h route → arrêt · <strong>J+ :</strong> max 7h<br>📷 Photos : approximatif, sans stress · 🏛️ Anne : durées visites + baignade comptées</div>
+
+<div class="map-container no-print" id="map"></div>
+
+<h2>Attraits</h2>
+<div class="flex"><div class="col"><h3>JCH — Photo wildlife</h3><p>Baie MSM : limicoles, phoques. Île Chausey : goélands, sternes. Marais de Villers. Falaises de Veules.</p></div>
+<div class="col"><h3>Anne — Art &amp; patrimoine</h3><p>Abbaye MSM (sculpture). Honfleur (galeries, Musée Boudin). Deauville (Planches). Veules-les-Roses (moulins).</p></div></div>
+<div class="card"><strong>Points communs :</strong> Alternance nature sauvage et villages d'art. Lumières aube/crépuscule. Marées parmi les plus hautes d'Europe.</div>
+
+<h2>Logistique</h2>
+<div class="table-wrap"><table>
+<tr><th>Stationnement</th><td>Parkings réserves, aires camping-car. ★ Vérifié Park4Night + bases officielles (INPN, CDDA).</td></tr>
+<tr><th>Services</th><td>Côte normande. Borne eau/vidange Honfleur, Granville.</td></tr>
+<tr><th>Accès</th><td>A27→A29→A13 (payant) ou N4→N2→N31</td></tr>
+<tr><th>Distance Liège</th><td class="km">560 km (5h30 auto.) / 620 km (8-9h sans)</td></tr></table></div>
+
+<h2>Distances &amp; liens</h2>
+<div class="table-wrap"><table>
+<tr><th>Trajet</th><th class="text-right">Km</th><th class="text-right">Temps</th><th>Maps</th></tr>
+<tr><td>Liège → Laon</td><td class="km text-right">250</td><td class="km text-right">2h30</td><td class="link"><a href="https://www.google.com/maps/dir/Liège/Laon" target="_blank">🔗</a></td></tr>
+<tr><td>Laon → Saint-Aubin</td><td class="km text-right">310</td><td class="km text-right">3h</td><td class="link"><a href="https://www.google.com/maps/dir/Laon/Saint-Aubin-sur-Mer" target="_blank">🔗</a></td></tr>
+<tr><td>Saint-Aubin → MSM</td><td class="km text-right">115</td><td class="km text-right">1h15</td><td class="link"><a href="https://www.google.com/maps/dir/Saint-Aubin-sur-Mer/Le+Mont-Saint-Michel" target="_blank">🔗</a></td></tr>
+<tr><td>MSM → Honfleur</td><td class="km text-right">145</td><td class="km text-right">1h30</td><td class="link"><a href="https://www.google.com/maps/dir/Le+Mont-Saint-Michel/Honfleur" target="_blank">🔗</a></td></tr>
+<tr><td>Honfleur → Deauville</td><td class="km text-right">16</td><td class="km text-right">20 min</td><td class="link"><a href="https://www.google.com/maps/dir/Honfleur/Deauville" target="_blank">🔗</a></td></tr>
+<tr><td>Deauville → Granville</td><td class="km text-right">130</td><td class="km text-right">1h30</td><td class="link"><a href="https://www.google.com/maps/dir/Deauville/Granville" target="_blank">🔗</a></td></tr>
+<tr><td>Granville → Veules</td><td class="km text-right">145</td><td class="km text-right">1h45</td><td class="link"><a href="https://www.google.com/maps/dir/Granville/Veules-les-Roses" target="_blank">🔗</a></td></tr>
+<tr><td>Veules → Monthermé</td><td class="km text-right">310</td><td class="km text-right">3h</td><td class="link"><a href="https://www.google.com/maps/dir/Veules-les-Roses/Monthermé" target="_blank">🔗</a></td></tr>
+<tr><td>Monthermé → Liège</td><td class="km text-right">130</td><td class="km text-right">1h15</td><td class="link"><a href="https://www.google.com/maps/dir/Monthermé/Liège" target="_blank">🔗</a></td></tr></table></div>
+
+<h2>⛴️ Île Chausey — traversée</h2>
+<div class="boat"><strong>Départ :</strong> Granville (port) · <strong>Bateau :</strong> Vedettes Jolie France / Cie Corsaire<br><strong>Navigation aller :</strong> ~50 min · <strong>Retour :</strong> ~50 min · <strong>Temps sur l'île :</strong> ~3h30 (selon marée)<br><strong>Horaire type :</strong> dép. 9h30 → île 10h20 / ret. 14h00 → Granville 14h50<br><strong>⚠️ Horaires variables</strong> — consulter <a href="https://www.bateauxgranville.fr" target="_blank" style="color:#C17F3A">bateauxgranville.fr</a> la veille.</div>
+
+<h2>Spots photo <span style="font-weight:400;font-size:10px;color:var(--gris)">— JCH</span></h2>
+<div class="table-wrap"><table><tr><th>Lieu</th><th>Sujet</th><th>Heure</th><th>Maps</th></tr>
+<tr><td>Baie MSM (Tombelaine)</td><td>Limicoles, phoques</td><td>Aube</td><td class="link"><a href="https://www.google.com/maps/place/Tombelaine" target="_blank">🔗</a></td></tr>
+<tr><td>Île Chausey</td><td>Goélands, sternes</td><td>Marée basse</td><td class="link"><a href="https://www.google.com/maps/place/Île+Chausey" target="_blank">🔗</a></td></tr>
+<tr><td>Falaises de Veules</td><td>Oiseaux marins</td><td>Lever</td><td class="link"><a href="https://www.google.com/maps/place/Veules-les-Roses" target="_blank">🔗</a></td></tr>
+<tr><td>Marais de Villers</td><td>Passereaux, busards</td><td>Matin</td><td class="link"><a href="https://www.google.com/maps/place/Villers-sur-Mer" target="_blank">🔗</a></td></tr></table></div>
+
+<h2>Patrimoine &amp; culture <span style="font-weight:400;font-size:10px;color:var(--gris)">— Anne</span></h2>
+<div class="table-wrap"><table><tr><th>Lieu</th><th>Type</th><th class="text-right">Durée</th><th>Maps</th></tr>
+<tr><td>Abbaye MSM</td><td>Sculpture médiévale</td><td class="km text-right">2-3h</td><td class="link"><a href="https://www.google.com/maps/place/Abbaye+Mont+Saint-Michel" target="_blank">🔗</a></td></tr>
+<tr><td>Honfleur (Vieux Bassin)</td><td>Peinture, galeries</td><td class="km text-right">2h</td><td class="link"><a href="https://www.google.com/maps/place/Honfleur" target="_blank">🔗</a></td></tr>
+<tr><td>Deauville (Planches)</td><td>Art déco, villas</td><td class="km text-right">1h30</td><td class="link"><a href="https://www.google.com/maps/place/Deauville" target="_blank">🔗</a></td></tr>
+<tr><td>Veules-les-Roses</td><td>Village classé, moulins</td><td class="km text-right">1h30</td><td class="link"><a href="https://www.google.com/maps/place/Veules-les-Roses" target="_blank">🔗</a></td></tr></table></div>
+
+<h2>Baignade <span style="font-weight:400;font-size:10px;color:var(--gris)">— Anne</span></h2>
+<div class="table-wrap"><table><tr><th>Lieu</th><th>Type</th><th class="text-right">Durée</th><th>Maps</th></tr>
+<tr><td>Plage Saint-Aubin</td><td>Mer</td><td class="km text-right">~1h</td><td class="link"><a href="https://www.google.com/maps/place/Saint-Aubin-sur-Mer" target="_blank">🔗</a></td></tr>
+<tr><td>Île Chausey (Port Marie)</td><td>Criques</td><td class="km text-right">~1h</td><td class="link"><a href="https://www.google.com/maps/place/Plage+Port+Marie+Chausey" target="_blank">🔗</a></td></tr>
+<tr><td>Plage Deauville</td><td>Mer</td><td class="km text-right">~1h</td><td class="link"><a href="https://www.google.com/maps/place/Deauville+plage" target="_blank">🔗</a></td></tr>
+<tr><td>Meuse (Monthermé)</td><td>Rivière</td><td class="km text-right">~1h</td><td class="link"><a href="https://www.google.com/maps/place/Monthermé" target="_blank">🔗</a></td></tr></table></div>
+
+<h2>Repas &amp; restaurants</h2>
+<div class="card"><strong>🥐 P-déj</strong> van · <strong>🥪 Déj</strong> van · <strong>🍽️ Dîner</strong> resto</div>
+<div class="table-wrap"><table><tr><th>Soir</th><th>Restaurant</th><th class="text-right">Prix</th><th>Maps</th></tr>
+<tr><td>J0 Laon</td><td>Le Parvis</td><td class="price text-right">20-30€</td><td class="link"><a href="https://www.google.com/maps/search/Le+Parvis+Laon" target="_blank">🔗</a></td></tr>
+<tr><td>J1 Saint-Aubin</td><td>La Gourmandise (Langrune)</td><td class="price text-right">25-35€</td><td class="link"><a href="https://www.google.com/maps/search/La+Gourmandise+Langrune" target="_blank">🔗</a></td></tr>
+<tr><td>J2 Honfleur</td><td>L'Absinthe</td><td class="price text-right">35-50€</td><td class="link"><a href="https://www.google.com/maps/search/restaurants+Honfleur" target="_blank">🔗</a></td></tr>
+<tr><td>J3 Granville</td><td>Le Phare (port)</td><td class="price text-right">30-40€</td><td class="link"><a href="https://www.google.com/maps/search/Le+Phare+Granville" target="_blank">🔗</a></td></tr>
+<tr><td>J4 Veules</td><td>Les Galets</td><td class="price text-right">25-35€</td><td class="link"><a href="https://www.google.com/maps/search/Les+Galets+Veules" target="_blank">🔗</a></td></tr>
+<tr><td>J5 Monthermé</td><td>Le Cabaret Vert</td><td class="price text-right">20-30€</td><td class="link"><a href="https://www.google.com/maps/search/Le+Cabaret+Vert+Monthermé" target="_blank">🔗</a></td></tr></table></div>
+
+<h2>Météo &amp; plans B</h2>
+<div class="table-wrap"><table><tr><th>Si mauvais temps…</th><th>Au lieu de…</th><th>Faire…</th></tr>
+<tr><td>J2 (MSM)</td><td>Photo aube + abbaye ext.</td><td>Abbaye intérieure + Musée Maritime Regnéville</td></tr>
+<tr><td>J3 (Chausey)</td><td>Île Chausey (bateau annulé)</td><td><strong>Bayeux</strong> : Tapisserie + cathédrale (à 1h)</td></tr>
+<tr><td>J4 (Honfleur/Deauville)</td><td>Planches et plage</td><td>Musée Boudin + galeries Honfleur</td></tr>
+<tr><td>J5 (Veules)</td><td>Falaises + baignade</td><td><strong>Rouen</strong> : cathédrale, Gros-Horloge, Beaux-Arts (45 min)</td></tr></table></div>
+
+<h2>Planning</h2>
+<div class="table-wrap"><table class="planning">
+<tr><th>Jour</th><th>Matin</th><th>Après-midi</th><th>Soir</th><th class="lodging">Nuit</th></tr>
+<tr><td>J0</td><td><span class="meal">🥐</span> <strong>10h00</strong> Départ Liège<br><span style="font-size:9px;color:var(--gris)">↗ 2h30 route</span></td><td><span class="meal">🥪</span> Laon — cathédrale (Anne · 2h)</td><td><span class="meal">🍽️</span> Le Parvis</td><td class="lodging">⬛ Laon</td></tr>
+<tr><td>J1</td><td><span class="meal">🥐</span> <strong>9h00</strong> Laon → Saint-Aubin<br><span style="font-size:9px;color:var(--gris)">↗ 3h route</span></td><td><span class="meal">🥪</span> Plage, baignade (1h)<br>Marais Villers (JCH)</td><td><span class="meal">🍽️</span> La Gourmandise</td><td class="lodging">⬛ Saint-Aubin</td></tr>
+<tr><td>J2</td><td>Aube baie MSM (JCH)<br><span class="meal">🥐</span> <strong>9h00</strong> Abbaye MSM (Anne · 2-3h)</td><td><span class="meal">🥪</span> → Honfleur (1h30)<br>Galeries, Musée Boudin (2h)</td><td><span class="meal">🍽️</span> L'Absinthe</td><td class="lodging">⬛ Honfleur</td></tr>
+<tr><td>J3<br><span style="color:#3B82F6;font-size:9px">⛴️</span></td><td><span class="meal">🥐</span> <strong>8h00</strong> Honfleur → Granville<br><span style="font-size:9px;color:var(--gris)">↗ 1h30 route</span><br><strong>⛴️ 9h30</strong> Bateau Chausey (50 min)</td><td><span class="meal">🥪</span> <strong>Île Chausey</strong> (3h30)<br>Baignade Port Marie (1h)<br>Photo goélands (JCH)<br><strong>⛴️ 14h00</strong> Retour Granville (50 min)</td><td><span class="meal">🍽️</span> Le Phare (Granville)</td><td class="lodging">⬛ Granville</td></tr>
+<tr><td>J4</td><td><span class="meal">🥐</span> <strong>9h00</strong> Deauville Planches<br><span style="font-size:9px;color:var(--gris)">↗ 1h30 route</span><br>Promenade (Anne · 1h30)</td><td><span class="meal">🥪</span> → Veules (1h45)<br>Moulins, baignade (1h)</td><td><span class="meal">🍽️</span> Les Galets</td><td class="lodging">⬛ Veules</td></tr>
+<tr><td>J5</td><td><span class="meal">🥐</span> <strong>9h00</strong> Veules → Monthermé<br><span style="font-size:9px;color:var(--gris)">↗ 3h route</span></td><td><span class="meal">🥪</span> Meuse, baignade (1h)<br>Forêt (JCH)</td><td><span class="meal">🍽️</span> Le Cabaret Vert</td><td class="lodging">⬛ Monthermé</td></tr>
+<tr><td>J6</td><td><span class="meal">🥐</span> <strong>9h00</strong> Monthermé → Liège<br><span style="font-size:9px;color:var(--gris)">↗ 1h15</span></td><td>🏠 Liège ~10h15</td><td>—</td><td>—</td></tr></table></div>
+
+<div class="footer"><span>Cigogne 🦩 · Vanlife Planner · PKA_JCH</span><span>29 mai 2026</span></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+var map=L.map('map').setView([49.2,2.0],7);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OSM'}).addTo(map);
+var pts=[{lat:50.63,lng:5.57,label:'Liège',t:'depart'},{lat:49.56,lng:3.62,label:'Laon ★',t:'lodging'},{lat:49.33,lng:-0.39,label:'Saint-Aubin',t:'lodging'},{lat:48.64,lng:-1.51,label:'MSM',t:'stop'},{lat:49.42,lng:0.23,label:'Honfleur',t:'lodging'},{lat:48.84,lng:-1.60,label:'Granville',t:'lodging'},{lat:48.75,lng:-1.85,label:'Chausey ⛴️',t:'boat'},{lat:49.36,lng:0.07,label:'Deauville',t:'stop'},{lat:49.87,lng:0.80,label:'Veules',t:'lodging'},{lat:49.89,lng:4.74,label:'Monthermé ★',t:'lodging'},{lat:50.63,lng:5.57,label:'Liège',t:'arrivee'}];
+var rc=pts.map(function(p){return [p.lat,p.lng]});
+L.polyline(rc,{color:'#C17F3A',weight:3,opacity:0.8}).addTo(map);
+pts.forEach(function(p){if(p.label==='Liège'&&p.t==='arrivee')return;var isL=p.t==='lodging',isB=p.t==='boat';var c=isL?'#0D0B09':isB?'#3B82F6':'#4A5568',f=isL?'#0D0B09':'#F8F5F0',r=isB?6:isL?7:5;if(isB){L.polyline([[48.84,-1.60],[48.75,-1.85]],{color:'#3B82F6',weight:2,dashArray:'5,5'}).addTo(map)}L.circleMarker([p.lat,p.lng],{radius:r,color:c,fillColor:f,fillOpacity:1,weight:2.5}).addTo(map).bindPopup('<b>'+p.label+'</b>'+(isL?' 🛏️':''))});
+map.fitBounds(L.polyline(rc).getBounds().pad(0.15));
+</script>
+</body></html>
