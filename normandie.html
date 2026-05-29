@@ -2,26 +2,26 @@
 <html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
 <title>Normandie — Vanlife</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" /><style>  :root { --ivoire: #F8F5F0; --noir: #0D0B09; --ocre: #C17F3A; --sable: #E8E2DA; --sable-fonce: #D4CCC2; --ardoise: #4A5568; --gris: #6B7280; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--ivoire); color: var(--noir); font-family: 'Lora', Georgia, serif; font-size: 15px; line-height: 1.6; padding: 16px 14px; -webkit-text-size-adjust: 100%; }
-  h1, h2, h3, th { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+  body { background: var(--ivoire); color: var(--noir); font-family: 'Inter', -apple-system, sans-serif; font-size: 15px; line-height: 1.6; padding: 16px 14px; -webkit-text-size-adjust: 100%; }
+  h1, h2, h3, th { font-family: 'Inter', -apple-system, sans-serif; font-weight: 700; }
   h1 { font-size: 24px; color: var(--ocre); margin-bottom: 4px; }
   h2 { font-size: 13px; color: var(--ocre); margin: 24px 0 8px 0; padding-bottom: 3px; border-bottom: 2px solid var(--sable); text-transform: uppercase; letter-spacing: 0.05em; }
   h3 { font-size: 12px; color: var(--ardoise); margin: 12px 0 4px 0; font-weight: 600; }
   .km, .price { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ardoise); }
   .header { margin-bottom: 14px; padding-bottom: 10px; border-bottom: 3px solid var(--ocre); }
   .header-meta { font-size: 11px; color: var(--gris); margin-top: 4px; }
-  .status { display: inline-block; background: var(--ocre); color: #fff; padding: 2px 10px; font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
-  .tagline { font-family: 'Lora', serif; font-style: italic; color: var(--gris); font-size: 13px; }
+  .status { display: inline-block; background: var(--ocre); color: #fff; padding: 2px 10px; font-family: 'Inter', -apple-system, sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+  .tagline { font-family: 'Inter', -apple-system, sans-serif; font-weight: 400; color: var(--gris); font-size: 13px; }
   .card { background: var(--sable); padding: 10px 14px; margin: 8px 0; font-size: 13px; }
   .rules { background: var(--sable); padding: 10px 12px; margin: 8px 0; font-size: 12px; border-left: 4px solid var(--ocre); line-height: 1.7; }
   .rules strong { color: var(--ocre); }
   .boat { background: #E8F0FE; border-left: 4px solid #3B82F6; padding: 10px 12px; margin: 8px 0; font-size: 12px; line-height: 1.7; }
   .table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 8px 0 12px 0; }
   table { width: 100%; border-collapse: collapse; font-size: 11px; min-width: 500px; }
-  th { background: var(--sable-fonce); color: var(--noir); font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; padding: 8px 8px; text-align: left; white-space: nowrap; }
+  th { background: var(--sable-fonce); color: var(--noir); font-family: 'Inter', -apple-system, sans-serif; font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; padding: 8px 8px; text-align: left; white-space: nowrap; }
   td { padding: 7px 8px; border-bottom: 1px solid var(--sable); vertical-align: top; }
   tr:last-child td { border-bottom: none; }
   .planning td:first-child { font-weight: 600; color: var(--ocre); white-space: nowrap; font-family: 'IBM Plex Mono', monospace; font-size: 11px; }
@@ -72,25 +72,25 @@
 <div class="boat"><strong>Départ :</strong> Granville (port) · <strong>Bateau :</strong> Vedettes Jolie France / Cie Corsaire<br><strong>Navigation aller :</strong> ~50 min · <strong>Retour :</strong> ~50 min · <strong>Temps sur l'île :</strong> ~3h30 (selon marée)<br><strong>Horaire type :</strong> dép. 9h30 → île 10h20 / ret. 14h00 → Granville 14h50<br><strong>⚠️ Horaires variables</strong> — consulter <a href="https://www.bateauxgranville.fr" target="_blank" style="color:#C17F3A">bateauxgranville.fr</a> la veille.</div>
 
 <h2>Spots photo <span style="font-weight:400;font-size:10px;color:var(--gris)">— JCH</span></h2>
-<div class="table-wrap"><table><tr><th>Lieu</th><th>Sujet</th><th>Heure</th><th>Maps</th></tr>
-<tr><td>Baie MSM (Tombelaine)</td><td>Limicoles, phoques</td><td>Aube</td><td class="link"><a href="https://www.google.com/maps/place/Tombelaine" target="_blank">🔗</a></td></tr>
-<tr><td>Île Chausey</td><td>Goélands, sternes</td><td>Marée basse</td><td class="link"><a href="https://www.google.com/maps/place/Île+Chausey" target="_blank">🔗</a></td></tr>
-<tr><td>Falaises de Veules</td><td>Oiseaux marins</td><td>Lever</td><td class="link"><a href="https://www.google.com/maps/place/Veules-les-Roses" target="_blank">🔗</a></td></tr>
-<tr><td>Marais de Villers</td><td>Passereaux, busards</td><td>Matin</td><td class="link"><a href="https://www.google.com/maps/place/Villers-sur-Mer" target="_blank">🔗</a></td></tr></table></div>
+<div class="table-wrap"><table><tr><th>Lieu</th><th>Sujet</th><th>Heure</th><th>Infos</th><th>Maps</th></tr>
+<tr><td>Baie MSM (Tombelaine)</td><td>Limicoles, phoques</td><td>Aube</td><td class="link"><a href="https://fr.wikipedia.org/wiki/Tombelaine" target="_blank">📖</a></td><td class="link"><a href="https://www.google.com/maps/place/Tombelaine" target="_blank">🔗</a></td></tr>
+<tr><td>Île Chausey</td><td>Goélands, sternes</td><td>Marée basse</td><td class="link"><a href="https://fr.wikipedia.org/wiki/Îles_Chausey" target="_blank">📖</a></td><td class="link"><a href="https://www.google.com/maps/place/Île+Chausey" target="_blank">🔗</a></td></tr>
+<tr><td>Falaises de Veules</td><td>Oiseaux marins</td><td>Lever</td><td class="link"><a href="https://fr.wikipedia.org/wiki/Veules-les-Roses" target="_blank">📖</a></td><td class="link"><a href="https://www.google.com/maps/place/Veules-les-Roses" target="_blank">🔗</a></td></tr>
+<tr><td>Marais de Villers</td><td>Passereaux, busards</td><td>Matin</td><td class="link"><a href="https://fr.wikipedia.org/wiki/Villers-sur-Mer" target="_blank">📖</a></td><td class="link"><a href="https://www.google.com/maps/place/Villers-sur-Mer" target="_blank">🔗</a></td></tr></table></div>
 
 <h2>Patrimoine &amp; culture <span style="font-weight:400;font-size:10px;color:var(--gris)">— Anne</span></h2>
-<div class="table-wrap"><table><tr><th>Lieu</th><th>Type</th><th class="text-right">Durée</th><th>Maps</th></tr>
-<tr><td>Abbaye MSM</td><td>Sculpture médiévale</td><td class="km text-right">2-3h</td><td class="link"><a href="https://www.google.com/maps/place/Abbaye+Mont+Saint-Michel" target="_blank">🔗</a></td></tr>
-<tr><td>Honfleur (Vieux Bassin)</td><td>Peinture, galeries</td><td class="km text-right">2h</td><td class="link"><a href="https://www.google.com/maps/place/Honfleur" target="_blank">🔗</a></td></tr>
-<tr><td>Deauville (Planches)</td><td>Art déco, villas</td><td class="km text-right">1h30</td><td class="link"><a href="https://www.google.com/maps/place/Deauville" target="_blank">🔗</a></td></tr>
-<tr><td>Veules-les-Roses</td><td>Village classé, moulins</td><td class="km text-right">1h30</td><td class="link"><a href="https://www.google.com/maps/place/Veules-les-Roses" target="_blank">🔗</a></td></tr></table></div>
+<div class="table-wrap"><table><tr><th>Lieu</th><th>Type</th><th class="text-right">Durée</th><th>Infos</th><th>Maps</th></tr>
+<tr><td>Abbaye MSM</td><td>Sculpture médiévale</td><td class="km text-right">2-3h</td><td class="link"><a href="https://fr.wikipedia.org/wiki/Abbaye_du_Mont-Saint-Michel" target="_blank">📖</a></td><td class="link"><a href="https://www.google.com/maps/place/Abbaye+Mont+Saint-Michel" target="_blank">🔗</a></td></tr>
+<tr><td>Honfleur (Vieux Bassin)</td><td>Peinture, galeries</td><td class="km text-right">2h</td><td class="link"><a href="https://fr.wikipedia.org/wiki/Honfleur" target="_blank">📖</a></td><td class="link"><a href="https://www.google.com/maps/place/Honfleur" target="_blank">🔗</a></td></tr>
+<tr><td>Deauville (Planches)</td><td>Art déco, villas</td><td class="km text-right">1h30</td><td class="link"><a href="https://fr.wikipedia.org/wiki/Deauville" target="_blank">📖</a></td><td class="link"><a href="https://www.google.com/maps/place/Deauville" target="_blank">🔗</a></td></tr>
+<tr><td>Veules-les-Roses</td><td>Village classé, moulins</td><td class="km text-right">1h30</td><td class="link"><a href="https://fr.wikipedia.org/wiki/Veules-les-Roses" target="_blank">📖</a></td><td class="link"><a href="https://www.google.com/maps/place/Veules-les-Roses" target="_blank">🔗</a></td></tr></table></div>
 
 <h2>Baignade <span style="font-weight:400;font-size:10px;color:var(--gris)">— Anne</span></h2>
-<div class="table-wrap"><table><tr><th>Lieu</th><th>Type</th><th class="text-right">Durée</th><th>Maps</th></tr>
-<tr><td>Plage Saint-Aubin</td><td>Mer</td><td class="km text-right">~1h</td><td class="link"><a href="https://www.google.com/maps/place/Saint-Aubin-sur-Mer" target="_blank">🔗</a></td></tr>
-<tr><td>Île Chausey (Port Marie)</td><td>Criques</td><td class="km text-right">~1h</td><td class="link"><a href="https://www.google.com/maps/place/Plage+Port+Marie+Chausey" target="_blank">🔗</a></td></tr>
-<tr><td>Plage Deauville</td><td>Mer</td><td class="km text-right">~1h</td><td class="link"><a href="https://www.google.com/maps/place/Deauville+plage" target="_blank">🔗</a></td></tr>
-<tr><td>Meuse (Monthermé)</td><td>Rivière</td><td class="km text-right">~1h</td><td class="link"><a href="https://www.google.com/maps/place/Monthermé" target="_blank">🔗</a></td></tr></table></div>
+<div class="table-wrap"><table><tr><th>Lieu</th><th>Type</th><th class="text-right">Durée</th><th>Infos</th><th>Maps</th></tr>
+<tr><td>Plage Saint-Aubin</td><td>Mer</td><td class="km text-right">~1h</td><td class="link"><a href="https://fr.wikipedia.org/wiki/Saint-Aubin-sur-Mer_(Calvados)" target="_blank">📖</a></td><td class="link"><a href="https://www.google.com/maps/place/Saint-Aubin-sur-Mer" target="_blank">🔗</a></td></tr>
+<tr><td>Île Chausey (Port Marie)</td><td>Criques</td><td class="km text-right">~1h</td><td class="link"><a href="https://fr.wikipedia.org/wiki/Îles_Chausey" target="_blank">📖</a></td><td class="link"><a href="https://www.google.com/maps/place/Plage+Port+Marie+Chausey" target="_blank">🔗</a></td></tr>
+<tr><td>Plage Deauville</td><td>Mer</td><td class="km text-right">~1h</td><td class="link"><a href="https://fr.wikipedia.org/wiki/Deauville" target="_blank">📖</a></td><td class="link"><a href="https://www.google.com/maps/place/Deauville+plage" target="_blank">🔗</a></td></tr>
+<tr><td>Meuse (Monthermé)</td><td>Rivière</td><td class="km text-right">~1h</td><td class="link"><a href="https://fr.wikipedia.org/wiki/Monthermé" target="_blank">📖</a></td><td class="link"><a href="https://www.google.com/maps/place/Monthermé" target="_blank">🔗</a></td></tr></table></div>
 
 <h2>Repas &amp; restaurants</h2>
 <div class="card"><strong>🥐 P-déj</strong> van · <strong>🥪 Déj</strong> van · <strong>🍽️ Dîner</strong> resto</div>
@@ -103,11 +103,11 @@
 <tr><td>J5 Monthermé</td><td>Le Cabaret Vert</td><td class="price text-right">20-30€</td><td class="link"><a href="https://www.google.com/maps/search/Le+Cabaret+Vert+Monthermé" target="_blank">🔗</a></td></tr></table></div>
 
 <h2>Météo &amp; plans B</h2>
-<div class="table-wrap"><table><tr><th>Si mauvais temps…</th><th>Au lieu de…</th><th>Faire…</th></tr>
-<tr><td>J2 (MSM)</td><td>Photo aube + abbaye ext.</td><td>Abbaye intérieure + Musée Maritime Regnéville</td></tr>
-<tr><td>J3 (Chausey)</td><td>Île Chausey (bateau annulé)</td><td><strong>Bayeux</strong> : Tapisserie + cathédrale (à 1h)</td></tr>
-<tr><td>J4 (Honfleur/Deauville)</td><td>Planches et plage</td><td>Musée Boudin + galeries Honfleur</td></tr>
-<tr><td>J5 (Veules)</td><td>Falaises + baignade</td><td><strong>Rouen</strong> : cathédrale, Gros-Horloge, Beaux-Arts (45 min)</td></tr></table></div>
+<div class="table-wrap"><table><tr><th>Si mauvais temps…</th><th>Au lieu de…</th><th>Faire…</th><th>Infos</th></tr>
+<tr><td>J2 (MSM)</td><td>Photo aube + abbaye ext.</td><td>Abbaye intérieure + Musée Maritime Regnéville</td><td class="link"><a href="https://fr.wikipedia.org/wiki/Abbaye_du_Mont-Saint-Michel" target="_blank">📖</a></td></tr>
+<tr><td>J3 (Chausey)</td><td>Île Chausey (bateau annulé)</td><td><strong>Bayeux</strong> : Tapisserie + cathédrale (à 1h)</td><td class="link"><a href="https://fr.wikipedia.org/wiki/Tapisserie_de_Bayeux" target="_blank">📖</a></td></tr>
+<tr><td>J4 (Honfleur/Deauville)</td><td>Planches et plage</td><td>Musée Boudin + galeries Honfleur</td><td class="link"><a href="https://fr.wikipedia.org/wiki/Musée_Eugène_Boudin_de_Honfleur" target="_blank">📖</a></td></tr>
+<tr><td>J5 (Veules)</td><td>Falaises + baignade</td><td><strong>Rouen</strong> : cathédrale, Gros-Horloge, Beaux-Arts (45 min)</td><td class="link"><a href="https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen" target="_blank">📖</a></td></tr></table></div>
 
 <h2>Planning</h2>
 <div class="table-wrap"><table class="planning">
@@ -124,12 +124,10 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-var map=L.map('map').setView([49.2,2.0],7);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OSM'}).addTo(map);
+var map=L.map('map').setView([49.2,2.0],7);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OSM'}).addTo(map);
 var pts=[{lat:50.63,lng:5.57,label:'Liège',t:'depart'},{lat:49.56,lng:3.62,label:'Laon ★',t:'lodging'},{lat:49.33,lng:-0.39,label:'Saint-Aubin',t:'lodging'},{lat:48.64,lng:-1.51,label:'MSM',t:'stop'},{lat:49.42,lng:0.23,label:'Honfleur',t:'lodging'},{lat:48.84,lng:-1.60,label:'Granville',t:'lodging'},{lat:48.75,lng:-1.85,label:'Chausey ⛴️',t:'boat'},{lat:49.36,lng:0.07,label:'Deauville',t:'stop'},{lat:49.87,lng:0.80,label:'Veules',t:'lodging'},{lat:49.89,lng:4.74,label:'Monthermé ★',t:'lodging'},{lat:50.63,lng:5.57,label:'Liège',t:'arrivee'}];
-var rc=pts.map(function(p){return [p.lat,p.lng]});
-L.polyline(rc,{color:'#C17F3A',weight:3,opacity:0.8}).addTo(map);
-pts.forEach(function(p){if(p.label==='Liège'&&p.t==='arrivee')return;var isL=p.t==='lodging',isB=p.t==='boat';var c=isL?'#0D0B09':isB?'#3B82F6':'#4A5568',f=isL?'#0D0B09':'#F8F5F0',r=isB?6:isL?7:5;if(isB){L.polyline([[48.84,-1.60],[48.75,-1.85]],{color:'#3B82F6',weight:2,dashArray:'5,5'}).addTo(map)}L.circleMarker([p.lat,p.lng],{radius:r,color:c,fillColor:f,fillOpacity:1,weight:2.5}).addTo(map).bindPopup('<b>'+p.label+'</b>'+(isL?' 🛏️':''))});
+var rc=pts.map(p=>[p.lat,p.lng]);L.polyline(rc,{color:'#C17F3A',weight:3,opacity:0.8}).addTo(map);
+pts.forEach(p=>{if(p.label==='Liège'&&p.t==='arrivee')return;var isL=p.t==='lodging',isB=p.t==='boat';var c=isL?'#0D0B09':isB?'#3B82F6':'#4A5568',f=isL?'#0D0B09':'#F8F5F0',r=isB?6:isL?7:5;if(isB)L.polyline([[48.84,-1.60],[48.75,-1.85]],{color:'#3B82F6',weight:2,dashArray:'5,5'}).addTo(map);L.circleMarker([p.lat,p.lng],{radius:r,color:c,fillColor:f,fillOpacity:1,weight:2.5}).addTo(map).bindPopup('<b>'+p.label+'</b>'+(isL?' 🛏️':''))});
 map.fitBounds(L.polyline(rc).getBounds().pad(0.15));
 </script>
 </body></html>
