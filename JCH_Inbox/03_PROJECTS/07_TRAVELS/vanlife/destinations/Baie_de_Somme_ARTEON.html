@@ -121,10 +121,58 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-var map=L.map('map').setView([50.5,2.5],8);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OSM'}).addTo(map);
-var pts=[{lat:50.63,lng:5.57,label:'Liège',t:'depart'},{lat:50.85,lng:1.67,label:'Audinghen',t:'lodging'},{lat:50.84,lng:1.65,label:'Plage Chatelet 🌊',t:'stop'},{lat:50.86,lng:1.66,label:'Tardinghen',t:'stop'},{lat:50.87,lng:1.66,label:'Récifs Gris-Nez 🌊',t:'stop'},{lat:50.92,lng:1.71,label:'Cap Blanc-Nez ⛰️',t:'stop'},{lat:50.19,lng:1.63,label:'Saint-Valery',t:'lodging'},{lat:50.26,lng:1.57,label:'Marquenterre',t:'stop'},{lat:50.21,lng:1.56,label:'Hourdel 🦭',t:'stop'},{lat:50.23,lng:1.63,label:'Le Crotoy',t:'stop'},{lat:50.35,lng:1.82,label:'Valloires',t:'stop'},{lat:50.10,lng:1.83,label:'Abbeville',t:'stop'},{lat:50.47,lng:4.86,label:'Namur 🪠',t:'service'},{lat:50.26,lng:4.91,label:'Dinant',t:'lodging'},{lat:50.63,lng:5.57,label:'Liège',t:'arrivee'}];
-var rc=pts.map(p=>[p.lat,p.lng]);L.polyline(rc,{color:'#C17F3A',weight:3,opacity:0.8}).addTo(map);
-pts.forEach(p=>{if(p.label==='Liège'&&p.t==='arrivee')return;var isL=p.t==='lodging',isS=p.t==='service';var c=isL?'#0D0B09':isS?'#10B981':'#4A5568',f=isL?'#0D0B09':isS?'#10B981':'#F8F5F0',r=isL?7:isS?7:5;L.circleMarker([p.lat,p.lng],{radius:r,color:c,fillColor:f,fillOpacity:1,weight:2.5}).addTo(map).bindPopup('<b>'+p.label+'</b>'+(isL?' 🛏️':isS?' 🪠':''))});
-map.fitBounds(L.polyline(rc).getBounds().pad(0.15));
+(function(){
+  var map = L.map('map').setView([50.4, 3.0], 8);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a>'
+  }).addTo(map);
+
+  var pts = [
+    {lat:50.633, lng:5.567, label:'Liege', type:'depart'},
+    {lat:50.852, lng:1.660, label:'Audinghen', type:'lodging'},
+    {lat:50.855, lng:1.645, label:'Plage du Chatelet', type:'beach'},
+    {lat:50.867, lng:1.635, label:'Tardinghen', type:'stop'},
+    {lat:50.870, lng:1.585, label:'Cap Gris-Nez', type:'reef'},
+    {lat:50.925, lng:1.710, label:'Cap Blanc-Nez', type:'geo'},
+    {lat:50.188, lng:1.630, label:'Saint-Valery-sur-Somme', type:'lodging'},
+    {lat:50.260, lng:1.570, label:'Parc du Marquenterre', type:'stop'},
+    {lat:50.215, lng:1.565, label:'Pointe du Hourdel', type:'seal'},
+    {lat:50.230, lng:1.630, label:'Le Crotoy', type:'stop'},
+    {lat:50.350, lng:1.820, label:'Abbaye de Valloires', type:'stop'},
+    {lat:50.105, lng:1.835, label:'Abbeville', type:'stop'},
+    {lat:50.467, lng:4.860, label:'Namur (vidange)', type:'service'},
+    {lat:50.260, lng:4.910, label:'Dinant', type:'lodging'},
+    {lat:50.633, lng:5.567, label:'Liege', type:'arrivee'}
+  ];
+
+  // Route line
+  var coords = pts.map(function(p) { return [p.lat, p.lng]; });
+  L.polyline(coords, {color: '#C17F3A', weight: 3, opacity: 0.8}).addTo(map);
+
+  // Markers
+  pts.forEach(function(p) {
+    if (p.type === 'arrivee') return; // skip duplicate Liege
+
+    var isLodging = p.type === 'lodging';
+    var isService = p.type === 'service';
+    var isBeach = p.type === 'beach' || p.type === 'reef';
+    var isSeal = p.type === 'seal';
+
+    var color = isLodging ? '#0D0B09' : isService ? '#10B981' : isSeal ? '#3B82F6' : isBeach ? '#06B6D4' : '#4A5568';
+    var fill = isLodging ? '#0D0B09' : isSeal ? '#3B82F6' : isService ? '#10B981' : '#F8F5F0';
+    var radius = isLodging ? 7 : 6;
+    var icon = isLodging ? ' 🛏️' : isService ? ' 🪠' : isSeal ? ' 🦭' : '';
+
+    L.circleMarker([p.lat, p.lng], {
+      radius: radius,
+      color: color,
+      fillColor: fill,
+      fillOpacity: 1,
+      weight: 2.5
+    }).addTo(map).bindPopup('<b>' + p.label + '</b>' + icon);
+  });
+
+  map.fitBounds(L.polyline(coords).getBounds().pad(0.15));
+})();
 </script>
 </body></html>
