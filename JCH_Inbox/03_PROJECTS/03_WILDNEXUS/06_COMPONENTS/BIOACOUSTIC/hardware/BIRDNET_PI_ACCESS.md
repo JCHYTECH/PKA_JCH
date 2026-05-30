@@ -1,6 +1,7 @@
 # BirdNET-Pi - Acces local et reperes critiques
 
 **Date de creation :** 2026-05-24  
+**Derniere mise a jour :** 2026-05-29 — hostname `birdnetpi` confirme, cloud-init fixe, reseau maison prioritaire  
 **Projet :** WildNexus / Bioacoustique  
 **Machine :** [[Raspberry Pi]] BirdNET-Pi  
 **Owner :** JCH  
@@ -30,11 +31,13 @@ Raison : les IP `172.20.10.x` du hotspot iPhone peuvent changer. Le nom `.local`
 
 Plan de stabilisation :
 
-1. fixer le hostname Raspberry a `birdnetpi` ;
-2. verifier/installer `avahi-daemon` ;
-3. utiliser `http://birdnetpi.local` comme URL principale ;
-4. conserver `192.168.1.48` comme reservation routeur maison ;
-5. utiliser [[Tailscale]]/MagicDNS si une URL stable est requise hors reseau local.
+1. ✅ fixer le hostname Raspberry a `birdnetpi` — fait 2026-05-29 (`hostnamectl set-hostname` + `preserve_hostname: true` dans cloud-init) ;
+2. ✅ `avahi-daemon` actif et operationnel ;
+3. utiliser `http://birdnetpi.local` comme URL principale (OK sur reseau local) ;
+4. ✅ `192.168.1.48` reservation routeur maison — IP WiFi wlan0 ;
+5. ✅ [[Tailscale]] actif : `100.84.45.93` — acces distant stable.
+
+**Reseau — priorite (2026-05-29) :** WiFi maison (wlan0, metric 600) primaire, LTE dongle (eth1, metric 700) backup.
 
 ### [[Tailscale]] / Tailnet
 

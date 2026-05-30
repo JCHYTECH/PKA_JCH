@@ -94,7 +94,7 @@ Seuls les rangs SPECIES / SUBSPECIES / VARIETY / FORM sont acceptés — les mat
 
 Embarqué directement dans le HTML. ~110 entrées couvrant :
 - Mammifères ([[Renard]], chevreuil, cerf, sanglier, blaireau, loutre, [[Castor]], chauves-souris...)
-- Oiseaux (cigogne, [[Héron]], faucon, [[Chouette]], martin-pêcheur, hirondelle...)
+- Oiseaux ([[cigogne]], [[Héron]], faucon, [[Chouette]], martin-pêcheur, hirondelle...)
 - Reptiles (lézard, couleuvre, vipère, orvet...)
 - Amphibiens (grenouille, crapaud, triton, salamandre...)
 - Poissons (saumon, truite, brochet, anguille...)

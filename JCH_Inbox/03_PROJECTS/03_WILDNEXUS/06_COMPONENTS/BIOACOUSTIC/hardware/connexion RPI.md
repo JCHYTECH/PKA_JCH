@@ -1,6 +1,7 @@
 # Connexion RPI BirdNET-Pi
 
 **Date :** 2026-05-24  
+**Mise a jour :** 2026-05-29 — hostname `birdnetpi` confirme, reseau maison prioritaire  
 **Machine :** [[Raspberry Pi]] BirdNET-Pi  
 **Projet :** WildNexus / Bioacoustique  
 **Regle securite :** ne pas ecrire le mot de passe en clair dans ce fichier.
@@ -9,11 +10,12 @@
 
 ### [[Raspberry Pi]]
 
-- Hostname cible : `birdnetpi`
+- Hostname : `birdnetpi` (confirme 2026-05-29, cloud-init `preserve_hostname: true`)
 - User SSH : `jchavaux`
-- IP maison probable : `192.168.1.48`
-- IP [[Tailscale]] RPI : 
-- Modele [[BirdNET]] : 
+- IP maison (WiFi wlan0) : `192.168.1.48` — primaire (metric 600)
+- IP LTE (eth1, dongle ZTE) : `192.168.0.178` — backup (metric 700)
+- IP [[Tailscale]] RPI : `100.84.45.93`
+- Modele [[BirdNET]] : BirdNET-Go (RPi 5)
 
 ### iPhone
 
@@ -215,3 +217,14 @@ find ~/BirdNET-Pi -iname '*model*' -o -iname '*BirdNET*'
 - 
 - Les IPs [[Tailscale]] 
 - Le mot de passe RPI est connu de JCH mais ne doit pas etre stocke ici en clair.
+
+## Troubleshooting interface web
+
+### « err-internet-disconnected » dans Chrome
+
+Si la page BirdNET affiche cette erreur mais que le RPi repond en SSH :
+
+1. **Force refresh** : `Cmd+Shift+R` — vide le cache de l'erreur precedente (souvent causee par un gel temporaire de caddy lors d'un conflit WAL SQLite).
+2. **Passer par [[Tailscale]]** : `http://100.84.45.93` — plus fiable que le Wi-Fi local (`192.168.1.48`), independant des aleas de la box.
+
+Le serveur caddy ecoute sur `*:80`, le probleme est toujours cote client Mac ↔ RPi, pas cote RPi.

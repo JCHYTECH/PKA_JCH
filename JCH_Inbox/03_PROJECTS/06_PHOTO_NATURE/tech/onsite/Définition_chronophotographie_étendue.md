@@ -1188,7 +1188,7 @@ Ces règles sont **non négociables** si l’on veut rester dans une chronophoto
 
 ---
 
-## TEMPLATE S-FIB-01  
+## [[TEMPLATE]] S-FIB-01  
 ### « Fibonacci centrée douce »  
 **(template de référence)**
 
@@ -1224,7 +1224,7 @@ Ces règles sont **non négociables** si l’on veut rester dans une chronophoto
 
 ---
 
-## TEMPLATE S-AXE-02  
+## [[TEMPLATE]] S-AXE-02  
 ### « Axial hiérarchisé »
 
 **Usage**
@@ -1252,7 +1252,7 @@ Ces règles sont **non négociables** si l’on veut rester dans une chronophoto
 
 ---
 
-## TEMPLATE S-RAD-03  
+## [[TEMPLATE]] S-RAD-03  
 ### « Fibonacci radicale monumentale »
 
 **Usage**
@@ -1287,7 +1287,7 @@ Ces règles sont **non négociables** si l’on veut rester dans une chronophoto
 
 ---
 
-## TEMPLATE A-FIB-04  
+## [[TEMPLATE]] A-FIB-04  
 ### « Fibonacci étirée directionnelle »
 
 **Usage**
@@ -1315,7 +1315,7 @@ Ces règles sont **non négociables** si l’on veut rester dans une chronophoto
 
 ---
 
-## TEMPLATE A-BRK-05  
+## [[TEMPLATE]] A-BRK-05  
 ### « Spirale brisée »
 
 **Usage**
@@ -1343,7 +1343,7 @@ Ces règles sont **non négociables** si l’on veut rester dans une chronophoto
 
 ---
 
-## TEMPLATE A-ESC-06  
+## [[TEMPLATE]] A-ESC-06  
 ### « Sortie de cadre »
 
 **Usage**
@@ -1521,7 +1521,7 @@ Aucune image n’est collée “en dur”.
 
 ---
 
-# 2. CHOIX D’UN TEMPLATE « SIGNATURE » POUR LE PROJET
+# 2. CHOIX D’UN [[TEMPLATE]] « SIGNATURE » POUR LE PROJET
 
 Ici, il s’agit d’un **choix stratégique**, pas esthétique.
 
@@ -1539,7 +1539,7 @@ Un template signature doit :
 
 ## 2.2. Décision recommandée (claire et assumée)
 
-### ✅ TEMPLATE SIGNATURE PRINCIPAL  
+### ✅ [[TEMPLATE]] SIGNATURE PRINCIPAL  
 **S-FIB-01 – Fibonacci centrée douce**
 
 **Pourquoi :**
