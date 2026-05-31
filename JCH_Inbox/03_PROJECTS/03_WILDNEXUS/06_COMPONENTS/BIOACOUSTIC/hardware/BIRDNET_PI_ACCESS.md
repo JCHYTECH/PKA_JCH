@@ -260,6 +260,78 @@ Chercher le modele [[BirdNET]] :
 find ~/BirdNET-Pi -iname '*model*' -o -iname '*BirdNET*'
 ```
 
+## Changer la langue des noms d'especes
+
+**Procedure validee 2026-05-30 :**
+
+```bash
+# 1. Modifier le parametre dans la config
+sudo sed -i 's/^DATABASE_LANG=.*/DATABASE_LANG=fr/' /etc/birdnet/birdnet.conf
+
+# 2. Regenere les labels (telecharge les noms francais)
+cd /home/jchavaux/BirdNET-Pi/scripts && sudo -E ./install_language_label.sh
+
+# 3. Redemarrer les services
+sudo systemctl restart birdnet_analysis.service birdnet_log.service \
+  birdnet_recording.service birdnet_stats.service chart_viewer.service \
+  spectrogram_viewer.service
+```
+
+**Note :** les detections deja enregistrees gardent leur nom d'origine (anglais) dans `birds.db`. Seules les nouvelles detections utilisent la nouvelle langue apres redemarrage.
+
+## EventNET — detection acoustique meteo (orage, pluie, vent)
+
+**Installe le 2026-05-30.** YAMNet (AudioSet, 521 classes) en parallele de BirdNET sur le meme flux audio.
+
+### Fonctionnement
+
+- `eventnet.service` surveille les WAV produits par BirdNET dans `StreamData/` via inotify
+- Chaque segment est analyse par YAMNet TFLite (modele ~4 Mo)
+- Les evenements météo (score > 0.15) sont loggues dans `events.db`
+
+### Classes detectees
+
+| Classe | AudioSet ID |
+|--------|-------------|
+| Tonnerre | `/m/0ngt1` |
+| Orage | `/m/0jbk` |
+| Pluie | `/m/06mb1` |
+| Pluie (surface) | `/t/dd00129` |
+| Vent | `/m/03m9d0h` |
+| Vent (micro) | `/m/0cj0r` |
+
+### Commandes
+
+```bash
+# Statut du service
+sudo systemctl status eventnet
+
+# Voir les logs en direct
+tail -f /home/jchavaux/BirdNET-Pi/eventnet/eventnet.log
+
+# Stats des detections
+/home/jchavaux/BirdNET-Pi/birdnet/bin/python3 /home/jchavaux/BirdNET-Pi/eventnet/eventnet_detect.py --stats
+
+# Derniers evenements (SQLite direct)
+sqlite3 /home/jchavaux/BirdNET-Pi/eventnet/events.db "SELECT timestamp,class_name_fr,score FROM events ORDER BY id DESC LIMIT 10;"
+```
+
+### Fichiers
+
+```
+/home/jchavaux/BirdNET-Pi/eventnet/
+├── yamnet.tflite           # Modele YAMNet TFLite (~4 Mo)
+├── yamnet_class_map.csv    # 521 classes AudioSet
+├── eventnet_detect.py      # Script de detection
+├── events.db               # Base SQLite des evenements
+├── eventnet.log            # Logs du service
+└── processed_files.txt     # Fichiers deja traites
+```
+
+### Script local PKA
+
+`scripts/eventnet_detect.py` + `scripts/eventnet.service`
+
 ## Regle memoire [[Dobby]]
 
 Toute nouvelle information d'acces BirdNET-Pi doit etre ajoutee ici :

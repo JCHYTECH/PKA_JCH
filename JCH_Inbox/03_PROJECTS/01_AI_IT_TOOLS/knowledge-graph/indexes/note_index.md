@@ -370,10 +370,9 @@ status: generated
 | Procédure de purge progressive des réglages mémorisés dans Epson Print Layout sur Mac |  |  | type/project, status/active | `JCH_Inbox/03_PROJECTS/06_PHOTO_NATURE/tech/printing/epson_print_layout_reset_mac.md` |
 | TRAVELS — Index projet |  |  |  | `JCH_Inbox/03_PROJECTS/07_TRAVELS/INDEX.md` |
 | Achat véhicule UE risques opportunités |  |  | type/project, status/active | `JCH_Inbox/03_PROJECTS/07_TRAVELS/docs/Achat_véhicule_UE_risques_opportunités.md` |
-| Danish Landscape Spots. |  |  | type/project, status/active | `JCH_Inbox/03_PROJECTS/07_TRAVELS/docs/Danish_Landscape_Spots.md` |
+| Danish Landscape Spots. |  |  | type/project, status/active | `JCH_Inbox/03_PROJECTS/07_TRAVELS/vanlife/destinations/Danish_Landscape_Spots.md` |
 | Expositions Vanlife 2026 |  |  |  | `JCH_Inbox/03_PROJECTS/07_TRAVELS/docs/Expositions_Vanlife_2026.md` |
-| Itinéraire Japon nature jardins |  |  |  | `JCH_Inbox/03_PROJECTS/07_TRAVELS/docs/Itinéraire_Japon_nature_jardins.md` |
-| [[Modif Stylevan]] |  |  | type/project, status/active | `JCH_Inbox/03_PROJECTS/07_TRAVELS/docs/Modif Stylevan.md` |
+| Itinéraire Japon nature jardins |  |  |  | `JCH_Inbox/03_PROJECTS/07_TRAVELS/vanlife/destinations/Itinéraire_Japon_nature_jardins.md` |
 | Prix Stylevan Equinox 4 2026 |  |  |  | `JCH_Inbox/03_PROJECTS/07_TRAVELS/docs/Prix_Stylevan_Equinox_4_2026.md` |
 | Checklist Achat – Stylevan Equinox IV Ford | checklist | active | type/checklist, domain/vanlife | `JCH_Inbox/03_PROJECTS/07_TRAVELS/docs/checklist-achat-stylevan-equinox-iv-ford.md` |
 | VETALYX / JCHYTECH — Index projet |  |  |  | `JCH_Inbox/03_PROJECTS/08_VETALYX/INDEX.md` |

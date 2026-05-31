@@ -20,9 +20,7 @@ Inclut la logistique van (Stylevan Equinox IV Ford) comme vecteur de voyage.
 
 ## Fichiers clés
 - `tech/checklist-achat-stylevan-equinox-iv-ford.md` — Checklist achat van Stylevan
-- `tech/Modif Stylevan.md` — Modifications et aménagements van
 - `tech/Achat_véhicule_UE_risques_opportunités.md` — Risques et opportunités achat véhicule en UE
-- `content/Danish_Landscape_Spots.md` — Sites paysagers danois (photo)
 
 ## Statut
 Actif — en développement (peu de contenu pour l'instant)
