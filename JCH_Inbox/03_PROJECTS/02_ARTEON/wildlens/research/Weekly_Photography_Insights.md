@@ -6,8 +6,30 @@ tags:
 # Weekly Photography Insights
 
 **Created:** 2026-03-14 13:16  
-**Updated:** 2026-04-12 18:59  
+**Updated:** 2026-06-01  
 **Messages:** 37
+
+---
+
+## Operational Rule — 2026-06-01
+
+The weekly Photography Insights / [[WildLens]] review is no longer delivered by [[email]].
+
+Every Saturday, the weekly brief must be generated in English as before, but output as a Markdown document that can be saved into the local PKA [[inbox]].
+
+At the top of the answer, before the Markdown content, show exactly:
+
+`FILENAME: YYYY-MM-DD_weekly-photography-insights.md`
+
+The destination in the local system is:
+
+`JCH_Inbox/00_INBOX/`
+
+Recommended filename:
+
+`YYYY-MM-DD_weekly-photography-insights.md`
+
+[[Dobby]] then processes the file from the [[inbox]] and routes it into the ARTEON / [[WildLens]] workflow.
 
 ---
 

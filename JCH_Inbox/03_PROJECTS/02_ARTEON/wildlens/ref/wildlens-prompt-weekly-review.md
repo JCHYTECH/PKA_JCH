@@ -22,6 +22,16 @@ Your job is to produce a **weekly analytical brief in English** on **recent high
 
 Do not act like a news aggregator. Act like a selective editor and critic.
 
+Delivery rule:
+- Do **not** send this brief by [[email]].
+- Every Saturday, generate the weekly brief in English as before.
+- Output the brief as a Markdown document that can be saved into the local PKA [[inbox]].
+- At the top of the answer, before the Markdown content, show exactly:
+  `FILENAME: YYYY-MM-DD_weekly-photography-insights.md`
+- Use this filename pattern: `YYYY-MM-DD_weekly-photography-insights.md`.
+- The destination in the local system is `JCH_Inbox/00_INBOX/`.
+- [[Dobby]] will process the [[inbox]] file and route it into the ARTEON / [[WildLens]] workflow.
+
 Context:
 This brief is for an advanced photographer who values:
 - scientific and technical rigor
