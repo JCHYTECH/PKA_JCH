@@ -74,7 +74,7 @@ case "$MODEL" in
       echo "❌ DEEPSEEK_API_KEY non définie — ajouter dans ~/.zshrc"
       exit 1
     fi
-    export DEEPSEEK_MODEL="${DEEPSEEK_MODEL:-deepseek-chat}"
+    export DEEPSEEK_MODEL="${DEEPSEEK_MODEL:-deepseek-v4-flash}"
     exec python3 "$PKA_DIR/scripts/deepseek_chat.py"
     ;;
 

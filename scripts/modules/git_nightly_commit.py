@@ -12,7 +12,11 @@ import subprocess
 from datetime import date
 from pathlib import Path
 
-ADD_PATHS = ["JCH_Inbox/", "TEAM/", "TEAM_Inbox/", "docs/", "scripts/"]
+# bin/ ajoute les lanceurs déplacés, _local/ les configs Home Assistant/Plane, wiki/ le knowledge graph
+ADD_PATHS = [
+    "JCH_Inbox/", "TEAM/", "TEAM_Inbox/",
+    "docs/", "scripts/", "bin/", "wiki/",
+]
 
 # Exclusions absolues — ne jamais commiter
 _EXCLUDED = [
@@ -77,5 +81,17 @@ def run(
         )
     except subprocess.CalledProcessError as exc:
         return {"committed": False, "error": str(exc)}
+
+    # Push silencieux — ne pas échouer si réseau absent
+    try:
+        subprocess.run(
+            ["git", "push"],
+            cwd=root,
+            capture_output=True,
+            text=True,
+            timeout=60,
+        )
+    except Exception:
+        pass  # push non bloquant
 
     return {"committed": True, "date": date_str}

@@ -1,0 +1,19 @@
+{
+  "telegram_message_id": "9",
+  "telegram_group": "DECOUVERTES",
+  "author": "Jean Claude Havaux",
+  "datetime": "2026-06-03T09:46:03+00:00",
+  "content_type": "image",
+  "text": "",
+  "links": [],
+  "media_files": [
+    {
+      "file_path": "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/raw/images/20260603_094603_9.jpg",
+      "media_type": "photo"
+    }
+  ],
+  "analysis_status": "analysed",
+  "place_candidates": [],
+  "confidence": null,
+  "draft_path": "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/drafts/2026-06-03_Oloron-Sainte-Marie.md"
+}

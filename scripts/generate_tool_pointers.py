@@ -87,6 +87,10 @@ def render_pointer(filename: str, tool_cfg: dict, cfg: dict, team_count: int) ->
         f"Current scan snapshot: {len(list_projects())} projets actifs ({projects}) ; {inbox_items} éléments dans `JCH_Inbox/00_INBOX/`.",
         "",
     ])
+    postscript = cfg.get("postscript")
+    if postscript:
+        lines.append(postscript)
+        lines.append("")
     return "\n".join(lines)
 
 
@@ -131,8 +135,19 @@ def sync_claude_managed_block(root: Path, cfg: dict, team_count: int, check: boo
     if not updated.endswith("\n"):
         updated += "\n"
 
+    postscript = cfg.get("postscript")
+    if postscript:
+        end_marker = CLAUDE_BLOCK_END
+        ps_line = "\n" + postscript + "\n"
+        if updated.find(end_marker + "\n" + postscript) == -1:
+            idx = updated.find(end_marker)
+            if idx != -1:
+                idx += len(end_marker)
+                updated = updated[:idx] + ps_line + updated[idx:]
+
     if check:
-        if current != updated:
+        target_read = target.read_text(encoding="utf-8")
+        if target_read != updated:
             print("DRIFT CLAUDE.md")
             return 1
         return 0

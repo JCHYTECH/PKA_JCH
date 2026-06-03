@@ -4,11 +4,11 @@ Traite les messages en attente dans queue/, identifie les lieux,
 génère des fiches Obsidian dans drafts/.
 
 Usage :
-  python3 analyzer.py                    # Claude Haiku (défaut, moins cher)
-  python3 analyzer.py --model sonnet     # Claude Sonnet
-  python3 analyzer.py --model opus       # Claude Opus
-  python3 analyzer.py --model ollama:qwen2.5vl:7b   # local, gratuit
-  python3 analyzer.py --limit 5          # traiter seulement 5 fichiers
+  python3 analyzer.py                         # Claude Haiku (défaut)
+  python3 analyzer.py --cascade               # Cascade auto : qwen3.5 → haiku → sonnet → opus
+  python3 analyzer.py --cascade --cascade-order ollama:qwen3.5,haiku,sonnet
+  python3 analyzer.py --model sonnet          # Forcer un modèle spécifique
+  python3 analyzer.py --limit 5               # Traiter seulement N fichiers
 """
 
 import argparse
@@ -42,7 +42,12 @@ CLAUDE_MODELS = {
     "opus":   "claude-opus-4-8",
 }
 
-OLLAMA_BASE = "http://localhost:11434"
+OLLAMA_BASE = os.getenv("OLLAMA_BASE", "http://localhost:11435")
+
+# ── Ordre cascade par défaut ────────────────────────────────────────────────────
+
+CASCADE_ORDER = ["ollama:qwen3.5", "haiku", "sonnet", "opus"]
+CASCADE_THRESHOLD = 0.7
 
 # ── Appels LLM ────────────────────────────────────────────────────────────────
 
@@ -84,6 +89,77 @@ def call_model(model_arg: str, prompt: str, image_b64: str | None = None) -> str
     if not model_id:
         raise ValueError(f"Modèle inconnu : {model_arg}. Choix : haiku, sonnet, opus, ollama:<name>")
     return call_claude(model_id, prompt, image_b64)
+
+
+def _extract_json(raw: str) -> dict:
+    """Extrait un objet JSON d'une réponse LLM, tolérant aux formats variés."""
+    raw = raw.strip()
+    # Tente d'extraire d'un bloc ```json ... ```
+    if "```" in raw:
+        parts = raw.split("```")
+        for p in parts:
+            p = p.strip()
+            if p.startswith("json"):
+                p = p[4:]
+            try:
+                return json.loads(p)
+            except json.JSONDecodeError:
+                continue
+    # Tente de trouver la première accolade { et dernière }
+    start = raw.find("{")
+    end = raw.rfind("}")
+    if start != -1 and end != -1:
+        try:
+            return json.loads(raw[start:end+1])
+        except json.JSONDecodeError:
+            pass
+    # Dernier essai : la ligne complète
+    return json.loads(raw)
+
+
+def analyze_with_cascade(
+    model_order: list[str], threshold: float,
+    content_type: str, image_b64: str | None, text: str,
+    hint: str | None = None,
+) -> dict | None:
+    """Essaie les modèles dans l'ordre jusqu'à obtenir une confiance >= threshold."""
+    best = None
+    best_conf = -1.0
+
+    for i, model_arg in enumerate(model_order):
+        arrow = "→" if i > 0 else ""
+        print(f"  {arrow} {model_arg}...", end=" ", flush=True)
+        try:
+            if image_b64 and content_type in ("photo", "image", "image_with_caption", "screenshot"):
+                raw = call_model(model_arg, get_vision_prompt(hint), image_b64)
+            else:
+                raw = call_model(model_arg, TEXT_PROMPT.format(text=text))
+
+            analysis = _extract_json(raw)
+
+            if not analysis.get("is_place", True):
+                print(f"pas un lieu")
+                continue
+
+            conf = float(analysis.get("confidence", 0))
+            nom = analysis.get("nom_lieu", "?")
+            print(f"{nom} ({int(conf*100)}%)")
+
+            if conf > best_conf:
+                best = analysis
+                best_conf = conf
+
+            if conf >= threshold:
+                print(f"  ✅ seuil {int(threshold*100)}% atteint — arrêt cascade")
+                return analysis
+
+        except Exception as e:
+            print(f"erreur: {e}")
+
+    if best:
+        print(f"  ⚠️ meilleur score {int(best_conf*100)}% < {int(threshold*100)}%")
+    return best
+
 
 # ── Nominatim — GPS depuis nom de lieu ───────────────────────────────────────
 
@@ -225,11 +301,61 @@ def get_restaurants(lat: float, lon: float, radius_km: int = 15) -> list[dict]:
     return results
 
 
+def get_nearby_attractions(lat: float, lon: float, radius_km: int = 30) -> list[dict]:
+    """Retourne jusqu'à 6 lieux touristiques/patrimoine dans le rayon."""
+    radius_m = radius_km * 1000
+    query = f"""
+    [out:json][timeout:25];
+    (
+      nwr["tourism"="attraction"](around:{radius_m},{lat},{lon});
+      nwr["historic"="castle"](around:{radius_m},{lat},{lon});
+      nwr["historic"="monument"](around:{radius_m},{lat},{lon});
+      nwr["historic"="church"](around:{radius_m},{lat},{lon});
+      nwr["tourism"="viewpoint"](around:{radius_m},{lat},{lon});
+      nwr["natural"="peak"](around:{radius_m},{lat},{lon});
+      nwr["waterway"="waterfall"](around:{radius_m},{lat},{lon});
+    );
+    out center 15;
+    """
+    elements = query_overpass(query)
+    results = []
+    seen = set()
+    for el in elements:
+        name = el.get("tags", {}).get("name", "").strip()
+        if not name or name.lower() in seen:
+            continue
+        seen.add(name.lower())
+        coords = _extract_coords(el)
+        if not coords:
+            continue
+        tags = el.get("tags", {})
+        if "historic" in tags:
+            kind = "Patrimoine"
+        elif tags.get("tourism") == "viewpoint":
+            kind = "Point de vue"
+        elif tags.get("natural") == "peak":
+            kind = "Sommet"
+        elif tags.get("waterway") == "waterfall":
+            kind = "Cascade"
+        else:
+            kind = "Site touristique"
+        results.append({
+            "name": name,
+            "type": kind,
+            "lat": coords[0],
+            "lon": coords[1],
+        })
+        if len(results) >= 6:
+            break
+    return results
+
+
 def generate_html_report(
     lat: float, lon: float, nom_lieu: str,
     pays: str, region: str, ville: str,
     analysis: dict, van_info: str, meta: dict,
     reserves: list[dict], restaurants: list[dict],
+    attractions: list[dict],
     reports_dir: Path, slug: str, today: str,
 ) -> Path | None:
     """Génère un rapport HTML standalone complet avec carte intégrée."""
@@ -237,43 +363,33 @@ def generate_html_report(
         reports_dir.mkdir(parents=True, exist_ok=True)
         report_path = reports_dir / f"{today}_{slug}.html"
 
-        # ── Marqueurs JS pour la carte ──
+        import math as _math
+
+        def _dist_km(lat2: float, lon2: float) -> str:
+            d = _math.dist((lat, lon), (lat2, lon2)) * 111.32
+            return f"{d:.0f} km" if d >= 1 else f"{int(d*1000)} m"
+
+        # ── Marqueurs JS carte ──
         reserve_js = ",\n        ".join(
-            f'L.marker([{r["lat"]}, {r["lon"]}]).bindPopup("<b>🌿 {r["name"]}</b><br>{r["type"]}").addTo(map)'
+            f'L.marker([{r["lat"]}, {r["lon"]}], {{icon: reserveIcon}}).bindPopup("<b>🌿 {r["name"]}</b><br>{r["type"]}").addTo(map)'
             for r in reserves
         )
         resto_js = ",\n        ".join(
             f'L.marker([{r["lat"]}, {r["lon"]}], {{icon: restoIcon}}).bindPopup("<b>🍽 {r["name"]}</b><br>{r["cuisine"]}").addTo(map)'
             for r in restaurants
         )
+        attr_js = ",\n        ".join(
+            f'L.marker([{a["lat"]}, {a["lon"]}], {{icon: attrIcon}}).bindPopup("<b>⭐ {a["name"]}</b><br>{a["type"]}").addTo(map)'
+            for a in attractions
+        )
 
-        # ── Scores visuels ──
-        def score_bar(label: str, value: int, emoji: str) -> str:
-            pct = value * 20
-            return f'<div class="score-row"><span class="score-emoji">{emoji}</span><span class="score-label">{label}</span><div class="score-bar"><div class="score-fill" style="width:{pct}%"></div></div><span class="score-val">{value}/5</span></div>'
+        # ── Confiance ──
+        confidence = int(analysis.get("confidence", 0) * 100)
+        conf_class = "conf-high" if confidence >= 80 else "conf-med" if confidence >= 50 else "conf-low"
+        action_label = "Validé" if analysis.get("action") == "validated" else "À vérifier"
+        gmaps = f"https://www.google.com/maps/search/{lat},{lon}"
 
-        # ── Réserves ──
-        reserves_html = ""
-        if reserves:
-            reserves_html = '<div class="card"><h2>🌿 Réserves naturelles <span class="badge">25 km</span></h2><ul class="item-list">'
-            for r in reserves:
-                reserves_html += f'<li><strong>{r["name"]}</strong> — {r["type"]}</li>'
-            reserves_html += "</ul></div>"
-        else:
-            reserves_html = '<div class="card"><h2>🌿 Réserves naturelles</h2><p class="muted">Aucune réserve trouvée dans un rayon de 25 km.</p></div>'
-
-        # ── Restaurants ──
-        restos_html = ""
-        if restaurants:
-            restos_html = '<div class="card"><h2>🍽 Restaurants <span class="badge">15 km</span></h2><ul class="item-list">'
-            for r in restaurants:
-                cuisine = f" — {r['cuisine']}" if r['cuisine'] else ""
-                restos_html += f'<li><strong>{r["name"]}</strong>{cuisine}</li>'
-            restos_html += "</ul></div>"
-        else:
-            restos_html = '<div class="card"><h2>🍽 Restaurants</h2><p class="muted">Aucun restaurant trouvé dans un rayon de 15 km.</p></div>'
-
-        # ── Photos ──
+        # ── Photos source ──
         photos_html = ""
         for mf in meta.get("media_files", []):
             fp = PKA_ROOT / mf["file_path"]
@@ -282,12 +398,20 @@ def generate_html_report(
                 img_b64 = _b64.standard_b64encode(fp.read_bytes()).decode()
                 photos_html += f'<div class="photo-card"><img src="data:image/jpeg;base64,{img_b64}" alt="Photo source" loading="lazy"></div>'
 
-        # ── Confiance ──
-        confidence = int(analysis.get("confidence", 0) * 100)
-        conf_class = "conf-high" if confidence >= 80 else "conf-med" if confidence >= 50 else "conf-low"
-        action_label = "Validé" if analysis.get("action") == "validated" else "À vérifier"
+        # ── Table attractions ──
+        attr_table = ""
+        for a in attractions:
+            attr_table += f'<tr><td>{a["name"]}</td><td>{a["type"]}</td><td class="km">{_dist_km(a["lat"], a["lon"])}</td><td class="link"><a href="https://www.google.com/maps/place/{a["name"].replace(" ","+")}" target="_blank">🔗</a></td></tr>'
 
-        gmaps = f"https://www.google.com/maps/search/{lat},{lon}"
+        # ── Table restos ──
+        resto_table = ""
+        for r in restaurants:
+            cuisine = r['cuisine'] if r['cuisine'] else "—"
+            resto_table += f'<tr><td>{r["name"]}</td><td>{cuisine}</td><td class="km">{_dist_km(r["lat"], r["lon"])}</td><td class="link"><a href="https://www.google.com/maps/place/{r["name"].replace(" ","+")}" target="_blank">🔗</a></td></tr>'
+
+        # ── Scores ──
+        def _stars(n: int) -> str:
+            return "★" * n + "☆" * (5 - n)
 
         html = f"""<!DOCTYPE html>
 <html lang="fr">
@@ -298,171 +422,104 @@ def generate_html_report(
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
-  :root {{
-    --bg: #f8f9fa; --card: #ffffff; --text: #2c3e50; --muted: #7f8c8d;
-    --accent: #2e7d32; --accent2: #e67e22; --blue: #2980b9;
-    --shadow: 0 2px 8px rgba(0,0,0,0.08);
-    --radius: 12px;
-  }}
+  :root {{ --ivoire: #F8F5F0; --noir: #0D0B09; --ocre: #C17F3A; --sable: #E8E2DA; --sable-fonce: #D4CCC2; --ardoise: #4A5568; --gris: #6B7280; }}
   * {{ box-sizing: border-box; margin: 0; padding: 0; }}
-  body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }}
-  .container {{ max-width: 900px; margin: 0 auto; padding: 16px; }}
-
-  .header {{ background: linear-gradient(135deg, #1a3c34 0%, #2e7d32 100%); color: white; padding: 32px 24px; border-radius: var(--radius); margin-bottom: 20px; }}
-  .header h1 {{ font-size: 1.8rem; margin-bottom: 6px; }}
-  .header .sub {{ font-size: 0.95rem; opacity: 0.85; }}
-  .header .meta-row {{ display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; font-size: 0.85rem; }}
-  .header .meta-row span {{ background: rgba(255,255,255,0.15); padding: 4px 10px; border-radius: 20px; }}
-
-  .map-container {{ height: 420px; border-radius: var(--radius); overflow: hidden; margin-bottom: 20px; box-shadow: var(--shadow); }}
+  body {{ background: var(--ivoire); color: var(--noir); font-family: 'Inter', -apple-system, sans-serif; font-size: 14px; line-height: 1.6; padding: 16px 14px; }}
+  h1, h2, h3, th {{ font-weight: 700; }}
+  h1 {{ font-size: 22px; color: var(--ocre); margin-bottom: 2px; }}
+  h2 {{ font-size: 12px; color: var(--ocre); margin: 22px 0 6px; padding-bottom: 2px; border-bottom: 2px solid var(--sable); text-transform: uppercase; letter-spacing: 0.05em; }}
+  h3 {{ font-size: 11px; color: var(--ardoise); margin: 10px 0 4px; font-weight: 600; }}
+  .km, .price {{ font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--ardoise); }}
+  .header {{ margin-bottom: 12px; padding-bottom: 8px; border-bottom: 3px solid var(--ocre); }}
+  .header-meta {{ font-size: 10px; color: var(--gris); margin-top: 2px; }}
+  .status {{ display: inline-block; background: var(--ocre); color: #fff; padding: 1px 8px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }}
+  .tagline {{ font-weight: 400; color: var(--gris); font-size: 12px; }}
+  .card {{ background: var(--sable); padding: 8px 12px; margin: 6px 0; font-size: 12px; }}
+  .rules {{ background: var(--sable); padding: 8px 10px; margin: 6px 0; font-size: 11px; border-left: 4px solid var(--ocre); line-height: 1.6; }}
+  .table-wrap {{ width: 100%; overflow-x: auto; margin: 6px 0 10px; }}
+  table {{ width: 100%; border-collapse: collapse; font-size: 10px; min-width: 400px; }}
+  th {{ background: var(--sable-fonce); color: var(--noir); font-weight: 600; font-size: 9px; text-transform: uppercase; letter-spacing: 0.04em; padding: 6px 6px; text-align: left; white-space: nowrap; }}
+  td {{ padding: 5px 6px; border-bottom: 1px solid var(--sable); vertical-align: top; }}
+  tr:last-child td {{ border-bottom: none; }}
+  .link a {{ color: var(--ocre); text-decoration: none; font-size: 12px; padding: 2px 4px; }}
+  .map-container {{ height: 260px; margin: 8px 0; border: 2px solid var(--sable); position: relative; z-index: 1; }}
   #map {{ height: 100%; }}
-  .legend {{ background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 1px 5px rgba(0,0,0,0.2); font: 12px/1.5 sans-serif; }}
-  .legend i {{ width: 12px; height: 12px; display: inline-block; margin-right: 5px; border-radius: 50%; vertical-align: middle; }}
-
-  .card {{ background: var(--card); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 16px; box-shadow: var(--shadow); }}
-  .card h2 {{ font-size: 1.1rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }}
-  .badge {{ font-size: 0.75rem; background: var(--bg); padding: 2px 8px; border-radius: 12px; font-weight: normal; }}
-
-  .score-row {{ display: flex; align-items: center; gap: 10px; margin: 8px 0; }}
-  .score-emoji {{ font-size: 1.2rem; width: 28px; }}
-  .score-label {{ width: 110px; font-size: 0.9rem; }}
-  .score-bar {{ flex: 1; height: 8px; background: #e9ecef; border-radius: 4px; overflow: hidden; }}
-  .score-fill {{ height: 100%; background: var(--accent); border-radius: 4px; transition: width 0.6s ease; }}
-  .score-val {{ font-weight: 600; font-size: 0.85rem; width: 32px; text-align: right; }}
-
-  .item-list {{ list-style: none; }}
-  .item-list li {{ padding: 8px 0; border-bottom: 1px solid #f0f0f0; }}
-  .item-list li:last-child {{ border-bottom: none; }}
-
-  .muted {{ color: var(--muted); font-style: italic; }}
-
-  .photo-gallery {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }}
-  .photo-card {{ border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }}
-  .photo-card img {{ width: 100%; display: block; }}
-
-  .conf-badge {{ display: inline-block; padding: 4px 12px; border-radius: 20px; font-weight: 600; font-size: 0.8rem; }}
+  .legend {{ background: rgba(255,255,255,0.95); padding: 5px 8px; border-radius: 4px; font: 10px/1.4 sans-serif; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }}
+  .legend i {{ width: 10px; height: 10px; display: inline-block; margin-right: 4px; border-radius: 50%; vertical-align: middle; }}
+  .stars {{ color: var(--ocre); font-size: 13px; letter-spacing: 2px; }}
+  .photo-gallery {{ display: flex; gap: 8px; overflow-x: auto; padding: 4px 0; }}
+  .photo-card {{ flex: 0 0 auto; border-radius: 4px; overflow: hidden; border: 1px solid var(--sable); }}
+  .photo-card img {{ height: 140px; display: block; }}
   .conf-high {{ background: #d4edda; color: #155724; }}
   .conf-med {{ background: #fff3cd; color: #856404; }}
   .conf-low {{ background: #f8d7da; color: #721c24; }}
-
-  .van-card {{ border-left: 4px solid var(--accent2); }}
-  .van-card h2 {{ color: var(--accent2); }}
-
-  .footer {{ text-align: center; padding: 24px; color: var(--muted); font-size: 0.8rem; }}
-  .footer a {{ color: var(--blue); }}
-
-  .btn {{ display: inline-block; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 0.85rem; font-weight: 600; }}
-  .btn-maps {{ background: var(--blue); color: white; }}
-
-  @media (max-width: 600px) {{
-    .header h1 {{ font-size: 1.4rem; }}
-    .map-container {{ height: 300px; }}
-    .score-label {{ width: 90px; }}
-    .photo-gallery {{ grid-template-columns: 1fr; }}
-  }}
+  .footer {{ text-align: center; padding: 16px; color: var(--gris); font-size: 9px; }}
+  .footer a {{ color: var(--ocre); }}
+  @media (max-width: 500px) {{ h1 {{ font-size: 18px; }} .map-container {{ height: 200px; }} .photo-card img {{ height: 100px; }} }}
 </style>
 </head>
 <body>
-<div class="container">
 
-  <div class="header">
-    <h1>📍 {nom_lieu}</h1>
-    <div class="sub">{analysis.get("type_lieu", "Lieu").capitalize()} — {ville}, {region}, {pays}</div>
-    <div class="meta-row">
-      <span>📅 {today}</span>
-      <span>📷 {analysis.get("interet_photo", 0)}/5</span>
-      <span>🌳 {analysis.get("interet_nature", 0)}/5</span>
-      <span>🏛 {analysis.get("interet_patrimoine", 0)}/5</span>
-      <span class="conf-badge {conf_class}">{confidence}% — {action_label}</span>
-    </div>
+<div class="header">
+  <div class="status">{action_label}</div>
+  <h1>📍 {nom_lieu}</h1>
+  <div class="tagline">{ville}, {region}, {pays} · {today} · {confidence}%</div>
+  <div class="header-meta">
+    📷 {_stars(analysis.get("interet_photo", 0))} &nbsp; 🌳 {_stars(analysis.get("interet_nature", 0))} &nbsp; 🏛 {_stars(analysis.get("interet_patrimoine", 0))}
   </div>
+</div>
 
-  <div class="map-container"><div id="map"></div></div>
+<div class="card">{analysis.get("description", "")}</div>
 
-  <div class="card">
-    <h2>📝 Résumé</h2>
-    <p>{analysis.get("description", "")}</p>
-    <p style="margin-top:12px"><a class="btn btn-maps" href="{gmaps}" target="_blank">🗺 Ouvrir dans Google Maps</a></p>
-  </div>
+<div class="map-container"><div id="map"></div></div>
 
-  <div class="card">
-    <h2>📊 Intérêts</h2>
-    {score_bar("Photo", analysis.get("interet_photo", 0), "📷")}
-    {score_bar("Nature", analysis.get("interet_nature", 0), "🌳")}
-    {score_bar("Patrimoine", analysis.get("interet_patrimoine", 0), "🏛")}
-  </div>
+<h2>📸 Spots photo <span style="font-weight:400;font-size:10px;color:var(--gris)">— saison · astuce</span></h2>
+<div class="rules">📷 <strong>Meilleure saison</strong> : printemps (avril-juin) ou automne (septembre-octobre) pour lumière rasante sur {nom_lieu}<br>
+🌅 <strong>Heure idéale</strong> : tôt le matin ou fin d'après-midi<br>
+🔭 <strong>Point de vue</strong> : à repérer sur place — privilégier un point en hauteur avec recul<br>
+💡 <strong>Astuce</strong> : trépied pour poses longues (rivière, cascade), filtre polarisant si ciel clair</div>
 
-  <div class="card van-card">
-    <h2>🚐 Accès minivan <span class="badge">2m H · 5m L</span></h2>
-    <div style="white-space: pre-line;">{van_info}</div>
-  </div>
+{"<h2>⭐ À voir aux alentours <span style='font-weight:400;font-size:10px;color:var(--gris)'>— 30 km</span></h2><div class='table-wrap'><table><tr><th>Lieu</th><th>Type</th><th>Dist</th><th>Maps</th></tr>" + attr_table + "</table></div>" if attr_table else ""}
 
-  {reserves_html}
+{"<h2>🍽 Restaurants <span style='font-weight:400;font-size:10px;color:var(--gris)'>— 15 km</span></h2><div class='table-wrap'><table><tr><th>Nom</th><th>Cuisine</th><th>Dist</th><th>Maps</th></tr>" + resto_table + "</table></div>" if resto_table else ""}
 
-  {restos_html}
+<h2>🚐 Accès minivan <span style="font-weight:400;font-size:10px;color:var(--gris)">— Stylevan Equinox IV</span></h2>
+<div class="rules">{van_info}</div>
 
-  <div class="card">
-    <h2>📸 Photos source</h2>
-    <div class="photo-gallery">{photos_html if photos_html else '<p class="muted">Aucune photo</p>'}</div>
-  </div>
+{"<div class='card' style='margin-top:10px'><div class='photo-gallery'>" + photos_html + "</div></div>" if photos_html else ""}
 
-  <div class="card">
-    <h2>🔍 Indices d'identification</h2>
-    <ul class="item-list">
-      {''.join(f'<li>{i}</li>' for i in analysis.get("indices_utilises", []))}
-    </ul>
-  </div>
-
-  <div class="footer">
-    <p>Généré par PKA Découvertes · {today}<br>
-    Source : Telegram — groupe DECOUVERTES · Auteur : {meta.get("author", "")}<br>
-    GPS : {lat:.4f}, {lon:.4f} · <a href="{gmaps}" target="_blank">Google Maps</a></p>
-  </div>
-
+<div class="footer">
+  PKA Découvertes · {today} · Telegram DECOUVERTES · {meta.get("author", "")}<br>
+  GPS {lat:.4f}, {lon:.4f} · <a href="{gmaps}" target="_blank">Google Maps</a>
 </div>
 
 <script>
-const map = L.map("map").setView([{lat}, {lon}], 10);
+const map = L.map("map").setView([{lat}, {lon}], 11);
+L.tileLayer("https://{{s}}.tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png", {{ attribution: "&copy; OSM", maxZoom: 18 }}).addTo(map);
+L.circle([{lat}, {lon}], {{ radius: 50000, color: "__SABLE__", fillColor: "__SABLE__", fillOpacity: 0.08, weight: 2, dashArray: "6 8" }}).addTo(map);
+L.marker([{lat}, {lon}]).bindPopup("<b>📍 {nom_lieu}</b>").addTo(map).openPopup();
 
-L.tileLayer("https://{{s}}.tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png", {{
-    attribution: "&copy; OpenStreetMap",
-    maxZoom: 18,
-}}).addTo(map);
-
-L.circle([{lat}, {lon}], {{
-    radius: 50000, color: "#2980b9", fillColor: "#2980b9",
-    fillOpacity: 0.06, weight: 2, dashArray: "6 8",
-}}).addTo(map);
-
-L.marker([{lat}, {lon}])
-    .bindPopup("<b>📍 {nom_lieu}</b>")
-    .addTo(map)
-    .openPopup();
-
-const reserveIcon = L.divIcon({{ className: "", html: "🌿", iconSize: [24, 24], iconAnchor: [12, 12] }});
+const reserveIcon = L.divIcon({{ className: "", html: "🌿", iconSize: [20, 20], iconAnchor: [10, 10] }});
 {reserve_js if reserve_js else "// Aucune réserve"};
 
-const restoIcon = L.divIcon({{ className: "", html: "🍽", iconSize: [24, 24], iconAnchor: [12, 12] }});
+const restoIcon = L.divIcon({{ className: "", html: "🍽", iconSize: [20, 20], iconAnchor: [10, 10] }});
 {resto_js if resto_js else "// Aucun resto"};
 
-L.circle([{lat}, {lon}], {{
-    radius: 25000, color: "#27ae60", fillColor: "#27ae60",
-    fillOpacity: 0.04, weight: 1, dashArray: "3 6",
-}}).addTo(map);
+const attrIcon = L.divIcon({{ className: "", html: "⭐", iconSize: [20, 20], iconAnchor: [10, 10] }});
+{attr_js if attr_js else "// Aucune attraction"};
+
+L.circle([{lat}, {lon}], {{ radius: 25000, color: "__ROUTE__", fillColor: "__ROUTE__", fillOpacity: 0.03, weight: 1, dashArray: "3 6" }}).addTo(map);
 
 const legend = L.control({{ position: "bottomright" }});
 legend.onAdd = function() {{
     const div = L.DomUtil.create("div", "legend");
-    div.innerHTML = "<b>Légende</b><br>" +
-        "<i style='background:#2980b9'></i> 50 km<br>" +
-        "<i style='background:#27ae60'></i> Réserves 25 km<br>" +
-        "🌿 Réserve · 🍽 Restaurant · 📍 Lieu";
+    div.innerHTML = "<b>Légende</b><br><i style='background:__SABLE__'></i> 50 km<br><i style='background:__ROUTE__'></i> 25 km<br>⭐ Site · 🌿 Réserve · 🍽 Resto";
     return div;
 }};
 legend.addTo(map);
 </script>
 </body>
-</html>"""
+</html>""".replace("__SABLE__", "#C17F3A").replace("__ROUTE__", "#6B7280")
         report_path.write_text(html, encoding="utf-8")
         return report_path
     except Exception as e:
@@ -471,7 +528,7 @@ legend.addTo(map);
 
 # ── Prompts ───────────────────────────────────────────────────────────────────
 
-VISION_PROMPT = """Tu es l'agent PKA_DECOUVERTES. Analyse cette image.
+VISION_PROMPT_BASE = """Tu es l'agent PKA_DECOUVERTES. Analyse cette image.
 
 Objectif principal : identifier le lieu photographié.
 
@@ -504,6 +561,19 @@ Si le lieu est clairement identifiable, action = validated.
 Si incertain, action = needs_review.
 """
 
+VISION_PROMPT = VISION_PROMPT_BASE  # rétrocompatibilité
+
+
+def get_vision_prompt(hint: str | None = None) -> str:
+    """Retourne le prompt vision, avec indices contextuels si fournis."""
+    if hint:
+        return VISION_PROMPT_BASE + f"""
+
+CONTEXTE FOURNI PAR L'UTILISATEUR (utilise ces indices en priorité) :
+{hint}
+"""
+    return VISION_PROMPT_BASE
+
 TEXT_PROMPT = """Tu es l'agent PKA_DECOUVERTES. Analyse ce message Telegram.
 
 Message : {text}
@@ -534,20 +604,21 @@ Si le message parle d'un lieu, retourne UNIQUEMENT un JSON valide avec ces champ
 Les scores sont de 0 à 5. confidence entre 0 et 1.
 """
 
-VAN_PROMPT = """Tu es un expert en voyage en minivan (hauteur 2m, longueur 5m).
+VAN_PROMPT = """Tu es un expert en voyage en minivan (hauteur 2m, longueur 5m, Stylevan Equinox IV Ford).
 
 Lieu : {nom_lieu}, {region}, {pays}
 Type : {type_lieu}
 Description : {description}
 
-Rédige une section pratique pour un voyageur en minivan avec :
-1. **Accès** : type de route, praticabilité pour un grand véhicule
-2. **Parking** : options connues, hauteur limite si applicable, gratuité
-3. **Nuit sur place** : possible ? aire de camping-car ? interdit ?
-4. **Services proches** : eau, électricité, vidange, supermarché
-5. **Conseil visite** : meilleure saison, durée recommandée, heure idéale
+Rédige une section pratique pour un voyageur en minivan. Sois TRÈS concret — donne des noms, distances en km, tarifs en € si connus.
 
-Sois concis et pratique. Si tu n'as pas l'info, dis-le clairement.
+1. **Accès** : type de route (D, N, A), état, praticabilité pour 2m de haut
+2. **Parking** : nom du parking le plus proche, hauteur max en mètres, gratuit/payant (tarif)
+3. **Nuit sur place** : camping-car autorisé ? aire officielle la plus proche (nom + distance km) ? stationnement nocturne toléré ?
+4. **Services** : borne eau/électricité/vidange la plus proche (nom + km), supermarché (nom + km)
+5. **Astuce vanlife** : meilleure saison, durée visite, heure idéale pour photos, spot secret si connu
+
+Si tu ne connais pas un détail précis, ne l'invente pas — écris "à vérifier sur place".
 """
 
 # ── Génération fiche Obsidian ─────────────────────────────────────────────────
@@ -665,7 +736,12 @@ Score : **{analysis.get("interet_patrimoine", 0)}/5**
 
 # ── Traitement d'un message ───────────────────────────────────────────────────
 
-def process_item(json_path: Path, model_arg: str) -> bool:
+def process_item(
+    json_path: Path, model_arg: str,
+    cascade_order: list[str] | None = None,
+    cascade_threshold: float = CASCADE_THRESHOLD,
+    hint: str | None = None,
+) -> bool:
     meta = json.loads(json_path.read_text())
     slug = json_path.stem
     content_type = meta.get("content_type", "text")
@@ -681,22 +757,28 @@ def process_item(json_path: Path, model_arg: str) -> bool:
                 return False
             image_b64 = base64.standard_b64encode(img_path.read_bytes()).decode()
             print(f"  Vision → {img_path.name} ({img_path.stat().st_size // 1024} Ko)")
-            raw = call_model(model_arg, VISION_PROMPT, image_b64)
+
+            if cascade_order:
+                analysis = analyze_with_cascade(cascade_order, cascade_threshold, content_type, image_b64, "", hint)
+            else:
+                raw = call_model(model_arg, get_vision_prompt(hint), image_b64)
+                analysis = _extract_json(raw)
         else:
             text = meta.get("text", "")
             if not text.strip():
                 print("  Message vide — ignoré")
                 return False
             print(f"  Texte → {text[:60]!r}")
-            raw = call_model(model_arg, TEXT_PROMPT.format(text=text))
 
-        # Extraire le JSON de la réponse
-        raw = raw.strip()
-        if "```" in raw:
-            raw = raw.split("```")[1]
-            if raw.startswith("json"):
-                raw = raw[4:]
-        analysis = json.loads(raw)
+            if cascade_order:
+                analysis = analyze_with_cascade(cascade_order, cascade_threshold, content_type, None, text)
+            else:
+                raw = call_model(model_arg, TEXT_PROMPT.format(text=text))
+                analysis = _extract_json(raw)
+
+        if analysis is None:
+            print("  Aucun modèle n'a identifié de lieu")
+            return False
 
         # Filtre messages non-lieu
         if not analysis.get("is_place", True):
@@ -731,8 +813,9 @@ def process_item(json_path: Path, model_arg: str) -> bool:
     except Exception as e:
         van_info = f"_Erreur lors de la génération des infos van : {e}_"
 
-    # ── Réserves naturelles, restaurants & rapport HTML
+    # ── Réserves naturelles, attractions, restaurants & rapport HTML
     reserves = []
+    attractions = []
     restaurants = []
     report_path = None
     if gps:
@@ -740,6 +823,11 @@ def process_item(json_path: Path, model_arg: str) -> bool:
         reserves = get_nature_reserves(gps["lat"], gps["lon"], radius_km=25)
         for r in reserves:
             print(f"    🌿 {r['name']} ({r['type']})")
+
+        print("  Overpass → attractions touristiques (30 km)...")
+        attractions = get_nearby_attractions(gps["lat"], gps["lon"], radius_km=30)
+        for a in attractions:
+            print(f"    ⭐ {a['name']} ({a['type']})")
 
         print("  Overpass → restaurants (15 km)...")
         restaurants = get_restaurants(gps["lat"], gps["lon"], radius_km=15)
@@ -758,7 +846,7 @@ def process_item(json_path: Path, model_arg: str) -> bool:
             analysis.get("region", ""),
             analysis.get("ville", ""),
             analysis, van_info, meta,
-            reserves, restaurants,
+            reserves, restaurants, attractions,
             reports_dir, slug, today,
         )
         if report_path:
@@ -791,7 +879,30 @@ def main():
         "--limit", type=int, default=0,
         help="Nombre max de fichiers à traiter (0 = tous)",
     )
+    parser.add_argument(
+        "--cascade", action="store_true",
+        help="Mode cascade : essaie les modèles dans l'ordre jusqu'à confiance >= seuil",
+    )
+    parser.add_argument(
+        "--cascade-order", type=str, default=",".join(CASCADE_ORDER),
+        help=f"Ordre des modèles en cascade (défaut: {','.join(CASCADE_ORDER)})",
+    )
+    parser.add_argument(
+        "--cascade-threshold", type=float, default=CASCADE_THRESHOLD,
+        help=f"Seuil de confiance pour arrêter la cascade (défaut: {CASCADE_THRESHOLD})",
+    )
+    parser.add_argument(
+        "--hint", type=str, default=None,
+        help="Indices contextuels à fournir au modèle (ex: 'village alpin français, colombages, torrent')",
+    )
     args = parser.parse_args()
+
+    cascade_order = None
+    if args.cascade:
+        cascade_order = [m.strip() for m in args.cascade_order.split(",")]
+        print(f"Cascade : {' → '.join(cascade_order)} (seuil {int(args.cascade_threshold*100)}%)")
+    else:
+        print(f"Modèle : {args.model}")
 
     pending = sorted(QUEUE_DIR.glob("*.json"))
     # Filtrer uniquement les non encore analysés
@@ -802,7 +913,6 @@ def main():
         print("Queue vide — aucun élément en attente.")
         return
 
-    print(f"Modèle : {args.model}")
     print(f"Éléments en attente : {len(pending)}")
     if args.limit:
         pending = pending[:args.limit]
@@ -810,7 +920,7 @@ def main():
 
     ok = 0
     for path in pending:
-        if process_item(path, args.model):
+        if process_item(path, args.model, cascade_order, args.cascade_threshold, args.hint):
             ok += 1
 
     print(f"\nTerminé — {ok}/{len(pending)} fiches générées dans drafts/")

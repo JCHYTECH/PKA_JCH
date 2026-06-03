@@ -13,19 +13,29 @@ try:
     from scripts import instinct_promote
     from scripts import pka_security_audit
     from scripts import pka_system_improvement_audit
+    from scripts import pka_structure_check
 except ModuleNotFoundError:
     import generate_tool_pointers
     import instinct_promote
     import pka_security_audit
     import pka_system_improvement_audit
+    import pka_structure_check
 
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORT_DIR = ROOT / "TEAM_Inbox"
 
 
-def combine_results(security: dict, improvement: dict, pointers: dict, promotion: dict) -> dict:
-    statuses = [security["status"], improvement["status"], pointers["status"], promotion["status"]]
+def combine_results(security: dict, improvement: dict,
+                    pointers: dict, promotion: dict,
+                    structure: dict | None = None) -> dict:
+    checks = {
+        "security": security, "improvement": improvement,
+        "pointers": pointers, "promotion": promotion,
+    }
+    if structure:
+        checks["structure"] = structure
+    statuses = [c["status"] for c in checks.values()]
     if "red" in statuses:
         status = "red"
     elif "orange" in statuses:
@@ -35,10 +45,7 @@ def combine_results(security: dict, improvement: dict, pointers: dict, promotion
     return {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "status": status,
-        "security": security,
-        "improvement": improvement,
-        "pointers": pointers,
-        "promotion": promotion,
+        **checks,
     }
 
 
@@ -79,6 +86,7 @@ def markdown_report(result: dict) -> str:
         f"- Security audit: `{result['security']['status'].upper()}`",
         f"- System improvement audit: `{result['improvement']['status'].upper()}`",
         f"- Pointer generation drift: `{result['pointers']['status'].upper()}`",
+        f"- File placement drift: `{result.get('structure', {}).get('status', 'skipped').upper()}`",
         f"- Instinct promotion: `{result['promotion']['status'].upper()}`",
         "",
     ]
@@ -99,6 +107,12 @@ def markdown_report(result: dict) -> str:
         lines.append("")
         for item in result["pointers"]["details"]:
             lines.append(f"- {item}")
+        lines.append("")
+    if result.get("structure") and result["structure"].get("findings"):
+        lines.append("## Structure Drift")
+        lines.append("")
+        for item in result["structure"]["findings"]:
+            lines.append(f"- `{item['severity']}` `{item['check']}` {item['path']}: {item['detail']}")
         lines.append("")
     if result["promotion"].get("details"):
         lines.append("## Instinct Promotion")
@@ -121,7 +135,8 @@ def main() -> int:
     improvement = pka_system_improvement_audit.run_audit()
     pointers = pointer_status()
     promotion = promotion_status()
-    result = combine_results(security, improvement, pointers, promotion)
+    structure = pka_structure_check.run_structure_check()
+    result = combine_results(security, improvement, pointers, promotion, structure)
 
     if args.write_report:
         REPORT_DIR.mkdir(parents=True, exist_ok=True)

@@ -2,6 +2,14 @@
 
 ---
 
+2026-06-03 22:45 — Save : daily note 2026-06-03 créée (sécurité API — centralisation api_keys — rotation clé NVIDIA Continue — DOBBY_CLAUDE_KEY à régénérer)
+
+2026-06-02 23:15 — Save : daily note 2026-06-02 mise à jour — session 2 PKA_DECOUVERTES (collector bot Telegram opérationnel — analyzer Claude Vision — fiches Obsidian générées — launchd com.pka.decouvertes actif)
+
+2026-06-02 19:55 — Save : daily note 2026-06-02 créée (BirdNET-Pi install complète — EventNet déployé — orage détecté 0.221 — RPi PKAJCH opérationnel)
+
+2026-05-29 23:30 — Save : daily note 2026-05-29 mise à jour (Camping Scout v2 — Flask mobile — GPS Plan B — guide dummies — skill #33)
+
 2026-05-17 — Save (session 2) : [[Atlas]] #27 onboardé — document fondateur WildNexus v0.1 assemblé (15 sections, 9 NN, 14 OBJ, 6 WP, 4 jalons) — wildnexus-founding-document-v0.1.md créé
 2026-05-17 — Save : daily note créée (WildNexus agents — camera-imaging créé — hardware-physical fusion — PM leader harmonisé — cross-refs tous agents — dashboard statique wildnexus-dashboard.html)
 
@@ -112,3 +120,47 @@
 2026-05-29 01:45 — Save Codex [model=claude-sonnet-4-6 ; project=01_AI_IT_TOOLS] : hermisation-complete (Hermisation PKA_JCH complète. 5 phases + 3 pilotes livrés. Infrastructure opérationnelle : memory_log, skills, knowledge, audit log dashboard, wikilinks vault appliqués (356 sur...) — `wiki/Daily/2026/05/2026-05-29-hermisation-complete.md`
 
 2026-05-29 01:55 — Save : daily note 2026-05-29.md créée, index mis à jour — session hermisation complète (5 phases + 3 pilotes + réorganisation vault)
+
+2026-05-29 09:08 — Save Codex [model=deepseek ; project=Diagnostic et correction des conflits WAL SQLite entre jchavaux et caddy sur le RPi BirdNET-Pi. Fixes appliqués : User=caddy, HOME=/home/jchavaux, UMask=0002, ExecStartPre checks, CONFIDENCE 0.6, Wi-Fi autoconnect OFF, coordonnées GPS corrigées. BirdSongs/ passé en jchavaux:caddy setgid. Détections stables sans erreurs.] : -e RPI BirdNET mobile — stabilisation DB et config (Actions : - Override systemd birdnet_analysis.service (User=caddy + Environment=HOME + ExecStartPre) - chown -R jchavaux:caddy /home/jchavaux/BirdSongs/ - CONFIDENCE 0.25 → 0.6...) — `wiki/Daily/2026/05/2026-05-29-e-rpi-birdnet-mobile-stabilisation-db-et-config.md`
+
+2026-05-29 09:53 — Save Codex [model=deepseek ; project=Analyse 1615 detections sur 5 jours. Export CSV, nettoyage faux positifs, calcul sunrise/sunset Esneux, agregation horaire, rapport HTML SVG fond sombre avec bandes jour/nuit.] : RPI BirdNET — analyse donnees, exports, rapports (Actions: export BirdDB.txt, filtrage, calcul solaire, rapport detections_luminosite.html, troubleshooting web ajoute dans connexion RPI.md) — `wiki/Daily/2026/05/2026-05-29-rpi-birdnet-analyse-donnees-exports-rapports.md`
+
+2026-05-29 10:59 — Save : daily note 2026-05-29-skills-mcp-session.md créée — skills 11→32, MCP x3 configurés (sqlite/filesystem/plane), token Plane validé
+
+2026-05-29 12:24 — Save Codex [model=deepseek ; project=RPi : stabilisation conflit WAL SQLite (User=caddy), confidence 0.6, export 1615 detections, rapport SVG luminosite, GitHub Pages normandie.html live.] : Session multi-projets — RPi BirdNET + Vanlife Normandie + recrutement Cigogne (Vanlife : recrutement Cigogne #29, fiche Normandie 7 jours avec Chausey, template ARTEON responsive iPhone, routine agent documentee (8 etapes + web), mode emploi novice pour An...) — `wiki/Daily/2026/05/2026-05-29-session-multi-projets-rpi-birdnet-vanlife-normandie-recrutem.md`
+
+2026-05-30 11:34 — Save Codex [model=deepseek ; project=WILDNEXUS] : session-deepseek-wildnexus-google-birdnet (Session DeepSeek TUI v0.8.39. Diagnostic erreur Google OAuth 403 (JCH-PKA en mode Testing). Changement langue BirdNET-Pi DATABASE_LANG en→fr sur le RPi tkajch + regénération lab...) — `wiki/Daily/2026/05/2026-05-30-session-deepseek-wildnexus-google-birdnet.md`
+
+2026-05-30 12:11 — Save Codex [model=deepseek ; project=WILDNEXUS] : session-deepseek-eventnet-wildnexus (Session DeepSeek TUI v0.8.39. Installation d'EventNET sur le RPi BirdNET-Pi : YAMNet TFLite en parallèle pour détection acoustique météo (orage, pluie, vent, tonnerre). Service...) — `wiki/Daily/2026/05/2026-05-30-session-deepseek-eventnet-wildnexus.md`
+
+2026-05-30 15:27 — Save Codex [model=deepseek ; project=AI_IT_TOOLS] : session-deepseek-homeassistant-mac (Session DeepSeek TUI v0.8.39. Installation Home Assistant Container Docker sur Mac M5. Accès distant via Tailscale confirmé (100.108.55.44:8123). Documentation dans MEMORY.md.) — `wiki/Daily/2026/05/2026-05-30-session-deepseek-homeassistant-mac.md`
+
+2026-05-30 16:47 — Save Codex [model=deepseek ; project=WILDNEXUS] : session-deepseek-rpi-ups-wildnexus (Session DeepSeek TUI v0.8.39. Diagnostic RPi BirdNET-Pi inaccessible suite orage (SSH timeout). Recommandation UPS Waveshare HAT (B) + accus 18650 pour protection futures coupures.) — `wiki/Daily/2026/05/2026-05-30-session-deepseek-rpi-ups-wildnexus.md`
+
+2026-05-30 22:39 — Save Codex [model=deepseek ; project=07_TRAVELS,03_WILDNEXUS] : session-deepseek-travels-restruct-insectnet-ssd (Restructuration 07_TRAVELS: création IOT VAN, déplacement fichiers, nettoyage batch avec scan références. Délestage INSECTNET 1.7 GB vers SSD BIGMAMA via symlinks. Leçon SSD: NT...) — `wiki/Daily/2026/05/2026-05-30-session-deepseek-travels-restruct-insectnet-ssd.md`
+
+2026-05-30 22:55 — Save Codex [model=deepseek ; project=PKA_SYSTEM] : session-deepseek-dropbox-sync (Copie complète du vault vers Dropbox (ditto 2.8 GB). Correction permissions post-sudo (chown). Exclusions Obsidian pour INSECTNET (audio/segments/spectrograms). Décision: Dropbo...) — `wiki/Daily/2026/05/2026-05-30-session-deepseek-dropbox-sync.md`
+
+2026-05-30 23:07 — Save Codex [model=deepseek ; project=PKA_SYSTEM] : session-deepseek-zshrc-prompts (Ajout alias shell: tka (Dropbox vault), tkal (local vault). Raccourci prompt: jch. Explication sandbox aux utilisateurs.) — `wiki/Daily/2026/05/2026-05-30-session-deepseek-zshrc-prompts.md`
+
+2026-05-31 11:55 — Save Codex [model=deepseek ; project=pack chine] : VETALYX — Pack Chine + réorg structure (Réorganisation structure VETALYX, renommage DIATECH→Vetalyx (23 fichiers), Pack Chine finalisé (4 documents bilingues FR/ZH en DOCX), convention nommage [FF-]Nom_Auteur_AAAA-MM-JJ) — `INDEX.md`
+
+2026-05-31 15:21 — Save Codex [model=deepseek ; project=deepseek] : VETALYX — Pack Chine + Legal Europeen (Session marathon VETALYX) — `wiki/Daily/2026/05/2026-05-31-vetalyx-pack-chine-legal-europeen.md`
+
+2026-05-31 18:19 — Save Codex [model=deepseek ; project=deepseek] : Session — VETALYX + Vanlife IOT + myPKA (08_VETALYX Pack Chine DIAHO (4 DOCX + HTML bilingue), Pacte V3 + Statuts SRL v2 (droit belge), convention nommage FF-/FFH-/VAL-, palette ARTEON, reorg structure, task system ado...) — `wiki/Daily/2026/05/2026-05-31-session-vetalyx-vanlife-iot-mypka.md`
+
+2026-06-01 22:11 — Save Codex [model=codex ; project=WILDNEXUS] : Session Codex — WildLens weekly + UPS RPi (Session Dobby/Codex du 2026-06-01. Mise à jour de la tâche hebdomadaire Photography Insights / WildLens : plus d'email, sortie Markdown chaque samedi avec ligne FILENAME et dépô...) — `wiki/Daily/2026/06/2026-06-01-session-codex-wildlens-weekly-ups-rpi.md`
+
+2026-06-01 22:55 — Save Codex [model=codex ; project=WILDNEXUS] : Achat capteur lux Aqara T1 (JCH a validé l'achat d'un capteur Aqara Light Sensor T1 / GZCGQ11LM via AliExpress, environ 20 euros, pour mesurer la luminosité réelle en lux comme variable complémentaire leve...) — `wiki/Daily/2026/06/2026-06-01-achat-capteur-lux-aqara-t1.md`
+
+2026-06-01 22:57 — Save Codex [model=codex ; project=WILDNEXUS] : Achat UPS Raspberry Pi Geekworm (JCH a confirmé l'achat d'un UPS Raspberry Pi Geekworm pour protéger le RPi BirdNET/WildNexus après coupure de courant et plantage SD. Prix communiqués : UPS Geekworm 42 euros, c...) — `wiki/Daily/2026/06/2026-06-01-achat-ups-raspberry-pi-geekworm.md`
+
+2026-06-02 20:29 — Save Codex [model=GPT-5 ; project=AI_IT_TOOLS] : m1-llm-acces-remote-ollama (Session centrée sur l'accès distant au Mac M1 dédié LLM locaux et la documentation des connexions machines.) — `wiki/Daily/2026/06/2026-06-02-m1-llm-acces-remote-ollama.md`
+
+2026-06-03 00:59 — Save Codex [model=deepseek ; project=PKA] : Session 2026-06-03 (Onboarding Graphify, enrichissement analyzer DECOUVERTES, téléchargements Qwen M1) — `wiki/Daily/2026/06/2026-06-03-session-2026-06-03.md`
+
+2026-06-03 13:23 — Save Codex [model=deepseek ; project=PKA] : Session 2026-06-03 (suite) (Refonte rapport DECOUVERTES design Baie de Somme, cascade auto qwen3.5→claude, backup vault→M1, installation qwen3/qwen3.5/qwen2.5-coder sur M1, règle 'Dobby exécute' gravée dan...) — `wiki/Daily/2026/06/2026-06-03-session-2026-06-03-suite.md`
+
+2026-06-03 13:59 — Save Codex [model=Session de suivi de l'onboarding de Graphify par Corbeau (génération de 52 notes pour WildNexus) et assistance pour la configuration de l'extension Continue (config.ts) dans VS Code avec l'API NVIDIA. ; project=Corbeau a reçu le mandat d'extraire le projet Vetalyx. Continue (VS Code) a été configuré en TypeScript pour l'API NVIDIA.] : Integration Graphify et Setup NVIDIA (Dobby) — `wiki/Daily/2026/06/2026-06-03-integration-graphify-et-setup-nvidia.md`
+
+2026-06-03 23:18 — Save Codex [model=codex ; project=AI_IT_TOOLS] : Correction clé DeepSeek TUI (Diagnostic de deepseek-tui après erreur de clé API invalide. La clé exportée dans ~/.zshrc était obsolète, tandis qu'une clé valide existait déjà dans ~/.config/pka-jch/api_keys.) — `wiki/Daily/2026/06/2026-06-03-correction-clé-deepseek-tui.md`

@@ -37,6 +37,7 @@ DEFAULT_IGNORED_PATHS = {
     ".git",
     "__pycache__",
     "scripts/telegram-bot/venv",
+    "scripts/decouvertes-collector/venv",
 }
 
 

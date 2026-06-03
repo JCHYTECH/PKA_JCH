@@ -1,11 +1,12 @@
-# Workstreams — Index
+# Workstreams — PKA
 
-Orchestrations récurrentes impliquant plusieurs spécialistes. La chorégraphie compte — ces fichiers définissent qui fait quoi et dans quel ordre.
+Orchestrations multi-agents recurrentes. Referencent des SOPs et Guidelines, jamais ne les dupliquent.
 
-| # | Fichier | Sujet | Owners | Déclencheur |
-|---|---------|-------|--------|-------------|
-| WS-001 | [WS-001-journal-quotidien](WS-001-journal-quotidien.md) | Capture et structuration du journal quotidien | [[Sybil]] + [[Dobby]] | Tout input JCH destiné au journal |
+## Workstreams actifs
 
----
-
-*Ajouter un Workstream quand : l'orchestration est récurrente, multi-spécialiste, et que la séquence a de l'importance.*
+| ID | Titre | Declencheur |
+|----|-------|-------------|
+| WS-001 | [[WS-001-journal-quotidien]] | Session quotidienne |
+| WS-002 | [[WS-002-onboarding-specialiste]] | Recrutement |
+| WS-003 | [[WS-003-session-start]] | Demarrage session Dobby |
+| WS-004 | [[WS-004-system-check]] | Check systeme quotidien |

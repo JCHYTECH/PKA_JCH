@@ -20,7 +20,7 @@ if not API_KEY:
     print("❌ DEEPSEEK_API_KEY non définie.")
     sys.exit(1)
 
-MODEL = os.environ.get("DEEPSEEK_MODEL", "deepseek-chat")
+MODEL = os.environ.get("DEEPSEEK_MODEL", "deepseek-v4-flash")
 
 # Charge le system prompt depuis DEEPSEEK.md
 system_file = PKA_DIR / "DEEPSEEK.md"
