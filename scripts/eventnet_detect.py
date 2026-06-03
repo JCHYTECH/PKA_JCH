@@ -169,6 +169,12 @@ def run_yamnet(interpreter, audio):
     return np.array(all_scores).mean(axis=0)
 
 
+def ensure_column(conn, table, column, definition):
+    columns = {row[1] for row in conn.execute(f"PRAGMA table_info({table})")}
+    if column not in columns:
+        conn.execute(f"ALTER TABLE {table} ADD COLUMN {column} {definition}")
+
+
 def init_db(path):
     path.parent.mkdir(parents=True, exist_ok=True)
     with sqlite3.connect(str(path)) as conn:
@@ -180,15 +186,36 @@ def init_db(path):
             class_name_en TEXT NOT NULL,
             score REAL NOT NULL,
             source_file TEXT,
-            duration_s REAL)""")
+            duration_s REAL,
+            event_group TEXT NOT NULL DEFAULT 'weather')""")
+        ensure_column(conn, "events", "event_group", "TEXT NOT NULL DEFAULT 'weather'")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_events_ts ON events(timestamp)")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_events_group_ts ON events(event_group, timestamp)")
+        conn.execute("""CREATE TABLE IF NOT EXISTS noise_index (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            window_start TEXT NOT NULL,
+            window_end TEXT NOT NULL,
+            anthropic_noise_score REAL NOT NULL,
+            anthropic_noise_level TEXT NOT NULL,
+            dominant_anthropic_source TEXT,
+            anthropic_event_count INTEGER NOT NULL,
+            max_anthropic_score REAL NOT NULL,
+            weather_event_count INTEGER NOT NULL,
+            sample_count INTEGER NOT NULL,
+            created_at TEXT NOT NULL,
+            UNIQUE(window_start, window_end))""")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_noise_index_window ON noise_index(window_start, window_end)")
         conn.commit()
 
 
-def log_event(db_path, ts, cid, name_fr, name_en, score, src, dur):
+def log_event(db_path, ts, cid, name_fr, name_en, score, src, dur, event_group):
     with sqlite3.connect(str(db_path)) as conn:
-        conn.execute("INSERT INTO events VALUES (NULL,?,?,?,?,?,?,?)",
-                     (ts, cid, name_fr, name_en, round(score, 4), src, round(dur, 2)))
+        conn.execute(
+            """INSERT INTO events
+               (timestamp, class_id, class_name_fr, class_name_en, score, source_file, duration_s, event_group)
+               VALUES (?,?,?,?,?,?,?,?)""",
+            (ts, cid, name_fr, name_en, round(score, 4), src, round(dur, 2), event_group),
+        )
         conn.commit()
 
 
@@ -203,8 +230,8 @@ def mark_processed(path, name):
         f.write(name + "\n")
 
 
-def process_file(wav_path, interpreter, weather_idx):
-    """Analyse un fichier WAV et loggue les événements météo."""
+def process_file(wav_path, interpreter, targets):
+    """Analyse un fichier WAV et loggue les événements cibles."""
     print(f"[EventNET] {wav_path.name}", flush=True)
     audio = read_wav_mono_16k(wav_path)
     if audio is None or len(audio) < TARGET_SR:
@@ -219,12 +246,21 @@ def process_file(wav_path, interpreter, weather_idx):
     dur = len(audio) / TARGET_SR
     ts = datetime.now().isoformat(timespec="seconds")
 
-    for idx, (mid, ename) in weather_idx.items():
+    for idx, target in targets.items():
         score = float(scores[idx])
         if score >= SCORE_THRESHOLD:
-            name_fr = WEATHER_CLASSES.get(mid, ename)
-            log_event(DB_PATH, ts, mid, name_fr, ename, score, wav_path.name, dur)
-            print(f"  -> {name_fr}: {score:.3f}", flush=True)
+            log_event(
+                DB_PATH,
+                ts,
+                target["mid"],
+                target["name_fr"],
+                target["name_en"],
+                score,
+                wav_path.name,
+                dur,
+                target["group"],
+            )
+            print(f"  -> {target['group']} / {target['name_fr']}: {score:.3f}", flush=True)
 
 
 def main_loop():
@@ -236,12 +272,9 @@ def main_loop():
     interpreter = load_model(MODEL_PATH)
     init_db(DB_PATH)
 
-    weather_idx = {}
-    for idx, (mid, name) in labels.items():
-        if mid in WEATHER_CLASSES:
-            weather_idx[idx] = (mid, name)
+    targets = build_target_indices(labels)
 
-    print(f"[EventNET] {len(weather_idx)} weather classes loaded", flush=True)
+    print(f"[EventNET] {len(targets)} target classes loaded", flush=True)
     print(f"[EventNET] Watching {STREAM_DIR}", flush=True)
 
     cmd = [
@@ -257,7 +290,7 @@ def main_loop():
                 continue
             wav_path = STREAM_DIR / fname
             if wav_path.exists():
-                process_file(wav_path, interpreter, weather_idx)
+                process_file(wav_path, interpreter, targets)
     except KeyboardInterrupt:
         pass
     finally:
@@ -279,8 +312,8 @@ def main():
         labels = load_labels(LABELS_PATH)
         interpreter = load_model(MODEL_PATH)
         init_db(DB_PATH)
-        weather_idx = {i: (m, n) for i, (m, n) in labels.items() if m in WEATHER_CLASSES}
-        process_file(Path(args.once), interpreter, weather_idx)
+        targets = build_target_indices(labels)
+        process_file(Path(args.once), interpreter, targets)
         return
 
     if args.stats:
