@@ -335,6 +335,7 @@ def process_file(wav_path, interpreter, targets):
     dur = len(audio) / TARGET_SR
     ts = datetime.now().isoformat(timespec="seconds")
 
+    logged_any = False
     for idx, target in targets.items():
         score = float(scores[idx])
         if score >= SCORE_THRESHOLD:
@@ -349,7 +350,11 @@ def process_file(wav_path, interpreter, targets):
                 dur,
                 target["group"],
             )
+            logged_any = True
             print(f"  -> {target['group']} / {target['name_fr']}: {score:.3f}", flush=True)
+
+    if logged_any:
+        rebuild_noise_index(DB_PATH)
 
 
 def main_loop():

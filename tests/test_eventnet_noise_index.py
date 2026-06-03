@@ -113,3 +113,25 @@ def test_rebuild_noise_index_writes_expected_window(tmp_path):
         1,
         3,
     )
+
+
+def test_process_file_rebuilds_index_after_logging(monkeypatch, tmp_path):
+    calls = []
+    monkeypatch.setattr(eventnet, "DB_PATH", tmp_path / "events.db")
+    monkeypatch.setattr(eventnet, "read_wav_mono_16k", lambda path: [0.1] * eventnet.TARGET_SR)
+    monkeypatch.setattr(eventnet, "run_yamnet", lambda interpreter, audio: [0.9])
+    monkeypatch.setattr(eventnet, "rebuild_noise_index", lambda db_path: calls.append(db_path) or 1)
+    eventnet.init_db(eventnet.DB_PATH)
+
+    targets = {
+        0: {
+            "mid": "/m/air",
+            "name_fr": "Avion",
+            "name_en": "Aircraft",
+            "group": "anthropic",
+        }
+    }
+
+    eventnet.process_file(Path("sample.wav"), object(), targets)
+
+    assert calls == [eventnet.DB_PATH]
