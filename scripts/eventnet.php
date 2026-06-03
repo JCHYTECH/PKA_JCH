@@ -32,6 +32,8 @@ td{padding:10px 14px;font-size:0.9em;border-top:1px solid #334155}
 .level-low{color:#bef264}
 .level-moderate{color:#fde68a}
 .level-high{color:#fca5a5}
+.metrics{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px;color:#cbd5e1;font-size:0.8em}
+.metric{background:#0f172a;border-radius:8px;padding:5px 8px}
 .score{font-family:monospace;color:#38bdf8}
 .empty{text-align:center;color:#64748b;padding:40px}
 .footer{text-align:center;margin-top:20px;color:#475569;font-size:0.7em}
@@ -46,7 +48,7 @@ td{padding:10px 14px;font-size:0.9em;border-top:1px solid #334155}
 <?php
 $db = new SQLite3('/home/jchavaux/BirdNET-Pi/eventnet/events.db');
 
-$latestIndex = $db->querySingle("SELECT window_start, window_end, anthropic_noise_score, anthropic_noise_level, dominant_anthropic_source, anthropic_event_count, max_anthropic_score FROM noise_index ORDER BY window_start DESC LIMIT 1", true);
+$latestIndex = $db->querySingle("SELECT window_start, window_end, anthropic_noise_score, anthropic_noise_level, dominant_anthropic_source, anthropic_event_count, max_anthropic_score, avg_rms_dbfs, max_peak_dbfs, max_clipping_ratio FROM noise_index ORDER BY window_start DESC LIMIT 1", true);
 
 $stats = $db->query("SELECT event_group, class_name_fr, COUNT(*) as cnt, ROUND(AVG(score),3) as avg, ROUND(MAX(score),3) as max FROM events GROUP BY event_group, class_name_fr ORDER BY event_group, cnt DESC");
 $counts = ['weather' => [], 'anthropic' => []];
@@ -64,6 +66,11 @@ while ($row = $stats->fetchArray(SQLITE3_ASSOC)) {
 <div class="label">Indice pollution sonore anthropique</div>
 <div class="count level-<?= htmlspecialchars($latestIndex['anthropic_noise_level']) ?>"><?= number_format($latestIndex['anthropic_noise_score'], 0) ?></div>
 <div class="label"><?= htmlspecialchars($latestIndex['anthropic_noise_level']) ?> — <?= htmlspecialchars($latestIndex['dominant_anthropic_source'] ?? 'aucune source dominante') ?></div>
+<div class="metrics">
+<span class="metric">RMS <?= $latestIndex['avg_rms_dbfs'] === null ? 'n/a' : number_format($latestIndex['avg_rms_dbfs'], 1) . ' dBFS' ?></span>
+<span class="metric">Peak <?= $latestIndex['max_peak_dbfs'] === null ? 'n/a' : number_format($latestIndex['max_peak_dbfs'], 1) . ' dBFS' ?></span>
+<span class="metric">Clip <?= $latestIndex['max_clipping_ratio'] === null ? 'n/a' : number_format($latestIndex['max_clipping_ratio'] * 100, 2) . '%' ?></span>
+</div>
 <div class="max">fenetre: <?= htmlspecialchars($latestIndex['window_start']) ?> → <?= htmlspecialchars($latestIndex['window_end']) ?> · evenements: <?= intval($latestIndex['anthropic_event_count']) ?></div>
 </div>
 <?php else: ?>

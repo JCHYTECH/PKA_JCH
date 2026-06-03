@@ -1,6 +1,7 @@
 import sqlite3
 from pathlib import Path
 
+import numpy as np
 import pytest
 
 from scripts import eventnet_detect as eventnet
@@ -135,3 +136,63 @@ def test_process_file_rebuilds_index_after_logging(monkeypatch, tmp_path):
     eventnet.process_file(Path("sample.wav"), object(), targets)
 
     assert calls == [eventnet.DB_PATH]
+
+
+def test_audio_level_metrics_dbfs_for_known_signal():
+    audio = np.array([0.5, -0.5, 0.0, 1.0, -1.0], dtype=np.float32)
+
+    metrics = eventnet.compute_audio_level_metrics(audio)
+
+    assert metrics["rms_dbfs"] == pytest.approx(-3.01, abs=0.01)
+    assert metrics["peak_dbfs"] == pytest.approx(0.0, abs=0.01)
+    assert metrics["clipping_ratio"] == pytest.approx(0.4, abs=0.001)
+
+
+def test_audio_level_metrics_handles_silence():
+    audio = np.zeros(16000, dtype=np.float32)
+
+    metrics = eventnet.compute_audio_level_metrics(audio)
+
+    assert metrics["rms_dbfs"] == -120.0
+    assert metrics["peak_dbfs"] == -120.0
+    assert metrics["clipping_ratio"] == 0.0
+
+
+def test_init_db_migrates_audio_level_columns(tmp_path):
+    db_path = tmp_path / "events.db"
+    eventnet.init_db(db_path)
+
+    with sqlite3.connect(db_path) as conn:
+        event_columns = columns_for(conn, "events")
+        index_columns = columns_for(conn, "noise_index")
+
+    assert {"rms_dbfs", "peak_dbfs", "clipping_ratio"} <= event_columns
+    assert {"avg_rms_dbfs", "max_peak_dbfs", "max_clipping_ratio"} <= index_columns
+
+
+def test_rebuild_noise_index_aggregates_audio_levels(tmp_path):
+    db_path = tmp_path / "events.db"
+    eventnet.init_db(db_path)
+    with sqlite3.connect(db_path) as conn:
+        conn.executemany(
+            """INSERT INTO events
+               (timestamp, class_id, class_name_fr, class_name_en, score, source_file, duration_s,
+                event_group, rms_dbfs, peak_dbfs, clipping_ratio)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?)""",
+            [
+                ("2026-06-03T10:00:01", "/m/air", "Avion", "Aircraft", 0.8, "a.wav", 3.0, "anthropic", -40.0, -10.0, 0.0),
+                ("2026-06-03T10:05:00", "/m/dog", "Chien / aboiement", "Bark", 0.4, "b.wav", 3.0, "anthropic", -30.0, -6.0, 0.01),
+                ("2026-06-03T10:06:00", "/m/rain", "Pluie", "Rain", 0.7, "c.wav", 3.0, "weather", -35.0, -8.0, 0.0),
+            ],
+        )
+        conn.commit()
+
+    eventnet.rebuild_noise_index(db_path, window_minutes=15)
+
+    with sqlite3.connect(db_path) as conn:
+        row = conn.execute(
+            """SELECT avg_rms_dbfs, max_peak_dbfs, max_clipping_ratio
+               FROM noise_index"""
+        ).fetchone()
+
+    assert row == (-35.0, -6.0, 0.01)

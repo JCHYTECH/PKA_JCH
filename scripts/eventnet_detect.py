@@ -188,8 +188,14 @@ def init_db(path):
             score REAL NOT NULL,
             source_file TEXT,
             duration_s REAL,
-            event_group TEXT NOT NULL DEFAULT 'weather')""")
+            event_group TEXT NOT NULL DEFAULT 'weather',
+            rms_dbfs REAL,
+            peak_dbfs REAL,
+            clipping_ratio REAL)""")
         ensure_column(conn, "events", "event_group", "TEXT NOT NULL DEFAULT 'weather'")
+        ensure_column(conn, "events", "rms_dbfs", "REAL")
+        ensure_column(conn, "events", "peak_dbfs", "REAL")
+        ensure_column(conn, "events", "clipping_ratio", "REAL")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_events_ts ON events(timestamp)")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_events_group_ts ON events(event_group, timestamp)")
         conn.execute("""CREATE TABLE IF NOT EXISTS noise_index (
@@ -203,19 +209,39 @@ def init_db(path):
             max_anthropic_score REAL NOT NULL,
             weather_event_count INTEGER NOT NULL,
             sample_count INTEGER NOT NULL,
+            avg_rms_dbfs REAL,
+            max_peak_dbfs REAL,
+            max_clipping_ratio REAL,
             created_at TEXT NOT NULL,
             UNIQUE(window_start, window_end))""")
+        ensure_column(conn, "noise_index", "avg_rms_dbfs", "REAL")
+        ensure_column(conn, "noise_index", "max_peak_dbfs", "REAL")
+        ensure_column(conn, "noise_index", "max_clipping_ratio", "REAL")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_noise_index_window ON noise_index(window_start, window_end)")
         conn.commit()
 
 
-def log_event(db_path, ts, cid, name_fr, name_en, score, src, dur, event_group):
+def log_event(db_path, ts, cid, name_fr, name_en, score, src, dur, event_group, audio_metrics=None):
+    audio_metrics = audio_metrics or {}
     with sqlite3.connect(str(db_path)) as conn:
         conn.execute(
             """INSERT INTO events
-               (timestamp, class_id, class_name_fr, class_name_en, score, source_file, duration_s, event_group)
-               VALUES (?,?,?,?,?,?,?,?)""",
-            (ts, cid, name_fr, name_en, round(score, 4), src, round(dur, 2), event_group),
+               (timestamp, class_id, class_name_fr, class_name_en, score, source_file, duration_s, event_group,
+                rms_dbfs, peak_dbfs, clipping_ratio)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?)""",
+            (
+                ts,
+                cid,
+                name_fr,
+                name_en,
+                round(score, 4),
+                src,
+                round(dur, 2),
+                event_group,
+                audio_metrics.get("rms_dbfs"),
+                audio_metrics.get("peak_dbfs"),
+                audio_metrics.get("clipping_ratio"),
+            ),
         )
         conn.commit()
 
@@ -250,23 +276,47 @@ def noise_level(score):
     return "high"
 
 
+def dbfs(value):
+    if value <= 0:
+        return -120.0
+    return round(20.0 * np.log10(value), 2)
+
+
+def compute_audio_level_metrics(audio):
+    if audio is None or len(audio) == 0:
+        return {"rms_dbfs": -120.0, "peak_dbfs": -120.0, "clipping_ratio": 0.0}
+    samples = np.asarray(audio, dtype=np.float32)
+    abs_samples = np.abs(samples)
+    rms = float(np.sqrt(np.mean(np.square(samples))))
+    peak = float(np.max(abs_samples))
+    clipping_ratio = float(np.mean(abs_samples >= 0.999))
+    return {
+        "rms_dbfs": dbfs(rms),
+        "peak_dbfs": dbfs(peak),
+        "clipping_ratio": round(clipping_ratio, 6),
+    }
+
+
 def rebuild_noise_index(db_path, window_minutes=15):
     init_db(db_path)
     windows = defaultdict(list)
     with sqlite3.connect(str(db_path)) as conn:
         rows = conn.execute(
-            """SELECT timestamp, class_name_fr, score, event_group
+            """SELECT timestamp, class_name_fr, score, event_group, rms_dbfs, peak_dbfs, clipping_ratio
                FROM events
                ORDER BY timestamp"""
         ).fetchall()
 
-        for timestamp, class_name_fr, score, event_group in rows:
+        for timestamp, class_name_fr, score, event_group, rms_dbfs, peak_dbfs, clipping_ratio in rows:
             start = floor_time(parse_event_time(timestamp), window_minutes)
             windows[start].append(
                 {
                     "class_name_fr": class_name_fr,
                     "score": float(score),
                     "event_group": event_group,
+                    "rms_dbfs": rms_dbfs,
+                    "peak_dbfs": peak_dbfs,
+                    "clipping_ratio": clipping_ratio,
                 }
             )
 
@@ -284,12 +334,18 @@ def rebuild_noise_index(db_path, window_minutes=15):
             if anthropic:
                 by_name = Counter(event["class_name_fr"] for event in anthropic)
                 dominant = by_name.most_common(1)[0][0]
+            rms_values = [event["rms_dbfs"] for event in events if event["rms_dbfs"] is not None]
+            peak_values = [event["peak_dbfs"] for event in events if event["peak_dbfs"] is not None]
+            clipping_values = [event["clipping_ratio"] for event in events if event["clipping_ratio"] is not None]
+            avg_rms_dbfs = round(sum(rms_values) / len(rms_values), 2) if rms_values else None
+            max_peak_dbfs = round(max(peak_values), 2) if peak_values else None
+            max_clipping_ratio = round(max(clipping_values), 6) if clipping_values else None
             conn.execute(
                 """INSERT OR REPLACE INTO noise_index
                    (window_start, window_end, anthropic_noise_score, anthropic_noise_level,
                     dominant_anthropic_source, anthropic_event_count, max_anthropic_score,
-                    weather_event_count, sample_count, created_at)
-                   VALUES (?,?,?,?,?,?,?,?,?,?)""",
+                    weather_event_count, sample_count, avg_rms_dbfs, max_peak_dbfs, max_clipping_ratio, created_at)
+                   VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)""",
                 (
                     start.isoformat(timespec="seconds"),
                     end.isoformat(timespec="seconds"),
@@ -300,6 +356,9 @@ def rebuild_noise_index(db_path, window_minutes=15):
                     round(max_score, 4),
                     len(weather),
                     len(events),
+                    avg_rms_dbfs,
+                    max_peak_dbfs,
+                    max_clipping_ratio,
                     now,
                 ),
             )
@@ -334,6 +393,7 @@ def process_file(wav_path, interpreter, targets):
 
     dur = len(audio) / TARGET_SR
     ts = datetime.now().isoformat(timespec="seconds")
+    audio_metrics = compute_audio_level_metrics(audio)
 
     logged_any = False
     for idx, target in targets.items():
@@ -349,9 +409,14 @@ def process_file(wav_path, interpreter, targets):
                 wav_path.name,
                 dur,
                 target["group"],
+                audio_metrics,
             )
             logged_any = True
-            print(f"  -> {target['group']} / {target['name_fr']}: {score:.3f}", flush=True)
+            print(
+                f"  -> {target['group']} / {target['name_fr']}: {score:.3f} "
+                f"(rms {audio_metrics['rms_dbfs']:.1f} dBFS, peak {audio_metrics['peak_dbfs']:.1f} dBFS)",
+                flush=True,
+            )
 
     if logged_any:
         rebuild_noise_index(DB_PATH)
@@ -435,13 +500,18 @@ def main():
             print("==================")
             rows = conn.execute(
                 """SELECT window_start, anthropic_noise_score, anthropic_noise_level,
-                          dominant_anthropic_source, anthropic_event_count
+                          dominant_anthropic_source, anthropic_event_count, avg_rms_dbfs, max_peak_dbfs
                    FROM noise_index
                    ORDER BY window_start DESC
                    LIMIT 10"""
             ).fetchall()
-            for window_start, score, level, dominant, count in rows:
-                print(f"{window_start} {score:>5.1f} {level:<8s} {dominant or '-':<24s} events={count}")
+            for window_start, score, level, dominant, count, avg_rms_dbfs, max_peak_dbfs in rows:
+                rms_label = f"{avg_rms_dbfs:.1f}" if avg_rms_dbfs is not None else "-"
+                peak_label = f"{max_peak_dbfs:.1f}" if max_peak_dbfs is not None else "-"
+                print(
+                    f"{window_start} {score:>5.1f} {level:<8s} {dominant or '-':<24s} "
+                    f"events={count} rms={rms_label}dBFS peak={peak_label}dBFS"
+                )
 
             total = conn.execute("SELECT COUNT(*) FROM events").fetchone()[0]
             print(f"\nTotal: {total}")
