@@ -22,14 +22,22 @@ from pathlib import Path
 
 import numpy as np
 
-try:
-    from tflite_runtime.interpreter import Interpreter
-except ImportError:
+Interpreter = None
+
+
+def get_interpreter_class():
+    global Interpreter
+    if Interpreter is not None:
+        return Interpreter
     try:
-        from tensorflow.lite.python.interpreter import Interpreter
+        from tflite_runtime.interpreter import Interpreter as RuntimeInterpreter
     except ImportError:
-        print("ERROR: tflite_runtime not found", file=sys.stderr)
-        sys.exit(1)
+        try:
+            from tensorflow.lite.python.interpreter import Interpreter as RuntimeInterpreter
+        except ImportError as exc:
+            raise RuntimeError("tflite_runtime or tensorflow.lite is required for YAMNet inference") from exc
+    Interpreter = RuntimeInterpreter
+    return Interpreter
 
 BASE_DIR = Path("/home/jchavaux/BirdNET-Pi")
 EVENTNET_DIR = BASE_DIR / "eventnet"
@@ -51,6 +59,52 @@ WEATHER_CLASSES = {
     "/m/0cj0r": "Vent (micro)",
 }
 
+ANTHROPIC_LABELS = {
+    "aircraft": "Avion",
+    "aeroplane": "Avion",
+    "airplane": "Avion",
+    "jet engine": "Avion",
+    "motor vehicle (road)": "Voiture / moteur",
+    "car": "Voiture / moteur",
+    "engine": "Voiture / moteur",
+    "engine idling": "Voiture / moteur",
+    "human voice": "Voix humaine",
+    "speech": "Voix humaine",
+    "conversation": "Voix humaine",
+    "shout": "Voix humaine",
+    "shouting": "Voix humaine",
+    "dog": "Chien / aboiement",
+    "bark": "Chien / aboiement",
+    "chainsaw": "Tronconneuse",
+}
+
+
+def normalize_label(label):
+    return label.strip().lower()
+
+
+def build_target_indices(labels):
+    targets = {}
+    for idx, (mid, display_name) in labels.items():
+        if mid in WEATHER_CLASSES:
+            targets[idx] = {
+                "mid": mid,
+                "name_fr": WEATHER_CLASSES[mid],
+                "name_en": display_name,
+                "group": "weather",
+            }
+            continue
+
+        normalized = normalize_label(display_name)
+        if normalized in ANTHROPIC_LABELS:
+            targets[idx] = {
+                "mid": mid,
+                "name_fr": ANTHROPIC_LABELS[normalized],
+                "name_en": display_name,
+                "group": "anthropic",
+            }
+    return targets
+
 
 def load_labels(path):
     labels = {}
@@ -61,7 +115,8 @@ def load_labels(path):
 
 
 def load_model(path):
-    interpreter = Interpreter(model_path=str(path))
+    interpreter_cls = get_interpreter_class()
+    interpreter = interpreter_cls(model_path=str(path))
     interpreter.allocate_tensors()
     return interpreter
 
