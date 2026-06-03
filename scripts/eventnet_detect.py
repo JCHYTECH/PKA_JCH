@@ -17,7 +17,8 @@ import sqlite3
 import sys
 import time
 import wave
-from datetime import datetime
+from collections import Counter, defaultdict
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import numpy as np
@@ -219,6 +220,94 @@ def log_event(db_path, ts, cid, name_fr, name_en, score, src, dur, event_group):
         conn.commit()
 
 
+def parse_event_time(value):
+    return datetime.fromisoformat(value)
+
+
+def floor_time(dt, window_minutes):
+    discard = timedelta(
+        minutes=dt.minute % window_minutes,
+        seconds=dt.second,
+        microseconds=dt.microsecond,
+    )
+    return dt - discard
+
+
+def compute_noise_score(max_anthropic_score, anthropic_event_count):
+    if anthropic_event_count <= 0 or max_anthropic_score <= 0:
+        return 0
+    raw = (max_anthropic_score * 70) + min(anthropic_event_count, 6) * 5
+    return min(100, round(raw))
+
+
+def noise_level(score):
+    if score <= 0:
+        return "none"
+    if score < 30:
+        return "low"
+    if score < 60:
+        return "moderate"
+    return "high"
+
+
+def rebuild_noise_index(db_path, window_minutes=15):
+    init_db(db_path)
+    windows = defaultdict(list)
+    with sqlite3.connect(str(db_path)) as conn:
+        rows = conn.execute(
+            """SELECT timestamp, class_name_fr, score, event_group
+               FROM events
+               ORDER BY timestamp"""
+        ).fetchall()
+
+        for timestamp, class_name_fr, score, event_group in rows:
+            start = floor_time(parse_event_time(timestamp), window_minutes)
+            windows[start].append(
+                {
+                    "class_name_fr": class_name_fr,
+                    "score": float(score),
+                    "event_group": event_group,
+                }
+            )
+
+        now = datetime.now().isoformat(timespec="seconds")
+        written = 0
+        for start, events in sorted(windows.items()):
+            end = start + timedelta(minutes=window_minutes)
+            anthropic = [event for event in events if event["event_group"] == "anthropic"]
+            weather = [event for event in events if event["event_group"] == "weather"]
+            max_score = max((event["score"] for event in anthropic), default=0.0)
+            count = len(anthropic)
+            score = float(compute_noise_score(max_score, count))
+            level = noise_level(score)
+            dominant = None
+            if anthropic:
+                by_name = Counter(event["class_name_fr"] for event in anthropic)
+                dominant = by_name.most_common(1)[0][0]
+            conn.execute(
+                """INSERT OR REPLACE INTO noise_index
+                   (window_start, window_end, anthropic_noise_score, anthropic_noise_level,
+                    dominant_anthropic_source, anthropic_event_count, max_anthropic_score,
+                    weather_event_count, sample_count, created_at)
+                   VALUES (?,?,?,?,?,?,?,?,?,?)""",
+                (
+                    start.isoformat(timespec="seconds"),
+                    end.isoformat(timespec="seconds"),
+                    score,
+                    level,
+                    dominant,
+                    count,
+                    round(max_score, 4),
+                    len(weather),
+                    len(events),
+                    now,
+                ),
+            )
+            written += 1
+        conn.commit()
+        return written
+
+
 def load_processed(path):
     if not path.exists():
         return set()
@@ -303,10 +392,17 @@ def main():
     parser.add_argument("--once", help="Analyze single WAV file")
     parser.add_argument("--threshold", type=float, default=0.25)
     parser.add_argument("--stats", action="store_true")
+    parser.add_argument("--rebuild-index", action="store_true")
+    parser.add_argument("--index-window-minutes", type=int, default=15)
     args = parser.parse_args()
 
     global SCORE_THRESHOLD
     SCORE_THRESHOLD = args.threshold
+
+    if args.rebuild_index:
+        written = rebuild_noise_index(DB_PATH, args.index_window_minutes)
+        print(f"Noise index windows written: {written}")
+        return
 
     if args.once:
         labels = load_labels(LABELS_PATH)

@@ -56,3 +56,60 @@ def test_init_db_migrates_event_group_and_creates_noise_index(tmp_path):
         }
         row = conn.execute("SELECT event_group FROM events").fetchone()
         assert row[0] == "weather"
+
+
+def test_noise_level_boundaries():
+    assert eventnet.noise_level(0) == "none"
+    assert eventnet.noise_level(1) == "low"
+    assert eventnet.noise_level(29) == "low"
+    assert eventnet.noise_level(30) == "moderate"
+    assert eventnet.noise_level(59) == "moderate"
+    assert eventnet.noise_level(60) == "high"
+    assert eventnet.noise_level(100) == "high"
+
+
+def test_compute_noise_score_uses_max_score_and_recurrence():
+    assert eventnet.compute_noise_score(0.0, 0) == 0
+    assert eventnet.compute_noise_score(0.2, 1) == 19
+    assert eventnet.compute_noise_score(0.8, 1) == 61
+    assert eventnet.compute_noise_score(1.0, 20) == 100
+
+
+def test_rebuild_noise_index_writes_expected_window(tmp_path):
+    db_path = tmp_path / "events.db"
+    eventnet.init_db(db_path)
+    with sqlite3.connect(db_path) as conn:
+        conn.executemany(
+            """INSERT INTO events
+               (timestamp, class_id, class_name_fr, class_name_en, score, source_file, duration_s, event_group)
+               VALUES (?,?,?,?,?,?,?,?)""",
+            [
+                ("2026-06-03T10:00:01", "/m/air", "Avion", "Aircraft", 0.8, "a.wav", 3.0, "anthropic"),
+                ("2026-06-03T10:05:00", "/m/dog", "Chien / aboiement", "Bark", 0.4, "b.wav", 3.0, "anthropic"),
+                ("2026-06-03T10:06:00", "/m/rain", "Pluie", "Rain", 0.7, "c.wav", 3.0, "weather"),
+            ],
+        )
+        conn.commit()
+
+    written = eventnet.rebuild_noise_index(db_path, window_minutes=15)
+
+    assert written == 1
+    with sqlite3.connect(db_path) as conn:
+        row = conn.execute(
+            """SELECT window_start, window_end, anthropic_noise_score, anthropic_noise_level,
+                      dominant_anthropic_source, anthropic_event_count, max_anthropic_score,
+                      weather_event_count, sample_count
+               FROM noise_index"""
+        ).fetchone()
+
+    assert row == (
+        "2026-06-03T10:00:00",
+        "2026-06-03T10:15:00",
+        66.0,
+        "high",
+        "Avion",
+        2,
+        0.8,
+        1,
+        3,
+    )
