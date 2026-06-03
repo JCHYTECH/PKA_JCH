@@ -87,7 +87,7 @@ if ($rows):
 <?php endif; ?>
 
 <div class="footer">
-Total : <strong><?= $total ?></strong> evenements — <a href="http://100.84.45.93">BirdNET-Pi</a>
+Total : <strong><?= $total ?></strong> evenements — <a href="http://100.66.110.60">BirdNET-Pi</a>
 </div>
 </body>
 </html>

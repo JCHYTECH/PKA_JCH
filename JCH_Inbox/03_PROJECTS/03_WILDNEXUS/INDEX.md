@@ -25,7 +25,7 @@ Sous-titre : **infrastructure distribuee d'observation ecologique**
 | [05_VISUALS_DASHBOARDS](05_VISUALS_DASHBOARDS/) | flowmaps, dashboards, vues HTML |
 | [06_COMPONENTS](06_COMPONENTS/) | composants adjacents ou futurs : bioacoustique, Faune Autour |
 | [07_AGENTS](07_AGENTS/) | agents WildNexus locaux et leurs `SKILL.md` |
-| [08_TECH_NOTES](08_TECH_NOTES/) | notes techniques actives, graphify-notes, API |
+| [08_TECH_NOTES](08_TECH_NOTES/) | notes techniques actives, [[graphify]]-notes, API |
 | [data](data/) | donnees projet |
 | [exports](exports/) | exports historiques ou externes |
 | [archive](archive/) | contenus inactifs |

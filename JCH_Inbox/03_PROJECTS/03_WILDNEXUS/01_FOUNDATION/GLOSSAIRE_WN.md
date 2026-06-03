@@ -241,7 +241,7 @@ Règle : la mémoire commune vit dans les fichiers PKA, pas dans le transcript d
 | `06_COMPONENTS/BIOACOUSTIC/` | Matière bioacoustique P1, hors P0 strict. |
 | `06_COMPONENTS/FAUNE_AUTOUR_APP/` | Application Faune Autour, projet adjacent ou futur composant P2. |
 | `07_AGENTS/` | Agents WildNexus locaux et leurs fichiers `SKILL.md`. |
-| `08_TECH_NOTES/` | Notes techniques exploratoires, notamment graphify-notes. |
+| `08_TECH_NOTES/` | Notes techniques exploratoires, notamment [[graphify]]-notes. |
 | `_quarantine/` | Zone temporaire pour éléments à vérifier avant suppression ou reclassement. |
 
 ---

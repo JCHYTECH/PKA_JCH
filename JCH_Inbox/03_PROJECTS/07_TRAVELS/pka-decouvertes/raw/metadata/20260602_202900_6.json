@@ -1,0 +1,18 @@
+{
+  "telegram_message_id": "6",
+  "telegram_group": "DECOUVERTES",
+  "author": "Jean Claude Havaux",
+  "datetime": "2026-06-02T20:29:00+00:00",
+  "content_type": "image",
+  "text": "",
+  "links": [],
+  "media_files": [
+    {
+      "file_path": "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/raw/images/20260602_202900_6.jpg",
+      "media_type": "photo"
+    }
+  ],
+  "analysis_status": "pending",
+  "place_candidates": [],
+  "confidence": null
+}

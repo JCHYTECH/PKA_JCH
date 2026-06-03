@@ -24,6 +24,11 @@ Dernière mise à jour : 2026-05-13
 | [Dobby Live]([[dobby]]-live.html) | Prototype voix temps réel Realtime 2 + tools PKA locaux |
 | [Organigramme](organigramme.html) | Vue équipe PKA |
 
+## Accès machines
+
+- [[CONNEXIONS|Connexions machines]] — SSH, VNC, [[Tailscale]], interfaces web et notes de sécurité.
+- [[MODE_EMPLOI_M1_LLM|Mode d'emploi M1 LLM]] — accès M1, VS Code Remote-SSH, commandes [[Ollama]] et tunnel local.
+
 Note : l'ancienne page `1.html` a ete remplacee par `hub.html`.
 
 ## Lancement recommande
