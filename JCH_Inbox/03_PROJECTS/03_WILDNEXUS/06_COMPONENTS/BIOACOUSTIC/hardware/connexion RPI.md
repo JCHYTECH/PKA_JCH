@@ -1,7 +1,7 @@
 # Connexion RPI BirdNET-Pi
 
 **Date :** 2026-05-24  
-**Mise a jour :** 2026-05-29 — hostname `birdnetpi` confirme, reseau maison prioritaire  
+**Mise a jour :** 2026-06-03 — IP Tailscale active `100.66.110.60` observee, ancienne IP `100.84.45.93` inactive  
 **Machine :** [[Raspberry Pi]] BirdNET-Pi  
 **Projet :** WildNexus / Bioacoustique  
 **Regle securite :** ne pas ecrire le mot de passe en clair dans ce fichier.
@@ -14,7 +14,8 @@
 - User SSH : `jchavaux`
 - IP maison (WiFi wlan0) : `192.168.1.48` — primaire (metric 600)
 - IP LTE (eth1, dongle ZTE) : `192.168.0.178` — backup (metric 700)
-- IP [[Tailscale]] RPI : `100.84.45.93`
+- IP [[Tailscale]] RPI : `100.66.110.60` (observee 2026-06-03, `rpi-pkajch`)
+- Ancienne IP [[Tailscale]] : `100.84.45.93` — inactive / no reply le 2026-06-03
 - Modele [[BirdNET]] : BirdNET-Go (RPi 5)
 
 ### iPhone
@@ -51,7 +52,7 @@ Dans Safari ou Chrome sur Mac, essayer dans cet ordre :
 ```text
 http://birdnetpi.local
 http://192.168.1.48
-http://100.84.45.93
+http://100.66.110.60
 ```
 
 ### 3. Connexion SSH depuis Terminal Mac
@@ -71,8 +72,10 @@ ssh jchavaux@192.168.1.48
 Si [[Tailscale]] est actif sur Mac et sur RPI :
 
 ```bash
-ssh jchavaux@100.84.45.93
+ssh jchavaux@100.66.110.60
 ```
+
+Note 2026-06-03 : l'hote `100.66.110.60` repond au ping Tailscale, mais l'authentification SSH non interactive depuis Codex a ete refusee (`Permission denied (publickey,password)`). Aucune cle ou mot de passe n'est stocke dans PKA.
 
 ### 4. Verifier [[Tailscale]] sur Mac
 

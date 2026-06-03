@@ -1,7 +1,7 @@
 # BirdNET-Pi - Acces local et reperes critiques
 
 **Date de creation :** 2026-05-24  
-**Derniere mise a jour :** 2026-05-29 — hostname `birdnetpi` confirme, cloud-init fixe, reseau maison prioritaire  
+**Derniere mise a jour :** 2026-06-03 — IP Tailscale active `100.66.110.60` observee, ancienne IP `100.84.45.93` inactive  
 **Projet :** WildNexus / Bioacoustique  
 **Machine :** [[Raspberry Pi]] BirdNET-Pi  
 **Owner :** JCH  
@@ -35,7 +35,7 @@ Plan de stabilisation :
 2. ✅ `avahi-daemon` actif et operationnel ;
 3. utiliser `http://birdnetpi.local` comme URL principale (OK sur reseau local) ;
 4. ✅ `192.168.1.48` reservation routeur maison — IP WiFi wlan0 ;
-5. ✅ [[Tailscale]] actif : `100.84.45.93` — acces distant stable.
+5. ✅ [[Tailscale]] actif : `100.66.110.60` — acces distant observe le 2026-06-03.
 
 **Reseau — priorite (2026-05-29) :** WiFi maison (wlan0, metric 600) primaire, LTE dongle (eth1, metric 700) backup.
 
@@ -61,10 +61,18 @@ iPhone 182 : 100.75.75.90
 tkajch (Raspberry Pi BirdNET-Pi) : 100.84.45.93
 ```
 
+Observation 2026-06-03 :
+
+```text
+rpi-pkajch (Raspberry Pi BirdNET-Pi) : 100.66.110.60 — ping Tailscale OK
+ancienne IP 100.84.45.93 — no reply
+SSH jchavaux@100.66.110.60 — hote joignable, authentification non interactive refusee (publickey,password)
+```
+
 URL Tailnet stable a tester pour BirdNET-Pi :
 
 ```text
-http://100.84.45.93
+http://100.66.110.60
 ```
 
 Statut Mac observe le 2026-05-24 :
