@@ -420,14 +420,29 @@ def main():
     if args.stats:
         init_db(DB_PATH)
         with sqlite3.connect(str(DB_PATH)) as conn:
+            print("Events by group")
+            print("===============")
             rows = conn.execute(
-                "SELECT class_name_fr, COUNT(*), ROUND(AVG(score),3), MAX(score) "
-                "FROM events GROUP BY class_name_fr ORDER BY COUNT(*) DESC"
+                """SELECT event_group, class_name_fr, COUNT(*), ROUND(AVG(score),3), MAX(score)
+                   FROM events
+                   GROUP BY event_group, class_name_fr
+                   ORDER BY event_group, COUNT(*) DESC"""
             ).fetchall()
-            print(f"{'Evenement':<20s} {'Count':>6s} {'Avg':>8s} {'Max':>8s}")
-            print("-" * 44)
-            for r in rows:
-                print(f"{r[0]:<20s} {r[1]:>6d} {r[2]:>8.3f} {r[3]:>8.3f}")
+            for event_group, class_name_fr, count, avg_score, max_score in rows:
+                print(f"{event_group:<10s} {class_name_fr:<24s} {count:>6d} {avg_score:>8.3f} {max_score:>8.3f}")
+
+            print("\nRecent noise index")
+            print("==================")
+            rows = conn.execute(
+                """SELECT window_start, anthropic_noise_score, anthropic_noise_level,
+                          dominant_anthropic_source, anthropic_event_count
+                   FROM noise_index
+                   ORDER BY window_start DESC
+                   LIMIT 10"""
+            ).fetchall()
+            for window_start, score, level, dominant, count in rows:
+                print(f"{window_start} {score:>5.1f} {level:<8s} {dominant or '-':<24s} events={count}")
+
             total = conn.execute("SELECT COUNT(*) FROM events").fetchone()[0]
             print(f"\nTotal: {total}")
         return
