@@ -68,8 +68,8 @@ Une carte passe par ces 7 statuts, dans l'ordre :
 
 | Rôle | Responsabilité |
 |------|----------------|
-| **Dobby** | Crée et pilote les cartes, assigne aux spécialistes |
-| **Forge** | Crée des cartes techniques |
+| **[[Dobby]]** | Crée et pilote les cartes, assigne aux spécialistes |
+| **[[Forge]]** | Crée des cartes techniques |
 | **JCH** | Valide les cartes en statut `En validation` |
 
 ---
@@ -77,10 +77,10 @@ Une carte passe par ces 7 statuts, dans l'ordre :
 ## ⚡ ASTUCES
 
 - Une carte bloquée → passe en `En attente` + label `bloque-externe`
-- Une carte urgente → label `urgent`, Dobby la priorise
+- Une carte urgente → label `urgent`, [[Dobby]] la priorise
 - Une carte en attente de toi → statut `En validation` + label `en-attente-jch`
 - Tu veux voir que tes tâches à valider → filtre `En validation`
 
 ---
 
-*Fiche générée par Dobby 🦉 — 3 juin 2026*
+*Fiche générée par [[Dobby]] 🦉 — 3 juin 2026*

@@ -14,7 +14,7 @@ pka-save
 `pka-save` fait :
 - Ajoute tous les fichiers modifiés (`git add -A`)
 - Te demande un message de commit
-- Te demande si tu veux ajouter une section à ta daily note
+- Te demande si tu veux ajouter une section à ta [[daily]] note
 - Commit + log dans `wiki/log.md`
 
 ---
@@ -84,4 +84,4 @@ git push
 
 ---
 
-*Fiche générée par Dobby 🦉 — 3 juin 2026*
+*Fiche générée par [[Dobby]] 🦉 — 3 juin 2026*

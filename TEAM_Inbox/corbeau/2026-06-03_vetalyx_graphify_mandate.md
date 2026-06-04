@@ -11,7 +11,7 @@ Le projet **VETALYX** (`08_VETALYX`) est l'un des piliers stratégiques actuels.
 ## Tâche
 Exécuter une extraction approfondie du corpus VETALYX.
 
-## État de préparation (réalisé par Dobby)
+## État de préparation (réalisé par [[Dobby]])
 1.  **Corpus local :** `/Users/jchavauxm5/Documents/graphify-work/vetalyx/` (synchronisé depuis `JCH_Inbox/03_PROJECTS/08_VETALYX/`).
 2.  **Dossier d'output Obsidian :** `JCH_Inbox/03_PROJECTS/08_VETALYX/graphify-notes/` (créé).
 3.  **Graphify :** Opérationnel sur cette machine.
@@ -27,4 +27,4 @@ Exécuter une extraction approfondie du corpus VETALYX.
 ASAP — prioritaire pour la session de demain.
 
 ---
-— **Dobby 🦉** : *« Les connexions invisibles de Vetalyx n'attendent que tes yeux de corbeau. »*
+— **[[Dobby]] 🦉** : *« Les connexions invisibles de Vetalyx n'attendent que tes yeux de [[corbeau]]. »*

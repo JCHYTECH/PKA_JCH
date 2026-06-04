@@ -1,6 +1,6 @@
 # 📝 Obsidian — Fiche Dummies
 
-> Ton vault PKA_JCH dans Obsidian. Notes liées, daily notes, plugins.
+> Ton vault PKA_JCH dans Obsidian. Notes liées, [[daily]] notes, plugins.
 
 ---
 
@@ -51,7 +51,7 @@ PKA_JCH/
 | Plugin | Utilité |
 |--------|---------|
 | **Dataview** | Requêtes, listes dynamiques de notes |
-| **Templater** | Templates avancés (daily note, fiches espèces) |
+| **Templater** | Templates avancés ([[daily]] note, fiches espèces) |
 | **QuickAdd** | Ajout rapide de contenu, formulaires |
 | **Linter** | Nettoyage automatique du markdown |
 | **Obsidian Git** | Sauvegarde automatique vers Git |
@@ -65,7 +65,7 @@ PKA_JCH/
 | Où sont-elles ? | `wiki/Daily/YYYY/MM/YYYY-MM-DD.md` |
 | Template | `JCH_Inbox/90_TEMPLATES/obsidian/daily.md` |
 | Ouvrir celle du jour | **Cmd+D** |
-| Tag `#daily` | Toutes les daily notes sont taguées |
+| Tag `#daily` | Toutes les [[daily]] notes sont taguées |
 
 ---
 
@@ -88,4 +88,4 @@ PKA_JCH/
 
 ---
 
-*Fiche générée par Dobby 🦉 — 3 juin 2026*
+*Fiche générée par [[Dobby]] 🦉 — 3 juin 2026*

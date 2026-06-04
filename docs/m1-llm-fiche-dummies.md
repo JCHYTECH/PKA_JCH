@@ -134,4 +134,4 @@ ssh m1@100.73.212.110 'sudo purge'
 
 ---
 
-*Fiche générée par Dobby 🦉 — 3 juin 2026*
+*Fiche générée par [[Dobby]] 🦉 — 3 juin 2026*

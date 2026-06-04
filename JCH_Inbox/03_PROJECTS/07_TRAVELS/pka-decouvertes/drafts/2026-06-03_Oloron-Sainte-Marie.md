@@ -157,7 +157,7 @@ Score : **5/5**
 
 ## Rapport complet
 
-[📄 Ouvrir le rapport HTML](JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/reports/2026-06-03_Oloron-Sainte-Marie.html)
+[📄 Ouvrir le rapport HTML](JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/reports/[[2026-06-03_Oloron-Sainte-Marie]].html)
 
 ## Voir aussi
 

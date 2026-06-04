@@ -114,7 +114,7 @@ Score : **5/5**
 
 ## Rapport complet
 
-[📄 Ouvrir le rapport HTML](JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/reports/2026-06-03_Luz-Saint-Sauveur.html)
+[📄 Ouvrir le rapport HTML](JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/reports/[[2026-06-03_Luz-Saint-Sauveur]].html)
 
 ## Voir aussi
 

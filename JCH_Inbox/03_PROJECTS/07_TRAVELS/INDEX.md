@@ -37,7 +37,7 @@ Responsable : [[Cigogne]] 🦩 — Vanlife Travel Planner & Experience Curator
 - `achat-van/Expositions_Vanlife_2026.md` — Agenda expositions vanlife
 - `iot-van/stylevan-equinox4-cahier-technique-iot.md` — Cahier technique IoT van
 - `iot-van/synthese-vanlife-iot.md` — Synthèse IoT vanlife
-- `iot-van/VAL-BOM-Vanlife-IOT_Forge_2026-05-31.md` — BOM IoT van (Forge)
+- `iot-van/VAL-BOM-Vanlife-IOT_Forge_2026-05-31.md` — BOM IoT van ([[Forge]])
 - `vanlife/PREFERENCES.md` — Préférences voyage, configuration van
 - `vanlife/logistique/camping_scout_README.md` — Guide camping-scout CLI
 - `vanlife/logistique/methodologie-stationnement.md` — Méthodologie stationnement

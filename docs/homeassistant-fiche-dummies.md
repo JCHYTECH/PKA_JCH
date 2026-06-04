@@ -85,4 +85,4 @@ _local/homeassistant/
 
 ---
 
-*Fiche générée par Dobby 🦉 — 3 juin 2026*
+*Fiche générée par [[Dobby]] 🦉 — 3 juin 2026*

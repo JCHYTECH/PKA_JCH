@@ -65,7 +65,7 @@
 | Problème | Solution |
 |----------|----------|
 | Plus aucun modèle ne marche | Reload Continue : **Cmd+Shift+P** → `Continue: Reload` |
-| "Operation not permitted" | Contacte Dobby, c'est l'API key ou la config |
+| "Operation not permitted" | Contacte [[Dobby]], c'est l'API key ou la config |
 | Modèle lent / timeout | Passe sur ⚡ Mixtral ou 💻 Llama 3.1 |
 
 ---
@@ -84,4 +84,4 @@
 
 ---
 
-*Fiche générée par Dobby 🦉 — 3 juin 2026*
+*Fiche générée par [[Dobby]] 🦉 — 3 juin 2026*
