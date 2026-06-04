@@ -42,6 +42,7 @@ scripts/telegram-bot/venv/
 .vscode/
 .obsidian/workspace.json
 .claude/settings.local.json
+.claude/commands/watch.md
 .claude/claude-video/
 .claude/skills/
 .agents/
