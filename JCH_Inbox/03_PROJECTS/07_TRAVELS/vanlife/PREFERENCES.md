@@ -7,7 +7,8 @@ Dernière mise à jour : 2026-05-29
 - **Passions :** photo wildlife, zoologie, observation naturaliste
 - **Rythme :** aube et crépuscule (lumières rasantes), sorties photo tôt le matin
 - **Équipement :** Canon R10 + 90D, RF 200-800mm, Tamron 150-600mm, macros
-- **Intérêts voyage :** réserves naturelles, parcs nationaux, zones humides, spots ornitho
+- **Intérêts voyage :** réserves naturelles, parcs nationaux, zones humides, spots ornitho, jardins botaniques, beaux jardins urbains
+- **Aime voir et photographier :** arbres remarquables, spécimens anciens ou insolites
 - **Conduite :** Stylevan Equinox IV Ford
 
 ## Anne
@@ -22,6 +23,7 @@ Dernière mise à jour : 2026-05-29
 - Se garer dans ou près des réserves naturelles pour être sur place à l'aube
 - Photographier aux heures dorées (lever/coucher du soleil)
 - Combiner nature sauvage et patrimoine culturel
+- Visiter les jardins botaniques et beaux jardins urbains
 - Voyager hors saison touristique si possible
 
 ## Préférences destination

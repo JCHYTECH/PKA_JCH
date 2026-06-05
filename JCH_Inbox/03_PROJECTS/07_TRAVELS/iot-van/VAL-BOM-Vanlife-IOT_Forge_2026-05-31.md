@@ -28,7 +28,7 @@
 
 ---
 
-## Phase 2 — GPS + Inclinaison + Relais
+## Phase 2 — GPS + Inclinaison + Relais + Présence extérieure
 
 | # | Composant | Modele | Qté | Prix | Total |
 |---|----------|--------|-----|------|-------|
@@ -36,7 +36,10 @@
 | 15 | ESP32 + MPU6050 | AZDelivery + GY-521 | 1 | ~10 | 10 |
 | 16 | Module relais 12V 2 canaux | SRD-12VDC | 1 | ~5 | 5 |
 | 17 | Electro-aimant 12V | pour verrou tiroir | 2 | ~2 | 4 |
-| **Total Phase 2** | | | | **~31 EUR** |
+| 18 | PIR extérieur 12V IP65 | alarme-grade (ex. Optex/Paradox) | 1 | ~12 | 12 |
+| 19 | Contact sec Zigbee | Sonoff SNZB-04 | 1 | ~8 | 8 |
+| 20 | Spot LED extérieur 12V + câbles | | 1 | ~5 | 5 |
+| **Total Phase 2** | | | | **~56 EUR** |
 
 ---
 
@@ -53,7 +56,7 @@
 
 ---
 
-## Total general : ~527 EUR
+## Total general : ~552 EUR
 
 ---
 

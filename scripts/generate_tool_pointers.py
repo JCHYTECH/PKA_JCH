@@ -109,7 +109,7 @@ def render_claude_managed_block(cfg: dict, team_count: int) -> str:
         "- Source of truth: `MEMORY.md`, `TEAM/team.db`, `TEAM/ROSTER.md`, `TEAM/dobby.md`, `wiki/index.md`",
         f"- Current scan snapshot: {len(list_projects())} projets actifs ({projects}) ; {inbox_items} éléments dans `JCH_Inbox/00_INBOX/`.",
         "",
-        "Tool pointer files `AGENTS.md`, `GEMINI.md`, and `DEEPSEEK.md` are derived from the same canonical source.",
+        "Tool pointer files " + ", ".join(f"`{f}`" for f in cfg["tools"]) + " are derived from the same canonical source.",
         CLAUDE_BLOCK_END,
     ]
     return "\n".join(lines)

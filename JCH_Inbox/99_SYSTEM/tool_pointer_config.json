@@ -42,6 +42,11 @@
       "title": "DEEPSEEK.md — PKA_JCH System Pointer (DeepSeek API)",
       "tool_label": "DeepSeek API",
       "model_hint": "(model in use — deepseek-chat or deepseek-reasoner)"
+    },
+    "QWEN.md": {
+      "title": "QWEN.md — PKA_JCH System Pointer (Qwen API)",
+      "tool_label": "Qwen API (DashScope / OpenRouter)",
+      "model_hint": "(model in use — qwen-max ou qwen3-7b-instruct)"
     }
   }
 }

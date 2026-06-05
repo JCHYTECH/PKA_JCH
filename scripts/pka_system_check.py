@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Run the main PKA system checks in one command."""
+"""Run the main PKA system checks in one command — with auto-heal and differential reporting."""
 
 from __future__ import annotations
 
 import argparse
 import datetime as dt
+import hashlib
 import json
 from pathlib import Path
 
@@ -24,6 +25,7 @@ except ModuleNotFoundError:
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORT_DIR = ROOT / "TEAM_Inbox"
+STATE_FILE = ROOT / "tmp" / "system_check_state.json"
 
 
 def combine_results(security: dict, improvement: dict,
@@ -125,13 +127,44 @@ def markdown_report(result: dict) -> str:
     return "\n".join(lines) + "\n"
 
 
+def result_hash(result: dict) -> str:
+    """Deterministic hash of check statuses — ignore timestamps."""
+    key = {
+        "security": result["security"]["status"],
+        "improvement": result["improvement"]["status"],
+        "pointers": result["pointers"]["status"],
+        "promotion": result["promotion"]["status"],
+        "structure": result.get("structure", {}).get("status", "skipped"),
+    }
+    return hashlib.sha256(json.dumps(key, sort_keys=True).encode()).hexdigest()[:16]
+
+
+def load_last_state() -> str | None:
+    if STATE_FILE.is_file():
+        try:
+            return json.loads(STATE_FILE.read_text(encoding="utf-8")).get("hash")
+        except (json.JSONDecodeError, KeyError):
+            return None
+    return None
+
+
+def save_state(state_hash: str) -> None:
+    STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    STATE_FILE.write_text(json.dumps({
+        "hash": state_hash,
+        "updated_at": dt.datetime.now().isoformat(timespec="seconds"),
+    }), encoding="utf-8")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Run the main PKA system checks")
     parser.add_argument("--json", action="store_true", help="Print JSON instead of Markdown")
     parser.add_argument("--write-report", action="store_true", help="Write report to TEAM_Inbox")
+    parser.add_argument("--auto-heal", action="store_true", help="Auto-fix permissions via security audit")
+    parser.add_argument("--force", action="store_true", help="Write report even if state unchanged")
     args = parser.parse_args()
 
-    security = pka_security_audit.run_audit()
+    security = pka_security_audit.run_audit(auto_heal=args.auto_heal)
     improvement = pka_system_improvement_audit.run_audit()
     pointers = pointer_status()
     promotion = promotion_status()
@@ -140,8 +173,13 @@ def main() -> int:
 
     if args.write_report:
         REPORT_DIR.mkdir(parents=True, exist_ok=True)
-        report_path = REPORT_DIR / f"{dt.date.today().isoformat()}_dobby_system_check.md"
-        report_path.write_text(markdown_report(result), encoding="utf-8")
+        current_hash = result_hash(result)
+        last_hash = load_last_state()
+
+        if args.force or current_hash != last_hash:
+            report_path = REPORT_DIR / f"{dt.date.today().isoformat()}_dobby_system_check.md"
+            report_path.write_text(markdown_report(result), encoding="utf-8")
+            save_state(current_hash)
 
     if args.json:
         print(json.dumps(result, ensure_ascii=False, indent=2))

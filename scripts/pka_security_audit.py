@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Non-destructive security audit for PKA_JCH."""
+"""Non-destructive security audit for PKA_JCH — with optional auto-healing."""
 
 from __future__ import annotations
 
@@ -10,6 +10,7 @@ import json
 import os
 import sqlite3
 import stat
+import subprocess
 from pathlib import Path
 
 
@@ -69,7 +70,16 @@ def file_mode(path: Path) -> int:
     return stat.S_IMODE(path.stat().st_mode)
 
 
-def check_permissions(patterns: list[str], ignored: set[str]) -> list[dict]:
+def fix_permission(path: Path) -> bool:
+    """Fix file permissions to 0600. Returns True if successful."""
+    try:
+        subprocess.run(["chmod", "0600", str(path)], check=True, capture_output=True)
+        return True
+    except subprocess.CalledProcessError:
+        return False
+
+
+def check_permissions(patterns: list[str], ignored: set[str], auto_heal: bool = False) -> list[dict]:
     findings = []
     for path in ROOT.rglob("*"):
         if not path.is_file() or is_ignored(path, ignored):
@@ -78,13 +88,33 @@ def check_permissions(patterns: list[str], ignored: set[str]) -> list[dict]:
             continue
         mode = file_mode(path)
         if mode & 0o077:
-            findings.append({
-                "severity": "high",
-                "check": "permissions",
-                "path": rel(path),
-                "detail": f"mode {mode:04o}, expected 0600 or stricter",
-                "mitigation": f"chmod 600 {rel(path)}",
-            })
+            if auto_heal:
+                healed = fix_permission(path)
+                if healed:
+                    new_mode = file_mode(path)
+                    findings.append({
+                        "severity": "info",
+                        "check": "permissions-auto-heal",
+                        "path": rel(path),
+                        "detail": f"mode corrected from {mode:04o} to {new_mode:04o} (auto-heal)",
+                        "mitigation": "auto-healed — no action needed",
+                    })
+                else:
+                    findings.append({
+                        "severity": "high",
+                        "check": "permissions",
+                        "path": rel(path),
+                        "detail": f"mode {mode:04o}, expected 0600 or stricter — auto-heal failed",
+                        "mitigation": f"chmod 600 {rel(path)} (manual)",
+                    })
+            else:
+                findings.append({
+                    "severity": "high",
+                    "check": "permissions",
+                    "path": rel(path),
+                    "detail": f"mode {mode:04o}, expected 0600 or stricter",
+                    "mitigation": f"chmod 600 {rel(path)}",
+                })
     return findings
 
 
@@ -201,17 +231,17 @@ def check_gitignore() -> list[dict]:
     return []
 
 
-def run_audit() -> dict:
+def run_audit(auto_heal: bool = False) -> dict:
     allowlist = load_allowlist()
     patterns = allowlist.get("sensitive_globs", DEFAULT_SENSITIVE_GLOBS)
     ignored = set(allowlist.get("ignored_paths", [])) | DEFAULT_IGNORED_PATHS
     findings = []
-    findings.extend(check_permissions(patterns, ignored))
+    findings.extend(check_permissions(patterns, ignored, auto_heal=auto_heal))
     findings.extend(check_roster_drift())
     findings.extend(check_backups())
     findings.extend(check_gitignore())
 
-    severity_order = {"critical": 4, "high": 3, "medium": 2, "low": 1}
+    severity_order = {"critical": 4, "high": 3, "medium": 2, "low": 1, "info": 0}
     worst = max((severity_order.get(item["severity"], 0) for item in findings), default=0)
     status = "green" if worst == 0 else "orange" if worst <= 2 else "red"
     return {
@@ -237,7 +267,7 @@ def markdown_report(result: dict) -> str:
     for item in result["findings"]:
         lines.append(
             f"| {item['severity']} | {item['check']} | `{item['path']}` | "
-            f"{item['detail']} | `{item['mitigation']}` |"
+            f"{item['detail']} | {item['mitigation']} |"
         )
     return "\n".join(lines) + "\n"
 
@@ -246,9 +276,10 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Audit local securite PKA_JCH")
     parser.add_argument("--json", action="store_true", help="print JSON instead of Markdown")
     parser.add_argument("--write-report", action="store_true", help="write Markdown report to TEAM_Inbox")
+    parser.add_argument("--auto-heal", action="store_true", help="auto-fix permissions to 0600")
     args = parser.parse_args()
 
-    result = run_audit()
+    result = run_audit(auto_heal=args.auto_heal)
     if args.write_report:
         REPORT_DIR.mkdir(parents=True, exist_ok=True)
         today = dt.date.today().isoformat()

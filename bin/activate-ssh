@@ -1,0 +1,9 @@
+#!/bin/bash
+echo "Démarrage du service SSH..."
+echo "5444" | sudo -S launchctl kickstart -kp system/com.openssh.sshd
+sleep 2
+echo ""
+echo "Vérification :"
+lsof -iTCP:22 -sTCP:LISTEN -P 2>/dev/null
+echo ""
+echo "Termius -> jchavauxm5@192.168.129.14:22"

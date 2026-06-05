@@ -10,6 +10,7 @@
     <string>/Library/Frameworks/Python.framework/Versions/3.13/bin/python3</string>
     <string>/Users/jchavauxm5/PKA_JCH/scripts/pka_system_check.py</string>
     <string>--write-report</string>
+    <string>--auto-heal</string>
   </array>
 
   <key>WorkingDirectory</key>

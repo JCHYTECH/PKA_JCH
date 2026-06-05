@@ -164,3 +164,7 @@
 2026-06-03 13:59 — Save Codex [model=Session de suivi de l'onboarding de Graphify par Corbeau (génération de 52 notes pour WildNexus) et assistance pour la configuration de l'extension Continue (config.ts) dans VS Code avec l'API NVIDIA. ; project=Corbeau a reçu le mandat d'extraire le projet Vetalyx. Continue (VS Code) a été configuré en TypeScript pour l'API NVIDIA.] : Integration Graphify et Setup NVIDIA (Dobby) — `wiki/Daily/2026/06/2026-06-03-integration-graphify-et-setup-nvidia.md`
 
 2026-06-03 23:18 — Save Codex [model=codex ; project=AI_IT_TOOLS] : Correction clé DeepSeek TUI (Diagnostic de deepseek-tui après erreur de clé API invalide. La clé exportée dans ~/.zshrc était obsolète, tandis qu'une clé valide existait déjà dans ~/.config/pka-jch/api_keys.) — `wiki/Daily/2026/06/2026-06-03-correction-clé-deepseek-tui.md`
+
+2026-06-04 12:57 — Save Claude [model=claude-sonnet-4-6 ; project=AI_IT_TOOLS] : Intégration Qwen API via OpenRouter (QWEN.md, .qwen/settings.json, patch generate_tool_pointers.py, test API OK) — `wiki/Daily/2026-06-04.md`
+
+2026-06-04 23:11 — Save Codex [model=codex ; project=AI_IT_TOOLS] : Cloture session Qwen Dobby launchers (Session de configuration des lanceurs IA PKA. DeepSeek TUI a ete resynchronise avec sa cle, Qwen 3.7 Plus/Max via OpenRouter ont ete valides, Continue VS Code a ete corrige pour...) — `wiki/Daily/2026/06/2026-06-04-cloture-session-qwen-dobby-launchers.md`
