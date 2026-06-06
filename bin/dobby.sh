@@ -24,6 +24,13 @@ export PKA_DIR
 
 cd "$PKA_DIR"
 
+SECRETS_FILE="$HOME/.config/pka-jch/api_keys"
+if [[ -f "$SECRETS_FILE" ]]; then
+  set -a
+  source "$SECRETS_FILE"
+  set +a
+fi
+
 stop_ollama_model() {
   local model_name="$1"
   if command -v ollama &>/dev/null; then

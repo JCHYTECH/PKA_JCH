@@ -126,6 +126,7 @@ Budget : ~210€. Réversible (régulateurs d'origine remontables).
 - Commander convertisseur DC-DC USB-C PD 5A
 - Commander clé Zigbee + capteurs
 - Localiser physiquement DS300 et goujon -B2
+- [**Nouveau**] Testeur USB FNIRSI FNB58 (~35€) — diagnostique alim Pi 5, câbles PD e-mark, power banks avant montage
 
 ### Phase 1 — Setup base (~1 week-end)
 1. Pi 5 sur table → test alim secteur

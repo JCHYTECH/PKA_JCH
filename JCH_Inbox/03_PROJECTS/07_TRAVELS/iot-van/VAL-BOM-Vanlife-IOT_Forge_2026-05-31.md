@@ -7,6 +7,12 @@
 
 ---
 
+## Phase 0 — Outillage diagnostic
+
+| # | Composant | Modèle | Qté | Prix unit. | Total | Note |
+|---|----------|--------|-----|-----------|-------|------|
+| 0 | Testeur USB FNB58 | FNIRSI FNB58 — USB-C/A, PD, QC, Bluetooth | 1 | ~35 | 35 | Vérifier alim Pi 5, câbles PD, power banks avant montage |
+
 ## Phase 0-1 — Setup base
 
 | # | Composant | Modele | Qté | Prix unit. | Total |

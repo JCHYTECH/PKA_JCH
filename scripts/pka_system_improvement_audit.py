@@ -11,8 +11,10 @@ from pathlib import Path
 
 try:
     from scripts import generate_tool_pointers
+    from scripts import generate_todo
 except ModuleNotFoundError:
     import generate_tool_pointers
+    import generate_todo
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -84,6 +86,25 @@ def check_instruction_surface() -> list[dict]:
                 "mitigation": "sync overlay wording with TEAM/team.db roster count",
                 "quick_win": True,
             })
+    return findings
+
+
+def check_todo_drift() -> list[dict]:
+    """Check if todo-jch.html is out of sync with todo-jch.json."""
+    findings = []
+    try:
+        rc = generate_todo.generate(check=True)
+    except Exception:
+        rc = 1
+    if rc != 0:
+        findings.append({
+            "severity": "low",
+            "check": "todo-drift",
+            "path": "JCH_Inbox/todo-jch.html vs todo-jch.json",
+            "detail": "generated HTML is out of sync with JSON task data",
+            "mitigation": "run `python3 scripts/generate_todo.py` to resync",
+            "quick_win": True,
+        })
     return findings
 
 
@@ -245,6 +266,7 @@ def check_skills_surface() -> list[dict]:
 def run_audit() -> dict:
     findings = []
     findings.extend(check_instruction_surface())
+    findings.extend(check_todo_drift())
     findings.extend(check_pointer_generation_drift())
     findings.extend(check_script_surface())
     findings.extend(check_hook_surface())

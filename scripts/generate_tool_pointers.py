@@ -38,7 +38,7 @@ def list_projects() -> list[str]:
 def inbox_count() -> int:
     if not INBOX_DIR.is_dir():
         return 0
-    return sum(1 for item in INBOX_DIR.iterdir() if item.name != ".DS_Store")
+    return sum(1 for item in INBOX_DIR.iterdir() if item.is_file() and not item.name.startswith("."))
 
 
 def render_pointer(filename: str, tool_cfg: dict, cfg: dict, team_count: int) -> str:
@@ -69,6 +69,15 @@ def render_pointer(filename: str, tool_cfg: dict, cfg: dict, team_count: int) ->
         "",
         "Read these at session start. This file is a pointer, not a copy.",
         "",
+    ])
+    behavioral_rules = cfg.get("behavioral_rules", [])
+    if behavioral_rules:
+        lines.extend(["## Behavioral rules (MANDATORY)", ""])
+        for rule in behavioral_rules:
+            lines.append(f"- {rule}")
+        lines.append("")
+
+    lines.extend([
         "## Operating protocol",
         "",
         cfg["operating_protocol"],
@@ -110,8 +119,11 @@ def render_claude_managed_block(cfg: dict, team_count: int) -> str:
         f"- Current scan snapshot: {len(list_projects())} projets actifs ({projects}) ; {inbox_items} éléments dans `JCH_Inbox/00_INBOX/`.",
         "",
         "Tool pointer files " + ", ".join(f"`{f}`" for f in cfg["tools"]) + " are derived from the same canonical source.",
-        CLAUDE_BLOCK_END,
+        "",
     ]
+    for rule in cfg.get("behavioral_rules", []):
+        lines.append(f"- {rule}")
+    lines.append(CLAUDE_BLOCK_END)
     return "\n".join(lines)
 
 

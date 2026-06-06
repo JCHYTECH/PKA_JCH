@@ -1,9 +1,14 @@
 # What to do for noise — Traitement post-production audio BirdNET
 
+> **STATUT : ABANDONNÉ** — 2026-06-05
+> Décision JCH : le projet de nettoyage audio RNNoise est arrêté.
+> Raison : RNNoise entraîné sur voix humaine (300 Hz–3,4 kHz) — incompatible avec les chants d'oiseaux (2–8 kHz). Le filtre `arnndn` était également indisponible dans l'environnement cron. Le besoin métier reste ouvert si une solution plus adaptée (`afftdn` ou autre) est priorisée un jour.
+> **Cleanup effectué :** crontab retiré, script archivé → `JCH_Inbox/07_ARCHIVES/rnnoise-overnight.sh`, fichiers techniques supprimés (log, modèle `.rnn`, raw/*).
+
 **Date :** 2026-06-04
 **Projet :** WildNexus / Bioacoustique
 **Contexte :** Discussion Qwen 3.7 (local Ollama) → [[Dobby]]/[[Forge]] → implémentation RNNoise batch
-**Fichiers liés :** `rnnoise-overnight.sh`, `BIRDNET_PI_ACCESS.md`, `Projet_bioacoustique.md`
+**Fichiers liés :** `BIRDNET_PI_ACCESS.md`, `Projet_bioacoustique.md`
 
 ---
 

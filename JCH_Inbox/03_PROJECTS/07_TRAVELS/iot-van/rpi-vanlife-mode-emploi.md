@@ -15,6 +15,7 @@
 - Pince à dénuder ou cutter
 - Tournevis cruciforme (pour bornier convertisseur)
 - Multimètre (indispensable — pour vérifier la tension avant de brancher le Pi)
+- **Testeur USB FNIRSI FNB58** (recommandé — vérifie tension/courant réels, protocole PD, câbles e-mark, power banks)
 - Fer à souder + étain (uniquement pour les verrous §8 — pas nécessaire pour le setup de base)
 - Gaine thermorétractable ou scotch d'électricien
 
