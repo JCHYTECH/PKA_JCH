@@ -2,6 +2,10 @@
 
 ---
 
+2026-06-05 20:15 — Save : daily note 2026-06-05 mise à jour (SSH M5 réparé — VNC iPad BVNC Pro — M5 ARD bloquant — RPi écran noir headless)
+
+2026-06-05 10:10 — Save : daily note 2026-06-05 créée (Thunderbolt M1↔M5 opérationnel — backup auto 4h — règle multi-terminal propagée tous modèles)
+
 2026-06-03 22:45 — Save : daily note 2026-06-03 créée (sécurité API — centralisation api_keys — rotation clé NVIDIA Continue — DOBBY_CLAUDE_KEY à régénérer)
 
 2026-06-02 23:15 — Save : daily note 2026-06-02 mise à jour — session 2 PKA_DECOUVERTES (collector bot Telegram opérationnel — analyzer Claude Vision — fiches Obsidian générées — launchd com.pka.decouvertes actif)

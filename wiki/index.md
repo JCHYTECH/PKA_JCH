@@ -15,6 +15,10 @@
 | 04 | 🔄 Workstreams | `Workstreams/` | Orchestrations récurrentes multi-spécialistes |
 | 05 | 📐 Guidelines | `Guidelines/` | Référentiels statiques partagés par toute l'équipe |
 
+## Système & Infrastructure
+
+- [[JCH_Inbox/99_SYSTEM/thunderbolt-m1-m5-mode-emploi|Thunderbolt Bridge M1↔M5 — Mode d'emploi]] — réseau 40 Gb/s, backup auto PKA_JCH
+
 ## SOPs (Procédures)
 
 - [[SOPs/SOP-005-checklist-terrain-bioacoustique|SOP-005 — Checklist Terrain Bioacoustique RPi 5]]
