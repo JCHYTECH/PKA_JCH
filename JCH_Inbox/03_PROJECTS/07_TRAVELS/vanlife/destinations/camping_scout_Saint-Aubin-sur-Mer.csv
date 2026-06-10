@@ -1,0 +1,462 @@
+Nom,Source,Type,Adresse,Distance (km),Latitude,Longitude,URL,Description,Services,Prix,Note,Score JCH,Réserve proche
+Bréville-les-Monts,OSM-camping,Camping / Aire CC,,15.2,49.2416041,-0.228141,https://www.openstreetmap.org/node/5838904123,,eau,Gratuit,,6,Banc des Oiseaux (4.7 km)
+Cabourg Market,OSM-camping,Camping / Aire CC,,19.2,49.2795715,-0.1350559,https://www.openstreetmap.org/node/11055216340,,vidange,Gratuit,,8,Site naturel des Vaches Noires (6.0 km)
+Aire de camping-car de Hermanville-sur-Mer,OSM-camping,Camping / Aire CC,,7.0,49.2883661,-0.3146017,https://www.openstreetmap.org/node/12085844090,,"vidange, eau",~15.20 €,,9,Réserve naturelle de la falaise du Cap-Romain (7.9 km)
+Aire de stationnement pour camping-car - Langrune-sur-Mer,OSM-camping,Camping / Aire CC,,1.4,49.3203991,-0.3746738,https://www.openstreetmap.org/node/12173079182,,,Gratuit,,9,Réserve naturelle de la falaise du Cap-Romain (2.3 km)
+Camping Village Ariane,OSM-camping,Camping / Aire CC,Merville-Franceville-Plage,15.3,49.2821648,-0.1908055,https://www.openstreetmap.org/way/62460153,,,,★3,6,Banc des Oiseaux (3.1 km)
+Donjon de Lars,OSM-camping,Camping / Aire CC,,4.0,49.3337257,-0.4436412,https://www.openstreetmap.org/way/69693083,,,Payant,★4,9,Réserve naturelle de la falaise du Cap-Romain (3.4 km)
+Camping de la Vallée,OSM-camping,Camping / Aire CC,Houlgate,23.8,49.2924247,-0.0655312,https://www.openstreetmap.org/way/101023115,,"vidange, eau, douches, WC",,,7,Site naturel des Vaches Noires (1.4 km)
+Camping Riva Bella,OSM-camping,Camping / Aire CC,,11.8,49.2692477,-0.254318,https://www.openstreetmap.org/way/107464620,,,,★4,9,Banc des Oiseaux (2.2 km)
+Camping de la Mer,OSM-camping,Camping / Aire CC,Merville-Franceville-Plage,15.5,49.2847723,-0.187289,https://www.openstreetmap.org/way/107607588,,vidange,,,6,Banc des Oiseaux (3.4 km)
+La Pommeraie,OSM-camping,Camping / Aire CC,,19.0,49.2814925,-0.1370269,https://www.openstreetmap.org/way/108356758,,,,★2,8,Site naturel des Vaches Noires (6.0 km)
+Camping de la plage,OSM-camping,Camping / Aire CC,Houlgate,23.3,49.3062209,-0.0694695,https://www.openstreetmap.org/way/108867042,,,,★3,7,Site naturel des Vaches Noires (0.5 km)
+Camping Les Falaises,OSM-camping,Camping / Aire CC,,25.0,49.3077035,-0.0467431,https://www.openstreetmap.org/way/110571247,,,,★4,7,Site naturel des Vaches Noires (1.2 km)
+Le Vert Pré,OSM-camping,Camping / Aire CC,,18.6,49.2810162,-0.1432165,https://www.openstreetmap.org/way/111722008,,,,,8,Site naturel des Vaches Noires (6.4 km)
+Le Cottage Fleuri,OSM-camping,Camping / Aire CC,,17.1,49.2800588,-0.1658423,https://www.openstreetmap.org/way/111722020,,,,★2,6,Banc des Oiseaux (4.9 km)
+Le Point du Jour Camping,OSM-camping,Camping / Aire CC,Merville-Franceville-Plage,15.1,49.2844424,-0.1922551,https://www.openstreetmap.org/way/111722049,,"vidange, eau, douches, WC",Payant,★4,6,Banc des Oiseaux (3.0 km)
+Les Peupliers,OSM-camping,Camping / Aire CC,Merville-Franceville-Plage,16.7,49.2819528,-0.1713303,https://www.openstreetmap.org/way/111722057,,,,★4,6,Banc des Oiseaux (4.5 km)
+Camping Oasis,OSM-camping,Camping / Aire CC,,15.2,49.2845124,-0.1911243,https://www.openstreetmap.org/way/111722064,,"vidange, eau, douches, WC",,★3,6,Banc des Oiseaux (3.1 km)
+Parc résidentiel de loisirs Pasteur,OSM-camping,Camping / Aire CC,,17.0,49.2819465,-0.1663316,https://www.openstreetmap.org/way/111722068,,,,,6,Banc des Oiseaux (4.9 km)
+Oasis de Cabourg,OSM-camping,Camping / Aire CC,,18.8,49.2844374,-0.1386992,https://www.openstreetmap.org/way/111722070,,,,,8,Site naturel des Vaches Noires (6.0 km)
+Le Toucan,OSM-camping,Camping / Aire CC,,18.8,49.2828268,-0.1402328,https://www.openstreetmap.org/way/111722105,,,,,8,Site naturel des Vaches Noires (6.2 km)
+Camping municipal des Bords de l'Aure,OSM-camping,Camping / Aire CC,,23.1,49.283101,-0.6989862,https://www.openstreetmap.org/way/126515462,,,Payant,★3,3,
+Les Hautes Coutures,OSM-camping,Camping / Aire CC,Bénouville,12.3,49.2485985,-0.2722277,https://www.openstreetmap.org/way/141766267,,,,★4,7,Banc des Oiseaux (4.8 km)
+Domaine Les Prairies de la Mer,OSM-camping,Camping / Aire CC,,9.8,49.2859577,-0.2713656,https://www.openstreetmap.org/way/141771552,,,,★4,9,Banc des Oiseaux (2.8 km)
+Camping Côte de Nacre,OSM-camping,Camping / Aire CC,,0.5,49.3250254,-0.3907558,https://www.openstreetmap.org/way/142186514,,,,★5,9,Réserve naturelle de la falaise du Cap-Romain (1.2 km)
+Camping Havre de Bernières,OSM-camping,Camping / Aire CC,,3.0,49.3309172,-0.4302207,https://www.openstreetmap.org/way/142197545,,,,★4,9,Réserve naturelle de la falaise du Cap-Romain (2.5 km)
+Camping La Capricieuse,OSM-camping,Camping / Aire CC,,2.4,49.3182843,-0.3593438,https://www.openstreetmap.org/way/142409571,url: https://www . campinglacapricieuse . com ... contains MALWARE !!! use url: https://www.yellohvillage-lacapricieuse.com .... clean :),,Payant,★5,7,Réserve naturelle de la falaise du Cap-Romain (3.3 km)
+Mer et Vacances,OSM-camping,Camping / Aire CC,,2.0,49.3210815,-0.3636228,https://www.openstreetmap.org/way/142409583,,,,★5,9,Réserve naturelle de la falaise du Cap-Romain (2.9 km)
+Camping municipal Quintefeuille,OSM-camping,Camping / Aire CC,,14.1,49.339948,-0.5814036,https://www.openstreetmap.org/way/173296782,,,,★2,7,Réserve naturelle des anciennes carrières d'Orival (7.5 km)
+Le Clos Tranquille,OSM-camping,Camping / Aire CC,,16.9,49.2523736,-0.1882391,https://www.openstreetmap.org/way/196716702,,,,★3,6,Banc des Oiseaux (4.8 km)
+Camping des Capucines,OSM-camping,Camping / Aire CC,,13.9,49.2378601,-0.2584406,https://www.openstreetmap.org/way/196717595,,,,,7,Banc des Oiseaux (5.4 km)
+Aire Camping-Car Ouistreham,OSM-camping,Camping / Aire CC,Ouistreham,11.1,49.2876657,-0.2499007,https://www.openstreetmap.org/way/245126254,,vidange,~13 €,,9,Banc des Oiseaux (1.3 km)
+(sans nom),OSM-camping,Camping / Aire CC,,1.2,49.3188255,-0.3824645,https://www.openstreetmap.org/way/248899363,Aire naturelle de Camping,,,,9,Réserve naturelle de la falaise du Cap-Romain (2.1 km)
+Aire Chemin du Hameau de la Rivière Bayeux,OSM-camping,Camping / Aire CC,,23.0,49.2817204,-0.6961438,https://www.openstreetmap.org/way/255284439,,"vidange, eau",Gratuit,,3,
+Caming du Prieuré,OSM-camping,Camping / Aire CC,,17.5,49.2276454,-0.2042898,https://www.openstreetmap.org/way/255557079,,,,★2,8,Réserve de Saint-Samson (6.4 km)
+Camping Canadian Scottish,OSM-camping,Camping / Aire CC,,6.6,49.3381292,-0.479004,https://www.openstreetmap.org/way/262865262,,,,★2,9,Réserve naturelle de la falaise du Cap-Romain (6.0 km)
+Les Salines,OSM-camping,Camping / Aire CC,Colleville-Montgomery,9.0,49.2888064,-0.282036,https://www.openstreetmap.org/way/275994707,,,,★3,7,Banc des Oiseaux (3.6 km)
+Camping Bois et Marais,OSM-camping,Camping / Aire CC,Touffréville,18.8,49.1997605,-0.222273,https://www.openstreetmap.org/way/296847825,,,,,6,Réserve de Saint-Samson (5.7 km)
+Aire de camping-cars – Merville-Franceville-Plage,OSM-camping,Camping / Aire CC,Merville-Franceville-Plage,13.9,49.2851387,-0.209876,https://www.openstreetmap.org/way/343492671,,"vidange, eau",Gratuit,,9,Banc des Oiseaux (1.7 km)
+Aire de Camping-cars Hérouvillette,OSM-camping,Camping / Aire CC,,16.0,49.2199345,-0.2449372,https://www.openstreetmap.org/way/343494369,,"vidange, eau",Gratuit,,6,Banc des Oiseaux (7.2 km)
+Camping du Golf,OSM-camping,Camping / Aire CC,,23.9,49.27856,-0.0692747,https://www.openstreetmap.org/way/390577582,,,,★3,5,Site naturel des Vaches Noires (3.0 km)
+Aire de stationnement camping-car – Colonel Harivel,OSM-camping,Camping / Aire CC,,1.6,49.3246612,-0.368136,https://www.openstreetmap.org/way/515919221,,,Gratuit,,9,Réserve naturelle de la falaise du Cap-Romain (2.4 km)
+Camping La Ferme,OSM-camping,Camping / Aire CC,Lion-sur-Mer,5.1,49.3043393,-0.3297412,https://www.openstreetmap.org/way/516687917,,"vidange, eau, douches, WC",Payant,,9,Réserve naturelle de la falaise du Cap-Romain (6.0 km)
+Aire de Camping Cars - Caen Memorial,OSM-camping,Camping / Aire CC,,14.4,49.1993645,-0.3861566,https://www.openstreetmap.org/way/549376917,,,Gratuit,,5,
+Parking du Musée Mémorial de la Bataille de Normandie,OSM-camping,Camping / Aire CC,,24.2,49.2723199,-0.7104143,https://www.openstreetmap.org/way/549775277,,,~5.50 €,,3,
+Aire de camping-cars de Colleville-Montgomery,OSM-camping,Camping / Aire CC,,9.2,49.2709088,-0.2989892,https://www.openstreetmap.org/way/644524008,,"vidange, eau",~13 €,,7,Banc des Oiseaux (5.0 km)
+Dives-sur-Mer Port-Guillaume,OSM-camping,Camping / Aire CC,,21.1,49.2898025,-0.1042592,https://www.openstreetmap.org/way/759222191,,"vidange, eau",~6 €,,5,Site naturel des Vaches Noires (3.5 km)
+Le Clos du Moulin,OSM-camping,Camping / Aire CC,,6.0,49.325753,-0.4706705,https://www.openstreetmap.org/way/838664288,,,,★2,9,Réserve naturelle de la falaise du Cap-Romain (5.5 km)
+Camping Les Trois Rivières,OSM-camping,Camping / Aire CC,,11.1,49.2899711,-0.5283154,https://www.openstreetmap.org/way/838665483,,,,★3,9,Réserve naturelle des anciennes carrières d'Orival (0.8 km)
+Camping Les Bas Carreaux,OSM-camping,Camping / Aire CC,,17.9,49.3352328,-0.6343249,https://www.openstreetmap.org/way/838674832,,,,★1,4,
+Le Conquérant,OSM-camping,Camping / Aire CC,,22.3,49.2853556,-0.0889105,https://www.openstreetmap.org/way/854468353,,,,,7,Site naturel des Vaches Noires (2.9 km)
+Aire Camping-car Lion-sur-Mer,OSM-camping,Camping / Aire CC,,6.2,49.3006313,-0.316061,https://www.openstreetmap.org/way/896295156,,,~15.20 €,,9,Réserve naturelle de la falaise du Cap-Romain (7.0 km)
+Camping du Château de Martragny,OSM-camping,Camping / Aire CC,,17.9,49.2486776,-0.6018609,https://www.openstreetmap.org/way/958620173,,,,,6,Réserve naturelle des anciennes carrières d'Orival (7.3 km)
+Table d'orientation,OSM-camping,Camping / Aire CC,,16.4,49.3393712,-0.6137157,https://www.openstreetmap.org/way/971188085,,,~11 €/24 hour,,4,
+Les Peupliers,OSM-camping,Camping / Aire CC,,21.0,49.2995514,-0.6743107,https://www.openstreetmap.org/way/991758724,,,~15 €,,3,
+La Gentilhommière,OSM-camping,Camping / Aire CC,,7.2,49.3130165,-0.4850158,https://www.openstreetmap.org/way/1030050579,,,,,9,Réserve naturelle de la falaise du Cap-Romain (6.9 km)
+Aire de camping-car Bretteville sur Odon,OSM-camping,Camping / Aire CC,,18.7,49.1626108,-0.4257833,https://www.openstreetmap.org/way/1078232748,,"vidange, eau",~14.40 €,,4,
+Aire communale d'Arromanches-les-Bains,OSM-camping,Camping / Aire CC,,17.3,49.3384517,-0.6262298,https://www.openstreetmap.org/way/1092294291,,"vidange, eau",~11 €/24 hours,,4,
+Camping-car Park Caen,OSM-camping,Camping / Aire CC,Caen,14.7,49.1968562,-0.3812779,https://www.openstreetmap.org/way/1167024938,,vidange,~14.70 €,,5,
+Cabourg Avenue Michel d'Ornano,OSM-camping,Camping / Aire CC,,20.3,49.2823213,-0.1192469,https://www.openstreetmap.org/way/1190646972,,eau,Gratuit,,5,Site naturel des Vaches Noires (4.8 km)
+Aire de camping-car Avenue de la Combattante,OSM-camping,Camping / Aire CC,,4.4,49.3346679,-0.4479316,https://www.openstreetmap.org/way/1212989291,,,Gratuit,,9,Réserve naturelle de la falaise du Cap-Romain (3.7 km)
+Aire de camping-car communale du Parc de l'Edit à Courseulles-sur-Mer,OSM-camping,Camping / Aire CC,,4.0,49.3302194,-0.4429478,https://www.openstreetmap.org/way/1213103642,,"vidange, eau",Gratuit,,9,Réserve naturelle de la falaise du Cap-Romain (3.4 km)
+Aire de camping-car communale de Luc-Sur-Mer,OSM-camping,Camping / Aire CC,,3.7,49.31416,-0.3433774,https://www.openstreetmap.org/way/1217355856,,"vidange, eau",Gratuit,,7,Réserve naturelle de la falaise du Cap-Romain (4.5 km)
+Camping & Espace Loisirs Pierre Soismier,OSM-camping,Camping / Aire CC,,19.0,49.2882731,-0.1346108,https://www.openstreetmap.org/way/1226701259,Priorité aux habitants de Mondeville. Ouverture aux personnes extérieures si les emplacements sont disponibles et dans une quotité limitée pour une durée n’excédant pas 8 jours/7 nuits.,"eau, douches, WC",,,8,Site naturel des Vaches Noires (5.6 km)
+Camping Alanjo,OSM-camping,Camping / Aire CC,,15.6,49.2464736,-0.2147235,https://www.openstreetmap.org/way/1239566951,,,,,6,Banc des Oiseaux (4.4 km)
+Hue Cocotte,OSM-camping,Camping / Aire CC,,19.8,49.3350885,-0.6607251,https://www.openstreetmap.org/way/1257529359,,eau,~14 €,,4,
+Les Rivages,OSM-camping,Camping / Aire CC,,15.9,49.2841829,-0.1805133,https://www.openstreetmap.org/way/1305803319,,,,,6,Banc des Oiseaux (3.9 km)
+Aire de camping-car – Sallenelles,OSM-camping,Camping / Aire CC,,13.8,49.2648406,-0.2270935,https://www.openstreetmap.org/way/1316489138,,"vidange, eau",Gratuit,,9,Banc des Oiseaux (2.2 km)
+Parking Pierre Trébucien,OSM-camping,Camping / Aire CC,,24.3,49.2765402,-0.7127601,https://www.openstreetmap.org/way/1316961384,,,~5.50 €,,3,
+(14880) Camping Les Salines  Camping les Salines *** proche,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/4579,,,,,5,
+(14810) La Maison Blanche  Corps de ferme situé face à la ba,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/417038,,,,,5,
+(14810) Camping Seasonova - Le Point du Jour  Grâce à l’accè,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/52581,,,,,5,
+(14750) Camping Sandaya Côte de Nacre  Venez prendre un bol,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/8748,,,,,5,
+(14750) Saint-Aubin-sur-Mer - 20 Rue de Verdun  Parking plat,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/185651,,,,,5,
+(14990) Bernières-sur-Mer - Avenue du Littoral  Parking le l,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/270971,,,,,5,
+(14990) Bernières-sur-Mer - Rue de Verdun  Un bon endroit po,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/614455,,,,,5,
+(14830) Langrune-sur-Mer - 11 Route de Courseulles  Le long,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/169017,,,,,5,
+(14830) Langrune-sur-Mer - 6 Rue du Colonel Pierre Harivel,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/3497,,,,,5,
+(14990) Bernières-sur-Mer - 215 Rue de Verdun  Large trottoi,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/142725,,,,,5,
+(14990) Bernières-sur-Mer - 245 Voie du Débarquement  Laveri,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/420636,,,,,5,
+(14990) Bernières-sur-Mer - D514  Parking en bord de route a,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/609392,,,,,5,
+"(14530) Camping La Capricieuse  Camping La Capricieuse ****,",park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/8760,,,,,5,
+(14990) Bernières-sur-Mer - D514 Rue Victor Tesnière  Parkin,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/176745,,,,,5,
+(14530) Luc-sur-Mer - 2 Rue Guynemer  Merveilleux petit park,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/424977,,,,,5,
+(14530) Luc-sur-Mer - 12 Rue du Général Dubail  Parking publ,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/224522,,,,,5,
+(14440) Douvres-la-Délivrande - 46P Voie des Alliés  Parking,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/532398,,,,,5,
+(14530) Luc-sur-Mer - 10 Rue de l'Église  Parking à l'église,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/547737,,,,,5,
+(14530) Luc-sur-Mer - 27 Route de Lion  Parking sans panneau,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/436146,,,,,5,
+(14440) Douvres-la-Délivrande - Chemin du Hutrel  Grand park,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/114493,,,,,5,
+(14530) Luc-sur-Mer - 45 Route de Lion  Une longue route de,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/14595,,,,,5,
+(14470) Aire de camping-car Parc de l'Edit  Courseulles-sur-,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/115786,,,,,5,
+(14470) Courseulles-sur-Mer - Avenue de la Combattante  Park,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/620305,,,,,5,
+(14470) Courseulles-sur-Mer - 48 Avenue de la Combattante  N,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/240882,,,,,5,
+(14440) Douvres-la-Délivrande - 21B Rue de la Poterie  Parki,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/284020,,,,,5,
+(14470) Courseulles-sur-Mer - 10 Chemin de la Délivrande  La,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/459453,,,,,5,
+(14470) Courseulles-sur-Mer - Chemin de la Délivrande  Stati,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/659466,,,,,5,
+(14470) Courseulles-sur-Mer - 5B Rue du Point du Jour  Parki,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/154722,,,,,5,
+(14470) Courseulles-sur-Mer - Rue de la Mer  Laverie automat,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/619465,,,,,5,
+(14440) Douvres-la-Délivrande - Route de Bény  Parking du mu,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/18409,,,,,5,
+(14780) Lechevalier Dany - Camping  Lechevalier Dany. Campin,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/62216,,,,,5,
+(14470) Courseulles-sur-Mer - 41 Quai Est  Attention barre d,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/280881,,,,,5,
+(14470) Courseulles-sur-Mer - Voie des Français Libres  Park,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/15826,,,,,5,
+(14440) Cresserons - Clos du Four  Parking calme derrière la,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/57428,,,,,5,
+(14470) Graye-sur-Mer - 8 Avenue du Général de Gaulle  Atten,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/426081,,,,,5,
+(14780) Oasis camping  Oasis camping☆☆ en bord de mer. Nous,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/15392,,,,,5,
+(14470) Graye-sur-Mer - 8 Avenue du Général de Gaulle  Sur l,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/498715,,,,,5,
+(14470) Camping Clos du Moulin  Camping Clos du Moulin vous,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/143989,,,,,5,
+(14780) Lion-sur-Mer - 11 Allée de la Ferme  Lavomatic à l'e,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/601887,,,,,5,
+(14470) Reviers - 45 Rue des Moulins  Endroit calme a l'entr,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/255137,,,,,5,
+(14780) Lion-sur-Mer - 9 Boulevard Carnot  Aire CAMPING-CAR,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/186393,,,,,5,
+(14470) Camping municipal Canadian Scottish**  Camping munic,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/17359,,,,,5,
+(14880) Hermanville-sur-Mer - D60  Près du nouveau cimetière,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/37646,,,,,5,
+(14880) Hermanville-sur-Mer - 24 Avenue Albert Camus  Aire C,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/562888,,,,,5,
+(14610) Fontaine-Henry - 10 Chemin du Presbytère  Parking du,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/133314,,,,,5,
+(14880) Colleville-Montgomery - Rue Dumenoir  Point d'eau un,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/676093,,,,,5,
+(14880) Colleville-Montgomery - Rue de la Mer  Hier befindet,park4night,Spot communautaire,,76.7,49.7492373,0.452349,https://park4night.com/fr/place/683193,,,,,3,
+(14880) AireServices Colleville-Montgomery  L'aire d'accueil,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/343750,,,,,5,
+(14114) Ver-sur-Mer - Rue de la Libération  Découverte par h,park4night,Spot communautaire,,87.9,48.894234,-1.3937011,https://park4night.com/fr/place/644566,,,,,3,
+(14150) Ouistreham - 2 Avenue Pasteur  Laverie en face du su,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/185899,,,,,5,
+(14150) Parking Alfred Thomas  Parking gratuit du 1er novemb,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/220502,,,,,5,
+(14480) Camping 3 Rivières***  Un cadre bucolique à deux pas,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/9612,,,,,5,
+(14150) Ouistreham - 30 Boulevard maritime  Parking en épis,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/96587,,,,,5,
+(14150) Ouistreham - 42 Avenue de la Redoute  Accueil campin,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/432040,,,,,5,
+(14150) Aire de camping-car Ouistreham Riva-Bella  Aire de s,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/2946,,,,,5,
+(14610) Cairon - Chem. Notre Dame du Marais  Parking près de,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/666655,,,,,5,
+(14480) Creully sur Seulles - 20 Rue de Tierceville  Parking,park4night,Spot communautaire,,?,,,https://park4night.com/fr/place/544290,,,,,5,
+"(14480) Creully - 8 Rue de Courseulles  Grand Parking, avec",park4night,Spot communautaire,,12.0,49.2846778,-0.5391023,https://park4night.com/fr/place/139719,,,,,9,Réserve naturelle des anciennes carrières d'Orival (1.4 km)
+Une paix inestimable et de belles vues,campspace,Chez l'habitant,"Beesel, Limbourg, Pays-Bas",?,,,https://campspace.com/fr/s/onbetaalbare-rust-en-prachtig-uitzicht_9352?pitchTypeId=8556&,"Réservation instantanée
+
+CAMPING BEESEL SUR LA MAAS
+Type d'hébergement
+
+Van
+
+Camping-car
+
+Tente de toit
+
+Réveillez-vous la fenêtre ouverte au chant des oiseaux. Camping BEESEL AAN DE MAAS. Nouveau cam",,de € 19.50 par nuit,,5,
+"Emplacements de camping à Bad Grönenbach, en Bavière",campspace,Chez l'habitant,"Bad Grönenbach, Bavière, Allemagne",?,,,https://campspace.com/fr/s/campspace-in-bad-groenenbach-bayern_25531?pitchTypeId=28364&,"Emplacement privé pour tente de toit, camping-car, camping-car de plus d'une demi-tonne, caravane, tente
+Type d'hébergement
+
+Tente
+
+Caravane
+
+Camping-car
+
+Tente de toit
+
+Accès par voie privée. Animaux",,de € 15.00 par nuit,,5,
+Endroit ensoleillé de la Costa Brava,campspace,Chez l'habitant,"Rabós d'Empordà, Catalogne, Espagne",?,,,https://campspace.com/fr/s/sunny-spot-costa-brava_18646?pitchTypeId=18729&,"Réservation instantanée
+
+Emplacement pour Van, Camping Car
+Type d'hébergement
+
+Van
+
+Camping-car
+
+Tente de toit
+
+Profitez de quelques jours d'immersion totale dans la nature, sous le soleil et en compa",,de € 12.50 par nuit,,5,
+Vue alpine à 870 m sur l'Auerberg,campspace,Chez l'habitant,"Bernbeuren, Bavière, Allemagne",?,,,https://campspace.com/fr/s/alpenblick-auf-870-m-auf-dem-auerberg_21541?pitchTypeId=30118&,"Réservation instantanée
+
+Alpenblick, vue sur la montagne
+Type d'hébergement
+
+Caravane
+
+Van
+
+Camping-car
+
+Tente de toit
+
+Bonjour, les emplacements sont en dur. Un grand arbre au milieu offre de l'ombre",,de € 30.00 par nuit,,5,
+Détendez-vous et profitez du cœur vert autour de Leiderdorp,campspace,Chez l'habitant,"Leiderdorp, Hollande du Sud, Pays-Bas",?,,,https://campspace.com/fr/s/ontspannen-en-genieten-in-het-groene-hart-rond-leiderdorp_5322?pitchTypeId=3224&,"Détendez-vous et profitez du cœur vert autour de Leiderdorp
+Type d'hébergement
+
+Tente
+
+Caravane
+
+Van
+
+Camping-car
+
+Tente de toit
+
+En savoir plus
+de € 27.00 par nuit",,de € 27.00 par nuit,,5,
+"Campspace in Arles, Provence-Alpes-Côte d'Azur",campspace,Chez l'habitant,"Arles, Provence-Alpes-Côte d'Azur, France",?,,,https://campspace.com/fr/s/campspace-in-arles-provence-alpes-cote-d-azur_13323?pitchTypeId=12845&,"Réservation instantanée
+
+Emplacement pour Tente, Caravane, Van, Camping-car
+Type d'hébergement
+
+Tente
+
+Caravane
+
+Van
+
+Camping-car
+
+Tente de toit
+
+Nous vous proposons des grands emplacements ombragés a",,de € 16.00 par nuit,,5,
+Camping à la ferme nostalgique près de la ville animée d'Amsterdam,campspace,Chez l'habitant,"Ouderkerk aan de Amstel, Hollande du Nord, Pays-Bas",?,,,https://campspace.com/fr/s/nostalgische-boerencamping-nabij-bruisend-amsterdam_5721?pitchTypeId=27926&,"Tente, caravane, camping-car, tente de toit
+Type d'hébergement
+
+Tente
+
+Caravane
+
+Van
+
+Tente de toit
+
+Le camping propose 10 emplacements spacieux avec branchement électrique 6 ampères et une vue impren",,de € 28.00 par nuit,,5,
+Mini camping près de la côte à Callantsoog,campspace,Chez l'habitant,"Callantsoog, Hollande du Nord, Pays-Bas",?,,,https://campspace.com/fr/s/minicamping-vlakbij-de-kust-in-callantsoog_5014?pitchTypeId=2819&,"Réservation instantanée
+
+Camping 'Vitamines au Bord de la Mer' (tous types)
+Type d'hébergement
+
+Tente
+
+Caravane
+
+Van
+
+Camping-car
+
+Tente de toit
+
+Endroit idéal si vous êtes de passage et/ou souhaitez ",,de € 22.00 par nuit,,5,
+En plein milieu de la ferme d'autruches,campspace,Chez l'habitant,"Freystadt, Bavière, Allemagne",?,,,https://campspace.com/fr/s/mittendrin-auf-der-straussenfarm_25514?pitchTypeId=28347&,"Emplacement privé pour tente de toit, camping-car, camping-car de plus d'une demi-tonne, caravane, tente
+Type d'hébergement
+
+Tente
+
+Caravane
+
+Van
+
+Camping-car
+
+Tente de toit
+
+Emplacement : chemin priv",,de € 24.00 par nuit,,5,
+Espace de camping à Balatonudvari,campspace,Chez l'habitant,"Balatonudvari, Hongrie",?,,,https://campspace.com/fr/s/campspace-in-balatonudvari_16382?pitchTypeId=16153&,"Réservation instantanée
+
+Emplacement pour Caravane, Van, Camping-car
+Type d'hébergement
+
+Caravane
+
+Van
+
+Camping-car
+
+Tente de toit
+
+• 3 emplacements de 5 x 10 m chacun
+• taille de véhicule autorisée :",,de € 20.00 par nuit,,5,
+"Au calme, à la ferme à Orx en Nouvelle-Aquitaine",campspace,Chez l'habitant,"Orx, Nouvelle-Aquitaine, France",?,,,https://campspace.com/fr/s/au-calme-a-la-ferme-a-orx-en-nouvelle-aquitaine_17057?pitchTypeId=16912&,"Réservation instantanée
+
+Emplacement pour Tente, Caravane, Van, Camping-car
+Type d'hébergement
+
+Tente
+
+Caravane
+
+Van
+
+Camping-car
+
+Tente de toit
+
+Le terrain est plat et ombragé, facile d'accès. Nous p",,de € 10.00 par nuit,,5,
+Nid de pinson au-dessus du terrain de golf,campspace,Chez l'habitant,"Sulzberg, Vorarlberg, Autriche",?,,,https://campspace.com/fr/s/finkennest-ueberm-golfplatz_25486?pitchTypeId=28319&,"Réservation instantanée
+
+Emplacement privé pour tente de toit, camping-car, camping-car de plus de 500 kg, caravane, tente, fourgon aménagé
+Type d'hébergement
+
+Caravane
+
+Van
+
+Camping-car
+
+Tente de toi",,de € 14.00 par nuit,,5,
+"Camperplace, la liberté ultime comme le camping est censé être.",campspace,Chez l'habitant,"Nieuwleusen, Overijssel, Pays-Bas",?,,,https://campspace.com/fr/s/camperplaats-ultieme-vrijheid-zoals-camperen-bedoelt-is_5369?pitchTypeId=3288&,"Réservation instantanée
+
+emplacement camping-car
+Type d'hébergement
+
+Camping-car
+
+Tous les emplacements ont un sol en dur sous l'herbe. La plupart des emplacements ont l'électricité. Tous les lieux on",,de € 13.00 par nuit,,5,
+"Espace de camping à Sveto Mitrani, municipalité de Kruševo",campspace,Chez l'habitant,"Sveto Mitrani, Municipality of Kruševo, Macédoine",?,,,https://campspace.com/fr/s/campspace-in-sveto-mitrani-municipality-of-krusevo_26633?pitchTypeId=29923&,"Emplacement pour 12 personnes
+Type d'hébergement
+
+Tente
+
+Caravane
+
+Van
+
+Camping-car
+
+Tente de toit
+
+Les places de stationnement sont libres. Le terrain est légèrement irrégulier ; l’utilisation d’une ",,de € 15.00 par nuit,,5,
+"Espace de camping à Škofljica, Ljubljana",campspace,Chez l'habitant,"Škofljica, Ljubljana, Slovénie",?,,,https://campspace.com/fr/s/campspace-in-skofljica-ljubljana_25661?pitchTypeId=28495&,"Emplacement privé pour tente de toit, camping-car, caravane, tente, fourgon aménagé/camping-car VW, camping-car de plus de 1/2
+Type d'hébergement
+
+Tente
+
+Caravane
+
+Van
+
+Camping-car
+
+Tente de toit
+
+Ani",,de € 33.00 par nuit,,5,
+"Pissenlits à Friedeburg, Basse-Saxe",campspace,Chez l'habitant,"Friedeburg, Basse-Saxe, Allemagne",?,,,https://campspace.com/fr/s/loewenzahn-in-friedeburg-niedersachsen_25526?pitchTypeId=28359&,"Parking privé à Löwenzahn offrant de nombreuses possibilités en bordure de nature
+Type d'hébergement
+
+Tente
+
+Caravane
+
+Van
+
+Camping-car
+
+Tente de toit
+
+Environnement en bordure de champ. Accessible au",,de € 10.00 par nuit,,5,
+"Emplacement de camping à Reichertshausen, en Bavière",campspace,Chez l'habitant,"Reichertshausen, Bavière, Allemagne",?,,,https://campspace.com/fr/s/campspace-in-reichertshausen-bayern_25618?pitchTypeId=28452&,"Réservation instantanée
+
+Emplacement privé pour caravanes, tentes, camping-cars, tentes de toit, fourgons aménagés/bus VW
+Type d'hébergement
+
+Tente
+
+Caravane
+
+Van
+
+Camping-car
+
+Tente de toit
+
+Emplacem",,de € 22.00 par nuit,,5,
+"Campspace in Portiragnes Plage, Occitanie",campspace,Chez l'habitant,"Portiragnes Plage, Occitanie, France",?,,,https://campspace.com/fr/s/campspace-in-portiragnes-plage-occitanie_10877?pitchTypeId=10205&,"Réservation instantanée
+
+Emplacement pour Tente, Van, tente de toit
+Type d'hébergement
+
+Tente
+
+Van
+
+Tente de toit
+
+Nous proposons plusieurs emplacements spacieux, chacun aménagé avec soin pour garanti",,de € 20.00 par nuit,,5,
+"Espace de camping à Weerselo, Overijssel",campspace,Chez l'habitant,"Weerselo, Overijssel, Pays-Bas",?,,,https://campspace.com/fr/s/campspace-in-weerselo-overijssel_26365?pitchTypeId=29540&,"Réservation instantanée
+
+Emplacement pour 2 personnes
+Type d'hébergement
+
+Van
+
+Camping-car
+
+En savoir plus
+de € 19.50 par nuit",,de € 19.50 par nuit,,5,
+Endroit romantique dans le verger,campspace,Chez l'habitant,"Eckelsheim, Rhénanie-Palatinat, Allemagne",?,,,https://campspace.com/fr/s/romantischer-platz-auf-der-obstwiese_25634?pitchTypeId=28468&,"Réservation instantanée
+
+Place de parking dans le verger
+Type d'hébergement
+
+Tente
+
+Caravane
+
+Van
+
+Camping-car
+
+Tente de toit
+
+Emplacement : en bordure de champ, dans un pâturage, dans un champ. Anima",,de € 10.00 par nuit,,5,
+"Camp nature à Kopp, Rhénanie-Palatinat",campspace,Chez l'habitant,"Kopp, Rhénanie-Palatinat, Allemagne",?,,,https://campspace.com/fr/s/nature-camp-in-kopp-rijnland-palts_8517?pitchTypeId=23643&,"Réservation instantanée
+
+Camping-car
+Type d'hébergement
+
+Van
+
+Au sommet du pré, avec vue sur le pré. A l'ombre du matin.
+
+En savoir plus
+de € 28.00 par nuit",,de € 28.00 par nuit,,5,
+"Camping calme en Normandie, Vue imprenable sur la mer et le Coucher de Soleil",campspace,Chez l'habitant,"Eletot - Valleuse d'Eletot, Normandie, France",?,,,https://campspace.com/fr/s/camping-calme-en-normandie-vue-imprenable-sur-la-mer-et-le-coucher-de-soleil_12100?pitchTypeId=11520&,"Réservation instantanée
+
+Emplacement pour Tente, Caravane, Van, Camping-car
+Type d'hébergement
+
+Tente
+
+Caravane
+
+Van
+
+Camping-car
+
+Tente de toit
+
+N'hésitez pas à préciser la taille de votre fourgon/ca",,de € 17.00 par nuit,,5,
+"Campspace in Camaret-Sur-Mer, Bretagne",campspace,Chez l'habitant,"Camaret-Sur-Mer, Bretagne, France",?,,,https://campspace.com/fr/s/campspace-in-camaret-sur-mer-bretagne_26717?pitchTypeId=30064&,"Réservation instantanée
+
+Yourte pour 4 personnes
+
+Yourte
+
+En savoir plus
+de € 45.00 par nuit",,de € 45.00 par nuit,,5,
+"Découvrez la nature à Cervello, Barcelone",campspace,Chez l'habitant,"CERVELLO, Barcelona, Spain, Barcelone, Espagne",?,,,https://campspace.com/fr/s/vive-la-naturaleza-en-cervello-barcelona_14127?pitchTypeId=13698&,"Réservation instantanée
+
+Emplacement pour Tente, Caravane, Van, Camping-car
+Type d'hébergement
+
+Tente
+
+Caravane
+
+Van
+
+Camping-car
+
+Tente de toit
+
+Il n'y pas de limitation sur la taille des caravanes o",,de € 25.00 par nuit,,5,
+"Espace de camping à Sankt Georgen am Kreischberg, Styrie",campspace,Chez l'habitant,"Sankt Georgen am Kreischberg, Steiermark, Autriche",?,,,https://campspace.com/fr/s/campspace-in-sankt-georgen-am-kreischberg-steiermark_25561?pitchTypeId=28394&,"Emplacement de parking privé pour tente de toit, camping-car, fourgon aménagé/VW aménagé
+Type d'hébergement
+
+Tente
+
+Van
+
+Camping-car
+
+Tente de toit
+
+Emplacement : en bordure de forêt, sur un chemin pr",,de € 13.00 par nuit,,5,
+[Login requis — France Passion],france-passion,Étape producteur,Utiliser --fp-user et --fp-pass,?,,,https://www.france-passion.com/camping-caristes/la-carte-des-etapes,Gratuit avec adhésion annuelle (~30€),,Gratuit (adhésion),,6,

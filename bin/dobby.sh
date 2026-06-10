@@ -94,6 +94,22 @@ case "$MODEL" in
     exec python3 "$PKA_DIR/scripts/deepseek_chat.py"
     ;;
 
+  openrouter|or)
+    OPENROUTER_KEY_FILE="$HOME/.config/pka-jch/openrouter_key.txt"
+    if [[ ! -f "$OPENROUTER_KEY_FILE" ]]; then
+      echo "❌ Clé OpenRouter introuvable : $OPENROUTER_KEY_FILE"
+      exit 1
+    fi
+    export DEEPSEEK_API_KEY="$(cat "$OPENROUTER_KEY_FILE")"
+    export DEEPSEEK_BASE_URL="https://openrouter.ai/api/v1"
+    export DEEPSEEK_MODEL="${DEEPSEEK_MODEL:-deepseek/deepseek-v4-flash}"
+    echo "ℹ️  OpenRouter — multi-provider (DeepSeek, Anthropic, Qwen...)"
+    echo "   Modèle par défaut : $DEEPSEEK_MODEL"
+    echo "   Crédits : ~10 USD (pré-payé)"
+    echo ""
+    exec python3 "$PKA_DIR/scripts/deepseek_chat.py"
+    ;;
+
   gemma4|gemma)
     if ! command -v ollama &>/dev/null; then
       echo "❌ Ollama non trouvé. Installer : https://ollama.ai"
@@ -142,11 +158,14 @@ case "$MODEL" in
     echo "❌ Modèle inconnu : $MODEL"
     echo ""
     echo "Modèles disponibles :"
-    echo "  --model claude    Claude Code (Anthropic) — défaut"
-    echo "  --model codex     Codex CLI (OpenAI)"
-    echo "  --model gemini    Gemini CLI (Google)"
-    echo "  --model gemma4    Gemma 4 local (Ollama)"
-    echo "  --model qwen3     Qwen 3.6 local (Ollama)"
+    echo "  --model claude      Claude Code (Anthropic) — défaut"
+    echo "  --model codex       Codex CLI (OpenAI)"
+    echo "  --model gemini      Gemini CLI (Google)"
+    echo "  --model deepseek    DeepSeek Chat (API)"
+    echo "  --model deepseek-r1 DeepSeek Reasoner (API)"
+    echo "  --model openrouter  OpenRouter (multi-provider, pré-payé)"
+    echo "  --model gemma4      Gemma 4 local (Ollama)"
+    echo "  --model qwen3       Qwen 3.6 local (Ollama)"
     exit 1
     ;;
 

@@ -1,0 +1,99 @@
+#!/bin/bash
+# sync-to-m1 — Synchronise PKA_JCH (M5) → M1 via Tailscale
+# Usage:
+#   ./bin/sync-to-m1                # sync complet (tout sauf binaires)
+#   ./bin/sync-to-m1 WILDNEXUS      # syncer un seul projet
+#
+# Structure M1 après sync :
+#   ~/PKA_JCH/
+#     AGENTS.md, MEMORY.md, ...
+#     projects/03_WILDNEXUS/
+#     projects/08_VETALYX/
+#     docs/
+#     TEAM/
+#     bin/
+#     scripts/
+
+M1_USER="m1"
+M1_HOST="100.73.212.110"
+M1_PATH="~/PKA_JCH"
+FILTER="$(echo "$1" | tr '[:lower:]' '[:upper:]')"  # uppercase
+BASE="/Users/jchavauxm5/PKA_JCH"
+
+echo "🔄 sync-to-m1 — PKA_JCH → M1 ($M1_HOST)"
+
+# Vérifier connexion
+if ! ping -c 1 -t 3 "$M1_HOST" &>/dev/null; then
+    echo "❌ M1 inaccessible. Vérifie Tailscale."
+    exit 1
+fi
+
+# Créer dossiers de base sur M1
+ssh "$M1_USER@$M1_HOST" "mkdir -p $M1_PATH $M1_PATH/projects $M1_PATH/docs $M1_PATH/TEAM $M1_PATH/bin $M1_PATH/scripts" 2>/dev/null
+
+# Sync d'un projet
+sync_project() {
+    local src="${1%/}"
+    local name="${src##*/}"
+    if [ -n "$FILTER" ] && [[ "$name" != *"$FILTER"* ]]; then
+        return
+    fi
+    echo "   → projects/$name"
+    rsync -az --delete \
+        --include='*/' --include='*.md' --include='*.txt' \
+        --include='*.json' --include='*.yaml' --include='*.yml' \
+        --include='*.toml' --include='*.sh' --include='*.py' \
+        --include='*.html' --include='*.css' --include='*.js' \
+        --include='*.c' --include='*.h' --include='*.cpp' --include='*.rs' \
+        --exclude='*' \
+        -e "ssh" \
+        "${src}/" "$M1_USER@$M1_HOST:$M1_PATH/projects/${name}/"
+}
+
+# Racine : fichiers .md et configs
+if [ -z "$FILTER" ]; then
+    echo "   → racine (fichiers .md, .toml)"
+    cd "$BASE"
+    rsync -az --delete \
+        --include='*.md' --include='*.txt' --include='*.toml' --include='*.json' \
+        --include='*.code-workspace' \
+        --exclude='*' \
+        -e "ssh" \
+        . "$M1_USER@$M1_HOST:$M1_PATH/"
+fi
+
+# Projets
+for d in "$BASE"/JCH_Inbox/03_PROJECTS/*/; do
+    name=$(basename "$d")
+    sync_project "$d" "$name"
+done
+
+# Docs
+if [ -z "$FILTER" ]; then
+    echo "   → docs/"
+    rsync -az --delete --include='*/' --include='*.md' --include='*.txt' --exclude='*' \
+        -e "ssh" \
+        "$BASE/docs/" "$M1_USER@$M1_HOST:$M1_PATH/docs/"
+    echo "   → TEAM/"
+    rsync -az --delete --include='*/' --include='*.md' --include='*.txt' --include='*.db' --exclude='*' \
+        -e "ssh" \
+        "$BASE/TEAM/" "$M1_USER@$M1_HOST:$M1_PATH/TEAM/"
+    echo "   → bin/"
+    rsync -az --delete --include='*.sh' --include='*.py' --include='*.command' --exclude='*' \
+        -e "ssh" \
+        "$BASE/bin/" "$M1_USER@$M1_HOST:$M1_PATH/bin/"
+    echo "   → scripts/"
+    rsync -az --delete --include='*/' --include='*.sh' --include='*.py' --include='*.php' \
+        --include='*.json' --include='*.md' \
+        --exclude='*' \
+        -e "ssh" \
+        "$BASE/scripts/" "$M1_USER@$M1_HOST:$M1_PATH/scripts/"
+fi
+
+echo "✅ Sync terminée."
+echo "   $M1_HOST:$M1_PATH"
+echo ""
+echo "💡 Interroger gemma3 avec les fichiers locaux :"
+echo '   ssh m1@100.73.212.110 "cd ~/PKA_JCH && ollama run gemma3:12b-it-qat"'
+echo ""
+echo "💡 Ou via API (tunnel) : voir script bin/ollama-gemma-m1.sh"

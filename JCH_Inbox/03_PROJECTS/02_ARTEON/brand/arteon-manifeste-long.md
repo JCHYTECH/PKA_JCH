@@ -17,7 +17,7 @@ Arteon défend une photographie exigeante. Techniquement, oui — mais cette exi
 
 Arteon refuse l'appât non déclaré. Le trucage qui se cache. Le dérangement de l'animal pour la prise. La publication de coordonnées sensibles. Le discours environnemental servi comme argument de vente. Ces pratiques rapportent des images ; elles coûtent au vivant et trahissent la promesse documentaire. À côté de chaque tirage, Arteon publie comment la photo a été obtenue.
 
-La diversité des façons de vivre — humaines et non humaines — mérite d'être regardée pour ce qu'elle est : un continuum. Un loup qui chasse. Un paysan qui marche dans son pré. Une araignée qui tisse. Un enfant accroupi devant une fourmi. Même tissu. Le montrer, c'est déjà, modestement, le recoudre.
+La diversité des façons de vivre — humaines et non humaines — mérite d'être regardée pour ce qu'elle est : un continuum. Un loup qui chasse. Un paysan qui marche dans son pré. Une araignée qui tisse. Un enfant accroupi devant une [[fourmi]]. Même tissu. Le montrer, c'est déjà, modestement, le recoudre.
 
 Arteon est un lieu de rencontre. Entre des photographes et leurs sujets. Entre des images et des regards. Entre ce que l'humain croit être et ce qu'il est réellement.
 

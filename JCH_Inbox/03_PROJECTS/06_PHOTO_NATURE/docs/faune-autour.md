@@ -39,6 +39,16 @@ Application mobile-first (PWA) affichant les animaux observés autour de la posi
 - Filtre par espèce : `taxonKey` résolu via résolution en 3 étapes (voir ci-dessous)
 - Données [[observations.be]] incluses dans GBIF avec délai de synchronisation (semaines à mois)
 
+### ⚠️ Limitations GBIF connues (documentées 2026-06-06)
+
+| Limitation | Impact | Plan de secours |
+|---|---|---|
+| **Délai de synchronisation** : plusieurs semaines à plusieurs mois entre observation terrain et disponibilité GBIF | Données récentes absentes — oiseaux migrateurs particulièrement touchés | Dictionnaire local ~110 entrées pour autocomplétion fiches |
+| **Embargo espèces rares** : [[Natagora]] masque systématiquement les localisations précises des espèces sensibles avant export GBIF | L'application ne peut jamais être aussi précise que la source primaire pour les espèces à fort intérêt naturaliste | Aucun plan de secours — limitation structurelle et intentionnelle |
+| **Indisponibilité GBIF** : application HTML unique sans serveur tiers | Mode Explorer perd son flux de données en cas de coupure API | Dictionnaire local maintient l'autocomplétion ; observations géolocalisées récentes indisponibles |
+
+> **Conséquence design :** l'application est un **outil de terrain documentaire**, pas un [[atlas]] naturaliste temps réel. Ne pas l'utiliser pour des vérifications de présence d'espèces rares ou protégées — consulter directement [[observations.be]] ou [[Natagora]].
+
 ---
 
 ## 4. Architecture technique

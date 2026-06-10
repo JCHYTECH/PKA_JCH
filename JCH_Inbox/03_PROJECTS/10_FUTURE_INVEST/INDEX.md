@@ -28,9 +28,11 @@ Concevoir et déployer un système de trading algorithmique sur les marchés Fut
 
 | Document | Emplacement | Statut |
 |----------|------------|--------|
-| [[2026-06-04_bruno_profil-investisseur\|Profil investisseur — Bruno]] | `strategy/` | 🟡 À remplir |
+| [[2026-06-04_bruno_profil-investisseur\|Profil investisseur — Bruno]] | `strategy/` | 🟠 Partiellement rempli (4 questions ouvertes) |
 | [[2026-06-04_event-analyzer-architecture\|Event Analyzer — Architecture v1]] | `architecture/` | ✅ Draft |
-| [[2026-06-04_checklist-lancement\|Checklist de lancement]] | `docs/` | 🟡 En cours |
+| [[2026-06-07_contraintes-style-trading\|Contraintes architecture — Style trading]] | `architecture/` | ✅ Validé |
+| [[2026-06-04_checklist-lancement\|Checklist de lancement]] | `docs/` | 🟡 Protocole HITL ajouté |
+| [[2026-06-07_grille-scoring-backtesting\|Grille scoring backtesting Phase 2]] | `docs/` | ✅ Validé |
 | [[2026-06-04_prompt-recherche-diy\|Prompt recherche DIY communities]] | `research/` | ⬜ À exécuter |
 | Résultats recherche DIY | `research/` | ⬜ À créer après exécution |
 

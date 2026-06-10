@@ -25,7 +25,7 @@ except ModuleNotFoundError:
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORT_DIR = ROOT / "TEAM_Inbox"
-STATE_FILE = ROOT / "tmp" / "system_check_state.json"
+STATE_FILE = ROOT / "_local" / "system_check_state.json"
 
 
 def combine_results(security: dict, improvement: dict,

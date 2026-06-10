@@ -74,7 +74,12 @@
 
   .command-title { font-size: 28px; font-weight: 600; margin-bottom: 12px; color: var(--texte-clair); }
   
-  .quick-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+  .quick-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 24px; }
+  .cockpit-right-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+  .m1-status { font-family: 'IBM Plex Mono', monospace; font-size: 13px; padding: 8px 0; }
+  .m1-status .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+  .m1-status .dot.on { background: var(--vert-ok); }
+  .m1-status .dot.off { background: var(--rouge-alert); }
   
   .quick-action-btn {
     padding: 8px 16px; border-radius: 6px; font-size: 12px; font-weight: 600;
@@ -170,8 +175,23 @@
   }
   .panel-title { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--texte-gris); }
   
-  /* Kanban Mini-Grid */
-  .mini-kanban { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+   /* Tâches JCH */
+   .jch-task-item {
+     display: flex; align-items: center; gap: 8px;
+     padding: 8px 10px; border-radius: 4px;
+     font-size: 12px; color: var(--texte-gris);
+     border-bottom: 1px solid var(--bordure);
+   }
+   .jch-task-item:hover { background: var(--bordure); color: var(--texte-clair); }
+   .jch-task-item-icon { color: var(--ocre); font-size: 14px; flex-shrink: 0; }
+   .jch-task-item-project {
+     font-family: 'IBM Plex Mono', monospace; font-size: 9px;
+     color: var(--ocre); background: var(--ocre-glow);
+     padding: 2px 6px; border-radius: 3px; flex-shrink: 0;
+   }
+
+   /* Kanban Mini-Grid (legacy — conservé pour rétrocompatibilité) */
+   .mini-kanban { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .k-card {
     background: var(--fond-global); border: 1px solid var(--bordure);
     padding: 16px; border-radius: 6px; text-align: center;
@@ -295,15 +315,11 @@
       <!-- LE CONTAINER TACHES INTERACTIF -->
       <div class="tasks-container" id="hub-tasks-container">
         <a href="/kanban.html" class="tasks-main">
-          <div class="tasks-icon">📋</div>
           <div class="tasks-text">Ouvrir tout</div>
         </a>
         <div class="tasks-stats">
-          <a href="/kanban.html?status=En%20cours" class="stat-pill normal">
+          <a href="/kanban.html" class="stat-pill normal">
             <span id="task-total">X</span> Actives
-          </a>
-          <a href="/kanban.html?awaiting_jch=1" class="stat-pill warning">
-            ⏳ <span id="task-waiting">X</span> Attente JCH
           </a>
           <a href="/kanban.html?status=En%20attente" class="stat-pill alert">
             🔴 <span id="task-urgent">X</span> Urgences
@@ -314,10 +330,7 @@
       <div class="quick-actions">
         <a href="organigramme.html" class="quick-action-btn">Voir l'Organigramme</a>
         <a href="dobby-live.html" class="quick-action-btn">Dobby Live 🎙️</a>
-        <a href="modeles.html" class="quick-action-btn">Modèles</a>
-        <a href="modeles.html#soldes-modeles" class="quick-action-btn">Soldes modèles</a>
         <a href="../03_PROJECTS/03_WILDNEXUS/01_FOUNDATION/WILDNEXUS_GLOSSAIRE.md" class="quick-action-btn">Glossaire WildNexus</a>
-        <button class="quick-action-btn" id="save-session">Sauver Session Terminal</button>
       </div>
     </div>
 
@@ -341,60 +354,32 @@
           <span class="radar-label">🔄 En cours (équipe)</span>
           <span class="radar-value" id="radar-in-progress">--</span>
         </div>
-        <div class="radar-item">
-          <span class="radar-label">📬 En attente validation</span>
-          <span class="radar-value alert" id="radar-delivered">--</span>
-        </div>
-        <div class="radar-item">
-          <span class="radar-label">❌ Rejetés non retraités</span>
-          <span class="radar-value alert" id="radar-rejected">--</span>
-        </div>
       </div>
 
-      <div class="radar-signal">
-        <strong>📡 Signal Récent :</strong> 
-        <span id="latest-deliverable">Chargement...</span>
+      <div class="m1-status" id="m1-status">
+        <span class="dot off"></span> M1 : vérification...
+      </div>
+
+      <div class="cockpit-right-actions">
+        <a href="modeles.html" class="quick-action-btn">Modèles</a>
+        <a href="modeles.html#soldes-modeles" class="quick-action-btn">Soldes modèles</a>
       </div>
     </div>
-  </div>
-
-  <!-- ── AUTOMATION LOG ── -->
-  <div class="panel" style="margin: 0 0 18px 0;">
-    <div class="panel-header">
-      <div class="panel-title">⚙️ Dernières exécutions automatisées</div>
-      <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--texte-mute);" id="automation-status">Chargement...</span>
-    </div>
-    <div id="automation-list" style="font-size:12px;font-family:'IBM Plex Mono',monospace;max-height:160px;overflow-y:auto;"></div>
   </div>
 
   <!-- ── SPLIT : KANBAN & RECHERCHE ── -->
   <div class="split-section">
     
-    <!-- KANBAN MINI -->
-    <div class="panel">
-      <div class="panel-header">
-        <div class="panel-title">État du Kanban PKA</div>
-        <a href="kanban.html" style="font-size:12px; color:var(--ocre);">Vue complète →</a>
-      </div>
-      <div class="mini-kanban">
-        <div class="k-card rouge">
-          <div class="k-val" id="k-blocked">0</div>
-          <div class="k-label">Bloquées</div>
-        </div>
-        <div class="k-card ocre">
-          <div class="k-val" id="k-val-jch">0</div>
-          <div class="k-label">Attente JCH</div>
-        </div>
-        <div class="k-card bleu">
-          <div class="k-val" id="k-progress">0</div>
-          <div class="k-label">En cours</div>
-        </div>
-        <div class="k-card vert">
-          <div class="k-val" id="k-ready">0</div>
-          <div class="k-label">Prêt</div>
-        </div>
-      </div>
-    </div>
+     <!-- MES TÂCHES DIRECTES -->
+     <div class="panel">
+       <div class="panel-header">
+         <div class="panel-title">📋 À faire (JCH)</div>
+         <a href="kanban.html?awaiting_jch=1" style="font-size:12px; color:var(--ocre);">Voir tout →</a>
+       </div>
+       <div id="jch-tasks-list" style="font-size:12px; color:var(--texte-gris); padding: 4px 0;">
+         Chargement...
+       </div>
+     </div>
 
     <!-- RECHERCHE RAPIDE -->
     <div class="panel">
@@ -438,10 +423,15 @@
       <div class="card-desc">Noeud camera autonome P0.</div>
       <div class="card-tag">● Actif</div>
     </a>
-    <a class="card" href="../03_PROJECTS/archive/reanimable/04_NUANCES/INDEX.md">
-      <div class="card-title">NUANCES</div>
-      <div class="card-desc">Consultance stratégique BESS.</div>
-      <div class="card-tag" style="color:var(--texte-mute)">○ Standby</div>
+    <a class="card active" href="../03_PROJECTS/10_FUTURE_INVEST/INDEX.md">
+      <div class="card-title">FUTURE_INVEST</div>
+      <div class="card-desc">Trading algorithmique Futures, co-création humain/IA.</div>
+      <div class="card-tag">● Actif</div>
+    </a>
+    <a class="card active" href="../03_PROJECTS/11_IOT/INDEX.md">
+      <div class="card-title">IOT</div>
+      <div class="card-desc">Domotique van & maison off-grid, capteurs, Home Assistant.</div>
+      <div class="card-tag">● Actif</div>
     </a>
     <a class="card active" href="../03_PROJECTS/05_PHOTO_AI_JURY/">
       <div class="card-title">PHOTO_AI_JURY</div>
@@ -483,39 +473,24 @@
       const resHealth = await fetch('/api/health');
       const health = await resHealth.json();
       document.getElementById('radar-inbox').textContent = health.inboxPending ?? '0';
-      document.getElementById('latest-deliverable').textContent = health.latestDeliverable || 'Aucun signal récent.';
-      loadAutomationLog();
       document.getElementById('radar-in-progress').textContent = health.inboxInProgress ?? '0';
-      const delivered = health.inboxDelivered ?? 0;
-      const rejected = health.inboxRejected ?? 0;
-      document.getElementById('radar-delivered').textContent = String(delivered);
-      document.getElementById('radar-rejected').textContent = String(rejected);
-      document.getElementById('radar-delivered').parentElement.classList.toggle('critical', delivered > 0);
-      document.getElementById('radar-rejected').parentElement.classList.toggle('critical', rejected > 0);
       
       const resKanban = await fetch("/api/kanban/summary");
       const summary = await resKanban.json();
       
       const blocked = summary.blocked || 0;
-      document.getElementById("k-blocked").textContent = String(blocked);
       document.getElementById("radar-blocked").textContent = String(blocked);
-      
-      document.getElementById("k-val-jch").textContent = String(summary.awaiting_jch || 0);
-      document.getElementById("k-progress").textContent = String((summary.totals || {})["En cours"] || 0);
-      document.getElementById("k-ready").textContent = String((summary.totals || {})["Pret"] || 0);
 
       // --- LOGIQUE VISUELLE DU SUPER-BOUTON TACHES (Simulation basée sur le Kanban) ---
       // Dans le futur, il faudra un endpoint spécifique /api/tasks pour ces chiffres précis.
-      const taskWaiting = summary.awaiting_jch || 0;
       const activeStatuses = Object.entries(summary.totals || {})
         .filter(([status]) => !["Termine", "Archive"].includes(status))
         .reduce((total, [, count]) => total + Number(count || 0), 0);
       document.getElementById("task-total").textContent = String(activeStatuses);
-      document.getElementById("task-waiting").textContent = String(taskWaiting);
       document.getElementById("task-urgent").textContent = String(blocked); // On utilise blocked comme urgence ici temporairement
       
       const btn = document.getElementById('hub-tasks-container');
-      if (blocked > 0 || taskWaiting > 0) {
+      if (blocked > 0) {
         btn.classList.add('has-alerts');
       } else {
         btn.classList.remove('has-alerts');
@@ -526,35 +501,7 @@
     }
   }
 
-  // ===== 2. AUTOMATION LOG =====
-  const EVENT_ICONS = { cron_ok: '✅', cron_error: '❌', save: '💾', action: '⚡', decision: '🔵', deliverable: '📦' };
-
-  async function loadAutomationLog() {
-    try {
-      const res = await fetch('/api/automation');
-      const data = await res.json();
-      const el = document.getElementById('automation-list');
-      const status = document.getElementById('automation-status');
-      if (!data.ok || !data.runs.length) {
-        el.textContent = 'Aucune exécution enregistrée.';
-        status.textContent = '0 entrées';
-        return;
-      }
-      status.textContent = `${data.runs.length} entrées`;
-      el.innerHTML = data.runs.map(r => {
-        const icon = EVENT_ICONS[r.event] || '•';
-        const body = String(r.body || '').slice(0, 100);
-        const proj = r.project ? ` <span style="color:var(--ocre)">[${r.project}]</span>` : '';
-        return `<div style="padding:3px 0;border-bottom:1px solid var(--bord-panel);color:var(--texte-mute)">
-          ${icon} <strong style="color:var(--texte)">${r.date}</strong>${proj} — ${escapeHtml(body)}
-        </div>`;
-      }).join('');
-    } catch(e) {
-      document.getElementById('automation-status').textContent = 'indisponible';
-    }
-  }
-
-  // ===== 3. RECHERCHE DE FICHIERS (Reprise de l'ancien script) =====
+  // ===== 2. RECHERCHE DE FICHIERS (Reprise de l'ancien script) =====
   const fileIndexState = {
     filters: { projects: [], components: {} },
     debounceId: null
@@ -662,19 +609,56 @@
     runFileIndexSearch();
   });
 
+  // ===== 3. TÂCHES DIRECTES JCH =====
+  async function loadJchTasks() {
+    const container = document.getElementById('jch-tasks-list');
+    try {
+      const res = await fetch('/api/kanban/cards?awaiting_jch=1');
+      const payload = await res.json();
+      if (!payload.ok || !payload.cards) {
+        container.innerHTML = '<div style="color:var(--texte-mute);padding:8px 0">Indisponible</div>';
+        return;
+      }
+      const tasks = payload.cards.slice(0, 5);
+      if (!tasks.length) {
+        container.innerHTML = '<div style="color:var(--texte-mute);padding:12px 0">✅ Rien en attente.</div>';
+        return;
+      }
+      container.innerHTML = tasks.map(card => `
+        <div class="jch-task-item">
+          <span class="jch-task-item-icon">▸</span>
+          <span class="jch-task-item-project">${escapeHtml(card.project || '')}</span>
+          <span>${escapeHtml(card.title || 'Sans titre')}</span>
+        </div>
+      `).join('');
+    } catch(e) {
+      container.innerHTML = '<div style="color:var(--texte-mute);padding:8px 0">Erreur chargement</div>';
+    }
+  }
+
+  // ===== 4. STATUS M1 =====
+  async function loadM1Status() {
+    const el = document.getElementById('m1-status');
+    try {
+      const res = await fetch('/api/m1-status');
+      if (res.ok) {
+        const data = await res.json();
+        if (data.online) {
+          el.innerHTML = '<span class="dot on"></span> M1 : ● Online';
+        } else {
+          el.innerHTML = '<span class="dot off"></span> M1 : ○ Offline';
+        }
+        return;
+      }
+    } catch(e) {}
+    el.innerHTML = '<span class="dot off"></span> M1 : ○ Indisponible';
+  }
+
   // Init
   loadMetrics();
+  loadJchTasks();
   loadFileIndexFilters();
-
-  document.getElementById('save-session').addEventListener('click', async (e) => {
-    const btn = e.target;
-    btn.textContent = '...';
-    try {
-      await fetch('/save', { method: 'POST', headers: { 'X-PKA-Dashboard': '1' }});
-      btn.textContent = 'Terminal Ouvert';
-    } catch { btn.textContent = 'Erreur'; }
-    setTimeout(() => btn.textContent = 'Sauver Session Terminal', 2000);
-  });
+  loadM1Status();
 </script>
 
 </body>

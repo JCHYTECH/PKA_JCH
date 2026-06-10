@@ -3,6 +3,8 @@ PKA DECOUVERTES Analyzer
 Traite les messages en attente dans queue/, identifie les lieux,
 génère des fiches Obsidian dans drafts/.
 
+Model: unknown (créé ~2026-06-02, modèle non documenté)
+
 Usage :
   python3 analyzer.py                         # Claude Haiku (défaut)
   python3 analyzer.py --cascade               # Cascade auto : qwen3.5 → haiku → sonnet → opus
@@ -22,11 +24,16 @@ from pathlib import Path
 import requests
 from dotenv import load_dotenv
 
-load_dotenv(Path(__file__).parent / ".env")
+# PKA_ROOT doit être connu avant de charger les secrets
+PKA_ROOT = Path(os.getenv("PKA_ROOT", str(Path(__file__).resolve().parents[2])))
+
+# Charger depuis JCH_PRIVATE/ (protégé par .gitignore) avec fallback local
+_env_path = PKA_ROOT / "JCH_PRIVATE" / "decouvertes.env"
+if not _env_path.exists():
+    _env_path = Path(__file__).parent / ".env"
+load_dotenv(_env_path)
 
 # ── Chemins ───────────────────────────────────────────────────────────────────
-
-PKA_ROOT   = Path(os.getenv("PKA_ROOT", "/Users/jchavauxm5/PKA_JCH"))
 BASE       = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes"
 QUEUE_DIR  = BASE / "queue"
 DRAFTS_DIR = BASE / "drafts"

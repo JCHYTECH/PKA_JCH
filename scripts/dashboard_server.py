@@ -373,6 +373,20 @@ def dashboard_health() -> dict:
     }
 
 
+def m1_status() -> dict:
+    """Ping M1 headless via Tailscale."""
+    import subprocess
+    try:
+        result = subprocess.run(
+            ["ping", "-c", "1", "-W", "2", "100.73.212.110"],
+            capture_output=True, text=True, timeout=5
+        )
+        online = result.returncode == 0
+        return {"ok": True, "online": online}
+    except Exception:
+        return {"ok": True, "online": False}
+
+
 def slugify(value: str, fallback: str = "dobby-live") -> str:
     slug = re.sub(r"[^a-zA-Z0-9_-]+", "-", value.lower()).strip("-")
     return slug[:80] or fallback
@@ -708,15 +722,38 @@ def provider_balance_status() -> dict:
         "topup_url": "https://console.cloud.google.com/billing",
     })
 
-    providers.append({
-        "id": "ollama",
-        "label": "Ollama local",
-        "kind": "Local",
-        "configured": True,
-        "status": "local",
-        "value": "0 EUR",
-        "detail": "pas de fournisseur payant; coût machine/énergie seulement",
-    })
+    openrouter_key = None
+    key_file = config_dir / "openrouter_key.txt"
+    if key_file.is_file():
+        openrouter_key = key_file.read_text(encoding="utf-8", errors="replace").strip()
+    openrouter = {
+        "id": "openrouter",
+        "label": "OpenRouter",
+        "kind": "Crédit pré-payé",
+        "configured": bool(openrouter_key),
+        "status": "missing",
+        "value": "clé absente",
+        "detail": "OPENROUTER_API_KEY non configurée",
+        "console_url": "https://openrouter.ai/credits",
+        "topup_url": "https://openrouter.ai/credits",
+    }
+    if openrouter_key:
+        status, payload, message = json_request(
+            "https://openrouter.ai/api/v1/auth/key",
+            {"Authorization": f"Bearer {openrouter_key}", "Accept": "application/json"},
+        )
+        if status == 200 and payload:
+            d = payload.get("data", {})
+            credits = d.get("limit_remaining", d.get("credits", 0))
+            usage = d.get("usage_monthly", 0)
+            openrouter.update({
+                "status": "ok",
+                "value": f"{float(credits):.2f} USD",
+                "detail": f"Dépense mois: {float(usage):.2f} USD — solde pré-payé",
+            })
+        else:
+            openrouter.update({"status": "error", "value": "erreur", "detail": f"HTTP {status}: {message}" if message else f"HTTP {status}"})
+    providers.append(openrouter)
 
     return {
         "ok": True,
@@ -726,6 +763,7 @@ def provider_balance_status() -> dict:
             "deepseek": "https://api-docs.deepseek.com/api/get-user-balance/",
             "openai": "https://platform.openai.com/docs/api-reference/usage/costs",
             "anthropic": "https://docs.anthropic.com/en/api/usage-cost-api",
+            "openrouter": "https://openrouter.ai/docs/api-reference/authentication/key",
         },
     }
 
@@ -1029,6 +1067,10 @@ class DashboardHandler(BaseHTTPRequestHandler):
 
         if path == "/api/automation":
             self.send_json(automation_log())
+            return
+
+        if path == "/api/m1-status":
+            self.send_json(m1_status())
             return
 
         if path == "/api/kanban/summary":

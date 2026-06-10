@@ -1,0 +1,19 @@
+{
+  "telegram_message_id": "13",
+  "telegram_group": "DECOUVERTES",
+  "author": "Jean Claude Havaux",
+  "datetime": "2026-06-09T13:43:03+00:00",
+  "content_type": "image",
+  "text": "",
+  "links": [],
+  "media_files": [
+    {
+      "file_path": "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/raw/images/20260609_134303_13.jpg",
+      "media_type": "photo"
+    }
+  ],
+  "analysis_status": "analysed",
+  "place_candidates": [],
+  "confidence": null,
+  "draft_path": "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/drafts/2026-06-09_Château-de-Beynac.md"
+}
