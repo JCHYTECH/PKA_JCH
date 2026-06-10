@@ -96,7 +96,7 @@ def dist_km(lat1, lng1, lat2, lng2) -> float:
     return round(geodesic((lat1, lng1), (lat2, lng2)).km, 1)
 
 
-def overpass_query(query: str, timeout: int = 20) -> dict | None:
+def overpass_query(query: str, timeout: int = 20):  # type: ignore
     """Requête Overpass avec fallback sur plusieurs mirrors."""
     for mirror in OVERPASS_MIRRORS:
         try:
@@ -419,6 +419,33 @@ def scrape_park4night(page, center_lat, center_lng, radius_km, results):
         except Exception:
             continue
 
+    # Geocode park4night spots missing GPS (with cache + rate limit)
+    geocoded = 0
+    geo_cache = {}  # query → (lat, lng) cache within this run
+    for i in range(len(results) - count, len(results)):
+        spot = results[i]
+        if spot["source"] == "park4night" and not spot.get("lat"):
+            name = spot["name"]
+            # Try postal code first: (14800) → "14800, France"
+            cp_match = re.search(r'\((\d{5})\)', name)
+            query = f"{cp_match.group(1)}, France" if cp_match else ""
+            if not query:
+                m = re.match(r'\(\d+\)\s+(\S[^-]+)', name)
+                query = m.group(1).strip() if m else name
+            if query in geo_cache:
+                lat, lng = geo_cache[query]
+            else:
+                try:
+                    lat, lng = geocode(query)
+                    geo_cache[query] = (lat, lng)
+                    time.sleep(1.0)  # Nominatim: 1 req/s max
+                except Exception:
+                    continue
+            spot["lat"] = str(lat)
+            spot["lng"] = str(lng)
+            spot["distance_km"] = str(dist_km(center_lat, center_lng, lat, lng))
+            geocoded += 1
+
     if count == 0:
         results.append({
             "name": f"[Voir manuellement park4night — {radius_km}km]",
@@ -436,7 +463,7 @@ def scrape_park4night(page, center_lat, center_lng, radius_km, results):
             "jch_score": "",
             "reserve_nearby": "",
         })
-    print(f"  ✅ {count} liens park4night extraits")
+    print(f"  ✅ {count} liens park4night extraits" + (f" · {geocoded} géocodés" if geocoded else ""))
 
 
 def _extract_places_from_nuxt(data, depth=0) -> list:
@@ -870,7 +897,10 @@ def main():
     if not args.quick and has_playwright:
         from playwright.sync_api import sync_playwright
         with sync_playwright() as pw:
-            browser = pw.chromium.launch(headless=args.headless)
+            browser = pw.chromium.launch(
+                headless=args.headless,
+                args=["--no-sandbox", "--disable-gpu", "--single-process"],
+            )
             ctx = browser.new_context(
                 user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/124.0",
                 viewport={"width": 1280, "height": 800},

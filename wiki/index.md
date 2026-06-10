@@ -44,7 +44,7 @@
 
 ## Statistiques
 
-- Daily notes : 10 (mise à jour 2026-05-28 — vault maintenance nocturne)
+- Daily notes : 11 (mise à jour 2026-06-07 — session NotebookLM knowledge harvest)
 - Articles knowledge : 2 (AI-Tools)
 - SOPs : 7 — Workstreams : 1 — Guidelines : 4
 - Fichiers raw en attente : 0

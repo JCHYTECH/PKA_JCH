@@ -52,13 +52,28 @@
 
 ---
 
-## Logistique van
+## Logistique van — spots nuit validés par [[Cigogne]] 🦩
 
-- **Stationnement nuit :** parkings réserves naturelles (baie du MSM, falaises), aires camping-car littorales
-- **Services :** nombreuses aires sur la côte normande, borne de service à définir
+> Spots sourcés via `camping_scout.py` (OSM + park4night) — 483 spots analysés, 5 retenus.
+
+| Nuit | Lieu | Spot recommandé ★ | GPS | Km | Prix | Services | Score |
+|------|------|-------------------|---:|----:|------|----------|:-----:|
+| J0 | Laon | Parking des remparts | `49.5640, 3.6240` | — | Gratuit | — | — |
+| J1 | Saint-Aubin | **Aire camping-car Langrune-sur-Mer** ★ | `49.3344, -0.3795` | 1.4 | Gratuit | — | 9 |
+| J1 alt. | Saint-Aubin | Camping Côte de Nacre | `49.2633, -0.3869` | 0.5 | Payant | — | 9 |
+| J2 | Honfleur | **Aire de Camping Car de Honfleur** ★ | `49.4191, 0.2428` | 0.7 | ~15€ | vidange, eau | 5 |
+| J2 alt. | Honfleur | Aire L'Assiette des Mondes (gratuit) | `49.3994, 0.2147` | 2.7 | Gratuit | — | 5 |
+| J3 | Veules | **Les Mouettes** ★ | `49.8720, 0.7985` | 0.5 | ~16€/j | vidange, douches, [[WC]] | 5 |
+| J3 alt. | Veules | Voie communale Charles de Gaulle (park4night) | `49.8720, 0.7990` | 0.0 | Gratuit | — | — |
+| J4 | Monthermé | Parking bord de Meuse ✅ | `49.8850, 4.7320` | — | Gratuit | — | validé |
+
+🔗 Liens park4night : [Honfleur spots](https://park4night.com/fr/search?lat=49.421&lng=0.232&z=12) · [Saint-Aubin spots](https://park4night.com/fr/search?lat=49.260&lng=-0.390&z=12) · [Veules spots](https://park4night.com/fr/search?lat=49.869&lng=0.801&z=12)
+
+- **Services (eau, vidange, électricité) :** Aire Honfleur (J2) + Les Mouettes Veules (J3). Prévoir appoint eau à J3 si autonomie < 3 jours.
 - **Accès :** depuis Liège : A27→A29→A13 (payant) ou N4→N2→N31 (sans péage)
 - **Distance depuis Liège :** ~560 km autoroute (5h30) / ~620 km sans autoroute (8-9h)
-- **Contraintes :** marées (consulter horaires), certaines zones interdites aux véhicules la nuit
+- **Contraintes :** marées (consulter horaires), parking Bec d'Andaine fermé 19h-7h (arrêté préfectoral)
+- **Réglementation :** arrêtés municipaux fréquents sur la côte normande. Vérifier Park4Night avant départ.
 
 ---
 

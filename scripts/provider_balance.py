@@ -69,8 +69,11 @@ def check_openrouter() -> dict:
         return {"provider": "OpenRouter", "status": "no_key", "balance": None}
     try:
         data = _api_get("https://openrouter.ai/api/v1/auth/key", key)
-        c = float(data.get("data", {}).get("credits", 0))
-        return {"provider": "OpenRouter", "status": "ok", "balance": round(c, 2), "currency": "USD"}
+        d = data.get("data", {})
+        # OpenRouter: limit_remaining = crédits restants, credits = solde pré-payé
+        balance = float(d.get("limit_remaining", d.get("credits", 0)))
+        usage_m = float(d.get("usage_monthly", 0))
+        return {"provider": "OpenRouter", "status": "ok", "balance": round(balance, 2), "currency": "USD", "usage_monthly": round(usage_m, 2)}
     except Exception as e:
         return {"provider": "OpenRouter", "status": "error", "balance": None, "error": str(e)[:60]}
 

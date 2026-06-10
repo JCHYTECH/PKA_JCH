@@ -1,6 +1,6 @@
 # TRAVELS — Index projet
 
-Dernière mise à jour : 2026-06-03
+Dernière mise à jour : 2026-06-06
 
 ## Description
 Voyages pour observer le monde — réserves naturelles, villes pour l'art, destinations photo wildlife.
@@ -14,7 +14,6 @@ Responsable : [[Cigogne]] 🦩 — Vanlife Travel Planner & Experience Curator
 |---|---|
 | `achat-van/` | Achat du van Stylevan Equinox IV — checklist, prix, risques UE, expositions vanlife |
 | `achat-van/docs/` | Brochures, catalogues, transcripts — PDF, PPT, sources externes |
-| `iot-van/` | Technique van connecté — RPi, IoT, BOM, guides d'installation |
 | `vanlife/` | Lifestyle van, destinations, logistique, préférences |
 | `vanlife/destinations/` | Fiches destinations — format `.md` canonique |
 | `vanlife/destinations/exports/` | Exports `.html` / `.pdf` générés à partir des fiches destinations |
@@ -35,9 +34,6 @@ Responsable : [[Cigogne]] 🦩 — Vanlife Travel Planner & Experience Curator
 - `achat-van/Achat_véhicule_UE_risques_opportunités.md` — Risques et opportunités achat UE
 - `achat-van/Prix_Stylevan_Equinox_4_2026.md` — Prix du modèle
 - `achat-van/Expositions_Vanlife_2026.md` — Agenda expositions vanlife
-- `iot-van/stylevan-equinox4-cahier-technique-iot.md` — Cahier technique IoT van
-- `iot-van/synthese-vanlife-iot.md` — Synthèse IoT vanlife
-- `iot-van/VAL-BOM-Vanlife-IOT_Forge_2026-05-31.md` — BOM IoT van ([[Forge]])
 - `vanlife/PREFERENCES.md` — Préférences voyage, configuration van
 - `vanlife/logistique/camping_scout_README.md` — Guide camping-scout CLI
 - `vanlife/logistique/methodologie-stationnement.md` — Méthodologie stationnement
@@ -46,9 +42,8 @@ Responsable : [[Cigogne]] 🦩 — Vanlife Travel Planner & Experience Curator
 ## Workflow
 
 1. **Découvertes** → Bot Telegram collecte → `pka-decouvertes/raw/` → `queue/` → Analyzer → `drafts/` → validation → `validated_places/`
-2. **Van connecté** → `iot-van/` (guides, config RPi, BOM)
-3. **Voyages** → Recherche destinations → `vanlife/destinations/` (fiche `.md`) → exports vers `exports/`
-4. **Logistique** → Stationnement, camping-scout, routines → `vanlife/logistique/`
+2. **Voyages** → Recherche destinations → `vanlife/destinations/` (fiche `.md`) → exports vers `exports/`
+3. **Logistique** → Stationnement, camping-scout, routines → `vanlife/logistique/`
 
 ## Voir aussi
 

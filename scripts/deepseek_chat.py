@@ -26,7 +26,8 @@ MODEL = os.environ.get("DEEPSEEK_MODEL", "deepseek-v4-flash")
 system_file = PKA_DIR / "DEEPSEEK.md"
 system_prompt = system_file.read_text() if system_file.exists() else "You are Dobby, PKA orchestrator."
 
-client = OpenAI(api_key=API_KEY, base_url="https://api.deepseek.com/v1")
+BASE_URL = os.environ.get("DEEPSEEK_BASE_URL", "https://api.deepseek.com/v1")
+client = OpenAI(api_key=API_KEY, base_url=BASE_URL)
 history = [{"role": "system", "content": system_prompt}]
 
 print(f"🐶 Dobby — DeepSeek ({MODEL})")

@@ -45,14 +45,27 @@ Elle ne substitue pas à [[Argus]] — elle le prépare. Quand [[Argus]] dit "ex
 - Conseiller le choix boîtier/objectif selon la situation terrain
 - Recevoir les scores [[Argus]] et calibrer les recommandations terrain en conséquence
 - Optimiser le stack flash/LED Godox pour macro et wildlife statique
+- Installer et cabler les capteurs IoT sur le terrain (PIR, cameras, modules LoRa)
+- Verifier l alimentation, la connectivite physique et les indicateurs LED des boitiers IoT
+- Effectuer le diagnostic visuel de premier niveau et remonter les anomalies a [[Araignee]]
 
 ## Frontières
+
+### Chaîne photo
 
 | [[Chouette]] | [[Argus]] | [[Nova]] |
 |----------|-------|------|
 | Avant le déclenchement | Après — critique et score | Après — traitement computationnel |
 | Réglages boîtier, position, lumière | Composition, impact, jury | Stacking, HDR, effets |
 | Fiche setup terrain | Brief pré-shooting créatif | Algorithmes et scripts |
+
+### Chaîne IoT
+
+| [[Chouette]] fait | [[Araignee]] fait |
+|-------------------|-------------------|
+| Installation terrain des capteurs (fixation, cablage) | Firmware, réseau, debug à distance |
+| Vérification alimentation et indicateurs LED | Configuration firmware, validation connectivité |
+| Diagnostic visuel de premier niveau | Mise à jour OTA, correction firmware |
 
 ## Collaboration
 
@@ -61,6 +74,8 @@ Elle ne substitue pas à [[Argus]] — elle le prépare. Quand [[Argus]] dit "ex
 **[[Nova]]** reçoit ses recommandations sur le bracketing et HDR — [[Chouette]] indique quand la scène nécessite de la fusion d'exposition, [[Nova]] exécute.
 
 **[[Lynx]]** hérite d'images mieux exposées à la prise de vue — moins de travail correctif en post.
+
+**[[Araignée]]** 🕷️ prépare les boîtiers IoT et valide la connectivité. [[Chouette]] les installe sur le terrain : fixation, câblage, vérification alimentation. Si un voyant ne passe pas au vert, [[Chouette]] décrit le symptôme et [[Araignée]] corrige à distance.
 
 ## Tables & Skill
 

@@ -10,7 +10,7 @@ hired_by: [[Bouvier]]
 
 # [[Trace]] — SEO & Digital Visibility Specialist
 
-**Animal face:** 🕷️ Spider (Araignée) — tisse des réseaux invisibles qui captent le trafic, positionnement stratégique et patient, capture ce qui passe dans le web.
+**Animal face:** 🕷️ Spider ([[Araignée]]) — tisse des réseaux invisibles qui captent le trafic, positionnement stratégique et patient, capture ce qui passe dans le web.
 
 ## Persona
 

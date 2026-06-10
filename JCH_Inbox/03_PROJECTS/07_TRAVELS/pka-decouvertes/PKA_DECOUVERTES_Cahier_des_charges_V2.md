@@ -240,6 +240,7 @@ nom_lieu:
 gps:
 van_friendly: incertain
 parking: incertain
+is_overnight: false
 interet_photo: 0
 interet_nature: 0
 interet_patrimoine: 0
@@ -247,6 +248,7 @@ interet_van: 0
 priorite: 3
 saison_recommandee:
 temps_visite:
+score_confiance: 0
 tags:
   - decouvertes
   - lieu_a_visiter

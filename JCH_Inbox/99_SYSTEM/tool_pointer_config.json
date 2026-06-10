@@ -16,6 +16,7 @@
     "`TEAM/team.db` — authoritative roster and all PKA data (SQLite)",
     "`TEAM/ROSTER.md` — human-readable mirror",
     "`TEAM/dobby.md` — full persona and responsibilities",
+    "`docs/system/outils-index.md` — central tool index (scripts, skills, bin — load at session start)",
     "`wiki/index.md` — knowledge base entry point"
   ],
   "behavioral_rules": [

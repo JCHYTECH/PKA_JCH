@@ -1,7 +1,7 @@
 # Team Roster
 
-Managed by [[Dobby]]. Last updated: 2026-05-28 — v21 (sync active count from `TEAM/team.db`).  
-**Source of truth:** `TEAM/team.db` — **29 membres actifs — 28 spécialistes + [[Dobby]]**.
+Managed by [[Dobby]]. Last updated: 2026-06-08 — v23 (sync active count from `TEAM/team.db`).  
+**Source of truth:** `TEAM/team.db` — **31 membres actifs — 30 spécialistes + [[Dobby]]**.
 
 | # | Name | Animal | Role | Status | Tables owned |
 |---|------|--------|------|--------|-------------|
@@ -33,7 +33,9 @@ Managed by [[Dobby]]. Last updated: 2026-05-28 — v21 (sync active count from `
 | 26 | [[Milan]] | 🦅 [[Milan]] Noir | Analyste OSINT & Intelligence Industrielle | active | inbox |
 | 27 | [[Atlas]] | 🐘 Éléphant d'Afrique | Strategic Document Architect & Senior R&D Writer | active | inbox, file_index |
 | 28 | [[Hermine]] | ⬜ [[Hermine]] | IP Strategist & Patent Counsel | active | inbox |
+| 30 | [[Araignée]] | 🕷️ Araignée | IoT & Embedded Systems Specialist | active | inbox |
 | 29 | [[Cigogne]] | 🦩 Cigogne blanche | Vanlife Travel Planner & Experience Curator | active | vanlife_destinations, vanlife_feedback, vanlife_preferences |
+| 31 | [[Fourmi]] | 🐜 Fourmi | Bench Technician — Électronique & Protocoles | active | inbox |
 
 ---
 

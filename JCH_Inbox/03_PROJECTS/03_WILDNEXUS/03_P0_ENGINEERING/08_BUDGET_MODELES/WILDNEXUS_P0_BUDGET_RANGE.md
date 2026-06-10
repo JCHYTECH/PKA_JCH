@@ -1,7 +1,7 @@
 # WildNexus — Budget P0
 
-**Version :** v0.2
-**Date :** 2026-05-18
+**Version :** v0.3
+**Date :** 2026-06-06 (correction ADR-005 — pivot piles AA)
 **Statut :** Enveloppe ferme — 1 000 € maximum
 **Owner :** [[Bruno]]
 
@@ -37,13 +37,15 @@ Enveloppe globale P0 fixée à **1 000 €** — volontairement serrée pour for
 | LED IR 850 nm × 4 | ~8 € | × 2 | ~16 € |
 | [[LoRa]] RAK3172 ou Murata 1SJ | ~12 € | × 2 | ~24 € |
 | microSD 16 GB industrielle | ~12 € | × 2 | ~24 € |
-| 2× 18650 LiFePO4 | ~12 € | × 2 | ~24 € |
-| Panneau solaire 6V 2W + CN3791 | ~12 € | × 2 | ~24 € |
+| 2× holder 4× AA (4S2P) | ~2 € | × 2 | ~4 € |
+| Régulateur buck TPS62840 | ~2 € | × 2 | ~4 € |
+| Diviseur résistif ADC | ~0.50 € | × 2 | ~1 € |
+| Panneau solaire — différé P1 | — | — | ~0 € |
 | Boîtier Hammond IP67 | ~15 € | × 2 | ~30 € |
 | SHT31 (temp + humidité) | ~5 € | × 2 | ~10 € |
 | PIR basse conso | ~5 € | × 2 | ~10 € |
 | MOSFET, résistances, capacités, connecteurs | ~25 € | × 2 | ~50 € |
-| **Sous-total électronique** | | | **~346 €** |
+| **Sous-total électronique** | | | **~307 €** |
 
 ### PCB et assemblage
 
@@ -83,12 +85,12 @@ Enveloppe globale P0 fixée à **1 000 €** — volontairement serrée pour for
 
 | Bloc | Montant |
 |------|--------:|
-| Électronique 2 nœuds | ~346 € |
+| Électronique 2 nœuds | ~307 € |
 | PCB | ~55 € |
 | Outillage | ~180 € |
 | Frais annexes | ~180 € |
 | Réserve | ~239 € |
-| **TOTAL** | **~1 000 €** |
+| **TOTAL** | **~961 €** |
 
 ---
 

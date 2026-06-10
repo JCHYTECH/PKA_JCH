@@ -112,6 +112,26 @@ status: en cours
 
 ## PHASE 3 — Paper Trading (argent fictif, système live)
 
+### 3.0 Protocole HITL — Absence et Timeout (⚠️ à implémenter avant tout déploiement)
+
+Le système est strictement Human-in-the-Loop. En l'absence de validation de JCH,
+aucune exécution ne se produit. Les règles suivantes s'appliquent :
+
+| Situation | Comportement du système | Action Telegram |
+|---|---|---|
+| Analyse prête, JCH disponible | Attente validation dans Streamlit | Notification immédiate |
+| JCH absent — délai < **4h** | Attente active, pas d'action | Rappel à 2h |
+| JCH absent — délai **4h à 24h** | **Archivage automatique** de l'analyse dans `research/archived/` | Alerte "Analyse expirée — archivée" |
+| JCH absent — délai > **24h** | Archivage + flag "fenêtre manquée" dans les logs | Alerte "Opportunité manquée — revue nécessaire" |
+| Événement de haute conviction (≥ 0.8) | **Jamais d'exécution automatique** — même règle timeout | Alerte urgente à 30 min |
+
+**Règle absolue :** aucune exécution automatique sans validation humaine explicite,
+quelle que soit la conviction du système. Le timeout est un archivage, jamais un déclencheur.
+
+- [ ] Implémenter le timeout 4h dans le Decision Layer
+- [ ] Tester le scénario "JCH absent 6h" : vérifier archivage + alerte Telegram
+- [ ] Vérifier que l'analyse archivée est consultable en retrospective
+
 ### 3.1 Déploiement initial
 - [ ] Déployer le Risk Supervisor en premier (avant tout exécution)
 - [ ] Tester le circuit-breaker manuellement (simuler un breach)

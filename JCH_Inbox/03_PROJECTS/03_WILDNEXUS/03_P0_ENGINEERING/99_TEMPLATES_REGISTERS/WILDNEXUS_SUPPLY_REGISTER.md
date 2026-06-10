@@ -1,7 +1,7 @@
 # WildNexus — Registre composants critiques P0
 
 **Version :** v0.3
-**Date :** 2026-05-23
+**Date :** 2026-05-23 (batterie et solaire déjà alignés sur ADR-005)
 **Statut :** Ouvert — à compléter avant `M-01`
 **Owner :** [[Bruno]] + [[Forge]]
 

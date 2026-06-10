@@ -3,6 +3,9 @@ PKA DECOUVERTES Collector
 Rôle unique : recevoir les messages du groupe Telegram DECOUVERTES
 et les sauvegarder bruts dans pka-decouvertes/raw/.
 Aucune analyse — aucune IA — passerelle fiable uniquement.
+
+Model: unknown (créé ~2026-06-02, modèle non documenté)
+Fixed: 2026-06-09 — TokenMaskFilter + RotatingFileHandler + JCH_PRIVATE isolation
 """
 
 import json
@@ -23,11 +26,17 @@ from telegram.ext import (
 
 # ── Config ────────────────────────────────────────────────────────────────────
 
-load_dotenv(Path(__file__).parent / ".env")
+# PKA_ROOT doit être connu avant de charger les secrets
+PKA_ROOT = Path(os.getenv("PKA_ROOT", str(Path(__file__).resolve().parents[2])))
+
+# Charger depuis JCH_PRIVATE/ (protégé par .gitignore) avec fallback local
+_env_path = PKA_ROOT / "JCH_PRIVATE" / "decouvertes.env"
+if not _env_path.exists():
+    _env_path = Path(__file__).parent / ".env"
+load_dotenv(_env_path)
 
 TOKEN    = os.getenv("DECOUVERTES_TOKEN")
 GROUP_ID = int(os.getenv("DECOUVERTES_GROUP_ID"))
-PKA_ROOT = Path(os.getenv("PKA_ROOT", "/Users/jchavauxm5/PKA_JCH"))
 
 RAW_DIR   = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/raw"
 QUEUE_DIR = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/queue"
@@ -39,15 +48,44 @@ for d in (RAW_DIR / "text", RAW_DIR / "images", RAW_DIR / "links",
 
 # ── Logging ───────────────────────────────────────────────────────────────────
 
+class TokenMaskFilter(logging.Filter):
+    """Masque le token Telegram dans les logs (msg + args lazy %s)."""
+    def filter(self, record):
+        if TOKEN and len(TOKEN) > 20:
+            record.msg = str(record.msg).replace(TOKEN, "***TOKEN***")
+            if record.args:
+                new_args = []
+                for a in record.args:
+                    if isinstance(a, str) and TOKEN in a:
+                        new_args.append(a.replace(TOKEN, "***TOKEN***"))
+                    elif not isinstance(a, (int, float, bool, type(None))) and TOKEN in str(a):
+                        new_args.append(str(a).replace(TOKEN, "***TOKEN***"))
+                    else:
+                        new_args.append(a)
+                record.args = tuple(new_args)
+        return True
+
+from logging.handlers import RotatingFileHandler
+
+log_file = LOG_DIR / "collector.log"
+file_handler = RotatingFileHandler(
+    str(log_file), maxBytes=1_000_000, backupCount=3, encoding="utf-8"
+)
+file_handler.setFormatter(logging.Formatter("%(asctime)s [%(levelname)s] %(message)s"))
+
 logging.basicConfig(
-    format="%(asctime)s [%(levelname)s] %(message)s",
     level=logging.INFO,
-    handlers=[
-        logging.FileHandler(LOG_DIR / "collector.log"),
-        logging.StreamHandler(),
-    ],
+    handlers=[file_handler],
     force=True,
 )
+
+# Appliquer le filtre sur le logger racine + loggers télégram/httpx
+# pour masquer le token dans TOUS les logs, erreurs includes
+token_filter = TokenMaskFilter()
+logging.root.addFilter(token_filter)
+for name in ("httpx", "telegram", "telegram.request", "telegram.ext"):
+    logging.getLogger(name).addFilter(token_filter)
+
 log = logging.getLogger(__name__)
 
 # ── Helpers ───────────────────────────────────────────────────────────────────

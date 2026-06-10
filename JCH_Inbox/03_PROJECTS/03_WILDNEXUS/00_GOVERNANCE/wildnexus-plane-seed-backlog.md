@@ -26,10 +26,10 @@ Purpose: Initial Plane backlog derived from the founding document.
 
 - `T01.1 Analyse comparative des specifications concurrentes`
 - `T01.2 Analyse FTO sur composants critiques`
-- `T01.3 Campagne mesures RF terrain`
+- `T01.3 Campagne mesures RF terrain (3 sites : clairiere, sous-bois dense, lisiere, documenter SF7/SF12)` ⬅️ (gemma3 #C/H)
 - `T01.4 Benchmark module camera IMX462 vs IMX327`
 - `T01.5 Selection MCU`
-- `T01.6 Budget P0 ordre de grandeur`
+- `T01.6 Budget P0 etendu : ajout dataset IR belge (Nova), stockage cloud backoffice, frais deplacement EVT` ⬅️ (gemma3 #E)
 - `DECISION: Confirm P0 autonomy ladder`
 - `DECISION: Confirm P0 product boundary`
 - `LEGAL: Resolve open-source and usage-restriction strategy`
@@ -43,8 +43,10 @@ Purpose: Initial Plane backlog derived from the founding document.
 - `T02.1 Schema electronique P0`
 - `T02.2 Layout PCB prototype`
 - `T02.3 CAO enclos IP67`
+- `T02.3b Ajout pastille deshydratante + event Gore-Tex M12 dans CAO enclos` ⬅️ (gemma3 #G)
 - `T02.4 Fabrication PCB prototype x5`
 - `T02.5 Assemblage et tests banc`
+- `T02.5b Bench courant deep sleep carte complete (PPK2, seuil fallback STM32U5 >150µA)` ⬅️ (gemma3 #A)
 
 ### WP03
 
@@ -67,7 +69,8 @@ Purpose: Initial Plane backlog derived from the founding document.
 
 - `T05.1 Selection et preparation site EVT`
 - `T05.2 Deploiement 3 noeuds`
-- `T05.3 Monitoring continu 30 jours`
+- `T05.3 Protocole test cycle complet : deep sleep + reveil + capture + TX + retour veille, criteres acceptation documentes` ⬅️ (gemma3 #F)
+- `T05.3b Monitoring continu 30 jours`
 - `T05.4 Collecte et analyse donnees`
 - `T05.5 Rapport EVT et corrections`
 
@@ -85,6 +88,9 @@ Purpose: Initial Plane backlog derived from the founding document.
 - `T01.4` -> `camera-imaging`, `benchmark`, `validation`, `P0`
 - `T01.5` -> `firmware`, `decision`, `P0`
 - `T01.6` -> `budget`, `decision`, `P0`
+- `T02.3b` -> `hardware-physical`, `enclosure`, `P0`
+- `T02.5b` -> `hardware-physical`, `benchmark`, `energy`, `P0`
+- `T05.3` -> `validation`, `protocol`, `P0`
 - `GOV-01` -> `documentation`, `decision`, `P0`
 - `DOC-01` -> `documentation`, `P0`
 - `SUPPLY-01` -> `hardware-physical`, `risk`, `P0`
