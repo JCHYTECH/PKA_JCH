@@ -13,7 +13,7 @@ The pilot must prove one narrow workflow:
 1. A new mail arrives in Gmail principal or Outlook JCHYTECH.
 2. n8n detects the event and applies only a light pre-filter.
 3. n8n writes a normalized markdown file to a Dropbox-synced PKA landing folder.
-4. The local PKA inbox flow imports that file under `JCH_Inbox/00_INBOX/email_imports/`.
+4. The local PKA [[inbox]] flow imports that file under `JCH_Inbox/00_INBOX/email_imports/`.
 5. [[Dobby]] and [[Pie]] can process the resulting intake file using existing PKA rules.
 
 ## Non-Goals
@@ -28,8 +28,8 @@ The pilot must prove one narrow workflow:
 
 PKA already has local mail logic:
 
-- `scripts/gmail_gatekeeper.py`: strict Gmail gatekeeper for the Dobby mailbox, with whitelist and explicit-user-processing semantics.
-- `scripts/email_digest.py`: Gmail digest, scoring, contacts lookup, Pie analysis, project labels, and routing.
+- `scripts/gmail_gatekeeper.py`: strict Gmail gatekeeper for the [[Dobby]] mailbox, with whitelist and explicit-user-processing semantics.
+- `scripts/email_digest.py`: Gmail digest, scoring, contacts lookup, [[Pie]] analysis, project labels, and routing.
 - `scripts/outlook_gatekeeper.py`: Microsoft Graph unread-mail processing for Outlook/JCHYTECH.
 
 The n8n pilot should orchestrate these systems without duplicating their internal judgment.
@@ -50,7 +50,7 @@ Each workflow follows the same structure:
    - thread/conversation id when available
    - received date
    - sender name
-   - sender email
+   - sender [[email]]
    - subject
    - body preview or bounded body text
    - attachment metadata only
@@ -113,9 +113,9 @@ If the same mail event arrives twice, PKA should not create duplicate markdown f
 
 ## Error Handling
 
-If Dropbox write fails, n8n should keep the workflow execution error visible and retry according to n8n defaults or a small bounded retry policy.
+If Dropbox write fails, n8n should keep the workflow execution error visible and retry according to n8n defaults or a small bounded retry [[policy]].
 
-If an imported markdown file is malformed, PKA should reject it without moving it into the canonical inbox path.
+If an imported markdown file is malformed, PKA should reject it without moving it into the canonical [[inbox]] path.
 
 If source metadata is missing, PKA should still accept the mail only when source, sender, subject, and received date are present.
 
@@ -137,7 +137,7 @@ Phase 1 is manual and visible:
 2. Send one controlled test mail to Gmail principal.
 3. Send one controlled test mail to Outlook JCHYTECH.
 4. Inspect generated markdown files in the Dropbox landing folder and then in `JCH_Inbox/00_INBOX/email_imports/`.
-5. Let [[Dobby]] and [[Pie]] process those files through the existing inbox flow.
+5. Let [[Dobby]] and [[Pie]] process those files through the existing [[inbox]] flow.
 
 Only after this pilot is validated should n8n trigger automatic specialist routing or Plane task creation.
 
