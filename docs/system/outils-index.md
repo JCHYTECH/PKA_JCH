@@ -77,6 +77,9 @@
 - scripts/dobby_train.py — Pipeline LoRA fine-tuning via MLX (M1)
 - scripts/dobby_codex_bridge.py — Pont Codex CLI et [[Dobby]]
 - scripts/dobby_weekly_report.py — Rapport hebdomadaire consolidé
+- scripts/pka_skill_generator.py — Générateur de skills auto-apprenant (retro_patterns → LLM → [[SKILL]].md)
+- scripts/cron-skill-generator.sh — Cron hebdomadaire skill generator (dimanche 22h)
+- bin/install-skill-generator-launchd.sh — Installation du launchd skill generator
 - scripts/cron-retro-local.sh — Cron rétro quotidienne (M1, 23h)
 - bin/install-[[dobby]]-retro.sh — Installation du launchd retro
 - bin/[[dobby]] — Commande [[Dobby]]

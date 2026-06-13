@@ -1,8 +1,8 @@
 # WildNexus — ADR Index
 
-**Version :** v0.5
-**Date :** 2026-06-08
-**Statut :** Ouvert — M-01 gelé, en attente ADR-006 (boîtier)
+**Version :** v0.6
+**Date :** 2026-06-12
+**Statut :** M-02 actif — ADR-012 et ADR-013 proposés
 **Owner :** [[Dobby]] + [[Forge]]
 
 ## 1. Objet
@@ -24,8 +24,10 @@ Les ADR documentent les décisions techniques qui structurent P0.
 | [ADR-009](ADR/[[ADR-009-architecture-satellite-base-cloud]].md) | Architecture Satellite / Base / Cloud | [[Dobby]] + [[Castor]] | M-01 | **Accepté** (2026-05-23) |
 | [ADR-010](ADR/[[ADR-010-securite-rgpd-edge-ai]].md) | Sécurité, Chiffrement et RGPD Edge AI | [[Castor]] + [[Forge]] + [[Hermine]] + [[Renard]] | M-02 / M-03 | **Accepté sous réserve** (2026-06-08) |
 | [ADR-011](ADR/[[ADR-011-provisioning-cycle-de-vie-cles]].md) | Provisioning et cycle de vie des clés | [[Castor]] + [[Forge]] + [[Hermine]] | M-02 / M-03 | **Proposé** (2026-06-08) |
+| [ADR-012](ADR/[[ADR-012-strategie-test-p0]].md) 🆕 | Stratégie de test P0 (banc, terrain, régression) | [[Forge]] + [[Castor]] + [[Fourmi]] | M-02 | **Proposé** (2026-06-12) |
+| [ADR-013](ADR/[[ADR-013-format-payload-lora]].md) 🆕 | Format données et protocole transmission (payload LoRa) | [[Forge]] + [[Chouette]] | M-02 | **Proposé** (2026-06-12) |
 
-> **Note 2026-06-08 :** ADR-002 à ADR-009 (sauf ADR-006) étaient listés « Proposé » dans l'index v0.4 par incohérence avec le WP01 architecture freeze summary (2026-05-23) qui les déclare acceptés. Cette version v0.5 aligne l'index sur la réalité des décisions JCH.
+> **Note 2026-06-12 :** ADR-012 et ADR-013 créés suite à l'analyse des 4 documents [[inbox]] WildNexus (D1–D4) et aux rapports [[Chouette]]+[[Araignée]], [[Castor]]+Fourmi, [[Forge]]+[[Nova]]. ADR-012 formalise la stratégie de test en 3 phases + régression avec critères GO/NO-GO. ADR-013 spécifie le format binaire 48 octets uplink et 16 octets downlink.
 
 ## 3. Points de réserve actifs
 
@@ -42,5 +44,4 @@ Les ADR documentent les décisions techniques qui structurent P0.
 
 | ADR | Sujet | Owner proposé | Priorité |
 |---|---|---|---|
-| ADR-012 | Stratégie de test P0 (banc, terrain, regression) | [[Forge]] + [[Castor]] | M-02 |
-| ADR-013 | Format données et protocole transmission (payload LoRa) | [[Forge]] + [[Chouette]] | M-02 |
+| ADR-014 | Architecture plugin P1 (hardware + software) | [[Castor]] + [[Forge]] | P1 — après M-03 |

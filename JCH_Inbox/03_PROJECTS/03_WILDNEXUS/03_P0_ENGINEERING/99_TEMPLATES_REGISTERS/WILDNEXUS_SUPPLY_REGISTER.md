@@ -49,7 +49,7 @@ Scoring fournisseur recommandé :
 | Famille | Choix ADR | Fournisseur primaire | Alternative écartée (motif) | Prix unitaire cible | Délai cible | Risque | ADR |
 |---------|-----------|---------------------|-----------------------------|--------------------:|-------------|--------|-----|
 | MCU | [[ESP32-S3]] | Mouser / Farnell EU | STM32U5 — *intégration caméra complexe* | ~4–8 € | 2–5 j | Bas | ADR-001 ✅ |
-| Caméra — capteur | OV5640 5MP M12 DVP (Arducam) | Arducam / Mouser EU | IMX462 MIPI — *interface MIPI non native [[ESP32-S3]]* | ~20 € | 3–7 j | Bas | ADR-002 ✅ |
+| Caméra — capteur | OV5640 5MP DVP 10-bit M12 (Camemake) | DigiKey BE (Marketplace) | IMX462 MIPI — *interface MIPI non native [[ESP32-S3]]* | ~20 € | 5–10 j | Bas | ADR-002 ✅ |
 | Caméra — lentille | M12 IR-corrigée f/1.8 4–6 mm | Lensation.de | Lentille fixe intégrée — *pas IR-corrigée, non remplaçable* | ~25–50 € | 3–7 j | Moyen | ADR-002 ✅ |
 | Caméra — IR LEDs | LED IR 850 nm × 4 | Mouser / AliExpress | 940 nm — *rendement capteur plus faible* | ~5–10 € | À confirmer | Bas | ADR-002 ✅ |
 | Radio [[LoRa]] | RAK3172 (SX1262, CE certifié) | RAK EU / Mouser | Murata Type 1SJ — *même gamme, second choix* | ~12–15 € | 3–7 j | Bas | ADR-003 ✅ |
@@ -67,7 +67,7 @@ Scoring fournisseur recommandé :
 
 ## 3.1 Shortlist procurement M-01 — achat depuis Liège
 
-**Stratégie panier :** centraliser d'abord chez **Mouser Belgique** pour MCU, capteurs, IR, composants passifs, boîtier si disponible ; utiliser **DigiKey Belgique** en second panier pour microSD industrielle et modem cellulaire si Mouser ne fournit pas ; utiliser les **fabricants officiels** pour les modules très spécialisés (RAK, Arducam, Lensation/Evetar) quand le distributeur généraliste ne garantit pas la bonne variante.
+**Stratégie panier :** centraliser d'abord chez **Mouser Belgique** pour MCU, capteurs, IR, composants passifs, boîtier si disponible ; utiliser **DigiKey Belgique** en second panier pour microSD industrielle et caméra OV5640 (Camemake) si Mouser ne fournit pas ; utiliser les **fabricants officiels** pour les modules très spécialisés (RAK, Lensation/Evetar) quand le distributeur généraliste ne garantit pas la bonne variante.
 
 DigiKey Belgique indique une livraison gratuite à partir de 50 EUR, sinon 18 EUR, avec livraison typique vers la Belgique sous 48 h. Mouser a de bons stocks Belgique/EU pour Espressif, Sensirion, Vishay et beaucoup de composants critiques, mais les frais réels restent à confirmer dans le panier.
 
@@ -77,7 +77,7 @@ DigiKey Belgique indique une livraison gratuite à partir de 50 EUR, sinon 18 EU
 | MCU PCB | ESP32-S3-WROOM-1U-N8R8 | Mouser BE | module officiel Espressif, IPEX, 8 MB PSRAM, stock élevé, prix bas | DigiKey BE ESP32-S3-WROOM-1-N8R8 | Prévoir 5-10 modules si PCB P0 lancé |
 | Radio [[LoRa]] nœud | RAK3172 / RAK3172-T EU868 avec IPEX | RAK Store officiel ou revendeur EU | bonne variante EU868, P2P supporté, documentation RAK | Industry-Electronics / M2M Gubbins si stock EU meilleur | Vérifier variante EU868 + IPEX avant achat |
 | Gateway / banc RF | Meshnology N35 V4 / Heltec WiFi [[LoRa]] 32 V4 EU868 | Meshnology/Heltec officiel, Amazon seulement si V4 confirmée | accélère tests [[LoRa]]/gateway, pas nœud caméra | RAK3172 Evaluation Board | Acheter 1-2 seulement pour banc RF |
-| Caméra capteur | OV5640 5 MP DVP compatible [[ESP32]], M12 si possible | Arducam officiel ou fournisseur caméra spécialisé | Mouser ne semble pas couvrir proprement le module DVP M12 voulu ; éviter variantes marketplace floues | IADIY / YXFcamera comme devis, pas achat aveugle | Demander fiche pinout + NoIR + M12 + DVP |
+| Caméra capteur | Camemake CM_DVP_OV5640_UNIVERSAL | DigiKey BE | OV5640 5MP DVP 10-bit M12, conçu pour ESP32-S3/STM32, pinout documenté, stock DigiKey Marketplace | AliExpress OV5640 DVP M12 24-pin (fallback basse priorité) | Commander 2 modules sur DigiKey BE |
 | Caméra alternative rapide | Arducam Mega 5MP SPI M12 | Arducam officiel | facile à intégrer, M12, SDK, mais **IR-cut visible only** donc non conforme nuit | aucun pour décision ADR-002 | Benchmark seulement, ne pas acheter comme caméra finale |
 | Lentille | M12 IR-corrigée f/1.8 4-6 mm | Lensation ou Evetar officiel EU | qualité optique, correction IR, traçabilité | Arducam M12 IR lens si specs complètes | Demander devis 2-5 pièces |
 | LEDs IR | Vishay 940 nm haute puissance + variante 850 nm | Mouser BE | stock, datasheets, pas de risque marketplace ; permet test faune 850/940 | Würth IR LEDs chez Mouser | Acheter petit lot des deux longueurs d'onde |
