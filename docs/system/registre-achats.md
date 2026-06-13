@@ -18,8 +18,11 @@
 | 2026-06-10 | STATION-DOMO | Hsthe Sea refroidisseur actif RPi5 (ventilo+radiateur) | 9,99€ | Amazon | reçu | — |
 | 2026-06-10 | STATION-DOMO | SONOFF SNZB-02DR2 AirGuard TH (température/humidité Zigbee + écran LCD) | 15,15€ | Amazon | reçu | — |
 | 2026-06-10 | STATION-DOMO | Sonoff Zigbee Smart Water Valve (électrovanne connectée) | — | Amazon | reçu | — |
+| 2026-06-05 | WILDNEXUS | Nordic Power Profiler Kit II (PPK2) | ~100€ | Nordic Semi EU | reçu | — |
 | 2026-06-10 | WILDNEXUS | Lot 2× ESP32 S3 DevKitC-1 N16R8 (WiFi/BLE 5.0, pour edge AI caméra-piège) | 21,98€ | Amazon (MiMiU) | reçu | — |
-| 2026-06-10 | IOT | Miuzei Starter Kit Arduino — 58 leçons, 235 composants (breadboard, LCD, capteurs, relais, GPIO extension RPi) | — | Amazon | reçu | — |
+| 2026-06-12 | WILDNEXUS | Camemake OV5640 DVP M12 ×1 — stock BE | 17,60€ | Camemake.eu | commandé | — |
+| 2026-06-12 | WILDNEXUS | Commande Mouser #39492997 — MEMS TDK ×3, IR 940nm ×10, PIR ×2, Buck TI ×10, Induct ×5, MOSFET ×5, BME688 ×2, SHT31 ×2, Antenne ×2, Dissipateur ×4 | 128,20€ TVAC | Mouser BE | commandé | Order_39492997.pdf |
+| 2026-06-10 | IOT / WILDNEXUS | Miuzei Starter Kit Arduino — 58 leçons, 235 composants (breadboard, LCD, capteurs, relais, GPIO extension RPi) | — | Amazon | reçu | Banc WildNexus M-02 |
 | 2026-06-10 | IT | UGREEN Adaptateur Type-C vers Micro USB (lot de 2) | — | Amazon | reçu | — |
 | 2026-06-10 | IT | UGREEN Adaptateur USB-C Ethernet Gigabit RJ45 1 Gbps | — | Amazon | reçu | — |
 
