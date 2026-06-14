@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Collect Xeno-canto API v3 metadata for InsectNet."""
+"""Collect Xeno-canto API v3 metadata for InsectNet.
+
+DEPRECATED (2026-06-13): Replaced by insectnet_xcapi_ingest.py + xcapi.
+This script is kept for reference only. Do not use for new data collection."""
 
 from __future__ import annotations
 

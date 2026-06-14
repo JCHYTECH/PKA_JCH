@@ -1,4 +1,69 @@
-# Log PKA
+# Log PKA — Opérations système
+
+> Append-only. Format : `## [YYYY-MM-DD] <opération> | <description>`.
+> Chaque entrée commence par `## [` — parseable avec `grep "^## \[" log.md`.
+> Modèle : Dobby (orchestrateur). Inspiré du pattern LLM Wiki (Karpathy, 2026).
+
+---
+
+## [2026-06-13] architecture | Règle « Vérification avant affirmation » + registre sources
+
+- `AGENTS.md` — nouvelle règle dans Behavioral rules, avec renvoi vers sources-verite.md
+- `docs/system/sources-verite.md` — registre complet (projets, données externes, système, wiki, règles)
+- `MEMORY.md` — règle « Données chiffrées vérifiées » élargie en « Vérification avant affirmation »
+- Protocole en 3 temps : fichier projet → outil externe → dire « non vérifié »
+
+## [2026-06-13] architecture | Formalisation des 3 couches (raw/wiki/schema) selon pattern Karpathy
+
+- `wiki/log.md` — adoption du format structuré `## [DATE] op | description`
+- `wiki/index.md` — catalogue auto-maintenu du wiki (Dobby met à jour)
+- `AGENTS.md` — section Knowledge architecture ajoutée
+- Document source : `wiki/Knowledge/AI-Tools/LLM Wiki — Karpathy pattern.md`
+
+## [2026-06-13] ingest | Document LLM Wiki (Karpathy) — analysé par Corbeau, Sybil, Castor, Furet
+
+- Recommandation : adopter index/log auto-maintenus + 3 couches dans AGENTS.md
+- Routé vers `wiki/Knowledge/AI-Tools/LLM Wiki — Karpathy pattern.md`
+
+## [2026-06-13] ingest | Document xcapi (Xeno-Canto) — adopté dans pipeline InsectNet
+
+- Package `xenocanto-api` 0.3.1 installé dans `.venv/`
+- Wrapper `bin/xcapi` créé
+- Script `scripts/insectnet_xcapi_ingest.py` créé — remplace 3 anciens scripts
+- Scripts deprecated : `insectnet_xc_metadata.py`, `insectnet_select_audio_candidates.py`, `insectnet_download_audio.py`
+- Document routé vers `INSECTNET/01_SOURCES/2026-06-13_xeno-canto-reference-xcapi-avesecho.md`
+
+## [2026-06-13] query | Xeno-Canto Alpes — 132 espèces d'orthoptères
+
+- Query API v3 : `grp:grasshoppers box:44,5,48,13` → 132 sp., 2 868 enreg.
+- Inventaire sauvegardé dans `INSECTNET/02_DATASET/alpine-species-inventory.md`
+
+## [2026-06-13] ingest | PPTX NotebookLM — SOPs WildNexus M-02
+
+- 14 slides, 12 SOPs. Analyse : aide-mémoire visuel, pas un remplacement des SOPs.
+- Routé vers `03_WILDNEXUS/05_VISUALS_DASHBOARDS/2026-06-13_NLM_SOP-M02-Metrology_Protocol.pptx`
+- PNG exemple SOP-01 : `2026-06-13_NLM_SOP-01_example-slide.png`
+
+## [2026-06-13] recovery | Daily notes 08→12 juin régénérées (gap de 7 jours)
+
+- 5 daily notes reconstruites à partir des retros, sybil-auto, system checks et TEAM_Inbox
+- Cause : Dobby n'avait pas fait de `/save` explicite pendant les sessions du 9→12 juin
+- 08 juin : machine off (dimanche) — launchd retro non déclenché
+- 09 juin : 8 sessions, 1355 éch. — 10 juin : 6 sessions, 1218 éch. — 11 juin : 2 sessions, 1064 éch. — 12 juin : 7 sessions, 1359 éch.
+- `com.dobby.retro.plist` : confirmé opérationnel (tourne chaque nuit 23h depuis le 9 juin). Le `Load failed` dans les rétros = pattern terminal capturé, pas le daemon.
+- mises à jour : `wiki/index.md` (121→126 daily notes), `wiki/log.md`, `MEMORY.md`
+
+## [2026-06-13] session | Daily note 2026-06-13 — diagnostic + HA Zigbee + architecture IoT
+
+- Gap daily notes 08→12 comblé, diagnostic launchd retro
+- Sonoff AirGuard TH (Zigbee) : script `_local/install-zigbee-ha.sh` + guide `docs/manuels/sonoff-zigbee-ha-guide.md`
+- Décision architecture IoT : 3 HA locaux (Belgique M5, Italie RPi, Van RPi) avec supervision iPhone/Tailscale
+- Fichiers : 7 daily notes (08→13), 1 script, 1 guide, index, log, MEMORY.md
+
+## [2026-06-13] query | Topo InsectNet — état V0.1
+
+- 5 espèces, pipeline data à 60%, gap ML (pas de classifieur entraîné)
+- Revue QC humaine bloquante pour l'entraînement baseline
 
 ---
 
