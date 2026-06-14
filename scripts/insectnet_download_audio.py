@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Download InsectNet audio files listed in a manifest."""
+"""Download InsectNet audio files listed in a manifest.
+
+DEPRECATED (2026-06-13): Replaced by insectnet_xcapi_ingest.py + xcapi.
+This script is kept for reference only."""
 
 from __future__ import annotations
 
