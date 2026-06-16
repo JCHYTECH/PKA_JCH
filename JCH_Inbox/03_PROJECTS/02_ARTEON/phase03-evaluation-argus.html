@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARTEON — Phase 0.3 — Évaluation Argus</title>
+<style>
+  :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --muted: #8b949e;
+          --green: #3fb950; --yellow: #d2991d; --orange: #db6d28; --red: #f85149;
+          --blue: #58a6ff; --purple: #a371f7; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 20px; }
+  h1 { font-size: 1.4em; margin-bottom: 4px; }
+  .sub { color: var(--muted); font-size: 0.85em; margin-bottom: 20px; }
+  .summary { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .stat { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; min-width: 100px; text-align: center; }
+  .stat .val { font-size: 1.6em; font-weight: 700; }
+  .stat .lbl { font-size: 0.75em; color: var(--muted); margin-top: 2px; }
+  .filters { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .filters button { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 0.85em; }
+  .filters button.active { background: var(--blue); border-color: var(--blue); color: #fff; }
+  .filters button:hover { border-color: var(--blue); }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 10px; display: flex; gap: 12px; align-items: flex-start; cursor: pointer; transition: border-color 0.15s; }
+  .card:hover { border-color: var(--blue); }
+  .card.evaluated { border-left: 3px solid var(--green); }
+  .thumb { width: 80px; height: 80px; object-fit: cover; border-radius: 4px; flex-shrink: 0; border: 1px solid var(--border); }
+  .score-circle { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1em; flex-shrink: 0; color: #000; }
+  .tier-EXCELLENT { background: var(--green); }
+  .tier-TRÈS_BON { background: #a371f7; }
+  .tier-BON { background: var(--yellow); }
+  .tier-À_AMÉLIORER { background: var(--orange); }
+  .info { flex: 1; min-width: 0; }
+  .info .name { font-weight: 600; font-size: 0.95em; }
+  .info .species { color: var(--muted); font-size: 0.8em; margin: 2px 0; }
+  .info .exif { color: var(--muted); font-size: 0.75em; }
+  .bars { display: flex; gap: 4px; margin-top: 6px; }
+  .bar-group { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  .bar-group .label { font-size: 0.6em; color: var(--muted); }
+  .bar { width: 22px; border-radius: 3px 3px 0 0; }
+  .bar-inner { width: 100%; border-radius: 3px; transition: height 0.3s; }
+  .eval-panel { display: none; flex-shrink: 0; gap: 6px; flex-direction: column; align-items: center; }
+  .card.expanded .eval-panel { display: flex; }
+  .eval-btn { width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--border); background: transparent; cursor: pointer; font-size: 1.1em; transition: all 0.15s; }
+  .eval-btn.good:hover, .eval-btn.good.selected { border-color: var(--green); background: rgba(63,185,80,0.15); }
+  .eval-btn.ok:hover, .eval-btn.ok.selected { border-color: var(--yellow); background: rgba(210,153,29,0.15); }
+  .eval-btn.bad:hover, .eval-btn.bad.selected { border-color: var(--red); background: rgba(248,81,73,0.15); }
+  .eval-label { font-size: 0.65em; color: var(--muted); }
+  .progress { margin-top: 20px; padding: 14px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; }
+  .progress h3 { font-size: 0.9em; margin-bottom: 8px; }
+  .progress-bar { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--green); border-radius: 4px; transition: width 0.3s; }
+  .empty { text-align: center; color: var(--muted); padding: 40px; }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<h1>📋 ARTEON — Phase 0.3 — Évaluation des rapports Argus</h1>
+<div class="sub">58 analyses photo · Pipeline Argus (Opus 4.7) · Mai 2026</div>
+
+<div class="summary">
+  <div class="stat"><div class="val" id="stat-total">58</div><div class="lbl">analyses</div></div>
+  <div class="stat"><div class="val" id="stat-eval">0</div><div class="lbl">évaluées</div></div>
+  <div class="stat"><div class="val" id="stat-good">0</div><div class="lbl">👍 bonnes</div></div>
+  <div class="stat"><div class="val" id="stat-ok">0</div><div class="lbl">👌 correctes</div></div>
+  <div class="stat"><div class="val" id="stat-bad">0</div><div class="lbl">👎 à revoir</div></div>
+</div>
+
+<div class="filters">
+  <button class="active" data-filter="all">Toutes (58)</button>
+  <button data-filter="EXCELLENT">⭐ Excellent (9)</button>
+  <button data-filter="TRÈS BON">🟣 Très Bon (24)</button>
+  <button data-filter="BON">🟡 Bon (24)</button>
+  <button data-filter="À AMÉLIORER">🟠 À améliorer (1)</button>
+  <button data-filter="unevaluated">⏳ Non évaluées</button>
+</div>
+<div style="font-size:0.75em;color:var(--muted);margin-bottom:12px" id="save-status">🔄 En attente de la première évaluation...</div>
+
+<div id="cards"></div>
+
+<div class="progress">
+  <h3>Progression : <span id="prog-text">0/58 évaluées</span></h3>
+  <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+</div>
+
+<script>
+const ANALYSES = [{"id": 15, "file": "LrC to-18.jpg", "tier": "EXCELLENT", "score": 86, "c": 17, "e": 16, "n": 18, "t": 17, "i": 18, "species": "Grenouille verte (Lithobates clamitans)", "fl": 800, "iso": 800, "ap": 11.0, "ss": "0.001", "pdf": "/PHOTO/analyses/LrC%20to-18_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-18.jpg"}, {"id": 39, "file": "LrC to-4.jpg", "tier": "EXCELLENT", "score": 86, "c": 17, "e": 16, "n": 18, "t": 17, "i": 18, "species": "Sculpture d'aigle en bois flotté (Land Art)", "fl": 43, "iso": 400, "ap": 13.0, "ss": "0.004", "pdf": "/PHOTO/analyses/LrC%20to-4_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-4.jpg"}, {"id": 57, "file": "LrC to-9.jpg", "tier": "EXCELLENT", "score": 86, "c": 17, "e": 16, "n": 17, "t": 18, "i": 18, "species": "Héron cendré (Ardea cinerea)", "fl": 428, "iso": 12800, "ap": 9.0, "ss": "0.001", "pdf": "/PHOTO/analyses/LrC%20to-9_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-9.jpg"}, {"id": 14, "file": "LrC to-17.jpg", "tier": "EXCELLENT", "score": 84, "c": 17, "e": 16, "n": 17, "t": 16, "i": 18, "species": "Grenouille verte (Pelophylax sp.)", "fl": 539, "iso": 8000, "ap": 11.0, "ss": "0.001", "pdf": "/PHOTO/analyses/LrC%20to-17_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-17.jpg"}, {"id": 47, "file": "LrC to-47.jpg", "tier": "EXCELLENT", "score": 84, "c": 17, "e": 16, "n": 17, "t": 16, "i": 18, "species": "Bernache du Canada (Branta canadensis)", "fl": 311, "iso": 640, "ap": 9.0, "ss": "0.0015625", "pdf": "/PHOTO/analyses/LrC%20to-47_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-47.jpg"}, {"id": 58, "file": "LrC to.jpg", "tier": "EXCELLENT", "score": 84, "c": 17, "e": 16, "n": 16, "t": 17, "i": 18, "species": "Paysage lacustre alpin avec givre", "fl": 6, "iso": 80, "ap": 1.8, "ss": "0.0002777777778", "pdf": "/PHOTO/analyses/LrC%20to_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to.jpg"}, {"id": 9, "file": "LrC to-12.jpg", "tier": "EXCELLENT", "score": 83, "c": 17, "e": 16, "n": 15, "t": 17, "i": 18, "species": "Vache des Highlands (Bos taurus, race Highland)", "fl": 258, "iso": 400, "ap": 7.1, "ss": "0.0008", "pdf": "/PHOTO/analyses/LrC%20to-12_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-12.jpg"}, {"id": 11, "file": "LrC to-14.jpg", "tier": "EXCELLENT", "score": 83, "c": 17, "e": 16, "n": 17, "t": 17, "i": 16, "species": "Geai des chênes (Garrulus glandarius)", "fl": 707, "iso": 12800, "ap": 9.0, "ss": "0.000625", "pdf": "/PHOTO/analyses/LrC%20to-14_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-14.jpg"}, {"id": 50, "file": "LrC to-5.jpg", "tier": "EXCELLENT", "score": 83, "c": 17, "e": 16, "n": 15, "t": 17, "i": 18, "species": "Fuligule milouinan (Aythya marila) ou Fuligule morillon mâle", "fl": 800, "iso": 2000, "ap": 9.0, "ss": "0.000625", "pdf": "/PHOTO/analyses/LrC%20to-5_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-5.jpg"}, {"id": 16, "file": "LrC to-19.jpg", "tier": "EXCELLENT", "score": 82, "c": 16, "e": 15, "n": 17, "t": 16, "i": 18, "species": "Grèbe à cou noir (Podiceps nigricollis)", "fl": 800, "iso": 1000, "ap": 11.0, "ss": "0.001", "pdf": "/PHOTO/analyses/LrC%20to-19_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-19.jpg"}, {"id": 20, "file": "LrC to-22.jpg", "tier": "EXCELLENT", "score": 82, "c": 16, "e": 15, "n": 17, "t": 16, "i": 18, "species": "Pigeon ramier (Columba palumbus)", "fl": 800, "iso": 1000, "ap": 9.0, "ss": "0.000625", "pdf": "/PHOTO/analyses/LrC%20to-22_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-22.jpg"}, {"id": 42, "file": "LrC to-42.jpg", "tier": "EXCELLENT", "score": 82, "c": 16, "e": 17, "n": 17, "t": 16, "i": 16, "species": "Rouge-gorge familier (Erithacus rubecula)", "fl": 800, "iso": 12800, "ap": 9.0, "ss": "0.00125", "pdf": "/PHOTO/analyses/LrC%20to-42_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-42.jpg"}, {"id": 55, "file": "LrC to-7.jpg", "tier": "EXCELLENT", "score": 82, "c": 16, "e": 15, "n": 17, "t": 16, "i": 18, "species": "Rouge-gorge familier (Erithacus rubecula)", "fl": 800, "iso": 800, "ap": 9.0, "ss": "0.001", "pdf": "/PHOTO/analyses/LrC%20to-7_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-7.jpg"}, {"id": 12, "file": "LrC to-15.jpg", "tier": "EXCELLENT", "score": 81, "c": 16, "e": 17, "n": 15, "t": 16, "i": 17, "species": "Pinson des arbres (Fringilla coelebs) - mâle", "fl": 637, "iso": 12800, "ap": 9.0, "ss": "0.000625", "pdf": "/PHOTO/analyses/LrC%20to-15_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-15.jpg"}, {"id": 18, "file": "LrC to-20.jpg", "tier": "EXCELLENT", "score": 81, "c": 16, "e": 15, "n": 17, "t": 15, "i": 18, "species": "Grenouille verte (Pelophylax kl. esculentus) mâle en chant", "fl": 539, "iso": 1600, "ap": 11.0, "ss": "0.001", "pdf": "/PHOTO/analyses/LrC%20to-20_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-20.jpg"}, {"id": 19, "file": "LrC to-21.jpg", "tier": "EXCELLENT", "score": 81, "c": 16, "e": 15, "n": 17, "t": 16, "i": 17, "species": "Grèbe à cou noir (Podiceps nigricollis)", "fl": 570, "iso": 1000, "ap": 10.0, "ss": "0.000625", "pdf": "/PHOTO/analyses/LrC%20to-21_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-21.jpg"}, {"id": 25, "file": "LrC to-27.jpg", "tier": "EXCELLENT", "score": 81, "c": 16, "e": 15, "n": 17, "t": 16, "i": 17, "species": "Sculpture en marbre - figure drapée à capuche (probablement allégorique ou religieuse)", "fl": 16, "iso": 320, "ap": 2.8, "ss": "0.01333333333", "pdf": "/PHOTO/analyses/LrC%20to-27_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-27.jpg"}, {"id": 26, "file": "LrC to-28.jpg", "tier": "EXCELLENT", "score": 81, "c": 16, "e": 15, "n": 17, "t": 16, "i": 17, "species": "Raiponce noire (Phyteuma ovatum / Phyteuma nigrum)", "fl": 450, "iso": 640, "ap": 11.0, "ss": "0.004", "pdf": "/PHOTO/analyses/LrC%20to-28_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-28.jpg"}, {"id": 38, "file": "LrC to-39.jpg", "tier": "EXCELLENT", "score": 81, "c": 16, "e": 15, "n": 17, "t": 16, "i": 17, "species": "Grand Cormoran (Phalacrocorax carbo)", "fl": 800, "iso": 800, "ap": 9.0, "ss": "0.0005", "pdf": "/PHOTO/analyses/LrC%20to-39_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-39.jpg"}, {"id": 54, "file": "LrC to-6.jpg", "tier": "EXCELLENT", "score": 81, "c": 16, "e": 15, "n": 17, "t": 16, "i": 17, "species": "Rouge-gorge familier (Erithacus rubecula)", "fl": 800, "iso": 1250, "ap": 9.0, "ss": "0.001", "pdf": "/PHOTO/analyses/LrC%20to-6_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-6.jpg"}, {"id": 56, "file": "LrC to-8.jpg", "tier": "EXCELLENT", "score": 81, "c": 16, "e": 15, "n": 17, "t": 16, "i": 17, "species": "Rouge-gorge familier (Erithacus rubecula)", "fl": 800, "iso": 2500, "ap": 9.0, "ss": "0.001", "pdf": "/PHOTO/analyses/LrC%20to-8_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-8.jpg"}, {"id": 10, "file": "LrC to-13.jpg", "tier": "EXCELLENT", "score": 80, "c": 16, "e": 14, "n": 17, "t": 16, "i": 17, "species": "Choucas des tours (Corvus monedula)", "fl": 600, "iso": 400, "ap": 8.0, "ss": "0.0008", "pdf": "/PHOTO/analyses/LrC%20to-13_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-13.jpg"}, {"id": 13, "file": "LrC to-16.jpg", "tier": "TRÈS BON", "score": 79, "c": 16, "e": 15, "n": 17, "t": 16, "i": 15, "species": "Troglodyte mignon (Troglodytes troglodytes)", "fl": 800, "iso": 8000, "ap": 9.0, "ss": "0.000625", "pdf": "/PHOTO/analyses/LrC%20to-16_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-16.jpg"}, {"id": 17, "file": "LrC to-2.jpg", "tier": "TRÈS BON", "score": 79, "c": 16, "e": 15, "n": 16, "t": 15, "i": 17, "species": "Paysage hivernal avec chapelle bavaroise au bord d'un lac", "fl": 16, "iso": 50, "ap": 2.8, "ss": "0.00625", "pdf": "/PHOTO/analyses/LrC%20to-2_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-2.jpg"}, {"id": 43, "file": "LrC to-43.jpg", "tier": "TRÈS BON", "score": 79, "c": 15, "e": 16, "n": 15, "t": 16, "i": 17, "species": "Canards colverts (Anas platyrhynchos)", "fl": 800, "iso": 1600, "ap": 9.0, "ss": "0.000625", "pdf": "/PHOTO/analyses/LrC%20to-43_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-43.jpg"}, {"id": 44, "file": "LrC to-44.jpg", "tier": "TRÈS BON", "score": 79, "c": 16, "e": 15, "n": 16, "t": 15, "i": 17, "species": "Bernache du Canada (Branta canadensis)", "fl": 800, "iso": 800, "ap": 10.0, "ss": "0.0008", "pdf": "/PHOTO/analyses/LrC%20to-44_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-44.jpg"}, {"id": 49, "file": "LrC to-49.jpg", "tier": "TRÈS BON", "score": 79, "c": 16, "e": 15, "n": 16, "t": 15, "i": 17, "species": "Bernache du Canada (Branta canadensis)", "fl": 90, "iso": 1600, "ap": 5.6, "ss": "0.0008", "pdf": "/PHOTO/analyses/LrC%20to-49_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-49.jpg"}, {"id": 46, "file": "LrC to-46.jpg", "tier": "TRÈS BON", "score": 78, "c": 16, "e": 14, "n": 16, "t": 15, "i": 17, "species": "Foulque d'Amérique (Fulica americana) et Canard chipeau (Mareca strepera) mâle", "fl": 338, "iso": 640, "ap": 10.0, "ss": "0.0008", "pdf": "/PHOTO/analyses/LrC%20to-46_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-46.jpg"}, {"id": 29, "file": "LrC to-30.jpg", "tier": "TRÈS BON", "score": 77, "c": 15, "e": 14, "n": 16, "t": 15, "i": 17, "species": "Cygneau (Cygnus olor, jeune cygne tuberculé)", "fl": 400, "iso": 4000, "ap": 8.0, "ss": "0.000625", "pdf": "/PHOTO/analyses/LrC%20to-30_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-30.jpg"}, {"id": 22, "file": "LrC to-24.jpg", "tier": "TRÈS BON", "score": 76, "c": 15, "e": 14, "n": 16, "t": 15, "i": 16, "species": "Fuligule milouin femelle (Aythya ferina)", "fl": 707, "iso": 3200, "ap": 9.0, "ss": "0.000625", "pdf": "/PHOTO/analyses/LrC%20to-24_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-24.jpg"}, {"id": 28, "file": "LrC to-3.jpg", "tier": "TRÈS BON", "score": 76, "c": 16, "e": 15, "n": 14, "t": 15, "i": 16, "species": "Buse variable (Buteo buteo)", "fl": 800, "iso": 200, "ap": 9.0, "ss": "0.00625", "pdf": "/PHOTO/analyses/LrC%20to-3_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-3.jpg"}, {"id": 48, "file": "LrC to-48.jpg", "tier": "TRÈS BON", "score": 76, "c": 16, "e": 15, "n": 13, "t": 15, "i": 17, "species": "Bernache du Canada (Branta canadensis)", "fl": 234, "iso": 400, "ap": 10.0, "ss": "0.0015625", "pdf": "/PHOTO/analyses/LrC%20to-48_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-48.jpg"}, {"id": 40, "file": "LrC to-40.jpg", "tier": "TRÈS BON", "score": 75, "c": 15, "e": 14, "n": 15, "t": 14, "i": 17, "species": "Grand cormoran (Phalacrocorax carbo)", "fl": 800, "iso": 640, "ap": 9.0, "ss": "0.000625", "pdf": "/PHOTO/analyses/LrC%20to-40_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-40.jpg"}, {"id": 41, "file": "LrC to-41.jpg", "tier": "TRÈS BON", "score": 75, "c": 16, "e": 15, "n": 14, "t": 14, "i": 16, "species": "Martin-pêcheur d'Europe (Alcedo atthis)", "fl": 800, "iso": 32000, "ap": 9.0, "ss": "0.000625", "pdf": "/PHOTO/analyses/LrC%20to-41_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-41.jpg"}, {"id": 27, "file": "LrC to-29.jpg", "tier": "TRÈS BON", "score": 74, "c": 15, "e": 14, "n": 15, "t": 16, "i": 14, "species": "Oie cendrée (Anser anser) et canards en vol", "fl": 450, "iso": 320, "ap": 8.0, "ss": "0.0004", "pdf": "/PHOTO/analyses/LrC%20to-29_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-29.jpg"}, {"id": 45, "file": "LrC to-45.jpg", "tier": "TRÈS BON", "score": 74, "c": 15, "e": 14, "n": 14, "t": 15, "i": 16, "species": "Cygne tuberculé (Cygnus olor)", "fl": 800, "iso": 320, "ap": 10.0, "ss": "0.0008", "pdf": "/PHOTO/analyses/LrC%20to-45_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-45.jpg"}, {"id": 51, "file": "LrC to-50.jpg", "tier": "TRÈS BON", "score": 74, "c": 16, "e": 13, "n": 14, "t": 14, "i": 17, "species": "Fresque baroque - Œil de la Providence entouré d'angelots", "fl": 16, "iso": 640, "ap": 2.8, "ss": "0.02", "pdf": "/PHOTO/analyses/LrC%20to-50_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-50.jpg"}, {"id": 53, "file": "LrC to-52.jpg", "tier": "TRÈS BON", "score": 73, "c": 15, "e": 16, "n": 12, "t": 14, "i": 16, "species": "Foulque macroule (Fulica atra) dans étang brumeux", "fl": 200, "iso": 1250, "ap": 9.0, "ss": "0.000625", "pdf": "/PHOTO/analyses/LrC%20to-52_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-52.jpg"}, {"id": 32, "file": "LrC to-33.jpg", "tier": "TRÈS BON", "score": 72, "c": 15, "e": 13, "n": 14, "t": 14, "i": 16, "species": "Flamant rose (Phoenicopterus roseus)", "fl": 600, "iso": 1250, "ap": 13.0, "ss": "0.0003125", "pdf": "/PHOTO/analyses/LrC%20to-33_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-33.jpg"}, {"id": 7, "file": "LrC to-10.jpg", "tier": "TRÈS BON", "score": 71, "c": 15, "e": 14, "n": 13, "t": 14, "i": 15, "species": "Mésange charbonnière (Parus major)", "fl": 800, "iso": 4000, "ap": 9.0, "ss": "0.000625", "pdf": "/PHOTO/analyses/LrC%20to-10_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-10.jpg"}, {"id": 36, "file": "LrC to-37.jpg", "tier": "TRÈS BON", "score": 71, "c": 14, "e": 13, "n": 15, "t": 14, "i": 15, "species": "Cygne tuberculé et ses jeunes (Cygnus olor)", "fl": 600, "iso": 400, "ap": 9.0, "ss": "0.0005", "pdf": "/PHOTO/analyses/LrC%20to-37_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-37.jpg"}, {"id": 8, "file": "LrC to-11.jpg", "tier": "TRÈS BON", "score": 70, "c": 15, "e": 14, "n": 13, "t": 12, "i": 16, "species": "Rouge-gorge familier (Erithacus rubecula)", "fl": 800, "iso": 1000, "ap": 11.0, "ss": "0.0008", "pdf": "/PHOTO/analyses/LrC%20to-11_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-11.jpg"}, {"id": 31, "file": "LrC to-32.jpg", "tier": "BON", "score": 69, "c": 13, "e": 14, "n": 14, "t": 13, "i": 15, "species": "Flamant rose juvénile (Phoenicopterus roseus)", "fl": 552, "iso": 12800, "ap": 22.0, "ss": "0.0005", "pdf": "/PHOTO/analyses/LrC%20to-32_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-32.jpg"}, {"id": 33, "file": "LrC to-34.jpg", "tier": "BON", "score": 69, "c": 14, "e": 12, "n": 15, "t": 13, "i": 15, "species": "Flamant rose juvénile (Phoenicopterus roseus)", "fl": 600, "iso": 1000, "ap": 13.0, "ss": "0.0003125", "pdf": "/PHOTO/analyses/LrC%20to-34_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-34.jpg"}, {"id": 34, "file": "LrC to-35.jpg", "tier": "BON", "score": 69, "c": 14, "e": 13, "n": 15, "t": 14, "i": 13, "species": "Hespérie (Hesperiidae), probablement Hespérie de la houlque (Thymelicus sylvestris) ou espèce voisine", "fl": 100, "iso": 250, "ap": 10.0, "ss": "0.005", "pdf": "/PHOTO/analyses/LrC%20to-35_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-35.jpg"}, {"id": 35, "file": "LrC to-36.jpg", "tier": "BON", "score": 69, "c": 12, "e": 14, "n": 13, "t": 13, "i": 17, "species": "Foulque macroule (Fulica atra) capturant un serpent d'eau", "fl": 552, "iso": 500, "ap": 9.0, "ss": "0.0005", "pdf": "/PHOTO/analyses/LrC%20to-36_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-36.jpg"}, {"id": 37, "file": "LrC to-38.jpg", "tier": "BON", "score": 69, "c": 13, "e": 15, "n": 14, "t": 15, "i": 12, "species": "Platane (Platanus x acerifolia) - fruits akènes", "fl": 200, "iso": 1000, "ap": 9.0, "ss": "0.0005", "pdf": "/PHOTO/analyses/LrC%20to-38_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-38.jpg"}, {"id": 52, "file": "LrC to-51.jpg", "tier": "BON", "score": 69, "c": 14, "e": 13, "n": 15, "t": 13, "i": 14, "species": "Buste sculpté d'ecclésiastique (probable pape ou cardinal)", "fl": 6, "iso": 640, "ap": 1.8, "ss": "0.01666666667", "pdf": "/PHOTO/analyses/LrC%20to-51_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-51.jpg"}, {"id": 21, "file": "LrC to-23.jpg", "tier": "BON", "score": 67, "c": 14, "e": 13, "n": 12, "t": 13, "i": 15, "species": "Sittelle torchepot (Sitta europaea)", "fl": 800, "iso": 800, "ap": 9.0, "ss": "0.0005", "pdf": "/PHOTO/analyses/LrC%20to-23_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-23.jpg"}, {"id": 23, "file": "LrC to-25.jpg", "tier": "BON", "score": 66, "c": 14, "e": 13, "n": 14, "t": 12, "i": 13, "species": "Scarabée vert (Cetoniinae, probablement Dicronorhina ou Cotinis)", "fl": 100, "iso": 200, "ap": 8.0, "ss": "0.005", "pdf": "/PHOTO/analyses/LrC%20to-25_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-25.jpg"}, {"id": 24, "file": "LrC to-26.jpg", "tier": "BON", "score": 64, "c": 13, "e": 12, "n": 11, "t": 13, "i": 15, "species": "Château néo-gothique (architecture - probablement Château de Noisy/Miranda)", "fl": 268, "iso": 200, "ap": 10.0, "ss": "0.002", "pdf": "/PHOTO/analyses/LrC%20to-26_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-26.jpg"}, {"id": 30, "file": "LrC to-31.jpg", "tier": "À AMÉLIORER", "score": 57, "c": 11, "e": 13, "n": 10, "t": 12, "i": 11, "species": "Cormoran pygmée (Microcarbo pygmaeus)", "fl": 600, "iso": 3200, "ap": 22.0, "ss": "0.0005", "pdf": "/PHOTO/analyses/LrC%20to-31_analyse.pdf", "thumb": "/PHOTO/analyses/thumbnails/LrC%20to-31.jpg"}];
+
+const TIER_LABELS = { "EXCELLENT": "Excellent", "TRÈS BON": "Très Bon", "BON": "Bon", "À AMÉLIORER": "À améliorer" };
+const TIER_CLASS = { "EXCELLENT": "tier-EXCELLENT", "TRÈS BON": "tier-TRÈS_BON", "BON": "tier-BON", "À AMÉLIORER": "tier-À_AMÉLIORER" };
+const SCORE_COLORS = { c: '#58a6ff', e: '#3fb950', n: '#f0883e', t: '#a371f7', i: '#f85149' };
+const SCORE_LABELS = { c: 'Compo', e: 'Expo', n: 'Net', t: 'Tech', i: 'Impact' };
+
+let evals = JSON.parse(localStorage.getItem('argus_evals') || '{}');
+// Sync any existing evaluations to server
+if (Object.keys(evals).length > 0) {
+  fetch('/save', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(evals)})
+    .then(r => r.json()).then(d => { document.getElementById('save-status').textContent = '✓ ' + d.saved + ' restaurées'; })
+    .catch(() => {});
+}
+let activeFilter = 'all';
+
+function saveEval(id, value) {
+  if (evals[id] === value) { delete evals[id]; }
+  else { evals[id] = value; }
+  localStorage.setItem('argus_evals', JSON.stringify(evals));
+  // Auto-save to server
+  fetch('/save', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(evals)
+  }).then(r => r.json()).then(d => {
+    document.getElementById('save-status').textContent = '✓ ' + d.saved + ' sauvegardées';
+  }).catch(() => {});
+  render();
+}
+
+function render() {
+  const container = document.getElementById('cards');
+  let filtered = ANALYSES;
+  if (activeFilter === 'unevaluated') filtered = ANALYSES.filter(a => !evals[a.id]);
+  else if (activeFilter !== 'all') filtered = ANALYSES.filter(a => a.tier === activeFilter);
+
+  if (filtered.length === 0) {
+    container.innerHTML = '<div class="empty">✅ Toutes les analyses de cette catégorie sont évaluées.</div>';
+  } else {
+    container.innerHTML = filtered.map(a => {
+      const ev = evals[a.id];
+      const maxScore = Math.max(a.c, a.e, a.n, a.t, a.i);
+      return `
+        <div class="card${ev ? ' evaluated' : ''}" onclick="toggleCard(this, ${a.id})">
+          <div class="score-circle ${TIER_CLASS[a.tier]}">${a.score}</div>
+          ${a.thumb ? `<img src="${a.thumb}" class="thumb" loading="lazy" onerror="this.style.display='none'">` : ''}
+          <div class="info">
+            <div class="name">${a.file} <span style="color:var(--muted);font-size:0.8em">${TIER_LABELS[a.tier]}</span></div>
+            <div class="species">🐾 ${a.species || '—'}</div>
+            <div class="exif">📷 ${a.fl}mm · f/${a.ap} · ISO${a.iso} · ${a.ss}s</div>
+            <div class="bars">
+              ${['c','e','n','t','i'].map(k => `
+                <div class="bar-group">
+                  <div class="bar" style="height:60px;background:var(--border)"><div class="bar-inner" style="height:${(a[k]/20*100)}%;background:${SCORE_COLORS[k]}"></div></div>
+                  <div class="label">${SCORE_LABELS[k]}<br>${a[k]}</div>
+                </div>`).join('')}
+            </div>
+          </div>
+          <div class="eval-panel">
+            <div class="eval-label">Prompt</div>
+            <button class="eval-btn good${ev==='good'?' selected':''}" onclick="event.stopPropagation();saveEval(${a.id},'good')" title="Analyse pertinente et utile">👍</button>
+            <button class="eval-btn ok${ev==='ok'?' selected':''}" onclick="event.stopPropagation();saveEval(${a.id},'ok')" title="Correct mais perfectible">👌</button>
+            <button class="eval-btn bad${ev==='bad'?' selected':''}" onclick="event.stopPropagation();saveEval(${a.id},'bad')" title="Erreurs ou à revoir">👎</button>
+            <a href="${a.pdf}" target="_blank" onclick="event.stopPropagation()" style="font-size:0.7em;margin-top:4px">📄 PDF</a>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  // Stats
+  const total = ANALYSES.length;
+  const evCount = Object.keys(evals).length;
+  const good = Object.values(evals).filter(v => v === 'good').length;
+  const ok = Object.values(evals).filter(v => v === 'ok').length;
+  const bad = Object.values(evals).filter(v => v === 'bad').length;
+  document.getElementById('stat-eval').textContent = evCount;
+  document.getElementById('stat-good').textContent = good;
+  document.getElementById('stat-ok').textContent = ok;
+  document.getElementById('stat-bad').textContent = bad;
+  document.getElementById('prog-text').textContent = `${evCount}/${total} évaluées`;
+  document.getElementById('prog-fill').style.width = `${(evCount/total*100).toFixed(0)}%`;
+}
+
+function toggleCard(el, id) {
+  el.classList.toggle('expanded');
+}
+
+document.querySelectorAll('.filters button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = btn.dataset.filter;
+    render();
+  });
+});
+
+render();
+</script>
+</body>
+</html>

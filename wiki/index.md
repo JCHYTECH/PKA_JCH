@@ -87,9 +87,9 @@
 
 ## Statistiques
 
-- Daily notes : 127 (dernière : 2026-06-13 — diagnostic système, HA Zigbee, architecture IoT distribuée)
+- Daily notes : 128 (dernière : 2026-06-15 — intégration Zigbee ZBDongle-P V2 × HA Docker, bridge Python launchd)
 - SOPs : 7 — Workstreams : 1 — Guidelines : 4
 - Articles knowledge : 2 (AI-Tools)
-- Log système : actif depuis 2026-05-03 (177+ entrées, format structuré depuis 2026-06-13)
+- Log système : actif depuis 2026-05-03 (178+ entrées, format structuré depuis 2026-06-13)
 
-*Mis à jour par Dobby à chaque session. Dernière mise à jour : 2026-06-13.*
+*Mis à jour par Dobby à chaque session. Dernière mise à jour : 2026-06-15.*

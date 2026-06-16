@@ -1,6 +1,6 @@
 # Index central des outils PKA_JCH
 
-> Dernière mise à jour : 2026-06-09
+> Dernière mise à jour : 2026-06-15
 > Source : `docs/system/outils-index.md`
 > Charger ce fichier au début de chaque session pour connaître tous les outils disponibles.
 
@@ -40,6 +40,7 @@
 ## Sécurité
 
 - scripts/pka_security_audit.py — Audit de sécurité du workspace
+- scripts/pka_prompt_guard.py — Scanner prompt injection (airlock [[inbox]]) — score 0-100 + quarantaine
 - scripts/pka_system_improvement_audit.py — Audit d'amélioration continue
 - scripts/rotate_deepseek_key.sh — Rotation clé DeepSeek
 - scripts/rotate_gemini_key.sh — Rotation clé Gemini

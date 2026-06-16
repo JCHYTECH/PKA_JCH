@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "JCH — Things To Do",
-    "last_updated": "2026-06-05",
+    "last_updated": "2026-06-15",
     "description": "Tâches JCH — décisions et actions directes. Généré depuis ce JSON par scripts/generate_todo.py"
   },
   "tasks": [
@@ -12,10 +12,13 @@
       "project": "LEGAL",
       "project_sub": "RGPD",
       "context": "Avant tout traitement de données via l'API Claude. Sans ce contrat, le transfert UE → USA de données utilisateurs est sans base légale (RGPD art. 28). 10 minutes sur le portail API Anthropic (trust.anthropic.com).",
-      "deps": ["Compte API Anthropic actif"],
+      "deps": [
+        "Compte API Anthropic actif"
+      ],
       "who": "JCH",
       "role": "Responsable",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t2",
@@ -24,10 +27,14 @@
       "project": "LEGAL",
       "project_sub": "ARTEON",
       "context": "Les CGU rédigées par Renard sont dans docs/legal/CGU-instant-lu.md. À lire, valider, puis confier à Forge pour publication sur arteon.be/legal.",
-      "deps": ["CGU-instant-lu.md rédigé ✓", "Page /legal (Forge)"],
+      "deps": [
+        "CGU-instant-lu.md rédigé ✓",
+        "Page /legal (Forge)"
+      ],
       "who": "JCH → Forge",
       "role": "Validation → Publication",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t3",
@@ -36,10 +43,14 @@
       "project": "LEGAL",
       "project_sub": "JCHYTECH",
       "context": "L'IBAN est requis dans les contrats B2B. Sans compte pro séparé, la comptabilité ARTEON/L'Instant Lu ne peut pas être proprement tracée.",
-      "deps": ["BCE BE 0680.640.981 ✓", "TVA BE0680640981 ✓"],
+      "deps": [
+        "BCE BE 0680.640.981 ✓",
+        "TVA BE0680640981 ✓"
+      ],
       "who": "JCH",
       "role": "Responsable",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t6",
@@ -48,10 +59,13 @@
       "project": "LEGAL",
       "project_sub": "ARTEON",
       "context": "Recherche professionnelle sur eSearch EUIPO + BOIP avant dépôt. Budget ~300-600€.",
-      "deps": ["Analyse Renard ✓"],
+      "deps": [
+        "Analyse Renard ✓"
+      ],
       "who": "JCH",
       "role": "Déléguer à agent de marques belge",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t7",
@@ -60,10 +74,14 @@
       "project": "LEGAL",
       "project_sub": "JCHYTECH",
       "context": "Valider indépendant vs SRL avant lancement commercial. Impact TVA, charges sociales, responsabilité.",
-      "deps": ["BCE ✓", "TVA ✓"],
+      "deps": [
+        "BCE ✓",
+        "TVA ✓"
+      ],
       "who": "JCH",
       "role": "Responsable",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t8",
@@ -72,10 +90,14 @@
       "project": "WILDNEXUS",
       "project_sub": "WP02",
       "context": "Depuis datasheets/INDEX_DATASHEETS_ROHS.md — 25 composants. Priorité : ESP32-S3, OV5640, EKMB1303111, LoRa RAK3172, BME688.",
-      "deps": ["INDEX_DATASHEETS_ROHS.md ✓", "Dossier datasheets/ prêt"],
+      "deps": [
+        "INDEX_DATASHEETS_ROHS.md ✓",
+        "Dossier datasheets/ prêt"
+      ],
       "who": "JCH",
       "role": "Responsable",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t9",
@@ -84,10 +106,13 @@
       "project": "WILDNEXUS",
       "project_sub": "WP02",
       "context": "datasheets/TI_TPS62840_datasheet.pdf tronqué (955 KB vs 3.17 MB).",
-      "deps": ["Composant critique buck"],
+      "deps": [
+        "Composant critique buck"
+      ],
       "who": "JCH",
       "role": "Responsable",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t10",
@@ -96,10 +121,13 @@
       "project": "ARTEON",
       "project_sub": "WILDLENS",
       "context": "Vega a livré 3 propositions de badge. JCH choisit et valide avant impression et dépôt marque Benelux.",
-      "deps": ["Propositions badge Vega ✓"],
+      "deps": [
+        "Propositions badge Vega ✓"
+      ],
       "who": "JCH",
       "role": "Décision",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t11",
@@ -108,10 +136,13 @@
       "project": "ARTEON",
       "project_sub": "BRAND",
       "context": "Palette, typographie, 3 identités (Arteon, L'Instant Lu, WildLens). JCH valide → Forge intègre. Étape 4/13.",
-      "deps": ["Charte graphique (Vega) ✓"],
+      "deps": [
+        "Charte graphique (Vega) ✓"
+      ],
       "who": "JCH → Forge",
       "role": "Validation → Intégration",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t12",
@@ -120,10 +151,13 @@
       "project": "ARGUS",
       "project_sub": "ARTEON",
       "context": "Pipeline image → filter_ethics.py → dossier client → Stripe.",
-      "deps": ["Procédure Argus (Forge) ✓"],
+      "deps": [
+        "Procédure Argus (Forge) ✓"
+      ],
       "who": "JCH",
       "role": "Validation",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t13",
@@ -132,10 +166,13 @@
       "project": "INFRA",
       "project_sub": "RUNTIME",
       "context": "M1 LLM (MacBook 32 Go) opérationnel SSH/Tailscale. Ollama OK.",
-      "deps": ["m1@100.73.212.110 ✓"],
+      "deps": [
+        "m1@100.73.212.110 ✓"
+      ],
       "who": "JCH",
       "role": "Validation",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t14",
@@ -144,10 +181,14 @@
       "project": "JCHYTECH",
       "project_sub": "VETALYX",
       "context": "Vasco a livré une analyse pricing. JCH briefe sur le positionnement final.",
-      "deps": ["Analyse pricing Vasco ✓", "Pacte actionnaires en cours"],
+      "deps": [
+        "Analyse pricing Vasco ✓",
+        "Pacte actionnaires en cours"
+      ],
       "who": "JCH → Vasco",
       "role": "Brief",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t16",
@@ -156,10 +197,14 @@
       "project": "LEGAL",
       "project_sub": "ARTEON",
       "context": "~240€ Benelux pour 10 ans. Après validation visuel badge.",
-      "deps": ["Visuel badge finalisé (Vega)", "Nom L'Instant Lu confirmé ✓"],
+      "deps": [
+        "Visuel badge finalisé (Vega)",
+        "Nom L'Instant Lu confirmé ✓"
+      ],
       "who": "JCH + conseil PI",
       "role": "Responsable",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t17",
@@ -168,10 +213,14 @@
       "project": "WILDNEXUS",
       "project_sub": "WP02",
       "context": "Nordic PPK2 (~100€) + ESP32-S3 DevKit ×2 (~32€) commandés par JCH le 2026-06-05. Reste panier Mouser (~162€) et Arducam à gérer.",
-      "deps": ["Shortlist WP02 v0.1 ✓", "Budget P0 1 000€"],
+      "deps": [
+        "Shortlist WP02 v0.1 ✓",
+        "Budget P0 1 000€"
+      ],
       "who": "JCH",
       "role": "Commandé ✓",
-      "done": true
+      "done": true,
+      "status": "done"
     },
     {
       "id": "t19",
@@ -180,10 +229,14 @@
       "project": "ARTEON",
       "project_sub": "ARGUS",
       "context": "Corrections Lightroom si client livre en DNG pro. Offre premium ~€9,90 TTC.",
-      "deps": ["Phase 0 validée", "Infra stockage DNG (Forge)"],
+      "deps": [
+        "Phase 0 validée",
+        "Infra stockage DNG (Forge)"
+      ],
       "who": "JCH",
       "role": "Décision après Phase 0",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t20",
@@ -192,10 +245,14 @@
       "project": "JCHYTECH",
       "project_sub": "LEGAL",
       "context": "SRL (IS 20%) si CA dépasse 40 000€/an. Révision annuelle.",
-      "deps": ["CA > 40 000€/an", "Comptable mandaté"],
+      "deps": [
+        "CA > 40 000€/an",
+        "Comptable mandaté"
+      ],
       "who": "JCH + comptable",
       "role": "Responsable",
-      "done": false
+      "done": false,
+      "status": "waiting"
     },
     {
       "id": "t22",
@@ -204,10 +261,15 @@
       "project": "JCHYTECH",
       "project_sub": "VETALYX",
       "context": "4 fondateurs à parité. Contrat-cadre DIAHO V2 + seing privé 40% V2 rédigés par Renard. JCH signe.",
-      "deps": ["Contrat-cadre DIAHO V2 ✓", "Seing privé 40% V2 ✓", "Vasco briefé"],
+      "deps": [
+        "Contrat-cadre DIAHO V2 ✓",
+        "Seing privé 40% V2 ✓",
+        "Vasco briefé"
+      ],
       "who": "JCH + Renard",
       "role": "Signature finale",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t24",
@@ -216,10 +278,14 @@
       "project": "ARTEON",
       "project_sub": "ARGUS",
       "context": "58 photos JCH analysées par le pipeline. JCH doit évaluer la qualité des rapports, ajuster le prompt si nécessaire, avant ouverture au public.",
-      "deps": ["Pipeline Argus opérationnel ✓", "58 rapports PDF dans PHOTO/analyses/"],
+      "deps": [
+        "Pipeline Argus opérationnel ✓",
+        "58 rapports PDF dans PHOTO/analyses/"
+      ],
       "who": "JCH",
       "role": "Validation qualité",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t25",
@@ -228,10 +294,14 @@
       "project": "JCHYTECH",
       "project_sub": "VETALYX",
       "context": "4 questions P0 au fournisseur Zheda Dixun : (1) logique lignes mixtes, (2) faisabilité technique, (3) matrices acceptées, (4) composition exacte des extraits allergéniques.",
-      "deps": ["Spécification 6 lignes ✓", "Contact DIXUN établi"],
+      "deps": [
+        "Spécification 6 lignes ✓",
+        "Contact DIXUN établi"
+      ],
       "who": "JCH",
       "role": "Rédaction et envoi",
-      "done": false
+      "done": false,
+      "status": "in_progress"
     },
     {
       "id": "t26",
@@ -240,10 +310,13 @@
       "project": "JCHYTECH",
       "project_sub": "VETALYX",
       "context": "Rapport final clinique DOCX (bilingue FR/ZH). JCH relit, approuve le style, valide logo. Dobby exporte en PDF pour distribution partenaires.",
-      "deps": ["DOCX final fusionné ✓ (2026-05-31)"],
+      "deps": [
+        "DOCX final fusionné ✓ (2026-05-31)"
+      ],
       "who": "JCH → Dobby",
       "role": "Relecture → Export",
-      "done": false
+      "done": true,
+      "status": "done"
     },
     {
       "id": "t27",
@@ -252,10 +325,14 @@
       "project": "JCHYTECH",
       "project_sub": "VETALYX",
       "context": "Dr Cannone (ENVA, dermatologie/félin) et Dr Billen (ULg, médecine interne). JCH envoie l'email d'approche avec protocole pilote KOL, puis propose un call de 30 min.",
-      "deps": ["Fiches KOL (Furet) ✓", "Protocole KOL ✓"],
+      "deps": [
+        "Fiches KOL (Furet) ✓",
+        "Protocole KOL ✓"
+      ],
       "who": "JCH → Dobby",
       "role": "Email + Call",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t28",
@@ -264,10 +341,14 @@
       "project": "WILDNEXUS",
       "project_sub": "WP02",
       "context": "Panier groupé Mouser BE : LED IR 850/940nm, PIR EKMB, micro MEMS, buck TPS62840, holders, passifs, MOSFET, piles lithium, breadboard, alim labo. Forge attend le go.",
-      "deps": ["PPK2 + ESP32-S3 ✓", "Shortlist WP02 v0.1 ✓"],
+      "deps": [
+        "PPK2 + ESP32-S3 ✓",
+        "Shortlist WP02 v0.1 ✓"
+      ],
       "who": "JCH",
       "role": "Décision achat",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t29",
@@ -276,10 +357,13 @@
       "project": "WILDNEXUS",
       "project_sub": "WP02",
       "context": "Caméra capteur manquante pour le banc. Contacter Arducam (arducam.com) : confirmation module DVP M12, fiche technique et délai avant commande.",
-      "deps": ["ADR-002 caméra ✓"],
+      "deps": [
+        "ADR-002 caméra ✓"
+      ],
       "who": "JCH",
       "role": "Contact fournisseur",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t30",
@@ -291,7 +375,8 @@
       "deps": [],
       "who": "JCH",
       "role": "Décision",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t31",
@@ -300,10 +385,14 @@
       "project": "JCHYTECH",
       "project_sub": "VETALYX",
       "context": "Honoraires par cas complet pour Dr Cannone et Dr Billen. Bruno prépare le budget, JCH valide.",
-      "deps": ["KOLs identifiés ✓", "Protocole KOL ✓"],
+      "deps": [
+        "KOLs identifiés ✓",
+        "Protocole KOL ✓"
+      ],
       "who": "JCH + Bruno",
       "role": "Validation budget",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t32",
@@ -312,10 +401,14 @@
       "project": "TRAVELS",
       "project_sub": "VAN",
       "context": "Documentation prête : checklist inspection, prix 2026, risques UE, expositions vanlife. JCH décide : achat neuf/occasion, budget, timing.",
-      "deps": ["Checklist achat ✓", "Analyse risques UE ✓"],
+      "deps": [
+        "Checklist achat ✓",
+        "Analyse risques UE ✓"
+      ],
       "who": "JCH",
       "role": "Décision",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t33",
@@ -324,10 +417,13 @@
       "project": "FUTURE_INVEST",
       "project_sub": "FONDATIONS",
       "context": "Questionnaire dans strategy/2026-06-04_bruno_profil-investisseur.md. Définit marchés cibles, MAX_DAILY_LOSS, MAX_DRAWDOWN, MAX_POSITION_SIZE.",
-      "deps": ["Template profil investisseur ✓"],
+      "deps": [
+        "Template profil investisseur ✓"
+      ],
       "who": "JCH → Bruno",
       "role": "Répondre au questionnaire",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t34",
@@ -336,10 +432,13 @@
       "project": "FUTURE_INVEST",
       "project_sub": "FORMATION",
       "context": "Lire doc IBKR section Education, tester 5 trades paper. Comprendre taille contrat, marge, expiration, rollover, effet de levier.",
-      "deps": ["Profil investisseur rempli"],
+      "deps": [
+        "Profil investisseur rempli"
+      ],
       "who": "JCH",
       "role": "Formation",
-      "done": false
+      "done": false,
+      "status": "todo"
     },
     {
       "id": "t35",
@@ -348,10 +447,13 @@
       "project": "FUTURE_INVEST",
       "project_sub": "ENVIRONNEMENT",
       "context": "ibkr.com → Open Account. Type Individual / Margin. Permissions Futures à activer + Paper Trading.",
-      "deps": ["Profil investisseur rempli"],
+      "deps": [
+        "Profil investisseur rempli"
+      ],
       "who": "JCH",
       "role": "Inscription",
-      "done": false
+      "done": false,
+      "status": "todo"
     }
   ]
 }
