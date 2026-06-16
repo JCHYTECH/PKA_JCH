@@ -59,6 +59,14 @@
 
 ---
 
+## 🔭 Pistes exploratoires (hors P0)
+
+| Composant | Réf. | Lien | Note |
+|-----------|------|------|------|
+| Capteur env. tout-en-un | **Sensirion SEN66-SIN-T** | [Mouser](https://eu.mouser.com/ProductDetail/Sensirion/SEN66-SIN-T) | PM, CO₂, TVOC, T°C, humidité — overkill pour P0, pertinent pour hub/base station P1 |
+
+---
+
 ## Statut RoHS global
 
 Tous les composants actifs et passifs proviennent de fabricants majeurs (TI, Espressif, Vishay, Panasonic, Würth, Nexperia, Bosch, Sensirion, Molex, RAKwireless) → **RoHS conformes par défaut**. Les fiches techniques individuelles le confirment en page 1 ou en fin de document (marquage RoHS / China RoHS / REACH).

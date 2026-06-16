@@ -20,19 +20,24 @@ HTML_PATH = ROOT / "JCH_Inbox" / "todo-jch.html"
 URGENCY_LABELS = {"critique": "Critique", "urgent": "Urgent", "important": "Important", "long": "Long terme"}
 URGENCY_COLORS = {"critique": "var(--rouge-alert)", "urgent": "#e67e22", "important": "#d4ac0d", "long": "var(--vert-ok)"}
 
-# Available projects extracted from data, ordered
-PROJECT_BUTTONS = ["LEGAL", "ARTEON", "ARGUS", "WILDNEXUS", "JCHYTECH", "INFRA"]
+# Project buttons derived dynamically in generate_html()
 
 
 def load_tasks() -> dict:
     return json.loads(JSON_PATH.read_text(encoding="utf-8"))
 
 
+STATUS_LABELS = {"todo": "À faire", "in_progress": "En cours", "waiting": "En attente", "done": "Terminé"}
+STATUS_CSS = {"todo": "", "in_progress": "in-progress", "waiting": "waiting", "done": "done"}
+
+
 def html_card(task: dict) -> str:
-    done_cls = ' class="done"' if task["done"] else ""
-    extra_cls = ' done' if task["done"] else ""
-    checked = 'checked' if task["done"] else ""
-    label = "Terminée ✓" if task["done"] else "Marquer comme fait"
+    status = task.get("status", "todo")
+    is_done = status == "done"
+    extra_cls = f' {STATUS_CSS[status]}' if STATUS_CSS[status] else ""
+    checked = 'checked' if is_done else ""
+    label = "Terminée ✓" if is_done else "Marquer comme fait"
+    status_badge = f' <span class="status-badge {STATUS_CSS[status]}">{STATUS_LABELS[status]}</span>' if not is_done and status != "todo" else ""
     project_label = f"{task['project']} · {task['project_sub']}" if task.get("project_sub") else task["project"]
 
     deps_html = ""
@@ -40,9 +45,9 @@ def html_card(task: dict) -> str:
         deps_html += f'<div class="dep-tag">{dep}</div>'
 
     return f"""\
-  <div class="card{extra_cls}" data-urgency="{task['urgency']}" data-project="{task['project']}">
+  <div class="card{extra_cls}" data-urgency="{task['urgency']}" data-project="{task['project']}" data-status="{status}">
     <div class="card-top">
-      <div class="card-title">{task['title']}</div>
+      <div class="card-title">{task['title']}{status_badge}</div>
       <div class="badge-urgency {task['urgency']}">{URGENCY_LABELS[task['urgency']]}</div>
     </div>
     <div class="card-context">{task['context']}</div>
@@ -60,9 +65,15 @@ def generate_html(data: dict) -> str:
     tasks = data["tasks"]
 
     cards = "\n\n".join(html_card(t) for t in tasks)
+    # Derive project buttons from data (ordered by frequency)
+    proj_counts = {}
+    for t in tasks:
+        p = t["project"]
+        proj_counts[p] = proj_counts.get(p, 0) + 1
+    sorted_projects = sorted(proj_counts, key=lambda p: (-proj_counts[p], p))
     project_buttons = "\n".join(
         f'  <button class="filter-btn" data-filter="project" data-value="{p}" onclick="filterProject(this)">{p}</button>'
-        for p in PROJECT_BUTTONS
+        for p in sorted_projects
     )
 
     today = date.today().isoformat()
@@ -146,6 +157,15 @@ def generate_html(data: dict) -> str:
   .badge-urgency.urgent   {{ background: #E67E22; color: white; }}
   .badge-urgency.important{{ background: #D4AC0D; color: var(--fond-global); }}
   .badge-urgency.long     {{ background: var(--vert-ok); color: var(--fond-global); }}
+
+  .status-badge {{
+    font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 3px;
+    margin-left: 8px; white-space: nowrap; display: inline-block;
+  }}
+  .status-badge.in-progress {{ background: #2c6fce; color: white; }}
+  .status-badge.waiting {{ background: #6b5b3a; color: #e0d5c0; }}
+  .card.in-progress {{ border-left-color: #2c6fce !important; }}
+  .card.waiting {{ border-left-color: #6b5b3a !important; opacity: 0.75; }}
 
   .card-context {{ font-size: 13px; line-height: 1.55; color: var(--texte-gris); }}
   .card-meta {{ display: flex; flex-direction: column; gap: 6px; margin-top: auto; }}

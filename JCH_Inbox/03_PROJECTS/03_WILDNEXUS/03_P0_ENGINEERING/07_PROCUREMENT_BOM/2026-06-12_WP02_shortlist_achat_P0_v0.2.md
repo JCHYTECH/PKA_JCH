@@ -30,7 +30,10 @@ L'outillage (PPK2) est prioritaire et fait partie d'Option A.
 | # | Composant | Référence précise | Fournisseur recommandé | Lien / Recherche | Qté | Prix unit. livré BE (est.) | Total (est.) | Délai | Risque supply | Note |
 |---|-----------|-------------------|------------------------|------------------|-----|---------------------------|--------------|-------|----------------|------|
 | A01 | MCU prototype | **ESP32-S3-DevKitC-1-N8R8** (8 MB flash, 8 MB PSRAM, USB-C) | **Mouser BE** | Mouser ref 595-ESP32-S3-DEVKITC-1 | 2 | ~16 € | ~32 € | 3–5 j | 🟢 Bas | Acheter 2 pour banc M-02 redondant |
-| A02 | Caméra capteur | **Camemake CM_DVP_OV5640_UNIVERSAL** — OV5640 5MP DVP 10-bit M12, natif ESP32-S3/STM32 | **DigiKey BE** (Marketplace) | DigiKey ref "6223-CM_DVP_OV5640_UNIVERSAL-ND" | 2 | ~20 € | ~40 € | 5–10 j | 🟢 Bas | DVP 10-bit + M12 mount + pinout documenté. Conçu pour ESP32-S3. Remplace Arducam B0253 (abandonné — MIPI-only en catalogue). |
+| A02 | Caméra capteur | ~~Camemake CM_DVP_OV5640_UNIVERSAL~~ — **REJETÉ** (MOQ 10, commande refusée 2026-06-14) | — | — | — | — | — | — | 🔴 Rejeté | Remplacé par A02a (ESP32-CAM) pour dév DVP + A02b (OV5640 AliExpress) pour capteur final. |
+| **A02a** 🆕 | **Caméra dév DVP** | **ESP32-CAM** (AI-Thinker, OV2640 2MP DVP, LED flash, slot SD onboard) | **Amazon BE / AliExpress** | "ESP32-CAM OV2640" | 1 | ~10 € | ~10 € | 3–7 j | 🟢 Bas | Outil de développement DVP uniquement — pas le capteur final. Permet de valider l'intégration DVP sans attendre OV5640. |
+| **A02b** 🆕 | **Caméra finale P0** | **OV5640 DVP M12 24-pin** (5MP, NoIR, M12 mount) | **AliExpress** | "OV5640 DVP M12 24-pin NoIR" | 2 | ~15 € | ~30 € | 15–25 j | 🟡 Moyen | Fallback du supply register. Commander maintenant — arrivera après les tests DVP initiaux. Vérifier : DVP (pas MIPI), 24-pin, M12 mount, NoIR (sans filtre IR-cut). |
+| **A02c** 🆕 | **Level shifter DVP** | **Level shifter 8 canaux 3.3V ↔ 1.8/2.8V** (e.g. TXS0108E ou TXB0108) | **AliExpress** | "level shifter 8ch 3.3V 1.8V" | 2 | ~3 € | ~6 € | 10–20 j | 🟢 Bas | Ajout 2026-06-14 — OV5640 peut nécessiter adaptation tension I/O (1.8V/2.8V → 3.3V ESP32-S3). Commander avec A02b. |
 | A03 | LED IR 850 nm | ~~Vishay VSLY3850~~ — **RETIRÉ** (décision JCH 2026-06-12 : 850nm perceptible faune) | — | — | — | — | — | — | — | IR 940nm uniquement (A04). |
 | A04 | LED IR 940 nm | **Vishay VSLB3940** (×4 par nœud) | **Mouser BE** | Mouser ref "VSLB3940" | 10 | ~0,37 € | ~4 € | 3–5 j | 🟢 Bas | Prix réel Mouser 2026-06-12 : 0,37€/pièce. |
 | A05 | PIR basse conso | **Panasonic EKMB1203111** (FOV 86°H × 84°V, 2–3 µA, EKMB1303111 indispo) | **Mouser BE** | Mouser ref "EKMB1203111" | 2 | ~22 € | ~44 € | 5–8 j | 🟢 Bas | Prix réel vérifié Mouser 2026-06-12 : 22,30€/pièce. EKMB1303111 ∼5€ estimé erroné — retiré. |
@@ -79,15 +82,15 @@ Lentille 2.8mm (A18) : ne pas confondre avec B01 (6mm). Les deux focales sont n�
 
 | Bloc | v0.1 | v0.2 | Δ |
 |------|------|------|---|
-| Option A — Banc rapide | ~396 € | **~446 €** | +50 € |
+| Option A — Banc rapide | ~396 € | **~452 €** | +56 € |
 | Option B — Additions terrain | ~203 € | **~238 €** | +35 € |
 | Frais de port (Mouser + DigiKey + RAK + Lensation + LILYGO) | ~50 € | ~55 € | +5 € |
 | Marge casse / reprise composants | ~80 € | ~80 € | — |
-| **Total estimé A + B** | **~729 €** | **~823 €** | +94 € |
-| **Réserve restante (enveloppe 1 000 €)** | **~271 €** | **~177 €** | −94 € |
+| **Total estimé A + B** | **~729 €** | **~829 €** | +100 € |
+| **Réserve restante (enveloppe 1 000 €)** | **~271 €** | **~171 €** | −100 € |
 
 > ⚠️ Tout achat individuel > 50 € doit être signalé à JCH avant commande (règle BUDGET v0.2).  
-> ⚠️ Si total projeté > 900 €, stopper et arbitrer. (v0.2 : 823 €, sous le seuil)
+> ⚠️ Si total projeté > 900 €, stopper et arbitrer. (v0.2c : 829 €, sous le seuil)
 
 ---
 
@@ -96,8 +99,8 @@ Lentille 2.8mm (A18) : ne pas confondre avec B01 (6mm). Les deux focales sont n�
 | Panier | Fournisseur | Contenu | Seuil livraison gratuite |
 |--------|-------------|---------|--------------------------|
 | Panier 1 | **Mouser BE** | A01 MCU, A03–A07 capteurs/micro/LED, A08–A12 passifs/buck/MOSFET, A17 dissipateur, B05–B06 capteurs env., B03 antenne | ~50 € (à confirmer) |
-| Panier 2 | **DigiKey BE** | A07 microSD Swissbit | 50 € (livraison gratuite ≥ 50 €, sinon ~18 €) |
-| Panier 3 | **DigiKey BE** | A02 Camemake OV5640 DVP M12 | Livraison gratuite ≥ 50 € — grouper avec A07 si possible |
+| Panier 2 | **Amazon BE / AliExpress** | A02a ESP32-CAM OV2640 | Commande séparée, livraison rapide |
+| Panier 3 | **AliExpress** | A02b OV5640 DVP M12 24-pin NoIR | Commander immédiatement — délai 15-25j |
 | Panier 4 | **RAK Store EU** | B02 RAK3172-T EU868 | Livraison directe EU |
 | Panier 5 | **Lensation.de** | B01 lentille M12 IR-corrigée 6mm | Demander devis 2 pièces |
 | Panier 6 | **RS Belgium** | A09 holders AA, B04 boîtier Hammond, B07 presse-étoupe | Livraison rapide BE |
@@ -175,6 +178,7 @@ Lentille 2.8mm (A18) : ne pas confondre avec B01 (6mm). Les deux focales sont n�
 | v0.1 | 2026-05-23 | [[Dobby]] + [[Forge]] + [[Bruno]] | Version initiale — Option A 396€ + Option B 203€ |
 | v0.2 | 2026-06-12 | [[Dobby]] + [[Castor]] + [[Sigma]] | +A17 dissipateur OV5640, +A18 lentille 2.8mm NoIR, +B10 LILYGO T-Beam 1W. Arbitrages JCH : Heltec/STM32U5/bioacoustique rejetés P0. Budget : 823€ (−177€ réserve). |
 | v0.2a | 2026-06-12 | [[Dobby]] + JCH | A02 remplacé Arducam→Camemake (DVP M12 dispo DigiKey). Modules Arducam MIPI-only et SPI documentés comme rejetés. IMX500 ajouté en P1 différé. Option A : 446€ (−4€). Budget : 819€ (−181€ réserve). |
+| v0.2c | 2026-06-14 | [[Dobby]] + JCH | A02 Camemake rejeté (MOQ 10). Remplacé par A02a ESP32-CAM OV2640 (dév DVP, ~10€) + A02b OV5640 DVP M12 AliExpress (final, ~30€). Budget inchangé (~823€). Panier DigiKey libéré. |
 | v0.3 | 2026-06-12 | [[Dobby]] + JCH | Index procurement Mouser/DigiKey (§11). Réfs vérifiées session. Pipeline : primaire Mouser, fallback DigiKey, indispo → signaler. |
 
 ---

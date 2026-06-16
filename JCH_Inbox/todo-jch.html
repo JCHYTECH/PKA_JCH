@@ -77,6 +77,15 @@
   .badge-urgency.important{ background: #D4AC0D; color: var(--fond-global); }
   .badge-urgency.long     { background: var(--vert-ok); color: var(--fond-global); }
 
+  .status-badge {
+    font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 3px;
+    margin-left: 8px; white-space: nowrap; display: inline-block;
+  }
+  .status-badge.in-progress { background: #2c6fce; color: white; }
+  .status-badge.waiting { background: #6b5b3a; color: #e0d5c0; }
+  .card.in-progress { border-left-color: #2c6fce !important; }
+  .card.waiting { border-left-color: #6b5b3a !important; opacity: 0.75; }
+
   .card-context { font-size: 13px; line-height: 1.55; color: var(--texte-gris); }
   .card-meta { display: flex; flex-direction: column; gap: 6px; margin-top: auto; }
   .card-project { font-size: 11px; font-family: 'IBM Plex Mono', monospace; color: var(--ocre); }
@@ -108,7 +117,7 @@
 
 <div class="header">
   <div class="header-title">JCH<span> — Things To Do</span></div>
-  <div class="header-count"><span id="visible-count">—</span> · généré le 2026-06-12</div>
+  <div class="header-count"><span id="visible-count">—</span> · généré le 2026-06-15</div>
 </div>
 
 <div class="toolbar">
@@ -120,19 +129,21 @@
   <div class="sep"></div>
   <span class="toolbar-label">Projet</span>
   <button class="filter-btn active" data-filter="project" data-value="all" onclick="filterProject(this)">Tous</button>
-  <button class="filter-btn" data-filter="project" data-value="LEGAL" onclick="filterProject(this)">LEGAL</button>
-  <button class="filter-btn" data-filter="project" data-value="ARTEON" onclick="filterProject(this)">ARTEON</button>
-  <button class="filter-btn" data-filter="project" data-value="ARGUS" onclick="filterProject(this)">ARGUS</button>
-  <button class="filter-btn" data-filter="project" data-value="WILDNEXUS" onclick="filterProject(this)">WILDNEXUS</button>
   <button class="filter-btn" data-filter="project" data-value="JCHYTECH" onclick="filterProject(this)">JCHYTECH</button>
+  <button class="filter-btn" data-filter="project" data-value="LEGAL" onclick="filterProject(this)">LEGAL</button>
+  <button class="filter-btn" data-filter="project" data-value="WILDNEXUS" onclick="filterProject(this)">WILDNEXUS</button>
+  <button class="filter-btn" data-filter="project" data-value="ARTEON" onclick="filterProject(this)">ARTEON</button>
+  <button class="filter-btn" data-filter="project" data-value="FUTURE_INVEST" onclick="filterProject(this)">FUTURE_INVEST</button>
+  <button class="filter-btn" data-filter="project" data-value="ARGUS" onclick="filterProject(this)">ARGUS</button>
   <button class="filter-btn" data-filter="project" data-value="INFRA" onclick="filterProject(this)">INFRA</button>
+  <button class="filter-btn" data-filter="project" data-value="TRAVELS" onclick="filterProject(this)">TRAVELS</button>
   <div class="sep"></div>
   <button class="filter-btn" onclick="toggleDone()">Masquer terminées</button>
 </div>
 
 <div class="grid" id="grid">
 
-  <div class="card" data-urgency="critique" data-project="LEGAL">
+  <div class="card" data-urgency="critique" data-project="LEGAL" data-status="todo">
     <div class="card-top">
       <div class="card-title">Signer le DPA Anthropic</div>
       <div class="badge-urgency critique">Critique</div>
@@ -146,7 +157,7 @@
     <div class="card-check"><input type="checkbox" id="t1" onchange="toggleDoneCard(this)" ><label for="t1">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="critique" data-project="LEGAL">
+  <div class="card" data-urgency="critique" data-project="LEGAL" data-status="todo">
     <div class="card-top">
       <div class="card-title">Valider et publier les CGU L'Instant Lu</div>
       <div class="badge-urgency critique">Critique</div>
@@ -160,7 +171,7 @@
     <div class="card-check"><input type="checkbox" id="t2" onchange="toggleDoneCard(this)" ><label for="t2">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="critique" data-project="LEGAL">
+  <div class="card" data-urgency="critique" data-project="LEGAL" data-status="todo">
     <div class="card-top">
       <div class="card-title">Ouvrir un compte bancaire professionnel JCHYTECH</div>
       <div class="badge-urgency critique">Critique</div>
@@ -174,7 +185,7 @@
     <div class="card-check"><input type="checkbox" id="t3" onchange="toggleDoneCard(this)" ><label for="t3">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="urgent" data-project="LEGAL">
+  <div class="card" data-urgency="urgent" data-project="LEGAL" data-status="todo">
     <div class="card-top">
       <div class="card-title">Mandater un conseil PI — recherche d'antériorités marque ARTEON</div>
       <div class="badge-urgency urgent">Urgent</div>
@@ -188,7 +199,7 @@
     <div class="card-check"><input type="checkbox" id="t6" onchange="toggleDoneCard(this)" ><label for="t6">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="urgent" data-project="LEGAL">
+  <div class="card" data-urgency="urgent" data-project="LEGAL" data-status="todo">
     <div class="card-top">
       <div class="card-title">Consulter un comptable belge — structure juridique optimale</div>
       <div class="badge-urgency urgent">Urgent</div>
@@ -202,7 +213,7 @@
     <div class="card-check"><input type="checkbox" id="t7" onchange="toggleDoneCard(this)" ><label for="t7">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="important" data-project="WILDNEXUS">
+  <div class="card" data-urgency="important" data-project="WILDNEXUS" data-status="todo">
     <div class="card-top">
       <div class="card-title">📥 Télécharger les fiches techniques composants WildNexus P0</div>
       <div class="badge-urgency important">Important</div>
@@ -216,7 +227,7 @@
     <div class="card-check"><input type="checkbox" id="t8" onchange="toggleDoneCard(this)" ><label for="t8">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="important" data-project="WILDNEXUS">
+  <div class="card" data-urgency="important" data-project="WILDNEXUS" data-status="todo">
     <div class="card-top">
       <div class="card-title">📥 Re-télécharger fiche TPS62840 complète (TI.com)</div>
       <div class="badge-urgency important">Important</div>
@@ -230,7 +241,7 @@
     <div class="card-check"><input type="checkbox" id="t9" onchange="toggleDoneCard(this)" ><label for="t9">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="important" data-project="ARTEON">
+  <div class="card" data-urgency="important" data-project="ARTEON" data-status="todo">
     <div class="card-top">
       <div class="card-title">Valider le visuel final du badge L'Instant Lu (Vega)</div>
       <div class="badge-urgency important">Important</div>
@@ -244,7 +255,7 @@
     <div class="card-check"><input type="checkbox" id="t10" onchange="toggleDoneCard(this)" ><label for="t10">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="important" data-project="ARTEON">
+  <div class="card" data-urgency="important" data-project="ARTEON" data-status="todo">
     <div class="card-top">
       <div class="card-title">Valider la charte graphique complète (3 identités)</div>
       <div class="badge-urgency important">Important</div>
@@ -258,7 +269,7 @@
     <div class="card-check"><input type="checkbox" id="t11" onchange="toggleDoneCard(this)" ><label for="t11">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="important" data-project="ARGUS">
+  <div class="card" data-urgency="important" data-project="ARGUS" data-status="todo">
     <div class="card-top">
       <div class="card-title">Valider la procédure opérationnelle Argus</div>
       <div class="badge-urgency important">Important</div>
@@ -272,7 +283,7 @@
     <div class="card-check"><input type="checkbox" id="t12" onchange="toggleDoneCard(this)" ><label for="t12">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="important" data-project="INFRA">
+  <div class="card" data-urgency="important" data-project="INFRA" data-status="todo">
     <div class="card-top">
       <div class="card-title">Valider le setup M1 headless</div>
       <div class="badge-urgency important">Important</div>
@@ -286,7 +297,7 @@
     <div class="card-check"><input type="checkbox" id="t13" onchange="toggleDoneCard(this)" ><label for="t13">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="important" data-project="JCHYTECH">
+  <div class="card" data-urgency="important" data-project="JCHYTECH" data-status="todo">
     <div class="card-top">
       <div class="card-title">Valider le pricing Vetalyx EU + pack DBS</div>
       <div class="badge-urgency important">Important</div>
@@ -300,7 +311,7 @@
     <div class="card-check"><input type="checkbox" id="t14" onchange="toggleDoneCard(this)" ><label for="t14">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="important" data-project="LEGAL">
+  <div class="card" data-urgency="important" data-project="LEGAL" data-status="todo">
     <div class="card-top">
       <div class="card-title">Dépôt Benelux marque L'Instant Lu + badge</div>
       <div class="badge-urgency important">Important</div>
@@ -314,7 +325,7 @@
     <div class="card-check"><input type="checkbox" id="t16" onchange="toggleDoneCard(this)" ><label for="t16">Marquer comme fait</label></div>
   </div>
 
-  <div class="card done" data-urgency="important" data-project="WILDNEXUS">
+  <div class="card done" data-urgency="important" data-project="WILDNEXUS" data-status="done">
     <div class="card-top">
       <div class="card-title">✅ PPK2 + 2× ESP32-S3 commandés (batch 1 WildNexus)</div>
       <div class="badge-urgency important">Important</div>
@@ -328,7 +339,7 @@
     <div class="card-check"><input type="checkbox" id="t17" onchange="toggleDoneCard(this)" checked><label for="t17">Terminée ✓</label></div>
   </div>
 
-  <div class="card" data-urgency="long" data-project="ARTEON">
+  <div class="card" data-urgency="long" data-project="ARTEON" data-status="todo">
     <div class="card-top">
       <div class="card-title">Tester l'offre DNG full-service</div>
       <div class="badge-urgency long">Long terme</div>
@@ -342,9 +353,9 @@
     <div class="card-check"><input type="checkbox" id="t19" onchange="toggleDoneCard(this)" ><label for="t19">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="long" data-project="JCHYTECH">
+  <div class="card waiting" data-urgency="long" data-project="JCHYTECH" data-status="waiting">
     <div class="card-top">
-      <div class="card-title">Réévaluation structure SRL si CA > 40 000€/an</div>
+      <div class="card-title">Réévaluation structure SRL si CA > 40 000€/an <span class="status-badge waiting">En attente</span></div>
       <div class="badge-urgency long">Long terme</div>
     </div>
     <div class="card-context">SRL (IS 20%) si CA dépasse 40 000€/an. Révision annuelle.</div>
@@ -356,7 +367,7 @@
     <div class="card-check"><input type="checkbox" id="t20" onchange="toggleDoneCard(this)" ><label for="t20">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="long" data-project="JCHYTECH">
+  <div class="card" data-urgency="long" data-project="JCHYTECH" data-status="todo">
     <div class="card-top">
       <div class="card-title">Finaliser pacte actionnaires Vetalyx (4×25%)</div>
       <div class="badge-urgency long">Long terme</div>
@@ -370,7 +381,7 @@
     <div class="card-check"><input type="checkbox" id="t22" onchange="toggleDoneCard(this)" ><label for="t22">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="critique" data-project="ARTEON">
+  <div class="card" data-urgency="critique" data-project="ARTEON" data-status="todo">
     <div class="card-top">
       <div class="card-title">🔴 Évaluer les 58 rapports Argus (Phase 0.3)</div>
       <div class="badge-urgency critique">Critique</div>
@@ -384,9 +395,9 @@
     <div class="card-check"><input type="checkbox" id="t24" onchange="toggleDoneCard(this)" ><label for="t24">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="critique" data-project="JCHYTECH">
+  <div class="card in-progress" data-urgency="critique" data-project="JCHYTECH" data-status="in_progress">
     <div class="card-top">
-      <div class="card-title">🔴 Envoyer les questions techniques à DIXUN</div>
+      <div class="card-title">🔴 Envoyer les questions techniques à DIXUN <span class="status-badge in-progress">En cours</span></div>
       <div class="badge-urgency critique">Critique</div>
     </div>
     <div class="card-context">4 questions P0 au fournisseur Zheda Dixun : (1) logique lignes mixtes, (2) faisabilité technique, (3) matrices acceptées, (4) composition exacte des extraits allergéniques.</div>
@@ -398,7 +409,7 @@
     <div class="card-check"><input type="checkbox" id="t25" onchange="toggleDoneCard(this)" ><label for="t25">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="critique" data-project="JCHYTECH">
+  <div class="card done" data-urgency="critique" data-project="JCHYTECH" data-status="done">
     <div class="card-top">
       <div class="card-title">🔴 Relire et exporter le rapport final partenaire Vetalyx</div>
       <div class="badge-urgency critique">Critique</div>
@@ -409,10 +420,10 @@
       <div class="card-deps"><div class="dep-tag">DOCX final fusionné ✓ (2026-05-31)</div></div>
       <div class="card-who">Relecture → Export : <strong>JCH → Dobby</strong></div>
     </div>
-    <div class="card-check"><input type="checkbox" id="t26" onchange="toggleDoneCard(this)" ><label for="t26">Marquer comme fait</label></div>
+    <div class="card-check"><input type="checkbox" id="t26" onchange="toggleDoneCard(this)" checked><label for="t26">Terminée ✓</label></div>
   </div>
 
-  <div class="card" data-urgency="critique" data-project="JCHYTECH">
+  <div class="card" data-urgency="critique" data-project="JCHYTECH" data-status="todo">
     <div class="card-top">
       <div class="card-title">🔴 Contacter les KOLs (Cannone, Billen)</div>
       <div class="badge-urgency critique">Critique</div>
@@ -426,7 +437,7 @@
     <div class="card-check"><input type="checkbox" id="t27" onchange="toggleDoneCard(this)" ><label for="t27">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="urgent" data-project="WILDNEXUS">
+  <div class="card" data-urgency="urgent" data-project="WILDNEXUS" data-status="todo">
     <div class="card-top">
       <div class="card-title">🟠 Valider le panier Mouser batch 1 WildNexus (~162€)</div>
       <div class="badge-urgency urgent">Urgent</div>
@@ -440,7 +451,7 @@
     <div class="card-check"><input type="checkbox" id="t28" onchange="toggleDoneCard(this)" ><label for="t28">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="important" data-project="WILDNEXUS">
+  <div class="card" data-urgency="important" data-project="WILDNEXUS" data-status="todo">
     <div class="card-top">
       <div class="card-title">🟠 Contacter Arducam — module OV5640 DVP M12</div>
       <div class="badge-urgency important">Important</div>
@@ -454,7 +465,7 @@
     <div class="card-check"><input type="checkbox" id="t29" onchange="toggleDoneCard(this)" ><label for="t29">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="important" data-project="JCHYTECH">
+  <div class="card" data-urgency="important" data-project="JCHYTECH" data-status="todo">
     <div class="card-top">
       <div class="card-title">🟡 Documenter les décisions fondatrices Vetalyx</div>
       <div class="badge-urgency important">Important</div>
@@ -468,7 +479,7 @@
     <div class="card-check"><input type="checkbox" id="t30" onchange="toggleDoneCard(this)" ><label for="t30">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="important" data-project="JCHYTECH">
+  <div class="card" data-urgency="important" data-project="JCHYTECH" data-status="todo">
     <div class="card-top">
       <div class="card-title">🟡 Définir la compensation KOL + budget</div>
       <div class="badge-urgency important">Important</div>
@@ -482,7 +493,7 @@
     <div class="card-check"><input type="checkbox" id="t31" onchange="toggleDoneCard(this)" ><label for="t31">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="important" data-project="TRAVELS">
+  <div class="card" data-urgency="important" data-project="TRAVELS" data-status="todo">
     <div class="card-top">
       <div class="card-title">🟡 Décision achat van Stylevan Equinox IV</div>
       <div class="badge-urgency important">Important</div>
@@ -496,7 +507,7 @@
     <div class="card-check"><input type="checkbox" id="t32" onchange="toggleDoneCard(this)" ><label for="t32">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="important" data-project="FUTURE_INVEST">
+  <div class="card" data-urgency="important" data-project="FUTURE_INVEST" data-status="todo">
     <div class="card-top">
       <div class="card-title">🟡 Remplir le profil investisseur (questionnaire Bruno)</div>
       <div class="badge-urgency important">Important</div>
@@ -510,7 +521,7 @@
     <div class="card-check"><input type="checkbox" id="t33" onchange="toggleDoneCard(this)" ><label for="t33">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="long" data-project="FUTURE_INVEST">
+  <div class="card" data-urgency="long" data-project="FUTURE_INVEST" data-status="todo">
     <div class="card-top">
       <div class="card-title">Formation personnelle Futures (IBKR paper)</div>
       <div class="badge-urgency long">Long terme</div>
@@ -524,7 +535,7 @@
     <div class="card-check"><input type="checkbox" id="t34" onchange="toggleDoneCard(this)" ><label for="t34">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="long" data-project="FUTURE_INVEST">
+  <div class="card" data-urgency="long" data-project="FUTURE_INVEST" data-status="todo">
     <div class="card-top">
       <div class="card-title">Ouvrir un compte Interactive Brokers (IBKR)</div>
       <div class="badge-urgency long">Long terme</div>
@@ -545,7 +556,7 @@
   <div class="stat"><span class="stat-dot urgent"></span><strong id="cnt-urgent">—</strong> urgentes</div>
   <div class="stat"><span class="stat-dot important"></span><strong id="cnt-important">—</strong> importantes</div>
   <div class="stat"><span class="stat-dot long"></span><strong id="cnt-long">—</strong> long terme</div>
-  <div class="stat" style="margin-left:auto;">Mis à jour : 2026-06-12</div>
+  <div class="stat" style="margin-left:auto;">Mis à jour : 2026-06-15</div>
 </div>
 
 <script>
