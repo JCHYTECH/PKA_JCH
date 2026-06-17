@@ -1,13 +1,9 @@
 # PKA Skills — Index transversal
 
 **Emplacement canonique :** `PKA_JCH/skills/`  
-**Dernière mise à jour :** 2026-05-25  
-**Plateformes :** [[Claude]] Code (symlinks 
-
-## Utilisation
-
-**[[Claude]] Code :** 
-**Autres plateformes :** lire le `SKILL.md` correspondant et suivre les instructions exactement.
+**Dernière mise à jour :** 2026-06-17  
+**Plateformes :** DeepSeek TUI, Codex CLI, Claude Code  
+**Politique :** Les skills locaux (`skills/`) prennent priorité sur les skills fondation du runtime. Toute amélioration d'un skill fondation se fait via shadow local.
 
 ---
 
@@ -15,20 +11,47 @@
 
 | Skill | Trigger(s) | Description courte |
 |-------|-----------|-------------------|
-| [wildnexus-bom](wildnexus-bom/SKILL.md) | "génère le BOM", "mets à jour le budget", "shortlist achat" | Générer/mettre à jour le BOM WildNexus P0 en Excel multi-onglets |
+| **Orchestration** | | |
+| [pka-session-start](pka-session-start/SKILL.md) | Automatique — début de session | Protocole démarrage Dobby : modèle, mémoire, inbox, confirmation |
+| [pka-system-check](pka-system-check/SKILL.md) | "check pka", "system check", "nettoie les scories" | Health-check automatique : permissions, backups, pointers, drift |
+| [pka-weekly-report](pka-weekly-report/SKILL.md) | "rapport hebdo", "weekly report", "bilan de la semaine" | Rapport hebdomadaire consolidé : équipe, projets, inbox, rétro |
+| [pka-pointer-sync](pka-pointer-sync/SKILL.md) | "mets à jour les pointers", "l'équipe a changé" | Resynchroniser CLAUDE.md, AGENTS.md, GEMINI.md, DEEPSEEK.md |
+| [pka-file-versioning](pka-file-versioning/SKILL.md) | Automatique — avant toute modif BOM/ADR/registre | Sauvegarder version précédente (cp ou git tag) |
+| [forge-loop](forge-loop/SKILL.md) | "forge loop", "code loop", "auto-fix" | Boucle autonome code review avec quality gate ≥ 4/5 (Grep Loop) |
+| **Opérations** | | |
+| [ingest](ingest/SKILL.md) | `/ingest`, traite automatiquement 00_INBOX | Router fichiers inbox → dossier projet, indexer dans file_index |
+| [capture](capture/SKILL.md) | `/capture <texte>` | Transformer input en entrée knowledge structurée (team.db) |
+| [brief](brief/SKILL.md) | `/brief <membre> <tâche>` | Générer brief de délégation avec PRIORITY et DEADLINE |
+| [status](status/SKILL.md) | `/status`, `/status <membre>` | Tableau de bord des livrables en attente, détection tâches bloquées |
+| **WildNexus** | | |
 | [wildnexus-adr](wildnexus-adr/SKILL.md) | "crée un ADR", "passe l'ADR en accepté", "documente la décision" | Créer, mettre à jour ou valider un ADR WildNexus |
-| [onboarding-specialiste](onboarding-specialiste/SKILL.md) | "recrute", "gap de compétence", "nouvel agent", "embauche" | Pipeline complet recrutement d'un spécialiste PKA (10 étapes) |
-| [pka-session-start](pka-session-start/SKILL.md) | Automatique — début de session | Protocole démarrage [[Dobby]] : modèle, mémoire, inbox, confirmation |
-| [pka-file-versioning](pka-file-versioning/SKILL.md) | Automatique — avant toute modif significative BOM/ADR/registre | Sauvegarder la version précédente d'un fichier itératif |
-| [pka-pointer-sync](pka-pointer-sync/SKILL.md) | "mets à jour les pointers", "l'équipe a changé" | Resynchroniser [[Claude]].md, AGENTS.md, GEMINI.md, DEEPSEEK.md |
-| [bioacoustics-qc-playbook](bioacoustics-qc-playbook/SKILL.md) | "bioacoustics QC", "segment triage", "spectrogram review", "insect dataset" | Curation datasets bioacoustiques, QC spectrogrammes, profils espèces audio |
-| [obsidian-knowledge-graph](obsidian-knowledge-graph/SKILL.md) | "wikilink le vault", "dry-run [[Obsidian]]", "mets à jour le knowledge graph" | Inventaire [[Obsidian]], dictionnaire, dry-run wikilinks et application contrôlée |
+| [wildnexus-bom](wildnexus-bom/SKILL.md) | "génère le BOM", "mets à jour le budget", "shortlist achat" | Générer/mettre à jour le BOM WildNexus P0 en Excel multi-onglets |
+| **Spécialistes** | | |
+| [onboarding-specialiste](onboarding-specialiste/SKILL.md) | "recrute", "gap de compétence", "nouvel agent", "embauche" | Pipeline complet recrutement d'un spécialiste PKA |
+| **Connaissances** | | |
+| [obsidian-knowledge-graph](obsidian-knowledge-graph/SKILL.md) | "wikilink le vault", "dry-run Obsidian" | Inventaire Obsidian, dictionnaire, wikilinks |
+| **Spécialisés** | | |
+| [bioacoustics-qc-playbook](bioacoustics-qc-playbook/SKILL.md) | "bioacoustics QC", "segment triage", "spectrogram review" | Curation datasets bioacoustiques, QC spectrogrammes |
+| [chronophotography-workflow](chronophotography-workflow.md) | "chronophotographie", "action overlay" | Images composites à partir de rafales (Action Overlay) |
+
+---
+
+## Skills externes (runtime — non modifiables)
+
+Ces skills sont fournis par le runtime et ne peuvent pas être modifiés directement. Des shadows locaux existent pour les plus critiques. Voir `CACHE_SKILLS_IMPROVEMENTS.md` pour les améliorations documentées.
+
+| Skill | Shadow local | Statut |
+|-------|-------------|--------|
+| `graphify` | — | Cross-ref documenté |
+| `delegate` | — | Note modèle-agnostique documentée |
+| `crm-update` | — | Acceptable en l'état |
+| `find-skills` | — | Utilitaire runtime |
+| `triage` | — | Usage rare |
 
 ---
 
 ## Ajouter un skill
 
-1. Créer `skills/<nom>/SKILL.md` avec frontmatter `name`, `description`, triggers
+1. Créer `skills/<nom>/SKILL.md` avec frontmatter `name`, `description`
 2. Ajouter la ligne dans ce tableau
-3. Pour [[Claude]] Code : 
-4. Les autres plateformes voient le skill automatiquement via ce fichier INDEX.md
+3. Le skill est automatiquement découvert par le runtime (priorité locale > fondation)
