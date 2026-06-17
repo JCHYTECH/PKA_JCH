@@ -26,6 +26,7 @@
 | **WildNexus** | | |
 | [wildnexus-adr](wildnexus-adr/SKILL.md) | "crée un ADR", "passe l'ADR en accepté", "documente la décision" | Créer, mettre à jour ou valider un ADR WildNexus |
 | [wildnexus-bom](wildnexus-bom/SKILL.md) | "génère le BOM", "mets à jour le budget", "shortlist achat" | Générer/mettre à jour le BOM WildNexus P0 en Excel multi-onglets |
+| [wildnexus-benchmark-loop](wildnexus-benchmark-loop/SKILL.md) | "benchmark loop", "PPK2 loop", "optimise le firmware" | Boucle autonome firmware WildNexus contre benchmarks hardware (AutoResearch) |
 | **Spécialistes** | | |
 | [onboarding-specialiste](onboarding-specialiste/SKILL.md) | "recrute", "gap de compétence", "nouvel agent", "embauche" | Pipeline complet recrutement d'un spécialiste PKA |
 | **Connaissances** | | |
