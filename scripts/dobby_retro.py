@@ -17,7 +17,7 @@ Dépendances : sqlite3, json, re, collections (stdlib).
               requests pour OpenRouter (pip install requests si utilisé).
 """
 
-import json
+import argparse, json
 import os
 import re
 import sqlite3
@@ -266,8 +266,8 @@ def read_claude_sessions(cutoff: datetime | None = None) -> list[dict]:
                     parts = [c.get("text", "") for c in content
                              if isinstance(c, dict) and c.get("type") == "text"]
                     text = " ".join(parts).strip()
-                else:
-                    text = str(content).strip()
+                elif isinstance(content, str):
+                    text = content.strip()
 
                 if text:
                     exchanges.append({
@@ -1314,42 +1314,39 @@ def _load_secrets() -> dict[str, str]:
 
 # ── CLI ───────────────────────────────────────────────────────────────
 
-def parse_args(argv: list[str]) -> dict:
-    args = {
-        "days": 1,
-        "dry_run": False,
-        "provider": "anthropic",
-        "model": None,
-        "all": False,
-    }
-    i = 0
-    while i < len(argv):
-        a = argv[i]
-        if a in ("--days", "-d") and i + 1 < len(argv):
-            args["days"] = int(argv[i + 1])
-            i += 2
-        elif a == "--all":
-            args["all"] = True
-            args["days"] = 365
-            i += 1
-        elif a == "--dry-run":
-            args["dry_run"] = True
-            i += 1
-        elif a == "--provider":
-            args["provider"] = argv[i + 1] if i + 1 < len(argv) else "anthropic"
-            i += 2
-        elif a == "--model":
-            args["model"] = argv[i + 1] if i + 1 < len(argv) else None
-            i += 2
-        else:
-            i += 1
-    return args
-
+def parse_args(argv: list[str]) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Dobby Retro — Rétrospective multi-source auto-apprenante"
+    )
+    parser.add_argument(
+        "--days", "-d", type=int, default=1,
+        help="Nombre de jours à analyser (défaut: 1)"
+    )
+    parser.add_argument(
+        "--all", action="store_true",
+        help="Analyser toutes les sessions disponibles"
+    )
+    parser.add_argument(
+        "--dry-run", action="store_true",
+        help="Extraction locale seulement, pas d'analyse LLM"
+    )
+    parser.add_argument(
+        "--provider", default="anthropic",
+        choices=["anthropic", "openrouter"],
+        help="Fournisseur LLM (défaut: anthropic)"
+    )
+    parser.add_argument(
+        "--model", default=None,
+        help="Modèle LLM spécifique (défaut: automatique)"
+    )
+    return parser.parse_args(argv)
 
 def main():
     args = parse_args(sys.argv[1:])
+    if args.all:
+        args.days = 365
     today_str = date.today().isoformat()
-    days = args["days"]
+    days = args.days
 
     print(f"[Dobby] Rétrospective multi-source — {days} jour(s)…")
     exchanges = load_all_transcripts(days=days)
@@ -1375,18 +1372,18 @@ def main():
     store_patterns(patterns, today_str)
     session_count = patterns.get("session_count", 0)
 
-    if args["dry_run"]:
+    if args.dry_run:
         print("[Dobby] Dry-run — analyse LLM sautée. Patterns stockés en DB.")
         store_retro_report(today_str, None, len(exchanges), session_count, ",".join(models), "dry-run")
         print("\n--- RÉSUMÉ LOCAL ---")
         print(json.dumps(patterns, indent=2, ensure_ascii=False))
         return
 
-    print(f"[Dobby] Analyse via {args['provider']}…")
-    provider = get_provider(args["provider"], args.get("model"))
+    print(f"[Dobby] Analyse via {args.provider}…")
+    provider = get_provider(args.provider, args.model)
     if not provider:
         print("[Dobby] Aucun fournisseur disponible. Fallback analyse locale uniquement.")
-        store_retro_report(today_str, None, len(exchanges), session_count, ",".join(models), f"{args['provider']}-failed")
+        store_retro_report(today_str, None, len(exchanges), session_count, ",".join(models), f"{args.provider}-failed")
         return
 
     context = build_context(exchanges, patterns)
@@ -1401,7 +1398,7 @@ def main():
     n_recs = store_recommendations(recommendations, today_str)
 
     filepath = save_retro_md(today_str, retro, patterns)
-    store_retro_report(today_str, filepath, len(exchanges), session_count, ",".join(models), args["provider"])
+    store_retro_report(today_str, filepath, len(exchanges), session_count, ",".join(models), args.provider)
 
     print(f"[Dobby] ✅ Rétrospective → {filepath}")
 
