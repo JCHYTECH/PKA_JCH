@@ -17,7 +17,13 @@
 | [pka-weekly-report](pka-weekly-report/SKILL.md) | "rapport hebdo", "weekly report", "bilan de la semaine" | Rapport hebdomadaire consolidé : équipe, projets, inbox, rétro |
 | [pka-pointer-sync](pka-pointer-sync/SKILL.md) | "mets à jour les pointers", "l'équipe a changé" | Resynchroniser CLAUDE.md, AGENTS.md, GEMINI.md, DEEPSEEK.md |
 | [pka-file-versioning](pka-file-versioning/SKILL.md) | Automatique — avant toute modif BOM/ADR/registre | Sauvegarder version précédente (cp ou git tag) |
-| [forge-loop](forge-loop/SKILL.md) | "forge loop", "code loop", "auto-fix" | Boucle autonome code review avec quality gate ≥ 4/5 (Grep Loop) |
+| **Loops** | | |
+| [forge-loop](forge-loop/SKILL.md) | "forge loop", "code loop", "auto-fix" | Boucle autonome code review avec quality gate ≥ 4/5 (Grep Loop + AutoResearch) |
+| [wildnexus-benchmark-loop](wildnexus-benchmark-loop/SKILL.md) | "benchmark loop", "PPK2 loop", "optimise le firmware" | Boucle autonome firmware WildNexus contre benchmarks hardware (AutoResearch) |
+| [edge-ai-loop](edge-ai-loop/SKILL.md) | "edge ai loop", "TinyML loop", "FOMO loop" | Boucle autonome TinyML — Musaraigne modèle → benchmark (AutoResearch) |
+| [seo-loop](seo-loop/SKILL.md) | "seo loop", "optimise le SEO", "auto-optimize SEO" | Boucle autonome SEO — Trace contenu → audit → optimise (AutoResearch) |
+| [sigma-loop](sigma-loop/SKILL.md) | "sigma loop", "backtest loop" | Boucle autonome validation financière — Sigma données → backtesting (AutoResearch) |
+| [bench-loop](bench-loop/SKILL.md) | "bench loop", "test loop", "SOP loop" | Boucle autonome SOPs hardware — Fourmi suit SOP → mesure → commit |
 | **Opérations** | | |
 | [ingest](ingest/SKILL.md) | `/ingest`, traite automatiquement 00_INBOX | Router fichiers inbox → dossier projet, indexer dans file_index |
 | [capture](capture/SKILL.md) | `/capture <texte>` | Transformer input en entrée knowledge structurée (team.db) |
@@ -26,7 +32,6 @@
 | **WildNexus** | | |
 | [wildnexus-adr](wildnexus-adr/SKILL.md) | "crée un ADR", "passe l'ADR en accepté", "documente la décision" | Créer, mettre à jour ou valider un ADR WildNexus |
 | [wildnexus-bom](wildnexus-bom/SKILL.md) | "génère le BOM", "mets à jour le budget", "shortlist achat" | Générer/mettre à jour le BOM WildNexus P0 en Excel multi-onglets |
-| [wildnexus-benchmark-loop](wildnexus-benchmark-loop/SKILL.md) | "benchmark loop", "PPK2 loop", "optimise le firmware" | Boucle autonome firmware WildNexus contre benchmarks hardware (AutoResearch) |
 | **Spécialistes** | | |
 | [onboarding-specialiste](onboarding-specialiste/SKILL.md) | "recrute", "gap de compétence", "nouvel agent", "embauche" | Pipeline complet recrutement d'un spécialiste PKA |
 | **Connaissances** | | |
