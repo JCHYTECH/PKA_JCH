@@ -203,11 +203,11 @@ Courant
 
 ### Checklist
 
-- [ ] PPK2 reconnu dans Power Profiler
-- [ ] Mode Source Meter, 5.0 V configuré
-- [ ] Branchement vérifié deux fois (polarité, pas d'USB)
-- [ ] Pics de réveil toutes les ~30 secondes observés
-- [ ] Mesures notées dans le CSV
+- [x] PPK2 reconnu dans Power Profiler
+- [x] Mode Source Meter, 5.0 V configuré
+- [x] Branchement vérifié deux fois (polarité, pas d'USB)
+- [x] Pics de réveil toutes les ~30 secondes observés
+- [x] Mesures notées dans le CSV
 - [ ] Session Power Profiler sauvegardée
 - [ ] Sortie PPK2 OFF, fils débranchés
 
@@ -215,7 +215,7 @@ Courant
 
 | Date | Test | Firmware | Tension | Mode PPK2 | Deep sleep | Pic boot | Courant actif | Durée active | Résultat |
 |------|------|----------|---------|-----------|-----------|---------|-------------|------------|----------|
-| YYYY-MM-DD | Phase C — deep sleep PPK2 | wn_deep_sleep_30s | 5.0 V | Source Meter | __ µA | __ mA | __ mA | __ s | GO / ORANGE / NO-GO |
+| 2026-06-16 | Phase C — deep sleep PPK2 | wn_deep_sleep_30s | 5.0 V | Source Meter | 1052 µA | 170 mA | — | 31.0 s | NO-GO (DevKit overhead: AMS1117 + LEDs + CP210x = ~1 mA parasite. ESP32-S3 seul estimé <20 µA) |
 
 ---
 

@@ -1,7 +1,7 @@
 # Team Roster
 
 Managed by [[Dobby]]. Last updated: 2026-06-08 — v23 (sync active count from `TEAM/team.db`).  
-**Source of truth:** `TEAM/team.db` — **31 membres actifs — 30 spécialistes + [[Dobby]]**.
+**Source of truth:** `TEAM/team.db` — **32 membres actifs — 31 spécialistes + [[Dobby]]**.
 
 | # | Name | Animal | Role | Status | Tables owned |
 |---|------|--------|------|--------|-------------|
@@ -36,6 +36,7 @@ Managed by [[Dobby]]. Last updated: 2026-06-08 — v23 (sync active count from `
 | 30 | [[Araignée]] | 🕷️ Araignée | IoT & Embedded Systems Specialist | active | inbox |
 | 29 | [[Cigogne]] | 🦩 Cigogne blanche | Vanlife Travel Planner & Experience Curator | active | vanlife_destinations, vanlife_feedback, vanlife_preferences |
 | 31 | [[Fourmi]] | 🐜 Fourmi | Bench Technician — Électronique & Protocoles | active | inbox |
+| 32 | [[Musaraigne]] | 🐭 Musaraigne | Edge AI & TinyML Specialist | active | models, datasets, benchmarks |
 
 ---
 

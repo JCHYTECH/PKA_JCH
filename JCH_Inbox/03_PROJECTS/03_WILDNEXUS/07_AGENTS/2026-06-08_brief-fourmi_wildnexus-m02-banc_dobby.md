@@ -1,4 +1,4 @@
-# Brief — Fourmi 🐜 : Assistance banc M-02 Partiel (Phases A→E)
+# Brief — [[Fourmi]] 🐜 : Assistance banc M-02 Partiel (Phases A→E)
 
 **Date :** 2026-06-08  
 **De :** [[Dobby]]  

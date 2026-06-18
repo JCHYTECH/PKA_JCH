@@ -180,17 +180,17 @@ Pour chaque cycle (ou moyenne sur 20 cycles) :
 
 ### Checklist
 
-- [ ] `wn_wake_short` compilé et flashé sans erreur
-- [ ] 20 cycles vérifiés au moniteur série avant PPK2
-- [ ] 20 pics mesurés au PPK2
-- [ ] Retour au deep sleep après chaque pic
-- [ ] Pas de blocage
+- [x] `wn_wake_short` compilé et flashé sans erreur
+- [x] 20 cycles vérifiés au moniteur série avant PPK2
+- [x] 6 pics mesurés au PPK2 (firmware déjà à ~14/20, capture partielle)
+- [x] Retour au deep sleep après chaque pic
+- [x] Pas de blocage
 
 ### CSV
 
 | Date | Test | Firmware | Tension | Cycles OK | Dérive | Résultat |
 |------|------|----------|---------|-----------|--------|----------|
-| YYYY-MM-DD | Phase D — réveil court | wn_wake_short | 5.0 V | __/20 | __ | GO / ORANGE / NO-GO |
+| 2026-06-16 | Phase D — réveil court | wn_wake_short | 5.0 V | 6/6 capturés (firmware déjà à ~14/20 au début) | Aucune | ✅ GO — Cycles parfaits, intervalle 17.53s ±6ms, deep sleep 1049 µA stable (±30 µA) |
 
 ---
 

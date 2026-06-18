@@ -1,7 +1,7 @@
 # Brief — Concordance ESP-DIVE × WildNexus : Analyse Hardware & Composants
 
 **De :** [[Dobby]] 🦉
-**Pour :** Fourmi 🐜 (#31)
+**Pour :** [[Fourmi]] 🐜 (#31)
 **Date :** 2026-06-15
 **Priorité :** HIGH
 **Contexte :** Évaluation hardware du projet ESP-DIVE pour mutualisation avec WildNexus P0.
@@ -49,7 +49,7 @@ ESP-DIVE est un sous-marin RC ESP32 avec caméra FPV. Son BOM (~$125) et ses cho
 | PVC tubing 3×6mm | Passage ballast |
 | Epoxy | Scellement permanent |
 
-## Questions pour Fourmi
+## Questions pour [[Fourmi]]
 
 1. **BOM overlap** — Parmi les composants ESP-DIVE, lesquels sont identiques ou substituables à ceux du BOM WildNexus v0.2c ? Y a-t-il des économies d'échelle (commande groupée) ?
 

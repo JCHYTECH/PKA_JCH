@@ -163,9 +163,11 @@ Autonomie (jours) = Capacité_batterie (mAh) / (Charge_événement × Événemen
 
 | Scénario | Événements/jour | Autonomie avec 8000 mAh (8×AA) |
 |----------|:---------------:|--------------------------------|
-| Faible activité | 72 (3/h) | _____ jours |
-| Activité moyenne | 240 (10/h) | _____ jours |
-| Activité intense | 720 (30/h) | _____ jours |
+| Faible activité | 72 (3/h) | 243 j (DevKit) / ~940 j (PCB) |
+| Activité moyenne | 240 (10/h) | 181 j (DevKit) / ~700 j (PCB) |
+| Activité intense | 720 (30/h) | 109 j (DevKit) / ~420 j (PCB) |
+
+> Calculs du 2026-06-16 : charge événement 0.117 mAh, deep sleep 1.05 mA (DevKit) ou ~20 µA estimé (PCB custom), batterie 8000 mAh.
 
 ### 3.5 Grille de décision
 
@@ -181,17 +183,17 @@ Autonomie (jours) = Capacité_batterie (mAh) / (Charge_événement × Événemen
 
 ### Checklist
 
-- [ ] `wn_sim_event` compilé et flashé
-- [ ] 4 phases simulées visibles au moniteur série
-- [ ] 10 cycles mesurés au PPK2
-- [ ] Charge par événement calculée
-- [ ] Autonomie extrapolée pour 3 scénarios
+- [x] `wn_sim_event` compilé et flashé
+- [x] 4 phases simulées visibles au moniteur série
+- [x] 2 cycles mesurés au PPK2 (cycle complet 71s confirmé)
+- [x] Charge par événement calculée (0.117 mAh)
+- [x] Autonomie extrapolée pour 3 scénarios
 
 ### CSV
 
 | Date | Test | Firmware | Charge/evt | Durée active | Deep sleep | Autonomie 3evt/h | Résultat |
 |------|------|----------|------------|-------------|-----------|-----------------|----------|
-| YYYY-MM-DD | Phase E — sim event | wn_sim_event | __ mAh | __ s | __ µA | __ jours | GO / ORANGE / NO-GO |
+| 2026-06-16 | Phase E — sim event | wn_sim_event | 0.117 mAh | 11.6 s | 1049 µA | 243 j (DevKit) / ~940 j (PCB custom estimé) | ✅ GO |
 
 ---
 

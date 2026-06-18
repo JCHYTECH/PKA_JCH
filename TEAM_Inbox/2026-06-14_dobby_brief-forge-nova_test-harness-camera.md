@@ -42,5 +42,5 @@ CONTRAINTES
 
 INTERACTIONS
 - Consulter le skill wildnexus-edge-ai-cv pour les specs modèle
-- Fourmi 🐜 peut flasher le firmware et insérer la SD si besoin
+- [[Fourmi]] 🐜 peut flasher le firmware et insérer la SD si besoin
 - [[Dobby]] peut tester la logique du harness dans Wokwi (sans l'inférence TFLite)

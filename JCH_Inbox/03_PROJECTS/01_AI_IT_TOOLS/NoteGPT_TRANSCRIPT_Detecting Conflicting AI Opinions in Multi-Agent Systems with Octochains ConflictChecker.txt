@@ -1,0 +1,66 @@
+00:00:02
+Hello everyone. Welcome back. My name is Ahmad and I'm absolutely thrilled to have you here for the second module of our Octo Chains Masterclass. Today, we're diving into a really critical topic in multi-agent systems. How to handle conflicting AI opinions. When you're building systems for high-stakes environments, acting financial auditing or legal reviews, as sequential agent chains can actually introduce a massive danger. We call this hallucinated compromises. In simple terms, what this means is that
+
+00:00:37
+if two agents disagree, they often end up talking in circles until they generate a watered-down middle ground response, which completely buries crucial warnings. Octo Chains solves this by taking an audit-first approach. By keeping our agents in completely isolated parallel threads, we preserve their raw unpolluted opinions. Today, we are going to use the conflict checker aggregator to deterministically analyze these isolated reports and flag conflicting AI opinions before they ever reach production. Let's start by
+
+00:01:16
+importing our dependencies and setting up our environment. First, we need to import our core modules including standard environment tools, the OpenAI client, and the essential Octo Chains components like agent, engine, and our conflict checker aggregator. We'll add a quick comment here to remind us that we are loading our environment variables and initializing our OpenAI client. Now, let's call load.env to pull in our API keys from the local environment file. And here, we instantiate the OpenAI
+
+00:01:51
+client so we can make calls to our language models. Now, let's look at why this matters. Because Octo Chains is designed to be completely zero dependency, we don't need complex setups. We just need a simple Python function to pass prompts to our chosen LLM. Here's where things get interesting. We're going to use a very low temperature of 0.2 for this audit. This ensures our model's reasoning remains highly deterministic, precise, and analytical, rather than creative. Let's write that wrapper
+
+00:02:26
+function. Let's define a helper function called call OpenAI. We are calling this function because Octo Chains is zero dependency, so we need a clean wrapper to send our prompts to GPT-4o with a low temperature of 0.2 to keep our audit highly precise and deterministic. Next up, we need to define our agents. In Octo Chains, the agent is an abstract base class. To use it, we simply create a subclass and define exactly how it should execute its task. In simple terms, what this means is that you get
+
+00:03:03
+total control over the prompt pipeline, allowing you to build custom behaviors while keeping the underlying execution engine clean and predictable. Next, we'll subclass the base agent to create our specialist agent. Inside its execute method, we construct a forced perspective prompt using the built-in helper and then run it through our LLM callable. Here's where things get really interesting. We are going to deploy a tri-agent squad, a three specialized agents designed to cross-examine a
+
+00:03:36
+high-stakes conflicting financial report. By forcing a head-on collision between different perspectives, we can uncover hidden risks. We'll have the growth bull, who focuses purely on revenue upsides and scaling. The compliance bear, who down financial risks and legal vulnerabilities, and the operations realist, who evaluates actual execution timelines and team stability. Let's initialize them now. Let's create our first agent, the growth bull, whose sole goal is to hunt down positive metrics and revenue upsides
+
+00:04:12
+while completely ignoring risks. We close the parenthesis to finish initializing our bullish agent. Now, let's set up our second agent, the compliance bear, focused entirely on financial risks, legal vulnerabilities, and debt. And we close the parenthesis for the bear agent. Finally, let's build the operations realist to evaluate execution timelines and team stability, ignoring the financial ledgers. Closing the parenthesis for the operations agent, let's run this and print a success message to confirm our
+
+00:04:49
+tri-agent squad is ready to roll. Now that we have our agents set up, let's talk about the conflict checker aggregator from Octo Chains. Instead of letting our agents argue back and forth until they settle on a watered-down hallucinated compromise, Octo Chains keeps them completely isolated. The conflict checker then steps in to analyze those raw, unpolluted opinions to catch logical inconsistencies and timeline mismatches. To do this, it offers two distinct strategies. First, we have the dynamic
+
+00:05:24
+prompt matrix, which is fast and cost-effective. Second, there's concurrent pairwise auditing, which is a high-precision, multi-threaded cross-examination of every single agent pair. Now, let's look at why this matters and how we can implement strategy one first. Let's dive into strategy one, the prompt matrix architecture. In simple terms, what this means is that we set pairwise audit to false. Instead of running multiple separate comparisons, OctoChains takes the clean isolated outputs from all of
+
+00:06:00
+our agents and projects them onto a single highly structured evaluation matrix. Think of the aggregator here as a neutral chief justice reviewing all the evidence in a single pass. It's incredibly fast and perfect for standard workflows. Let's run the code and see it in action. First, we'll write a comment to remind ourselves we are setting up our aggregator using strategy one, which is the default matrix approach. Let's create a new variable here to store our results. Initializing the
+
+00:06:33
+conflict checker with our OpenAI wrapper, turning off pairwise auditing, and enabling logs so we can see what's happening under the hood. And we'll close that parenthesis to finish initializing our checker. Next, we'll add a comment indicating we are putting together our multi-agent engine. We are calling this engine class to bundle our three specialized agents, Edible, The Bear, and The Realist, along with our matrix checker into a single execution unit. Let's add a comment to mark where we
+
+00:07:05
+define our target scenario. We'll define a multi-line string variable named Financial Swot Report to hold the raw financial data we want to audit. This line describes Company X's massive revenue growth and their upcoming Q4 product launch. But here is a massive red flag, a $50 million lawsuit that completely wipes out their liquid cash. Management remains optimistic claiming a Series C round next quarter will solve all their problems. And finally, we note a critical operational risk with 30% employee churn
+
+00:07:43
+in R&D. Let's close our multi-line string here. Now, let's add a comment before we trigger the actual execution. We'll run the engine on our financial report, keeping logs enabled so we can watch the parallel agents do their work in real time. Let's see what this outputs by printing out the total number of conflicts our matrix audit managed to catch. Finally, we'll loop through each detected conflict and print its description to see what the matrix checker found. And there we have it.
+
+00:08:25
+As we can see from the output, the aggregator successfully spotted the logical conflicts hiding within the agent opinions. It didn't let them smooth over the cracks, it highlighted them clearly. But what if we need even more precision? Here's where things get even more interesting. This brings us to strategy two, extreme precision with pairwise auditing. Now, let's look at why this matters. If you're working in an enterprise environment with a large squad of agents, a single LLM pass might gloss
+
+00:08:58
+over subtle, fine-grained contradictions. By setting pairwise audit to true, OctoChain spins up native Python multi-threading. It mathematically pairs up your agents alike agent A versus agent B and agent B versus agent K and cross-examines them systematically. It's the ultimate safeguard against logical contamination. Let's run this more rigorous audit and see what else we can uncover. All right, let's step up the precision. We'll add a comment for strategy two, which uses concurrent
+
+00:09:32
+cross-examination. Let's create a new variable pairwise chat checker, setting pairwise audit to true this time to force rigorous agent versus agent auditing. Closing the parenthesis for our pairwise checker setup, we are calling the engine class again, but this time we're passing our new pairwise checker to handle the aggregation. Let's write a quick comment to document that we are running the high precision audit. If we run this, we'll trigger the multi-threaded pairwise audit across all
+
+00:10:05
+agent combinations. Let's see what this outputs by printing the count of conflicts detected by this deeper audit. And we'll loop through and print out each conflict's description to inspect the granular contradictions. Now, as you can see, because we used the pairwise analysis strategy, we spotted much more robust and nuanced conflicts. By isolating the agents and cross-examining them in pairs, we didn't let any subtle contradictions slip through the cracks. Here's where things get interesting. We
+
+00:10:51
+don't just get a block of text back. We get structured actionable data that we can actually build logic around. Let's take a closer look at these structured conflict report fields. When the conflict checker finishes its run, it doesn't just spit out a messy unstructured string. Instead, it returns a type-safe Pydantic object through report.consensus. In simple terms, what this means is that you can easily integrate these results directly into your production databases or automated pipelines without fragile
+
+00:11:25
+text parsing. Let's break down the key fields we get. First, we have has conflicts, a simple boolean flag. This is incredibly powerful because it lets your downstream systems instantly decide whether to trigger an automated human in the loop review or let the process slide through. Next is the summary, which gives you a clean high-level executive overview of the entire audit. And finally, we have the conflicts list. Each conflict in this list is highly detailed, giving you a precise description of the clash, the
+
+00:12:02
+specific involved honor agents who disagreed, and a severity tag I like critical, moderate, or minor also. You know exactly what to prioritize. Now, let's look at why this matters in practice as we write some code to access these fields and serialize them into JSON. Let's loop through our pairwise conflicts and print out a beautifully structured log showing the issue, the involved agents, and the severity level. Next, we'll add a comment about converting our structured Pydantic consensus object into a standard Python
+
+00:12:40
+dictionary. We are calling the two dict method on our consensus object to make it easy to manipulate or pass to other Python utilities. Let's add another comment for our final step exporting to a JSON string. We'll call to JSON to serialize our structured report, making it ready to be sent to an external API or database. Finally, we'll print a success message to confirm everything serialized perfectly.
+

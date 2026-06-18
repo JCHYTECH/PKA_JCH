@@ -98,8 +98,8 @@ Le document D3 rappelle que M-02 est **bloquant pour le passage à M-03** (terra
 
 ### 3.3 Prochaine session
 
-- Inspecter les livrables de [[Chouette]]+[[Araignée]], [[Castor]]+Fourmi, [[Forge]]+[[Nova]]
-- Valider les BOM additions proposées par [[Castor]]+Fourmi
+- Inspecter les livrables de [[Chouette]]+[[Araignée]], [[Castor]]+[[Fourmi]], [[Forge]]+[[Nova]]
+- Valider les BOM additions proposées par [[Castor]]+[[Fourmi]]
 - Si GO JCH : lancer la commande des composants manquants
 - Assigner formellement ADR-012 et ADR-013 aux agents
 
@@ -110,7 +110,7 @@ Le document D3 rappelle que M-02 est **bloquant pour le passage à M-03** (terra
 | Agent | Livrable | Statut |
 |-------|----------|--------|
 | [[Chouette]] + [[Araignée]] | Rapport gaps WILDMESH_PLUS vs ADRs | En cours |
-| [[Castor]] + Fourmi | Fiche spec OV5640 + LoRa + impact BOM | En cours |
+| [[Castor]] + [[Fourmi]] | Fiche spec OV5640 + LoRa + impact BOM | En cours |
 | [[Forge]] + [[Nova]] | Checklist validation M-02 + template ADR-012 | En cours |
 | [[Sigma]] | Cette synthèse | ✓ |
 

@@ -10,6 +10,8 @@
 
 | Section | Contenu |
 |---------|---------|
+| **Architecture** | Memory Layer, gouvernance, décisions |
+| **Memory Pipeline** | Session extractor, unified retrieval, MEMORY.md generator |
 | Orchestration | Sauvegarde, system check, mémoire |
 | Sécurité | Rotation clés, audit, isolation secrets |
 | Infrastructure | Backup, sync, maintenance |
@@ -36,6 +38,15 @@
 - scripts/pka_vigilance.py — Détection de dérive entre DB et fichiers
 - scripts/pka_vault_maintenance.py — Maintenance vault Obsidian
 - scripts/pka_structure_check.py — Vérifie la structure du workspace
+
+## Memory Pipeline
+
+- scripts/pka_session_extract.py — Extraction post-session : décisions, faits, feedback → `knowledge` + `retro_patterns` + `dobby_feedback`
+- scripts/pka_retrieve.py — Recherche unifiée multi-sources (team.db, [[graphify]], file_index, MEMORY.md, wiki)
+- scripts/pka_generate_memory.py — Régénération automatique de MEMORY.md depuis team.db
+- scripts/pka_conflict_checker.py — Détection de contradictions entre rapports de spécialistes (inspiré OctoChains)
+- scripts/pka_pointer_sync.py — Synchronisation automatique des 6 fichiers pointeurs PKA
+- docs/system/[[pka-memory-layer]].md — Architecture complète du Memory Layer PKA
 
 ## Sécurité
 
@@ -202,6 +213,11 @@
 - scripts/build_vetalyx_rapid_allergy_report.py — Rapport allergie rapide
 - Dossiers : strategy/, legal/, regulatory/, clinical/, market/, investors/
 
+## MCP Servers (ponts IA ↔ applications)
+
+- lightroom-mcp — `_local/lightroom-mcp/` — Contrôle Lightroom Classic via MCP (plugin Lua + serveur Node). Configuré dans `~/.deepseek/config.toml`.
+- photoshop-mcp — `github.com/alisaitteke/photoshop-mcp` — Contrôle Photoshop via MCP (50+ outils). À installer.
+
 ## Projets — Photo
 
 - scripts/argus_batch.py — Traitement par lot critiques [[Argus]]
@@ -209,6 +225,7 @@
 - scripts/backfill_exif.py — Remplissage EXIF
 - scripts/heron_paper.py — Préparation tirages papier
 - scripts/chouette_diagnostic.py — Diagnostic pièges photo
+- `05_PHOTO_AI_JURY/mcp_apply_lr.py` — Pont [[Argus]] → Lightroom MCP (mapping 51 clés SDK, commandes prepare/map/sdk-keys)
 - Skill : bioacoustics-qc-playbook
 
 ## Projets — InsectNet

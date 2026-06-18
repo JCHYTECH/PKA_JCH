@@ -11,7 +11,7 @@
 Dernier scan [[graphify]] : 2026-06-05. Depuis :
 
 - 2 nouveaux projets : 10_FUTURE_INVEST, 11_IOT
-- Nouveaux specialistes : Araignee (#30), Fourmi (#31)
+- Nouveaux specialistes : Araignee (#30), [[Fourmi]] (#31)
 - Hub.html refait (cockpit, OpenRouter, provider balances)
 - Dashboard server modifie (M1 status, nettoyage)
 - Rapports WildNexus et IoT dans docs/manuels/

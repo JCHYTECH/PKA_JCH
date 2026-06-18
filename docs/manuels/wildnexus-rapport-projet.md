@@ -94,7 +94,7 @@ Le système est composé de 3 sous-ensembles, documentés par des ADR (Architect
 | Juridique & licence | [[Renard]] 🦊 | RGPD, licence duale (MIT + ETHICS.md) |
 | Propriété intellectuelle | [[Hermine]] ⬜ | Brevets, FTO (Freedom to Operate) |
 | IoT transverse | [[Araignée]] 🕷️ | Interface avec projet IoT van |
-| Protocoles, câblage | Fourmi 🐜 | Banc de test, mesures, PPK2 |
+| Protocoles, câblage | [[Fourmi]] 🐜 | Banc de test, mesures, PPK2 |
 
 ---
 
