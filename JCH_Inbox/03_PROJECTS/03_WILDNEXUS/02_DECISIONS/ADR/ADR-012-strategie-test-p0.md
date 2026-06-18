@@ -65,7 +65,7 @@ Adopter une stratégie de test en **3 phases + 1 suite de régression**, avec cr
 
 Après M-02, une suite minimale de tests de régression est exécutée à chaque modification firmware ou hardware :
 - H2 (deep sleep), H3 (stabilité 10 cycles), H4 (microSD), E1 (courant idle)
-- Durée cible : < 15 minutes — exécutable par Fourmi sans supervision
+- Durée cible : < 15 minutes — exécutable par [[Fourmi]] sans supervision
 
 ## Alternatives considérées
 
@@ -77,7 +77,7 @@ Après M-02, une suite minimale de tests de régression est exécutée à chaque
 
 ## Conséquences
 
-- Fourmi devient l'opérateur principal des tests M-02 — exécute, documente, remonte les écarts.
+- [[Fourmi]] devient l'opérateur principal des tests M-02 — exécute, documente, remonte les écarts.
 - Chaque test produit un artéfact horodaté : capture PPK2, log série, image témoin.
 - Les critères GO/NO-GO de ce document conditionnent le passage à M-03.
 - Le protocole complet (Phases A–P) est consigné dans `08_TECH_NOTES/protocole-m02-complet.md`.

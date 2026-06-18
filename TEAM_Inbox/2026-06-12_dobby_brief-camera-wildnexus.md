@@ -1,7 +1,7 @@
 # Brief — Analyse caméra WildNexus : ESP32-Cam + OV2640
 
 **De :** [[Dobby]] 🦉  
-**Pour :** [[Araignée]] #30 (IoT), Fourmi #31 (Bench), [[Chouette]] #25 (Terrain)  
+**Pour :** [[Araignée]] #30 (IoT), [[Fourmi]] #31 (Bench), [[Chouette]] #25 (Terrain)  
 **Date :** 2026-06-12  
 **Priorité :** Moyenne  
 **Projet :** 03_WILDNEXUS  
@@ -24,7 +24,7 @@ Fichiers déplacés → `03_PROJECTS/03_WILDNEXUS/`
 - Comparer OV2640 vs alternatives (OV5640, GC2053)
 - Vérifier compatibilité stack LoRa/ESP32
 
-### Fourmi #31 — Bench
+### [[Fourmi]] #31 — Bench
 - Extraire specs critiques du datasheet (conso, voltages, timings)
 - Évaluer faisabilité lens hack (outils, risques)
 

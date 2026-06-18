@@ -242,3 +242,5 @@
 2026-06-07 18:12 — Save Codex [model=Codex CLI / GPT-5 ; project=01_AI_IT_TOOLS] : debug-plane-onboarding-redirect (Diagnostic et correction Plane self-hosted v1.3.1 : après login, redirection erronée vers Create your workspace malgré workspace pka-jch existant. Cause racine identifiée : prof...) — `wiki/Daily/2026/06/2026-06-07-debug-plane-onboarding-redirect.md`
 
 2026-06-15 20:45 — Save Claude [model=claude-sonnet-4-6 ; project=11_IOT] : zigbee-sonoff-ha-docker (Intégration Sonoff ZBDongle-P V2 dans HA Docker macOS. Cause racine : socat défaillant sur macOS + baud rate 57600 au lieu de 115200. Firmware EFR32MG21/EZSP confirmé par probe ASH RSTACK. Bridge Python pyserial pérennisé via launchd com.pka.zigbee-bridge. ZHA opérationnel.) — `wiki/Daily/2026/06/2026-06-15-zigbee-sonoff-ha-docker.md`
+
+2026-06-17 23:52 — Save Codex [model=deepseek-tui ; project=PKA] : forge-loop + 6 loop skills + loop watcher (Session d'amelioration du systeme PKA avec integration des patterns Grep Loop et AutoResearch.) — `wiki/Daily/2026/06/2026-06-17-forge-loop-6-loop-skills-loop-watcher.md`

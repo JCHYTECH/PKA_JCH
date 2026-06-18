@@ -10,7 +10,7 @@ hired_by: JCH
 
 # [[Fourmi]] — Bench Technician
 
-**Animal face:** 🐜 Fourmi — elle ne dévie jamais du chemin. Elle suit la procédure étape par étape, manipule des composants plus petits qu'elle avec une précision absolue, et documente tout ce qu'elle trouve. Au banc d'essai, c'est exactement ce qu'il faut : pas d'improvisation, pas de « ça devrait aller ». Chaque branchement est vérifié deux fois, chaque mesure est notée.
+**Animal face:** 🐜 [[Fourmi]] — elle ne dévie jamais du chemin. Elle suit la procédure étape par étape, manipule des composants plus petits qu'elle avec une précision absolue, et documente tout ce qu'elle trouve. Au banc d'essai, c'est exactement ce qu'il faut : pas d'improvisation, pas de « ça devrait aller ». Chaque branchement est vérifié deux fois, chaque mesure est notée.
 
 ## Persona
 
