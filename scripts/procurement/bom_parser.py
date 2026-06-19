@@ -7,13 +7,16 @@ from .models import BOMData, Component
 
 # Mapping noms de colonnes → champs Component
 _COLUMN_MAP = {
-    "ref": ["ref", "reference", "designator", "repère"],
-    "description": ["description", "desc", "composant", "component", "désignation"],
-    "qty": ["qty", "quantity", "quantité", "qte", "q", "nb"],
-    "mpn": ["mpn", "part number", "manufacturer part number", "référence fabricant", "pn"],
-    "preferred_supplier": ["preferred_supplier", "fournisseur", "supplier", "preferred supplier"],
-    "category": ["category", "catégorie", "type", "famille"],
-    "notes": ["notes", "note", "remarques", "commentaire"],
+    "ref": ["ref", "reference", "designator", "repère", "#", "n°", "no", "num", "item", "id"],
+    "description": ["description", "desc", "composant", "component", "désignation", "designation", "name", "nom"],
+    "qty": ["qty", "quantity", "quantité", "qte", "q", "nb", "quantite", "quant."],
+    "mpn": ["mpn", "part number", "manufacturer part number", "référence fabricant", "pn",
+            "mfr part#", "mfr part", "mfr part no", "mfr part number",
+            "référence précise", "reference precise", "ref fabricant"],
+    "preferred_supplier": ["preferred_supplier", "fournisseur", "supplier", "preferred supplier",
+                          "distributeur", "distributor", "vendor", "vendeur"],
+    "category": ["category", "catégorie", "type", "famille", "family", "class"],
+    "notes": ["notes", "note", "remarques", "commentaire", "comment", "remarks"],
 }
 
 
