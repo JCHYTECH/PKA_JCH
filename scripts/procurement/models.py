@@ -15,9 +15,24 @@ class Component:
 
 
 @dataclass
+class SupplierResult:
+    """Résultat d'un fournisseur pour un composant."""
+    supplier: str = ""  # "Mouser", "DigiKey", etc.
+    price_unit: Optional[float] = None
+    currency: str = "EUR"
+    stock_qty: Optional[int] = None
+    lead_time_days: Optional[int] = None
+    obsolete: bool = False
+    supplier_url: str = ""
+    found_mpn: str = ""
+    error: str = ""
+    is_best: bool = False  # Meilleur choix pour ce composant
+
+
+@dataclass
 class EnrichedComponent:
     component: Component
-    price_unit: Optional[float] = None
+    price_unit: Optional[float] = None  # Prix du meilleur fournisseur
     currency: str = "EUR"
     stock_qty: Optional[int] = None
     lead_time_days: Optional[int] = None
@@ -28,6 +43,15 @@ class EnrichedComponent:
     simulation: bool = False
     error: str = ""
     flag: str = ""  # "", "⚠️ MANUEL", "🔴 OBSOLETE"
+    # Multi-fournisseur
+    supplier_results: List[SupplierResult] = field(default_factory=list)
+    best_supplier: str = ""  # "Mouser", "DigiKey", "Aucun"
+    mouser_price: Optional[float] = None
+    mouser_stock: Optional[int] = None
+    mouser_url: str = ""
+    digikey_price: Optional[float] = None
+    digikey_stock: Optional[int] = None
+    digikey_url: str = ""
 
 
 @dataclass
@@ -44,3 +68,5 @@ class ProcurementResult:
     total_cost_eur: float = 0.0
     simulation: bool = False
     alerts: List[str] = field(default_factory=list)
+    optimization: Optional[dict] = None  # Résultat de basket_optimizer.optimize()
+    validations: Optional[dict] = None  # Résultat de validation.validate_component()

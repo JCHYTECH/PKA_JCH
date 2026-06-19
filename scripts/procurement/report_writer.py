@@ -1,6 +1,7 @@
 from datetime import date
 from pathlib import Path
 from collections import defaultdict
+from typing import List
 from .models import ProcurementResult, EnrichedComponent
 
 _TEMPLATE = """\
@@ -10,6 +11,30 @@ _TEMPLATE = """\
 **Source BOM :** `{source_file}`
 **Coût total estimé :** {total_cost:.2f} €
 **Mode simulation :** {simulation_flag}
+
+---
+
+## Comparaison Mouser vs DigiKey
+
+{comparison_table}
+
+---
+
+## Paniers optimisés
+
+{basket_section}
+
+---
+
+## Validation MPN (H2 — Arbor)
+
+{validation_section}
+
+---
+
+## Checklist terrain Chouette 🦉
+
+{chouette_checklist}
 
 ---
 
@@ -68,6 +93,49 @@ def _component_row(e: EnrichedComponent) -> str:
     )
 
 
+def _comparison_row(e: EnrichedComponent) -> str:
+    comp = e.component
+    mp = f"{e.mouser_price:.2f}€" if e.mouser_price is not None else "N/A"
+    ms = str(e.mouser_stock) if e.mouser_stock is not None else "N/A"
+    dp = f"{e.digikey_price:.2f}€" if e.digikey_price is not None else "N/A"
+    ds = str(e.digikey_stock) if e.digikey_stock is not None else "N/A"
+    best = e.best_supplier or "—"
+    return (
+        f"| {comp.ref or '—':6s} | {comp.description[:35]:35s} | {comp.qty} | "
+        f"`{comp.mpn or '—':25s}` | {mp:>8} | {ms:>6} | {dp:>8} | {ds:>6} | **{best}** |"
+    )
+
+
+def _chouette_checklist(enriched: List[EnrichedComponent]) -> str:
+    """Génère la checklist terrain basée sur l'expérience WildNexus (Chouette)."""
+    items = []
+    for e in enriched:
+        warnings = []
+        desc = e.component.description.lower()
+        mpn = (e.component.mpn or "").lower()
+
+        # Vérifications automatiques
+        if "868" in mpn or "lora" in desc:
+            if "eu868" not in mpn and "863" not in mpn:
+                warnings.append("📻 Vérifier bande EU868 (pas US915/AS923)")
+        if "ov5640" in desc or "caméra" in desc:
+            warnings.append("📸 Vérifier monture M12 + variante NoIR (pas IR-cut visible)")
+            warnings.append("📸 Vérifier MOQ — commandes proto souvent refusées")
+        if "led ir" in desc or "vslb" in mpn or "vslb" in desc:
+            warnings.append("🔦 Confirmer longueur d'onde compatible faune (940nm préféré)")
+        if "antenne" in desc or "antenna" in desc or "molex" in desc:
+            warnings.append("📡 Vérifier connecteur IPEX/U.FL (pas SMA seul)")
+        if "boîtier" in desc or "hammond" in desc or "boitier" in desc:
+            warnings.append("📦 Vérifier place pour presse-étoupe + câble antenne")
+        if "holder" in desc or "pile" in desc or "aa" in desc:
+            warnings.append("🔋 Vérifier orientation contacts (ressort = −)")
+        if "connecteur" in desc or "câble" in desc:
+            warnings.append("🔌 Vérifier longueur câble suffisante pour boîtier")
+        if warnings:
+            items.append(f"**{e.component.ref}** — {e.component.description[:40]}\n" + "\n".join(f"  - {w}" for w in warnings))
+    return "\n\n".join(items) if items else "_Aucune alerte terrain détectée automatiquement._"
+
+
 def _cart_by_supplier(result: ProcurementResult) -> str:
     carts: dict = defaultdict(list)
     for e in result.enriched:
@@ -85,6 +153,45 @@ def _cart_by_supplier(result: ProcurementResult) -> str:
     for supplier, items in carts.items():
         lines.append(f"### {supplier}\n" + "\n".join(items))
     return "\n\n".join(lines)
+
+
+def _basket_section(result: ProcurementResult) -> str:
+    opt = result.optimization
+    if not opt:
+        return "_Optimisation panier non disponible (mode Mouser seul)._"
+    lines = []
+    for basket in opt["baskets"]:
+        free_icon = "✅" if basket.free_shipping else "❌"
+        lines.append(
+            f"### {basket.supplier} — {len(basket.components)} composants\n"
+            f"- Sous-total : {basket.subtotal:.2f} €\n"
+            f"- Livraison : {basket.shipping:.2f} € {free_icon} gratuit\n"
+            f"- **Total : {basket.total:.2f} €**"
+        )
+    lines.append(f"\n💰 Économie estimée vs 8 paniers manuels : **{opt['savings_vs_manual']:.2f} €** de frais de port")
+    if opt["recommendations"]:
+        lines.append("\n### Suggestions d'optimisation\n" + "\n".join(opt["recommendations"]))
+    return "\n\n".join(lines)
+
+
+def _validation_section(result: ProcurementResult) -> str:
+    """Génère la section validation MPN du rapport."""
+    if not result.validations:
+        return "_Validation MPN non disponible._"
+    lines = [
+        "| Ref | Confiance | Score | Vérifications |",
+        "|-----|-----------|------:|--------------|",
+    ]
+    for ref, v in result.validations.items():
+        checks_str = "; ".join(
+            f"{'✅' if c.match else '❌'} {c.param}" for c in v.checks
+        ) if v.checks else "—"
+        warnings_str = "<br>".join(v.warnings) if v.warnings else ""
+        detail = f"{checks_str}"
+        if warnings_str:
+            detail += f"<br>⚠️ {warnings_str}"
+        lines.append(f"| {ref:20s} | {v.confidence} | {v.score:.0%} | {detail} |")
+    return "\n".join(lines)
 
 
 def write_report(
@@ -107,6 +214,11 @@ def write_report(
     components_table = "\n".join(_component_row(e) for e in result.enriched)
 
     alerts = list(result.alerts or [])
+    comparison_table = (
+        "| Ref | Description | Qté | MPN | Prix Mouser | Stock M | Prix DK | Stock DK | Best |\n"
+        "|-----|-------------|-----|-----|------------:|--------:|--------:|--------:|------|\n"
+        + "\n".join(_comparison_row(e) for e in result.enriched)
+    )
     for e in result.enriched:
         if e.obsolete:
             msg = f"🔴 **{e.component.ref}** (`{e.component.mpn}`) — Obsolète"
@@ -116,7 +228,7 @@ def write_report(
             msg = f"⚠️ **{e.component.ref}** (`{e.component.mpn}`) — Rupture de stock"
             if msg not in alerts:
                 alerts.append(msg)
-    alerts_section = "\n".join(f"- {a}" for a in alerts) if alerts else "_Aucune alerte._"
+    alerts_section = "\n".join(f"- {a}" for a in alerts) if alerts else "✅ _Aucune alerte._"
 
     alt_lines = []
     for e in result.enriched:
@@ -149,6 +261,10 @@ def write_report(
         narrative=narrative or "_Narratif LLM non disponible._",
         components_table=components_table,
         alerts_section=alerts_section,
+        comparison_table=comparison_table,
+        basket_section=_basket_section(result),
+        validation_section=_validation_section(result),
+        chouette_checklist=_chouette_checklist(result.enriched),
         cart_section=_cart_by_supplier(result),
         alternatives_section=alternatives_section,
         decisions_section=decisions_section,
