@@ -28,6 +28,12 @@ Il sert de couche de supervision entre :
 | `kpi-portefeuille.md` | Indicateurs transverses de pilotage |
 | `opportunites-a-suivre.md` | Pistes à surveiller sans polluer l'exécution |
 | `risques-et-frottements.md` | Points de tension, dette, obstacles systémiques |
+| `etat-projets.md` | Tableau de bord one-pager — statuts, blocages, échéances |
+| `matrice-modeles.md` | Quel modèle IA pour quel type de tâche |
+| `decisions-pka.md` | Registre des décisions structurelles transverses |
+| `instructions-systeme.md` | Tableau consolidé de toutes les instructions PKA (39+) |
+| `prompt-hermes-amelioration-pka.md` | Prompt d'analyse Hermes → PKA |
+| `prompt-ingestion-amelioration-systemique.md` | Prompt universel d'ingestion document → amélioration |
 
 ## Principes
 

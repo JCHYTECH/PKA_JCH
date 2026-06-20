@@ -16,6 +16,12 @@ JCH_PRIVATE/
 *secret*
 *credentials*
 
+# PKA DECOUVERTES — secrets centralisés dans JCH_PRIVATE/
+JCH_PRIVATE/decouvertes.env
+scripts/decouvertes-collector/.env
+scripts/decouvertes-collector/venv/
+JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/logs/
+
 # Runtime databases and backups
 *.db
 *.sqlite
@@ -45,6 +51,10 @@ scripts/telegram-bot/venv/
 .claude/commands/watch.md
 .claude/claude-video/
 .claude/skills/
+.deepseek/
+.gemini/
+.qwen/
+.continuerules
 .agents/
 skills-lock.json
 
@@ -52,6 +62,16 @@ skills-lock.json
 .cache/
 tmp/
 temp/
+build/
+deploy/
+report-build-status/
+0_report-build-status.txt
+2_build.txt
+session_*.json
+JCH_Inbox/07_ARCHIVES/sessions/
+graphify-out/
+_local/dobby-dataset/
+_local/homeassistant/
 _local/plane-community/
 outputs/
 PHOTO/analyses/
@@ -63,3 +83,4 @@ JCH_Inbox/03_PROJECTS/03_WILDNEXUS/06_COMPONENTS/BIOACOUSTIC/INSECTNET/03_AUDIO_
 JCH_Inbox/03_PROJECTS/03_WILDNEXUS/06_COMPONENTS/BIOACOUSTIC/INSECTNET/03_AUDIO_DOWNLOADS/segments
 JCH_Inbox/03_PROJECTS/03_WILDNEXUS/06_COMPONENTS/BIOACOUSTIC/INSECTNET/03_AUDIO_DOWNLOADS/spectrograms
 .mcp.json
+**/sessions/*/artifacts/

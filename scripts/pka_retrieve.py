@@ -11,6 +11,7 @@ Traduit une question en langage naturel en requêtes sur :
 Usage:
     python3 scripts/pka_retrieve.py "qu'est-ce qu'on a décidé pour le deep sleep ESP32 ?"
     python3 scripts/pka_retrieve.py --project WILDNEXUS "état du BOM"
+    python3 scripts/pka_retrieve.py --fts "budget WildNexus mars 2026"
     python3 scripts/pka_retrieve.py --json "bme688 capteur"
 
 Part of PKA Memory Layer — docs/system/pka-memory-layer.md
@@ -277,6 +278,8 @@ if __name__ == "__main__":
     parser.add_argument("--json", "-j", action="store_true", help="Sortie JSON")
     parser.add_argument("--limit", "-n", type=int, default=MAX_RESULTS,
                         help=f"Nombre max de résultats par source (défaut: {MAX_RESULTS})")
+    parser.add_argument("--fts", action="store_true",
+                        help="Activer la recherche FTS5 dans les sessions indexées")
 
     args = parser.parse_args()
 
@@ -284,5 +287,33 @@ if __name__ == "__main__":
         parser.print_help()
         sys.exit(1)
 
+    if args.fts:
+        # Recherche FTS5 + sources existantes
+        try:
+            with sqlite3.connect(DB_PATH) as con:
+                fts_rows = con.execute(
+                    """SELECT session_id, date, model, project,
+                              snippet(session_fts, 2, '<b>', '</b>', '...', 40) AS snippet
+                       FROM session_fts
+                       WHERE session_fts MATCH ?
+                       ORDER BY rank
+                       LIMIT ?""",
+                    (args.query, args.limit),
+                ).fetchall()
+
+            fts_results = [
+                {
+                    "source": "session_fts",
+                    "title": f"Session {r[0]} [{r[1]}]",
+                    "body": f"Modèle: {r[2]} | Projet: {r[3]}\n{r[4]}",
+                    "date": r[1],
+                }
+                for r in fts_rows
+            ]
+        except sqlite3.DatabaseError:
+            fts_results = []
+
     results = retrieve(args.query, args.project, args.limit)
+    if args.fts:
+        results = fts_results + results
     print(format_results(results, args.json))

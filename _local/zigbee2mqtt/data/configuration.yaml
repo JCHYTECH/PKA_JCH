@@ -1,0 +1,16 @@
+homeassistant:
+  enabled: true
+mqtt:
+  server: mqtt://host.docker.internal:1883
+serial:
+  port: tcp://host.docker.internal:6638
+  adapter: ember
+frontend:
+  enabled: true
+  port: 8080
+advanced:
+  log_level: debug
+version: 5
+devices:
+  '0xa4c1380f1ceaffff':
+    friendly_name: Temphumid

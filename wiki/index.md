@@ -87,7 +87,7 @@
 
 ## Statistiques
 
-- Daily notes : 128 (dernière : 2026-06-15 — intégration Zigbee ZBDongle-P V2 × HA Docker, bridge Python launchd)
+- Daily notes : 130 (dernière : 2026-06-20 — diagnostic MacFUSE, zombies SSHFS tués, script mount corrigé)
 - SOPs : 7 — Workstreams : 1 — Guidelines : 4
 - Articles knowledge : 2 (AI-Tools)
 - Log système : actif depuis 2026-05-03 (178+ entrées, format structuré depuis 2026-06-13)

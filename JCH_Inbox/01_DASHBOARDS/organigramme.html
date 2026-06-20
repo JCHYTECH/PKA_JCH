@@ -218,6 +218,12 @@
   .c-energy     { background: #1a160a; border: 1px solid #5a4005; border-style: dashed; }
   .c-energy .cluster-title { color: #fcd34d; }
 
+  .c-tech      { background: #0a1018; border: 1px solid #1e3a5f; }
+  .c-tech .cluster-title { color: #38bdf8; }
+
+  .c-voyages   { background: #181005; border: 1px solid #5a3505; }
+  .c-voyages .cluster-title { color: #f59e0b; }
+
   /* ── Dept separator line ── */
   .dept-divider {
     border: none;
@@ -239,7 +245,7 @@
 <body>
 
 <h1>PKA — Personal Knowledge Assistant</h1>
-<p class="subtitle">Organigramme · 27 spécialistes · v20 · 2026-05-23</p>
+<p class="subtitle">Organigramme · 31 spécialistes · v21 · 2026-06-20</p>
 
 <!-- Dobby -->
 <div class="dobby-wrap">
@@ -307,6 +313,14 @@
         <div class="member" data-tip="Strategic Document Architect & Senior R&D Writer">
           <span class="emoji">🐘</span>
           <div class="member-info"><div class="mname">Atlas</div><div class="mrole">Doc. Architect</div></div>
+        </div>
+      </div>
+
+      <div class="cluster c-research">
+        <div class="cluster-title">Edge AI & TinyML</div>
+        <div class="member" data-tip="Edge AI & TinyML Specialist — Optimisation modèles embarqués, FOMO, datasets">
+          <span class="emoji">🐭</span>
+          <div class="member-info"><div class="mname">Musaraigne</div><div class="mrole">Edge AI Specialist</div></div>
         </div>
       </div>
 
@@ -400,6 +414,14 @@
         </div>
       </div>
 
+      <div class="cluster c-photo">
+        <div class="cluster-title">Terrain & Installation</div>
+        <div class="member" data-tip="Field Technician & Camera Setup — Installation pièges photo, maintenance terrain">
+          <span class="emoji">🦉</span>
+          <div class="member-info"><div class="mname">Chouette</div><div class="mrole">Field Technician</div></div>
+        </div>
+      </div>
+
       <div class="cluster c-web">
         <div class="cluster-title">Web & Brand</div>
         <div class="member" data-tip="Creative Director — Web & Brand System">
@@ -413,6 +435,28 @@
         <div class="member" data-tip="Community Manager — Instagram, Facebook, Newsletter">
           <span class="emoji">🐝</span>
           <div class="member-info"><div class="mname">Miel</div><div class="mrole">Community Manager</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="dept-divider">
+
+  <!-- ── TECH & IOT ── -->
+  <div class="dept">
+    <div class="dept-label">Tech & IoT</div>
+    <div class="dept-clusters">
+
+      <div class="cluster c-tech">
+        <div class="cluster-title">Systèmes Embarqués</div>
+        <div class="member" data-tip="Spécialiste IoT & Systèmes Embarqués — ESP32, capteurs, firmware">
+          <span class="emoji">🕷️</span>
+          <div class="member-info"><div class="mname">Araignée</div><div class="mrole">IoT · Embarqué</div></div>
+        </div>
+        <div class="member" data-tip="Bench Technician — Électronique, protocoles, SOPs hardware">
+          <span class="emoji">🐜</span>
+          <div class="member-info"><div class="mname">Fourmi</div><div class="mrole">Bench Technician</div></div>
         </div>
       </div>
 
@@ -439,6 +483,24 @@
 
   <hr class="dept-divider">
 
+  <!-- ── VOYAGES ── -->
+  <div class="dept">
+    <div class="dept-label">Voyages</div>
+    <div class="dept-clusters">
+
+      <div class="cluster c-voyages">
+        <div class="cluster-title">Vanlife & Expérience</div>
+        <div class="member" data-tip="Vanlife Travel Planner & Experience Curator — Destinations, logistique, récits">
+          <span class="emoji">🦩</span>
+          <div class="member-info"><div class="mname">Cigogne</div><div class="mrole">Travel Curator</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="dept-divider">
+
   <!-- ── ENERGY ── -->
   <div class="dept">
     <div class="dept-label">Energy</div>
@@ -457,7 +519,7 @@
 
 </div>
 
-<p class="footer">PKA · JCH · Liège–Trentino · Dobby v16 · 2026-05-17</p>
+<p class="footer">PKA · JCH · Liège–Trentino · Dobby v20 · 2026-06-20</p>
 
 </body>
 </html>

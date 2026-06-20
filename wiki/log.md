@@ -244,3 +244,12 @@
 2026-06-15 20:45 — Save Claude [model=claude-sonnet-4-6 ; project=11_IOT] : zigbee-sonoff-ha-docker (Intégration Sonoff ZBDongle-P V2 dans HA Docker macOS. Cause racine : socat défaillant sur macOS + baud rate 57600 au lieu de 115200. Firmware EFR32MG21/EZSP confirmé par probe ASH RSTACK. Bridge Python pyserial pérennisé via launchd com.pka.zigbee-bridge. ZHA opérationnel.) — `wiki/Daily/2026/06/2026-06-15-zigbee-sonoff-ha-docker.md`
 
 2026-06-17 23:52 — Save Codex [model=deepseek-tui ; project=PKA] : forge-loop + 6 loop skills + loop watcher (Session d'amelioration du systeme PKA avec integration des patterns Grep Loop et AutoResearch.) — `wiki/Daily/2026/06/2026-06-17-forge-loop-6-loop-skills-loop-watcher.md`
+
+2026-06-19 09:12 — Save Codex [model=deepseek ; project=AI_IT_TOOLS] : amelioration-systeme-hermes-pka (Analyse approfondie de l'architecture Hermes Agent (NousResearch, 197k★) et transposition vers PKA-JCH. Livrables : split SOUL.md/USER.md/MEMORY.md, Memory Nudge (pka_memory_nud...) — `wiki/Daily/2026/06/2026-06-19-amelioration-systeme-hermes-pka.md`
+
+2026-06-19 12:40 — Save Codex [model=deepseek ; project=AI_IT_TOOLS] : session-principale-architecture-acoustique (Session principale du 19 juin 2026. Refonte architecture mémoire (SOUL/USER/MEMORY), pipeline acoustique complet (10 enregistrements → 1441 segments → 3 espèces → manifold 4D),...) — `wiki/Daily/2026/06/2026-06-19-session-principale-architecture-acoustique.md`
+2026-06-19 23:30 — Save [model=claude-sonnet-4-6 ; project=WILDNEXUS] : sshfs-mount-m1 (Diagnostic montage SMB M1→Tailscale. Abandon SMB (hash NT absent). Installation sshfs-mac + réécriture script SSHFS. Bloqué sur approbation extension macFUSE.) — `wiki/Daily/2026-06-19.md`
+
+2026-06-20 08:27 — Save Codex [model=deepseek-tui ; project=AI_IT_TOOLS] : finalisation-session-2026-06-19 (Finalisation de la session du 19/06 : Memory Nudge et Honcho PKA pivotes synchrone, pka-save execute, checklist actions P0 verifiee, MEMORY.md mis a jour. Session couvrait : spl...) — `wiki/Daily/2026/06/2026-06-20-finalisation-session-2026-06-19.md`
+
+2026-06-20 09:30 — Save [model=claude-sonnet-4-6 ; project=AI_IT_TOOLS] : macfuse-diagnostic (Diagnostic MacFUSE : 4 zombies mount_macfuse tués, montage SSHFS stale démonté, script m1-datasets-mount.sh corrigé. Reboot M5 recommandé pour kext 5.2.0.) — `wiki/Daily/2026-06-20.md`

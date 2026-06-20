@@ -7,7 +7,7 @@
 **Prérequis :** SOP-05 réussi, buck TPS62840 et porte-piles AA disponibles  
 **Auteur :** [[Dobby]]  
 **Date :** 2026-06-12  
-**Version :** 1.0  
+**Version :** 1.1 — Ajout note dropout voltage AMS1117 (2026-06-19, source: system-improvement-ingest ESP32 Battery)
 
 ---
 
@@ -19,6 +19,12 @@ Cette phase est la plus risquée électriquement.
 2. **Sortie buck avant branchement ESP32 :** mesurer la tension de sortie AVANT de brancher l'ESP32. Si > 3.6V → le buck est mal configuré → ne pas brancher.
 3. **Ne jamais court-circuiter les bornes du porte-piles** avec un outil métallique.
 4. **Mode Ampère Meter du PPK2 :** branchement en série entre une source d'énergie et une charge. Risque d'inversion si on se trompe.
+
+> ### 🧠 Leçon apprise — Piège dropout voltage AMS1117
+> Les DevKits ESP32 standard (et l'ESP32-CAM A02a) utilisent un régulateur **AMS1117** dont le **dropout voltage est de 1.2V**. Pour réguler correctement à 3.3V, il faut **minimum 4.5V en entrée**. Une batterie lithium 3.7V (4.2V max chargée) connectée directement au VIN est **sous le seuil** → le régulateur passe en pass-through → la tension 3.3V devient instable → **les lectures ADC sont faussées** (tension batterie lue incorrectement).
+> 
+> **Solution :** toujours utiliser un boost converter (5V) ou un buck (notre TPS62840) entre la batterie et l'ESP32. Ne jamais connecter une li-ion directement au VIN si on a besoin de lectures ADC fiables.
+> **Source :** Transcript « How to Power an Arduino ESP32 with a 3.7V Lithium Battery » — analysé via system-improvement-ingest, 2026-06-19.
 
 ---
 

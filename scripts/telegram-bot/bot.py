@@ -1,9 +1,13 @@
 """
-Dobby — Bot Telegram PKA
-Texte · Voix (Whisper) · Photos (Claude Vision) · Réponses vocales (OpenAI TTS)
+Dobby — Bot Telegram PKA (Gemini)
+Texte · Voix · Photos · Réponses vocales
+
+Moteur IA : Google Gemini (texte + vision + audio + TTS)
+Un seul modèle pour tout remplacer Claude + Whisper + OpenAI TTS.
 """
 
 import asyncio
+import base64
 import io
 import logging
 import os
@@ -22,8 +26,7 @@ from telegram.ext import (
     MessageHandler,
     filters,
 )
-import anthropic
-from openai import OpenAI
+from google import genai
 
 from dobby_context import SYSTEM_PROMPT
 
@@ -33,13 +36,11 @@ load_dotenv()
 
 TELEGRAM_TOKEN      = os.getenv("TELEGRAM_TOKEN")
 TELEGRAM_USER_ID    = int(os.getenv("TELEGRAM_USER_ID"))
-ANTHROPIC_API_KEY   = os.getenv("ANTHROPIC_API_KEY")
-OPENAI_API_KEY      = os.getenv("OPENAI_API_KEY")
+GEMINI_API_KEY      = os.getenv("GEMINI_API_KEY")
 PKA_ROOT            = os.getenv("PKA_ROOT", "/Users/jchavauxm5/PKA_JCH")
 
-OPENAI_TTS_VOICE    = os.getenv("OPENAI_TTS_VOICE", "nova")
-OPENAI_TTS_MODEL    = os.getenv("OPENAI_TTS_MODEL", "tts-1")
-TTS_ALSO_SEND_TEXT  = os.getenv("TTS_ALSO_SEND_TEXT", "true").lower() == "true"
+GEMINI_TEXT_MODEL   = os.getenv("GEMINI_TEXT_MODEL", "gemini-2.5-flash")
+GEMINI_TTS_MODEL    = os.getenv("GEMINI_TTS_MODEL", "gemini-2.5-flash-preview-tts")
 
 DB_PATH = Path(__file__).parent / "conversation.db"
 MAX_HISTORY = 20
@@ -47,6 +48,7 @@ MAX_HISTORY = 20
 # ── État TTS (toggle /vocal) ─────────────────────────────────────────────────
 
 tts_enabled = os.getenv("TTS_ENABLED", "true").lower() == "true"
+TTS_ALSO_SEND_TEXT = os.getenv("TTS_ALSO_SEND_TEXT", "true").lower() == "true"
 
 # ── Logging ──────────────────────────────────────────────────────────────────
 
@@ -87,14 +89,13 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-for noisy_logger in ("httpx", "httpcore", "telegram"):
+for noisy_logger in ("httpx", "httpcore", "telegram", "google_genai"):
     logging.getLogger(noisy_logger).addFilter(RedactingFilter())
     logging.getLogger(noisy_logger).setLevel(logging.WARNING)
 
-# ── Clients API ──────────────────────────────────────────────────────────────
+# ── Client Gemini ────────────────────────────────────────────────────────────
 
-claude = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
-openai_client = OpenAI(api_key=OPENAI_API_KEY) if OPENAI_API_KEY else None
+gemini_client = genai.Client(api_key=GEMINI_API_KEY) if GEMINI_API_KEY else None
 
 # ── Base de données — historique de conversation ──────────────────────────────
 
@@ -141,51 +142,81 @@ def is_authorized(update: Update) -> bool:
         return False
     return True
 
-# ── Appel Claude ─────────────────────────────────────────────────────────────
+# ── Appels Gemini ────────────────────────────────────────────────────────────
 
-def ask_claude(messages: list[dict]) -> str:
-    response = claude.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=1024,
-        system=SYSTEM_PROMPT,
-        messages=messages,
+def ask_gemini(history: list[dict]) -> str:
+    """Texte simple : envoie l'historique à Gemini."""
+    if gemini_client is None:
+        return "⚠️ Gemini non configuré — GEMINI_API_KEY manquant dans .env"
+
+    # Convertir l'historique en format Gemini
+    contents = []
+    for msg in history:
+        role = "user" if msg["role"] == "user" else "model"
+        contents.append({"role": role, "parts": [{"text": msg["content"]}]})
+
+    response = gemini_client.models.generate_content(
+        model=GEMINI_TEXT_MODEL,
+        contents=contents,
+        config={
+            "system_instruction": SYSTEM_PROMPT,
+            "max_output_tokens": 1024,
+        },
     )
-    return response.content[0].text
+    return response.text
 
-def ask_claude_vision(image_bytes: bytes, caption: str | None) -> str:
-    import base64
+
+def ask_gemini_vision(image_bytes: bytes, caption: str | None) -> str:
+    """Analyse de photo : Gemini multimodal (vision intégrée, pas d'API séparée)."""
+    if gemini_client is None:
+        return "⚠️ Gemini non configuré"
+
+    prompt = caption or "Analyse cette image en détail."
     image_b64 = base64.standard_b64encode(image_bytes).decode("utf-8")
-    prompt = caption or "Analyse cette image."
-    response = claude.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=1024,
-        system=SYSTEM_PROMPT,
-        messages=[{
-            "role": "user",
-            "content": [
-                {"type": "image", "source": {"type": "base64", "media_type": "image/jpeg", "data": image_b64}},
-                {"type": "text",  "text": prompt},
-            ],
-        }],
+
+    response = gemini_client.models.generate_content(
+        model=GEMINI_TEXT_MODEL,
+        contents=[
+            {
+                "role": "user",
+                "parts": [
+                    {"text": prompt},
+                    {"inline_data": {"mime_type": "image/jpeg", "data": image_b64}},
+                ],
+            }
+        ],
+        config={
+            "system_instruction": SYSTEM_PROMPT,
+            "max_output_tokens": 1024,
+        },
     )
-    return response.content[0].text
+    return response.text
 
-# ── Transcription vocale (Whisper) ────────────────────────────────────────────
 
-async def transcribe_voice(file_path: Path) -> str:
-    if openai_client is None:
-        return "[Transcription non disponible — OPENAI_API_KEY manquant dans .env]"
-    with open(file_path, "rb") as f:
-        result = openai_client.audio.transcriptions.create(
-            model="whisper-1",
-            file=f,
-            language="fr",
-        )
-    return result.text
+async def transcribe_voice_gemini(file_path: Path) -> str:
+    """Transcription vocale : Gemini traite l'audio directement (pas de Whisper)."""
+    if gemini_client is None:
+        return "[Transcription non disponible — GEMINI_API_KEY manquant]"
 
-# ── TTS — génération audio depuis texte ──────────────────────────────────────
+    audio_bytes = file_path.read_bytes()
 
-def strip_markdown(text: str) -> str:
+    response = gemini_client.models.generate_content(
+        model=GEMINI_TEXT_MODEL,
+        contents=[
+            {
+                "role": "user",
+                "parts": [
+                    {"text": "Transcris ce message vocal en français. Retourne uniquement la transcription, rien d'autre."},
+                    {"inline_data": {"mime_type": "audio/ogg", "data": base64.standard_b64encode(audio_bytes).decode("utf-8")}},
+                ],
+            }
+        ],
+    )
+    return response.text.strip()
+
+
+def strip_markdown_for_tts(text: str) -> str:
+    """Nettoie le markdown pour le TTS (Gemini TTS accepte du texte brut)."""
     text = re.sub(r"\*{1,2}(.+?)\*{1,2}", r"\1", text)
     text = re.sub(r"_{1,2}(.+?)_{1,2}", r"\1", text)
     text = re.sub(r"`(.+?)`", r"\1", text)
@@ -193,33 +224,70 @@ def strip_markdown(text: str) -> str:
     text = re.sub(r"\[(.+?)\]\(.+?\)", r"\1", text)
     return text.strip()
 
-async def generate_tts(text: str) -> bytes | None:
-    if openai_client is None:
-        log.warning("TTS ignoré — OPENAI_API_KEY manquant")
+
+def pcm_to_wav(pcm_data: bytes, sample_rate: int = 24000, bits: int = 16, channels: int = 1) -> bytes:
+    """Convertit du PCM brut en WAV (ajout du header 44 bytes)."""
+    import struct
+    byte_rate = sample_rate * channels * bits // 8
+    block_align = channels * bits // 8
+    data_size = len(pcm_data)
+    header = struct.pack(
+        '<4sI4s4sIHHIIHH4sI',
+        b'RIFF', 36 + data_size, b'WAVE', b'fmt ', 16,
+        1, channels, sample_rate, byte_rate, block_align, bits,
+        b'data', data_size
+    )
+    return header + pcm_data
+
+
+async def generate_tts_gemini(text: str) -> bytes | None:
+    """Synthèse vocale via Gemini TTS (modèle preview-tts).
+    Retourne du WAV (PCM + header) que Telegram accepte en audio.
+    """
+    if gemini_client is None:
         return None
+
     try:
-        clean_text = strip_markdown(text)
-        response = openai_client.audio.speech.create(
-            model=OPENAI_TTS_MODEL,
-            voice=OPENAI_TTS_VOICE,
-            input=clean_text,
-            response_format="opus",
+        clean_text = strip_markdown_for_tts(text)
+        response = gemini_client.models.generate_content(
+            model=GEMINI_TTS_MODEL,
+            contents=[{"role": "user", "parts": [{"text": clean_text}]}],
+            config={
+                "response_modalities": ["AUDIO"],
+                "speech_config": {
+                    "voice_config": {
+                        "prebuilt_voice_config": {"voice_name": "Zephyr"}
+                    }
+                },
+            },
         )
-        return response.content
-    except Exception as e:
-        log.error(f"Erreur TTS : {e}")
+        for part in response.candidates[0].content.parts:
+            if hasattr(part, 'inline_data') and part.inline_data:
+                if 'audio' in part.inline_data.mime_type:
+                    pcm = part.inline_data.data
+                    # Extraire le sample rate du mime type si dispo
+                    return pcm_to_wav(pcm)
+        log.warning("TTS Gemini : pas de données audio dans la réponse")
         return None
+    except Exception as e:
+        log.error(f"Erreur TTS Gemini : {e}")
+        return None
+
 
 async def send_reply(update: Update, reply: str):
     """Envoie la réponse : vocal si TTS actif, texte toujours si TTS_ALSO_SEND_TEXT."""
     if tts_enabled:
-        audio = await generate_tts(reply)
+        audio = await generate_tts_gemini(reply)
         if audio:
-            await update.message.reply_voice(voice=io.BytesIO(audio))
+            await update.message.reply_audio(
+                audio=io.BytesIO(audio),
+                title="Dobby",
+                performer="Gemini TTS"
+            )
             if TTS_ALSO_SEND_TEXT:
-                await update.message.reply_text(reply, parse_mode="Markdown")
+                await update.message.reply_text(reply)
             return
-    await update.message.reply_text(reply, parse_mode="Markdown")
+    await update.message.reply_text(reply)
 
 # ── Handlers ─────────────────────────────────────────────────────────────────
 
@@ -227,7 +295,7 @@ async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not is_authorized(update):
         return
     await update.message.reply_text(
-        "🐶 *Dobby en ligne.* Parle — je t'écoute.",
+        "🐶 *Dobby en ligne.* Parle — je t'écoute. *(Gemini)*",
         parse_mode="Markdown",
     )
 
@@ -246,12 +314,14 @@ async def cmd_status(update: Update, context: ContextTypes.DEFAULT_TYPE):
     db.close()
     hist = load_history()
     vocal_status = "✅ activé" if tts_enabled else "❌ désactivé"
+    engine = "Gemini 2.5 Flash" if gemini_client else "⚠️ non configuré"
     await update.message.reply_text(
         f"🐶 *PKA Status*\n"
+        f"• Moteur : {engine}\n"
         f"• Membres actifs : {membres}\n"
         f"• Messages en contexte : {len(hist)}\n"
         f"• DB : TEAM/team.db ✓\n"
-        f"• Vocal : {vocal_status} (voix : {OPENAI_TTS_VOICE})",
+        f"• Vocal : {vocal_status}",
         parse_mode="Markdown",
     )
 
@@ -259,33 +329,25 @@ async def cmd_vocal(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not is_authorized(update):
         return
     global tts_enabled
-    args = context.args
-    if args and args[0].lower() == "on":
-        tts_enabled = True
-    elif args and args[0].lower() == "off":
-        tts_enabled = False
-    else:
-        tts_enabled = not tts_enabled
+    tts_enabled = not tts_enabled
     state = "activé ✅" if tts_enabled else "désactivé ❌"
-    await update.message.reply_text(f"🐶 Réponses vocales {state}.")
+    await update.message.reply_text(f"🐶 Mode vocal : {state}")
 
 async def cmd_help(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not is_authorized(update):
         return
     await update.message.reply_text(
-        "🐶 *Commandes disponibles*\n\n"
-        "/start — démarrer\n"
-        "/status — état du système PKA\n"
-        "/clear — effacer l'historique de conversation\n"
-        "/vocal — activer/désactiver les réponses vocales\n"
-        "/vocal on|off — forcer l'état\n"
-        "/help — cette aide\n\n"
-        "Tu peux aussi m'envoyer :\n"
+        "🐶 *Dobby Telegram — Gemini Edition*\n"
         "• Un message texte → je réponds\n"
         "• Un message vocal → je transcris et je réponds\n"
-        "• Une photo → je l'analyse (Argus dans la boucle)",
+        "• Une photo → je l'analyse\n"
+        "• /vocal → active/désactive la réponse vocale\n"
+        "• /status → état du système\n"
+        "• /clear → efface l'historique",
         parse_mode="Markdown",
     )
+
+# ── Message handlers ─────────────────────────────────────────────────────────
 
 async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not is_authorized(update):
@@ -300,13 +362,14 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     history = load_history()
 
     try:
-        reply = ask_claude(history)
+        reply = ask_gemini(history)
     except Exception as e:
-        log.error(f"Erreur Claude : {e}")
-        reply = f"⚠️ Erreur Claude : {e}"
+        log.error(f"Erreur Gemini texte : {e}")
+        reply = f"⚠️ Erreur Gemini : {e}"
 
     save_message("assistant", reply)
     await send_reply(update, reply)
+
 
 async def handle_voice(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not is_authorized(update):
@@ -322,8 +385,11 @@ async def handle_voice(update: Update, context: ContextTypes.DEFAULT_TYPE):
         tmp_path = Path(tmp.name)
 
     try:
-        transcription = await transcribe_voice(tmp_path)
+        transcription = await transcribe_voice_gemini(tmp_path)
         log.info(f"Transcription : {transcription[:100]}")
+    except Exception as e:
+        log.error(f"Erreur transcription Gemini : {e}")
+        transcription = f"[Erreur transcription : {e}]"
     finally:
         tmp_path.unlink(missing_ok=True)
 
@@ -332,28 +398,31 @@ async def handle_voice(update: Update, context: ContextTypes.DEFAULT_TYPE):
     history = load_history()
 
     try:
-        reply = ask_claude(history)
+        reply = ask_gemini(history)
     except Exception as e:
-        log.error(f"Erreur Claude : {e}")
-        reply = f"⚠️ Erreur Claude : {e}"
+        log.error(f"Erreur Gemini texte : {e}")
+        reply = f"⚠️ Erreur Gemini : {e}"
 
     save_message("assistant", reply)
 
     if tts_enabled:
-        audio = await generate_tts(reply)
+        audio = await generate_tts_gemini(reply)
         if audio:
-            await update.message.reply_voice(voice=io.BytesIO(audio))
+            await update.message.reply_audio(
+                audio=io.BytesIO(audio),
+                title="Dobby",
+                performer="Gemini TTS"
+            )
             if TTS_ALSO_SEND_TEXT:
                 await update.message.reply_text(
-                    f"🎙 _{transcription}_\n\n{reply}",
-                    parse_mode="Markdown",
+                    f"🎙 {transcription}\n\n{reply}"
                 )
             return
 
     await update.message.reply_text(
-        f"🎙 _{transcription}_\n\n{reply}",
-        parse_mode="Markdown",
+        f"🎙 {transcription}\n\n{reply}"
     )
+
 
 async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not is_authorized(update):
@@ -373,18 +442,23 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     caption = update.message.caption or None
 
     try:
-        reply = ask_claude_vision(image_bytes, caption)
+        reply = ask_gemini_vision(image_bytes, caption)
     except Exception as e:
-        log.error(f"Erreur vision : {e}")
+        log.error(f"Erreur Gemini vision : {e}")
         reply = f"⚠️ Erreur analyse image : {e}"
 
-    await update.message.reply_text(reply, parse_mode="Markdown")
+    await update.message.reply_text(reply)
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
     init_db()
-    log.info("🐶 Dobby démarre — PKA Telegram Bot")
+
+    if gemini_client is None:
+        log.error("GEMINI_API_KEY manquant — le bot ne peut pas fonctionner")
+        return
+
+    log.info("🐶 Dobby démarre — PKA Telegram Bot (Gemini)")
 
     app = Application.builder().token(TELEGRAM_TOKEN).build()
 
@@ -397,7 +471,7 @@ def main():
     app.add_handler(MessageHandler(filters.VOICE, handle_voice))
     app.add_handler(MessageHandler(filters.PHOTO, handle_photo))
 
-    log.info("✅ Bot actif — en attente de messages")
+    log.info("✅ Bot actif — en attente de messages (Gemini)")
     app.run_polling(allowed_updates=Update.ALL_TYPES)
 
 if __name__ == "__main__":

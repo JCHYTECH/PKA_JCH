@@ -24,6 +24,7 @@
 | [seo-loop](seo-loop/SKILL.md) | "seo loop", "optimise le SEO", "auto-optimize SEO" | Boucle autonome SEO — Trace contenu → audit → optimise (AutoResearch) |
 | [sigma-loop](sigma-loop/SKILL.md) | "sigma loop", "backtest loop" | Boucle autonome validation financière — Sigma données → backtesting (AutoResearch) |
 | [bench-loop](bench-loop/SKILL.md) | "bench loop", "test loop", "SOP loop" | Boucle autonome SOPs hardware — Fourmi suit SOP → mesure → commit |
+| [arbor-research](arbor-research/SKILL.md) | "arbor loop", "recherche autonome", "hypothesis tree" | Protocole recherche cumulative (Arbor) — hypothèse → expérience → insight — transforme toute loop en OBSERVE→IDEATE→DECIDE |
 | **Opérations** | | |
 | [ingest](ingest/SKILL.md) | `/ingest`, traite automatiquement 00_INBOX | Router fichiers inbox → dossier projet, indexer dans file_index |
 | [capture](capture/SKILL.md) | `/capture <texte>` | Transformer input en entrée knowledge structurée (team.db) |

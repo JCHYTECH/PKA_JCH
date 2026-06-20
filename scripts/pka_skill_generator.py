@@ -133,6 +133,52 @@ class OpenRouterProvider(SkillGeneratorProvider):
 
 # ── LECTURE DES PATTERNS DEPUIS TEAM.DB ─────────────────────────────
 
+def load_honcho_insights(days: int = 30) -> list[dict]:
+    """Lit les insights Honcho depuis user_model (source propre, confiance ≥ seuil)."""
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        c = conn.cursor()
+        cutoff = (date.today() - timedelta(days=days)).isoformat()
+        c.execute(
+            """SELECT category, insight, confidence, status FROM user_model
+               WHERE created_at >= ? AND status IN ('proposed', 'validated', 'applied')
+               ORDER BY confidence DESC""",
+            (cutoff,),
+        )
+        rows = c.fetchall()
+        conn.close()
+        return [
+            {"category": r[0], "insight": r[1], "confidence": r[2], "status": r[3]}
+            for r in rows if r[1] and r[1].strip()
+        ]
+    except (OSError, sqlite3.DatabaseError) as exc:
+        print(f"[DB] Lecture Honcho impossible : {exc}")
+        return []
+
+
+def load_nudge_patterns(days: int = 30) -> list[dict]:
+    """Lit les patterns Memory Nudge depuis dobby_feedback (source propre)."""
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        c = conn.cursor()
+        cutoff = (date.today() - timedelta(days=days)).isoformat()
+        c.execute(
+            """SELECT feedback_type, context, dobby_action FROM dobby_feedback
+               WHERE created_at >= ? AND incorporated = 1
+               ORDER BY created_at DESC""",
+            (cutoff,),
+        )
+        rows = c.fetchall()
+        conn.close()
+        return [
+            {"type": r[0], "context": r[1], "action": r[2] or ""}
+            for r in rows if r[1] and r[1].strip()
+        ]
+    except (OSError, sqlite3.DatabaseError) as exc:
+        print(f"[DB] Lecture Memory Nudge impossible : {exc}")
+        return []
+
+
 def load_patterns(days: int = 14) -> dict[str, list[str]]:
     """Lit les patterns depuis retro_patterns dans team.db."""
     try:
@@ -240,12 +286,43 @@ def cluster_patterns(patterns: list[str],
 
 
 def find_skill_candidates(patterns: dict[str, list[str]],
-                          recommendations: list[str],
-                          existing_skills: set[str],
-                          min_occurrences: int = MIN_PATTERN_OCCURRENCES,
-                          ) -> list[dict]:
-    """Identifie les clusters de patterns qui justifient une skill candidate."""
+                           recommendations: list[str],
+                           existing_skills: set[str],
+                           honcho_insights: list[dict] | None = None,
+                           nudge_patterns: list[dict] | None = None,
+                           min_occurrences: int = MIN_PATTERN_OCCURRENCES,
+                           ) -> list[dict]:
+    """Identifie les clusters de patterns qui justifient une skill candidate.
+
+    Sources (par priorité décroissante) :
+    1. Honcho (user_model) — insights structurés, confiance 0-1 → poids ×3
+    2. Memory Nudge (dobby_feedback) — patterns validés → poids ×2
+    3. retro_patterns — fragments bruts → poids ×1
+    """
+    honcho_insights = honcho_insights or []
+    nudge_patterns = nudge_patterns or []
     candidates = []
+
+    # 0. Honcho — insights de haute qualité (boostés)
+    for ins in honcho_insights:
+        weight = int(ins.get("confidence", 0.5) * 100)
+        candidates.append({
+            "type": f"honcho_{ins['category']}",
+            "patterns": [ins["insight"]],
+            "count": weight,
+            "sample": ins["insight"][:200],
+            "source": "honcho",
+        })
+
+    # 0b. Memory Nudge — patterns validés (boostés)
+    for pat in nudge_patterns:
+        candidates.append({
+            "type": f"nudge_{pat['type']}",
+            "patterns": [pat["context"]],
+            "count": 50,
+            "sample": pat["context"][:200],
+            "source": "nudge",
+        })
 
     # 1. Questions récurrentes
     questions = patterns.get("question", []) + patterns.get("recurring_question", [])
@@ -470,8 +547,18 @@ def main():
     print(f"   Fenêtre : {args.days} jours | Provider : {args.provider} | Modèle : {args.model}")
     print("=" * 60)
 
-    # 1. Charger les patterns
-    print(f"\n[1/5] Lecture des patterns depuis team.db (retro_patterns)...")
+    # 1a. Charger les insights Honcho (source propre)
+    print(f"\n[1/7] Lecture des insights Honcho (user_model)...")
+    honcho = load_honcho_insights(days=max(args.days, 30))
+    print(f"       {len(honcho)} insights Honcho chargés")
+
+    # 1b. Charger les patterns Memory Nudge (source propre)
+    print(f"\n[2/7] Lecture des patterns Memory Nudge (dobby_feedback)...")
+    nudge = load_nudge_patterns(days=max(args.days, 30))
+    print(f"       {len(nudge)} patterns Nudge chargés")
+
+    # 1c. Charger les patterns rétro
+    print(f"\n[3/7] Lecture des patterns depuis team.db (retro_patterns)...")
     patterns = load_patterns(days=args.days)
     total = sum(len(v) for v in patterns.values())
     if total == 0:
@@ -482,18 +569,20 @@ def main():
         print(f"         - {ptype}: {len(items)}")
 
     # 2. Charger les recommandations ouvertes
-    print(f"\n[2/5] Lecture des recommandations ouvertes...")
+    print(f"\n[4/7] Lecture des recommandations ouvertes...")
     recommendations = load_recommendations(days=max(args.days, 30))
     print(f"       {len(recommendations)} recommandations ouvertes")
 
     # 3. Charger les skills existantes
-    print(f"\n[3/5] Inventaire des skills existantes...")
+    print(f"\n[5/7] Inventaire des skills existantes...")
     existing = load_existing_skills()
     print(f"       {len(existing)} skills recensées")
 
     # 4. Identifier les candidats
-    print(f"\n[4/5] Clustering et identification des candidats...")
+    print(f"\n[6/7] Clustering et identification des candidats...")
     candidates = find_skill_candidates(patterns, recommendations, existing,
+                                       honcho_insights=honcho,
+                                       nudge_patterns=nudge,
                                        min_occurrences=args.min_occurrences)
     if not candidates:
         print("       Aucun cluster ne dépasse le seuil d'occurrences.")
@@ -506,7 +595,7 @@ def main():
 
     # 5. Analyse LLM
     if args.dry_run:
-        print(f"\n[5/5] DRY-RUN — Pas d'appel LLM.")
+        print(f"\n[7/7] DRY-RUN — Pas d'appel LLM.")
         context = build_llm_context(candidates, existing)
         print(f"       Contexte préparé : {len(context)} chars")
         print(f"       Serait envoyé à {args.provider}/{args.model}")
@@ -515,7 +604,7 @@ def main():
         print("...")
         return
 
-    print(f"\n[5/5] Analyse LLM via {args.provider}/{args.model}...")
+    print(f"\n[7/7] Analyse LLM via {args.provider}/{args.model}...")
     api_key = get_api_key(args.provider)
     if not api_key:
         print("       ⚠️  Aucune clé API trouvée. Utilisez --dry-run ou configurez une clé.")

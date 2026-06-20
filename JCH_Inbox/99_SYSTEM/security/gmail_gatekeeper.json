@@ -10,6 +10,6 @@
     "jc.havaux@vetalyx.com"
   ],
   "deletion_mode": "trash",
-  "state_file": "tmp/gmail_gatekeeper_state.json",
+  "state_file": "_local/gmail_gatekeeper_state.json",
   "extract_root": "JCH_Inbox/00_INBOX/email_imports"
 }

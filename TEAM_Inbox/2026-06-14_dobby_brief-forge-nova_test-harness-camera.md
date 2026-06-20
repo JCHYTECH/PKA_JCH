@@ -2,7 +2,9 @@ BRIEF — [[Forge]] 🦦 + [[Nova]] 🦋 — 2026-06-14
 ═══════════════════════════════════════════
 
 PRIORITY : high
-DEADLINE : 2026-06-21
+DEADLINE : 2026-06-30 (reporté le 19/06 — attente images IR depuis Belgique)
+
+STATUT : Dataset jour prêt (51 images, 224×224). Images nuit IR à venir de Belgique.
 
 MISSION
 Créer un test harness firmware qui lit des images depuis la SD, exécute l'inférence MobileNet-SSD sur ESP32-S3, et produit un benchmark recall/précision/latence — sans attendre la caméra OV5640.
