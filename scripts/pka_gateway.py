@@ -48,6 +48,9 @@ STATE_FILE = PKA_DIR / "_local" / "gateway_state.json"
 POLL_INTERVAL = 60  # secondes (mode --watch)
 MAX_MESSAGES_PER_SCAN = 50
 
+# Backoff state for permission errors (e.g. Dropbox macOS privacy)
+_channel_backoff: dict[str, tuple[int, float]] = {}  # channel -> (count, retry_after_ts)
+
 # ── SCHEMA ──────────────────────────────────────────────────────────
 
 def ensure_schema():
@@ -113,27 +116,46 @@ def scan_dropbox_inbox(state: dict) -> list[dict]:
     if not DROPBOX_INBOX.is_dir():
         return messages
 
+    # Permission backoff: avoid spamming logs every poll cycle
+    now = time.time()
+    err_count, retry_ts = _channel_backoff.get("dropbox_inbox", (0, 0.0))
+    if now < retry_ts:
+        return messages
+
     seen = set(state.get("dropbox_inbox_seen", []))
     new_seen = []
 
-    for entry in sorted(DROPBOX_INBOX.iterdir()):
-        if entry.name.startswith("."):
-            continue
+    try:
+        for entry in sorted(DROPBOX_INBOX.iterdir()):
+            if entry.name.startswith("."):
+                continue
 
-        entry_id = f"{entry.name}:{entry.stat().st_mtime}"
-        new_seen.append(entry_id)
+            entry_id = f"{entry.name}:{entry.stat().st_mtime}"
+            new_seen.append(entry_id)
 
-        if entry_id in seen:
-            continue
+            if entry_id in seen:
+                continue
 
-        messages.append({
-            "channel": "dropbox_inbox",
-            "source_path": str(entry),
-            "message_type": "file" if entry.is_file() else "directory",
-            "subject": entry.name,
-            "body": f"Dropbox inbox: {entry.name}",
-            "priority": "high" if entry.suffix in (".pdf", ".docx", ".md") else "normal",
-        })
+            messages.append({
+                "channel": "dropbox_inbox",
+                "source_path": str(entry),
+                "message_type": "file" if entry.is_file() else "directory",
+                "subject": entry.name,
+                "body": f"Dropbox inbox: {entry.name}",
+                "priority": "high" if entry.suffix in (".pdf", ".docx", ".md") else "normal",
+            })
+        # Success: reset backoff
+        _channel_backoff.pop("dropbox_inbox", None)
+    except PermissionError as e:
+        err_count += 1
+        backoff = min(3600, 60 * (2 ** min(err_count - 1, 6)))  # max 1h
+        _channel_backoff["dropbox_inbox"] = (err_count, now + backoff)
+        print(f"[dropbox_inbox] Permission refusée (tentative {err_count}). Réessai dans {backoff}s. Donner l'accès disque complet à Python dans Préférences Système.")
+    except OSError as e:
+        err_count += 1
+        backoff = min(3600, 60 * (2 ** min(err_count - 1, 6)))
+        _channel_backoff["dropbox_inbox"] = (err_count, now + backoff)
+        print(f"[dropbox_inbox] Erreur: {e}. Réessai dans {backoff}s.")
 
     state["dropbox_inbox_seen"] = list(set(new_seen))[-200:]
     return messages
