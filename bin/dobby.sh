@@ -24,6 +24,13 @@ export PKA_DIR
 
 cd "$PKA_DIR"
 
+# Python : priorité au venv local (évite conflits pydantic/openai du Python système)
+if [[ -x "$PKA_DIR/.venv/bin/python3" ]]; then
+  PYTHON="$PKA_DIR/.venv/bin/python3"
+else
+  PYTHON="python3"
+fi
+
 SECRETS_FILE="$HOME/.config/pka-jch/api_keys"
 if [[ -f "$SECRETS_FILE" ]]; then
   set -a
@@ -82,7 +89,7 @@ case "$MODEL" in
       exit 1
     fi
     export DEEPSEEK_MODEL="${DEEPSEEK_MODEL:-deepseek-v4-flash}"
-    exec python3 "$PKA_DIR/scripts/deepseek_chat.py"
+    exec $PYTHON "$PKA_DIR/scripts/deepseek_chat.py"
     ;;
 
   deepseek-r1)
@@ -91,7 +98,7 @@ case "$MODEL" in
       exit 1
     fi
     export DEEPSEEK_MODEL="deepseek-reasoner"
-    exec python3 "$PKA_DIR/scripts/deepseek_chat.py"
+    exec $PYTHON "$PKA_DIR/scripts/deepseek_chat.py"
     ;;
 
   openrouter|or)
@@ -102,27 +109,32 @@ case "$MODEL" in
     fi
     export DEEPSEEK_API_KEY="$(cat "$OPENROUTER_KEY_FILE")"
     export DEEPSEEK_BASE_URL="https://openrouter.ai/api/v1"
+
     export DEEPSEEK_MODEL="${DEEPSEEK_MODEL:-deepseek/deepseek-v4-flash}"
     echo "ℹ️  OpenRouter — multi-provider (DeepSeek, Anthropic, Qwen...)"
-    echo "   Modèle par défaut : $DEEPSEEK_MODEL"
+
+    echo "   Modèle : $DEEPSEEK_MODEL"
     echo "   Crédits : ~10 USD (pré-payé)"
     echo ""
-    exec python3 "$PKA_DIR/scripts/deepseek_chat.py"
+    exec $PYTHON "$PKA_DIR/scripts/deepseek_chat.py"
     ;;
 
-  kimi|kimik2)
+  kimi|kimik2|moonshot)
     KIMI_KEY_FILE="$HOME/.config/pka-jch/kimi_key.txt"
     if [[ ! -f "$KIMI_KEY_FILE" ]]; then
       echo "❌ Clé Kimi introuvable : $KIMI_KEY_FILE"
+      echo "   À créer avec ta clé API Moonshot (https://platform.moonshot.ai)"
       exit 1
     fi
     export DEEPSEEK_API_KEY="$(cat "$KIMI_KEY_FILE")"
-    export DEEPSEEK_BASE_URL="https://api.moonshot.cn/v1"
+    export DEEPSEEK_BASE_URL="https://api.moonshot.ai/v1"
     export DEEPSEEK_MODEL="${DEEPSEEK_MODEL:-kimi-k2.7-code}"
-    echo "ℹ️  Kimi — Moonshot API (Pékin)"
-    echo "   Modèle par défaut : $DEEPSEEK_MODEL"
+    export PKA_POINTER="KIMI.md"
+    export PKA_PROVIDER="Kimi K2.7"
+    echo "ℹ️  Kimi K2.7 — API Moonshot directe"
+    echo "   Modèle : $DEEPSEEK_MODEL"
     echo ""
-    exec python3 "$PKA_DIR/scripts/deepseek_chat.py"
+    exec $PYTHON "$PKA_DIR/scripts/deepseek_chat.py"
     ;;
 
   gemma4|gemma)
@@ -141,7 +153,7 @@ case "$MODEL" in
     echo "ℹ️  Préflight perf : arrêt de Qwen 3.6 pour libérer la RAM/VRAM"
     echo "   Pour un agent complet avec outils, lancer : gemini gemma setup"
     echo ""
-    exec python3 "$PKA_DIR/scripts/ollama_chat.py" \
+    exec $PYTHON "$PKA_DIR/scripts/ollama_chat.py" \
       --model "gemma4:latest" \
       --system-file "$PKA_DIR/GEMMA.md" \
       --verbose
@@ -162,7 +174,7 @@ case "$MODEL" in
     echo "ℹ️  Mode local Qwen 3.6 — accès filesystem limité au chat Ollama"
     echo "ℹ️  Préflight perf : arrêt de Gemma 4 pour libérer la RAM/VRAM"
     echo ""
-    exec python3 "$PKA_DIR/scripts/ollama_chat.py" \
+    exec $PYTHON "$PKA_DIR/scripts/ollama_chat.py" \
       --model "qwen3.6:latest" \
       --system-file "$PKA_DIR/QWEN.md" \
       --verbose
@@ -179,7 +191,7 @@ case "$MODEL" in
     echo "  --model deepseek    DeepSeek Chat (API)"
     echo "  --model deepseek-r1 DeepSeek Reasoner (API)"
     echo "  --model openrouter  OpenRouter (multi-provider, pré-payé)"
-    echo "  --model kimi        Kimi K2.7 (Moonshot API)"
+    echo "  --model kimi        Kimi K2.7 (API Moonshot directe)"
     echo "  --model gemma4      Gemma 4 local (Ollama)"
     echo "  --model qwen3       Qwen 3.6 local (Ollama)"
     exit 1

@@ -65,7 +65,7 @@
       "api_key": "ollama"
     },
     "kimi": {
-      "base_url": "https://api.moonshot.cn/v1",
+      "base_url": "https://api.moonshot.ai/v1",
       "key_file": "~/.config/pka-jch/kimi_key.txt"
     },
     "openrouter": {

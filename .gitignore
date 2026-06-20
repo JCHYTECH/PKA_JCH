@@ -84,3 +84,13 @@ JCH_Inbox/03_PROJECTS/03_WILDNEXUS/06_COMPONENTS/BIOACOUSTIC/INSECTNET/03_AUDIO_
 JCH_Inbox/03_PROJECTS/03_WILDNEXUS/06_COMPONENTS/BIOACOUSTIC/INSECTNET/03_AUDIO_DOWNLOADS/spectrograms
 .mcp.json
 **/sessions/*/artifacts/
+
+# PKA runtime files (logs, states, temp DB WAL)
+_local/*.log
+_local/*.err
+_local/*.out
+_local/*_state.json
+_local/backup_pka_m1.log
+TEAM/team.db-wal
+TEAM/team.db-shm
+
