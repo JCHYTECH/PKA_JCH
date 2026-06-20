@@ -6,7 +6,7 @@
     <string>com.dobby.pka-gateway</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/usr/bin/python3</string>
+        <string>/Users/jchavauxm5/PKA_JCH/.venv/bin/python3</string>
         <string>/Users/jchavauxm5/PKA_JCH/scripts/pka_gateway.py</string>
         <string>--watch</string>
         <string>--verbose</string>
@@ -22,7 +22,11 @@
     <key>EnvironmentVariables</key>
     <dict>
         <key>PATH</key>
-        <string>/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin</string>
+        <string>/Users/jchavauxm5/PKA_JCH/.venv/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin</string>
+        <key>PKA_DIR</key>
+        <string>/Users/jchavauxm5/PKA_JCH</string>
     </dict>
+    <key>WorkingDirectory</key>
+    <string>/Users/jchavauxm5/PKA_JCH</string>
 </dict>
 </plist>
