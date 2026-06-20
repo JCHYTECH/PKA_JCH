@@ -1,6 +1,6 @@
 # MEMORY — PKA_JCH
 > Connaissances accumulées, décisions, chronologie des événements.
-> Dernière mise à jour : 2026-06-19 — split SOUL.md / USER.md / MEMORY.md (pattern Hermes)
+> Dernière mise à jour : 2026-06-20 — Kimi routing direct Moonshot + split Hermes
 > 
 > **SOUL.md** → personnalité et règles de comportement de Dobby
 > **USER.md** → profil de JCH, setup technique, projets actifs
@@ -93,6 +93,11 @@
 - [2026-06-15] [Backup] : Backup chiffré PKA → Dropbox (`scripts/backup_pka_to_dropbox.py`). AES-256-CBC via Keychain. team.db + JCH_PRIVATE chiffrés, MEMORY.md + docs/system/ en miroir. Launchd quotidien 08:15. Rotation 7j.
 - [2026-06-15] [Sécurité] : Scanner prompt injection `pka_prompt_guard.py` déployé. Architecture airlock 3 niveaux : pré-traitement HTML/Unicode → détection patterns/heuristiques → scoring 0-100 + quarantaine. Pipelines inbox (ingest, Pie) intégrés. 5 familles d'attaques couvertes : zero-width binaire, Unicode tags, bidi override, homoglyphes, payload splitting. Recherche OWASP LLM01 + promptfoo + ctx-guard + cyberdesserts. Brief Pie (`TEAM_Inbox/2026-06-15_dobby_brief-pie_prompt-injection-security.md`).
 - [2026-06-14] [InsectNet — M1] : Plan de migration du pipeline InsectNet (segmentation, spectrogrammes, training CNN) du M5 (16 Go) vers le M1 headless (32 Go, MLX 0.31.2, Python 3.12.4). Gains : RAM ×2, délestage M5, jobs longs 24/7 sans impacter le bureau. À exécuter plus tard — nécessite accès M1 au dépôt PKA (rsync ou partage réseau).
+- [2026-06-20] [Kimi — Routing] : Kimi K2.7 basculé d'OpenRouter → API Moonshot directe (`api.moonshot.ai/v1` — `.cn` → `.ai` corrigé après 401). Clé `~/.config/pka-jch/kimi_key.txt`. Modèle `kimi-k2.7-code`. `KIMI.md` créé (pointer file dédié). `deepseek_chat.py` rendu générique via `PKA_POINTER` + `PKA_PROVIDER`. `dobby.sh` : case `kimi|kimik2|moonshot`, extrait du bloc OpenRouter ; détection auto `.venv/bin/python3` (évite conflit pydantic Python 3.13 système). `model_config.json` + `dobby-doctor.py` endpoint corrigés.
+- [2026-06-20] [Siri — CarPlay] : Guide complet `docs/manuels/dobby-siri-carplay.md` — Raccourci iOS « Dobby » permettant de parler à Dobby via Siri + API Kimi en mains libres (voiture, CarPlay). Pipeline : dictée vocale → API Moonshot → réponse lue par Siri. ~$0.02/interaction.
+- [2026-06-20] [Agent — Outils] : `deepseek_chat.py` upgadé en agent avec tool calling (OpenAI-compatible). 5 outils : `read_file`, `list_dir`, `grep_files`, `exec_shell`, `write_file`. Workspace isolé dans PKA_DIR. Tous les modèles (DeepSeek, Kimi, OpenRouter) bénéficient des outils automatiquement. Kimi K2.7 confirmé compatible tool calling natif.
+- [2026-06-20] [Gateway — Intégration] : Gateway (`pka_gateway.py`) intégrée au protocole de démarrage Dobby. 128 messages historiques acquittés. À chaque « dobby », Dobby interroge `gateway_messages` pour les nouveaux messages depuis la dernière session. 5 canaux : Telegram, Dropbox, Apple Notes, inbox local, git commits. Piste d'audit complète.
+- [2026-06-20] [P1 — Nettoyage] : 16 launchd zombies désactivés (→ `.disabled`), 22 MB de logs purgés. `.claude/skills/` supprimé (doublon de `.agents/skills/`). 3 venvs → 1 (`.venv` unique, 210 MB libérés). `requirements.txt` unifié racine. `pka_security_audit.py` exclut `node_modules`, `.venv`, `*.d.ts` — 12 faux positifs → 0. 8 `.DS_Store` + `.bak` supprimés.
 
 ---
 

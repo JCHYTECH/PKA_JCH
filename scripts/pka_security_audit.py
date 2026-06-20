@@ -37,8 +37,12 @@ DEFAULT_SENSITIVE_GLOBS = [
 DEFAULT_IGNORED_PATHS = {
     ".git",
     "__pycache__",
+    "node_modules",
+    ".venv",
     "scripts/telegram-bot/venv",
     "scripts/decouvertes-collector/venv",
+    "_local/lightroom-mcp",
+    "pka-decouvertes/logs",
 }
 
 
@@ -61,6 +65,12 @@ def is_ignored(path: Path, ignored: set[str]) -> bool:
 def is_sensitive(path: Path, patterns: list[str]) -> bool:
     name = path.name
     if name == ".env.example":
+        return False
+    # Exclude TypeScript declaration files (*.d.ts, *.d.ts.map) — not secrets
+    if name.endswith(".d.ts") or name.endswith(".d.ts.map"):
+        return False
+    # Exclude package.json and LICENSE files — metadata, not secrets
+    if name in ("package.json", "LICENSE", "CHANGELOG.md", "README.md"):
         return False
     relative = rel(path)
     return any(fnmatch.fnmatch(name, pattern) or fnmatch.fnmatch(relative, pattern) for pattern in patterns)

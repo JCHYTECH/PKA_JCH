@@ -1,0 +1,38 @@
+# PKA_JCH — Unified requirements (2026-06-20)
+# Install: pip install -r requirements.txt
+# Note: some project-specific packages (InsectNet audio stack, Flask dashboard,
+# computer vision) are listed in OPTIONAL sections and may be installed on demand.
+
+# ── Core PKA runtime ────────────────────────────────────────────
+anthropic==0.111.0
+google-genai==2.9.0
+httpx==0.28.1
+openai==2.43.0
+openpyxl==3.1.5
+python-dotenv==1.2.2
+python-telegram-bot==21.5
+requests==2.34.2
+responses==0.26.1
+pyyaml==6.0.2
+
+# ── Local LLM / tools ───────────────────────────────────────────
+# ollama is invoked via CLI, not Python SDK
+
+# ── Optional: dashboard ─────────────────────────────────────────
+# flask>=3.0.0
+
+# ── Optional: InsectNet / audio ─────────────────────────────────
+# numpy>=1.26.0
+# pandas>=2.1.0
+# librosa>=0.10.0
+# soundfile>=0.12.0
+# matplotlib>=3.8.0
+# scikit-learn>=1.3.0
+
+# ── Optional: Photo / vision ────────────────────────────────────
+# opencv-python>=4.8.0
+# Pillow>=10.0.0
+
+# ── Optional: Document processing ───────────────────────────────
+# python-docx>=1.1.0
+# markdown>=3.5.0

@@ -1,14 +1,20 @@
 #!/usr/bin/env zsh
-PKA_DIR="/Users/jchavauxm5/PKA_JCH"
-MODEL="gemini"
-TITLE="Dobby - Gemini CLI"
-BG="#0f1710"
-FG="#f8f5f0"
-CURSOR="#3d5a3e"
+export PKA_DIR="/Users/jchavauxm5/PKA_JCH"
+export PKA_MODEL="gemini"
+export PKA_TITLE="Dobby - Gemini CLI"
+export PKA_BG="#0f1710"
+export PKA_FG="#f8f5f0"
+export PKA_CURSOR="#3d5a3e"
 
-osascript <<APPLESCRIPT
+osascript <<'APPLESCRIPT'
 tell application "Terminal"
   activate
-  do script "printf '\\033]0;$TITLE\\007'; printf '\\033]10;$FG\\007'; printf '\\033]11;$BG\\007'; printf '\\033]12;$CURSOR\\007'; cd " & quoted form of "$PKA_DIR" & " && ./dobby.sh --model $MODEL"
+  set pka_dir to system attribute "PKA_DIR"
+  set pka_model to system attribute "PKA_MODEL"
+  set pka_title to system attribute "PKA_TITLE"
+  set pka_bg to system attribute "PKA_BG"
+  set pka_fg to system attribute "PKA_FG"
+  set pka_cursor to system attribute "PKA_CURSOR"
+  do script "printf '\\033]0;" & pka_title & "\\007'; printf '\\033]10;" & pka_fg & "\\007'; printf '\\033]11;" & pka_bg & "\\007'; printf '\\033]12;" & pka_cursor & "\\007'; cd " & quoted form of pka_dir & " && ./bin/dobby.sh --model " & pka_model
 end tell
 APPLESCRIPT
