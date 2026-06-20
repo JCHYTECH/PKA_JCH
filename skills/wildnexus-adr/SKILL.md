@@ -17,6 +17,7 @@ description: Créer, mettre à jour ou valider un ADR WildNexus (Architecture De
 - Dossier ADRs : `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/02_DECISIONS/ADR/`
 - Nomenclature fichier : `ADR-NNN-<slug-sujet>.md`
 - Numérotation : séquentielle depuis ADR-001 — vérifier le dernier numéro dans l'index avant de créer
+- Gouvernance : `wildnexus-governance` (skill compagnon) — vérifie la conformité P0 des décisions ADR
 
 ## Procédure — Créer un nouvel ADR
 

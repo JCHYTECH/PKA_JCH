@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/jchavauxm5/PKA_JCH/scripts/apple_notes_to_inbox.py", line 217, in <module>
+    raise SystemExit(main())
+  File "/Users/jchavauxm5/PKA_JCH/scripts/apple_notes_to_inbox.py", line 191, in main
+    folder_id = get_folder_id(args.folder)
+  File "/Users/jchavauxm5/PKA_JCH/scripts/apple_notes_to_inbox.py", line 77, in get_folder_id
+    db = sqlite3.connect(str(NOTES_DB))
+sqlite3.DatabaseError: authorization denied

@@ -1,0 +1,29 @@
+{
+  "last_scan_at": "2026-06-01T21:31:28",
+  "seen_allowed_ids": [
+    "19e259b16cd791d7"
+  ],
+  "deleted_unauthorized_ids": [
+    "19e25462363d807b",
+    "19e255ff587d04ad",
+    "19e256064b2da77e",
+    "19e2563808e0c37d",
+    "19e259918a17b400",
+    "19e6d5f0b5642a10"
+  ],
+  "pending": [
+    {
+      "id": "19e259b16cd791d7",
+      "thread_id": "19e259918a17b400",
+      "sender_name": "jean-claude havaux",
+      "sender_email": "jc.havaux@gmail.com",
+      "subject": "FW: niall staines",
+      "date": "Thu, 14 May 2026 08:29:39 +0000",
+      "internal_date": 1778747379000,
+      "status": "imported_waiting_instruction",
+      "processed": true,
+      "saved_to": "JCH_Inbox/00_INBOX/email_imports/2026-05-14_103059_fw-niall-staines/email.md",
+      "attachment_count": 0
+    }
+  ]
+}

@@ -110,6 +110,21 @@ case "$MODEL" in
     exec python3 "$PKA_DIR/scripts/deepseek_chat.py"
     ;;
 
+  kimi|kimik2)
+    KIMI_KEY_FILE="$HOME/.config/pka-jch/kimi_key.txt"
+    if [[ ! -f "$KIMI_KEY_FILE" ]]; then
+      echo "❌ Clé Kimi introuvable : $KIMI_KEY_FILE"
+      exit 1
+    fi
+    export DEEPSEEK_API_KEY="$(cat "$KIMI_KEY_FILE")"
+    export DEEPSEEK_BASE_URL="https://api.moonshot.cn/v1"
+    export DEEPSEEK_MODEL="${DEEPSEEK_MODEL:-kimi-k2.7-code}"
+    echo "ℹ️  Kimi — Moonshot API (Pékin)"
+    echo "   Modèle par défaut : $DEEPSEEK_MODEL"
+    echo ""
+    exec python3 "$PKA_DIR/scripts/deepseek_chat.py"
+    ;;
+
   gemma4|gemma)
     if ! command -v ollama &>/dev/null; then
       echo "❌ Ollama non trouvé. Installer : https://ollama.ai"
@@ -164,6 +179,7 @@ case "$MODEL" in
     echo "  --model deepseek    DeepSeek Chat (API)"
     echo "  --model deepseek-r1 DeepSeek Reasoner (API)"
     echo "  --model openrouter  OpenRouter (multi-provider, pré-payé)"
+    echo "  --model kimi        Kimi K2.7 (Moonshot API)"
     echo "  --model gemma4      Gemma 4 local (Ollama)"
     echo "  --model qwen3       Qwen 3.6 local (Ollama)"
     exit 1

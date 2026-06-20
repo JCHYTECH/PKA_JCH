@@ -1,0 +1,147 @@
+00:00:00
+ Je pense qu'on a tous vu Iron Man étant plus jeune et on a tous rêvé d'avoir notre propre jarvis, notre propre assistant personnel hier. Si vous avez suivi cette chaîne depuis le début, ça a toujours été un peu un sujet majeur de créer un assistant personnel. On a précédemment réussi à faire un truc assez sympa, voilà, un agent vocal qui pouvait retenir les informations, mais voilà, on était encore très loin, je pense, de Jarvis. [musique] Et donc ce que j'ai décidé de faire ces dernières
+
+00:00:25
+ semaines, c'est de repartir complètement de zéro et reconstruire en entier jarvis, brique par brique. Et bien les amis, aujourd'hui je suis hyper heureux parce que c'est enfin le jour J, je vais pouvoir vous présenter le rendu final de notre Jarvis. Vous allez voir, c'est exceptionnel. Je pense être allé au-delà de mes espérances. Je pense avoir fait mieux que Jarvis. Et accroche-toi parce que ça envoie du très très lourd. Le système est construit en plusieurs couches de complexité et dans cette
+
+00:00:54
+ vidéo, on va tout simplement descendre dans les entrailles de la machine. Donc reste bien jusqu'à la fin de la vidéo parce que plus elle va avancer, plus il y a des dingueries qui vont arriver [musique] et en plus surtout je vais te montrer à la fin de la vidéo comment tu peux installer toi-même Jarvis chez toi, voire même participer au projet. [musique] Identité vérifiée. Bonjour. Alors, laissez-moi vous présenter tout ça. Déjà, on arrive sur notre jeune interface que je trouve plutôt sexy. À
+
+00:01:34
+ vous d'en juger. Voilà, moi j'aime bien. Et donc, laissez-moi vous présenter la couche une qui est un peu la couche de base de Jarvis. Système en ligne. Bonjour Bart. Salut Jarvis. Comment ça va ? Ça va tranquille ma Kille. Et toi, est-ce que tu pourrais me donner mes tâches à faire du jour s'il te plaît ? Ouais, c'est parti chef. Tu as 11 trucs à faire. Colis à envoyer, doc adaptable à imprimer et balancer, doc référal. Comme vous pouvez le remarquer, Jarvis est très très rapide. Au final, pour
+
+00:02:06
+ moi, l'enjeu numéro 1 d'un assistant personnel vocal, c'est la latence. Si tu attends 5 secondes à chaque fois pour avoir une réponse, bah l'expérience utilisateur et la fluidité des conversations, ça devient l'enfer. Pour faire un échange vocal, il y a trois étapes. D'abord, vous lui parlez, il y a la transcription. Ensuite, le résultat de la transcription est envoyé au LM qui va générer une réponse texte et ensuite cette réponse va être elle-même transformée en réponse vocale. Si on le
+
+00:02:33
+ fait de manière classique, cet enchaînement peut être assez long. Donc pour répondre à ce problème, j'ai utilisé un framework qui s'appelle Life Kit et qui va gérer et optimiser tout ce processus pour le rendre beaucoup plus rapide et efficace. Je vais pas rentrer en détail sur le fonctionnement de Life Kit, mais pour info, apparemment, c'est le framework qui est utilisé pour les échanges vocaux sur l'application Chat GPT. Et si vous l'avez déjà testé, vous savez qu'il est rapide. Le gros avantage
+
+00:02:57
+ de Live Kit, c'est que toutes les briques du pipeline sont interchangeables. Donc par exemple, je peux utiler le modèle de transcription que je souhaite de la même manière que je peux utiliser le LLM que je souhaite et encore de la même manière que je peux utiliser la génération de voix que je souhaite. Et donc là par exemple, j'ouvre une fenêtre textuelle et je vais aller dans mes réglages, dans la configuration, dans les modèles et je vais pouvoir sélectionner Mistral. Je sauvegarde, je retourne dans mon home et si je lui
+
+00:03:33
+ parle, salut Jarvis tout simplement. Alors, c'est un peu long parce que c'est je viens de switcher de modèle mais voilà. Yo mon Vous le verrez après, la personnalité s'adapte he c'est pour ça qu'il me parle comme ça. Je mets quoi de neuf ? Rien de neuf mon gars. Tout est calme. Et toi ça roule. Mais vous l'aurez deviné, ça veut aussi dire qu'on peut utiliser un LLM local pour Jarvis. Alors, vous allez le voir après Jarvis nécessite quelques ressources pour fonctionner mais théoriquement on
+
+00:04:12
+ pourrait déjà faire tourner Jarvis en local. Jarvis, tu peux me mettre un peu de jazz s'il te plaît ? Parti mon reuf. Ambiance Justill en route. Moi évidemment, j'ai intégré des tools à Jarvis. Donc il peut faire de la recherche web, il a des intégrations Gmail, calendar, Spotify, il peut faire de la recherche dans les fichiers de mon ordinateur. Rien de très sorcier, j'ai envie de vous dire pour un agent IA en 2026. J'ai également dans l'interface ajouté quelques petits widgets. Donc par
+
+00:04:53
+ exemple ce widget pour gérer la musique sur Spotify directement, mais aussi par exemple ce widget qui permet tout simplement d'afficher la caméra qui va apparaître ici. Voilà. Et petit truc sympa, c'est que j'ai intégré Méia Pipe. Donc Media Pipe, ça permet de faire de la détection de mains et de position de votre main. Et ce qui fait qu'après, on peut mettre en place des déclencheurs. Et donc par exemple ici, voilà, j'ai mis un déclencheur tout simplement pour contrôler la musique
+
+00:05:24
+ avec la main. Bon, c'est pas forcément hyper utile pour le moment, c'est un peu gadget, mais je pense qu'à l'avenir, on pourra se resservir cette techno pour de futurs projets ou futures intégrations. Je n'en dis pas plus. Finalement, petit widget textuel pour pouvoir échanger avec Jarvis de façon textuelle. Et d'ailleurs, en parlant d'échange textuel, j'ai également fait une intégration Telegram. Donc, par exemple, si j'ouvre Telegram et que je vais sur ma conversation avec Jarvis, je peux
+
+00:05:54
+ dire "Yo mon gars ! Et tout simplement Gervis va écrire et me répondre de façon très très simple. Quad neuf vieux. Bon voilà, pour l'instant c'est pas des conversations très poussées mais vous allez le voir, on peut faire des choses très intéressantes. Bon voilà notre couche numéro 1, un agent vocal instantané qui a des tools, qui a quelques fonctionnalités sympas, rien de très sorcier en 2026 et c'est pour ça que je vous propose qu'on aille plus loin et qu'on rentre dans la couche
+
+00:06:29
+ numéro 2 de Jarvis. Jarvis, tu peux me rappeler le film que j'ai regardé hier soir ? J'ai retrouvé un souvenir mon reuf. Tu regardais Iron Man 3 hier soir, c'est ça ? Ouais, c'est exactement ça. Je regarder Iron Man 3 hier soir, c'est faux. Je regardais le match d'ouverture de la Coupe du monde. Mais par exemple, je peux aussi lui demander et tu peux me rappeler mon plat préféré s'il te plaît ? Ouais, c'est bon mon reuf, je t'ai noté ça. Pas de pesto. Pas de pesto les gars, la classique. Euh
+
+00:07:05
+ moi je suis un homme simple hein. J'ai pas besoin de plus que ça. Déjà j'ai fait un bête de système de mémoire. Je vais pas rentrer dans les détails sur le fonctionnement, c'est pas le but de cette vidéo. Mais pour faire simple, tout ce qui se passe, donc chaque conversation mais aussi chaque action que fait Jarvis va être enregistré comme un événement. C'est-à-dire que ça va être aussi daté dans une base de données SQ Light qui tourne en local chez moi. Ça veut dire que toutes les données
+
+00:07:28
+ restent à la maison. Et l'autre point c'est que de la même manière que vous pouvez tisser une relation avec quelqu'un aujourd'hui, bah en fait vous allez vous adapter à la personne et la personne va s'adapter à vous. Et ben, j'avais envie que Jarvis s'adapte à nos préférences. Par exemple, dans la manière de s'exprimer, dans la manière voilà de discuter entre nous. C'est pour ça qu'il est extrêmement familier avec moi. Et pour faire ça, il va avoir un endroit spécial dans la base de données
+
+00:07:52
+ où il va pouvoir noter justement mes préférences et la façon de discuter avec moi ou alors mes habitudes. Pour finir sur cette partie mémoire, j'ai implémenté un truc archi stylé que je vais vous présenter tout de suite et qui s'appelle l'autodream. En gros, faut savoir que quand vous dormez la nuit, votre cerveau va se régénérer, mais il va aussi classer toutes les informations engendrées durant la journée. Donc, il va acheter les informations inutiles et il va classer les informations qu'il va
+
+00:08:15
+ considérer comme utiles. Alors, disclaimer, je suis pas un expert dans le domaine, mais bon, en gros, ça fonctionne à peu près comme ça. Et il faut savoir que Jarvis fait la même chose. Chaque nuit à 3h du matin, pétan Jarvis va se mettre à repasser toutes nos conversations de la journée et à l'étrier. Donc jeter ce qui considère comme inutile ou alors trier et classer dans la mémoire long terme les informations qui considèrent comme utile et ou importante. Et ensuite à 3h10, on va avoir un module de maintenance qui va
+
+00:08:47
+ intervenir et ça va être un module qui va être chargé de générer un rapport justement sur toutes ces informations là, notamment sur les différents points à rectifier manuellement. Donc par exemple, si vous avez des souvenirs périmés ou des contradictions ou des erreurs, moi le lendemain, je vais avoir un petit rapport et je vais pouvoir, si je le souhaite, c'est pas obligatoire, rectifier les informations. Voilà, ça permet d'avoir un meilleur contrôle sur la propreté de notre base de données.
+
+00:09:12
+ Non, c'est c'est une pétanque. Pétanque en un seul mot ? Ouais, mon reuf, je te note ça et tu au fait, n'oublie pas ta pétanle dans 5 minutes. Ouais, merci Jarvis de me de me le rappeler. Oui, oui, c'est bien Jarvis qui a pris l'initiative de me prévenir que j'avais un événement prévu. Pour moi, le truc qui m'a toujours fait trop kiffer avec Jarvis, c'est la prise d'initiative. Vous savez la scène dans Iron Man quand Tony Stark a, il me semble, un rendez-vous, un événement
+
+00:09:39
+ important et qui revient chez lui et que Jarvis le félicite pour cet événement. Congratulation. [musique] Ça pour moi c'était un peu le goal de la prise d'initiative. Je trouve ça vraiment trop trop stylé et voilà, j'ai toujours voulu avoir cette fonctionnalité là et donc pour ça j'ai implémenté des petites fonctionnalités. Je m'en frotte les mains. Ce qui va se passer, c'est que en arrière-plan, Jarvis va surveiller plein de sources de données différentes. Que ça soit mes
+
+00:10:10
+ mails, que ça soit la météo, que ça soit ma liste de tâche, que ça soit mon calendrier, il va reprendre toutes ces sources d'information et il va se poser en permanence. Est-ce qu'il y a un truc utile que je peux faire pour Bart ou pour l'utilisateur à ce moment précis ? Et donc par exemple, vous l'avez vu tout à l'heure, il est revenu vers moi pour me dire attention, tu as tel ou tel événement. Mais de la même manière, si je reçois un mail et qui considère que c'est important de répondre à ce mail,
+
+00:10:35
+ et ben automatiquement, il va aller chercher le contexte du mail et me générer un brouillon que je vais pouvoir valider ou non par la suite. Et d'ailleurs, j'ai créé un endroit spécial dans mon interface pour pouvoir retrouver ces initiatives et les piloter. Si je vais tout simplement ici et je vais dans le workspace, je peux aller dans les initiatives et comme vous le voyez, il me propose ces différentes initiatives. Alors là en l'occurrence, j'ai pas de mail mais je vais pouvoir
+
+00:11:01
+ retrouver sur ce dashboard toutes les initiatives qui me proposent. Est-ce que vous trouvez pas que c'est un truc de ouf quand même ? C'est même plus moi qui ai besoin de voir Lia, c'est elle qui me fait directement des propositions. Moi, je trouve ça incroyable. Voilà, ensuite, vous pouvez le voir sur mon dashboard, il y a un petit onglet sur le côté qui s'appelle mission. Et bien ce que je vous propose c'est qu'on retourne en home et que je dise à Jarvis de m'écrire trois article pour
+
+00:11:28
+ impulsion. Je dire nouvelle mission. Nouvelle mission mon gars. Écrit trois articles pour impulsion. Bon, la suite logique des choses, vous l'avez compris, il est déjà capable de générer des mails, mais c'est qu'il puisse réaliser des missions de plus grande ampleur, on va dire. Un peu à la manière d'openclaw, j'avais envie que Jarvis puisse travailler sur des missions un peu plus importantes. Et donc pour ça, c'est assez simple. J'ai mis en place un système d'agent IA avec
+
+00:12:00
+ un orchestrateur. S'il considère que la tâche que je lui demande nécessite de lancer une mission en arrière-plan, et bien il va tout simplement envoyer ça à un agent dans le background. J'ai un background. Et donc si je vais dans mes missions, comme vous le voyez, j'ai donc notre mission en cours avec les trois variantes d'email. Et en fait ce qu'il va tout simplement faire, c'est qu'il va se générer un plan d'action tout seul avec bah par exemple ici rédiger la variante 1, rédiger la variante 2,
+
+00:12:27
+ rédiger la variante 3. Ensuite, il va relire tout ça, il va corriger si besoin et à la fin il va me générer un rapport point md. Bon, ça vous paraît déjà balaise tout ça ? Je comprends, c'est impressionnant mais sachez que vous n'êtes pas au bout de vos surprises puisque à présent on va passer à la troisème couche de Jarvis et ça c'est la couche apprentissage. Ce que j'ai toujours voulu c'est avoir un agent qui évolue avec moi, pas seulement qui enregistre mes préférences, mais
+
+00:12:56
+ vraiment un agent capable de grandir, qu'on grandisse ensemble. Et pour ça, regarde ce que j'ai fait. Charvis créer un créer un skill pour je sais pas compter le nombre de voyelles dans un mot. Bon, la compétence est pas ouf mais c'est juste pour vous montrer l'exemple et vous allez voir ce qui va se passer. C'est assez ouf. Je vais créer le skill une sec. Alright, on y va. Et vous allez voir, il va revenir vers moi peu après. Moi, je vais aller dans le mission control, le workspace. Je vais aller
+
+00:13:31
+ dans initiative et comme vous le voyez, il y a un petit onglet skill à valider. Je vais pouvoir promouvoir ou non le skill. Donc là, je vais le promouvoir, je retourne en home et je vais mettre combien de voyelles dans le mot ? Je sais pas, éléphant. Donc logiquement, il y en a trois. On va voir s'il est capable finalement de le faire. Attention, le mot éléphant contient trois voyelles. Euh euh et a. Alors là, je vous l'accorde, il y avait pas besoin forcément d'un skill pour ça, mais
+
+00:14:01
+ voilà, à l'avenir s'il a besoin d'une compétence spécifique ou de faire une intégration aussi, c'est possible. Ce que j'ai longuement reproché à OpenClore, c'est tout simplement le fait que son agent IA pouvait faire absolument n'importe quoi. Comment est-ce qu'il y a des mecs qui dorment sereinement en sachant que ils ont donné leur carte bancaire et les clés de tous leurs réseaux sociaux, de toutes leurs ressources, de tout leur ordi à OpenCla et qui tourne librement sur son
+
+00:14:27
+ ordinateur. J'en sais rien. En tout cas, ça serait pas mon cas. Et donc pour répondre à ce problème, ce que j'ai fait c'est que pour chaque action que Jarvis souhaite entreprendre, vraiment chaque action hein, sans exception, il va passer par un portail qui va poser trois questions. Quel est le type d'action qu'il veut faire ? Est-ce que c'est risqué ? Et combien est-ce que ça coûte ? Et en fonction de ça, il peut y avoir différents verdicts. Soit l'action est directement validée. C'est le cas la
+
+00:14:53
+ plupart du temps. Par exemple, c'est juste pour lire mon agenda, bah il y a pas besoin de validation pour le faire. Si c'est risqué mais que c'est faisable, il va me demander mon autorisation et je vais pouvoir valider ou non. Et si c'est trop dangereux et bien automatiquement la tâche va être interdite. Et par exemple, certaines actions sont interdites par conception, touché à son propre noyau de code, bah ça automatiquement il a pas le droit de le faire puisque ça pourrait tout
+
+00:15:19
+ simplement le casser, ce qui serait un peu con. Et une dernière règle pour être vraiment certain que Jarvis ne puisse pas faire n'importe quoi, c'est que toute action vers le monde extérieur sont automatiquement passé en validation. Et au final, tous ces éléments nous permettent d'avoir un Jarvis qui tourne en toute autonomie mais complètement encadré et vraiment d'éviter qu'il fasse n'importe quoi et de pouvoir tout simplement dormir sur vos deux oreilles. Finalement, on passe
+
+00:15:46
+ à la dernière couche de notre Jarvis. Et cette couche là, c'est celle qui moi me passionne le plus et me fait le plus kiffer et je pense va permettre à notre Jarvis de se démarquer à mort, c'est la couche écosystème. Il faut savoir qu'on peut rajouter aujourd'hui des extensions à Jarvis et il y a trois types d'extensions. Les skills, les prets et les vues. Les skills, c'est les intégrations basiques. Par exemple, j'ai créé un skill Fusion 360 qui permet d'interagir avec le logiciel de cao ou
+
+00:16:15
+ encore un skill bamboulab qui permet d'envoyer des commandes à mon imprimante 3D. Ça c'est tout simple, j'ai envie de vous dire c'est le classique. Deuxième élément un peu plus original, c'est les preset. En fait, j'ai remarqué que les gens quiffaient les automatisations et qu'il y avait des mecs qui créaient des Jarvis et qui lui demandaient par exemple, je sais pas, active le mode streamer et automatiquement ça allait ouvrir toutes les fenêtres qui permettent de streamer de la même
+
+00:16:37
+ manière. Je sais pas, il va lui dire "Ouvre-moi mon workspace de travail." Et ça va ouvrir toutes les fenêtres qui correspondent à son workspace de travail. Donc de tâche, ses dernières stats YouTube et cetera. Si je vous montre un exemple, ici j'ai le mode streamer et je vais demander à Jarvis, je vais lui dire "Jarvis active le mode streamer et vous allez voir ce qui va se passer." Alors, j'ai plusieurs écrans, donc peut-être que ça va s'ouvrir sur mes autres écrans.
+
+00:17:05
+ Voilà. là-bas. Donc c'est un peu ce que je craignais mais en gros comme vous le voyez, j'ai Twitch qui s'ouvre, j'ai OBS et j'ai également le store Steam. Donc vous avez compris le concept. En fait, ça permet d'installer des automatisations qui vont permettre à Jarvis de déclencher une suite d'événement. En l'occurrence là, c'est le mode streamer, mais on pourrait imaginer plein d'autres modes différents. Dernier point, le plus beau pour la fin, dans Iron Man, encore une
+
+00:17:30
+ fois, Jarvis a différentes vues qui peut projeter à Tony Stark pour illustrer ses propos. Par exemple, il peut y avoir une vue pour montrer un modèle 3D, une vue pour une molécule en particulier. Bref, il y a plein de vues différentes et donc j'ai voulu reprendre ce système là. Et en gros, aujourd'hui, on a notre sphère originelle. J'espère que vous l'appréciez d'ailleurs. Mais on va pouvoir demander à Jarvis de nous afficher autre chose. Par exemple, montre-moi la tour Effel. Et vous allez
+
+00:17:59
+ voir, Jarvis, c'est magnifique. Va pouvoir me montrer cette magnifique vue de la tour Effel. Regardez comme c'est beau et surtout imaginez le potentiel de cette fonction. Je lui dis "Montre-moi la météo." C'est la même chose. Il peut tout simplement m'emmener sur une vue qui va me montrer la météo à Paris. Je peux sélectionner d'autres villes. Montre-moi l'heure. Et vous aurez compris l'idée. Il peut tout simplement me montrer différentes vues. Là, je peux laisser cette vue qui est relativement
+
+00:18:31
+ sympa. on va pas se le cacher. En tout cas, vous avez compris les skills, les pret et les vues. L'avantage, c'est qu'on peut créer une infinité de modules. Et donc moi, je suis en train d'en créer. Mais ce que j'avais surtout envie, c'est que vous, la communauté, vous appropriez ces modulesl et que vous créez vos propres modules adaptés à vos besoins. Et donc, j'ai créé un ripo où j'explique précisément comment vous pouvez créer soit bah un skill, soit une vue, soit un preset. C'est hyper simple.
+
+00:18:59
+ Il y a juste quelques standards à respecter pour être sûr que ça fonctionne. Ensuite, vous pouvez le tester en local directement sur votre propre Jarvis et si ça vous plaît, vous pouvez le push sur Guitub. Ensuite derrière nous, l'équipe, on regarde si tout est bon, on valide et ça permet à n'importe qui d'utiliser votre module. Évidemment, il y aura la petite dédicace du créateur important et voilà. Et le but, ça va être de créer le plus gros store possible de module et de skills. Et je pense qu'il y a vraiment un bel
+
+00:19:26
+ écosystème à faire à ce niveau-là. Et puis dernier élément de l'écosystème et là pour moi c'est le plus important, c'est les intégrations hardware. Mon but à travers Jarvis, c'est de faire un assistant personnel mais c'est aussi de créer l'environnement connecté augmenté ultime. Et donc pour ça évidemment il faut faire des intégrations hardware. Ça soit de la domotique mais aussi n'importe quel élément physique auquel vous pensez. Et ce qui va se passer et c'est là que c'est beau, c'est que tous
+
+00:19:51
+ les futurs projets sur la chaîne, il y en a des beau qui arrivent, vont avoir une intégration Jarvis et vont nous permettre de nous y connecter directement. Et donc par exemple, si je fais une lampe connectée, Jarvis va pouvoir la contrôler. Voilà où je suis aujourd'hui. Et maintenant, je te montre comment tu peux installer Jarvis directement chez toi. Pour ça, vous allez tout simplement aller sur le Rippo qui se trouve dans la description et vous allez ouvrir un nouveau terminal et vous allez faire tout simplement git
+
+00:20:19
+ clone et le lien du ripo entrée. Alors moi je l'ai déjà donc ça fonctionne pas mais normalement ça va vous télécharger tout le ripo. Et ensuite vous faites commande jarvis-os. Ça vous permettre de vous rendre sur le fichier et vous faites Jarvis éclosion. Éclosion. Et ça c'est la commande qui va permettre de setup tout Jarvis. Regardez comme c'est beau. Ça va vous télécharger toutes les dépendances. Moi je les ai déjà donc ça m'a pris un/art de seconde. Mais vous ça devrait prendre quelques
+
+00:20:49
+ dizaines de secondes voire quelques minutes pour tout télécharger. Et à la fin vous allez être guidé sur les dernières étapes du setup notamment pour choisir votre modèle d'API backend. À noter que vous pourrez toujours modifier ça plus tard. Mais par exemple ici, je je dis non pour Open AI et je dis oui pour Enopique. Donc on me demande ma clé à API. Vous allez être guidé et une fois que c'est terminé, vous allez avoir l'instruction finale. Mais en gros, vous pouvez lancer Jarvis Run et là ça va
+
+00:21:17
+ vous permettre tout simplement de démarrer Jarvis. Alors attendez quelques secondes que ça se démarre. Attendez quelques secondes et une fois que c'est fait, vous pouvez vous rendre à local host 8000. et vous aurez cette page, vous double tapez dans vos mains et ça devrait lancer Jarvis. À noter, vous l'avez vu dans l'intro qu'il y a de la reconnaissance faciale, ce qui veut dire que vous devez mettre une photo de vous dans ce dossier ou alors dans le point, vous désactivez la reconnaissance
+
+00:21:45
+ faciale. OK ? Si ça marche pas, vérifiez que votre terminal a accès à votre micro et à votre caméra. Et ensuite, vous allez pouvoir du coup aller dans Mich Control configuration et dans modèle, vous allez pouvoir mettre toutes vos clés API. Et dans capacité, vous pouvez également aller dans intégration et connecter toutes vos intégrations. Voilà. En tout cas, je suis trop trop content de cette version de Jarvis. Je sens qu'il y a un vrai potentiel. J'ai essayé de faire vraiment le truc qui
+
+00:22:15
+ répondait à ma vision actuelle. Le point le plus important, je pense que vous l'aurez retenu, c'est toute la partie écosystème. Je vous invite à y participer. De mon côté, je vais créer des modules, que ça soit des extensions software, que ça soit des modules hardware. Ça va être trop trop cool. À noter que je fais aussi beaucoup de veilles sur ce qui existe actuellement sur le marché, tous les assistants personnels un peu les concurrents. Donc que ça soit OpenClaw, Hermes, paper Clip, tous ces élémentsl. Finalement, on
+
+00:22:40
+ reprend un peu, comme je l'ai dit tout à l'heure, le meilleur de chaque monde pour faire l'assistant personnelia ultime. En plus, les amis, c'est français et ça ça fait plaisir. Venez, on se l'approprie et venez, on en fait un [ __ ] de produit français. Vous trouverez le lien des deux ripo que ça soit Jarvis et Jarvis Skills dans la description. Mettez un max d'étoiles sur Jarvisos pour propulser le projet. un petit like, un petit commentaire, un petit abonnement, ça ferait plaisir
+
+00:23:05
+ surtout pour propulser la vidéo parce que plus il y a de gens qui la voient, plus il y a de gens qui vont vouloir participer au projet et donc plus l'écosystème va grossir et va être riche. Donc c'est vraiment important. Tu peux rejoindre le petit Discord, le Lbo comme d'habitude avec des makers passionnés, tu connais. Je t'y attends. Et euh sur ce, j'ai envie de te dire bisous.
+

@@ -112,6 +112,20 @@ MODELS = {
         "fg": "#0d0b09",
         "cursor": "#e8e2da",
     },
+    "openrouter": {
+        "label": "OpenRouter",
+        "command": ["./bin/dobby.sh", "--model", "openrouter"],
+        "bg": "#1a1a2e",
+        "fg": "#e8e2da",
+        "cursor": "#c9a43e",
+    },
+    "kimi": {
+        "label": "Kimi K2.7",
+        "command": ["./bin/dobby.sh", "--model", "kimi"],
+        "bg": "#0d1117",
+        "fg": "#e6edf3",
+        "cursor": "#58a6ff",
+    },
 }
 
 ALLOWED_FILE_INDEX_ROOTS = (

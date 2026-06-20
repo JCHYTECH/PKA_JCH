@@ -20,6 +20,10 @@ description: Piloter l'inventaire, le dictionnaire, les dry-runs et l'applicatio
 - Projet : `/Users/jchavauxm5/PKA_JCH/JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/obsidian-knowledge-graph/`
 - Regles de validation : `references/validation_rules.md`
 
+## À ne pas confondre avec
+
+- **`graphify`** — Graphe de connaissance projet (JSON + communautés + HTML). Utiliser `graphify` pour comprendre l'architecture d'un projet, les relations entre fichiers de code, ou les dépendances inter-modules. Ce skill (`obsidian-knowledge-graph`) est spécifique aux wikilinks [[Obsidian]] dans le vault PKA_JCH.
+
 ## Principe
 
 Le skill orchestre le graphe [[Obsidian]], mais ne remplace pas le script.

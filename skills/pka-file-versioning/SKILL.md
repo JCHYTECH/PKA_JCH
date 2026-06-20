@@ -27,10 +27,18 @@ Conventions :
 - Fichier avec version dans le nom : `nom_vX.Y.ext` → copier tel quel (la nouvelle version aura un numéro incrémenté)
 - Fichier sans version dans le nom : créer `nom_backup_YYYY-MM-DD.ext`
 
-### 3. Copier avant modification
+### 3. Sauvegarder avant modification
+
+**Méthode A — Copie simple (par défaut) :**
 ```bash
 cp "<chemin_original>" "<chemin_sauvegarde>"
 ```
+
+**Méthode B — Git tag (recommandé pour fichiers versionnés) :**
+```bash
+git tag -a "backup/<nom-fichier>_vX.Y" -m "Backup avant modification de <fichier> vX.Y"
+```
+Le tag git évite la prolifération de fichiers `_backup` et garde l'historique dans le repo. Préférer cette méthode pour BOM, budget, ADR.
 
 ### 4. Procéder à la modification
 - Modifier le fichier original (pas la copie)

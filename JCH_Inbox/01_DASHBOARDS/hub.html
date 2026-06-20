@@ -288,6 +288,91 @@
     font-size: 11px; color: var(--texte-mute);
   }
 
+  /* ── Tableau Lanceurs LLM ── */
+  .launcher-table-wrap {
+    overflow-x: auto;
+    margin-bottom: 48px;
+  }
+  .launcher-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .launcher-table th {
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--texte-gris);
+    border-bottom: 1px solid var(--bordure);
+  }
+  .launcher-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--bordure);
+    vertical-align: middle;
+  }
+  .launcher-table tbody tr {
+    transition: background 0.15s;
+  }
+  .launcher-table tbody tr:hover {
+    background: var(--carte-hover);
+  }
+  .launcher-table code {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ocre);
+    background: var(--fond-global);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .type-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .type-badge.api {
+    background: rgba(96, 165, 250, 0.12);
+    color: var(--bleu-info);
+    border: 1px solid rgba(96, 165, 250, 0.25);
+  }
+  .type-badge.local {
+    background: rgba(74, 222, 128, 0.12);
+    color: var(--vert-ok);
+    border: 1px solid rgba(74, 222, 128, 0.25);
+  }
+  .launch-btn {
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--ocre);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .launch-btn:hover {
+    background: #c9955a;
+    transform: translateY(-1px);
+  }
+  .launch-btn:active {
+    transform: translateY(0);
+  }
+  .launch-btn.launching {
+    background: var(--texte-mute);
+    cursor: wait;
+    opacity: 0.7;
+  }
+  .launch-btn.launched {
+    background: var(--vert-ok);
+  }
+
   @media (max-width: 900px) {
     .command-panel, .split-section { grid-template-columns: 1fr; }
     .tasks-container { flex-direction: column; align-items: flex-start; gap: 16px; }
@@ -403,6 +488,77 @@
       </div>
     </div>
     
+  </div>
+
+  <!-- ── LANCEURS LLM ── -->
+  <div class="section-title">Lanceurs LLM</div>
+  <div class="launcher-table-wrap">
+    <table class="launcher-table">
+      <thead>
+        <tr>
+          <th>Modèle</th>
+          <th>Type</th>
+          <th>Commande</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="launcher-tbody">
+        <tr data-model="claude">
+          <td><strong>Claude Code</strong></td>
+          <td><span class="type-badge api">API Anthropic</span></td>
+          <td><code>./bin/dobby.sh --model claude</code></td>
+          <td><button class="launch-btn" onclick="launchModel('claude')">▶ Lancer</button></td>
+        </tr>
+        <tr data-model="codex">
+          <td><strong>Codex CLI</strong></td>
+          <td><span class="type-badge api">API OpenAI</span></td>
+          <td><code>./bin/dobby.sh --model codex</code></td>
+          <td><button class="launch-btn" onclick="launchModel('codex')">▶ Lancer</button></td>
+        </tr>
+        <tr data-model="deepseek">
+          <td><strong>DeepSeek V4</strong></td>
+          <td><span class="type-badge api">API DeepSeek</span></td>
+          <td><code>./bin/dobby.sh --model deepseek</code></td>
+          <td><button class="launch-btn" onclick="launchModel('deepseek')">▶ Lancer</button></td>
+        </tr>
+        <tr data-model="deepseek-r1">
+          <td><strong>DeepSeek R1</strong></td>
+          <td><span class="type-badge api">API DeepSeek</span></td>
+          <td><code>./bin/dobby.sh --model deepseek-r1</code></td>
+          <td><button class="launch-btn" onclick="launchModel('deepseek-r1')">▶ Lancer</button></td>
+        </tr>
+        <tr data-model="gemini">
+          <td><strong>Gemini CLI</strong></td>
+          <td><span class="type-badge api">API Google</span></td>
+          <td><code>./bin/dobby.sh --model gemini</code></td>
+          <td><button class="launch-btn" onclick="launchModel('gemini')">▶ Lancer</button></td>
+        </tr>
+        <tr data-model="kimi">
+          <td><strong>Kimi K2.7</strong></td>
+          <td><span class="type-badge api">API Moonshot</span></td>
+          <td><code>./bin/dobby.sh --model kimi</code></td>
+          <td><button class="launch-btn" onclick="launchModel('kimi')">▶ Lancer</button></td>
+        </tr>
+        <tr data-model="openrouter">
+          <td><strong>OpenRouter</strong></td>
+          <td><span class="type-badge api">API Multi</span></td>
+          <td><code>./bin/dobby.sh --model openrouter</code></td>
+          <td><button class="launch-btn" onclick="launchModel('openrouter')">▶ Lancer</button></td>
+        </tr>
+        <tr data-model="gemma4">
+          <td><strong>Gemma 4</strong></td>
+          <td><span class="type-badge local">Local Ollama</span></td>
+          <td><code>./bin/dobby.sh --model gemma4</code></td>
+          <td><button class="launch-btn" onclick="launchModel('gemma4')">▶ Lancer</button></td>
+        </tr>
+        <tr data-model="qwen3">
+          <td><strong>Qwen 3.6</strong></td>
+          <td><span class="type-badge local">Local Ollama</span></td>
+          <td><code>./bin/dobby.sh --model qwen3</code></td>
+          <td><button class="launch-btn" onclick="launchModel('qwen3')">▶ Lancer</button></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <!-- ── PORTEFEUILLE PROJETS ── -->
@@ -652,6 +808,38 @@
       }
     } catch(e) {}
     el.innerHTML = '<span class="dot off"></span> M1 : ○ Indisponible';
+  }
+
+  // ===== 5. LANCEMENT MODELE =====
+  async function launchModel(model) {
+    const btn = document.querySelector(`#launcher-tbody tr[data-model="${model}"] .launch-btn`);
+    if (!btn) return;
+    btn.textContent = '⏳ Lancement...';
+    btn.classList.add('launching');
+    try {
+      const res = await fetch(`/api/launch/${model}`, {
+        method: 'POST',
+        headers: { 'X-PKA-Dashboard': '1' }
+      });
+      const data = await res.json();
+      if (data.ok) {
+        btn.textContent = '✓ Terminal ouvert';
+        btn.classList.remove('launching');
+        btn.classList.add('launched');
+        setTimeout(() => {
+          btn.textContent = '▶ Lancer';
+          btn.classList.remove('launched');
+        }, 3000);
+      } else {
+        btn.textContent = '⚠ Erreur';
+        btn.classList.remove('launching');
+        setTimeout(() => { btn.textContent = '▶ Lancer'; }, 2000);
+      }
+    } catch(e) {
+      btn.textContent = '⚠ Erreur';
+      btn.classList.remove('launching');
+      setTimeout(() => { btn.textContent = '▶ Lancer'; }, 2000);
+    }
   }
 
   // Init

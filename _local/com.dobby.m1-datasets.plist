@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.dobby.m1-datasets</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/jchavauxm5/PKA_JCH/bin/m1-datasets-mount.sh</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <false/>
+    <key>StandardOutPath</key>
+    <string>/Users/jchavauxm5/PKA_JCH/_local/m1-datasets-mount.out</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/jchavauxm5/PKA_JCH/_local/m1-datasets-mount.err</string>
+</dict>
+</plist>

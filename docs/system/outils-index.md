@@ -42,11 +42,14 @@
 ## Memory Pipeline
 
 - scripts/pka_session_extract.py — Extraction post-session : décisions, faits, feedback → `knowledge` + `retro_patterns` + `dobby_feedback`
-- scripts/pka_retrieve.py — Recherche unifiée multi-sources (team.db, [[graphify]], file_index, MEMORY.md, wiki)
+- scripts/pka_retrieve.py — Recherche unifiée multi-sources (team.db, [[graphify]], file_index, MEMORY.md, wiki) + FTS5 sessions (--fts)
 - scripts/pka_generate_memory.py — Régénération automatique de MEMORY.md depuis team.db
 - scripts/pka_conflict_checker.py — Détection de contradictions entre rapports de spécialistes (inspiré OctoChains)
 - scripts/pka_pointer_sync.py — Synchronisation automatique des 6 fichiers pointeurs PKA
 - docs/system/[[pka-memory-layer]].md — Architecture complète du Memory Layer PKA
+- scripts/pka_memory_nudge.py — Extraction mémoire post-réponse (pattern Hermes)
+- docs/system/honcho-pka-design.md — Design spec Honcho PKA (user modeling évolutif)
+- docs/system/fts5-sessions-design.md — Design spec FTS5 sur sessions JSON
 
 ## Sécurité
 
@@ -162,6 +165,7 @@
 - skills/wildnexus-bom — Génération BOM WildNexus Excel
 - skills/obsidian-[[knowledge]]-graph — Inventaire, dictionnaire, wikilinks Obsidian
 - skills/bioacoustics-qc-playbook — QC bioacoustique, spectrogrammes, tri segments
+- skills/system-improvement-ingest — Analyse document → amélioration PKA (grille 6 axes)
 
 ## Skills Claude (.claude/skills)
 
