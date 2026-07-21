@@ -1,0 +1,22 @@
+homeassistant:
+  enabled: true
+mqtt:
+  server: mqtt://host.docker.internal:1883
+  user: jchavaux
+  password: Dobby2026!
+serial:
+  port: tcp://host.docker.internal:6638
+  adapter: ember
+frontend:
+  enabled: true
+  port: 8080
+advanced:
+  channel: 15
+version: 5
+devices:
+  '0x44e2f8fffe052e46':
+    friendly_name: '0x44e2f8fffe052e46'
+  '0xa4c1380f1ceaffff':
+    friendly_name: '0xa4c1380f1ceaffff'
+  '0x54ef44100162b3de':
+    friendly_name: LuxSerre

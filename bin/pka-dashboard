@@ -1,0 +1,422 @@
+#!/usr/bin/env bash
+# =============================================================================
+# pka-dashboard — Génère le dashboard HTML statique de supervision des loops PKA
+# =============================================================================
+#
+# Usage:
+#   bin/pka-dashboard                  Génère _local/dashboard/loops.html
+#   bin/pka-dashboard --open            Génère + ouvre dans le navigateur
+#   bin/pka-dashboard --output <path>   Génère vers un fichier alternatif
+#
+# =============================================================================
+
+set -euo pipefail
+
+# ── Chemins canoniques ─────────────────────────────────────────────────────
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+if [[ "$SCRIPT_DIR" == */bin ]]; then
+    PKA_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+else
+    PKA_ROOT="${PKA_ROOT:-$(pwd)}"
+fi
+
+LOG_FILE="${PKA_ROOT}/_local/logs/pka-loop.log"
+DASHBOARD_DIR="${PKA_ROOT}/_local/dashboard"
+DEFAULT_OUTPUT="${DASHBOARD_DIR}/loops.html"
+GEN_DATE="$(date '+%Y-%m-%d %H:%M:%S')"
+
+# ── Arguments ──────────────────────────────────────────────────────────────
+OPEN_BROWSER=false
+OUTPUT_FILE="$DEFAULT_OUTPUT"
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --open)
+            OPEN_BROWSER=true
+            shift
+            ;;
+        --output)
+            OUTPUT_FILE="$2"
+            shift 2
+            ;;
+        --help|-h)
+            echo "Usage: bin/pka-dashboard [--open] [--output <path>]"
+            echo ""
+            echo "  --open          Ouvre le dashboard dans le navigateur après génération"
+            echo "  --output <path> Fichier de sortie alternatif (défaut: _local/dashboard/loops.html)"
+            exit 0
+            ;;
+        *)
+            echo "Option inconnue: $1"
+            echo "Usage: bin/pka-dashboard [--open] [--output <path>]"
+            exit 1
+            ;;
+    esac
+done
+
+# ── Fonctions utilitaires ──────────────────────────────────────────────────
+
+html_escape() {
+    # Échappe les caractères HTML spéciaux
+    sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g'
+}
+
+# Extraction des triggers depuis un SKILL.md
+extract_triggers() {
+    local skill_file="$1"
+    if [[ ! -f "$skill_file" ]]; then
+        echo "<li>(non disponible)</li>"
+        return
+    fi
+    # Extrait la section "Déclencheurs" (entre "## Déclencheurs" et le prochain "##")
+    # puis extrait les lignes commençant par "- "
+    local triggers
+    triggers=$(awk '
+        /^## Déclencheurs/ { in_section=1; next }
+        /^## / && in_section { exit }
+        in_section && /^- / {
+            # Enlève le "- " initial et les backticks simples
+            line = $0
+            sub(/^- /, "", line)
+            gsub(/`/, "", line)
+            # Trim
+            sub(/^[[:space:]]+/, "", line)
+            sub(/[[:space:]]+$/, "", line)
+            if (line != "" && line !~ /^- /) {
+                print line
+            }
+        }
+    ' "$skill_file")
+    if [[ -z "$triggers" ]]; then
+        echo "<li>(non spécifié)</li>"
+    else
+        echo "$triggers" | while IFS= read -r line; do
+            echo "<li>$(echo "$line" | html_escape)</li>"
+        done
+    fi
+}
+
+# Récupère la description courte depuis le frontmatter YAML du SKILL.md
+extract_description() {
+    local skill_file="$1"
+    if [[ ! -f "$skill_file" ]]; then
+        echo ""
+        return
+    fi
+    awk '/^description:/ {
+        sub(/^description:[[:space:]]*/, "")
+        sub(/^"/, ""); sub(/"$/, "")
+        print
+        exit
+    }' "$skill_file"
+}
+
+# Parse les logs pour une loop donnée
+# Retourne: last_ts|last_status|total_count
+parse_log_for_loop() {
+    local loop_name="$1"
+    local log_file="$2"
+
+    if [[ ! -f "$log_file" ]]; then
+        echo "||0"
+        return
+    fi
+
+    local total last_ts last_status
+    total=0
+    last_ts=""
+    last_status=""
+
+    while IFS= read -r line; do
+        # Vérifie que la ligne contient bien la loop
+        if echo "$line" | grep -q "\"loop\":\"${loop_name}\""; then
+            total=$((total + 1))
+            # Extrait timestamp
+            local ts
+            ts=$(echo "$line" | sed -n 's/.*"timestamp":"\([^"]*\)".*/\1/p')
+            # Extrait status
+            local st
+            st=$(echo "$line" | sed -n 's/.*"status":"\([^"]*\)".*/\1/p')
+            if [[ -n "$ts" ]]; then
+                last_ts="$ts"
+                last_status="${st:-unknown}"
+            fi
+        fi
+    done < "$log_file"
+
+    echo "${last_ts}|${last_status}|${total}"
+}
+
+# ── Définition des loops ───────────────────────────────────────────────────
+
+# Format: name|skill_dir|specialist|emoji|css_class_suffix
+declare -a LOOPS=(
+    "forge|forge-loop|Forge|🔨|forge"
+    "bench|bench-loop|Fourmi|🐜|bench"
+    "edge|edge-ai-loop|Musaraigne|🦇|edge"
+    "seo|seo-loop|Trace|🔍|seo"
+    "sigma|sigma-loop|Sigma|📊|sigma"
+    "research|arbor-research|Dobby|🦉|research"
+)
+
+# ── Génération du HTML ─────────────────────────────────────────────────────
+
+mkdir -p "$DASHBOARD_DIR"
+
+# ── HEAD ───────────────────────────────────────────────────────────────────
+cat > "$OUTPUT_FILE" <<'HEADER'
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PKA Loop Dashboard</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0a0a0c;
+    color: #c9d1d9;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Menlo', 'Monaco', monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    background: #161b22;
+    border-bottom: 2px solid #30363d;
+    padding: 24px 20px;
+    text-align: center;
+  }
+  header h1 {
+    font-size: 1.6rem;
+    color: #f0f6fc;
+    letter-spacing: 0.5px;
+  }
+  header .subtitle {
+    color: #8b949e;
+    font-size: 0.85rem;
+    margin-top: 6px;
+  }
+  main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 18px;
+    padding: 24px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: border-color 0.2s;
+  }
+  .card:hover {
+    border-color: #58a6ff;
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-header .emoji {
+    font-size: 1.8rem;
+    line-height: 1;
+  }
+  .card-header .name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #f0f6fc;
+  }
+  .card-header .specialist {
+    font-size: 0.85rem;
+    color: #8b949e;
+    margin-left: auto;
+  }
+  .card-desc {
+    font-size: 0.78rem;
+    color: #6e7681;
+    line-height: 1.4;
+    border-left: 2px solid #30363d;
+    padding-left: 10px;
+    margin-top: 2px;
+  }
+  .card-section {
+    font-size: 0.82rem;
+  }
+  .card-section .label {
+    color: #8b949e;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .card-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  .card-section ul li {
+    font-size: 0.78rem;
+    color: #c9d1d9;
+    padding: 2px 0 2px 14px;
+    position: relative;
+  }
+  .card-section ul li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: #58a6ff;
+    font-size: 0.7rem;
+  }
+  .card-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid #21262d;
+    font-size: 0.78rem;
+    flex-wrap: wrap;
+  }
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 4px;
+  }
+  .status-ok       { background: #0d3320; color: #3fb950; }
+  .status-dry_run  { background: #1c2128; color: #8b949e; }
+  .status-error    { background: #3d1418; color: #f85149; }
+  .status-inactive { background: #2b2a14; color: #d29922; }
+  .status-unknown  { background: #1c2128; color: #8b949e; }
+  .status-invoked  { background: #0d2137; color: #58a6ff; }
+  .exec-count {
+    color: #8b949e;
+  }
+  .last-run {
+    color: #6e7681;
+    font-size: 0.75rem;
+  }
+  footer {
+    text-align: center;
+    padding: 16px 20px;
+    border-top: 1px solid #21262d;
+    color: #484f58;
+    font-size: 0.75rem;
+  }
+  footer span {
+    color: #6e7681;
+  }
+
+  @media (max-width: 400px) {
+    main {
+      grid-template-columns: 1fr;
+      padding: 14px 10px;
+      gap: 12px;
+    }
+    .card { padding: 14px; }
+    header h1 { font-size: 1.3rem; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>⚡ PKA Loop Dashboard</h1>
+  <div class="subtitle">Généré le HEADERPLACEHOLDER</div>
+</header>
+<main>
+HEADER
+
+# ── Remplace la date placeholder ───────────────────────────────────────────
+sed -i '' "s|HEADERPLACEHOLDER|${GEN_DATE}|g" "$OUTPUT_FILE"
+
+# ── Génération des cartes ──────────────────────────────────────────────────
+for entry in "${LOOPS[@]}"; do
+    IFS='|' read -r loop_name loop_dir specialist emoji css_suffix <<< "$entry"
+    skill_file="${PKA_ROOT}/skills/${loop_dir}/SKILL.md"
+    desc=$(extract_description "$skill_file")
+    triggers_html=$(extract_triggers "$skill_file")
+    log_info=$(parse_log_for_loop "$loop_name" "$LOG_FILE")
+    IFS='|' read -r last_ts last_status total_count <<< "$log_info"
+
+    # Déterminer le statut visuel
+    if [[ -z "$last_status" ]]; then
+        status_label="inactif"
+        status_css="inactive"
+        status_text="inactif"
+    else
+        status_css="$last_status"
+        case "$last_status" in
+            ok)       status_text="actif" ;;
+            dry_run)  status_text="dry-run" ;;
+            error)    status_text="erreur" ;;
+            invoked)  status_text="invoqué" ;;
+            *)        status_text="$last_status" ;;
+        esac
+    fi
+
+    # Formater la dernière exécution
+    if [[ -z "$last_ts" ]]; then
+        last_run_display="Aucune exécution loggée"
+    else
+        # Raccourcir l'affichage du timestamp
+        last_run_display="${last_ts}"
+    fi
+
+    # Échapper la description
+    desc_esc=$(echo "$desc" | html_escape)
+
+    cat >> "$OUTPUT_FILE" <<CARDSECTION
+  <div class="card">
+    <div class="card-header">
+      <span class="emoji">${emoji}</span>
+      <span class="name">${loop_dir}</span>
+      <span class="specialist">${specialist} ${emoji}</span>
+    </div>
+    <div class="card-desc">${desc_esc}</div>
+    <div class="card-section">
+      <span class="label">Déclencheurs</span>
+      <ul>
+        ${triggers_html}
+      </ul>
+    </div>
+    <div class="card-footer">
+      <span class="status status-${status_css}">● ${status_text}</span>
+      <span class="exec-count">${total_count} exécution(s)</span>
+      <span class="last-run">${last_run_display}</span>
+    </div>
+  </div>
+CARDSECTION
+done
+
+# ── FOOTER ─────────────────────────────────────────────────────────────────
+cat >> "$OUTPUT_FILE" <<'FOOTER'
+</main>
+<footer>
+  <span>Dobby 🦉 — PKA_JCH</span>
+</footer>
+</body>
+</html>
+FOOTER
+
+echo "✅ Dashboard généré : ${OUTPUT_FILE}"
+
+# ── Ouverture navigateur ───────────────────────────────────────────────────
+if [[ "$OPEN_BROWSER" == "true" ]]; then
+    if command -v open &>/dev/null; then
+        open "$OUTPUT_FILE"
+        echo "🌐 Dashboard ouvert dans le navigateur."
+    else
+        echo "⚠️  Commande 'open' non disponible (pas sur macOS ?)."
+    fi
+fi

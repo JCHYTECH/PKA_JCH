@@ -1,0 +1,103 @@
+#!/usr/bin/env bash
+# pka-memory-hook — Capture mémoire automatique post-session
+# Dobby 🦉 — 2026-07-18 — Automatisation #5
+#
+# Extrait les décisions, leçons, et patterns de la session récente
+# depuis TEAM_Inbox/ (livrables du jour) et MEMORY.md.
+#
+# Usage:
+#   bin/pka-memory-hook --run        Extrait et propose des captures
+#   bin/pka-memory-hook --dry-run    Simule sans écrire
+#   bin/pka-memory-hook --help
+
+set -euo pipefail
+
+PKA_ROOT="/Users/jchavauxm5/PKA_JCH"
+TODAY=$(date +%Y-%m-%d)
+
+MODE="${1:---run}"
+DRY=false
+[[ "${2:-}" == "--dry-run" ]] && DRY=true
+
+if [[ "$MODE" == "--help" || "$MODE" == "-h" ]]; then
+  cat <<'EOF'
+🧠 pka-memory-hook — Capture mémoire automatique post-session
+
+USAGE
+  bin/pka-memory-hook --run        Analyse et propose des captures
+  bin/pka-memory-hook --dry-run    Simule sans écrire
+
+DESCRIPTION
+  Scrute TEAM_Inbox/ (livrables du jour) et MEMORY.md (session récente).
+  Détecte :
+    - Nouvelles décisions → propose ajout decisions-pka.md
+    - Nouvelles règles → propose ajout SOUL.md
+    - Nouveaux patterns → propose ajout MEMORY.md (section Patterns)
+    - Changements d'état → suggère màj etat-projets.md / hardware-state.md
+  
+  Affiche les propositions. Valider avant d'appliquer.
+
+DÉCLENCHEURS
+  - Manuel  : bin/pka-memory-hook --run
+  - Automatique : à chaque fin de session significative (≥5 échanges)
+EOF
+  exit 0
+fi
+
+echo "🧠 pka-memory-hook — Analyse du $(date +%d/%m/%Y)"
+echo ""
+
+# 1. Scanner les livrables du jour
+deliverables=$(ls "$PKA_ROOT/TEAM_Inbox/${TODAY}"_*.md 2>/dev/null || true)
+if [[ -z "$deliverables" ]]; then
+  echo "Aucun livrable aujourd'hui. Rien à extraire."
+  exit 0
+fi
+
+count=0
+echo "📄 Livrables du jour :"
+for f in $deliverables; do
+  echo "   $(basename "$f")"
+  count=$((count + 1))
+done
+echo ""
+
+# 2. Extraire les décisions/leçons (mots-clés dans les livrables)
+echo "🔍 Détection de patterns :"
+echo ""
+
+for f in $deliverables; do
+  base=$(basename "$f")
+  
+  # Chercher les marqueurs de décision
+  if grep -qiE '(décision|decision|action proposée|P0|règle|rule|à retenir|retenir)' "$f" 2>/dev/null; then
+    echo "  📌 $base — contient décisions/actions"
+  fi
+  
+  # Chercher les nouvelles connaissances
+  if grep -qiE '(découverte|leçon|lesson|insight|nouveau|nouvel outil)' "$f" 2>/dev/null; then
+    echo "  💡 $base — contient découvertes/insights"
+  fi
+done
+
+echo ""
+echo "---"
+echo "💡 Propositions :"
+echo ""
+
+# 3. Suggérer des captures
+for f in $deliverables; do
+  base=$(basename "$f")
+  
+  # Suggérer pka_memory_capture.py
+  if $DRY; then
+    echo "  [DRY-RUN] python3 scripts/pka_memory_capture.py --fact \"...\" --category decision --trust internal"
+  else
+    echo "  ✅ $base — prêt pour capture mémoire"
+    echo "     Commande : python3 scripts/pka_memory_capture.py --auto-extract --source \"$f\""
+  fi
+done
+
+echo ""
+echo "⚠️  Valider les propositions avant d'appliquer."
+echo "   Utiliser pka_memory_capture.py --auto-extract pour extraction automatique."

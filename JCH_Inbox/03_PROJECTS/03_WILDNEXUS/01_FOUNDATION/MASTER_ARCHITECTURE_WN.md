@@ -3,11 +3,19 @@
 
 [[wildnexus]]
 
+> ⚠️ **Document de cadrage initial (mai 2026).** Ce document a servi à figer la vision produit lors du cycle M-01. Pour l'état opérationnel actuel, consulter :
+> - `00_GOVERNANCE/Start.md` — protocole de lancement et état des milestones
+> - `02_DECISIONS/WILDNEXUS_ADR_INDEX.md` — 14 ADRs (décisions techniques actives)
+> - `03_P0_ENGINEERING/PROTOCOLES/progress.md` — avancement des protocoles M-02
+> - `09_PRODUCT_SHEETS/INDEX.md` — fiches produit (F1/F2/S1/S2/A1)
+>
+> Le présent document reste utile pour le contexte stratégique et la narration produit. Il n'est plus la source de vérité opérationnelle.
+
 ---
 
 # 1. Vision générale du projet
 
-WildNexus est envisagé comme une plateforme modulaire d’observation écologique autonome destinée à fonctionner dans des environnements naturels parfois isolés et contraignants.
+WildNexus est envisagé comme une plateforme modulaire d'observation écologique autonome destinée à fonctionner dans des environnements naturels parfois isolés et contraignants.
 
 Le projet ne doit pas être considéré comme un simple piège photographique amélioré, mais comme une infrastructure distribuée capable de :
 
@@ -19,13 +27,13 @@ Le projet ne doit pas être considéré comme un simple piège photographique am
 - structurer,
 - exploiter des données environnementales et biologiques.
 
-L’objectif est de créer un système robuste, extensible et énergétiquement optimisé pouvant évoluer progressivement depuis un produit terrain minimal jusqu’à une véritable plateforme scientifique distribuée.
+L'objectif est de créer un système robuste, extensible et énergétiquement optimisé pouvant évoluer progressivement depuis un produit terrain minimal jusqu'à une véritable plateforme scientifique distribuée.
 
 ---
 
 # 2. Positionnement stratégique
 
-Le principal différenciateur potentiel du projet n’est probablement pas le hardware lui-même.
+Le principal différenciateur potentiel du projet n'est probablement pas le hardware lui-même.
 
 Le véritable avantage compétitif peut devenir :
 
@@ -41,7 +49,7 @@ Le système pourrait corréler :
 - géolocalisation,
 - comportements observés.
 
-Très peu d’acteurs proposent aujourd’hui :
+Très peu d'acteurs proposent aujourd'hui :
 
 - une architecture modulaire ouverte,
 - une très basse consommation,
@@ -51,7 +59,7 @@ Très peu d’acteurs proposent aujourd’hui :
 
 WildNexus pourrait donc évoluer vers :
 
-## une infrastructure autonome distribuée d’observation écologique.
+## une infrastructure autonome distribuée d'observation écologique.
 
 ---
 
@@ -110,7 +118,7 @@ Ajouts possibles :
 - exports scientifiques standardisés,
 - corrélation événementielle.
 
-Cette phase introduit l’intelligence embarquée progressivement.
+Cette phase introduit l'intelligence embarquée progressivement.
 
 ---
 
@@ -134,7 +142,7 @@ Ajouts :
 
 Le système doit vivre la majorité du temps en ultra-basse consommation.
 
-Les composants énergivores doivent être activés uniquement lors d’événements spécifiques.
+Les composants énergivores doivent être activés uniquement lors d'événements spécifiques.
 
 ---
 
@@ -201,11 +209,11 @@ La version finale terrain ne devrait probablement pas reposer entièrement sur u
 
 ## 7.1 [[LoRa]] : prudence sur le mesh
 
-L’héritage conceptuel de WildMesh suggère naturellement une logique mesh.
+L'héritage conceptuel de WildMesh suggère naturellement une logique mesh.
 
 Cependant :
 
-[[LoRa]] n’est pas naturellement idéal pour un mesh dense et fortement routé.
+[[LoRa]] n'est pas naturellement idéal pour un mesh dense et fortement routé.
 
 Limitations réelles :
 
@@ -213,7 +221,7 @@ Limitations réelles :
 - duty-cycle EU868,
 - latence,
 - saturation,
-- temps d’air élevé,
+- temps d'air élevé,
 - consommation relayage,
 - topologies complexes.
 
@@ -238,7 +246,7 @@ Transmission :
 - état batterie,
 - thumbnails compressés.
 
-Pas de transfert massif d’images.
+Pas de transfert massif d'images.
 
 ---
 
@@ -273,7 +281,7 @@ Les plus gros consommateurs :
 - microphones continus,
 - stockage massif.
 
-L’architecture énergétique doit être pensée dès le départ.
+L'architecture énergétique doit être pensée dès le départ.
 
 ---
 
@@ -305,7 +313,7 @@ Version de base possible :
 - pluie,
 - vibrations.
 
-Les données environnementales deviennent très intéressantes lorsqu’elles sont corrélées avec :
+Les données environnementales deviennent très intéressantes lorsqu'elles sont corrélées avec :
 
 - activité animale,
 - bioacoustique,
@@ -374,7 +382,7 @@ Mais :
 
 Recommandation :
 
-préparer l’architecture pour une future intégration sans l’imposer dès P0.
+préparer l'architecture pour une future intégration sans l'imposer dès P0.
 
 ---
 
@@ -392,7 +400,7 @@ préparer l’architecture pour une future intégration sans l’imposer dès P0
 
 ## Attention
 
-L’IA embarquée augmente :
+L'IA embarquée augmente :
 
 - consommation,
 - complexité,
@@ -463,244 +471,47 @@ Sandbox sécurisée éventuelle.
 
 # 15. Robustesse terrain
 
-## 15.1 Sujet souvent sous-estimé
+Le système doit résister :
 
-Le terrain réel impose :
-
-- pluie,
-- boue,
-- gel,
+- humidité (IP67),
+- variations thermiques (-20°C à +50°C),
+- chocs,
 - UV,
-- condensation,
+- rongeurs,
 - insectes,
-- corrosion,
-- chocs.
-
----
-
-## 15.2 Points critiques
-
-- étanchéité,
-- vieillissement membranes,
-- buée optique,
-- dilatation thermique,
-- fixation mécanique.
-
----
-
-# 16. Anti-vol et sécurité
-
-## Menaces réalistes
-
-- vol,
-- vandalisme,
-- sabotage,
-- curiosité.
-
----
-
-## Recommandations
-
-### Mécanique
-
-- fixation robuste,
-- camouflage,
-- vis anti-effraction.
-
----
-
-### Logiciel
-
-- chiffrement,
-- secure boot,
-- firmware signé.
-
----
-
-### Localisation
-
-- beacon BLE,
-- journal ouverture,
-- GPS ponctuel.
-
----
-
-# 17. Vision écosystème
-
-Le projet peut évoluer vers un réseau écologique distribué composé de :
-
-- pièges photo,
-- stations acoustiques,
-- capteurs rivière,
-- gateways solaires,
-- unités mobiles.
-
-Le système pourrait intéresser :
-
-- universités,
-- ONG,
-- réserves naturelles,
-- Natura 2000,
-- forestiers,
-- scientifiques,
-- citizen science.
-
----
-
-# 18. Agents et compétences à intégrer
-
-## A. Firmware ultra low power
-
-Compétences :
-
-- MCU,
-- veille profonde,
-- optimisation énergétique.
-
----
-
-## B. RF & propagation specialist
-
-Mission :
-
-- [[LoRa]] terrain forêt,
-- antennes,
-- propagation humide,
-- optimisation réseau.
-
----
-
-## C. Edge AI / Computer vision
-
-Mission :
-
-- reconnaissance espèces,
-- modèles basse consommation,
-- réduction faux positifs.
-
----
-
-## D. Bioacoustique / DSP
-
-Mission :
-
-- microphones,
-- traitement signal,
-- IA audio,
-- calibration.
-
----
-
-## E. Mechanical enclosure engineering
-
-Mission :
-
-- boîtier,
-- thermique,
 - condensation,
-- fixation arbre,
-- maintenance terrain.
+- croissance fongique.
 
 ---
 
-## F. Environmental durability engineering
+# 16. Coût cible
 
-Mission :
+Le coût BOM cible pour un nœud P0 doit rester sous 100€ en production.
 
-- vieillissement,
-- UV,
-- humidité,
-- gel/dégel,
-- tests IP.
+Le prix de vente cible est 149-179€ (cf. fiche produit F1 FIELD).
 
 ---
 
-## G. Industrialisation & manufacturing
+# 17. Documentation et reproductibilité
 
-Mission :
+Le projet doit publier :
 
-- DFM,
-- sourcing,
-- assemblage,
-- contrôle qualité.
+- schémas matériels,
+- BOM détaillée,
+- firmware,
+- procédures de build et flash,
+- guides de déploiement terrain.
 
----
-
-## H. Scientific ecological advisor
-
-Mission :
-
-- validation scientifique,
-- workflows chercheurs,
-- standards biodiversité.
+Ceci constitue la base du socle open source M-04.
 
 ---
 
-# 19. Préparation de la phase suivante
+# 18. Next steps
 
-La phase suivante devra définir :
-
-## 19.1 Version BASIC
-
-- fonctionnalités minimales,
-- autonomie cible,
-- architecture matérielle,
-- coûts,
-- boîtier,
-- communications.
+Les décisions techniques détaillées vivent dans les ADRs (`02_DECISIONS/`).
+L'exécution M-02 est tracée dans `03_P0_ENGINEERING/PROTOCOLES/progress.md`.
+Le démarrage opérationnel est dans `00_GOVERNANCE/Start.md`.
 
 ---
 
-## 19.2 Version ADVANCED
-
-- IA,
-- bioacoustique,
-- gateways,
-- thermique,
-- cloud.
-
----
-
-## 19.3 Spécifications techniques détaillées
-
-À définir :
-
-- CPU/MCU,
-- mémoire,
-- stockage,
-- capteurs,
-- autonomie,
-- consommation,
-- optique,
-- microphones,
-- protocoles radio,
-- formats données,
-- APIs,
-- sécurité,
-- maintenance,
-- OTA,
-- interfaces mobiles.
-
----
-
-# 20. Conclusion
-
-WildNexus possède le potentiel pour devenir bien davantage qu’un piège photographique.
-
-Le projet pourrait évoluer vers :
-
-## une infrastructure autonome distribuée d’observation écologique.
-
-Les axes les plus stratégiques semblent être :
-
-1. ultra basse consommation,
-2. modularité terrain,
-3. structuration scientifique des données,
-4. corrélation multimodale,
-5. architecture distribuée,
-6. robustesse environnementale,
-7. évolutivité progressive.
-
-La priorité absolue doit cependant rester :
-
-## construire d’abord une unité terrain extrêmement fiable, robuste et autonome avant d’ajouter la complexité avancée.
+*Document de cadrage initial — rédigé le 2026-05-17 par Dobby 🦉 — marqué comme référence historique le 2026-06-30.*

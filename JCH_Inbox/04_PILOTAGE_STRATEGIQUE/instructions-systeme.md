@@ -1,6 +1,7 @@
 # Instructions Système PKA-JCH — Tableau Consolidé
 > Tous les mécanismes d'instruction, d'amélioration et de pilotage du système.
 > Généré le 2026-06-19 par Dobby 🦉
+> Mis à jour le 2026-07-07
 > 
 > **Lecture :** une ligne = une instruction. Activable par Dobby ou par JC.
 
@@ -22,7 +23,7 @@
 | S1 | system-improvement-ingest | `skills/system-improvement-ingest/SKILL.md` | `/system-improvement-ingest`, « analyse ce document pour PKA » | Grille 6 axes — version skill du prompt P2 |
 | S2 | arbor-research | `skills/arbor-research/SKILL.md` | « arbor loop », « recherche autonome », « hypothesis tree » | Protocole hypothèse → expérience → insight → décision |
 | S3 | pka-system-check | `skills/pka-system-check/SKILL.md` | « check pka », « system check », « vérifie l'état du système » | Health-check automatique (permissions, backups, pointers, todo drift) |
-| S4 | pka-session-start | `skills/pka-session-start/SKILL.md` | Automatique en début de session | Protocole démarrage : identité, mémoire, inbox, activation |
+| S4 | pka-session-start | `skills/pka-session-start/SKILL.md` | Automatique en début de session | Protocole démarrage 5 phases : identité, contexte, State, vérifications, activation |
 | S5 | pka-pointer-sync | `skills/pka-pointer-sync/SKILL.md` | « mets à jour les pointers », « synchronise les fichiers système » | Synchro 6 fichiers pointeurs après changement équipe/structure |
 | S6 | pka-file-versioning | `skills/pka-file-versioning/SKILL.md` | Automatique avant modif BOM/ADR/registre/budget | Backup pré-édition fichiers itératifs |
 ---
@@ -70,6 +71,7 @@
 | T8 | pka_structure_check.py | `scripts/pka_structure_check.py` | Vérification | Vérifie la structure du workspace |
 | T9 | pka_prompt_guard.py | `scripts/pka_prompt_guard.py` | Sécurité | Scanner prompt injection (score 0-100 + quarantaine) |
 | T10 | pka_memory_log.py | `scripts/pka_memory_log.py` | Log | Log mémoire automatique dans SYBIL_JOURNAL |
+| T11 | **pka_memory_capture.py** | `scripts/pka_memory_capture.py` | `python3 scripts/pka_memory_capture.py --fact "..." --category semantic|procedural|episodic --importance 1-5` | **Capture mémoire unifiée** — déduplication, conflits, routage (team.db, MEMORY.md, knowledge) |
 
 ---
 
@@ -79,7 +81,7 @@
 |---|-----|---------|------|
 | D1 | Priorités actives | `priorites-actives.md` | Vue courte des priorités en cours |
 | D2 | Roadmap 90 jours | `roadmap-90-jours.md` | Horizon tactique portefeuille |
-| D3 | Arbitrages & décisions | `arbitrages-decisions.md` | Décisions de focus, stop, report |
+| D3 | ~~Arbitrages & décisions~~ | `arbitrages-decisions.md` | Archivé le 2026-06-23 — supplanté par `decisions-pka.md` + `decisions-actives.md` |
 | D4 | KPI portefeuille | `kpi-portefeuille.md` | Indicateurs transverses |
 | D5 | Opportunités à suivre | `opportunites-a-suivre.md` | Pistes à surveiller |
 | D6 | Risques & frottements | `risques-et-frottements.md` | Points de tension, obstacles |
@@ -97,6 +99,7 @@
 |---|----------|--------|---------|
 | N1 | Memory Nudge | ✅ Actif | `scripts/pka_memory_nudge.py` + règle SOUL.md |
 | N2 | Alerte compression contexte | ✅ Actif | Règle SOUL.md |
+| N3 | Memory Capture temps réel | ✅ Actif | `scripts/pka_memory_capture.py` + règle SOUL.md |
 
 | Catégorie | Nombre | Activation |
 |-----------|--------|------------|

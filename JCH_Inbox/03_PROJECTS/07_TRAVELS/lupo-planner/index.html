@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#1a1a2e">
+<meta name="description" content="Lupo Planner — spots de bivouac et roadtrips en van">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Lupo Planner 🐺</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐺</text></svg>">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0f0f1a; --surface: #1a1a2e; --surface2: #16213e;
+  --text: #e0e0e0; --text2: #a0a0b0; --accent: #e94560;
+  --accent2: #0f3460; --green: #4ecca3; --warning: #f0a500;
+  --radius: 8px; --shadow: 0 2px 8px rgba(0,0,0,0.4);
+  --prio1: #e94560; --prio2: #f0a500; --prio3: #4ecca3; --prio4: #a0a0b0;
+}
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); height: 100dvh; overflow: hidden; }
+
+/* ── Header ── */
+header { display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; background: var(--surface); border-bottom: 1px solid var(--surface2); z-index: 1000; position: relative; }
+header h1 { font-size: 1.1rem; font-weight: 600; }
+header h1 span { color: var(--accent); }
+header button { background: var(--surface2); border: none; color: var(--text); padding: 6px 12px; border-radius: var(--radius); cursor: pointer; font-size: 0.85rem; transition: background 0.2s; }
+header button:hover { background: var(--accent); }
+.header-actions { display: flex; gap: 6px; }
+
+/* ── Layout ── */
+main { display: flex; height: calc(100dvh - 48px); position: relative; }
+#map { flex: 1; z-index: 1; }
+#sidebar { width: 380px; max-width: 100vw; background: var(--surface); border-left: 1px solid var(--surface2); display: flex; flex-direction: column; overflow: hidden; transition: transform 0.3s; z-index: 500; }
+#sidebar.hidden { transform: translateX(100%); position: absolute; right: 0; top: 0; bottom: 0; }
+
+/* ── Sidebar tabs ── */
+.tabs { display: flex; border-bottom: 1px solid var(--surface2); }
+.tab { flex: 1; padding: 10px; text-align: center; cursor: pointer; font-size: 0.9rem; background: none; border: none; color: var(--text2); border-bottom: 2px solid transparent; transition: all 0.2s; }
+.tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab-content { display: none; flex: 1; overflow-y: auto; padding: 10px; }
+.tab-content.active { display: flex; flex-direction: column; }
+
+/* ── Toolbar ── */
+.toolbar { display: flex; gap: 6px; flex-wrap: wrap; padding-bottom: 10px; border-bottom: 1px solid var(--surface2); margin-bottom: 10px; }
+.toolbar select, .toolbar input { background: var(--bg); color: var(--text); border: 1px solid var(--surface2); padding: 5px 8px; border-radius: var(--radius); font-size: 0.8rem; }
+.toolbar select { min-width: 90px; }
+.toolbar input { flex: 1; min-width: 100px; }
+.toolbar button { background: var(--accent2); color: var(--text); border: none; padding: 5px 10px; border-radius: var(--radius); cursor: pointer; font-size: 0.8rem; white-space: nowrap; }
+.toolbar button:hover { background: var(--accent); }
+
+/* ── Spot list ── */
+.spot-list { flex: 1; overflow-y: auto; }
+.spot-item { padding: 8px 10px; border-radius: var(--radius); margin-bottom: 4px; cursor: pointer; transition: background 0.15s; display: flex; align-items: center; gap: 8px; font-size: 0.85rem; border-left: 3px solid transparent; }
+.spot-item:hover { background: var(--surface2); }
+.spot-item .prio-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.spot-item .info { flex: 1; min-width: 0; }
+.spot-item .name { font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.spot-item .meta { font-size: 0.7rem; color: var(--text2); }
+.spot-item .actions { display: flex; gap: 4px; flex-shrink: 0; }
+.spot-item .actions button { background: none; border: none; color: var(--text2); cursor: pointer; font-size: 0.8rem; padding: 2px 4px; }
+.spot-item .actions button:hover { color: var(--accent); }
+.spot-item .actions .fav { color: var(--warning); }
+.spot-item.visited { opacity: 0.5; }
+.empty-state { text-align: center; padding: 40px 20px; color: var(--text2); }
+.empty-state .icon { font-size: 3rem; margin-bottom: 10px; }
+
+/* ── Roadtrip list ── */
+.roadtrip-item { padding: 8px 10px; border-radius: var(--radius); margin-bottom: 4px; cursor: pointer; border: 1px solid var(--surface2); transition: background 0.15s; }
+.roadtrip-item:hover { background: var(--surface2); }
+.roadtrip-item .rt-name { font-weight: 500; }
+.roadtrip-item .rt-count { font-size: 0.75rem; color: var(--text2); }
+
+/* ── Add spot modal ── */
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 2000; align-items: center; justify-content: center; }
+.modal-overlay.active { display: flex; }
+.modal { background: var(--surface); border-radius: 12px; padding: 20px; width: 90%; max-width: 420px; max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow); }
+.modal h2 { margin-bottom: 14px; font-size: 1.1rem; }
+.modal label { display: block; font-size: 0.8rem; color: var(--text2); margin-bottom: 3px; margin-top: 10px; }
+.modal input, .modal select, .modal textarea { width: 100%; background: var(--bg); color: var(--text); border: 1px solid var(--surface2); padding: 7px 10px; border-radius: var(--radius); font-size: 0.9rem; font-family: inherit; }
+.modal textarea { resize: vertical; min-height: 50px; }
+.modal .btn-row { display: flex; gap: 8px; margin-top: 16px; justify-content: flex-end; }
+.modal .btn-row button { padding: 8px 16px; border-radius: var(--radius); border: none; cursor: pointer; font-size: 0.9rem; }
+.modal .btn-save { background: var(--accent); color: white; }
+.modal .btn-cancel { background: var(--surface2); color: var(--text); }
+.modal .coords-row { display: flex; gap: 8px; }
+.modal .coords-row input { flex: 1; }
+
+/* ── Map picker ── */
+.map-picker-info { font-size: 0.75rem; color: var(--text2); margin-bottom: 6px; }
+.map-picker-info code { background: var(--surface2); padding: 1px 5px; border-radius: 3px; }
+
+/* ── FAB ── */
+.fab { position: fixed; bottom: 20px; right: 20px; width: 52px; height: 52px; border-radius: 50%; background: var(--accent); color: white; border: none; font-size: 1.6rem; cursor: pointer; z-index: 1500; box-shadow: var(--shadow); display: flex; align-items: center; justify-content: center; transition: transform 0.2s; }
+.fab:hover { transform: scale(1.1); }
+
+/* ── Country flags ── */
+.flag { font-size: 1rem; }
+
+/* ── Toast ── */
+.toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: var(--green); color: #000; padding: 8px 20px; border-radius: 20px; font-size: 0.85rem; z-index: 3000; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+.toast.show { opacity: 1; }
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  #sidebar { width: 100vw; position: absolute; right: 0; top: 0; bottom: 0; }
+  #sidebar.hidden { transform: translateX(100%); }
+  .modal { width: 95%; padding: 15px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <h1>🐺 Lupo <span>Planner</span></h1>
+  <div class="header-actions">
+    <button onclick="toggleSidebar()" title="Liste">☰</button>
+    <button onclick="showImportExport()" title="Import/Export">📦</button>
+  </div>
+</header>
+
+<!-- Map + Sidebar -->
+<main>
+  <div id="map"></div>
+  <div id="sidebar">
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('spots')">📍 Spots</button>
+      <button class="tab" onclick="switchTab('roadtrips')">🗺️ Roadtrips</button>
+    </div>
+    <div id="tab-spots" class="tab-content active">
+      <div class="toolbar">
+        <select id="filter-country" onchange="filterSpots()">
+          <option value="">🌍 Tous</option><option value="FR">🇫🇷</option><option value="ES">🇪🇸</option><option value="IT">🇮🇹</option><option value="DE">🇩🇪</option><option value="BE">🇧🇪</option><option value="NL">🇳🇱</option>
+        </select>
+        <select id="filter-type" onchange="filterSpots()">
+          <option value="">Tous types</option><option value="sauvage">Sauvage</option><option value="prive">Privé/Ferme</option><option value="camping_isole">Camping isolé</option><option value="camping">Camping</option><option value="aire">Aire</option>
+        </select>
+        <input id="filter-search" placeholder="Rechercher..." oninput="filterSpots()">
+      </div>
+      <div class="spot-list" id="spot-list"></div>
+    </div>
+    <div id="tab-roadtrips" class="tab-content">
+      <div class="toolbar">
+        <button onclick="newRoadtrip()">+ Nouveau roadtrip</button>
+      </div>
+      <div class="spot-list" id="roadtrip-list"></div>
+    </div>
+  </div>
+</main>
+
+<!-- FAB -->
+<button class="fab" onclick="openAddSpot()" title="Ajouter un spot">+</button>
+
+<!-- Add/Edit Spot Modal -->
+<div class="modal-overlay" id="modal-spot">
+  <div class="modal">
+    <h2 id="modal-title">Ajouter un spot</h2>
+    <label>Nom</label>
+    <input id="spot-name" placeholder="ex: Clairière du lac...">
+    <label>Coordonnées GPS</label>
+    <div class="coords-row">
+      <input id="spot-lat" type="number" step="any" placeholder="Latitude (ex: 44.1234)">
+      <input id="spot-lng" type="number" step="any" placeholder="Longitude (ex: 5.5678)">
+    </div>
+    <p class="map-picker-info">Astuce : clique sur la carte pour remplir automatiquement, ou colle depuis park4night (format <code>44.1234, 5.5678</code>).</p>
+    <label>Type</label>
+    <select id="spot-type">
+      <option value="sauvage">🥇 Sauvage</option>
+      <option value="prive">🥈 Privé / Ferme</option>
+      <option value="camping_isole">🥉 Camping isolé</option>
+      <option value="camping">🏕️ Camping</option>
+      <option value="aire">🅿️ Aire</option>
+    </select>
+    <label>Pays</label>
+    <select id="spot-country">
+      <option value="FR">🇫🇷 France</option><option value="ES">🇪🇸 Espagne</option><option value="IT">🇮🇹 Italie</option><option value="DE">🇩🇪 Allemagne</option><option value="BE">🇧🇪 Belgique</option><option value="NL">🇳🇱 Pays-Bas</option>
+    </select>
+    <label>Source</label>
+    <select id="spot-source">
+      <option value="other">Autre</option><option value="park4night">park4night</option><option value="france_passion">France Passion</option><option value="campspace">Campspace</option><option value="huttopia">Bivouacs Huttopia</option><option value="campercontact">Campercontact</option><option value="ioverlander">iOverlander</option><option value="landvergnugen">Landvergnügen</option><option value="agricamper">Agricamper</option><option value="espana_discovery">España Discovery</option>
+    </select>
+    <label>Notes</label>
+    <textarea id="spot-notes" placeholder="Infos utiles, accès, contact..."></textarea>
+    <input type="hidden" id="spot-id">
+    <div class="btn-row">
+      <button class="btn-cancel" onclick="closeModal('modal-spot')">Annuler</button>
+      <button class="btn-save" onclick="saveSpot()">Sauvegarder</button>
+    </div>
+  </div>
+</div>
+
+<!-- Roadtrip Modal -->
+<div class="modal-overlay" id="modal-roadtrip">
+  <div class="modal">
+    <h2 id="rt-modal-title">Nouveau roadtrip</h2>
+    <label>Nom</label>
+    <input id="rt-name" placeholder="ex: Tour de Corse printemps 2027">
+    <label>Spots (ordre = itinéraire)</label>
+    <div class="spot-list" id="rt-spot-picker" style="max-height:200px; overflow-y:auto;"></div>
+    <input type="hidden" id="rt-id">
+    <div class="btn-row">
+      <button class="btn-cancel" onclick="closeModal('modal-roadtrip')">Annuler</button>
+      <button class="btn-save" onclick="saveRoadtrip()">Sauvegarder</button>
+    </div>
+  </div>
+</div>
+
+<!-- Import/Export Modal -->
+<div class="modal-overlay" id="modal-io">
+  <div class="modal">
+    <h2>Import / Export</h2>
+    <label>Export</label>
+    <button class="btn-save" style="width:100%; margin-bottom:10px;" onclick="exportData()">📥 Télécharger JSON (spots + roadtrips)</button>
+    <label>Import</label>
+    <input type="file" id="import-file" accept=".json" onchange="importData(event)" style="padding:6px;">
+    <p style="font-size:0.75rem; color:var(--warning); margin-top:4px;">⚠️ L'import fusionne avec les données existantes.</p>
+    <div class="btn-row">
+      <button class="btn-cancel" onclick="closeModal('modal-io')">Fermer</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+/* ══════════════════════════════════════════
+   LUPO PLANNER — Database (IndexedDB)
+   ══════════════════════════════════════════ */
+const DB = (() => {
+  const DB_NAME = 'lupo-planner';
+  const DB_VER = 1;
+  let db = null;
+
+  async function open() {
+    return new Promise((resolve, reject) => {
+      const req = indexedDB.open(DB_NAME, DB_VER);
+      req.onupgradeneeded = (e) => {
+        const d = e.target.result;
+        if (!d.objectStoreNames.contains('spots')) {
+          const s = d.createObjectStore('spots', { keyPath: 'id' });
+          s.createIndex('country', 'country', { unique: false });
+          s.createIndex('type', 'type', { unique: false });
+          s.createIndex('favorite', 'favorite', { unique: false });
+        }
+        if (!d.objectStoreNames.contains('roadtrips')) {
+          d.createObjectStore('roadtrips', { keyPath: 'id' });
+        }
+      };
+      req.onsuccess = (e) => { db = e.target.result; resolve(db); };
+      req.onerror = () => reject(req.error);
+    });
+  }
+
+  async function getAll(store) {
+    return new Promise((resolve) => {
+      const tx = db.transaction(store, 'readonly');
+      const req = tx.objectStore(store).getAll();
+      req.onsuccess = () => resolve(req.result || []);
+    });
+  }
+
+  async function put(store, obj) {
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(store, 'readwrite');
+      tx.objectStore(store).put(obj);
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+    });
+  }
+
+  async function remove(store, id) {
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(store, 'readwrite');
+      tx.objectStore(store).delete(id);
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+    });
+  }
+
+  function uid() { return crypto.randomUUID(); }
+
+  return { open, getAll, put, remove, uid };
+})();
+
+/* ══════════════════════════════════════════
+   LUPO PLANNER — Map
+   ══════════════════════════════════════════ */
+const MapCtrl = (() => {
+  let map;
+  let markers = [];
+  let clickHandler = null;
+
+  const TYPE_COLORS = {
+    sauvage: '#e94560', prive: '#f0a500', camping_isole: '#4ecca3',
+    camping: '#a0a0b0', aire: '#5dade2'
+  };
+
+  const COUNTRY_CENTERS = {
+    FR: [46.6, 2.2], ES: [40.4, -3.7], IT: [42.8, 12.5],
+    DE: [51.1, 10.4], BE: [50.5, 4.5], NL: [52.2, 5.3]
+  };
+
+  function init() {
+    map = L.map('map', { zoomControl: true, attributionControl: false }).setView([47.5, 5.0], 6);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+    }).addTo(map);
+
+    map.on('click', (e) => {
+      if (clickHandler) clickHandler(e.latlng);
+    });
+  }
+
+  function onMapClick(fn) { clickHandler = fn; }
+
+  function clearMarkers() {
+    // markers.forEach(m => map.removeLayer(m));
+    markers = [];
+  }
+
+  function showSpots(spots) {
+    // Clear existing
+    map.eachLayer(l => { if (l instanceof L.Marker || l instanceof L.CircleMarker) map.removeLayer(l); });
+    markers = [];
+
+    spots.forEach(s => {
+      const color = TYPE_COLORS[s.type] || '#a0a0b0';
+      const icon = L.divIcon({
+        className: 'custom-marker',
+        html: `<div style="background:${color}; width:22px; height:22px; border-radius:50%; border:2px solid white; box-shadow:0 1px 5px rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center; font-size:10px;">${emojiForType(s.type)}</div>`,
+        iconSize: [22, 22],
+        iconAnchor: [11, 11],
+        popupAnchor: [0, -11]
+      });
+      const marker = L.marker([s.lat, s.lng], { icon }).addTo(map);
+      marker.bindPopup(`<b>${s.name}</b><br><small>${typeLabel(s.type)} · ${countryFlag(s.country)}</small><br><small style="color:#888">${s.lat.toFixed(5)}, ${s.lng.toFixed(5)}</small>`);
+      marker.spotId = s.id;
+      markers.push(marker);
+    });
+
+    if (spots.length > 0 && spots.length <= 20) {
+      const bounds = spots.map(s => [s.lat, s.lng]);
+      map.fitBounds(bounds, { padding: [40, 40], maxZoom: 14 });
+    }
+  }
+
+  function flyTo(lat, lng) {
+    map.flyTo([lat, lng], 15, { duration: 1 });
+  }
+
+  function emojiForType(t) {
+    const m = { sauvage: '🏕', prive: '🧑‍🌾', camping_isole: '🌲', camping: '⛺', aire: '🅿️' };
+    return m[t] || '📍';
+  }
+
+  function typeLabel(t) {
+    const m = { sauvage: 'Sauvage', prive: 'Privé/Ferme', camping_isole: 'Camping isolé', camping: 'Camping', aire: 'Aire' };
+    return m[t] || t;
+  }
+
+  function countryFlag(c) {
+    const m = { FR: '🇫🇷', ES: '🇪🇸', IT: '🇮🇹', DE: '🇩🇪', BE: '🇧🇪', NL: '🇳🇱' };
+    return m[c] || c;
+  }
+
+  return { init, showSpots, flyTo, onMapClick, clearMarkers, emojiForType, typeLabel, countryFlag };
+})();
+
+/* ══════════════════════════════════════════
+   LUPO PLANNER — App Controller
+   ══════════════════════════════════════════ */
+const App = (() => {
+  let spots = [];
+  let roadtrips = [];
+  let editingId = null;
+  let mapClickMode = false;
+
+  async function init() {
+    await DB.open();
+    MapCtrl.init();
+    await loadData();
+    renderAll();
+
+    // Map click for add spot
+    MapCtrl.onMapClick((latlng) => {
+      if (document.getElementById('modal-spot').classList.contains('active') && !editingId) {
+        document.getElementById('spot-lat').value = latlng.lat.toFixed(6);
+        document.getElementById('spot-lng').value = latlng.lng.toFixed(6);
+        toast('Coordonnées ajoutées !');
+      }
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal('modal-spot');
+        closeModal('modal-roadtrip');
+        closeModal('modal-io');
+      }
+    });
+  }
+
+  async function loadData() {
+    spots = await DB.getAll('spots');
+    roadtrips = await DB.getAll('roadtrips');
+    spots.sort((a, b) => b.createdAt - a.createdAt);
+  }
+
+  function renderAll() {
+    renderSpotList();
+    renderRoadtripList();
+    renderMap();
+  }
+
+  /* ── Spots ── */
+  function renderSpotList(filteredSpots = null) {
+    const data = filteredSpots || spots;
+    const el = document.getElementById('spot-list');
+    if (data.length === 0) {
+      el.innerHTML = `<div class="empty-state"><div class="icon">🐺</div><p>Pas encore de spots.</p><p style="font-size:0.8rem;">Clique sur <strong>+</strong> pour ajouter ton premier spot, ou sur la carte.</p></div>`;
+      return;
+    }
+    el.innerHTML = data.map(s => `
+      <div class="spot-item ${s.visited ? 'visited' : ''}" style="border-left-color: ${prioColor(s.type)}" onclick="App.focusSpot('${s.id}')">
+        <div class="prio-dot" style="background:${prioColor(s.type)}" title="${MapCtrl.typeLabel(s.type)}"></div>
+        <div class="info">
+          <div class="name">${MapCtrl.emojiForType(s.type)} ${escHtml(s.name)}</div>
+          <div class="meta">${MapCtrl.typeLabel(s.type)} · ${MapCtrl.countryFlag(s.country)} · ${s.source || 'autre'}</div>
+        </div>
+        <div class="actions" onclick="event.stopPropagation()">
+          <button class="${s.favorite ? 'fav' : ''}" onclick="App.toggleFav('${s.id}')">${s.favorite ? '★' : '☆'}</button>
+          <button onclick="App.editSpot('${s.id}')">✏️</button>
+          <button onclick="App.deleteSpot('${s.id}')">🗑</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function filterSpots() {
+    const country = document.getElementById('filter-country').value;
+    const type = document.getElementById('filter-type').value;
+    const search = document.getElementById('filter-search').value.toLowerCase();
+    let filtered = spots;
+    if (country) filtered = filtered.filter(s => s.country === country);
+    if (type) filtered = filtered.filter(s => s.type === type);
+    if (search) filtered = filtered.filter(s => s.name.toLowerCase().includes(search) || (s.notes || '').toLowerCase().includes(search));
+    renderSpotList(filtered);
+  }
+
+  function focusSpot(id) {
+    const s = spots.find(sp => sp.id === id);
+    if (!s) return;
+    MapCtrl.flyTo(s.lat, s.lng);
+    document.getElementById('sidebar').classList.remove('hidden');
+  }
+
+  async function toggleFav(id) {
+    const s = spots.find(sp => sp.id === id);
+    if (!s) return;
+    s.favorite = !s.favorite;
+    await DB.put('spots', s);
+    await loadData();
+    renderAll();
+  }
+
+  function openAddSpot() {
+    editingId = null;
+    document.getElementById('modal-title').textContent = 'Ajouter un spot';
+    document.getElementById('spot-id').value = '';
+    document.getElementById('spot-name').value = '';
+    document.getElementById('spot-lat').value = '';
+    document.getElementById('spot-lng').value = '';
+    document.getElementById('spot-notes').value = '';
+    document.getElementById('spot-type').value = 'sauvage';
+    document.getElementById('spot-country').value = 'FR';
+    document.getElementById('spot-source').value = 'other';
+    document.getElementById('modal-spot').classList.add('active');
+    mapClickMode = true;
+  }
+
+  function editSpot(id) {
+    const s = spots.find(sp => sp.id === id);
+    if (!s) return;
+    editingId = id;
+    document.getElementById('modal-title').textContent = 'Modifier le spot';
+    document.getElementById('spot-id').value = s.id;
+    document.getElementById('spot-name').value = s.name;
+    document.getElementById('spot-lat').value = s.lat;
+    document.getElementById('spot-lng').value = s.lng;
+    document.getElementById('spot-notes').value = s.notes || '';
+    document.getElementById('spot-type').value = s.type;
+    document.getElementById('spot-country').value = s.country;
+    document.getElementById('spot-source').value = s.source || 'other';
+    document.getElementById('modal-spot').classList.add('active');
+  }
+
+  async function saveSpot() {
+    const id = document.getElementById('spot-id').value || DB.uid();
+    const name = document.getElementById('spot-name').value.trim();
+    const lat = parseFloat(document.getElementById('spot-lat').value);
+    const lng = parseFloat(document.getElementById('spot-lng').value);
+    if (!name || isNaN(lat) || isNaN(lng)) { toast('⚠️ Nom et coordonnées requis'); return; }
+
+    const spot = {
+      id,
+      name,
+      lat, lng,
+      type: document.getElementById('spot-type').value,
+      country: document.getElementById('spot-country').value,
+      source: document.getElementById('spot-source').value,
+      notes: document.getElementById('spot-notes').value.trim(),
+      visited: editingId ? (spots.find(s => s.id === editingId) || {}).visited || false : false,
+      favorite: editingId ? (spots.find(s => s.id === editingId) || {}).favorite || false : false,
+      createdAt: editingId ? (spots.find(s => s.id === editingId) || {}).createdAt : Date.now()
+    };
+
+    await DB.put('spots', spot);
+    await loadData();
+    renderAll();
+    closeModal('modal-spot');
+    toast(editingId ? 'Spot modifié ✓' : 'Spot ajouté ✓');
+    editingId = null;
+    mapClickMode = false;
+  }
+
+  async function deleteSpot(id) {
+    if (!confirm('Supprimer ce spot ?')) return;
+    // Also remove from roadtrips
+    for (const rt of roadtrips) {
+      rt.spotIds = (rt.spotIds || []).filter(sid => sid !== id);
+      await DB.put('roadtrips', rt);
+    }
+    await DB.remove('spots', id);
+    await loadData();
+    renderAll();
+    toast('Spot supprimé');
+  }
+
+  /* ── Roadtrips ── */
+  function renderRoadtripList() {
+    const el = document.getElementById('roadtrip-list');
+    if (roadtrips.length === 0) {
+      el.innerHTML = `<div class="empty-state"><div class="icon">🗺️</div><p>Pas encore de roadtrip.</p></div>`;
+      return;
+    }
+    el.innerHTML = roadtrips.map(rt => `
+      <div class="roadtrip-item">
+        <div class="rt-name">${escHtml(rt.name)}</div>
+        <div class="rt-count">${(rt.spotIds || []).length} spots</div>
+        <div style="margin-top:4px; display:flex; gap:4px;">
+          <button style="font-size:0.7rem; padding:2px 8px; background:var(--accent2); color:var(--text); border:none; border-radius:4px; cursor:pointer;" onclick="App.viewRoadtrip('${rt.id}')">Voir</button>
+          <button style="font-size:0.7rem; padding:2px 8px; background:var(--surface2); color:var(--text); border:none; border-radius:4px; cursor:pointer;" onclick="App.editRoadtrip('${rt.id}')">✏️</button>
+          <button style="font-size:0.7rem; padding:2px 8px; background:var(--surface2); color:var(--warning); border:none; border-radius:4px; cursor:pointer;" onclick="App.deleteRoadtrip('${rt.id}')">🗑</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  async function viewRoadtrip(id) {
+    const rt = roadtrips.find(r => r.id === id);
+    if (!rt) return;
+    const rtSpots = (rt.spotIds || []).map(sid => spots.find(s => s.id === sid)).filter(Boolean);
+    renderSpotList(rtSpots);
+    MapCtrl.showSpots(rtSpots);
+    switchTab('spots');
+    document.getElementById('sidebar').classList.remove('hidden');
+  }
+
+  function newRoadtrip() {
+    document.getElementById('rt-modal-title').textContent = 'Nouveau roadtrip';
+    document.getElementById('rt-id').value = '';
+    document.getElementById('rt-name').value = '';
+    renderRoadtripSpotPicker([]);
+    document.getElementById('modal-roadtrip').classList.add('active');
+  }
+
+  function editRoadtrip(id) {
+    const rt = roadtrips.find(r => r.id === id);
+    if (!rt) return;
+    document.getElementById('rt-modal-title').textContent = 'Modifier le roadtrip';
+    document.getElementById('rt-id').value = rt.id;
+    document.getElementById('rt-name').value = rt.name;
+    renderRoadtripSpotPicker(rt.spotIds || []);
+    document.getElementById('modal-roadtrip').classList.add('active');
+  }
+
+  function renderRoadtripSpotPicker(selectedIds) {
+    const el = document.getElementById('rt-spot-picker');
+    el.innerHTML = spots.map(s => `
+      <div class="spot-item" style="cursor:pointer;" onclick="App.toggleRoadtripSpot(this, '${s.id}')">
+        <input type="checkbox" ${selectedIds.includes(s.id) ? 'checked' : ''} style="pointer-events:none;">
+        <div class="info"><div class="name">${escHtml(s.name)}</div><div class="meta">${MapCtrl.typeLabel(s.type)} · ${MapCtrl.countryFlag(s.country)}</div></div>
+      </div>
+    `).join('');
+    el.dataset.selected = JSON.stringify(selectedIds);
+  }
+
+  function toggleRoadtripSpot(el, spotId) {
+    let selected = JSON.parse(el.parentElement.dataset.selected || '[]');
+    const cb = el.querySelector('input[type=checkbox]');
+    if (selected.includes(spotId)) {
+      selected = selected.filter(id => id !== spotId);
+      cb.checked = false;
+    } else {
+      selected.push(spotId);
+      cb.checked = true;
+    }
+    el.parentElement.dataset.selected = JSON.stringify(selected);
+  }
+
+  async function saveRoadtrip() {
+    const id = document.getElementById('rt-id').value || DB.uid();
+    const name = document.getElementById('rt-name').value.trim();
+    if (!name) { toast('⚠️ Nom requis'); return; }
+    const selected = JSON.parse(document.getElementById('rt-spot-picker').dataset.selected || '[]');
+
+    const rt = { id, name, spotIds: selected, createdAt: Date.now() };
+    await DB.put('roadtrips', rt);
+    await loadData();
+    renderAll();
+    closeModal('modal-roadtrip');
+    toast('Roadtrip sauvegardé ✓');
+  }
+
+  async function deleteRoadtrip(id) {
+    if (!confirm('Supprimer ce roadtrip ?')) return;
+    await DB.remove('roadtrips', id);
+    await loadData();
+    renderAll();
+    toast('Roadtrip supprimé');
+  }
+
+  /* ── Map ── */
+  function renderMap() {
+    MapCtrl.showSpots(spots);
+  }
+
+  /* ── Import/Export ── */
+  function showImportExport() {
+    document.getElementById('modal-io').classList.add('active');
+  }
+
+  function exportData() {
+    const data = { version: 1, exportedAt: new Date().toISOString(), spots, roadtrips };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `lupo-planner-${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    toast('Exporté ✓');
+  }
+
+  async function importData(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    try {
+      const text = await file.text();
+      const data = JSON.parse(text);
+      let count = 0;
+      if (data.spots && Array.isArray(data.spots)) {
+        for (const s of data.spots) { await DB.put('spots', s); count++; }
+      }
+      if (data.roadtrips && Array.isArray(data.roadtrips)) {
+        for (const rt of data.roadtrips) { await DB.put('roadtrips', rt); }
+      }
+      await loadData();
+      renderAll();
+      toast(`${count} spots importés ✓`);
+    } catch (e) {
+      toast('⚠️ Fichier invalide');
+    }
+    event.target.value = '';
+    closeModal('modal-io');
+  }
+
+  /* ── UI helpers ── */
+  function switchTab(tab) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelector(`.tab:nth-child(${tab === 'spots' ? 1 : 2})`).classList.add('active');
+    document.getElementById(`tab-${tab}`).classList.add('active');
+    if (tab === 'spots') renderSpotList();
+    if (tab === 'roadtrips') renderRoadtripList();
+  }
+
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('hidden');
+    setTimeout(() => map.invalidateSize(), 300);
+  }
+
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('active');
+    editingId = null;
+    mapClickMode = false;
+  }
+
+  function prioColor(type) {
+    const m = { sauvage: '#e94560', prive: '#f0a500', camping_isole: '#4ecca3', camping: '#a0a0b0', aire: '#5dade2' };
+    return m[type] || '#a0a0b0';
+  }
+
+  function escHtml(s) {
+    const d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+  function toast(msg) {
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 2000);
+  }
+
+  return {
+    init, focusSpot, toggleFav, openAddSpot, editSpot, saveSpot, deleteSpot,
+    filterSpots, viewRoadtrip, newRoadtrip, editRoadtrip, deleteRoadtrip, saveRoadtrip,
+    toggleRoadtripSpot, showImportExport, exportData, importData,
+    switchTab, toggleSidebar, closeModal
+  };
+})();
+
+// Expose to global scope for onclick handlers
+window.App = App;
+window.filterSpots = App.filterSpots;
+window.switchTab = App.switchTab;
+window.toggleSidebar = App.toggleSidebar;
+window.openAddSpot = App.openAddSpot;
+window.closeModal = App.closeModal;
+window.saveSpot = App.saveSpot;
+window.saveRoadtrip = App.saveRoadtrip;
+window.newRoadtrip = App.newRoadtrip;
+window.showImportExport = App.showImportExport;
+window.exportData = App.exportData;
+window.importData = App.importData;
+
+// Boot
+document.addEventListener('DOMContentLoaded', () => App.init());
+
+// Register service worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+</script>
+</body>
+</html>

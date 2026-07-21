@@ -1,0 +1,9 @@
+{
+  "broker": {"host": "192.168.129.31", "port": 1883, "username": "jchavaux", "password": "Dobby2026!"},
+  "device": {"identifiers": ["esneux"], "name": "Esneux", "manufacturer": "PKA_JCH"},
+  "source_topic": "esneux/iphone",
+  "sensors": [
+    {"key": "pressure", "name": "Esneux Pression Atmosphérique", "unit": "hPa", "state_topic": "esneux/iphone/pressure"},
+    {"key": "relativeAltitude", "name": "Esneux Altitude Relative", "unit": "m", "state_topic": "esneux/iphone/altitude"}
+  ]
+}

@@ -1,0 +1,42 @@
+[whisper-server] Starting on port 4444, model=base
+ * Serving Flask app 'whisper-server'
+ * Debug mode: off
+[whisper-server] Starting on port 4444, model=base
+ * Serving Flask app 'whisper-server'
+ * Debug mode: off
+[whisper-server] Loading model 'base'...
+[whisper-server] Model 'base' loaded.
+ * Serving Flask app 'whisper-server'
+ * Debug mode: off
+ * Serving Flask app 'whisper-server'
+ * Debug mode: off
+ * Serving Flask app 'whisper-server'
+ * Debug mode: off
+ * Serving Flask app 'whisper-server'
+ * Debug mode: off
+ * Serving Flask app 'whisper-server'
+ * Debug mode: off
+ * Serving Flask app 'whisper-server'
+ * Debug mode: off
+ * Serving Flask app 'whisper-server'
+ * Debug mode: off
+ * Serving Flask app 'whisper-server'
+ * Debug mode: off
+ * Serving Flask app 'whisper-server'
+ * Debug mode: off
+ * Serving Flask app 'whisper-server'
+ * Debug mode: off
+ * Serving Flask app 'whisper-server'
+ * Debug mode: off
+ * Serving Flask app 'whisper-server'
+ * Debug mode: off
+ * Serving Flask app 'whisper-server'
+ * Debug mode: off
+ * Serving Flask app 'whisper-server'
+ * Debug mode: off
+ * Serving Flask app 'whisper-server'
+ * Debug mode: off
+ * Serving Flask app 'whisper-server'
+ * Debug mode: off
+ * Serving Flask app 'whisper-server'
+ * Debug mode: off

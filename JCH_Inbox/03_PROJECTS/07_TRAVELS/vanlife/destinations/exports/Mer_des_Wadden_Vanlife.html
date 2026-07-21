@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title>Mer des Wadden — Vanlife · 25–29 juin 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" /><style>  :root { --ivoire: #F8F5F0; --noir: #0D0B09; --ocre: #C17F3A; --sable: #E8E2DA; --sable-fonce: #D4CCC2; --ardoise: #4A5568; --gris: #6B7280; --mer: #2563EB; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--ivoire); color: var(--noir); font-family: 'Inter', -apple-system, sans-serif; font-size: 15px; line-height: 1.6; padding: 16px 14px; -webkit-text-size-adjust: 100%; }
+  h1, h2, h3, th { font-family: 'Inter', -apple-system, sans-serif; font-weight: 700; }
+  h1 { font-size: 24px; color: var(--ocre); margin-bottom: 4px; }
+  h2 { font-size: 13px; color: var(--ocre); margin: 24px 0 8px 0; padding-bottom: 3px; border-bottom: 2px solid var(--sable); text-transform: uppercase; letter-spacing: 0.05em; }
+  h3 { font-size: 12px; color: var(--ardoise); margin: 12px 0 4px 0; font-weight: 600; }
+  .km, .price { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ardoise); }
+  .header { margin-bottom: 14px; padding-bottom: 10px; border-bottom: 3px solid var(--ocre); }
+  .header-meta { font-size: 11px; color: var(--gris); margin-top: 4px; }
+  .status { display: inline-block; background: var(--ocre); color: #fff; padding: 2px 10px; font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+  .tagline { font-weight: 400; color: var(--gris); font-size: 13px; }
+  .card { background: var(--sable); padding: 10px 14px; margin: 8px 0; font-size: 13px; }
+  .card-flex { background: var(--sable); padding: 10px 14px; margin: 8px 0; font-size: 13px; }
+  .card-flex p { margin: 4px 0; }
+  .rules { background: var(--sable); padding: 10px 12px; margin: 8px 0; font-size: 12px; border-left: 4px solid var(--ocre); line-height: 1.7; }
+  .rules strong { color: var(--ocre); }
+  .table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 8px 0 12px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 11px; min-width: 500px; }
+  th { background: var(--sable-fonce); color: var(--noir); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; padding: 8px 8px; text-align: left; white-space: nowrap; }
+  td { padding: 7px 8px; border-bottom: 1px solid var(--sable); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  .planning td:first-child { font-weight: 600; color: var(--ocre); white-space: nowrap; font-family: 'IBM Plex Mono', monospace; font-size: 11px; }
+  .meal { font-size: 10px; color: var(--ardoise); }
+  .link a { color: var(--ocre); text-decoration: none; font-size: 14px; padding: 4px 8px; display: inline-block; }
+  .lodging { font-weight: 700; color: var(--noir); }
+  .bird { background: #F0F7FF; border-left: 4px solid #2563EB; padding: 10px 12px; margin: 8px 0; font-size: 12px; line-height: 1.7; }
+  .flex { display: flex; gap: 12px; flex-wrap: wrap; }
+  .col { flex: 1; min-width: 200px; }
+  .text-right { text-align: right; }
+  .map-container { height: 280px; margin: 10px 0; border: 2px solid var(--sable); position: relative; z-index: 1; }
+  .footer { margin-top: 20px; padding-top: 10px; border-top: 1px solid var(--sable); font-size: 10px; color: var(--ardoise); display: flex; justify-content: space-between; }
+  .alt-box { background: #FFFBF0; border: 1px dashed var(--ocre); padding: 10px 12px; margin: 8px 0; font-size: 12px; }
+  .alt-box strong { color: var(--ocre); }
+</style></head><body>
+
+<div class="header">
+  <div class="status">⏳ Confirmé</div>
+  <h1>Mer des Wadden · Vanlife</h1>
+  <div class="tagline">Namur → Lelystad → Friedrichskoog → Liège · 25–29 juin 2026</div>
+  <div class="header-meta">4 jours / 3 nuits · ~1 100 km aller-retour · Cigogne 🦩 + JCH</div>
+</div>
+
+<div class="map-container" id="map">
+  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 280'%3E%3Crect fill='%23E8E2DA' width='800' height='280'/%3E%3Ctext x='400' y='140' text-anchor='middle' fill='%236B7280' font-family='Inter' font-size='14'%3E🗺️ Chargement carte…%3C/text%3E%3C/svg%3E" alt="Carte" style="width:100%;height:100%;object-fit:cover;">
+</div>
+
+<h2>📍 Itinéraire</h2>
+<div class="table-wrap"><table>
+<tr><th>Jour</th><th>Date</th><th>Trajet</th><th class="text-right">Km</th><th class="text-right">Temps</th></tr>
+<tr><td>J1</td><td>25 juin</td><td>Namur Ecolys → Lelystad (Uilenweg 11)</td><td class="km text-right">280</td><td class="km text-right">3h00</td></tr>
+<tr><td>J2</td><td>26 juin</td><td>Lelystad → Friedrichskoog (via Afsluitdijk, Groningen, Bremerhaven) ⚠️ flexible</td><td class="km text-right">420</td><td class="km text-right">4h30</td></tr>
+<tr><td>J3</td><td>27 juin</td><td>Journée complète Friedrichskoog — mer des Wadden</td><td class="km text-right">—</td><td class="km text-right">—</td></tr>
+<tr><td>J4</td><td>28 juin</td><td>Friedrichskoog → Liège</td><td class="km text-right">550</td><td class="km text-right">5h30</td></tr>
+<tr><td>J5</td><td>29 juin</td><td>Liège → Namur Ecolys (restitution véhicule)</td><td class="km text-right">65</td><td class="km text-right">50 min</td></tr>
+</table></div>
+
+<h2>🗓️ Planning détaillé</h2>
+<div class="table-wrap"><table class="planning">
+<tr><th>Jour</th><th>Matin</th><th>Après-midi</th><th>Soir</th><th>Nuit</th></tr>
+<tr><td>J1<br>jeu 25</td><td>—</td><td><span class="meal">🚐</span> <strong>15h00</strong> Départ Namur Ecolys<br>→ Liège → Maastricht → Eindhoven → Utrecht</td><td><span class="meal">🍽️</span> ~18h00 Arrivée Lelystad<br>Installation camping</td><td class="lodging">⬛ Lelystad<br><strong>Uilenweg 11</strong><br>8245 AB Lelystad</td></tr>
+<tr><td>J2<br>ven 26</td><td><span class="meal">🥐</span> <strong>9h00</strong> Départ Lelystad<br>Afsluitdijk — pause café<br>Centre d'information digue</td><td><span class="meal">🥪</span> Groningen → Oldenburg<br>→ Bremerhaven → Cuxhaven<br><em>⚠️ Arrêt flexible si fatigue</em></td><td><span class="meal">🍽️</span> Arrivée Friedrichskoog<br><strong>Süderdeich 4</strong><br>25718 Friedrichskoog</td><td class="lodging">⬛ Friedrichskoog<br><strong>Süderdeich 4</strong><br>(camping confirmé)</td></tr>
+<tr><td>J3<br>sam 27</td><td><span class="meal">🥐</span> Matinée mer des Wadden<br>Marée basse — Wattwanderung<br>Seehundstation Friedrichskoog</td><td><span class="meal">🥪</span> Friedrichskoog-Spitze<br>Spots ornitho (Trischen, Speicherkoog)<br>Plage Badestrand</td><td><span class="meal">🍽️</span> Fruits de mer régionaux<br>Coucher de soleil mer du Nord</td><td class="lodging">⬛ Friedrichskoog<br><strong>Süderdeich 4</strong><br>(nuit 2)</td></tr>
+<tr><td>J4<br>dim 28</td><td><span class="meal">🥐</span> <strong>9h00</strong> Départ Friedrichskoog<br>→ Hambourg (contournement)<br>→ Hanovre → Dortmund</td><td><span class="meal">🥪</span> → Köln → Aachen → Liège<br><span style="font-size:9px;color:var(--gris)">↗ 5h30</span></td><td><span class="meal">🍽️</span> Retour Liège</td><td class="lodging">⬛ Liège<br>Domicile</td></tr>
+<tr><td>J5<br>lun 29</td><td><span class="meal">🥐</span> Matinée Liège</td><td><span class="meal">🚐</span> Liège → Namur Ecolys<br>Restitution véhicule</td><td>—</td><td>—</td></tr>
+</table></div>
+
+<div class="alt-box">
+  <strong>⚠️ J2 — Alternative si trop long :</strong> Friedrichskoog est à ~420 km de Lelystad (~4h30 sans pauses). Si la journée est trop longue, possibilité de couper la route à :<br><br>
+  • <strong>Groningen</strong> (NL, ~160 km) — ville étudiante animée, canaux, camping Stadspark<br>
+  • <strong>Oldenburg</strong> (DE, ~280 km) — jolie ville hanséatique, camping au bord du Hunte<br>
+  • <strong>Bremerhaven</strong> (DE, ~370 km) — port, Klimahaus, Deutsches Auswandererhaus<br>
+  • <strong>Cuxhaven</strong> (DE, ~390 km) — déjà exploré dans le scout, Kugelbake, plages<br><br>
+  Dans ce cas, J3 = trajet jusqu'à Friedrichskoog le matin (~1h depuis Cuxhaven, ~2h depuis Bremerhaven).
+</div>
+
+<h2>🦅 Spots ornitho — Friedrichskoog &amp; Dithmarschen</h2>
+<div class="table-wrap"><table>
+<tr><th>Lieu</th><th>Espèces</th><th>Quand</th><th>Infos</th></tr>
+<tr><td><strong>Trischen</strong> — île aux oiseaux 🏝️</td><td>Sternes (colonnes importantes), goélands, eiders, tadornes</td><td>Observation depuis la digue (accès interdit — réserve)</td><td>Lunette indispensable. Accès visuel depuis Friedrichskoog-Spitze.</td></tr>
+<tr><td><strong>Meldorfer Speicherkoog</strong></td><td>Limicoles, canards, oies (halte migratoire), avocettes, spatules</td><td>Marée montante — les oiseaux se rapprochent</td><td>~15 km au nord de Friedrichskoog. Observatoire, sentiers digue.</td></tr>
+<tr><td><strong>Friedrichskoog-Spitze</strong></td><td>Seawatching : macreuses, eiders, sternes, fous de Bassan (passage)</td><td>Aube / crépuscule</td><td>Jetée panoramique, parking, resto. Vue mer du Nord + Trischen.</td></tr>
+<tr><td><strong>Dithmarscher Watt</strong></td><td>Bécasseaux, huîtriers, courlis, barges</td><td>Marée basse (vasières découvertes)</td><td>Wattwanderung guidée obligatoire (parc national).</td></tr>
+<tr><td><strong>Seehundstation Friedrichskoog</strong> 🦭</td><td>Phoques gris + veaux marins (centre de soins)</td><td>10h–17h</td><td>Centre de réhabilitation. Bassins de soins, exposition. Entrée ~10€.</td></tr>
+</table></div>
+
+<div class="bird"><strong>🌊 Contexte :</strong> Friedrichskoog est au cœur du <strong>Nationalpark Schleswig-Holsteinisches Wattenmeer</strong> (UNESCO). Fin juin = reproduction des sternes, arrivée des premiers migrateurs post-nuptiaux (limicoles). Marée basse = vasières à perte de vue. Emporter : <strong>lunette</strong>, trépied, répulsif moustiques, bottes pour la vase.</div>
+
+<h2>🏖️ Plages — Friedrichskoog &amp; environs</h2>
+<div class="table-wrap"><table>
+<tr><th>Plage</th><th>Type</th><th>Accès</th><th>Infos</th></tr>
+<tr><td><strong>Badestrand Friedrichskoog</strong></td><td>Sable fin, familiale</td><td>Parking direct, 5 min à pied</td><td>Baignade surveillée, strandkörbe, restaurant</td></tr>
+<tr><td><strong>Friedrichskoog-Spitze (Grünstrand)</strong></td><td>Sable + herbe, sauvage</td><td>Parking Spitze</td><td>Plus calme, chiens autorisés, vue Trischen</td></tr>
+<tr><td><strong>Büsum</strong> (~20 km N)</td><td>Sable fin, station balnéaire</td><td>Parking centre-ville</td><td>Perlebucht (piscine mer), port de pêche animé</td></tr>
+</table></div>
+
+<h2>📸 Spots photo — JCH</h2>
+<div class="table-wrap"><table>
+<tr><th>Lieu</th><th>Sujet</th><th>Heure</th><th>Notes</th></tr>
+<tr><td>Friedrichskoog-Spitze</td><td>Trischen au loin, vasières, ciel immense</td><td>Aube / Coucher</td><td>Grand angle + téléobjectif. La lumière rase sur les vasières est spectaculaire.</td></tr>
+<tr><td>Afsluitdijk</td><td>Oiseaux marins, digue infinie, mer des Wadden vs IJsselmeer</td><td>Matin J2</td><td>Pause café au Breezanddijk. Contraste saisissant entre les deux mers.</td></tr>
+<tr><td>Meldorfer Speicherkoog</td><td>Limicoles en vol, paysages de polder</td><td>Marée haute</td><td>Grands vols d'oiseaux, ciels dramatiques typiques de la mer du Nord.</td></tr>
+<tr><td>Dithmarscher Watt</td><td>Vasières à perte de vue, traces d'oiseaux, textures</td><td>Marée basse</td><td>Macro + grand angle. Motifs abstraits dans la vase.</td></tr>
+<tr><td>Seehundstation</td><td>Portraits de phoques, soigneurs</td><td>10h–17h</td><td>Téléobjectif. Bassins extérieurs, lumière naturelle.</td></tr>
+</table></div>
+
+<h2>Logistique</h2>
+<div class="table-wrap"><table>
+<tr><th>Stationnement</th><td>J1 : Camping Uilenweg 11, 8245 AB Lelystad. J2+J3 : Süderdeich 4, 25718 Friedrichskoog. J4 : Liège domicile.</td></tr>
+<tr><th>Services</th><td>Camping Lelystad : bornes, sanitaires. Friedrichskoog : camping Süderdeich, sanitaires sur place.</td></tr>
+<tr><th>Ferry Weser</th><td>Blexen → Bremerhaven (bac camping-car, ~45 min). Alternative : tunnel Weser (gratuit, +30 km).</td></tr>
+<tr><th>Retour</th><td>Friedrichskoog → Liège (~550 km, 5h30 via A23/A7/A1). Parking Liège à confirmer.</td></tr>
+<tr><th>Restitution</th><td>Lun 29 juin — Liège → Namur Ecolys (~65 km, 50 min).</td></tr>
+</table></div>
+
+<h2>Distances &amp; liens</h2>
+<div class="table-wrap"><table>
+<tr><th>Trajet</th><th class="text-right">Km</th><th class="text-right">Temps</th><th>Maps</th></tr>
+<tr><td>Namur Ecolys → Lelystad</td><td class="km text-right">280</td><td class="km text-right">3h00</td><td class="link"><a href="https://www.google.com/maps/dir/Namur/Lelystad" target="_blank">🔗</a></td></tr>
+<tr><td>Lelystad → Afsluitdijk → Groningen</td><td class="km text-right">160</td><td class="km text-right">1h50</td><td class="link"><a href="https://www.google.com/maps/dir/Lelystad/Groningen" target="_blank">🔗</a></td></tr>
+<tr><td>Groningen → Oldenburg → Bremerhaven</td><td class="km text-right">210</td><td class="km text-right">2h15</td><td class="link"><a href="https://www.google.com/maps/dir/Groningen/Bremerhaven" target="_blank">🔗</a></td></tr>
+<tr><td>Bremerhaven → Cuxhaven → Friedrichskoog</td><td class="km text-right">60</td><td class="km text-right">50 min</td><td class="link"><a href="https://www.google.com/maps/dir/Bremerhaven/Friedrichskoog" target="_blank">🔗</a></td></tr>
+<tr><td>Friedrichskoog → Liège</td><td class="km text-right">550</td><td class="km text-right">5h30</td><td class="link"><a href="https://www.google.com/maps/dir/Friedrichskoog/Liège" target="_blank">🔗</a></td></tr>
+<tr><td>Liège → Namur Ecolys</td><td class="km text-right">65</td><td class="km text-right">50 min</td><td class="link"><a href="https://www.google.com/maps/dir/Liège/Namur" target="_blank">🔗</a></td></tr>
+</table></div>
+
+<div class="card-flex">
+  <p><strong>🌡️ Météo fin juin — Friedrichskoog :</strong> 17–22°C, vent de mer fréquent. Possible pluie/averses (climat maritime). Prévoir veste imperméable + couche chaude pour les sorties aube/crépuscule.</p>
+  <p><strong>📻 Marées :</strong> Consulter <a href="https://www.bsh.de/DE/THEMEN/Wasserstand_und_Gezeiten/Vorhersagen/vorhersagen_node.html" target="_blank">BSH Gezeitenvorhersage</a> pour Friedrichskoog. Les Wattwanderungen se font uniquement à marée basse, avec guide.</p>
+  <p><strong>💰 Budget estimé :</strong> Campings ~25€/nuit × 3 = 75€. Carburant ~1 100 km × 10 L/100 km × 1.70€/L ≈ 185€. Repas, entrées, ferry Weser ~100€. <strong>Total ~360€.</strong></p>
+</div>
+
+<div class="footer"><span>Cigogne 🦩 · Vanlife Planner · PKA_JCH</span><span>Mis à jour 24 juin 2026 — briefing JCH</span></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function(){
+  var mapDiv = document.getElementById('map');
+  var staticImg = mapDiv.querySelector('img');
+  if (staticImg) staticImg.style.display = 'none';
+
+  var map = L.map('map').setView([52.3, 6.3], 7);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a>'
+  }).addTo(map);
+
+  var pts = [
+    // Départ / Arrivée
+    {lat:50.4850, lng:4.8057, label:'Namur Ecolys (départ J1)', type:'depart'},
+    {lat:50.6451, lng:5.5736, label:'Liège (arrivée J4)', type:'lodging'},
+    // J1
+    {lat:52.4860, lng:5.4162, label:'Lelystad — Camping Uilenweg 11', type:'lodging'},
+    // J2
+    {lat:53.0300, lng:5.2000, label:'Afsluitdijk (pause café)', type:'stop'},
+    {lat:53.2200, lng:6.5600, label:'Groningen (alt. stop J2)', type:'alt'},
+    {lat:53.1400, lng:8.2200, label:'Oldenburg (alt. stop J2)', type:'alt'},
+    {lat:53.5400, lng:8.5800, label:'Bremerhaven (alt. stop J2)', type:'alt'},
+    {lat:53.8614, lng:8.6897, label:'Cuxhaven (alt. stop J2)', type:'alt'},
+    {lat:54.0226, lng:8.8515, label:'Friedrichskoog — Süderdeich 4 ⛺', type:'lodging'},
+    // J3 — Friedrichskoog spots
+    {lat:54.0400, lng:8.8300, label:'Friedrichskoog-Spitze 🦅', type:'bird'},
+    {lat:54.0200, lng:8.8700, label:'Trischen (réserve oiseaux)', type:'bird'},
+    {lat:54.0500, lng:8.8100, label:'Badestrand', type:'stop'},
+    {lat:54.0800, lng:8.9500, label:'Meldorfer Speicherkoog', type:'bird'},
+  ];
+
+  // Route line — tracé réaliste complet
+  var routePts = [
+    // J1 — Namur → Lelystad
+    [50.4850, 4.8057],   // Namur Ecolys
+    [50.6451, 5.5736],   // Liège
+    [50.8500, 5.7000],   // Maastricht
+    [51.4400, 5.4800],   // Eindhoven
+    [51.9700, 5.2800],   // Utrecht
+    [52.3500, 5.3000],   // Almere
+    [52.4860, 5.4162],   // Lelystad — Uilenweg
+    // J2 — Lelystad → Friedrichskoog via Afsluitdijk
+    [52.6322, 5.4194],   // Houtribdijk
+    [52.8150, 5.1100],   // Den Oever (début Afsluitdijk)
+    [53.0300, 5.2000],   // Breezanddijk
+    [53.0900, 5.4400],   // Zurich (fin Afsluitdijk)
+    [53.2200, 6.5600],   // Groningen
+    [53.1700, 7.2000],   // Bad Nieuweschans (frontière)
+    [53.1400, 8.2200],   // Oldenburg
+    [53.5400, 8.5800],   // Bremerhaven
+    [53.8614, 8.6897],   // Cuxhaven
+    [54.0226, 8.8515],   // Friedrichskoog
+    // J4 — Friedrichskoog → Liège
+    [53.9000, 8.8000],   // Cuxhaven
+    [53.5500, 9.9900],   // Hambourg
+    [52.5200, 9.7400],   // Hanovre
+    [51.5100, 7.4600],   // Dortmund
+    [50.9400, 6.9600],   // Köln
+    [50.7700, 6.0800],   // Aachen
+    [50.6451, 5.5736],   // Liège
+    // J5 — Liège → Namur
+    [50.4850, 4.8057],   // Namur Ecolys
+  ];
+  L.polyline(routePts, {color: '#C17F3A', weight: 3, opacity: 0.8}).addTo(map);
+
+  pts.forEach(function(p) {
+    var isLodging = p.type === 'lodging';
+    var isBird = p.type === 'bird';
+    var isAlt = p.type === 'alt';
+    var isDepart = p.type === 'depart';
+
+    var color = isLodging ? '#0D0B09' : isBird ? '#2563EB' : isAlt ? '#C17F3A' : isDepart ? '#059669' : '#4A5568';
+    var fill = isLodging ? '#0D0B09' : isBird ? '#DBEAFE' : isAlt ? '#FEF3C7' : isDepart ? '#D1FAE5' : '#F8F5F0';
+    var radius = isLodging ? 8 : isBird ? 5 : isAlt ? 5 : isDepart ? 7 : 6;
+    var icon = isLodging ? ' ⛺' : isBird ? ' 🦅' : isAlt ? ' 🔄' : isDepart ? ' 🚐' : '';
+
+    L.circleMarker([p.lat, p.lng], {
+      radius: radius,
+      color: color,
+      fillColor: fill,
+      fillOpacity: 1,
+      weight: 2.5
+    }).addTo(map).bindPopup('<b>' + p.label + '</b>' + icon);
+  });
+
+  map.fitBounds(L.polyline(routePts).getBounds().pad(0.15));
+})();
+</script>
+
+</body></html>

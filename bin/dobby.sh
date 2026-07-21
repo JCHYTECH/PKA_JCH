@@ -109,6 +109,7 @@ case "$MODEL" in
     fi
     export DEEPSEEK_API_KEY="$(cat "$OPENROUTER_KEY_FILE")"
     export DEEPSEEK_BASE_URL="https://openrouter.ai/api/v1"
+    export PKA_PROVIDER="OpenRouter (DeepSeek V4 Flash)"
 
     export DEEPSEEK_MODEL="${DEEPSEEK_MODEL:-deepseek/deepseek-v4-flash}"
     echo "ℹ️  OpenRouter — multi-provider (DeepSeek, Anthropic, Qwen...)"
@@ -181,17 +182,67 @@ case "$MODEL" in
 
     ;;
 
+  glm5|glm)
+    OPENROUTER_KEY_FILE="$HOME/.config/pka-jch/openrouter_key.txt"
+    if [[ ! -f "$OPENROUTER_KEY_FILE" ]]; then
+      echo "❌ Clé OpenRouter introuvable : $OPENROUTER_KEY_FILE"
+      exit 1
+    fi
+    export DEEPSEEK_API_KEY="$(cat "$OPENROUTER_KEY_FILE")"
+    export DEEPSEEK_BASE_URL="https://openrouter.ai/api/v1"
+    export PKA_PROVIDER="OpenRouter → Z.ai GLM 5.2"
+    export DEEPSEEK_MODEL="z-ai/glm-5.2"
+    export PKA_POINTER="GLM.md"
+    echo "ℹ️  GLM 5.2 — Z.ai via OpenRouter"
+    echo "   Modèle : $DEEPSEEK_MODEL"
+    echo ""
+    exec $PYTHON "$PKA_DIR/scripts/deepseek_chat.py"
+    ;;
+
+  claude-or|claudeor)
+    OPENROUTER_KEY_FILE="$HOME/.config/pka-jch/openrouter_key.txt"
+    if [[ ! -f "$OPENROUTER_KEY_FILE" ]]; then
+      echo "❌ Clé OpenRouter introuvable : $OPENROUTER_KEY_FILE"
+      exit 1
+    fi
+    export DEEPSEEK_API_KEY="$(cat "$OPENROUTER_KEY_FILE")"
+    export DEEPSEEK_BASE_URL="https://openrouter.ai/api/v1"
+    export PKA_PROVIDER="OpenRouter → Anthropic Claude Sonnet 5"
+    export DEEPSEEK_MODEL="anthropic/claude-sonnet-5"
+    echo "ℹ️  Claude Sonnet 5 — via OpenRouter"
+    echo "   Modèle : $DEEPSEEK_MODEL"
+    echo ""
+    exec $PYTHON "$PKA_DIR/scripts/deepseek_chat.py"
+    ;;
+
+  chatgpt|gpt)
+    OPENROUTER_KEY_FILE="$HOME/.config/pka-jch/openrouter_key.txt"
+    if [[ ! -f "$OPENROUTER_KEY_FILE" ]]; then
+      echo "❌ Clé OpenRouter introuvable : $OPENROUTER_KEY_FILE"
+      exit 1
+    fi
+    export DEEPSEEK_API_KEY="$(cat "$OPENROUTER_KEY_FILE")"
+    export DEEPSEEK_BASE_URL="https://openrouter.ai/api/v1"
+    export PKA_PROVIDER="OpenRouter → OpenAI ChatGPT"
+    export DEEPSEEK_MODEL="openai/gpt-chat-latest"
+    echo "ℹ️  ChatGPT — via OpenRouter"
+    echo "   Modèle : $DEEPSEEK_MODEL"
+    echo ""
+    exec $PYTHON "$PKA_DIR/scripts/deepseek_chat.py"
+    ;;
+
   *)
     echo "❌ Modèle inconnu : $MODEL"
     echo ""
     echo "Modèles disponibles :"
-    echo "  --model claude      Claude Code (Anthropic) — défaut"
-    echo "  --model codex       Codex CLI (OpenAI)"
+    echo "  --model openrouter  OpenRouter (multi-provider, pré-payé) — défaut"
+    echo "  --model glm5        GLM 5.2 (Z.ai via OpenRouter)"
+    echo "  --model kimi        Kimi K2.7 (API Moonshot)"
+    echo "  --model claude-or   Claude Sonnet 5 (via OpenRouter)"
+    echo "  --model chatgpt     ChatGPT (via OpenRouter)"
     echo "  --model gemini      Gemini CLI (Google)"
     echo "  --model deepseek    DeepSeek Chat (API)"
     echo "  --model deepseek-r1 DeepSeek Reasoner (API)"
-    echo "  --model openrouter  OpenRouter (multi-provider, pré-payé)"
-    echo "  --model kimi        Kimi K2.7 (API Moonshot directe)"
     echo "  --model gemma4      Gemma 4 local (Ollama)"
     echo "  --model qwen3       Qwen 3.6 local (Ollama)"
     exit 1

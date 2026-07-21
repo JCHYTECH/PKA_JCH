@@ -1,0 +1,17 @@
+homeassistant: true
+permit_join: true
+
+mqtt:
+  server: mqtt://host.docker.internal:1883
+  user: jchavaux
+  password: dobby
+
+serial:
+  port: tcp://host.docker.internal:6638
+  adapter: ember
+
+frontend:
+  port: 8080
+
+advanced:
+  channel: 15

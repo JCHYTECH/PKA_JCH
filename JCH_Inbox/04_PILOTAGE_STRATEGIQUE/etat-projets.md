@@ -1,27 +1,39 @@
 # État des projets — One-Pager
 > Tableau de bord unique de tous les projets actifs PKA_JCH.
-> Dernière mise à jour : 2026-06-19 par Dobby 🦉 — Réorganisation WildNexus
+> Dernière mise à jour : 2026-07-11 par Dobby 🦉 — Skill pka-thread-file terminé, IOT thread mis à jour post-stabilisation Lupo (deadline 7 août, arrivée Lupo). 6 projets gelés jusqu'à septembre.
 > 
-> **Lecture :** 🟢 = actif, 🟡 = en cours/ralenti, 🔴 = bloqué, ⚪ = veille
+> **Lecture :** 🔴 = P0 deadline dure, 🟢 = actif autonome, ⚪ = gelé/reporté
 
 ---
 
-## Projets actifs
+## 🔴 P0 — Deadline 7 août 2026 (arrivée Lupo)
 
-| # | Projet | Statut | Dernière action (date) | Prochaine étape | Blocage | Spécialiste(s) |
-|---|--------|--------|------------------------|-----------------|---------|----------------|
-| 1 | **WILDNEXUS** | 🟡 firmware | Réorganisation structurelle (19/06), Dataset jour prêt (51 img), Wokwi OK | Test harness caméra (deadline 30/06) | OV5640 en transit, images IR attendues de Belgique | Forge, Nova, Fourmi, Araignée, Chouette |
-| 2 | **ARTEON** | 🟢 actif | Éval Argus phase 0.3 — 81% acceptation (14/06) | Phase 0.4 — déploiement éditorial | — | Argus, Vega, Miel |
-| 3 | **IOT / Domotique** | 🟡 déploiement | Docker restart policy corrigé (16/06), Zigbee opérationnel | Reproduire config Docker sur RPi | RPi à configurer | Forge, Araignée |
-| 4 | **PHOTO_NATURE** | 🟢 actif | Analyses photo en cours | — | — | Lynx, Nova, Héron |
-| 5 | **PHOTO_AI_JURY** | 🟢 actif | argus_critique.db actif, prompt mis à jour (14/06) | Prochaine fournée d'analyses | — | Argus |
-| 6 | **VETALYX** | ⚪ veille | Rapport Vasco + pacte fondateurs 25/25/25/25 | Roadmap 2026 | — | Vasco, Hermine |
-| 7 | **AI_IT_TOOLS** | 🟢 actif | P0-P2 terminés (19/06) | Maintenance : accumulation Honcho/Nudge → skills auto | — | Dobby, Forge |
-| 8 | **TRAVELS** | 🟡 planification | NotebookLM préparé (06/06) | Planification saison | — | Cigogne |
-| 9 | **FUTURE_INVEST** | ⚪ veille | — | — | — | Bruno, Sigma |
-| 10 | **InsectNet** | 🟡 pipeline | Plan migration M5→M1 (14/06), xcapi validé | Exécuter migration M1 | Accès M1 au dépôt PKA (rsync) | Clio, Musaraigne |
-| 11 | **NEXUS_ACOUSTIC** | ⚪ P1 deferred | Extrait de WildNexus (19/06), Document Unique de Projet existant, BirdNET analysé | Roadmap P1 : stations RPi + API backend | WildNexus P0 doit être livré d'abord | Clio, Chouette, Musaraigne |
-| 12 | **FAUNE_AUTOUR** | ⚪ gelé | Extrait de WildNexus (19/06), PWA source conservée | — | Projet gelé | — |
+| # | Projet | Statut | Dernière action | Prochaine étape | Blocage | Spécialiste(s) |
+|---|--------|--------|-----------------|-----------------|---------|----------------|
+| 1 | **IOT / Vanlife** | 🔴 P0 | RPi 5 assemblé (SSD + UPS HAT + accus 18650), Mouser reçu, Sonde TL-136 reçue, Step-Down HW-133 reçu, ADS1115×6 reçus | Mise en boîtier X1201-C1 + silentblocs + coating + PV PI HAT + config HA finale + commander capteurs Zigbee + préparer install Lupo | — | Forge, Araignée, Dobby |
+
+---
+
+## 🟢 P1 — Actifs autonomes (pas de charge JC)
+
+| # | Projet | Statut | Dernière action | Prochaine étape | Spécialiste(s) |
+|---|--------|--------|-----------------|-----------------|----------------|
+| 2 | **PHOTO_NATURE** | 🟢 autonome | INDEX à jour (02/07), keyworder fonctionnel, 11 presets Argus | — (tourne seul) | Lynx, Nova, Héron |
+| 3 | **PHOTO_AI_JURY** | 🟢 autonome | argus_critique.db actif (58 analyses), prompt calibré (14/06) | Activer MCP Lightroom (30 min JC) | Argus |
+| 4 | **AI_IT_TOOLS** | 🟢 autonome | P0-P2 terminés (19/06), hub OpenRouter restructuré (01/07) | ✅ Skill pka-thread-file terminé (10/07), 10 thread files créés. IOT mis à jour 11/07. | Dobby, Forge |
+
+---
+
+## ⚪ Gelés — Reprise septembre 2026 (post-van)
+
+| # | Projet | Statut | Raison du gel | Reprise prévue |
+|---|--------|--------|---------------|----------------|
+| 5 | **WILDNEXUS** | ⚪ gelé | Hardware reçu, mais bench loop = temps long. Septembre idéal. | Septembre |
+| 6 | **ARTEON + WildLens** | ⚪ gelé | Relance éditoriale exige créativité JC, pas le moment | Septembre |
+| 7 | **InsectNet** | ⚪ gelé | Migration M1 non urgente | Septembre |
+| 8 | **TRAVELS** | ⚪ gelé | Docs créées (apps-roadtrip, Lupo Planner PWA). Planif voyage = en roulant en août. | En roulant (août) |
+| 9 | **VETALYX** | ⚪ gelé | En veille depuis juin | Septembre |
+| 10 | **NEXUS_ACOUSTIC** | ⚪ gelé | Dépend de WildNexus P0 | Post-WildNexus |
 
 ---
 
@@ -30,7 +42,9 @@
 | Projet | Statut | Note |
 |--------|--------|------|
 | WILDMESH | ⚪ gelé | Réseau LoRa mesh — en attente de maturité WildNexus |
+| FUTURE_INVEST | ⚪ gelé | Archivé le 2026-06-23 — Freeze décidé par JC |
 | Maison off-grid | ⚪ concept | 60 m² bois sur 9 000 m² — phase concept uniquement |
+| FAUNE_AUTOUR | ⚪ gelé | PWA extraite dans PHOTO_NATURE — gelée |
 
 ---
 
@@ -38,14 +52,32 @@
 
 | Indicateur | Valeur |
 |------------|--------|
-| Projets actifs | 12 (dont 2 extraits le 19/06) |
-| 🟢 Plein régime | 4 (ARTEON, PHOTO_NATURE, PHOTO_AI_JURY, AI_IT_TOOLS) |
-| 🟡 En cours | 4 (WILDNEXUS, IOT, TRAVELS, InsectNet) |
-| ⚪ Veille / Deferred | 4 (VETALYX, FUTURE_INVEST, NEXUS_ACOUSTIC, FAUNE_AUTOUR) |
-| 🔴 Bloqué | 0 |
-| Prochaine échéance | 30 juin — test harness caméra WildNexus (reporté, attente IR Belgique) |
+| Projets totaux | 10 |
+| 🔴 P0 (deadline dure) | 1 — IOT/Vanlife |
+| 🟢 P1 (autonome) | 3 — PHOTO_NATURE, PHOTO_AI_JURY, AI_IT_TOOLS |
+| ⚪ Gelés | 6 — WILDNEXUS, ARTEON, InsectNet, TRAVELS, VETALYX, NEXUS_ACOUSTIC |
+| Prochaine échéance | **7 août 2026** — arrivée Lupo, IOT doit être prêt |
+| Prochaine échéance secondaire | ✅ Terminé — skill pka-thread-file livré le 11/07 |
 
 ---
+
+## Relations inter-projets photo
+
+```
+PHOTO_NATURE (terrain, technique, keyworder)
+        │
+        │ photos brutes + presets Argus
+        ▼
+PHOTO_AI_JURY (moteur IA Argus — 58 analyses, MCP LR)
+        │
+        │ rapports PDF + presets XMP + conseil papier
+        ▼
+ARTEON (shop + marque + L'Instant Lu)
+        │
+        │ acquisition
+        ▼
+WildLens (journal hebdomadaire — tête du funnel)
+```
 
 *Mise à jour par Dobby 🦉 à chaque changement d'état d'un projet.
 Source : MEMORY.md, TEAM_Inbox/, 03_PROJECTS/, kanban.*

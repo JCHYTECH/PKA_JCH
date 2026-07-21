@@ -1,0 +1,42 @@
+2026/07/01 17:26:09 socat[25203] E parseopts_table(): unknown option "b115200"
+2026/07/01 17:27:52 socat[26309] E parseopts_table(): unknown option "b115200"
+2026/07/01 17:28:41 socat[26789] E parseopts_table(): unknown option "b115200"
+2026/07/01 17:29:05 socat[26924] E parseopts_table(): unknown option "b115200"
+2026/07/01 17:29:47 socat[27387] E parseopts_table(): unknown option "b115200"
+2026/07/01 17:31:20 socat[14001] W exiting on signal 15
+Exception in thread Thread-3 (forward):
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jchavauxm5/PKA_JCH/_local/serial_bridge.py", line 18, in forward
+    data = src.recv(4096)
+           ^^^^^^^^
+AttributeError: 'Serial' object has no attribute 'recv'
+Exception in thread Thread-6 (forward):
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jchavauxm5/PKA_JCH/_local/serial_bridge.py", line 18, in forward
+    data = src.recv(4096)
+           ^^^^^^^^
+AttributeError: 'Serial' object has no attribute 'recv'
+Exception in thread Thread-9 (forward):
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jchavauxm5/PKA_JCH/_local/serial_bridge.py", line 18, in forward
+    data = src.recv(4096)
+           ^^^^^^^^
+AttributeError: 'Serial' object has no attribute 'recv'

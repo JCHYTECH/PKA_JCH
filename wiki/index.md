@@ -2,7 +2,7 @@
 
 > Catalogue auto-maintenu du wiki PKA.  
 > Dobby met à jour ce fichier à chaque session.  
-> Dernière mise à jour : 2026-06-13  
+> Dernière mise à jour : 2026-06-22  
 > Pattern : LLM Wiki (Karpathy, 2026) — [[Knowledge/AI-Tools/LLM Wiki — Karpathy pattern|document source]]
 
 ---
@@ -22,7 +22,7 @@
 | # | Domaine | Chemin | Description | Pages |
 |---|---------|--------|-------------|:-----:|
 | 01 | 🤖 AI & Outils | `AI-Tools/` | Outils IA, glossaire, patterns LLM | 2 |
-| 02 | 🗓️ Journal | `Daily/YYYY/MM/` | Notes quotidiennes — YYYY-MM-DD-slug.md | 121 |
+| 02 | 🗓️ Journal | `Daily/YYYY/MM/` | Notes quotidiennes — YYYY-MM-DD-slug.md | 122 |
 | 03 | 📋 SOPs | `SOPs/` | Procédures pas-à-pas | 7 |
 | 04 | 🔄 Workstreams | `Workstreams/` | Orchestrations récurrentes multi-spécialistes | 1 |
 | 05 | 📐 Guidelines | `Guidelines/` | Référentiels statiques partagés | 4 |
@@ -87,9 +87,9 @@
 
 ## Statistiques
 
-- Daily notes : 130 (dernière : 2026-06-20 — diagnostic MacFUSE, zombies SSHFS tués, script mount corrigé)
+- Daily notes : 133 (dernière : 2026-06-23 — refonte protocole mémoire Dobby, 7 améliorations bootstrap)
 - SOPs : 7 — Workstreams : 1 — Guidelines : 4
 - Articles knowledge : 2 (AI-Tools)
-- Log système : actif depuis 2026-05-03 (178+ entrées, format structuré depuis 2026-06-13)
+- Log système : actif depuis 2026-05-03 (180+ entrées, format structuré depuis 2026-06-13)
 
-*Mis à jour par Dobby à chaque session. Dernière mise à jour : 2026-06-15.*
+*Mis à jour par Dobby à chaque session. Dernière mise à jour : 2026-06-23.*

@@ -73,7 +73,7 @@ Pour chaque fichier :
 | `manifeste`, `brand`, `identite` | dossier projet correspondant + `/docs/` |
 | `mouser`, `digikey`, `order`, `commande`, `facture` | Identifier le projet (si WildNexus → `03_WILDNEXUS/06_COMPONENTS/`, sinon dossier projet principal) |
 | `.DS_Store`, `Thumbs.db` | Ignorer (fichiers système) |
-| Déjà dans `.processed/` | Ignorer (déjà traité) |
+| Déjà traité (dans MEMORY.md) | Ignorer (déjà traité) |
 | Inconnu | Demander confirmation avant de déplacer |
 
 ### 4. Déplacer le fichier

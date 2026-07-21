@@ -1,7 +1,7 @@
 # WildNexus — Document Fondateur
 
-**Version :** v0.2 DRAFT
-**Date :** 2026-05-17
+**Version :** v0.3
+**Date :** 2026-07-03
 **Statut :** DRAFT — Pour validation JCH
 **Rédigé par :** [[Dobby]] 🦉 — orchestration et consolidation documentaire PKA_JCH
 **Propriétaire :** Jean-Claude Havaux — JCHYTECH
@@ -10,32 +10,42 @@
 
 ## Table des matières & responsabilités par section
 
-| § | Section | Agents concernés | Rôle |
-|---|---------|-----------------|------|
-| 1 | Carte d'identité | JCH · [[Dobby]] | Propriétaire · Orchestration |
-| 2 | Contexte et origine | JCH | Source narrative — non délégable |
-| 3 | Vision et ambition | JCH · wildnexus-program-manager-system-architect | Vision (JCH) · Cohérence scope P0/P1/P2 |
-| 4 | Rationale stratégique | wildnexus-program-manager-system-architect · wildnexus-scientific-advisor · [[Furet]] | Arbitrage · Positionnement scientifique · Analyse concurrents |
-| 5 | Non-négociables | JCH · [[Renard]] · conseil [[Pi]] externe si nécessaire | Validation obligatoire JCH · Clauses contractuelles et licence ([[Renard]]) · Compatibilité brevets/FTO |
-| 6 | Objectifs | wildnexus-program-manager-system-architect · tous agents domaine | Scoping P0/P1/P2 · Vérification faisabilité par domaine |
-| 7 | État de l'art | wildnexus-scientific-advisor · [[Furet]] · wildnexus-edge-ai-cv | Standards scientifiques · Recherche concurrents · IA existante |
-| 8 | Méthodologie | wildnexus-program-manager-system-architect · wildnexus-firmware-ulp · wildnexus-camera-imaging · wildnexus-hardware-physical · wildnexus-rf-propagation · wildnexus-edge-ai-cv · wildnexus-bioacoustics-dsp | Arbitrage système · Plateforme embarquée · Capteur/IR · Enclos · Énergie · Radio · IA · Acoustique |
-| 9 | Propriété intellectuelle | [[Renard]] · JCH · conseil [[Pi]] externe si nécessaire | Contrats et licences · Validation stratégie · Appui FTO/brevets |
-| 10 | Work packages | wildnexus-program-manager-system-architect · tous agents domaine | Séquençage · Livrables et jalons par domaine |
-| 11 | Plan de validation | wildnexus-scientific-advisor · wildnexus-firmware-ulp · wildnexus-camera-imaging · wildnexus-hardware-physical | Standards mesure · Plateforme · Image · Enclos · Énergie |
-| 12 | Registre des risques | wildnexus-program-manager-system-architect · tous agents domaine | Identification · Mitigation par domaine |
-| 13 | Budget | JCH · [[Bruno]] | Décision financement · Analyse ressources |
-| 14 | Outputs et impact | wildnexus-scientific-advisor · wildnexus-program-manager-system-architect · [[Miel]] | Valeur scientifique · Scope · Communauté |
-| 15 | Conditions de sortie | JCH · wildnexus-program-manager-system-architect | Décision finale · Arbitrage technique |
+| § | Section                    | Agents concernés                                                                                                                                                                                                 | Rôle                                                                                                        |
+| -- | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| 1  | Carte d'identité          | JCH ·[[Dobby]]                                                                                                                                                                                                            | Propriétaire · Orchestration                                                                               |
+| 2  | Contexte et origine        | JCH                                                                                                                                                                                                               | Source narrative — non délégable                                                                          |
+| 3  | Vision et ambition         | JCH · wildnexus-program-manager-system-architect                                                                                                                                                                 | Vision (JCH) · Cohérence scope P0/P1/P2                                                                    |
+| 4  | Rationale stratégique     | wildnexus-program-manager-system-architect · wildnexus-scientific-advisor ·[[Furet]]                                                                                                                                     | Arbitrage · Positionnement scientifique · Analyse concurrents                                              |
+| 5  | Non-négociables           | JCH ·[[Renard]] · conseil [[Pi]] externe si nécessaire                                                                                                                                                                         | Validation obligatoire JCH · Clauses contractuelles et licence ([[Renard]]) · Compatibilité brevets/FTO             |
+| 6  | Objectifs                  | wildnexus-program-manager-system-architect · tous agents domaine                                                                                                                                                 | Scoping P0/P1/P2 · Vérification faisabilité par domaine                                                   |
+| 7  | État de l'art             | wildnexus-scientific-advisor ·[[Furet]] · wildnexus-edge-ai-cv                                                                                                                                                           | Standards scientifiques · Recherche concurrents · IA existante                                             |
+| 8  | Méthodologie              | wildnexus-program-manager-system-architect · wildnexus-firmware-ulp · wildnexus-camera-imaging · wildnexus-hardware-physical · wildnexus-rf-propagation · wildnexus-edge-ai-cv · wildnexus-bioacoustics-dsp | Arbitrage système · Plateforme embarquée · Capteur/IR · Enclos · Énergie · Radio · IA · Acoustique |
+| 9  | Propriété intellectuelle | [[Renard]] · JCH · conseil [[Pi]] externe si nécessaire                                                                                                                                                                        | Contrats et licences · Validation stratégie · Appui FTO/brevets                                           |
+| 10 | Work packages              | wildnexus-program-manager-system-architect · tous agents domaine                                                                                                                                                 | Séquençage · Livrables et jalons par domaine                                                              |
+| 11 | Plan de validation         | wildnexus-scientific-advisor · wildnexus-firmware-ulp · wildnexus-camera-imaging · wildnexus-hardware-physical                                                                                                 | Standards mesure · Plateforme · Image · Enclos · Énergie                                                |
+| 12 | Registre des risques       | wildnexus-program-manager-system-architect · tous agents domaine                                                                                                                                                 | Identification · Mitigation par domaine                                                                     |
+| 13 | Budget                     | JCH ·[[Bruno]]                                                                                                                                                                                                            | Décision financement · Analyse ressources                                                                  |
+| 14 | Outputs et impact          | wildnexus-scientific-advisor · wildnexus-program-manager-system-architect ·[[Miel]]                                                                                                                                     | Valeur scientifique · Scope · Communauté                                                                  |
+| 15 | Conditions de sortie       | JCH · wildnexus-program-manager-system-architect                                                                                                                                                                 | Décision finale · Arbitrage technique                                                                      |
 
 **Légende :** JCH est validateur obligatoire de §2, §3, §5, §9, §13, §15 — ces sections ne sont pas gelées sans sa confirmation explicite.
 
 **Jalons P0 :** M-01 Architecture gelée → M-02 Prototype banc → M-03 EVT validé → M-04 Open source publié
 
-**Sections à affiner après actions en cours :**
-- §7 : T01.1 analyse comparative concurrents
-- §9 : [[Renard]] — arbitrage licence + politique contractuelle d'usage
-- §11 : seuils quantitatifs à confirmer après T01.3 (RF) et T01.4 (caméra)
+| Jalon          | Statut        | Date         | Détail                                                    |
+| -------------- | ------------- | ------------ | ---------------------------------------------------------- |
+| **M-01** | ✅ Complété | Mai 2026     | Architecture gelée, 16 ADRs, composants sélectionnés    |
+| **M-02** | 🟡 En cours   | Juillet 2026 | htaoloplaSOPs A-C ✅, D-K en attente, SOP-07 LoRa bloquée |
+| **M-03** | ⏳ Planifié  | Q4 2026      | EVT terrain 30 jours — dépend de M-02                    |
+| **M-04** | ⏳ Planifié  | Q1 2027      | Publication open source                                    |
+
+**Documents liés :**
+
+- ADR Index : `02_DECISIONS/WILDNEXUS_ADR_INDEX.md` (16 ADRs, ADR-001 à ADR-016)
+- Protocoles : `03_P0_ENGINEERING/PROTOCOLES/progress.md`
+- Fiches produit : `09_PRODUCT_SHEETS/INDEX.md`
+- Executive Summary : `executive-summary.md`
+- Thread File : `thread-wildnexus.md`
 
 ---
 
@@ -44,18 +54,21 @@
 > **Lecture recommandée du document**
 > Ce document mélange volontairement quatre couches qui devront être séparées à terme : la doctrine fondatrice, le plan technique P0, la stratégie juridique/IP et la logique budgétaire. En `v0.2`, elles sont réunies pour conserver un point de vérité unique. En `v0.3+`, les annexes juridique et budgétaire pourront être détachées sans changer le fond des engagements.
 
-| Champ | Contenu |
-|-------|---------|
-| **Nom du projet** | WildNexus |
-| **Propriétaire** | Jean-Claude Havaux — JCHYTECH |
-| **Statut** | Actif — Phase P0 Design |
-| **Version document** | v0.2 DRAFT |
-| **Date** | 2026-05-17 |
-| **Rédigé par** | [[Dobby]] 🦉 — orchestration et consolidation documentaire PKA_JCH |
-| **Validé par** | JCH (en cours) |
-| **Définition du succès** | Un naturaliste amateur peut déployer seul un réseau de nœuds WildNexus sur sa zone d'observation, le laisser fonctionner six mois avec maintenance semestrielle planifiée, et recevoir des données suffisamment riches pour prendre des décisions concrètes de gestion ou de restauration de son territoire |
-| **Autonomie P0** | 60 jours sur batterie seule (minimum garanti) · 6 mois avec apport solaire + maintenance semestrielle planifiée (ambition produit) · 30 jours EVT terrain avec extrapolation (critère de validation P0) |
-| **Document dérivé synchronisé** | Résumé exécutif WildNexus — même version, audience externe |
+| Champ                                    | Contenu                                                                                                                                                                                                                                                                                                            |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Nom du projet**                  | WildNexus                                                                                                                                                                                                                                                                                                          |
+| **Propriétaire**                  | Jean-Claude Havaux — JCHYTECH                                                                                                                                                                                                                                                                                     |
+| **Statut**                         | Actif — Phase P0 Design                                                                                                                                                                                                                                                                                           |
+| **Version document**               | v0.3                                                                                                                                                                                                                                                                                                               |
+| **Date**                           | 2026-07-03                                                                                                                                                                                                                                                                                                         |
+| **Rédigé par**                   | [[Dobby]] 🦉 — orchestration et consolidation documentaire PKA_JCH                                                                                                                                                                                                                                                         |
+| **Validé par**                    | JCH (en cours)                                                                                                                                                                                                                                                                                                     |
+| **Définition du succès**         | Un naturaliste amateur peut déployer seul un réseau de nœuds WildNexus sur sa zone d'observation, le laisser fonctionner six mois avec maintenance semestrielle planifiée, et recevoir des données suffisamment riches pour prendre des décisions concrètes de gestion ou de restauration de son territoire |
+| **Autonomie P0**                   | 60 jours sur batterie seule (minimum garanti) · 6 mois avec apport solaire + maintenance semestrielle planifiée (ambition produit) · 30 jours EVT terrain avec extrapolation (critère de validation P0)                                                                                                        |
+| **Document dérivé synchronisé** | Résumé exécutif WildNexus — même version, audience externe (`executive-summary.md`)                                                                                                                                                                                                                         |
+| **Phase actuelle**                 | M-02 Prototype banc                                                                                                                                                                                                                                                                                                |
+| **Budget total P0**                | 1 000 € — dépensé ~380€, reste ~279€                                                                                                                                                                                                                                                                         |
+| **Marque**                         | WildNexus™ — JCHYTECH                                                                                                                                                                                                                                                                                            |
 
 ---
 
@@ -216,11 +229,12 @@ La licence WildNexus exclut contractuellement les usages contraires aux valeurs 
 
 **NN-07 — Autonomie terrain — hiérarchie des cibles**
 Trois cibles distinctes doivent être comprises séparément :
+
 - **P0 minimum garanti** : 60 jours sur batterie seule, sans apport solaire — plancher non compressible. Aucune feature P0 ne peut le franchir.
 - **Critère de validation P0** : 30 jours de mesure EVT terrain avec extrapolation à 60 jours — méthode de preuve, pas l'ambition.
 - **Ambition produit** : 6 mois avec apport solaire et maintenance semestrielle planifiée — cible commerciale, non engagée à P0.
-**Justification** : Confondre ces trois cibles produit des promesses non vérifiables ou des critères de validation irréalistes. Le plancher 60 jours batterie-seule est le seul engagement hard de P0.
-**Vérifiable par** : budget énergie validé par wildnexus-firmware-ulp et wildnexus-hardware-physical avant gel feature P0 ; mesure terrain EVT avec extrapolation documentée.
+  **Justification** : Confondre ces trois cibles produit des promesses non vérifiables ou des critères de validation irréalistes. Le plancher 60 jours batterie-seule est le seul engagement hard de P0.
+  **Vérifiable par** : budget énergie validé par wildnexus-firmware-ulp et wildnexus-hardware-physical avant gel feature P0 ; mesure terrain EVT avec extrapolation documentée.
 
 **NN-08 — Indépendance financière durant la phase de conception**
 Aucune dépendance à un financement externe n'est acceptée pendant la phase de conception et de développement P0.
@@ -306,17 +320,17 @@ RIOT OS, Moteino, TTN : couvrent la connectivité et le firmware. Ne traitent pa
 
 ### 7.2 Matrice de positionnement
 
-| Dimension | Pièges photos grand public | Systèmes connectés propriétaires | Monitoring institutionnel | WildNexus |
-|-----------|---------------------------|----------------------------------|--------------------------|-----------|
-| Connectivité longue portée sans opérateur | ✗ | ✗ | Partiel | ✅ |
-| Open hardware + software | ✗ | ✗ | Partiel | ✅ |
-| Extensibilité capteurs | ✗ | ✗ | ✗ | ✅ |
-| IA embarquée (edge) | ✗ | ✗ | Cloud uniquement | ✅ |
-| Reconnaissance individuelle / comportement | ✗ | ✗ | Cloud, cas par cas | P1 |
-| Prix accessible amateur | ✅ | ✅ | ✗ | ✅ |
-| Autonomie 6 mois sans intervention | Partiel | ✗ | Variable | ✅ |
-| Non-intrusion (zones de tranquillité) | ✗ | ✗ | ✗ | ✅ |
-| Communauté contributrice | ✗ | ✗ | Partiel | ✅ |
+| Dimension                                    | Pièges photos grand public | Systèmes connectés propriétaires | Monitoring institutionnel | WildNexus |
+| -------------------------------------------- | --------------------------- | ----------------------------------- | ------------------------- | --------- |
+| Connectivité longue portée sans opérateur | ✗                          | ✗                                  | Partiel                   | ✅        |
+| Open hardware + software                     | ✗                          | ✗                                  | Partiel                   | ✅        |
+| Extensibilité capteurs                      | ✗                          | ✗                                  | ✗                        | ✅        |
+| IA embarquée (edge)                         | ✗                          | ✗                                  | Cloud uniquement          | ✅        |
+| Reconnaissance individuelle / comportement   | ✗                          | ✗                                  | Cloud, cas par cas        | P1        |
+| Prix accessible amateur                      | ✅                          | ✅                                  | ✗                        | ✅        |
+| Autonomie 6 mois sans intervention           | Partiel                     | ✗                                  | Variable                  | ✅        |
+| Non-intrusion (zones de tranquillité)       | ✗                          | ✗                                  | ✗                        | ✅        |
+| Communauté contributrice                    | ✗                          | ✗                                  | Partiel                   | ✅        |
 
 ### 7.3 Contribution spécifique de WildNexus
 
@@ -336,11 +350,11 @@ WildNexus suit une méthodologie de développement itératif validé sur le terr
 
 WildNexus est une plateforme distribuée composée de trois types de nœuds distincts, maintenus séparés à P0 :
 
-| Nœud | Capteur primaire | Énergie | Rôle |
-|------|-----------------|---------|------|
-| Nœud caméra | PIR + capteur optique + IR | Batterie + solaire | Détection et capture d'événements faunistiques |
-| Nœud acoustique | Réseau microphones | Batterie + solaire | Acquisition audio planifiée — variante P1 |
-| Gateway | Concentrateur LPWAN | Solaire + filaire | Agrégation et backhaul |
+| Nœud            | Capteur primaire           | Énergie           | Rôle                                             |
+| ---------------- | -------------------------- | ------------------ | ------------------------------------------------- |
+| Nœud caméra    | PIR + capteur optique + IR | Batterie + solaire | Détection et capture d'événements faunistiques |
+| Nœud acoustique | Réseau microphones        | Batterie + solaire | Acquisition audio planifiée — variante P1       |
+| Gateway          | Concentrateur LPWAN        | Solaire + filaire  | Agrégation et backhaul                           |
 
 **Règle architecturale P0** : les nœuds caméra et acoustique sont des produits distincts. Leurs profils énergétiques, contraintes d'installation et exigences d'enclos sont incompatibles avec une conception unifiée optimisée. Une fusion est évaluée en P1 uniquement si les données terrain le justifient.
 
@@ -353,6 +367,7 @@ Standard longue portée basse consommation retenu pour le transport des événem
 Capteur CMOS haute sensibilité en faible luminosité, compatible imagerie IR nocturne. Le choix final est conditionné à la mesure empirique du temps de boot et du courant actif — les deux variables qui déterminent le budget énergie par événement.
 
 **IA embarquée — deux couches distinctes**
+
 - *Couche 1 — edge P0* : classificateur binaire (animal / non-animal) embarqué sur le nœud, sans connexion. Modèle quantisé, inférence < 200 ms. La classification d'espèces n'est PAS un objectif P0 engagé.
 - *Couche 2 — analytique P1* : classification d'espèces (embarquée ou hybride edge/cloud selon validation EVT), reconnaissance individuelle, analyse comportementale sur données accumulées.
 
@@ -371,17 +386,18 @@ PC/ABS stabilisé UV. Joint EPDM face seal. Fixation sangle cliquet + câble ant
 
 ### 8.5 Inconnues et méthode de résolution
 
-| Inconnue | Impact | Méthode | Jalon |
-|----------|--------|---------|-------|
-| Portée LPWAN réelle en forêt belge | Architecture réseau invalide | Campagne RF terrain T01.3 | M-01 |
-| Boot time caméra mesuré | Budget énergie incorrect | Benchmark module physique T01.4 | M-01 |
-| Faux positifs PIR en conditions réelles | Autonomie réelle < estimée | EVT terrain 30 jours | M-03 |
-| LiFePO4 < 0°C conditions hivernales | Autonomie hivernale non garantie | Test IEC 60068-2-1 | M-02 |
-| Adoption communautaire open source | Écosystème ne se développe pas | Publication précoce + canal actif dès P0 | M-04 |
+| Inconnue                                 | Impact                            | Méthode                                   | Jalon |
+| ---------------------------------------- | --------------------------------- | ------------------------------------------ | ----- |
+| Portée LPWAN réelle en forêt belge    | Architecture réseau invalide     | Campagne RF terrain T01.3                  | M-01  |
+| Boot time caméra mesuré                | Budget énergie incorrect         | Benchmark module physique T01.4            | M-01  |
+| Faux positifs PIR en conditions réelles | Autonomie réelle < estimée      | EVT terrain 30 jours                       | M-03  |
+| LiFePO4 < 0°C conditions hivernales     | Autonomie hivernale non garantie  | Test IEC 60068-2-1                         | M-02  |
+| Adoption communautaire open source       | Écosystème ne se développe pas | Publication précoce + canal actif dès P0 | M-04  |
 
 ### 8.6 Périmètre P0 — ce que P0 est et ce qu'il n'est pas
 
 P0 n'est pas une plateforme biodiversité complète. P0 est un nœud caméra déployable qui prouve :
+
 - Capture d'image autonome jour/nuit avec qualité utilisable
 - Filtrage binaire animal/non-animal embarqué
 - Transmission de métadonnées d'événement via LPWAN
@@ -390,6 +406,7 @@ P0 n'est pas une plateforme biodiversité complète. P0 est un nœud caméra dé
 - Reproductibilité open source par un tiers sans assistance
 
 **P0 exclut explicitement comme objectifs engagés :**
+
 - Classification d'espèces (P1)
 - Reconnaissance individuelle et analyse comportementale (P1)
 - Nœud acoustique (P1 — variante distincte)
@@ -402,20 +419,20 @@ P0 n'est pas une plateforme biodiversité complète. P0 est un nœud caméra dé
 
 Même si l'export Camtrap-DP est P1, le schéma de données P0 doit être conçu pour la compatibilité future. Chaque événement P0 enregistre au minimum :
 
-| Champ | Description |
-|-------|-------------|
-| `deviceID` | Identifiant unique du nœud |
-| `deploymentID` | Identifiant du déploiement (site + période) |
-| `timestamp` | Horodatage avec fuseau horaire (ISO 8601) |
-| `location` | Coordonnées GPS fixes ou déclarées à l'installation |
-| `triggerType` | PIR / scheduled / manual |
-| `illuminationMode` | IR 850nm / IR 940nm / visible / aucun |
-| `batteryVoltage` | Tension batterie au moment de l'événement (mV) |
-| `firmwareVersion` | Version du firmware actif |
-| `modelVersion` | Version du modèle IA embarqué |
-| `eventConfidence` | Score de confiance du classificateur binaire (0–1) |
-| `mediaPath` | Chemin relatif du fichier image sur SD |
-| `humanDetected` | Booléen — suppression activée si true (RGPD NN-09) |
+| Champ                | Description                                             |
+| -------------------- | ------------------------------------------------------- |
+| `deviceID`         | Identifiant unique du nœud                             |
+| `deploymentID`     | Identifiant du déploiement (site + période)           |
+| `timestamp`        | Horodatage avec fuseau horaire (ISO 8601)               |
+| `location`         | Coordonnées GPS fixes ou déclarées à l'installation |
+| `triggerType`      | PIR / scheduled / manual                                |
+| `illuminationMode` | IR 850nm / IR 940nm / visible / aucun                   |
+| `batteryVoltage`   | Tension batterie au moment de l'événement (mV)        |
+| `firmwareVersion`  | Version du firmware actif                               |
+| `modelVersion`     | Version du modèle IA embarqué                         |
+| `eventConfidence`  | Score de confiance du classificateur binaire (0–1)     |
+| `mediaPath`        | Chemin relatif du fichier image sur SD                  |
+| `humanDetected`    | Booléen — suppression activée si true (RGPD NN-09)   |
 
 Ce schéma est défini par wildnexus-scientific-advisor et freezé avant WP03 pour garantir la compatibilité Camtrap-DP en P1.
 
@@ -423,14 +440,14 @@ Ce schéma est défini par wildnexus-scientific-advisor et freezé avant WP03 po
 
 La sécurité est une spécification P0, pas une option P1. Les exigences minimales :
 
-| Domaine | Exigence |
-|---------|----------|
-| Firmware | Signature cryptographique de chaque image firmware ; boot refusé si signature invalide |
-| Mise à jour OTA | Canal chiffré ; rollback automatique si signature échoue |
-| Configuration BLE | Appairage avec authentification ; pas de configuration en clair non appairé |
-| Stockage SD | Chiffrement des images sensibles (humains détectés) ; clé dérivée du deviceID |
-| Clés | Stockage en zone sécurisée MCU (secure element ou eFuse) ; non extractibles |
-| Comportement anti-falsification | Log d'intégrité ; alerte transmission si falsification détectée |
+| Domaine                         | Exigence                                                                                |
+| ------------------------------- | --------------------------------------------------------------------------------------- |
+| Firmware                        | Signature cryptographique de chaque image firmware ; boot refusé si signature invalide |
+| Mise à jour OTA                | Canal chiffré ; rollback automatique si signature échoue                              |
+| Configuration BLE               | Appairage avec authentification ; pas de configuration en clair non appairé            |
+| Stockage SD                     | Chiffrement des images sensibles (humains détectés) ; clé dérivée du deviceID      |
+| Clés                           | Stockage en zone sécurisée MCU (secure element ou eFuse) ; non extractibles           |
+| Comportement anti-falsification | Log d'intégrité ; alerte transmission si falsification détectée                     |
 
 Owner : wildnexus-firmware-ulp (implémentation) + [[Renard]] (obligations légales et cohérence contractuelle).
 
@@ -448,23 +465,25 @@ Avant tout développement engageant sur les composants critiques, une analyse FT
 
 **Périmètre minimal de vérification :**
 
-| Domaine | Éléments à vérifier |
-|---------|---------------------|
-| Imagerie nocturne + IR | Déclenchement PIR + capture IR pulsée synchronisée |
-| IA embarquée faune | Classification d'espèces on-device, reconnaissance individuelle |
-| Communication LPWAN | Architecture réseau événementiel longue portée pour monitoring environnemental |
-| Enclos autonome terrain | Alimentation hybride batterie/solaire pour capteurs déployés |
+| Domaine                 | Éléments à vérifier                                                            |
+| ----------------------- | ---------------------------------------------------------------------------------- |
+| Imagerie nocturne + IR  | Déclenchement PIR + capture IR pulsée synchronisée                              |
+| IA embarquée faune     | Classification d'espèces on-device, reconnaissance individuelle                   |
+| Communication LPWAN     | Architecture réseau événementiel longue portée pour monitoring environnemental |
+| Enclos autonome terrain | Alimentation hybride batterie/solaire pour capteurs déployés                     |
 
 L'analyse FTO est un livrable de WP01, conduite avant M-01. Confiée à [[Renard]] avec appui cabinet spécialisé si nécessaire. Aucun composant litigieux n'est intégré sans avis FTO favorable ou contournement documenté.
 
 ### 9.3 Stratégie brevet — défensive et éthique
 
 **Ce que les brevets permettent :**
+
 - Accorder des licences conditionnelles aux valeurs du projet
 - Opposer juridiquement les clauses d'exclusion à des tiers
 - Protéger la communauté contre un rachat ou une appropriation fermante
 
 **Ce que les brevets ne visent pas :**
+
 - Bloquer des contributeurs conformes à la mission
 - Générer des revenus de licence comme modèle principal
 - Créer une barrière à l'entrée communautaire
@@ -483,6 +502,8 @@ L'analyse FTO est un livrable de WP01, conduite avant M-01. Confiée à [[Renard
 
 **[[Renard]]** pilote la rédaction contractuelle, la politique de diffusion, les accords partenaires et distributeurs, ainsi que la base légale RGPD liée aux usages terrain.
 
+**Statut au 2026-07-03** : modèle source-available en cours de formalisation. Licence duale AGPL v3 / commerciale retenue comme base de travail. Analyse FTO non encore livrée (WP01 partiellement complété).
+
 **Conseil [[Pi]] externe** : mobilisé si nécessaire pour T01.2, pour l'analyse FTO, la stratégie de dépôt défensif post-POC et la surveillance du portefeuille.
 
 **Partition claire** : [[Renard]] structure le dispositif juridique et contractuel ; le conseil [[Pi]] externe intervient comme expertise spécialisée sur les brevets et la FTO ; JCH valide toute décision qui modifie l'équilibre entre diffusion, exclusions d'usage et protection de la mission.
@@ -495,16 +516,19 @@ L'analyse FTO est un livrable de WP01, conduite avant M-01. Confiée à [[Renard
 
 *Les work packages couvrent la phase P0. P1 et P2 feront l'objet d'un addendum après M-04.*
 
-### WP01 — Conception & Architecture
+### WP01 — Conception & Architecture ✅
 
-| Champ | Contenu |
-|-------|---------|
-| **Objectif** | Geler l'architecture système P0 sur des bases vérifiées |
-| **Durée** | 2 mois |
-| **Dépendances** | Aucune |
-| **Owner** | JCH + wildnexus-program-manager-system-architect |
+**Statut M-02 (2026-07-03)** : M-01 atteint. Architecture gelée, ESP32-S3 retenu (ADR-001), OV5640 sélectionné (ADR-002), LoRa validé (ADR-003). T01.1 analyse concurrents partiellement complétée. T01.2 FTO non livrée. T01.3 mesures RF terrain non réalisées (module LoRa non commandé). T01.4 benchmark caméra complété via ADR-002. T01.5 MCU retenu : ESP32-S3-DevKitC-1 N16R8.
+
+| Champ                  | Contenu                                                    |
+| ---------------------- | ---------------------------------------------------------- |
+| **Objectif**     | Geler l'architecture système P0 sur des bases vérifiées |
+| **Durée**       | 2 mois                                                     |
+| **Dépendances** | Aucune                                                     |
+| **Owner**        | JCH + wildnexus-program-manager-system-architect           |
 
 **Tâches :**
+
 - T01.1 — Analyse comparative des spécifications concurrentes → tableau comparatif consolidé (calibration §6 et §11)
 - T01.2 — Analyse FTO sur composants critiques ([[Renard]])
 - T01.3 — Campagne mesures RF terrain : portée LPWAN réelle, sélection standard
@@ -517,16 +541,19 @@ L'analyse FTO est un livrable de WP01, conduite avant M-01. Confiée à [[Renard
 
 ---
 
-### WP02 — Hardware & Enclos
+### WP02 — Hardware & Enclos 🟡
 
-| Champ | Contenu |
-|-------|---------|
-| **Objectif** | Concevoir et fabriquer le premier prototype PCB fonctionnel en boîtier IP67 |
-| **Durée** | 3 mois |
-| **Dépendances** | M-01 |
-| **Owner** | wildnexus-hardware-physical + wildnexus-camera-imaging + wildnexus-firmware-ulp |
+**Statut M-02 (2026-07-03)** : Composants principaux reçus — ESP32-S3 ×2, ESP32-CAM ×6, OV5640 ×5, Mouser #39492997 (MEMS TDK×3, IR 940nm×10, PIR×2, Buck×10, BME688×2, SHT31×2, antennes, dissipateurs), MP1584 DC-DC ×5, Miuzei Starter Kit. PPK2 actif. Panier Mouser restant (~279€) incluant module LoRa — **non commandé, bloque SOP-07**. Test harness caméra dataset 51 images — deadline 15/07 (reporté par JC le 30/06). Wokwi simulation CI validée.
+
+| Champ                  | Contenu                                                                         |
+| ---------------------- | ------------------------------------------------------------------------------- |
+| **Objectif**     | Concevoir et fabriquer le premier prototype PCB fonctionnel en boîtier IP67    |
+| **Durée**       | 3 mois                                                                          |
+| **Dépendances** | M-01                                                                            |
+| **Owner**        | wildnexus-hardware-physical + wildnexus-camera-imaging + wildnexus-firmware-ulp |
 
 **Tâches :**
+
 - T02.1 — Schéma électronique : alimentation, rails caméra, IR pulsé, LPWAN, BLE, capteurs env.
 - T02.2 — Layout PCB : chemin IR LED synchronisé, power gate, antenne
 - T02.3 — CAO enclos : port optique, joint EPDM, fenêtre AR, fixation
@@ -539,16 +566,19 @@ L'analyse FTO est un livrable de WP01, conduite avant M-01. Confiée à [[Renard
 
 ---
 
-### WP03 — Firmware ULP
+### WP03 — Firmware ULP 🟡
 
-| Champ | Contenu |
-|-------|---------|
-| **Objectif** | Firmware P0 : veille, déclenchement, capture, IA binaire, transmission, OTA |
-| **Durée** | 3 mois (parallèle WP02) |
-| **Dépendances** | M-01 |
-| **Owner** | wildnexus-firmware-ulp |
+**Statut M-02 (2026-07-03)** : ADR-016 firmware intégré créé le 30/06. SOP-01 (ESP32 alive) ✅, SOP-02 (deep sleep) ✅, SOP-03 (PPK2 mesures) ✅. Firmware machine à états en développement. Pilote caméra, BMS/MPPT, BLE, OTA — en attente hardware.
+
+| Champ                  | Contenu                                                                      |
+| ---------------------- | ---------------------------------------------------------------------------- |
+| **Objectif**     | Firmware P0 : veille, déclenchement, capture, IA binaire, transmission, OTA |
+| **Durée**       | 3 mois (parallèle WP02)                                                     |
+| **Dépendances** | M-01                                                                         |
+| **Owner**        | wildnexus-firmware-ulp                                                       |
 
 **Tâches :**
+
 - T03.1 — Machine à états : sleep / wake / PIR / boot caméra / capture / inférence / transmit / sleep
 - T03.2 — Pilote caméra MIPI + power gate synchronisé
 - T03.3 — Gestion BMS + MPPT + undervoltage lockout hardware
@@ -559,16 +589,19 @@ L'analyse FTO est un livrable de WP01, conduite avant M-01. Confiée à [[Renard
 
 ---
 
-### WP04 — Edge AI
+### WP04 — Edge AI 🟡
 
-| Champ | Contenu |
-|-------|---------|
-| **Objectif** | Entraîner, quantiser et valider le classificateur binaire embarqué |
-| **Durée** | 2 mois (parallèle WP02/03) |
-| **Dépendances** | M-01 (MCU retenu) |
-| **Owner** | wildnexus-edge-ai-cv |
+**Statut M-02 (2026-07-03)** : ESP32-S3 sans NPU → stratégie FOMO via Edge Impulse comme baseline (ADR-007). Dataset caméra 51 images en cours de constitution (test harness, deadline 15/07). Modèle non entraîné. Pipeline PTQ birdnet-stm32 → FOMO documenté.
+
+| Champ                  | Contenu                                                              |
+| ---------------------- | -------------------------------------------------------------------- |
+| **Objectif**     | Entraîner, quantiser et valider le classificateur binaire embarqué |
+| **Durée**       | 2 mois (parallèle WP02/03)                                          |
+| **Dépendances** | M-01 (MCU retenu)                                                    |
+| **Owner**        | wildnexus-edge-ai-cv                                                 |
 
 **Tâches :**
+
 - T04.1 — Dataset images IR nocturnes faune belge
 - T04.2 — Entraînement et quantisation modèle binaire
 - T04.3 — Validation : taux détection, faux positifs, latence sur MCU cible
@@ -580,14 +613,15 @@ L'analyse FTO est un livrable de WP01, conduite avant M-01. Confiée à [[Renard
 
 ### WP05 — Validation terrain (EVT)
 
-| Champ | Contenu |
-|-------|---------|
-| **Objectif** | Valider le prototype P0 en conditions réelles, 30 jours minimum, site belge |
-| **Durée** | 2 mois |
-| **Dépendances** | M-02 |
-| **Owner** | JCH + wildnexus-scientific-advisor |
+| Champ                  | Contenu                                                                      |
+| ---------------------- | ---------------------------------------------------------------------------- |
+| **Objectif**     | Valider le prototype P0 en conditions réelles, 30 jours minimum, site belge |
+| **Durée**       | 2 mois                                                                       |
+| **Dépendances** | M-02                                                                         |
+| **Owner**        | JCH + wildnexus-scientific-advisor                                           |
 
 **Tâches :**
+
 - T05.1 — Sélection et préparation site EVT
 - T05.2 — Déploiement 3 nœuds (installation chronométrée, objectif < 30 min/nœud)
 - T05.3 — Monitoring continu 30 jours
@@ -602,14 +636,15 @@ L'analyse FTO est un livrable de WP01, conduite avant M-01. Confiée à [[Renard
 
 ### WP06 — Open source & Communauté
 
-| Champ | Contenu |
-|-------|---------|
-| **Objectif** | Publier le socle open source et amorcer l'engagement communautaire dès P0 |
-| **Durée** | Continu depuis M-01 |
-| **Dépendances** | D01.2 (FTO favorable avant publication) |
-| **Owner** | JCH + wildnexus-program-manager-system-architect |
+| Champ                  | Contenu                                                                    |
+| ---------------------- | -------------------------------------------------------------------------- |
+| **Objectif**     | Publier le socle open source et amorcer l'engagement communautaire dès P0 |
+| **Durée**       | Continu depuis M-01                                                        |
+| **Dépendances** | D01.2 (FTO favorable avant publication)                                    |
+| **Owner**        | JCH + wildnexus-program-manager-system-architect                           |
 
 **Tâches :**
+
 - T06.1 — Création dépôt public : firmware, schémas, BOM, documentation
 - T06.2 — Documentation contribution (CONTRIBUTING.md, interface capteur)
 - T06.3 — Canal communautaire (forum, Discord, ou équivalent)
@@ -639,26 +674,28 @@ Décision entrée P1
 
 ## 11. Plan de validation
 
-| Objectif | Critère de succès | Seuil | Méthode | Condition d'échec |
-|----------|------------------|-------|---------|-------------------|
-| OBJ-01 Autonomie | Courant moyen sur cycle complet | ≤ 33 mAh/jour | Mesure banc + extrapolation EVT | < 45 jours extrapolés → retour WP02/03 |
-| OBJ-01 Latence | PIR trigger → image capturée | < 600 ms | Chronométrage 50 événements labo | > 800 ms sur > 10 % → refonte power gate |
-| OBJ-01 Qualité image | Utilisable pour identification à 5 m | 70 % images jugées utilisables | 50 images EVT évaluées en aveugle | < 70 % → révision IR ou objectif |
-| OBJ-02 Classificateur | Détection animaux / faux positifs | Détection > 90 % / FP < 15 % | Test sur dataset EVT annoté | FP > 30 % → réentraînement |
-| OBJ-03 Étanchéité | Intégrité après immersion 30 min 1 m | Zéro infiltration | Test IEC 60529 IP67 sur 3 enclos | Infiltration → refonte joint |
-| OBJ-03 Durée vie matériaux | Absence dégradation après 3 mois EVT | Pas de fissure/déformation | Inspection visuelle post-EVT | Dégradation → changement grade |
-| OBJ-03 Installation solo | Déploiement par non-technicien | < 30 minutes/nœud | Test 3 profils non-techniciens | > 45 min ou erreur → révision doc |
-| OBJ-04 Open source | Compilable par tiers | Compilation sans assistance sur 3 env. | Test 3 développeurs externes naïfs | Échec → révision documentation |
-| OBJ-05 EVT | 3 nœuds actifs 30 jours continus | 0 défaillance critique, données ≥ 90 % | Log transmission + inspection J+30 | Perte > 20 % ou défaillance → M-03 bloqué |
-| OBJ-14 Non-intrusion | Interventions terrain hors déploiement | 0 intervention non planifiée sur 30 jours | Log incidents + journal terrain | Intervention < J+15 → autonomie/firmware insuffisant |
+**Note au 2026-07-03** : plan de validation théorique. Les seuils quantitatifs n'ont pas encore été confirmés par des mesures terrain. T01.3 (RF) non réalisé (module LoRa non commandé). T01.4 (caméra) partiellement complété via ADR-002.
+
+| Objectif                     | Critère de succès                     | Seuil                                      | Méthode                             | Condition d'échec                                    |
+| ---------------------------- | --------------------------------------- | ------------------------------------------ | ------------------------------------ | ----------------------------------------------------- |
+| OBJ-01 Autonomie             | Courant moyen sur cycle complet         | ≤ 33 mAh/jour                             | Mesure banc + extrapolation EVT      | < 45 jours extrapolés → retour WP02/03              |
+| OBJ-01 Latence               | PIR trigger → image capturée          | < 600 ms                                   | Chronométrage 50 événements labo  | > 800 ms sur > 10 % → refonte power gate             |
+| OBJ-01 Qualité image        | Utilisable pour identification à 5 m   | 70 % images jugées utilisables            | 50 images EVT évaluées en aveugle  | < 70 % → révision IR ou objectif                    |
+| OBJ-02 Classificateur        | Détection animaux / faux positifs      | Détection > 90 % / FP < 15 %              | Test sur dataset EVT annoté         | FP > 30 % → réentraînement                         |
+| OBJ-03 Étanchéité         | Intégrité après immersion 30 min 1 m | Zéro infiltration                         | Test IEC 60529 IP67 sur 3 enclos     | Infiltration → refonte joint                         |
+| OBJ-03 Durée vie matériaux | Absence dégradation après 3 mois EVT  | Pas de fissure/déformation                | Inspection visuelle post-EVT         | Dégradation → changement grade                      |
+| OBJ-03 Installation solo     | Déploiement par non-technicien         | < 30 minutes/nœud                         | Test 3 profils non-techniciens       | > 45 min ou erreur → révision doc                   |
+| OBJ-04 Open source           | Compilable par tiers                    | Compilation sans assistance sur 3 env.     | Test 3 développeurs externes naïfs | Échec → révision documentation                     |
+| OBJ-05 EVT                   | 3 nœuds actifs 30 jours continus       | 0 défaillance critique, données ≥ 90 %  | Log transmission + inspection J+30   | Perte > 20 % ou défaillance → M-03 bloqué          |
+| OBJ-14 Non-intrusion         | Interventions terrain hors déploiement | 0 intervention non planifiée sur 30 jours | Log incidents + journal terrain      | Intervention < J+15 → autonomie/firmware insuffisant |
 
 ### Validation standard LPWAN (T01.3)
 
-| Critère | Seuil | Méthode |
-|---------|-------|---------|
-| Portée forêt dense | ≥ 1 km avec gateway unique | Mesure RSSI sur parcours forestier balisé |
-| Consommation émission | Compatible 33 mAh/jour avec 48 événements/jour | Mesure courant pic + durée émission |
-| Conformité EU868 | Duty cycle respecté | Vérification firmware + calcul charge réseau |
+| Critère               | Seuil                                            | Méthode                                       |
+| ---------------------- | ------------------------------------------------ | ---------------------------------------------- |
+| Portée forêt dense   | ≥ 1 km avec gateway unique                      | Mesure RSSI sur parcours forestier balisé     |
+| Consommation émission | Compatible 33 mAh/jour avec 48 événements/jour | Mesure courant pic + durée émission          |
+| Conformité EU868      | Duty cycle respecté                             | Vérification firmware + calcul charge réseau |
 
 ---
 
@@ -668,41 +705,41 @@ Décision entrée P1
 
 ### Risques techniques
 
-| Risque | P | I | Mitigation | Fallback |
-|--------|---|---|-----------|---------|
-| Portée LPWAN insuffisante en forêt belge | M | H | Campagne RF terrain avant M-01 | Substitution standard ou gateway rapproché |
-| Boot time caméra > 600 ms | M | H | Benchmark empirique T01.4 avant gel | Module alternatif ; warm-standby partiel |
-| Autonomie < 60 jours conditions hivernales | M | H | Test LiFePO4 < 0°C avant EVT | Augmentation capacité batterie |
-| Faux positifs PIR > 30 % terrain | M | M | Classificateur IA comme second filtre | Ajustement seuil + réentraînement |
-| Infiltration enclos après 30 jours | L | H | Test IP67 systématique sur chaque lot | Refonte joint EPDM |
-| Consommation IA > budget énergie événement | L | M | Profiling énergie modèle quantisé avant intégration | Réduction complexité modèle |
+| Risque                                        | P | I | Mitigation                                              | Fallback                                    |
+| --------------------------------------------- | - | - | ------------------------------------------------------- | ------------------------------------------- |
+| Portée LPWAN insuffisante en forêt belge    | M | H | Campagne RF terrain avant M-01                          | Substitution standard ou gateway rapproché |
+| Boot time caméra > 600 ms                    | M | H | Benchmark empirique T01.4 avant gel                     | Module alternatif ; warm-standby partiel    |
+| Autonomie < 60 jours conditions hivernales    | M | H | Test LiFePO4 < 0°C avant EVT                           | Augmentation capacité batterie             |
+| Faux positifs PIR > 30 % terrain              | M | M | Classificateur IA comme second filtre                   | Ajustement seuil + réentraînement         |
+| Infiltration enclos après 30 jours           | L | H | Test IP67 systématique sur chaque lot                  | Refonte joint EPDM                          |
+| Consommation IA > budget énergie événement | L | M | Profiling énergie modèle quantisé avant intégration | Réduction complexité modèle              |
 
 ### Risques supply chain & ressources
 
-| Risque | P | I | Mitigation | Fallback |
-|--------|---|---|-----------|---------|
+| Risque                                         | P | I | Mitigation                                                   | Fallback                               |
+| ---------------------------------------------- | - | - | ------------------------------------------------------------ | -------------------------------------- |
 | Module caméra indisponible ou délai > 3 mois | L | H | Sourcing anticipé dès M-01 ; second fournisseur identifié | Module alternatif benchmarké en T01.4 |
-| Composants LPWAN en rupture | M | M | Stock précaution sur composants critiques | Standard alternatif évalué en T01.3 |
-| Dépassement budget WP02 | M | M | BOM chiffré avant fabrication | Réduction prototypes EVT |
+| Composants LPWAN en rupture                    | M | M | Stock précaution sur composants critiques                   | Standard alternatif évalué en T01.3  |
+| Dépassement budget WP02                       | M | M | BOM chiffré avant fabrication                               | Réduction prototypes EVT              |
 
 ### Risques timeline
 
-| Risque | P | I | Mitigation | Fallback |
-|--------|---|---|-----------|---------|
-| WP02 et WP03 non synchronisés à M-02 | M | M | Points synchronisation hebdomadaires | Firmware sur dev board si PCB retardé |
-| EVT retardé météo ou accès site | L | L | Site identifié et autorisé avant M-02 | Second site de secours |
-| FTO révèle brevet bloquant | L | H | FTO lancé en parallèle dès WP01 J+1 | Contournement technique ou dépôt défensif |
+| Risque                                 | P | I | Mitigation                              | Fallback                                     |
+| -------------------------------------- | - | - | --------------------------------------- | -------------------------------------------- |
+| WP02 et WP03 non synchronisés à M-02 | M | M | Points synchronisation hebdomadaires    | Firmware sur dev board si PCB retardé       |
+| EVT retardé météo ou accès site    | L | L | Site identifié et autorisé avant M-02 | Second site de secours                       |
+| FTO révèle brevet bloquant           | L | H | FTO lancé en parallèle dès WP01 J+1  | Contournement technique ou dépôt défensif |
 
 ### Risques externes & mission
 
-| Risque | P | I | Mitigation | Fallback |
-|--------|---|---|-----------|---------|
-| Dévoiement militaire ou para-militaire | L | H | Clause d'exclusion dans le dispositif juridique retenu dès D06.1 ; [[Renard]] + validation JCH | Révocation licence ou rupture contractuelle ; action juridique |
-| Appropriation open source refermée | M | M | Modèle de diffusion clarifié avant M-01 | Surveillance forks ; réaction communautaire |
-| Absence adoption communautaire | M | M | Canal actif avant publication ; EVT documenté ([[Miel]]) | Réseau bêta-testeurs naturalistes ciblés |
-| Concurrent direct open source avant M-04 | L | M | Publication anticipée dès FTO validé | Contribution au projet concurrent si supérieur |
-| Non-conformité RGPD (capture de personnes) | M | H | NN-09 : détection + suppression embarquée avant transmission ; signalétique EVT ; avis [[Renard]] | Désactivation transmission images jusqu'à conformité documentée |
-| Tension NN-02 / NN-05/06 non résolue avant publication | M | H | Arbitrage licence prioritaire avant M-01 | Publication différée jusqu'à arbitrage juridique documenté |
+| Risque                                                  | P | I | Mitigation                                                                                | Fallback                                                            |
+| ------------------------------------------------------- | - | - | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Dévoiement militaire ou para-militaire                 | L | H | Clause d'exclusion dans le dispositif juridique retenu dès D06.1 ;[[Renard]] + validation JCH      | Révocation licence ou rupture contractuelle ; action juridique     |
+| Appropriation open source refermée                     | M | M | Modèle de diffusion clarifié avant M-01                                                 | Surveillance forks ; réaction communautaire                        |
+| Absence adoption communautaire                          | M | M | Canal actif avant publication ; EVT documenté ([[Miel]])                                         | Réseau bêta-testeurs naturalistes ciblés                         |
+| Concurrent direct open source avant M-04                | L | M | Publication anticipée dès FTO validé                                                   | Contribution au projet concurrent si supérieur                     |
+| Non-conformité RGPD (capture de personnes)             | M | H | NN-09 : détection + suppression embarquée avant transmission ; signalétique EVT ; avis[[Renard]] | Désactivation transmission images jusqu'à conformité documentée |
+| Tension NN-02 / NN-05/06 non résolue avant publication | M | H | Arbitrage licence prioritaire avant M-01                                                  | Publication différée jusqu'à arbitrage juridique documenté      |
 
 ---
 
@@ -714,18 +751,18 @@ WildNexus est intégralement autofinancé par JCHYTECH durant la phase P0, confo
 
 ### 13.2 Logique de budget par work package
 
-| WP | Catégorie | Poste dominant | Ordre de grandeur |
-|----|-----------|----------------|------------------|
-| WP01 | Études & conseil | FTO ([[Renard]] + cabinet) + benchmark | Moyen |
-| WP02 | Hardware | Fabrication PCB + enclos prototype | Élevé |
-| WP03 | Développement | Temps JCH + outillage firmware | Faible |
-| WP04 | IA & données | Dataset + compute entraînement | Moyen |
-| WP05 | Terrain | Déplacement + site EVT + mesure | Faible |
-| WP06 | Communauté | Infrastructure dépôt + communication | Très faible |
+| WP   | Catégorie        | Poste dominant                         | Ordre de grandeur |
+| ---- | ----------------- | -------------------------------------- | ----------------- |
+| WP01 | Études & conseil | FTO ([[Renard]] + cabinet) + benchmark           | Moyen             |
+| WP02 | Hardware          | Fabrication PCB + enclos prototype     | Élevé           |
+| WP03 | Développement    | Temps JCH + outillage firmware         | Faible            |
+| WP04 | IA & données     | Dataset + compute entraînement        | Moyen             |
+| WP05 | Terrain           | Déplacement + site EVT + mesure       | Faible            |
+| WP06 | Communauté       | Infrastructure dépôt + communication | Très faible      |
 
 *Les montants précis sont définis dans le budget opérationnel JCHYTECH — document séparé, non inclus dans la bible publique.*
 
-> **Note v0.2** : La cible de 900 € TTC (NN-01) nécessite un modèle de coût lié pour être un engagement d'ingénierie plutôt qu'une valeur déclarative. Ce modèle sera produit après D02.2 (BOM WP02) et intégré en §13 v0.3 : BOM + assemblage + enclos + certification CE/RoHS + garantie + TVA + marge distribution + support.
+> **Note v0.3** : Budget M-02 actualisé — dépensé ~380€, reste ~279€ (panier Mouser LoRa + connectique). La cible de prix NN-01 (149-179€ FIELD, cf. fiches produit) nécessite un modèle de coût lié pour être un engagement d'ingénierie plutôt qu'une valeur déclarative. Ce modèle sera produit après D02.2 (BOM WP02) et intégré en §13 v0.4 : BOM + assemblage + enclos + certification CE/RoHS + garantie + TVA + marge distribution + support.
 
 ### 13.3 Budget minimum pour atteindre M-03
 
@@ -733,12 +770,12 @@ Le jalon critique est M-03 (EVT validé) — premier moment où WildNexus peut d
 
 ### 13.4 Ce qu'un investisseur post-POC débloque
 
-| Investissement | Ce que cela accélère |
-|---------------|---------------------|
-| Industrialisation enclos (injection) | Réduction coût unitaire série, DVT propre |
-| Dataset P1 (espèces, individus) | Classificateur espèces + reconnaissance individuelle |
-| Ressource développement communauté | Animation WP06, documentation, premiers partenariats |
-| Certification CE, RoHS | Condition de mise sur le marché européen |
+| Investissement                       | Ce que cela accélère                                |
+| ------------------------------------ | ----------------------------------------------------- |
+| Industrialisation enclos (injection) | Réduction coût unitaire série, DVT propre          |
+| Dataset P1 (espèces, individus)     | Classificateur espèces + reconnaissance individuelle |
+| Ressource développement communauté | Animation WP06, documentation, premiers partenariats  |
+| Certification CE, RoHS               | Condition de mise sur le marché européen            |
 
 ---
 
@@ -746,18 +783,18 @@ Le jalon critique est M-03 (EVT validé) — premier moment où WildNexus peut d
 
 ### 14.1 Outputs
 
-| Output | Phase | Nature |
-|--------|-------|--------|
-| Prototype nœud caméra P0 validé terrain | P0 | Hardware + firmware |
-| Socle open source publié | P0 | Dépôt public, licence ouverte |
-| Dataset images IR faune belge annoté | P0 | Données ouvertes |
-| Rapport EVT terrain | P0 | Document technique |
-| Classificateur binaire embarqué quantisé | P0 | Modèle IA open source |
-| Protocole communication événementielle LPWAN | P0 | Spécification ouverte |
-| Classificateur d'espèces faune européenne | P1 | Modèle IA |
-| Module reconnaissance individuelle + comportement | P1 | Modèle IA + interface |
-| Nœud acoustique validé | P1 | Hardware + firmware |
-| Pipeline export Camtrap-DP / GBIF | P1 | Software |
+| Output                                            | Phase | Nature                          |
+| ------------------------------------------------- | ----- | ------------------------------- |
+| Prototype nœud caméra P0 validé terrain        | P0    | Hardware + firmware             |
+| Socle open source publié                         | P0    | Dépôt public, licence ouverte |
+| Dataset images IR faune belge annoté             | P0    | Données ouvertes               |
+| Rapport EVT terrain                               | P0    | Document technique              |
+| Classificateur binaire embarqué quantisé        | P0    | Modèle IA open source          |
+| Protocole communication événementielle LPWAN    | P0    | Spécification ouverte          |
+| Classificateur d'espèces faune européenne       | P1    | Modèle IA                      |
+| Module reconnaissance individuelle + comportement | P1    | Modèle IA + interface          |
+| Nœud acoustique validé                          | P1    | Hardware + firmware             |
+| Pipeline export Camtrap-DP / GBIF                 | P1    | Software                        |
 
 ### 14.2 Outcomes
 
@@ -809,11 +846,12 @@ Un pivot radical est déclenché si :
 
 ---
 
-*Document fondateur WildNexus — DRAFT v0.2 — 2026-05-17*
+*Document fondateur WildNexus — v0.3 — 2026-07-03*
 *Consolidé par [[Dobby]] 🦉 — orchestration documentaire PKA_JCH*
 *Propriétaire : Jean-Claude Havaux — JCHYTECH*
 
 **Changelog v0.1 → v0.2 :**
+
 - Autonomie : hiérarchie explicite des trois cibles (60j batterie / 30j EVT / 6 mois produit)
 - Edge AI : claims corrigés — filtrage binaire P0, classification espèces P1
 - NN-02 : tension open source / exclusions d'usage clarifiée ; terminologie publique conditionnée au modèle juridique réel
@@ -828,4 +866,25 @@ Un pivot radical est déclenché si :
 - §12 : 2 nouveaux risques (RGPD, tension licence)
 - §13 : note modèle de coût lié au prix cible 900 €
 - Table des matières et owners alignés sur les agents WildNexus cibles
-*Prochaine révision v0.3 : après T01.1 (analyse concurrents), D01.2 (FTO/conseil [[Pi]]), T01.3 (RF terrain), D02.2 (BOM → modèle coût §13)*
+  *Prochaine révision v0.4 : après FTO, mesures RF terrain, et validation JCH.*
+
+**Changelog v0.2 → v0.3 :**
+
+- Date : 2026-05-17 → 2026-07-03
+- Statut DRAFT maintenu — validation JCH toujours en attente
+- Jalons M-01→M-04 : tableau de statut ajouté (M-01 ✅, M-02 🟡, M-03/04 ⏳)
+- ADRs : 14 → 16 (ADR-016 firmware intégré créé le 2026-06-30)
+- §1 : Phase actuelle + Budget + Marque ajoutés
+- §2 : « 40 ans » → « 45 ans », contexte enrichi
+- WP01 : M-01 atteint, décisions techniques documentées (ESP32-S3, OV5640, LoRa)
+- WP02 : M-02 en cours — hardware reçu listé, bloqueur LoRa identifié
+- WP03 : SOPs A-C complétées (alive, deep sleep, PPK2), ADR-016
+- WP04 : Stratégie FOMO/Edge Impulse, dataset caméra 51 images en cours
+- §9 : Statut licence ajouté (AGPL v3 / commerciale retenue)
+- §11 : Note statut validation (T01.3 RF non réalisé, T01.4 partiel)
+- §13 : Budget actualisé (~380€ dépensés, ~279€ restant), référence fiches produit
+- NEXUS_ACOUSTIC : extraction en projet autonome documentée
+- Fiches produit (`09_PRODUCT_SHEETS/`) créées — FIELD, FIELD+, STATION, STATION+, Nexus Acoustic
+- Executive summary externe créé (`executive-summary.md`)
+- Thread file créé (`thread-wildnexus.md`)
+- Documents liés ajoutés (ADR Index, Protocoles, Fiches produit, Exec Summary, Thread File)

@@ -1,6 +1,6 @@
 # MEMORY — PKA_JCH
 > Connaissances accumulées, décisions, chronologie des événements.
-> Dernière mise à jour : 2026-06-20 — Kimi routing direct Moonshot + split Hermes
+> Dernière mise à jour : 2026-07-20 — Analyse INBOX projet surveillance acoustique écurie. Livrable : TEAM_Inbox/2026-07-20_dobby_analyse-surveillance-acoustique-ecurie.md. Page assiette van déployée sur aroundus.tech avec icône niveau à bulle. Règle YOLO ajoutée dans AGENTS.md.
 > 
 > **SOUL.md** → personnalité et règles de comportement de Dobby
 > **USER.md** → profil de JCH, setup technique, projets actifs
@@ -8,9 +8,187 @@
 
 ---
 
+- [2026-07-18] [AI_IT_TOOLS — Automatisation] : 3 améliorations d'automaticité : (1) `pka-watch-inbox` → notification macOS à chaque nouveau fichier, (2) `pka-watch-freshness` → alerte quotidienne 8h30 si State files CRITICAL, (3) `pka-memory-hook` → extraction post-session des décisions/règles/patterns depuis TEAM_Inbox. 8 daemons launchd actifs au total.
+
+- [2026-07-18] [AI_IT_TOOLS — Veille] : 2 transcripts NoteGPT traités : (1) Constrained decoding / structured output (logit masking, GBNF grammars, OpenAI/Anthropic) — déjà implémenté dans DeepSeek V4. (2) Memori — moteur mémoire open-source SQL-native pour agents LLM — PKA a déjà team.db + MEMORY.md + pka_memory_capture.py, plus sophistiqué. Références dans `01_AI_IT_TOOLS/99_REFERENCES/`.
+
+## Session 2026-07-18 — Clonage SD Lupo + Règle hardware
+
+- [2026-07-18] [IOT — Hardware] : Clonage SD 128 Go → Endurance 256 Go terminé avec succès. SD→SSD→SD en deux étapes (107 Mo/s en lecture, ~5 min en écriture). RPi boote sur Endurance 256 Go, HA OS accessible via IP directe (pont Ethernet M5). Règle réseau ajoutée : .local ne traverse pas le bridge macOS, toujours utiliser l'IP directe. Carte prête pour Lupo. Échec initial : `dd` direct SD→SD sur même hub USB → 1,3 Mo/s, 58 Go en 12h. Solution : SD source → SSD M5 (107 Mo/s via slot interne) → Endurance 256. **Règle : ne jamais cloner SD→SD sur même bus USB. Toujours passer par le SSD interne en intermédiaire.**
+
+## Session 2026-07-17 — Hardware Lupo : SD Endurance + Argus MagiCam reçus
+
+- [2026-07-17] [IOT — Hardware] : Samsung PRO Endurance 256GB microSD ✅ REÇU (Amazon). Remplace SD 128 Go actuelle. Reolink Argus MagiCam ✅ REÇU. Tout le hardware STATION-DOMO/IoT est maintenant livré (sauf WiCAN Pro en backorder).
+- [2026-07-17] [IOT — Décision] : **NVMe Fanxiang retiré physiquement du RPi. Décision confirmée : SD seule, pas de SSD.** L'adaptateur USB-NVMe n'est plus nécessaire. Le RPi Lupo fonctionne en microSD boot uniquement.
+- [2026-07-17] [IOT — Thread] : Thread-iot.md mis à jour — NVMe marqué ⚫ retiré, prochaine étape = swap SD 128→Endurance 256.
+
+- [2026-07-17] [IOT — Sécurité] : Fiche sécurisation physique/réseau WiCAN PRO (ChatGPT) traitée depuis INBOX. 4 méthodes physiques + volet réseau. Référencée dans `11_IOT/iot-van/securite/obd/`. Complément à `OPERATIONS-CAN-OBD.md`.
+
+- [2026-07-17] [AI_IT_TOOLS — Build] : P2 Loop Engineering terminés : `bin/pka-chain` (orchestrateur cross-loop, fichier .chain, --dry-run, --continue-on-error, quick-check.chain exemple), `bin/pka-persist` (persistence post-session, --once nohup + --schedule launchd, tasks.json). Toute la stack Loop Engineering PKA est complète (7/7 actions, P0+P1+P2).
+
+- [2026-07-17] [AI_IT_TOOLS — Build] : P1 Loop Engineering terminés : `bin/pka-dashboard` (HTML statique, 6 loops, dark mode), `bin/pka-watch-deadline` (parse dates FR, J-X, alertes markdown, plist launchd 9h), skill `compound-memoire` (erreur→règle SOUL.md, workflow 3 étapes, seuils de confiance). Dashboard + deadline testés avec succès.
+
+- [2026-07-17] [AI_IT_TOOLS — Build] : Forge a implémenté les 2 P0 Loop Engineering : `bin/pka-loop` (commande /loop unifiée, 6 loops, syntaxe courte + anatomie Cherny 6 params) et `bin/pka-watch-inbox` (surveillance INBOX, logs JSON, alertes markdown, plist launchd). Testés —help, --dry-run, --once, --daemon. Rapport : `TEAM_Inbox/2026-07-17_forge_p0-loop-engineering.md`.
+
+## Session 2026-07-17 (soir) — INBOX : Analyse Loop Engineering
+
+- [2026-07-17] [AI_IT_TOOLS — Veille] : Analyse approfondie Loop Engineering — sources primaires Cherny (Anthropic), Osmani (Google), Steinberger (OpenAI). Corpus : cocodedk/loop-engineering (11 docs), addyosmani.com. PKA a ~2 ans d'avance sur le concept. Découvertes clés : (1) compound Cherny = erreur→CLAUDE.md automatique, (2) watch-for-work > wait-for-command, (3) anatomie 6 parties (trigger→scope→action→budget→stop→report). 7 actions dont 2 P0 : commande /loop unifiée, watch-for-INBOX. Livrables : analyse initiale + complétive dans `TEAM_Inbox/`.
+
+## Session 2026-07-16 (soir) — CAN/OBD + Capteurs + Scarabée
+
+- [2026-07-16] [IOT — CAN/OBD] : WiCAN Pro commandé en backorder chez Mouser (~82€). OBDLink LX101 reçu mais incompatible (Bluetooth, HS-CAN seul, pas de MS-CAN). Procédure complète créée : `OPERATIONS-CAN-OBD.md` (6 étapes, flash firmware, config WiFi/MQTT, preset PIDs Ford, power management, validation).
+- [2026-07-16] [IOT — Réseau] : AP WiFi `VanLife_Network` configuré sur Lupo RPi (à activer via UI HA, pas CLI — échec `ha network update --wifi-mode ap`). Dongle 4G ZTE MF833U1 (✅ REÇU) documenté. Architecture finale : RPi 5 = hub unique (AP WiFi + passerelle 4G). Mot de passe stocké dans `JCH_PRIVATE/credentials-central.md`.
+- [2026-07-16] [IOT — Capteurs] : Panier Amazon vanlife réduit à 172€ (vs 282€). SNZB-02D ×3 supprimés → remplacés par BME688 + SHT31 du stock WildNexus (Mouser #39492997). Fiche technique `SPEC-CAPTEUR-ENV.md` créée : ESP32-C3 + BME688 + SHT31 = T°/HR/Pression/IAQ pour 0€. Firmware ESPHome inclus.
+- [2026-07-16] [IOT — Panier] : Fichier `panier-vanlife-amazon.html` v6 — 11 articles, 172€, 4 niveaux de priorité avec liens Amazon Belgique.
+- [2026-07-16] [Système — Équipe] : Recrutement Scarabée 🪲 (#34) — Concepteur 3D & Fabrication Additive. Première mission : boîtier station météo Lupo. Pipeline onboarding exécuté (DB → markdown → roster → pointers). Équipe : 32 membres (31 spécialistes + Dobby).
+- [2026-07-16] [IOT — Hardware] : ZTE MF833U1 ajouté au `hardware-state.md` (✅ REÇU). WiCAN Pro marqué COMMANDÉ (backorder).
+
+## Session 2026-07-16 — Incorporation architecture + migration ZHA→Z2M
+
+- [2026-07-16] [Système — Gouvernance] : 3 documents créés depuis `Prompt_Dobby_PKA_JCH_Master_Architecture.md` : `principes-architecturaux.md` (6 principes), `securite-sauvegardes.md` (confidentialité 🔴🟡🟢 + backup), `roadmap-long-terme.md` (vision 1/3/5 ans). Référencés dans AGENTS.md, outils-index.md, sources-verite.md. Source archivée dans `01_AI_IT_TOOLS/99_REFERENCES/`.
+- [2026-07-16] [WILDNEXUS — Stratégie] : Analyse Dossier de Conception v1 (JC, 16/07). Proposition d'élargissement : biodiversité → santé écosystémique (orages AS3935, incendie BME688, cavitation, VOC). Recommandation Scénario B : P0 enrichi BME688 + AS3935 + PM2.5 (~35€/station, délai +2 sem). Cavitation → P1 recherche. Livrable : `TEAM_Inbox/2026-07-16_dobby_analyse-wildnexus-dossier-conception.md`.
+- [2026-07-16] [Système — Veille] : Analyse transcript Ev Chapman « Threads Memory System » (avril 2026). Système à 2 dossiers (threads + daily logs) + script nocturne + second brain. PKA couvre déjà tous les cas d'usage avec plus de profondeur (team.db, graphify, 30 agents). Validation externe de l'approche PKA. Livrable : `TEAM_Inbox/2026-07-16_dobby_analyse-threads-memory-system.md`.
+- [2026-07-16] [IoT Van — Lupo RPi] : Migration ZHA → Zigbee2MQTT terminée. ZHA désinstallé, Z2M v2.12.1 installé et opérationnel. Dongle Sonoff ZBDongle-E V2 reconnu (firmware EmberZNet 8.0.2, adapter `ember`). Mosquitto OK, MQTT connecté (user `homeassistant` + `addons`). Réseau Zigbee vierge — prêt à appairer. Contournement : pont TCP série homeassistant:8486 (superviseur refusait de monter le device). Stickers Lupo déplacés vers `07_TRAVELS/vanlife/deco/`.
+
+## Session 2026-07-15 — Nettoyage structure PKA_JCH
+
+- [2026-07-15] [Système — Nettoyage] : Fichiers pilotage stratégique réalignés (WILDNEXUS gelé septembre, IOT Van P0 7 août). 14 session JSONs → `_local/sessions/`, MEMORY.md.bak ×2 → `_local/archives/`, 23 .DS_Store supprimés. `tests/`, `deploy/`, symlink `Wadden_Vanlife.html` supprimés.
+- [2026-07-15] [IoT — Wishlist] : Monitoring batterie X1205 dans HA — pas d'intégration native pour X120x (RPi 5). Piste : script Python I2C → MQTT via Terminal & SSH add-on. Repo `lovwyr/HA-Geekworm_X120x` ne couvre que X1204. Forum HA confirme « nothing yet ».
+- [2026-07-15] [IoT — Lupo RPi config] : Credentials récupérés via USB CONFIG + SSH debug port 22222. Tailscale 0.28.1 installé et authentifié. IP Tailscale : `100.106.152.118`. HA Core 2026.7.2, HA OS 17.3, hostname `lupo`. WiFi Proximus, Ethernet `end0` désactivé. Terminal & SSH add-on présent mais port 22 non exposé.
+- [2026-07-15] [IoT — Nettoyage RPi] : Anciens nœuds supprimés — `rpi-pkajch` (BirdNET-Pi) et RPi 5 Esneux (HA OS serre/maison). Seul RPi 5 Lupo (van) reste actif. `rpi-connexion.md` et `USER.md` mis à jour.
+- [2026-07-15] [Modèle — DINOv2-bio] : Fichier `models/vit_reg4_so150m_p14_ls_dino-v2-bio-252px.pt` (510 MB) supprimé. Contexte préservé dans `TEAM_Inbox/2026-07-03_dobby_analyse-birder-dinov2-bio.md`. À retélécharger depuis HuggingFace `birder-project/vit_reg4_so150m_p14_ls_dino-v2-bio` si besoin (septembre+).
+
+## Session 2026-07-14 — Carrefour spots vanlife + activation Dobby
+
+- [2026-07-14] [TRAVELS — Carrefour spots vanlife] : Page HTML créée — `vanlife/carrefour-spots-vanlife.html` (547 lignes, 19 Ko). Consolide 24 liens (apps stationnement, planification voyage, par pays FR/IT/DE/BE, bases officielles réserves naturelles, outils PKA) en 6 sections. Checklist Cigogne intégrée. Dark mode responsive. Sources : `apps-roadtrip-lupo.md` + `methodologie-stationnement.md`.
+- [2026-07-14] [Système — Activation Dobby] : Session démarrée. 31 membres actifs. 10 State files >7j (dont 1 CRITICAL — registre-achats.md 15j). IOT/Vanlife = P0 deadline 7 août. Samsung PRO Endurance 256GB + Reolink Argus MagiCam commandés 13/07.
+
+## Session 2026-07-10/11 — Stabilisation Lupo RPi 5 : SD boot + double instance HA
+
+- [2026-07-11] [IoT — Résolution double instance] : Le RPi 5 Lupo (HA OS 17.3 sur NVMe) et le Docker M5 (HA `localhost:8123`) provoquaient `duplicate_os_installation` → Supervisor unhealthy → add-ons bloqués. **Cause :** hostname par défaut `homeassistant` sur les deux instances + anciennes partitions HA OS sur NVMe détectées comme second OS. **Solution :** (1) hostname RPi changé en `lupo` dans Settings → System → Network, (2) `ha supervisor repair` exécuté via Terminal & SSH add-on pour régénérer le Machine ID, (3) Docker M5 conservé en `homeassistant`. Résultat : ✅ Healthy, coexistence stable, plus de conflit.
+- [2026-07-10] [IoT — Échec boot NVMe natif] : Après la solution du 09/07 (boot NVMe confirmé à 22h), tentatives répétées de boot NVMe seul (sans SD). **Échec intermittent** : LED verte fixe = NVMe non détecté. **Diagnostic confirmé :** (1) les pogo pins du X1205 ne fournissent pas le courant de pointe nécessaire au boot NVMe (PCIe Gen3 + contrôleur SSD) → chute de tension sous 4.65V → PMIC coupe tout. Boot direct USB-C = OK. (2) La nappe PCIe est critique : contacts métalliques doivent être orientés vers l'intérieur (face au processeur), loquet noir bien verrouillé. (3) Le RPi 5 nécessite une carte SD présente pour initialiser le bus PCIe — sans SD, le NVMe n'est jamais détecté même si la SD est vide.
+- [2026-07-10] [IoT — Solution retenue : Plan C] : **HA OS 17.3 sur SD 128 Go** (boot fiable), NVMe 256 Go en attente de wipe pour usage futur (Move Data Disk). La SD seule est stable — HA Community #716038 confirme cette approche comme fiable pour RPi 5. Le bug GitHub #4785 (HA OS 18.x + NVMe instable) impose de rester en 17.3.
+- [2026-07-10] [IoT — Commande adaptateur USB-NVMe] : **UGREEN 10Gbps NVMe Enclosure** (réf `B0D53K7HK9`, ~25€) commandé pour wiper le NVMe Fanxiang 256 Go depuis le M5. Une fois wipe, le NVMe pourra être reconnecté au RPi et utilisé comme data disk via la fonction Move Data Disk de HA.
+- [2026-07-10] [IoT — Configuration matérielle stable] : Stack final : RPi 5 + SD 128 Go (HA OS 17.3, hostname `lupo`) + X1205 (batteries 18650 en place pour UPS, mais alim directe USB-C sur le RPi pour éviter le problème pogo pins). NVMe + Shield PCIe déconnectés en attendant l'adaptateur USB. Boîtier X1201-C1 non encore monté (restera ouvert pour accès facile).
+- [2026-07-10] [IoT — Expert externe] : Validation croisée avec un expert LLM externe. Points confirmés : orientation nappe PCIe, méthode d'isolation 3 étapes (SD seule → +NVMe → +HAT), paramètres EEPROM corrects (BOOT_ORDER=0xf416, PCIE_PROBE=1, PSU_MAX_CURRENT=5000), modèles LLM recommandés pour RPi 5 (Qwen 2.5 1.5B/3B, Gemma 3 1B, DeepSeek-Coder 1.3B).
+- [2026-07-10] [Système — Session marathon] : Session de ~4h, 80+ échanges, diagnostic itératif hardware + software. Dobby a navigué entre le RPi (via SSH + API observer) et le Docker M5, avec wipe SD, reflash, et coordination des actions physiques de JC.
+
+## Session 2026-07-09 — Analyse OBD/CAN bus Ford Transit Custom + intégration WiCAN Pro
+
+- [2026-07-09] [IoT — Analyse OBD/CAN] : Analyse approfondie de l'apport des données OBD-II/CAN bus du Ford Transit Custom 170CV 4x4 (Westfalia Kelsey « Lupo »). Le véhicule expose deux bus CAN : HS-CAN (PCM 0x7E0, groupe motopropulseur) et MS-CAN (BCM 0x726, carrosserie). Le MS-CAN est critique — il fournit état portes ×6, pression pneus ×6, batterie SOC/courant/tension sans capteur physique.
+- [2026-07-09] [IoT — Décision WiCAN Pro] : **WiCAN Pro retenu** (~82€, Crowd Supply/Mouser). Seul device compatible MS-CAN + HS-CAN avec PIDs Ford Transit prêts à l'emploi (repo `WiCAN-Ford-Transit`). WiCAN basic éliminé (pas de MS-CAN). DIY ESP32+CAN éliminé (effort de reverse engineering disproportionné). 17+ entités HA exposées.
+- [2026-07-09] [IoT — Sommeil CAN bus] : Recherche intensive confirmée : le CAN bus Ford s'endort après 30-60 min contact OFF. Aucun hack fiable pour le maintenir actif 24/7 sans vider la batterie porteur (200-500mA → 4-5 jours d'autonomie). Le WiCAN Pro utilise un sleep mode <1mA + periodic wake configurable (5 min recommandé). **Les Aqara Zigbee restent obligatoires** pour la détection porte en temps réel en camping. Le CAN bus est un enrichisseur de données roulage + backup sécurité, pas un tueur de capteurs.
+- [2026-07-09] [IoT — BOM impact] : TPMS Bluetooth supprimé (-20€, remplacé par BCM pneus ×6). BME280 extérieur supprimé (-5€, remplacé par PCM ambient air temp). WiCAN Pro ajouté (+82€). Delta net : +57€. Cumulé avec DS300 Tap (-57€) : **total optimisations = 0€ (neutre)**. 6 nouveaux scénarios créés : jauge carburant + range anxiety (P1), conso réelle par trajet (P1), diagnostic moteur DTC live (P1), surveillance turbo (P2), préchauffage Webasto intelligent (P2), alerte batterie porteur (P2). GPS u-blox rétrogradé P2→P3 (vitesse via CAN, position seule).
+- [2026-07-09] [IoT — Fichiers mis à jour] : `SPEC-CAN-BUS.md` créé, `ADR-006-obd-can-wican-pro.md` créé, `BOM-VANLIFE.md` (v5 sections → 6), `scenarios-algorithmes-vanlife.md` (v1.0→v1.1, +section 7 CAN), `hardware-state.md`, `SPEC-DS300-TAP.md` (impact CAN). Commande WiCAN Pro ajoutée en Commande #2 prioritaire.
+
+## Session 2026-07-09 — Diagnostic échec boot NVMe + correction guide assemblage
+
+- [2026-07-09] [IoT — Diagnostic] : JC a tenté l'assemblage et l'installation HA OS sur le RPi 5 vanlife. **Échec complet** — « enormement de difficulté, j'ai du tout arreter ». Analyse post-mortem :
+  - **Cause n°1 : bootloader NVMe non configuré.** Le guide `ASSEMBLAGE-RPi5-VANLIFE.md` indiquait de flasher HA OS directement sur le SSD et de booter, mais le RPi 5 ne boote PAS sur NVMe sans configuration préalable de l'EEPROM (`BOOT_ORDER=0xf416`, `PCIE_PROBE=1`, `dtparam=pciex1` dans config.txt).
+  - **Cause n°2 : pogo pins X1205.** La FAQ Geekworm confirme que des standoffs mal serrés empêchent le contact pogo pins → pastilles RPi → pas d'alimentation.
+  - **Cause n°3 : pas de câble USB-C PD e-mark.** Sans négociation Power Delivery 5A, le RPi 5 est en undervoltage chronique (`throttled=0x50000`).
+  - **Cause n°4 : SSD Fanxiang.** Peut nécessiter `dtparam=pciex1_gen3` pour éviter les erreurs I/O.
+  - **Tentative JC :** Dupont entre pin 6 (GND) et pin 8 (GPIO14/TXD) du GPIO — probablement pour forcer l'auto-power-on, mais la doc X1205 indique que cette fonction est gérée par une résistance soudée, pas par jumper GPIO.
+- [2026-07-09] [IoT — Guide] : **Section 4 du guide d'assemblage entièrement réécrite** (298→500 lignes). Nouvelle procédure en 10 sous-étapes : microSD bootstrap → EEPROM update → BOOT_ORDER + PCIE_PROBE → dtparam=pciex1 + gen3 → PSU_MAX_CURRENT → vérification NVMe → flash HA OS → boot sans microSD. Checklist de vérification enrichie (pogo pins, EXT5V_V, throttle). Roadmap réorganisée en 3 phases.
+- [2026-07-09] [IoT — Clarification Tailscale] : Tailscale utile uniquement quand le RPi a accès à internet. Sans dongle 4G → utile seulement sur Wi-Fi connu (maison, camping). Avec dongle 4G → game-changer 24/7. Positionné en Phase 1 étape 2 (après bootloader + HA OS).
+
+## Session 2026-07-09 — Solution consolidée boot NVMe (analyse croisée équipe + web)
+
+- [2026-07-09] [IoT — Erreur image HA OS] : **Forge 🔨 a identifié la cause racine probable.** Le postmortem indique que `haos_generic-aarch64-18.1.img` a été flashé, mais le guide spécifie `haos_rpi5-64-xx.img`. L'image `generic` est pour machines UEFI ARM64 (GRUB/systemd-boot) — le BCM2712 du RPi 5 cherche `start4.elf` sur la partition FAT, absent de l'image generic. Le hand-editing de `config.txt`/`cmdline.txt` ne servait à rien car aucun bootloader RPi n'était présent. La LED verte fixe initiale était le bootloader qui scannait sans trouver `start4.elf`.
+- [2026-07-09] [IoT — Facteur aggravant X1205] : **Araignée 🕷️ confirme 80% probabilité d'alim insuffisante via pogo pins.** Le boot NVMe crée un appel de courant instantané (PCIe Gen3 + contrôleur SSD) supérieur au boot microSD. Si résistance de contact pogo pins > spec, chute de tension sous 4.65V → PMIC DA9091 coupe tout. Test discriminant : `vcgencmd get_throttled` sous stress `dd` NVMe.
+- [2026-07-09] [IoT — Alerte externe GitHub #4785] : Bug **ouvert** sur HA OS 18.0/18.x + RPi 5 + NVMe hat → I/O errors en ~3 min, filesystem corrompu. Utilisateur a rollbacké vers 17.3 avec succès. **Non résolu au 9 juillet 2026.** Recommandation : utiliser HA OS **17.3** (pas 18.x) pour Lupo.
+- [2026-07-09] [IoT — Plan d'action] : (1) Test `vcgencmd get_throttled` sous stress NVMe (5 min). (2) Si propre → flasher `haos_rpi5-64-17.3.img` sur NVMe. (3) Si throttling → bypass X1205 (alim directe USB-C). (4) Fallback : microSD + Move datadisk (Settings → Storage). **SOLUTION-BOOT-NVME-2026-07-09.md** réécrit avec analyse consolidée Dobby+Forge+Araignée+sources web.
+- [2026-07-09] [IoT — Sources externes] : HA Community #716038 confirme Move datadisk fonctionnel (« data drive copied from SD to NVMe using Settings → Storage → Move Data Disk »). Reddit r/homeassistant idem. jbsoft.nl et martinrowan.co.uk documentent la procédure complète. Guide d'assemblage §4.8 était correct — l'erreur était au moment du téléchargement/flash.
+
+## Session 2026-07-08 — Réception accus 18650 + état des lieux
+
+- [2026-07-08] [IoT — Hardware] : **20× accus 18650 Flat 3400mAh CCC-5 SDIR18T** (rose) reçus. Destinés au Geekworm X1205 UPS HAT du RPi 5 vanlife. `hardware-state.md` mis à jour.
+- [2026-07-08] [IoT — Hardware] : **Power Supply Adapter HS24A (24V)** + **sonde hydrostatique TL-136** + **Sonoff ZBMiniR2** + **5× Step-Down HW-133 3A 5V DC-DC (Tecnoiot)** + **3× ADS1115 HW-19S** reçus. Stock total ADS1115 : 6 (3 Heemol + 3 HW-19S). Stock ESP32-C3 Super Mini : 3 (Heemol). Détecteur niveau liquide : il ne manque plus que boost converter (MT3608) et chargeur TC4056 pour le proto banc (buck HW-133 et accus 18650 déjà en stock). `hardware-state.md` mis à jour.
+- [2026-07-08] [IoT — Assemblage] : RPi 5 vanlife assemblé (RPi 5 + SSD NVMe + UPS HAT X1205 + accus 18650). Reste : mise en boîtier X1201-C1. `hardware-state.md` mis à jour.
+- [2026-07-08] [IoT — Optimisation] : Analyse redondance signal capteurs vanlife. **Économie réelle : -1 capteur (-10€)**. JSN-SR04T van ×2 supprimés (→ DS300 Tap lit sondes CBE). SNZB-02D extérieur supprimé (→ BME280 P3). ⚠️ Correction : le SNZB-04P est un capteur contact uniquement (pas de T°). Les Aqara frigo/toit et SNZB-02D frigo sont conservés. Le 04P reste une option upgrade (tamper alert). Panier v4 : 27 items / 257€.
+- [2026-07-08] [IoT — DS300 Tap] : **Sous-projet `iot-van/ds300-tap/` créé.** Recherche web confirmée : le CBE DS300 utilise un connecteur 16 broches (J9) avec signaux analogiques simples (pas de CAN/LIN). Pinout documenté par WomoNET. Le tap ESP32 + ADS1115 permet de lire tensions B1/B2, niveaux cuves eau, D+, 230V, état relais — sans modifier le câblage d'origine. Fichiers créés : `SPEC-DS300-TAP.md`, `esphome-ds300.yaml`. Scénarios mis à jour.
+- [2026-07-08] [IoT — BOM] : **BOM maître `iot-van/BOM-VANLIFE.md` créée** — structurée par sous-projet : RPi 5 Hub (445€ reçus), DS300 Tap (15€), Capteurs Zigbee (276€ à commander), Victron P3 (210€ reporté), Divers (27€). Total projet : ~973€ dont ~446€ déjà payés. Panier Amazon v4 : 33 articles / 282€. Reste à payer P1 : ~317€.
+- [2026-07-08] [IoT — Réorg] : **Réorganisation complète de `11_IOT/`.** Root : 14→6 entrées. `iot-van/` : 9 fichiers racine → 3 (`BOM-VANLIFE.md`, `scenarios-algorithmes-vanlife.md`, `ASSEMBLAGE-RPi5-VANLIFE.md`). Création de `docs/`, `briefs/`, `rpi-config/`, `specs/`, `archive/`, `assets/`. Chemins corrigés partout.
+
+## Session 2026-07-07 — Correction protocole pka-session-start
+
+- [2026-07-07] [Vetalyx — Clarification stratégique JC] : JC confirme que la note Depinois n'est PAS un ordre de modification des priorités actuelles. Les priorités restent inchangées. L'objectif est d'augmenter la réflexion stratégique et d'identifier d'autres MVP pour le futur, car Vetalyx sera à terme une plateforme de diagnostics vétérinaires sensu largo. Les briefs et la synthèse doivent être réinterprétés comme du travail d'enrichissement stratégique, pas comme un plan de pivot immédiat.
+
+- [2026-07-07] [Vetalyx — Note cadrage Depinois] : Email d'Alain Depinois (AWDN Partners, 2026-06-25) analysé et comparé au corpus Vetalyx. Proposition de repositionner le MVP commercial sur les tests infectieux/vectoriels (panel Lyme/Anaplasma/Ehrlichia/Dirofilaria chien) + FeLV/FIV + biomarqueurs CRP/SAA, avec l'allergie comme option plus risquée. 4 scénarios évalués. Recommandation Dobby : scénario D (intégration sélective, négocier les 3 familles avec les chinois) avec option C si l'allergie EU n'est pas viable. Livrable : `TEAM_Inbox/2026-07-07_dobby_analyse-note-cadrage-vetalyx-depinois.md`. Source routée vers `JCH_Inbox/03_PROJECTS/08_VETALYX/strategy/`. Thread `thread-vetalyx.md` mis à jour.
+
+- [2026-07-07] [Vetalyx — Synthèse décisionnelle] : Synthèse approfondie des points d'attention et de décision produite. 14 points de décision identifiés (stratégie, produit, fournisseur, réglementaire, financier, corporate, marque, scientifique, organisation, partenariat DIAHO, IP, etc.). 7 briefs créés et insérés dans `team.db` pour Furet+Milan, Renard, Clio, Bruno+Sigma, Hermine, Vega+Milan, Atlas. Recommandation Dobby : scénario C ajusté (P0 vectoriel chien + FeLV/FIV, P1 allergie différenciante). 7 questions ouvertes pour JCH. Livrable : `TEAM_Inbox/2026-07-07_dobby_synthese-points-decision-vetalyx-depinois.md`.
+
+- [2026-07-07] [Vetalyx — Analyse croisée 4 spécialistes] : Dobby a mandaté Vasco, Hermine, Renard et Sigma pour analyser la proposition Depinois sous 4 angles (stratégique, réglementaire, contractuel, marché). 3 erreurs factuelles identifiées dans la proposition d'Alain : AFMPS ≠ plus simple, panels ≠ non-commoditisés, Dixun/DIAHO non mentionnés. Recommandation unanime : dual-track (allergologie P0 + infectieux P1), pas pivot. 3 décisions bloquantes en attente de JC (D1-D3). Livrable : `TEAM_Inbox/2026-07-07_dobby_analyse-cadrage-depinois-vetalyx.md`.
+
+- [2026-07-07] [Système — Bootstrap GLM 5.2] : BOOTSTRAP.md créé (83 lignes, protocole Phase 2→5 condensé). `scripts/deepseek_chat.py` modifié pour charger BOOTSTRAP.md après MEMORY.md. GLM.md créé comme pointer dédié. `bin/dobby.sh` modifié pour exporter PKA_POINTER=GLM.md en mode glm5. Tous les modèles via deepseek_chat.py (GLM 5.2, DeepSeek API, Kimi, OpenRouter, Claude-OR, ChatGPT) bénéficient désormais du bootstrap complet.
+
+- [2026-07-07] [Background Depinois] : Vérification web — Alain Depinois, vétérinaire de formation (confirmé JC), 132 connexions LinkedIn, AWDN&Partners fondée en 2010 (Havelange), classifiée « Other business services ». Aucune trace publique de publications, conférences ou présence dans l'industrie du diagnostic vétérinaire. Expertise marché non vérifiable — JC le qualifie de « compétent en connaissance, pertinence marché à vérifier ».
+
+- [2026-07-07] [Vetalyx — Clarification JC] : La note Depinois est un **apport à la réflexion stratégique**, pas un ordre de pivot. Les priorités actuelles (WildNexus P0, IOT Van, NEXUS_ACOUSTIC) restent inchangées. Vision long terme : Vetalyx = plateforme de diagnostic vétérinaire *sensu largo*, intégrant à terme allergologie + infectieux + biomarqueurs. L'analyse produite reste valide mais son statut passe de « décision requise » à « réflexion long terme ».
+
+- [2026-07-07] [Système — pka-session-start] : Skill `skills/pka-session-start/SKILL.md` réécrit pour s'aligner sur `docs/system/dobby-memory-bootstrap.md` v2. 6 corrections appliquées : (1) titre passé à « 5 phases » au lieu de « 4 phases », (2) retrait de `arbitrages-decisions.md` (archivé le 2026-06-23), (3) ajout de `wiki/index.md` en phase 2, (4) ajout de `PROTOCOLES/progress.md` en phase 3 avec règle anti-déduction d'artefacts, (5) ajout de `pka_retrieve.py --fts` en phase 4 pour recherche historique cross-session, (6) détection du modèle actif formalisée. Sauvegarde `SKILL.md.bak.20260707` créée.
+- [2026-07-07] [Système — instructions-systeme.md] : Tableau des instructions mis à jour — description S4 enrichie (« Protocole démarrage 5 phases : identité, contexte, State, vérifications, activation ») et date de mise à jour ajoutée. Sauvegarde `instructions-systeme.md.bak.20260707` créée.
+- [2026-07-07] [Système — State freshness] : `check_state_freshness.py` exécuté — 15/16 State OK, 1 WARNING (`docs/system/registre-achats.md` — 8 jours).
+
+## Session 2026-07-03 — Analyse INTERSPECIES SONGS + Lucio Arese → Intégration NEXUS_ACOUSTIC
+
+- [2026-07-03] [NEXUS_ACOUSTIC — TweetyBERT] : Document INTERSPECIES SONGS.md (627 lignes) analysé en profondeur. TweetyBERT (University of Oregon, Patterns/Cell Press, avril 2026) identifié comme découverte la plus actionnable pour PKA. Transformer self-supervised, parsing de syllabes sans labels, résolution 2.7ms. Open-source (GitHub/Zenodo). Pipeline complet xcapi→librosa→TweetyBERT→t-SNE→Markov documenté. Analyse livrée : `TEAM_Inbox/2026-07-03_dobby_analyse-interspecies-songs.md`.
+- [2026-07-03] [NEXUS_ACOUSTIC — InsectSet459] : Dataset 26 298 fichiers, 226.6h, 459 espèces (310 Orthoptera + 149 Cicadidae), publié dans Nature Scientific Data (2026), disponible sur Zenodo. C'est le dataset de fine-tuning idéal pour TweetyBERT sur orthoptères.
+- [2026-07-03] [NEXUS_ACOUSTIC — Lucio Arese] : Document Lucio Arese inspiration.md (261 lignes) analysé. Pont entre pipeline scientifique et visualisation 3D (TouchDesigner/SoundPlot). Dimension Z=temps validée comme avantage analytique réel. SoundPlot (arXiv 2601.12752) identifié comme alternative open-source à TouchDesigner. Schéma JSON standardisé PKA proposé par Forge. Livrable : `TEAM_Inbox/2026-07-03_dobby_analyse-lucio-arese.md`.
+- [2026-07-03] [NEXUS_ACOUSTIC — Architecture cible] : Edge léger (ESP32 VAD + enregistrement) → RPi 5 BirdNET-Lite (classification) → M5 TweetyBERT (parsing/clustering). Musaraigne confirme : TweetyBERT sur RPi 5 = ❌ (transformer trop lourd, 4GB OOM), sur M5 = ✅ (GPU Apple Silicon).
+- [2026-07-03] [NEXUS_ACOUSTIC — Roadmap] : P0 juillet = télécharger InsectSet459 + installer TweetyBERT sur M5 + adapter preprocessing orthoptères (fmin=5000). P1 août = fine-tuning + dashboard 3D. P2 septembre = pipeline automatisé + série WildLens « Sound Portraits ».
+- [2026-07-03] [NEXUS_ACOUSTIC — WildLens] : Potentiel éditorial identifié — sculptures 3D de chants d'orthoptères comme contenu visuel différenciant. Série « Sound Portraits » proposée.
+- [2026-07-03] [Validation web] : 15 recherches DuckDuckGo, 22 sources croisées. Confirmations : TweetyBERT peer-reviewed, InsectSet459 public, Lucio Arese artiste-chercheur confirmé (Seeing Birdsong, Nencki Institute), SoundPlot framework open-source, DolphinGemma forkable, ESP modèle généralisable 2028.
+- [2026-07-03] [Système — Prompt INBOX] : Template `prompt-inbox-analysis.md` créé dans `docs/system/`. 7 phases standardisées (Discovery → Deep Read → Multi-Angle Analysis → Web Validation → Cross-Project Impact → Integration Proposals → Memory Capture). Réutilisable pour tout futur fichier INBOX. Supprime l'improvisation et garantit une analyse complète à chaque fois.
+- [2026-07-03] [NEXUS_ACOUSTIC — BIRDER] : Modèle `birder-project/vit_reg4_so150m_p14_ls_dino-v2-bio` analysé. Encodeur ViT 133.6M params (DINOv2) entraîné sur 31M photos de biodiversité. ⚠️ Modèle VISUEL (photos RGB), PAS bioacoustique. Pertinent pour (1) classification automatique photos naturalistes JC (PHOTO_NATURE, 81% iNat2021) et (2) encodeur alternatif pour spectrogrammes InsectSet459. Framework `birder` open-source (GitLab), licence Apache 2.0. Livrable : `TEAM_Inbox/2026-07-03_dobby_analyse-birder-dinov2-bio.md`.
+- [2026-07-03] [NEXUS_ACOUSTIC — Téléchargements] : InsectSet459 sur M5 — Train.zip (48 GB, MD5 ✅) + Validation.zip (15 GB, MD5 ✅) téléchargés. Test.zip (16 GB) en cours (2.3 MB/s, ~1h50 restant). Emplacement : `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/datasets/InsectSet459/`.
+- [2026-07-03] [WILDNEXUS — Correction hardware-state] : Commande Mouser #39492997 n'était PAS reçue — statut réel = BACKORDER. Bloqueur TPS62840DLCR (Buck TI) ETA 15 juillet. hardware-state.md corrigé (✅→⏳). MP1584 DC-DC ×5 reçus séparément. Panier Mouser restant ~279€ toujours à commander.
+- [2026-07-03] [Hardware — Prototypage] : 5× MP1584 DC-DC Step Down 3A reçus. Ultra-Small, réglable, remplace LM2596. Alimentation projets WildNexus/IoT. Enregistré dans `hardware-state.md`.
+- [2026-07-03] [Système — Threads Memory System] : Transcript YouTube Ev Chapman analysé via inbox-analysis (7 phases). Architecture PKA déjà supérieure (State/Log, team.db, 30+ skills, retro_digest.py). Gap identifié : pas de « living thread file » par projet. P0 exécuté : skill `pka-thread-file` créé (`skills/pka-thread-file/SKILL.md`), template `thread-file-template.md` déployé. 10/10 thread files créés. Système mémoire projet actif. Livrable : `TEAM_Inbox/2026-07-03_dobby_analyse-threads-memory-system.md`.
+
+## Session 2026-07-04 — Concordance Lupo ↔ WildNexus
+
+- [2026-07-04] [WILDNEXUS ↔ Lupo] : Concordance caméras van Lupo × WildNexus. Même socle technique (ESP32 + caméra extérieure + solaire + IP67 + HA). Lupo = variante surveillance humaine de WildNexus. 4 actions P0-P1 : MOSFET power-gating au lieu du relais, PIR EKMB dans boîtier ESP32, test ESPHome sur WN, gateway LoRa van. Recommandation : rattacher Lupo comme sous-projet WildNexus. Livrable : `TEAM_Inbox/2026-07-04_dobby_concordance-lupo-wildnexus.md`.
+
+## Session 2026-07-02 — Restructuration ARTEON / WildLens / PHOTO_AI_JURY / PHOTO_NATURE
+
+- [2026-07-02] [ARTEON — Restructuration] : Analyse complète des 3 projets photo (ARTEON, PHOTO_AI_JURY, PHOTO_NATURE). Constat : 3 couches d'un même système vivant en silos. WildLens enterré en sous-dossier malgré son rôle critique de tête du funnel. Option A validée par JC — WildLens promu service prioritaire sans extraction en projet autonome.
+- [2026-07-02] [WildLens — Promotion] : INDEX dédié créé (`02_ARTEON/wildlens/INDEX.md`). Édition #1 materialisée depuis transcript ChatGPT (`editions/WildLens-2026-03-28.md`). 5 sections verrouillées : Lead Editorial, Behaviour & The Lens, Technique Spotlight, Competition Dissection, Field Assignment. Relance nécessaire — 0 édition depuis 3 mois.
+- [2026-07-02] [ARTEON — INDEX] : INDEX mis à jour — WildLens remonté en première position. Roadmap étape 4 (charte) marquée ✅. 13 étapes, 5 ✅, 7 ⏳, 1 🔴 (relance WildLens).
+- [2026-07-02] [PHOTO_AI_JURY — INDEX] : INDEX créé (manquait). Données clés : 58 analyses, 73.8/100 moyen, 81% acceptation JC. MCP LR partiellement installé (activation manquante). Cross-références vers ARTEON et PHOTO_NATURE.
+- [2026-07-02] [PHOTO_NATURE — INDEX] : INDEX mis à jour avec section "Voir aussi" pointant vers ARTEON et PHOTO_AI_JURY. Cross-référence presets Argus (11 XMP ici ↔ 11 PDF dans PHOTO_AI_JURY).
+- [2026-07-02] [Pilotage] : `etat-projets.md` mis à jour — ARTEON passe 🟢→🟡 (relance WildLens), WildLens ajouté en sous-ligne 2a. Diagramme des relations inter-projets photo ajouté en bas de fichier.
+- [2026-07-02] [ARTEON — etat-projet] : `arteon-etat-projet.md` mis à jour — étape 4 charte marquée ✅, date mise à jour 02/07.
+
+## Session 2026-07-01 — Réception SSD + Réorg hub OpenRouter
+
+- [2026-07-01] [IoT — Hardware] : SSD Fanxiang NVMe 256GB reçu + **PV PI HAT reçu** (avance sur prévision 15/08). Le RPi 5 vanlife est complet : SSD + shield + boîtiers + PV PI HAT. Assemblage prêt à lancer. → [Guide d'assemblage](JCH_Inbox/03_PROJECTS/11_IOT/iot-van/ASSEMBLAGE-RPi5-VANLIFE.md) créé.
+- [2026-07-01] [AI_IT_TOOLS — OpenRouter] : GLM 5.2 (`z-ai/glm-5.2`), Claude Sonnet 5 (`anthropic/claude-sonnet-5`), ChatGPT (`openai/gpt-chat-latest`) ajoutés comme lanceurs OpenRouter dans `dobby.sh` et le hub. Claude Code et Codex CLI retirés du hub (remplacés par OpenRouter).
+- [2026-07-01] [AI_IT_TOOLS — Bootstrap] : `deepseek_chat.py` enrichi : ADAPTER-PROMPT.md et TEAM/dobby.md ajoutés au system prompt (6 fichiers, ~78K chars). PKA_PROVIDER renseigné pour chaque modèle OpenRouter.
+- [2026-07-01] [IoT — Capteurs] : Document INBOX « détecteur niveau eau » analysé et structuré. → [SPEC-DETECTEUR-NIVEAU-HYDROSTATIQUE.md](JCH_Inbox/03_PROJECTS/11_IOT/_shared/detecteur-niveau-liquide/SPEC-DETECTEUR-NIVEAU-HYDROSTATIQUE.md). Solution TL-136 + ADS1115 + ESP32, BOM ~60-80€ par point, code ESPHome validé, use cases vanlife + serre documentés.
+- [2026-07-01] [AI_IT_TOOLS — Hub] : Restructuration du hub avec menu latéral (sidebar 220px, ancres smooth-scroll) et lanceurs LLM remontés en première position.
+- [2026-07-01] [AI_IT_TOOLS — Dashboard] : Correction du routage `/api/launch/` dans `dashboard_server.py` (accepte `/api/launch/*` et `/launch/*`). Ajout glm5, claude-or, chatgpt au dict MODELS.
+
+## Session 2026-07-02 — Réception ADS1115 + ESP32-C3 Super Mini
+
+- [2026-07-02] [IoT — Hardware] : **3× ADS1115 ADC Module** (Heemol, 9,21€) + **3× ESP32-C3 Super Mini** (Heemol, 15,98€) reçus. Composants pour le détecteur de niveau hydrostatique (projet `11_IOT`). `hardware-state.md` et `SPEC-DETECTEUR-NIVEAU-HYDROSTATIQUE.md` mis à jour (🔴 Commandé → ✅ REÇU).
+- [2026-07-02] [IoT — Prochaine étape] : Reste à recevoir : sonde TL-136, alim 24V, buck/boost converters, chargeur TC4056, accus 18650. Assemblage proto banc dès que la sonde et l'alim sont là.
+- [2026-07-02] [IoT — Zigbee] : **Aqara Light Sensor T1** (`GZCGQ11LM`, IEEE `0x54ef44100162b3de`) appairé avec succès. Renommé `Aqara_Lux`. Exposes : illuminance (lx), batterie (%), voltage, linkquality. Ajouté dans `hardware-state.md`.
+- [2026-07-02] [Infra — Docker] : Docker Desktop configuré en démarrage automatique au login (`AutoStart: true` dans `settings-store.json`).
+- [2026-07-02] [ARTEON — WildLens #2] : Article validé à 100%. Photo LrC to-112.jpg (couple + poussin fous de Bassan), français par défaut, images Unsplash sections ② et ③. `WildLens-2026-07-02-preview.html` prêt pour publication.
+
+## Session 2026-06-30 — System check & deadline WildNexus
+
+- [2026-06-30] [WildNexus — Décision JC] : Deadline test harness caméra reportée de 15 jours → 15 juillet 2026. OV5640×5 reçus, Mouser #39492997 reçu, hardware caméra disponible.
+- [2026-06-30] [IoT — Hardware] : RPi 5 + SSD NVMe + boîtiers Geekworm X1201-C1 tous reçus (29/06). Assemblage vanlife à lancer. PV PI HAT en transit (livraison ~15/08).
+- [2026-06-30] [IoT — Véhicule] : **Van acheté** — Westfalia Kelsey 2026, 170CV, 4x4, blanc. Remplace le Stylevan Equinox 4 précédemment envisagé. Le projet IoT vanlife a maintenant un véhicule réel.
+- [2026-06-30] [Système — State freshness] : 5 fichiers procurement CRITICAL (>14j stale, jusqu'à 37j). `etat-projets.md` remis à jour (deadline 15/07, IoT hardware). Dernier system check : 21/06 (RED, 9 jours). `hardware-state.md` à jour (29/06).
+
+---
+
 ## État équipe
 
-- **31 membres actifs** (source : `team.db`) — 30 spécialistes + Dobby. Derniers ajouts : Araignée #30, Fourmi #31.
+- **31 membres actifs** (source : `team.db`) — 30 spécialistes + Dobby. Audit 2026-06-22 : Ariane fusionnée dans Forge (onboarding plateforme), Fourmi fusionnée dans Araignée (bench tech). Mésange #33 créée (Naturaliste Terrain & Bioacoustique).
 - **Recrutement gelé** levé ponctuellement pour besoin opérationnel avéré — re-gelé après intégration.
 - **Graphify onboardé** — attribué à Corbeau (#5). Outil de knowledge graph extraction (v0.4.29), doc `docs/system/graphify.md`.
 
@@ -49,6 +227,7 @@
 
 ## Décisions structurelles (juin 2026)
 
+- [2026-06-23] [BirdNET — Intégration] : L'écosystème BirdNET (Cornell) est officiellement reconnu comme référence architecturale pour NEXUS_ACOUSTIC. Le pattern double canal mel spectrogram sera intégré au pipeline InsectNet. birdnet-stm32 et BirdNET-Tiny-Forge serviront de référence pour le déploiement TinyML sur ESP32-S3. geomodel (MIT) sera utilisé comme base pour un post-filtre spatial GBIF des détections InsectNet.
 - [2026-06-04] [Optimisation] : MEMORY.md allégé — historique déplacé vers `wiki/archives/memory-history-2026-05.md`. Skills communautaires inutilisées retirées de `skills-lock.json`. Pointer files regénérés. System check auto-healing ajouté.
 - [2026-06-04] [Pointer] : Tool pointers régénérés — 10 projets, 2 inbox. Permissions HA corrigées (0600).
 - [2026-06-03] [Onboarding] : Graphify attribué à Corbeau par extension de responsabilités — pas de nouveau membre.
@@ -202,3 +381,84 @@ MEMORY.md, AGENTS.md, DEEPSEEK.md, GEMINI.md, QWEN.md, CLAUDE.md, ADAPTER-PROMPT
 - [2026-06-19] [WildNexus — Test Harness] : Dataset 51 images 224×224 extraites de Lightroom. Contact sheet HTML interactive. Deadline repoussée au 30 juin (attente IR Belgique). Note dropout voltage AMS1117 ajoutée à SOP-10.
 - [2026-06-19] [Réorganisation — Projets] : NEXUS_ACOUSTIC (projet #11) + FAUNE_AUTOUR (projet #12) extraits de WildNexus. 06_COMPONENTS → 06_ADJACENT. Nettoyage 08_TECH_NOTES, PPK2, datasheets. Projets actifs : 10 → 12. Analyse complète dans TEAM_Inbox/2026-06-19_dobby_analyse-reorganisation-wildnexus.md.
 - [2026-06-20] [Memory Nudge — Activé] : Première exécution live du Memory Nudge. Détection gap MEMORY.md (session 19 juin non capturée). Mode synchrone validé — les gaps mémoire sont détectés et comblés sans script externe.
+- [2026-06-22] [Onboarding] : Musaraigne #32 onboardée — Edge AI & TinyML Specialist. Recrutement suite projet LEAFNET + besoins InsectNet.
+- [2026-06-22] [IoT — Architecture] : Projet 11_IOT créé — 3 sous-projets : iot-van (RPi 5 12V DC-DC, HA autonome, Zigbee, Tailscale, prototype banc), iot-serre (RPi 5 Esneux, HA partagé, BOM 247€ prêt, 5 phases), iot-maison (même hub Esneux, ébauche long terme). Spécialistes : Araignée, Fourmi, Musaraigne.
+- [2026-06-22] [LEAFNET — Création] : Sous-projet LEAFNET créé dans 12_NEXUS_ACOUSTIC. Concept WN-BIO v1.0 : nœud bioélectrique végétal ESP32-S3 + AD620ANZ. GO validé Forge. ~22€ proto banc. Phase P1 post-WildNexus P0 — nœud dédié séparé.
+- [2026-06-22] [WildNexus P0 — État] : Phase M-02 banc. Option A (PPK2 + DevKit ESP32) prioritaire. Option B (proto terrain IP67) après M-02. Budget 1000€. Shortlist v0.2c active. MCU cible production : ESP32-S3-WROOM-1-N8R8.
+- [2026-06-22] [Audit mémoire] : Transversalité vérifiée — gaps corrigés : session_count agrégation retro_patterns réparée (2595→721, upsert), retro_digest.py créé (inject 15 patterns/session), 3 skills IoT/LEAFNET créés (ids 35-37), MEMORY.md racine synchronisée, USER.md corrigé, ADAPTER-PROMPT.md mis à jour.
+- [2026-06-23] [WildNexus — Matériel reçu] : 4× ESP32-CAM OV2640 (cartes sans module caméra) + 3× USB-C TTL Serial Adapter. Prototypage firmware caméra, debug ESP32. Registre mis à jour dans `07_PROCUREMENT_BOM/`.
+- [2026-06-23] [IoT — Procurement] : PV PI (AutoEcology/Luke Ditria) commandé — 150 AUD (~90€). HAT solaire RPi : MPPT, LiFePO4 12V, 10A, RTC, watchdog. Livraison estimée mi-août 2026. Projets cibles : IoT van, IoT serre, WildNexus base, NEXUS_ACOUSTIC. Registre : `11_IOT/_shared/procurement-register.md`. Rappel team.db : 15 août 2026.
+- [2026-06-23] [LEAFNET — Enrichissement] : Document `sonification.rtf` (Note Apple Notes JC) routé de INBOX → `LEAFNET/99_REFERENCES/`. Guide d'implémentation complet : XIAO ESP32-S3, ampli INA126/TLC2272, PPK2, ESP-NOW, code C++ production-ready (5 optimisations deep sleep), intégration MQTT→Home Assistant. Concordance LEAFNET v0.1 : AD623ANZ confirmé supérieur (CMRR 110 dB vs 94 dB). Scope LEAFNET enrichi (alternatives ampli, firmware ESP-NOW, intégration HA, PPK2 validation).
+- [2026-06-23] [BirdNET — Analyse écosystème] : Analyse complète de l'écosystème BirdNET (Cornell + Chemnitz TU). **5 insights critiques :** (1) Architecture double canal mel spectrogram (0-3kHz + 500Hz-15kHz) directement transposable à InsectNet pour les orthoptères haute fréquence, (2) birdnet-stm32 comme architecture de référence TinyML pour ESP32-S3, (3) BirdNET-Tiny-Forge (Kedro, Apache 2.0) pour pipeline dataset FOMO, (4) geomodel (MIT) pour post-filtrage spatial GBIF, (5) ecoPi-rtf comme template dashboard bioacoustique. **9 recommandations** émises pour Clio, Chouette, Musaraigne, Forge, Araignée. Brief complet : `TEAM_Inbox/2026-06-23_dobby_analyse-birdnet-ecosysteme_integration-pka.md`. Modèles CC BY-NC-SA 4.0 — compatible recherche, à documenter pour dérivés.
+
+- [2026-06-23][capture/episodic/P4] : Session 2026-06-23 : gap analysis mémoire+bootstrap exécuté, 5 corrections appliquées, pka_memory_capture.py créé
+
+- [2026-06-23][capture/episodic/P4] : Session 2026-06-23 — Phase 2 mémoire : search_memory intégré dans SOUL.md, Memory Nudge temps réel via pka_memory_capture.py, check_state_freshness.py étendu à 19 fichiers (+procurement), outils-index.md + instructions-systeme.md mis à jour, 7 notes Apple routées vers projets (VETALYX, TRAVELS, NEXUS_ACOUSTIC, IOT)
+
+- [2026-06-23][capture/episodic/P3] : Nettoyage WildNexus 2026-06-23 : 16 actions (2 vides, 3 temp, 6 déplacés, 30+ FAUNE_AUTOUR extraits, 3 ADR corrigés, _quarantine supprimé). Structure propre : PROTOCOLES/progress.md créé, VISUALS nettoyé, ADR-014 créé.
+
+---
+
+## Session 2026-06-24 — Outlook + OV5640
+
+- [2026-06-24] [WildNexus — Matériel reçu] : 4× OV5640 DVP M12 reçus d'AliExpress. Total OV5640 = 5 (1× Camemake + 4× AliExpress). `hardware-state.md` mis à jour.
+- [2026-06-24] [IT — Outlook] : Crash Outlook → restauration profil depuis `~/Library/Group Containers/UBF8T346G9.Office/`. Profil et données intacts mais entrées Keychain `Microsoft Office Identities Cache/Settings 2` disparues. Comptes recréés manuellement : jchytech ✅, Gmail ✅, Yahoo abandonné (timeout + mot de passe d'application). Leçon : les comptes sont dans la base Outlook + Keychain ; sans Keychain, impossible de les restaurer automatiquement.
+- [2026-06-24] [AI_IT_TOOLS — Pattern 2 Mem0] : Distinction formelle mémoire session ↔ long-terme ajoutée à `SOUL.md` + `AGENTS.md`. Tableau 2 couches (Session/Contexte LLM vs Long-terme/team.db), règle « retrieval context window » en 3 étapes avant toute réponse impliquant projet/décision/état. Règle « jamais répondre de mémoire » renforcée.
+- [2026-06-24] [AI_IT_TOOLS — Auto-extract v0.1] : Fonction `--auto-extract` ajoutée à `pka_memory_capture.py`. Extraction automatique de faits atomiques depuis transcripts de conversation via LLM. Primary: Gemma3 12B (Ollama M1), Fallback: DeepSeek V3 API. Prompt structuré {fact, category, importance}. 10 faits capturés en test réel (session 24 juin). Usage : `echo "conversation" | pka_memory_capture.py --auto-extract - [--dry-run]`. Limite ~6000 chars par extraction.
+- [2026-06-24] [AI_IT_TOOLS — Veille Mem0] : Transcript tutoriel Mem0 analysé. Mem0 = couche mémoire agent IA avec extraction automatique de faits via LLM. **3 patterns cannibalisables pour PKA :** (1) Extraction automatique de faits atomiques depuis conversations — PKA pourrait l'ajouter à `pka_memory_capture.py` pour réduire la capture manuelle. (2) Distinction mémoire/historique opérationnalisée — PKA a déjà State/Log mais gagnerait à formaliser « retrieval context window » dans les prompts Dobby. (3) Vector DB interchangeable — PKA utilise FTS5, une couche vectorielle (Qdrant/Chroma) améliorerait la recherche sémantique cross-session. **Action différée** — à intégrer dans roadmap AI_IT_TOOLS si JC valide.
+
+- [2026-07-01][capture/episodic/P4] : WildNexus — nettoyage projet complet : 14 fichiers mis à jour, ADR-014 renuméroté (conflit ADR-013), ADR-016 créé (firmware intégré P0 machine d'états), Start.md v0.3, budget v0.4 avec suivi achats réels (~758€ engagé/prévu / 1000€), MASTER_ARCHITECTURE marqué comme document de cadrage initial, usage policy alignée avec ADR-010 dual-license MIT+ETHICS.md, scope lock aligné micro stéréo (ADR-013), fiches produit corrigées (avertissements modèles IA, LoRaWAN non validé), agent mapping comblé, M-01 readiness clôturé, 10 inconsistances inter-fichiers corrigées
+
+## Session 2026-07-05 — Implémentation boucle CoALA (Reconcile + Forget + Guard + Embed)
+
+- [2026-07-05] [AI_IT_TOOLS — Memory Layer v0.2] : Analyse de 3 transcripts INBOX sur la mémoire des agents IA → framework CoALA (Princeton). 4 types identifiés : working (contexte), semantic (CLAUDE.md/AGENTS.md), procedural (skills/), episodic (MEMORY.md). Implémentation de 3 améliorations P0/P1/P2.
+- [2026-07-05] [P0a — Auto-Reconcile] : `pka_memory_capture.py` v0.2 — ajout de `auto_reconcile()` : quand un fait contredit une entrée existante (même clé, valeur différente), supersede automatique si importance ≥ existante. Flag `--no-reconcile` pour désactiver.
+- [2026-07-05] [P0b — Memory Prune] : Nouveau script `pka_memory_prune.py` — archive les entrées MEMORY.md > 90 jours vers `wiki/archives/memory-archive-YYYY-MM.md` avec résumé une ligne. Implémente le maillon « Forget » de CoALA. `--dry-run`, `--days N`, `--force`, `--json`.
+- [2026-07-05] [P1a — Memory Guard] : `pka_memory_capture.py` — ajout de `guard_memory_write()` : scan pre-write de chaque fait contre 14 patterns d'injection (memory poisoning, role hijack, template injection, destructive commands). Niveaux : internal (bypass), external (warn≥20, block≥50), untrusted (block≥20).
+- [2026-07-05] [P1b — Trust Levels] : Colonne `trust` ajoutée à `memory_capture` (internal/external/untrusted). Flag `--trust` pour capture manuelle, `--auto-trust` pour auto-extract (défaut: external). Faits untrusted exclus du routage vers knowledge/USER.md.
+- [2026-07-05] [P2 — Semantic Retrieval] : `pka_retrieve.py` — ajout de `search_embedding()` via Ollama M1 (`nomic-embed-text`, fallback gemma3). Flag `--embed`/`--semantic`. Cosine similarity sur memory_capture + knowledge, seuil 0.5. Résultats mergés AVANT les résultats keyword.
+- [2026-07-05] [outils-index.md] : Mis à jour avec les 3 nouveaux flags/scripts. Memory Pipeline documenté v0.2.
+- [2026-07-05] [Tests] : Memory guard : 5/5 tests passés (clean=score 0, malicious=score 55 bloqué, internal bypass, untrusted bloqué). Prune dry-run : 4 entrées totales, 0 stales (90j), 3 stales (7j). Syntax check : 3/3 scripts OK.
+
+## Session 2026-07-06 — Fiche technique Lupo + Correction Stylevan→Kelsey
+
+- [2026-07-06] [TRAVELS — Lupo] : Van nommé « Lupo » 🐺 par JC. Fiche technique complète créée : `07_TRAVELS/van technique/achat-van/fiche-technique-lupo-kelsey.md`. Westfalia Kelsey 2026, Ford Transit Custom 2.0 EcoBlue 170ch, BVA8, 4×4 permanente, blanc, 5.45m, 3200kg PTAC. Équipement série + options documentés depuis catalogue UK RRP 2026.
+- [2026-07-06] [Correction] : Base porteur corrigée dans tous les fichiers actifs : Ford Transit Custom (pas VW Crafter). Nom « Stylevan Equinox IV » remplacé par « Westfalia Kelsey 2026 / Lupo » dans INDEX.md, USER.md, securite-van-lupo.md.
+- [2026-07-06] [Sécurité van] : Document stratégique `securite-van-lupo.md` créé — architecture 3 couches (capteurs Zigbee + verrouillage mécanique IMC + alarme Fencive), budget ~754€, plan P0→P3. Aucune serrure connectée compatible FAP européen.
+
+## Session 2026-07-08 — Apps Roadtrip Lupo 🐺 + Recherche 6 pays
+
+- [2026-07-08] [TRAVELS — Lupo] : Document `apps-roadtrip-lupo.md` créé dans `van technique/`. Synthèse des apps et plateformes pour roadtrip couvrant 🇫🇷 🇪🇸 🇮🇹 🇩🇪 🇧🇪 🇳🇱. 4 niveaux de priorité JC (sauvage → privé/fermier → camping isolé → camping classique).
+- [2026-07-08] [Apps répertoriées] : park4night, iOverlander, Campspace, Campercontact, ACSI, Wanderlog, Windy, Cartes IGN, Organic Maps, AllTrails, Bivouacs Huttopia, France Passion, Allvan, Accueil Paysan, Bienvenue à la Ferme, España Discovery, Agricamper Italia, Natura Camping, CamperOnLine, Landvergnügen, Bauernhofcamping, stellplatz.info, Camperstop.com, VanSpot Finder.
+- [2026-07-08] [Bivouacs Huttopia] : 1 000+ spots nature privatifs (15-30 €/nuit), visités et validés, réservables en ligne. 🇫🇷🇪🇸🇧🇪🇵🇹. Planificateur IA intégré.
+- [2026-07-08] [Budget estimé] : ~210 €/an pour les abonnements (park4night Premium + ACSI + France Passion + Agricamper + España Discovery + Landvergnügen) + nuits à ~10-30 €.
+
+## Session 2026-07-08 (suite) — Lupo Planner PWA
+
+- [2026-07-08] [TRAVELS — Lupo Planner] : PWA « Lupo Planner 🐺 » créée dans `07_TRAVELS/lupo-planner/`. Carte unifiée des spots de bivouac, stockage local IndexedDB, filtrage par pays/type, roadtrips, import/export JSON, mode hors-ligne via service worker.
+- Fichiers : `index.html` (754 lignes, tout-en-un), `manifest.json`, `sw.js`, `deploy.sh`
+- Stack : vanilla HTML/CSS/JS, Leaflet.js (CDN), OpenStreetMap tuiles, IndexedDB, PWA installable
+- Déploiement : `./deploy.sh dev` (localhost:8088), `./deploy.sh ha` (HA www/), `./deploy.sh rpi` (RPi http.server)
+- 6 pays couverts 🇫🇷🇪🇸🇮🇹🇩🇪🇧🇪🇳🇱, 5 types de spots alignés sur priorités JC (sauvage → privé/ferme → camping isolé → camping → aire)
+
+## Session 2026-07-08 (suite) — Commande Mouser #39492997 réceptionnée
+
+- [2026-07-08] [WILDNEXUS — Hardware] : Commande Mouser #39492997 livrée complète avec 1 semaine d'avance (ETA initial 15/07). 11 références : LED IR 940nm×10, PIR EKMB 2µA×2, MEMS TDK×2, Buck TPS62840×5, Inductance 10µH×5, MOSFET SI2302×5, BME688×2, SHT31×2, Antenne LoRa×2, Dissipateur×4, Lot passifs CMS×1. 105,94€ + port.
+- [2026-07-08] [WILDNEXUS — Statut] : Tous les composants actifs P0 sont maintenant reçus. Reste le panier Mouser #2 (~279€, 11 composants BOM). Prochaine étape : bench loop (SOPs WildNexus P0) avec les composants reçus.
+
+## Session 2026-07-08 (suite) — Réorganisation P0 : IOT/Vanlife priorité absolue
+
+- [2026-07-08] [PILOTAGE] : Réorganisation complète des projets. IOT/Vanlife promu **P0, deadline 7 août 2026** (arrivée Lupo). 6 projets gelés jusqu'à septembre : WILDNEXUS, ARTEON+WildLens, InsectNet, TRAVELS, VETALYX, NEXUS_ACOUSTIC. 3 projets P1 autonomes : PHOTO_NATURE, PHOTO_AI_JURY, AI_IT_TOOLS.
+- [2026-07-08] [IOT/Vanlife — Reste à faire] : Mise en boîtier X1201-C1, silentblocs, coating, PV PI HAT, config HA finale, commander capteurs Zigbee, préparer installation Lupo.
+
+- [2026-07-13][capture/episodic/P4] : SD RPi Lupo : Samsung PRO Endurance 256 Go commandée (89€). Reolink Argus MagiCam commandée. SSD NVMe Fanxiang 256 Go wipe effectué (ex-HA OS, maintenant HFS+). Décision : SD 256 Go seule (pas NVMe) pour fiabilité vanlife.
+
+- [2026-07-13][capture/episodic/P3] : 3 nouveaux scripts intégrés (pattern Sanja Obsidian+AI) : pka_date_scanner.py (scan dates→follow_ups), pka_quick_capture.py (capture rapide inbox), pka_vault_maintenance.py étendu (dedup, broken links, orphans). SOUL.md et outils-index.md mis à jour.
+
+- [2026-07-13][capture/episodic/P4] : Analyse Exosfer OBD Protect : antivol passif par permutation broches OBD. ⚠️ Incompatible avec dongle OBD permanent (WiCAN Pro). Commande WiCAN conditionnée à validation compatibilité.
+
+- [2026-07-19][session/Dobby] : Password Mosquitto unifié Dobby2026!. Capteurs pression/altitude Esneux opérationnels dans HA (Sensor Logger HTTP→MQTT). Page assiette van autonome https://192.168.129.31:8843 (PWA, silhouette Lupo, hauteurs de cale par roue, Ford Transit Custom L2 3500×1740mm, calibration iPhone 17 Pro Max coque offset −1.6°). Noctua NF-A4x10 PWM 12V reçu pour RPi Lupo — connexion via adaptateur JST-SH + alim 12V séparée (pas compatible direct RPi 5). Ressources HA sauvegardées dans 11_IOT/_shared/. Tests réels assiette van prévus dans quelques jours.
+
+- [2026-07-20][session/Dobby] : Page assiette van déployée sur https://aroundus.tech/lupo/assiette-van-leveling.html (Hostinger). Icône niveau à bulle (PNG 180×180). Règle YOLO ajoutée dans AGENTS.md pour tous les modèles. Analyse INBOX projet surveillance acoustique écurie : livrable TEAM_Inbox/2026-07-20_dobby_analyse-surveillance-acoustique-ecurie.md — synthèse 8 sections avec feuille de route 4 phases, briques WildNexus (SOP-13/14/15) + InsectNet (CNN 330K, F1 0.98), validation web via Savonia (projet jumeau Finlande). Source INBOX déplacée dans WildNexus/99_REFERENCES. Fichiers Revenu cadastral → JCH_PRIVATE/maman/. Images Lupo → 07_TRAVELS/vanlife/deco/.
+
+- [2026-07-21][session/Dobby] : INBOX traité — 6 fichiers Revatis/Axovet → `08_VETALYX/partners/revatis/` (LETTER OF INTENT, Investor Brief, NDA, 2 présentations, dossier inbox). Revatis identifié comme partenaire potentiel de VETALYX. Facture → `07_TRAVELS/van technique/achats/`. Agricamper Italia 2026 → `07_TRAVELS/vanlife/destinations/`. INBOX vide ✅.

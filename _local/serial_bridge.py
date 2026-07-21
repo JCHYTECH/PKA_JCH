@@ -1,95 +1,58 @@
 #!/usr/bin/env python3
-"""Bridge TCP:6638 <-> /dev/cu.usbserial-10 @ 115200 pour ZHA/EZSP.
-v3 — threaded (stable), shared serial, graceful."""
-import socket, serial, threading, signal, sys, time
+"""Bridge TCP ↔ Serial pour Sonoff ZBDongle-E. v4 — select-based, zero latency."""
+import socket
+import serial
+import select
+import threading
+import sys
 
-SERIAL_PORT = "/dev/cu.usbserial-10"
-BAUD = 115200
 TCP_PORT = 6638
+SERIAL_DEV = '/dev/tty.usbserial-1110'
+BAUD = 115200
 
-running = True
-
-def shutdown(sig, frame):
-    global running
-    print("[bridge] shutdown", flush=True)
-    running = False
-
-signal.signal(signal.SIGINT, shutdown)
-signal.signal(signal.SIGTERM, shutdown)
-
-# Shared serial — opened once
-ser = serial.Serial(SERIAL_PORT, BAUD, timeout=0.05)
-print(f"[bridge] serial {SERIAL_PORT}@{BAUD}", flush=True)
-
-srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-srv.bind(("0.0.0.0", TCP_PORT))
-srv.listen(1)
-srv.settimeout(1.0)
-print(f"[bridge] TCP:{TCP_PORT}", flush=True)
-
-write_lock = threading.Lock()
-
-def handle(conn, addr):
-    print(f"[bridge] client {addr}", flush=True)
-    stop = threading.Event()
-    
-    def tcp_to_ser():
-        try:
-            while not stop.is_set():
-                try:
-                    data = conn.recv(4096)
-                except socket.timeout:
-                    continue
+def bridge(conn, ser):
+    """Bidirectional bridge using select for minimal latency."""
+    conn.setblocking(False)
+    ser.timeout = 0
+    try:
+        while True:
+            # Wait for data on either socket or serial
+            readable, _, _ = select.select([conn, ser], [], [], 0.05)
+            if conn in readable:
+                data = conn.recv(4096)
                 if not data:
                     break
-                with write_lock:
-                    ser.write(data)
-        except Exception as e:
-            print(f"[tcp→ser] {e}", flush=True)
-        finally:
-            stop.set()
-
-    def ser_to_tcp():
-        try:
-            while not stop.is_set():
-                with write_lock:
-                    waiting = ser.in_waiting
-                    if waiting:
-                        data = ser.read(waiting)
-                    else:
-                        data = None
+                ser.write(data)
+                ser.flush()
+            if ser in readable:
+                data = ser.read(ser.in_waiting or 4096)
                 if data:
-                    try:
-                        conn.sendall(data)
-                    except Exception:
-                        break
-                else:
-                    time.sleep(0.001)
-        except Exception as e:
-            if not stop.is_set():
-                print(f"[ser→tcp] {e}", flush=True)
+                    conn.sendall(data)
+    except (OSError, serial.SerialException):
+        pass
 
-    t1 = threading.Thread(target=tcp_to_ser, daemon=True)
-    t2 = threading.Thread(target=ser_to_tcp, daemon=True)
-    t1.start(); t2.start()
-    t1.join()
-    stop.set()
-    t2.join(timeout=1)
-    conn.close()
-    print(f"[bridge] client {addr} déconnecté", flush=True)
+def handle_client(conn, addr):
+    print(f"[bridge] Connected: {addr}", flush=True)
+    try:
+        ser = serial.Serial(SERIAL_DEV, BAUD, timeout=0, rtscts=False)
+        bridge(conn, ser)
+        ser.close()
+    except Exception as e:
+        print(f"[bridge] Error: {e}", flush=True)
+    finally:
+        try: conn.close()
+        except: pass
+        print(f"[bridge] Disconnected: {addr}", flush=True)
 
-try:
-    while running:
-        try:
-            conn, addr = srv.accept()
-            conn.settimeout(0.1)
-            threading.Thread(target=handle, args=(conn, addr), daemon=True).start()
-        except socket.timeout:
-            continue
-except KeyboardInterrupt:
-    pass
-finally:
-    ser.close()
-    srv.close()
-    print("[bridge] terminé", flush=True)
+def main():
+    print(f"[bridge] TCP:{TCP_PORT} → {SERIAL_DEV}@{BAUD}", flush=True)
+    srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    srv.bind(('0.0.0.0', TCP_PORT))
+    srv.listen(5)
+    while True:
+        conn, addr = srv.accept()
+        threading.Thread(target=handle_client, args=(conn, addr), daemon=True).start()
+
+if __name__ == '__main__':
+    main()

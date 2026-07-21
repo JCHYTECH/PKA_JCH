@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="1200" height="500">
+  <defs>
+    <style>
+      .s { fill: #000000; }
+    </style>
+  </defs>
+
+  <!-- Fond transparent -->
+
+  <!-- ===== ÉTANG — BAS GAUCHE (départ mi-porte, zone basse) ===== -->
+  <g class="s">
+    <!-- Mare -->
+    <ellipse cx="150" cy="400" rx="100" ry="40"/>
+    <path d="M80,395 Q100,385 120,395 Q140,405 160,395"/>
+    <path d="M100,410 Q125,400 150,410"/>
+
+    <!-- Roseaux -->
+    <line x1="60" y1="450" x2="68" y2="300" stroke="black" stroke-width="2"/>
+    <ellipse cx="68" cy="296" rx="4" ry="12"/>
+    <line x1="75" y1="450" x2="72" y2="320" stroke="black" stroke-width="1.5"/>
+    <line x1="50" y1="450" x2="55" y2="340" stroke="black" stroke-width="1.5"/>
+    <line x1="200" y1="440" x2="205" y2="310" stroke="black" stroke-width="2"/>
+    <ellipse cx="205" cy="306" rx="4" ry="10"/>
+    <line x1="215" y1="440" x2="212" y2="330" stroke="black" stroke-width="1.5"/>
+
+    <!-- Héron -->
+    <line x1="230" y1="430" x2="236" y2="395" stroke="black" stroke-width="2"/>
+    <line x1="242" y1="430" x2="240" y2="398" stroke="black" stroke-width="1.5"/>
+    <ellipse cx="245" cy="375" rx="11" ry="20" transform="rotate(-8,245,375)"/>
+    <path d="M252,360 Q258,340 253,325" stroke="black" stroke-width="3" fill="none"/>
+    <ellipse cx="253" cy="322" rx="5" ry="8"/>
+    <polygon points="258,320 276,323 258,325"/>
+
+    <!-- Nénuphars -->
+    <ellipse cx="140" cy="410" rx="12" ry="5"/>
+    <path d="M140,410 L140,405"/>
+    <ellipse cx="180" cy="418" rx="8" ry="3"/>
+
+    <!-- Libellule -->
+    <line x1="130" y1="310" x2="155" y2="305" stroke="black" stroke-width="1"/>
+    <ellipse cx="150" cy="306" rx="6" ry="2"/>
+    <ellipse cx="130" cy="307" rx="3" ry="2" transform="rotate(-20,130,307)"/>
+    <ellipse cx="130" cy="312" rx="3" ry="2" transform="rotate(20,130,312)"/>
+  </g>
+
+  <!-- ===== PRAIRIE — CENTRE (monte en diagonale) ===== -->
+  <g class="s">
+    <!-- Herbes hautes -->
+    <path d="M350,430 Q358,360 362,340 Q365,360 370,430"/>
+    <path d="M380,420 Q385,350 390,330 Q395,350 398,420"/>
+    <path d="M410,410 Q415,340 420,320 Q425,340 428,410"/>
+    <path d="M440,400 Q445,330 450,310 Q455,330 458,400"/>
+    <path d="M470,390 Q475,320 480,300 Q485,320 488,390"/>
+    <path d="M500,370 Q505,310 510,290 Q515,310 518,370"/>
+    <path d="M530,350 Q535,300 540,280 Q545,300 548,350"/>
+
+    <!-- Chevreuil -->
+    <line x1="560" y1="380" x2="558" y2="330" stroke="black" stroke-width="2.5"/>
+    <line x1="570" y1="380" x2="572" y2="330" stroke="black" stroke-width="2.5"/>
+    <line x1="585" y1="378" x2="583" y2="332" stroke="black" stroke-width="2"/>
+    <line x1="592" y1="378" x2="594" y2="332" stroke="black" stroke-width="2"/>
+    <ellipse cx="580" cy="310" rx="25" ry="18" transform="rotate(-5,580,310)"/>
+    <path d="M592,295 Q598,275 595,260" stroke="black" stroke-width="3" fill="none"/>
+    <ellipse cx="594" cy="256" rx="9" ry="11" transform="rotate(8,594,256)"/>
+    <ellipse cx="586" cy="246" rx="3" ry="9" transform="rotate(-25,586,246)"/>
+    <ellipse cx="598" cy="244" rx="3" ry="9" transform="rotate(15,598,244)"/>
+    <ellipse cx="555" cy="302" rx="5" ry="6"/>
+
+    <!-- Fleurs -->
+    <circle cx="430" cy="390" r="3.5"/>
+    <circle cx="480" cy="360" r="3"/>
+    <circle cx="630" cy="325" r="3.5"/>
+    <circle cx="540" cy="340" r="2.5"/>
+
+    <!-- Papillon -->
+    <ellipse cx="510" cy="270" rx="2.5" ry="5" transform="rotate(-30,510,270)"/>
+    <ellipse cx="513" cy="270" rx="2.5" ry="5" transform="rotate(30,513,270)"/>
+  </g>
+
+  <!-- ===== FORÊT — HAUT DROITE (arrivée haut du van, fin de vitre) ===== -->
+  <g class="s">
+    <!-- Chêne principal — massive, culminant -->
+    <path d="M780,380 L775,260 Q778,230 770,195 Q773,165 780,140 Q790,110 800,85 Q810,65 820,50 Q830,40 840,35 Q850,32 860,35 Q870,40 878,50 Q888,65 895,85 Q905,110 910,140 Q915,165 912,195 Q908,230 912,260 L908,380"/>
+    <!-- Branches -->
+    <path d="M800,120 Q760,105 730,80" stroke="black" stroke-width="3.5" fill="none"/>
+    <path d="M880,100 Q920,85 950,55" stroke="black" stroke-width="3.5" fill="none"/>
+    <path d="M810,170 Q775,155 750,130" stroke="black" stroke-width="3" fill="none"/>
+    <path d="M890,160 Q930,140 960,110" stroke="black" stroke-width="3" fill="none"/>
+    <path d="M830,210 Q800,195 780,170" stroke="black" stroke-width="2.5" fill="none"/>
+    <path d="M860,200 Q890,185 910,160" stroke="black" stroke-width="2.5" fill="none"/>
+
+    <!-- Hibou — perché dans le chêne -->
+    <ellipse cx="845" cy="100" rx="11" ry="15"/>
+    <circle cx="845" cy="86" r="10"/>
+    <polygon points="838,78 834,68 842,75"/>
+    <polygon points="852,78 856,68 848,75"/>
+    <circle cx="841" cy="85" r="3.5"/>
+    <circle cx="849" cy="85" r="3.5"/>
+    <polygon points="843,90 847,90 845,95"/>
+
+    <!-- Second arbre — à droite -->
+    <path d="M980,350 L976,270 Q978,245 972,220 Q975,195 980,175 Q985,155 990,140 Q995,130 1000,125 Q1005,122 1010,125 Q1015,130 1020,140 Q1025,155 1028,175 Q1030,195 1028,220 Q1022,245 1025,270 L1020,350"/>
+    <path d="M990,160 Q960,145 940,125" stroke="black" stroke-width="2.5" fill="none"/>
+    <path d="M1015,155 Q1040,140 1060,115" stroke="black" stroke-width="2.5" fill="none"/>
+
+    <!-- Troisième arbre — fond, plus petit -->
+    <path d="M1080,320 L1078,260 Q1080,240 1075,220 Q1078,200 1082,185 Q1085,175 1090,170 Q1095,168 1100,170 Q1105,175 1108,185 Q1112,200 1110,220 Q1108,240 1110,260 L1108,320"/>
+    <path d="M1085,200 Q1065,190 1050,175" stroke="black" stroke-width="2" fill="none"/>
+    <path d="M1105,195 Q1120,185 1135,170" stroke="black" stroke-width="2" fill="none"/>
+
+    <!-- Sous-bois -->
+    <ellipse cx="790" cy="378" rx="22" ry="6"/>
+    <ellipse cx="930" cy="368" rx="18" ry="5"/>
+    <ellipse cx="1060" cy="338" rx="15" ry="4"/>
+    <path d="M730,380 Q740,360 750,380"/>
+    <path d="M1050,340 Q1058,320 1065,340"/>
+
+    <!-- Champignons -->
+    <ellipse cx="880" cy="378" rx="6" ry="2.5"/>
+    <rect x="878" y="375" width="4" height="5"/>
+    <ellipse cx="950" cy="370" rx="5" ry="2"/>
+    <rect x="948" y="367" width="4" height="4"/>
+  </g>
+
+  <!-- ===== LIANTS — oiseaux en migration diagonale bas-gauche → haut-droite ===== -->
+  <g class="s">
+    <path d="M180,260 Q192,255 198,260 Q192,265 180,260"/>
+    <path d="M220,240 Q232,235 238,240 Q232,245 220,240"/>
+    <path d="M270,215 Q282,210 288,215 Q282,220 270,215"/>
+    <path d="M330,185 Q342,180 348,185 Q342,190 330,185"/>
+    <path d="M400,155 Q412,150 418,155 Q412,160 400,155"/>
+    <path d="M480,120 Q492,115 498,120 Q492,125 480,120"/>
+
+    <!-- Ligne de sol montante (diagonale) -->
+    <path d="M30,460 Q60,455 90,460 Q120,450 150,445 Q180,440 210,445 Q240,435 270,430 Q300,425 330,430 Q360,420 390,415 Q420,410 450,415 Q480,400 510,395 Q540,390 570,395 Q600,380 630,375 Q660,370 690,375 Q720,360 750,355 Q780,350 810,355 Q840,340 870,335 Q900,330 930,325 Q960,318 990,310 Q1020,305 1050,300 Q1080,295 1110,290 Q1140,285 1170,280" fill="none" stroke="black" stroke-width="1.5"/>
+  </g>
+</svg>

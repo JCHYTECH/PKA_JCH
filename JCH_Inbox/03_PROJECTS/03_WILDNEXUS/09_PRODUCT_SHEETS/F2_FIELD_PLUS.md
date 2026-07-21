@@ -1,6 +1,6 @@
 # F2 — WildNexus FIELD+
 > Nœud caméra autonome + acoustique + solaire · Version P1
-> Fiche produit — 2026-06-19
+> Fiche produit — 2026-06-19 (mis à jour 2026-06-30)
 
 ---
 
@@ -19,7 +19,7 @@ Le FIELD+ est l'**upgrade terrain** du FIELD. Il ajoute l'autonomie solaire, une
 | **Énergie** | 8× AA Lithium L91 | LiFePO4 3 000 mAh + panneau solaire 5W | Autonomie illimitée (6 mois+) |
 | **Acoustique** | 2× SPH0645 (10 kHz) | 2× ICS-43434 (20 kHz) + préampli | Couvre ultrason (sauterelles, chauves-souris) |
 | **IA** | Binaire animal/non-animal | Espèces (FOMO multi-classes) | Identification taxonomique |
-| **Radio** | LoRa P2P SF7-12 | LoRaWAN + LoRa P2P | Compatibilité infrastructures existantes |
+| **Radio** | LoRa P2P EU868 | LoRa P2P EU868 (+ LoRaWAN optionnel) | Compatibilité infrastructures existantes |
 | **Capteurs env.** | — | BME688 (T/P/H/gaz) + SHT31 (humidité) | Contexte environnemental |
 | **Boîtier** | Hammond 1555 IP67 | Boîtier alu usiné IP68 | Robustesse long terme, dissipation thermique |
 
@@ -88,7 +88,7 @@ Le FIELD+ est l'**upgrade terrain** du FIELD. Il ajoute l'autonomie solaire, une
 ## Ce qui n'est PAS inclus
 
 - Gateway STATION (vendue séparément)
-- Abonnement LoRaWAN (si utilisé)
+- Abonnement LoRaWAN (si utilisé — optionnel, pas requis)
 - Recharge LiFePO4 externe (auto-suffisant)
 
 ---
@@ -105,4 +105,6 @@ FIELD → FIELD+ : remplacer le boîtier + ajouter module solaire
 
 ---
 
-*Références : ADR-001, ADR-002, ADR-003, ADR-005, ADR-006, ADR-008 (capteurs), ADR-013.*
+*Références : ADR-001, ADR-002, ADR-003, ADR-005, ADR-006, ADR-008 (capteurs), ADR-013 (acoustique/micros), ADR-014 (payload LoRa).*
+
+> ⚠️ LoRaWAN mentionné comme option P1 — aucun ADR ne valide encore cette intégration. L'option LoRaWAN dépendra d'une décision technique séparée en P1.

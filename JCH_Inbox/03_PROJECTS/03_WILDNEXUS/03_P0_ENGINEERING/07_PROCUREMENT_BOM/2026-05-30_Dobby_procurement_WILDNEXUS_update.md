@@ -1,9 +1,10 @@
 # Rapport Procurement WILDNEXUS — Mise à jour 2026-05-30
 
 **Généré par :** [[Dobby]] 🦉 — mise à jour du rapport [[Forge]] du 2026-05-26
+**Dernière mise à jour :** 2026-07-06
 **Source BOM :** `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/07_PROCUREMENT_BOM/WILDNEXUS_BOM_P0_v0.2.xlsx`
-**Shortlist canonique :** `2026-05-23_WP02_shortlist_achat_P0_v0.1.md`
-**Budget P0 :** 1 000 € | Estimé actuel : ~760 € | Réserve : ~240 €
+**Shortlist canonique :** `2026-06-12_WP02_shortlist_achat_P0_v0.2.md`
+**Budget P0 :** 1 000 € | Mouser #39492997 commandé (105,94€) | Reste à commander : ~279€ | Réserve : ~107€
 
 ---
 
@@ -20,7 +21,7 @@ Le panier Mouser peut être groupé immédiatement. Le PPK2 reste le bloqueur cr
 | # | Composant | MPN | Qté | Prix unit. | Total | Fournisseur | Statut |
 |---|-----------|-----|-----|-----------|-------|-------------|--------|
 | A01 | MCU prototype | ST SPC560B-DIS | 1 | 95,03 € | 95,03 € | Mouser BE | ✅ OK |
-| A02 | Caméra capteur | OV5640 DVP M12 — Arducam B0253 | 1 | ~22 € | ~22 € | Arducam officiel | ⚠️ ATTENTE — contacter Arducam |
+| A02 | Caméra capteur | OV5640 DVP M12 (modules existants) | 1 | ~22 € | ~22 € | Stock interne | ✅ REÇU — Arducam gelé (MOQ 10), on utilise les OV5640 dispos |
 | A03 | LED IR 850 nm | Vishay VSLY3850 | 10 | ~0,80 € | ~8 € | Mouser BE | ✅ OK |
 | A04 | LED IR 940 nm | Vishay VSLB3940 | 10 | ~0,90 € | ~9 € | Mouser BE | ✅ OK |
 | A05 | PIR basse conso | **Panasonic EKMB1303111K** | 1 | ~20 € | ~20 € | Mouser BE | ✅ RÉSOLU — MPN confirmé, stock à vérifier |
@@ -31,7 +32,7 @@ Le panier Mouser peut être groupé immédiatement. Le PPK2 reste le bloqueur cr
 | A10 | Inductance buck | Würth 744043100 | 5 | ~0,60 € | ~3 € | Mouser BE | ✅ OK |
 | A11 | Passifs CMS | Vishay MSP06A0110K0GEJ | 10 | ~0,56 € | ~6 € | Mouser BE | ✅ OK |
 | A12 | MOSFET power gating | Nexperia PMV16XN | 5 | ~0,50 € | ~3 € | Mouser BE | ✅ OK |
-| A13 | **Nordic PPK2** | nRF-PPK2 | 1 | ~100 € | **~100 €** | Mouser BE / Nordic shop | 🔴 BLOQUANT — à commander par JCH |
+| A13 | **Nordic PPK2** | nRF-PPK2 | 1 | ~100 € | **~100 €** | Mouser BE / Nordic shop | ✅ REÇU — utilisé en P0 (test harness, LEAFNET, sonification) |
 | A14 | Alimentation labo USB | **RD UM24C** ou Ruideng RD6006 | 1 | ~35 € | ~35 € | Amazon.de | ✅ RÉSOLU — Amazon.de, livraison rapide |
 | A15 | Breadboard + câbles | Kit proto 830 pts | 2 | ~7 € | ~14 € | Amazon.de / Conrad | ✅ OK |
 | A16 | Piles AA lithium | Energizer L91 × 16 | 16 | ~1,80 € | ~29 € | Amazon.be / Carrefour | ✅ OK |
@@ -95,10 +96,8 @@ Le panier Mouser peut être groupé immédiatement. Le PPK2 reste le bloqueur cr
 
 ## Actions requises pour débloquer
 
-### 🔴 À faire par JCH (5 minutes)
-- [ ] **Commander PPK2** — Mouser BE (réf nRF-PPK2, ~100€) ou Nordic Semiconductor shop EU
-  - Lien Mouser : https://www.mouser.be/ProductDetail/Nordic-Semiconductor/nRF-PPK2
-  - Sans PPK2 → pas de M-02 → tout est bloqué
+### 🔴 À faire par JCH
+- ✅ **PPK2** — reçu et utilisé. M-02 débloqué.
 
 ### 🟡 À faire par [[Dobby]]
 - [ ] **Contacter Arducam** — [[email]] pour confirmation OV5640 DVP M12 (pinout, NoIR, monture)
@@ -114,11 +113,35 @@ Le panier Mouser peut être groupé immédiatement. Le PPK2 reste le bloqueur cr
 
 ## Décisions en attente JCH
 
-- **Commande PPK2** : bloquant immédiat — sans PPK2, M-02 ne démarre pas
-- **Validation panier Mouser groupé** : 11 composants pour ~279€ — prêt à commander
-- **Arducam** : attendre confirmation avant commande caméra
+- ✅ **PPK2** : reçu et opérationnel — M-02 actif
+- **Validation panier Mouser groupé** : 11 composants pour ~279€ — prêt à commander (PPK2 déjà déduit)
+- ✅ **Arducam** : gelé (MOQ 10). OV5640 dispos en stock — on avance avec l'existant.
 
 ---
 
 *Aucune commande ne sera passée sans validation explicite JCH.*  
 *Prix vérifiés le 2026-05-23 sur Mouser/DigiKey/RAK Store — à confirmer au moment de la commande.*
+
+---
+
+## Matériel reçu — état au 2026-07-06
+
+| # | Composant | Qté | Date réception | Statut |
+|---|-----------|-----|---------------|--------|
+| R00 | Nordic PPK2 | 1 | ~10/06 | ✅ REÇU |
+| R01 | ESP32-CAM OV2640 (cartes seules) | 4 | 23/06 | ✅ REÇU |
+| R02 | USB-C TTL FT232RL | 3 | 21/06 | ✅ REÇU |
+| R03 | ESP32-S3-DevKitC-1 N16R8 | 2 | ~15/06 | ✅ REÇU |
+| R04 | ESP32-CAM OV2640 (modules caméra) | 2 | 21/06 | ✅ REÇU |
+| R05 | OV5640 DVP M12 | 5 | 12/06 + 24/06 | ✅ REÇU |
+| R06 | Mouser #39492997 (partiel) | 1 colis | ~20/06 | ⏳ BACKORDER — TPS62840DLCR ETA 15/07 |
+| R07 | MP1584 DC-DC Step Down 3A | 5 | 03/07 | ✅ REÇU |
+| R08 | ADS1115 ADC Module | 3 | 02/07 | ✅ REÇU (IoT) |
+| R09 | ESP32-C3 Super Mini | 3 | 02/07 | ✅ REÇU (IoT) |
+| R10 | PV PI HAT | 1 | 01/07 | ✅ REÇU (IoT — 6 semaines d'avance) |
+
+**Notes :**
+- Les ESP32-CAM OV2640 servent au prototypage firmware caméra DVP — l'OV5640 (5MP) est le capteur final P0
+- Panier Mouser restant (~279€, 11 composants BOM) : comprend RAK3172 LoRa, antennes, connecteurs, etc.
+- Bloqueur Mouser : TPS62840DLCR (buck faible Iq) — ETA 15/07 → commande groupée après cette date
+- SD 128 GB à acheter (~15€) pour stockage audio/photo terrain (ADR-017)

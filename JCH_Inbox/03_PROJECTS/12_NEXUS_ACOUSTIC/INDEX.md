@@ -11,9 +11,10 @@ Détection et classification acoustique d'espèces (oiseaux, orthoptères, amphi
 ## Structure
 
 - `Projet_bioacoustique.md` — Document Unique de Projet
-- `INSECTNET/` — Pont avec le projet InsectNet (classification orthoptères)
+- `INSECTNET/` — Classification acoustique des orthoptères
+- `LEAFNET/` — Sonification & monitoring bioélectrique végétal (fork 2026-06-22)
 - `BirdNET-Go_RaspberryPi_iPhone_summary.md` — Analyse BirdNET
-- `hardware/` — Matériel (RPi, microphones, stations)
+- `hardware/` — Matériel (RPi, microphones, stations) + registre acquisitions
 - `raw_audio/` — Enregistrements bruts
 - `data/` — Données structurées
 - `Reverse Birdsong/` — Expérimentations

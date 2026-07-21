@@ -10,8 +10,8 @@
 
 | Date | Projet | Article | Prix | Vendeur | Statut | Ref. [[inbox]] |
 |------|--------|---------|------|---------|--------|-----------|
-| 2026-06-01 | STATION-DOMO | Geekworm X1205 UPS HAT | 42,39€ | AliExpress | commandé | Reçu pour votre paiement à AliExpress.eml |
-| 2026-06-01 | STATION-DOMO | Geekbord X1201-C1 boîtier métal RPi5+UPS | 18,59€ | AliExpress | commandé | Reçu pour votre paiement à AliExpress.eml |
+| 2026-06-01 | STATION-DOMO | Geekworm X1205 UPS HAT | 42,39€ | AliExpress | reçu | Reçu pour votre paiement à AliExpress.eml |
+| 2026-06-01 | STATION-DOMO | Geekbord X1201-C1 boîtier métal RPi5+UPS | 18,59€ | AliExpress | reçu | Reçu pour votre paiement à AliExpress.eml |
 | 2026-06-07 | STATION-DOMO | SONOFF ZigBee 3.0 USB Dongle Plus (EFR32MG21 coordinateur ZigBee) | 25,32€ | Amazon (SONOFFEU) | commandé | amazon purchase.eml |
 | 2026-06-10 | STATION-DOMO | Raspberry Pi 5 4GB board | 132,09€ | Amazon | reçu | — |
 | 2026-06-10 | STATION-DOMO | Bloc alim officiel RPi5 27W | 15,32€ | Amazon | reçu | — |
@@ -25,6 +25,10 @@
 | 2026-06-10 | IOT / WILDNEXUS | Miuzei Starter Kit Arduino — 58 leçons, 235 composants (breadboard, LCD, capteurs, relais, GPIO extension RPi) | — | Amazon | reçu | Banc WildNexus M-02 |
 | 2026-06-10 | IT | UGREEN Adaptateur Type-C vers Micro USB (lot de 2) | — | Amazon | reçu | — |
 | 2026-06-10 | IT | UGREEN Adaptateur USB-C Ethernet Gigabit RJ45 1 Gbps | — | Amazon | reçu | — |
+| 2026-06-21 | WILDNEXUS | Hailege 2pcs ESP32-CAM OV2640 (module caméra WiFi BT 2MP, slot TF) — A02a | ~25€ | Amazon.de | reçu | — |
+| 2026-06-21 | WILDNEXUS | AZDelivery Lot 3× adaptateur USB-C vers TTL FT232RL (3.3V/5V) — A21 | 9€ | Amazon | reçu | — |
+| 2026-06-23 | IOT | PV PI — PhotoVoltaic Pi HAT (solar power manager RPi, MPPT, LiFePO4 12V, 10A) — AutoEcology/Luke Ditria | 150 AUD (~90€) | auto-ecology.com | commandé | — |
+| 2026-06-23 | WILDNEXUS | Lot 4× ESP32-CAM OV2640 (cartes seules, sans module caméra) — A02a batch 2 | — | — | reçu | — |
 
 ---
 

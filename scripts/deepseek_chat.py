@@ -39,12 +39,25 @@ SHELL_TIMEOUT   = 30     # secondes max pour une commande shell
 # ── System prompt ──────────────────────────────────────────────
 
 def load_system_prompt():
-    """Charge le system prompt : POINTER + SOUL + USER + MEMORY."""
+    """Charge le system prompt complet selon dobby-memory-bootstrap.md."""
     parts = []
+    # Runtime context
+    parts.append(f"# Runtime: {PROVIDER}\n# Model: {MODEL}\n# PKA Provider: OpenRouter-compatible API\n\n")
+    # Phase 1 — Config (identité, immuable)
     for fname, label in [
-        (POINTER, None),
+        ("ADAPTER-PROMPT.md", "Bootstrap universel PKA"),
+        (POINTER, "Pointer spécifique outil"),
         ("SOUL.md", "Personnalité & règles"),
         ("USER.md", "Profil JCH"),
+        ("TEAM/dobby.md", "Persona complet Dobby"),
+    ]:
+        fpath = PKA_DIR / fname
+        if fpath.exists():
+            if label:
+                parts.append(f"\n\n---\n## {fname} ({label})\n---\n")
+            parts.append(fpath.read_text())
+    # Phase 2 — Log (contexte, historique)
+    for fname, label in [
         ("MEMORY.md", "Connaissances accumulées"),
     ]:
         fpath = PKA_DIR / fname
@@ -52,6 +65,11 @@ def load_system_prompt():
             if label:
                 parts.append(f"\n\n---\n## {fname} ({label})\n---\n")
             parts.append(fpath.read_text())
+    # Phase 2+ — Bootstrap instructions (protocole Phase 2→5)
+    bootstrap_path = PKA_DIR / "BOOTSTRAP.md"
+    if bootstrap_path.exists():
+        parts.append(f"\n\n---\n## BOOTSTRAP.md (Protocole démarrage session)\n---\n")
+        parts.append(bootstrap_path.read_text())
     return "".join(parts)
 
 system_prompt = load_system_prompt() or "You are Dobby 🦉, PKA orchestrator for Jean-Claude."

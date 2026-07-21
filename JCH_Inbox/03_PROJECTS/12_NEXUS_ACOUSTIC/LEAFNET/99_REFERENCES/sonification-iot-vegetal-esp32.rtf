@@ -1,0 +1,216 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2869
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 # Projet de Sonification et IoT V\'e9g\'e9tal avec ESP32-S3\
+\
+Ce document synth\'e9tise les aspects techniques, mat\'e9riels (hardware) et logiciels (software) pour concevoir un capteur IoT miniature de biodata sonification et de suivi scientifique v\'e9g\'e9tal optimis\'e9 pour fonctionner sur batterie.\
+\
+---\
+\
+## 1. Principes Techniques : La Biodata Sonification\
+\
+La transformation de l'activit\'e9 d'une plante en musique ou en donn\'e9es scientifiques repose sur le principe de la **biodata sonification**.\
+\
+1. **Capture du signal \'e9lectrique :** On mesure les micro-fluctuations de la conductivit\'e9 et de la r\'e9sistance \'e9lectrique des tissus v\'e9g\'e9taux \'e0 l'aide de sondes conductrices non destructives (pinces crocodiles lisses ou patchs d'\'e9lectrodes ECG).\
+2. **Conditionnement du signal (Hardware) :** Les signaux biologiques \'e9tant de l'ordre du microvolt, ils transitent par un circuit amplificateur op\'e9rationnel (AOP \'e0 haute imp\'e9dance comme le TLC2272 ou INA126) et un filtre passe-bas mat\'e9riel pour \'e9liminer les parasites environnementaux (50Hz, ondes radio).\
+3. **Num\'e9risation :** Le signal amplifi\'e9 (ramen\'e9 entre 0V et 3.3V) est lu par le convertisseur analogique-num\'e9rique (ADC) d'un microcontr\'f4leur.\
+4. **Interpr\'e9tation et Communication :** Les variations sont traduites en donn\'e9es exploitables (donn\'e9es agronomiques de stress ou messages musicaux MIDI pour piloter des synth\'e9tiseurs).\
+\
+---\
+\
+## 2. Choix du Mat\'e9riel Miniature & Gestion d'\'c9nergie\
+\
+Pour concevoir un objet connect\'e9 (IoT) autonome et discret, la plateforme recommand\'e9e est la gamme **Seeed Studio XIAO** (versions ESP32-C3 ou ESP32-S3) :\
+* **Taille ultra-r\'e9duite :** ~ 2,1 cm x 1,7 cm (taille d'un timbre-poste).\
+* **PMIC int\'e9gr\'e9 :** Circuit de charge pour batterie LiPo 3.7V directement au dos de la carte.\
+* **Consommation en Deep Sleep :** Chute \'e0 environ **44 \'b5A**, id\'e9al pour maximiser l'autonomie.\
+* **Connectivit\'e9 :** Supporte le Wi-Fi, le Bluetooth (BLE) et le protocole basse consommation **ESP-NOW**.\
+\
+### Architecture d'\'c9nergie (R\'e8gle d'or sur Batterie)\
+Pour \'e9viter que le circuit amplificateur de la plante ne vide la batterie pendant que le microcontr\'f4leur dort, le capteur n'est pas branch\'e9 sur le `3.3V` permanent. Il est aliment\'e9 par une broche num\'e9rique (ex: `D0`) activ\'e9e uniquement au moment de la mesure.\
+\
+---\
+\
+## 3. Sch\'e9ma de C\'e2blage et Profilage (PPK2)\
+\
+Le **Power Profiler Kit II (PPK2)** de Nordic Semiconductor permet de mesurer la consommation r\'e9elle \'e0 haute fr\'e9quence.\
+\
+### Connexion du PPK2 (Mode Source Meter \'e0 3.7V)\
+* **PPK2 [VOUT] (Rouge)** \uc0\u9472 \u9472 > Pastille **[BAT+]** au dos du XIAO\
+* **PPK2 [GND] (Noir)** \uc0\u9472 \u9472 > Masse commune **[GND]** (XIAO + Capteur Plante)\
+* *Note : Le c\'e2ble USB du XIAO doit \'eatre d\'e9branch\'e9 pendant la mesure pour ne pas fausser le profil \'e9nerg\'e9tique.*\
+\
+### Diagramme d'architecture mat\'e9rielle globale :\
+\
+```text\
+       \uc0\u9484 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9488 \
+       \uc0\u9474          Seeed Studio XIAO            \u9474 \
+       \uc0\u9474                                       \u9474 \
+       \uc0\u9474     [BAT+] (Pastille au dos) \u9668 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9532 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9488 \
+       \uc0\u9474     [BAT-] (Pastille au dos) \u9668 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9488  \u9474       \u9474 \
+       \uc0\u9474                                     \u9474  \u9474       \u9474 \
+       \uc0\u9474     [GND] \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9488     \u9474  \u9474       \u9474 \
+       \uc0\u9474     [Pin D0] \u9472 \u9472 \u9472  [Alimentation]\u9532 \u9472 \u9472 \u9488  \u9474  \u9474       \u9474 \
+       \uc0\u9474     [Pin A0] <\u9472 \u9472  [Signal analog]\u9488  \u9474  \u9474  \u9474       \u9474 \
+       \uc0\u9492 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9532 \u9532 \u9472 \u9472 \u9532 \u9472 \u9532 \u9472 \u9532 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9496 \
+                                      \uc0\u9474 \u9474   \u9474  \u9474  \u9474 \
+                                      \uc0\u9660 \u9660   \u9660  \u9474  \u9474 \
+                              \uc0\u9484 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9488      \u9474 \
+                              \uc0\u9474  CAPTEUR PLANTE \u9474      \u9474 \
+                              \uc0\u9474  (Ampli / GSR)  \u9474      \u9474 \
+                              \uc0\u9492 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9496      \u9474 \
+ \uc0\u9484 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9488                             \u9474 \
+ \uc0\u9474  BATTERIE LiPo 3.7V   \u9474                             \u9474 \
+ \uc0\u9474                       \u9474                             \u9474 \
+ \uc0\u9474   (Borne +) \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9496 \
+ \uc0\u9474   (Borne -) \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9496 \
+```\
+\
+---\
+\
+## 4. Code Logiciel Optimis\'e9 (C++ Arduino)\
+\
+### \'c9metteur : Le Capteur Miniature sur Batterie (XIAO ESP32)\
+Ce code int\'e8gre des optimisations avanc\'e9es : baisse de la fr\'e9quence CPU \'e0 80MHz, initialisation radio agressive, coupure de l'alimentation de la m\'e9moire flash interne (`VDDSDIO`) et isolation des broches pour \'e9liminer tout courant de fuite visible au PPK2.\
+\
+```cpp\
+#include <esp_now.h>\
+#include <WiFi.h>\
+#include <esp_wifi.h>\
+\
+#define TIME_TO_SLEEP  900        // Temps en secondes (900s = 15 minutes)\
+#define uS_TO_S_FACTOR 1000000ULL // Facteur de conversion microsecondes -> secondes\
+\
+const int PIN_ALIM_CAPTEUR = D0;  // Broche d'alimentation du capteur\
+const int PIN_SIGNAL_PLANTE = A0; // Broche ADC (Lecture du signal)\
+\
+// Remplacer par la v\'e9ritable adresse MAC de votre Hub R\'e9cepteur\
+uint8_t broadcastAddress[] = \{0x24, 0x0A, 0xC4, 0xXX, 0xXX, 0xXX\};\
+\
+typedef struct struct_message \{\
+  int id;\
+  float tensionPlante;\
+\} struct_message;\
+\
+struct_message mesDonnees;\
+esp_now_peer_info_t peerInfo;\
+\
+void setup() \{\
+  // OPTIMISATION 1 : R\'e9duire la fr\'e9quence d'horloge (Consomme 2x moins de mA pendant la mesure)\
+  setCpuFrequencyMhz(80);\
+\
+  pinMode(PIN_ALIM_CAPTEUR, OUTPUT);\
+  digitalWrite(PIN_ALIM_CAPTEUR, HIGH); // Allumage de l'amplificateur\
+  \
+  // OPTIMISATION 2 : D\'e9lai minimal de stabilisation \'e0 valider au PPK2\
+  delay(15); \
+  \
+  int valeurBrute = analogRead(PIN_SIGNAL_PLANTE);\
+  mesDonnees.tensionPlante = (valeurBrute * 3.3) / 4095.0; // Conversion en Volts (12 bits)\
+  mesDonnees.id = 1; // Identifiant du capteur (permet le stacking de plusieurs plantes)\
+\
+  digitalWrite(PIN_ALIM_CAPTEUR, LOW); // Extinction imm\'e9diate du capteur\
+\
+  // OPTIMISATION 3 : D\'e9marrage radio rapide pour protocole ESP-NOW (Envoi en < 100ms)\
+  WiFi.mode(WIFI_STA);\
+  esp_wifi_start(); \
+\
+  if (esp_now_init() == ESP_OK) \{\
+    memcpy(peerInfo.peer_addr, broadcastAddress, 6);\
+    peerInfo.channel = 0;  \
+    peerInfo.encrypt = false;\
+    \
+    if (esp_now_add_peer(&peerInfo) == ESP_OK) \{\
+      esp_now_send(broadcastAddress, (uint8_t *) &mesDonnees, sizeof(mesDonnees));\
+      delay(5); // Temporisation mat\'e9rielle minimale pour finaliser l'\'e9mission\
+    \}\
+  \}\
+\
+  entrerEnSommeilProfondUltra();\
+\}\
+\
+void loop() \{\}\
+\
+void entrerEnSommeilProfondUltra() \{\
+  esp_wifi_stop();\
+  esp_wifi_deinit();\
+\
+  // OPTIMISATION 4 : Couper l'alimentation de la m\'e9moire Flash interne en mode sommeil\
+  esp_sleep_pd_config(ESP_PD_DOMAIN_VDDSDIO, ESP_PD_OPTION_OFF);\
+  \
+  // OPTIMISATION 5 : Bloquer l'\'e9tat de la broche pour \'e9viter les fuites de courant vers l'AOP\
+  gpio_hold_en((gpio_num_t)PIN_ALIM_CAPTEUR); \
+\
+  esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_S_FACTOR);\
+  esp_deep_sleep_start();\
+\}\
+```\
+\
+### R\'e9cepteur : Le Hub Central (Aliment\'e9 sur Secteur)\
+Ce module reste en \'e9coute constante via le protocole ultra-rapide **ESP-NOW**. Il centralise et d\'e9code \'e0 la vol\'e9e les paquets provenant de vos diff\'e9rents capteurs miniatures "stack\'e9s".\
+\
+```cpp\
+#include <esp_now.h>\
+#include <WiFi.h>\
+\
+typedef struct struct_message \{\
+  int id;\
+  float tensionPlante;\
+\} struct_message;\
+\
+donneesRecues struct_message;\
+\
+// Fonction ex\'e9cut\'e9e automatiquement \'e0 la r\'e9ception d'un paquet radio\
+void OnDataRecv(const esp_now_recv_info_t * recvInfo, const uint8_t *incomingData, int len) \{\
+  memcpy(&donneesRecues, incomingData, sizeof(donneesRecues));\
+  \
+  char macStr[18];\
+  snprintf(macStr, sizeof(macStr), "%02X:%02X:%02X:%02X:%02X:%02X",\
+           recvInfo->src_addr[0], recvInfo->src_addr[1], recvInfo->src_addr[2], \
+           recvInfo->src_addr[3], recvInfo->src_addr[4], recvInfo->src_addr[5]);\
+\
+  Serial.print("Donn\'e9es re\'e7ues du capteur V\'e9g\'e9tal [ID ");\
+  Serial.print(donneesRecues.id);\
+  Serial.print(" - MAC: ");\
+  Serial.print(macStr);\
+  Serial.print("] -> Tension mesur\'e9e : ");\
+  Serial.print(donneesRecues.tensionPlante, 3);\
+  Serial.println(" V");\
+\
+  // Traitement applicatif (Ex: Envoi MQTT vers Home Assistant ou conversion en Note MIDI)\
+  if (donneesRecues.id == 1) \{\
+    // Logique pour la plante num\'e9ro 1\
+  \}\
+\}\
+\
+void setup() \{\
+  Serial.begin(115200);\
+  \
+  WiFi.mode(WIFI_STA);\
+  WiFi.disconnect(); \
+\
+  if (esp_now_init() != ESP_OK) \{\
+    Serial.println("Erreur d'initialisation d'ESP-NOW");\
+    return;\
+  \}\
+  \
+  esp_now_register_recv_cb(OnDataRecv);\
+  Serial.println("Hub R\'e9cepteur en ligne. En attente des donn\'e9es des plantes...");\
+\}\
+\
+void loop() \{\
+  // Rien ici. Tout est g\'e9r\'e9 de mani\'e8re asynchrone par les interruptions mat\'e9rielles.\
+\}\
+```\
+\
+---\
+\
+## 5. Perspectives d'\'c9volution de l'Objet Connect\'e9\
+Avec cette infrastructure basse consommation en place, le Hub central peut servir de passerelle pour :\
+* **La cr\'e9ation artistique :** Mapper en temps r\'e9el les tensions re\'e7ues vers des notes ou des textures sonores (via les biblioth\'e8ques `BLE-MIDI` de l'ESP32) pour piloter Ableton, Logic Pro ou une application mobile.\
+* **La domotique (IoT) :** Publier les messages en MQTT vers **Home Assistant (via ESPHome)** pour int\'e9grer vos plantes dans l'\'e9cosyst\'e8me de votre maison (ex: d\'e9clencher une alerte visuelle lumineuse si la plante montre des signes \'e9lectriques de stress hydrique).\
+}

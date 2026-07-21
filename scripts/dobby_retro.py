@@ -494,6 +494,31 @@ def build_context(exchanges: list[dict], patterns: dict) -> str:
 
 # ── STOCKAGE DB ───────────────────────────────────────────────────────
 
+def _upsert_pattern(c: sqlite3.Cursor, today_str: str, pattern_type: str,
+                    content: str, source: str = "auto-extract") -> bool:
+    """Insert or increment session_count if a similar unresolved pattern already exists.
+    Returns True if a new row was inserted, False if an existing one was incremented."""
+    key = content[:60]
+    c.execute(
+        """SELECT id FROM retro_patterns
+           WHERE pattern_type = ? AND substr(content, 1, 60) = ? AND resolved_at IS NULL""",
+        (pattern_type, key),
+    )
+    row = c.fetchone()
+    if row:
+        c.execute(
+            "UPDATE retro_patterns SET session_count = session_count + 1, date = ? WHERE id = ?",
+            (today_str, row[0]),
+        )
+        return False
+    else:
+        c.execute(
+            "INSERT INTO retro_patterns (date, pattern_type, content, source) VALUES (?, ?, ?, ?)",
+            (today_str, pattern_type, content, source),
+        )
+        return True
+
+
 def _init_retro_schema(conn: sqlite3.Connection):
     """Crée les tables de rétrospective si elles n'existent pas."""
     conn.executescript("""
@@ -512,6 +537,8 @@ def _init_retro_schema(conn: sqlite3.Connection):
         CREATE INDEX IF NOT EXISTS idx_retro_date ON retro_patterns(date);
         CREATE INDEX IF NOT EXISTS idx_retro_type ON retro_patterns(pattern_type);
         CREATE INDEX IF NOT EXISTS idx_retro_unresolved ON retro_patterns(resolved_at)
+            WHERE resolved_at IS NULL;
+        CREATE INDEX IF NOT EXISTS idx_retro_dedup ON retro_patterns(pattern_type, substr(content, 1, 60))
             WHERE resolved_at IS NULL;
 
         CREATE TABLE IF NOT EXISTS retro_sessions (
@@ -567,26 +594,22 @@ def store_patterns(patterns: dict, today_str: str):
         _init_retro_schema(conn)
         c = conn.cursor()
 
+        new_count = 0
+        updated_count = 0
         for decision in patterns.get("decisions", []):
-            c.execute(
-                "INSERT INTO retro_patterns (date, pattern_type, content, source) VALUES (?, 'decision', ?, 'auto-extract')",
-                (today_str, decision),
-            )
+            inserted = _upsert_pattern(c, today_str, "decision", decision)
+            new_count += inserted; updated_count += not inserted
         for failure in patterns.get("failures", []):
-            c.execute(
-                "INSERT INTO retro_patterns (date, pattern_type, content, source) VALUES (?, 'failure', ?, 'auto-extract')",
-                (today_str, failure),
-            )
+            inserted = _upsert_pattern(c, today_str, "failure", failure)
+            new_count += inserted; updated_count += not inserted
         for question in patterns.get("questions", []):
-            c.execute(
-                "INSERT INTO retro_patterns (date, pattern_type, content, source) VALUES (?, 'question', ?, 'auto-extract')",
-                (today_str, question),
-            )
+            inserted = _upsert_pattern(c, today_str, "question", question)
+            new_count += inserted; updated_count += not inserted
         for recurring in patterns.get("recurring_questions", []):
-            c.execute(
-                "INSERT INTO retro_patterns (date, pattern_type, content, source) VALUES (?, 'recurring_question', ?, 'auto-extract')",
-                (today_str, recurring),
-            )
+            inserted = _upsert_pattern(c, today_str, "recurring_question", recurring)
+            new_count += inserted; updated_count += not inserted
+        if new_count or updated_count:
+            print(f"[Patterns] {new_count} nouveaux, {updated_count} mis à jour (session_count+1).")
 
         # Auto-résolution : marquer les patterns 'failure' passés qui n'apparaissent plus
         # On garde une fenêtre de 14 jours pour éviter de marquer des patterns très récents
@@ -937,11 +960,8 @@ def store_retro_discoveries(discoveries: dict, today_str: str) -> int:
         c = conn.cursor()
         for local_cat, db_type in cat_map.items():
             for item in discoveries.get(local_cat, []):
-                c.execute("SELECT id FROM retro_patterns WHERE date = ? AND pattern_type = ? AND content = ?",
-                          (today_str, db_type, item))
-                if not c.fetchone():
-                    c.execute("INSERT INTO retro_patterns (date, pattern_type, content, source) VALUES (?, ?, ?, 'llm_discovery')",
-                              (today_str, db_type, item))
+                inserted = _upsert_pattern(c, today_str, db_type, item, source="llm_discovery")
+                if inserted:
                     total += 1
         conn.commit()
         conn.close()

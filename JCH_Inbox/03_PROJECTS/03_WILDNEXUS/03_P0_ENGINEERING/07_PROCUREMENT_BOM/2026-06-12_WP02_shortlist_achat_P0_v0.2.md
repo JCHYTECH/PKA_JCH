@@ -1,7 +1,8 @@
 # WildNexus WP02 — Shortlist achat P0 v0.2
 
 **Date :** 2026-06-16 (v0.2c — +A19/A20 mesure deep sleep)  
-**Statut :** actif — enrichi suite SOP-03/04/05 (mesures PPK2) et arbitrages JCH du 2026-06-16  
+**Dernière vérification :** 2026-07-06  
+**Statut :** actif — Mouser #39492997 commandé (backorder TPS62840DLCR ETA 15/07), OV5640×5 reçus, reste ~279€ à commander  
 **Owner :** [[Dobby]] + [[Forge]] + [[Bruno]] + [[Castor]]  
 **Référence :** [WP02 hardware matrix v0.1] + [WP01 architecture freeze] + [SUPPLY_REGISTER v0.3] + [BUDGET v0.2] + [Synthèse [[inbox]] 2026-06-12] + [Rapport [[Castor]]+[[Fourmi]] OV5640/LoRa]  
 **Version précédente :** `2026-05-23_WP02_shortlist_achat_P0_v0.1.md` (backup `.bak-2026-06-12`)  
@@ -31,7 +32,7 @@ L'outillage (PPK2) est prioritaire et fait partie d'Option A.
 |---|-----------|-------------------|------------------------|------------------|-----|---------------------------|--------------|-------|----------------|------|
 | A01 | MCU prototype | **ESP32-S3-DevKitC-1-N8R8** (8 MB flash, 8 MB PSRAM, USB-C) | **Mouser BE** | Mouser ref 595-ESP32-S3-DEVKITC-1 | 2 | ~16 € | ~32 € | 3–5 j | 🟢 Bas | Acheter 2 pour banc M-02 redondant |
 | A02 | Caméra capteur | ~~Camemake CM_DVP_OV5640_UNIVERSAL~~ — **REJETÉ** (MOQ 10, commande refusée 2026-06-14) | — | — | — | — | — | — | 🔴 Rejeté | Remplacé par A02a (ESP32-CAM) pour dév DVP + A02b (OV5640 AliExpress) pour capteur final. |
-| **A02a** 🆕 | **Caméra dév DVP** | **ESP32-CAM** (AI-Thinker, OV2640 2MP DVP, LED flash, slot SD onboard) | **Amazon.de** | Hailege 2pcs ESP32-CAM OV2640 | 2 | **12,50€ réel** | **~25€** | 2–3 j | 🟢 Bas | ✅ **Commandé 2026-06-16** (Hailege 2-pack Amazon.de). Outil DVP + SD onboard = pas besoin module SD externe pour dév. OV2640 uniquement — ne pas brancher OV5640 ici. |
+| **A02a** 🆕 | **Caméra dév DVP** | **ESP32-CAM** (AI-Thinker, OV2640 2MP DVP, LED flash, slot SD onboard) | **Amazon.de** | Hailege 2pcs ESP32-CAM OV2640 | 2 | **12,50€ réel** | **~25€** | 2–3 j | 🟢 Bas | ✅ **Reçu 2026-06-21** (Hailege 2-pack Amazon.de). Outil DVP + SD onboard = pas besoin module SD externe pour dév. OV2640 uniquement — ne pas brancher OV5640 ici. |
 | **A02b** 🆕 | **Caméra finale P0** | **OV5640 DVP M12 24-pin** (5MP, M12 mount, entrée 1.8–12.8V → LDO onboard probable) | **AliExpress** | `1005005710463218` | 4 (commandé) | **5,81€ réel** | **23,24€ réel** | 15–25 j | 🟡 Moyen | ✅ **Commandé 2026-06-16** (4×, NoIR à confirmer à réception). Plage tension large = LDO quasi-certain. Budget : −6,76€ vs estimé. |
 | **A02c** 🆕 | **Level shifter DVP (proto)** | **Level shifter 8 canaux 3.3V ↔ 1.8/2.8V** (e.g. TXS0108E ou TXB0108) — modules pré-assemblés | **AliExpress** | "level shifter 8ch 3.3V 1.8V" | 2 | ~3 € → **8,20€ réel** | ~6 € → **16,39€ réel** | 10–20 j | 🟢 Bas | ✅ **Commandé 2026-06-16** (ref 1005010226529230, 2× 8ch). Proto uniquement — remplacé par A02d en production. |
 | A03 | LED IR 850 nm | ~~Vishay VSLY3850~~ — **RETIRÉ** (décision JCH 2026-06-12 : 850nm perceptible faune) | — | — | — | — | — | — | — | IR 940nm uniquement (A04). |
@@ -54,7 +55,7 @@ L'outillage (PPK2) est prioritaire et fait partie d'Option A.
 | **A18** 🆕 | **Lentille M12 2.8mm NoIR f/1.8** | Objectif grand angle M12, NoIR (sans filtre IR-cut), ouverture f/1.8, champ ~90-100° | **Arducam / Lensation** | arducam.com "M12 2.8mm NoIR" | 2 | ~25 € | ~50 € | 5–10 j | 🟡 Moyen | **Ajout 2026-06-12** — Tests comparatifs focaux au banc M-02 : 2.8mm (coulée, 1-5m) vs 6mm (télé, 5-12m). Source : D4 + 22 29 50. |
 | **A19** 🆕 | **ESP32-S3 basse conso (mesure deep sleep)** | **NULA DeepSleep ESP32-S3** (WROOM-1-N8R8, 7 µA deep sleep mesuré, USB-C, sans régulateur superflu) | **Soldered.com** (Croatie, UE) | soldered.com/products/nula-deepsleep-esp32-s3-board | 1 | ~25 € | ~25 € | 5–10 j | 🟢 Bas | **Ajout 2026-06-16** — Mesure deep sleep réel hors overhead DevKit (AMS1117 + CP210x + LEDs = ~1 mA). Valide l'estimation PCB custom (20 µA vs 1049 µA mesuré). Priorité : après SOP-05. |
 | **A20** 🆕 | **Breakout nu ESP32-S3 (alternative)** | **Freenove Breakout Board** pour WROOM/WROVER (pas de régulateur, pas d'USB-UART) + module ESP32-S3-WROOM-1 séparé | **Amazon.de / Freenove** | freenove.com "ESP32-S3 breakout" | 1 kit | ~15 € | ~15 € | 3–7 j | 🟢 Bas | **Ajout 2026-06-16** — Alternative économique à NULA. Mesure deep sleep module nu. Nécessite FTDI externe pour flash. |
-| **A21** 🆕 | **Programmateur USB-série** | **AZDelivery 3× FT232RL USB-C** (3.3V/5V, driver signé Windows/Mac/Linux) | **Amazon.de** | AZDelivery 3X FT232RL USB-C | 1 kit (3 pcs) | ~16 € | **~16 €** | 2–3 j | 🟢 Bas | ✅ **Commandé 2026-06-16**. Flash ESP32-CAM (A02a) + breakout nu (A20) + debug série général. 3 unités = 1 dédié CAM, 1 labo, 1 spare. |
+| **A21** 🆕 | **Programmateur USB-série** | **AZDelivery 3× FT232RL USB-C** (3.3V/5V, driver signé Windows/Mac/Linux) | **Amazon.de** | AZDelivery 3X FT232RL USB-C | 1 kit (3 pcs) | **3€ réel** | **9€ réel** | 2–3 j | 🟢 Bas | ✅ **Reçu 2026-06-21**. Flash ESP32-CAM (A02a) + breakout nu (A20) + debug série général. 3 unités = 1 dédié CAM, 1 labo, 1 spare. |
 | **B05** | BME688 capteur env. | **Bosch BME688** (T/P/H/gaz, I2C/SPI) | **Mouser BE** | Mouser ref "BME688" | 2 | ~7,44 € | ~15 € | 3–7 j | 🟢 Bas | **Déjà commandé** Mouser #39492997. |
 | **B06** | SHT31-DIS humidité | **Sensirion SHT31-DIS-B** (±2% RH, I2C) | **Mouser BE** | Mouser ref "SHT31-DIS-B" | 2 | ~3,87 € | ~8 € | 3–5 j | 🟢 Bas | **Déjà commandé** Mouser #39492997. |
 
@@ -87,15 +88,15 @@ Lentille 2.8mm (A18) : ne pas confondre avec B01 (6mm). Les deux focales sont n�
 
 | Bloc | v0.1 | v0.2 | Δ |
 |------|------|------|---|
-| Option A — Banc rapide | ~396 € | **~527 €** (v0.4 : +A19/A20 + A21 FTDI + ajustements prix réels) | +131 € |
+| Option A — Banc rapide | ~396 € | **~520 €** (v0.5 : +A19/A20 + A21 FTDI 9€ réel + ajustements prix réels) | +124 € |
 | Option B — Additions terrain | ~203 € | **~238 €** | +35 € |
 | Frais de port (Mouser + DigiKey + RAK + Lensation + LILYGO) | ~50 € | ~55 € | +5 € |
 | Marge casse / reprise composants | ~80 € | ~80 € | — |
-| **Total estimé A + B** | **~729 €** | **~900 €** | +171 € |
-| **Réserve restante (enveloppe 1 000 €)** | **~271 €** | **~100 €** | −171 € |
+| **Total estimé A + B** | **~729 €** | **~893 €** | +164 € |
+| **Réserve restante (enveloppe 1 000 €)** | **~271 €** | **~107 €** | −164 € |
 
 > ⚠️ Tout achat individuel > 50 € doit être signalé à JCH avant commande (règle BUDGET v0.2).  
-> ⚠️ Si total projeté > 900 €, stopper et arbitrer. (v0.2c : 829 €, sous le seuil)
+> ⚠️ Si total projeté > 900 €, stopper et arbitrer. (v0.5 : 893 €, sous le seuil)
 
 ---
 
@@ -187,6 +188,7 @@ Lentille 2.8mm (A18) : ne pas confondre avec B01 (6mm). Les deux focales sont n�
 | v0.2c | 2026-06-14 | [[Dobby]] + JCH | A02 Camemake rejeté (MOQ 10). Remplacé par A02a ESP32-CAM OV2640 (dév DVP, ~10€) + A02b OV5640 DVP M12 AliExpress (final, ~30€). Budget inchangé (~823€). Panier DigiKey libéré. |
 | v0.3 | 2026-06-12 | [[Dobby]] + JCH | Index procurement Mouser/DigiKey (§11). Réfs vérifiées session. Pipeline : primaire Mouser, fallback DigiKey, indispo → signaler. |
 | v0.4 | 2026-06-16 | [[Dobby]] + JCH | A02b commandé (ref 1005005710463218, 4× 5,81€, plage 1.8–12.8V). A02c commandé (ref 1005010226529230, 2× 8ch, 16,39€). +A02d (TI SN74AVC16T245, level shifter production 16-bit, ~3,50€, P1 différé). A02a commandé (Hailege 2-pack Amazon.de, ~25€). +A21 programmateur FTDI (AZDelivery 3× FT232RL USB-C, ~16€). Budget : 900€ (−100€ réserve). |
+| v0.5 | 2026-06-21 | [[Dobby]] + JCH | A02a reçu (Hailege 2× ESP32-CAM OV2640, 25€). A21 reçu (AZDelivery 3× FT232RL USB-C, 9€ réel vs 16€ estimé). Budget : 893€ (−107€ réserve). Test harness OV2640 peut démarrer. |
 
 ---
 

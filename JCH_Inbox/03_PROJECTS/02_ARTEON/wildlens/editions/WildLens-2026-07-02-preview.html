@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WildLens — Edition #2 — The Nest That Tells the Truth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --noir-terrain: #0D0B09;
+    --ivoire: #F8F5F0;
+    --ocre-lumiere: #C17F3A;
+    --sable: #E8E2DA;
+    --gris-terrain: #6B6560;
+    --brun-nuit: #2A2420;
+    --vert-terrain: #3D5A3E;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--noir-terrain);
+    background: var(--ivoire);
+  }
+  h1, h2, h3, h4, .nav-text, .logo, .caption, .meta, .tag {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  h1 { font-weight: 700; font-size: clamp(32px, 5vw, 56px); letter-spacing: -0.5px; }
+  h2 { font-weight: 600; font-size: clamp(24px, 3.5vw, 32px); margin-top: 0; margin-bottom: 24px; }
+  h3 { font-weight: 500; font-size: 20px; }
+  .caption { font-weight: 400; font-size: 13px; color: var(--gris-terrain); letter-spacing: 0.3px; }
+  .meta { font-weight: 400; font-size: 13px; color: var(--gris-terrain); }
+  em, i { font-style: italic; }
+
+  /* === Header === */
+  header {
+    background: var(--noir-terrain);
+    color: var(--ivoire);
+    padding: 18px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo {
+    font-weight: 300; font-size: 22px; letter-spacing: 2px;
+    color: var(--ivoire); text-decoration: none;
+  }
+  .logo .dot { color: var(--ocre-lumiere); }
+  nav ul { list-style: none; display: flex; gap: 28px; align-items: center; }
+  nav a {
+    color: var(--ivoire); text-decoration: none;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px; font-weight: 400; opacity: 0.8; transition: opacity 0.2s;
+  }
+  nav a:hover { opacity: 1; }
+  nav a.active { color: var(--vert-terrain); opacity: 1; }
+
+  /* === Lang switcher === */
+  .lang-switcher {
+    display: flex; gap: 4px; align-items: center;
+    border-left: 1px solid #333; padding-left: 20px; margin-left: 8px;
+  }
+  .lang-btn {
+    background: none; border: 1px solid transparent;
+    color: var(--gris-terrain); cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px; font-weight: 500;
+    padding: 4px 8px; letter-spacing: 1px;
+    transition: all 0.2s; text-transform: uppercase;
+  }
+  .lang-btn:hover { color: var(--ivoire); border-color: var(--gris-terrain); }
+  .lang-btn.active { color: var(--ocre-lumiere); border-color: var(--ocre-lumiere); }
+
+  /* === Masthead === */
+  .masthead {
+    background: var(--noir-terrain); color: var(--ivoire);
+    text-align: center; padding: 60px 20px 40px;
+    border-bottom: 3px solid var(--vert-terrain);
+  }
+  .masthead .wl-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300; font-size: clamp(28px, 4vw, 42px);
+    letter-spacing: 4px; text-transform: uppercase; color: var(--ivoire);
+  }
+  .masthead .wl-tagline {
+    font-family: 'Lora', serif; font-style: italic;
+    font-size: 15px; color: var(--gris-terrain); margin-top: 8px;
+  }
+  .masthead .wl-edition {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px; color: var(--vert-terrain);
+    margin-top: 12px; letter-spacing: 1px;
+  }
+
+  /* === Article === */
+  .article { max-width: 720px; margin: 0 auto; padding: 60px 24px; }
+  .section { margin-bottom: 80px; }
+  .section-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500; font-size: 12px;
+    text-transform: uppercase; letter-spacing: 2px;
+    color: var(--vert-terrain); margin-bottom: 8px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::before {
+    content: ''; display: inline-block;
+    width: 24px; height: 2px; background: var(--vert-terrain);
+  }
+
+  /* === Photo === */
+  .frame-photo { width: 100%; margin: 0 0 16px 0; display: block; }
+  .frame-photo img { width: 100%; height: auto; display: block; }
+  .frame-caption {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px; color: var(--gris-terrain);
+    padding: 8px 0; border-bottom: 1px solid var(--sable);
+    margin-bottom: 32px;
+  }
+  .frame-caption .credit { color: var(--ocre-lumiere); }
+
+  /* === Drop cap === */
+  .frame-body::first-letter {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: 56px;
+    float: left; line-height: 1; margin: 4px 12px 0 0;
+    color: var(--noir-terrain);
+  }
+  .frame-body p { margin-bottom: 18px; }
+
+  /* === Pull quote === */
+  .pull-quote {
+    font-family: 'Lora', serif; font-style: italic;
+    font-size: 22px; line-height: 1.5; color: var(--brun-nuit);
+    border-left: 3px solid var(--vert-terrain);
+    padding: 12px 0 12px 24px; margin: 32px 0;
+  }
+
+  /* === Tags === */
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+  .tag {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--gris-terrain); padding: 4px 10px; border: 1px solid var(--sable);
+  }
+
+  /* === Source === */
+  .source-link {
+    font-family: 'IBM Plex Mono', monospace; font-size: 13px;
+    color: var(--ocre-lumiere); text-decoration: none;
+    border-bottom: 1px solid var(--ocre-lumiere);
+  }
+  .source-link:hover { opacity: 0.7; }
+
+  /* === CTA === */
+  .cta-box {
+    background: var(--brun-nuit); color: var(--ivoire);
+    padding: 40px; text-align: center; margin: 60px 0;
+  }
+  .cta-box h3 {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 600;
+    font-size: 22px; margin-bottom: 8px; color: var(--ivoire);
+  }
+  .cta-box p {
+    font-family: 'Lora', serif; font-size: 15px;
+    color: var(--sable); margin-bottom: 20px;
+  }
+  .cta-button {
+    display: inline-block; background: var(--ocre-lumiere);
+    color: var(--ivoire); font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600; font-size: 14px; padding: 12px 32px;
+    text-decoration: none; border: none; transition: background 0.2s;
+  }
+  .cta-button:hover { background: var(--vert-terrain); }
+
+  /* === Footer === */
+  footer {
+    background: var(--brun-nuit); color: var(--ivoire);
+    padding: 40px 24px; text-align: center;
+  }
+  footer .logo { font-size: 18px; margin-bottom: 8px; display: inline-block; }
+  footer .footer-tagline {
+    font-family: 'Lora', serif; font-style: italic;
+    font-size: 14px; color: var(--gris-terrain);
+  }
+  footer .footer-links {
+    margin-top: 16px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+  }
+  footer .footer-links a {
+    color: var(--sable); text-decoration: none;
+    font-size: 13px; font-family: 'Space Grotesk', sans-serif;
+  }
+  footer .footer-links a:hover { color: var(--ocre-lumiere); }
+
+  /* === Responsive === */
+  @media (max-width: 640px) {
+    header { padding: 14px 16px; flex-wrap: wrap; gap: 8px; }
+    nav ul { gap: 14px; }
+    nav a { font-size: 12px; }
+    .lang-switcher { padding-left: 12px; }
+    .lang-btn { font-size: 10px; padding: 3px 6px; }
+    .article { padding: 40px 16px; }
+    .frame-body::first-letter { font-size: 44px; }
+    .pull-quote { font-size: 18px; padding-left: 16px; }
+  }
+  ::selection { background: var(--vert-terrain); color: var(--ivoire); }
+
+  /* === i18n === */
+  [data-lang] { display: none; }
+  [data-lang].active { display: block; }
+  [data-lang].active.inline { display: inline; }
+</style>
+</head>
+<body>
+
+<!-- === Header === -->
+<header>
+  <a href="#" class="logo">Arteon<span class="dot">·</span></a>
+  <nav>
+    <ul>
+      <li><a href="#" data-i18n="nav_manifeste">Manifeste</a></li>
+      <li><a href="#" data-i18n="nav_artistes">Artistes</a></li>
+      <li><a href="#">Shop</a></li>
+      <li><a href="#" class="active">WildLens</a></li>
+      <li><a href="#">L'Instant Lu</a></li>
+      <li class="lang-switcher">
+        <button class="lang-btn active" data-lang-btn="en">EN</button>
+        <button class="lang-btn" data-lang-btn="fr">FR</button>
+        <button class="lang-btn" data-lang-btn="it">IT</button>
+        <button class="lang-btn" data-lang-btn="es">ES</button>
+        <button class="lang-btn" data-lang-btn="de">DE</button>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<!-- === Masthead === -->
+<div class="masthead">
+  <div class="wl-title">WildLens</div>
+  <div class="wl-tagline">
+    <span data-lang="en">The instant held, the thought set in motion.</span>
+    <span data-lang="fr" class="active">L'instant figé, la pensée en mouvement.</span>
+    <span data-lang="it">L'istante immortalato, il pensiero in movimento.</span>
+    <span data-lang="es">El instante capturado, el pensamiento en movimiento.</span>
+    <span data-lang="de">Der eingefrorene Augenblick, der Gedanke in Bewegung.</span>
+  </div>
+  <div class="wl-edition">
+    <span data-lang="en">EDITION #002 · 02 JULY 2026 · THE NEST THAT TELLS THE TRUTH</span>
+    <span data-lang="fr" class="active">ÉDITION #002 · 02 JUILLET 2026 · LE NID QUI DIT LA VÉRITÉ</span>
+    <span data-lang="it">EDIZIONE #002 · 02 LUGLIO 2026 · IL NIDO CHE DICE LA VERITÀ</span>
+    <span data-lang="es">EDICIÓN #002 · 02 JULIO 2026 · EL NIDO QUE DICE LA VERDAD</span>
+    <span data-lang="de">AUSGABE #002 · 02 JULI 2026 · DAS NEST, DAS DIE WAHRHEIT SAGT</span>
+  </div>
+</div>
+
+<!-- === Article === -->
+<article class="article">
+
+  <!-- ① The Frame -->
+  <section class="section">
+    <div class="section-label">
+      <span data-lang="en">① The Frame</span>
+      <span data-lang="fr" class="active">① Le Cadrage</span>
+      <span data-lang="it">① L'Inquadratura</span>
+      <span data-lang="es">① El Encuadre</span>
+      <span data-lang="de">① Der Rahmen</span>
+    </div>
+    <h2>
+      <span data-lang="en">The Nest That Tells the Truth</span>
+      <span data-lang="fr" class="active">Le nid qui dit la vérité</span>
+      <span data-lang="it">Il nido che dice la verità</span>
+      <span data-lang="es">El nido que dice la verdad</span>
+      <span data-lang="de">Das Nest, das die Wahrheit sagt</span>
+    </h2>
+
+    <figure class="frame-photo">
+      <img src="LrC-to-112.jpg" alt="Northern Gannet on nest made of fishing net debris">
+      <figcaption class="frame-caption">
+        <span data-lang="en">Northern Gannet (<em>Morus bassanus</em>) — nest constructed from fishing net debris &nbsp;·&nbsp; <span class="credit">© JC Havaux / ARTEON</span> &nbsp;·&nbsp; Canon EOS R10 · RF 200-800mm</span>
+        <span data-lang="fr" class="active">Fou de Bassan (<em>Morus bassanus</em>) — nid construit avec des déchets de filet de pêche &nbsp;·&nbsp; <span class="credit">© JC Havaux / ARTEON</span> &nbsp;·&nbsp; Canon EOS R10 · RF 200-800mm</span>
+        <span data-lang="it">Sula bassana (<em>Morus bassanus</em>) — nido costruito con reti da pesca abbandonate &nbsp;·&nbsp; <span class="credit">© JC Havaux / ARTEON</span> &nbsp;·&nbsp; Canon EOS R10 · RF 200-800mm</span>
+        <span data-lang="es">Alcatraz atlántico (<em>Morus bassanus</em>) — nido construido con desechos de red de pesca &nbsp;·&nbsp; <span class="credit">© JC Havaux / ARTEON</span> &nbsp;·&nbsp; Canon EOS R10 · RF 200-800mm</span>
+        <span data-lang="de">Basstölpel (<em>Morus bassanus</em>) — Nest aus Fischernetzabfällen &nbsp;·&nbsp; <span class="credit">© JC Havaux / ARTEON</span> &nbsp;·&nbsp; Canon EOS R10 · RF 200-800mm</span>
+      </figcaption>
+    </figure>
+
+    <!-- EN -->
+    <div class="frame-body" data-lang="en">
+      <p>A Northern Gannet (<em>Morus bassanus</em>) sits on its nest. The nest should be made of seaweed, grass, feathers — the soft, organic materials that gannets have gathered for millennia on cliff-ledges and rocky islands. This one is made of fishing net.</p>
+      <p>Not one piece. Not a thread. The entire structure — the cup, the rim, the lining — is synthetic debris pulled from the sea and woven into a shape that the bird's instincts still recognise as "nest," even though the material would not exist in any world that hadn't been industrialised and trawled and discarded into.</p>
+      <p>The gannet has adapted. That is what animals do. They use what is available. They rebuild with what we leave behind. A gannet does not distinguish between a strip of polypropylene netting and a blade of eelgrass — both are flexible, both are weaveable, both hold the egg in place. The adaptation is real, it is functional, and it is heartbreaking.</p>
+      <div class="pull-quote">This is not a story of resilience. It is a story of substitution.</div>
+      <p>The fishing net that forms this nest was once part of an industrial operation that removed the fish from the waters around this colony. The net caught the fish. The net was lost or discarded. The net washed up on the colony. The gannet took it and built with it. The same industry that emptied the sea provided the material for the nest that replaces what the sea no longer gives.</p>
+      <p>We — photographers, naturalists, viewers — stand in front of this image and we feel something. The image works because it shows adaptation, yes. But it also shows the price. The gannet looks healthy. The nest looks functional. And yet everything in this frame exists in a world that has been fundamentally altered, and the bird is surviving in the ruins of its own ecosystem by repurposing the wreckage.</p>
+      <p>This is what wildlife photography can do that no statistic can: make the invisible visible. A number passes through the mind. An image of a gannet on a nest of netting stays there. It does not argue. It shows. And showing, as Arteon's manifeste says, is <em>« modestement, recoudre. »</em></p>
+      <p>This photograph will not stop ghost fishing. But it does something that data cannot: it makes the viewer <em>see</em> the adaptation as loss. The gannet is not thriving. The gannet is coping. There is a difference, and photography is one of the few tools that can make that difference legible.</p>
+    </div>
+
+    <!-- FR -->
+    <div class="frame-body active" data-lang="fr">
+      <p>Un couple de fous de Bassan et leur poussin sont posés sur leur nid. Le nid devrait être fait d'algues, d'herbes, de plumes — les matériaux organiques souples que les fous collectent depuis des millénaires sur les falaises et les îles rocheuses. Celui-ci est fait de filet de pêche.</p>
+      <p>Pas un morceau. Pas un fil. Toute la structure — la coupe, le bord, la doublure — est constituée de débris synthétiques tirés de la mer et tissés en une forme que l'instinct de l'oiseau reconnaît encore comme « nid », bien que ce matériau n'existerait dans aucun monde qui n'aurait pas été industrialisé, traqué et pollué.</p>
+      <p>Le fou s'est adapté. C'est ce que font les animaux. Ils utilisent ce qui est disponible. Ils reconstruisent avec ce que nous laissons derrière nous. Un fou ne distingue pas une lanière de filet en polypropylène d'une lame d'herbe marine — l'une et l'autre sont souples, tressables, et maintiennent l'œuf en place. L'adaptation est réelle, fonctionnelle, et déchirante.</p>
+      <div class="pull-quote">Ce n'est pas une histoire de résilience. C'est une histoire de substitution.</div>
+      <p>Le filet qui forme ce nid faisait partie d'une opération industrielle qui a retiré les poissons des eaux autour de cette colonie. Le filet a capturé le poisson. Le filet a été perdu ou rejeté. Le filet a échoué sur la colonie. Le fou l'a pris et a construit avec. La même industrie qui a vidé la mer a fourni le matériau du nid qui remplace ce que la mer ne donne plus.</p>
+      <p>Nous — photographes, naturalistes, spectateurs — nous nous tenons devant cette image et nous ressentons quelque chose. L'image fonctionne parce qu'elle montre l'adaptation, oui. Mais elle montre aussi le prix. Le fou a l'air en bonne santé. Le nid a l'air fonctionnel. Et pourtant tout dans ce cadre existe dans un monde fondamentalement altéré, et l'oiseau survit dans les ruines de son propre écosystème en réutilisant les débris.</p>
+      <p>C'est ce que la photographie naturaliste peut faire qu'aucune statistique ne peut : rendre visible l'invisible. Un nombre traverse l'esprit. Une image de fou sur un nid de filet y reste. Elle n'argumente pas. Elle montre. Et montrer, comme le dit le manifeste d'Arteon, c'est <em>« modestement, recoudre. »</em></p>
+      <p>Cette photographie ne mettra pas fin à la pêche fantôme. Mais elle fait ce que les données ne peuvent pas : elle amène le spectateur à <em>voir</em> l'adaptation comme une perte. Le fou ne prospère pas. Le fou fait face. Il y a une différence, et la photographie est l'un des rares outils qui peut rendre cette différence lisible.</p>
+    </div>
+
+    <!-- IT -->
+    <div class="frame-body" data-lang="it">
+      <p>Una sula bassana (<em>Morus bassanus</em>) è posata sul suo nido. Il nido dovrebbe essere fatto di alghe, erba, piume — i materiali organici morbidi che le sule raccolgono da millenni sulle scogliere e le isole rocciose. Questo è fatto di rete da pesca.</p>
+      <p>Non un pezzo. Non un filo. L'intera struttura — la coppa, il bordo, il rivestimento — è composta da detriti sintetici presi dal mare e intrecciati in una forma che l'istinto dell'uccello riconosce ancora come "nido", anche se quel materiale non esisterebbe in nessun mondo che non fosse stato industrializzato e saccheggiato.</p>
+      <p>La sula si è adattata. È ciò che fanno gli animali. Usano ciò che è disponibile. Ricostruiscono con ciò che lasciamo indietro. Una sula non distingue una striscia di rete in polipropilene da una foglia di posidonia — entrambe sono flessibili, intrecciabili, tengono l'uovo al suo posto. L'adattamento è reale, funzionale, e spezza il cuore.</p>
+      <div class="pull-quote">Non è una storia di resilienza. È una storia di sostituzione.</div>
+      <p>La rete che forma questo nido faceva parte di un'operazione industriale che ha rimosso i pesci dalle acque attorno a questa colonia. La rete ha catturato il pesce. La rete è stata persa o scartata. La rete è arrivata alla colonia. La sula l'ha presa e ha costruito. La stessa industria che ha svuotato il mare ha fornito il materiale per il nido che sostituisce ciò che il mare non dà più.</p>
+      <p>Noi — fotografi, naturalisti, spettatori — ci fermiamo davanti a questa immagine e proviamo qualcosa. L'immagine funziona perché mostra l'adattamento, sì. Ma mostra anche il prezzo. La sula sembra sana. Il nido sembra funzionale. Eppure tutto in questa inquadratura esiste in un mondo fondamentalmente alterato, e l'uccello sopravvive nelle rovine del suo ecosistema riutilizzando i detriti.</p>
+      <p>È ciò che la fotografia naturalistica può fare e che nessuna statistica può: rendere visibile l'invisibile. Un numero attraversa la mente. Un'immagine di una sula su un nido di rete resta lì. Non argomenta. Mostra. E mostrare, come dice il manifesto di Arteon, è <em>« modestamente, ricucire. »</em></p>
+      <p>Questa fotografia non fermerà la pesca fantasma. Ma fa ciò che i dati non possono: porta chi guarda a <em>vedere</em> l'adattamento come perdita. La sula non prospera. La sula si adatta. C'è una differenza, e la fotografia è uno dei pochi strumenti che può renderla leggibile.</p>
+    </div>
+
+    <!-- ES -->
+    <div class="frame-body" data-lang="es">
+      <p>Un alcatraz atlántico (<em>Morus bassanus</em>) está posado en su nido. El nido debería estar hecho de algas, hierbas, plumas — los materiales orgánicos suaves que los alcatraces han recogido durante milenios en acantilados e islas rocosas. Este está hecho de red de pesca.</p>
+      <p>No una pieza. No un hilo. Toda la estructura — la copa, el borde, el revestimiento — está compuesta de desechos sintéticos extraídos del mar y tejidos en una forma que el instinto del ave todavía reconoce como "nido", aunque ese material no existiría en ningún mundo que no hubiera sido industrializado y explotado.</p>
+      <p>El alcatraz se ha adaptado. Es lo que hacen los animales. Usan lo que está disponible. Reconstruyen con lo que dejamos atrás. Un alcatraz no distingue una tira de red de polipropileno de una hoja de hierba marina — ambas son flexibles, tejibles, mantienen el huevo en su sitio. La adaptación es real, funcional, y desgarradora.</p>
+      <div class="pull-quote">Esta no es una historia de resiliencia. Es una historia de sustitución.</div>
+      <p>La red que forma este nido formaba parte de una operación industrial que eliminó los peces de las aguas alrededor de esta colonia. La red capturó al pez. La red se perdió o se descartó. La red llegó a la colonia. El alcatraz la tomó y construyó con ella. La misma industria que vació el mar proporcionó el material para el nido que reemplaza lo que el mar ya no da.</p>
+      <p>Nosotros — fotógrafos, naturalistas, espectadores — nos detenemos ante esta imagen y sentimos algo. La imagen funciona porque muestra la adaptación, sí. Pero también muestra el precio. El alcatraz parece sano. El nido parece funcional. Y sin embargo todo en este encuadre existe en un mundo fundamentalmente alterado, y el ave sobrevive en las ruinas de su propio ecosistema reutilizando los escombros.</p>
+      <p>Esto es lo que la fotografía de vida silvestre puede hacer y que ninguna estadística puede: hacer visible lo invisible. Un número atraviesa la mente. Una imagen de un alcatraz en un nido de red se queda allí. No argumenta. Muestra. Y mostrar, como dice el manifiesto de Arteon, es <em>« modestamente, recoser. »</em></p>
+      <p>Esta fotografía no detendrá la pesca fantasma. Pero hace lo que los datos no pueden: lleva al espectador a <em>ver</em> la adaptación como pérdida. El alcatraz no prospera. El alcatraz se las arregla. Hay una diferencia, y la fotografía es una de las pocas herramientas que puede hacer esa diferencia legible.</p>
+    </div>
+
+    <!-- DE -->
+    <div class="frame-body" data-lang="de">
+      <p>Ein Basstölpel (<em>Morus bassanus</em>) sitzt auf seinem Nest. Das Nest sollte aus Seetang, Gras, Federn bestehen — den weichen, organischen Materialien, die Basstölpel seit Jahrtausenden auf Klippen und felsigen Inseln sammeln. Dieses besteht aus Fischernetz.</p>
+      <p>Nicht ein Stück. Nicht ein Faden. Die gesamte Struktur — die Mulde, der Rand, die Auskleidung — besteht aus synthetischem Abfall, der aus dem Meer gezogen und zu einer Form gewebt wurde, die der Instinkt des Vogels noch als „Nest" erkennt, obwohl dieses Material in keiner Welt existieren würde, die nicht industrialisiert, befischt und verschmutzt worden wäre.</p>
+      <p>Der Tölpel hat sich angepasst. Das tun Tiere. Sie nutzen, was verfügbar ist. Sie bauen mit dem, was wir hinterlassen. Ein Tölpel unterscheidet nicht zwischen einem Streifen Polypropylennetz und einem Seegrasblatt — beide sind flexibel, beide sind webbar, beide halten das Ei an Ort und Stelle. Die Anpassung ist real, funktional und herzzerreißend.</p>
+      <div class="pull-quote">Dies ist keine Geschichte von Widerstandskraft. Es ist eine Geschichte der Ersetzung.</div>
+      <p>Das Netz, das dieses Nest bildet, war einst Teil einer industriellen Operation, die die Fische aus den Gewässern um diese Kolonie entfernte. Das Netz fing den Fisch. Das Netz ging verloren oder wurde weggeworfen. Das Netz wurde an die Kolonie gespült. Der Tölpel nahm es und baute damit. Dieselbe Industrie, die das Meer leerte, lieferte das Material für das Nest, das ersetzt, was das Meer nicht mehr gibt.</p>
+      <p>Wir — Fotografen, Naturforscher, Betrachter — stehen vor diesem Bild und fühlen etwas. Das Bild funktioniert, weil es Anpassung zeigt, ja. Aber es zeigt auch den Preis. Der Tölpel sieht gesund aus. Das Nest sieht funktional aus. Und doch existiert alles in diesem Rahmen in einer Welt, die grundlegend verändert wurde, und der Vogel überlebt in den Ruinen seines eigenen Ökosystems, indem er die Trümmer wiederverwendet.</p>
+      <p>Das ist es, was Naturfotografie kann, was keine Statistik kann: das Unsichtbare sichtbar machen. Eine Zahl durchquert den Geist. Ein Bild eines Tölpels auf einem Nest aus Netz bleibt. Es argumentiert nicht. Es zeigt. Und zeigen, wie das Manifest von Arteon sagt, ist <em>« bescheiden, wieder vernähen. »</em></p>
+      <p>Diese Fotografie wird die Geisterfischerei nicht stoppen. Aber sie tut, was Daten nicht können: sie bringt den Betrachter dazu, die Anpassung als Verlust zu <em>sehen</em>. Der Tölpel gedeiht nicht. Der Tölpel kommt zurecht. Es gibt einen Unterschied, und Fotografie ist eines der wenigen Werkzeuge, die diesen Unterschied lesbar machen können.</p>
+    </div>
+
+    <div class="tags">
+      <span class="tag" data-i18n="tag_anthropisation">Anthropisation</span>
+      <span class="tag" data-i18n="tag_marine">Marine Pollution</span>
+      <span class="tag">Gannet</span>
+      <span class="tag" data-i18n="tag_adaptation">Adaptation</span>
+    </div>
+  </section>
+
+  <!-- ② The Shift -->
+  <section class="section">
+    <div class="section-label">
+      <span data-lang="en">② The Shift</span>
+      <span data-lang="fr" class="active">② Le Changement</span>
+      <span data-lang="it">② Il Cambiamento</span>
+      <span data-lang="es">② El Cambio</span>
+      <span data-lang="de">② Die Verschiebung</span>
+    </div>
+    <h2>
+      <span data-lang="en">Content Credentials: The Infrastructure of Honesty</span>
+      <span data-lang="fr" class="active">Content Credentials : l'infrastructure de l'honnêteté</span>
+      <span data-lang="it">Content Credentials: l'infrastruttura dell'onestà</span>
+      <span data-lang="es">Content Credentials: la infraestructura de la honestidad</span>
+      <span data-lang="de">Content Credentials: Die Infrastruktur der Ehrlichkeit</span>
+    </h2>
+
+    <figure class="frame-photo">
+      <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1200&fit=crop" alt="Camera lens — digital authenticity">
+      <figcaption class="frame-caption">Photo libre de droit · Unsplash</figcaption>
+    </figure>
+
+    <!-- EN -->
+    <div data-lang="en">
+      <p>A quieter development this week, but one that matters for anyone who photographs the wild and wants the image to be believed.</p>
+      <p>The C2PA — the coalition behind Content Credentials — announced version 2.3 of their provenance standard in February 2026, with a conformance program designed to make credentials more reliable across the image ecosystem. Adobe's Content Authenticity tools can now inspect and embed provenance metadata across DNG, HEIC, JPEG, PNG, TIFF, AVIF, and WebP.</p>
+      <p>What this means: an image can now carry a cryptographically signed record of its creation and editing history — camera model, lens, timestamp, edits applied — that travels with the file rather than depending on a platform's willingness to display it.</p>
+      <p>For wildlife photography, this matters more than it sounds. We live in an era where the question "was this real?" is becoming default. The technology exists. The bottleneck is adoption. Photographers who start embedding Content Credentials now are building the credibility that will matter when the flood of AI-generated nature imagery makes provenance the only differentiator.</p>
+      <p>If you photograph the wild, sign your work. Not with a watermark. With its history.</p>
+      <p style="margin-top:20px;"><a href="https://c2pa.org/the-c2pa-launches-content-credentials-2-3-and-celebrates-5-years-of-impact-across-the-digital-ecosystem/" class="source-link" target="_blank">↗ C2PA Content Credentials 2.3</a></p>
+    </div>
+
+    <!-- FR -->
+    <div data-lang="fr" class="active">
+      <p>Un développement plus discret cette semaine, mais qui compte pour quiconque photographie la nature et veut que l'image soit crue.</p>
+      <p>La C2PA — la coalition derrière Content Credentials — a annoncé la version 2.3 de son standard de provenance en février 2026, avec un programme de conformité destiné à rendre les credentials plus fiables dans l'écosystème de l'image. Les outils Content Authenticity d'Adobe peuvent désormais inspecter et intégrer les métadonnées de provenance sur DNG, HEIC, JPEG, PNG, TIFF, AVIF et WebP.</p>
+      <p>Ce que cela signifie : une image peut désormais transporter un enregistrement cryptographiquement signé de son historique de création et d'édition — modèle d'appareil, objectif, horodatage, modifications appliquées — qui voyage avec le fichier plutôt que de dépendre de la volonté d'une plateforme de l'afficher.</p>
+      <p>Pour la photographie naturaliste, cela compte plus qu'il n'y paraît. Nous vivons à une époque où la question « c'était réel ? » devient par défaut. La technologie existe. Le goulot d'étranglement, c'est l'adoption. Les photographes qui commencent à intégrer Content Credentials maintenant construisent la crédibilité qui comptera quand le déluge d'images naturelles générées par IA fera de la provenance le seul différenciateur.</p>
+      <p>Si vous photographiez la nature, signez votre travail. Pas avec un filigrane. Avec son histoire.</p>
+      <p style="margin-top:20px;"><a href="https://c2pa.org/the-c2pa-launches-content-credentials-2-3-and-celebrates-5-years-of-impact-across-the-digital-ecosystem/" class="source-link" target="_blank">↗ C2PA Content Credentials 2.3</a></p>
+    </div>
+
+    <!-- IT -->
+    <div data-lang="it">
+      <p>Uno sviluppo più silenzioso questa settimana, ma che conta per chi fotografa la natura e vuole che l'immagine sia creduta.</p>
+      <p>La C2PA — la coalizione dietro Content Credentials — ha annunciato la versione 2.3 del suo standard di provenienza a febbraio 2026, con un programma di conformità per rendere le credenziali più affidabili nell'ecosistema delle immagini. Gli strumenti Content Authenticity di Adobe possono ora ispezionare e incorporare metadati di provenienza su DNG, HEIC, JPEG, PNG, TIFF, AVIF e WebP.</p>
+      <p>Cosa significa: un'immagine può ora trasportare un record crittograficamente firmato della sua storia di creazione e modifica — modello fotocamera, obiettivo, timestamp, modifiche applicate — che viaggia con il file invece di dipendere dalla volontà di una piattaforma di mostrarlo.</p>
+      <p>Per la fotografia naturalistica, conta più di quanto sembri. Viviamo in un'epoca in cui la domanda "era reale?" sta diventando predefinita. La tecnologia esiste. Il collo di bottiglia è l'adozione. I fotografi che iniziano a incorporare Content Credentials ora stanno costruendo la credibilità che conterà quando l'inondazione di immagini naturali generate dall'IA renderà la provenienza l'unico elemento differenziante.</p>
+      <p>Se fotografi la natura, firma il tuo lavoro. Non con un watermark. Con la sua storia.</p>
+      <p style="margin-top:20px;"><a href="https://c2pa.org/the-c2pa-launches-content-credentials-2-3-and-celebrates-5-years-of-impact-across-the-digital-ecosystem/" class="source-link" target="_blank">↗ C2PA Content Credentials 2.3</a></p>
+    </div>
+
+    <!-- ES -->
+    <div data-lang="es">
+      <p>Un desarrollo más discreto esta semana, pero que importa para cualquiera que fotografíe la naturaleza y quiera que se crea la imagen.</p>
+      <p>La C2PA — la coalición detrás de Content Credentials — anunció la versión 2.3 de su estándar de procedencia en febrero de 2026, con un programa de conformidad diseñado para hacer las credenciales más confiables en el ecosistema de imágenes. Las herramientas Content Authenticity de Adobe ahora pueden inspeccionar e incorporar metadatos de procedencia en DNG, HEIC, JPEG, PNG, TIFF, AVIF y WebP.</p>
+      <p>Lo que esto significa: una imagen ahora puede llevar un registro criptográficamente firmado de su historial de creación y edición — modelo de cámara, objetivo, marca de tiempo, ediciones aplicadas — que viaja con el archivo en lugar de depender de la voluntad de una plataforma para mostrarlo.</p>
+      <p>Para la fotografía de vida silvestre, esto importa más de lo que parece. Vivimos en una era donde la pregunta "¿esto fue real?" se está volviendo predeterminada. La tecnología existe. El cuello de botella es la adopción. Los fotógrafos que empiezan a incorporar Content Credentials ahora están construyendo la credibilidad que importará cuando la inundación de imágenes naturales generadas por IA haga de la procedencia el único diferenciador.</p>
+      <p>Si fotografías la naturaleza, firma tu trabajo. No con una marca de agua. Con su historia.</p>
+      <p style="margin-top:20px;"><a href="https://c2pa.org/the-c2pa-launches-content-credentials-2-3-and-celebrates-5-years-of-impact-across-the-digital-ecosystem/" class="source-link" target="_blank">↗ C2PA Content Credentials 2.3</a></p>
+    </div>
+
+    <!-- DE -->
+    <div data-lang="de">
+      <p>Eine leisere Entwicklung dieser Woche, die aber für jeden zählt, der Wildnis fotografiert und will, dass das Bild geglaubt wird.</p>
+      <p>Die C2PA — die Koalition hinter Content Credentials — kündigte im Februar 2026 Version 2.3 ihres Provenienzstandards an, mit einem Konformitätsprogramm, das Credentials im Bild-Ökosystem zuverlässiger machen soll. Adobes Content Authenticity Tools können jetzt Provenienz-Metadaten über DNG, HEIC, JPEG, PNG, TIFF, AVIF und WebP prüfen und einbetten.</p>
+      <p>Was das bedeutet: Ein Bild kann jetzt einen kryptografisch signierten Datensatz seiner Entstehungs- und Bearbeitungshistorie tragen — Kameramodell, Objektiv, Zeitstempel, angewendete Bearbeitungen — der mit der Datei reist, anstatt von der Bereitschaft einer Plattform abzuhängen, ihn anzuzeigen.</p>
+      <p>Für Naturfotografie zählt das mehr, als es klingt. Wir leben in einer Ära, in der die Frage „War das echt?" zur Voreinstellung wird. Die Technologie existiert. Der Engpass ist die Akzeptanz. Fotografen, die jetzt anfangen, Content Credentials einzubetten, bauen die Glaubwürdigkeit auf, die zählen wird, wenn die Flut von KI-generierten Naturbildern Provenienz zum einzigen Unterscheidungsmerkmal macht.</p>
+      <p>Wenn Sie Natur fotografieren, signieren Sie Ihre Arbeit. Nicht mit einem Wasserzeichen. Mit ihrer Geschichte.</p>
+      <p style="margin-top:20px;"><a href="https://c2pa.org/the-c2pa-launches-content-credentials-2-3-and-celebrates-5-years-of-impact-across-the-digital-ecosystem/" class="source-link" target="_blank">↗ C2PA Content Credentials 2.3</a></p>
+    </div>
+  </section>
+
+  <!-- ③ The Lens -->
+  <section class="section">
+    <div class="section-label">
+      <span data-lang="en">③ The Lens</span>
+      <span data-lang="fr" class="active">③ L'Objectif</span>
+      <span data-lang="it">③ L'Ottica</span>
+      <span data-lang="es">③ El Objetivo</span>
+      <span data-lang="de">③ Das Objektiv</span>
+    </div>
+    <h2>
+      <span data-lang="en">When the Camera Listens: Photography as Ecological Sensor</span>
+      <span data-lang="fr" class="active">Quand l'appareil écoute : la photographie comme capteur écologique</span>
+      <span data-lang="it">Quando la fotocamera ascolta: la fotografia come sensore ecologico</span>
+      <span data-lang="es">Cuando la cámara escucha: la fotografía como sensor ecológico</span>
+      <span data-lang="de">Wenn die Kamera zuhört: Fotografie als ökologischer Sensor</span>
+    </h2>
+
+    <figure class="frame-photo">
+      <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=1200&fit=crop" alt="Forest — wildlife monitoring sensor">
+      <figcaption class="frame-caption">Photo libre de droit · Unsplash</figcaption>
+    </figure>
+
+    <!-- EN -->
+    <div data-lang="en">
+      <p>There is a shift happening in conservation biology that wildlife photographers should know about, because it changes what a photograph is <em>for</em>.</p>
+      <p>For most of its history, wildlife photography has been understood as a visual art: the image is the deliverable, the print is the endpoint. But a growing body of work in ecological monitoring is treating the camera — and increasingly, the microphone — as a <strong>sensor</strong>: a field instrument that records biological data continuously, without a human behind it.</p>
+      <p>Camera traps have been used this way for decades. What is new is the scale and the intelligence applied to the output. Networks of motion-triggered cameras now cover reserves, migration corridors, and restored habitats — not to produce beautiful images, but to estimate population density, detect invasive species, and measure the rate at which a recovering ecosystem repopulates. The photographs are data points. AI models trained on millions of camera-trap images can identify species, count individuals, and flag behavioural anomalies faster than any human reviewer.</p>
+      <p>The same logic is now extending to sound. Passive acoustic monitoring — deploying autonomous recorders in forests, wetlands, and marine environments — captures the acoustic signature of an ecosystem over weeks or months. BirdNET, developed at the Cornell Lab of Ornithology, can identify bird species from audio in real time. Similar models are being trained for bats, frogs, and insects. The sound of a healthy forest at dawn is not just beautiful. It is a census.</p>
+      <div class="pull-quote">The photographer who understands that their camera is also a sensing instrument is operating in a richer territory than the one who chases only the frame.</div>
+      <p><strong>What this means for photographers:</strong> the boundary between "making images" and "producing ecological knowledge" is dissolving. A well-placed trail camera does not replace a photographer — no algorithm composes with intent, reads light for emotional weight, or chooses the moment that tells a story a human needs to hear. But the photographer who understands that their camera is also a sensing instrument is operating in a richer territory than the one who chases only the frame.</p>
+      <p>The gannet photograph in this edition is a portrait. It is also evidence. The photograph does not stop being art. But it becomes more than art — it becomes an instrument.</p>
+      <p>This is the territory WildLens will explore: photography not as an end, but as a node in a network of seeing, listening, and understanding what is happening to the wild.</p>
+    </div>
+
+    <!-- FR -->
+    <div data-lang="fr" class="active">
+      <p>Un changement est en cours en biologie de la conservation que les photographes naturalistes devraient connaître, car il modifie ce qu'une photographie est <em>destinée à être</em>.</p>
+      <p>Pendant la plus grande partie de son histoire, la photographie naturaliste a été comprise comme un art visuel : l'image est le livrable, le tirage est le point final. Mais un corpus croissant de travaux en surveillance écologique traite l'appareil photo — et de plus en plus le microphone — comme un <strong>capteur</strong> : un instrument de terrain qui enregistre des données biologiques en continu, sans humain derrière.</p>
+      <p>Les pièges photographiques sont utilisés ainsi depuis des décennies. Ce qui est nouveau, c'est l'échelle et l'intelligence appliquées aux résultats. Des réseaux de caméras à déclenchement automatique couvrent désormais des réserves, des couloirs de migration et des habitats restaurés — non pour produire de belles images, mais pour estimer la densité de population, détecter les espèces invasives et mesurer le rythme auquel un écosystème en récupération se repeuple. Les photographies sont des points de données. Des modèles d'IA entraînés sur des millions d'images de pièges photo peuvent identifier les espèces, compter les individus et signaler des anomalies comportementales plus rapidement que n'importe quel examinateur humain.</p>
+      <p>La même logique s'étend maintenant au son. Le suivi acoustique passif — déploiement d'enregistreurs autonomes dans les forêts, les zones humides et les environnements marins — capture la signature acoustique d'un écosystème sur des semaines ou des mois. BirdNET, développé au Cornell Lab of Ornithology, peut identifier les espèces d'oiseaux à partir de l'audio en temps réel. Des modèles similaires sont entraînés pour les chauves-souris, les grenouilles et les insectes. Le son d'une forêt saine à l'aube n'est pas seulement beau. C'est un recensement.</p>
+      <div class="pull-quote">Le photographe qui comprend que son appareil est aussi un instrument de mesure évolue dans un territoire plus riche que celui qui ne cherche que l'image.</div>
+      <p><strong>Ce que cela signifie pour les photographes :</strong> la frontière entre « faire des images » et « produire des connaissances écologiques » se dissout. Un piège photo bien placé ne remplace pas un photographe — aucun algorithme ne compose avec intention, ne lit la lumière pour son poids émotionnel, ne choisit le moment qui raconte une histoire qu'un humain a besoin d'entendre. Mais le photographe qui comprend que son appareil est aussi un capteur évolue dans un territoire plus riche que celui qui ne poursuit que le cadre.</p>
+      <p>La photographie du fou de Bassan dans cette édition est un portrait. C'est aussi une preuve. La photographie ne cesse pas d'être de l'art. Mais elle devient plus que de l'art — elle devient un instrument.</p>
+      <p>C'est le territoire que WildLens explorera : la photographie non comme une fin, mais comme un nœud dans un réseau de voir, d'écouter et de comprendre ce qui arrive au vivant.</p>
+    </div>
+
+    <!-- IT -->
+    <div data-lang="it">
+      <p>C'è un cambiamento in corso nella biologia della conservazione che i fotografi naturalisti dovrebbero conoscere, perché cambia ciò per cui una fotografia è <em>fatta</em>.</p>
+      <p>Per gran parte della sua storia, la fotografia naturalistica è stata intesa come arte visiva: l'immagine è il prodotto, la stampa è il punto finale. Ma un corpo crescente di lavori nel monitoraggio ecologico tratta la fotocamera — e sempre più il microfono — come un <strong>sensore</strong>: uno strumento da campo che registra dati biologici continuamente, senza un essere umano dietro.</p>
+      <p>Le fototrappole sono usate così da decenni. Ciò che è nuovo è la scala e l'intelligenza applicata ai risultati. Reti di fotocamere attivate dal movimento coprono ora riserve, corridoi di migrazione e habitat ripristinati — non per produrre belle immagini, ma per stimare la densità di popolazione, rilevare specie invasive e misurare il ritmo di ripopolamento di un ecosistema in recupero. Le fotografie sono punti dati. Modelli di IA addestrati su milioni di immagini di fototrappole possono identificare specie, contare individui e segnalare anomalie comportamentali più velocemente di qualsiasi revisore umano.</p>
+      <p>La stessa logica si sta ora estendendo al suono. Il monitoraggio acustico passivo — deploy di registratori autonomi in foreste, zone umide e ambienti marini — cattura la firma acustica di un ecosistema per settimane o mesi. BirdNET, sviluppato al Cornell Lab of Ornithology, può identificare specie di uccelli dall'audio in tempo reale. Modelli simili sono in fase di addestramento per pipistrelli, rane e insetti. Il suono di una foresta sana all'alba non è solo bello. È un censimento.</p>
+      <div class="pull-quote">Il fotografo che comprende che la sua fotocamera è anche uno strumento di misura opera in un territorio più ricco di chi insegue solo lo scatto.</div>
+      <p><strong>Cosa significa per i fotografi:</strong> il confine tra "fare immagini" e "produrre conoscenza ecologica" si sta dissolvendo. Una fototrappola ben posizionata non sostituisce un fotografo — nessun algoritmo compone con intenzione, legge la luce per il peso emotivo, sceglie il momento che racconta una storia che un essere umano ha bisogno di sentire. Ma il fotografo che comprende che la sua fotocamera è anche un sensore opera in un territorio più ricco di chi insegue solo lo scatto.</p>
+      <p>La fotografia della sula in questa edizione è un ritratto. È anche una prova. La fotografia non cessa di essere arte. Ma diventa più dell'arte — diventa uno strumento.</p>
+      <p>Questo è il territorio che WildLens esplorerà: la fotografia non come fine, ma come nodo in una rete di vedere, ascoltare e comprendere ciò che sta accadendo alla natura selvaggia.</p>
+    </div>
+
+    <!-- ES -->
+    <div data-lang="es">
+      <p>Hay un cambio ocurriendo en la biología de la conservación que los fotógrafos de vida silvestre deberían conocer, porque cambia para qué sirve una fotografía.</p>
+      <p>Durante la mayor parte de su historia, la fotografía de vida silvestre se ha entendido como arte visual: la imagen es el producto, la impresión es el punto final. Pero un cuerpo creciente de trabajo en monitoreo ecológico trata la cámara — y cada vez más el micrófono — como un <strong>sensor</strong>: un instrumento de campo que registra datos biológicos continuamente, sin un humano detrás.</p>
+      <p>Las cámaras trampa se han usado así durante décadas. Lo nuevo es la escala y la inteligencia aplicada a los resultados. Redes de cámaras activadas por movimiento cubren ahora reservas, corredores de migración y hábitats restaurados — no para producir imágenes hermosas, sino para estimar la densidad de población, detectar especies invasivas y medir el ritmo al que un ecosistema en recuperación se repuebla. Las fotografías son puntos de datos. Modelos de IA entrenados con millones de imágenes de cámaras trampa pueden identificar especies, contar individuos y señalar anomalías de comportamiento más rápido que cualquier revisor humano.</p>
+      <p>La misma lógica se extiende ahora al sonido. El monitoreo acústico pasivo — despliegue de grabadoras autónomas en bosques, humedales y entornos marinos — captura la firma acústica de un ecosistema durante semanas o meses. BirdNET, desarrollado en el Cornell Lab of Ornithology, puede identificar especies de aves a partir del audio en tiempo real. Modelos similares se están entrenando para murciélagos, ranas e insectos. El sonido de un bosque sano al amanecer no es solo hermoso. Es un censo.</p>
+      <div class="pull-quote">El fotógrafo que comprende que su cámara es también un instrumento de medición opera en un territorio más rico que el que solo persigue la foto.</div>
+      <p><strong>Lo que esto significa para los fotógrafos:</strong> la frontera entre "hacer imágenes" y "producir conocimiento ecológico" se está disolviendo. Una cámara trampa bien colocada no reemplaza a un fotógrafo — ningún algoritmo compone con intención, lee la luz por su peso emocional, o elige el momento que cuenta una historia que un humano necesita escuchar. Pero el fotógrafo que comprende que su cámara es también un sensor opera en un territorio más rico que el que solo persigue la foto.</p>
+      <p>La fotografía del alcatraz en esta edición es un retrato. También es evidencia. La fotografía no deja de ser arte. Pero se convierte en más que arte — se convierte en un instrumento.</p>
+      <p>Este es el territorio que WildLens explorará: la fotografía no como un fin, sino como un nodo en una red de ver, escuchar y comprender lo que le está pasando a la vida silvestre.</p>
+    </div>
+
+    <!-- DE -->
+    <div data-lang="de">
+      <p>Es vollzieht sich ein Wandel in der Naturschutzbiologie, den Naturfotografen kennen sollten, weil er verändert, wofür eine Fotografie <em>da ist</em>.</p>
+      <p>Den größten Teil ihrer Geschichte wurde Naturfotografie als visuelle Kunst verstanden: das Bild ist das Endprodukt, der Abzug ist der Endpunkt. Aber eine wachsende Reihe von Arbeiten im ökologischen Monitoring behandelt die Kamera — und zunehmend das Mikrofon — als <strong>Sensor</strong>: ein Feldinstrument, das kontinuierlich biologische Daten aufzeichnet, ohne einen Menschen dahinter.</p>
+      <p>Kamerafallen werden seit Jahrzehnten so eingesetzt. Was neu ist, ist das Maß und die Intelligenz, die auf die Ergebnisse angewendet wird. Netzwerke bewegungsausgelöster Kameras decken jetzt Reservate, Migrationskorridore und wiederhergestellte Lebensräume ab — nicht um schöne Bilder zu produzieren, sondern um Populationsdichte zu schätzen, invasive Arten zu erkennen und das Tempo zu messen, in dem sich ein sich erholendes Ökosystem wieder besiedelt. Die Fotografien sind Datenpunkte. KI-Modelle, die auf Millionen von Kamerafallbildern trainiert sind, können Arten identifizieren, Individuen zählen und Verhaltensanomalien schneller kennzeichnen als jeder menschliche Prüfer.</p>
+      <p>Die gleiche Logik erstreckt sich jetzt auf den Klang. Passives akustisches Monitoring — der Einsatz autonomer Rekorder in Wäldern, Feuchtgebieten und Meeresumgebungen — erfasst die akustische Signatur eines Ökosystems über Wochen oder Monate. BirdNET, entwickelt am Cornell Lab of Ornithology, kann Vogelarten aus Audio in Echtzeit identifizieren. Ähnliche Modelle werden für Fledermäuse, Frösche und Insekte trainiert. Der Klang eines gesunden Waldes bei Sonnenaufgang ist nicht nur schön. Er ist eine Volkszählung.</p>
+      <div class="pull-quote">Der Fotograf, der versteht, dass seine Kamera auch ein Messinstrument ist, bewegt sich in einem reicheren Territory als der, der nur das Bild jagt.</div>
+      <p><strong>Was das für Fotografen bedeutet:</strong> die Grenze zwischen „Bilder machen" und „ökologisches Wissen produzieren" löst sich auf. Eine gut platzierte Kamerafalle ersetzt keinen Fotografen — kein Algorithmus komponiert mit Absicht, liest Licht für emotionales Gewicht, oder wählt den Moment, der eine Geschichte erzählt, die ein Mensch hören muss. Aber der Fotograf, der versteht, dass seine Kamera auch ein Sensor ist, bewegt sich in einem reicheren Gebiet als der, der nur den Rahmen jagt.</p>
+      <p>Die Tölpel-Fotografie in dieser Ausgabe ist ein Porträt. Sie ist auch ein Beweis. Die Fotografie hört nicht auf, Kunst zu sein. Aber sie wird mehr als Kunst — sie wird ein Instrument.</p>
+      <p>Dies ist das Gebiet, das WildLens erkunden wird: Fotografie nicht als Zweck, sondern als Knotenpunkt in einem Netzwerk des Sehens, Zuhörens und Verstehens, was mit der Wildnis geschieht.</p>
+    </div>
+
+    <div class="tags">
+      <span class="tag">Acoustic Monitoring</span>
+      <span class="tag">Camera Traps</span>
+      <span class="tag">BirdNET</span>
+      <span class="tag">Conservation Tech</span>
+    </div>
+  </section>
+
+  <!-- === CTA === -->
+  <div class="cta-box">
+    <h3>
+      <span data-lang="en">Get your photo analysed by an expert</span>
+      <span data-lang="fr" class="active">Faites analyser votre photo par un expert</span>
+      <span data-lang="it">Fai analizzare la tua foto da un esperto</span>
+      <span data-lang="es">Haz que un experto analice tu foto</span>
+      <span data-lang="de">Lassen Sie Ihr Foto von einem Experten analysieren</span>
+    </h3>
+    <p>
+      <span data-lang="en">L'Instant Lu — AI-powered wildlife photography critique. €1.90 per analysis. First one free.</span>
+      <span data-lang="fr" class="active">L'Instant Lu — critique photo IA. 1,90 € l'analyse. La première est gratuite.</span>
+      <span data-lang="it">L'Instant Lu — critica fotografica IA. 1,90 € ad analisi. La prima è gratuita.</span>
+      <span data-lang="es">L'Instant Lu — crítica fotográfica con IA. 1,90 € por análisis. La primera es gratuita.</span>
+      <span data-lang="de">L'Instant Lu — KI-gestützte Fotokritik. 1,90 € pro Analyse. Die erste ist kostenlos.</span>
+    </p>
+    <a href="#" class="cta-button">
+      <span data-lang="en">Try L'Instant Lu →</span>
+      <span data-lang="fr" class="active">Essayer L'Instant Lu →</span>
+      <span data-lang="it">Prova L'Instant Lu →</span>
+      <span data-lang="es">Probar L'Instant Lu →</span>
+      <span data-lang="de">L'Instant Lu testen →</span>
+    </a>
+  </div>
+
+</article>
+
+<!-- === Footer === -->
+<footer>
+  <a href="#" class="logo">Arteon<span class="dot">·</span></a>
+  <div class="footer-tagline">
+    <span data-lang="en">Between us and the wild, there is knowledge. Arteon puts it there.</span>
+    <span data-lang="fr" class="active">Entre nous et le vivant, il y a la connaissance. Arteon la met là.</span>
+    <span data-lang="it">Tra noi e la natura, c'è la conoscenza. Arteon la mette lì.</span>
+    <span data-lang="es">Entre nosotros y la naturaleza, está el conocimiento. Arteon lo pone ahí.</span>
+    <span data-lang="de">Zwischen uns und der Wildnis liegt das Wissen. Arteon bringt es dorthin.</span>
+  </div>
+  <div class="footer-links">
+    <a href="#" data-i18n="nav_manifeste">Manifeste</a>
+    <a href="#">Shop</a>
+    <a href="#">WildLens</a>
+    <a href="#">L'Instant Lu</a>
+    <a href="#" data-i18n="nav_affiliation">Affiliation</a>
+    <a href="#">Legal</a>
+  </div>
+</footer>
+
+<script>
+  // === Language switcher ===
+  const langButtons = document.querySelectorAll('.lang-btn');
+  const langElements = document.querySelectorAll('[data-lang]');
+
+  function switchLanguage(lang) {
+    // Toggle buttons
+    langButtons.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.langBtn === lang);
+    });
+    // Toggle content
+    langElements.forEach(el => {
+      if (el.dataset.lang === lang) {
+        el.classList.add('active');
+      } else {
+        el.classList.remove('active');
+      }
+    });
+    // Update html lang attribute
+    document.documentElement.lang = lang;
+  }
+
+  langButtons.forEach(btn => {
+    btn.addEventListener('click', () => switchLanguage(btn.dataset.langBtn));
+  });
+</script>
+
+</body>
+</html>

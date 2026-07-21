@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+# pka-backup — Sauvegarde PKA vers M1 via rsync
+# Dobby 🦉 — 2026-07-18 — Automatisation #7
+#
+# Rsync le cœur de PKA (hors _local, .git, gros PDFs) vers le M1.
+# Usage:
+#   bin/pka-backup --run       Sauvegarde complète
+#   bin/pka-backup --dry-run   Simule
+#   bin/pka-backup --help
+
+set -euo pipefail
+
+PKA_ROOT="/Users/jchavauxm5/PKA_JCH"
+M1_HOST="m1-llm"
+M1_IP="100.73.212.110"
+M1_USER="m1"
+M1_PATH="/home/m1/pka-backup"
+LOG="$PKA_ROOT/_local/logs/pka-backup.log"
+
+MODE="${1:---run}"
+
+if [[ "$MODE" == "--help" || "$MODE" == "-h" ]]; then
+  cat <<'EOF'
+💾 pka-backup — Sauvegarde PKA vers M1
+
+USAGE
+  bin/pka-backup --run       Sauvegarde complète (rsync)
+  bin/pka-backup --dry-run   Simule sans transférer
+
+DESTINATION
+  M1 (100.73.212.110) → /home/m1/pka-backup/
+
+EXCLUSIONS
+  _local/  .git/  node_modules/  *.pdf  *.jpg  *.png
+  session_*.json  JCH_Inbox/00_INBOX/  __pycache__/
+
+LAUNCHD
+  cp _local/launchd-plists/com.dobby.pka-backup.plist ~/Library/LaunchAgents/
+  launchctl load ~/Library/LaunchAgents/com.dobby.pka-backup.plist
+EOF
+  exit 0
+fi
+
+DRY=""
+[[ "$MODE" == "--dry-run" ]] && DRY="--dry-run"
+
+mkdir -p "$(dirname "$LOG")"
+echo "[$(date -Iseconds)] Début backup" >> "$LOG"
+
+# Vérifier connexion M1
+if ! ssh -o ConnectTimeout=5 -o BatchMode=yes "$M1_USER@$M1_IP" echo ok 2>/dev/null; then
+  echo "❌ M1 inaccessible. Vérifie Tailscale."
+  echo "[$(date -Iseconds)] ÉCHEC — M1 inaccessible" >> "$LOG"
+  exit 1
+fi
+
+# Créer le dossier cible
+ssh "$M1_USER@$M1_IP" "mkdir -p $M1_PATH" 2>/dev/null
+
+echo "💾 Sauvegarde PKA → M1 ($M1_IP)"
+echo "   Source : $PKA_ROOT"
+echo "   Cible  : $M1_USER@$M1_IP:$M1_PATH"
+echo ""
+
+# Rsync avec exclusions
+rsync -avz $DRY \
+  --exclude='_local/' \
+  --exclude='.git/' \
+  --exclude='node_modules/' \
+  --exclude='*.pdf' \
+  --exclude='*.jpg' \
+  --exclude='*.png' \
+  --exclude='*.dmg' \
+  --exclude='session_*.json' \
+  --exclude='JCH_Inbox/00_INBOX/' \
+  --exclude='__pycache__/' \
+  --exclude='.DS_Store' \
+  --exclude='*.db-shm' \
+  --exclude='*.db-wal' \
+  --delete \
+  "$PKA_ROOT/" "$M1_USER@$M1_IP:$M1_PATH/" 2>&1
+
+EXIT=$?
+
+if [[ $EXIT -eq 0 ]]; then
+  echo ""
+  echo "✅ Sauvegarde terminée."
+  echo "[$(date -Iseconds)] OK" >> "$LOG"
+  
+  # Notification
+  osascript -e "display notification \"Rsync vers M1 terminé\" with title \"💾 PKA Backup\" subtitle \"Sauvegarde OK\"" 2>/dev/null || true
+else
+  echo "❌ Erreur rsync (code $EXIT)"
+  echo "[$(date -Iseconds)] ÉCHEC — rsync exit $EXIT" >> "$LOG"
+fi
+
+exit $EXIT

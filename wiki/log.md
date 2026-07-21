@@ -253,3 +253,14 @@
 2026-06-20 08:27 — Save Codex [model=deepseek-tui ; project=AI_IT_TOOLS] : finalisation-session-2026-06-19 (Finalisation de la session du 19/06 : Memory Nudge et Honcho PKA pivotes synchrone, pka-save execute, checklist actions P0 verifiee, MEMORY.md mis a jour. Session couvrait : spl...) — `wiki/Daily/2026/06/2026-06-20-finalisation-session-2026-06-19.md`
 
 2026-06-20 09:30 — Save [model=claude-sonnet-4-6 ; project=AI_IT_TOOLS] : macfuse-diagnostic (Diagnostic MacFUSE : 4 zombies mount_macfuse tués, montage SSHFS stale démonté, script m1-datasets-mount.sh corrigé. Reboot M5 recommandé pour kext 5.2.0.) — `wiki/Daily/2026-06-20.md`
+
+2026-06-22 00:47 — Save [model=claude-sonnet-4-6 ; project=AI_IT_TOOLS] : cloudflare-bypass-mcp-playwright (Validation boucle Kimi–DeepSeek–Kimi. FlareSolverr live. Playwright MCP câblé sur Claude Code + Kimi. ~/.claude.json et ~/.kimi-code/mcp.json mis à jour.) — `wiki/Daily/2026/06/2026-06-22.md`
+
+2026-06-22 15:06 — Save [model=claude-sonnet-4-6 ; project=AI_IT_TOOLS] : audit-equipe-pka (Week 1 actions exécutées. Audit 32 agents PKA : fusions Ariane→Forge + Fourmi→Araignée, création Mésange #33 bioacoustique. 31 membres actifs. Graphify rebuild 25397 nodes. Skills #38-40. Organigramme v22.) — `wiki/Daily/2026/06/2026-06-22.md`
+
+2026-06-23 10:17 — Save [model=claude-sonnet-4-6 ; project=PKA_SYSTEM] : refonte-protocole-memoire-dobby (Skill pka-session-start aligné sur bootstrap. 7 améliorations bootstrap : decisions-actives.md créé, type Config ajouté, glob procurement dynamique, check_state_freshness.py opérationnel, règle mid-session, 6 fichiers State manquants ajoutés.) — `wiki/Daily/2026/06/2026-06-23.md`
+
+2026-06-23 10:26 — Save [model=claude-sonnet-4-6 ; project=PKA_SYSTEM] : check-state-freshness-v2 (Script amélioré : WARNING/CRITICAL, --json, matrice-modeles + registre-achats ajoutés.) — `wiki/Daily/2026/06/2026-06-23.md`
+2026-07-09 21:13 — Save Codex [model=claude-sonnet-5 ; project=IOT_VAN] : Traitement inbox YOLO + Postmortem/Solution boot NVMe (Mode yolo activé sur demande JC. Inbox 00_INBOX vidée (6 fichiers routés/archivés/supprimés). Lecture du postmortem échec boot HA OS sur NVMe (RPi5+X1205) — proposition de solut...) — `wiki/Daily/2026/07/2026-07-09-traitement-inbox-yolo-postmortem-solution-boot-nvme.md`
+
+2026-07-19 23:02 — Save Codex [model=claude-sonnet-5 ; project=IOT] : MQTT Discovery générique multi-instances (Lupo + Esneux) (Résolution du blocage capteurs MQTT sur Lupo (mqtt:/broker: YAML obsolete). Architecture MQTT Discovery générique adoptée pour toutes les instances HA. Extension immédiate testé...) — `wiki/Daily/2026/07/2026-07-19-mqtt-discovery-générique-multi-instances-lupo-esneux.md`
