@@ -1,6 +1,6 @@
 # F1 — WildNexus FIELD
 > Nœud caméra autonome · Version P0 MVP
-> Fiche produit — 2026-06-19
+> Fiche produit — 2026-06-19 (mis à jour 2026-06-30)
 
 ---
 
@@ -43,8 +43,8 @@ FIELD ←──LoRa downlink── STATION (demande image)
 FIELD ──LTE-M burst────→ STATION (image 5MP, ~3-5 Mo)
 ```
 
-- **Uplink :** paquet 50 octets (horodatage, ID, score IA, batterie, RSSI, compteur)
-- **Downlink :** commande 10 octets (demande image spécifique)
+- **Uplink :** paquet 48 octets binaire (cf. ADR-014 — horodatage, ID, score IA, batterie, RSSI, compteur)
+- **Downlink :** paquet 16 octets binaire (cf. ADR-014 — demande image spécifique)
 - **Pas de LoRaWAN, pas de TTN** — infrastructure propre, zéro dépendance externe
 - **LTE-M (SIM7080G) optionnel** — pour téléchargement d'image à la demande seulement
 
@@ -69,6 +69,8 @@ FIELD ──LTE-M burst────→ STATION (image 5MP, ~3-5 Mo)
 | **Total BOM** | | | **~92.45€** |
 
 **Prix de vente cible :** 149-179€ (marge ~40%, hors piles)
+
+> ⚠️ Le BOM production (92.45€) diffère du budget prototype P0 (307€ pour 2 nœuds, cf. `08_BUDGET_MODELES/WILDNEXUS_P0_BUDGET_RANGE.md`). Le prototype inclut l'outillage (PPK2), les frais annexes, la réserve casse, et utilise des DevKit au lieu de PCB dédié.
 
 ---
 
@@ -116,4 +118,4 @@ Acheter 1 FIELD → déployer dans son jardin → recevoir alertes LoRa
 
 ---
 
-*Références : ADR-001 (MCU), ADR-002 (caméra IR), ADR-003 (radio), ADR-004 (stockage), ADR-005 (énergie), ADR-006 (boîtier), ADR-007 (détection), ADR-013 (acoustique).*
+*Références : ADR-001 (MCU), ADR-002 (caméra IR), ADR-003 (radio), ADR-004 (stockage), ADR-005 (énergie), ADR-006 (boîtier), ADR-007 (détection), ADR-013 (acoustique/micros), ADR-014 (payload LoRa).*

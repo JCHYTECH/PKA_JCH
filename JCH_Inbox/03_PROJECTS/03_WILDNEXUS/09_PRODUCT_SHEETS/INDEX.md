@@ -1,7 +1,8 @@
 # 09_PRODUCT_SHEETS — Fiches produit WildNexus
 
 > Générées le 2026-06-19 par Dobby 🦉 — Analyse Arbor (OBSERVE → IDEATE → DECIDE)
-> Basées sur : Master Architecture WN, Founding Document v0.2, 14 ADRs, BOM v0.2c, Usage Matrix
+> Mises à jour le 2026-06-30 — alignement ADR, avertissements modèles IA
+> Basées sur : Master Architecture WN, Founding Document v0.2, 16 ADRs, BOM v0.4, Usage Matrix
 
 ---
 
@@ -59,25 +60,42 @@ Total progressif : 149€ → 696€ → 1 295€ → 1 544€
 
 ## Spécifications partagées (tous produits FIELD/STATION)
 
-- **Open source** — firmware, dashboard, modèles IA sous licence à définir (cf. Usage Policy)
+- **Open source** — firmware sous licence MIT + ETHICS.md (cf. ADR-010 §6, usage policy)
 - **Données locales** — pas de cloud obligatoire, vous possédez vos données
 - **Pas de vendor lock-in** — formats standards (Camtrap-DP, Darwin Core, CSV, JSON)
-- **LoRa EU868 P2P** — infrastructure propre, zéro dépendance externe
-- **Conforme RGPD** — pas d'images humaines, traitement local
+- **LoRa EU868 P2P** — infrastructure propre, zéro dépendance externe (ADR-003)
+- **Payload binaire 48 octets** — format compact et extensible (ADR-014)
+- **Conforme RGPD** — filtre humain Edge AI, traitement local, pas d'images humaines transmises (ADR-010)
 - **Usage matrix** — tout usage est qualifié selon la matrice WildNexus
+
+---
+
+## ⚠️ Avertissements — Modèles IA et fonctionnalités P1
+
+Les fiches produit décrivent la **vision produit complète** P0→P1+. Certaines fonctionnalités sont des cibles, pas des réalités actuelles :
+
+| Fonctionnalité | Fiche | Statut réel (2026-06-30) | Source |
+|----------------|-------|--------------------------|--------|
+| IA binaire animal/non-animal | F1 | ⏳ Modèle non entraîné, dataset 51 images insuffisant | ADR-010 R4, SOP-11 |
+| IA espèces multi-classes | F2 | ⏳ Non commencé | — |
+| BirdNET-Lite | S2, A1 | 🟡 Écosystème BirdNET analysé, intégration planifiée | NEXUS_ACOUSTIC |
+| InsectNet-CNN | S2, A1 | 🟡 Pipeline en cours (dataset Conocephalus fuscus prêt) | InsectNet |
+| AmphibianNet | S2 | ⏳ Non commencé | — |
+| LoRaWAN | F2 | ⚠️ Option P1 — aucun ADR ne valide cette intégration | — |
 
 ---
 
 ## Références croisées
 
-- [01_FOUNDATION/MASTER_ARCHITECTURE_WN.md](../01_FOUNDATION/MASTER_ARCHITECTURE_WN.md) — vision produit, phases P0/P1/P2
+- [01_FOUNDATION/MASTER_ARCHITECTURE_WN.md](../01_FOUNDATION/MASTER_ARCHITECTURE_WN.md) — vision produit, phases P0/P1/P2 (document de cadrage initial)
 - [01_FOUNDATION/wildnexus-usage-matrix.md](../01_FOUNDATION/wildnexus-usage-matrix.md) — qualification d'usage par persona
 - [01_FOUNDATION/WILDNEXUS_P0_SCOPE_LOCK.md](../01_FOUNDATION/WILDNEXUS_P0_SCOPE_LOCK.md) — périmètre P0
-- [02_DECISIONS/WILDNEXUS_ADR_INDEX.md](../02_DECISIONS/WILDNEXUS_ADR_INDEX.md) — index des 14 ADRs
-- [03_P0_ENGINEERING/07_PROCUREMENT_BOM/](../03_P0_ENGINEERING/07_PROCUREMENT_BOM/) — BOM v0.2c
+- [02_DECISIONS/WILDNEXUS_ADR_INDEX.md](../02_DECISIONS/WILDNEXUS_ADR_INDEX.md) — index des 16 ADRs
+- [03_P0_ENGINEERING/07_PROCUREMENT_BOM/](../03_P0_ENGINEERING/07_PROCUREMENT_BOM/) — BOM v0.4
+- [03_P0_ENGINEERING/08_BUDGET_MODELES/WILDNEXUS_P0_BUDGET_RANGE.md](../03_P0_ENGINEERING/08_BUDGET_MODELES/WILDNEXUS_P0_BUDGET_RANGE.md) — budget P0 avec suivi achats réels
 - [../../12_NEXUS_ACOUSTIC/](../../12_NEXUS_ACOUSTIC/) — projet Nexus Acoustic autonome
 - [../../TEAM_Inbox/2026-06-19_dobby_arbor-wildnexus-product-line.md](../../TEAM_Inbox/2026-06-19_dobby_arbor-wildnexus-product-line.md) — analyse Arbor complète
 
 ---
 
-*Généré par Dobby 🦉 — 2026-06-19*
+*Généré par Dobby 🦉 — 2026-06-19 — mis à jour 2026-06-30.*

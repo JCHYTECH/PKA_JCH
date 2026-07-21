@@ -1,6 +1,6 @@
 # S2 — WildNexus STATION+
 > Gateway + IA multi-taxons + corrélation multimodale · Version P1+
-> Fiche produit — 2026-06-19
+> Fiche produit — 2026-06-19 (mis à jour 2026-06-30)
 
 ---
 
@@ -31,12 +31,14 @@ La STATION+ est la **station de recherche** WildNexus. Elle ajoute l'intelligenc
 
 ### Modèles embarqués (TPU Coral)
 
-| Modèle | Cible | Taille | Latence |
-|--------|-------|--------|---------|
-| MobileNetV2 + FOMO | Mammifères (15 spp) | 3.5 MB | 8 ms |
-| BirdNET-Lite | Oiseaux chanteurs (200 spp EU) | 18 MB | 45 ms |
-| InsectNet-CNN | Orthoptères (30 spp) | 12 MB | 25 ms |
-| AmphibianNet | Amphibiens (10 spp) | 5 MB | 12 ms |
+| Modèle | Cible | Taille | Latence | Statut développement |
+|--------|-------|--------|---------|---------------------|
+| MobileNetV2 + FOMO | Mammifères (15 spp) | 3.5 MB | 8 ms | ⏳ À entraîner |
+| BirdNET-Lite | Oiseaux chanteurs (200 spp EU) | 18 MB | 45 ms | ⏳ Basé sur BirdNET (Cornell) — écosystème analysé |
+| InsectNet-CNN | Orthoptères (30 spp) | 12 MB | 25 ms | 🟡 Pipeline en cours (dataset Conocephalus fuscus prêt) |
+| AmphibianNet | Amphibiens (10 spp) | 5 MB | 12 ms | ⏳ Non commencé |
+
+> ⚠️ Ces modèles sont des **cibles produit P1**. InsectNet est le plus avancé (pipeline de collecte XC + segmentation actif). Les autres sont en planification.
 
 ### Corrélation multimodale
 
@@ -125,4 +127,6 @@ Le dashboard affiche non pas des événements isolés, mais des **scènes écolo
 
 ---
 
-*Références : ADR-001, ADR-003, ADR-009, ADR-012 (stratégie test), ADR-013.*
+*Références : ADR-001, ADR-003, ADR-009, ADR-012 (stratégie test), ADR-014 (payload LoRa).*
+
+> ⚠️ Les modèles IA (InsectNet-CNN, AmphibianNet) sont des **cibles P1**. Leur disponibilité dépend de l'avancement des pipelines de collecte et d'entraînement. InsectNet est le plus avancé.

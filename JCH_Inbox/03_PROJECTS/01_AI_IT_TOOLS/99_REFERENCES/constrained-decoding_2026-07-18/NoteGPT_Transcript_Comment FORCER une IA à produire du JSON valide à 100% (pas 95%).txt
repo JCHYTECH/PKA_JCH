@@ -1,0 +1,104 @@
+00:00:00 - 00:00:57
+Ça c'est un LM à qui tu demandes du Jason. À gauche, ce qu'il te renvoie une fois sur 20. Du Jason cassé qui fait planter ton appli. À droite, le même modèle avec une technique au milieu qui rend le Jason invalide, littéralement impossible à générer. Cette technique s'appelle le constrained decoding, le décodage contraint. Et voilà le truc que personne ne te dit. Tu peux mettre les meilleures instructions du monde dans ton prompt. Répond en Jason valide s'il te plaît. C'est très important. Un LM va
+
+00:00:29 - 00:01:28
+quand même se planter, pas tout le temps, mais juste assez souvent pour casser une appli en production. Parce qu'un LM ne respecte pas un format, il échantillonne des probabilités token par token et rien, absolument rien dans sa mécanique ne l'empêche d'oublier une accolade, sauf si tu changes les règles du jeu au niveau le plus bas. Et c'est exactement ce qu'on va voir. Petit retour en arrière. Tant que les LLM servaient à discuter, peu importe qu'ils écrivent bien sûr voici ton Jason
+
+00:00:58 - 00:02:10
+valide, un humain lisait, un humain comprenait. Mais en 2023-2024, les LLM sont devenus des briques logiciel. To lose agents, function calling. Le modèle ne parle plus à un humain, il parle à du code et du code ne pardonne pas. Une virgule de trop et Jason.ps Parce plante à l'échelle de millions de requêtes du 95 % de jason valide, ça veut dire des dizaines de milliers de crash par jour. Le constraint decoding c'est la réponse d'ingénierie à ce problème. Le passage de 95 % à 100 %. Pour cette vidéo, je me
+
+00:01:34 - 00:02:46
+suis plongée dans les sources de référence. La librairie outlines de la team.txt, la grammaire GBNF de lama.cppp et les doc structured outputs d'open AI. et danthropique. Mon but est de te rendre tout ça simple et promis, pas besoin d'être ingénieur, pas besoin de math, juste la mécanique clairement. On va voir trois choses. 1, pourquoi le prompt seul ne garantit jamais rien ? 2, le mécanisme exact qui rend la valide impossible. Le Logit masking 3, comment tu t'en sers en vrai, ce que ça coûte et
+
+00:02:09 - 00:03:09
+le vrai débat. Est-ce que contraindre ça rend le modèle plus bête ? Avant d'attaquer, deux notions. Si tu as vu le deep dive sur le Transformer, tu connais déjà la première. Je vais juste la rappeler en 30 secondes parce que tout le reste repose dessus. Premier concept, comment un LM choisit le prochain token ? Rappelle, un token, c'est un morceau de mots, pas une lettre, pas un mot entier. Le mot accolade peut faire deux ou trois tokens. À chaque étape, le modèle ne sort pas un mot directement.
+
+00:02:39 - 00:03:35
+Il sort une liste longue de scores, un score par token possible. dans son vocabulaire. Ces scores bruts, on les appelle les logits. Un logit, vulgarisons tout de suite, c'est juste un nombre qui dit à quel point le modèle tend vers ce token là à cet instant. Plus c'est haut, plus il est tenté. Ça peut être négatif, ça peut être très grand, peu importe l'échelle pour l'instant. Retiens un logit par token candidat. Et le vocabulaire d'un LLM moderne, c'est gros. Souvent autour de
+
+00:03:07 - 00:04:09
+100000 à 130000 tokens. Donc à chaque mot généré, le modèle produit une liste de 100000 scores. Deuxième concept, le Softmax. Le modèle a 100000 scores bruts mais il lui faut une probabilité pour pouvoir tirer au sort. Le softmax, c'est l'opération qui transforme cette liste de scores en liste de probabilité. Vulgarison. C'est une moulinette qui prend des nombres dans tous les sens et les ramène entre 0 et 1 de façon à ce qu'ils additionnent tout à un comme des pourcentage. Le score le plus haut
+
+00:03:38 - 00:04:40
+devient la plus grosse part du gâteau. Une fois qu'on a ses probabilités, le modèle pioche un token dedans. Un peu comme une loterie truquée où les tokens probables ont le plus de tickets. Garde bien ces deux mots en tête. Logit, ce sont les scores bruts et softmax, c'est la moulinette qui en fait des probabilités. Toute la magie du constrained decoding se joue entre les deux. Partie 1, le problème. Pourquoi le prompt ne suffit jamais ? Objectif de cette partie, te convaincre mécaniquement que demander gentiment du
+
+00:04:09 - 00:05:12
+Jason dans le prompt ne pourra jamais te garantir du Jason valide. Pas rarement, jamais à 100 %. Et une fois que tu auras compris pourquoi, la solution de la partie 2 va te paraître évidente. Sous étape 1, la génération est un tirage au sort. Mot après mot, reprenons. Le modèle génère un token à la fois. Il produit ses logits. Le softmax en fait des probabilités. Il pioche un token, il le colle à la suite et il recommence avec ce nouveau token comme contexte encore et encore. C'est ce qu'on appelle
+
+00:04:40 - 00:05:49
+la génération autorégressive. Chaque token généré devient l'entrée du suivant. Voilà le point crucial. À chaque étape, plusieurs tokens ont une probabilité non nulle. Après une accollade ouvrante, le modèle a 70 % de mettre des guillemets, mais il a aussi disons 2 % de mettre un espace bizarre, 1 % de mettre un sous ligne en trop, 0,5 % de partir sur un texte libre genre voici ces petites probabilités, elles ne sont jamais exactement zéro. Sous étape 2, la température ou pourquoi le hasard est volontaire. Et pourquoi le modèle ne
+
+00:05:15 - 00:06:17
+prend pas juste le token le plus probable à chaque fois ? parce qu'on lui demande explicitement de ne pas le faire. C'est le rôle de la température. Vulgarison. La température c'est un bouton de créativité qui aplatit accentue la distribution de probabilité. À température basse, le modèle prend presque toujours le favori. C'est rigide, répétitif. À température plus haute, il donne sa chance aux outsiders. C'est varié, créatif, mais c'est aussi là qu'il déraille. On veut de la
+
+00:05:46 - 00:06:48
+créativité pour la prose. Mais cette même créativité sur du jison, c'est exactement ce qui te plante une accolade. Et même à température zéro, si tu prends toujours le token le plus probable, tu n'es pas sauvé parce que parfois le token le plus probable est le mauvais. Le modèle a vu tellement de bien sûr voici de points dans son entraînement qu'à certains moments, ce préambule peut vraiment lui apparaître comme étant le plus probable. Sous étape 3, le catalogue des cassures. Concrètement, voilà comment un LM casse
+
+00:06:17 - 00:07:23
+du jason. Et c'est toujours les mêmes modes d'échec. 1, il oublie de refermer une accolade ou un crochet. 2, il met une virgule en trouve avant la fermeture. 3, il invente une clé qui n'existe pas dans ton schéma. 4, il met un nombre là où tu veux du texte ou l'inverse 5. Il enrle tout dans un bloc markdown avec des back ticks ou ajoute voici le jason devant. Chacune de ces erreurs casse ton parse et tu peux retryve, valider, redemander. Tu réduis le taux d'échec mais tu ne l'annules
+
+00:06:50 - 00:07:56
+pas. Donc le constat est clair. Tant que le modèle a le droit de générer n'importe quel token de son vocabulaire à chaque étape, il finira par générer le mauvais. La seule solution robuste, c'est de lui retirer ce droit, de rendre les tokens cassants littéralement impossible à sélectionné. Et la beauté de la chose, c'est que ça se fait avec une idée d'une simplicité presque ridicule. Partie 2, le mécanisme, le masking. Voici le cœur de la vidéo. La technique s'appelle le masking, le
+
+00:07:22 - 00:08:26
+masquage de Logit. et l'idée tient une phrase. À chaque étape de génération, on connaît la liste des tokens qui maintiennent un format valide. On éteint tous les autres. Impossible d'en choisir un. On va voir comment on les éteint et surtout comment on sait lesquels sont valides à chaque instant. Sous étape une, mettre les logit à moins l'infini. Souviens-toi, entre les logit max, il y a un trou. C'est là qu'on s'insère. Avant de passer les logits dans le softmax, on les modifie. Pour chaque
+
+00:07:54 - 00:09:12
+token interdit à cet instant, on remplace son logit par moins l'infini. Vulgarisons moins l'infini. C'est juste une façon de dire le plus petit score imaginable, infiniment bas. Pourquoi cette valeur précise ? Parce que rappelle-toi ce que fait le softmax. Il transforme les scores en probabilité et un score infiniment bas qui passe dans le soft max ressort avec une probabilité de 0 % exactement pas 0,001 0. Donc le token a zéro tickets de loterie. Le modèle ne peut physiquement pas le tirer. C'est ça tout le truc. On
+
+00:08:33 - 00:09:39
+n' pas modifié le modèle, on n pas réentraîné quoi que ce soit. On a juste à la dernière seconde bifer les options interdites avant le tirage au sort. Le modèle reste libre de choisir mais seulement parmi les tokens qui ont un format valide. Du coup, la vraie question, la seule qui reste, comment le système sait à chaque instant quels sont les tokens valides ? Sous étape 2, l'automate a état fini. La réponse, un automate à état fini. Mot savant, idée simple. Vulgarison. Un automate, c'est
+
+00:09:06 - 00:10:10
+une petite machine qui se trouve toujours dans un état précis et qui, selon ce qu'elle dit, passe à un autre état comme un labyrinthe de couloir. Depuis chaque pièce, seules certaines portes sont ouvertes. Tu ne peux pas traverser un mur. Applique ça au Jason. Au tout début, un seul caractère est légal pour démarrer un objet Jason. La collade ouvrante. Donc l'automate est dans un état début et la seule porte ouverte c'est à collade ouvrante. Tous les autres token, l'IT a moins l'infini.
+
+00:09:38 - 00:10:36
+Le modèle est obligé de commencer par la collade ouvrante. Une fois la collade posée, l'automate change d'état. Maintenant, les portes ouvertes sont soit déguimé pour commencer une clé, soit la collade fermante pour un objet vide. Rien d'autre, pas de virgule, pas de texte, pas de bactic. Le modèle choisit parmi ces options-là selon ses propres préférences, mais il ne peut pas en sortir. Et ça continue comme ça, token après token. À chaque position, l'automate dit "Voici les tokens LEGO
+
+00:10:07 - 00:11:06
+maintenant, on masque tout le reste. Le modèle pioche dans ce qui reste." C'est l'automate qui se balade dans la grammaire en même temps que le modèle génère. Les deux avancent ensemble pas après pas. Sous étape 3 de la rejex à la grammaire contex free. Un automate à état fini, ça suffit pour des formats plats. Une réjex, une date jour mois mois année sur quatre caractères, un choix dans une liste, un nombre. Tu veux que le modèle réponde uniquement par oui, non ou peut-être. Tu construis un
+
+00:10:37 - 00:11:35
+automate à trois chemins et le modèle ne peut littéralement rien dire d'autre. Mais le gison, c'est plus retort. Pourquoi ? Parce qu'il faut compter. Si tu ouvres trois accolades, un imbriqué, il faut en refermer exactement trois. Dans le bon ordre, un simple automate à état fini ne sait pas compter ses parenthèses ouvertes. Il n'a pas de mémoire pour ça. Pour ça, on monte d'un cran. La grammaire contexte free, vulgarison. C'est un jeu de règles d'emboîement du type un objet, c'est une
+
+00:11:06 - 00:12:07
+incolade puis des paires clévaleurs puis une incolade fermante et une valeur peut elle-même être un autre objet. Ce qui permet l'imbation à l'infini. proprement équilibré. C'est exactement la même famille d'outils qui sert à valider la syntaxe des langages de programmation. Et c'est exactement ce que fait le format GNBF de lama.cppp. Tu écris une grammaire et le moteur garantit que la sortie le respecte et la librairie Outlines, elle fait encore plus malin. Tu lui donnes un schéma, la description
+
+00:11:37 - 00:12:36
+de la structure que tu veux avec tes champs et leur type et elle la compile automatiquement en automate. Tu ne touches jamais à la grammaire à la main. Donc voilà la mécanique complète. Grammaire ou schéma, vert automate, vert masquage des logit à chaque token vers sortie valide garantie à 100 %. par construction, mais parce qu'il y a toujours un mais est-ce que ça ralentit ? Et la vraie question qui fâche, est-ce qu'en mettant le modèle dans un couloir, on ne l'empêche pas de bien réfléchir ?
+
+00:12:06 - 00:13:11
+On regarde ça maintenant. Partie 3. En pratique, outil, coût et le vrai débat. Trois choses dans cette partie. Comment tu utilises ça concrètement via les API ? Ce que ça coûte vraiment et le débat de fond contrainde. Est-ce que ça bme raisonnement du modèle ? sous étape une gon mode et function calling ce qu'il y a sous le capot. Si tu utilises Open AI ou tu as déjà croiser ça forcément sans le savoir. Deux fonctionnalités. Le Jason Mode première génération. Donne-moi du Jason valide. Ça garantit
+
+00:12:39 - 00:13:47
+que c'est du Jason par sable. Mais pas forcément ton Jason. Le modèle peut inventer ses propres clés. et la version sérieuse, le structured output ou function coding où tu fournis ton Jason schéma exact. Là, la sortie est garantie de coller à ta structure, tes champs, tes types, tes valeurs autorisées. Sous le capot, c'est exactement le log masking de la partie 2. Ton schéma est compilé en automate côté serveur et les logit interdits sont éteints à chaque token. Le réflexe à prendre. Dès que la
+
+00:13:13 - 00:14:12
+sortie d'un LM est lu par du code et pas par un humain, un agent, un appel d'outil, un remplissage de base de données, tu n'utilises pas le prompt seul. Tu passes par le structured output. C'est la différence entre une démo et la prod. Sous étape 2, le coût caché. Compiler la gramaire. Maintenant, le prix à payer. Il y en a un mais il est plus subtile qu'on ne le croit. Première idée fausse à tuer. Ça doit ralentir chaque token. En vrai, non, presque pas. Appliquer un masque sur une
+
+00:13:42 - 00:14:44
+liste de Logite, même 130000 valeurs, c'est une opération quasi gratuite pour un GPU. Le surcoup par token est négligeable. Le vrai coup, il est avant compiler ta grammaire ou ton schéma en automate. Transformer un Jason schéma complexe en une machine à état, ça peut prendre du temps de calcul une fois au démarrage. Sur les bonnes implémentations comme outlines, cette compilation est mise en cache. Tu la payes une seule fois pour un schéma donné. Puis toutes les requêtes suivantes réutilisent l'automate. Donc
+
+00:14:13 - 00:15:12
+en pratique un coup de démarrage puis quasi rien. Le deuxième coup plus vicieux. Si ton schéma est mal fichu, trop permissif ou au contraire avec des champs qui forcent des formats que le modèle n'aurait jamais produit naturellement, tu peux le mettre dans une position inconfortable. On y arrive avec le débat. Sous étape 3, le débat. Contreindre rend-il le modèle plus bête ? Voilà la question qui revient tout le temps et elle est légitime. Si je force le modèle dans un couloir de token, est-ce que je l'empêche de bien
+
+00:14:43 - 00:15:43
+réfléchir ? L'intuition derrière la crainte, le modèle pense en générant. Quand tu lui imposes de produire une incolade ouvrante dès le premier token, tu le prives de toute la place où normalement il aurait posé son raisonnement à voix haute son Chin et un modèle qui n'a pas le droit de réfléchir avant de répondre, réponds-moi bien, cette crainte est réelle et il y a eu de vraies études contradictoires sur ce sujet mais la réponse nuancée, celle que les ingénieurs appliquent, c'est qu'on
+
+00:15:13 - 00:16:08
+sépare les deux phases. Phase 1, tu laisses le modèle raisonner librement sans aucune contrainte dans un champ texte. Il pose ses étapes, il réfléchit, il hésite. Phase 2. Ensuite seulement, tu actives le décodage contraint pour produire la sortie structurée finale qui synthétise sa réflexion. Tu prends le meilleur des deux mondes, la qualité de raisonnement du texte libre et la garantie de format de la sortie contrainte. C'est même un pattern qu'on retrouve dans les schémas eux-mêmes. Un
+
+00:15:41 - 00:16:44
+premier champ raisonnement en texte libre suivi du champ réponse structuré. Le modèle raisonne dans le premier et conclu dans le second. Le tout dans un seul jason valide. Donc la vraie réponse au débat n'est pas contraindre ses bien ou contraindre ses mals. C'est ne contraints que ce qui doit l'être et au bon moment. Et avec ça, tu as toute la chaîne en tête. Récapitulons proprement. Trois points à retenir. 1, le problème. Un LM génère token par token en piochant dans une distribution de probabilité. Le
+
+00:16:12 - 00:17:18
+prompt seul, même parfait, ne peut jamais garantir un format. Il finira par tirer le mauvais token. 2. Le mécanisme, le logit masking. À chaque étape, un automate ou une grammaire dit quel token garde le format valide. On met tous les autres à moins l'infini et le softmax les ramène à une probabilité de zéro. L'invalide devient impossible, pas juste, improbable. 3. En pratique, tu passes par le structure de output des API par des librairies comme Outlines et GBNF. Le coût, c'est la compilation du
+
+00:16:45 - 00:17:46
+schéma, payé une fois et mise en cash. Et pour ne pas brider le raisonnement, tu laisses le modèle réfléchir librement. D'abord, tu contrains la sortie finale. Ensuite, la punchline à retenir. Le prompt, ça demande poliment. Le constraint decoding, ça rend la désobéissance impossible. En prod, tu ne demandes pas, tu garantis. Si tu veux mettre les mains dedans, va voir la librairie Outlines. Quelques lignes de Python pour contraindre n'importe quel modèle local sur un Gon schéma et la documentation de la grammaire GBNF de
+
+00:17:15 - 00:18:05
+lama.cppp. Les deux sont open source et c'est le meilleur moyen de voir l'automate à l'œuvre. Une question pour toi en commentaire. Quelle partie t'a semblé la plus contreintuitive ? le coup de mettre les logites à moins l'infini ou le tomate qui se balade dans la grammaire en même temps que le modèle génère. Dis-le-moi en commentaire, ça m'aide à savoir ce que je dois approfondir dans une prochaine vidéo. Et si cette vidéo t'a fait comprendre un truc, lâche un like, ça compte vraiment
+
+00:17:40 - 00:17:49
+pour le référencement. Et abonne-toi à Projetia.

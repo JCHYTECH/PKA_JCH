@@ -1,0 +1,14 @@
+# quick-check.chain — Vérification rapide : code OK → test hardware
+#
+# Cette chaîne exécute forge-loop (revue de code) puis bench-loop (test hardware).
+# Si forge échoue (score < 4/5), bench ne démarre pas → fail-fast.
+#
+# Usage :
+#   bin/pka-chain run quick-check.chain
+#   bin/pka-chain run quick-check.chain --dry-run
+
+LOOP forge --budget 3 --stop "score >= 4/5"
+LOOP bench --scope "SOP-1..SOP-3"
+
+ON_SUCCESS → echo "✅ Quick-check terminé : forge + bench OK"
+ON_FAILURE → echo "❌ Quick-check cassé — une loop a échoué"

@@ -1,6 +1,6 @@
 # Index central des outils PKA_JCH
 
-> Dernière mise à jour : 2026-06-15
+> Dernière mise à jour : 2026-07-16 — Ajout principes-architecturaux, securite-sauvegardes, roadmap-long-terme
 > Source : `docs/system/outils-index.md`
 > Charger ce fichier au début de chaque session pour connaître tous les outils disponibles.
 
@@ -15,6 +15,7 @@
 | Orchestration | Sauvegarde, system check, mémoire |
 | Sécurité | Rotation clés, audit, isolation secrets |
 | Infrastructure | Backup, sync, maintenance |
+| **Navigation Web** | FlareSolverr (Cloudflare bypass), Playwright MCP |
 | IA & LLM | Clients modèles, providers, config |
 | [[Dobby]] | Rétro, training, rapports |
 | Dashboard | Serveur, contrôle, launchd |
@@ -41,8 +42,10 @@
 
 ## Memory Pipeline
 
+- scripts/pka_memory_capture.py — **Capture mémoire unifiée v0.2** — API `{fact, category, importance, trust}` avec déduplication, auto-reconcile (override intelligent), memory guard (pre-write injection scan), routage (team.db, MEMORY.md, knowledge, USER.md). Niveaux de confiance : `--trust internal|external|untrusted`. Auto-extract : `--auto-extract` via Gemma3 12B (Ollama M1) ou DeepSeek V3 (fallback).
 - scripts/pka_session_extract.py — Extraction post-session : décisions, faits, feedback → `knowledge` + `retro_patterns` + `dobby_feedback`
-- scripts/pka_retrieve.py — Recherche unifiée multi-sources (team.db, [[graphify]], file_index, MEMORY.md, wiki) + FTS5 sessions (--fts)
+- scripts/pka_retrieve.py — Recherche unifiée multi-sources (team.db, graphify, file_index, MEMORY.md, wiki) + FTS5 sessions (--fts) + recherche sémantique par embedding (--embed, Ollama M1)
+- scripts/pka_memory_prune.py — **Nettoyage automatique MEMORY.md** — Archive les entrées > 90 jours vers wiki/archives/ avec résumé une ligne. Implémente le maillon « Forget » de la boucle CoALA. `--dry-run`, `--days N`, `--force`.
 - scripts/pka_generate_memory.py — Régénération automatique de MEMORY.md depuis team.db
 - scripts/pka_conflict_checker.py — Détection de contradictions entre rapports de spécialistes (inspiré OctoChains)
 - scripts/pka_pointer_sync.py — Synchronisation automatique des 6 fichiers pointeurs PKA
@@ -50,6 +53,15 @@
 - scripts/pka_memory_nudge.py — Extraction mémoire post-réponse (pattern Hermes)
 - docs/system/honcho-pka-design.md — Design spec Honcho PKA (user modeling évolutif)
 - docs/system/fts5-sessions-design.md — Design spec FTS5 sur sessions JSON
+- scripts/pka_date_scanner.py — **Nouveau (2026-07-13)** — Scan auto de dates (deadlines, expirations) dans les fichiers → création follow_ups dans team.db. Patterns FR + EN, mots-clés déclencheurs, vacuum des expirés. `--dry-run`, `--all-projects`, `--vacuum`.
+- scripts/pka_quick_capture.py — **Nouveau (2026-07-13)** — Capture rapide d'une pensée brute → inbox avec auto-détection du projet. Zéro friction : `pka_quick_capture.py "pensée"`. Option `--urgent`. Pattern inspiré de Sanja (Obsidian+AI).
+
+## Gouvernance & Architecture
+
+- `docs/system/principes-architecturaux.md` — **Nouveau (2026-07-16)** — Les 6 principes fondateurs de PKA (simplicité, modularité, maintenabilité, automatisation, documentation, indépendance fournisseur). Toute décision doit y être conforme.
+- `docs/system/securite-sauvegardes.md` — **Nouveau (2026-07-16)** — Niveaux de confidentialité (🔴🟡🟢), plan de sauvegarde, règles agent.
+- `JCH_Inbox/04_PILOTAGE_STRATEGIQUE/roadmap-long-terme.md` — **Nouveau (2026-07-16)** — Vision 1 an / 3 ans / 5 ans PKA.
+- `JCH_Inbox/04_PILOTAGE_STRATEGIQUE/roadmap-90-jours.md` — Roadmap court terme (juillet→octobre 2026)
 
 ## Sécurité
 
@@ -72,6 +84,18 @@
 - scripts/rebuild_file_index.py — Reconstruit l'index des fichiers dans team.db
 - bin/sync-to-m1 — Rsync workspace vers M1
 - scripts/install_vault_maintenance_launchd.sh — Install cron vault maintenance
+- scripts/pka_vault_maintenance.py — **Étendu (2026-07-13)** — Maintenance nocturne 6 étapes : wikilink patcher, file placement checker, git nightly commit, **dedup detector (nouveau)**, **broken link scanner (nouveau)**, **orphan detector (nouveau)**
+
+## Navigation Web (Cloudflare bypass)
+
+> Suite à la session du 2026-06-21 — les outils `fetch_url` et `web.run` sont bloqués par Cloudflare.
+> Stack à 2 niveaux : FlareSolverr (proxy anti-Cloudflare, Docker) + Playwright MCP (navigateur complet pilotable).
+
+- **FlareSolverr** (Docker, port 8191) — Proxy anti-Cloudflare JS Challenge. `POST http://localhost:8191/v1`. Usage : curl → FlareSolverr → site protégé.
+- **@playwright/mcp** (Node.js, npm global) — Navigateur Chromium headless pilotable via MCP. Contourne Cloudflare + interactions AJAX (dropdowns, formulaires). Configuré dans `~/.deepseek/config.toml`.
+- Docker: `docker run -d --name flaresolverr --restart unless-stopped -p 8191:8191 flaresolverr/flaresolverr:latest`
+- MCP: `npx -y @playwright/mcp --browser chromium --headless --isolated`
+- Brief: `TEAM_Inbox/2026-06-21_dobby_brief-forge_cloudflare-bypass-tools.md`
 
 ## IA & LLM
 
@@ -166,6 +190,7 @@
 - skills/obsidian-[[knowledge]]-graph — Inventaire, dictionnaire, wikilinks Obsidian
 - skills/bioacoustics-qc-playbook — QC bioacoustique, spectrogrammes, tri segments
 - skills/system-improvement-ingest — Analyse document → amélioration PKA (grille 6 axes)
+- skills/pka-thread-file — Living document par projet (overview/statut/décisions), lecture auto + mise à jour session
 
 ## Skills Claude (.claude/skills)
 

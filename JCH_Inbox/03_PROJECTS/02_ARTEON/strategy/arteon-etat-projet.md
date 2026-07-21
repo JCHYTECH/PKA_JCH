@@ -5,7 +5,7 @@ tags:
 ---
 # ARTEON — État du projet
 
-*Document de référence — mis à jour le 21 avril 2026, fin étape 3*
+*Document de référence — mis à jour le 2 juillet 2026 — restructuration 3 projets, WildLens promu, étape 4 close*
 
 ---
 [[Website_Analysis_and_Reproduction]]
@@ -119,7 +119,7 @@ Concepts d'**interdépendance** et **non-séparation** intégrés sans étiqueta
 | 1 | Réservation domaine | ✅ arteon.be enregistré |
 | 2 | Manifeste Arteon | ✅ v2 validée, 2 fichiers livrés |
 | 3 | Slogan Arteon | ✅ Validé |
-| 4 | **Charte graphique** (palette, typo, logo, règles) | **▶ Prochaine étape** |
+| 4 | **Charte graphique** (palette, typo, logo, règles) | ✅ Livrée dans `arteon-architecture-charte.md` |
 | 5 | Template fiche artiste | ⏳ |
 | 6 | Template fiche produit (fiche naturaliste) | ⏳ |
 | 7 | Formulaire et processus d'affiliation | ⏳ |

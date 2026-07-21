@@ -1,0 +1,361 @@
+#!/usr/bin/env bash
+# =============================================================================
+# pka-loop — Commande /loop unifiée PKA
+# =============================================================================
+#
+# Wrapper unifié sur les 6 loops PKA existantes, basé sur l'anatomie
+# Cherny en 6 parties : trigger, scope, action, budget, stop, report.
+#
+# Syntaxe longue (anatomie Cherny) :
+#   bin/pka-loop --trigger "..." --scope "..." --action "..." \
+#                --budget "..." --stop "..." --report "..."
+#
+# Syntaxe courte (nom de loop) :
+#   bin/pka-loop forge --budget 3 --stop "score >= 4/5"
+#   bin/pka-loop bench --scope "SOP-1..SOP-6"
+#   bin/pka-loop research --action "hypothese: les grillons sont plus actifs a 22C"
+#   bin/pka-loop seo --scope "https://monsite.com"
+#   bin/pka-loop edge --budget 10
+#   bin/pka-loop sigma --action "backtest Q2"
+#
+# Options globales :
+#   --dry-run    Affiche ce qui serait exécuté sans logger
+#   --help       Affiche cette aide
+#
+# Logs : chaque exécution est loggée dans _local/logs/pka-loop.log
+# =============================================================================
+
+set -euo pipefail
+
+# ── Chemins canoniques ─────────────────────────────────────────────────────
+PKA_ROOT="${PKA_ROOT:-/Users/jchavauxm5/PKA_JCH}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+# Si le script est exécuté depuis bin/, remonter d'un niveau pour PKA_ROOT
+if [[ "$SCRIPT_DIR" == */bin ]]; then
+    PKA_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+fi
+LOG_DIR="${PKA_ROOT}/_local/logs"
+LOG_FILE="${LOG_DIR}/pka-loop.log"
+STATE_DIR="${PKA_ROOT}/_local/state"
+
+# ── Mapping des noms courts vers les skills ─────────────────────────────────
+# Retourne "skill_dir|trigger_defaut|description" via echo
+resolve_loop() {
+    case "$1" in
+        forge)    echo "forge-loop|forge loop|Boucle autonome de code review avec quality gate (score >= 4/5)" ;;
+        bench)    echo "bench-loop|bench loop|Boucle sequentielle d'execution de SOPs hardware" ;;
+        edge)     echo "edge-ai-loop|edge ai loop|Boucle autonome d'optimisation de modeles TinyML" ;;
+        seo)      echo "seo-loop|seo loop|Boucle autonome d'optimisation SEO (Lighthouse, EEAT)" ;;
+        sigma)    echo "sigma-loop|sigma loop|Boucle autonome de validation de donnees financieres" ;;
+        research) echo "arbor-research|arbor research|Protocole de recherche autonome avec arbre d'hypotheses" ;;
+        *)        echo "" ;;
+    esac
+}
+
+is_valid_loop() {
+    case "$1" in
+        forge|bench|edge|seo|sigma|research) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
+# ── Fonctions utilitaires ──────────────────────────────────────────────────
+
+timestamp() {
+    date '+%Y-%m-%dT%H:%M:%S'
+}
+
+log_execution() {
+    local loop_name="$1"
+    local trigger="$2"
+    local scope="$3"
+    local action="$4"
+    local budget="$5"
+    local stop_cond="$6"
+    local report="$7"
+    local status="$8"
+    local ts
+    ts=$(timestamp)
+
+    mkdir -p "$LOG_DIR"
+
+    # Format JSON-ligne pour facilité de parsing
+    cat >> "$LOG_FILE" <<EOF
+{"timestamp":"${ts}","loop":"${loop_name}","trigger":"${trigger}","scope":"${scope}","action":"${action}","budget":"${budget}","stop":"${stop_cond}","report":"${report}","status":"${status}"}
+EOF
+}
+
+show_help() {
+    cat <<'HELP'
+🔨 pka-loop — Commande /loop unifiée PKA
+
+USAGE
+  bin/pka-loop [--dry-run] <nom-loop> [paramètres...]
+  bin/pka-loop [--dry-run] --trigger <...> --scope <...> [--action <...>] ...
+
+SYNTAXE COURTE (nom de loop)
+  bin/pka-loop forge    --budget 3 --stop "score >= 4/5"
+  bin/pka-loop bench    --scope "SOP-1..SOP-6"
+  bin/pka-loop edge     --budget 10
+  bin/pka-loop seo      --scope "https://monsite.com"
+  bin/pka-loop sigma    --action "backtest Q2"
+  bin/pka-loop research --action "hypothese: les grillons sont plus actifs a 22C"
+
+SYNTAXE LONGUE (anatomie Cherny)
+  --trigger  Condition de déclenchement textuelle
+  --scope    Périmètre d'action (fichier, URL, plage SOP, repo...)
+  --action   Action à entreprendre (hypothèse, cible optimisation...)
+  --budget   Budget ressources (itérations max, tokens, secondes...)
+  --stop     Condition d'arrêt (score seuil, temps max, stop_on_fail...)
+  --report   Format ou cible du rapport final
+
+LOOPS DISPONIBLES
+  forge     → forge-loop      Code review autonome
+  bench     → bench-loop      Exécution séquentielle de SOPs hardware
+  edge      → edge-ai-loop    Optimisation de modèles TinyML
+  seo       → seo-loop        Optimisation SEO (Lighthouse, EEAT)
+  sigma     → sigma-loop      Validation données financières
+  research  → arbor-research  Recherche autonome avec arbre d'hypothèses
+
+OPTIONS GLOBALES
+  --dry-run  Affiche la commande qui serait exécutée sans logger
+  --help      Affiche cette aide
+
+EXEMPLES
+  # Lancer une forge-loop avec budget 3 itérations
+  bin/pka-loop forge --budget 3 --stop "score >= 4/5"
+
+  # Lancer une bench-loop sur les SOPs 1 à 6
+  bin/pka-loop bench --scope "SOP-1..SOP-6"
+
+  # Dry-run : voir ce qui serait exécuté sans logger
+  bin/pka-loop research --action "hypothese: temperature optimale" --dry-run
+
+  # Anatomie Cherny complète
+  bin/pka-loop --trigger "chaque push sur main" \
+               --scope "src/*.py" \
+               --action "code-review-pro" \
+               --budget "3 iterations, 50k tokens" \
+               --stop "score >= 4/5" \
+               --report "PR comment + TEAM_Inbox"
+
+LOG
+  Chaque exécution est loggée dans : _local/logs/pka-loop.log
+  Format JSON-ligne avec timestamp, paramètres et statut.
+
+AUTEUR
+  Forge 🔨 — PKA_JCH — 2026-07-17
+HELP
+}
+
+# ── Parsing des arguments ──────────────────────────────────────────────────
+
+DRY_RUN=false
+LOOP_NAME=""
+TRIGGER=""
+SCOPE=""
+ACTION=""
+BUDGET=""
+STOP_COND=""
+REPORT=""
+
+# Premier passage : détecter --help et --dry-run
+for arg in "$@"; do
+    case "$arg" in
+        --help|-h)
+            show_help
+            exit 0
+            ;;
+    esac
+done
+
+# Parsing principal
+args=("$@")
+i=0
+while [[ $i -lt ${#args[@]} ]]; do
+    arg="${args[$i]}"
+    case "$arg" in
+        --dry-run)
+            DRY_RUN=true
+            i=$((i + 1))
+            ;;
+        --trigger)
+            i=$((i + 1))
+            TRIGGER="${args[$i]:-}"
+            i=$((i + 1))
+            ;;
+        --scope)
+            i=$((i + 1))
+            SCOPE="${args[$i]:-}"
+            i=$((i + 1))
+            ;;
+        --action)
+            i=$((i + 1))
+            ACTION="${args[$i]:-}"
+            i=$((i + 1))
+            ;;
+        --budget)
+            i=$((i + 1))
+            BUDGET="${args[$i]:-}"
+            i=$((i + 1))
+            ;;
+        --stop)
+            i=$((i + 1))
+            STOP_COND="${args[$i]:-}"
+            i=$((i + 1))
+            ;;
+        --report)
+            i=$((i + 1))
+            REPORT="${args[$i]:-}"
+            i=$((i + 1))
+            ;;
+        --*)
+            echo "❌ Option inconnue : $arg"
+            echo "   Utilisez --help pour la liste des options."
+            exit 1
+            ;;
+        *)
+            # Premier argument non-option → nom de loop
+            if [[ -z "$LOOP_NAME" ]]; then
+                LOOP_NAME="$arg"
+            else
+                echo "❌ Argument superflu : $arg"
+                echo "   Utilisez --help pour la syntaxe."
+                exit 1
+            fi
+            i=$((i + 1))
+            ;;
+    esac
+done
+
+# ── Validation ─────────────────────────────────────────────────────────────
+
+# Si aucun nom de loop et pas de --trigger explicite → erreur
+if [[ -z "$LOOP_NAME" && -z "$TRIGGER" ]]; then
+    echo "❌ Aucune loop spécifiée."
+    echo "   Syntaxe : bin/pka-loop <nom-loop> [options]"
+    echo "   ou       bin/pka-loop --trigger '...' --scope '...' [...]"
+    echo "   Utilisez --help pour plus de détails."
+    exit 1
+fi
+
+# Résolution du nom de loop
+if [[ -n "$LOOP_NAME" ]]; then
+    if ! is_valid_loop "$LOOP_NAME"; then
+        echo "❌ Loop inconnue : '$LOOP_NAME'"
+        echo "   Loops disponibles : forge, bench, edge, seo, sigma, research"
+        echo "   Utilisez --help pour plus de détails."
+        exit 1
+    fi
+    LOOP_INFO=$(resolve_loop "$LOOP_NAME")
+    SKILL_DIR="${LOOP_INFO%%|*}"
+    REST="${LOOP_INFO#*|}"
+    DEFAULT_TRIGGER="${REST%%|*}"
+    LOOP_DESC="${REST#*|}"
+
+    # Si --trigger n'est pas fourni explicitement, utiliser le défaut
+    if [[ -z "$TRIGGER" ]]; then
+        TRIGGER="$DEFAULT_TRIGGER"
+    fi
+else
+    # Mode anatomie Cherny pure (--trigger sans nom court)
+    SKILL_DIR="custom"
+    DEFAULT_TRIGGER="$TRIGGER"
+    LOOP_DESC="Loop custom (anatomie Cherny)"
+fi
+
+# ── Construction du message trigger ────────────────────────────────────────
+
+build_trigger_message() {
+    local msg=""
+
+    # Ligne principale : trigger
+    msg+="TRIGGER: ${TRIGGER}\n"
+
+    # Paramètres optionnels
+    [[ -n "$SCOPE" ]]     && msg+="  SCOPE:  ${SCOPE}\n"
+    [[ -n "$ACTION" ]]    && msg+="  ACTION: ${ACTION}\n"
+    [[ -n "$BUDGET" ]]    && msg+="  BUDGET: ${BUDGET}\n"
+    [[ -n "$STOP_COND" ]] && msg+="  STOP:   ${STOP_COND}\n"
+    [[ -n "$REPORT" ]]    && msg+="  REPORT: ${REPORT}\n"
+
+    msg+="\n--\nSkill cible : skills/${SKILL_DIR}/SKILL.md\n"
+    msg+="Loop      : ${LOOP_DESC}\n"
+
+    echo -e "$msg"
+}
+
+# ── Construction de la commande Dobby suggérée ─────────────────────────────
+
+build_dobby_command() {
+    local trigger_text="$TRIGGER"
+
+    # Enrichir le trigger avec les paramètres
+    [[ -n "$SCOPE" ]]     && trigger_text+=" --scope '${SCOPE}'"
+    [[ -n "$ACTION" ]]    && trigger_text+=" --action '${ACTION}'"
+    [[ -n "$BUDGET" ]]    && trigger_text+=" --budget ${BUDGET}"
+    [[ -n "$STOP_COND" ]] && trigger_text+=" --stop '${STOP_COND}'"
+    [[ -n "$REPORT" ]]    && trigger_text+=" --report '${REPORT}'"
+
+    echo "bin/dobby --msg '${trigger_text}'"
+}
+
+# ── Exécution ──────────────────────────────────────────────────────────────
+
+TRIGGER_MSG=$(build_trigger_message)
+DOBBY_CMD=$(build_dobby_command)
+
+if [[ "$DRY_RUN" == "true" ]]; then
+    echo "🔍 DRY RUN — Aucune exécution réelle, pas de log."
+    echo ""
+    echo "┌─────────────────────────────────────────────────────┐"
+    echo "│ Loop       : ${LOOP_NAME:-custom}                    "
+    echo "│ Skill      : skills/${SKILL_DIR}/SKILL.md"
+    printf "│ Trigger    : %-40s │\n" "${TRIGGER:0:40}"
+    [[ -n "$SCOPE" ]]     && printf "│ Scope      : %-40s │\n" "${SCOPE:0:40}"
+    [[ -n "$ACTION" ]]    && printf "│ Action     : %-40s │\n" "${ACTION:0:40}"
+    [[ -n "$BUDGET" ]]    && printf "│ Budget     : %-40s │\n" "${BUDGET:0:40}"
+    [[ -n "$STOP_COND" ]] && printf "│ Stop       : %-40s │\n" "${STOP_COND:0:40}"
+    [[ -n "$REPORT" ]]    && printf "│ Report     : %-40s │\n" "${REPORT:0:40}"
+    echo "└─────────────────────────────────────────────────────┘"
+    echo ""
+    echo "── Trigger complet ──────────────────────────────────"
+    echo -e "$TRIGGER_MSG"
+    echo ""
+    echo "── Commande Dobby suggérée ──────────────────────────"
+    echo "  $DOBBY_CMD"
+    echo ""
+    echo "✅ Dry-run terminé. Utilisez la commande sans --dry-run pour exécuter."
+else
+    # Log l'exécution
+    log_execution \
+        "${LOOP_NAME:-custom}" \
+        "$TRIGGER" \
+        "$SCOPE" \
+        "$ACTION" \
+        "$BUDGET" \
+        "$STOP_COND" \
+        "$REPORT" \
+        "invoked"
+
+    echo "🔨 pka-loop — ${LOOP_NAME:-custom}"
+    echo ""
+    echo "┌─────────────────────────────────────────────────────┐"
+    echo "│ Loop       : ${LOOP_NAME:-custom}                    "
+    echo "│ Skill      : skills/${SKILL_DIR}/SKILL.md"
+    printf "│ Trigger    : %-40s │\n" "${TRIGGER:0:40}"
+    [[ -n "$SCOPE" ]]     && printf "│ Scope      : %-40s │\n" "${SCOPE:0:40}"
+    [[ -n "$ACTION" ]]    && printf "│ Action     : %-40s │\n" "${ACTION:0:40}"
+    [[ -n "$BUDGET" ]]    && printf "│ Budget     : %-40s │\n" "${BUDGET:0:40}"
+    [[ -n "$STOP_COND" ]] && printf "│ Stop       : %-40s │\n" "${STOP_COND:0:40}"
+    [[ -n "$REPORT" ]]    && printf "│ Report     : %-40s │\n" "${REPORT:0:40}"
+    echo "└─────────────────────────────────────────────────────┘"
+    echo ""
+    echo "── Trigger complet ──────────────────────────────────"
+    echo -e "$TRIGGER_MSG"
+    echo ""
+    echo "── Pour invoquer Dobby avec ce trigger ──────────────"
+    echo "  $DOBBY_CMD"
+    echo ""
+    echo "📝 Exécution loggée dans ${LOG_FILE}"
+fi

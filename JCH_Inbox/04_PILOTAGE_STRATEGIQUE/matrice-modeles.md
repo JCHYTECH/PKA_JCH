@@ -1,6 +1,6 @@
 # Matrice des modèles — PKA_JCH
 > Quel modèle utiliser pour quel type de tâche, et comment.
-> Dernière mise à jour : 2026-06-19 par Dobby 🦉
+> Dernière mise à jour : 2026-07-06 par Dobby 🦉
 > 
 > **Lecture :** une ligne = un modèle disponible. Choisir selon la tâche.
 

@@ -80,6 +80,16 @@ Avant chaque réponse contenant une affirmation factuelle :
 
 ---
 
+## Gouvernance & Architecture
+
+| Domaine | Source autoritaire | Outil |
+|---------|-------------------|-------|
+| Principes architecturaux | `docs/system/principes-architecturaux.md` | `read_file` |
+| Sécurité & Sauvegardes | `docs/system/securite-sauvegardes.md` | `read_file` |
+| Roadmap long terme | `JCH_Inbox/04_PILOTAGE_STRATEGIQUE/roadmap-long-terme.md` | `read_file` |
+| Roadmap court terme | `JCH_Inbox/04_PILOTAGE_STRATEGIQUE/roadmap-90-jours.md` | `read_file` |
+| État projets | `JCH_Inbox/04_PILOTAGE_STRATEGIQUE/etat-projets.md` | `read_file` |
+
 ## Exceptions
 
 - Les connaissances zoologiques de JCH sont présumées exactes (Master Zoologie ULiège) — mais les faits scientifiques récents doivent être vérifiés.

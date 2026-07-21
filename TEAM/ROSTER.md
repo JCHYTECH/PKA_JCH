@@ -1,6 +1,6 @@
 # Team Roster
 
-Managed by [[Dobby]]. Last updated: 2026-06-08 — v23 (sync active count from `TEAM/team.db`).  
+Managed by [[Dobby]]. Last updated: 2026-07-16 — v25 (création Scarabée — Concepteur 3D).  
 **Source of truth:** `TEAM/team.db` — **32 membres actifs — 31 spécialistes + [[Dobby]]**.
 
 | # | Name | Animal | Role | Status | Tables owned |
@@ -17,7 +17,7 @@ Managed by [[Dobby]]. Last updated: 2026-06-08 — v23 (sync active count from `
 | 10 | [[Renard]] | 🦊 Fox | Legal Counsel — Contracts & Advisory | active | inbox |
 | 11 | [[Iris]] | 🦅 Kestrel (Crécerelle) | Trend Research Strategist | active | ideas |
 | 12 | [[Forge]] | 🦦 Otter | Full-Stack Developer & Systems Integrator | active | inbox, file_index |
-| 13 | [[Ariane]] | 🐦 Hirondelle | Technical Platform Onboarding Guide | active | inbox |
+| 13 | ~~[[Ariane]]~~ | 🐦 Hirondelle | ~~Technical Platform Onboarding Guide~~ | **merged→[[Forge]]** | — |
 | 14 | [[Bruno]] | 🐻 Bear | Finance & Investment Analyst | active | inbox |
 | 15 | [[Sybil]] | 🦔 Hedgehog | Personal Journal Manager | active | journal, goals |
 | 16 | [[Clio]] | 🦜 Parrot | Scientific Literature Analyst | active | knowledge |
@@ -35,8 +35,10 @@ Managed by [[Dobby]]. Last updated: 2026-06-08 — v23 (sync active count from `
 | 28 | [[Hermine]] | ⬜ [[Hermine]] | IP Strategist & Patent Counsel | active | inbox |
 | 30 | [[Araignée]] | 🕷️ Araignée | IoT & Embedded Systems Specialist | active | inbox |
 | 29 | [[Cigogne]] | 🦩 Cigogne blanche | Vanlife Travel Planner & Experience Curator | active | vanlife_destinations, vanlife_feedback, vanlife_preferences |
-| 31 | [[Fourmi]] | 🐜 Fourmi | Bench Technician — Électronique & Protocoles | active | inbox |
+| 31 | ~~[[Fourmi]]~~ | 🐜 Fourmi | ~~Bench Technician — Électronique & Protocoles~~ | **merged→[[Araignée]]** | — |
 | 32 | [[Musaraigne]] | 🐭 Musaraigne | Edge AI & TinyML Specialist | active | models, datasets, benchmarks |
+| 33 | [[Mésange]] | 🐦 Mésange charbonnière | Naturaliste Terrain & Bioacoustique | active | inbox |
+| 34 | [[Scarabée]] | 🪲 Scarabée | Concepteur 3D & Fabrication Additive | active | 3d_models, 3d_prints, 3d_materials |
 
 ---
 

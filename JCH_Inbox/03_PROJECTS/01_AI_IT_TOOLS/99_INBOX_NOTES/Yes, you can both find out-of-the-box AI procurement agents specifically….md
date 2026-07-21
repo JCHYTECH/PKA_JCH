@@ -1,3 +1,7 @@
+> **Note de recherche — conservée pour référence**
+> **Dernière vérification :** 2026-07-06 — contenu toujours pertinent (Kavida.ai, PartsAgent, Evolinq, CrewAI, n8n)
+> **Action PKA :** non prioritaire — à reconsidérer si le volume procurement augmente
+
 **Yes, you can both find out-of-the-box AI procurement agents specifically designed for electronics or build your own custom agent completely for free using open-source frameworks.** Electronics procurement faces unique challenges like matching detailed data sheets, verifying compliance certificates (RoHS, REACH), and dealing with component market volatility, which makes specialized or custom-developed AI agents highly effective. [1, 2, 3, 4, 5]  
   
 ## 🛠️ Out-of-the-Box AI Agents for Electronics  

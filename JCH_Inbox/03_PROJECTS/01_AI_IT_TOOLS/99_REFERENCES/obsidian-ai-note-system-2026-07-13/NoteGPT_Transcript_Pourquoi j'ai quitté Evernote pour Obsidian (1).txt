@@ -1,0 +1,74 @@
+00:00:00 - 00:00:57
+Est-ce que ça t'est déjà arrivé de recevoir un super conseil par email en lisant un article ou en discutant avec quelqu'un et de te dire ça c'est hyper important, je veux le garder de le ranger bien au chaud dans un logiciel de note comme Everne et de jamais retourner parce que moi ça m'est arrivé un nombre incalculable de fois et le problème c'est pas de sauvegarder l'information parce que ça on sait tous le faire. Le problème c'est que une information sauvegardée qui est jamais relue et bien
+
+00:00:28 - 00:01:25
+ça vaut strictement rien. En fait c'est un tiroir qui se remplit et absolument pas une mémoire qui te sert. C'est une mémoire morte qui sait même plus que l'information elle existe quelque part. Alors comment tu veux retrouver une information si tu sais plus que tu l'as ? Et ça c'est pas spécifique à Everne, c'est commun à toutes les applications qui te proposent de stocker de l'information. Et le même problème se pose exactement le même par exemple pour note d'Apple ou OneNote sur Windows ou
+
+00:00:56 - 00:01:51
+n'importe quel autre logiciel, même sur Linux ou voilà. Bon, tu m'as compris ? Alors, ce que je te dis là, c'est pas forcément vrai pour tout ce qui est stockage par exemple de papiers parce que moi je me suis longtemps servi d'Note pour stocker mes papiers importants. Euh, ça c'est de l'archivage et puis ça fonctionne plutôt bien. C'est vraiment le stockage de l'information. Si par exemple tu veux te créer un wiki personnel qui pose problème [grognement] et en fait ça a toujours été le cas
+
+00:01:23 - 00:02:18
+jusqu'à ce que Lia arrive et change enfin complètement la donne parce que avec Lia on passe clairement de la de chevaux à la Ferrari. Alors, je te dis pas qu'Evernne est mauvais, pas du tout. Everote à la base, c'est un très bon logiciel, il a rendu service à énormément de monde, des millions d'utilisateurs et moi y compris pendant très longtemps, il y avait pas forcément l'équivalent sur le marché. J'ai mis très longtemps d'ailleurs à trouver quelque chose qui pouvait le
+
+00:01:51 - 00:02:54
+substituer et mais il y a il y a trois défauts qui avec le temps sont devenus rédibitoires quand même pour moi. Euh et le premier défaut c'est déjà que tes notes elles sont enfermées. Ça c'est problématique parce que le format est propriétaire c'est que les données elles appartent elles appartiennent au logiciel pas à toi. Et le jour où Evernot change sa politique de prix ou ferme une fonctionnalité ou pire disparaît, et ben tu te retrouves complètement coincé. Et mais ça pareil, c'est pas spécifique qu'à note. C'est à
+
+00:02:23 - 00:03:20
+chaque fois que tu vas utiliser en fait un logiciel, il va enfermer les données. Voilà. Donc ça c'est le premier problème. Après il y a un deuxième défaut, c'est que les notes elles se parlent pas entre elles. Tu en accumules des centaines, des milliers mais chacune vit dans son coin. Elles ont aucun lien entre elles et il y a pas de structure. Et le comble c'est que plus tu en ajoutes et moins tu arrives à retrouver quoi que ce soit. En gros, bah ça fait exactement le contraire de ce que tu attendais au
+
+00:02:51 - 00:03:49
+départ. Et puis le troisème défaut, bah c'est qu'elle a été rachetée malheureusement, enfin j'en sais rien, malheureusement, je suis peut-être un peu dur, par une boîte italienne il y a quelques années qui s'appelle Bending Spoons et au départ c'était c'était américain, c'était une boîte américaine qui avait vraiment bien conçu le le système. Puis bon, il faut remonter aussi en 2009, il faut tenir compte du contexte. il y avait pas il y avait rien d'autre à l'époque ou pas grand-chose et Evernot
+
+00:03:20 - 00:04:17
+c'était arrivé comme une petite révolution quand même. Et donc le problème c'est que depuis j'ai l'impression bah qu'ils ont qu'ils ont rien amélioré même s'ils rajoutent plein de choses qui font plein de de versions sans arrêt là des des changements des mises à jour on a l'impression qu'elles servent à rien. Euh en fait ils améliorent pas véritablement le fond. En tout cas, c'est vraiment l'impression que j'en ai. Et en plus, l'abonnement, il est devenu cher. Donc moi, j'ai
+
+00:03:49 - 00:04:48
+l'impression d'être piégé dans une application qui m'apporte plus vraiment de valeur. C'est devenu lourd en plus. Et puis il y a des bugs. Et ces bugs, ça fait des mois que je les vois, ils ont toujours pas été résolus. Alors, je sais qu'il y en a certains qui vont me dire "Et Notion, tu parles pas parce que notion ça pourrait être une piste." Bah moi, je vais être honnête avec toi, le peu que j'ai testé de notion, ça m'a vraiment pas convaincu. Euh parce que pour moi, c'est clairement
+
+00:04:17 - 00:05:19
+une usine à gaz. Euh en fait, ça fait tout et rien en même temps. Alors, ça fait énormément de choses, mais ça fait rien exactement comme tu voudrais que ça le fasse. Et franchement, c'est hyper douloureux. Moi pour mon cerveau de de constater ça le en fait le fonctionnement de notion moi ça me va pas du tout et en plus j'ai jamais compris la logique de mettre des feuilles dans des feuilles. Il y a des imbrications, c'est hyper alambiqué, ça en finit pas. C'est comme des poupé russes en fait qui s'empilent et je
+
+00:04:49 - 00:05:50
+trouve ça honnêtement hyper confus et c'est pas du tout adapté à moi en tout cas. Voilà. Alors que Obsidiane dont j'ai parlé dans les précédentes vidéos, bah c'est exactement le contraire. Les notes, elles sont liées entre elles et elle constituent un vrai réseau neuronal. Va voir sur le site, regarde euh comme c'est ça t'exliqué, tu vas vite comprendre. Et même si notion bah je dis pas c'est peut-être intéressant sur sous certains aspects euh mais le problème bah c'est
+
+00:05:20 - 00:06:15
+que ça demande énormément de temps de configuration et puis que bah tout ce temps que tu perds à comprendre comment ça fonctionne bah c'est du temps que tu aurais pu utiliser pour construire et puis en plus ça passe par le cloud de notion et donc là aussi bah tes données elles t'appartiennent pas et puis entre nous pour un usage personnel c'est bien trop compliqué Euh si toi tu l'utilises et que ça te convient, bah dis-le-moi en commentaire, je suis preneur de ton retour. On peut
+
+00:05:47 - 00:06:51
+même en discuter, hein. Euh mais en tout cas, moi en ce qui me concerne, je te le conseille pas du tout. Même si tout le monde ne jure que par ça aujourd'hui. Euh non, pour moi c'est pas ça va pas. Donc voilà. Euh et puis en plus si j'ai besoin par exemple d'un tableur euh j'en ai pas souvent besoin mais honnêtement le meilleur tableur qui existe actuellement sur Terre depuis toujours, c'est Excel. Ça a jamais été dépassé. Euh c'est même meilleur que ce qu'a fait
+
+00:06:18 - 00:07:22
+Apple. Euh franchement Windows là euh Microsoft pardon, à l'époque ils avaient fait un super truc et ils ont toujours gardé euh l'origimonie. Alors que Notion, bah c'est pas un tableur. Il a en fait la fonction de tableur mais c'est pas la même chose. Il y a vraiment une nuance ici. Et donc moi, depuis que j'ai découvert Obsidiane, bah c'est comme s'il y avait une caverne d'Alibaba qui s'était ouverte devant mes yeux. J'ai eu l'impression là ces 15 derniers jours, j'étais comme
+
+00:06:51 - 00:07:48
+un gosse en fait qui était qui venait de découvrir ses ses cadeaux sous le sapin. Je t'en avais parlé dans ma dernière vidéo qui te montre comment j'ai construit un système automatique pour classer tous mes papiers. Et si tu l'as pas vu, franchement va l'avir. Euh quand j'ai commencé à créer mon système, donc ça s'appelle la Jed hein, c'est ça ça veut dire gestion électronique des documents, je suis parti dans dans la création d'autres systèmes de façon complètement intuitive. C'était
+
+00:07:19 - 00:08:14
+complètement fluide à tel point que bah j'ai j'étais absorbé pendant des journées entières et j'ai fait que bosser 12h par jour. Mais je l'ai fait, c'était vraiment sans me forcer hein. Et les idées, elles arrivaient par flow comme si je les canalisais honnêtement. Et pour une fois, j'ai pu toutes les consigner en parlant juste avec Claude parce que le problème qui qui arrive souvent, c'est que j'ai trop d'idées à la fois qui arrive où j'en ai aucune et pendant des semaines, j'ai plus d'idées
+
+00:07:47 - 00:08:33
+où ça déferle et j'ai pas le temps de les noter. Et là, pour la première fois en parlant à Claude, bah il m'a construit les notes au fur et à mesure à la vitesse de ma pensée. C'est la première fois que j'expérimente ça. Peu importe qu'elle soit arborescente parce que moi j'ai une pensée qui fonctionne en arborescence et en fait ça peut être un handicap en réalité c'est c'est pas forcément ce qu'on pense. Pour moi ça a été longtemps un handicap de penser à un
+
+00:08:10 - 00:09:14
+arbores parce que tu arrives pas à te concentrer en fait sur l'idée principale. Mais enfin là cette arborescence elle se construit grâce à la puissance de l'IA et d'Obsidian combidé et ça se fait en temps réel. Euh et puis tes notes sont écrites dans un format qui s'appelle le Markdown. Donc qu'est-ce que c'est que le markdown ? Ben c'est des simples fichier texte qui sont stockés sur ton ordinateur et tu peux les ouvrir avec n'importe quel logiciel même sans Obsidian. Donc tes
+
+00:08:43 - 00:09:45
+données elles t'appartiennent complètement pour de vrai. Et si demain il y a un problème avec Obsidian et puis qui disparaisse, tu ne perds rien. Tu retrouves absolument tout et tu peux réutiliser tout ça dans un nouveau logiciel. Donc le vrai changement par rapport euh je dirais à tous les autres systèmes, bah c'est que tes notes, elles sont plus isolées. C'est surtout ça qu'il faut retenir. Elle se relie entre elles. EA et ben elle t'aide à créer ses connexions. Chaque nouvelle note peut
+
+00:09:13 - 00:10:12
+faire écho à une ancienne. une idée oubliée peut ressurgir au bon moment et puis une réflexion que tu avais oublié, tu vois, du mois dernier ou d'il y a 3 mois, et ben ça peut éclairer un problème d'aujourd'hui. Donc au fil du temps, tu construis pas euh une simple collection de documents comme on faisait jusque-l, comme j'ai fait jusqu'à maintenant, mais là c'est un véritable réseau de connaissance qui fonctionne comme un cerveau. C'estàd que tu as une idée qui en rappelle une
+
+00:09:43 - 00:10:45
+autre, un domaine qui nourrit les autres et c'est plus un tiroir que tu remplis en oubliant ce qu'il y a dedans. Voilà. Et c'est une mémoire vivante. Et quand tu échanges avec Lia, et ben elle peut s'appuyer sur tout ce que tu as déjà consigné pour te rappeler des informations, faire des rapprochements euh auxquels tu aurais pas forcément pensé et c'est même sûr d'ailleurs et t'aider à prendre des meilleures décisions. Donc voilà. Bon alors Obsidian en plus pour finir est gratuit. Alors c'est pas
+
+00:10:14 - 00:11:07
+gratuit avec des fonctionnalités bridées euh pour te pousser à l'abonnement hein. C'est vraiment gratuit mais c'est tellement bien foutu que on a presque honte de l'utiliser sans payer. Je te dis franchement. Alors bah si tu souhaites soutenir les développeurs, tu peux le faire de deux façons. Soit en t'abonnant au service de synchronisation Obsidian 5, même si nous on va pas l'utiliser. En tout cas moi le fonctionnement que j'ai pris c'est de passer par iCloud comme je suis sur Mac.
+
+00:10:41 - 00:11:44
+Toi si tu es sur Windows, bah tu utiliseras OneDrive ou tu peux utiliser Google Drive, peu importe. En fait, tu as pas forcément besoin d'Obsidian 5. Donc si tu prends pas le la synchronisation, bah tu peux quand même les aider en prenant une licence catalyste. C'est une petite contribution volontaire qui permet de soutenir le développement du logiciel. Euh bah personnellement, je trouve que c'est une très belle philosophie et puis on sent surtout qu'Obsidian a été conçu avant tout par des passionnés qui ont
+
+00:11:12 - 00:12:13
+voulu créer le meilleur outil possible. Alors maintenant, je pense que tu as saisi hein, Obsidian c'est pas juste un meilleur logiciel de note, c'est une fondation. On peut dire que c'est c'est une fondation. Euh vendredi, moi je t'ai montré comment j'ai construit avec Claude un système qui classe automatiquement tous mes papiers, les factures, les courriers, les documents administratifs euh sans que j'ai plus jamais à y penser. Tout est automatisé et c'est que le début parce que je suis
+
+00:11:43 - 00:12:40
+en train de construire sur cette même base d'autres systèmes en parallèle dont je vais te parler hein sous peu et dont un wiki personnel. Je vais t'en reparler bientôt. Donc si ce genre de système construit brique par brique t'intéresse, et ben je t'apprends à tout mettre en place pas à pas dans l'atelier geek pratique et le lien est dans la description et je te dis à très vite pour la suite. Так.

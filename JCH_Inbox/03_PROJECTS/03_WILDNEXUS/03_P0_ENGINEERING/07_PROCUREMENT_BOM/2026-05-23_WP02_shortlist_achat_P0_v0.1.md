@@ -1,4 +1,5 @@
-# WildNexus WP02 — Shortlist achat P0 v0.1
+# [ARCHIVÉ 2026-06-30] WildNexus WP02 — Shortlist achat P0 v0.1
+> ⚠️ Document historique — l'état vivant du matériel est dans `JCH_Inbox/04_PILOTAGE_STRATEGIQUE/hardware-state.md`
 
 **Date :** 2026-05-23  
 **Statut :** actif — prix vérifiés le 2026-05-23, corrections intégrées (§10)  

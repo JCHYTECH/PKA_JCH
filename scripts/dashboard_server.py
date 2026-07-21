@@ -63,19 +63,40 @@ KANBAN_CACHE_TTL_SECONDS = 60
 _KANBAN_CARDS_CACHE: dict[str, object] = {"timestamp": 0.0, "cards": None}
 
 MODELS = {
-    "claude": {
-        "label": "Claude Code",
-        "command": ["./bin/dobby.sh", "--model", "claude"],
-        "bg": "#30200f",
-        "fg": "#f8f5f0",
-        "cursor": "#c17f3a",
+    "openrouter": {
+        "label": "OpenRouter",
+        "command": ["./bin/dobby.sh", "--model", "openrouter"],
+        "bg": "#1a1a2e",
+        "fg": "#e8e2da",
+        "cursor": "#c9a43e",
     },
-    "codex": {
-        "label": "Codex CLI",
-        "command": ["./bin/dobby.sh", "--model", "codex"],
-        "bg": "#131520",
-        "fg": "#f8f5f0",
-        "cursor": "#4a5568",
+    "glm5": {
+        "label": "GLM 5.2",
+        "command": ["./bin/dobby.sh", "--model", "glm5"],
+        "bg": "#1a1025",
+        "fg": "#e8e0f0",
+        "cursor": "#b388ff",
+    },
+    "kimi": {
+        "label": "Kimi K2.7",
+        "command": ["./bin/dobby.sh", "--model", "kimi"],
+        "bg": "#0d1117",
+        "fg": "#e6edf3",
+        "cursor": "#58a6ff",
+    },
+    "claude-or": {
+        "label": "Claude Sonnet 5",
+        "command": ["./bin/dobby.sh", "--model", "claude-or"],
+        "bg": "#2a1a0f",
+        "fg": "#f4f0e8",
+        "cursor": "#d4923a",
+    },
+    "chatgpt": {
+        "label": "ChatGPT",
+        "command": ["./bin/dobby.sh", "--model", "chatgpt"],
+        "bg": "#0d3320",
+        "fg": "#e6f5ee",
+        "cursor": "#3cb371",
     },
     "gemini": {
         "label": "Gemini CLI",
@@ -111,20 +132,6 @@ MODELS = {
         "bg": "#3a3937",
         "fg": "#0d0b09",
         "cursor": "#e8e2da",
-    },
-    "openrouter": {
-        "label": "OpenRouter",
-        "command": ["./bin/dobby.sh", "--model", "openrouter"],
-        "bg": "#1a1a2e",
-        "fg": "#e8e2da",
-        "cursor": "#c9a43e",
-    },
-    "kimi": {
-        "label": "Kimi K2.7",
-        "command": ["./bin/dobby.sh", "--model", "kimi"],
-        "bg": "#0d1117",
-        "fg": "#e6edf3",
-        "cursor": "#58a6ff",
     },
 }
 
@@ -1214,12 +1221,12 @@ class DashboardHandler(BaseHTTPRequestHandler):
             self.send_json(result)
             return
 
-        if len(parts) == 2 and parts[0] == "launch":
+        if len(parts) in (2, 3) and parts[-2] == "launch":
             if self.headers.get("X-PKA-Dashboard") != "1":
                 self.send_json({"ok": False, "error": "Requete dashboard invalide"}, HTTPStatus.FORBIDDEN)
                 return
 
-            model = parts[1]
+            model = parts[-1]
             if model not in MODELS:
                 self.send_json({"ok": False, "error": "Modele non autorise"}, HTTPStatus.BAD_REQUEST)
                 return
@@ -1236,7 +1243,7 @@ class DashboardHandler(BaseHTTPRequestHandler):
             self.send_json({"ok": True, "model": model, "label": MODELS[model]["label"]})
             return
 
-        if len(parts) == 1 and parts[0] == "save":
+        if len(parts) in (1, 2) and parts[-1] == "save":
             if self.headers.get("X-PKA-Dashboard") != "1":
                 self.send_json({"ok": False, "error": "Requete dashboard invalide"}, HTTPStatus.FORBIDDEN)
                 return

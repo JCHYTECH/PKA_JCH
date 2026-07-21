@@ -1,8 +1,8 @@
 # WildNexus — Usage Matrix
 
-**Version :** v0.1 DRAFT  
-**Date :** 2026-05-17  
-**Statut :** Draft de travail  
+**Version :** v0.2  
+**Date :** 2026-06-30  
+**Statut :** Draft de travail — aligné avec ADR-010 §6 (dual-license)  
 **Propriétaire :** Jean-Claude Havaux — JCHYTECH  
 **Owner juridique :** [[Renard]]
 
@@ -14,7 +14,7 @@ Cette matrice transforme les principes WildNexus en décisions simples de qualif
 
 Elle sert à :
 - qualifier rapidement un cas d'usage
-- guider la rédaction de la licence et de la politique d'usage
+- guider la rédaction de ETHICS.md et de la politique d'usage
 - aider au tri des partenaires, distributeurs et demandes entrantes
 - éviter les ambiguïtés entre mission écologique et exploitation technique
 
@@ -33,10 +33,10 @@ Les trois statuts sont :
 | Association naturaliste déployant un petit réseau local | Autorisé | Respect des obligations terrain et données | Aligné avec la mission biodiversité | Aucun, hors support standard |
 | Réserve naturelle, commune rurale, ONG environnementale | Autorisé | Cadre légal local, signalétique si nécessaire | Aligné avec mission et impact | Aucun, hors support standard |
 | Université ou institut de recherche sur biodiversité | Autorisé | Respect de la politique d'usage et du RGPD | Usage scientifique compatible | Aucun, hors support standard |
-| Contribution technique au code, hardware ou documentation | Autorisé | Respect des règles de contribution et de la licence | Communauté contributive voulue | Maintainers WildNexus |
-| Reproduction d'un nœud pour usage personnel ou recherche compatible | Autorisé | Respect intégral de la licence et de la politique d'usage | Auditabilité et reproductibilité du socle | Aucun |
+| Contribution technique au code, hardware ou documentation | Autorisé | Respect des règles de contribution et de la licence MIT | Communauté contributive voulue | Maintainers WildNexus |
+| Reproduction d'un nœud pour usage personnel ou recherche compatible | Autorisé | Respect intégral de la licence MIT et de ETHICS.md | Auditabilité et reproductibilité du socle | Aucun |
 | Intégration d'un capteur additionnel orienté biodiversité | Autorisé | Documentation minimale des interfaces | Extensibilité voulue par design | Maintainers techniques |
-| Revente / distribution par partenaire [[commercial]] orienté nature | Conditionnel | Contrat, reprise des exclusions d'usage, usage de marque contrôlé | Compatible si l'alignement mission est maintenu | [[Renard]] + JCH |
+| Revente / distribution par partenaire commercial orienté nature | Conditionnel | Contrat, reprise des exclusions d'usage, usage de marque contrôlé | Compatible si l'alignement mission est maintenu | [[Renard]] + JCH |
 | Déploiement par bureau d'études environnementales | Conditionnel | Vérification du contexte client et des usages finaux | Peut être aligné, mais dépend des missions réelles | [[Renard]] |
 | Utilisation par administration publique non militaire | Conditionnel | Vérifier finalité réelle, gouvernance des données, cadre RGPD | Potentiellement compatible, mais sensible selon usage | [[Renard]] + JCH |
 | Intégration dans une plateforme logicielle tierce | Conditionnel | Pas de contournement des exclusions d'usage, pas de fermeture abusive | Compatible seulement si la mission et la conformité restent intactes | [[Renard]] + owner technique |
@@ -51,7 +51,7 @@ Les trois statuts sont :
 | Braconnage, repérage de faune pour destruction ou capture illicite | Interdit | Aucune exception | Contraire à la mission biodiversité | Refus automatique |
 | Surveillance humaine générale ou profiling de personnes | Interdit | Aucune exception | Contradictoire avec NN-09 et RGPD | Refus automatique |
 | Reconnaissance faciale ou identification humaine | Interdit | Aucune exception | Hors mission, risque juridique élevé | Refus automatique |
-| Vente ou transmission d'images de personnes capturées incidentalement | Interdit | Aucune exception | Incompatible RGPD et mission | Refus automatique |
+| Vente ou transmission d'images de personnes capturées incidentellement | Interdit | Aucune exception | Incompatible RGPD et mission | Refus automatique |
 | Fermeture propriétaire d'une version dérivée en contradiction avec la licence | Interdit | Aucune exception | Détruit le caractère publiable et auditabilité du socle | [[Renard]] |
 
 ---
@@ -77,31 +77,35 @@ Un cas passe automatiquement en **Interdit** s'il présente au moins un des sign
 
 ## 4. Decision Workflow
 
-1. Identifier l'utilisateur réel et l'usage final, pas seulement l'intermédiaire.
-2. Qualifier le cas avec la matrice.
-3. Si `Autorisé`, appliquer le flux standard.
-4. Si 
-5. Si `Interdit`, refuser sans entrer en négociation sur une exception.
+1. **Identifier** l'utilisateur réel et l'usage final, pas seulement l'intermédiaire.
+2. **Qualifier** le cas avec la matrice (§2).
+3. Si `Autorisé` : appliquer le flux standard — pas de revue nécessaire.
+4. Si `Conditionnel` : passer en revue renforcée (voir ci-dessous).
+5. Si `Interdit` : refuser sans entrer en négociation sur une exception.
+
+### Revue renforcée (cas Conditionnels)
 
 Pour les cas `Conditionnels`, la revue documente au minimum :
-- acteur
-- usage final
-- données traitées
-- zone géographique
-- risques RGPD
-- risque de dérive mission
-- décision et justification
+- acteur (nom, statut, taille)
+- usage final (pas l'usage déclaré, l'usage réel)
+- données traitées (nature, volume, durée de conservation)
+- zone géographique (pays, juridiction applicable)
+- risques RGPD (images humaines possibles ? base légale ?)
+- risque de dérive mission (évolution possible vers un usage interdit ?)
+- décision et justification (autorisé sous conditions / refusé / demande d'info complémentaire)
+
+La décision est tracée dans un registre interne et signée par [[Renard]] (ou JCH si sensible).
 
 ---
 
 ## 5. Immediate Uses Of This Matrix
 
 Cette matrice doit être utilisée pour :
-- la première note de licence WildNexus
-- la future `usage policy`
+- la rédaction de ETHICS.md (addendum éthique au dépôt)
+- la future `usage policy` formalisée
 - le tri des partenaires et distributeurs
 - les FAQ publiques sur ce qui est permis ou non
 
 ---
 
-*Document de travail — WildNexus usage matrix — v0.1 DRAFT*
+*Mis à jour v0.2 le 2026-06-30 — workflow §4 complété, références licence alignées avec ADR-010 §6 (MIT + ETHICS.md).*

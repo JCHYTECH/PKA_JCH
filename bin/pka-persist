@@ -1,0 +1,279 @@
+#!/usr/bin/env bash
+# pka-persist — Exécution persistante de loops PKA (post-session)
+# Forge 🔨 — 2026-07-17 — P2 Loop Engineering
+#
+# Permet de lancer une loop qui continue après fermeture de session.
+# Deux modes : --once (background immédiat) et --schedule (launchd périodique).
+#
+# Usage:
+#   bin/pka-persist --loop "forge --budget 5" --once --name "review"
+#   bin/pka-persist --loop "bench --scope SOP-1" --schedule "0 */6 * * *" --name "bench-6h"
+#   bin/pka-persist --list
+#   bin/pka-persist --remove <id>
+
+set -euo pipefail
+
+PKA_ROOT="/Users/jchavauxm5/PKA_JCH"
+PERSIST_DIR="$PKA_ROOT/_local/persist"
+TASKS_FILE="$PERSIST_DIR/tasks.json"
+LOOP_BIN="$PKA_ROOT/bin/pka-loop"
+
+mkdir -p "$PERSIST_DIR"
+
+# --- Help ---
+if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
+  cat <<'EOF'
+💾 pka-persist — Persistence post-session des loops PKA
+
+USAGE
+  bin/pka-persist --loop "<args>" --once --name <id>
+      Lance une loop en arrière-plan immédiatement.
+      Continue après fermeture de session (nohup).
+
+  bin/pka-persist --loop "<args>" --schedule "<cron>" --name <id>
+      Planifie une loop via launchd (ex: "0 */6 * * *").
+      La loop s'exécutera même laptop fermé si le Mac est allumé.
+
+  bin/pka-persist --list
+      Liste toutes les tâches persistantes enregistrées.
+
+  bin/pka-persist --remove <id>
+      Supprime une tâche persistante.
+
+  bin/pka-persist --help
+      Cette aide.
+
+EXEMPLES
+  bin/pka-persist --loop "research --action 'hypothese: grillons actifs a 22C'" --once --name "grillon-night"
+  bin/pka-persist --loop "seo --scope https://monsite.com" --schedule "0 8 * * *" --name "seo-matin"
+  bin/pka-persist --list
+  bin/pka-persist --remove grillon-night
+
+FICHIERS
+  _local/persist/tasks.json        Registre des tâches
+  _local/logs/persist-<id>.log     Logs d'exécution
+  _local/launchd-plists/           Fichiers launchd générés
+EOF
+  exit 0
+fi
+
+# --- Parser les arguments ---
+LOOP_ARGS=""
+MODE=""
+NAME=""
+SCHEDULE=""
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --loop) LOOP_ARGS="$2"; shift 2 ;;
+    --once) MODE="once"; shift ;;
+    --schedule) MODE="schedule"; SCHEDULE="$2"; shift 2 ;;
+    --name) NAME="$2"; shift 2 ;;
+    --list) MODE="list"; shift ;;
+    --remove) MODE="remove"; NAME="$2"; shift 2 ;;
+    *) shift ;;
+  esac
+done
+
+# --- Initialiser tasks.json si absent ---
+[[ ! -f "$TASKS_FILE" ]] && echo '[]' > "$TASKS_FILE"
+
+# --- Mode List ---
+if [[ "$MODE" == "list" ]]; then
+  if [[ ! -s "$TASKS_FILE" || "$(cat "$TASKS_FILE")" == "[]" ]]; then
+    echo "Aucune tâche persistante enregistrée."
+    exit 0
+  fi
+  echo "📋 Tâches persistantes :"
+  echo ""
+  python3 -c "
+import json, sys
+tasks = json.load(open('$TASKS_FILE'))
+for t in tasks:
+    status = t.get('status','?')
+    icon = {'running':'🟢','scheduled':'🔵','done':'✅','error':'🔴'}.get(status,'⚪')
+    last = t.get('last_run') or 'jamais'
+    print(f\"  {icon} {t['id']:20s} {t['loop']:10s} {status:10s} last: {last}\")
+" 2>/dev/null || echo "  (fichier tasks.json corrompu)"
+  exit 0
+fi
+
+# --- Mode Remove ---
+if [[ "$MODE" == "remove" ]]; then
+  if [[ -z "$NAME" ]]; then
+    echo "❌ Spécifie un nom avec --name <id>"
+    exit 1
+  fi
+  
+  # Supprimer du JSON
+  python3 -c "
+import json
+tasks = json.load(open('$TASKS_FILE'))
+before = len(tasks)
+tasks = [t for t in tasks if t['id'] != '$NAME']
+after = len(tasks)
+json.dump(tasks, open('$TASKS_FILE','w'), indent=2)
+print(f'{\"✅\" if after < before else \"❌\"} Tâche \"$NAME\" {\"supprimée\" if after < before else \"non trouvée\"}.')
+" 2>/dev/null
+  
+  # Supprimer le plist launchd si existe
+  PLIST="$HOME/Library/LaunchAgents/com.dobby.persist-${NAME}.plist"
+  if [[ -f "$PLIST" ]]; then
+    launchctl unload "$PLIST" 2>/dev/null || true
+    rm -f "$PLIST"
+    echo "   plist launchd supprimé."
+  fi
+  
+  exit 0
+fi
+
+# --- Valider les arguments ---
+if [[ -z "$LOOP_ARGS" ]]; then
+  echo "❌ Spécifie une loop avec --loop \"<args>\""
+  exit 1
+fi
+if [[ -z "$NAME" ]]; then
+  NAME="persist-$(date +%s)"
+  echo "⚠️  Pas de nom spécifié, auto-généré : $NAME"
+fi
+
+# --- Mode Once (background immédiat) ---
+if [[ "$MODE" == "once" ]]; then
+  LOGFILE="$PKA_ROOT/_local/logs/persist-${NAME}.log"
+  
+  echo "🚀 Lancement background de : pka-loop $LOOP_ARGS"
+  echo "   Nom  : $NAME"
+  echo "   Log  : $LOGFILE"
+  
+  # Lancer en background avec nohup
+  nohup bash "$LOOP_BIN" $LOOP_ARGS >> "$LOGFILE" 2>&1 &
+  PID=$!
+  
+  echo "   PID  : $PID"
+  
+  # Enregistrer dans tasks.json
+  python3 -c "
+import json
+tasks = json.load(open('$TASKS_FILE'))
+tasks.append({
+    'id': '$NAME',
+    'loop': '$(echo "$LOOP_ARGS" | cut -d' ' -f1)',
+    'params': '$LOOP_ARGS',
+    'mode': 'once',
+    'pid': $PID,
+    'created': '$(date -u +%Y-%m-%dT%H:%M:%SZ)',
+    'last_run': '$(date -u +%Y-%m-%dT%H:%M:%SZ)',
+    'status': 'running'
+})
+json.dump(tasks, open('$TASKS_FILE','w'), indent=2)
+" 2>/dev/null
+  
+  echo ""
+  echo "✅ Loop lancée en arrière-plan. Continue après fermeture de session."
+  exit 0
+fi
+
+# --- Mode Schedule (launchd périodique) ---
+if [[ "$MODE" == "schedule" ]]; then
+  if [[ -z "$SCHEDULE" ]]; then
+    echo "❌ Spécifie un schedule cron avec --schedule \"<cron>\""
+    exit 1
+  fi
+  
+  # Parser le cron simple (on supporte "0 */6 * * *" → minute, hour)
+  MINUTE=$(echo "$SCHEDULE" | awk '{print $1}')
+  HOUR=$(echo "$SCHEDULE" | awk '{print $2}')
+  
+  # Si */N, on simplifie en "toutes les N heures" via StartInterval
+  PLIST="$PKA_ROOT/_local/launchd-plists/com.dobby.persist-${NAME}.plist"
+  
+  if [[ "$HOUR" == "*/"* ]]; then
+    INTERVAL=$(echo "$HOUR" | sed 's|\*/||')
+    INTERVAL_SEC=$((INTERVAL * 3600))
+    
+    cat > "$PLIST" <<PLISTEND
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.dobby.persist-${NAME}</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>${LOOP_BIN}</string>
+        ${LOOP_ARGS}
+    </array>
+    <key>StartInterval</key>
+    <integer>${INTERVAL_SEC}</integer>
+    <key>StandardOutPath</key>
+    <string>${PKA_ROOT}/_local/logs/persist-${NAME}.log</string>
+    <key>StandardErrorPath</key>
+    <string>${PKA_ROOT}/_local/logs/persist-${NAME}.err</string>
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>
+PLISTEND
+  else
+    cat > "$PLIST" <<PLISTEND
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.dobby.persist-${NAME}</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>${LOOP_BIN}</string>
+        ${LOOP_ARGS}
+    </array>
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>${HOUR}</integer>
+        <key>Minute</key>
+        <integer>${MINUTE:-0}</integer>
+    </dict>
+    <key>StandardOutPath</key>
+    <string>${PKA_ROOT}/_local/logs/persist-${NAME}.log</string>
+    <key>StandardErrorPath</key>
+    <string>${PKA_ROOT}/_local/logs/persist-${NAME}.err</string>
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>
+PLISTEND
+  fi
+  
+  # Copier et charger
+  INSTALL_PLIST="$HOME/Library/LaunchAgents/com.dobby.persist-${NAME}.plist"
+  cp "$PLIST" "$INSTALL_PLIST"
+  launchctl load "$INSTALL_PLIST" 2>/dev/null || true
+  
+  # Enregistrer dans tasks.json
+  python3 -c "
+import json
+tasks = json.load(open('$TASKS_FILE'))
+tasks.append({
+    'id': '$NAME',
+    'loop': '$(echo "$LOOP_ARGS" | cut -d' ' -f1)',
+    'params': '$LOOP_ARGS',
+    'mode': 'schedule',
+    'schedule': '$SCHEDULE',
+    'created': '$(date -u +%Y-%m-%dT%H:%M:%SZ)',
+    'status': 'scheduled'
+})
+json.dump(tasks, open('$TASKS_FILE','w'), indent=2)
+" 2>/dev/null
+  
+  echo "✅ Loop planifiée : $NAME"
+  echo "   Schedule : $SCHEDULE"
+  echo "   Plist    : $INSTALL_PLIST"
+  echo "   Log      : _local/logs/persist-${NAME}.log"
+  exit 0
+fi
+
+echo "❌ Mode inconnu. Utilise --once, --schedule, --list, ou --remove."
+exit 1

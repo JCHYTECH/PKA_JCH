@@ -1,0 +1,391 @@
+#!/usr/bin/env bash
+# =============================================================================
+# pka-watch-inbox — Surveillance automatisée de JCH_Inbox/00_INBOX/
+# =============================================================================
+#
+# Surveille le dossier 00_INBOX/ pour détecter les nouveaux fichiers.
+# À chaque détection :
+#   1. Log dans _local/logs/pka-watch.log
+#   2. MAJ du fichier d'état _local/state/inbox-watch.json
+#   3. Écriture d'une alerte dans TEAM_Inbox/ (format YYYY-MM-DD_forge_watch-inbox-alert.md)
+#
+# Usage :
+#   bin/pka-watch-inbox --once     Scan unique
+#   bin/pka-watch-inbox --daemon   Boucle infinie (sleep 300s)
+#   bin/pka-watch-inbox --help     Aide
+#
+# Fichiers ignorés : .DS_Store, contenu de _captures/
+# =============================================================================
+
+set -euo pipefail
+
+# ── Chemins canoniques ─────────────────────────────────────────────────────
+PKA_ROOT="${PKA_ROOT:-/Users/jchavauxm5/PKA_JCH}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+if [[ "$SCRIPT_DIR" == */bin ]]; then
+    PKA_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+fi
+
+INBOX_DIR="${PKA_ROOT}/JCH_Inbox/00_INBOX"
+LOG_DIR="${PKA_ROOT}/_local/logs"
+LOG_FILE="${LOG_DIR}/pka-watch.log"
+STATE_DIR="${PKA_ROOT}/_local/state"
+STATE_FILE="${STATE_DIR}/inbox-watch.json"
+TEAM_INBOX="${PKA_ROOT}/TEAM_Inbox"
+
+# ── Fonctions utilitaires ──────────────────────────────────────────────────
+
+timestamp() {
+    date '+%Y-%m-%dT%H:%M:%S'
+}
+
+date_ymd() {
+    date '+%Y-%m-%d'
+}
+
+# Initialise le fichier d'état s'il n'existe pas
+init_state() {
+    mkdir -p "$STATE_DIR"
+    if [[ ! -f "$STATE_FILE" ]]; then
+        cat > "$STATE_FILE" <<'EOF'
+{
+  "last_scan": null,
+  "total_detected": 0,
+  "files": {}
+}
+EOF
+    fi
+}
+
+# Lit l'état actuel sous forme de fichier temporaire plus facile à manipuler
+# Retourne la liste des chemins déjà connus (séparés par newline)
+get_known_files() {
+    if [[ -f "$STATE_FILE" ]]; then
+        # Extraire les clés de l'objet "files" avec python3 (dispo sur macOS)
+        python3 -c "
+import json, sys
+try:
+    with open('${STATE_FILE}', 'r') as f:
+        state = json.load(f)
+    for fpath in state.get('files', {}).keys():
+        print(fpath)
+except (json.JSONDecodeError, FileNotFoundError):
+    pass
+" 2>/dev/null || true
+    fi
+}
+
+# Ajoute un fichier à l'état
+add_file_to_state() {
+    local fpath="$1"
+    local fsize="$2"
+    local detected_at="$3"
+
+    python3 -c "
+import json, sys
+
+state_path = '${STATE_FILE}'
+try:
+    with open(state_path, 'r') as f:
+        state = json.load(f)
+except (json.JSONDecodeError, FileNotFoundError):
+    state = {'last_scan': None, 'total_detected': 0, 'files': {}}
+
+state['files']['${fpath}'] = {
+    'size_bytes': ${fsize},
+    'first_detected': '${detected_at}',
+    'last_seen': '${detected_at}',
+    'alert_sent': True
+}
+state['last_scan'] = '${detected_at}'
+state['total_detected'] = len(state['files'])
+
+with open(state_path, 'w') as f:
+    json.dump(state, f, indent=2, ensure_ascii=False)
+    f.write('\n')
+" 2>/dev/null || {
+        echo "⚠️  Impossible de mettre à jour le fichier d'état." >&2
+    }
+}
+
+# Met à jour la date de last_scan sans ajouter de fichiers
+update_last_scan() {
+    local scan_time="$1"
+    python3 -c "
+import json
+
+state_path = '${STATE_FILE}'
+try:
+    with open(state_path, 'r') as f:
+        state = json.load(f)
+except (json.JSONDecodeError, FileNotFoundError):
+    state = {'last_scan': None, 'total_detected': 0, 'files': {}}
+
+state['last_scan'] = '${scan_time}'
+
+with open(state_path, 'w') as f:
+    json.dump(state, f, indent=2, ensure_ascii=False)
+    f.write('\n')
+" 2>/dev/null || true
+}
+
+# Écrit une alerte dans TEAM_Inbox/
+write_alert() {
+    local fpath="$1"
+    local fsize="$2"
+    local detected_at="$3"
+    local alert_date
+    alert_date=$(date_ymd)
+    local alert_file="${TEAM_INBOX}/${alert_date}_forge_watch-inbox-alert.md"
+
+    mkdir -p "$TEAM_INBOX"
+
+    # Format lisible pour la taille
+    local fsize_hr
+    if command -v numfmt &>/dev/null; then
+        fsize_hr=$(numfmt --to=iec --suffix=B "$fsize" 2>/dev/null || echo "${fsize} octets")
+    else
+        # macOS fallback
+        if [[ $fsize -ge 1048576 ]]; then
+            fsize_hr="$(echo "scale=2; $fsize/1048576" | bc 2>/dev/null || echo "?") MB"
+        elif [[ $fsize -ge 1024 ]]; then
+            fsize_hr="$(echo "scale=2; $fsize/1024" | bc 2>/dev/null || echo "?") KB"
+        else
+            fsize_hr="${fsize} octets"
+        fi
+    fi
+
+    cat > "$alert_file" <<ALERTEOF
+# 🔔 Watch-INBOX Alert — ${alert_date}
+
+> **Forge 🔨** — Surveillance automatique — $(timestamp)
+
+## Nouveau fichier détecté
+
+| Propriété | Valeur |
+|-----------|--------|
+| **Chemin** | \`${fpath}\` |
+| **Taille** | ${fsize_hr} (${fsize} octets) |
+| **Détecté le** | ${detected_at} |
+
+## Action suggérée
+
+Le fichier a été placé dans \`JCH_Inbox/00_INBOX/\`. Actions recommandées :
+
+1. **Classifier** — Déplacer vers le dossier approprié (\`03_PROJECTS\`, \`04_PILOTAGE_STRATEGIQUE\`, etc.)
+2. **Analyser** — Lancer \`inbox-analysis\` sur ce fichier
+3. **Traiter** — Créer une tâche ou un projet selon le contenu
+
+## Rappel
+
+Cette alerte est générée automatiquement par \`pka-watch-inbox\`.
+Pour désactiver : \`launchctl unload _local/launchd-plists/com.dobby.pka-watch-inbox.plist\`
+
+---
+*Fichier auto-généré — $(timestamp)*
+ALERTEOF
+
+    echo "   📄 Alerte écrite : ${alert_file}"
+}
+
+# Log un événement
+log_event() {
+    local level="$1"
+    local message="$2"
+    local ts
+    ts=$(timestamp)
+
+    mkdir -p "$LOG_DIR"
+    echo "[${ts}] [${level}] ${message}" >> "$LOG_FILE"
+}
+
+# ── Scan principal ─────────────────────────────────────────────────────────
+
+scan_inbox() {
+    local scan_start
+    scan_start=$(timestamp)
+    local new_count=0
+    local total_scanned=0
+
+    log_event "INFO" "Début scan — ${scan_start}"
+
+    # Vérifier que le dossier INBOX existe
+    if [[ ! -d "$INBOX_DIR" ]]; then
+        log_event "ERROR" "Dossier INBOX introuvable : ${INBOX_DIR}"
+        echo "❌ Dossier INBOX introuvable : ${INBOX_DIR}" >&2
+        return 1
+    fi
+
+    # Obtenir la liste des fichiers déjà connus
+    local known_files
+    known_files=$(get_known_files)
+
+    # Scanner les fichiers dans 00_INBOX/
+    # Ignorer .DS_Store et tout ce qui est dans _captures/
+    while IFS= read -r -d '' filepath; do
+        total_scanned=$((total_scanned + 1))
+
+        # Chemin relatif par rapport à PKA_ROOT
+        local relpath="${filepath#${PKA_ROOT}/}"
+
+        # Ignorer _captures/
+        if [[ "$relpath" == *"/_captures/"* || "$relpath" == *"/_captures" ]]; then
+            continue
+        fi
+
+        # Vérifier si le fichier est déjà connu
+        if echo "$known_files" | grep -Fxq "$relpath" 2>/dev/null; then
+            continue  # Fichier déjà connu → ignorer
+        fi
+
+        # Nouveau fichier détecté !
+        local fsize
+        if [[ -f "$filepath" ]]; then
+            fsize=$(stat -f%z "$filepath" 2>/dev/null || stat -c%s "$filepath" 2>/dev/null || echo "0")
+        else
+            fsize=0
+        fi
+        local detected_at
+        detected_at=$(timestamp)
+
+        new_count=$((new_count + 1))
+
+        echo ""
+        echo "🆕 NOUVEAU FICHIER DÉTECTÉ — ${detected_at}"
+        echo "   Chemin : ${relpath}"
+        echo "   Taille : ${fsize} octets"
+
+        # Action 1 : Logger
+        log_event "DETECT" "Nouveau fichier: ${relpath} (${fsize} octets)"
+
+        # Action 2 : Mettre à jour l'état
+        add_file_to_state "$relpath" "$fsize" "$detected_at"
+
+        # Action 3 : Écrire l'alerte
+        write_alert "$relpath" "$fsize" "$detected_at"
+        
+        # Action 4 : Notification macOS
+        osascript -e "display notification \"${relpath} (${fsize} octets)\" with title \"📥 PKA INBOX\" subtitle \"Nouveau fichier détecté\"" 2>/dev/null || true
+
+    done < <(find "$INBOX_DIR" -type f -not -name '.DS_Store' -print0 2>/dev/null || true)
+
+    # Mettre à jour last_scan même si aucun nouveau fichier
+    if [[ $new_count -eq 0 ]]; then
+        update_last_scan "$scan_start"
+    fi
+
+    local scan_end
+    scan_end=$(timestamp)
+
+    log_event "INFO" "Fin scan — ${scan_end} — ${total_scanned} fichiers scannés, ${new_count} nouveaux"
+
+    echo ""
+    echo "📊 Résumé du scan : ${total_scanned} fichiers scannés, ${new_count} nouveau(x)"
+    echo "   Log    : ${LOG_FILE}"
+    echo "   État   : ${STATE_FILE}"
+
+    return 0
+}
+
+# ── Interface utilisateur ──────────────────────────────────────────────────
+
+show_help() {
+    cat <<'HELP'
+👁️  pka-watch-inbox — Surveillance automatisée de JCH_Inbox/00_INBOX/
+
+USAGE
+  bin/pka-watch-inbox --once      Scan unique du dossier INBOX
+  bin/pka-watch-inbox --daemon    Boucle infinie (scan toutes les 300s)
+  bin/pka-watch-inbox --help      Cette aide
+
+DESCRIPTION
+  Surveille JCH_Inbox/00_INBOX/ pour détecter les nouveaux fichiers.
+  Ignore .DS_Store et le contenu de _captures/.
+
+  À chaque nouveau fichier détecté :
+    1. Log dans _local/logs/pka-watch.log
+    2. Mise à jour de _local/state/inbox-watch.json
+    3. Alerte dans TEAM_Inbox/ (format YYYY-MM-DD_forge_watch-inbox-alert.md)
+
+FICHIERS PRODUITS
+  _local/logs/pka-watch.log              Journal des événements
+  _local/state/inbox-watch.json           État persistant (fichiers connus)
+  TEAM_Inbox/*_forge_watch-inbox-alert.md Alertes de détection
+
+LAUNCHD (exécution périodique)
+  Pour une exécution automatique toutes les 5 minutes :
+    cp _local/launchd-plists/com.dobby.pka-watch-inbox.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.dobby.pka-watch-inbox.plist
+
+EXEMPLES
+  bin/pka-watch-inbox --once      # Scan ponctuel
+  bin/pka-watch-inbox --daemon    # Surveillance continue (Ctrl+C pour arrêter)
+
+AUTEUR
+  Forge 🔨 — PKA_JCH — 2026-07-17
+HELP
+}
+
+# ── Point d'entrée ─────────────────────────────────────────────────────────
+
+MODE=""
+
+# Parsing des arguments
+for arg in "$@"; do
+    case "$arg" in
+        --help|-h)
+            show_help
+            exit 0
+            ;;
+        --once)
+            MODE="once"
+            ;;
+        --daemon)
+            MODE="daemon"
+            ;;
+        *)
+            echo "❌ Option inconnue : $arg"
+            echo "   Utilisez --help pour la liste des options."
+            exit 1
+            ;;
+    esac
+done
+
+if [[ -z "$MODE" ]]; then
+    echo "❌ Aucun mode spécifié."
+    echo "   Utilisez --once, --daemon, ou --help."
+    exit 1
+fi
+
+# Initialiser l'état
+init_state
+
+if [[ "$MODE" == "once" ]]; then
+    echo "👁️  pka-watch-inbox — Scan unique"
+    echo "   Dossier : ${INBOX_DIR}"
+    echo "   Début   : $(timestamp)"
+    echo ""
+    scan_inbox
+    echo ""
+    echo "✅ Scan terminé."
+
+elif [[ "$MODE" == "daemon" ]]; then
+    echo "👁️  pka-watch-inbox — Mode démon (Ctrl+C pour arrêter)"
+    echo "   Dossier  : ${INBOX_DIR}"
+    echo "   Interval : 300 secondes (5 minutes)"
+    echo "   Début    : $(timestamp)"
+    echo ""
+
+    # Piège SIGINT/SIGTERM pour sortie propre
+    trap 'echo ""; echo "🛑 Démon arrêté — $(timestamp)"; exit 0' INT TERM
+
+    local iteration=0
+    while true; do
+        iteration=$((iteration + 1))
+        echo "── Scan #${iteration} ── $(timestamp) ──"
+        scan_inbox
+        echo ""
+        echo "💤 Pause 300s... (Ctrl+C pour arrêter)"
+        sleep 300
+    done
+fi

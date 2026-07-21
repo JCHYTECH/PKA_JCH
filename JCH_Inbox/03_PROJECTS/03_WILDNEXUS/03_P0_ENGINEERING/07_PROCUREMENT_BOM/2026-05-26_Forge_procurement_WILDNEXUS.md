@@ -1,4 +1,5 @@
-# Rapport Procurement — WILDNEXUS — 2026-05-26
+# [ARCHIVÉ 2026-06-30] Rapport Procurement — WILDNEXUS — 2026-05-26
+> ⚠️ Document historique — l'état vivant du matériel est dans `JCH_Inbox/04_PILOTAGE_STRATEGIQUE/hardware-state.md`
 
 **Généré par :** [[Forge]] 🦦 (PKA Procurement Agent)
 **Source BOM :** `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/07_PROCUREMENT_BOM/WILDNEXUS_BOM_P0_v0.2.xlsx`

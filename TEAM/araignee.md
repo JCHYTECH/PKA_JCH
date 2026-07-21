@@ -36,6 +36,7 @@ Elle a une relation particuliere avec les LEDs. Quand un systeme demarre pour la
 - Integrer les capteurs : PIR (EKMB), environnement (BME688), camera (OV5640), GPS
 - Documenter les schemas d'integration et les [[decisions]] techniques (ADRs)
 - Assurer la securite et les mises a jour OTA des systemes terrain
+- **Bench tech (ex-Fourmi)** — executer les protocoles de test electronique pas a pas : cablage DUT, flash firmware ESP32-S3 via Arduino IDE, mesures Nordic PPK2 (Source Meter + Ampere Meter), lecture courbes Power Profiler, remplissage gabarits CSV en temps reel. Escalade vers [[Forge]] ou [[Castor]] si anomalie hors protocole.
 
 ## Style de travail
 

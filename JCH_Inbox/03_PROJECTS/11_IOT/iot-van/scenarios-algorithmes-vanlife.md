@@ -1,7 +1,7 @@
 # Scénarios & Algorithmes — Vanlife IOT
 
-> Document de conception des automatismes intelligents du Stylevan Equinox 4
-> Version : v1.0 VALIDATED — 2026-06-07
+> Document de conception des automatismes intelligents du Westfalia Kelsey 2026 (Ford Transit Custom)
+> Version : v1.1 — 2026-07-09 (ajout CAN bus + nouveaux scénarios)
 > Réglages : tous les seuils sont des `input_number` ajustables depuis le dashboard — pas de valeurs en dur
 > Validé par : JCH (paramètres validés, ajustables en essais)
 > Rédacteur : [[Dobby]] 🦉
@@ -68,9 +68,9 @@ Pour chaque famille de capteurs, la matrice suivante :
 
 | Champ | Valeur |
 |-------|--------|
-| **Capteurs** | Toutes portes + GPS vitesse |
-| **Donnée brute** | `binary_sensor.door_X` = ON + `sensor.speed` > 0 |
-| **Algorithme** | SI (vitesse > 5 km/h) ET (porte ouverte > 15s) → ALERTE |
+| **Capteurs** | Toutes portes + `binary_sensor.engine_running` (D+ DS300) |
+| **Donnée brute** | `binary_sensor.door_X` = ON + `binary_sensor.engine_running` = ON |
+| **Algorithme** | SI (moteur tournant) ET (porte ouverte > 15s) → ALERTE |
 | **Action** | Notification push iPhone + warning dashboard Lovelace |
 | **Seuils** | 15s (portes avant), 30s (hayon — tolérance manœuvre lente) |
 | **Filtre** | Ignorer si van à l'arrêt (vitesse = 0) même moteur allumé |
@@ -98,7 +98,7 @@ Pour chaque famille de capteurs, la matrice suivante :
 
 | Champ | Valeur |
 |-------|--------|
-| **Capteurs** | Porte frigo + température frigo |
+| **Capteurs** | Aqara frigo (ouverture) + SNZB-02D frigo (température) |
 | **Donnée brute** | `binary_sensor.fridge` = ON > 2 min |
 | **Algorithme** | SI (porte frigo ouverte > 2 min) → ALERTE |
 | **Action** | Notification "Porte frigo ouverte" |
@@ -238,10 +238,13 @@ Pour chaque famille de capteurs, la matrice suivante :
 
 | # | Capteur | Technologie | Phase |
 |---|---------|-------------|-------|
-| 1 | Batterie cellule LiFePO4 | Victron SmartShunt 500A (VE.Direct → USB) | P3 |
-| 2 | Batterie véhicule | SmartShunt ou mesure tension | P3 |
-| 3 | Panneau solaire | Victron SmartSolar MPPT 100/20 (VE.Direct → USB) | P3 |
-| 4 | Conso totale cellule | SmartShunt | P3 |
+| 1 | Batterie cellule LiFePO4 (SOC/courant) | Victron SmartShunt 500A (VE.Direct → USB) | P3 |
+| 2 | Tension batterie cellule (V) | DS300 Tap — `sensor.leisure_battery_voltage` | P1 |
+| 3 | Tension batterie véhicule (V) | DS300 Tap — `sensor.starter_battery_voltage` | P1 |
+| 4 | Panneau solaire | Victron SmartSolar MPPT 100/20 (VE.Direct → USB) | P3 |
+| 5 | Signal D+ (moteur tournant) | DS300 Tap — `binary_sensor.engine_running` | P1 |
+| 6 | Présence 230V secteur | DS300 Tap — `binary_sensor.shore_power` | P1 |
+| 7 | Conso totale cellule | SmartShunt | P3 |
 
 ---
 
@@ -291,8 +294,8 @@ Pour chaque famille de capteurs, la matrice suivante :
 
 | Champ | Valeur |
 |-------|--------|
-| **Capteurs** | 2× JSN-SR04T ultrason (ESP32) |
-| **Donnée brute** | `sensor.eau_propre_niveau` (% ou litres), `sensor.eau_grise_niveau` (% ou litres) |
+| **Capteurs** | Sondes résistives cuves CBE → DS300 Tap — `sensor.fresh_water_level`, `sensor.grey_water_level` |
+| **Donnée brute** | `sensor.fresh_water_level` (%), `sensor.grey_water_level` (%) |
 | **Algorithme** | SI (eau propre < 20%) → NOTIFICATION "Eau propre faible — faire le plein" — SI (eau grise > 80%) → NOTIFICATION "Eaux grises pleines — vidanger" |
 | **Action** | Notification push + dashboard widget avec volume restant |
 | **Seuils** | Eau propre : < 20% avertissement, < 10% critique. Eau grise : > 80% avertissement, > 90% critique |
@@ -308,7 +311,7 @@ Pour chaque famille de capteurs, la matrice suivante :
 
 | # | Mesure | Technologie | Phase |
 |---|--------|-------------|-------|
-| 1 | T° extérieure | Sonoff SNZB-02D extérieur | P3 |
+| 1 | T° extérieure | BME280 (ESP32 I2C, T°+HR+pression) | P3 |
 | 2 | Vent | Anémomètre cupules (ESP32) | P3 |
 | 3 | Pression atmosphérique | BME280 (I2C) | P3 |
 | 4 | Pluie | Capteur pluie résistif | P3 |
@@ -377,14 +380,175 @@ Pour chaque famille de capteurs, la matrice suivante :
 
 ---
 
+## 6. Famille DS300 TAP — Intégration tableau électrique
+
+> **Spec :** [`ds300-tap/SPEC-DS300-TAP.md`](ds300-tap/SPEC-DS300-TAP.md)  
+> **Config ESPHome :** [`ds300-tap/esphome-ds300.yaml`](ds300-tap/esphome-ds300.yaml)
+
+### Capteurs exposés par le DS300 Tap
+
+| # | Entité HA | Signal DS300 | Phase |
+|---|-----------|-------------|-------|
+| 1 | `sensor.leisure_battery_voltage` | Pin 15 — B2 cellule | P1 |
+| 2 | `sensor.starter_battery_voltage` | Pin 12 — B1 porteur | P1 |
+| 3 | `sensor.fresh_water_level` | Pins 2-7-8 — Sonde eau propre | P1 |
+| 4 | `sensor.grey_water_level` | Pin 9 — Sonde eau grise | P1 |
+| 5 | `binary_sensor.engine_running` | Pin 5 — D+ alternateur | P1 |
+| 6 | `binary_sensor.shore_power` | Pin 10 — Présence 230V | P1 |
+| 7 | `binary_sensor.water_pump` | Pin 6 — Relais pompe | P1 |
+| 8 | `binary_sensor.fridge_relay` | Pin 4 — Relais frigo | P1 |
+| 9 | `binary_sensor.main_relay` | Pin 14 — Relais principal | P1 |
+
+### Impact sur les scénarios
+
+| Scénario | Avant | Après DS300 Tap |
+|----------|-------|-----------------|
+| 1.1 Porte oubliée roulage | GPS vitesse | `binary_sensor.engine_running` (D+) — plus fiable, pas besoin de GPS |
+| 3.1 Autonomie prédictive | SmartShunt seul | SmartShunt (SOC) + `sensor.leisure_battery_voltage` (cross-check) |
+| 3.2 Shutdown batterie faible | SmartShunt SOC | Ajout `binary_sensor.shore_power` — ne pas shutdown si branché |
+| 3.3 Niveau gaz | Mopeka seul | Inchangé |
+| 3.4 Niveaux d'eau | JSN-SR04T / TL-136 | `sensor.fresh_water_level` + `sensor.grey_water_level` — sondes CBE d'origine |
+| 5.1 GPS spots | GPS u-blox | Complété par `binary_sensor.engine_running` pour détecter arrêt moteur |
+
+### Économies
+
+- **Capteurs supprimés :** JSN-SR04T ×2 (jauges eau van → DS300 Tap)
+- **Capteurs gratuits :** D+, 230V shoreline, état relais, tensions B1/B2 — aucune BOM additionnelle
+- **Coût du Tap :** ~8€ (connecteurs + optocoupleurs + résistances)
+- **Économie nette :** ~10€ sur le panier Amazon
+
+---
+
+## 7. Famille CAN BUS — Données véhicule Ford Transit Custom
+
+> **Spec :** [`specs/SPEC-CAN-BUS.md`](specs/SPEC-CAN-BUS.md)  
+> **Hardware :** WiCAN Pro (ESP32-S3 + STN OBD interpreter, ~82€)  
+> **Source PIDs :** [WiCAN-Ford-Transit](https://github.com/anthonysecco/WiCAN-Ford-Transit)
+
+### Capteurs CAN exposés dans HA
+
+| # | Entité HA | PID | Source | Mode |
+|---|-----------|-----|--------|------|
+| 1 | `sensor.vehicle_speed` | 0x0D | PCM HS-CAN | Roulage |
+| 2 | `sensor.engine_rpm` | 0x0C | PCM HS-CAN | Roulage |
+| 3 | `sensor.coolant_temp` | 0x05 | PCM HS-CAN | Roulage |
+| 4 | `sensor.fuel_level` | 0x2F | PCM HS-CAN | Roulage |
+| 5 | `sensor.fuel_rate` | 0x5E | PCM HS-CAN | Roulage |
+| 6 | `sensor.ambient_air_temp` | 0x46 | PCM HS-CAN | Roulage |
+| 7 | `sensor.manifold_pressure` | 0x0B | PCM HS-CAN | Roulage |
+| 8 | `sensor.dtc_count` | Mode 03 | PCM | Tout moment |
+| 9 | `binary_sensor.door_driver` | 0x225B1D/0 | BCM MS-CAN | Periodic wake |
+| 10 | `binary_sensor.door_passenger` | 0x225B1D/1 | BCM MS-CAN | Periodic wake |
+| 11 | `binary_sensor.door_left_rear` | 0x225B1D/3 | BCM MS-CAN | Periodic wake |
+| 12 | `binary_sensor.door_right_rear` | 0x225B1D/4 | BCM MS-CAN | Periodic wake |
+| 13 | `binary_sensor.door_luggage` | 0x225B1D/5 | BCM MS-CAN | Periodic wake |
+| 14 | `sensor.tpms_*` (×6) | 0x222813-18 | BCM MS-CAN | Periodic wake |
+| 15 | `sensor.battery_soc` | 0x224028 | BCM MS-CAN | Periodic wake |
+
+> **Note :** Les données BCM (portes, pneus, batterie) sont disponibles en roulage (temps réel) et en stationnement (periodic wake ~5 min). Les Aqara Zigbee restent la source primaire pour les portes en camping (latence <1s).
+
+---
+
+### 7.1 — Jauge carburant + autonomie restante
+
+| Champ | Valeur |
+|-------|--------|
+| **Capteurs** | `sensor.fuel_level` + `sensor.fuel_rate` + GPS odomètre |
+| **Donnée brute** | Niveau réservoir (%) + débit instantané (L/h) |
+| **Algorithme** | Conso moyenne 100km = moyenne mobile de fuel_rate / speed × 100 — Autonomie restante = fuel_level × capacité_réservoir / conso_moyenne |
+| **Action** | Dashboard : jauge (%) + "Range: X km". SI (fuel < 25%) → notification "Carburant bas — autonomie ~X km". SI (fuel < 10%) → ALERTE CRITIQUE |
+| **Seuils** | 25% avertissement, 10% critique |
+| **Priorité** | **P1** |
+
+---
+
+### 7.2 — Conso réelle par trajet (L/100km)
+
+| Champ | Valeur |
+|-------|--------|
+| **Capteurs** | `sensor.fuel_rate` + `sensor.vehicle_speed` + GPS distance |
+| **Donnée brute** | Débit carburant (L/h) + vitesse (km/h) |
+| **Algorithme** | `sensor.fuel_consumption_l100` = fuel_rate / speed × 100 — Log par trajet détecté (moteur ON → OFF) |
+| **Action** | Dashboard : "Ce trajet : X.X L/100km — Coût estimé : Y€" (prix diesel saisi manuellement par pays) |
+| **Seuils** | Alert si conso anormale (> 12 L/100km en croisière) → possible problème mécanique |
+| **Priorité** | **P1** |
+
+---
+
+### 7.3 — Diagnostic moteur live (DTC)
+
+| Champ | Valeur |
+|-------|--------|
+| **Capteurs** | Mode 03 + code description (base JSON ou API) |
+| **Donnée brute** | `sensor.dtc_count` + `sensor.dtc_codes` |
+| **Algorithme** | SI (DTC count > 0) → NOTIFICATION "Code défaut moteur : PXXXX — [description]" |
+| **Action** | Notification push + dashboard widget avec liste des codes actifs + lien recherche |
+| **Filtre** | Ignorer codes non critiques (P04xx évap mineur) si configuré |
+| **Priorité** | **P1** — sécurité roadtrip |
+
+---
+
+### 7.4 — Surveillance turbo
+
+| Champ | Valeur |
+|-------|--------|
+| **Capteurs** | `sensor.manifold_pressure` + `sensor.engine_rpm` |
+| **Donnée brute** | Pression admission (kPa) + régime (tr/min) |
+| **Algorithme** | SI (pression admission < seuil_attendu @ RPM donné) → ALERTE "Turbo sous-performant — possible fuite admission/durite" |
+| **Seuils** | À calibrer sur véhicule : pression attendue ~180-220 kPa @ 2000 RPM en charge. Écart > 30% → alerte. |
+| **Cross-check** | Si conso anormale (7.2) simultanée → confirmation panne |
+| **Priorité** | **P2** |
+
+---
+
+### 7.5 — Préchauffage Webasto intelligent
+
+| Champ | Valeur |
+|-------|--------|
+| **Capteurs** | `sensor.coolant_temp` + `binary_sensor.van_occupied` (mode camping) |
+| **Donnée brute** | T° liquide refroidissement + mode occupation |
+| **Algorithme** | SI (coolant < 5°C) ET (van occupé) ET (mode "départ prévu" activé) → SUGGESTION "Lancer Webasto — T° moteur : X°C" |
+| **Action** | Notification push avec bouton "Démarrer Webasto" (intégration future si interface disponible) |
+| **Seuils** | < 5°C → préchauffage recommandé. < -10°C → critique (diesel risque gélification) |
+| **Priorité** | **P2** |
+
+---
+
+### 7.6 — Alerte batterie porteur faible
+
+| Champ | Valeur |
+|-------|--------|
+| **Capteurs** | `sensor.battery_soc` + `sensor.battery_voltage_bcm` + `sensor.battery_current` |
+| **Donnée brute** | SOC (%), tension (V), courant (A) |
+| **Algorithme** | SI (SOC < 50%) ET (moteur OFF > 24h) → ALERTE "Batterie porteur faible — risque de non-démarrage" |
+| **Action** | Notification push + dashboard widget. SI (SOC < 30%) → ALERTE CRITIQUE "Démarrer le moteur maintenant" |
+| **Seuils** | SOC < 50% avertissement, < 30% critique. Cross-check avec tension < 11.8V. |
+| **Priorité** | **P2** |
+
+---
+
+### Impact CAN bus sur les scénarios existants
+
+| Scénario | Amélioration |
+|----------|-------------|
+| 1.1 Porte oubliée roulage | CAN speed + RPM remplacent attente GPS. Triple confirmation (D+ + speed + Aqara). |
+| 1.2 Hayon resté ouvert | CAN hayon en backup de l'Aqara (0-5 min délai, suffisant pour ce scénario) |
+| 1.4 Verrouillage tiroirs | CAN vitesse instantanée remplace GPS vitesse (plus rapide, pas de lag) |
+| 1.5 Détection intrusion | CAN capot + portes en backup des Aqaras. Porte AV + capot = scénario vol. |
+| 2.2 Surchauffe habitacle | Cross-check T° liquide refroidissement → distingue surchauffe moteur vs solaire |
+| 5.1 GPS spots | Enrichi : fuel_level + coolant_temp + RPM au spot → profil complet |
+| 5.2 Alerte pression pneus | Supprimé — remplacé par BCM TPMS ×6 (gratuit) |
+
+---
+
 ## Priorisation & roadmap
 
 | Priorité | Scénarios | Phase |
 |----------|-----------|-------|
-| 🔴 Critique | Porte oubliée roulage (1.1), Surchauffe (2.2), Frigo (1.3) | P1 |
-| 🟡 Important | Hayon ouvert (1.2), Verrouillage tiroirs (1.4), Intrusion (1.5), Condensation (2.1), Angle sécurité (2.6) | P2 |
+| 🔴 Critique | Porte oubliée roulage (1.1), Surchauffe (2.2), Frigo (1.3), **Jauge carburant (7.1)**, **Conso trajet (7.2)**, **DTC moteur (7.3)** | P1 |
+| 🟡 Important | Hayon ouvert (1.2), Verrouillage tiroirs (1.4), Intrusion (1.5), Condensation (2.1), Angle sécurité (2.6), **Surveillance turbo (7.4)**, **Webasto (7.5)**, **Batterie porteur (7.6)** | P2 |
 | 🟢 Confort | Autonomie (3.1), Shutdown (3.2), Toit relevable (4.1), GPS spots (5.1), Confort dB (2.3) | P3 |
-| 🔵 Évolution | Alarme sonore (2.4), TPMS (5.2), Alerte gel (2.5), Intempérie (4.2) | P4 |
+| 🔵 Évolution | Alarme sonore (2.4), Alerte gel (2.5), Intempérie (4.2) | P4 |
 
 ---
 
@@ -395,7 +559,9 @@ Pour chaque famille de capteurs, la matrice suivante :
 - [[stylevan-equinox4-cahier-technique-iot]] — Cahier technique
 - [[projet-vanlife-iot-foundation]] — Document fondateur
 - [[rpi-vanlife-guide-complet]] — Guide installation RPi + HA
+- [`ds300-tap/SPEC-DS300-TAP.md`](ds300-tap/SPEC-DS300-TAP.md) — Spec interface CBE DS300
+- [WomoNET Wiki — CBE DS Powerblock Series](https://wiki.womonet.io/protocols/cbe_ds_series/) — Pinout source
 
 ---
 
-*Document v0.1 DRAFT — [[Dobby]] 🦉, 2026-06-07. Prochaine révision : après validation des scénarios par JCH.*
+*Document v1.1 — [[Dobby]] 🦉, 2026-06-07, mis à jour 2026-07-09 (ajout CAN bus). Prochaine révision : après validation CAN sur véhicule réel.*

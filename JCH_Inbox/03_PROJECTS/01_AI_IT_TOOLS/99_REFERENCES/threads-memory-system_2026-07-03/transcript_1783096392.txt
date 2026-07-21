@@ -1,0 +1,131 @@
+00:00:00 - 00:00:52
+Today, we're talking about giving your AI memory. Not the complicated types that every other AI memory video is showing you, but the embarrassingly simple one that I came up with 6 months ago that is two folders on my computer. I call it the Threads Memory System, and I almost didn't make this video because I thought surely this is not the right way to do memory. But, after using it for 6 months, I can't really argue. So, I'm Ev, and I help knowledge professionals turn their scattered notes
+
+00:00:26 - 00:01:14
+and systems into a personal AI operating system where everything works together so you can move faster with more flow and focus. So, in this video, I'm going to show you exactly how the Threads Memory System works, the two folders you need to set up so that you can ask, "What did we decide about the launch last week?" and your AI actually knows. And then, at the end, I'm going to show you one more layer that, honestly, if you add it in, takes this from useful to something that you cannot work without.
+
+00:00:50 - 00:01:46
+Now, before we jump in, what I'm showing you today is just one piece of something bigger that I teach in my membership community, College of Knowledge. It is the place for solo operators who want to build a personal agentic operating system for themselves and their business. Not just AI tools, but the actual system that makes AI genuinely able to operate beside you in your daily work. So, it remembers everything, holds the context, it can actually do the work so you can be freed up to do your best
+
+00:01:18 - 00:02:10
+work. And it's not a pipe dream, it's what every member is building in College of Knowledge. So, you get access to our monthly workshops and our build sprints where we actually build out all the components of the system, our full toolkit library where every toolkit adds more capabilities to your agents, with weekly office hours, where our community is sharing wild things about what they are doing with AI and their agents, and so much more. So, if you want to stop playing around with all of the scattered
+
+00:01:44 - 00:02:34
+tools and build a real system that's going to upgrade how you work, then check it out at the link in the description below. All right. So, let me talk about the first part of this system, which is what I call thread files. And I think this came out of one of my biggest frustrations when I was working with AI all the way back in the very beginning, right? I remember when I started using Claude, it would constantly compact the conversation. Now, it doesn't do that as much anymore, but I remember every time
+
+00:02:10 - 00:02:59
+you picked up a conversation after it compacted, it was like it didn't remember anything. And so, this actually came out of that frustration, which then turned into now, you know, I can pick up a conversation in any different, you know, conversation with Claude over weeks and months, and it doesn't miss a beat, right? And so, it's something that I call thread files. And I call them this because basically I wanted to keep the thread of a conversation going. And so, whenever we start working on a
+
+00:02:34 - 00:03:29
+really, not even a really big project, whenever we start working on something together that I know is going to need a longer conversation, I'm going to want to work on it over multiple days, weeks, months, that kind of thing, and I don't want to have to go back and try and find a previous conversation, that kind of thing, I create a thread file. And it's just a folder that is part of my agent system that Chad, who's my chief of staff, can write to, and we keep all of these kind of thread files. So, this is
+
+00:03:01 - 00:03:48
+my threads pipeline, but essentially it's just a view in Obsidian. The whole folder is just a folder of files that are called threads. And I keep them for all types of things. So, you can see here that it's kind of broken down by different areas in my business. So, I've got threads that are running about business operations, about business strategy, about my College of Knowledge membership, marketing and funnels, and this just makes it really easy to see. And so, I've got all these active ones
+
+00:03:25 - 00:04:14
+here. I've got ones that are not started. I've got ones that are just reference, like they just hang around forever just as reference files, and then they're completed ones. So, if we have a look at one of these, like let's go into funnel mapping, you can see at the top here we put together some different properties. Now, in Obsidian, these are properties, but essentially they're just kind of like little fields at the top, and your AI can add them in. So, I basically choose kind of thread
+
+00:03:49 - 00:04:35
+types. So, they could be a standing thread, which is like they always exist, and I do that for like bigger areas in the business, one-off projects that we're working on, or systems that we have in the business. So, I've got, you know, if we're coding different systems, I've got dashboards and things like that. We keep a thread for all of those different things, so we can just pick it up anytime. And these work so well. So, they also have a state, so they can be active, not started. You just saw that
+
+00:04:12 - 00:05:05
+in the thread, the master thread file. I can connect it to B A U's, so I've got different B A U's in the business that I can connect it into. And I find this really helpful because I can actually see the long-term conversations that I'm having with Claude, and kind of work on those, and have all of the details about those in a thread file, when it started, what the description is, and then then we have the thread file. So, this is This is one we have where we're mapping all the funnels in my business. So,
+
+00:04:39 - 00:05:24
+there's a whole lot of things. And by the way, I do not write these at all, right? Chad writes the whole thing. Um I just say, "Write this to a thread." And he just goes and writes everything. He's very good at documenting. So, there's a whole of different things in here, like, you know, the different product tiers and that kind of thing. Like, each thread is a little bit different, but essentially it's all of the stuff that we need in order for me to say, "Hey, can we kind of continue on with this?"
+
+00:05:02 - 00:05:43
+So, you can see here we've got like a what's next, you know, what we've done, what we're still going to build, what we need to decide on, some proposals, like heaps of like cool stuff in here. And if we have a look at another one, let's say one that's not started. So, a lot of the time, these all come about because I'll have a conversation with Claude, and I'll say, "Hey, I'm thinking about this thing." And we do a whole lot of thinking work, and a lot of the time,
+
+00:05:22 - 00:06:14
+if you don't have a system like this to document it, all of that gets lost in a chat, okay? So, this is one where I've been thinking about, okay, I want to create some learning paths for my membership community. So, I've had a conversation with Chad, and then what we've done is then put this thread together with all of that thinking, so that I don't necessarily have to do the work in that one session, but and for instance, this is from probably a month, maybe 6 weeks ago we did this. It's just
+
+00:05:48 - 00:06:40
+not ready. It's not in our current cycle. It's going to be in our next cycle. But, I've already done the thinking with Claude, and I wanted to preserve it, right? So, we've got kind of what this is, why it exists, some kind of like what we did in the first thinking session around this, some naming, the shape of it, the structure. There is a lot in here that we've done [clears throat] in that conversation. And, you know, we probably put this together 6 weeks ago. So, if I wanted to
+
+00:06:13 - 00:07:06
+pick up this learning path thread and start to work on it, all I have to do is open up a conversation. Now, this is my new hire agent plugin. Next week, I'm going to do a full video on releasing this plugin. But, essentially, I can talk to Claude straight from within Obsidian, which is where all these thread files are. So, I can just say, "Hey, I want to pick up the thread on COK learning paths. Where were we up to?" Right? And this is a pretty long thread. I would have to read through it
+
+00:06:40 - 00:07:39
+all. But, in my plugin, I can just attach it, and then we can get started again. Okay. So, Chad read the file. Where we're at? Okay, just kind of he catches me up on where we're at, what we haven't done, and then what we should do. Okay, readiness sequencing. Where do we want to go? And so, having something like this, where you can pick up just a project that you worked on or some thinking that you worked on 6 weeks ago and just like we never even, you know, skipped a beat is so good when you were
+
+00:07:10 - 00:07:59
+doing a lot of knowledge work. So, essentially, how this is set up is literally a folder within my agent's operating system, right? So, if you're using Claude code or something like that, you're going to want to set up a folder that your agent can operate in, right? That's where your Claude file is, everything. If you want to know how to kind of get that set up, I will leave a video above, which I showed you my full agent setup. But, essentially, it's just a folder in here, and Chad can just
+
+00:07:33 - 00:08:32
+write all its files to it. And then, when I set it up, because I view everything kind of here in Obsidian, I just set up a file called the threads pipeline and these are just bases within it and when I say I set it up, I really just asked Chad to set up these views. So, it's just looking for everything within the threads folder and kind of what view I want and so it makes it really easy. Now, almost all of this is optional, right? All I started within the beginning was just a plain file, right? But over time, I added this
+
+00:08:04 - 00:09:02
+pipeline so I can like see things easily. I added the properties in each of the threads so it's really evolved over time. Now, the other important thing that I did early on in the beginning is create a skill so Chad knows how to save a thread, okay? So, in here I have a skill just called Chad save thread and whenever I save, can you save this thread? He's looking at this skill, okay? So, essentially how this skill is put together is kind of a bit of like why it exists, okay? And kind of
+
+00:08:33 - 00:09:20
+like for context limit, you know, to pick up conversations, that kind of thing. You know, we put in here thread files are Chad's memory, right? So, he knows that this is his memory. He has to capture everything, okay? So, there's some operational rules, there's some front matter that you know, that's what you see kind of like when it's choosing BAU or state or that kind of thing. Talked about, you know, the steps, instructions, capture the why, capture the state, handle multiple contexts,
+
+00:08:56 - 00:10:00
+save the file. It's pretty simple. It's not hugely complex but it means that Chad saves things consistently every time and I don't have to kind of keep telling him what a thread is, how to save it, those kinds of things. All right. So, if threads are the long-term thinking so that we can continue conversations and work on projects and work on thinking, daily notes are the short-term log, okay? So, I have kept daily logs or daily notes for years and years and they are so helpful when I go back to see like, oh,
+
+00:09:29 - 00:10:31
+what did I work on, you know, what did I do that day, that kind of thing. And so, when I was building this memory system, I thought, well, if daily logs help me, maybe they could help my AI assistant. And I was pretty much right on that. So, what I did was I built a system which had Wright's daily notes. Okay, so this is an example of a daily note. And again, this is just in his agent file, right? We set up a folder called daily notes, and at the end of the day he writes a basically looks through all of
+
+00:10:00 - 00:11:02
+his conversations and writes a daily log for everything. So, you can see here, this is for the 3rd of June, and it's just a log of everything that he did. Okay, so we did a voice mode implementation for our HiAo plugin. We did an audit of his AI memory system. We did some research. We did something about my Slack gateway. We did some Hermes testing. Like there's all sorts of things in here, right? And so this is really helpful when I say, "Hey, remember how we talked about this yesterday?" Or remember how we talked
+
+00:10:31 - 00:11:24
+about this, you know, like and so it's kind of like fuzzy, but essentially I can say to Chad, "Hey, remember when we talked about or when we fixed the HiAo Obsidian plugin the other day, right?" And so when I say that, he automatically knows to go back into his daily logs, have a look, and he gets himself caught up, and then he can follow the threads for anything that's here. So, if we were working on this, he might go and have a look at AIiOS, or you know, that kind of thing. So, it's like just enough that he
+
+00:10:57 - 00:11:47
+can catch himself up quickly from what we talked about in a conversation, have a look at a thread if that's applicable, that kind of thing. And so I found this really, really helpful. And how we set this up is that it is just a folder within our operating system called daily logs, okay? And then there's a few ways that you can do it, right? What I used to do is at the end of every conversation I would say, "Hey, can you log this?" Right? It's very manual, but I could just manually like, you know,
+
+00:11:22 - 00:12:13
+just say, "Hey, log this into your daily logs." That can work. And I built a log this skill just almost exactly like the thread skill, just so Chad knows kind of what to log, where to log it, you know, all of that kind of thing and it's consistent. But, what I've recently done is actually build a script that runs every night on my computer that just reads through all of the conversations for the day and just does it automatically. And I got Claude to set that up for me cuz I don't know how to
+
+00:11:48 - 00:12:34
+do things like that. But, that means that I don't have to kind of manually do the log this at the end of every conversation. I can just shut conversations down. But, what the script actually does is it actually goes in to the full conversation. So, it finds all the conversations, which are actually just logged on your computer, and it's reads through them all and it just uses High-Code really like cheap and cheerful and just does all this logging. And this is the skill that we use. It's just a
+
+00:12:11 - 00:13:04
+log session. So, all it's doing is that it's running a script in the background where it looks at the whole of the transcript of the session and then logs it into the file, right? Now, I built a full guide that you can just give to your AI to build both of this setup, right? The threads and the daily log plus scripts and everything. So, if you want to grab that, I'm going to leave a link for it in the description below. Trust me, it's way easier than trying to figure this out yourself. I just got
+
+00:12:38 - 00:13:41
+Chad to write you the guide that you can give to your AI. So, my AI can talk to your AI and you can get this set up. And I also mentioned that there's one other layer of memory that takes this from like kind of useful to something that I cannot live without. And that is my second brain, okay? And this is probably a term that you have heard thrown around in a million different ways, but this is something that I have been building for years and years, okay? I have so much external accumulated
+
+00:13:09 - 00:14:07
+thoughts in my second brain. It is where I operate my business from, it's where I operate my life from, and so having Claude connected into it means that along with threads and along with daily notes, he can go and find whatever he needs if we're talking about a project, if we're talking about, you know, a quick note, if we're talking about some knowledge that I've set up, that kind of thing. So, I highly recommend that you do not sleep on building something like this. It doesn't have to be complicated.
+
+00:13:38 - 00:14:34
+It can be really, really simple. So, let me jump in. Now, I keep my full second brain in Tana Outliner. I have been using Tana Outliner for like 4 years, maybe, and I really love it. And it works the way my brain works. I love how I can capture things into it, and it has an MCP so that my agent can actually connect into it and find whatever it needs, okay? So, this system that I keep on my computer and that I operate through Obsidian is my agent's operating system. And then, connected through an
+
+00:14:06 - 00:14:54
+MCP to Tana Outliner is my second brain. And so, my AI knows that if it needs to go and find anything else, it can do that here. Now, how I set this up is I have some different domains, okay? So, in my business, these are kind of my domains here. I've got business operations, I've got my focus hub, which is like how I get work done, I've got a knowledge vault, and a content engine, and then these are the three. But, the first four are really the big domains that I use. All right, so within
+
+00:14:30 - 00:15:21
+business operations, I have a few different sections, and these are literally just super tags in Tana. And each super tag is kind of like an entity or a thing, right? So, I have all of my business areas, and within these, this is where I have all of my kind of like thinking around an area of the business. So, if I come into like my membership, I've got all the projects that we're running for that cycle, I've got the threads, so this is the same thing that you saw in Obsidian, it's replicated
+
+00:14:55 - 00:15:50
+here, so I can actually connect all of the thinking that I'm doing to those threads. We've got issues, improvements, and insights for each of those, and different quick notes. And quick notes is kind of how I just get like stuff out of my head. But, essentially, how I view my second brain is it is my externalized thinking on everything that is going on in my life and my business, okay? And if you want to start to use AI in a significant way, then I I you have to get good at externalizing your thoughts.
+
+00:15:23 - 00:16:18
+And by the way, to do any of the organization in my second brain, right? I put quick notes in, and those quick notes turn into issues, improvements, insights, threads, you know, all of that. Like, Chad just organizes everything, okay? I'm going to have a video coming up on how I get AI to actually organize my whole second brain in a few weeks time, so stay tuned for that. But, yeah, so this is kind of how I run my business operations. If we come into my knowledge vault, same kind of thing. We have collections, which is
+
+00:15:50 - 00:16:38
+where I keep like all of the big kind of like knowledge areas that I'm thinking about and writing about and learning. I have sparks, I have sources, I have like a whole lot of like different videos on like how I do knowledge management. But, essentially, like my business is my knowledge, right? So, I have to always kind of be building kind of like knowledge and learning things and, you know, packaging that up for people in my world. And then, I also have my content engine, right? Which is where I run all
+
+00:16:15 - 00:17:01
+my content from. So, there's lots of different ways kind of to set this up, right? And I've been teaching people how to do this for a long time, building a second brain, that kind of thing. It feels complicated. What I always suggest people do, and I have a video on this now, I'll leave a link above, but essentially, like I talk about building a minimum viable system that can work with your AI, okay? And by the way, you don't have to build this in Tana at all. You can use Obsidian itself. It's great.
+
+00:16:38 - 00:17:26
+It's just markdown files, just notes, that kind of thing. But, essentially, the five things that I think everyone really needs is, if you want to build a second brain that AI can work with you and kind of understands what you're working on, all that kind of thing, is you build out these sections, right? You need something to manage actions and projects, right? The day-to-day running of what you do. I also suggest that people have somewhere that they can store notes about meetings and people,
+
+00:17:02 - 00:17:53
+okay? Because for most knowledge workers, that's a big part of the work that you do. And then, somewhere where you can store quick notes, okay? So, you saw like most of what I get out of my head and into my system is a quick note, and AI turns that into something else, so it's organized. And then, also documents. So, anything that I am actually producing, okay? If I go to documents here, there's like a bunch of stuff here. The stuff on funnels that I'm working on, stuff on, you know,
+
+00:17:27 - 00:18:24
+12-month plan for College of Knowledge, like all sorts of things, like things that I'm actually creating from the system. That for me is a minimum viable knowledge system that you can use to work with AI. So, that AI actually knows what you're working on, it has context, all of that kind of thing. So, if you're interested I'll leave a link to that above, but I just wanted to illustrate that along with threads and along with daily notes, the second brain actually is kind of this long-term memory that AI
+
+00:17:55 - 00:18:44
+can reach into and figure out stuff for me. So, that when I mention College of Knowledge, it goes to my area and it can see all of things. It can see what's currently in my thinking. It can say, "Oh, okay, Ev's, you know, wrestling with this issue." Or she wants to deal with this improvement. Like, when we go to plan our next cycle, all of my externalized thinking is already there. It's already waiting for me, and I don't have to do a lot of kind of the hard work of brainstorming and thinking
+
+00:18:20 - 00:19:07
+because I'm just constantly trying to get stuff out of my head. And like I said, I almost didn't make this video because I thought surely this cannot be the right way to do memory. But 6 months later, and Chad hasn't missed a beat on a single project that we've worked on. And once your agent has memory, it can start acting like a real operational partner for you. And that's when you it's going to want to start connecting it to the tools you use every day, so it can start doing work for you. And I
+
+00:18:43 - 00:19:25
+explain exactly how to do that in this next video. And remember, if you want the setup guide, then you can just hand your AI agent and get this whole thing set up, I'll leave a link to that in the description below. And of course, if you want to build the whole thing, the complete AI operating system, don't forget to check out College of Knowledge. And as always, if you like this video, hit like and subscribe, so you see more of it in your feed.
