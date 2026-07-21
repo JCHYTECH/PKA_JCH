@@ -74,7 +74,7 @@ Nous proposons une **visioconférence** pour caler ces points ensemble, puis un 
 
 Dites-nous quelles dates vous conviendraient.
 
-Je pense que nos derniers echanges sont la vraie fondation de l'action.
+Je pense que nos derniers echanges sont la vraie fondation de l'action et nous nous réjouissons d'aller de l'avant.
 
 Cordialement,
 
