@@ -1,5 +1,5 @@
 # EMAIL — VETALYX / DIAHO — Envoi Pack Strategique
-# 邮件 — VETALYX / 迪奥 — 战略资料包发送
+# 邮件 — VETALYX / 迪亚霍 — 战略资料包发送
 
 > **Statut :** Brouillon a valider par JCH
 > **Date :** 31 mai 2026
