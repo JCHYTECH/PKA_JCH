@@ -28,13 +28,13 @@ Ci-après désignée « **VETALYX** » ou le « **Distributeur** », | 以下简
 
 **DIAHO**, société de droit chinois [X], dont le siège social est sis [X], immatriculée sous le numéro [X], représentée par [X], en sa qualité de [X], dûment habilité(e) à cet effet,
 
-**迪奥（DIAHO）公司**，依中国法律设立的[X]，注册地址：[X]，统一社会信用代码：[X]，由[X]以[X]身份代表，其签署本协议已获有效授权，
+**迪亚霍（DIAHO）公司**，依中国法律设立的[X]，注册地址：[X]，统一社会信用代码：[X]，由[X]以[X]身份代表，其签署本协议已获有效授权，
 
-Ci-après désignée « **DIAHO** » ou le « **Fournisseur** », | 以下简称"**迪奥**"或"**供应商**"，
+Ci-après désignée « **DIAHO** » ou le « **Fournisseur** », | 以下简称"**迪亚霍**"或"**供应商**"，
 
 **D'AUTRE PART, | 乙方。**
 
-VETALYX et DIAHO étant ci-après désignées individuellement une « **Partie** » et collectivement les « **Parties** ». | VETALYX与迪奥以下单独称"**一方**"，合称"**双方**"。
+VETALYX et DIAHO étant ci-après désignées individuellement une « **Partie** » et collectivement les « **Parties** ». | VETALYX与迪亚霍以下单独称"**一方**"，合称"**双方**"。
 
 ---
 
@@ -42,19 +42,19 @@ VETALYX et DIAHO étant ci-après désignées individuellement une « **Partie**
 
 **A.** DIAHO est une société chinoise qui fédère, coordonne et représente les produits de quatre partenaires industriels chinois — Zheda Dixun (partenaire principal), Hangzhou Darui (lecteur DX-Reader), Gangzhu et Zhunxin — dans le domaine du diagnostic vétérinaire, notamment des tests rapides destinés à la détection des allergies chez les chiens et les chats.
 
-**A.** 迪奥为中国公司，汇聚、协调并代表四家中国工业合作伙伴——浙大迪迅（主要合作伙伴）、杭州大瑞（DX-Reader阅读器）、刚竹及准芯——在兽医诊断领域的产品，特别是用于犬猫过敏检测的快速测试产品。
+**A.** 迪亚霍为中国公司，汇聚、协调并代表四家中国工业合作伙伴——浙大迪迅（主要合作伙伴）、杭州大瑞（DX-Reader阅读器）、刚竹及准芯——在兽医诊断领域的产品，特别是用于犬猫过敏检测的快速测试产品。
 
 **B.** VETALYX dispose d'une expertise commerciale, scientifique, réglementaire et stratégique dans le domaine du diagnostic vétérinaire et souhaite développer sur le marché européen un réseau de distribution, de représentation réglementaire, d'enregistrement, de promotion et, le cas échéant, de localisation industrielle des produits fédérés par DIAHO.
 
-**B.** VETALYX在兽医诊断领域拥有商业、科学、监管及战略专业能力，并希望在欧洲市场发展迪奥所汇聚产品的分销、监管代表、注册、推广及必要时的工业本地化网络。
+**B.** VETALYX在兽医诊断领域拥有商业、科学、监管及战略专业能力，并希望在欧洲市场发展迪亚霍所汇聚产品的分销、监管代表、注册、推广及必要时的工业本地化网络。
 
 **C.** DIAHO garantit détenir les droits, autorisations, licences et mandats nécessaires de ses quatre partenaires chinois pour accorder à VETALYX l'exclusivité territoriale, les droits de distribution, de représentation réglementaire et de localisation industrielle prévus au présent Contrat. DIAHO sera seule responsable envers VETALYX de tout manquement d'un partenaire chinois à ses obligations.
 
-**C.** 迪奥保证其已从四家中国合作伙伴处获得必要的权利、授权、许可及委托，以授予VETALYX本协议规定的区域独家权、分销权、监管代表权及工业本地化权。如任何中国合作伙伴违反其义务，迪奥将单独对VETALYX承担责任。
+**C.** 迪亚霍保证其已从四家中国合作伙伴处获得必要的权利、授权、许可及委托，以授予VETALYX本协议规定的区域独家权、分销权、监管代表权及工业本地化权。如任何中国合作伙伴违反其义务，迪亚霍将单独对VETALYX承担责任。
 
 **D.** Les Parties ont conclu, en date du [X], un Accord sous seing privé (ci-après l'« Accord sous seing privé ») garantissant à DIAHO une participation de quarante pour cent (40 %) au capital de VETALYX en contrepartie d'un apport en propriété intellectuelle, conditionné à l'exercice par VETALYX de l'option de production prévue au présent Contrat.
 
-**D.** 双方已于[X]日签署一份私下协议书（以下简称"私下协议"），保证在VETALYX行使本协议规定的生产选择权的前提下，迪奥以知识产权出资为对价，获得VETALYX百分之四十（40%）的股权。
+**D.** 双方已于[X]日签署一份私下协议书（以下简称"私下协议"），保证在VETALYX行使本协议规定的生产选择权的前提下，迪亚霍以知识产权出资为对价，获得VETALYX百分之四十（40%）的股权。
 
 **E.** Les Parties reconnaissent que VETALYX devra engager des ressources financières, commerciales, scientifiques, réglementaires et organisationnelles importantes afin de créer et développer le marché européen des Produits. En conséquence, les Parties entendent protéger les droits de VETALYX sur le Territoire, notamment par une exclusivité contractuelle, des clauses de non-contournement, la reconnaissance de ses droits sur les dossiers réglementaires constitués par elle, ainsi qu'un droit de premier refus sur les produits futurs.
 
@@ -68,7 +68,7 @@ VETALYX et DIAHO étant ci-après désignées individuellement une « **Partie**
 
 **« Contrat »** désigne le présent contrat-cadre, ses annexes, avenants et tout document contractuel signé par les Parties en relation avec son objet. | **"协议"** 指本框架协议及其附件、补充协议及双方就协议标的所签署的任何合同文件。
 
-**« Produits »** désigne les produits de diagnostic vétérinaire destinés à la détection des allergies chez les chiens et les chats, fédérés par DIAHO auprès de ses partenaires chinois, tels que décrits en Annexe 1, ainsi que tout produit futur intégré au Contrat. | **"产品"** 指迪奥从其中国合作伙伴处汇聚的用于犬猫过敏检测的兽医诊断产品，详见附件1，以及纳入本协议的任何未来产品。
+**« Produits »** désigne les produits de diagnostic vétérinaire destinés à la détection des allergies chez les chiens et les chats, fédérés par DIAHO auprès de ses partenaires chinois, tels que décrits en Annexe 1, ainsi que tout produit futur intégré au Contrat. | **"产品"** 指迪亚霍从其中国合作伙伴处汇聚的用于犬猫过敏检测的兽医诊断产品，详见附件1，以及纳入本协议的任何未来产品。
 
 **« Territoire »** désigne l'Union européenne, le Royaume-Uni, la Suisse, la Norvège et l'Espace économique européen (EEE). | **"区域"** 指欧盟、英国、瑞士、挪威及欧洲经济区（EEA）。
 
@@ -78,15 +78,15 @@ VETALYX et DIAHO étant ci-après désignées individuellement une « **Partie**
 
 **« Savoir-Faire »** désigne l'ensemble des connaissances techniques, scientifiques, industrielles, commerciales, réglementaires et pratiques nécessaires à la production ou l'adaptation des Produits. | **"专有技术"** 指生产或改编产品所需的所有技术、科学、工业、商业、监管及实践知识。
 
-**« Partenaires Chinois »** désigne Zheda Dixun, Hangzhou Darui, Gangzhu, Zhunxin et toute autre entité chinoise dont DIAHO fédère les produits. | **"中国合作伙伴"** 指浙大迪迅、杭州大瑞、刚竹、准芯及迪奥汇聚其产品的任何其他中国实体。
+**« Partenaires Chinois »** désigne Zheda Dixun, Hangzhou Darui, Gangzhu, Zhunxin et toute autre entité chinoise dont DIAHO fédère les produits. | **"中国合作伙伴"** 指浙大迪迅、杭州大瑞、刚竹、准芯及迪亚霍汇聚其产品的任何其他中国实体。
 
-**« Accord sous seing privé »** désigne l'accord sous seing privé du 31 mai 2026 garantissant à DIAHO une participation de 40 % au capital de VETALYX. | **"私下协议"** 指2026年5月31日签署的私下协议书，保证迪奥获得VETALYX 40%的股权。
+**« Accord sous seing privé »** désigne l'accord sous seing privé du 31 mai 2026 garantissant à DIAHO une participation de 40 % au capital de VETALYX. | **"私下协议"** 指2026年5月31日签署的私下协议书，保证迪亚霍获得VETALYX 40%的股权。
 
 ---
 
 ## Article 2 — Objet | 第二条 — 标的
 
-Le présent Contrat définit les conditions dans lesquelles DIAHO accorde à VETALYX les droits suivants sur le Territoire : | 本协议规定迪奥授予VETALYX在区域内的以下权利：
+Le présent Contrat définit les conditions dans lesquelles DIAHO accorde à VETALYX les droits suivants sur le Territoire : | 本协议规定迪亚霍授予VETALYX在区域内的以下权利：
 
 1. un droit exclusif de distribution des Produits ; | 产品的独家分销权；
 2. un droit exclusif de promotion et de développement [[commercial]] ; | 独家推广及商业开发权；
@@ -101,9 +101,9 @@ Le Contrat constitue un contrat-cadre stratégique. | 本协议为战略框架�
 
 ## Article 3 — Exclusivité territoriale | 第三条 — 区域独家权
 
-DIAHO accorde à VETALYX, pour toute la durée du Contrat, une exclusivité totale sur le Territoire pour la distribution, la promotion, l'enregistrement et la commercialisation des Produits. | 迪奥授予VETALYX在本协议整个有效期内对区域内产品的分销、推广、注册及商业化享有完全独家权。
+DIAHO accorde à VETALYX, pour toute la durée du Contrat, une exclusivité totale sur le Territoire pour la distribution, la promotion, l'enregistrement et la commercialisation des Produits. | 迪亚霍授予VETALYX在本协议整个有效期内对区域内产品的分销、推广、注册及商业化享有完全独家权。
 
-DIAHO s'interdit de vendre, promouvoir ou distribuer les Produits sur le Territoire autrement que par l'intermédiaire de VETALYX. Cette interdiction s'applique également aux Partenaires Chinois. DIAHO garantit leur respect des obligations d'exclusivité. | 迪奥保证不通过VETALYX以外的渠道在区域内销售、推广或分销产品。此禁止同样适用于中国合作伙伴。迪奥保证其遵守独家权义务。
+DIAHO s'interdit de vendre, promouvoir ou distribuer les Produits sur le Territoire autrement que par l'intermédiaire de VETALYX. Cette interdiction s'applique également aux Partenaires Chinois. DIAHO garantit leur respect des obligations d'exclusivité. | 迪亚霍保证不通过VETALYX以外的渠道在区域内销售、推广或分销产品。此禁止同样适用于中国合作伙伴。迪亚霍保证其遵守独家权义务。
 
 Toute demande provenant du Territoire devra être transmise sans délai à VETALYX. | 任何来自区域内的请求均应立即转交VETALYX。
 
@@ -129,7 +129,7 @@ Toute Partie souhaitant ne pas renouveler devra notifier par écrit au moins dou
 
 6.1. Les Parties conviennent d'une phase de démarrage pour sécuriser le lancement [[commercial]]. | 双方约定设立启动阶段以保障商业启动。
 
-6.2. DIAHO fournit un stock initial de cent dix mille euros hors taxes (110 000 EUR HT), valorisé au prix de transfert préférentiel (Annexe 6). | 迪奥提供初始库存，价值十一万欧元（110,000 EUR，不含税），按优惠转让价格计价（附件6）。
+6.2. DIAHO fournit un stock initial de cent dix mille euros hors taxes (110 000 EUR HT), valorisé au prix de transfert préférentiel (Annexe 6). | 迪亚霍提供初始库存，价值十一万欧元（110,000 EUR，不含税），按优惠转让价格计价（附件6）。
 
 6.3. Le remboursement est soumis à la vente effective et à l'encaissement sur le Territoire. En cas d'invendus, de péremption ou de non-pertinence clinique, VETALYX est libérée de l'obligation de remboursement pour les quantités concernées. | 偿还以在区域内实际销售并收款为条件。如出现滞销、过期或临床不适用，VETALYX就相关数量免除偿还义务。
 
@@ -141,14 +141,14 @@ Toute Partie souhaitant ne pas renouveler devra notifier par écrit au moins dou
 
 L'entrée en vigueur du Contrat est soumise à : | 协议生效须满足：
 
-1. Remise par DIAHO des dossiers d'enregistrement chinois complets pour les Produits Initiaux. | 迪奥提交全部初始产品的完整中国注册档案。
+1. Remise par DIAHO des dossiers d'enregistrement chinois complets pour les Produits Initiaux. | 迪亚霍提交全部初始产品的完整中国注册档案。
 2. Immatriculation de VETALYX à la Banque-Carrefour des Entreprises (BCE) belge. | VETALYX在比利时企业交叉数据库（BCE）完成注册。
 
 ---
 
 ## Article 8 — Enregistrement réglementaire | 第八条 — 监管注册
 
-VETALYX est responsable des enregistrements réglementaires sur le Territoire. DIAHO fournit tous documents nécessaires sans frais supplémentaires. Les Dossiers Réglementaires constitués par VETALYX sont sa propriété exclusive. | VETALYX负责区域内的监管注册。迪奥免费提供所有必要文件。VETALYX所建监管档案为其独家财产。
+VETALYX est responsable des enregistrements réglementaires sur le Territoire. DIAHO fournit tous documents nécessaires sans frais supplémentaires. Les Dossiers Réglementaires constitués par VETALYX sont sa propriété exclusive. | VETALYX负责区域内的监管注册。迪亚霍免费提供所有必要文件。VETALYX所建监管档案为其独家财产。
 
 ---
 
@@ -160,7 +160,7 @@ VETALYX est responsable des enregistrements réglementaires sur le Territoire. D
 
 9.3. Les Parties disposent de huit (8) mois à compter de la notification pour organiser le transfert de Savoir-Faire. | 自通知之日起，双方有八（8）个月时间组织专有技术转让。
 
-9.4. L'exercice de l'option déclenche l'entrée de DIAHO au capital de VETALYX à hauteur de 40 % conformément à l'Accord sous seing privé. | 行使选择权触发私下协议规定的迪奥以40%股权比例入股VETALYX。
+9.4. L'exercice de l'option déclenche l'entrée de DIAHO au capital de VETALYX à hauteur de 40 % conformément à l'Accord sous seing privé. | 行使选择权触发私下协议规定的迪亚霍以40%股权比例入股VETALYX。
 
 ---
 
@@ -168,7 +168,7 @@ VETALYX est responsable des enregistrements réglementaires sur le Territoire. D
 
 10.1. Les Produits sont fabriqués conformément à la norme ISO 9001. | 产品按照ISO 9001标准生产。
 
-10.2. VETALYX finance les audits et certifications pour le Territoire. Les contrôles obligatoires en Chine sont à la charge de DIAHO ou du partenaire concerné. | VETALYX承担区域内的审核及认证费用。中国境内的强制检验由迪奥或相关合作伙伴承担。
+10.2. VETALYX finance les audits et certifications pour le Territoire. Les contrôles obligatoires en Chine sont à la charge de DIAHO ou du partenaire concerné. | VETALYX承担区域内的审核及认证费用。中国境内的强制检验由迪亚霍或相关合作伙伴承担。
 
 ---
 
@@ -180,13 +180,13 @@ Les prix de transfert sont définis en Annexe 6. Modification soumise à préavi
 
 ## Article 12 — Propriété intellectuelle | 第十二条 — 知识产权
 
-DIAHO conserve sa propriété intellectuelle préexistante. Les adaptations et Dossiers Réglementaires de VETALYX sont sa propriété exclusive. Le transfert de propriété intellectuelle lié à l'entrée au capital est régi par l'Accord sous seing privé. | 迪奥保留既有知识产权。VETALYX的改编及监管档案为其独家财产。与入股相关的知识产权转让由私下协议规定。
+DIAHO conserve sa propriété intellectuelle préexistante. Les adaptations et Dossiers Réglementaires de VETALYX sont sa propriété exclusive. Le transfert de propriété intellectuelle lié à l'entrée au capital est régi par l'Accord sous seing privé. | 迪亚霍保留既有知识产权。VETALYX的改编及监管档案为其独家财产。与入股相关的知识产权转让由私下协议规定。
 
 ---
 
 ## Article 13 — Confidentialité et non-contournement | 第十三条 — 保密与禁止规避
 
-Les Parties traitent comme confidentielles toutes les informations échangées. DIAHO s'interdit de contourner VETALYX pour entrer en relation directe avec des clients ou partenaires sur le Territoire. Les Partenaires Chinois sont tenus aux mêmes obligations. | 双方对所有交换信息予以保密。迪奥承诺不绕过VETALYX直接与区域内客户或合作伙伴建立关系。中国合作伙伴承担相同义务。
+Les Parties traitent comme confidentielles toutes les informations échangées. DIAHO s'interdit de contourner VETALYX pour entrer en relation directe avec des clients ou partenaires sur le Territoire. Les Partenaires Chinois sont tenus aux mêmes obligations. | 双方对所有交换信息予以保密。迪亚霍承诺不绕过VETALYX直接与区域内客户或合作伙伴建立关系。中国合作伙伴承担相同义务。
 
 ---
 
@@ -221,7 +221,7 @@ Fait à [LIEU], le [DATE], en cinq (5) exemplaires originaux. | 于[地点]签�
 Jean-Christophe HAVAUX — Fondateur | 创始人
 Signature : __________________ | 签名：__________________
 
-**Pour DIAHO | 迪奥代表：**
+**Pour DIAHO | 迪亚霍代表：**
 
 [X] — [X]
 Signature : __________________ | 签名：__________________

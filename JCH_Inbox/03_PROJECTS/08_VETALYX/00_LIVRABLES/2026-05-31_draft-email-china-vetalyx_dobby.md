@@ -17,7 +17,7 @@
 ## CORPS DU MAIL / 正文
 
 Dear Partners at DIAHO / ZHEDA DIXUN,  
-亲爱的迪奥（DIAHO）/ 浙大迪迅（ZHEDA DIXUN）合作伙伴：
+亲爱的迪亚霍（DIAHO）/ 浙大迪迅（ZHEDA DIXUN）合作伙伴：
 
 Following our recent discussions and the progress made on the European market launch, I am pleased to share with you several key documents for our strategic partnership.  
 继我们近期关于欧洲市场启动的讨论及取得的进展之后，我很高兴与各位分享我们战略合作伙伴关系的几份关键文件。
@@ -32,7 +32,7 @@ You will find attached the draft for the **Exclusive Distribution, Regulatory Re
 ### 2. 股东协议及知识产权入股
 
 Regarding the entry of DIAHO into the capital of VETALYX (40%), we have drafted a specific **Private Agreement**.  
-关于迪奥入股 VETALYX（40%）的事宜，我们起草了一份专门的**私下协议书**。
+关于迪亚霍入股 VETALYX（40%）的事宜，我们起草了一份专门的**私下协议书**。
 
 As discussed, this 40% stake is guaranteed in exchange for the transfer of production trade secrets. We have added a standard **anti-dilution clause** to ensure fairness: the 40% participation is calculated based on the Founders' initial equity block and will be diluted by any external third-party investors who might join the project *prior* to the exercise of the option, in the same way the Founders' shares are diluted. This ensures a balanced capitalization table for all parties.  
 诚如所议，这40%的股权是作为转让生产专有技术的对价而提供的。为确保公平，我们增加了一条标准的**反稀释条款**：这40%的持股比例是以创始人的初始股权块为基数计算的，并将按比例被在行使选择权*之前*可能加入项目的任何外部第三方投资者稀释，稀释方式与创始人股份相同。这确保了各方资本结构的平衡。

@@ -3,7 +3,7 @@
 
 **Version :** v1 — Final | **版本：** v1 — 终稿
 **Date :** 31 mai 2026 | **日期：** 2026年5月31日
-**Destinataire :** DIAHO / ZHEDA DIXUN | **收件方：** 迪奥 / 浙大迪迅
+**Destinataire :** DIAHO / ZHEDA DIXUN | **收件方：** 迪亚霍 / 浙大迪迅
 **Rédigé par :** [[Dobby]] (synthèse), [[Vasco]] (clinique), [[Clio]] (scientifique) | **起草人：** [[Dobby]]（综合）、[[Vasco]]（临床）、[[Clio]]（科学）
 **Traduit par :** [[Jade]] | **译者：** [[Jade]]
 
@@ -257,10 +257,10 @@ Les vétérinaires attendent des **allergènes européens à forte prévalence**
 
 ### 6.3 Prochaines étapes | 后续步骤
 
-1. DIAHO confirme la faisabilité technique de l'adaptation des panels 6 lignes. | 迪奥确认6线面板调整的技术可行性。
-2. VETALYX et DIAHO conviennent d'un calendrier de production des panels adaptés. | VETALYX与迪奥商定调整后面板的生产时间表。
+1. DIAHO confirme la faisabilité technique de l'adaptation des panels 6 lignes. | 迪亚霍确认6线面板调整的技术可行性。
+2. VETALYX et DIAHO conviennent d'un calendrier de production des panels adaptés. | VETALYX与迪亚霍商定调整后面板的生产时间表。
 3. VETALYX engage la validation KOL avec les deux leaders d'opinion identifiés. | VETALYX与已确定的两位意见领袖启动KOL验证。
-4. Documentation technique complète à fournir par DIAHO avant commercialisation. | 迪奥在商业化前提供完整的技术文档。
+4. Documentation technique complète à fournir par DIAHO avant commercialisation. | 迪亚霍在商业化前提供完整的技术文档。
 
 ---
 

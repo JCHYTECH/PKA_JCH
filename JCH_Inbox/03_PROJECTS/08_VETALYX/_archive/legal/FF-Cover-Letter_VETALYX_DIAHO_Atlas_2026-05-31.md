@@ -29,7 +29,7 @@ Le silence des derniers jours etait un silence de travail. Veuillez trouver ci-j
 
 **Private Shareholder Agreement (40% Equity)**
 *Accord garantissant l'entree au capital de DIAHO, incluant la clause de protection contre la dilution prealable.*
-**私下股东协议（40% 股权），包括预稀释保护条款，保障迪奥的入股权益。**
+**私下股东协议（40% 股权），包括预稀释保护条款，保障迪亚霍的入股权益。**
 
 ### 2. TECHNICAL & CLINICAL DOSSIER / 技术与临床资料
 
