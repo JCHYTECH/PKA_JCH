@@ -1,14 +1,14 @@
 # Thread — VETALYX
 
 > Living document — mis à jour automatiquement par Dobby 🦉 en fin de session.
-> **Dernière mise à jour** : 2026-10-06 — Contrat-cadre v4.1 (protections v1 restaurées + annexes réorganisées 1→10) ; statuts : exercice fiscal long fixé, administrateurs à nommer
+> **Dernière mise à jour** : 2026-10-06 — Contrat-cadre v4.1 + annexes 1→10 ; statuts (exercice fiscal long, administrateurs à nommer) ; business plan V3 recalé + Excel capital nettoyé ; archives consolidées + git commit
 > **Statut** : 🔶 actif (juridique) — capital 10 000 € (4 000 libéré), DIAHO 40 % en espèces
 
 ---
 
 ## Vue d'ensemble
 
-Plateforme de diagnostics vétérinaires rapides — marché européen. **Structure capitalistique actualisée** : DIAHO (Chine) entre au capital comme **actionnaire fondateur à 40 % dès la constitution** (apport en nature PI, Art. 5:7 CSA), les 4 fondateurs belges passent à **4 × 15 % (60 %)**. VETALYX exécute en outre une **mission de préparation stratégique d'implantation Europe** pour DIAHO (et d'autres candidats chinois en diagnostic), facturée 120 000 € HT (100 K€ + 20 K€ validations cliniques/sérothèque). MVP prioritaire : allergie IgE — inchangé.
+Plateforme de diagnostics vétérinaires rapides — marché européen. **Structure capitalistique actualisée** : DIAHO (Chine) entre au capital comme **actionnaire fondateur à 40 % dès la constitution** (apport en espèces, 1 600 €), les 4 fondateurs belges passent à **4 × 15 % (60 %)**. VETALYX exécute en outre une **mission de préparation stratégique d'implantation Europe** pour DIAHO (et d'autres candidats chinois en diagnostic), facturée 120 000 € HT (100 K€ + 20 K€ validations cliniques/sérothèque). MVP prioritaire : allergie IgE — inchangé.
 
 ---
 
@@ -19,6 +19,7 @@ Plateforme de diagnostics vétérinaires rapides — marché européen. **Struct
 | Global | ⚪ | Veille, reprise septembre |
 | Capital | 🟡 | **Pacte v1 + convention bloc v1 rédigés (30/09)**. Arbitrage JC 01/10 : DIAHO 40 % en espèces (1 600 €), capital 10 000 € (4 000 libéré), véto → statuts, seuils 50 %. Reste : corrections fond + notaire. |
 | Contrat-cadre | 🟡 | **v4.1 (06/10)** — protections v1 restaurées (stock lancement, écoulement 12 mois, cession/changement contrôle, assurance, garanties, marques, résiliation + 8 manquements graves DIAHO, force majeure, notifications, nullité partielle) ; annexes réorganisées 1→10 (fusion specs+données → Annexe 2, QA reportée Annexe 3) ; répartition inscrite. **EN officielle (Jade)**. Reste : validation Bosseloir + notaire. |
+| Business Plan | 🟡 | **V3 recalé (06/10)** — chiffres 2026-2030 alignés sur le modèle Excel, DIAHO 40 % dès la constitution, Belgique/AFMPS-FAMHP, mission 120 K€, localisation en option ; Excel nettoyé (capital 10 K€/4 K€ ajouté + 2 008 #REF! → 0). Reste : export PDF/statique pour tiers. |
 | Mission stratégique | ✅ | Article 6 v3 — 100 K€ + 20 K€ (validations cliniques + sérothèque) |
 | Checklist DIAHO | ✅ | 22 éléments (2 tableaux FR/ZH), revue ZH « Jade à confirmer » |
 | Qualif. AFMPS/FAMHP | 🟡 | À trancher (dispositif médical vétérinaire vs médicament vétérinaire) |
@@ -45,12 +46,14 @@ Plateforme de diagnostics vétérinaires rapides — marché européen. **Struct
 | 2026-10-06 | **Annexes réorganisées** | Fusion 2+3 (specs + données → Annexe 2), renumérotation 1→10, Quality Agreement reporté après constitution (Annexe 3), répartition inscrite (DIAHO fournit 1-2 ; VETALYX rédige 4-6-8-9-10 ; co-rédaction 3-5-7) |
 | 2026-10-06 | **Exercice fiscal fixé** | Exercice long : constitution → 31/12/2028 (démarrage facilité — 1ers comptes/AG/impôt en 2029) |
 | 2026-10-06 | **Administrateurs + DIAHO fiscal** | Statuts Art. 33 : 1. Peiwen QI, 2-3 [à désigner] (non tranché) ; pas d'exigence d'éléments fiscaux DIAHO |
+| 2026-10-06 | **Business plan recalé** | BP V3 : chiffres 2026-2030 (CA 299,7 K€ → 7,2 M€ ; EBITDA 41 K€ → 4,2 M€) alignés sur le modèle ; DIATECH→Vetalyx purgé ; DIAHO 40 % dès la constitution (espèces), Belgique/AFMPS-FAMHP, mission 120 K€, localisation en option ; Excel : capital 10 K€/4 K€ + 2 008 #REF! neutralisés |
+| 2026-10-06 | **Ordre & archivage** | INDEX.md réécrit, tout l'historique consolidé sous `_archive/legal/`, `.docx` obsolètes archivés, git commit `66d2b84` (baseline VETALYX) |
 
 ---
 
 ## Prochaine étape
 
-**Action** : ✅ Passe v2.1 **exécutée** (06/10) — contrat-cadre v4.1 (protections restaurées + annexes 1→10 + répartition), statuts (exercice fiscal long). → Prochaine : nommer les 2 administrateurs fondateurs (Art. 33) ; validation notaire (mécanique 6 000 €, ISC, exercice) ; re-traduction EN (Jade) des clauses ajoutées.
+**Action** : ✅ Passe v2.2 **exécutée** (06/10) — contrat-cadre v4.1 + annexes 1→10, statuts (exercice long), **business plan V3 recalé + Excel capital nettoyé**, archives consolidées + git commit. → Prochaine : nommer les 2 administrateurs fondateurs (Art. 33) ; validation notaire (mécanique 6 000 €, ISC, exercice) ; re-traduction EN (Jade) des clauses ajoutées ; export BP statique (PDF) pour tiers.
 **Deadline** : —
 **Responsable** : JC (nommer 2 administrateurs), Notaire (validation), Clio 📜 (qualification DM), Jade 🦩 (re-traduction EN des clauses ajoutées)
 
@@ -94,7 +97,8 @@ Plateforme de diagnostics vétérinaires rapides — marché européen. **Struct
 - **Brief Renard v2** : `00_LIVRABLES/2026-10-05_brief-revision-pacte-statuts-renard-v2_dobby.md`
 - **Contrat-cadre v4 (FR consolidée)** : `legal/contrat-diaho/FF-Contrat-Cadre_VETALYX_DIAHO_Renard_2026-10-05_v4-consolidee.md`
 - **Contrat-cadre v4 EN (officielle)** : `legal/contrat-diaho/FF-Contrat-Cadre_VETALYX_DIAHO_Renard_2026-10-05_v4-EN.md`
-- **Archives (antécédents)** : `legal/archives/` + `legal/contrat-diaho/archives/`
+- **Business plan V3** : `business-plan/Vetalyx_Executive_summary_V3.docx` (+ `_V3.md`, `Vetalyx BP.xlsx`)
+- **Archives (antécédents)** : `_archive/legal/`
 
 ---
 
