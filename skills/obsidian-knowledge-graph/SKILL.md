@@ -17,7 +17,7 @@ description: Piloter l'inventaire, le dictionnaire, les dry-runs et l'applicatio
 ## Sources
 
 - Script canonique : `/Users/jchavauxm5/PKA_JCH/scripts/obsidian_knowledge_inventory.py`
-- Projet : `/Users/jchavauxm5/PKA_JCH/JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/obsidian-knowledge-graph/`
+- Projet : `/Users/jchavauxm5/PKA_JCH/JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/knowledge-graph/`
 - Regles de validation : `references/validation_rules.md`
 
 ## À ne pas confondre avec
@@ -71,7 +71,7 @@ Verifier au minimum :
 Pour un test, utiliser le rapport genere par le script :
 
 ```text
-JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/obsidian-knowledge-graph/wikilink_dry_run_5.md
+JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/knowledge-graph/wikilink_dry_run_5.md
 ```
 
 Valider dans le rapport :
