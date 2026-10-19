@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1960 1560" font-family="Helvetica, Arial, sans-serif">
+<style>
+.frame{fill:none;stroke:#1a1a1a;stroke-width:3}.panel{fill:#f5e6c8;stroke:#8a6d3b;stroke-width:2}
+.drawer{fill:#e8d5a8;stroke:#8a6d3b;stroke-width:2}.trap{fill:#cdb27a;stroke:#6b5328;stroke-width:2}
+.hardware{fill:#333}.dim{stroke:#b30000;stroke-width:1.2}.dimtxt{fill:#b30000;font-size:22px}
+.label{fill:#1a1a1a;font-size:26px;font-weight:bold}.note{fill:#444;font-size:20px}
+</style>
+<text x="50" y="45" class="label">Meuble banquette — Module A · 344 × 540 × 256 mm · Échelle 1/2 (face/profil), 2/3 (dessus)</text>
+<text x="40" y="85" class="note">VUE DE FACE</text>
+<rect x="40" y="90" width="688.0" height="512.0" class="frame"/>
+<rect x="40" y="90" width="688.0" height="30.0" class="trap"/>
+<rect x="40" y="578.0" width="688.0" height="24.0" class="panel"/>
+<rect x="40" y="90" width="24.0" height="512.0" class="panel"/>
+<rect x="704.0" y="90" width="24.0" height="512.0" class="panel"/>
+<rect x="64.0" y="120.0" width="640.0" height="400.0" class="drawer"/>
+<circle cx="384.0" cy="320.0" r="40.0" fill="none" stroke="#333" stroke-width="2"/>
+<line x1="40" y1="622.0" x2="728.0" y2="622.0" class="dim"/>
+<text x="384.0" y="647.0" class="dimtxt" text-anchor="middle">344 mm</text>
+<line x1="746.0" y1="90" x2="746.0" y2="602.0" class="dim"/>
+<text x="752.0" y="346.0" class="dimtxt" transform="rotate(90 752.0 346.0)">256 mm</text>
+<text x="820" y="85" class="note">VUE DE PROFIL</text>
+<rect x="820" y="90" width="1080.0" height="512.0" class="frame"/>
+<rect x="820" y="90" width="1080.0" height="30.0" class="trap"/>
+<rect x="820" y="578.0" width="1080.0" height="24.0" class="panel"/>
+<rect x="820" y="90" width="24.0" height="512.0" class="panel"/>
+<rect x="844.0" y="120.0" width="1000.0" height="400.0" class="drawer"/>
+<line x1="844.0" y1="320.0" x2="1844.0" y2="320.0" stroke="#555" stroke-width="4" stroke-dasharray="10 6"/>
+<text x="1284.0" y="310.0" class="note">coulisse 500 mm</text>
+<circle cx="844.0" cy="98" r="8" class="hardware"/>
+<text x="844.0" y="82" class="note">charnière piano (butée 180°)</text>
+<line x1="820" y1="622.0" x2="1900.0" y2="622.0" class="dim"/>
+<text x="1360.0" y="647.0" class="dimtxt" text-anchor="middle">540 mm</text>
+<text x="40" y="695" class="note">VUE DE DESSUS (trappe)</text>
+<rect x="40" y="700" width="516.0" height="810.0" class="trap"/>
+<line x1="40" y1="706" x2="556.0" y2="706" stroke="#6b5328" stroke-width="4"/>
+<text x="50" y="730" class="note">charnière (arête interne)</text>
+<circle cx="100" cy="1490.0" r="9" class="hardware"/>
+<circle cx="496.0" cy="1490.0" r="9" class="hardware"/>
+<text x="50" y="1526.0" class="note">douilles M6 (arête externe)</text>
+<line x1="576.0" y1="700" x2="576.0" y2="1510.0" class="dim"/>
+<text x="582.0" y="1105.0" class="dimtxt" transform="rotate(90 582.0 1105.0)">540 mm</text>
+<line x1="40" y1="684" x2="556.0" y2="684" class="dim"/>
+<text x="298.0" y="678" class="dimtxt" text-anchor="middle">344 mm</text>
+<text x="40" y="1530" class="note">Module B/C : 288 × 540 × 256 mm (intérieur 264 mm) — mêmes détails, seule la largeur change.</text>
+</svg>

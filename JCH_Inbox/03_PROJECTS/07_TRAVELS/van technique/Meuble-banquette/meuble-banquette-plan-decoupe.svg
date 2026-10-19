@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1500" font-family="Helvetica, Arial, sans-serif">
+<text x="40" y="28" font-size="17" font-weight="bold">Plan de découpe — meuble banquette v5 (2026-10-18)</text>
+<text x="40" y="46" font-size="11" fill="#444">Cotes NETTES (mm) · plaques 2500×1220 · échelle 1/2 · nidage indicatif (à optimiser par le service de coupe)</text>
+<rect x="40" y="60" width="1250.0" height="610.0" fill="#faf7f0" stroke="#111" stroke-width="2.5"/>
+<text x="40" y="50" font-size="12" font-weight="bold" fill="#111">Feuille 1 — HPL-faced 10,5 mm — 15 panneaux</text>
+<rect x="40" y="60" width="270.0" height="128.0" fill="#cfc9bd" stroke="#333" stroke-width="1"/>
+<text x="175" y="121" font-size="9" fill="#111" text-anchor="middle">Côté</text>
+<text x="175" y="132" font-size="8" fill="#555" text-anchor="middle">540×256</text>
+<rect x="310.0" y="60" width="270.0" height="128.0" fill="#cfc9bd" stroke="#333" stroke-width="1"/>
+<text x="445" y="121" font-size="9" fill="#111" text-anchor="middle">Côté</text>
+<text x="445" y="132" font-size="8" fill="#555" text-anchor="middle">540×256</text>
+<rect x="580.0" y="60" width="270.0" height="128.0" fill="#cfc9bd" stroke="#333" stroke-width="1"/>
+<text x="715" y="121" font-size="9" fill="#111" text-anchor="middle">Côté</text>
+<text x="715" y="132" font-size="8" fill="#555" text-anchor="middle">540×256</text>
+<rect x="850.0" y="60" width="270.0" height="128.0" fill="#cfc9bd" stroke="#333" stroke-width="1"/>
+<text x="985" y="121" font-size="9" fill="#111" text-anchor="middle">Côté</text>
+<text x="985" y="132" font-size="8" fill="#555" text-anchor="middle">540×256</text>
+<rect x="40" y="188.0" width="270.0" height="128.0" fill="#cfc9bd" stroke="#333" stroke-width="1"/>
+<text x="175" y="249" font-size="9" fill="#111" text-anchor="middle">Côté</text>
+<text x="175" y="260" font-size="8" fill="#555" text-anchor="middle">540×256</text>
+<rect x="310.0" y="188.0" width="270.0" height="128.0" fill="#cfc9bd" stroke="#333" stroke-width="1"/>
+<text x="445" y="249" font-size="9" fill="#111" text-anchor="middle">Côté</text>
+<text x="445" y="260" font-size="8" fill="#555" text-anchor="middle">540×256</text>
+<rect x="580.0" y="188.0" width="270.0" height="105.0" fill="#cfc9bd" stroke="#333" stroke-width="1"/>
+<text x="715" y="238" font-size="9" fill="#111" text-anchor="middle">Flanc tiroir</text>
+<text x="715" y="248" font-size="8" fill="#555" text-anchor="middle">540×210</text>
+<rect x="850.0" y="188.0" width="270.0" height="105.0" fill="#cfc9bd" stroke="#333" stroke-width="1"/>
+<text x="985" y="238" font-size="9" fill="#111" text-anchor="middle">Flanc tiroir</text>
+<text x="985" y="248" font-size="8" fill="#555" text-anchor="middle">540×210</text>
+<rect x="40" y="316.0" width="270.0" height="105.0" fill="#cfc9bd" stroke="#333" stroke-width="1"/>
+<text x="175" y="366" font-size="9" fill="#111" text-anchor="middle">Flanc tiroir</text>
+<text x="175" y="376" font-size="8" fill="#555" text-anchor="middle">540×210</text>
+<rect x="310.0" y="316.0" width="270.0" height="105.0" fill="#cfc9bd" stroke="#333" stroke-width="1"/>
+<text x="445" y="366" font-size="9" fill="#111" text-anchor="middle">Flanc tiroir</text>
+<text x="445" y="376" font-size="8" fill="#555" text-anchor="middle">540×210</text>
+<rect x="580.0" y="316.0" width="270.0" height="105.0" fill="#cfc9bd" stroke="#333" stroke-width="1"/>
+<text x="715" y="366" font-size="9" fill="#111" text-anchor="middle">Flanc tiroir</text>
+<text x="715" y="376" font-size="8" fill="#555" text-anchor="middle">540×210</text>
+<rect x="850.0" y="316.0" width="270.0" height="105.0" fill="#cfc9bd" stroke="#333" stroke-width="1"/>
+<text x="985" y="366" font-size="9" fill="#111" text-anchor="middle">Flanc tiroir</text>
+<text x="985" y="376" font-size="8" fill="#555" text-anchor="middle">540×210</text>
+<rect x="1120.0" y="316.0" width="160.0" height="270.0" fill="#cfc9bd" stroke="#333" stroke-width="1"/>
+<text x="1200" y="448" font-size="9" fill="#111" text-anchor="middle">Fond A</text>
+<text x="1200" y="459" font-size="8" fill="#555" text-anchor="middle">320×540</text>
+<rect x="40" y="780" width="1250.0" height="610.0" fill="#faf7f0" stroke="#111" stroke-width="2.5"/>
+<text x="40" y="770" font-size="12" font-weight="bold" fill="#111">Feuille 2 — HPL compact 6 + 12 mm — 12 panneaux</text>
+<rect x="40" y="780" width="148.5" height="270.0" fill="#cfe0d8" stroke="#333" stroke-width="1"/>
+<text x="114" y="912" font-size="9" fill="#111" text-anchor="middle">Fond tiroir A</text>
+<text x="114" y="923" font-size="8" fill="#555" text-anchor="middle">297×540</text>
+<rect x="188.5" y="780" width="120.5" height="270.0" fill="#cfe0d8" stroke="#333" stroke-width="1"/>
+<text x="249" y="912" font-size="9" fill="#111" text-anchor="middle">Fond tiroir B/C</text>
+<text x="249" y="923" font-size="8" fill="#555" text-anchor="middle">241×540</text>
+<rect x="309.0" y="780" width="120.5" height="270.0" fill="#cfe0d8" stroke="#333" stroke-width="1"/>
+<text x="369" y="912" font-size="9" fill="#111" text-anchor="middle">Fond tiroir B/C</text>
+<text x="369" y="923" font-size="8" fill="#555" text-anchor="middle">241×540</text>
+<rect x="429.5" y="780" width="145.0" height="270.0" fill="#cfe0d8" stroke="#333" stroke-width="1"/>
+<text x="502" y="912" font-size="9" fill="#111" text-anchor="middle">Couvercle A (12)</text>
+<text x="502" y="923" font-size="8" fill="#555" text-anchor="middle">290×540</text>
+<rect x="574.5" y="780" width="117.0" height="270.0" fill="#cfe0d8" stroke="#333" stroke-width="1"/>
+<text x="633" y="912" font-size="9" fill="#111" text-anchor="middle">Couvercle B/C (12)</text>
+<text x="633" y="923" font-size="8" fill="#555" text-anchor="middle">234×540</text>
+<rect x="691.5" y="780" width="117.0" height="270.0" fill="#cfe0d8" stroke="#333" stroke-width="1"/>
+<text x="750" y="912" font-size="9" fill="#111" text-anchor="middle">Couvercle B/C (12)</text>
+<text x="750" y="923" font-size="8" fill="#555" text-anchor="middle">234×540</text>
+<rect x="808.5" y="780" width="148.5" height="105.0" fill="#cfe0d8" stroke="#333" stroke-width="1"/>
+<text x="883" y="830" font-size="9" fill="#111" text-anchor="middle">Extrémité A</text>
+<text x="883" y="840" font-size="8" fill="#555" text-anchor="middle">297×210</text>
+<rect x="957.0" y="780" width="148.5" height="105.0" fill="#cfe0d8" stroke="#333" stroke-width="1"/>
+<text x="1031" y="830" font-size="9" fill="#111" text-anchor="middle">Extrémité A</text>
+<text x="1031" y="840" font-size="8" fill="#555" text-anchor="middle">297×210</text>
+<rect x="1105.5" y="780" width="120.5" height="105.0" fill="#cfe0d8" stroke="#333" stroke-width="1"/>
+<text x="1166" y="830" font-size="9" fill="#111" text-anchor="middle">Extrémité B/C</text>
+<text x="1166" y="840" font-size="8" fill="#555" text-anchor="middle">241×210</text>
+<rect x="40" y="1050.0" width="120.5" height="105.0" fill="#cfe0d8" stroke="#333" stroke-width="1"/>
+<text x="100" y="1100" font-size="9" fill="#111" text-anchor="middle">Extrémité B/C</text>
+<text x="100" y="1110" font-size="8" fill="#555" text-anchor="middle">241×210</text>
+<rect x="160.5" y="1050.0" width="120.5" height="105.0" fill="#cfe0d8" stroke="#333" stroke-width="1"/>
+<text x="221" y="1100" font-size="9" fill="#111" text-anchor="middle">Extrémité B/C</text>
+<text x="221" y="1110" font-size="8" fill="#555" text-anchor="middle">241×210</text>
+<rect x="281.0" y="1050.0" width="120.5" height="105.0" fill="#cfe0d8" stroke="#333" stroke-width="1"/>
+<text x="341" y="1100" font-size="9" fill="#111" text-anchor="middle">Extrémité B/C</text>
+<text x="341" y="1110" font-size="8" fill="#555" text-anchor="middle">241×210</text>
+</svg>

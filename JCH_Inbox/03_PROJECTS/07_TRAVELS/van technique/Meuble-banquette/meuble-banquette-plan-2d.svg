@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1002 822" font-family="Helvetica, Arial, sans-serif">
+<rect x="60" y="80" width="682.0" height="512.0" fill="#f3ede0" stroke="#5b4a2e" stroke-width="3"/>
+<rect x="60" y="80" width="21.0" height="512.0" fill="#d9c9a8" stroke="#5b4a2e" stroke-width="1.5"/>
+<rect x="721.0" y="80" width="21.0" height="512.0" fill="#d9c9a8" stroke="#5b4a2e" stroke-width="1.5"/>
+<rect x="81.0" y="571.0" width="640.0" height="21.0" fill="#d9c9a8" stroke="#5b4a2e" stroke-width="1.5"/>
+<rect x="104.2" y="126.0" width="594.0" height="420.0" fill="#bcd7ef" stroke="#2b6cb0" stroke-width="2"/>
+<rect x="104.2" y="126.0" width="21.0" height="420.0" fill="#9fc3e8" stroke="#2b6cb0" stroke-width="1"/>
+<rect x="677.2" y="126.0" width="21.0" height="420.0" fill="#9fc3e8" stroke="#2b6cb0" stroke-width="1"/>
+<rect x="125.2" y="534.0" width="552.0" height="12.0" fill="#7fb3d5" stroke="#2b6cb0" stroke-width="1"/>
+<rect x="381.2" y="126.0" width="40.0" height="40.0" fill="#c98a4b" stroke="#7a4a1e" stroke-width="1.5"/>
+<rect x="81.0" y="124.0" width="19.2" height="424.0" fill="#e07b39" stroke="#8a4a12" stroke-width="1"/>
+<rect x="701.8" y="124.0" width="19.2" height="424.0" fill="#e07b39" stroke="#8a4a12" stroke-width="1"/>
+<rect x="81.0" y="80.0" width="30.0" height="40.0" fill="#c98a4b" stroke="#7a4a1e" stroke-width="1.5"/>
+<rect x="691.0" y="80.0" width="30.0" height="40.0" fill="#c98a4b" stroke="#7a4a1e" stroke-width="1.5"/>
+<rect x="111.0" y="96.0" width="580.0" height="24.0" fill="#6fa8dc" stroke="#1f5c99" stroke-width="2"/>
+<text x="40" y="40" font-size="22" font-weight="bold" fill="#111">Meuble banquette v5 — module A (coupe transversale)</text>
+<text x="40" y="65" font-size="14" fill="#444">Tiroir double sens R28DD · couvercle compact 12 dans cadre L · traverse anti-rack · hauteur tiroir 210 mm</text>
+<text x="401" y="632" font-size="15" fill="#b30000" text-anchor="middle">341 mm (largeur module A)</text>
+<line x1="60" y1="607.0" x2="742.0" y2="607.0" stroke="#b30000" stroke-width="1.2"/>
+<text x="401" y="576" font-size="13" fill="#b30000" text-anchor="middle">tiroir 297 × 210 mm</text>
+<text x="782" y="336" font-size="15" fill="#b30000" text-anchor="middle" transform="rotate(90 782 336)">hauteur 256 mm</text>
+<rect x="60" y="672.0" width="22" height="16" fill="#d9c9a8" stroke="#333" stroke-width="1"/>
+<text x="92" y="685.0" font-size="14" fill="#222">caisson (HPL-faced 10,5)</text>
+<rect x="60" y="698.0" width="22" height="16" fill="#bcd7ef" stroke="#333" stroke-width="1"/>
+<text x="92" y="711.0" font-size="14" fill="#222">tiroir (flancs 10,5 / extrémités+fond 6)</text>
+<rect x="60" y="724.0" width="22" height="16" fill="#e07b39" stroke="#333" stroke-width="1"/>
+<text x="92" y="737.0" font-size="14" fill="#222">coulisses R28DD (9,6 mm)</text>
+<rect x="60" y="750.0" width="22" height="16" fill="#c98a4b" stroke="#333" stroke-width="1"/>
+<text x="92" y="763.0" font-size="14" fill="#222">cadre L + traverse (bois dur)</text>
+<rect x="60" y="776.0" width="22" height="16" fill="#6fa8dc" stroke="#333" stroke-width="1"/>
+<text x="92" y="789.0" font-size="14" fill="#222">couvercle HPL compact 12</text>
+</svg>

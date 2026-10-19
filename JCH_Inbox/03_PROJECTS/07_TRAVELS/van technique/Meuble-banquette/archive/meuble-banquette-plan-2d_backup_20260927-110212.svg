@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1560" font-family="Helvetica, Arial, sans-serif">
+  <style>
+    .frame { fill: none; stroke: #1a1a1a; stroke-width: 3; }
+    .panel { fill: #f5e6c8; stroke: #8a6d3b; stroke-width: 2; }
+    .drawer { fill: #e8d5a8; stroke: #8a6d3b; stroke-width: 2; }
+    .trap { fill: #cdb27a; stroke: #6b5328; stroke-width: 2; }
+    .hardware { fill: #333; stroke: none; }
+    .dim { stroke: #b30000; stroke-width: 1.2; }
+    .dimtxt { fill: #b30000; font-size: 22px; }
+    .label { fill: #1a1a1a; font-size: 26px; font-weight: bold; }
+    .note { fill: #444; font-size: 20px; }
+  </style>
+
+  <text x="50" y="45" class="label">Meuble banquette — Module type · 346 × 560 × 250 mm · Échelle 1/2 (face/profil), 2/3 (dessus)</text>
+
+  <!-- ============ VUE DE FACE (346 × 250) — origine (40, 90), échelle 2 px/mm ============ -->
+  <text x="40" y="85" class="note">VUE DE FACE</text>
+  <!-- module outline 692x500 -->
+  <rect x="40" y="90" width="692" height="500" class="frame"/>
+  <!-- trappe (top) 15mm=30px -->
+  <rect x="40" y="90" width="692" height="30" class="trap"/>
+  <!-- bottom panel 15mm -->
+  <rect x="40" y="560" width="692" height="30" class="panel"/>
+  <!-- side panels 15mm each -->
+  <rect x="40" y="90" width="30" height="500" class="panel"/>
+  <rect x="702" y="90" width="30" height="500" class="panel"/>
+  <!-- drawer front 316x200 -> 632x400, at (70,160) -->
+  <rect x="70" y="160" width="632" height="400" class="drawer"/>
+  <!-- handle -->
+  <rect x="316" y="350" width="160" height="20" rx="4" class="hardware"/>
+  <!-- dims -->
+  <line x1="40" y1="610" x2="732" y2="610" class="dim"/>
+  <text x="360" y="635" class="dimtxt">346 mm</text>
+  <line x1="750" y1="90" x2="750" y2="590" class="dim"/>
+  <text x="758" y="345" class="dimtxt" transform="rotate(90 758 345)">250 mm</text>
+
+  <!-- ============ VUE DE PROFIL (560 × 250) — origine (820, 90), échelle 2 ============ -->
+  <text x="820" y="85" class="note">VUE DE PROFIL (côté interne à gauche, extérieur à droite)</text>
+  <!-- module outline 1120x500 -->
+  <rect x="820" y="90" width="1120" height="500" class="frame"/>
+  <!-- trappe 560x15 -->
+  <rect x="820" y="90" width="1120" height="30" class="trap"/>
+  <!-- bottom panel -->
+  <rect x="820" y="560" width="1120" height="30" class="panel"/>
+  <!-- back panel (dos) 15mm -->
+  <rect x="820" y="90" width="30" height="500" class="panel"/>
+  <!-- drawer 500x200 -> 1000x400, from back (x=850) -->
+  <rect x="850" y="160" width="1000" height="400" class="drawer"/>
+  <!-- slide (full extension 500mm) -->
+  <line x1="850" y1="360" x2="1850" y2="360" stroke="#555" stroke-width="4" stroke-dasharray="10 6"/>
+  <text x="1270" y="352" class="note">coulisse pleine extension 500 mm</text>
+  <!-- hinge (back top edge) -->
+  <circle cx="835" cy="105" r="8" class="hardware"/>
+  <text x="835" y="70" class="note">charnière piano (butée 180°)</text>
+  <!-- douilles M6 (external edge, top) -->
+  <circle cx="1900" cy="105" r="8" class="hardware"/>
+  <circle cx="1880" cy="105" r="8" class="hardware"/>
+  <text x="1830" y="70" class="note">douilles M6 (câbles/jambes)</text>
+  <!-- dims -->
+  <line x1="820" y1="620" x2="1940" y2="620" class="dim"/>
+  <text x="1350" y="645" class="dimtxt">560 mm</text>
+
+  <!-- ============ VUE DE DESSUS (346 × 560) — origine (40, 700), échelle 1.5 ============ -->
+  <text x="40" y="695" class="note">VUE DE DESSUS (trappe)</text>
+  <!-- trappe 519x840 -->
+  <rect x="40" y="700" width="519" height="840" class="trap"/>
+  <!-- hinge line (back, top edge) -->
+  <line x1="40" y1="706" x2="559" y2="706" stroke="#6b5328" stroke-width="4"/>
+  <text x="60" y="730" class="note">charnière (arête interne)</text>
+  <!-- 2 douilles (external edge, bottom) -->
+  <circle cx="120" cy="1520" r="9" class="hardware"/>
+  <circle cx="460" cy="1520" r="9" class="hardware"/>
+  <text x="70" y="1550" class="note">douilles M6 (arête externe)</text>
+  <!-- 4 alvéoles (corners) -->
+  <circle cx="70" cy="730" r="14" fill="none" stroke="#b30000" stroke-width="2"/>
+  <circle cx="510" cy="730" r="14" fill="none" stroke="#b30000" stroke-width="2"/>
+  <circle cx="70" cy="1490" r="14" fill="none" stroke="#b30000" stroke-width="2"/>
+  <circle cx="510" cy="1490" r="14" fill="none" stroke="#b30000" stroke-width="2"/>
+  <text x="120" y="760" class="note">alvéoles (empilement) ×4</text>
+  <!-- dims -->
+  <line x1="600" y1="700" x2="600" y2="1540" class="dim"/>
+  <text x="610" y="1130" class="dimtxt" transform="rotate(90 610 1130)">560 mm</text>
+  <line x1="40" y1="680" x2="559" y2="680" class="dim"/>
+  <text x="260" y="674" class="dimtxt">346 mm</text>
+</svg>
