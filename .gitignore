@@ -46,6 +46,9 @@ venv/
 env/
 scripts/telegram-bot/venv/
 
+# git filter-repo safety backups
+.git.bak-*/
+
 # OS/editor noise
 .DS_Store
 .idea/
