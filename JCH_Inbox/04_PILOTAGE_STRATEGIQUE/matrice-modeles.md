@@ -1,6 +1,6 @@
 # Matrice des modèles — PKA_JCH
 > Quel modèle utiliser pour quel type de tâche, et comment.
-> Dernière mise à jour : 2026-07-06 par Dobby 🦉
+> Dernière mise à jour : 2026-10-19 par Dobby 🦉
 > 
 > **Lecture :** une ligne = un modèle disponible. Choisir selon la tâche.
 
@@ -10,7 +10,7 @@
 
 | Modèle | Runtime | Accès | Usage recommandé | Coût estimé | Forces | Limites |
 |--------|---------|-------|-----------------|-------------|--------|---------|
-| **DeepSeek V4** | Codex CLI (local) | Direct | Tâches complexes, code, architecture, recherche, loops | ~$0.14/M input | Raisonnement profond, 1M contexte, tools riches | Bing indisponible → DuckDuckGo |
+| **DeepSeek V4** | Codex CLI (local) | Direct | Tâches complexes, code, architecture, recherche, loops | ~$0.14/M input | Raisonnement profond, 1M contexte, tools riches | Recherche : `web_search` (Tavily) par défaut |
 | **Claude Sonnet 4.6** | Claude Code | API Anthropic | Raisonnement stratégique, analyse juridique, décisions nuancées | Payant | Pensée structurée, sécurité, nuance | Contexte plus limité que DeepSeek |
 | **Qwen 2.5 / 3.5** | OpenRouter | `~/.config/pka-jch/openrouter_key.txt` | Tâches équilibrées, backup DeepSeek | Variable (OpenRouter) | Bon rapport qualité/prix | Dépend du modèle spécifique |
 | **Gemini 2.5 Pro** | Gemini CLI | API Google | Multimodal, analyse d'images, recherche web Google | Payant | Intégration Google, vision, 1M+ contexte | Prompting différent des autres |
@@ -40,7 +40,7 @@
 | Coder un script complexe | DeepSeek V4 (Codex) |
 | Écrire un brief stratégique | Claude Sonnet 4.6 |
 | Analyser une photo | llama3.2-vision:11b (local) ou Gemini 2.5 Pro |
-| Faire une recherche web | DeepSeek V4 → DuckDuckGo |
+| Faire une recherche web | DeepSeek V4 → Tavily (`web_search`) |
 | Du code hors-ligne / gratuit | qwen2.5-coder:14b (Ollama M1) |
 | Un agent autonome longue durée | DeepSeek V4 (1M contexte) |
 | Raisonner sur un problème logique | deepseek-r1:14b (local) |
