@@ -1,30 +1,35 @@
 # Priorités actives — Portefeuille PKA_JCH
 
-> Dernière mise à jour : 2026-07-15 — Dobby 🦉 — Alignement post-gel WILDNEXUS
+> Dernière mise à jour : 2026-10-19 — Dobby 🦉 — deadline IOT Van prolongée au 15/12, RPi 5 boot résolu
 > Rôle : arbitrage transversal entre projets
 
 ---
 
-## 🔴 Priorité absolue — juillet 2026
+## 🔴 Priorité absolue — octobre 2026
 
 | Projet | Pourquoi maintenant | Deadline |
 |--------|-------------------|----------|
-| **IOT Van** | Tout le hardware est reçu (RPi 5 assemblé, SSD, PV PI, Mouser reçu, Sonde TL-136, ADS1115×6). Mise en boîtier + config HA finale + commander capteurs Zigbee + préparer install Lupo. | **7 août 2026** — arrivée Lupo |
+| **IOT Van** | RPi 5 boot résolu (NVMe retiré 01/10, HAOS 18.3). Hardware quasi complet, reste : capteurs Zigbee (~88€), silentblocs, coating, WiCAN Pro, pose bracket Be Camper. | **15 décembre 2026** — installation IOT Van |
 
-## 🟡 Priorité haute — septembre 2026
+## 🟠 Priorité haute — juridique VETALYX (réactivé)
 
 | Projet | Pourquoi |
 |--------|----------|
-| **WILDNEXUS P0** | Gelé jusqu'à septembre (bench loop = temps long, incompatible avec deadline Lupo). Hardware reçu, SOPs audio (13-18) en attente, panier Mouser restant (~279€) à commander. Reprise septembre. |
-| **NEXUS_ACOUSTIC** | TweetyBERT + InsectSet459 analysés (03/07), Lucio Arese/SoundPlot validé. Reprise septembre — pipeline cible : Edge→RPi 5 BirdNET→M5 TweetyBERT. |
-| **ARTEON** | Gelé jusqu'à septembre — relance éditoriale exige créativité JC. WildLens édition #1 matérialisée, charte livrée. Ghost API à configurer à la reprise. |
-| **LEAFNET** | Gelé — proto breadboard AD623 + firmware ESP-NOW reporté à septembre. |
+| **VETALYX** | DIAHO 40 % fondateur acté (18/08). Pacte actionnaires v1 + convention bloc v1 produits (30/09). Reste : corrections fond (véto → statuts), qualification AFMPS/FAMHP, notaire + UCM. Non bloquant mais chaud. |
+
+## 🟡 Priorité haute — replanifiée (non reprise)
+
+| Projet | Pourquoi |
+|--------|----------|
+| **WILDNEXUS P0** | Bench loop non repris en septembre. Panier Mouser ~279€ non commandé. À replanifier post-van. |
+| **NEXUS_ACOUSTIC** | Dépend de WildNexus P0. |
+| **ARTEON** | Relance éditoriale exige créativité JC. |
 
 ## 🟢 Maintenir
 
 | Projet | Action |
 |--------|--------|
-| **AI_IT_TOOLS** | Thread files par projet livrés (11/07). Maintien. |
+| **AI_IT_TOOLS** | Thread files par projet livrés. Maintien. |
 | **PHOTO_NATURE** | Keyworder fonctionnel, presets stockés, maintien. |
 | **PHOTO_AI_JURY** | 58 analyses dans argus_critique.db, MCP LR à activer (30 min JC). |
 
@@ -32,9 +37,9 @@
 
 | Projet | Statut |
 |--------|--------|
-| **VETALYX** | Veille — en attente roadmap 2026 |
 | **InsectNet** | Pipeline en pause — migration M1 à exécuter quand accès dispo |
-| **TRAVELS** | Docs créées, planification voyage = en roulant en août |
+| **TRAVELS** | Docs créées, meuble banquette en design, planif voyage = en roulant |
+| **LEAFNET** | Gelé — proto reporté |
 | **FAUNE_AUTOUR** | Gelé — PWA frontend en attente |
 | **FUTURE_INVEST** | Gelé |
 

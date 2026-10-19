@@ -1,16 +1,16 @@
 # État des projets — One-Pager
 > Tableau de bord unique de tous les projets actifs PKA_JCH.
-> Dernière mise à jour : 2026-07-11 par Dobby 🦉 — Skill pka-thread-file terminé, IOT thread mis à jour post-stabilisation Lupo (deadline 7 août, arrivée Lupo). 6 projets gelés jusqu'à septembre.
+> Dernière mise à jour : 2026-10-19 par Dobby 🦉 — deadline IOT Van prolongée au 15/12 (JC). RPi 5 boot résolu, HAOS 18.3. VETALYX réactivé (juridique).
 > 
 > **Lecture :** 🔴 = P0 deadline dure, 🟢 = actif autonome, ⚪ = gelé/reporté
 
 ---
 
-## 🔴 P0 — Deadline 7 août 2026 (arrivée Lupo)
+## 🔴 P0 — Deadline 15 décembre 2026 (installation IOT Van)
 
 | # | Projet | Statut | Dernière action | Prochaine étape | Blocage | Spécialiste(s) |
 |---|--------|--------|-----------------|-----------------|---------|----------------|
-| 1 | **IOT / Vanlife** | 🔴 P0 | RPi 5 assemblé (SSD + UPS HAT + accus 18650), Mouser reçu, Sonde TL-136 reçue, Step-Down HW-133 reçu, ADS1115×6 reçus | Mise en boîtier X1201-C1 + silentblocs + coating + PV PI HAT + config HA finale + commander capteurs Zigbee + préparer install Lupo | — | Forge, Araignée, Dobby |
+| 1 | **IOT / Vanlife** | 🔴 P0 | Van Lupo livré (30/07), RPi 5 boot résolu (NVMe retiré 01/10, HAOS 18.3), hardware quasi complet. | Commander 8 capteurs Zigbee (~88€) + silentblocs + coating, intégrer WiCAN Pro, installer dans le van. | — (deadline 15/12) | Forge, Araignée, Dobby |
 
 ---
 
@@ -18,21 +18,28 @@
 
 | # | Projet | Statut | Dernière action | Prochaine étape | Spécialiste(s) |
 |---|--------|--------|-----------------|-----------------|----------------|
-| 2 | **PHOTO_NATURE** | 🟢 autonome | INDEX à jour (02/07), keyworder fonctionnel, 11 presets Argus | — (tourne seul) | Lynx, Nova, Héron |
-| 3 | **PHOTO_AI_JURY** | 🟢 autonome | argus_critique.db actif (58 analyses), prompt calibré (14/06) | Activer MCP Lightroom (30 min JC) | Argus |
-| 4 | **AI_IT_TOOLS** | 🟢 autonome | P0-P2 terminés (19/06), hub OpenRouter restructuré (01/07) | ✅ Skill pka-thread-file terminé (10/07), 10 thread files créés. IOT mis à jour 11/07. | Dobby, Forge |
+| 2 | **PHOTO_NATURE** | 🟢 autonome | INDEX à jour, keyworder fonctionnel, presets Argus | — (tourne seul) | Lynx, Nova, Héron |
+| 3 | **PHOTO_AI_JURY** | 🟢 autonome | argus_critique.db actif (58 analyses) | Activer MCP Lightroom (30 min JC) | Argus |
+| 4 | **AI_IT_TOOLS** | 🟢 autonome | 10 thread files créés, skills actifs | Maintien | Dobby, Forge |
 
 ---
 
-## ⚪ Gelés — Reprise septembre 2026 (post-van)
+## 🔶 Réactivé — VETALYX (juridique, actif depuis août)
+
+| # | Projet | Statut | Dernière action | Prochaine étape | Spécialiste(s) |
+|---|--------|--------|-----------------|-----------------|----------------|
+| 5 | **VETALYX** | 🔶 actif (juridique) | DIAHO 40 % fondateur acté (18/08). Contrat-cadre v3, statuts SRL v22/09, pacte actionnaires v1 + convention bloc v1 produits (30/09). | Appliquer corrections fond juridique (véto DIAHO → statuts), trancher qualification AFMPS/FAMHP, valider avec notaire + UCM. | Renard, Clio, Jade |
+
+---
+
+## ⚪ Gelés — reprise à replanifier
 
 | # | Projet | Statut | Raison du gel | Reprise prévue |
 |---|--------|--------|---------------|----------------|
-| 5 | **WILDNEXUS** | ⚪ gelé | Hardware reçu, mais bench loop = temps long. Septembre idéal. | Septembre |
-| 6 | **ARTEON + WildLens** | ⚪ gelé | Relance éditoriale exige créativité JC, pas le moment | Septembre |
-| 7 | **InsectNet** | ⚪ gelé | Migration M1 non urgente | Septembre |
-| 8 | **TRAVELS** | ⚪ gelé | Docs créées (apps-roadtrip, Lupo Planner PWA). Planif voyage = en roulant en août. | En roulant (août) |
-| 9 | **VETALYX** | ⚪ gelé | En veille depuis juin | Septembre |
+| 6 | **WILDNEXUS** | ⚪ gelé | Bench loop non repris en septembre (focus IOT/VETALYX). Panier Mouser ~279€ non commandé. | À replanifier post-van |
+| 7 | **ARTEON + WildLens** | ⚪ gelé | Relance éditoriale exige créativité JC | À replanifier |
+| 8 | **InsectNet** | ⚪ gelé | Migration M1 non urgente | À replanifier |
+| 9 | **TRAVELS** | ⚪ gelé | Planif voyage en roulant. Meuble banquette 104×55×25 en design. | En roulant |
 | 10 | **NEXUS_ACOUSTIC** | ⚪ gelé | Dépend de WildNexus P0 | Post-WildNexus |
 
 ---
@@ -42,9 +49,9 @@
 | Projet | Statut | Note |
 |--------|--------|------|
 | WILDMESH | ⚪ gelé | Réseau LoRa mesh — en attente de maturité WildNexus |
-| FUTURE_INVEST | ⚪ gelé | Archivé le 2026-06-23 — Freeze décidé par JC |
-| Maison off-grid | ⚪ concept | 60 m² bois sur 9 000 m² — phase concept uniquement |
-| FAUNE_AUTOUR | ⚪ gelé | PWA extraite dans PHOTO_NATURE — gelée |
+| FUTURE_INVEST | ⚪ gelé | Archivé le 2026-06-23 |
+| Maison off-grid | ⚪ concept | Phase concept uniquement |
+| FAUNE_AUTOUR | ⚪ gelé | PWA extraite dans PHOTO_NATURE |
 
 ---
 
@@ -54,10 +61,10 @@
 |------------|--------|
 | Projets totaux | 10 |
 | 🔴 P0 (deadline dure) | 1 — IOT/Vanlife |
+| 🔶 Réactivé | 1 — VETALYX (juridique) |
 | 🟢 P1 (autonome) | 3 — PHOTO_NATURE, PHOTO_AI_JURY, AI_IT_TOOLS |
-| ⚪ Gelés | 6 — WILDNEXUS, ARTEON, InsectNet, TRAVELS, VETALYX, NEXUS_ACOUSTIC |
-| Prochaine échéance | **7 août 2026** — arrivée Lupo, IOT doit être prêt |
-| Prochaine échéance secondaire | ✅ Terminé — skill pka-thread-file livré le 11/07 |
+| ⚪ Gelés | 5 — WILDNEXUS, ARTEON, InsectNet, TRAVELS, NEXUS_ACOUSTIC |
+| Prochaine échéance | **15 décembre 2026** — installation IOT Van |
 
 ---
 
@@ -80,4 +87,4 @@ WildLens (journal hebdomadaire — tête du funnel)
 ```
 
 *Mise à jour par Dobby 🦉 à chaque changement d'état d'un projet.
-Source : MEMORY.md, TEAM_Inbox/, 03_PROJECTS/, kanban.*
+Source : MEMORY.md, TEAM_Inbox/, 03_PROJECTS/, kanban, wiki/Daily.*
