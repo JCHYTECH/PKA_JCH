@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 2730" font-family="Helvetica, Arial, sans-serif">
+<text x="60" y="30" font-size="18" font-weight="bold">Plan de découpe — guide réel (cotes nettes + trait de lame 4 mm + chant 10 mm)</text>
+<text x="60" y="50" font-size="12" fill="#444">Échelle 1/2 · les bandes rouges = trait de lame (4 mm) · cotes affichées = NETTES (à couper)</text>
+<rect x="60" y="0" width="1250.0" height="610.0" fill="#faf7f0" stroke="#111" stroke-width="3"/>
+<rect x="60" y="0" width="5.0" height="610.0" fill="#eee" stroke="#999" stroke-width="0.5"/>
+<rect x="60" y="0" width="1250.0" height="5.0" fill="#eee" stroke="#999" stroke-width="0.5"/>
+<text x="62.5" y="604.0" font-size="9" fill="#777" transform="rotate(-90 62.5 604.0)">chant 10</text>
+<text x="685.0" y="2.5" font-size="9" fill="#777" text-anchor="middle">chant 10</text>
+<text x="60" y="-6" font-size="13" font-weight="bold" fill="#111">12 mm — caisson (2 plaques) — feuille 1</text>
+<rect x="65.0" y="5.0" width="280.0" height="161.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="205.0" y="85.5" font-size="9" fill="#111" text-anchor="middle">Fond</text>
+<text x="205.0" y="95.5" font-size="8" fill="#555" text-anchor="middle">560×322</text>
+<rect x="345.0" y="5.0" width="2.0" height="161.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="347.0" y="5.0" width="280.0" height="161.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="487.0" y="85.5" font-size="9" fill="#111" text-anchor="middle">Fond</text>
+<text x="487.0" y="95.5" font-size="8" fill="#555" text-anchor="middle">560×322</text>
+<rect x="627.0" y="5.0" width="2.0" height="161.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="629.0" y="5.0" width="280.0" height="161.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="769.0" y="85.5" font-size="9" fill="#111" text-anchor="middle">Fond</text>
+<text x="769.0" y="95.5" font-size="8" fill="#555" text-anchor="middle">560×322</text>
+<rect x="909.0" y="5.0" width="2.0" height="161.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="911.0" y="5.0" width="280.0" height="125.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="1051.0" y="67.5" font-size="9" fill="#111" text-anchor="middle">Côté</text>
+<text x="1051.0" y="77.5" font-size="8" fill="#555" text-anchor="middle">560×250</text>
+<rect x="1191.0" y="5.0" width="2.0" height="125.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="65.0" y="168.0" width="280.0" height="125.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="205.0" y="230.5" font-size="9" fill="#111" text-anchor="middle">Côté</text>
+<text x="205.0" y="240.5" font-size="8" fill="#555" text-anchor="middle">560×250</text>
+<rect x="345.0" y="168.0" width="2.0" height="125.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="347.0" y="168.0" width="280.0" height="125.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="487.0" y="230.5" font-size="9" fill="#111" text-anchor="middle">Côté</text>
+<text x="487.0" y="240.5" font-size="8" fill="#555" text-anchor="middle">560×250</text>
+<rect x="627.0" y="168.0" width="2.0" height="125.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="629.0" y="168.0" width="280.0" height="125.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="769.0" y="230.5" font-size="9" fill="#111" text-anchor="middle">Côté</text>
+<text x="769.0" y="240.5" font-size="8" fill="#555" text-anchor="middle">560×250</text>
+<rect x="909.0" y="168.0" width="2.0" height="125.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="911.0" y="168.0" width="280.0" height="125.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="1051.0" y="230.5" font-size="9" fill="#111" text-anchor="middle">Côté</text>
+<text x="1051.0" y="240.5" font-size="8" fill="#555" text-anchor="middle">560×250</text>
+<rect x="1191.0" y="168.0" width="2.0" height="125.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="65.0" y="295.0" width="280.0" height="125.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="205.0" y="357.5" font-size="9" fill="#111" text-anchor="middle">Côté</text>
+<text x="205.0" y="367.5" font-size="8" fill="#555" text-anchor="middle">560×250</text>
+<rect x="345.0" y="295.0" width="2.0" height="125.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="347.0" y="295.0" width="250.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="472.0" y="345.0" font-size="9" fill="#111" text-anchor="middle">Côté tiroir</text>
+<text x="472.0" y="355.0" font-size="8" fill="#555" text-anchor="middle">500×200</text>
+<rect x="597.0" y="295.0" width="2.0" height="100.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="599.0" y="295.0" width="250.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="724.0" y="345.0" font-size="9" fill="#111" text-anchor="middle">Côté tiroir</text>
+<text x="724.0" y="355.0" font-size="8" fill="#555" text-anchor="middle">500×200</text>
+<rect x="849.0" y="295.0" width="2.0" height="100.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="851.0" y="295.0" width="250.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="976.0" y="345.0" font-size="9" fill="#111" text-anchor="middle">Côté tiroir</text>
+<text x="976.0" y="355.0" font-size="8" fill="#555" text-anchor="middle">500×200</text>
+<rect x="1101.0" y="295.0" width="2.0" height="100.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="1103.0" y="295.0" width="161.0" height="113.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="1183.5" y="351.5" font-size="9" fill="#111" text-anchor="middle">Dos</text>
+<text x="1183.5" y="361.5" font-size="8" fill="#555" text-anchor="middle">322×226</text>
+<rect x="1264.0" y="295.0" width="2.0" height="113.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="65.0" y="422.0" width="250.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="190.0" y="472.0" font-size="9" fill="#111" text-anchor="middle">Côté tiroir</text>
+<text x="190.0" y="482.0" font-size="8" fill="#555" text-anchor="middle">500×200</text>
+<rect x="315.0" y="422.0" width="2.0" height="100.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="317.0" y="422.0" width="250.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="442.0" y="472.0" font-size="9" fill="#111" text-anchor="middle">Côté tiroir</text>
+<text x="442.0" y="482.0" font-size="8" fill="#555" text-anchor="middle">500×200</text>
+<rect x="567.0" y="422.0" width="2.0" height="100.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="569.0" y="422.0" width="250.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="694.0" y="472.0" font-size="9" fill="#111" text-anchor="middle">Côté tiroir</text>
+<text x="694.0" y="482.0" font-size="8" fill="#555" text-anchor="middle">500×200</text>
+<rect x="819.0" y="422.0" width="2.0" height="100.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="821.0" y="422.0" width="161.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="901.5" y="472.0" font-size="9" fill="#111" text-anchor="middle">Façade</text>
+<text x="901.5" y="482.0" font-size="8" fill="#555" text-anchor="middle">322×200</text>
+<rect x="982.0" y="422.0" width="2.0" height="100.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="984.0" y="422.0" width="161.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="1064.5" y="472.0" font-size="9" fill="#111" text-anchor="middle">Façade</text>
+<text x="1064.5" y="482.0" font-size="8" fill="#555" text-anchor="middle">322×200</text>
+<rect x="1145.0" y="422.0" width="2.0" height="100.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="1147.0" y="422.0" width="161.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="1227.5" y="472.0" font-size="9" fill="#111" text-anchor="middle">Façade</text>
+<text x="1227.5" y="482.0" font-size="8" fill="#555" text-anchor="middle">322×200</text>
+<rect x="1308.0" y="422.0" width="2.0" height="100.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="60" y="656.0" width="1250.0" height="610.0" fill="#faf7f0" stroke="#111" stroke-width="3"/>
+<rect x="60" y="656.0" width="5.0" height="610.0" fill="#eee" stroke="#999" stroke-width="0.5"/>
+<rect x="60" y="656.0" width="1250.0" height="5.0" fill="#eee" stroke="#999" stroke-width="0.5"/>
+<text x="62.5" y="1260.0" font-size="9" fill="#777" transform="rotate(-90 62.5 1260.0)">chant 10</text>
+<text x="685.0" y="658.5" font-size="9" fill="#777" text-anchor="middle">chant 10</text>
+<text x="60" y="650.0" font-size="13" font-weight="bold" fill="#111">12 mm — caisson (2 plaques) — feuille 2</text>
+<rect x="65.0" y="661.0" width="161.0" height="113.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="145.5" y="717.5" font-size="9" fill="#111" text-anchor="middle">Dos</text>
+<text x="145.5" y="727.5" font-size="8" fill="#555" text-anchor="middle">322×226</text>
+<rect x="226.0" y="661.0" width="2.0" height="113.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="228.0" y="661.0" width="161.0" height="113.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="308.5" y="717.5" font-size="9" fill="#111" text-anchor="middle">Dos</text>
+<text x="308.5" y="727.5" font-size="8" fill="#555" text-anchor="middle">322×226</text>
+<rect x="389.0" y="661.0" width="2.0" height="113.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="391.0" y="661.0" width="161.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="471.5" y="711.0" font-size="9" fill="#111" text-anchor="middle">Dos tiroir</text>
+<text x="471.5" y="721.0" font-size="8" fill="#555" text-anchor="middle">322×200</text>
+<rect x="552.0" y="661.0" width="2.0" height="100.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="554.0" y="661.0" width="161.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="634.5" y="711.0" font-size="9" fill="#111" text-anchor="middle">Dos tiroir</text>
+<text x="634.5" y="721.0" font-size="8" fill="#555" text-anchor="middle">322×200</text>
+<rect x="715.0" y="661.0" width="2.0" height="100.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="717.0" y="661.0" width="161.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="797.5" y="711.0" font-size="9" fill="#111" text-anchor="middle">Dos tiroir</text>
+<text x="797.5" y="721.0" font-size="8" fill="#555" text-anchor="middle">322×200</text>
+<rect x="878.0" y="661.0" width="2.0" height="100.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="60" y="0" width="1250.0" height="610.0" fill="#faf7f0" stroke="#111" stroke-width="3"/>
+<rect x="60" y="0" width="5.0" height="610.0" fill="#eee" stroke="#999" stroke-width="0.5"/>
+<rect x="60" y="0" width="1250.0" height="5.0" fill="#eee" stroke="#999" stroke-width="0.5"/>
+<text x="62.5" y="604.0" font-size="9" fill="#777" transform="rotate(-90 62.5 604.0)">chant 10</text>
+<text x="685.0" y="2.5" font-size="9" fill="#777" text-anchor="middle">chant 10</text>
+<text x="60" y="-6" font-size="13" font-weight="bold" fill="#111">15 mm — trappes (1 plaque) — feuille 1</text>
+<rect x="65.0" y="5.0" width="280.0" height="173.0" fill="#cdb27a" stroke="#333" stroke-width="1"/>
+<text x="205.0" y="91.5" font-size="9" fill="#111" text-anchor="middle">Trappe</text>
+<text x="205.0" y="101.5" font-size="8" fill="#555" text-anchor="middle">560×346</text>
+<rect x="345.0" y="5.0" width="2.0" height="173.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="347.0" y="5.0" width="280.0" height="173.0" fill="#cdb27a" stroke="#333" stroke-width="1"/>
+<text x="487.0" y="91.5" font-size="9" fill="#111" text-anchor="middle">Trappe</text>
+<text x="487.0" y="101.5" font-size="8" fill="#555" text-anchor="middle">560×346</text>
+<rect x="627.0" y="5.0" width="2.0" height="173.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="629.0" y="5.0" width="280.0" height="173.0" fill="#cdb27a" stroke="#333" stroke-width="1"/>
+<text x="769.0" y="91.5" font-size="9" fill="#111" text-anchor="middle">Trappe</text>
+<text x="769.0" y="101.5" font-size="8" fill="#555" text-anchor="middle">560×346</text>
+<rect x="909.0" y="5.0" width="2.0" height="173.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="60" y="0" width="1250.0" height="610.0" fill="#faf7f0" stroke="#111" stroke-width="3"/>
+<rect x="60" y="0" width="5.0" height="610.0" fill="#eee" stroke="#999" stroke-width="0.5"/>
+<rect x="60" y="0" width="1250.0" height="5.0" fill="#eee" stroke="#999" stroke-width="0.5"/>
+<text x="62.5" y="604.0" font-size="9" fill="#777" transform="rotate(-90 62.5 604.0)">chant 10</text>
+<text x="685.0" y="2.5" font-size="9" fill="#777" text-anchor="middle">chant 10</text>
+<text x="60" y="-6" font-size="13" font-weight="bold" fill="#111">6 mm — fonds de tiroir (1 plaque) — feuille 1</text>
+<rect x="65.0" y="5.0" width="250.0" height="161.0" fill="#d8cfe8" stroke="#333" stroke-width="1"/>
+<text x="190.0" y="85.5" font-size="9" fill="#111" text-anchor="middle">Fond tiroir</text>
+<text x="190.0" y="95.5" font-size="8" fill="#555" text-anchor="middle">500×322</text>
+<rect x="315.0" y="5.0" width="2.0" height="161.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="317.0" y="5.0" width="250.0" height="161.0" fill="#d8cfe8" stroke="#333" stroke-width="1"/>
+<text x="442.0" y="85.5" font-size="9" fill="#111" text-anchor="middle">Fond tiroir</text>
+<text x="442.0" y="95.5" font-size="8" fill="#555" text-anchor="middle">500×322</text>
+<rect x="567.0" y="5.0" width="2.0" height="161.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+<rect x="569.0" y="5.0" width="250.0" height="161.0" fill="#d8cfe8" stroke="#333" stroke-width="1"/>
+<text x="694.0" y="85.5" font-size="9" fill="#111" text-anchor="middle">Fond tiroir</text>
+<text x="694.0" y="95.5" font-size="8" fill="#555" text-anchor="middle">500×322</text>
+<rect x="819.0" y="5.0" width="2.0" height="161.0" fill="#ffdddd" stroke="#c00" stroke-width="0.5"/>
+</svg>

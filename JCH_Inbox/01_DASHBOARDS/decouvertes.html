@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PKA · DÉCOUVERTES — Planification van</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+  :root {
+    --bg: #0f1115; --panel: #171a21; --panel2: #1e222b;
+    --text: #e8e2da; --muted: #9aa0ab; --accent: #c9a43e;
+    --ok: #3cb371; --warn: #d4923a; --line: #2a2f3a;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "SF Pro Text", Inter, Segoe UI, sans-serif;
+         background: var(--bg); color: var(--text); }
+  header { padding: 22px 28px; border-bottom: 1px solid var(--line); }
+  header h1 { margin: 0; font-size: 20px; font-weight: 700; }
+  header p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 24px 28px 60px; }
+  .hint { color: var(--muted); font-size: 13px; margin-bottom: 18px; }
+  .alltoggle { background: var(--panel2); border: 1px solid var(--line); color: var(--accent);
+               padding: 5px 12px; border-radius: 8px; font-size: 12px; cursor: pointer; }
+  .alltoggle:hover { border-color: var(--accent); }
+  .tabs { display: flex; gap: 8px; margin: 4px 0 14px; }
+  .tabs button { background: var(--panel2); border: 1px solid var(--line); color: var(--muted);
+                 padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 13px; }
+  .tabs button.active { background: var(--accent); color: #1a1406; border-color: var(--accent); font-weight: 600; }
+  .ztl-ok { color: var(--ok); }
+  .ztl-warn { color: var(--warn); }
+  .circuit-ctrl { display: flex; gap: 8px; align-items: center; margin-bottom: 14px; flex-wrap: wrap; }
+  .circuit-ctrl select { background: var(--panel2); border: 1px solid var(--line); color: var(--text);
+                         padding: 7px 10px; border-radius: 8px; font-size: 13px; }
+  .num-marker { background: #c9a43e; color: #1a1406; border-radius: 50%; width: 22px; height: 22px;
+                display: flex; align-items: center; justify-content: center; font-weight: 700;
+                font-size: 12px; border: 2px solid #fff; }
+  .country-head { color: var(--accent); font-size: 14px; font-weight: 600; letter-spacing: .05em;
+                  text-transform: uppercase; margin: 24px 0 12px; padding-bottom: 6px;
+                  border-bottom: 1px solid var(--line); }
+  .country-head .count { color: var(--muted); font-weight: 400; font-size: 12px; margin-left: 6px; }
+  .region-head { color: var(--text); font-size: 13px; font-weight: 600; margin: 16px 0 8px 14px;
+                 padding-left: 10px; border-left: 2px solid var(--accent);
+                 display: flex; align-items: center; gap: 8px; }
+  .region-head .count { color: var(--muted); font-weight: 400; font-size: 12px; margin-left: 2px; }
+  .region-head .caret { display: inline-block; width: 10px; color: var(--muted);
+                         transition: transform .15s ease; }
+  .region-head.open .caret { transform: rotate(90deg); }
+  .region-head { cursor: pointer; }
+  .region-head:hover { color: var(--accent); }
+  .region-places { padding-left: 26px; }
+  .map-btn { background: var(--panel2); border: 1px solid var(--line); color: var(--accent);
+             border-radius: 6px; padding: 2px 8px; font-size: 13px; cursor: pointer;
+             line-height: 1.3; }
+  .map-btn:hover { background: var(--panel); border-color: var(--accent); }
+
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+          padding: 16px 18px; margin-bottom: 14px; }
+  .card .top { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .card h2 { margin: 0; font-size: 17px; }
+  .card .loc { color: var(--muted); font-size: 13px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; background: var(--panel2);
+           color: var(--muted); border: 1px solid var(--line); }
+  .badge.ok { color: var(--ok); border-color: var(--ok); }
+  .badge.insolite { color: #b68af0; border-color: #9b5de5; }
+  .badge.reserve { color: #4caf50; border-color: #2e7d32; }
+  .filter-bar { margin: 2px 0 12px; display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+  .filter-bar select { background: var(--panel2); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 5px 10px; font-size: 13px; }
+  .filter-bar input { background: var(--panel2); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 5px 10px; font-size: 13px; width: 230px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+  .kw-chip { background: var(--panel2); border: 1px solid var(--line); color: var(--text); border-radius: 20px; padding: 3px 10px; font-size: 12px; cursor: pointer; }
+  .kw-chip:hover { border-color: var(--accent); }
+  .kw-chip .n { color: var(--muted); margin-left: 4px; font-size: 11px; }
+  .scores { margin-top: 8px; display: flex; gap: 14px; color: var(--muted); font-size: 12.5px; }
+  .scores b { color: var(--text); }
+  .gps { color: var(--muted); font-size: 12px; margin-top: 6px; font-family: ui-monospace, Menlo, monospace; }
+
+  button.sleep { background: var(--accent); color: #1a1406; border: 0;
+                 padding: 8px 14px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 13px; }
+  button.sleep:disabled { opacity: .5; cursor: default; }
+  .actions { display: flex; gap: 10px; align-items: center; margin-top: 12px; }
+  a.fiche { color: var(--accent); font-size: 13px; text-decoration: none;
+            border: 1px solid var(--line); padding: 7px 12px; border-radius: 8px; }
+  a.fiche:hover { background: var(--panel2); }
+  .spinner { display: inline-block; width: 12px; height: 12px; border: 2px solid #1a1406;
+             border-top-color: transparent; border-radius: 50%; animation: spin .7s linear infinite;
+             vertical-align: -1px; margin-right: 6px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .results { margin-top: 14px; border-top: 1px dashed var(--line); padding-top: 12px; }
+  .spot { background: var(--panel2); border: 1px solid var(--line); border-radius: 10px;
+          padding: 12px 14px; margin-bottom: 10px; }
+  .spot .line1 { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+  .spot .name { font-weight: 600; font-size: 14px; }
+  .spot .type { color: var(--accent); font-size: 12px; }
+  .spot .meta { color: var(--muted); font-size: 12.5px; margin-top: 4px; }
+  .spot .vibe { margin-top: 5px; font-size: 12px; color: var(--muted); }
+  .spot .vibe b { color: var(--text); }
+  .chip { display: inline-block; font-size: 11px; padding: 1px 7px; border-radius: 12px;
+          background: var(--panel); border: 1px solid var(--line); color: var(--muted); margin: 2px 3px 0 0; }
+  .spot a { color: var(--accent); font-size: 12px; text-decoration: none; }
+  .err { color: var(--warn); font-size: 13px; margin-top: 10px; }
+  .empty { color: var(--muted); font-size: 14px; }
+
+  /* Overlay carte région */
+  #mapOverlay { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(10,12,16,.85);
+                flex-direction: column; padding: 18px; }
+  #mapOverlay .bar { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  #mapOverlay .bar h2 { margin: 0; font-size: 16px; }
+  #mapOverlay .bar .close { margin-left: auto; background: var(--panel2); color: var(--text);
+                            border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; cursor: pointer; font-size: 13px; }
+  #regionMapDiv { flex: 1; border-radius: 12px; border: 1px solid var(--line); min-height: 0; }
+  #mapOverlay .legend { position: absolute; right: 30px; bottom: 30px; z-index: 1001; background: var(--panel2);
+                        padding: 6px 10px; border-radius: 6px; font-size: 12px; color: var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <h1>🦉 DÉCOUVERTES — Planification van</h1>
+  <p>Choisis un lieu → « Où dormir ? » interroge park4night au moment voulu (données fraîches).
+     <button class="alltoggle" id="allToggle" onclick="toggleAll()">Tout déplier</button></p>
+</header>
+<div class="wrap">
+  <div class="tabs">
+    <button id="tabLieux" class="active" onclick="switchTab('lieux')">📍 Lieux à visiter</button>
+    <button id="tabGarer" onclick="switchTab('garer')">🅿️ Se garer</button>
+    <button id="tabCircuit" onclick="switchTab('circuit')">🧭 Circuit</button>
+  </div>
+  <div class="hint" id="status">Chargement des lieux…</div>
+  <div class="filter-bar" id="filterBar">
+    <label for="categoryFilter">Filtrer :</label>
+    <select id="categoryFilter" onchange="onCategoryFilter()">
+      <option value="">Toutes les catégories</option>
+      <option value="reserves_naturelles">🌿 Réserves naturelles</option>
+      <option value="insolite">🟣 Insolite</option>
+    </select>
+    <input id="searchBox" type="text" placeholder="🔎 Rechercher (château, ruines, abbaye…)" oninput="onSearch()">
+  </div>
+  <div class="chips" id="keywordChips"></div>
+  <div id="list"></div>
+  <div id="spotsList" style="display:none"></div>
+  <div id="circuitView" style="display:none">
+    <div class="circuit-ctrl">
+      <select id="circuitRegion" onchange="onRegionChange()"></select>
+      <select id="circuitStart" title="Point d'entrée"></select>
+      <select id="circuitEnd" title="Point de sortie"></select>
+      <button class="alltoggle" onclick="genCircuit()">Générer l'itinéraire</button>
+    </div>
+    <div id="circuitResult"></div>
+  </div>
+</div>
+
+<div id="mapOverlay">
+  <div class="bar">
+    <h2 id="mapTitle">🗺️ Carte</h2>
+    <button class="close" onclick="closeMap()">✕ Fermer</button>
+  </div>
+  <div id="regionMapDiv"></div>
+  <div class="legend">🔵 lieu classique · 🟣 insolite · 🌿 réserve naturelle</div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const $ = (sel) => document.querySelector(sel);
+
+let regionData = {};      // "pays|région" -> places
+let regionMap = null;
+let markerLayer = null;
+
+function cardHtml(p) {
+  return `
+    <div class="card" data-lat="${p.lat}" data-lng="${p.lng}">
+      <div class="top">
+        <h2>${esc(p.name)}</h2>
+        ${p.status === 'validated' ? '<span class="badge ok">validé</span>' : '<span class="badge">brouillon</span>'}
+        ${p.categorie === 'insolite' ? '<span class="badge insolite">🟣 insolite</span>' : ''}
+        ${p.categorie === 'reserves_naturelles' ? '<span class="badge reserve">🌿 réserve naturelle</span>' : ''}
+        <span class="loc">${esc([p.ville, p.admin_region || p.region, p.pays].filter(Boolean).join(' · '))}</span>
+      </div>
+      <div class="scores">
+        <span>photo <b>${p.photo || '–'}</b></span>
+        <span>nature <b>${p.nature || '–'}</b></span>
+        <span>patrimoine <b>${p.patrimoine || '–'}</b></span>
+        ${p.confidence ? `<span>confiance <b>${Math.round(parseFloat(p.confidence)*100)}%</b></span>` : ''}
+      </div>
+      <div class="gps">${p.lat}, ${p.lng}</div>
+      <div class="actions">
+        <button class="sleep" onclick="sleepHere(this)">Où dormir ?</button>
+        <a class="fiche" href="place.html?name=${encodeURIComponent(p.slug)}">📄 Fiche</a>
+      </div>
+      <div class="results" style="display:none"></div>
+    </div>`;
+}
+
+let lieux = [];
+
+async function loadPlaces() {
+  const r = await fetch('/api/decouvertes');
+  const data = await r.json();
+  lieux = data.places || [];
+  renderPlaces('');
+  buildKeywordChips();
+}
+
+function norm(s) {
+  return String(s ?? '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+function renderPlaces(category, keyword) {
+  const list = $('#list');
+  const kw = norm(keyword || '');
+  let places = lieux;
+  if (category) places = places.filter(p => (p.categorie || '') === category);
+  if (kw) places = places.filter(p => norm(p.name + ' ' + p.ville + ' ' + p.region + ' ' + p.pays).includes(kw));
+  if (!places.length) {
+    $('#status').textContent = kw ? `Aucun lieu ne correspond à « ${keyword} ».` : (category ? 'Aucun lieu dans cette catégorie.' : 'Aucun lieu DÉCOUVERTES trouvé.');
+    list.innerHTML = '<div class="empty">Aucun lieu pour ce filtre.</div>';
+    return;
+  }
+  const label = kw ? `🔎 « ${keyword} »` : (category === 'reserves_naturelles' ? '🌿 réserves naturelles' : (category === 'insolite' ? '🟣 insolite' : 'toutes catégories'));
+  $('#status').textContent = `${places.length} lieu(x) [${label}] — classés par pays puis région · clique sur une région pour afficher ses lieux · 🗺️ = carte de la région.`;
+
+  // 2 niveaux : pays → région administrative
+  const byCountry = {};
+  regionData = {};
+  places.forEach(p => {
+    const c = p.pays || 'Autre';
+    const r = (p.admin_region || p.region || '').trim() || 'Non classé';
+    (byCountry[c] = byCountry[c] || {});
+    (byCountry[c][r] = byCountry[c][r] || []).push(p);
+    regionData[c + '|' + r] = (byCountry[c][r] || []);
+  });
+
+  list.innerHTML = Object.keys(byCountry)
+    .sort((a, b) => a.localeCompare(b, 'fr'))
+    .map(country => {
+      const regions = byCountry[country];
+      const total = Object.values(regions).reduce((s, a) => s + a.length, 0);
+      const blocks = Object.keys(regions)
+        .sort((a, b) => a.localeCompare(b, 'fr'))
+        .map(reg => {
+          const key = country + '|' + reg;
+          return `
+          <div class="region-head" data-key="${esc(key)}" onclick="toggleRegion(this)">
+            <span class="caret">▸</span>
+            <span>${esc(reg)}</span><span class="count">${regions[reg].length}</span>
+            <button class="map-btn" data-key="${esc(key)}" title="Voir la carte de cette région" onclick="event.stopPropagation(); showRegionMap(this)">🗺️ carte</button>
+          </div>
+          <div class="region-places" data-key="${esc(key)}" style="display:none">
+            ${regions[reg].map(cardHtml).join('')}
+          </div>
+        `;
+        }).join('');
+      return `
+        <div class="country-head">${esc(country)}<span class="count">${total}</span></div>
+        ${blocks}
+      `;
+    }).join('');
+}
+
+function onCategoryFilter() {
+  renderPlaces($('#categoryFilter').value, $('#searchBox').value);
+}
+
+function onSearch() {
+  renderPlaces($('#categoryFilter').value, $('#searchBox').value);
+}
+
+const KEYWORD_INDEX = [
+  { label: 'château',   rx: /\b(?:chateau|chateaux|castle|castello|schloss|burg|castillo)\b/ },
+  { label: 'abbaye',    rx: /\b(?:abbaye|abbayes|abbey|abbazia|abtei|monastere|monastery|monastero|kloster)\b/ },
+  { label: 'église',    rx: /\b(?:eglise|eglises|church|chiesa|kirche|iglesia|duomo|dom|basilique|basilica|cathedrale|cathedral|chapelle)\b/ },
+  { label: 'ruines',    rx: /\b(?:ruine|ruines|ruin|ruins)\b/ },
+  { label: 'lac',       rx: /\b(?:lac|lacs|lake|lago|etang|etangs)\b/ },
+  { label: 'réserve',   rx: /\b(?:reserve|reserves|natuurgebied)\b/ },
+  { label: 'parc',      rx: /\b(?:parc|parcs|park)\b/ },
+  { label: 'plage',     rx: /\b(?:plage|plages|beach|spiaggia|playa)\b/ },
+  { label: 'cascade',   rx: /\b(?:cascade|cascades|cascata|waterfall|cascada)\b/ },
+  { label: 'gorges',    rx: /\b(?:gorge|gorges|canyon)\b/ },
+  { label: 'montagne',  rx: /\b(?:mont|montagne|monte|mountain|berg|pic)\b/ },
+  { label: 'village',   rx: /\b(?:village|villages|borgo)\b/ },
+  { label: 'pont',      rx: /\b(?:pont|ponts|bridge|ponte)\b/ },
+  { label: 'grotte',    rx: /\b(?:grotte|grottes|cave|grotta)\b/ },
+  { label: 'fort',      rx: /\b(?:fort|citadelle|forteresse|fortress|citadel)\b/ },
+  { label: 'tour',      rx: /\b(?:tour|tower|torre)\b/ },
+  { label: 'baie',      rx: /\b(?:baie|bay)\b/ },
+  { label: 'vallée',    rx: /\b(?:vallee|vallees|valley|val)\b/ },
+  { label: 'île',       rx: /\b(?:ile|iles|island|isola|insula)\b/ },
+  { label: 'forêt',     rx: /\b(?:bois|foret|forest|wald)\b/ },
+];
+
+function buildKeywordChips() {
+  const chips = KEYWORD_INDEX
+    .map(k => ({ label: k.label, n: lieux.filter(p => k.rx.test(norm(p.name))).length }))
+    .filter(k => k.n > 0)
+    .sort((a, b) => b.n - a.n);
+  $('#keywordChips').innerHTML = chips.map(k =>
+    `<button class="kw-chip" onclick="applyKeyword('${k.label}')">${k.label}<span class="n">${k.n}</span></button>`
+  ).join('');
+}
+
+function applyKeyword(kw) {
+  $('#searchBox').value = kw;
+  onSearch();
+}
+
+function toggleRegion(el) {
+  const places = el.nextElementSibling;
+  if (!places || !places.classList.contains('region-places')) return;
+  const isOpen = places.style.display !== 'none';
+  places.style.display = isOpen ? 'none' : 'block';
+  el.classList.toggle('open', !isOpen);
+}
+
+function toggleAll() {
+  const blocks = Array.from(document.querySelectorAll('.region-places'));
+  const anyClosed = blocks.some(b => b.style.display === 'none');
+  blocks.forEach(b => b.style.display = anyClosed ? 'block' : 'none');
+  document.querySelectorAll('.region-head').forEach(h => h.classList.toggle('open', anyClosed));
+  $('#allToggle').textContent = anyClosed ? 'Tout replier' : 'Tout déplier';
+}
+
+function showRegionMap(btn) {
+  const key = btn.dataset.key;
+  const places = regionData[key] || [];
+  const title = key.split('|').filter(Boolean).join(' · ') || 'Carte';
+  openMap(title, places);
+}
+
+function openMap(title, places) {
+  $('#mapTitle').textContent = '🗺️ ' + title;
+  $('#mapOverlay').style.display = 'flex';
+  if (!regionMap) {
+    regionMap = L.map('regionMapDiv');
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OSM', maxZoom: 18 }).addTo(regionMap);
+    markerLayer = L.layerGroup().addTo(regionMap);
+  }
+  markerLayer.clearLayers();
+  const bounds = [];
+  places.forEach(p => {
+    const lat = parseFloat(p.lat), lng = parseFloat(p.lng);
+    if (isNaN(lat) || isNaN(lng)) return;
+    bounds.push([lat, lng]);
+    const popup = `<b>${esc(p.name)}</b>${p.categorie === 'insolite' ? ' 🟣' : p.categorie === 'reserves_naturelles' ? ' 🌿' : ''}<br>${esc([p.ville, p.pays].filter(Boolean).join(' · '))}<br><a href="place.html?name=${encodeURIComponent(p.slug)}">Fiche ↗</a>`;
+    let marker;
+    if (p.categorie === 'insolite') {
+      marker = L.circleMarker([lat, lng], { radius: 9, color: '#9b5de5', weight: 2, fillColor: '#9b5de5', fillOpacity: 0.85 });
+    } else if (p.categorie === 'reserves_naturelles') {
+      marker = L.circleMarker([lat, lng], { radius: 9, color: '#2e7d32', weight: 2, fillColor: '#4caf50', fillOpacity: 0.85 });
+    } else {
+      marker = L.marker([lat, lng]);
+    }
+    marker.bindPopup(popup).addTo(markerLayer);
+  });
+  if (bounds.length) {
+    regionMap.fitBounds(bounds, { padding: [30, 30], maxZoom: 11 });
+  }
+  setTimeout(() => regionMap.invalidateSize(), 60);
+}
+
+function closeMap() {
+  $('#mapOverlay').style.display = 'none';
+}
+
+async function sleepHere(btn) {
+  const card = btn.closest('.card');
+  const results = card.querySelector('.results');
+  results.style.display = 'block';
+  results.innerHTML = '<span class="spinner"></span> Recherche park4night…';
+  btn.disabled = true;
+  try {
+    const lat = card.dataset.lat, lng = card.dataset.lng;
+    const r = await fetch(`/api/sleep?lat=${lat}&lng=${lng}&radius=20&top=5`);
+    const data = await r.json();
+    if (!data.ok) { results.innerHTML = `<div class="err">${esc(data.error || 'Erreur inconnue')}</div>`; return; }
+    if (!data.spots.length) { results.innerHTML = '<div class="empty">Aucun spot trouvé.</div>'; return; }
+    results.innerHTML = data.spots.map((s, i) => `
+      <div class="spot">
+        <div class="line1">
+          <span class="name">${i+1}. ${esc(s.name)}</span>
+          <span class="type">${esc(s.type_label)}</span>
+          <span class="meta">${s.distance} km · note ${s.rating}</span>
+        </div>
+        <div class="meta">${esc(s.services_label.slice(0,6).join(', ') || '—')}</div>
+        <div class="vibe">vibe <b>${s.vibe_score}</b> — vue ${s.view}, calme ${s.calm}, bruit ${s.noise}</div>
+        <div class="gps">${s.lat}, ${s.lng}</div>
+        ${s.url ? `<a href="${esc(s.url)}" target="_blank">voir sur park4night ↗</a>` : ''}
+      </div>
+    `).join('');
+  } catch (e) {
+    results.innerHTML = `<div class="err">Erreur réseau : ${esc(String(e))}</div>`;
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+function esc(s) {
+  return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function switchTab(tab) {
+  const tabs = { lieux: ['tabLieux', '#list'], garer: ['tabGarer', '#spotsList'], circuit: ['tabCircuit', '#circuitView'] };
+  Object.entries(tabs).forEach(([k, [btnId, viewSel]]) => {
+    $('#' + btnId).classList.toggle('active', k === tab);
+    $(viewSel).style.display = k === tab ? 'block' : 'none';
+  });
+  $('#status').style.display = tab === 'lieux' ? 'block' : 'none';
+  $('#filterBar').style.display = tab === 'lieux' ? 'flex' : 'none';
+  $('#keywordChips').style.display = tab === 'lieux' ? 'flex' : 'none';
+}
+
+function spotCardHtml(s) {
+  const ztlWarn = /centre|vérifier/i.test(String(s.ztl || ''));
+  return `
+    <div class="card">
+      <div class="top">
+        <h2>${esc(s.name)}</h2>
+        <span class="badge">${esc(s.type_aire)}</span>
+        <span class="loc">${esc(s.ville)}</span>
+      </div>
+      <div class="scores">
+        <span>note <b>${s.note || '–'}</b></span>
+        ${s.avis ? `<span>(${s.avis} avis)</span>` : ''}
+        <span>centre <b>${s.distance} km</b></span>
+        <span class="${ztlWarn ? 'ztl-warn' : 'ztl-ok'}">${esc(s.ztl || '')}</span>
+      </div>
+      <div class="gps">${s.lat}, ${s.lng}</div>
+      <div class="actions">
+        <a class="fiche" href="${esc(s.url_p4n)}" target="_blank">park4night ↗</a>
+        <a class="fiche" href="https://maps.google.com/?q=${s.lat},${s.lng}" target="_blank">Maps ↗</a>
+      </div>
+    </div>`;
+}
+
+async function loadSpots() {
+  const r = await fetch('/api/spots');
+  const data = await r.json();
+  const list = $('#spotsList');
+  if (!data.spots || !data.spots.length) {
+    list.innerHTML = '<div class="empty">Aucun spot « se garer » — lance spots_ville.py pour une ville.</div>';
+    return;
+  }
+  const byVille = {};
+  data.spots.forEach(s => { (byVille[s.ville || 'Autre'] = byVille[s.ville || 'Autre'] || []).push(s); });
+  list.innerHTML = Object.keys(byVille).sort().map(v => `
+    <div class="country-head">${esc(v)}<span class="count">${byVille[v].length}</span></div>
+    ${byVille[v].map(spotCardHtml).join('')}
+  `).join('');
+}
+
+let circuitRoute = [];
+let allPlaces = [];
+
+async function populateRegions() {
+  const r = await fetch('/api/decouvertes');
+  const data = await r.json();
+  allPlaces = data.places || [];
+  const regions = [...new Set(allPlaces.map(p => p.admin_region || p.region).filter(Boolean))].sort();
+  const sel = $('#circuitRegion');
+  sel.innerHTML = regions.map(r => `<option value="${esc(r)}">${esc(r)}</option>`).join('');
+  onRegionChange();
+}
+
+function onRegionChange() {
+  const region = $('#circuitRegion').value;
+  const places = allPlaces.filter(p => (p.admin_region || p.region) === region);
+  const opts = '<option value="">auto</option>' + places.map(p => `<option value="${esc(p.slug)}">${esc(p.name)}</option>`).join('');
+  $('#circuitStart').innerHTML = opts;
+  $('#circuitEnd').innerHTML = opts;
+}
+
+async function genCircuit() {
+  const region = $('#circuitRegion').value;
+  if (!region) return;
+  const start = $('#circuitStart').value;
+  const end = $('#circuitEnd').value;
+  const q = new URLSearchParams({ region, start, end });
+  const r = await fetch('/api/circuit?' + q.toString());
+  const data = await r.json();
+  const res = $('#circuitResult');
+  if (!data.route || !data.route.length) {
+    res.innerHTML = '<div class="empty">Aucun lieu dans cette région.</div>';
+    return;
+  }
+  circuitRoute = data.route;
+  res.innerHTML = `
+    <div class="hint">${data.route.length} étapes · ${data.total_km} km au total (entrée → sortie)</div>
+    <div class="actions">
+      <button class="alltoggle" onclick="showCircuitMap()">🗺️ voir la route</button>
+      <a class="fiche" href="/api/circuit.gpx?${q.toString()}">⬇️ GPX (OsmAnd)</a>
+      <a class="fiche" href="/api/circuit.kml?${q.toString()}">⬇️ KML (Google Maps)</a>
+    </div>
+    ${data.route.map((p, i) => `
+      <div class="card">
+        <div class="top">
+          <h2>${i + 1}. ${esc(p.name)}</h2>
+          ${p.categorie === 'insolite' ? '<span class="badge insolite">🟣 insolite</span>' : ''}
+          ${p.categorie === 'reserves_naturelles' ? '<span class="badge reserve">🌿 réserve naturelle</span>' : ''}
+          <span class="loc">${esc(p.ville)}</span>
+        </div>
+        <div class="scores">
+          <span>${i > 0 ? '← ' + p.leg_km + ' km' : 'départ'}</span>
+          <span>cumul <b>${p.cum_km} km</b></span>
+        </div>
+        <div class="gps">${p.lat}, ${p.lng}</div>
+      </div>
+    `).join('')}
+  `;
+}
+
+function showCircuitMap() {
+  const route = circuitRoute;
+  if (!route || !route.length) return;
+  $('#mapTitle').textContent = '🧭 Circuit';
+  $('#mapOverlay').style.display = 'flex';
+  if (!regionMap) {
+    regionMap = L.map('regionMapDiv');
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OSM', maxZoom: 18 }).addTo(regionMap);
+    markerLayer = L.layerGroup().addTo(regionMap);
+  }
+  markerLayer.clearLayers();
+  const pts = [];
+  route.forEach((p, i) => {
+    const lat = parseFloat(p.lat), lng = parseFloat(p.lng);
+    if (isNaN(lat) || isNaN(lng)) return;
+    pts.push([lat, lng]);
+    const icon = L.divIcon({ className: '', html: `<div class="num-marker">${i + 1}</div>`, iconSize: [22, 22], iconAnchor: [11, 11] });
+    L.marker([lat, lng], { icon }).bindPopup(`<b>${i + 1}. ${esc(p.name)}</b><br>${esc(p.ville)}<br><a href="place.html?name=${encodeURIComponent(p.slug)}">Fiche ↗</a>`).addTo(markerLayer);
+  });
+  L.polyline(pts, { color: '#c9a43e', weight: 3, opacity: 0.8 }).addTo(markerLayer);
+  if (pts.length) regionMap.fitBounds(pts, { padding: [40, 40] });
+  setTimeout(() => regionMap.invalidateSize(), 60);
+}
+
+loadPlaces();
+loadSpots();
+populateRegions();
+</script>
+</body>
+</html>

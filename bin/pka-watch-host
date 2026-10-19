@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# pka-watch-host — Surveillance santé machine hôte (disque, Time Machine, CPU)
+# Dobby 🦉 — 2026-10-04
+#
+# Usage :
+#   bin/pka-watch-host --check    Affiche le rapport (sans alerter)
+#   bin/pka-watch-host --alert    Alerte si critique (fichier + notification)
+set -euo pipefail
+
+exec python3 /Users/jchavauxm5/PKA_JCH/scripts/pka_host_watch.py "${1:---alert}"
