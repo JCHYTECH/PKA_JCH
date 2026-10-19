@@ -1,9 +1,70 @@
-#!/usr/bin/env zsh
-# Alias court pour la cloture interactive PKA.
+#!/usr/bin/env bash
+# pka — point d'entrée unifié PKA_JCH
+# Dobby 🦉 — 2026-10-04 — Consolidation agentique #4
+#
+# Remplace la dispersion des commandes pka-* par un seul point d'entrée.
+# « pka » sans argument conserve l'ancien comportement (clôture de session).
 
 set -euo pipefail
 
 PKA_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$PKA_DIR"
 
-exec "$PKA_DIR/bin/pka-save"
+usage() {
+  cat <<'EOF'
+pka — commande unifiée PKA_JCH
+
+Usage : pka [sous-commande] [options]
+
+  (sans arg)  Clôture de session (= pka save)
+  save        Clôture de session (sauvegarde + mémoire)
+  snapshot    Génère etat-snapshot.md (page d'état consolidée)
+  actions     Top-3 prochaines actions
+  check       Health-check système PKA
+  host        Santé machine hôte (disque, Time Machine, CPU)
+  drift       Fraîcheur + dérive des State files
+  watch       Tous les watchers en une passe
+  memory      Mémoire : capture | nudge | prune | generate | retrieve
+  help        Cette aide
+EOF
+}
+
+cmd="${1:-save}"
+shift || true
+
+case "$cmd" in
+  save)
+    exec python3 "$PKA_DIR/scripts/pka_save.py" --interactive "$@" ;;
+  snapshot)
+    exec python3 "$PKA_DIR/scripts/pka_state_snapshot.py" --write "$@" ;;
+  actions)
+    exec python3 "$PKA_DIR/scripts/pka_state_snapshot.py" --actions "$@" ;;
+  check)
+    exec python3 "$PKA_DIR/scripts/pka_system_check.py" "$@" ;;
+  host)
+    exec python3 "$PKA_DIR/scripts/pka_host_watch.py" "${@:---check}" ;;
+  drift)
+    exec python3 "$PKA_DIR/scripts/pka_state_snapshot.py" --check "$@" ;;
+  watch)
+    echo "🖥️  Host :"
+    python3 "$PKA_DIR/scripts/pka_host_watch.py" --check
+    echo
+    echo "📊 Fraîcheur + dérive :"
+    python3 "$PKA_DIR/scripts/pka_state_snapshot.py" --check
+    ;;
+  memory)
+    sub="${1:-}"
+    case "$sub" in
+      capture)   shift; exec python3 "$PKA_DIR/scripts/pka_memory_capture.py" "$@" ;;
+      nudge)     shift; exec python3 "$PKA_DIR/scripts/pka_memory_nudge.py" "$@" ;;
+      prune)     shift; exec python3 "$PKA_DIR/scripts/pka_memory_prune.py" "$@" ;;
+      generate)  shift; exec python3 "$PKA_DIR/scripts/pka_generate_memory.py" "$@" ;;
+      retrieve)  shift; exec python3 "$PKA_DIR/scripts/pka_retrieve.py" "$@" ;;
+      *) echo "Usage: pka memory <capture|nudge|prune|generate|retrieve> ..."; exit 1 ;;
+    esac
+    ;;
+  help|-h|--help)
+    usage ;;
+  *)
+    echo "Sous-commande inconnue : $cmd"; echo; usage; exit 1 ;;
+esac

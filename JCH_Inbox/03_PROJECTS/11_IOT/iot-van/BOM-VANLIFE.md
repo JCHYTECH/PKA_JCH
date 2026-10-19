@@ -17,7 +17,7 @@
 | **4. WiCAN Pro (OBD/CAN)** | ~82€ | 0€ | ~82€ | 🟡 À commander |
 | **5. Victron Energy (P3)** | ~210€ | 0€ | ~210€ | 🔵 P3 — après arrivée |
 | **6. Divers (proto + silentblocs)** | ~27€ | 0€ | ~27€ | 🟡 À définir |
-| **TOTAL** | **~1030€** | **~446€** | **~584€** | |
+| **TOTAL** | **~1026€** | **~446€** | **~584€** | |
 
 > **Économies cumulées :** DS300 Tap (-57€) + CAN bus TPMS+BME280 (-25€) = **~82€ d'économies nettes**  
 > **Investissement CAN bus :** +82€ WiCAN Pro → delta net des optimisations = **0€** (neutre)
@@ -46,6 +46,8 @@
 | 11 | UGREEN USB Audio | Dongle audio | 1 | ~10€ | ✅ Reçu |
 | 12 | Step-Down HW-133 3A 5V DC-DC | Tecnoiot, 24V→5V | 1 | ~2€ | ✅ Reçu (stock 5) |
 | | **Sous-total reçu** | | | **~435€** | 🟢 |
+
+> **Note :** Inclinomètre MPU6050 supprimé (23/07) — l'iPhone gère l'assiette du van.
 
 ### 1.2 Reste à faire / commander
 
@@ -103,8 +105,7 @@
 | 7 | Relais 12V 2 canaux | SRD-12VDC | 2 | 5€ | 10€ | Ventilateurs + tiroirs |
 | 8 | ESP32-S3 DevKitC-1 | — | 2 | 12€ | 24€ | µC généralistes |
 | 9 | Clé Zigbee | Sonoff ZBDongle-E | 2 | 18€ | 36€ | Van + serre |
-| 10 | Inclinomètre | MPU6050 GY-521 | 1 | 4€ | 4€ | Niveau van |
-| | **Sous-total Amazon** | | **27** | | **257€** | 🔴 À commander |
+| | **Sous-total Amazon** | | **26** | | **253€** | 🔴 À commander |
 
 ### 3.2 Compléments hors Amazon
 
@@ -177,7 +178,7 @@
 
 ### 🛒 Commande #1 — Amazon Belgique (PRIORITAIRE)
 - **Contenu :** Capteurs §3.1 (27 items) + Divers §6
-- **Total :** 257€ + 25€ = **~282€**
+- **Total :** 253€ + 25€ = **~278€**
 - **Deadline :** Cette semaine — livraison 3-5 jours ouvrés
 
 ### 🛒 Commande #2 — Crowd Supply / Mouser (WiCAN Pro)
@@ -207,9 +208,9 @@
 | WiCAN Pro | 82€ (à commander) |
 | Victron P3 | 210€ (reporté) |
 | Divers | 27€ (à commander) |
-| **TOTAL** | **~1030€** |
+| **TOTAL** | **~1026€** |
 | **Dont déjà payé** | **~446€** |
-| **Reste à payer (P1)** | **~374€** |
+| **Reste à payer (P1)** | **~370€** |
 | **Reste à payer (P3)** | **~210€** |
 
 ---

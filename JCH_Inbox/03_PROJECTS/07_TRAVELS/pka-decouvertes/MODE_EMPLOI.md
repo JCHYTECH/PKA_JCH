@@ -1,12 +1,16 @@
 # PKA DÉCOUVERTES — Mode d'emploi
 
-> Dernière mise à jour : 2026-06-09
+> Dernière mise à jour : 2026-08-30 — ajout MODE A (inbox SITES), correction clé Anthropic, limitation text-only
 
 ## C'est quoi ?
 
-Un pipeline qui transforme les messages d'un **groupe Telegram** en **fiches de lieux à visiter**.
+Un pipeline qui transforme des **screenshots / photos de lieux** en **fiches de lieux à visiter** (GPS, région, scores photo/nature/patrimoine, accès van 2 m).
 
-**Exemple :** tu vois un château sur Instagram → tu fais une capture d'écran → tu l'envoies dans le groupe Telegram DÉCOUVERTES → 2 minutes plus tard, une fiche complète existe avec GPS, accès van, restos à proximité, réserves naturelles autour.
+**Deux entrées possibles :**
+- **MODE B — Telegram** : tu envoies dans le groupe DÉCOUVERTES, le bot capture tout seul (24/7).
+- **MODE A — Inbox SITES/** : tu déposes des screenshots dans `JCH_Inbox/00_INBOX/SITES/`, on les injecte à la main.
+
+**Exemple :** tu vois un château sur Instagram → tu fais une capture d'écran → tu l'envoies dans le groupe Telegram DÉCOUVERTES (ou tu la déposes dans `SITES/`) → l'analyzer identifie le lieu → une fiche complète existe avec GPS, accès van, restos à proximité, réserves naturelles autour.
 
 ---
 
@@ -102,11 +106,14 @@ Les fiches générées sont dans :
 JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/drafts/
 ```
 
-Pour chaque fiche :
-1. Ouvre le fichier `.md` dans Obsidian
-2. Vérifie : nom du lieu, GPS, photo, scores (photo/nature/patrimoine)
-3. Si c'est bon → déplace dans `validated_places/`
-4. Si incorrect → supprime ou corrige
+⚠️ **Auto-validation systématique (décision JC 2026-09-21)** — on valide tout en bloc, sans relecture :
+
+```bash
+python3 auto_validate.py            # déplace drafts/*.md → validated_places/ (idempotent)
+python3 auto_validate.py --dry-run  # aperçu sans déplacement
+```
+
+Le `status` du frontmatter est conservé (`validated` / `a_enrichir` / `needs_review`). `needs_review` reste une étiquette informative — plus de relecture manuelle.
 
 ### 4. Vérifier que tout va bien
 
@@ -123,6 +130,29 @@ ls JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/drafts/
 # Le log est-il propre ?
 tail -5 JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/logs/collector.log
 ```
+
+---
+
+## MODE A — Screenshots dans l'inbox (`00_INBOX/SITES/`)
+
+Les screenshots déposés dans `JCH_Inbox/00_INBOX/SITES/` **ne sont pas captés** par le collector (qui n'écoute que Telegram). Il faut les injecter à la main :
+
+1. **Lister** : `ls JCH_Inbox/00_INBOX/SITES/*.jpeg`
+2. **Injecter chaque image** — copier dans `raw/images/<slug>.jpg` + écrire `queue/<slug>.json` (même format que le collector : `content_type: "screenshot"`, `media_files[0].file_path` relatif à `PKA_ROOT`).
+3. **Lancer l'analyzer** (section « Lancer l'analyse » ci-dessus).
+4. **Valider**, puis **archiver les originaux** de `SITES/` (les déplacer hors inbox pour éviter le re-traitement).
+
+### Fallback manuel (quand l'analyzer ignore un lieu)
+
+L'analyzer est **text-only** (OCR + EXIF + LLM). Sur un post Instagram sans nom de lieu lisible, il conclut « pas un lieu » et marque l'item `skipped`.
+
+Dans ce cas, identifier à la main :
+1. **OCR** l'image pour lire le nom du lieu (le texte Instagram contient souvent le nom).
+2. **Géolocaliser** — DuckDuckGo (`web.run`) ou directement **Nominatim** (plus précis pour le GPS) :
+   ```
+   https://nominatim.openstreetmap.org/search?q=<lieu>&format=json&limit=1
+   ```
+3. **Écrire la fiche** dans `drafts/` en reprenant le format « Que contient une fiche ? » ci-dessous.
 
 ---
 
@@ -190,6 +220,7 @@ Lien vers le rapport HTML avec carte interactive
 | "DECOUVERTES_TOKEN manquant" | Vérifier `JCH_PRIVATE/decouvertes.env` — le token doit être sur UNE SEULE ligne : `DECOUVERTES_TOKEN=890...` |
 | "Conflict" au démarrage | `pkill -f collector.py` puis relancer |
 | Le bot ne reçoit plus rien | Vérifier que le token n'a pas été révoqué (BotFather) |
+| `Error code: 401 — authentication_error` (analyzer) | La clé `ANTHROPIC_API_KEY` de `JCH_PRIVATE/decouvertes.env` est périmée. La recopier depuis `~/.config/pka-jch/api_keys` (clé centrale valide). |
 | L'analyzer ne trouve rien | `queue/` est peut-être vide ou les statuts sont `"skipped"` au lieu de `"pending"` — vérifier avec `cat queue/*.json \| grep analysis_status` |
 | Le log est énorme | Normalement rotation automatique à 1 Mo. Si dépassé, purger : `echo "" > logs/collector.log` |
 | Token visible dans le log | Ne devrait plus arriver (TokenMaskFilter). Si oui, redémarrer le collector. |
@@ -203,3 +234,4 @@ Lien vers le rapport HTML avec carte interactive
 - `scripts/decouvertes-collector/.env.example` est le template pour les nouveaux contributeurs
 - Le token est automatiquement masqué (`***TOKEN***`) dans les logs
 - Rotation des logs : 1 Mo maximum, 3 backups
+- ⚠️ La clé `ANTHROPIC_API_KEY` (utilisée par l'analyzer) peut dériver de la clé centrale `~/.config/pka-jch/api_keys`. Si l'analyzer renvoie 401, resynchroniser (voir Dépannage).

@@ -20,6 +20,7 @@ Lire silencieusement (si non déjà injectés via le pointer outil actif) :
 - `SOUL.md` — persona, règles de comportement
 - `USER.md` — profil JC, setup, préférences
 - `TEAM/dobby.md` — responsabilités et frontières du rôle orchestrateur
+- `docs/system/procedure-traduction-jade.md` — procédure de traduction bilingue Jade (VETALYX/DIAHO) — à charger pour toute session pouvant toucher à la traduction FR/EN↔ZH
 
 Identifier et mémoriser le modèle actif (depuis le contexte système) pour attribution des entrées mémoire de la session.
 
@@ -101,7 +102,7 @@ python3 /Users/jchavauxm5/PKA_JCH/scripts/pka_retrieve.py --fts "<mots-clés con
 
 # Follow_ups en retard dans team.db
 sqlite3 /Users/jchavauxm5/PKA_JCH/TEAM/team.db \
-  "SELECT id, note, due_date FROM follow_ups WHERE due_date < date('now') AND status != 'done';" 2>/dev/null
+  "SELECT id, subject, due_date FROM follow_ups WHERE due_date < date('now') AND status != 'done';" 2>/dev/null
 
 # Scanner l'inbox
 ls /Users/jchavauxm5/PKA_JCH/JCH_Inbox/00_INBOX/

@@ -3,7 +3,7 @@
 > **Règle :** Dobby lit ce fichier AVANT de faire une affirmation sur le matériel.
 > **Mise à jour :** immédiate après chaque info de JC (réception, commande, panne, prêt).
 > **Ne pas déduire, ne pas deviner.** Si pas dans ce fichier → demander à JC.
-> **Dernière mise à jour :** 2026-07-19 — Noctua NF-A4x10 PWM reçu
+> **Dernière mise à jour :** 2026-10-13 — dashcam + kit hardwire + OEM bracket + rallonge reçus ; microSD reportée.
 
 ---
 
@@ -26,6 +26,7 @@
 
 | Composant | Qté | Statut | Notes |
 |-----------|-----|--------|-------|
+| Lupo (Ford Transit Custom Westfalia Kelsey) | 1 | ✅ REÇU | 30 juillet 2026 — véhicule livré, installation IOT en cours (deadline 01/11) |
 | RPi 5 4GB | 1 | ✅ REÇU | Amazon, 132,09€, 10 juin |
 | Alim officielle RPi5 27W | 1 | ✅ REÇU | 15,32€ |
 | Refroidisseur actif RPi5 | 1 | ✅ REÇU | 9,99€ |
@@ -46,12 +47,23 @@
 | Sonde hydrostatique TL-136 | 1 | ✅ REÇU | 8 juillet — capteur 4-20mA, détecteur niveau liquide |
 | BOYA BY-MM1 | 1 | ✅ REÇU | Micro shotgun |
 | UGREEN USB Audio | 1 | ✅ REÇU | Adaptateur audio RPi |
+| Teltonika RUT240 (routeur 4G/LTE) | 1 | ✅ EN STOCK | Passerelle internet van : SIM 4G → Ethernet → RPi 5. Alim 9-30V DC, Tailscale/WireGuard, RMS. Remplace le ZTE MF833U1 (dongle) pour le van. |
 | PCIe to M.2 NVMe Shield | 2 | ✅ REÇU | 29 juin, pour SSD NVMe RPi 5 vanlife |
 | SSD NVMe M.2 Fanxiang 256GB | 1 | ✅ REÇU | 1er juillet, pour RPi 5 vanlife |
-| Assemblage RPi 5 vanlife | 1 | ✅ ASSEMBLÉ | RPi 5 + SSD + UPS HAT + accus 18650 — 8 juillet. Reste : mise en boîtier X1201-C1. |
+| Assemblage RPi 5 vanlife | 1 | ✅ BOOT OK + HAOS 18.3 | RPi 5 + SD 256 Go Endurance + UPS HAT + accus 18650 + X1201-C1. NVMe retiré (01/10) → boot résolu, HAOS 17.3→18.3, auto-update OFF, Healthy. Reste : silentblocs, coating, capteurs Zigbee. |
 | Samsung PRO Endurance 256GB microSD | 1 | ✅ REÇU | 17 juillet, Amazon. Remplace SD 128 Go actuelle pour HA OS 24/7. |
 | Noctua NF-A4x10 PWM | 1 | ✅ REÇU | 19 juillet. Ventilateur 40×10mm silencieux pour RPi Lupo. |
 | Reolink Argus MagiCam | 1 | ✅ REÇU | 17 juillet. Dashcam/sécurité Lupo, fixation aimantée. Voir `07_TRAVELS/van technique/securite/camera-reolink-argus-magicam-lupo.md`. |
+| Bidirectional Level Shifter 8CH | 2 | ✅ REÇU | 23 juillet — conversion 3.3V ↔ 5V, I2C/SPI/UART, pour RPi Lupo |
+| XKC-Y25-V Capteur niveau liquide sans contact | 4 | ✅ REÇU | 25 juillet — XKeyes/EllyESTUDIO, non-contact, pour cuves Lupo |
+| Module relais optocoupleur Arduino 12V 2CH | 3 | ✅ REÇU | 25 juillet — Shield, déclenchement haut/bas, optocoupleur |
+| INMP441 MEMS Microphone omnidirectionnel I2S | 3 | ✅ REÇU | 25 juillet — Haute précision, basse conso, ESP32, acquisition vocale |
+| GY-521 MPU-6050 IMU 6 axes (gyro + accéléro) | 4 | ✅ REÇU | 25 juillet — I2C, pour Arduino/ESP32. Inclinométrie ? Détection mouvement ? |
+| Wolfbox G900 TriPro Bumper (miroir 12" 3 canaux : avant 4K IMX678 + arrière 2.5K + pare-chocs 1080P) | 1 | ✅ REÇU | livrée 13/10 (pack étendu, **378 €**). Version Stoßfänger, caméra pare-chocs IP67. Voir `07_TRAVELS/van technique/securite/cameras-parking-dashcam-lupo.md` |
+| Wolfbox OEM bracket (support rétro d'origine) | 1 | ✅ REÇU | reçu 13/10 — à faire fixer par Be Camper |
+| Kit hardwire Wolfbox G900TriPro (mode parking) | 1 | ✅ REÇU | reçu 13/10, ~25€, fusible tap + coupure basse tension |
+| Rallonge câble caméra arrière 10/15 m (G900TriPro) | 1 | ✅ REÇU | reçue 13/10, ~28€, pour van 5,45 m |
+| microSD High Endurance 256 Go (dashcam) | 1 | ⏳ À COMMANDER | achetée plus tard (JC 13/10) — séparée de celle du RPi |
 
 ## IT / Divers
 
@@ -60,8 +72,9 @@
 | UGREEN USB-C → Micro USB ×2 | 2 | ✅ REÇU | 10 juin |
 | UGREEN USB-C Ethernet Gigabit | 1 | ✅ REÇU | 10 juin |
 | ZTE MF833U1 LTE USB Modem | 1 | ✅ REÇU | Dongle 4G USB pour internet van — voir briefs vanlife-iot. |
-| WiCAN Pro (OBD/CAN Ford) | 1 | ⏳ COMMANDÉ (backorder) | ~82€, Mouser. MS-CAN + HS-CAN. 17+ capteurs véhicule → HA. Voir `specs/SPEC-CAN-BUS.md` |
+| WiCAN Pro (OBD/CAN Ford) | 1 | ✅ REÇU | 1er août 2026. ~82€, Mouser. MS-CAN + HS-CAN. 17+ capteurs véhicule → HA. Voir `specs/SPEC-CAN-BUS.md` |
 | Exosfer OBD Protect | 1 | ✅ REÇU | Antivol électronique prise OBD. ⚠️ Compatibilité WiCAN Pro à vérifier. |
+| SSD Time Machine | 1 | ⏳ À COMMANDER | Décision JC 2026-10-05. SSD 2 To min (USB-C/Thunderbolt), format APFS chiffré. Remplace le HDD 1 To `PKA_TimeMachine` (APFS saturé à 97%, LazyThinning bloqué à 99% CPU). |
 
 ## LEAFNET / WN-BIO
 

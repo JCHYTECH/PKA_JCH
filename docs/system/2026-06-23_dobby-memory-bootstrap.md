@@ -74,7 +74,7 @@ python3 /Users/jchavauxm5/PKA_JCH/scripts/check_state_freshness.py --warn-days 7
 
 # Follow_ups en retard dans team.db
 sqlite3 /Users/jchavauxm5/PKA_JCH/TEAM/team.db \
-  "SELECT id, note, due_date FROM follow_ups WHERE due_date < date('now') AND status != 'done';" 2>/dev/null
+  "SELECT id, subject, due_date FROM follow_ups WHERE due_date < date('now') AND status != 'done';" 2>/dev/null
 ```
 
 | Vérification | Action |

@@ -364,24 +364,90 @@ Company seal: ☐
 **Status:** ⏸️ To be provided after incorporation (existing multi-page document — not required before incorporation)
 
 ### Annex 4 — European Territory
-**Planned content:** list of covered countries (EU Member States and other European countries), priority countries, countries possibly excluded or to be dealt with separately.
+This Annex defines the territorial scope of the exclusivity, distribution and commercial development rights granted to VETALYX under the Agreement.
+
+The following countries are expressly listed; other countries may be added by written agreement between the Parties, consistently with Articles 1 and 3.
+
+**Countries covered.** Germany; Austria; Belgium; Bulgaria; Cyprus; Croatia; Denmark; Spain; Estonia; Finland; France; Greece; Hungary; Ireland; Iceland; Italy; Latvia; Liechtenstein; Lithuania; Luxembourg; Malta; Norway; Netherlands; Poland; Portugal; Czechia; Romania; United Kingdom; Slovakia; Slovenia; Sweden; Switzerland.
+
+**Countries to be excluded or subject to specific conditions.** Russia; Türkiye; Ukraine; Belarus; countries subject to sanctions, trade restrictions or particular regulatory complexities. Any exclusion or specific conditions shall be expressly agreed in writing before signature, consistently with the European scope defined in the Agreement.
+
+Inclusion of a country does not require VETALYX to market the Products there immediately. VETALYX remains free to determine market priorities, launch schedules and distribution channels according to commercial, regulatory and operational conditions.
+
+Actual marketing in each country remains subject to applicable regulatory, customs, language and commercial requirements. Any change to the Territory requires written agreement between the Parties. No minimum commercial target is created by this Annex.
+
 **Responsible:** VETALYX
-**Status:** ⬜ To be finalised
+**Status:** 🟢 Drafted (Alain Bosseloir, 06/10)
 
 ### Annex 5 — Commercial terms
-**Planned content:** transfer prices (arm's length principle), pricing mechanism (review period, indexation), Incoterms, delivery times, payment terms, invoicing schedule of the Assignment (EUR 100,000 + EUR 20,000).
+This Annex defines the economic and commercial conditions applicable to the supply of Products by DIAHO to VETALYX. It supplements the Agreement concerning transfer prices, orders, payment, deliveries and initial launch stock. These conditions may be completed or updated by written agreement in accordance with the Agreement.
+
+**Product supply conditions**
+
+| Item | Product / Ref. 1 | Product / Ref. 2 | Product / Ref. 3 |
+|---|---|---|---|
+| Transfer price | [To complete] | [To complete] | [To complete] |
+| Currency | EUR | EUR | EUR |
+| Payment terms | [To complete] | [To complete] | [To complete] |
+| Applicable Incoterm / named place | [To complete] | [To complete] | [To complete] |
+| Delivery lead time | [To complete] | [To complete] | [To complete] |
+| Minimum order quantity (MOQ) | None for first 24 months | None for first 24 months | None for first 24 months |
+| Storage conditions | [To complete] | [To complete] | [To complete] |
+| Price validity / changes | Article 10 | Article 10 | Article 10 |
+| Replacement of defective Products | [To complete] | [To complete] | [To complete] |
+| Expired Products | [To complete] | [To complete] | [To complete] |
+| Warranty conditions | [To complete] | [To complete] | [To complete] |
+| Order forecasting arrangements | [To complete] | [To complete] | [To complete] |
+
+Transport quality, storage conditions, Product integrity, temperature excursions, delivery quality documentation and incoming inspection are governed by the Quality Agreement.
+
+Prices and their modification remain subject to Articles 10 and 16: arm's length terms, twelve-month review by default, six months' prior written notice for changes, objective justification and written agreement. Any indexation mechanism must be agreed in writing.
+
+**Initial launch stock.** DIAHO shall provide EUR 50,000 excluding taxes of kits, valued at the applicable transfer prices, without initial invoicing or immediate payment. Their use and progressive reimbursement are governed by Article 10.
+
 **Responsible:** VETALYX + DIAHO
-**Status:** ⬜ To be finalised
+**Status:** 🟡 Drafted (Alain Bosseloir, 06/10) — commercial values still to be completed
 
 ### Annex 6 — EU Authorised Representative mandate
-**Planned content:** scope of the EU Authorised Representative mandate (representation before the authorities, response to administrative requests, incident and complaint management, recall coordination), DIAHO's obligations, documentary and signature powers.
+This Annex defines the Parties' respective responsibilities for the regulatory steps necessary or applicable to importing, making available, distributing and marketing the Products in the countries of the Territory.
+
+Under Article 8, VETALYX shall coordinate regulatory steps falling within its role as importer, distributor and European commercial operator, in accordance with the requirements applicable in the countries where it decides to market the Products. DIAHO remains responsible for supplying the necessary technical, quality and manufacturer information and documentation.
+
+This coordination may include:
+- exchanges with competent authorities;
+- preparation, submission and follow-up of required notifications, registrations or other formalities;
+- retention or provision of required documents;
+- regulatory coordination and responses to administrative requests;
+- regulatory management of incidents, complaints, withdrawals and recalls;
+- documentary follow-up;
+- identification and monitoring of country-specific requirements.
+
+DIAHO shall provide, or arrange for Zheda Dixun or the relevant manufacturer to provide, all documents, information, declarations, signatures and powers reasonably necessary for VETALYX to carry out these steps.
+
+Where requirements differ between countries, VETALYX may establish and update a regulatory matrix identifying the Product, country, competent authority, applicable formalities and respective responsibilities.
+
+Quality, technical documentation, traceability, Change Control and Product-related communication remain governed by the Quality Agreement. The mandate shall be implemented within the powers and requirements of the applicable product and country regulations.
+
 **Responsible:** VETALYX
-**Status:** ⬜ To be finalised
+**Status:** 🟢 Drafted (Alain Bosseloir, 06/10)
 
 ### Annex 7 — Know-how transfer and industrial localisation
-**Planned content:** framework for progressive transfer to Europe (assembly, packaging, labelling, quality control, partial or full production), protection of Know-How, indicative timetable, selection of European partners.
+This Annex defines the framework for progressively transferring to Europe all or part of the activities relating to Product preparation, assembly, packaging, control or manufacture.
+
+Under Article 15, VETALYX may exercise the localisation option by decision of its Board. The Parties shall have eight (8) months from notification to organise the Know-How transfer. The option does not itself require an immediate industrial transfer: implementation of each stage requires an agreement defining scope, timetable, responsibilities, costs and rights to use the relevant Know-How. Article 21.8 provides for a separate licence agreement where necessary; no automatic assignment or licence arises.
+
+European localisation may include:
+- document transfer and training;
+- assembly, packaging, labelling and adaptation of instructions;
+- quality control and batch release;
+- partial or complete production and industrial validation;
+- selection of European partners;
+- Know-How protection, indicative timetable, Parties' responsibilities and any cost sharing.
+
+Each transferred activity shall be validated before commercial implementation to demonstrate that Product characteristics, quality and performance remain consistent with the approved specifications.
+
 **Responsible:** VETALYX + DIAHO
-**Status:** ⬜ To be finalised
+**Status:** 🟢 Drafted (Alain Bosseloir, 06/10)
 
 ### Annex 8 — Future Products and right of first refusal
 **Planned content:** terms of VETALYX's right of first refusal on Future Products, proposal file, evaluation deadlines, conditions for integration into the Agreement.
@@ -389,14 +455,57 @@ Company seal: ☐
 **Status:** ⬜ To be finalised
 
 ### Annex 9 — Enhanced confidentiality and non-circumvention
-**Planned content:** reinforced protection of the customers, prospects, distributors, partners and contacts identified by VETALYX; application to DIAHO's Affiliates and manufacturers; **reciprocal guarantees DIAHO ↔ Zheda Dixun** (see Article 21.9); contractual sanctions in the event of breach.
+This Annex supplements the Agreement's confidentiality, exclusivity and non-circumvention provisions. It protects information, commercial relationships and opportunities developed through the partnership, particularly VETALYX's investment in identifying, developing and structuring the European market.
+
+**Confidentiality.** DIAHO shall not disclose or use outside the Agreement the technical, regulatory, commercial, financial or strategic information communicated by VETALYX.
+
+**Protected contacts and commercial relationships.** Customers, prospects, distributors, partners, experts and other contacts identified, introduced or developed by VETALYX under the Agreement are Protected Contacts. DIAHO shall not establish a commercial relationship aimed at bypassing VETALYX or use those relationships to conclude agreements directly or indirectly with such contacts.
+
+**Regulatory Files and territorial sales.** Files, translations, adaptations and regulatory work created or financed by VETALYX shall not be used for a third party's benefit in the Territory without VETALYX's written consent. DIAHO shall not make direct or indirect territorial sales aimed at bypassing VETALYX's exclusivity.
+
+**Affiliates, partners and guarantees.** DIAHO shall ensure compliance by its parent companies, subsidiaries, Affiliates, Zheda Dixun, partner manufacturers, agents and relevant distributors. Dixun's direct obligations and DIAHO/Dixun's joint and several liability remain governed by Article 21.9; their internal arrangements shall not be enforceable against VETALYX.
+
+**Breach and existing rights.** A substantial breach constitutes a serious contractual breach and may require immediate cessation, compensation for loss and, where appropriate, termination under Article 5. Article 21.10 governs survival of Dixun's non-circumvention and confidentiality obligations. The Parties' pre-existing rights in information, technology, contacts and commercial relationships are preserved, without authorising a breach of the Agreement's exclusivity.
+
+If this Annex conflicts with general confidentiality or non-circumvention provisions, the Parties shall expressly clarify precedence by written agreement.
+
 **Responsible:** VETALYX
-**Status:** ⬜ To be finalised
+**Status:** 🟢 Drafted (Alain Bosseloir, 06/10)
 
 ### Annex 10 — Deed of Accession of Zheda Dixun
-**Planned content:** separate deed by which Zheda Dixun, a Chinese company, shareholder of DIAHO and actual Manufacturer of the Products, declares that it has read the Framework Agreement and its annexes, and **expressly adheres** to the obligations of Article 21 as well as Articles 8, 9, 12, 13 and 15 and Annex 9, to the extent they concern it. Signature + company seal of Dixun (the company seal constitutes a valid undertaking under Chinese law).
+Relating to the Strategic Partnership Framework Agreement between VETALYX and DIAHO dated [DATE / VERSION].
+
+| Zheda Dixun | Registered details |
+|---|---|
+| Full legal name in Chinese / English | [To complete] |
+| Unified Social Credit Code | [To complete] |
+| Registered office | [To complete] |
+| Representative / capacity / authority | [To complete] |
+
+Zheda Dixun, shareholder of DIAHO and actual Manufacturer of the Initial Products, declares that it has read the Agreement and the annexes identified below. It expressly accepts Article 21, Articles 8, 9, 12, 13 and 15 and Annex 9, insofar as they concern it.
+
+These undertakings are directly enforceable by VETALYX and DIAHO. In accordance with Article 21.9, DIAHO and Dixun are jointly and severally liable towards VETALYX for the obligations covered by Article 21. Dixun's accession does not release DIAHO or permit their internal agreements or disputes to limit VETALYX's rights.
+
+The undertakings follow the term of the Agreement. Non-circumvention survives for five (5) years; confidentiality survives while the information remains confidential, under Article 21.10. Belgian law, the dispute procedure and the binding English language follow Articles 17, 18 and 19.
+
+Documents received and accepted: [Agreement and each applicable annex: version/date]. Any annex not yet supplied, including the Quality Agreement where applicable, shall be identified as pending and separately accepted when provided.
+
+The signatory confirms that he/she is duly authorised. Dixun shall provide evidence of authority on request. Execution shall include the company seal where required or used, subject to verification of the registered identity and signing authority.
+
+**For ZHEDA DIXUN**
+- Name / capacity: ______________
+- Signature: ______________
+- Company seal: ______________
+- Place / date: ______________
+
+**Acknowledged by VETALYX**
+- Name / capacity / signature / date: ______________
+
+**Acknowledged by DIAHO**
+- Name / capacity / signature / company seal / date: ______________
+
 **Responsible:** VETALYX
-**Status:** ⬜ To be finalised (model to be signed with the Agreement)
+**Status:** 🟡 Drafted (Alain Bosseloir, 06/10) — Dixun registered details still to be completed
 
 ---
 

@@ -46,6 +46,14 @@ PROCUREMENT_EXCLUDE_PATTERNS = [
     "*procurement-pass*",      # Passes d'achat historiques
 ]
 
+# Répertoires à exclure entièrement du scan procurement (archives, notes, inbox)
+PROCUREMENT_EXCLUDE_DIRS = [
+    "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/07_PROCUREMENT_BOM",  # BOM historiques WildNexus
+    "JCH_Inbox/03_PROJECTS/11_IOT/iot-van/passe-utile/boms",                   # BOM historiques IOT Vanlife
+    "JCH_Inbox/03_PROJECTS/11_IOT/_shared",                                     # Registre procurement partagé = duplicata registre-achats.md
+    "JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/99_INBOX_NOTES",                      # Notes inbox = pas State
+]
+
 # Patterns pour extraire la date de dernière mise à jour
 DATE_PATTERNS = [
     re.compile(r"Dernière mise à jour\s*:\s*(\d{4}-\d{2}-\d{2})"),
@@ -95,12 +103,19 @@ def check_freshness(json_output: bool = False) -> dict:
                     rel = f.relative_to(WORKSPACE)
                     rel_str = str(rel)
 
-                    # Skip excluded patterns
+                    # Skip excluded directories
                     excluded = False
-                    for excl in PROCUREMENT_EXCLUDE_PATTERNS:
-                        if f.match(excl):
+                    for excl_dir in PROCUREMENT_EXCLUDE_DIRS:
+                        if str(rel).startswith(excl_dir):
                             excluded = True
                             break
+
+                    # Skip excluded patterns
+                    if not excluded:
+                        for excl in PROCUREMENT_EXCLUDE_PATTERNS:
+                            if f.match(excl):
+                                excluded = True
+                                break
 
                     # Skip procurement files older than archive threshold
                     if not excluded:

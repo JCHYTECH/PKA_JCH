@@ -153,7 +153,7 @@ def derive_category(rel_path: str, file_type: str, project_key: str | None, comp
 
 def derive_status(rel_path: str) -> str:
     parts = set(Path(rel_path).parts)
-    if "archive" in parts or "archives" in parts:
+    if parts & {"archive", "archives", "_archive", "_archives"}:
         return "archived"
     return "active"
 

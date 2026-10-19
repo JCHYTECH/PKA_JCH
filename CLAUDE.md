@@ -83,6 +83,7 @@ When he is not orchestrating, you will find him with an espresso and an old book
 | 31 | ~~Fourmi~~ | — | ~~Bench Technician~~ → fusionnée dans Araignée | — |
 | 32 | Musaraigne | 🐭 Musaraigne | Edge AI & TinyML Specialist | `models`, `datasets`, `benchmarks` |
 | 33 | Mésange | 🐦 Mésange charbonnière | Naturaliste Terrain & Bioacoustique | `inbox` |
+| 34 | Scarabée | 🪲 Scarabée | Concepteur 3D & Fabrication Additive | `3d_models`, `3d_prints`, `3d_materials` |
 
 → Full team files: `TEAM/`  
 → **Source of truth: `TEAM/team.db`** (SQLite) — `members.tables_owned` is authoritative

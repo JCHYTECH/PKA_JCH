@@ -2,7 +2,7 @@
 
 > **Fichier maître de la gestion mémoire Dobby 🦉**
 > **Chargé à chaque début de session.** Décrit l'ordre, la fonction et les règles de chaque fichier.
-> **Dernière mise à jour :** 2026-06-23 — v2 post-analyse améliorations
+> **Dernière mise à jour :** 2026-08-21 — ajout procédure de traduction bilingue Jade (VETALYX/DIAHO)
 
 ---
 
@@ -28,6 +28,7 @@ La mémoire de Dobby repose sur une séparation stricte entre trois types de fic
 | 2 | `SOUL.md` | Qui je suis, règles de comportement, persona |
 | 3 | `USER.md` | Qui est JC, son setup, ses projets, ses préférences |
 | 4 | `TEAM/dobby.md` | Persona complet, responsabilités, frontières du rôle d'orchestrateur |
+| 5 | `docs/system/procedure-traduction-jade.md` | Procédure de traduction bilingue Jade (VETALYX/DIAHO) — workflow, format bilingue, terminologie figée (DIAHO → 迪亚霍) |
 
 Ces fichiers changent rarement. Ils définissent le *cadre* de la session. Sur Claude Code ils sont injectés via `CLAUDE.md` — les lire explicitement sur tout autre modèle ou en cas de doute.
 
@@ -79,7 +80,7 @@ python3 /Users/jchavauxm5/PKA_JCH/scripts/check_state_freshness.py --warn-days 7
 
 # Follow_ups en retard dans team.db
 sqlite3 /Users/jchavauxm5/PKA_JCH/TEAM/team.db \
-  "SELECT id, note, due_date FROM follow_ups WHERE due_date < date('now') AND status != 'done';" 2>/dev/null
+  "SELECT id, subject, due_date FROM follow_ups WHERE due_date < date('now') AND status != 'done';" 2>/dev/null
 ```
 
 | Vérification | Action |
@@ -156,6 +157,7 @@ Si une affirmation sur un State doit être faite > 30 min après sa lecture init
 | `USER.md` | ✅ | Profil JC |
 | `TEAM/dobby.md` | ✅ | Persona et frontières rôle orchestrateur |
 | `docs/system/dobby-memory-bootstrap.md` | ✅ 2026-06-23 | Ce fichier — constitution mémoire |
+| `docs/system/procedure-traduction-jade.md` | ✅ 2026-08-21 | Procédure de traduction bilingue Jade (VETALYX/DIAHO) |
 
 ---
 

@@ -3,6 +3,14 @@
 Date de création : 2026-06-02 21:03  
 Projet : Agent spécialisé pour transformer le groupe Telegram **DECOUVERTES** en base de lieux touristiques exploitables dans **PKA_JCH** et Obsidian.
 
+> **📌 Statut d'implémentation (mis à jour 2026-08-30)**
+> Ce cahier des charges est le **design cible**. L'implémentation réelle a divergé :
+> - **Code réel** : `scripts/decouvertes-collector/collector.py` (collecte Telegram) + `analyzer.py` (analyse). Pas d'agents séparés — tout est dans ces 2 scripts.
+> - **Deux entrées** : groupe Telegram (MODE B) **et** screenshots déposés dans `00_INBOX/SITES/` (MODE A, injection manuelle).
+> - **Arborescence réelle** : `JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/` — le schéma §4 (`00_INBOX/DECOUVERTES_Telegram/`) n'est plus utilisé.
+> - **Analyse text-only** : OCR (tesseract) + EXIF + LLM (Claude Haiku ou cascade). L'agent « Vision / Screenshot » (§5.3) n'est **pas** implémenté — voir §21.1.
+> - **Fallback manuel** : lieux ignorés par l'OCR identifiés à la main (OCR + Nominatim) — voir `MODE_EMPLOI.md`.
+
 ---
 
 # 1. Objectif général
@@ -796,11 +804,13 @@ Tout le reste doit être automatisé par [[Dobby]] et les agents spécialisés.
 
 Un screenshot d'un lieu sans nom visible peut être difficile à identifier.
 
-Solution :
+**Constaté en réel (2026-08-30) :** l'analyzer actuel (text-only) marque `skipped` les posts Instagram sans nom de lieu lisible dans l'OCR (ex. posts « earthpix », « umbria_italy », « viaggiaconwallace »).
 
-- extraire tous les indices
-- proposer plusieurs candidats
-- demander validation humaine si nécessaire
+Solution (implémentée) :
+
+- OCR pour extraire le nom du lieu depuis le texte de l'image
+- géolocalisation via Nominatim (GPS exact)
+- fiche écrite à la main dans `drafts/` si l'analyzer échoue — voir `MODE_EMPLOI.md` → « Fallback manuel »
 
 ---
 

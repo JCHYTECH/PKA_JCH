@@ -30,6 +30,7 @@
 | [capture](capture/SKILL.md) | `/capture <texte>` | Transformer input en entrée knowledge structurée (team.db) |
 | [brief](brief/SKILL.md) | `/brief <membre> <tâche>` | Générer brief de délégation avec PRIORITY et DEADLINE |
 | [status](status/SKILL.md) | `/status`, `/status <membre>` | Tableau de bord des livrables en attente, détection tâches bloquées |
+| [pka-decouvertes](pka-decouvertes/SKILL.md) | "decouvertes inbox", "decouvertes telegram", "traite les screenshots SITES" | Identifier des lieux (screenshots inbox ou Telegram) → fiches Obsidian |
 | **WildNexus** | | |
 | [wildnexus-adr](wildnexus-adr/SKILL.md) | "crée un ADR", "passe l'ADR en accepté", "documente la décision" | Créer, mettre à jour ou valider un ADR WildNexus |
 | [wildnexus-bom](wildnexus-bom/SKILL.md) | "génère le BOM", "mets à jour le budget", "shortlist achat" | Générer/mettre à jour le BOM WildNexus P0 en Excel multi-onglets |
