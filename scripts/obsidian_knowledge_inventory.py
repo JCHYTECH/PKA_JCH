@@ -58,7 +58,6 @@ AGENT_NAMES = [
     "Renard",
     "Iris",
     "Forge",
-    "Ariane",
     "Bruno",
     "Sybil",
     "Clio",
@@ -74,6 +73,11 @@ AGENT_NAMES = [
     "Milan",
     "Atlas",
     "Hermine",
+    "Araignée",
+    "Cigogne",
+    "Mésange",
+    "Musaraigne",
+    "Scarabée",
 ]
 
 AMBIGUOUS_TERMS = {
@@ -281,7 +285,7 @@ def header(title: str) -> list[str]:
     return [
         "---",
         f"date: {date.today().isoformat()}",
-        "model: GPT-5 Codex",
+        "model: DeepSeek V4",
         "type: index",
         "status: generated",
         "---",
@@ -362,7 +366,7 @@ def render_knowledge_dictionary(inventory: Inventory) -> str:
     lines = [
         "---",
         f"date: {date.today().isoformat()}",
-        "model: GPT-5 Codex",
+        "model: DeepSeek V4",
         "type: dictionary",
         "status: validated",
         "validated: 2026-05-29",
@@ -421,7 +425,7 @@ def render_review_queue(inventory: Inventory) -> str:
     lines = [
         "---",
         f"date: {date.today().isoformat()}",
-        "model: GPT-5 Codex",
+        "model: DeepSeek V4",
         "type: review-queue",
         "status: generated",
         "---",
@@ -553,7 +557,7 @@ def render_wikilink_dry_run(inventory: Inventory, suggestions: list[WikilinkSugg
     lines = [
         "---",
         f"date: {date.today().isoformat()}",
-        "model: GPT-5 Codex",
+        "model: DeepSeek V4",
         "type: wikilink-dry-run",
         "status: proposal",
         "---",

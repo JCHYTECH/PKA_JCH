@@ -1,6 +1,6 @@
 ---
-date: 2026-05-29
-model: GPT-5 Codex
+date: 2026-10-19
+model: DeepSeek V4
 type: dictionary
 status: validated
 validated: 2026-05-29
@@ -10,128 +10,137 @@ validated: 2026-05-29
 
 > Validé par JCH le 2026-05-29. Phase 3 (dry-run wikilinks) autorisée.
 
-## [[Argus]]
+## Araignée
 
-- canonical: [[Argus]]
+- canonical: Araignée
 - aliases:
-  - [[Argus]]
+  - Araignée
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Ariane]]
+## Argus
 
-- canonical: [[Ariane]]
+- canonical: Argus
 - aliases:
-  - [[Ariane]]
+  - Argus
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Atlas]]
+## Atlas
 
-- canonical: [[Atlas]]
+- canonical: Atlas
 - aliases:
-  - [[Atlas]]
+  - Atlas
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Bouvier]]
+## Bouvier
 
-- canonical: [[Bouvier]]
+- canonical: Bouvier
 - aliases:
-  - [[Bouvier]]
+  - Bouvier
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Bruno]]
+## Bruno
 
-- canonical: [[Bruno]]
+- canonical: Bruno
 - aliases:
-  - [[Bruno]]
+  - Bruno
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Castor]]
+## Castor
 
-- canonical: [[Castor]]
+- canonical: Castor
 - aliases:
-  - [[Castor]]
+  - Castor
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Chouette]]
+## Chouette
 
-- canonical: [[Chouette]]
+- canonical: Chouette
 - aliases:
-  - [[Chouette]]
+  - Chouette
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Clio]]
+## Cigogne
 
-- canonical: [[Clio]]
+- canonical: Cigogne
 - aliases:
-  - [[Clio]]
+  - Cigogne
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Corbeau]]
+## Clio
 
-- canonical: [[Corbeau]]
+- canonical: Clio
 - aliases:
-  - [[Corbeau]]
+  - Clio
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Delphi]]
+## Corbeau
 
-- canonical: [[Delphi]]
+- canonical: Corbeau
 - aliases:
-  - [[Delphi]]
+  - Corbeau
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Dobby]]
+## Delphi
 
-- canonical: [[Dobby]]
+- canonical: Delphi
 - aliases:
-  - [[Dobby]]
+  - Delphi
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Forge]]
+## Dobby
 
-- canonical: [[Forge]]
+- canonical: Dobby
 - aliases:
-  - [[Forge]]
+  - Dobby
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Furet]]
+## Forge
 
-- canonical: [[Furet]]
+- canonical: Forge
 - aliases:
-  - [[Furet]]
+  - Forge
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Hermine]]
+## Furet
 
-- canonical: [[Hermine]]
+- canonical: Furet
 - aliases:
-  - [[Hermine]]
+  - Furet
+- category: agent
+- folder: `TEAM`
+- ambiguity: none recorded
+
+## Hermine
+
+- canonical: Hermine
+- aliases:
+  - Hermine
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
@@ -145,119 +154,146 @@ validated: 2026-05-29
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Iris]]
+## Iris
 
-- canonical: [[Iris]]
+- canonical: Iris
 - aliases:
-  - [[Iris]]
+  - Iris
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Jade]]
+## Jade
 
-- canonical: [[Jade]]
+- canonical: Jade
 - aliases:
-  - [[Jade]]
+  - Jade
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Lynx]]
+## Lynx
 
-- canonical: [[Lynx]]
+- canonical: Lynx
 - aliases:
-  - [[Lynx]]
+  - Lynx
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Miel]]
+## Miel
 
-- canonical: [[Miel]]
+- canonical: Miel
 - aliases:
-  - [[Miel]]
+  - Miel
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Milan]]
+## Milan
 
-- canonical: [[Milan]]
+- canonical: Milan
 - aliases:
-  - [[Milan]]
+  - Milan
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Nova]]
+## Musaraigne
 
-- canonical: [[Nova]]
+- canonical: Musaraigne
 - aliases:
-  - [[Nova]]
+  - Musaraigne
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Pie]]
+## Mésange
 
-- canonical: [[Pie]]
+- canonical: Mésange
 - aliases:
-  - [[Pie]]
+  - Mésange
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Renard]]
+## Nova
 
-- canonical: [[Renard]]
+- canonical: Nova
 - aliases:
-  - [[Renard]]
+  - Nova
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Sigma]]
+## Pie
 
-- canonical: [[Sigma]]
+- canonical: Pie
 - aliases:
-  - [[Sigma]]
+  - Pie
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Sybil]]
+## Renard
 
-- canonical: [[Sybil]]
+- canonical: Renard
 - aliases:
-  - [[Sybil]]
+  - Renard
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Trace]]
+## Scarabée
 
-- canonical: [[Trace]]
+- canonical: Scarabée
 - aliases:
-  - [[Trace]]
+  - Scarabée
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Vasco]]
+## Sigma
 
-- canonical: [[Vasco]]
+- canonical: Sigma
 - aliases:
-  - [[Vasco]]
+  - Sigma
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
 
-## [[Vega]]
+## Sybil
 
-- canonical: [[Vega]]
+- canonical: Sybil
 - aliases:
-  - [[Vega]]
+  - Sybil
+- category: agent
+- folder: `TEAM`
+- ambiguity: none recorded
+
+## Trace
+
+- canonical: Trace
+- aliases:
+  - Trace
+- category: agent
+- folder: `TEAM`
+- ambiguity: none recorded
+
+## Vasco
+
+- canonical: Vasco
+- aliases:
+  - Vasco
+- category: agent
+- folder: `TEAM`
+- ambiguity: none recorded
+
+## Vega
+
+- canonical: Vega
+- aliases:
+  - Vega
 - category: agent
 - folder: `TEAM`
 - ambiguity: none recorded
@@ -289,6 +325,15 @@ validated: 2026-05-29
 - folder: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS`
 - ambiguity: none recorded
 
+## 05_PHOTO_AI_JURY
+
+- canonical: 05_PHOTO_AI_JURY
+- aliases:
+  - 05_PHOTO_AI_JURY
+- category: project
+- folder: `JCH_Inbox/03_PROJECTS/05_PHOTO_AI_JURY`
+- ambiguity: none recorded
+
 ## 06_PHOTO_NATURE
 
 - canonical: 06_PHOTO_NATURE
@@ -316,6 +361,33 @@ validated: 2026-05-29
 - folder: `JCH_Inbox/03_PROJECTS/08_VETALYX`
 - ambiguity: none recorded
 
+## 09_InsectNet
+
+- canonical: 09_InsectNet
+- aliases:
+  - 09_InsectNet
+- category: project
+- folder: `JCH_Inbox/03_PROJECTS/09_InsectNet`
+- ambiguity: none recorded
+
+## 11_IOT
+
+- canonical: 11_IOT
+- aliases:
+  - 11_IOT
+- category: project
+- folder: `JCH_Inbox/03_PROJECTS/11_IOT`
+- ambiguity: none recorded
+
+## 12_NEXUS_ACOUSTIC
+
+- canonical: 12_NEXUS_ACOUSTIC
+- aliases:
+  - 12_NEXUS_ACOUSTIC
+- category: project
+- folder: `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC`
+- ambiguity: none recorded
+
 ## archive
 
 - canonical: archive
@@ -331,7 +403,7 @@ validated: 2026-05-29
 - aliases:
   - Apple
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/06_PHOTO_NATURE/tech/printing`
+- folder: `JCH_Inbox/07_ARCHIVES/notes_apple`
 - ambiguity: excluded — trop de faux positifs, validé JCH 2026-05-29
 - wikilink: false
 
@@ -341,7 +413,7 @@ validated: 2026-05-29
 - aliases:
   - Arduino
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/09_BENCHMARKS_PRODUITS`
+- folder: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/PROTOCOLES`
 - ambiguity: none recorded
 
 ## BirdNET
@@ -350,7 +422,7 @@ validated: 2026-05-29
 - aliases:
   - BirdNET
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/06_COMPONENTS/BIOACOUSTIC/hardware`
+- folder: `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/hardware`
 - ambiguity: none recorded
 
 ## ChatGPT
@@ -369,7 +441,7 @@ validated: 2026-05-29
 - aliases:
   - Claude
 - category: technology
-- folder: `TEAM_Inbox`
+- folder: `JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/validated_places`
 - ambiguity: excluded — aussi un prénom, validé JCH 2026-05-29
 - wikilink: false
 
@@ -397,7 +469,7 @@ validated: 2026-05-29
 - aliases:
   - ESP32
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation/_source`
+- folder: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/PROTOCOLES`
 - ambiguity: none recorded
 
 ## ESP32-S3
@@ -406,7 +478,7 @@ validated: 2026-05-29
 - aliases:
   - ESP32-S3
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/02_DECISIONS/ADR`
+- folder: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/PROTOCOLES`
 - ambiguity: none recorded
 
 ## FastAPI
@@ -415,7 +487,7 @@ validated: 2026-05-29
 - aliases:
   - FastAPI
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/02_ARTEON/strategy`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/passe-utile`
 - ambiguity: none recorded
 
 ## Git
@@ -424,7 +496,7 @@ validated: 2026-05-29
 - aliases:
   - Git
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/08_TECH_NOTES/tech/graphify-notes`
+- folder: `JCH_Inbox/03_PROJECTS/06_PHOTO_NATURE/FAUNE_AUTOUR/docs/graphify-notes`
 - ambiguity: none recorded
 
 ## Graphify
@@ -433,7 +505,7 @@ validated: 2026-05-29
 - aliases:
   - Graphify
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/08_TECH_NOTES/tech/graphify-notes`
+- folder: `JCH_Inbox/03_PROJECTS/06_PHOTO_NATURE/FAUNE_AUTOUR/docs/graphify-notes`
 - ambiguity: none recorded
 
 ## LoRa
@@ -460,7 +532,7 @@ validated: 2026-05-29
 - aliases:
   - Obsidian
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation/_source`
+- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS`
 - ambiguity: none recorded
 
 ## Pi
@@ -469,7 +541,7 @@ validated: 2026-05-29
 - aliases:
   - Pi
 - category: technology
-- folder: `TEAM_Inbox/pie`
+- folder: `_local/processed_inbox`
 - ambiguity: excluded — raccourci trop vague — préférer Raspberry Pi 5, validé JCH 2026-05-29
 - wikilink: false
 
@@ -488,7 +560,7 @@ validated: 2026-05-29
 - aliases:
   - Python
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/hermisation`
+- folder: `TEAM_Inbox/_archive`
 - ambiguity: excluded — trop générique, validé JCH 2026-05-29
 - wikilink: false
 
@@ -507,7 +579,7 @@ validated: 2026-05-29
 - aliases:
   - Raspberry Pi
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/06_COMPONENTS/BIOACOUSTIC/hardware`
+- folder: `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/hardware`
 - ambiguity: none recorded
 
 ## Raspberry Pi 5
@@ -516,7 +588,7 @@ validated: 2026-05-29
 - aliases:
   - Raspberry Pi 5
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/06_COMPONENTS/BIOACOUSTIC/hardware`
+- folder: `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/hardware`
 - ambiguity: none recorded
 
 ## Redis
@@ -561,5 +633,5 @@ validated: 2026-05-29
 - aliases:
   - Xeno-Canto
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/06_COMPONENTS/BIOACOUSTIC/INSECTNET/02_DATASET`
+- folder: `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/INSECTNET/02_DATASET`
 - ambiguity: none recorded
