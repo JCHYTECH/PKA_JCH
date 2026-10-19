@@ -61,7 +61,7 @@ def publish_discovery_configs(client, mapping):
 
 
 def build_client(broker_cfg):
-    client = mqtt.Client()
+    client = mqtt.Client(protocol=mqtt.MQTTv5)
     if broker_cfg.get("username"):
         client.username_pw_set(broker_cfg["username"], broker_cfg.get("password"))
     client.connect(broker_cfg["host"], broker_cfg.get("port", 1883), keepalive=60)
@@ -89,16 +89,98 @@ def main():
 
     source_topic = mapping["source_topic"]
     sensors = mapping["sensors"]
+    source_format = mapping.get("source_format", "flat")
+
+    def extract_flat(data, sensor):
+        if sensor["key"] in data:
+            return data[sensor["key"]]
+        return None
+
+    def extract_sensor_logger(data, sensor):
+        """Extrait les valeurs depuis le format Sensor Logger (payload[] avec name/values)."""
+        import math
+        key = sensor["key"]
+
+        # Capteurs d'orientation : radians → degrés
+        orientation_keys = {"pitch", "roll", "yaw"}
+        if key in orientation_keys:
+            for item in data.get("payload", []):
+                if item.get("name") == "orientation":
+                    values = item.get("values", {})
+                    if key in values:
+                        return round(values[key] * 180.0 / math.pi, 2)
+
+        # Capteurs GPS : dans payload[name=location]
+        gps_keys = {"latitude", "longitude", "altitude", "speed", "course"}
+        if key in gps_keys:
+            for item in data.get("payload", []):
+                if item.get("name") == "location":
+                    values = item.get("values", {})
+                    if key in values:
+                        return round(values[key], 5) if key in ("latitude", "longitude") else round(values[key], 1)
+
+        # Baromètre : dans payload[name=barometer]
+        if key == "pressure":
+            for item in data.get("payload", []):
+                if item.get("name") == "barometer":
+                    values = item.get("values", {})
+                    if "pressure" in values:
+                        return round(values["pressure"], 0)
+
+        # Batterie : dans payload[name=battery]
+        if key == "batteryLevel":
+            for item in data.get("payload", []):
+                if item.get("name") == "battery":
+                    values = item.get("values", {})
+                    if "batteryLevel" in values:
+                        return round(values["batteryLevel"] * 100, 0)
+
+        # Capteurs compas/magnetometer : magneticBearing en radians → degrés
+        compass_keys = {"magneticBearing"}
+        if key in compass_keys:
+            for item in data.get("payload", []):
+                if item.get("name") in ("compass", "magnetometer"):
+                    values = item.get("values", {})
+                    if key in values:
+                        val = values[key]
+                        # Si < 2π (~6.28), c'est en radians → convertir
+                        if val < 7:
+                            return round(val * 180.0 / math.pi, 2)
+                        return round(val, 2)
+
+        # Fallback : cherche la clé dans n'importe quel payload
+        for item in data.get("payload", []):
+            values = item.get("values", {})
+            if key in values:
+                return values[key]
+
+        return None
+
+    extractors = {
+        "flat": extract_flat,
+        "sensor_logger": extract_sensor_logger,
+    }
+    extract = extractors.get(source_format, extract_flat)
+
+    # Cache GPS pour device_tracker combiné
+    gps_cache = {"latitude": None, "longitude": None}
+    position_topic = mapping.get("device_tracker", {}).get("state_topic", "")
 
     def on_message(c, userdata, msg):
         try:
             data = json.loads(msg.payload.decode())
         except (json.JSONDecodeError, UnicodeDecodeError):
             return
+        updated = False
         for sensor in sensors:
-            if sensor["key"] in data:
-                value = data[sensor["key"]]
+            value = extract(data, sensor)
+            if value is not None:
                 client.publish(sensor["state_topic"], value, qos=0)
+                if sensor["key"] in ("latitude", "longitude"):
+                    gps_cache[sensor["key"]] = value
+                    updated = True
+        if updated and position_topic and gps_cache["latitude"] is not None and gps_cache["longitude"] is not None:
+            client.publish(position_topic, json.dumps(gps_cache), qos=0)
 
     client.on_message = on_message
     client.subscribe(source_topic)

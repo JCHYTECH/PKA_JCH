@@ -37,7 +37,7 @@ Configuration minimale (add-on, pas configuration.yaml) :
 ```yaml
 logins:
   - username: jchavaux
-    password: dobby2026!
+    password: Dobby2026!
 require_certificate: false
 ```
 
@@ -52,15 +52,18 @@ rencontrée le 18/07).
 1. Installer [Sensor Logger](https://apps.apple.com/app/sensor-logger/id1531582925) (gratuit)
 2. Onglet **Stream** → **MQTT**
 3. Configuration :
-   - **Broker URL** : `mqtt://<IP_RPi_Lupo>:1883`
+   - **Broker URL** : `mqtt://<IP_RPi_Lupo>:1883` (ou IP M5 pour test)
    - **Username** : `jchavaux`
-   - **Password** : `dobby2026!`
-   - **Topic** : `lupo/assiette`
+   - **Password** : `Dobby2026!`
+   - **Topic** : `lupo/assiette` (van) ou `esneux/iphone` (test M5)
    - **Mode** : JSON
    - **Batch period** : 1000 ms
    - **Skip writing** : activé
 4. Onglet **Sensors** → activer **Accelerometer** et **Gyroscope**
 5. Appuyer sur ▶️ Record → les données commencent à streamer
+
+> **Format réel :** Sensor Logger envoie un JSON nested avec `payload[].orientation.values.{pitch,roll}` en radians.
+> Le pont `pka_mqtt_discovery_bridge.py` (v2, MQTTv5) convertit automatiquement en degrés via `source_format: "sensor_logger"`.
 
 ---
 

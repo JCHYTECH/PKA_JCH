@@ -22,8 +22,9 @@ from googleapiclient.discovery import build
 
 ROOT = Path(__file__).resolve().parents[1]
 SYSTEM_DIR = ROOT / "JCH_Inbox" / "99_SYSTEM"
-CREDENTIALS_FILE = SYSTEM_DIR / "google_calendar_credentials.json"
-TOKEN_FILE = SYSTEM_DIR / "google_calendar_token.json"
+PRIVATE_DIR = ROOT / "JCH_PRIVATE"
+CREDENTIALS_FILE = PRIVATE_DIR / "google_calendar_credentials.json"
+TOKEN_FILE = PRIVATE_DIR / "google_calendar_token.json"
 COLORS_FILE = SYSTEM_DIR / "google_calendar_colors.json"
 PKA_CALENDAR_PREFIX = "PKA — "
 SCOPES = [

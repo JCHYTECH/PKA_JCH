@@ -12,7 +12,7 @@
       "media_type": "photo"
     }
   ],
-  "analysis_status": "pending",
+  "analysis_status": "skipped",
   "place_candidates": [],
   "confidence": null
 }

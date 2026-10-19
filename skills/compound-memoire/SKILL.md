@@ -1,3 +1,8 @@
+---
+name: compound-memoire
+description: Capturer chaque correction/erreur de JC en règle durable (SOUL.md ou nouveau skill) — pattern Cherny « erreur → règle ». Déclencher sur "compound mémoire", "erreur → règle", "apprends de cette erreur", après chaque correction de JC à Dobby ou échec de loop.
+---
+
 # Skill — compound-memoire
 
 ## Déclencheur

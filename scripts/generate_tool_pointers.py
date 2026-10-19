@@ -52,8 +52,9 @@ def inbox_count() -> int:
     return sum(1 for item in INBOX_DIR.iterdir() if item.is_file() and not item.name.startswith("."))
 
 
-def render_stub(filename: str, tool_cfg: dict) -> str:
+def render_stub(filename: str, tool_cfg: dict, team_count: int) -> str:
     """Generate a stub that points to AGENTS.md."""
+    specialist_count = team_count - 1 if team_count > 0 else 0
     return (
         f"# {tool_cfg['title']}\n"
         f"\n"
@@ -62,6 +63,7 @@ def render_stub(filename: str, tool_cfg: dict) -> str:
         f"\n"
         f"> **Lire `AGENTS.md` pour les instructions complètes** — identité, règles de comportement, sources, protocole opérationnel, graphify, moteur de recherche.\n"
         f"> Ce fichier est un stub. `AGENTS.md` est la source canonique unique.\n"
+        f"> **TEAM :** {team_count} membres actifs — {specialist_count} spécialistes + Dobby\n"
     )
 
 
@@ -172,7 +174,7 @@ def generate(check: bool = False) -> int:
         if filename == "CLAUDE.md":
             continue  # Handled by sync_claude_managed_block
 
-        rendered = render_stub(filename, tool_cfg) + "\n"
+        rendered = render_stub(filename, tool_cfg, team_count) + "\n"
         target = ROOT / filename
         current = target.read_text(encoding="utf-8") if target.exists() else None
 

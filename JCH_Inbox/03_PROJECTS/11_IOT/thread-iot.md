@@ -1,8 +1,8 @@
 # Thread — IOT / Domotique
 
 > Living document — mis à jour automatiquement par Dobby 🦉 en fin de session.
-> **Dernière mise à jour** : 2026-07-11 — RPi 5 Lupo stabilisé SD boot, double instance résolue, NVMe en attente adaptateur USB
-> **Statut** : 🔴 P0 — deadline 7 août 2026 (arrivée Lupo)
+> **Dernière mise à jour** : 2026-10-05 — procédure d'appairage Zigbee documentée (SNZB-02DR2 frigo)
+> **Statut** : 🔴 P0 — deadline 1er novembre 2026 (installation van Lupo)
 
 ---
 
@@ -17,11 +17,12 @@ Architecture domotique distribuée : HA Docker M5 + HA OS RPi 5 Esneux (serre + 
 | Axe | Statut | Détail |
 |-----|--------|--------|
 | Global | 🔴 P0 | Lupo = priorité absolue jusqu'au 7 août |
-| Vanlife — RPi | 🟢 | RPi 5 assemblé (SD 128 Go HA OS 17.3, hostname `lupo`), Healthy, boot fiable. Docker M5 coexiste sans conflit. |
+| Vanlife — RPi | 🟢 | Boot résolu (01/10, NVMe retiré). SD 256 Go Endurance, HAOS **18.3** (fix #5005), Supervisor + Core à jour, auto-update OFF, Healthy. |
 | Vanlife — NVMe | ⚫ | NVMe Fanxiang 256 Go retiré physiquement. Décision : SD seule (pas de SSD). Adaptateur USB-NVMe non nécessaire. |
-| Vanlife — Alim | 🔶 | Alim directe USB-C RPi (X1205 pogo pins insuffisants pour boot NVMe). X1205 conservé pour UPS (accus 18650). |
-| Vanlife — Boîtier | ⏳ | X1201-C1 non monté (accès facile pour debug). À fermer avant le 7 août. |
-| Vanlife — Capteurs | ⏳ | WiCAN Pro à commander (~82€), capteurs Zigbee (portes, frigo) à sélectionner. |
+| Vanlife — Alim | 🟡 | **Décision : remplacer X1205 → Geekworm X1200** (5.1V/5A, 2×18650, ~50-70 € livré, achat différé). En attendant : alim directe USB-C RPi (`throttled=0x0`). Cause X1205 : pogo pins < 5A → undervoltage boot + throttling sous charge. |
+| Vanlife — Réseau | 🟡 | **RUT240 Teltonika (4G) en stock** → passerelle internet van (SIM 4G → Ethernet → RPi 5). À intégrer. Remplace le ZTE MF833U1. |
+| Vanlife — Boîtier | 🟢 | X1201-C1 monté. Reste : silentblocs + coating. |
+| Vanlife — Capteurs | 🟡 | WiCAN Pro **installé** (OBD véhicule). SNZB-02DR2 **appairé** (cellule, 07/10) via Z2M. Reste 7 capteurs ~88€ → à commander. |
 | Vanlife — CAN bus | 🟢 | Spéc complet : WiCAN Pro (HS-CAN + MS-CAN), 17+ entités HA, scénarios définis. |
 | Serre Esneux | ⚪ | Gelé jusqu'à septembre (post-van). BOM 247€ prêt. |
 | HA M5 | 🟢 | Docker opérationnel, Zigbee OK, `homeassistant` hostname. |
@@ -43,8 +44,8 @@ Architecture domotique distribuée : HA Docker M5 + HA OS RPi 5 Esneux (serre + 
 
 ## Prochaine étape
 
-**Action** : Swap SD 128 Go → Samsung PRO Endurance 256 Go (clone + extend partition)
-**Deadline** : Session en cours (17 juillet)
+**Action** : Commander capteurs Zigbee (8, ~88€) + silentblocs + coating + **UPS X1200 (~50-70€)** ; intégrer WiCAN Pro dans HA
+**Deadline** : 1er novembre 2026
 **Responsable** : JC + Dobby
 
 ---
@@ -53,6 +54,7 @@ Architecture domotique distribuée : HA Docker M5 + HA OS RPi 5 Esneux (serre + 
 
 | Date | Résumé session | Livrable |
 |------|---------------|----------|
+| 2026-10-01 | RPi 5 réparé : NVMe retiré (cause boot bloqué), HAOS 17.3→18.3 (fix #5005), Supervisor + Core à jour, auto-update OFF, Zigbee2MQTT opérationnel. Liste capteurs finalisée + WiCAN Pro installé. | `DIAGNOSTIC-RPi5-BOOT-2026-10-01.md` |
 | 2026-07-11 | RPi Lupo stabilisé : SD boot HA OS 17.3, hostname `lupo`, Healthy. Double instance HA résolue (ha supervisor repair). NVMe déconnecté, adaptateur USB commandé. | `MEMORY.md` §2026-07-10/11 |
 | 2026-07-09 | Boot NVMe résolu (2 causes : image generic ≠ rpi5 + standoffs X1205). OBD/CAN analysé, WiCAN Pro retenu. Mouser reçu. | `TEAM_Inbox/2026-07-09_dobby_traitement-inbox-yolo.md` |
 | 2026-07-08 | RPi 5 assemblé (SSD + UPS HAT + accus 18650). Tentative boot NVMe = échec. | — |
@@ -68,6 +70,7 @@ Architecture domotique distribuée : HA Docker M5 + HA OS RPi 5 Esneux (serre + 
 - Assemblage : `iot-van/ASSEMBLAGE-RPi5-VANLIFE.md`
 - CAN bus : `iot-van/specs/SPEC-CAN-BUS.md`
 - Procurement : `11_IOT/_shared/procurement-register.md`
+- Appairage Zigbee : `iot-van/PROCEDURE-APPAIRAGE-ZIGBEE-2026-10-05.md`
 
 ---
 

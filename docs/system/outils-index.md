@@ -100,6 +100,9 @@
 ## IA & LLM
 
 - scripts/deepseek_chat.py — Client DeepSeek API
+- scripts/claude_openrouter.py — Appel LLM one-shot via OpenRouter (Claude par défaut, `-m` pour changer)
+- scripts/or_route.py — Routeur auto de modèles OpenRouter (type de tâche → modèle)
+- scripts/or_image.py — Génération d'image via OpenRouter (Gemini nano-banana, sauvegarde fichier)
 - scripts/ollama_chat.py — Client Ollama local (M1)
 - scripts/qwen.py — Client Qwen
 - scripts/nvidia_chat.py — Client Nvidia API
@@ -192,21 +195,37 @@
 - skills/system-improvement-ingest — Analyse document → amélioration PKA (grille 6 axes)
 - skills/pka-thread-file — Living document par projet (overview/statut/décisions), lecture auto + mise à jour session
 
-## Skills Claude (.claude/skills)
+## Skills home — Claude Code (~/.claude/skills)
 
-- brief — Génération de brief structuré pour spécialiste
-- capture — Capture connaissance (mail, note, idée) vers team.db
-- crm-update — Log interaction contact dans team.db
-- deploy — Checklist mise en production [[Forge]]
-- [[graphify]] — Extraction [[knowledge]] graph depuis fichiers
-- ingest — Traitement [[inbox]] vers destination avec index
-- legal-check — Revue rapide document juridique
-- modele — Enrichissement contexte + recommandation modèle
-- photo-analyse-wildlife — Analyse photo naturaliste
-- status — Dashboard livrables par membre
-- triage — Classification manuelle mails ambigus
+> Emplacement réel : `~/.claude/skills` (home, hors workspace). Skills per-tool chargés par Claude Code.
+> ⚠️ `[dup]` = existe aussi dans le workspace (`.agents/skills/` ou `skills/`) — le workspace est la source canonique. À réconcilier (symlink ou purge home).
 
-## Skills DeepSeek (.deepseek/skills)
+- brief — Génération de brief structuré [dup: skills/brief]
+- capture — Capture connaissance vers team.db [dup: skills/capture]
+- code-review-pro — Revue de code [dup: .agents/skills/code-review-pro]
+- content-gap-analysis — Gaps éditoriaux [dup]
+- content-quality-auditor — Audit E-E-A-T [dup]
+- crm-update — Log interaction contact (home only)
+- deploy — Checklist mise en production Forge (home only)
+- figma-generate-design — Maquettes Figma [dup]
+- find-skills — Découverte/install skills [dup]
+- graphify — Extraction knowledge graph (home only ; CLI `graphify` aussi dans workspace)
+- ingest — Traitement inbox [dup: skills/ingest]
+- insecure-defaults — Defaults insecure [dup]
+- legal-check — Revue juridique (home only)
+- modele — Enrichissement contexte modèle (home only)
+- onboarding-specialiste — Recrutement spécialiste [dup: skills/onboarding-specialiste]
+- photo-analyse-wildlife — Analyse photo naturaliste (home only) ⚠️ à promouvoir dans le workspace
+- pka-file-versioning / pka-pointer-sync / pka-session-start — [dup: skills/]
+- seo-content-writer — Rédaction SEO [dup]
+- status — Dashboard livrables [dup: skills/status]
+- supply-chain-risk-auditor — Audit supply chain [dup]
+- triage — Classification mails ambigus (home only)
+- wildnexus-adr / wildnexus-bom — [dup: skills/]
+
+## Skills home — DeepSeek CLI (~/.deepseek/skills)
+
+> Emplacement réel : `~/.deepseek/skills`. Skills per-tool chargés par DeepSeek CLI (hors TUI workspace). Aucun doublon avec le workspace.
 
 - delegate — Délégation multi-step via sub-agents
 - skill-creator — Création/amélioration de skills
@@ -241,6 +260,7 @@
 
 - scripts/build_vetalyx_rapid_allergy_report.py — Rapport allergie rapide
 - Dossiers : strategy/, legal/, regulatory/, clinical/, market/, investors/
+- Procédure : `docs/system/procedure-traduction-jade.md` — traduction bilingue Jade (VETALYX/DIAHO)
 
 ## MCP Servers (ponts IA ↔ applications)
 

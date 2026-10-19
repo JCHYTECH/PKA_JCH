@@ -121,7 +121,7 @@ def scan_file(filepath):
 def create_follow_up(conn, result, dry_run=False):
     """Crée un follow_up dans team.db."""
     due_date = result["date"]
-    note = f"[auto] {result['trigger']}: {result['snippet'][:100]}"
+    subject = f"[auto] {result['trigger']}: {result['snippet'][:100]}"
     source = f"{Path(result['file']).name}:L{result['line']}"
 
     if dry_run:
@@ -129,8 +129,8 @@ def create_follow_up(conn, result, dry_run=False):
 
     try:
         conn.execute(
-            "INSERT INTO follow_ups (note, due_date, status, source, created_at) VALUES (?, ?, 'pending', ?, ?)",
-            (note, due_date, source, datetime.now().isoformat())
+            "INSERT INTO follow_ups (contact_id, due_date, subject, notes, status) VALUES (NULL, ?, ?, ?, 'open')",
+            (due_date, subject, source)
         )
         conn.commit()
         return True
@@ -172,7 +172,7 @@ def vacuum_follow_ups(conn, dry_run=False):
     cutoff = (date.today() - timedelta(days=30)).isoformat()
     if dry_run:
         cur = conn.execute(
-            "SELECT id, note, due_date FROM follow_ups WHERE due_date < ? AND status != 'done'",
+            "SELECT id, subject, due_date FROM follow_ups WHERE due_date < ? AND status != 'done'",
             (cutoff,)
         )
         expired = cur.fetchall()
@@ -194,11 +194,12 @@ def init_db(conn):
     conn.execute("""
         CREATE TABLE IF NOT EXISTS follow_ups (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            note TEXT,
-            due_date TEXT,
-            status TEXT DEFAULT 'pending',
-            source TEXT,
-            created_at TEXT
+            contact_id INTEGER REFERENCES contacts(id),
+            due_date TEXT NOT NULL,
+            subject TEXT NOT NULL,
+            notes TEXT,
+            status TEXT NOT NULL DEFAULT 'open' CHECK(status IN ('open','done','cancelled')),
+            created_at TEXT NOT NULL DEFAULT (datetime('now'))
         )
     """)
     conn.commit()

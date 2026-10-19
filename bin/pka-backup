@@ -14,7 +14,7 @@ PKA_ROOT="/Users/jchavauxm5/PKA_JCH"
 M1_HOST="m1-llm"
 M1_IP="100.73.212.110"
 M1_USER="m1"
-M1_PATH="/home/m1/pka-backup"
+M1_PATH="/Users/m1/pka-backup"
 LOG="$PKA_ROOT/_local/logs/pka-backup.log"
 
 MODE="${1:---run}"
@@ -71,6 +71,7 @@ rsync -avz $DRY \
   --exclude='*.jpg' \
   --exclude='*.png' \
   --exclude='*.dmg' \
+  --exclude='*.zip' \
   --exclude='session_*.json' \
   --exclude='JCH_Inbox/00_INBOX/' \
   --exclude='__pycache__/' \

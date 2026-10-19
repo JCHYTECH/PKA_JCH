@@ -5,6 +5,11 @@ Designed for VS Code Whisper Assistant extension (martinopensky.whisper-assistan
 
 Supports both simple ({"text": "..."}) and verbose_json response formats.
 The extension v1.2.4 sends response_format=verbose_json.
+
+Modèle par défaut : small (bon compromis vitesse/précision pour la dictée sur CPU).
+⚠️ Premier lancement : télécharge ~460 Mo depuis HuggingFace puis charge le modèle.
+Pour plus de précision (mais plus lent) : WHISPER_MODEL=medium|large-v3-turbo.
+Pour plus de vitesse (mais moins précis) : WHISPER_MODEL=base.
 """
 
 import os
@@ -13,7 +18,7 @@ import argparse
 import logging
 from flask import Flask, request, jsonify
 
-MODEL_SIZE = os.environ.get("WHISPER_MODEL", "base")
+MODEL_SIZE = os.environ.get("WHISPER_MODEL", "small")
 PORT = int(os.environ.get("WHISPER_PORT", "4444"))
 API_KEY = os.environ.get("WHISPER_API_KEY", "localhost-key-must-be-set")
 DEFAULT_LANGUAGE = os.environ.get("WHISPER_LANGUAGE", "fr")
@@ -64,7 +69,14 @@ def transcribe():
         model = get_model()
         log.info(f"Transcribing (lang={language}, fmt={response_format}, file={os.path.basename(tmp_path)})...")
 
-        segments, info = model.transcribe(tmp_path, language=language, beam_size=5)
+        segments, info = model.transcribe(
+            tmp_path,
+            language=language,
+            beam_size=1,          # greedy : bien plus rapide que beam_size=5, précision quasi identique en dictée
+            vad_filter=True,      # ignore les silences → moins de "hallucinations" en fin de phrase
+            vad_parameters=dict(min_silence_duration_ms=500),
+            condition_on_previous_text=False,  # anti-hallucination (évite les répétitions/loops)
+        )
 
         # Collect segments (generator → list)
         segment_list = list(segments)

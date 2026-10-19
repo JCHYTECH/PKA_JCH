@@ -1,4 +1,0 @@
-Mfr Part#,Qty,Description,Prix unit. (EUR),Stock,Délai (j),Obsolète,Alternative,URL fournisseur,Simulation
-ESP32-S3-DevKitC-1,1,MCU ESP32-S3 DevKitC-1,4.43,48933,N/A,NON,,https://www.mouser.be/ProductDetail/Texas-Instruments/ADS1115IDGSR?qs=IK5e5L0zOXjKCJoVMhYO%2FQ%3D%3D,NON
-AD623ANZ,1,Ampli instrumentation AD623 DIP-8 (alternative AD620),4.43,48933,N/A,NON,,https://www.mouser.be/ProductDetail/Texas-Instruments/ADS1115IDGSR?qs=IK5e5L0zOXjKCJoVMhYO%2FQ%3D%3D,NON
-ADS1115IDGSR,1,ADC 16-bit I2C optionnel,4.43,48933,N/A,NON,,https://www.mouser.be/ProductDetail/Texas-Instruments/ADS1115IDGSR?qs=IK5e5L0zOXjKCJoVMhYO%2FQ%3D%3D,NON

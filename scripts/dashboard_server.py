@@ -35,6 +35,16 @@ from scripts import pka_kanban_service
 from scripts import pka_plane_adapter
 from scripts import rebuild_file_index
 
+# park4night (module d'enrichissement "où dormir en van")
+DECOUVERTES_COLLECTOR_DIR = SCRIPT_DIR / "decouvertes-collector"
+if str(DECOUVERTES_COLLECTOR_DIR) not in sys.path:
+    sys.path.insert(0, str(DECOUVERTES_COLLECTOR_DIR))
+try:
+    import park4night  # noqa: E402
+    _PARK4NIGHT_AVAILABLE = True
+except Exception:  # le dashboard reste fonctionnel même sans park4night
+    _PARK4NIGHT_AVAILABLE = False
+
 JCH_INBOX_DIR = PKA_DIR / "JCH_Inbox"
 DASHBOARD_DIR = PKA_DIR / "JCH_Inbox" / "01_DASHBOARDS"
 TEAM_DB = PKA_DIR / "TEAM" / "team.db"
@@ -176,6 +186,407 @@ def resolve_file_index_path(raw_path: str) -> Path | None:
     if not any(relative_path == root or relative_path.startswith(f"{root}/") for root in ALLOWED_FILE_INDEX_ROOTS):
         return None
     return candidate
+
+
+DECOUVERTES_BASE = PKA_DIR / "JCH_Inbox" / "03_PROJECTS" / "07_TRAVELS" / "pka-decouvertes"
+
+
+def _read_frontmatter(path: Path) -> dict:
+    """Lit le frontmatter YAML (--- ... ---) d'une fiche lieu."""
+    text = path.read_text(encoding="utf-8", errors="replace")
+    m = re.match(r"^---\n(.*?)\n---", text, re.S)
+    if not m:
+        return {}
+    out: dict = {}
+    for line in m.group(1).splitlines():
+        if ":" in line:
+            k, v = line.split(":", 1)
+            out[k.strip()] = v.strip()
+    return out
+
+
+# ── Normalisation des régions administratives ────────────────────────────────
+# Les fiches portent des variantes (fr/it, singulier/pluriel, double nom).
+# On les ramène à un nom officiel français cohérent pour le classement pays→région.
+_REGION_CANON = {
+    "ombrie": "Ombrie", "umbria": "Ombrie",
+    "ombrie (umbria)": "Ombrie",
+    "latium": "Latium", "lazio": "Latium", "latium (lazio)": "Latium",
+    "frioul-vénétie julienne": "Frioul-Vénétie Julienne",
+    "friuli venezia giulia": "Frioul-Vénétie Julienne",
+    "marche": "Marches",
+    "pouille": "Pouilles", "pouilles": "Pouilles",
+    "toscane": "Toscane", "toscana": "Toscane",
+    "sicile": "Sicile", "sicilia": "Sicile",
+    "sardaigne": "Sardaigne", "sardegna": "Sardaigne",
+    "campanie": "Campanie", "campania": "Campanie",
+    "ligurie": "Ligurie", "liguria": "Ligurie",
+    "abruzzes": "Abruzzes", "abruzzo": "Abruzzes",
+    "vénétie": "Vénétie", "venetie": "Vénétie", "veneto": "Vénétie",
+    "basilicate": "Basilicate", "basilicata": "Basilicate",
+    "piémont": "Piémont", "piemont": "Piémont", "piemonte": "Piémont",
+    "lombardie": "Lombardie", "lombardia": "Lombardie",
+    "trentin-haut-adige": "Trentin-Haut-Adige", "trentino-alto adige": "Trentin-Haut-Adige",
+    "val d'aoste": "Vallée d'Aoste", "vallée d'aoste": "Vallée d'Aoste", "valle d'aosta": "Vallée d'Aoste",
+    "molise": "Molise",
+    "calabre": "Calabre", "calabria": "Calabre",
+    "émilie-romagne": "Émilie-Romagne", "emilie-romagne": "Émilie-Romagne", "emilia-romagna": "Émilie-Romagne",
+    "sintra": "Lisbonne (Sintra)",
+    "hollande du nord": "Hollande-Septentrionale",
+    "castille-et-león": "Castille-et-León",
+    "carinthie": "Carinthie",
+}
+
+
+# ── France : départements / provinces → région officielle ─────────────────────
+_FR_REGIONS = {
+    "nouvelle-aquitaine": "Nouvelle-Aquitaine",
+    "occitanie": "Occitanie",
+    "auvergne-rhône-alpes": "Auvergne-Rhône-Alpes",
+    "bourgogne-franche-comté": "Bourgogne-Franche-Comté",
+    "bourgogne-franche-comte": "Bourgogne-Franche-Comté",
+    "grand est": "Grand Est",
+    "bretagne": "Bretagne",
+    "normandie": "Normandie",
+    "hauts-de-france": "Hauts-de-France",
+    "île-de-france": "Île-de-France",
+    "ile-de-france": "Île-de-France",
+    "pays de la loire": "Pays de la Loire",
+    "centre-val de loire": "Centre-Val de Loire",
+    "provence-alpes-côte d'azur": "Provence-Alpes-Côte d'Azur",
+    "provence-alpes-cote d'azur": "Provence-Alpes-Côte d'Azur",
+    "corse": "Corse",
+}
+_FR_DEPT_TO_REGION = {
+    "pyrénées-atlantiques": "Nouvelle-Aquitaine",
+    "dordogne": "Nouvelle-Aquitaine",
+    "charente-maritime": "Nouvelle-Aquitaine",
+    "lot": "Occitanie",
+    "béarn": "Nouvelle-Aquitaine",
+}
+
+
+def normalize_region(pays: str, region: str) -> str:
+    """Ramène une région à un nom administratif cohérent (variantes → nom officiel FR)."""
+    r = (region or "").strip()
+    if not r:
+        return ""
+    key = r.lower()
+    if key in _REGION_CANON:
+        return _REGION_CANON[key]
+    # France : le champ peut mélanger "Région, Département (code)" ou "Dépt (province)".
+    # On extrait la région officielle par containment, puis on retombe sur le département.
+    if pays and pays.lower().startswith("france"):
+        for k, v in _FR_REGIONS.items():
+            if k in key:
+                return v
+        for k, v in _FR_DEPT_TO_REGION.items():
+            if k in key:
+                return v
+    # Multi-régions "A, B, C" → normaliser chaque composant, dédup en gardant l'ordre
+    if "," in r:
+        parts = []
+        for part in r.split(","):
+            n = normalize_region(pays, part)
+            if n and n not in parts:
+                parts.append(n)
+        return ", ".join(parts)
+    return r  # déjà un nom officiel ou région non cartographiée → tel quel
+
+
+def _name_key(name: str) -> str:
+    """Clé de déduplication : nom normalisé (minuscules, sans accents, espaces réduits)."""
+    import unicodedata
+    s = unicodedata.normalize("NFKD", name or "")
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    return " ".join(s.lower().split())
+
+
+def slugify(name: str) -> str:
+    """Slug sûr pour URL/nom de fichier : [A-Za-z0-9._-], sans accents, tronqué à 40.
+
+    Doit correspondre à la regex de /api/place : `[A-Za-z0-9._-]+`.
+    """
+    import unicodedata
+    s = unicodedata.normalize("NFKD", name or "")
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    s = re.sub(r"[^A-Za-z0-9._-]+", "-", s).strip("-")
+    return s[:40] or "lieu"
+
+
+def _dedup_places(places: list[dict]) -> list[dict]:
+    """Déduplique les fiches de même nom (ex: brouillon + validé du même lieu).
+
+    On garde validé > brouillon > confiance > nom. Les lieux aux noms différents
+    (ex: « Village de Piediluco » vs « Lago di Piediluco ») sont tous conservés.
+    """
+    best: dict[str, dict] = {}
+    for p in sorted(
+        places,
+        key=lambda p: (
+            p.get("status") != "validated",      # validé d'abord
+            -(float(p.get("confidence") or 0)),  # puis confiance décroissante
+            p.get("name", ""),
+        ),
+    ):
+        best.setdefault(_name_key(p.get("name")), p)
+    kept = list(best.values())
+    kept.sort(key=lambda p: (p.get("status") != "validated", p.get("pays", ""), p.get("name", "")))
+    return kept
+
+
+def decouvertes_places() -> list[dict]:
+    """Liste les lieux DÉCOUVERTES (drafts + validated_places) avec nom + GPS."""
+    places: list[dict] = []
+    for status, d in (("validated", DECOUVERTES_BASE / "validated_places"),
+                      ("draft", DECOUVERTES_BASE / "drafts")):
+        if not d.is_dir():
+            continue
+        for md in sorted(d.glob("*.md")):
+            fm = _read_frontmatter(md)
+            gps_raw = str(fm.get("gps", "")).strip().strip('"')
+            parts = gps_raw.split(",")
+            if len(parts) != 2:
+                continue
+            try:
+                lat, lng = float(parts[0]), float(parts[1])
+            except ValueError:
+                continue
+            name = fm.get("nom_lieu") or md.stem
+            places.append({
+                "name": name,
+                "slug": slugify(name),
+                "lat": lat,
+                "lng": lng,
+                "pays": fm.get("pays", ""),
+                "region": fm.get("region", ""),
+                "admin_region": normalize_region(fm.get("pays", ""), fm.get("region", "")),
+                "ville": fm.get("ville", ""),
+                "photo": fm.get("interet_photo"),
+                "nature": fm.get("interet_nature"),
+                "patrimoine": fm.get("interet_patrimoine"),
+                "categorie": fm.get("categorie", ""),
+                "confidence": fm.get("confidence"),
+                "status": status,
+                "path": pka_relative_path(md),
+            })
+    places.sort(key=lambda p: (p["status"] != "validated", p.get("pays", ""), p["name"]))
+    return _dedup_places(places)
+
+
+def spots_van() -> list[dict]:
+    """Liste les spots « se garer » (spots_van/*.md) : parkings + aires CC par ville."""
+    d = DECOUVERTES_BASE / "spots_van"
+    spots: list[dict] = []
+    if not d.is_dir():
+        return spots
+    for md in sorted(d.glob("*.md")):
+        fm = _read_frontmatter(md)
+        gps_raw = str(fm.get("gps", "")).strip().strip('"')
+        parts = gps_raw.split(",")
+        if len(parts) != 2:
+            continue
+        try:
+            lat, lng = float(parts[0]), float(parts[1])
+        except ValueError:
+            continue
+        spots.append({
+            "name": fm.get("nom_spot") or md.stem,
+            "ville": fm.get("ville", ""),
+            "pays": fm.get("pays", ""),
+            "type_aire": fm.get("type_aire", ""),
+            "note": fm.get("note"),
+            "avis": fm.get("avis"),
+            "distance": fm.get("distance_centre_km"),
+            "ztl": fm.get("ztl", ""),
+            "van_friendly": fm.get("van_friendly", ""),
+            "url_p4n": fm.get("url_p4n", ""),
+            "lat": lat,
+            "lng": lng,
+        })
+    spots.sort(key=lambda s: (s["ville"], float(s.get("distance") or 999)))
+    return spots
+
+
+def _fiche_body(text: str) -> str:
+    parts = text.split("---", 2)
+    return parts[2] if len(parts) >= 3 else text
+
+
+def _fiche_section(body: str, name: str) -> str:
+    m = re.search(rf"^## {re.escape(name)}\s*\n(.*?)(?=^## |\Z)", body, re.M | re.S)
+    return m.group(1).strip() if m else ""
+
+
+def _place_payload_from_md(md: Path, slug: str) -> dict:
+    """Reconstruit le payload « place » (même schéma que data/<slug>.json) depuis une fiche .md."""
+    fm = _read_frontmatter(md)
+    body = _fiche_body(md.read_text(encoding="utf-8", errors="replace"))
+    gps_raw = str(fm.get("gps", "")).strip().strip('"')
+    lat = lon = None
+    if "," in gps_raw:
+        try:
+            lat, lon = [float(x.strip()) for x in gps_raw.split(",", 1)]
+        except ValueError:
+            lat = lon = None
+
+    def _int(k):
+        try:
+            return int(fm.get(k) or 0)
+        except (ValueError, TypeError):
+            return 0
+
+    def _float(k):
+        try:
+            return float(fm.get(k) or 0)
+        except (ValueError, TypeError):
+            return 0.0
+
+    nom = fm.get("nom_lieu") or fm.get("nom_spot") or md.stem.split("_", 1)[-1]
+    return {
+        "slug": slug,
+        "nom_lieu": nom,
+        "pays": fm.get("pays", ""),
+        "region": fm.get("region", ""),
+        "ville": fm.get("ville", ""),
+        "gps": {"lat": lat, "lon": lon} if lat is not None else None,
+        "scores": {
+            "photo": _int("interet_photo"),
+            "nature": _int("interet_nature"),
+            "patrimoine": _int("interet_patrimoine"),
+            "van": _int("interet_van"),
+        },
+        "type_lieu": fm.get("type_lieu", fm.get("type", "autre")),
+        "confidence": _float("confidence"),
+        "action": fm.get("status", "needs_review"),
+        "description": _fiche_section(body, "Résumé"),
+        "van_info": _fiche_section(body, "Accès minivan"),
+        "reserves": [],
+        "restaurants": [],
+        "attractions": [],
+        "media_files": [],
+        "source": {"author": fm.get("auteur", ""), "datetime": fm.get("date_capture", ""), "text": ""},
+        "date_analyse": fm.get("date_analyse", ""),
+    }
+
+
+def _find_fiche_md(slug: str) -> Path | None:
+    """Retrouve la fiche .md dont le slug (nom_lieu/nom_spot) correspond au nom demandé."""
+    for d in (DECOUVERTES_BASE / "validated_places", DECOUVERTES_BASE / "drafts",
+              DECOUVERTES_BASE / "spots_van"):
+        if not d.is_dir():
+            continue
+        for md in d.glob("*.md"):
+            fm = _read_frontmatter(md)
+            nom = fm.get("nom_lieu") or fm.get("nom_spot") or md.stem
+            if slugify(nom) == slug:
+                return md
+    return None
+
+
+def _haversine_km(lat1: float, lng1: float, lat2: float, lng2: float) -> float:
+    import math
+    r = 6371.0
+    p1, p2 = math.radians(lat1), math.radians(lat2)
+    dp, dl = math.radians(lat2 - lat1), math.radians(lng2 - lng1)
+    a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
+    return 2 * r * math.asin(math.sqrt(a))
+
+
+def circuit(region: str, start_slug: str = "", end_slug: str = "") -> dict:
+    """Ordonne les lieux d'une région en itinéraire (plus proche voisin).
+
+    start_slug / end_slug : point d'entrée / de sortie optionnels (par slug ou nom).
+    Défaut : départ au point le plus au nord, fin libre.
+    """
+    places = [
+        p for p in decouvertes_places()
+        if (p.get("admin_region") or p.get("region") or "").lower() == (region or "").lower()
+    ]
+    if not places:
+        return {"region": region, "route": [], "total_km": 0.0}
+
+    def find(slug: str):
+        if not slug:
+            return None
+        key = slug.strip().lower()
+        for p in places:
+            if p["slug"].lower() == key or p["name"].lower() == key:
+                return p
+        return None
+
+    start = find(start_slug) or max(places, key=lambda p: p["lat"])
+    end = find(end_slug)
+    if end is start:
+        end = None
+
+    ordered = [start]
+    remaining = [p for p in places if p is not start and p is not end]
+    total = 0.0
+    while remaining:
+        last = ordered[-1]
+        nxt = min(remaining, key=lambda p: _haversine_km(last["lat"], last["lng"], p["lat"], p["lng"]))
+        total += _haversine_km(last["lat"], last["lng"], nxt["lat"], nxt["lng"])
+        remaining.remove(nxt)
+        ordered.append(nxt)
+    if end is not None:
+        total += _haversine_km(ordered[-1]["lat"], ordered[-1]["lng"], end["lat"], end["lng"])
+        ordered.append(end)
+
+    route, cum = [], 0.0
+    for i, p in enumerate(ordered):
+        leg = 0.0 if i == 0 else _haversine_km(ordered[i - 1]["lat"], ordered[i - 1]["lng"], p["lat"], p["lng"])
+        cum += leg
+        route.append({
+            "name": p["name"], "slug": p["slug"], "lat": p["lat"], "lng": p["lng"],
+            "ville": p.get("ville", ""), "categorie": p.get("categorie", ""),
+            "leg_km": round(leg, 1), "cum_km": round(cum, 1),
+        })
+    return {"region": region, "route": route, "total_km": round(total, 1)}
+
+
+def _xml_escape(s: str) -> str:
+    return (s or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+
+
+def circuit_gpx(region: str, start_slug: str = "", end_slug: str = "") -> str:
+    """Génère un GPX (route ordonnée) importable dans OsmAnd / Google My Maps."""
+    c = circuit(region, start_slug, end_slug)
+    pts = [
+        f'      <rtept lat="{p["lat"]}" lon="{p["lng"]}"><name>{i}. {_xml_escape(p["name"])}</name><desc>{_xml_escape(p.get("ville", ""))}</desc></rtept>'
+        for i, p in enumerate(c["route"], 1)
+    ]
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<gpx version="1.1" creator="PKA_DECOUVERTES" xmlns="http://www.topografix.com/GPX/1/1">\n'
+        f'  <rte>\n    <name>{_xml_escape(region)} — circuit PKA</name>\n'
+        + "\n".join(pts)
+        + "\n  </rte>\n</gpx>\n"
+    )
+
+
+def circuit_kml(region: str, start_slug: str = "", end_slug: str = "") -> str:
+    """Génère un KML (points numérotés + tracé) importable dans Google My Maps."""
+    c = circuit(region, start_slug, end_slug)
+    marks, coords = [], []
+    for i, p in enumerate(c["route"], 1):
+        marks.append(
+            f'    <Placemark><name>{i}. {_xml_escape(p["name"])}</name>'
+            f'<Point><coordinates>{p["lng"]},{p["lat"]},0</coordinates></Point></Placemark>'
+        )
+        coords.append(f"{p['lng']},{p['lat']},0")
+    line = (
+        f'    <Placemark><name>Route — {_xml_escape(region)}</name>'
+        f'<LineString><tessellate>1</tessellate><coordinates>{" ".join(coords)}</coordinates></LineString></Placemark>'
+    )
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<kml xmlns="http://www.opengis.net/kml/2.2">\n'
+        '  <Document>\n'
+        f'    <name>{_xml_escape(region)} — circuit PKA</name>\n'
+        + "\n".join(marks) + "\n" + line + "\n"
+        + "  </Document>\n</kml>\n"
+    )
 
 
 def file_index_search_payload(query: str, project_key: str | None, component: str | None, limit: int = 20) -> dict:
@@ -408,7 +819,7 @@ def m1_status() -> dict:
         return {"ok": True, "online": False}
 
 
-def slugify(value: str, fallback: str = "dobby-live") -> str:
+def slugify_live(value: str, fallback: str = "dobby-live") -> str:
     slug = re.sub(r"[^a-zA-Z0-9_-]+", "-", value.lower()).strip("-")
     return slug[:80] or fallback
 
@@ -989,7 +1400,7 @@ def append_daily_note(title: str, content: str) -> dict:
 def save_team_inbox(title: str, content: str) -> dict:
     TEAM_INBOX_DIR.mkdir(parents=True, exist_ok=True)
     today = dt.date.today().strftime("%Y-%m-%d")
-    path = TEAM_INBOX_DIR / f"{today}_dobby_live_{slugify(title)}.md"
+    path = TEAM_INBOX_DIR / f"{today}_dobby_live_{slugify_live(title)}.md"
     header = f"# {title.strip() or 'Dobby Live'}\n\n_Source : Dobby Live / Realtime 2_\n\n"
     path.write_text(header + content.strip() + "\n", encoding="utf-8")
     return {"ok": True, "path": str(path.relative_to(PKA_DIR))}
@@ -1176,6 +1587,82 @@ class DashboardHandler(BaseHTTPRequestHandler):
             })
             return
 
+        if path == "/api/decouvertes":
+            self.send_json({"places": decouvertes_places()})
+            return
+
+        if path == "/api/spots":
+            self.send_json({"spots": spots_van()})
+            return
+
+        if path == "/api/circuit":
+            params = parse_qs(parsed.query)
+            region = params.get("region", [""])[0].strip()
+            start = params.get("start", [""])[0].strip()
+            end = params.get("end", [""])[0].strip()
+            self.send_json(circuit(region, start, end))
+            return
+
+        if path == "/api/circuit.gpx":
+            params = parse_qs(parsed.query)
+            region = params.get("region", [""])[0].strip()
+            start = params.get("start", [""])[0].strip()
+            end = params.get("end", [""])[0].strip()
+            fname = f"{slugify_live(region) or 'circuit'}.gpx"
+            self.send_download(circuit_gpx(region, start, end).encode("utf-8"), "application/gpx+xml", fname)
+            return
+
+        if path == "/api/circuit.kml":
+            params = parse_qs(parsed.query)
+            region = params.get("region", [""])[0].strip()
+            start = params.get("start", [""])[0].strip()
+            end = params.get("end", [""])[0].strip()
+            fname = f"{slugify_live(region) or 'circuit'}.kml"
+            self.send_download(circuit_kml(region, start, end).encode("utf-8"), "application/vnd.google-earth.kml+xml", fname)
+            return
+
+        if path == "/api/sleep":
+            params = parse_qs(parsed.query)
+            try:
+                lat = float(params.get("lat", ["0"])[0])
+                lng = float(params.get("lng", ["0"])[0])
+                radius = int(params.get("radius", ["20"])[0])
+                top = int(params.get("top", ["5"])[0])
+            except (ValueError, IndexError):
+                self.send_json({"ok": False, "error": "lat/lng invalides"}, HTTPStatus.BAD_REQUEST)
+                return
+            if not _PARK4NIGHT_AVAILABLE:
+                self.send_json({"ok": False, "error": "park4night indisponible"}, HTTPStatus.SERVICE_UNAVAILABLE)
+                return
+            try:
+                spots = park4night.find_sleep_spots(lat, lng, radius=radius, top_k=top)
+            except Exception as exc:  # noqa: BLE001 — on renvoie l'erreur au client
+                self.send_json({"ok": False, "error": str(exc)}, HTTPStatus.SERVICE_UNAVAILABLE)
+                return
+            self.send_json({"ok": True, "spots": spots})
+            return
+
+        if path == "/api/place":
+            params = parse_qs(parsed.query)
+            name = params.get("name", [""])[0].strip()
+            if not name or not re.fullmatch(r"[A-Za-z0-9._-]+", name):
+                self.send_json({"ok": False, "error": "paramètre name invalide"}, HTTPStatus.BAD_REQUEST)
+                return
+            data_file = DECOUVERTES_BASE / "data" / f"{name}.json"
+            if data_file.is_file():
+                try:
+                    self.send_json({"ok": True, "place": json.loads(data_file.read_text(encoding="utf-8"))})
+                except Exception:
+                    self.send_json({"ok": False, "error": "JSON illisible"}, HTTPStatus.SERVICE_UNAVAILABLE)
+                return
+            # Fallback robuste : reconstruire depuis la fiche .md si le JSON manque
+            md = _find_fiche_md(name)
+            if md is not None:
+                self.send_json({"ok": True, "place": _place_payload_from_md(md, name)})
+                return
+            self.send_json({"ok": False, "error": "lieu introuvable"}, HTTPStatus.NOT_FOUND)
+            return
+
         self.serve_static(path)
 
     def do_POST(self) -> None:
@@ -1197,6 +1684,10 @@ class DashboardHandler(BaseHTTPRequestHandler):
 
         if not self.is_authorized_request():
             self.send_json({"ok": False, "error": "Acces PKA verrouille"}, HTTPStatus.UNAUTHORIZED)
+            return
+
+        if not self.is_local_request():
+            self.send_json({"ok": False, "error": "Lecture seule depuis un appareil distant"}, HTTPStatus.FORBIDDEN)
             return
 
         if parsed.path == "/api/realtime/call":
@@ -1353,6 +1844,17 @@ button {{ width: 100%; min-height: 42px; margin-top: 12px; border: 0; border-rad
         self.end_headers()
         self.wfile.write(data)
 
+
+    def send_download(self, data: bytes, content_type: str, filename: str) -> None:
+        self.send_response(HTTPStatus.OK)
+        self.send_header("Content-Type", content_type)
+        self.send_header("Content-Length", str(len(data)))
+        self.send_header("Content-Disposition", f'attachment; filename="{filename}"')
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.end_headers()
+        self.wfile.write(data)
+
     def send_directory_index(self, directory: Path) -> None:
         entries = [item for item in sorted(directory.iterdir(), key=lambda item: (not item.is_dir(), item.name.lower())) if item.name != ".DS_Store"]
         relative = pka_relative_path(directory)
@@ -1407,6 +1909,8 @@ small {{ color: var(--texte-mute); text-transform: uppercase; letter-spacing: 0.
         self.end_headers()
         self.wfile.write(data)
 
+
+
     def redirect(self, location: str) -> None:
         self.send_response(HTTPStatus.FOUND)
         self.send_header("Location", location)
@@ -1429,6 +1933,8 @@ small {{ color: var(--texte-mute); text-transform: uppercase; letter-spacing: 0.
         self.send_header("Access-Control-Allow-Headers", "Content-Type, X-PKA-Dashboard")
         self.end_headers()
         self.wfile.write(data)
+
+
 
 
 def main() -> None:

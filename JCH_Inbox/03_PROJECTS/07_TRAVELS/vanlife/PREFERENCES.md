@@ -1,6 +1,6 @@
 # [[PREFERENCES]] — Profil vanlife JCH & Anne
 
-Dernière mise à jour : 2026-05-29
+Dernière mise à jour : 2026-10-04
 
 ## JCH
 
@@ -9,7 +9,7 @@ Dernière mise à jour : 2026-05-29
 - **Équipement :** Canon R10 + 90D, RF 200-800mm, Tamron 150-600mm, macros
 - **Intérêts voyage :** réserves naturelles, parcs nationaux, zones humides, spots ornitho, jardins botaniques, beaux jardins urbains
 - **Aime voir et photographier :** arbres remarquables, spécimens anciens ou insolites
-- **Conduite :** Stylevan Equinox IV Ford
+- **Conduite :** Westfalia Kelsey 2026 (Ford Transit Custom, 170 ch, 4×4)
 
 ## Anne
 
@@ -35,6 +35,6 @@ Dernière mise à jour : 2026-05-29
 
 ## Contraintes logistiques
 
-- Van : Stylevan Equinox IV Ford (L x l x h à préciser)
+- Van : Westfalia Kelsey 2026 (Ford Transit Custom) — 5,45 m × ~2,05 m × ~2,05 m (toit fermé)
 - Stationnement : parkings réserves naturelles OK, éviter zones trop urbanisées
 - Autonomie : à documenter (eau, électricité, gaz)

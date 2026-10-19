@@ -14,15 +14,31 @@ Usage :
 """
 
 import argparse
-import base64
+import hashlib
 import json
 import os
+import re
 import sys
+import shutil
 from datetime import datetime, timezone
 from pathlib import Path
 
 import requests
 from dotenv import load_dotenv
+
+# ── OCR & EXIF (optionnels — fallback gracieux si absents) ──────────────────
+try:
+    from PIL import Image, ExifTags
+    HAS_PIL = True
+except ImportError:
+    HAS_PIL = False
+
+try:
+    import pytesseract
+    HAS_TESSERACT = True
+except ImportError:
+    HAS_TESSERACT = False
+HAS_TESSERACT_CLI = shutil.which("tesseract") is not None
 
 # PKA_ROOT doit être connu avant de charger les secrets
 PKA_ROOT = Path(os.getenv("PKA_ROOT", str(Path(__file__).resolve().parents[2])))
@@ -56,46 +72,366 @@ OLLAMA_BASE = os.getenv("OLLAMA_BASE", "http://localhost:11435")
 CASCADE_ORDER = ["ollama:qwen3.5", "haiku", "sonnet", "opus"]
 CASCADE_THRESHOLD = 0.7
 
+# ── Cache déduplication ────────────────────────────────────────────────────
+CACHE_DIR = BASE / ".cache"
+CACHE_FILE = CACHE_DIR / "analyzed_places.json"
+GMAPS_CSV = BASE / "lieux_google_maps.csv"
+GMAPS_CSV_HEADER = "Name,Description,Latitude,Longitude,Country,Region"
+
+def _load_cache() -> dict:
+    """Charge le cache des lieux déjà analysés. Retourne {place_key: {date, nom_lieu}}."""
+    if not CACHE_FILE.exists():
+        return {}
+    try:
+        return json.loads(CACHE_FILE.read_text())
+    except (json.JSONDecodeError, OSError):
+        return {}
+
+def _save_cache(cache: dict) -> None:
+    """Sauvegarde le cache de déduplication."""
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    CACHE_FILE.write_text(json.dumps(cache, ensure_ascii=False, indent=2))
+
+def _cache_key(nom_lieu: str) -> str:
+    """Génère une clé de cache normalisée à partir d'un nom de lieu."""
+    return hashlib.sha256(
+        nom_lieu.strip().lower().encode()
+    ).hexdigest()[:16]
+
+def _append_google_maps_csv(analysis: dict, gps: dict) -> None:
+    """Ajoute une ligne au fichier CSV compatible Google My Maps (import direct).
+
+    Si le pays n'est pas fourni par l'analyse LLM, tente un reverse geocode Nominatim.
+    """
+    import csv as _csv
+    nom = analysis.get("nom_lieu", "").replace('"', '""')
+    pays = analysis.get("pays", "").replace('"', '""')
+    region = analysis.get("region", "").replace('"', '""')
+    type_lieu = analysis.get("type_lieu", "")
+    confidence = f"{analysis.get('confidence', 0):.0%}"
+    date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    notes = analysis.get("description", "")[:200].replace('"', '""')
+
+    # Reverse geocode fallback si le pays est vide
+    if not pays.strip():
+        try:
+            resp = requests.get(
+                "https://nominatim.openstreetmap.org/reverse",
+                params={"lat": gps["lat"], "lon": gps["lon"], "format": "json", "zoom": 3},
+                headers={"User-Agent": "PKA_DECOUVERTES/1.0"},
+                timeout=10,
+            )
+            data = resp.json()
+            pays = data.get("address", {}).get("country", "")
+            region = region or data.get("address", {}).get("state", "")
+        except Exception:
+            pass
+
+    write_header = not GMAPS_CSV.exists()
+    with open(GMAPS_CSV, "a", newline="", encoding="utf-8") as f:
+        w = _csv.writer(f)
+        if write_header:
+            w.writerow(GMAPS_CSV_HEADER.split(","))
+        desc = " · ".join(x for x in (pays, region, type_lieu) if x and str(x).strip())
+        w.writerow([nom, desc, gps["lat"], gps["lon"], pays, region])
+
+# ── OCR & EXIF ──────────────────────────────────────────────────────────────
+
+# Patterns pour détecter un nom de lieu dans du texte brut
+_PLACE_PATTERNS = [
+    # Français : "Château de X", "Abbaye de X", "Cathédrale de X"...
+    # Le nom qui suit DOIT commencer par une majuscule (nom propre) — (?-i:) force la casse
+    re.compile(r'(?i)(?:Château|Abbaye|Cathédrale|Basilique|Église|Collegiale'
+               r'|Chapelle|Monastère|Forteresse|Citadelle|Tour|Pont|Lac'
+               r'|Plage|Grotte|Cascade|Cirque|Col|Pic|Mont|Vallée'
+               r'|Parc|Jardin|Réserve|Village|Hameau)\s+(?:du\s+|de\s+|des\s+|d\')?\s*'
+               r'(?-i:[A-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜÇ])[\w\-\']+'),
+    # Italien : "Piana di X", "Val di X", "Lago di X"...
+    re.compile(r'(?i)(?:Piana|Val|Lago|Monte|Passo|Rifugio|Isola|Fiume'
+               r'|Torre|Ponte|Castello|Chiesa|Duomo|Piazza|Lido|Spiaggia'
+               r'|Baia|Golfo|Capo|Porto|Borgo|Santuario|Eremo'
+               r')\s+(?:di|del|della|dei|degli|delle|san|sant\')?\s*'
+               r'(?-i:[A-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜÇ])[\w\-\']+'),
+    # "San X", "Santa X", "Sant'X" — toponymes italiens
+    re.compile(r'(?i)(?:San|Santa|Sant)\s+(?-i:[A-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜÇ])[\w\-\']+'),
+    # "X (Y — Z)" — lieu avec région entre parenthèses
+    re.compile(r'(?-i:[A-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜÇ][\w\-\'\s]{3,40})\s*\((?-i:[A-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜÇ][\w\-\'\s,]{2,30})\)'),
+    # Allemand : "Schloss X", "Burg X", "X Brücke"... (mot suivant DOIT être capitalisé)
+    re.compile(r'(?i)(?:Schloss|Burg|Kloster|Dom|Münster|Berg|Bach'
+               r'|Wald|Insel|Brücke|Turm)\s+(?-i:[A-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜÇ])[\w\-\']{2,30}'),
+    re.compile(r'(?-i:[A-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜÇ])[\w\-\']{2,30}\s+(?i:Brücke|Schloss|Burg|Berg|Wald)'),
+    # Mots composés allemands : "Rakotzbrücke", "Xburg", "Xstein", "Xdorf", "Xbach"
+    re.compile(r'(?-i:[A-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜÇ])[a-zàâäéèêëîïôöùûüç]{3,20}'
+               r'(?i:brücke|brucke|burg|berg|stein|dorf|bach|feld|heim'
+               r'|garten|schlucht|klamm|spitze|horn|kogel|gletscher'
+               r'|see|tal|alp|wand|au|ach|ried|moos|egg|kopf|joch)'),
+    # Anglais/International : "X Castle", "X Abbey", "X Cathedral"...
+    re.compile(r'(?-i:[A-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜÇ])[\w\-\']{2,30}\s+'
+               r'(?i:Castle|Abbey|Cathedral|Basilica|Church'
+               r'|Monastery|Fortress|Citadel|Tower|Bridge|Lake'
+               r'|Beach|Cave|Waterfall|Cirque|Pass|Peak|Mount|Valley'
+               r'|Park|Garden|Reserve|Village|Hamlet|Falls|Canyon'
+               r'|National\s+Park|Nature\s+Reserve)'),
+    # Nom propre en MAJUSCULES suivi d'un tiret et d'une région (ex: "SISTERON - PROVENCA")
+    # Priorité HAUTE : très fiable — capture un seul mot en majuscules avant le tiret
+    re.compile(r'\b([A-Z][A-Z\']{3,30})\s*[-–—]\s*(?:PROVENCE|PROVENCA|BRETAGNE|ALSACE|CORSE|PACA|OCCITANIE|AUVERGNE|NORMANDIE|SAVOIE|ARDECHE|DORDOGNE|CAMARGUE|TOSCANA|LOMBARDIA|SICILIA|TRENTINO|BAVIERA|TIROL)\b',
+               re.IGNORECASE),
+    # Mot en majuscule suivi de "(01)" style département
+    re.compile(r'([A-Z][a-zàâäéèêëîïôöùûüç\-]{3,}(?:\s[A-Z][a-zàâäéèêëîïôöùûüç\-]{3,}){0,3})\s*\(\d{2,3}\)'),
+    # Nom propre isolé tout en MAJUSCULES (5+ lettres, filtré par blocklist)
+    re.compile(r'\b([A-Z][A-Z\']{4,}(?:\s[A-Z][A-Z\']{2,}){0,2})\b'),
+    # Nom propre en Title Case (ex: "Pantropica") — 7+ lettres, dernier recours
+    re.compile(r"\b([A-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜÇ][a-zàâäéèêëîïôöùûüç']{6,}(?:\s[A-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜÇ][a-zàâäéèêëîïôöùûüç']{2,}){0,2})\b"),
+    # Emoji lieu suivi d'un nom (priorité basse)
+    re.compile(r'[📍🏰⛪🏞🏔🌊🏖]\s*[\w\s\-]{3,40}'),
+]
+
+def ocr_extract_text(image_path: Path) -> str | None:
+    """Extrait le texte via tesseract CLI (subprocess) — indépendant de pytesseract.
+
+    Stratégie multi-passe : couleur PSM 6 → couleur PSM 3 → N&B PSM 6.
+    Langue : eng (les packs fra/ita/deu ne sont pas installés sur cette machine).
+    """
+    import subprocess
+    import tempfile
+
+    if not shutil.which("tesseract"):
+        return None
+    candidates = []
+    try:
+        for psm in ("6", "3"):
+            out = subprocess.run(
+                ["tesseract", str(image_path), "stdout", "-l", "eng", "--psm", psm],
+                capture_output=True, text=True, timeout=40,
+            )
+            t = out.stdout.strip()
+            if t:
+                candidates.append(t)
+
+        # Passe N&B PSM 6 (fallback textes difficiles)
+        if HAS_PIL:
+            try:
+                img = Image.open(image_path).convert("L")
+                with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tf:
+                    img.save(tf.name)
+                    nb_path = tf.name
+                out = subprocess.run(
+                    ["tesseract", nb_path, "stdout", "-l", "eng", "--psm", "6"],
+                    capture_output=True, text=True, timeout=40,
+                )
+                t = out.stdout.strip()
+                if t:
+                    candidates.append(t)
+            except Exception:
+                pass
+
+        if not candidates:
+            return None
+
+        # Retourner le meilleur candidat : celui qui contient un lieu extractible,
+        # ou à défaut le plus long (plus de texte = plus de chances)
+        for text in candidates:
+            if extract_place_from_text(text):
+                return text
+        return max(candidates, key=len)
+    except Exception as e:
+        print(f"  [ocr] échec : {e}")
+        return None
+
+# Mots en majuscules qui NE sont PAS des lieux (bruit Instagram/OCR)
+_PLACE_BLOCKLIST = {
+    'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN',
+    'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC',
+    'SECRET', 'ROMANTIQUE', 'HABITE', 'DEPUIS', 'INSPIRA', 'TOILES',
+    'SUGGESTED', 'FOLLOW', 'TRANSLATION', 'CREDITS', 'AUTOR', 'SEE',
+    'HOURS', 'AGO', 'MORE', 'LIKE', 'THIS', 'THAT', 'WITH', 'FROM',
+    'LINK', 'BIO', 'PHOTO', 'VIDEO', 'POST', 'SHARE', 'COMMENT',
+    'FOR', 'YOU', 'AND', 'THE', 'NEW', 'NOW', 'HAS', 'WAS',
+    'VIA', 'UNE', 'SUR', 'DANS', 'AVEC', 'POUR', 'PAR', 'EST',
+    'SON', 'LES', 'DES', 'QUE', 'QUI', 'PAS', 'PLUS', 'AUX',
+    'NOTRE', 'VOTRE', 'LEUR', 'TOUS', 'TOUT', 'TRES', 'BIEN',
+    'CETTE', 'CES', 'MON', 'TON', 'SON', 'MES', 'TES', 'SES',
+    'ELLE', 'ILS', 'ELLES', 'FAIRE', 'ETRE', 'AVOIR', 'DIRE',
+    'ALORS', 'DONC', 'MAIS', 'AUSSI', 'MEME', 'DEJA', 'APRES',
+    'ENCORE', 'TOUJOURS', 'JAMAIS', 'RIEN', 'PEUT', 'FAIT',
+    'DEUX', 'LIEU', 'CARTE', 'PLAN', 'INFO', 'PAGE', 'SITE',
+    'SEE', 'TRANSLATION', 'PRESENTA', 'OCCITANIA', 'PROVENCA',
+    'CREDIT', 'CAPTION', 'LANTIQUITE', 'LABYRINTHIQUE', 'ROMANTIQUE',
+    'PAINTING', 'BRIDGE', 'GERMANY', 'LOOKS', 'EARTHPIX', 'MEDIAPART',
+    # Title Case (index 7) blocklist additions
+    'Follow', 'Reels', 'Friends', 'Watch', 'Suggested', 'Again',
+    'Pause', 'Sul', 'Mare', 'Prima', 'Posto', 'Perfetto', 'Rallentare',
+    'Viaggio', 'Dopo', 'Fare', 'Passi', 'Ripartire', 'Exactly', 'Showed',
+    'First', 'Place', 'Expect', 'Tropical', 'Rainforest', 'Netherlands',
+    'Tommaso', 'Michele', 'Welcome', 'Friends', 'Pirie', 'Sacra', 'Comment',
+}
+
+def extract_address_cities(text: str) -> list[str]:
+    """Extrait les villes depuis des adresses type « Via X 34, Ville, Provincia di Y ».
+
+    Les posts Instagram de lieux contiennent souvent l'adresse complète — la ville y
+    est le meilleur ancrage géographique, mieux que le titre/la légende.
+    """
+    cities = []
+    for m in re.finditer(
+        r'(?:Via|Piazza|Corso|Viale|Strada|Località|Contrada|Largo|Borgo)\s+'
+        r'[\w\s\.\d\'\-]{1,60}?,\s*'
+        r'([A-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜÇ][\w\-\']+(?:\s+(?:di|del|de|della|delle|dei|degli|du|des|sur|en|in)\s+[A-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜÇ][\w\-\']+){0,3})',
+        text,
+    ):
+        cities.append(m.group(1).strip())
+    return cities
+
+
+def extract_places_from_text(text: str) -> list[str]:
+    """Extrait TOUS les lieux du texte — gère les listes numérotées (posts itinéraires).
+
+    Stratégie :
+    1. Détecter une liste numérotée (ex: Romantic Road) → extraire chaque item
+    2. Sinon, fallback sur extract_place_from_text() pour le lieu unique
+    """
+    results = []
+
+    # ── Détection de liste numérotée ──────────────────────────────────────
+    # Pattern: "1. Nom du lieu" ou "* 1. Nom du lieu" ou "1 - Nom du lieu"
+    numbered = re.findall(
+        r'(?:^|\n).*?(?:\*\s*)?\b(\d+)[\.\-][ \t]+'
+        r'([A-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜÇ][\w\-\'\(\)]+(?:[ \t]+(?:[A-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜÇ][\w\-\'\(\)]+|ob|am|der|im|de|di|del|sur|en|au|aux|du|des|le|la|les|el|il|van|von|zum|zur)){0,4})',
+        text, re.MULTILINE,
+    )
+    # Extraire seulement les noms de lieux (deuxième groupe), filtrer doublons
+    seen = set()
+    clean_numbered = []
+    for num, name in numbered:
+        name = name.strip()
+        if name.lower() not in seen:
+            seen.add(name.lower())
+            clean_numbered.append(name)
+    if len(clean_numbered) >= 3:
+        # Filtrer les lignes parasites (mots trop génériques)
+        blocklist_lower = {w.lower() for w in _PLACE_BLOCKLIST}
+        for item in clean_numbered:
+            clean = item.strip().rstrip("',-:;.!?")
+            # Skip si trop court ou dans la blocklist
+            if len(clean) < 4 or clean.lower() in blocklist_lower:
+                continue
+            # Skip si commence par un stop word
+            first_word = clean.split()[0].lower() if clean.split() else ''
+            if first_word in {'save', 'follow', 'share', 'comment', 'like', 'the', 'this', 'one', 'start', 'finish'}:
+                continue
+            results.append(clean)
+
+    # ── Adresse → ville (ex: "Via X, Cividale del Friuli, Provincia di Udine") ──
+    for city in extract_address_cities(text):
+        if city.lower() not in {r.lower() for r in results}:
+            results.append(city)
+
+    # ── Fallback : lieu unique (toujours tenté, dédupliqué) ──────────────
+    single = extract_place_from_text(text)
+    if single and single.lower() not in {r.lower() for r in results}:
+        results.append(single)
+
+    return results
+
+
+def extract_place_from_text(text: str) -> str | None:
+    """Tente d'extraire un nom de lieu du texte OCR via patterns regex."""
+    for i, pattern in enumerate(_PLACE_PATTERNS):
+        # Pour les patterns à blocklist (10=MAJUSCULES, 11=Title Case), essayer
+        # tous les matchs jusqu'à en trouver un qui passe la blocklist
+        if i in (10, 11):
+            for match in pattern.finditer(text):
+                groups = match.groups()
+                candidate = groups[0].strip() if groups else match.group(0).strip()
+                words = candidate.split()
+                # Nettoyer ponctuation trailing (', -, :, etc.)
+                clean = [w.rstrip("',-:;.!?") for w in words]
+                if i == 11:
+                    place_words = [w for w in clean if w not in _PLACE_BLOCKLIST]
+                else:
+                    place_words = [w for w in clean if w.upper() not in _PLACE_BLOCKLIST]
+                if place_words:
+                    return ' '.join(place_words)
+            continue
+
+        match = pattern.search(text)
+        if match:
+            candidate = match.group(0).strip()
+            # Pour MAJUSCULES+région (8) → extraire le groupe capturant
+            if i == 8:
+                groups = match.groups()
+                if groups:
+                    candidate = groups[0].strip()
+            return candidate
+    return None
+
+def extract_exif_gps(image_path: Path) -> dict | None:
+    """Extrait les coordonnées GPS des métadonnées EXIF. Retourne {lat, lon} ou None."""
+    if not HAS_PIL:
+        return None
+    try:
+        img = Image.open(image_path)
+        exif = img.getexif()
+        if not exif:
+            return None
+        gps_info = {}
+        for tag_id, value in exif.items():
+            tag_name = ExifTags.TAGS.get(tag_id, "")
+            if tag_name == "GPSInfo":
+                gps_info = value
+                break
+        if not gps_info:
+            return None
+
+        def _dms_to_dd(values):
+            """Convertit (deg, min, sec) tuple en degrés décimaux."""
+            d, m, s = [float(x) for x in values]
+            return d + m / 60 + s / 3600
+
+        lat = _dms_to_dd(gps_info[2])
+        lon = _dms_to_dd(gps_info[4])
+        if gps_info.get(1) == 'S':
+            lat = -lat
+        if gps_info.get(3) == 'W':
+            lon = -lon
+        return {"lat": lat, "lon": lon}
+    except Exception:
+        return None
+
 # ── Appels LLM ────────────────────────────────────────────────────────────────
 
-def call_claude(model_id: str, prompt: str, image_b64: str | None = None) -> str:
+def call_claude(model_id: str, prompt: str) -> str:
+    """Appel texte uniquement — pas de vision."""
     import anthropic
     client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
-    content = []
-    if image_b64:
-        content.append({
-            "type": "image",
-            "source": {"type": "base64", "media_type": "image/jpeg", "data": image_b64},
-        })
-    content.append({"type": "text", "text": prompt})
     resp = client.messages.create(
         model=model_id,
         max_tokens=2048,
-        messages=[{"role": "user", "content": content}],
+        messages=[{"role": "user", "content": prompt}],
     )
     return resp.content[0].text
 
 
-def call_ollama(model_name: str, prompt: str, image_b64: str | None = None) -> str:
+def call_ollama(model_name: str, prompt: str) -> str:
+    """Appel texte uniquement — pas de vision."""
     payload: dict = {
         "model": model_name,
         "messages": [{"role": "user", "content": prompt}],
         "stream": False,
     }
-    if image_b64:
-        payload["messages"][0]["images"] = [image_b64]
     resp = requests.post(f"{OLLAMA_BASE}/api/chat", json=payload, timeout=120)
     resp.raise_for_status()
     return resp.json()["message"]["content"]
 
 
-def call_model(model_arg: str, prompt: str, image_b64: str | None = None) -> str:
+def call_model(model_arg: str, prompt: str) -> str:
+    """Appel LLM texte uniquement."""
     if model_arg.startswith("ollama:"):
-        return call_ollama(model_arg[7:], prompt, image_b64)
+        return call_ollama(model_arg[7:], prompt)
     model_id = CLAUDE_MODELS.get(model_arg)
     if not model_id:
         raise ValueError(f"Modèle inconnu : {model_arg}. Choix : haiku, sonnet, opus, ollama:<name>")
-    return call_claude(model_id, prompt, image_b64)
+    return call_claude(model_id, prompt)
 
 
 def _extract_json(raw: str) -> dict:
@@ -125,9 +461,7 @@ def _extract_json(raw: str) -> dict:
 
 
 def analyze_with_cascade(
-    model_order: list[str], threshold: float,
-    content_type: str, image_b64: str | None, text: str,
-    hint: str | None = None,
+    model_order: list[str], threshold: float, text: str,
 ) -> dict | None:
     """Essaie les modèles dans l'ordre jusqu'à obtenir une confiance >= threshold."""
     best = None
@@ -137,10 +471,7 @@ def analyze_with_cascade(
         arrow = "→" if i > 0 else ""
         print(f"  {arrow} {model_arg}...", end=" ", flush=True)
         try:
-            if image_b64 and content_type in ("photo", "image", "image_with_caption", "screenshot"):
-                raw = call_model(model_arg, get_vision_prompt(hint), image_b64)
-            else:
-                raw = call_model(model_arg, TEXT_PROMPT.format(text=text))
+            raw = call_model(model_arg, TEXT_PROMPT.format(text=text))
 
             analysis = _extract_json(raw)
 
@@ -174,9 +505,9 @@ def geocode(analysis: dict) -> dict | None:
     # Essaie plusieurs variantes pour maximiser les chances de trouver
     candidates = [
         analysis.get("place_query"),
-        analysis.get("nom_lieu"),
         f"{analysis.get('nom_lieu')} {analysis.get('ville')} {analysis.get('pays')}",
         f"{analysis.get('nom_lieu')} {analysis.get('region')} {analysis.get('pays')}",
+        analysis.get("nom_lieu"),
     ]
     for query in candidates:
         if not query or not query.strip():
@@ -357,229 +688,8 @@ def get_nearby_attractions(lat: float, lon: float, radius_km: int = 30) -> list[
     return results
 
 
-def generate_html_report(
-    lat: float, lon: float, nom_lieu: str,
-    pays: str, region: str, ville: str,
-    analysis: dict, van_info: str, meta: dict,
-    reserves: list[dict], restaurants: list[dict],
-    attractions: list[dict],
-    reports_dir: Path, slug: str, today: str,
-) -> Path | None:
-    """Génère un rapport HTML standalone complet avec carte intégrée."""
-    try:
-        reports_dir.mkdir(parents=True, exist_ok=True)
-        report_path = reports_dir / f"{today}_{slug}.html"
-
-        import math as _math
-
-        def _dist_km(lat2: float, lon2: float) -> str:
-            d = _math.dist((lat, lon), (lat2, lon2)) * 111.32
-            return f"{d:.0f} km" if d >= 1 else f"{int(d*1000)} m"
-
-        # ── Marqueurs JS carte ──
-        reserve_js = ",\n        ".join(
-            f'L.marker([{r["lat"]}, {r["lon"]}], {{icon: reserveIcon}}).bindPopup("<b>🌿 {r["name"]}</b><br>{r["type"]}").addTo(map)'
-            for r in reserves
-        )
-        resto_js = ",\n        ".join(
-            f'L.marker([{r["lat"]}, {r["lon"]}], {{icon: restoIcon}}).bindPopup("<b>🍽 {r["name"]}</b><br>{r["cuisine"]}").addTo(map)'
-            for r in restaurants
-        )
-        attr_js = ",\n        ".join(
-            f'L.marker([{a["lat"]}, {a["lon"]}], {{icon: attrIcon}}).bindPopup("<b>⭐ {a["name"]}</b><br>{a["type"]}").addTo(map)'
-            for a in attractions
-        )
-
-        # ── Confiance ──
-        confidence = int(analysis.get("confidence", 0) * 100)
-        conf_class = "conf-high" if confidence >= 80 else "conf-med" if confidence >= 50 else "conf-low"
-        action_label = "Validé" if analysis.get("action") == "validated" else "À vérifier"
-        gmaps = f"https://www.google.com/maps/search/{lat},{lon}"
-
-        # ── Photos source ──
-        photos_html = ""
-        for mf in meta.get("media_files", []):
-            fp = PKA_ROOT / mf["file_path"]
-            if fp.exists():
-                import base64 as _b64
-                img_b64 = _b64.standard_b64encode(fp.read_bytes()).decode()
-                photos_html += f'<div class="photo-card"><img src="data:image/jpeg;base64,{img_b64}" alt="Photo source" loading="lazy"></div>'
-
-        # ── Table attractions ──
-        attr_table = ""
-        for a in attractions:
-            attr_table += f'<tr><td>{a["name"]}</td><td>{a["type"]}</td><td class="km">{_dist_km(a["lat"], a["lon"])}</td><td class="link"><a href="https://www.google.com/maps/place/{a["name"].replace(" ","+")}" target="_blank">🔗</a></td></tr>'
-
-        # ── Table restos ──
-        resto_table = ""
-        for r in restaurants:
-            cuisine = r['cuisine'] if r['cuisine'] else "—"
-            resto_table += f'<tr><td>{r["name"]}</td><td>{cuisine}</td><td class="km">{_dist_km(r["lat"], r["lon"])}</td><td class="link"><a href="https://www.google.com/maps/place/{r["name"].replace(" ","+")}" target="_blank">🔗</a></td></tr>'
-
-        # ── Scores ──
-        def _stars(n: int) -> str:
-            return "★" * n + "☆" * (5 - n)
-
-        html = f"""<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{nom_lieu} — PKA Découvertes</title>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<style>
-  :root {{ --ivoire: #F8F5F0; --noir: #0D0B09; --ocre: #C17F3A; --sable: #E8E2DA; --sable-fonce: #D4CCC2; --ardoise: #4A5568; --gris: #6B7280; }}
-  * {{ box-sizing: border-box; margin: 0; padding: 0; }}
-  body {{ background: var(--ivoire); color: var(--noir); font-family: 'Inter', -apple-system, sans-serif; font-size: 14px; line-height: 1.6; padding: 16px 14px; }}
-  h1, h2, h3, th {{ font-weight: 700; }}
-  h1 {{ font-size: 22px; color: var(--ocre); margin-bottom: 2px; }}
-  h2 {{ font-size: 12px; color: var(--ocre); margin: 22px 0 6px; padding-bottom: 2px; border-bottom: 2px solid var(--sable); text-transform: uppercase; letter-spacing: 0.05em; }}
-  h3 {{ font-size: 11px; color: var(--ardoise); margin: 10px 0 4px; font-weight: 600; }}
-  .km, .price {{ font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--ardoise); }}
-  .header {{ margin-bottom: 12px; padding-bottom: 8px; border-bottom: 3px solid var(--ocre); }}
-  .header-meta {{ font-size: 10px; color: var(--gris); margin-top: 2px; }}
-  .status {{ display: inline-block; background: var(--ocre); color: #fff; padding: 1px 8px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }}
-  .tagline {{ font-weight: 400; color: var(--gris); font-size: 12px; }}
-  .card {{ background: var(--sable); padding: 8px 12px; margin: 6px 0; font-size: 12px; }}
-  .rules {{ background: var(--sable); padding: 8px 10px; margin: 6px 0; font-size: 11px; border-left: 4px solid var(--ocre); line-height: 1.6; }}
-  .table-wrap {{ width: 100%; overflow-x: auto; margin: 6px 0 10px; }}
-  table {{ width: 100%; border-collapse: collapse; font-size: 10px; min-width: 400px; }}
-  th {{ background: var(--sable-fonce); color: var(--noir); font-weight: 600; font-size: 9px; text-transform: uppercase; letter-spacing: 0.04em; padding: 6px 6px; text-align: left; white-space: nowrap; }}
-  td {{ padding: 5px 6px; border-bottom: 1px solid var(--sable); vertical-align: top; }}
-  tr:last-child td {{ border-bottom: none; }}
-  .link a {{ color: var(--ocre); text-decoration: none; font-size: 12px; padding: 2px 4px; }}
-  .map-container {{ height: 260px; margin: 8px 0; border: 2px solid var(--sable); position: relative; z-index: 1; }}
-  #map {{ height: 100%; }}
-  .legend {{ background: rgba(255,255,255,0.95); padding: 5px 8px; border-radius: 4px; font: 10px/1.4 sans-serif; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }}
-  .legend i {{ width: 10px; height: 10px; display: inline-block; margin-right: 4px; border-radius: 50%; vertical-align: middle; }}
-  .stars {{ color: var(--ocre); font-size: 13px; letter-spacing: 2px; }}
-  .photo-gallery {{ display: flex; gap: 8px; overflow-x: auto; padding: 4px 0; }}
-  .photo-card {{ flex: 0 0 auto; border-radius: 4px; overflow: hidden; border: 1px solid var(--sable); }}
-  .photo-card img {{ height: 140px; display: block; }}
-  .conf-high {{ background: #d4edda; color: #155724; }}
-  .conf-med {{ background: #fff3cd; color: #856404; }}
-  .conf-low {{ background: #f8d7da; color: #721c24; }}
-  .footer {{ text-align: center; padding: 16px; color: var(--gris); font-size: 9px; }}
-  .footer a {{ color: var(--ocre); }}
-  @media (max-width: 500px) {{ h1 {{ font-size: 18px; }} .map-container {{ height: 200px; }} .photo-card img {{ height: 100px; }} }}
-</style>
-</head>
-<body>
-
-<div class="header">
-  <div class="status">{action_label}</div>
-  <h1>📍 {nom_lieu}</h1>
-  <div class="tagline">{ville}, {region}, {pays} · {today} · {confidence}%</div>
-  <div class="header-meta">
-    📷 {_stars(analysis.get("interet_photo", 0))} &nbsp; 🌳 {_stars(analysis.get("interet_nature", 0))} &nbsp; 🏛 {_stars(analysis.get("interet_patrimoine", 0))}
-  </div>
-</div>
-
-<div class="card">{analysis.get("description", "")}</div>
-
-<div class="map-container"><div id="map"></div></div>
-
-<h2>📸 Spots photo <span style="font-weight:400;font-size:10px;color:var(--gris)">— saison · astuce</span></h2>
-<div class="rules">📷 <strong>Meilleure saison</strong> : printemps (avril-juin) ou automne (septembre-octobre) pour lumière rasante sur {nom_lieu}<br>
-🌅 <strong>Heure idéale</strong> : tôt le matin ou fin d'après-midi<br>
-🔭 <strong>Point de vue</strong> : à repérer sur place — privilégier un point en hauteur avec recul<br>
-💡 <strong>Astuce</strong> : trépied pour poses longues (rivière, cascade), filtre polarisant si ciel clair</div>
-
-{"<h2>⭐ À voir aux alentours <span style='font-weight:400;font-size:10px;color:var(--gris)'>— 30 km</span></h2><div class='table-wrap'><table><tr><th>Lieu</th><th>Type</th><th>Dist</th><th>Maps</th></tr>" + attr_table + "</table></div>" if attr_table else ""}
-
-{"<h2>🍽 Restaurants <span style='font-weight:400;font-size:10px;color:var(--gris)'>— 15 km</span></h2><div class='table-wrap'><table><tr><th>Nom</th><th>Cuisine</th><th>Dist</th><th>Maps</th></tr>" + resto_table + "</table></div>" if resto_table else ""}
-
-<h2>🚐 Accès minivan <span style="font-weight:400;font-size:10px;color:var(--gris)">— Stylevan Equinox IV</span></h2>
-<div class="rules">{van_info}</div>
-
-{"<div class='card' style='margin-top:10px'><div class='photo-gallery'>" + photos_html + "</div></div>" if photos_html else ""}
-
-<div class="footer">
-  PKA Découvertes · {today} · Telegram DECOUVERTES · {meta.get("author", "")}<br>
-  GPS {lat:.4f}, {lon:.4f} · <a href="{gmaps}" target="_blank">Google Maps</a>
-</div>
-
-<script>
-const map = L.map("map").setView([{lat}, {lon}], 11);
-L.tileLayer("https://{{s}}.tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png", {{ attribution: "&copy; OSM", maxZoom: 18 }}).addTo(map);
-L.circle([{lat}, {lon}], {{ radius: 50000, color: "__SABLE__", fillColor: "__SABLE__", fillOpacity: 0.08, weight: 2, dashArray: "6 8" }}).addTo(map);
-L.marker([{lat}, {lon}]).bindPopup("<b>📍 {nom_lieu}</b>").addTo(map).openPopup();
-
-const reserveIcon = L.divIcon({{ className: "", html: "🌿", iconSize: [20, 20], iconAnchor: [10, 10] }});
-{reserve_js if reserve_js else "// Aucune réserve"};
-
-const restoIcon = L.divIcon({{ className: "", html: "🍽", iconSize: [20, 20], iconAnchor: [10, 10] }});
-{resto_js if resto_js else "// Aucun resto"};
-
-const attrIcon = L.divIcon({{ className: "", html: "⭐", iconSize: [20, 20], iconAnchor: [10, 10] }});
-{attr_js if attr_js else "// Aucune attraction"};
-
-L.circle([{lat}, {lon}], {{ radius: 25000, color: "__ROUTE__", fillColor: "__ROUTE__", fillOpacity: 0.03, weight: 1, dashArray: "3 6" }}).addTo(map);
-
-const legend = L.control({{ position: "bottomright" }});
-legend.onAdd = function() {{
-    const div = L.DomUtil.create("div", "legend");
-    div.innerHTML = "<b>Légende</b><br><i style='background:__SABLE__'></i> 50 km<br><i style='background:__ROUTE__'></i> 25 km<br>⭐ Site · 🌿 Réserve · 🍽 Resto";
-    return div;
-}};
-legend.addTo(map);
-</script>
-</body>
-</html>""".replace("__SABLE__", "#C17F3A").replace("__ROUTE__", "#6B7280")
-        report_path.write_text(html, encoding="utf-8")
-        return report_path
-    except Exception as e:
-        print(f"  [html] erreur génération rapport : {e}")
-        return None
-
-# ── Prompts ───────────────────────────────────────────────────────────────────
-
-VISION_PROMPT_BASE = """Tu es l'agent PKA_DECOUVERTES. Analyse cette image.
-
-Objectif principal : identifier le lieu photographié.
-
-Extrais tous les indices visibles :
-- texte, panneaux, enseignes, noms sur la photo
-- monuments, paysages, architecture caractéristique
-- drapeaux, plaques, logos
-- végétation, relief, côte, montagne, ville
-
-Retourne UNIQUEMENT un JSON valide avec ces champs :
-{
-  "nom_lieu": "nom le plus probable du lieu",
-  "pays": "pays",
-  "region": "région ou département",
-  "ville": "ville ou commune proche",
-  "type_lieu": "une valeur parmi : nature, monument, village, plage, montagne, foret, lac, autre",
-  "description": "2-3 phrases décrivant ce qu'on voit et pourquoi c'est intéressant à visiter",
-  "interet_photo": 0,
-  "interet_nature": 0,
-  "interet_patrimoine": 0,
-  "van_friendly_observation": "ce que la photo révèle sur l'accessibilité (parking, espace, route)",
-  "indices_utilises": ["liste des indices visuels qui ont guidé l'identification"],
-  "confidence": 0.0,
-  "action": "validated | needs_review",
-  "place_query": "requête de recherche optimale pour trouver le lieu sur Google Maps"
-}
-
-Les scores sont de 0 à 5. confidence entre 0 et 1.
-Si le lieu est clairement identifiable, action = validated.
-Si incertain, action = needs_review.
-"""
-
-VISION_PROMPT = VISION_PROMPT_BASE  # rétrocompatibilité
-
-
-def get_vision_prompt(hint: str | None = None) -> str:
-    """Retourne le prompt vision, avec indices contextuels si fournis."""
-    if hint:
-        return VISION_PROMPT_BASE + f"""
-
-CONTEXTE FOURNI PAR L'UTILISATEUR (utilise ces indices en priorité) :
-{hint}
-"""
-    return VISION_PROMPT_BASE
+# ── Prompt ────────────────────────────────────────────────────────────────────
+# (Vision prompts archivés dans analyzer_archive_vision.py — pipeline OCR→texte uniquement)
 
 TEXT_PROMPT = """Tu es l'agent PKA_DECOUVERTES. Analyse ce message Telegram.
 
@@ -628,13 +738,69 @@ Rédige une section pratique pour un voyageur en minivan. Sois TRÈS concret —
 Si tu ne connais pas un détail précis, ne l'invente pas — écris "à vérifier sur place".
 """
 
+def slugify(name: str) -> str:
+    """Slug sûr pour URL/nom de fichier : [A-Za-z0-9._-], sans accents, tronqué à 40."""
+    import unicodedata
+    s = unicodedata.normalize("NFKD", name or "")
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    s = re.sub(r"[^A-Za-z0-9._-]+", "-", s).strip("-")
+    return s[:40] or "lieu"
+
+
+def generate_place_json(
+    lat: float, lon: float,
+    analysis: dict, van_info: str, meta: dict,
+    reserves: list[dict], restaurants: list[dict], attractions: list[dict],
+    data_dir: Path, slug: str, today: str,
+) -> Path | None:
+    """Écrit les données structurées d'un lieu en JSON (consommé par place.html)."""
+    try:
+        data_dir.mkdir(parents=True, exist_ok=True)
+        media_files = [mf.get("file_path") for mf in meta.get("media_files", [])]
+        payload = {
+            "slug": slug,
+            "nom_lieu": analysis.get("nom_lieu", "Lieu inconnu"),
+            "pays": analysis.get("pays", ""),
+            "region": analysis.get("region", ""),
+            "ville": analysis.get("ville", ""),
+            "gps": {"lat": lat, "lon": lon},
+            "scores": {
+                "photo": analysis.get("interet_photo", 0),
+                "nature": analysis.get("interet_nature", 0),
+                "patrimoine": analysis.get("interet_patrimoine", 0),
+                "van": analysis.get("interet_van", 0),
+            },
+            "type_lieu": analysis.get("type_lieu", ""),
+            "confidence": analysis.get("confidence", 0),
+            "action": analysis.get("action", "needs_review"),
+            "description": analysis.get("description", ""),
+            "van_info": van_info,
+            "reserves": reserves,
+            "restaurants": restaurants,
+            "attractions": attractions,
+            "media_files": media_files,
+            "source": {
+                "author": meta.get("author", ""),
+                "datetime": meta.get("datetime", ""),
+                "text": meta.get("text", ""),
+            },
+            "date_analyse": today,
+        }
+        path = data_dir / f"{slug}.json"
+        path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+        return path
+    except Exception as e:
+        print(f"  [json] erreur génération données : {e}")
+        return None
+
+
 # ── Génération fiche Obsidian ─────────────────────────────────────────────────
 
 def generate_note(
     meta: dict, analysis: dict, van_info: str, gps: dict | None,
     reserves: list[dict] | None = None,
     restaurants: list[dict] | None = None,
-    report_path: Path | None = None,
+    slug: str | None = None,
 ) -> str:
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     nom   = analysis.get("nom_lieu", "Lieu inconnu")
@@ -732,7 +898,7 @@ Score : **{analysis.get("interet_patrimoine", 0)}/5**
 ## Rapport complet
 
 """ + (
-        f"[📄 Ouvrir le rapport HTML]({report_path.relative_to(PKA_ROOT)})" if report_path else "_Rapport non disponible_"
+        f"[📄 Ouvrir la fiche interactive](http://127.0.0.1:8787/place.html?name={slug})" if slug else "_Fiche non disponible_"
     ) + """
 
 ## Voir aussi
@@ -755,36 +921,65 @@ def process_item(
 
     print(f"\n[{slug}] type={content_type} auteur={meta.get('author')}")
 
-    # ── Analyse vision ou texte
+    # ── Pipeline OCR → LLM texte ─────────────────────────────────────────
     try:
         if meta.get("media_files") and content_type in ("photo", "image", "image_with_caption", "screenshot"):
             img_path = PKA_ROOT / meta["media_files"][0]["file_path"]
             if not img_path.exists():
                 print(f"  Image introuvable : {img_path}")
                 return False
-            image_b64 = base64.standard_b64encode(img_path.read_bytes()).decode()
-            print(f"  Vision → {img_path.name} ({img_path.stat().st_size // 1024} Ko)")
+            print(f"  📷 {img_path.name} ({img_path.stat().st_size // 1024} Ko)")
 
-            if cascade_order:
-                analysis = analyze_with_cascade(cascade_order, cascade_threshold, content_type, image_b64, "", hint)
+            # 1. OCR
+            ocr_text = None
+            ocr_places = []
+            if HAS_TESSERACT_CLI:
+                ocr_text = ocr_extract_text(img_path)
+                if ocr_text:
+                    print(f"  🔍 OCR : {len(ocr_text)} caractères")
+                    ocr_places = extract_places_from_text(ocr_text)
+                    if ocr_places:
+                        for place in ocr_places:
+                            print(f"  🏷 {place}")
+                    else:
+                        print(f"  ⚠️ Aucun lieu détecté dans le texte OCR")
+                else:
+                    print(f"  ⚠️ OCR vide")
             else:
-                raw = call_model(model_arg, get_vision_prompt(hint), image_b64)
-                analysis = _extract_json(raw)
+                print(f"  ⚠️ pytesseract non installé")
+
+            # 2. Si pas de lieu trouvé → skip
+            if not ocr_places:
+                print(f"  ⏭ Rien à analyser")
+                meta["analysis_status"] = "skipped"
+                json_path.write_text(json.dumps(meta, ensure_ascii=False, indent=2))
+                return False
+
+            # 3. Construire le texte LLM : candidats + texte OCR complet (tronqué)
+            #    Corrige les échecs où le 1er candidat regex est faux/générique
+            #    ("CASTELLO DA" vs "Castello di Duino", "Santa Maria" vs l'adresse).
+            candidates = " | ".join(ocr_places)
+            ocr_trim = (ocr_text or "").strip()
+            text_for_llm = f"{candidates}\n\nTexte OCR complet :\n{ocr_trim[:1600]}"
+
         else:
-            text = meta.get("text", "")
-            if not text.strip():
+            text_for_llm = meta.get("text", "")
+            if not text_for_llm.strip():
                 print("  Message vide — ignoré")
                 return False
-            print(f"  Texte → {text[:60]!r}")
+            print(f"  Texte → {text_for_llm[:60]!r}")
 
-            if cascade_order:
-                analysis = analyze_with_cascade(cascade_order, cascade_threshold, content_type, None, text)
-            else:
-                raw = call_model(model_arg, TEXT_PROMPT.format(text=text))
-                analysis = _extract_json(raw)
+        # 4. Appel LLM texte
+        if cascade_order:
+            analysis = analyze_with_cascade(cascade_order, cascade_threshold, text_for_llm)
+        else:
+            raw = call_model(model_arg, TEXT_PROMPT.format(text=text_for_llm))
+            analysis = _extract_json(raw)
 
         if analysis is None:
             print("  Aucun modèle n'a identifié de lieu")
+            meta["analysis_status"] = "skipped"
+            json_path.write_text(json.dumps(meta, ensure_ascii=False, indent=2))
             return False
 
         # Filtre messages non-lieu
@@ -800,10 +995,24 @@ def process_item(
 
     print(f"  Lieu identifié : {analysis.get('nom_lieu')} ({int(analysis.get('confidence', 0)*100)}%)")
 
+    # ── Cache : sauvegarder pour déduplication future ──────────────────
+    nom_lieu = analysis.get("nom_lieu", "")
+    if nom_lieu:
+        cache = _load_cache()
+        ck = _cache_key(nom_lieu)
+        cache[ck] = {
+            "date": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+            "nom_lieu": nom_lieu,
+        }
+        _save_cache(cache)
+
     # ── GPS via Nominatim
     gps = geocode(analysis)
     if gps:
         print(f"  GPS : {gps['lat']:.4f}, {gps['lon']:.4f}")
+        # ── CSV Google Maps cumulatif
+        _append_google_maps_csv(analysis, gps)
+        print(f"  📍 → {GMAPS_CSV.name}")
     else:
         print("  GPS : non trouvé")
 
@@ -820,11 +1029,13 @@ def process_item(
     except Exception as e:
         van_info = f"_Erreur lors de la génération des infos van : {e}_"
 
-    # ── Réserves naturelles, attractions, restaurants & rapport HTML
+    # ── Réserves naturelles, attractions, restaurants & données lieu
     reserves = []
     attractions = []
     restaurants = []
-    report_path = None
+    data_path = None
+    slug = slugify(analysis.get("nom_lieu", "lieu-inconnu"))
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     if gps:
         print("  Overpass → réserves naturelles (25 km)...")
         reserves = get_nature_reserves(gps["lat"], gps["lon"], radius_km=25)
@@ -842,28 +1053,19 @@ def process_item(
             cuisine_str = f" — {r['cuisine']}" if r['cuisine'] else ""
             print(f"    🍽 {r['name']}{cuisine_str}")
 
-        slug = analysis.get("nom_lieu", "lieu-inconnu").replace(" ", "-").replace("/", "-")[:40]
-        today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-        reports_dir = BASE / "reports"
-        print("  HTML → rapport complet...")
-        report_path = generate_html_report(
+        print("  JSON → données lieu...")
+        data_path = generate_place_json(
             gps["lat"], gps["lon"],
-            analysis.get("nom_lieu", "Lieu inconnu"),
-            analysis.get("pays", ""),
-            analysis.get("region", ""),
-            analysis.get("ville", ""),
             analysis, van_info, meta,
             reserves, restaurants, attractions,
-            reports_dir, slug, today,
+            BASE / "data", slug, today,
         )
-        if report_path:
-            print(f"    → reports/{report_path.name}")
+        if data_path:
+            print(f"    → data/{data_path.name}")
 
     # ── Fiche Obsidian
-    note = generate_note(meta, analysis, van_info, gps, reserves, restaurants, report_path)
-    nom_safe = analysis.get("nom_lieu", "lieu-inconnu").replace(" ", "-").replace("/", "-")[:40]
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    note_path = DRAFTS_DIR / f"{today}_{nom_safe}.md"
+    note = generate_note(meta, analysis, van_info, gps, reserves, restaurants, slug)
+    note_path = DRAFTS_DIR / f"{today}_{slug}.md"
     note_path.write_text(note, encoding="utf-8")
     print(f"  → drafts/{note_path.name}")
 

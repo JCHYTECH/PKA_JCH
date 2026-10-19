@@ -60,6 +60,7 @@ Projets IoT (Internet of Things) transverses de JCH : vanlife, serre, maison off
 │   ├── BOM-VANLIFE.md                ← BOM maître
 │   ├── scenarios-algorithmes-vanlife.md ← Scénarios & algorithmes
 │   ├── ASSEMBLAGE-RPi5-VANLIFE.md    ← Guide assemblage hardware
+│   ├── PROCEDURE-APPAIRAGE-ZIGBEE-2026-10-05.md ← Appairage capteurs Zigbee
 │   ├── docs/                         ← Documentation générale
 │   │   ├── stylevan-equinox4-cahier-technique-iot.md
 │   │   ├── rpi-vanlife-guide-complet.md

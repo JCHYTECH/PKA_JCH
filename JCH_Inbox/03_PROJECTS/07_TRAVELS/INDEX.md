@@ -1,10 +1,10 @@
 # TRAVELS — Index projet
 
-Dernière mise à jour : 2026-06-06
+Dernière mise à jour : 2026-10-04
 
 ## Description
 Voyages pour observer le monde — réserves naturelles, villes pour l'art, destinations photo wildlife.
-Inclut la logistique van (Stylevan Equinox IV Ford) comme vecteur de voyage.
+Inclut la logistique van (Westfalia Kelsey 2026, porteur Ford Transit Custom) comme vecteur de voyage.
 
 Responsable : [[Cigogne]] 🦩 — Vanlife Travel Planner & Experience Curator
 
@@ -12,7 +12,7 @@ Responsable : [[Cigogne]] 🦩 — Vanlife Travel Planner & Experience Curator
 
 | Dossier | Contenu |
 |---|---|
-| `achat-van/` | Achat du van Stylevan Equinox IV — checklist, prix, risques UE, expositions vanlife |
+| `Lupo Itself/` | Fiche technique, documents et archives du van Westfalia Kelsey 2026 |
 | `achat-van/docs/` | Brochures, catalogues, transcripts — PDF, PPT, sources externes |
 | `vanlife/` | Lifestyle van, destinations, logistique, préférences |
 | `vanlife/destinations/` | Fiches destinations — format `.md` canonique |
@@ -30,9 +30,9 @@ Responsable : [[Cigogne]] 🦩 — Vanlife Travel Planner & Experience Curator
 
 ## Fichiers clés
 
-- `achat-van/checklist-achat-stylevan-equinox-iv-ford.md` — Checklist achat van Stylevan
+- `Lupo Itself/OLDIES/achat-van/fiche-technique-lupo-kelsey.md` — Fiche technique Westfalia Kelsey 2026
 - `achat-van/Achat_véhicule_UE_risques_opportunités.md` — Risques et opportunités achat UE
-- `achat-van/Prix_Stylevan_Equinox_4_2026.md` — Prix du modèle
+- `Lupo Itself/OLDIES/achat-van/` — Prix, checklist et archives d'achat (historique)
 - `achat-van/Expositions_Vanlife_2026.md` — Agenda expositions vanlife
 - `vanlife/PREFERENCES.md` — Préférences voyage, configuration van
 - `vanlife/logistique/camping_scout_README.md` — Guide camping-scout CLI

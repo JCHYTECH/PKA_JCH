@@ -9,7 +9,7 @@
         <string>/Library/Frameworks/Python.framework/Versions/3.13/bin/python3</string>
         <string>/Users/jchavauxm5/PKA_JCH/_local/whisper-server.py</string>
         <string>--model</string>
-        <string>base</string>
+        <string>small</string>
         <string>--port</string>
         <string>4444</string>
     </array>
@@ -26,7 +26,7 @@
     <key>EnvironmentVariables</key>
     <dict>
         <key>WHISPER_MODEL</key>
-        <string>base</string>
+        <string>small</string>
     </dict>
 </dict>
 </plist>
