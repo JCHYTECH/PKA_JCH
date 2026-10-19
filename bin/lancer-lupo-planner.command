@@ -4,7 +4,7 @@
 # Sans ça, OSM renvoie « 403 access blocked » (file:// → referer invalide).
 
 PLANNER_DIR="/Users/jchavauxm5/PKA_JCH/JCH_Inbox/03_PROJECTS/07_TRAVELS/lupo-planner"
-PORT=8088
+PORT=8090
 URL="http://localhost:${PORT}"
 
 cd "$PLANNER_DIR" || { echo "Dossier introuvable : $PLANNER_DIR"; read -k1; exit 1; }
