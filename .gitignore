@@ -21,6 +21,10 @@ JCH_PRIVATE/decouvertes.env
 scripts/decouvertes-collector/.env
 scripts/decouvertes-collector/venv/
 JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/logs/
+JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/raw/
+JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/queue/
+JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/data/
+JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/.cache/
 
 # Runtime databases and backups
 *.db
@@ -89,6 +93,7 @@ JCH_Inbox/03_PROJECTS/03_WILDNEXUS/06_COMPONENTS/BIOACOUSTIC/INSECTNET/03_AUDIO_
 _local/*.log
 _local/*.err
 _local/*.out
+_local/logs/
 _local/*_state.json
 _local/backup_pka_m1.log
 TEAM/team.db-wal
