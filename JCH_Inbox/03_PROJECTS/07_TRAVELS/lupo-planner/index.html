@@ -136,7 +136,7 @@ main { display: flex; height: calc(100dvh - 48px); position: relative; }
           <option value="">🌍 Tous</option><option value="FR">🇫🇷</option><option value="ES">🇪🇸</option><option value="IT">🇮🇹</option><option value="DE">🇩🇪</option><option value="BE">🇧🇪</option><option value="NL">🇳🇱</option>
         </select>
         <select id="filter-type" onchange="filterSpots()">
-          <option value="">Tous types</option><option value="sauvage">Sauvage</option><option value="prive">Privé/Ferme</option><option value="camping_isole">Camping isolé</option><option value="camping">Camping</option><option value="aire">Aire</option>
+          <option value="">Tous types</option><option value="sauvage">Sauvage</option><option value="prive">Privé/Ferme</option><option value="camping_isole">Camping isolé</option><option value="camping">Camping</option><option value="aire">Aire</option><option value="poi">POI / Visite</option>
         </select>
         <input id="filter-search" placeholder="Rechercher..." oninput="filterSpots()">
       </div>
@@ -173,6 +173,7 @@ main { display: flex; height: calc(100dvh - 48px); position: relative; }
       <option value="camping_isole">🥉 Camping isolé</option>
       <option value="camping">🏕️ Camping</option>
       <option value="aire">🅿️ Aire</option>
+      <option value="poi">🏛️ POI / Visite</option>
     </select>
     <label>Pays</label>
     <select id="spot-country">
@@ -298,7 +299,7 @@ const MapCtrl = (() => {
 
   const TYPE_COLORS = {
     sauvage: '#e94560', prive: '#f0a500', camping_isole: '#4ecca3',
-    camping: '#a0a0b0', aire: '#5dade2'
+    camping: '#a0a0b0', aire: '#5dade2', poi: '#9b59b6'
   };
 
   const COUNTRY_CENTERS = {
@@ -355,12 +356,12 @@ const MapCtrl = (() => {
   }
 
   function emojiForType(t) {
-    const m = { sauvage: '🏕', prive: '🧑‍🌾', camping_isole: '🌲', camping: '⛺', aire: '🅿️' };
+    const m = { sauvage: '🏕', prive: '🧑‍🌾', camping_isole: '🌲', camping: '⛺', aire: '🅿️', poi: '🏛️' };
     return m[t] || '📍';
   }
 
   function typeLabel(t) {
-    const m = { sauvage: 'Sauvage', prive: 'Privé/Ferme', camping_isole: 'Camping isolé', camping: 'Camping', aire: 'Aire' };
+    const m = { sauvage: 'Sauvage', prive: 'Privé/Ferme', camping_isole: 'Camping isolé', camping: 'Camping', aire: 'Aire', poi: 'POI/Visite' };
     return m[t] || t;
   }
 
@@ -703,7 +704,7 @@ const App = (() => {
   }
 
   function prioColor(type) {
-    const m = { sauvage: '#e94560', prive: '#f0a500', camping_isole: '#4ecca3', camping: '#a0a0b0', aire: '#5dade2' };
+    const m = { sauvage: '#e94560', prive: '#f0a500', camping_isole: '#4ecca3', camping: '#a0a0b0', aire: '#5dade2', poi: '#9b59b6' };
     return m[type] || '#a0a0b0';
   }
 

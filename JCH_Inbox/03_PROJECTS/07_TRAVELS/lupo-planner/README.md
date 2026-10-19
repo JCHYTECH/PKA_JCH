@@ -38,12 +38,13 @@ deploy.sh           → Script de déploiement (dev / HA / RPi)
 
 ### Spots
 - Ajout : nom, GPS (lat/lng), type, pays, source, notes
-- 5 types alignés sur priorités JC :
+- 6 types alignés sur priorités JC :
   - 🥇 Sauvage (rouge)
   - 🥈 Privé / Ferme (orange)
   - 🥉 Camping isolé (vert)
   - 🏕️ Camping (gris)
   - 🅿️ Aire (bleu)
+  - 🏛️ POI / Visite (violet)
 - Sources : park4night, France Passion, Campspace, Huttopia, Campercontact, iOverlander, Landvergnügen, Agricamper, España Discovery, autre
 - Filtrage : par pays, type, recherche texte
 - Favoris ★
@@ -100,7 +101,7 @@ spot = {
   id: uuid,
   name: string,
   lat: number, lng: number,
-  type: 'sauvage' | 'prive' | 'camping_isole' | 'camping' | 'aire',
+  type: 'sauvage' | 'prive' | 'camping_isole' | 'camping' | 'aire' | 'poi',
   country: 'FR' | 'ES' | 'IT' | 'DE' | 'BE' | 'NL',
   source: 'park4night' | 'france_passion' | 'campspace' | 'huttopia' |
           'campercontact' | 'ioverlander' | 'landvergnugen' |
