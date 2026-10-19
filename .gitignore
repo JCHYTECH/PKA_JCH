@@ -89,6 +89,19 @@ JCH_Inbox/03_PROJECTS/03_WILDNEXUS/06_COMPONENTS/BIOACOUSTIC/INSECTNET/03_AUDIO_
 .mcp.json
 **/sessions/*/artifacts/
 
+# Large datasets / measurements / model weights (purged from history 2026-10-19)
+JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/datasets/
+JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/INSECTNET/03_AUDIO_DOWNLOADS/
+JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/03_ENERGIE_AUTONOMIE/mesures/
+JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/05_SIMULATION/test_harness/source_fullres/
+JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/99_REFERENCES/PPK2/
+_local/dobby-lora/
+*.ppk2
+*.wav
+*.zip
+*.safetensors
+*.m4a
+
 # PKA runtime files (logs, states, temp DB WAL)
 _local/*.log
 _local/*.err
