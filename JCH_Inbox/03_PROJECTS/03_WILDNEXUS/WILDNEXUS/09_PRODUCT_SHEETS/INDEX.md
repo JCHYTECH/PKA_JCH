@@ -93,7 +93,7 @@ Les fiches produit décrivent la **vision produit complète** P0→P1+. Certaine
 - [02_DECISIONS/WILDNEXUS_ADR_INDEX.md](../02_DECISIONS/WILDNEXUS_ADR_INDEX.md) — index des 16 ADRs
 - [03_P0_ENGINEERING/07_PROCUREMENT_BOM/](../03_P0_ENGINEERING/07_PROCUREMENT_BOM/) — BOM v0.4
 - [03_P0_ENGINEERING/08_BUDGET_MODELES/WILDNEXUS_P0_BUDGET_RANGE.md](../03_P0_ENGINEERING/08_BUDGET_MODELES/WILDNEXUS_P0_BUDGET_RANGE.md) — budget P0 avec suivi achats réels
-- [../../12_NEXUS_ACOUSTIC/](../../12_NEXUS_ACOUSTIC/) — projet Nexus Acoustic autonome
+- [../../NEXUS_ACOUSTIC/](../../NEXUS_ACOUSTIC/) — projet Nexus Acoustic autonome
 - [../../TEAM_Inbox/2026-06-19_dobby_arbor-wildnexus-product-line.md](../../TEAM_Inbox/2026-06-19_dobby_arbor-wildnexus-product-line.md) — analyse Arbor complète
 
 ---

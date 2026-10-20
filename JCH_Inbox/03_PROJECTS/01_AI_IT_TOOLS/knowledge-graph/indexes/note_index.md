@@ -1369,9 +1369,9 @@ status: generated
 | Vetalyx - site web | knowledge | active | type/knowledge, domain/marketing, project/vetalyx, graph/pivot, type/project, status/active | `JCH_Inbox/03_PROJECTS/08_VETALYX/strategy/site-web.md` |
 | Vetalyx - stratégie | knowledge | active | type/knowledge, domain/strategy, project/vetalyx, graph/pivot | `JCH_Inbox/03_PROJECTS/08_VETALYX/strategy/strategie.md` |
 | Thread — VETALYX |  |  |  | `JCH_Inbox/03_PROJECTS/08_VETALYX/thread-vetalyx.md` |
-| ANALYSE — BIRDER DINOv2-bio |  |  |  | `JCH_Inbox/03_PROJECTS/09_InsectNet/2026-07-03_dobby_analyse-birder-dinov2-bio.md` |
-| InsectNet — Executive Summary |  |  |  | `JCH_Inbox/03_PROJECTS/09_InsectNet/executive-summary.md` |
-| Thread — InsectNet |  |  |  | `JCH_Inbox/03_PROJECTS/09_InsectNet/thread-insectnet.md` |
+| ANALYSE — BIRDER DINOv2-bio |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/INSECTNET/2026-07-03_dobby_analyse-birder-dinov2-bio.md` |
+| InsectNet — Executive Summary |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/INSECTNET/executive-summary.md` |
+| Thread — InsectNet |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/INSECTNET/thread-insectnet.md` |
 | Session 2026-07-09 — Analyse & intégration OBD/CAN bus Transit Custom | session-summary |  |  | `JCH_Inbox/03_PROJECTS/11_IOT/2026-07-09_dobby_analyse-integration-canbus-wican-pro.md` |
 | Analyse — Exosfer OBD Protect |  |  |  | `JCH_Inbox/03_PROJECTS/11_IOT/2026-07-13_dobby_analyse-exosfer-obd-protect.md` |
 | Brief — Scarabée 🪲 : Esquisse boîtier Station Météo Lupo |  |  |  | `JCH_Inbox/03_PROJECTS/11_IOT/2026-07-16_dobby_brief-scarabee_boitier-station-meteo-lupo.md` |
@@ -1436,66 +1436,66 @@ status: generated
 | SPEC-CAN-BUS — Interface OBD-II / CAN bus Ford Transit Custom |  |  |  | `JCH_Inbox/03_PROJECTS/11_IOT/iot-van/specs/SPEC-CAN-BUS.md` |
 | SPEC-CAPTEUR-ENV — Station météo intérieure Lupo |  |  |  | `JCH_Inbox/03_PROJECTS/11_IOT/iot-van/specs/SPEC-CAPTEUR-ENV.md` |
 | Thread — IOT / Domotique |  |  |  | `JCH_Inbox/03_PROJECTS/11_IOT/thread-iot.md` |
-| Sound Sources — European Insect Bioacoustics |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/2026-05-23_insect-sound-sources-europe.md` |
-| ANALYSE — INTERSPECIES SONGS.md |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/2026-07-03_dobby_analyse-interspecies-songs.md` |
-| ANALYSE — Lucio Arese inspiration.md |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/2026-07-03_dobby_analyse-lucio-arese.md` |
-| Inbox Processing — INTERSPECIES SONGS |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/2026-07-03_dobby_inbox-interspecies-songs.md` |
-| BIRDNET |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/99_INBOX_NOTES/2026-05-15_BIRDNET.md` |
-| Alors on va essayer de résumer une un nouveau projet. Le projet consiste… |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/99_INBOX_NOTES/2026-05-16_Alors_on_va_essayer_de_résumer_une_un_nouveau_projet_Le_projet_consiste.md` |
-| BIRDNET / FAUNE AUTOUR V2 |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/99_INBOX_NOTES/2026-05-24_BIRDNET_FAUNE_AUTOUR_V2.md` |
-| # Guide d'utilisation de BirdNET : Gestion du bruit de fond et des… |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/99_INBOX_NOTES/2026-06-05_Guide_dutilisation_de_BirdNET_Gestion_du_bruit_de_fond_et_des.md` |
-| Voici la méthode pour exporter vos enregistrements BirdNET de votre… |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/99_INBOX_NOTES/2026-06-05_Voici_la_méthode_pour_exporter_vos_enregistrements_BirdNET_de_votre.md` |
-| XENO-CANTO |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/99_INBOX_NOTES/2026-06-13_XENO-CANTO.md` |
-| https://birdnet-team.github.io/BirdNET-Analyzer/index.html |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/99_REFERENCES/2026-06-21_httpsbirdnet-teamgithubioBirdNET-Analyzerindexhtml.md` |
-| Install the official command-line/Python tool |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/99_REFERENCES/interspecies-songs/INTERSPECIES-SONGS_dolphingemma-bioacoustique.md` |
-| Lucio Arese inspiration |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/99_REFERENCES/interspecies-songs/lucio-arese-3d-birdsong-visualisation.md` |
-| BirdNET-Go + [[Raspberry Pi 5]] + iPhone — Conversation Summary |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/BirdNET-Go_RaspberryPi_iPhone_summary.md` |
-| Faune Autour — Acoustic Biodiversity Sensor & Platform |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/Faune_Autour_Acoustic_Project_Report.md` |
-| NEXUS_ACOUSTIC — Infrastructure de monitoring bioacoustique |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/INDEX.md` |
-| InsectNet PKA_JCH - Cadrage V0.1 |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/INSECTNET/00_SCOPE/insectnet-v0.1-scope.md` |
-| InsectSet459 — Évaluation pour InsectNet V0.2 |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/INSECTNET/01_RESEARCH/insectset459-evaluation.md` |
-| XENO-CANTO |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/INSECTNET/01_SOURCES/2026-06-13_xeno-canto-reference-xcapi-avesecho.md` |
-| InsectNet - Registre des sources V0.1 |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/INSECTNET/01_SOURCES/sources-register.md` |
-| InsectNet - Test [[Xeno-Canto]] API v3 |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/INSECTNET/01_SOURCES/xeno-canto-v3-test.md` |
-| InsectNet — Inventaire des orthoptères alpins (Xeno-Canto) |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/INSECTNET/02_DATASET/alpine-species-inventory.md` |
-| InsectNet - Dataset Build Log |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/INSECTNET/02_DATASET/dataset-build-log.md` |
-| InsectNet - Metadata Schema V0.1 |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/INSECTNET/02_DATASET/metadata-schema.md` |
-| InsectNet - Dataset Summary: Tettigonia viridissima |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/INSECTNET/02_DATASET/tettigonia-viridissima-summary.md` |
-| InsectNet V0.1 - Comparaison metadata des especes candidates |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/INSECTNET/02_DATASET/v0.1-species-metadata-comparison.md` |
-| InsectNet V0.1 — Baseline Classifier Results |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/INSECTNET/04_MODELS/baseline-results.md` |
-| InsectNet - Audio QC and Segmentation Log |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/INSECTNET/04_PIPELINE/audio-qc-segmentation-log.md` |
-| InsectNet - Auto-QC Prefilter Log |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/INSECTNET/04_PIPELINE/auto-qc-prefilter-log.md` |
-| InsectNet - QC Review App Log |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/INSECTNET/04_PIPELINE/qc-review-app-log.md` |
-| InsectNet - Segment QC and Grouped Split Log |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/INSECTNET/04_PIPELINE/segment-qc-and-grouped-split-log.md` |
-| InsectNet - Visual Spectrogram Review V0.1 |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/INSECTNET/04_PIPELINE/visual-spectrogram-review-v0.1.md` |
-| LeafNet — Sonification & Monitoring Bioélectrique Végétal |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/LEAFNET/00_SCOPE/leafnet-v0.1-scope.md` |
-| LeafNet — Analyse Miniaturisation & Alternatives Hardware |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/LEAFNET/01_HARDWARE/miniaturization-analysis.md` |
-| Yes, the ESP32-S3 is an excellent, highly capable microcontroller… |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/LEAFNET/99_REFERENCES/2026-06-22_Yes_the_ESP32-S3_is_an_excellent_highly_capable_microcontroller.md` |
-| sonification-iot-vegetal-esp32 |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/LEAFNET/99_REFERENCES/sonification-iot-vegetal-esp32.md` |
-| Protocole Progress — NEXUS_ACOUSTIC / LEAFNET / InsectNet |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/PROTOCOLES/progress.md` |
-| Document Unique de Projet : Faune Autour - Radar de Biodiversité Acoustique |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/Projet_bioacoustique.md` |
-| Bon de Commande — Bird Sound Generator (Prototype) v2 |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/Reverse Birdsong/2026-06-01_BC_bird_synth_prototype.md` |
-| Brief Construction — [[Forge]] 🦦 |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/Reverse Birdsong/2026-06-01_dobby_brief_forge_bird_synth.md` |
-| Brief Recherche — [[Furet]] 🦡 |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/Reverse Birdsong/2026-06-01_dobby_brief_furet_mixikid_bird_synth.md` |
-| Rapport de Recherche — [[Furet]] 🦡 |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/Reverse Birdsong/2026-06-01_furet_mixikid_bird_synth_diy.md` |
-| InsectSet459 — Fiche Dataset |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/datasets/InsectSet459/DATASET_INFO.md` |
-| NEXUS ACOUSTIC — Executive Summary |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/executive-summary.md` |
-| BirdNET-Go mobile — [[Raspberry Pi]] + MF833U1 LTE | hardware-note | active | [[BirdNET]], raspberry-pi, lte, mobile | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/hardware/2026-05-26_birdnet-rpi-mobile-lte-mf833u1.md` |
-| 2026-05-26_protocole-terrain-24h-rpi-birdnet-mobile.html |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/hardware/2026-05-26_protocole-terrain-24h-rpi-birdnet-mobile.html.md` |
-| Protocole terrain 24 h — [[Raspberry Pi 5]] + BirdNET-Go mobile | protocol | active | [[BirdNET]], raspberry-pi, bioacoustique, terrain, mobile | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/hardware/2026-05-26_protocole-terrain-24h-rpi-birdnet-mobile.md` |
-| Retour test maison — RPi BirdNET-Pi + MF833U1 LTE |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/hardware/2026-05-28_retour-test-maison-rpi-birdnet-mobile.md` |
-| BirdNET-Pi - Acces local et reperes critiques |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/hardware/BIRDNET_PI_ACCESS.md` |
-| BirdNET-Go + [[Raspberry Pi 5]] + iPhone — Conversation Summary |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/hardware/birdnet-go-raspberry-iphone-conversation.md` |
-| BirdNET-Pi — Liste d'achat installation extérieure |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/hardware/birdnet-pi-liste-achat.md` |
-| BirdNET-Go – Gestion Wi‑Fi et hotspot iPhone | procedure |  | [[BirdNET]], raspberrypi, wifi, iphone, hotspot | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/hardware/birdnet_go_wifi_hotspot_procedure.md` |
-| Connexion RPI BirdNET-Pi |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/hardware/connexion RPI.md` |
-| maillage_esp32_birdnetgo_rtsp |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/hardware/maillage_esp32_birdnetgo_rtsp.md` |
-| NEXUS_ACOUSTIC — Registre hardware (acquisitions) |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/hardware/registre-hardware.md` |
-| What to do for noise — Traitement post-production audio BirdNET |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/hardware/what_to_do_for_noise.md` |
-| Analyse [[BirdNET]] — Webinar Open Ecoacoustics #2 |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/tech_notes/2026-05-25_analyse_BirdNET_webinar_WildNexus_InsectNet.md` |
-| [[Insectes vol]] — Rapport préliminaire de faisabilité |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/tech_notes/Insectes vol.md` |
-| yt_birdweather-puck-field-workflow |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/tech_notes/yt_birdweather-puck-field-workflow.md` |
-| Thread — NEXUS_ACOUSTIC |  |  |  | `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/thread-nexus-acoustic.md` |
+| Sound Sources — European Insect Bioacoustics |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/2026-05-23_insect-sound-sources-europe.md` |
+| ANALYSE — INTERSPECIES SONGS.md |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/2026-07-03_dobby_analyse-interspecies-songs.md` |
+| ANALYSE — Lucio Arese inspiration.md |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/2026-07-03_dobby_analyse-lucio-arese.md` |
+| Inbox Processing — INTERSPECIES SONGS |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/2026-07-03_dobby_inbox-interspecies-songs.md` |
+| BIRDNET |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/99_INBOX_NOTES/2026-05-15_BIRDNET.md` |
+| Alors on va essayer de résumer une un nouveau projet. Le projet consiste… |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/99_INBOX_NOTES/2026-05-16_Alors_on_va_essayer_de_résumer_une_un_nouveau_projet_Le_projet_consiste.md` |
+| BIRDNET / FAUNE AUTOUR V2 |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/99_INBOX_NOTES/2026-05-24_BIRDNET_FAUNE_AUTOUR_V2.md` |
+| # Guide d'utilisation de BirdNET : Gestion du bruit de fond et des… |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/99_INBOX_NOTES/2026-06-05_Guide_dutilisation_de_BirdNET_Gestion_du_bruit_de_fond_et_des.md` |
+| Voici la méthode pour exporter vos enregistrements BirdNET de votre… |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/99_INBOX_NOTES/2026-06-05_Voici_la_méthode_pour_exporter_vos_enregistrements_BirdNET_de_votre.md` |
+| XENO-CANTO |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/99_INBOX_NOTES/2026-06-13_XENO-CANTO.md` |
+| https://birdnet-team.github.io/BirdNET-Analyzer/index.html |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/99_REFERENCES/2026-06-21_httpsbirdnet-teamgithubioBirdNET-Analyzerindexhtml.md` |
+| Install the official command-line/Python tool |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/99_REFERENCES/interspecies-songs/INTERSPECIES-SONGS_dolphingemma-bioacoustique.md` |
+| Lucio Arese inspiration |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/99_REFERENCES/interspecies-songs/lucio-arese-3d-birdsong-visualisation.md` |
+| BirdNET-Go + [[Raspberry Pi 5]] + iPhone — Conversation Summary |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/BirdNET-Go_RaspberryPi_iPhone_summary.md` |
+| Faune Autour — Acoustic Biodiversity Sensor & Platform |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/Faune_Autour_Acoustic_Project_Report.md` |
+| NEXUS_ACOUSTIC — Infrastructure de monitoring bioacoustique |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/INDEX.md` |
+| InsectNet PKA_JCH - Cadrage V0.1 |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/INSECTNET/00_SCOPE/insectnet-v0.1-scope.md` |
+| InsectSet459 — Évaluation pour InsectNet V0.2 |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/INSECTNET/01_RESEARCH/insectset459-evaluation.md` |
+| XENO-CANTO |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/INSECTNET/01_SOURCES/2026-06-13_xeno-canto-reference-xcapi-avesecho.md` |
+| InsectNet - Registre des sources V0.1 |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/INSECTNET/01_SOURCES/sources-register.md` |
+| InsectNet - Test [[Xeno-Canto]] API v3 |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/INSECTNET/01_SOURCES/xeno-canto-v3-test.md` |
+| InsectNet — Inventaire des orthoptères alpins (Xeno-Canto) |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/INSECTNET/02_DATASET/alpine-species-inventory.md` |
+| InsectNet - Dataset Build Log |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/INSECTNET/02_DATASET/dataset-build-log.md` |
+| InsectNet - Metadata Schema V0.1 |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/INSECTNET/02_DATASET/metadata-schema.md` |
+| InsectNet - Dataset Summary: Tettigonia viridissima |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/INSECTNET/02_DATASET/tettigonia-viridissima-summary.md` |
+| InsectNet V0.1 - Comparaison metadata des especes candidates |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/INSECTNET/02_DATASET/v0.1-species-metadata-comparison.md` |
+| InsectNet V0.1 — Baseline Classifier Results |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/INSECTNET/04_MODELS/baseline-results.md` |
+| InsectNet - Audio QC and Segmentation Log |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/INSECTNET/04_PIPELINE/audio-qc-segmentation-log.md` |
+| InsectNet - Auto-QC Prefilter Log |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/INSECTNET/04_PIPELINE/auto-qc-prefilter-log.md` |
+| InsectNet - QC Review App Log |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/INSECTNET/04_PIPELINE/qc-review-app-log.md` |
+| InsectNet - Segment QC and Grouped Split Log |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/INSECTNET/04_PIPELINE/segment-qc-and-grouped-split-log.md` |
+| InsectNet - Visual Spectrogram Review V0.1 |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/INSECTNET/04_PIPELINE/visual-spectrogram-review-v0.1.md` |
+| LeafNet — Sonification & Monitoring Bioélectrique Végétal |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/LEAFNET/00_SCOPE/leafnet-v0.1-scope.md` |
+| LeafNet — Analyse Miniaturisation & Alternatives Hardware |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/LEAFNET/01_HARDWARE/miniaturization-analysis.md` |
+| Yes, the ESP32-S3 is an excellent, highly capable microcontroller… |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/LEAFNET/99_REFERENCES/2026-06-22_Yes_the_ESP32-S3_is_an_excellent_highly_capable_microcontroller.md` |
+| sonification-iot-vegetal-esp32 |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/LEAFNET/99_REFERENCES/sonification-iot-vegetal-esp32.md` |
+| Protocole Progress — NEXUS_ACOUSTIC / LEAFNET / InsectNet |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/PROTOCOLES/progress.md` |
+| Document Unique de Projet : Faune Autour - Radar de Biodiversité Acoustique |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/Projet_bioacoustique.md` |
+| Bon de Commande — Bird Sound Generator (Prototype) v2 |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/Reverse Birdsong/2026-06-01_BC_bird_synth_prototype.md` |
+| Brief Construction — [[Forge]] 🦦 |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/Reverse Birdsong/2026-06-01_dobby_brief_forge_bird_synth.md` |
+| Brief Recherche — [[Furet]] 🦡 |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/Reverse Birdsong/2026-06-01_dobby_brief_furet_mixikid_bird_synth.md` |
+| Rapport de Recherche — [[Furet]] 🦡 |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/Reverse Birdsong/2026-06-01_furet_mixikid_bird_synth_diy.md` |
+| InsectSet459 — Fiche Dataset |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/datasets/InsectSet459/DATASET_INFO.md` |
+| NEXUS ACOUSTIC — Executive Summary |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/executive-summary.md` |
+| BirdNET-Go mobile — [[Raspberry Pi]] + MF833U1 LTE | hardware-note | active | [[BirdNET]], raspberry-pi, lte, mobile | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/hardware/2026-05-26_birdnet-rpi-mobile-lte-mf833u1.md` |
+| 2026-05-26_protocole-terrain-24h-rpi-birdnet-mobile.html |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/hardware/2026-05-26_protocole-terrain-24h-rpi-birdnet-mobile.html.md` |
+| Protocole terrain 24 h — [[Raspberry Pi 5]] + BirdNET-Go mobile | protocol | active | [[BirdNET]], raspberry-pi, bioacoustique, terrain, mobile | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/hardware/2026-05-26_protocole-terrain-24h-rpi-birdnet-mobile.md` |
+| Retour test maison — RPi BirdNET-Pi + MF833U1 LTE |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/hardware/2026-05-28_retour-test-maison-rpi-birdnet-mobile.md` |
+| BirdNET-Pi - Acces local et reperes critiques |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/hardware/BIRDNET_PI_ACCESS.md` |
+| BirdNET-Go + [[Raspberry Pi 5]] + iPhone — Conversation Summary |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/hardware/birdnet-go-raspberry-iphone-conversation.md` |
+| BirdNET-Pi — Liste d'achat installation extérieure |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/hardware/birdnet-pi-liste-achat.md` |
+| BirdNET-Go – Gestion Wi‑Fi et hotspot iPhone | procedure |  | [[BirdNET]], raspberrypi, wifi, iphone, hotspot | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/hardware/birdnet_go_wifi_hotspot_procedure.md` |
+| Connexion RPI BirdNET-Pi |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/hardware/connexion RPI.md` |
+| maillage_esp32_birdnetgo_rtsp |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/hardware/maillage_esp32_birdnetgo_rtsp.md` |
+| NEXUS_ACOUSTIC — Registre hardware (acquisitions) |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/hardware/registre-hardware.md` |
+| What to do for noise — Traitement post-production audio BirdNET |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/hardware/what_to_do_for_noise.md` |
+| Analyse [[BirdNET]] — Webinar Open Ecoacoustics #2 |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/tech_notes/2026-05-25_analyse_BirdNET_webinar_WildNexus_InsectNet.md` |
+| [[Insectes vol]] — Rapport préliminaire de faisabilité |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/tech_notes/Insectes vol.md` |
+| yt_birdweather-puck-field-workflow |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/tech_notes/yt_birdweather-puck-field-workflow.md` |
+| Thread — NEXUS_ACOUSTIC |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/thread-nexus-acoustic.md` |
 | Appartement contemporain de haut standing situé sur les hauteurs de… |  |  |  | `JCH_Inbox/03_PROJECTS/archive/10_FUTURE_INVEST/99_INBOX_NOTES/2026-05-17_Appartement_contemporain_de_haut_standing_situé_sur_les_hauteurs_de.md` |
 | Future Invest — Projet de Trading Automatisé sur Futures |  | phase-0-en-cours |  | `JCH_Inbox/03_PROJECTS/archive/10_FUTURE_INVEST/INDEX.md` |
 | Event Analyzer — Architecture du Module |  | draft v1 |  | `JCH_Inbox/03_PROJECTS/archive/10_FUTURE_INVEST/architecture/2026-06-04_event-analyzer-architecture.md` |

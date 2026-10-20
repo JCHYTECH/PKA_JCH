@@ -35,9 +35,9 @@ Sous-titre : **infrastructure distribuée d'observation écologique**
 
 | Projet | Emplacement | Statut |
 |--------|-------------|--------|
-| **NEXUS_ACOUSTIC** | [../12_NEXUS_ACOUSTIC/](../12_NEXUS_ACOUSTIC/) | P1 — Bioacoustique, BirdNET, classification |
+| **NEXUS_ACOUSTIC** | [../NEXUS_ACOUSTIC/](../NEXUS_ACOUSTIC/) | P1 — Bioacoustique, BirdNET, classification |
 | **FAUNE_AUTOUR** | [../FAUNE_AUTOUR/](../FAUNE_AUTOUR/) | ⚪ Gelé — PWA GBIF |
-| **InsectNet** | [../10_InsectNet/](../10_InsectNet/) | 🟡 Pipeline — Classification orthoptères |
+| **InsectNet** | [../INSECTNET/](../INSECTNET/) | 🟡 Pipeline — Classification orthoptères |
 
 ## Verrou P0
 

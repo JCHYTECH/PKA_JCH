@@ -76,8 +76,8 @@ Après chaque mise à jour :
 | VETALYX | `08_VETALYX/` | `thread-vetalyx.md` |
 | AI_IT_TOOLS | `01_AI_IT_TOOLS/` | `thread-ai-it-tools.md` |
 | TRAVELS | `07_TRAVELS/` | `thread-travels.md` |
-| NEXUS_ACOUSTIC | `12_NEXUS_ACOUSTIC/` | `thread-nexus-acoustic.md` |
-| InsectNet | `09_InsectNet/` | `thread-insectnet.md` |
+| NEXUS_ACOUSTIC | `03_WILDNEXUS/NEXUS_ACOUSTIC/` | `thread-nexus-acoustic.md` |
+| InsectNet | `03_WILDNEXUS/INSECTNET/` | `thread-insectnet.md` |
 
 ---
 

@@ -69,7 +69,7 @@ P0 ne développe pas les modules P1/P2, mais doit éviter de les bloquer :
 
 ### NEXUS_ACOUSTIC (projet extrait)
 
-Le répertoire bioacoustique a été extrait vers le projet autonome `12_NEXUS_ACOUSTIC`. Le P0 intègre :
+Le répertoire bioacoustique a été extrait vers le projet autonome `NEXUS_ACOUSTIC`. Le P0 intègre :
 - 2 micros MEMS stéréo (ADR-013)
 - enregistrement de clips WAV courts programmés (ADR-016/017)
 - features spectrales transmises LoRa (ADR-014 type 0x05)

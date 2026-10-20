@@ -361,13 +361,13 @@ validated: 2026-05-29
 - folder: `JCH_Inbox/03_PROJECTS/08_VETALYX`
 - ambiguity: none recorded
 
-## 09_InsectNet
+## INSECTNET
 
-- canonical: 09_InsectNet
+- canonical: INSECTNET
 - aliases:
-  - 09_InsectNet
+  - INSECTNET
 - category: project
-- folder: `JCH_Inbox/03_PROJECTS/09_InsectNet`
+- folder: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/INSECTNET`
 - ambiguity: none recorded
 
 ## 11_IOT
@@ -379,13 +379,13 @@ validated: 2026-05-29
 - folder: `JCH_Inbox/03_PROJECTS/11_IOT`
 - ambiguity: none recorded
 
-## 12_NEXUS_ACOUSTIC
+## NEXUS_ACOUSTIC
 
-- canonical: 12_NEXUS_ACOUSTIC
+- canonical: NEXUS_ACOUSTIC
 - aliases:
-  - 12_NEXUS_ACOUSTIC
+  - NEXUS_ACOUSTIC
 - category: project
-- folder: `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC`
+- folder: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC`
 - ambiguity: none recorded
 
 ## archive
@@ -422,7 +422,7 @@ validated: 2026-05-29
 - aliases:
   - BirdNET
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/hardware`
+- folder: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/hardware`
 - ambiguity: none recorded
 
 ## ChatGPT
@@ -579,7 +579,7 @@ validated: 2026-05-29
 - aliases:
   - Raspberry Pi
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/hardware`
+- folder: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/hardware`
 - ambiguity: none recorded
 
 ## Raspberry Pi 5
@@ -588,7 +588,7 @@ validated: 2026-05-29
 - aliases:
   - Raspberry Pi 5
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/hardware`
+- folder: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/hardware`
 - ambiguity: none recorded
 
 ## Redis
@@ -633,5 +633,5 @@ validated: 2026-05-29
 - aliases:
   - Xeno-Canto
 - category: technology
-- folder: `JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/INSECTNET/02_DATASET`
+- folder: `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/INSECTNET/02_DATASET`
 - ambiguity: none recorded

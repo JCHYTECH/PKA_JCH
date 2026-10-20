@@ -48,8 +48,8 @@ Classification automatique d'insectes par deep learning — pipeline xcapi → p
 
 ## Liens
 
-- Dossier : `03_PROJECTS/09_InsectNet/`
-- NEXUS_ACOUSTIC : `03_PROJECTS/12_NEXUS_ACOUSTIC/` (InsectSet459 partagé)
+- Dossier : `03_PROJECTS/03_WILDNEXUS/INSECTNET/`
+- NEXUS_ACOUSTIC : `03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/` (InsectSet459 partagé)
 
 ---
 

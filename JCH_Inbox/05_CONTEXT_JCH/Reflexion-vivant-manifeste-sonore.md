@@ -22,4 +22,4 @@ Alors j'écoute pour **comprendre** — la bioacoustique qui transforme un chant
 
 ---
 
-*Esquisse — à rapprocher de `Reflexion-vivant-quantique-selection-anthropocene.md` et du manifeste photo. Peut migrer vers `02_ARTEON/wildlens/` ou `12_NEXUS_ACOUSTIC` une fois affiné.*
+*Esquisse — à rapprocher de `Reflexion-vivant-quantique-selection-anthropocene.md` et du manifeste photo. Peut migrer vers `02_ARTEON/wildlens/` ou `NEXUS_ACOUSTIC` une fois affiné.*
