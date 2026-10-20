@@ -413,7 +413,7 @@ Audio 3s stéréo
 | `03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/PROTOCOLES/SOP-14-fft-features.md` | FFT 1024 + 10 descripteurs spectraux |
 | `03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/PROTOCOLES/SOP-15-clip-wav-json.md` | Capture WAV 3s + sidecar JSON |
 | `03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/02_HARDWARE_SATELLITE/2026-05-22_dobby_wildnexus-onboard-sensor-matrix.md` | Matrice capteurs |
-| `03_PROJECTS/12_NEXUS_ACOUSTIC/INSECTNET/04_MODELS/baseline-results.md` | Résultats CNN 330K |
+| `03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/INSECTNET/04_MODELS/baseline-results.md` | Résultats CNN 330K |
 | `TEAM_Inbox/2026-07-20_dobby_analyse-surveillance-acoustique-ecurie.md` | Analyse INBOX initiale |
 | `TEAM_Inbox/2026-07-20_dobby_brief-savonia-contact-hardware-convergence.md` | Brief Savonia + convergence hardware |
 | `TEAM_Inbox/2026-07-20_dobby_analyse-comparative-pka-vs-savonia.md` | Analyse comparative détaillée |

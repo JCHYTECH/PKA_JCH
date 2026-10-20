@@ -55,4 +55,4 @@ Configurer l'accès rsync du Mac M1 au dépôt PKA pour migrer l'entraînement.
 
 ---
 
-*Document destiné à un public académique. Pipeline détaillé : `09_InsectNet/`*
+*Document destiné à un public académique. Pipeline détaillé : `INSECTNET/`*

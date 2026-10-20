@@ -231,7 +231,7 @@ ADR-010 §2 impose le chiffrement AES-128 des données SD. Les fichiers audio so
 
 - Le module `wn_audio_metadata.c` (ADR-016) génère le header WAV RIFF + le sidecar JSON à chaque clip.
 - Le module `wn_storage.c` gère la structure de répertoires `AUDIO/{NODE_ID}/{YYYY}/{MM}/{DD}/`.
-- Le parser gateway (Python) peut router les clips vers InsectNet (dossier `09_InsectNet/raw_audio/`) ou NEXUS_ACOUSTIC (`12_NEXUS_ACOUSTIC/raw_audio/`) selon l'origine du nœud.
+- Le parser gateway (Python) peut router les clips vers InsectNet (dossier `INSECTNET/raw_audio/`) ou NEXUS_ACOUSTIC (`NEXUS_ACOUSTIC/raw_audio/`) selon l'origine du nœud.
 - Le BOM P0 doit inclure une carte microSD **128 GB minimum** (ajout ~7€ vs 32 GB — dans la réserve budget 111€).
 - Le script d'extraction SD (Forge, à créer) déchiffre + copie + valide SHA-256 + route vers les projets.
 

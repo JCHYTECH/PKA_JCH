@@ -8,9 +8,9 @@
 
 | Projet | Emplacement | Statut |
 |--------|-------------|--------|
-| **NEXUS_ACOUSTIC** | `../12_NEXUS_ACOUSTIC/` | P1 — Bioacoustique, BirdNET, classification insectes/oiseaux |
+| **NEXUS_ACOUSTIC** | `../../NEXUS_ACOUSTIC/` | P1 — Bioacoustique, BirdNET, classification insectes/oiseaux |
 | **FAUNE_AUTOUR** | `../FAUNE_AUTOUR/` | ⚪ Gelé — PWA GBIF d'observation faune locale |
-| **InsectNet** | `../10_InsectNet/` | 🟡 Pipeline — Classification acoustique orthoptères |
+| **InsectNet** | `../../INSECTNET/` | 🟡 Pipeline — Classification acoustique orthoptères |
 
 ## Références techniques (archivées dans P0_ENGINEERING)
 

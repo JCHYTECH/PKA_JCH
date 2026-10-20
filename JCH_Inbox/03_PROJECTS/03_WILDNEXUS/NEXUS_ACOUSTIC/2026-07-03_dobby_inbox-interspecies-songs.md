@@ -1,7 +1,7 @@
 # Inbox Processing — INTERSPECIES SONGS
 > **Date :** 2026-07-03
 > **Dobby 🦉** — traitement inbox `00_INBOX/INTERSPECIES SONGS/`
-> **Routage :** `12_NEXUS_ACOUSTIC/99_REFERENCES/interspecies-songs/`
+> **Routage :** `NEXUS_ACOUSTIC/99_REFERENCES/interspecies-songs/`
 > **Spécialistes mandatés :** Clio 🦢 (analyse scientifique), Musaraigne 🐭 (Edge AI / TinyML), Miel 🐝 (potentialité artistique ARTEON)
 
 ---

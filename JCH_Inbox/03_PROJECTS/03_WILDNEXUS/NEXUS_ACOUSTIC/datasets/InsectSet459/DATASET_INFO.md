@@ -54,7 +54,7 @@ InsectSet459/
 ## [M5] Commandes de téléchargement
 
 ```bash
-cd /Users/jchavauxm5/PKA_JCH/JCH_Inbox/03_PROJECTS/12_NEXUS_ACOUSTIC/datasets/InsectSet459
+cd /Users/jchavauxm5/PKA_JCH/JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/datasets/InsectSet459
 
 # Train (51.2 GB) — le plus gros, à lancer en premier
 curl -L -O "https://zenodo.org/records/18554693/files/Train.zip"

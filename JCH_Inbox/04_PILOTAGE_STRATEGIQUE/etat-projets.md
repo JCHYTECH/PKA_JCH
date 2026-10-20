@@ -36,11 +36,9 @@
 
 | # | Projet | Statut | Raison du gel | Reprise prévue |
 |---|--------|--------|---------------|----------------|
-| 6 | **WILDNEXUS** | ⚪ gelé | Bench loop non repris en septembre (focus IOT/VETALYX). Panier Mouser ~279€ non commandé. | À replanifier post-van |
+| 6 | **WILDNEXUS** — regroupe InsectNet + NEXUS_ACOUSTIC | ⚪ gelé | Bench loop non repris (focus IOT/VETALYX). Panier Mouser ~279€ non commandé. InsectNet + NEXUS_ACOUSTIC dépendent du P0. | À replanifier post-van |
 | 7 | **ARTEON + WildLens** | ⚪ gelé | Relance éditoriale exige créativité JC | À replanifier |
-| 8 | **InsectNet** | ⚪ gelé | Migration M1 non urgente | À replanifier |
-| 9 | **TRAVELS** | ⚪ gelé | Planif voyage en roulant. Meuble banquette 104×55×25 en design. | En roulant |
-| 10 | **NEXUS_ACOUSTIC** | ⚪ gelé | Dépend de WildNexus P0 | Post-WildNexus |
+| 8 | **TRAVELS** | ⚪ gelé | Planif voyage en roulant. Meuble banquette 104×55×25 en design. | En roulant |
 
 ---
 
@@ -59,11 +57,11 @@
 
 | Indicateur | Valeur |
 |------------|--------|
-| Projets totaux | 10 |
+| Projets totaux | 8 |
 | 🔴 P0 (deadline dure) | 1 — IOT/Vanlife |
 | 🔶 Réactivé | 1 — VETALYX (juridique) |
 | 🟢 P1 (autonome) | 3 — PHOTO_NATURE, PHOTO_AI_JURY, AI_IT_TOOLS |
-| ⚪ Gelés | 5 — WILDNEXUS, ARTEON, InsectNet, TRAVELS, NEXUS_ACOUSTIC |
+| ⚪ Gelés | 3 — WILDNEXUS (regroupe InsectNet + NEXUS_ACOUSTIC), ARTEON, TRAVELS |
 | Prochaine échéance | **15 décembre 2026** — installation IOT Van |
 
 ---

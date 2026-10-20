@@ -54,8 +54,8 @@ Bioacoustique — pipeline classification/visualisation chants d'insectes. Tweet
 
 ## Liens
 
-- INDEX : `03_PROJECTS/12_NEXUS_ACOUSTIC/`
-- Datasets : `03_PROJECTS/12_NEXUS_ACOUSTIC/datasets/InsectSet459/`
+- INDEX : `03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/`
+- Datasets : `03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/datasets/InsectSet459/`
 - Analyses : `TEAM_Inbox/2026-07-03_dobby_analyse-*.md`
 
 ---

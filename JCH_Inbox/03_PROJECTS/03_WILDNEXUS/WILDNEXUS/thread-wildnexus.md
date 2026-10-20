@@ -64,8 +64,8 @@ Nœud caméra-piège IA autonome (ESP32-S3 + OV5640 + LoRa + micros stéréo). P
 - Procurement : `03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/07_PROCUREMENT_BOM/`
 - Progress : `03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/PROTOCOLES/progress.md`
 - Audit : `TEAM_Inbox/2026-07-05_dobby_audit-p0-wildnexus-insectnet-nexus-acoustic.md`
-- InsectNet : `03_PROJECTS/09_InsectNet/`
-- NEXUS_ACOUSTIC : `03_PROJECTS/12_NEXUS_ACOUSTIC/`
+- InsectNet : `03_PROJECTS/03_WILDNEXUS/INSECTNET/`
+- NEXUS_ACOUSTIC : `03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/`
 
 ---
 
