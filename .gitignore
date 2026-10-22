@@ -120,3 +120,6 @@ _local/state/
 # pka-memory-review — artefacts générés (boucle mémoire autonome)
 _local/persist/
 MEMORY.md.bak-*
+
+# pka-memory-eval — sorties de run
+JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/memory-eval/run-*.json
