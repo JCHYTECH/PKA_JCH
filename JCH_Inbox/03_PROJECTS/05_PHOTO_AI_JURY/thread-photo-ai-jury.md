@@ -1,7 +1,7 @@
 # Thread — PHOTO_AI_JURY
 
 > Living document — mis à jour automatiquement par Dobby 🦉 en fin de session.
-> **Dernière mise à jour** : 2026-07-03 — Thread file créé
+> **Dernière mise à jour** : 2026-10-22 — outil de détection IA ajouté (niveau 1) ; MCP Lightroom toujours non activé
 > **Statut** : 🟢 actif
 
 ---
@@ -19,7 +19,8 @@ Moteur IA Argus de critique photo naturaliste — 58 analyses cumulées, score m
 | Global | 🟢 | Actif, modèle calibré |
 | Base | 🟢 | argus_critique.db — 58 analyses |
 | Modèle | 🟢 | Prompt calibré (14/06), score 73.8/100 moyen |
-| MCP LR | 🟡 | Partiellement installé — activation Start Server manquante |
+| MCP LR | 🟡 | Partiellement installé — activation Start Server manquante (inchangé depuis 03/07) |
+| Détection IA | 🟢 | **Nouveau 22/10** — `scripts/pka_ai_image_check.py`, **niveau 1 uniquement** (C2PA + EXIF). Classifieurs ViT mesurés inutilisables (12/12 faux positifs) → désactivés. Hook de rappel actif |
 
 ---
 
@@ -44,6 +45,7 @@ Moteur IA Argus de critique photo naturaliste — 58 analyses cumulées, score m
 
 | Date | Résumé session | Livrable |
 |------|---------------|----------|
+| 2026-10-22 | Outil détection IA (niveau 1) + veille état de l'art | `scripts/pka_ai_image_check.py`, `ai-image-detection.md` |
 | 2026-07-02 | INDEX créé, cross-réfs | — |
 | 2026-06-14 | Prompt calibré | — |
 

@@ -3,7 +3,7 @@
 **Véhicule :** Van Lupo 🐺 — Westfalia Kelsey 2026 (Porteur Ford Transit Custom Tourneo V710, 2.0 EcoBlue 170 ch, 4×4, BVA8)  
 **Rédacteur :** Dobby 🦉  
 **Date du rapport :** 4 octobre 2026  
-**Échéance installation physique :** 1er novembre 2026  
+**Échéance installation physique :** 15 décembre 2026 (prolongée JC 19/10)  
 **Version HAOS :** HAOS 18.3 (Core & Supervisor à jour, auto-update désactivé)
 
 ---

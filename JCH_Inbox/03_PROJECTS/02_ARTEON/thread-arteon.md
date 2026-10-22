@@ -1,8 +1,8 @@
 # Thread — ARTEON
 
 > Living document — mis à jour automatiquement par Dobby 🦉 en fin de session.
-> **Dernière mise à jour** : 2026-07-03 — Thread file créé
-> **Statut** : 🟡 relance
+> **Dernière mise à jour** : 2026-10-22 — état consolidé : relance toujours bloquée (0 édition depuis 6 mois)
+> **Statut** : 🟠 bloqué — relance éditoriale non démarrée
 
 ---
 
@@ -16,11 +16,18 @@ Photographie naturaliste éditoriale — marque ARTEON + service WildLens + futu
 
 | Axe | Statut | Détail |
 |-----|--------|--------|
-| Global | 🟡 | Relance en cours après restructuration |
-| WildLens | 🟡 | Édition #1 materialisée, #2 = template vide — 0 édition depuis 3 mois |
-| Shopify | ⏳ | Lancement V1 à préparer |
-| WhiteWall | ⏳ | Intégration à configurer |
-| L'Instant Lu | ⏳ | Backend à construire |
+| Global | 🟠 | **Relance non démarrée** — constat du 03/07 (« 0 édition depuis 3 mois ») toujours valable au 22/10, soit **6 mois** |
+| Roadmap 13 étapes | 🟠 | **5 ✅ · 7 ⏳ · 1 🔴** — 7 étapes vides depuis juillet |
+| Charte de marque | ✅ | Livrée (étape 4/13) |
+| WildLens | 🔴 | Édition #1 matérialisée, #2 = template vide — **0 édition depuis 6 mois** |
+| Shopify | ⏳ | V1 non préparée (aucune action depuis 02/07) |
+| WhiteWall | ⏳ | Intégration non configurée |
+| L'Instant Lu | ⏳ | Backend non construit |
+
+> ⚠️ **Blocage structurel identifié (22/10)** : la matière existe (45 fichiers,
+> 10 Mo, charte livrée) mais l'exécution éditoriale exige du temps créatif JC,
+> qui est mobilisé sur IOT/VETALYX. Tant que ce temps n'est pas alloué,
+> les 7 étapes vides ne bougeront pas.
 
 ---
 

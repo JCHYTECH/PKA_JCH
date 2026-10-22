@@ -26,7 +26,7 @@
 
 | Composant | Qté | Statut | Notes |
 |-----------|-----|--------|-------|
-| Lupo (Ford Transit Custom Westfalia Kelsey) | 1 | ✅ REÇU | 30 juillet 2026 — véhicule livré, installation IOT en cours (deadline 01/11) |
+| Lupo (Ford Transit Custom Westfalia Kelsey) | 1 | ✅ REÇU | 30 juillet 2026 — véhicule livré, installation IOT en cours (deadline **15/12**, prolongée par JC le 19/10) |
 | RPi 5 4GB | 1 | ✅ REÇU | Amazon, 132,09€, 10 juin |
 | Alim officielle RPi5 27W | 1 | ✅ REÇU | 15,32€ |
 | Refroidisseur actif RPi5 | 1 | ✅ REÇU | 9,99€ |

@@ -1,14 +1,14 @@
 # Thread — IOT / Domotique
 
 > Living document — mis à jour automatiquement par Dobby 🦉 en fin de session.
-> **Dernière mise à jour** : 2026-10-05 — procédure d'appairage Zigbee documentée (SNZB-02DR2 frigo)
-> **Statut** : 🔴 P0 — deadline 1er novembre 2026 (installation van Lupo)
+> **Dernière mise à jour** : 2026-10-22 — **deadline unifiée au 15/12/2026** (arbitrage JC du 19/10) ; état consolidé
+> **Statut** : 🔴 P0 — deadline **15 décembre 2026** (installation van Lupo)
 
 ---
 
 ## Vue d'ensemble
 
-Architecture domotique distribuée : HA Docker M5 + HA OS RPi 5 Esneux (serre + maison) + HA OS RPi 5 van (Westfalia Kelsey 2026 « Lupo »). Supervision unifiée iPhone via Tailscale. Focus P0 actuel : Lupo vanlife, deadline 7 août.
+Architecture domotique distribuée : HA Docker M5 + HA OS RPi 5 Esneux (serre + maison) + HA OS RPi 5 van (Westfalia Kelsey 2026 « Lupo »). Supervision unifiée iPhone via Tailscale. Focus P0 actuel : Lupo vanlife, deadline **15/12/2026**.
 
 ---
 
@@ -16,7 +16,7 @@ Architecture domotique distribuée : HA Docker M5 + HA OS RPi 5 Esneux (serre + 
 
 | Axe | Statut | Détail |
 |-----|--------|--------|
-| Global | 🔴 P0 | Lupo = priorité absolue jusqu'au 7 août |
+| Global | 🔴 P0 | Lupo = priorité absolue jusqu'au **15/12/2026** |
 | Vanlife — RPi | 🟢 | Boot résolu (01/10, NVMe retiré). SD 256 Go Endurance, HAOS **18.3** (fix #5005), Supervisor + Core à jour, auto-update OFF, Healthy. |
 | Vanlife — NVMe | ⚫ | NVMe Fanxiang 256 Go retiré physiquement. Décision : SD seule (pas de SSD). Adaptateur USB-NVMe non nécessaire. |
 | Vanlife — Alim | 🟡 | **Décision : remplacer X1205 → Geekworm X1200** (5.1V/5A, 2×18650, ~50-70 € livré, achat différé). En attendant : alim directe USB-C RPi (`throttled=0x0`). Cause X1205 : pogo pins < 5A → undervoltage boot + throttling sous charge. |
@@ -45,7 +45,7 @@ Architecture domotique distribuée : HA Docker M5 + HA OS RPi 5 Esneux (serre + 
 ## Prochaine étape
 
 **Action** : Commander capteurs Zigbee (8, ~88€) + silentblocs + coating + **UPS X1200 (~50-70€)** ; intégrer WiCAN Pro dans HA
-**Deadline** : 1er novembre 2026
+**Deadline** : 15 décembre 2026 (prolongée par JC le 19/10)
 **Responsable** : JC + Dobby
 
 ---

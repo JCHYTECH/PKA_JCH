@@ -1,7 +1,7 @@
 # Procédure de réactivation — Projet IOT Van (Lupo)
 
 > **Date :** 2026-10-01 | **Orchestré par :** Dobby 🦉
-> **Objectif :** relancer le projet IOT Van, arrêté depuis ~09/09 (boot bloqué du RPi 5), et tenir la deadline du **1er novembre 2026**.
+> **Objectif :** relancer le projet IOT Van, arrêté depuis ~09/09 (boot bloqué du RPi 5), et tenir la deadline du **15 décembre 2026** (prolongée JC 19/10).
 > **Règle multi-terminal :** chaque commande est préfixée par sa machine cible — [M5] (Mac), [RPi] (Lupo), [M1] (serveur LLM).
 
 ---
@@ -39,7 +39,7 @@ Le RPi 5 « Lupo » (cœur domotique du van Westfalia Kelsey) est **bloqué au b
 - Valider les scénarios critiques hors réseau.
 - **Sortie :** checklist de test validée.
 
-### Phase 5 — Installation van (deadline 01/11)
+### Phase 5 — Installation van (deadline 15/12)
 - Silentblocs + coating (vibration/humidité).
 - Câblage 12V (DC-DC) + PV PI HAT.
 - Fixation boîtier, câblage capteurs.

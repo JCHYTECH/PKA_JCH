@@ -58,7 +58,7 @@
 2. Réinsérer, `Move Data Disk` → NVMe.
 3. Surveiller les I/O errors (#4785) avant de valider pour le van.
 
-### Phase D — Installation van (deadline 01/11)
+### Phase D — Installation van (deadline 15/12)
 - Silentblocs + coating + câblage 12V + PV PI + capteurs Zigbee.
 
 ## 5. Points à confirmer par JC (bloquants pour démarrer)

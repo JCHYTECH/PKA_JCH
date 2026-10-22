@@ -1,7 +1,7 @@
 # Thread — WILDNEXUS
 
 > Living document — mis à jour automatiquement par Dobby 🦉 en fin de session.
-> **Dernière mise à jour** : 2026-07-05 — Audit P0 ↔ InsectNet/NEXUS_ACOUSTIC, ADR-014/016/017 acceptés
+> **Dernière mise à jour** : 2026-10-22 — état consolidé : SOP-01/02/03 exécutées, blocage ciblé sur panier Mouser 279 €
 > **Statut** : 🟡 firmware — double cycle caméra+audio
 
 ---
@@ -22,6 +22,8 @@ Nœud caméra-piège IA autonome (ESP32-S3 + OV5640 + LoRa + micros stéréo). P
 | Audio | 🟡 | ADR-013/014/016/017 acceptés — format WAV + payload spectral définis. SOPs 13-18 ajoutées au tracker. Pas encore exécutées. |
 | Documentation | 🟢 | 17 ADRs, Start.md v0.3, scope lock v0.4 |
 | Procurement | 🟡 | Panier Mouser restant (~279€) ⏳ À COMMANDER — bloque LoRa (SOP-07) + payload spectral (SOP-16) |
+| Banc M-02 | 🟡 | **SOP-01/02/03 ✅ exécutées** (16-18/06, résultats PPK2 + CSV). Phases **D** (réveil court) et **E** (cycle simulé) ⏳ en attente — firmware prêt |
+| Échelle projet | 🟢 | **225 fichiers, 218 Mo** — le plus gros projet du workspace. 24 protocoles documentés |
 
 ---
 
