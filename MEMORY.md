@@ -1,6 +1,18 @@
 # MEMORY — PKA_JCH
 > Connaissances accumulées, décisions, chronologie des événements.
-> Dernière mise à jour : 2026-10-13 — réflexion définition du vivant + manifeste WildLens
+> Dernière mise à jour : 2026-10-22 — boucle mémoire autonome (auto-review LLM)
+
+- [2026-10-21] [VETALYX — Mail Chine] : Configuration du gatekeeper Gmail pour les partenaires chinois — forward manuel vers Dobby en place, whitelist à étendre pour l'automatisation (adresse chinoise manquante).
+
+- [2026-10-20] [GIT — Purge historique] : 88 Go → 617 Mo via `filter-repo --strip-blobs-bigger-than 10M`. Backup `.git.bak`, push force nécessaire.
+
+- [2026-10-20] [VETALYX — Email] : Configuration du gatekeeper Gmail pour les partenaires chinois, whitelist mise à jour.
+
+- [2026-10-19] [VOICE — Dictée fluide] : Boucle vocale opérationnelle (transcription + TTS) via `voice_dobby.py`. Solution testée et livrée.
+
+- [2026-10-19] [TECH — Rétroviseur Tourneo] : Ford Tourneo Custom 2026 — procédure démontage rétroviseur intérieur (embase métal collée, clip 45°, cache plastique) + doc officielle V710 partagée.
+
+- [2026-10-13] [IOT — Bluetti] : Bluetti Elite 100V2 — docs techniques et devis Be Camper prêts pour l'installation van Lupo.
 
 - [2026-10-13] [Réflexion — Vivant] : Suite de la réflexion sur la définition du vivant (08/10) : raffinement quantique (Schrödinger, Löwdin, Bell/Aspect), affinement de la sélection (dérive, niveaux, MEPP, evo-devo), mutagénèse stress-induite (Luria-Delbrück, Radman, Cairns), Anthropocène comme accélérateur de sélection/mutation. Consolidé : `05_CONTEXT_JCH/Reflexion-vivant-quantique-selection-anthropocene.md` + texte grand public `Reflexion-vivant-texte-grand-public.md` + esquisse manifeste sonore `Reflexion-vivant-manifeste-sonore.md`. Manifeste photo WildLens : `02_ARTEON/wildlens/manifeste.md`.
 

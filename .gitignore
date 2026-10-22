@@ -116,3 +116,7 @@ TEAM/team.db-shm
 JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS/firmware/
 _local/lightroom-mcp/
 _local/state/
+
+# pka-memory-review — artefacts générés (boucle mémoire autonome)
+_local/persist/
+MEMORY.md.bak-*
