@@ -39,6 +39,38 @@ MEMORY_PATH = os.path.join(PKA_ROOT, "MEMORY.md")
 WIKI_PATH = os.path.join(PKA_ROOT, "wiki")
 MAX_RESULTS = 10
 
+# ─── Tokenisation partagée (correctif 2026-10-22) ─────────────────
+# Les sources textuelles faisaient un match sur la PHRASE ENTIÈRE
+# (`LIKE '%question naturelle complète%'`), ce qui ne retournait jamais rien.
+# On tokenise la question et on exige la présence des termes.
+STOPWORDS = {
+    "le", "la", "les", "de", "des", "du", "un", "une", "et", "ou", "a", "à",
+    "au", "aux", "en", "pour", "par", "sur", "dans", "avec", "sans", "est",
+    "sont", "quel", "quelle", "quels", "quelles", "que", "qui", "quoi", "dont",
+    "où", "quand", "comment", "pourquoi", "combien", "il", "elle", "ils",
+    "elles", "on", "nous", "vous", "je", "tu", "ce", "cet", "cette", "ces",
+    "son", "sa", "ses", "leur", "leurs", "mon", "ma", "mes", "the", "of",
+    "and", "or", "is", "are", "was", "were", "what", "which", "who", "how",
+    "when", "where", "why", "to", "in", "on", "for", "with", "at", "by",
+    "ne", "pas", "plus", "être", "avoir", "fait", "faire",
+}
+
+
+def query_terms(query: str, min_len: int = 3) -> list[str]:
+    """Termes significatifs de la question (minuscules, sans stopwords)."""
+    raw = re.findall(r"[0-9a-zàâäéèêëîïôöùûüç]+", query.lower())
+    terms = [t for t in raw if len(t) >= min_len and t not in STOPWORDS]
+    return list(dict.fromkeys(terms))
+
+
+def term_score(text: str, terms: list[str]) -> tuple[int, float]:
+    """Retourne (nb de termes présents, ratio) pour classer les résultats."""
+    if not terms:
+        return 0, 0.0
+    low = (text or "").lower()
+    hits = sum(1 for t in terms if t in low)
+    return hits, hits / len(terms)
+
 # Ollama embedding config (M1)
 OLLAMA_M1_URL = "http://100.73.212.110:11434"
 OLLAMA_EMBED_MODEL = "nomic-embed-text"  # Fast, lightweight, 768-dim
@@ -53,21 +85,35 @@ def search_db(query, project=None, limit=MAX_RESULTS):
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
 
+    terms = query_terms(query) or [query.lower()]
+
+    # On élargit sur le terme le plus long (le plus discriminant), puis on
+    # reclasse en Python par nombre de termes réellement présents.
+    anchor = max(terms, key=len)
     sql = """SELECT title, body, type, source, created_at, tags
              FROM knowledge
              WHERE status = 'active'
                AND (title LIKE ? OR body LIKE ? OR tags LIKE ?)"""
-    params = [f"%{query}%", f"%{query}%", f"%{query}%"]
+    params = [f"%{anchor}%", f"%{anchor}%", f"%{anchor}%"]
 
     if project:
         sql += " AND (tags LIKE ? OR source LIKE ?)"
         params.extend([f"%{project}%", f"%{project}%"])
 
     sql += " ORDER BY created_at DESC LIMIT ?"
-    params.append(limit)
+    params.append(limit * 4)
 
     rows = conn.execute(sql, params).fetchall()
     conn.close()
+
+    scored = []
+    for r in rows:
+        blob = f"{r['title']} {r['body'] or ''} {r['tags'] or ''}"
+        hits, ratio = term_score(blob, terms)
+        if hits == 0:
+            continue
+        scored.append((hits, ratio, r))
+    scored.sort(key=lambda x: (-x[0], -x[1]))
 
     return [{
         "source": "team.db/knowledge",
@@ -75,8 +121,9 @@ def search_db(query, project=None, limit=MAX_RESULTS):
         "body": r["body"][:300] if r["body"] else "",
         "type": r["type"],
         "date": r["created_at"],
-        "relevance": "high" if query.lower() in (r["title"] + (r["body"] or "")).lower() else "medium"
-    } for r in rows]
+        "relevance": "high" if hits >= max(2, len(terms) // 2) else "medium",
+        "_score": ratio,
+    } for hits, ratio, r in scored[:limit]]
 
 
 def search_graphify(query, limit=MAX_RESULTS):
@@ -139,23 +186,78 @@ def search_memory_md(query, limit=MAX_RESULTS):
     with open(MEMORY_PATH) as f:
         lines = f.readlines()
 
-    results = []
+    terms = query_terms(query) or [query.lower()]
+    scored = []
     for i, line in enumerate(lines):
-        if query.lower() in line.lower():
-            # Prend le contexte (2 lignes avant, 2 après)
-            start = max(0, i - 2)
-            end = min(len(lines), i + 3)
-            context = "".join(lines[start:end]).strip()
-            results.append({
-                "source": "MEMORY.md",
-                "title": f"Ligne {i+1}",
-                "body": context[:300],
-                "type": "memory_entry",
-                "date": "",
-                "relevance": "high" if query.lower() in line.lower() else "medium"
-            })
-            if len(results) >= limit:
-                break
+        if not line.strip().startswith("-"):
+            continue  # seules les entrées datées sont des faits
+        hits, ratio = term_score(line, terms)
+        if hits == 0:
+            continue
+        # Contexte : l'entrée seule (MEMORY.md = une ligne = un fait)
+        scored.append((hits, ratio, i, line.strip()))
+    scored.sort(key=lambda x: (-x[0], -x[1]))
+
+    results = []
+    for hits, ratio, i, line in scored[:limit]:
+        results.append({
+            "source": "MEMORY.md",
+            "title": f"Ligne {i+1}",
+            "body": line[:400],
+            "type": "memory_entry",
+            "date": "",
+            "relevance": "high" if hits >= max(2, len(terms) // 2) else "medium",
+            "_score": ratio,
+        })
+    return results
+
+
+STATE_PATHS = [
+    "JCH_Inbox/04_PILOTAGE_STRATEGIQUE/etat-projets.md",
+    "JCH_Inbox/04_PILOTAGE_STRATEGIQUE/hardware-state.md",
+    "JCH_Inbox/04_PILOTAGE_STRATEGIQUE/decisions-actives.md",
+    "JCH_Inbox/04_PILOTAGE_STRATEGIQUE/priorites-actives.md",
+    "JCH_Inbox/04_PILOTAGE_STRATEGIQUE/risques-et-frottements.md",
+]
+
+
+def search_state(query, limit=MAX_RESULTS):
+    """State files (04_PILOTAGE_STRATEGIQUE) — l'état vivant des projets.
+
+    Correctif 2026-10-22 : ces fichiers n'étaient interrogés par AUCUNE source,
+    alors qu'ils portent les deadlines, statuts et décisions courantes.
+    """
+    terms = query_terms(query) or [query.lower()]
+    scored = []
+    for rel in STATE_PATHS:
+        fpath = os.path.join(PKA_ROOT, rel)
+        if not os.path.exists(fpath):
+            continue
+        try:
+            with open(fpath, encoding="utf-8") as fh:
+                lines = fh.readlines()
+        except (IOError, UnicodeDecodeError):
+            continue
+        for i, line in enumerate(lines):
+            if len(line.strip()) < 15:
+                continue
+            hits, ratio = term_score(line, terms)
+            if hits == 0:
+                continue
+            scored.append((hits, ratio, rel, i, line.strip()))
+    scored.sort(key=lambda x: (-x[0], -x[1]))
+
+    results = []
+    for hits, ratio, rel, i, line in scored[:limit]:
+        results.append({
+            "source": f"state/{os.path.basename(rel)}",
+            "title": f"{os.path.basename(rel)}:{i+1}",
+            "body": line[:400],
+            "type": "state",
+            "date": "",
+            "relevance": "high" if hits >= max(2, len(terms) // 2) else "medium",
+            "_score": ratio,
+        })
     return results
 
 
@@ -163,32 +265,41 @@ def search_wiki(query, limit=MAX_RESULTS):
     """Recherche dans le vault wiki/."""
     if not os.path.isdir(WIKI_PATH):
         return []
-    results = []
+    terms = query_terms(query) or [query.lower()]
+    scored = []
     for root, dirs, files in os.walk(WIKI_PATH):
         for f in files:
-            if f.endswith(".md"):
-                fpath = os.path.join(root, f)
-                try:
-                    with open(fpath) as fh:
-                        content = fh.read()
-                    if query.lower() in content.lower():
-                        # Extrait un extrait contextuel
-                        idx = content.lower().find(query.lower())
-                        start = max(0, idx - 100)
-                        end = min(len(content), idx + 200)
-                        snippet = content[start:end].replace("\n", " ")
-                        results.append({
-                            "source": f"wiki/{os.path.relpath(fpath, WIKI_PATH)}",
-                            "title": f.replace(".md", ""),
-                            "body": snippet[:300],
-                            "type": "wiki",
-                            "date": "",
-                            "relevance": "high"
-                        })
-                except (IOError, UnicodeDecodeError):
-                    pass
-                if len(results) >= limit:
-                    return results
+            if not f.endswith(".md"):
+                continue
+            fpath = os.path.join(root, f)
+            try:
+                with open(fpath) as fh:
+                    content = fh.read()
+            except (IOError, UnicodeDecodeError):
+                continue
+            hits, ratio = term_score(content, terms)
+            if hits == 0:
+                continue
+            # Extrait centré sur le premier terme trouvé
+            low = content.lower()
+            idx = next((low.find(t) for t in terms if t in low), 0)
+            start = max(0, idx - 100)
+            end = min(len(content), idx + 250)
+            snippet = content[start:end].replace("\n", " ")
+            scored.append((hits, ratio, fpath, f, snippet))
+    scored.sort(key=lambda x: (-x[0], -x[1]))
+
+    results = []
+    for hits, ratio, fpath, f, snippet in scored[:limit]:
+        results.append({
+            "source": f"wiki/{os.path.relpath(fpath, WIKI_PATH)}",
+            "title": f.replace(".md", ""),
+            "body": snippet[:300],
+            "type": "wiki",
+            "date": "",
+            "relevance": "high" if hits >= max(2, len(terms) // 2) else "medium",
+            "_score": ratio,
+        })
     return results
 
 
@@ -379,18 +490,32 @@ def retrieve(query, project=None, limit=MAX_RESULTS):
     # Parallélisable — exécution séquentielle pour simplicité
     all_results.extend(search_db(query, project, limit))
     all_results.extend(search_retro(query, project, limit))
+    all_results.extend(search_state(query, limit))
     all_results.extend(search_memory_md(query, limit))
     all_results.extend(search_file_index(query, limit))
     all_results.extend(search_wiki(query, limit))
     all_results.extend(search_graphify(query, limit))
 
-    # Tri par pertinence (high > medium) puis par source
-    all_results.sort(key=lambda r: (
-        0 if r["relevance"] == "high" else 1,
-        r["source"]
-    ))
+    # ─── Classement (correctif 2026-10-22) ───────────────────────
+    # Avant : tri alphabétique par source + coupe globale ⇒ graphify
+    # monopolisait les résultats et évincait les autres sources.
+    # Maintenant : round-robin équitable par source, puis tri par score
+    # à l'intérieur de chaque source.
+    by_source: dict[str, list] = {}
+    for r in all_results:
+        by_source.setdefault(r["source"], []).append(r)
+    for src in by_source:
+        by_source[src].sort(key=lambda r: -r.get("_score", 0))
 
-    return all_results[:limit * 2]  # un peu plus large car consolidation
+    merged = []
+    depth = 0
+    while any(len(v) > depth for v in by_source.values()):
+        for src in sorted(by_source):
+            if len(by_source[src]) > depth:
+                merged.append(by_source[src][depth])
+        depth += 1
+
+    return merged[:max(limit * 2, limit)]  # un peu plus large car consolidation
 
 
 def format_results(results, json_output=False):
