@@ -55,6 +55,10 @@
 - docs/system/fts5-sessions-design.md — Design spec FTS5 sur sessions JSON
 - scripts/pka_date_scanner.py — **Nouveau (2026-07-13)** — Scan auto de dates (deadlines, expirations) dans les fichiers → création follow_ups dans team.db. Patterns FR + EN, mots-clés déclencheurs, vacuum des expirés. `--dry-run`, `--all-projects`, `--vacuum`.
 - scripts/pka_quick_capture.py — **Nouveau (2026-07-13)** — Capture rapide d'une pensée brute → inbox avec auto-détection du projet. Zéro friction : `pka_quick_capture.py "pensée"`. Option `--urgent`. Pattern inspiré de Sanja (Obsidian+AI).
+- scripts/pka_memory_eval.py — **Nouveau (2026-10-22)** — Banc d'essai mémoire (inspiré LoCoMo/LongMemEval) : mesure hit@k, MRR, tokens/requête et latence sur un jeu de questions de référence. `--k`, `--json`, `--save`. Questions : `01_AI_IT_TOOLS/memory-eval/questions.json`.
+- scripts/pka_memory_export.py — **Nouveau (2026-10-22)** — Export portable de la mémoire (inspiré HyperMemory) : faits atomiques JSON avec provenance et confiance, dérivés de team.db + MEMORY.md + skills. `--kind`, `--stats`, `--dry-run`.
+- scripts/pka_llm_trace.py — **Nouveau (2026-10-22)** — Tracing des appels LLM : table `llm_calls` (script, projet, modèle, tokens, coût, latence, succès) + rapport `report --days N`. Contexte `trace_call()` pour instrumentation.
+- bin/pka-memory-review — **Nouveau (2026-10-22)** — Boucle mémoire autonome : `review` (résumé LLM), `skills` (détection auto-skill), `fts` (indexation), `apply`. Job launchd quotidien 09:15 via `bin/pka-memory-loop`.
 
 ## Gouvernance & Architecture
 
@@ -65,6 +69,8 @@
 
 ## Sécurité
 
+- scripts/pka_mcp_guard.py — **Nouveau (2026-10-22)** — Gouvernance MCP : registre versionné des serveurs approuvés + scan des descriptions d'outils (détection tool poisoning / OWASP ASI01). `audit`, `freeze`, `scan-tools <json>`.
+- JCH_Inbox/99_SYSTEM/mcp_registry.json — Registre des serveurs MCP approuvés (hash de commande, date d'approbation)
 - scripts/pka_security_audit.py — Audit de sécurité du workspace
 - scripts/pka_prompt_guard.py — Scanner prompt injection (airlock [[inbox]]) — score 0-100 + quarantaine
 - scripts/pka_system_improvement_audit.py — Audit d'amélioration continue

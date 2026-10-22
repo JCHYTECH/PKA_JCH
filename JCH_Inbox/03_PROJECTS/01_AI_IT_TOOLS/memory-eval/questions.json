@@ -1,0 +1,160 @@
+{
+  "_meta": {
+    "purpose": "Banc d'essai mémoire PKA — questions de référence avec réponse attendue.",
+    "rule": "Chaque question doit avoir une réponse vérifiable dans une source identifiable. Ajouter des questions au fil de l'eau ; ne pas inventer de réponses.",
+    "fields": {
+      "id": "identifiant stable",
+      "question": "question posée au retriever",
+      "expect_any": "fragments dont AU MOINS UN doit apparaître dans les résultats (recall@k)",
+      "expect_source": "source attendue en priorité (facultatif) : team.db | memoire | graphify | wiki | file_index",
+      "category": "single-hop | temporal | multi-hop | project-status",
+      "added": "date d'ajout"
+    }
+  },
+  "questions": [
+    {
+      "id": "iot-deadline",
+      "question": "quelle est la deadline de l'installation IOT dans le van ?",
+      "expect_any": ["15 décembre", "15/12", "15 decembre"],
+      "expect_source": "team.db",
+      "category": "single-hop",
+      "added": "2026-10-22"
+    },
+    {
+      "id": "iot-rpi-boot",
+      "question": "état du boot du Raspberry Pi 5 pour Lupo",
+      "expect_any": ["HAOS 18.3", "NVMe retiré", "boot résolu"],
+      "expect_source": "team.db",
+      "category": "project-status",
+      "added": "2026-10-22"
+    },
+    {
+      "id": "bluetti-choix",
+      "question": "quel matériel Bluetti a été acheté pour le van ?",
+      "expect_any": ["Elite 100", "Charger 2", "Bluetti"],
+      "expect_source": "memoire",
+      "category": "multi-hop",
+      "added": "2026-10-22"
+    },
+    {
+      "id": "dashcam-modele",
+      "question": "quel modèle de dashcam a été retenu pour Lupo ?",
+      "expect_any": ["Wolfbox", "G900", "TriPro"],
+      "expect_source": "memoire",
+      "category": "single-hop",
+      "added": "2026-10-22"
+    },
+    {
+      "id": "vetalyx-diaho",
+      "question": "quelle part DIAHO détient-elle dans Vetalyx ?",
+      "expect_any": ["40 %", "40%", "DIAHO"],
+      "expect_source": "team.db",
+      "category": "single-hop",
+      "added": "2026-10-22"
+    },
+    {
+      "id": "vetalyx-contrat",
+      "question": "où en est le contrat-cadre Vetalyx DIAHO Dixun ?",
+      "expect_any": ["contrat-cadre", "v4", "Dixun"],
+      "expect_source": "team.db",
+      "category": "project-status",
+      "added": "2026-10-22"
+    },
+    {
+      "id": "photo-presets",
+      "question": "combien de presets Argus sont stockés ?",
+      "expect_any": ["11 presets", "11 preset"],
+      "expect_source": "wiki",
+      "category": "single-hop",
+      "added": "2026-10-22"
+    },
+    {
+      "id": "photo-score",
+      "question": "quel est le score moyen attribué par Argus aux photos ?",
+      "expect_any": ["73.8", "73,8"],
+      "expect_source": "wiki",
+      "category": "single-hop",
+      "added": "2026-10-22"
+    },
+    {
+      "id": "wildnexus-device",
+      "question": "quel microcontrôleur équipe le device WildNexus P0 ?",
+      "expect_any": ["ESP32-S3", "ESP32 S3"],
+      "expect_source": "graphify",
+      "category": "single-hop",
+      "added": "2026-10-22"
+    },
+    {
+      "id": "wildnexus-mic",
+      "question": "quel micro I2S est utilisé pour l'acoustique WildNexus ?",
+      "expect_any": ["SPH0645"],
+      "expect_source": "graphify",
+      "category": "single-hop",
+      "added": "2026-10-22"
+    },
+    {
+      "id": "wildnexus-bloque",
+      "question": "pourquoi WildNexus est-il bloqué ?",
+      "expect_any": ["Mouser", "279", "gelé", "gele"],
+      "expect_source": "team.db",
+      "category": "project-status",
+      "added": "2026-10-22"
+    },
+    {
+      "id": "memoire-cout",
+      "question": "quel modèle est utilisé pour la boucle mémoire autonome ?",
+      "expect_any": ["deepseek", "deepseek-chat"],
+      "expect_source": "wiki",
+      "category": "temporal",
+      "added": "2026-10-22"
+    },
+    {
+      "id": "git-purge",
+      "question": "quel nettoyage de l'historique git a été fait et quel volume ?",
+      "expect_any": ["filter-repo", "88 Go", "617 Mo"],
+      "expect_source": "memoire",
+      "category": "multi-hop",
+      "added": "2026-10-22"
+    },
+    {
+      "id": "voix-ursa",
+      "question": "quelle voix est utilisée pour la conversation vocale de Dobby ?",
+      "expect_any": ["Ursa"],
+      "expect_source": "wiki",
+      "category": "single-hop",
+      "added": "2026-10-22"
+    },
+    {
+      "id": "van-modele",
+      "question": "quel est le modèle du van de JCH ?",
+      "expect_any": ["Westfalia Kelsey", "Kelsey", "Transit Custom"],
+      "expect_source": "team.db",
+      "category": "single-hop",
+      "added": "2026-10-22"
+    },
+    {
+      "id": "hermes-hermes",
+      "question": "qu'est-ce qu'Hermes Agent et pourquoi n'a-t-il pas été adopté ?",
+      "expect_any": ["Hermes", "Nous Research", "agent"],
+      "expect_source": "team.db",
+      "category": "multi-hop",
+      "added": "2026-10-22"
+    },
+    {
+      "id": "kiro-outil",
+      "question": "qu'est-ce que Kiro et a-t-il été intégré ?",
+      "expect_any": ["Kiro", "navigateur", "IndexedDB"],
+      "expect_source": "memoire",
+      "category": "temporal",
+      "added": "2026-10-22"
+    },
+    {
+      "id": "gerbe-avancement",
+      "question": "quel est le niveau d'avancement du projet WildNexus ?",
+      "expect_any": ["3/10", "gelé", "Mouser"],
+      "expect_source": "team.db",
+      "category": "project-status",
+      "added": "2026-10-22"
+    }
+  ]
+}
