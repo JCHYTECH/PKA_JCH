@@ -30,6 +30,29 @@ python3 scripts/photo_keyworder.py --input ~/Photos/ --m1
 python3 scripts/photo_keyworder.py --input ~/Photos/ --verbose
 ```
 
+## Reprise sur échec (2026-10-22)
+
+Le traitement est désormais **robuste** :
+
+```bash
+# 3 tentatives par image (backoff 1s → 2s), configurable
+python3 scripts/photo_keyworder.py --input ~/Photos/ --retries 3
+
+# Reprendre UNIQUEMENT les photos en échec
+python3 scripts/photo_keyworder.py --input ~/Photos/ --retry-failed
+```
+
+- Pendant le traitement : barre de progression + **ETA** réelle
+  (`[████████░░░░░░░░] 142/500 (28%) ETA 1m42s`)
+- En fin de traitement : rapport `Images / Tagged / Cached / Errors / Time`
+- En cas d'échec : `keyword_failed.json` liste les photos avec la raison,
+  et `--retry-failed` les reprend sans rescanner tout le dossier.
+- Si aucun échec, le fichier de reprise est **automatiquement nettoyé**.
+
+**Limite connue** : le cache (`keyword_cache.json`) n'est pas écrit en
+`--dry-run` — c'est voulu (rien ne doit changer en simulation), mais cela
+signifie qu'un dry-run suivi d'un run réel refera tout le travail.
+
 ## Après taguage — dans Lightroom
 
 1. Sélectionner les photos taguées
