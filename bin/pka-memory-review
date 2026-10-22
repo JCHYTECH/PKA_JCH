@@ -40,6 +40,13 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 PKA_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Tracing des coûts par appel (P3) — import optionnel, jamais bloquant.
+sys.path.insert(0, os.path.join(PKA_ROOT, "scripts"))
+try:
+    from pka_llm_trace import trace_call  # type: ignore
+except ImportError:  # pragma: no cover
+    trace_call = None
 SESSIONS_DIR = os.path.join(PKA_ROOT, "_local", "sessions")
 DB_PATH = os.path.join(PKA_ROOT, "TEAM", "team.db")
 MEMORY_PATH = os.path.join(PKA_ROOT, "MEMORY.md")
@@ -180,14 +187,27 @@ def llm_call(messages: list[dict], model: str, max_tokens: int = 200) -> str | N
             "Content-Type": "application/json",
         },
     )
+    ctx = trace_call("pka_memory_review", model, "AI_IT_TOOLS") if trace_call else None
     try:
+        if ctx:
+            t = ctx.__enter__()
         with urllib.request.urlopen(req, timeout=60) as resp:
             data = json.loads(resp.read().decode("utf-8"))
+        usage = data.get("usage", {}) or {}
+        if ctx:
+            t.record(tokens_in=usage.get("prompt_tokens", 0),
+                     tokens_out=usage.get("completion_tokens", 0),
+                     cost_usd=usage.get("cost", 0.0) or 0.0)
         content = data["choices"][0]["message"].get("content")
         return content.strip() if content else None
     except (urllib.error.HTTPError, urllib.error.URLError, KeyError, IndexError,
-            json.JSONDecodeError, OSError):
+            json.JSONDecodeError, OSError) as exc:
+        if ctx:
+            t.fail(f"{type(exc).__name__}: {exc}")
         return None
+    finally:
+        if ctx:
+            ctx.__exit__(None, None, None)
 
 
 def llm_summarize(session: dict, model: str) -> str | None:
