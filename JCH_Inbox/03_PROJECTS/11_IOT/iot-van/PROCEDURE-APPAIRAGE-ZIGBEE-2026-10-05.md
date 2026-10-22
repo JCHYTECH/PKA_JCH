@@ -1,7 +1,7 @@
 # Procédure d'appairage — Capteurs Zigbee (Van Lupo)
 
 > **Date :** 2026-10-05 | **Orchestré par :** Dobby 🦉
-> **Objectif :** appairer et nommer les capteurs Zigbee de la cellule van, de façon standardisée et reproductible, pour tenir la deadline du **1er novembre 2026**.
+> **Objectif :** appairer et nommer les capteurs Zigbee de la cellule van, de façon standardisée et reproductible, pour tenir la deadline du **15 décembre 2026** (prolongée JC 19/10).
 > **Règle multi-terminal :** chaque commande/action est préfixée par sa machine cible — [M5] (Mac), [RPi] (Lupo), [M1] (serveur LLM). L'appairage se pilote depuis un navigateur (Mac/iPad), l'iPhone sert à la vérification live.
 > **Contexte :** RPi 5 Lupo, HAOS 18.3, Zigbee opérationnel (Sonoff ZBDongle-E, Ember, canal 15), Zigbee2MQTT → Mosquitto `:1883`. Réseau « up, 0 appareil joint » au 01/10.
 
