@@ -55,6 +55,14 @@ Midjourney v8 (mi-2026) **ne signe pas** en C2PA. Un screenshot ou un re-export
 strip le manifeste. **L'absence de preuve n'est jamais une preuve d'absence** —
 pour un jury photo, c'est la formulation à tenir.
 
+## ⚠️ RAPPEL ACTIF — décision JCH du 2026-10-22
+
+**On reste au niveau 1 (provenance).** Si JCH utilise `pka_ai_image_check.py` en
+conditions réelles, **Dobby doit lui rappeler** : « on doit creuser la piste
+d'entraînement d'un détecteur sur tes propres photos » (voir piste 1 ci-dessous).
+Raison : les classifieurs publics sont inutilisables, et la provenance seule ne
+répond pas à la question « une *partie* de l'image est-elle IA ? ».
+
 ## Pistes si on veut aller plus loin
 
 1. **Entraîner un détecteur sur NOS images** : JCH produit des milliers de photos

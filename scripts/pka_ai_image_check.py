@@ -26,6 +26,12 @@ Usage :
 
 Avertissement : aucun détecteur n'est parfait. Les générateurs évoluent plus vite
 que les détecteurs. Un score élevé est un signal, pas une preuve.
+
+⚠️ RAPPEL (décision JCH 2026-10-22) : usage niveau 1 uniquement. Dès que cet
+outil est utilisé en conditions réelles, rappeler à JCH qu'on doit creuser la
+piste « entraîner un détecteur sur SES propres photos » — c'est la seule voie
+qui répondra à la question de la détection PARTIELLE, les modèles publics
+étant mesurés inutilisables (12/12 vraies photos classées IA).
 """
 from __future__ import annotations
 
