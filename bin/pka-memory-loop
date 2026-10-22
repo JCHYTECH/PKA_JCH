@@ -1,0 +1,11 @@
+#!/bin/bash
+# pka-memory-loop — Boucle mémoire autonome quotidienne (review + skills).
+# Appelé par le LaunchAgent com.dobby.pka-memory-review.
+set -euo pipefail
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+echo "[Dobby] pka-memory-loop — $(date '+%Y-%m-%d %H:%M')"
+"$ROOT/bin/pka-memory-review" review --json --llm
+echo "—"
+"$ROOT/bin/pka-memory-review" skills --json --llm
+echo "[Dobby] boucle mémoire terminée."
