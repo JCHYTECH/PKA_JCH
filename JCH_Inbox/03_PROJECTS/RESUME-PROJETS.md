@@ -14,7 +14,7 @@
 | 4 | `05_PHOTO_AI_JURY` | **7/10** |
 | 5 | `06_PHOTO_NATURE` | **8/10** |
 | 6 | `07_TRAVELS` | **4/10** |
-| 7 | `08_VETALYX` | **4/10** |
+| 7 | `08_VETALYX` | **6/10** |
 | 8 | `11_IOT` | **6/10** |
 
 ---
@@ -102,17 +102,20 @@
 
 ---
 
-## 08_VETALYX — 4/10
+## 08_VETALYX — 6/10
 
-**Description** : Diagnostic rapide des allergies animales par IA, ciblant le marché vétérinaire européen (cliniques + laboratoires).
+**Description** : Société belge (Marche-en-Famenne) de diagnostic vétérinaire rapide — MVP allergie IgE chien/chat. Fournisseur Zheda Dixun (CN) via DIAHO (actionnaire 40 %). Marchés : FR, IT, ES, DE, BE.
 
 **Livrables attendus**
-- Contrat-cadre, statuts SRL, pacte d'actionnaires
-- Business plan
-- Roadmap produit + validation clinique
-- Qualification réglementaire AFMPS / FAMHP
+- Contrat-cadre + annexes, statuts SRL, pacte, convention de bloc ✅
+- Business plan chiffré 2026-2030 + modèle financier Excel ✅
+- Pilote France 12 mois (4 phases, 200-300 cliniques) 📋 documenté, non démarré
+- Qualification AFMPS / FAMHP ⏳ non tranchée
+- 8 points notariés à lever ⏳
 
-**Avancement** : **4/10** — structuration juridique avancée (DIAHO 40 %, contrat-cadre v3, statuts, pacte actionnaires v1), mais business plan et roadmap non définis ; en attente de la réunion Vita X (Taiwan).
+**Avancement** : **6/10** — la structuration est bien plus avancée que je ne l'avais noté (contrat-cadre v4.1 + annexes 1→10, BP V3 chiffré : CA 299 K€ → 7,2 M€, EBITDA 41 K€ → 4,2 M€, roadmap pilote France chiffrée à 420 K€ base). **Rien n'est encore vendu** et le verrou réglementaire AFMPS/FAMHP n'est pas levé.
+
+> ⚠️ Note corrigée le 2026-10-22 : mon premier passage (4/10, « business plan et roadmap non définis ») était **faux** — il s'appuyait sur `executive-summary.md` (généré 03/07, périmé). Analyse complète : `08_VETALYX/2026-10-22_dobby_analyse-approfondie.md`.
 
 ---
 
