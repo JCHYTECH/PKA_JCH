@@ -1,11 +1,26 @@
 ---
 name: pka-thread-file
-description: Living document par projet — overview/statut/décisions persistant, mis à jour automatiquement en fin de session. Déclencher sur "thread file", "update thread", "met à jour le thread", ou automatiquement en fin de session projet.
+description: Living document par projet — overview/statut/décisions persistant, mis à jour en fin de session (PAS automatiquement — voir règle de fraîcheur). Déclencher sur "thread file", "update thread", "met à jour le thread", ou en fin de session projet.
 ---
 
 # Skill — pka-thread-file
 
 > Living thread file par projet PKA. Inspiré du « Threads Memory System » d'Ev Chapman, adapté à l'architecture PKA (State/Log, team.db, vérifications).
+
+## ⚠️ Règle de fraîcheur (2026-10-22)
+
+**La mise à jour n'est PAS automatique.** Le libellé « mis à jour automatiquement »
+était faux : au 2026-10-22, **4 thread files sur 8 avaient 3+ mois de retard**
+(AI_IT_TOOLS, ARTEON, PHOTO_AI_JURY : 03/07 · WILDNEXUS : 05/07) et
+**07_TRAVELS n'en avait aucun** malgré 729 fichiers.
+
+Avant de citer un thread file comme source :
+1. **Vérifier sa date** dans l'en-tête (`Dernière mise à jour`)
+2. Si > 30 jours **et** que le projet a bougé depuis → mettre à jour d'abord
+3. Ne jamais présenter un thread périmé comme l'état actuel
+
+Complément : un thread file **absent** est un signal de pilotage manquant,
+pas une preuve que le projet est inactif (cas TRAVELS : 647 lieux validés).
 
 ## Architecture
 
