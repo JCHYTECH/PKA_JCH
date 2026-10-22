@@ -60,6 +60,12 @@ def build_template_prompt(template: dict) -> str:
     return f"{system}\n\n{prompt}"
 
 def load_cache() -> dict:
+    """Charge le cache complet (entrées réelles + entrées dry-run).
+
+    Les entrées dry-run sont conservées dans le même fichier mais sous une clé
+    préfixée `dryrun:` afin qu'elles ne soient JAMAIS prises pour un taguage
+    réel effectué.
+    """
     if CACHE_FILE.exists():
         try:
             return json.loads(CACHE_FILE.read_text())
@@ -442,10 +448,14 @@ def main():
     for idx, img in enumerate(images, 1):
         fingerprint = file_fingerprint(img)
 
-        # Check cache
-        if not args.no_cache and fingerprint in cache:
+        # Check cache — distinction stricte réel / dry-run.
+        # Un résultat de dry-run ne doit jamais éviter un vrai taguage :
+        # il ne sert qu'à retrouver la sortie du modèle dans un dry-run suivant.
+        cache_key = fingerprint if not args.dry_run else f"dryrun:{fingerprint}"
+        if not args.no_cache and cache_key in cache:
             if args.verbose:
-                print(f"  ⏭️  {img.name} (cached)")
+                kind = "dry-run" if args.dry_run else "cached"
+                print(f"  ⏭️  {img.name} ({kind})")
             skipped_cached += 1
             processed += 1
             continue
@@ -474,16 +484,22 @@ def main():
                     print(f"\n     → {display[:300]}")
                 print(f"✅ {display[:120]}")
                 tagged += 1
-                cache[fingerprint] = {
+                cache[cache_key] = {
                     "file": img.name,
                     "template": args.template,
                     "result": result,
+                    "dry_run": bool(args.dry_run),
                     "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S")
                 }
             else:
                 # Flatten to keywords
                 keywords = [] if use_full_metadata else flatten_keywords(result)
-                description = ""
+                # BUG CORRIGÉ 2026-10-22 : `headline` et `description` n'étaient
+                # définis que dans le bloc `if use_full_metadata` ci-dessous,
+                # puis utilisés hors du bloc (lignes 570-577) → UnboundLocalError
+                # sur chaque photo en mode normal. Initialisation systématique.
+                headline = result.get("headline", "")
+                description = result.get("description", "")
 
                 # Two-pass: species identification via Gemini
                 species_info = None
@@ -564,10 +580,11 @@ def main():
                 if ok:
                     tagged += 1
                     meta = f" +headline +desc" if (headline or description) else ""
-                    cache[fingerprint] = {
+                    cache[cache_key] = {
                         "file": img.name,
                         "keywords": keywords,
                         "confidence": conf,
+                        "dry_run": bool(args.dry_run),
                         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S")
                     }
                     print(f"✅ {len(keywords)} keywords (conf {conf:.0%})")
@@ -587,9 +604,12 @@ def main():
 
     elapsed = time.monotonic() - t_start
 
-    # Save cache
-    if not args.dry_run:
-        save_cache(cache)
+    # Save cache — désormais aussi en dry-run (clés préfixées `dryrun:`).
+    # Un dry-run alimente donc le cache de vérification, sans jamais faire
+    # croire qu'un taguage réel a eu lieu. Le run réel suivant réutilise
+    # les inférences du dry-run uniquement si on relance un dry-run ; il
+    # refait toujours l'inférence pour un taguage réel (clé différente).
+    save_cache(cache)
 
     # ── Rapport de fin (P0) ──────────────────────────────────────
     print(f"\n{'─'*50}")

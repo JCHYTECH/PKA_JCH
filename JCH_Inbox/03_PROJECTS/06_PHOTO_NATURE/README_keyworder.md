@@ -49,9 +49,20 @@ python3 scripts/photo_keyworder.py --input ~/Photos/ --retry-failed
   et `--retry-failed` les reprend sans rescanner tout le dossier.
 - Si aucun échec, le fichier de reprise est **automatiquement nettoyé**.
 
-**Limite connue** : le cache (`keyword_cache.json`) n'est pas écrit en
-`--dry-run` — c'est voulu (rien ne doit changer en simulation), mais cela
-signifie qu'un dry-run suivi d'un run réel refera tout le travail.
+## Cache dry-run (2026-10-22)
+
+Le `--dry-run` **alimente désormais le cache**, sous une clé préfixée
+`dryrun:` — donc sans jamais faire croire qu'un taguage réel a eu lieu.
+
+| Situation | Comportement |
+|---|---|
+| Dry-run #1 | inférence, écrit la clé `dryrun:<fingerprint>` |
+| Dry-run #2 | **Cached**, zéro inférence — la vérification est instantanée |
+| Run réel | inférence, écrit la clé réelle `<fingerprint>` |
+
+**Garantie** : une entrée `dryrun:` ne satisfait jamais une recherche de clé
+réelle. Un dry-run ne peut donc pas masquer un taguage manquant — c'est la
+raison de la clé séparée plutôt qu'un cache unique.
 
 ## Après taguage — dans Lightroom
 
