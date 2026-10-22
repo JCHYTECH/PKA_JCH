@@ -106,7 +106,26 @@ def src_graphify(query: str, k: int) -> list[dict]:
     return out
 
 
-SOURCES = {"fts": src_fts, "memoire": src_memory, "graphify": src_graphify}
+def src_retrieve(query: str, k: int) -> list[dict]:
+    """Le retriever PKA réel (pka_retrieve) — c'est LUI qu'on veut mesurer."""
+    out = []
+    try:
+        r = subprocess.run(
+            [sys.executable, str(PKA_ROOT / "scripts" / "pka_retrieve.py"),
+             "--json", "--limit", str(k), query],
+            capture_output=True, text=True, timeout=120)
+        if r.returncode == 0 and r.stdout.strip():
+            for item in json.loads(r.stdout)[:k]:
+                out.append({"source": item.get("source", "?"),
+                            "title": item.get("title", "")[:120],
+                            "body": item.get("body", "")})
+    except (subprocess.SubprocessError, json.JSONDecodeError, OSError) as exc:
+        out.append({"source": "retrieve", "title": f"[ERREUR] {exc}", "body": ""})
+    return out
+
+
+SOURCES = {"fts": src_fts, "memoire": src_memory, "graphify": src_graphify,
+           "retrieve": src_retrieve}
 
 
 # ── Évaluation ─────────────────────────────────────────────────────────────
@@ -171,7 +190,8 @@ def main() -> int:
     p.add_argument("--k", type=int, default=5)
     p.add_argument("--json", action="store_true")
     p.add_argument("--save", action="store_true")
-    p.add_argument("--sources", default="fts,memoire,graphify")
+    p.add_argument("--sources", default="retrieve",
+                   help="Sources à évaluer (défaut: retrieve = pka_retrieve réel)")
     p.add_argument("--questions", default=str(QUESTIONS_PATH))
     args = p.parse_args()
 
