@@ -88,8 +88,12 @@ def encode_image(path: Path) -> str:
 
 # ── Ollama Vision ─────────────────────────────────────────────────────────────
 def ollama_vision(image_b64: str, prompt: str, model: str, endpoint: str,
-                  timeout: int = 120) -> Optional[dict]:
-    """Send image + prompt to Ollama vision model, return parsed JSON."""
+                  timeout: int = 120, retries: int = 3) -> Optional[dict]:
+    """Send image + prompt to Ollama vision model, return parsed JSON.
+
+    P0 (2026-10-22) : retry avec backoff exponentiel. Avant, un seul échec
+    réseau ou un JSON malformé faisait perdre la photo silencieusement.
+    """
     payload = {
         "model": model,
         "prompt": prompt,
@@ -98,28 +102,36 @@ def ollama_vision(image_b64: str, prompt: str, model: str, endpoint: str,
         "format": "json",
         "options": {"temperature": 0.3, "num_predict": 1024}
     }
-    try:
-        resp = requests.post(endpoint, json=payload, timeout=timeout)
-        resp.raise_for_status()
-        body = resp.json()
-        raw = body.get("response", "").strip()
+    last_error = None
+    for attempt in range(1, retries + 1):
+        try:
+            resp = requests.post(endpoint, json=payload, timeout=timeout)
+            resp.raise_for_status()
+            body = resp.json()
+            raw = body.get("response", "").strip()
 
-        # Try to extract JSON from the response
-        # Sometimes the model wraps JSON in markdown fences
-        if raw.startswith("```"):
-            lines = raw.split("\n")
-            raw = "\n".join(lines[1:-1]) if len(lines) > 2 else raw
+            # Extract JSON (le modèle l'enrobe parfois en markdown)
+            if raw.startswith("```"):
+                lines = raw.split("\n")
+                raw = "\n".join(lines[1:-1]) if len(lines) > 2 else raw
 
-        # Find first { and last }
-        start = raw.find("{")
-        end = raw.rfind("}")
-        if start >= 0 and end > start:
-            raw = raw[start:end+1]
+            start = raw.find("{")
+            end = raw.rfind("}")
+            if start >= 0 and end > start:
+                raw = raw[start:end+1]
 
-        return json.loads(raw)
-    except (requests.RequestException, json.JSONDecodeError, KeyError) as e:
-        print(f"  ⚠️  Model error: {e}")
-        return None
+            return json.loads(raw)
+
+        except (requests.RequestException, json.JSONDecodeError, KeyError) as e:
+            last_error = e
+            if attempt < retries:
+                wait = 2 ** (attempt - 1)  # 1s, 2s
+                print(f"  ↻ tentative {attempt}/{retries} échouée ({type(e).__name__}), "
+                      f"reprise dans {wait}s", end=" ", flush=True)
+                time.sleep(wait)
+
+    print(f"  ⚠️  Model error après {retries} tentatives: {last_error}")
+    return None
 
 # ── EXIF / IPTC writing ───────────────────────────────────────────────────────
 def write_keywords(image_path: Path, keywords: list[str], dry_run: bool = False) -> bool:
@@ -330,6 +342,10 @@ def main():
                         help="Prompt template: classify, species, describe, print, arteon, stock, caption, full")
     parser.add_argument("--species-api", default=None,
                         help="External API for species ID: gemini (uses gemini-3.1-flash-lite, near-free)")
+    parser.add_argument("--retry-failed", action="store_true",
+                        help="Reprocesser uniquement les photos listées dans keyword_failed.json")
+    parser.add_argument("--retries", type=int, default=3,
+                        help="Nombre de tentatives par image (défaut 3)")
     args = parser.parse_args()
 
     # Resolve endpoint
@@ -368,6 +384,22 @@ def main():
     if not images:
         sys.exit("❌ No supported images found.")
 
+    # --retry-failed : ne garder que les photos listées dans keyword_failed.json
+    if args.retry_failed:
+        fail_path = CACHE_FILE.parent / "keyword_failed.json"
+        if not fail_path.exists():
+            sys.exit("❌ Aucun fichier keyword_failed.json — rien à reprendre.")
+        try:
+            pending = {f["file"] for f in
+                       json.loads(fail_path.read_text(encoding="utf-8")).get("failed", [])}
+        except (OSError, json.JSONDecodeError) as exc:
+            sys.exit(f"❌ keyword_failed.json illisible : {exc}")
+        before = len(images)
+        images = [i for i in images if str(i) in pending]
+        print(f"   Reprise : {len(images)}/{before} photo(s) en échec à retenter")
+        if not images:
+            sys.exit("✅ Aucune photo en échec dans ce dossier.")
+
     print(f"   Found {len(images)} image(s)")
 
     if args.max_images > 0:
@@ -389,10 +421,25 @@ def main():
     tagged = 0
     errors = 0
     skipped_cached = 0
+    failed: list[dict] = []          # P0 : photos en échec, pour reprise
+    total = len(images)
 
     t_start = time.monotonic()
 
-    for img in images:
+    def progress_line(idx: int, name: str, elapsed: float, done: int) -> str:
+        """Barre + ETA (P0). Basée sur la moyenne réelle des photos traitées."""
+        pct = idx / total * 100 if total else 0
+        filled = int(pct / 100 * 24)
+        bar = "█" * filled + "░" * (24 - filled)
+        if done > 0:
+            per = elapsed / done
+            remaining = per * (total - idx)
+            eta = f"{int(remaining//60)}m{int(remaining%60):02d}s"
+        else:
+            eta = "—"
+        return f"  [{bar}] {idx}/{total} ({pct:.0f}%) ETA {eta}"
+
+    for idx, img in enumerate(images, 1):
         fingerprint = file_fingerprint(img)
 
         # Check cache
@@ -410,10 +457,14 @@ def main():
             img_b64 = encode_image(img)
 
             # Send to model
-            result = ollama_vision(img_b64, prompt, model, endpoint)
+            result = ollama_vision(img_b64, prompt, model, endpoint, retries=args.retries)
             if result is None:
                 errors += 1
+                failed.append({"file": str(img),
+                               "reason": f"model error ({args.retries} tentatives)"})
                 print("❌ model error")
+                print(progress_line(idx, img.name, time.monotonic() - t_start, tagged + errors))
+                processed += 1
                 continue
 
             if args.template:
@@ -522,13 +573,17 @@ def main():
                     print(f"✅ {len(keywords)} keywords (conf {conf:.0%})")
                 if not ok:
                     errors += 1
+                    failed.append({"file": str(img), "reason": "write error (exiftool)"})
                     print("❌ write error")
 
         except Exception as e:
             errors += 1
+            failed.append({"file": str(img), "reason": f"{type(e).__name__}: {e}"})
             print(f"❌ {e}")
 
         processed += 1
+        if (tagged + errors) % 1 == 0 and not args.verbose:
+            print(progress_line(idx, img.name, time.monotonic() - t_start, tagged + errors))
 
     elapsed = time.monotonic() - t_start
 
@@ -536,13 +591,42 @@ def main():
     if not args.dry_run:
         save_cache(cache)
 
-    # Summary
+    # ── Rapport de fin (P0) ──────────────────────────────────────
     print(f"\n{'─'*50}")
     print(f"  Images:    {len(images)}")
     print(f"  Tagged:    {tagged}")
     print(f"  Cached:    {skipped_cached}")
     print(f"  Errors:    {errors}")
     print(f"  Time:      {elapsed:.1f}s ({elapsed/max(processed,1):.1f}s/img)")
+
+    # Fichier de reprise : liste des échecs, relançable tel quel
+    if failed:
+        fail_path = CACHE_FILE.parent / "keyword_failed.json"
+        try:
+            prev = []
+            if fail_path.exists():
+                prev = json.loads(fail_path.read_text(encoding="utf-8")).get("failed", [])
+            known = {f["file"] for f in prev}
+            merged = prev + [f for f in failed if f["file"] not in known]
+            fail_path.write_text(json.dumps(
+                {"updated": time.strftime("%Y-%m-%dT%H:%M:%S"),
+                 "count": len(merged), "failed": merged},
+                indent=2, ensure_ascii=False), encoding="utf-8")
+            print(f"\n  ⚠️  {len(failed)} photo(s) en échec → {fail_path.name}")
+            print(f"     Relancer : python3 scripts/photo_keyworder.py "
+                  f"--input <dossier> --retry-failed")
+        except OSError as exc:
+            print(f"\n  ⚠️  Impossible d'écrire {fail_path.name}: {exc}")
+    elif errors == 0 and tagged > 0:
+        # Tout est passé : on nettoie un éventuel fichier de reprise périmé
+        stale = CACHE_FILE.parent / "keyword_failed.json"
+        if stale.exists():
+            try:
+                stale.unlink()
+                print("\n  ✅ Aucun échec — fichier de reprise nettoyé")
+            except OSError:
+                pass
+
     if not args.dry_run and tagged > 0:
         print(f"  Keywords written to IPTC + XMP + HierarchicalSubject")
         print(f"  → Import into Lightroom: Metadata → Read Metadata from Files")

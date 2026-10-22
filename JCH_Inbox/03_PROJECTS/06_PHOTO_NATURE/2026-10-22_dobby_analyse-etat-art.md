@@ -24,22 +24,26 @@ mais « où ça casse en vrai ».
 
 ## 2. Les trois fragilités mesurées
 
-### 2.1 Le cache est alimenté uniquement dans un mode secondaire (bug confirmé)
+### 2.1 Le cache n'est pas alimenté en `--dry-run` (diagnostic corrigé)
 
-`keyword_cache.json` contient **1 entrée**, alors que le projet référence
-**116 fichiers indexés**. En lisant le code (lignes 426 et 516), la cause est
-identifiée :
+> ⚠️ **Correction du 2026-10-22 (après lecture complète du fichier)** : ma
+> première lecture annonçait que le cache n'était jamais écrit hors
+> `--template`. C'était **faux** — la ligne 528 écrit bien le cache dans le
+> chemin normal. Le vrai mécanisme est ci-dessous.
 
-- ligne **426** : `cache[fingerprint] = {...}` — dans la branche `--template`
-- ligne **516** : même chose, seconde branche
-- **le chemin normal (flatten → keywords IPTC) n'écrit JAMAIS dans le cache**
+`keyword_cache.json` contient **1 entrée** pour **116 fichiers indexés**. Cause réelle :
 
-Autrement dit, le cache ne sert qu'aux utilisateurs du mode `--template`,
-jamais à l'usage courant. Chaque passage en mode normal rejoue donc
-l'intégralité de l'inférence.
+- ligne **528** : `cache[fingerprint] = {...}` dans la branche normale ✅
+- ligne **574** : `if not args.dry_run: save_cache(cache)` — **le cache n'est
+  persisté que si ce n'est pas un dry-run**
 
-→ **Fluidité** : sur 500 photos à ~18 s, c'est 2h30 qui pourraient être 10 min.
-→ **Correctif** : une ligne à ajouter dans la branche normale. Trivial.
+Donc : un usage en `--dry-run` (mode recommandé pour vérifier avant d'écrire)
+**ne mémorise rien**. Le dry-run puis le run réel refont deux fois le travail.
+Et si l'usage réel est rare, le cache ne se remplit jamais.
+
+→ **Fluidité** : sur 500 photos à ~18 s, 2h30 rejouées à chaque passage.
+→ **Recommandation** : persister le cache aussi en dry-run, sous une clé
+distincte (`dry_run: true`), pour que la vérification serve vraiment.
 
 ### 2.2 Une seule tentative, aucune reprise
 
