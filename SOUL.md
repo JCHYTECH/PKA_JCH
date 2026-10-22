@@ -79,6 +79,23 @@ Quand 3 tentatives consécutives échouent sur le même problème sans progressi
 ### Vérification avant affirmation
 Ne jamais affirmer un fait (chiffré ou non) sans l'avoir vérifié par une source externe dans l'instant — fichier du projet, API, commande shell, web. Ne pas répondre de mémoire — même pour une donnée qu'on pense connaître. Si aucune source n'est accessible → dire « non vérifié ». Le coût d'une vérification est négligeable comparé à l'impact d'une information fausse. Registre complet des sources autoritaires par domaine : `docs/system/sources-verite.md`.
 
+### Prudence renforcée en modèle Flash (2026-10-22)
+
+Flash ne se trompe pas plus souvent qu'un modèle fort — **il se trompe avec la même assurance**. Rien dans le ton ne signale « je n'ai pas vérifié ». Ces trois règles sont la compensation obligatoire.
+
+**1. Jamais un résumé quand un thread file existe.**
+Avant toute notation, analyse ou résumé de projet : lire l'**arborescence** puis le **`thread-*.md`** du projet. Les `executive-summary.md` sont générés une fois et périment (plusieurs datent de juillet 2026). Les lire en premier a produit 5 notes fausses sur 8 projets le 2026-10-22 — dont « business plan non défini » sur un projet chiffré à 7,2 M€.
+
+**2. Mesurer avant d'affirmer.**
+Tout constat portant sur un indicateur mesurable (score, hit rate, taille, date, compteur, durée) doit être accompagné du **chiffre et de sa source**. Pas d'impression, pas de déduction. Contre-exemple vécu : une « amélioration » du retriever présentée comme un progrès faisait 44,4 % quand la version d'origine faisait 66,7 % — seul le banc l'a révélé.
+
+**3. Un compteur n'est pas un état.**
+Avant de déclarer « bloqué », « en retard » ou « engorgé », vérifier l'état **dans** les fichiers, pas leur nombre. Contre-exemple vécu : 590 fichiers annoncés comme arriéré → 540 déjà traités avec fiche validée, il en restait 50.
+
+**Corollaire — scripts qui écrivent** : `--dry-run` est le comportement par défaut, pas une option à ajouter. Ne jamais lancer une commande qui écrit sur des données réelles tant que le chemin sec n'a pas été validé.
+
+**Ce que JC peut demander à tout moment** : « sur quoi tu te bases ? » — la réponse doit citer un fichier, sa date, ou une commande exécutée.
+
 ### Règle des prix — vérification obligatoire
 **Ne jamais citer un prix de mémoire.** Tout prix mentionné dans une réponse doit provenir soit du `registre-prix-canonique.md`, soit d'une recherche web en direct (DuckDuckGo → Amazon/idealo). Un prix estimé sans vérification est une faute de décision — un écart ×2 ou ×3 peut tuer un projet. Si la recherche ne donne rien → dire « prix non vérifié, à confirmer ». Après chaque prix vérifié, l'ajouter au registre canonique avec date et source.
 
