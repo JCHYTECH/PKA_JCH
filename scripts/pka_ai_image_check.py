@@ -346,6 +346,17 @@ def main() -> int:
             print(f"{r['name']}: {r.get('verdict','ERREUR')} "
                   f"(confiance {r.get('confidence','—')})")
 
+    # ── Hook de rappel (décision JC 2026-10-22) ──────────────────
+    # Trace l'usage et affiche le rappel sur stderr (jamais sur stdout,
+    # pour ne pas casser --json). Ne doit jamais faire échouer l'outil.
+    try:
+        import sys as _sys
+        _sys.path.insert(0, str(PKA_ROOT / "scripts"))
+        from ai_image_check_hook import record_and_remind
+        record_and_remind(invocation="pka_ai_image_check", n_files=len(files))
+    except Exception:
+        pass
+
     report = {"generated": datetime.now().isoformat(timespec="seconds"),
               "model": MODEL_NAME, "results": results}
 
