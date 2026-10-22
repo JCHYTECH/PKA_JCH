@@ -9,11 +9,11 @@
 | # | Projet | Avancement |
 |---|--------|-----------|
 | 1 | `01_AI_IT_TOOLS` | **8/10** |
-| 2 | `02_ARTEON` / WildLens | **4/10** |
-| 3 | `03_WILDNEXUS` | **3/10** |
+| 2 | `02_ARTEON` / WildLens | **3/10** |
+| 3 | `03_WILDNEXUS` | **5/10** |
 | 4 | `05_PHOTO_AI_JURY` | **7/10** |
-| 5 | `06_PHOTO_NATURE` | **8/10** |
-| 6 | `07_TRAVELS` | **4/10** |
+| 5 | `06_PHOTO_NATURE` | **7/10** |
+| 6 | `07_TRAVELS` | **7/10** |
 | 7 | `08_VETALYX` | **6/10** |
 | 8 | `11_IOT` | **6/10** |
 
@@ -130,6 +130,24 @@
 - Installation complète dans le van (deadline 15/12/2026)
 
 **Avancement** : **6/10** — HA M5 opérationnel, hardware van quasi complet, RPi 5 boot résolu (HAOS 18.3). Reste l'assemblage + capteurs Zigbee + intégration van (**deadline 15/12**).
+
+---
+
+## ⚠️ Re-vérification du 2026-10-22
+
+Ce résumé a été **re-vérifié** après une première passe erronée (lecture des
+`executive-summary.md` datés de juillet au lieu des thread files à jour).
+4 notes corrigées : ARTEON 4→3, WILDNEXUS 3→5, PHOTO_NATURE 8→7, TRAVELS 4→7.
+VETALYX 4→6 (voir son entrée). Détail : `2026-10-22_dobby_reverification-projets.md`.
+
+**Trois constats transverses** :
+
+1. **Les thread files ne sont pas tenus à jour** — 4 projets sur 8 ont 3+ mois
+   de retard (AI_TOOLS, ARTEON, PHOTO_AI_JURY : 03/07 ; WILDNEXUS : 05/07).
+2. **`07_TRAVELS` n'a aucun thread file** malgré 729 fichiers — le projet le
+   plus volumineux est le moins piloté.
+3. **Trois deadlines contradictoires pour l'IOT Van** : 1er novembre (thread),
+   7 août (thread, vue d'ensemble), 15 décembre (etat-projets.md du 19/10).
 
 ---
 
