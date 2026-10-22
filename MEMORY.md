@@ -2,6 +2,8 @@
 > Connaissances accumulées, décisions, chronologie des événements.
 > Dernière mise à jour : 2026-10-22 — boucle mémoire autonome (auto-review LLM)
 
+- [2026-10-22] [Veille — Outils] : Kiro (Renaud Dékode) évalué — front-end navigateur multi-modèles (API + local Ollama/LM Studio), non intégré (pas d'agent, silo IndexedDB, pas de pont vers team.db/MEMORY.md).
+
 - [2026-10-21] [VETALYX — Mail Chine] : Configuration du gatekeeper Gmail pour les partenaires chinois — forward manuel vers Dobby en place, whitelist à étendre pour l'automatisation (adresse chinoise manquante).
 
 - [2026-10-20] [GIT — Purge historique] : 88 Go → 617 Mo via `filter-repo --strip-blobs-bigger-than 10M`. Backup `.git.bak`, push force nécessaire.
