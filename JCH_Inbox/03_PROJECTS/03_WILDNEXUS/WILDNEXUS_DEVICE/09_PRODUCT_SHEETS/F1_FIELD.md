@@ -18,13 +18,13 @@ Le FIELD est le **produit d'entrée** WildNexus. Un nœud caméra autonome, robu
 |-----------|-----------|--------|
 | **MCU** | ESP32-S3 WROOM-1 N8R8 | 8 MB Flash, 8 MB PSRAM, Wi-Fi désactivé hors config |
 | **Caméra** | OV5640 DVP 5MP | M12 mount, NoIR, lentille 2.8mm f/1.8, champ 90-100° |
-| **Détection** | PIR Panasonic EKMB1203111 | 2-3 µA, FOV 86°H × 84°V, range ~5 m |
+| **Détection** | PIR Panasonic EKMB1303111 | 2-3 µA, FOV 86°H × 84°V, range ~5 m |
 | **IR nocturne** | 4× LED Vishay VSLB3940 940nm | Invisible faune, pulsé < 5s |
 | **Audio** | 2× Knowles SPH0645LM4H-B | I2S MEMS, 65 dB SNR, 20Hz-10kHz, spatialisation stéréo |
 | **Stockage** | microSD SanDisk Extreme 32GB | ~50 000 images (5MP JPEG), Swissbit pSLC en option terrain |
 | **Radio** | LoRa SX1262 (RAK3172) | EU868 P2P, SF7-SF12, 500m-3km forêt |
 | **Énergie** | 8× AA (4S2P) | Lithium L91 : 7 000 mAh, NiMH Eneloop Pro : 5 000 mAh |
-| **Régulation** | TPS62840DLCR | Buck 60 nA Iq, 3.0V out, 750 mA |
+| **Régulation** | TPS62840DLCR | Buck 60 nA Iq, 3.3V out, 750 mA |
 | **Autonomie** | 60 jours minimum garanti | 10 événements/jour, Lithium L91, -10°C à +45°C |
 | **Boîtier** | Hammond 1555 modifié IP67 | ABS, 150×100×60 mm, trappe piles, fenêtre optique anti-buée |
 | **Fixation** | Sangle arbre | Supports ronds 10-40 cm diamètre |
@@ -56,7 +56,7 @@ FIELD ──LTE-M burst────→ STATION (image 5MP, ~3-5 Mo)
 |-----------|-----|-----------|-------|
 | ESP32-S3-WROOM-1-N8R8 | 1 | ~4.00€ | 4.00€ |
 | OV5640 DVP + M12 lens | 1 | ~8.00€ | 8.00€ |
-| PIR EKMB1203111 | 1 | ~18.00€ | 18.00€ |
+| PIR EKMB1303111 | 1 | ~18.00€ | 18.00€ |
 | LED IR VSLB3940 | 4 | ~0.37€ | 1.48€ |
 | SPH0645LM4H-B | 2 | ~3.00€ | 6.00€ |
 | RAK3172 LoRa module | 1 | ~8.00€ | 8.00€ |

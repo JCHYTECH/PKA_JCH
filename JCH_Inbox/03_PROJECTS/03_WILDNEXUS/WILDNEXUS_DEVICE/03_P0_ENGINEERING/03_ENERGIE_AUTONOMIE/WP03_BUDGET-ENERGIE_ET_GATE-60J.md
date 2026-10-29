@@ -100,7 +100,7 @@ autonomie(jours) = Capacité_mAh / mq_jour
 3. **SOP-04** : réveil court, 20 cycles.
 4. **SOP-05** : cycle événement simulé (11 s) → charge/événement.
 5. Reporter dans le **modèle d'autonomie** + grille Go/No-Go → verdict.
-6. Si No-Go : arbitrage avec [[Forge]]/[[Castor]] (optimisation i2s/caméra/rail) — **avant** toute optimisation « à l'aveugle** (principe WP03 : mesurer d'abord).
+6. Si No-Go : arbitrage avec [[Forge]]/[[Castor]] (optimisation i2s/caméra/rail) — **avant** toute optimisation « à l'aveugle »** (principe WP03 : mesurer d'abord).
 
 ---
 
