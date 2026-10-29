@@ -1,97 +1,75 @@
-# WildNexus — Executive Summary
+# WildNexus — Résumé exécutif (v2)
 
-> Document externe — investisseurs, partenaires, banquiers.
-> Généré le 2026-07-03 par Dobby 🦉. Version 1.0.
+> **Document externe** — investisseurs, partenaires, banques.
+> **Version 2.0 — 2026-10-29.** Remplace la v1.0 (2026-07-03), archivée dans `HISTORIQUE/executive-summary-v1_2026-07-03.md`.
+> **Aligné sur le périmètre P0 réel** (`WILDNEXUS_P0_SCOPE_LOCK.md` v0.4). Document de référence interne : `01_FOUNDATION/WILDNEXUS_DOSSIER_TECHNICO-COMMERCIAL_V0.md` (la « bible V0 »).
 
 ---
 
 ## En une phrase
 
-**WildNexus est un réseau de caméras-pièges autonomes à intelligence embarquée qui identifie et cartographie la faune en temps réel, sans infrastructure cloud.**
-
----
+**WildNexus est un nœud caméra-piège autonome à intelligence embarquée qui détecte la présence animale et transmet ses alertes en radio longue portée, sans abonnement cellulaire — un instrument d'observation de terrain à coût maîtrisé, ouvert et standardisé.**
 
 ## Le problème
 
-Les caméras-pièges traditionnelles capturent des milliers d'images — 90% de faux déclenchements (vent, végétation). Un chercheur ou un gestionnaire de réserve passe des **heures à trier manuellement**. Résultat : les données exploitables arrivent trop tard, ou jamais.
+Les caméras-pièges classiques produisent **75 à 90 % de faux déclenchements** (vent, végétation). Le tri manuel paralyse chercheurs et gestionnaires de réserves, et la récupération des données par visites terrain est lente et perturbante. Les solutions existantes sont soit fermées et sans réseau (grand public), soit lourdes et coûteuses (institutionnel).
 
----
+## La solution — périmètre P0 (ce qui est réellement engagé)
 
-## Notre solution
+Un nœud autonome (ESP32-S3 + caméra OV5640 + PIR + 2 micros MEMS) qui :
+- **capture** jour et nuit (déclenchement PIR + filtre embarqué **binaire animal / non-animal**) ;
+- **enregistre** l'audio local (clips WAV courts + descripteurs spectraux) ;
+- **transmet** par **LoRa** (P2P, 500 m-3 km forêt) — **zéro abonnement cellulaire** ;
+- **stocke** en local (microSD, métadonnées standardisées Camtrap-DP) ;
+- **tient ≥ 60 jours** sur piles AA (L91) ;
+- **boîtier IP67**.
 
-Un nœud autonome (ESP32-S3 + caméra + IA embarquée + LoRa) qui :
-- **Capture** — déclenchement intelligent (PIR + analyse IA locale)
-- **Filtre** — classification embarquée (espèce, comportement)
-- **Transmet** — radio longue portée LoRa (5-15 km), zéro abonnement cellulaire
-- **Alimente** — panneau solaire intégré, autonomie multi-saisons
+La Station (gateway) locale consolide et expose les données ; elle est vendue séparément.
 
-Les données remontent à une **Station** locale (Raspberry Pi) qui consolide et expose l'information via un dashboard.
+## Ce qui n'est PAS dans P0 (roadmap P1+)
 
----
+Reconnaissance d'espèce (BirdNET/SpeciesNet), autonomie solaire, multi-capteurs, transfert d'image. Ces fonctions sont **planifiées**, pas engagées dans le prototype P0. (La communication externe doit refléter cette distinction.)
 
-## Le marché
+## Le marché et la demande
 
-- **Marché primaire** : réserves naturelles, parcs nationaux, associations de protection (France : 350+ réserves, 11 parcs nationaux)
-- **Marché secondaire** : recherche académique (écologie, éthologie, bioacoustique)
-- **Budget typique** : 5 000-50 000€ par site de suivi faune
-- **Concurrence** : Reconyx, Bushnell (caméras classiques, pas d'IA), Arducam (modules, pas de système intégré)
-- **Différenciation** : IA embarquée + LoRa + solaire = **zéro intervention humaine après installation**
+- Marché des systèmes de caméras-pièges : ~**1,1 Md$ (2025) → ~2,2 Md$ (2034)**, CAGR ~7,7 % (ordre de grandeur, sources hétérogènes).
+- Le vrai moteur est **réglementaire** : **CSRD** (ESRS E4 biodiversité), **TNFD**, **Biodiversity Net Gain** britannique (suivi obligatoire 30 ans), **EU Nature Credits** (cadre 2026) → demande de **données de biodiversité continues et auditables**.
+- Segments : bureaux d'études et acheteurs de conformité (co-primaire), réserves/parcs (co-primaire), recherche (secondaire).
 
----
+## Différenciation
 
-## Gamme produit
-
-| Produit | Prix cible | Phase | Description |
-|---------|-----------|-------|-------------|
-| **WildNexus FIELD** | 149-179€ | P0 (2026) | Nœud caméra-piège IA + LoRa + solaire |
-| **WildNexus FIELD+** | 299-349€ | P1 (2027) | Multi-capteurs (caméra + micro + météo) |
-| **WildNexus STATION** | 249-299€ | P1 | Hub local de réception et dashboard |
-| **WildNexus STATION+** | 599-799€ | P1+ | Station renforcée multi-nœuds |
-| **Nexus Acoustic** | 249-299€ | P1 | Station bioacoustique (chauves-souris, insectes, oiseaux) |
-
----
+- **Zéro abonnement data** (LoRa, pas de SIM) — là où TrailGuard (~799 $) et Nightjar facturent cellulaire/satellite.
+- **Prix nœud** cible 149-179 € · **open source** (hardware + firmware) · **conformité EU** · **données standardisées**.
+- **Nuance TCO** : le prix nœud seul n'inclut pas la Station ; le coût système utile (nœud + station) doit être communiqué honnêtement (~400-480 €), vs concurrents 799 $ + abonnement ≥180 $/an.
 
 ## Modèle économique
 
-- **Vente matériel** : 149-799€ par unité (marge estimée 45-55%)
-- **Licence logicielle** : dual-licensing (open source gratuit pour usage non commercial, licence payante pour usage professionnel/gouvernemental)
-- **Marché cible an 3** : 5 000 unités/an → CA matériel ~1M€ + licences
-
----
+- **Matériel** : nœud FIELD (149-179 €) + Station (249-299 €) ; gamme FIELD+/STATION+ en P1.
+- **Licence** : hardware CERN OHL v2 ; logiciel AGPL v3 + licence commerciale (dual).
+- **Services (relais de croissance)** : monitoring-as-a-service (HaaS), **rapports de conformité biodiversité**, data/API, installation/formation.
+- **Économie unitaire (réaliste)** : BOM production **~92,45 €**/nœud → marge brute ~40 % avant coûts complets (assemblage, test, certification, logistique, support). Modèle financier détaillé à finaliser.
 
 ## Roadmap
 
 | Phase | Période | Jalon |
-|-------|---------|-------|
-| **M-01** | ✅ Complété | Architecture gelée |
-| **M-02** | Q3 2026 | Prototype banc — test harness caméra (15 juillet) |
-| **M-03** | Q4 2026 | EVT validé — prototype terrain |
-| **M-04** | Q1 2027 | Publication open source + pré-séries |
+|---|---|---|
+| M-01 | ✅ | Architecture gelée |
+| M-02 | Q3 2026 | Prototype banc |
+| M-03 | Q4 2026 | **EVT terrain — autonomie 30 j + extrapolation 60 j** |
+| M-04 | Q1 2027 | Open source + pré-séries |
 
----
+## Budget P0
+
+Enveloppe **1 000 €** — **~758 € engagé/prévu, réserve ~242 €**. (Prototype 2 nœuds DevKit + outillage PPK2 ; ne pas confondre avec le BOM de production 92,45 €/nœud.)
 
 ## Propriété intellectuelle
 
-- Marque « WildNexus » déposée (JCHYTECH)
-- Hardware open source (CERN OHL v2)
-- Logiciel dual-license (AGPL v3 / licence commerciale)
-- Brevets : analyse FTO en cours
-
----
+Marque WildNexus™ (JCHYTECH) · hardware open source (CERN OHL v2) · logiciel dual-licence (AGPL v3 / commerciale) · analyse FTO en cours (à externaliser avant partenariat/levée).
 
 ## L'équipe
 
-- **Jean-Claude Havaux** — Fondateur, zoologiste (ULiège), photographe naturaliste
-- **PKA_JCH** — Équipe de 31 spécialistes IA pilotée par Dobby 🦉 (orchestrateur IA)
+Jean-Claude Havaux — fondateur, zoologiste (ULiège), photographe naturaliste · JCHYTECH · équipe PKA_JCH (31 spécialistes IA orchestrés par Dobby 🦉).
 
 ---
 
-## Budget actuel
-
-- **Dépensé à date** : ~280€ (composants prototype M-02)
-- **À commander** : ~279€ (panier Mouser — LoRa + connectique)
-- **Budget total P0** : 1 000€
-
----
-
-*Document destiné à un public externe. Version détaillée : `01_FOUNDATION/wildnexus-founding-document-v0.2.md`*
+*Résumé externe aligné P0. Pour le détail technique, financier et la revue expert : `01_FOUNDATION/WILDNEXUS_DOSSIER_TECHNICO-COMMERCIAL_V0.md`.*
