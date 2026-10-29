@@ -3,5 +3,6 @@
   "templater-obsidian",
   "quickadd",
   "obsidian-linter",
-  "obsidian-git"
+  "obsidian-git",
+  "terminal"
 ]

@@ -123,3 +123,7 @@ MEMORY.md.bak-*
 
 # pka-memory-eval — sorties de run
 JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/memory-eval/run-*.json
+
+# Obsidian — binaires plugins & backups locaux
+.obsidian/plugins/
+.obsidian/community-plugins.json.bak

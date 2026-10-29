@@ -5,5 +5,14 @@
   "newFileFolderPath": "JCH_Inbox/00_INBOX",
   "attachmentFolderPath": "wiki/images",
   "alwaysUpdateLinks": true,
-  "showUnsupportedFiles": true
+  "showUnsupportedFiles": true,
+  "userIgnoreFilters": [
+    "bin/",
+    "scripts/",
+    "tmp/",
+    "graphify-out/",
+    "requirements.txt",
+    "skills-lock.json",
+    "session_*.json"
+  ]
 }
