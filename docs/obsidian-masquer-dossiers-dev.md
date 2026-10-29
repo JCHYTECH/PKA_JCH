@@ -5,8 +5,9 @@
 ## Ce qui est masqué
 - **Dossiers** : `bin/`, `scripts/`, `tmp/`, `graphify-out/`.
 - **Fichiers racine** : `requirements.txt`, `skills-lock.json`, `jchavauxm5.code-workspace`, `session_*.json`, `*.md.bak`.
+- **Pointeurs / bootstrap outils** : `AGENTS.md`, `DEEPSEEK.md`, `ADAPTER-PROMPT.md` (usage = terminal + DeepSeek uniquement ; ce ne sont pas des notes).
 
-Tout le reste reste visible : `JCH_Inbox/`, `TEAM/`, `TEAM_Inbox/`, `docs/`, `wiki/`, `PHOTO/`, `JCH_PRIVATE/` + notes racine (`AGENTS`, `MEMORY`, `SOUL`, `USER`…).
+Tout le reste reste visible : `JCH_Inbox/`, `TEAM/`, `TEAM_Inbox/`, `docs/`, `wiki/`, `PHOTO/`, `JCH_PRIVATE/` + notes racine (`MEMORY`, `SOUL`, `USER`…).
 
 ## Comment c'est implémenté
 1. **Snippet CSS** : `.obsidian/snippets/hide-dev-folders.css` (règles `display:none` via `:has()` sur `data-path`).

@@ -6,30 +6,10 @@
       "tool_label": "(voir ton fichier stub)",
       "model_hint": "(modèle en cours)"
     },
-    "CLAUDE.md": {
-      "title": "CLAUDE.md — PKA_JCH System Pointer (Claude)",
-      "tool_label": "Claude (Codex CLI / Claude Desktop)",
-      "model_hint": "Claude 4.x (Sonnet / Opus)"
-    },
-    "GEMINI.md": {
-      "title": "GEMINI.md — PKA_JCH System Pointer (Gemini CLI)",
-      "tool_label": "Gemini CLI",
-      "model_hint": "Gemini 2.5 Pro / Gemma (local)"
-    },
     "DEEPSEEK.md": {
       "title": "DEEPSEEK.md — PKA_JCH System Pointer (DeepSeek API)",
       "tool_label": "DeepSeek API",
       "model_hint": "deepseek-v4 / deepseek-reasoner"
-    },
-    "QWEN.md": {
-      "title": "QWEN.md — PKA_JCH System Pointer (Qwen via OpenRouter)",
-      "tool_label": "Qwen via OpenRouter",
-      "model_hint": "qwen2.5-coder:14b / qwen3.5 / qwen3:30b-a3b"
-    },
-    "KIMI.md": {
-      "title": "KIMI.md — PKA_JCH System Pointer (Kimi K2.7 via Moonshot API)",
-      "tool_label": "Kimi K2.7 (Moonshot API)",
-      "model_hint": "kimi-k2.7-code"
     }
   }
 }

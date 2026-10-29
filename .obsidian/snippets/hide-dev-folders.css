@@ -18,3 +18,10 @@
 .nav-file:has(> .nav-file-title[data-path$=".md.bak"]) {
   display: none !important;
 }
+
+/* Pointeurs / bootstrap outils (usage : terminal + DeepSeek uniquement) */
+.nav-file:has(> .nav-file-title[data-path="AGENTS.md"]),
+.nav-file:has(> .nav-file-title[data-path="DEEPSEEK.md"]),
+.nav-file:has(> .nav-file-title[data-path="ADAPTER-PROMPT.md"]) {
+  display: none !important;
+}
