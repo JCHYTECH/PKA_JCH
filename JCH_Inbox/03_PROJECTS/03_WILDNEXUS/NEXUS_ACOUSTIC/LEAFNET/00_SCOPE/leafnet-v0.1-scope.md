@@ -36,7 +36,7 @@ LeafNet est le pendant végétal d'InsectNet. Là où InsectNet classifie les or
 - **Coût proto** : ~32 € (Mouser 26.82 € + passifs 5 €)
 - **PPK2** : profilage énergétique obligatoire avant déploiement — procédure documentée dans `99_REFERENCES/sonification-iot-vegetal-esp32.md`
 
-> Voir fiche concept complète : [`WILDNEXUS/03_P0_ENGINEERING/01_ARCHITECTURE_SYSTEME/2026-06-22_concept-noeud-bioelectrique.md`](../../03_WILDNEXUS/03_P0_ENGINEERING/01_ARCHITECTURE_SYSTEME/2026-06-22_concept-noeud-bioelectrique.md)
+> Voir fiche concept complète : [`WILDNEXUS_DEVICE/03_P0_ENGINEERING/01_ARCHITECTURE_SYSTEME/2026-06-22_concept-noeud-bioelectrique.md`](../../../WILDNEXUS_DEVICE/03_P0_ENGINEERING/01_ARCHITECTURE_SYSTEME/2026-06-22_concept-noeud-bioelectrique.md)
 
 ### 2.2 Firmware
 
