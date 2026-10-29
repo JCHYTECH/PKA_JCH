@@ -9,7 +9,7 @@
 
 | Sous-projet | Périmètre | Rôle dans la chaîne |
 |-------------|-----------|---------------------|
-| **WILDNEXUS/** | Device P0 terrain (ESP32-S3, caméra PIR, micros stéréo, LoRa) | **Capture** l'audio localement |
+| **WILDNEXUS_DEVICE/** | Device P0 terrain (ESP32-S3, caméra PIR, micros stéréo, LoRa) | **Capture** l'audio localement |
 | **INSECTNET/** | Classification acoustique des orthoptères (~30 spp, InsectNet-CNN) | **Classe** les insectes |
 | **NEXUS_ACOUSTIC/** | BirdNET (oiseaux 200 spp), TweetyBERT, AmphibianNet, LEAFNET | **Classe** oiseaux/amphibiens + bioélectrique |
 
@@ -25,7 +25,7 @@
        └──────────────► NEXUS_ACOUSTIC/ → BirdNET / TweetyBERT / SoundPlot / AmphibianNet
 ```
 
-Les ADR (dans `WILDNEXUS/02_DECISIONS/ADR/`) définissent le **contrat amont**
+Les ADR (dans `WILDNEXUS_DEVICE/02_DECISIONS/ADR/`) définissent le **contrat amont**
 qui alimente les deux pipelines de classification en aval.
 
 ## Outils partagés (déjà centralisés au niveau repo)
@@ -55,7 +55,7 @@ qui alimente les deux pipelines de classification en aval.
 
 ## Liens
 
-- Index device : `WILDNEXUS/INDEX.md`
+- Index device : `WILDNEXUS_DEVICE/INDEX.md`
 - Index InsectNet : `INSECTNET/thread-insectnet.md`
 - Index Nexus : `NEXUS_ACOUSTIC/INDEX.md`
-- Gouvernance P0 : `WILDNEXUS/00_GOVERNANCE/`
+- Gouvernance P0 : `WILDNEXUS_DEVICE/00_GOVERNANCE/`
