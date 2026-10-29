@@ -1,139 +1,79 @@
 # IOT — Index projet
 
-> Projet créé le 2026-06-06 par [[Dobby]] 🦉
-> Réorganisé le 2026-06-22 — 3 sous-projets distincts
+> Projet ombrelle domotique JCH. Réorganisé le 2026-10-29 (bible V0 + nettoyage structure).
+> **Source de vérité opérationnelle : `thread-iot.md`** (le reste s'aligne dessus).
 
----
+## ⭐ Point d'entrée
 
-## Description
+- 🟢 **[IOT_DOSSIER_TECHNIQUE_V0.md](IOT_DOSSIER_TECHNIQUE_V0.md)** — **LA BIBLE** : référentiel technique consolidé + revue experts internes (Forge/Araignée/Atlas). *À lire en premier.*
+- **[thread-iot.md](thread-iot.md)** — living doc : état opérationnel à jour (2026-10-22).
+- **[executive-summary.md](executive-summary.md)** — résumé externe v2 (aligné, sans surpromesse).
 
-Projets IoT (Internet of Things) transverses de JCH : vanlife, serre, maison off-grid. Stack technique partagée : RPi 5, Home Assistant, Zigbee, Tailscale.
+## Nature & périmètre
 
----
+- **Infrastructure personnelle** (pas de commercialisation).
+- **4 nœuds** : `M5 Docker` (base/dev, Belgique) · `RPi 5 Esneux` (serre + maison) · `RPi 5 Van Lupo` (P0) · `RPi 5 Italie` (planifié).
+- Autonome par site · supervision iPhone via **Tailscale** · **zéro cloud / zéro abonnement**.
 
 ## Sous-projets
 
-| Projet | Hub | Lieu | Statut |
-|---|---|---|---|
-| [`iot-van/`](iot-van/) | RPi 5 dédié (12V DC-DC) | Westfalia Kelsey 2026 | Prototype banc |
-| [`iot-serre/`](iot-serre/) | RPi 5 partagé (secteur + UPS) | Esneux | Ébauche — BOM prêt |
-| [`iot-maison/`](iot-maison/) | Même RPi que serre | Esneux | Ébauche long terme |
+| Projet | Hub / lieu | Statut |
+|---|---|---|
+| [`iot-van/`](iot-van/) | RPi 5 voiture (12V) — Westfalia Kelsey « Lupo » | 🔴 **P0 — deadline 15/12/2026** |
+| [`iot-serre/`](iot-serre/) | RPi 5 Esneux | ⚪ gelé (reprise post-van) |
+| [`iot-maison/`](iot-maison/) | même RPi Esneux | ⚪ ébauche long terme |
+| [`_shared/`](_shared/) | — | ressources partagées (hub, procurement, capteurs) |
 
----
-
-## Architecture globale
-
-```
-┌─────────────────────────────────────────────────────┐
-│  Esneux — Hub RPi 5 (secteur + UPS)                 │
-│  ┌──────────────┐  ┌──────────────────┐             │
-│  │ iot-serre/   │  │ iot-maison/      │             │
-│  │ Zigbee       │  │ Zigbee + LoRa    │             │
-│  │ Capteurs     │  │ Capteurs pièces  │             │
-│  │ Arrosage     │  │ Énergie Victron  │             │
-│  └──────────────┘  └──────────────────┘             │
-│         ↕ même HA, même Zigbee, même dashboard      │
-└─────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────┐
-│  Van — Hub RPi 5 (12V DC-DC + X1201 UPS)            │
-│  ┌──────────────┐                                   │
-│  │ iot-van/     │                                   │
-│  │ Zigbee       │                                   │
-│  │ Capteurs     │                                   │
-│  │ Solaire      │                                   │
-│  └──────────────┘                                   │
-│         ↕ HA dédié, Tailscale                       │
-└─────────────────────────────────────────────────────┘
-```
-
----
-
-## Structure du projet
+## Structure réelle (2026-10-29)
 
 ```
 11_IOT/
-├── INDEX.md                          ← Ce fichier
-├── executive-summary.md              ← Résumé exécutif
-├── thread-iot.md                     ← Living document
-├── iot-van/                          ← Projet vanlife Lupo 🐺
-│   ├── BOM-VANLIFE.md                ← BOM maître
-│   ├── scenarios-algorithmes-vanlife.md ← Scénarios & algorithmes
-│   ├── ASSEMBLAGE-RPi5-VANLIFE.md    ← Guide assemblage hardware
-│   ├── PROCEDURE-APPAIRAGE-ZIGBEE-2026-10-05.md ← Appairage capteurs Zigbee
-│   ├── docs/                         ← Documentation générale
-│   │   ├── stylevan-equinox4-cahier-technique-iot.md
-│   │   ├── rpi-vanlife-guide-complet.md
-│   │   ├── rpi-vanlife-mode-emploi.md
-│   │   └── synthese-vanlife-iot.md
-│   ├── briefs/                       ← Mandats, briefs, documents fondateurs
-│   ├── rpi-config/                   ← Fichiers config OS RPi 5 (.txt)
-│   ├── specs/                        ← Specs composants (INMP441, etc.)
-│   ├── adr/                          ← Architecture Decision Records
-│   ├── ds300-tap/                    ← Interface CBE DS300
-│   ├── carplay/                      ← Intégration CarPlay
-│   ├── archive/                      ← Documents obsolètes
-│   ├── assets/                       ← Captures, images
-│   └── 99_REFERENCES/                ← Références externes
-├── iot-serre/                        ← Projet serre Esneux
-├── iot-maison/                       ← Projet maison Esneux
-├── _shared/                          ← Ressources partagées
-│   ├── panier-amazon-van-serre.html  ← Panier groupé (v3)
-│   ├── convergence-van-serre-capteurs.md
-│   ├── hub-esneux.md
-│   ├── detecteur-niveau-liquide/
-│   └── procurement-register.md
-├── PROTOCOLES/                       ← Protocoles de déploiement
-└── 99_INBOX_NOTES/                   ← Notes brutes archivées
+├── INDEX.md                        ← ce fichier
+├── IOT_DOSSIER_TECHNIQUE_V0.md      ← la bible
+├── thread-iot.md                    ← living doc (source vérité)
+├── executive-summary.md             ← résumé externe
+├── iot-van/                         ← P0 Lupo
+│   ├── ASSEMBLAGE-RPi5-VANLIFE.md · BOM-VANLIFE.md · scenarios-algorithmes-vanlife.md
+│   ├── OPERATIONS-CAN-OBD.md · Liste/procédures/DIAGNOSTIC/POSTMORTEM (docs 2026-10)
+│   ├── adr/ (ADR-001→006) · specs/ · ds300-tap/ · carplay/ · dashboard/
+│   ├── enclosure/ · rpi-config/ · securite/obd/ · 99_REFERENCES/westfalia-kelsey/
+│   └── passe-utile/{docs,briefs,boms}   (anciens docs consolidés)
+├── iot-serre/ · iot-maison/
+├── _shared/                        ← hub-esneux, procurement, paniers, convergence
+├── PROTOCOLES/progress.md
+├── guide installation HA/          ← guide (md/docx/pdf/png)
+└── HISTORIQUE/                     ← notes datées 2026-07, 99_INBOX_NOTES, taches-annulees, Instagram
 ```
 
-## Ressources partagées
+## État par site (source : thread 2026-10-22)
 
-| Fichier | Contenu |
+| Site | Statut |
 |---|---|
-| [`_shared/panier-amazon-van-serre.html`](_shared/panier-amazon-van-serre.html) | 🛒 Panier groupé Amazon (v4 : 33 articles, 282€) |
-| [`_shared/convergence-van-serre-capteurs.md`](_shared/convergence-van-serre-capteurs.md) | Plan d'achat groupé van + serre (v4 : 257€, 27 items) |
-| [`_shared/hub-esneux.md`](_shared/hub-esneux.md) | Infrastructure RPi 5 partagée serre + maison |
-| [`iot-van/BOM-VANLIFE.md`](iot-van/BOM-VANLIFE.md) | 📋 BOM maître IoT Vanlife (tous sous-projets) |
-| [`iot-van/ds300-tap/`](iot-van/ds300-tap/) | Interface passive ESP32 sur connecteur CBE DS300 |
+| **Van Lupo** | RPi boot OK (SD 256 Go, HAOS 18.3) ; NVMe retiré ; alim **X1205→X1200** (achat différé) ; WiCAN Pro **installé** ; SNZB-02DR2 appairé ; RUT240 4G en stock ; reste 7 capteurs (~88 €) + X1200 |
+| **Serre Esneux** | ⚪ gelé (post-van) — BOM 247 € prêt, hub Esneux 298 € |
+| **Maison Esneux** | ⚪ ébauche |
+| **Italie** | ⚪ planifié (RPi 5) |
+| **M5 Docker** | 🟢 base/dev opérationnelle |
 
----
+## Budget
 
-## Inventaire RPi — Tous projets
+- **Van** : ~1 026 € (BOM) — **reste réel court terme ≈ 150 €** (7 capteurs ~88 € + X1200 ~50-70 €). ⚠️ chiffres BOM (2026-07) périmés sur alim/stockage — voir bible §7.
+- **Hub Esneux** : ~298 € (RPi 5 8 Go + X1201 + X1001 + SSD 128 Go).
 
-| # | Projet | Modèle | Rôle | Alim | Statut |
-|---|---|---|---|---|---|
-| 1 | IOT Vanlife | RPi 5 4 Go | HA embarqué | DC-DC 12V + X1205 UPS + PV PI HAT | ✅ **Tout reçu** — voir [ASSEMBLAGE](iot-van/ASSEMBLAGE-RPi5-VANLIFE.md) |
-| 2 | IOT Esneux | RPi 5 8 Go | HA serre + maison | Secteur + X1201 UPS | 📋 BOM ~298 € |
-| 3 | NEXUS_ACOUSTIC | RPi 5 | BirdNET-Go 24/7 | Secteur + UPS | 📋 À planifier |
-| 4 | WildNexus P1 | RPi 5 | Base Nexus | À définir | 🔮 Prototype futur |
-| **Total** | | **4 RPi 5** | | | |
+## ⚠️ Chantiers bloquants (revue experts — cf. bible §16)
 
-> Décision 2026-06-22 : séparés pour le moment. Fusion Esneux possible (HA + BirdNET sur le même Pi).
-
----
-
-## Sous-systèmes partagés
-
-- [`detecteur-niveau-liquide/`](_shared/detecteur-niveau-liquide/SPEC-DETECTEUR-NIVEAU-HYDROSTATIQUE.md) — Sonde hydrostatique TL-136 + ESP32 + ADS1115 (serre — van utilise DS300 Tap)
-- [`iot-van/ds300-tap/`](iot-van/ds300-tap/SPEC-DS300-TAP.md) — Interface ESP32 sur connecteur CBE DS300 16 broches (vanlife)
-
-## Stack transverse
-
-- RPi 5 / ESP32-S3 / Home Assistant OS
-- Zigbee (Sonoff ZBDongle-E) + LoRa (extérieur)
-- Tailscale / WireGuard
-- Capteurs : Aqara, Sonoff, Ecowitt
-- Solaire : Victron VE.Direct/MQTT
-
----
+1. **`iot-van/ds300-tap/esphome-ds300.yaml`** : **GPIO8 utilisé 2×** (I²C SDA + relais) → à corriger avant flash.
+2. **DC-DC USB-C PD 5 A absent du BOM** (exigé ADR-001) → X1200 5,1 V/5 A inatteignable sans lui.
+3. **X1200 non vérifié** (datasheet, jauge I²C 0x32/0x36).
+4. **Canal Zigbee** : 15 recouvre Wi-Fi 6 → choisir canal hors 1/6/11 (ex. 25).
 
 ## Spécialistes
 
-- **Araignée 🕷️** — BOM serre, capteurs, ESPHome
-- **Atlas 🗺️** — Template projet, documentation
-- **Forge 🛡️** — Hardware, ADR-005 vanlife
+- **Araignée 🕷️** — Zigbee/Z2M, ESPHome, capteurs
+- **Forge 🛡️** — hardware, alimentation, ADR, CAN/OBD
+- **Atlas 🗺️** — documentation, synthèse, cohérence
+- **Vega** — architecture
 
 ---
 
-*Généré par Dobby 🦉 — 2026-06-22*
+*Généré par Dobby 🦉 — réorganisé 2026-10-29.*
