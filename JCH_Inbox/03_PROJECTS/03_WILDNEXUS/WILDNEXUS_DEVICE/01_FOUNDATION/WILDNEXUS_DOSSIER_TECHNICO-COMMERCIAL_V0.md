@@ -11,7 +11,7 @@
 
 > ⚠️ **Règle d'or** : ce dossier distingue systématiquement **P0 (engagé)** de **P1/P2 (vision)**. Toute promesse commerciale se lit à l'aune de cette distinction. La gouvernance « Satellite-Lite » prime : robustesse et vitesse avant optimum théorique.
 
-> 🔧 **Correctifs V0.2 (suite revue expert)** : (1) BOM corrigé de « <22 € » (erroné) à **92,45 €** (fiche F1, production 100 u.) ; (2) budget corrigé à **~758 € engagé / ~242 € réserve** ; (3) architecture énergie précisée (**8×AA 4S2P**, TPS62840 **3,0 V**) avec **alerte** sur le rail 3,0 V ; (4) distinction claire **zéro abonnement DATA ≠ abonnement SERVICE** ; (5) segmentation conformité promue en co-primaire. Voir §19 (revue des experts).
+> 🔧 **Correctifs V0.2 (suite revue expert)** : (1) BOM corrigé de « <22 € » (erroné) à **92,45 €** (fiche F1, production 100 u.) ; (2) budget corrigé à **~758 € engagé / ~242 € réserve** ; (3) architecture énergie précisée (**8×AA 4S2P**, TPS62840 **3,3 V**), décision WP03 (la fiche F1 disait 3,0 V — corrigé) ; (4) distinction claire **zéro abonnement DATA ≠ abonnement SERVICE** ; (5) segmentation conformité promue en co-primaire. Voir §19 (revue des experts).
 
 ---
 
@@ -24,7 +24,7 @@
 | **Nature** | Nœud caméra-piège autonome à déclenchement intelligent + radio longue portée ; plateforme distribuée à terme |
 | **Phase** | M-02 (prototype banc) — P0 |
 | **Budget P0** | Enveloppe 1 000 € — **~758 € engagé/prévu, réserve ~242 €** |
-| **Cœur technique P0 (F1 FIELD)** | ESP32-S3-WROOM N8R8 · OV5640 5MP NoIR + PIR Panasonic EKMB1203111 + 4× IR 940 nm · 2× Knowles SPH0645LM4H-B · IA binaire (Edge Impulse FOMO, <100 ms) · LoRa SX1262/RAK3172 EU868 P2P · **8× AA (4S2P)** L91 · buck TPS62840DLCR **3,0 V** · microSD 32 GB · boîtier Hammond 1555 IP67 |
+| **Cœur technique P0 (F1 FIELD)** | ESP32-S3-WROOM N8R8 · OV5640 5MP NoIR + PIR Panasonic EKMB1303111 + 4× IR 940 nm · 2× Knowles SPH0645LM4H-B · IA binaire (Edge Impulse FOMO, <100 ms) · LoRa SX1262/RAK3172 EU868 P2P · **8× AA (4S2P)** L91 · buck TPS62840DLCR **3,3 V** · microSD 32 GB · boîtier Hammond 1555 IP67 |
 | **Promesse P0** | Nœud autonome crédible : capture jour/nuit, audio local, trigger binaire, alerte LPWAN, **60 j à 10 événements/jour**, **zéro abonnement data** |
 | **BOM production (100 u.)** | **~92,45 €** (hors piles) → prix cible 149-179 €, **marge brute ~40 %** |
 | **Modèle éco** | Vente matériel (nœud + Station séparée) + licence duale + services (monitoring-as-a-service, conformité biodiversité) |
@@ -119,13 +119,13 @@ La stratégie est **frugale et prouvable** : réussir d'abord le **nœud P0** (A
 |---|---|---|
 | MCU | ESP32-S3-WROOM-1 N8R8 | 8 MB Flash, 8 MB PSRAM ; Wi-Fi off hors config |
 | Caméra | OV5640 DVP 5MP | M12, NoIR, 2.8 mm f/1.8, 90-100° |
-| Détection | PIR Panasonic EKMB1203111 | 2-3 µA, FOV ~86°×84°, ~5 m *(stock actuel : EKMB1303111 — à aligner)* |
+| Détection | PIR Panasonic **EKMB1303111** | 2-3 µA, FOV ~86°×84°, ~5 m |
 | IR nocturne | 4× Vishay VSLB3940 940 nm | pulsé < 5 s |
 | Audio | 2× Knowles SPH0645LM4H-B | I2S MEMS, 65 dB SNR, 20 Hz-10 kHz |
 | Stockage | microSD 32 GB | Swissbit pSLC option terrain |
 | Radio | LoRa SX1262 (RAK3172) | EU868 P2P, SF7-SF12, **500 m-3 km forêt** |
 | Énergie | **8× AA (4S2P)** | L91 7 000 mAh / Eneloop Pro 5 000 mAh |
-| Régulation | TPS62840DLCR | buck 60 nA Iq, **3,0 V**, 750 mA |
+| Régulation | TPS62840DLCR | buck 60 nA Iq, **3,3 V**, 750 mA |
 | IA onboard | Edge Impulse FOMO binaire | **< 100 ms** |
 | Boîtier | Hammond 1555 IP67 | ABS 150×100×60 mm, trappe piles |
 | Config | Smartphone (BTLE/Wi-Fi) | provisioning Espressif |
@@ -134,8 +134,8 @@ La stratégie est **frugale et prouvable** : réussir d'abord le **nœud P0** (A
 Capture jour/nuit · audio local (clip WAV 3 s/60 min + features FFT 1024/15 min, ADR-014/016/017) · trigger PIR + filtre **binaire** animal/non-animal · LoRa P2P événementiel (uplink 48 o / downlink 16 o, ADR-014) · stockage SD + sidecars JSON · config terrain · **autonomie ≥60 j à 10 évts/j, -10/+45 °C** · IP67 · doc reproductible.
 
 ### 5.3 ⚠️ Architecture énergie — point à verrouiller (R&D)
-- Architecture retenue : **8× AA en 4S2P** → buck TPS62840 → **rail 3,0 V**, 750 mA, Iq 60 nA.
-- **Alerte R&D** : 3,0 V est **la limite basse** de l'ESP32-S3 (et proche des besoins OV5640/MEMS). À **confirmer en WP03** (marge, chute en fin de vie piles, pics de courant caméra/IR). Si insuffisant, passer le rail à 3,3 V.
+- Architecture retenue : **8× AA en 4S2P** → buck TPS62840 → **rail 3,3 V**, 750 mA, Iq 60 nA.
+- **Décision (WP03)** : rail fixé à **3,3 V** (3,0 V était la limite basse marginale de l'ESP32-S3 ; la fiche F1 disait 3,0 V → corrigé). À valider en charge (pics caméra/IR) au banc.
 - **Blocage n°1 R&D** : **aucun budget énergie formalisé** n'existe encore (nb de cellules oui, mais pas : J/événement, courant de veille, courant caméra/IR, profil LoRa, budget thermique). Or **60 j = critère de sortie P0**. → **WP03 (mesure PPK2) prioritaire avant toute optimisation**.
 
 ### 5.4 Choix validés par la recherche externe
@@ -198,7 +198,7 @@ BirdNET/ID espèce fine · reconnaissance individuelle · réseau public · mult
 |---|---|
 | ESP32-S3-WROOM-1-N8R8 | 4,00 |
 | OV5640 + lentille M12 | 8,00 |
-| PIR EKMB1203111 | 18,00 |
+| PIR EKMB1303111 | 18,00 |
 | LED IR VSLB3940 ×4 | 1,48 |
 | SPH0645LM4H-B ×2 | 6,00 |
 | RAK3172 LoRa | 8,00 |
@@ -276,7 +276,7 @@ Hardware **CERN OHL v2** · Logiciel **AGPL v3 + licence commerciale** (dual).
 | Risque | Impact | Mitigation |
 |---|---|---|
 | **BOM/marge surévalués** (22€→92€ corrigé) | Crédibilité / cash | Modèle financier complet (§9.3) avant pitch |
-| **Budget énergie absent** (R&D) | Échec critère 60 j | **WP03 PPK2 prioritaire** ; confirmer rail 3,0 V |
+| **Budget énergie absent** (R&D) | Échec critère 60 j | **WP03 PPK2 prioritaire** ; confirmer rail 3,3 V |
 | Surpromesse commerciale (solaire/ID) | Réputation | Messaging §16 ; P0 vs P1 strict |
 | Backorder RAK3172 → SOP-07 | Planning M-03 | Source alt. SX1262 ; réévaluer jalon LoRa |
 | Coûts cachés non budgétés (CE/RED, moule, distri) | Sous-estimation | Budgéter §9.3 |
@@ -320,7 +320,7 @@ Marché : Dataintelo, Congruence/Yahoo Finance, market.us. Concurrents : Global 
 ---
 
 ## 18. Prochaines actions
-1. **WP03 (PPK2)** : formaliser le budget énergie + confirmer rail 3,0 V — **débloque le critère 60 j**.
+1. **WP03 (PPK2)** : formaliser le budget énergie + confirmer rail 3,3 V — **débloque le critère 60 j**.
 2. Débloquer **RAK3172** (SOP-07).
 3. Corriger `executive-summary.md` (§16).
 4. Modèle financier complet (marge nette, coûts cachés, BFR) — §9.3/§10.4.
