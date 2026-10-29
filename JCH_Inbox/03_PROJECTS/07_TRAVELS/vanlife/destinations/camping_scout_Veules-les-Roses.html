@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏕️ Spots nuit — Veules-les-Roses (25 km)</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --accent: #C17F3A;
+    --bg: #f8f7f4;
+    --white: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--ink); font-size: 13px; }
+  header { background: var(--ink); color: white; padding: 14px 20px; }
+  header h1 { font-size: 1.05em; font-weight: 600; letter-spacing: 0.02em; }
+  header small { opacity: 0.55; font-size: 0.82em; display: block; margin-top: 2px; }
+  #map { width: 100%; height: 48vh; border-bottom: 2px solid var(--accent); }
+  .legend { padding: 8px 16px; background: white; border-bottom: 1px solid #e0ddd6; display: flex; flex-wrap: wrap; gap: 5px; align-items: center; font-size: 0.78em; }
+  .legend strong { margin-right: 4px; color: #666; }
+  .badge { display: inline-block; padding: 2px 7px; border-radius: 3px; color: white; font-size: 0.72em; font-weight: 600; white-space: nowrap; }
+  .jch-note { background: #1a1a2e; color: #C17F3A; padding: 6px 16px; font-size: 0.78em; }
+  table { width: 100%; border-collapse: collapse; }
+  thead th { background: var(--ink); color: white; padding: 7px 10px; text-align: left; position: sticky; top: 0; font-weight: 500; font-size: 0.78em; white-space: nowrap; }
+  tbody tr:nth-child(even) { background: #f0ede8; }
+  tbody tr:hover { background: #e8e3da; }
+  tbody td { padding: 6px 10px; border-bottom: 1px solid #e0ddd6; vertical-align: middle; }
+  .table-wrap { overflow: auto; max-height: 38vh; }
+  footer { text-align: center; padding: 8px; font-size: 0.72em; color: #999; background: white; border-top: 1px solid #eee; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🏕️ Spots nuit en van — Veules-les-Roses</h1>
+  <small>Rayon 25 km · 0 spots · 0 réserves naturelles · 09/06/2026 12:00</small>
+</header>
+
+<div id="map"></div>
+
+<div class="legend">
+  <strong>Sources :</strong><span class="badge" style="background:#27ae60">OSM-camping</span><span class="badge" style="background:#2ecc71">OSM-motorhome</span><span class="badge" style="background:#f39c12">OSM-ferme</span><span class="badge" style="background:#e74c3c">park4night</span><span class="badge" style="background:#3498db">campspace</span><span class="badge" style="background:#9b59b6">france-passion</span><span class="badge" style="background:#e67e22">bienvenue-ferme</span><span class="badge" style="background:#1abc9c">reserve-naturelle</span>
+</div>
+<div class="jch-note">
+  🦉 Score JCH = proximité réserves naturelles + type spot. 10/10 = spot idéal pour photo aube/crépuscule.
+</div>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Source</th><th>Nom</th><th>Type</th><th>Adresse</th><th>Distance</th>
+      <th>Score JCH</th><th>Réserve proche</th><th>Services</th><th>Prix</th><th>🔗</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+  </tbody>
+</table>
+</div>
+
+<footer>camping_scout.py v2 · PKA_JCH · 09/06/2026 12:00</footer>
+
+<script>
+const CENTER = [49.8722029, 0.7990652];
+const RADIUS_KM = 25;
+const MARKERS = [];
+const RESERVES = [];
+const COLORS = {"OSM-camping": "#27ae60", "OSM-motorhome": "#2ecc71", "OSM-ferme": "#f39c12", "park4night": "#e74c3c", "campspace": "#3498db", "france-passion": "#9b59b6", "bienvenue-ferme": "#e67e22", "reserve-naturelle": "#1abc9c"};
+
+const map = L.map('map').setView(CENTER, 11);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap contributors'
+}).addTo(map);
+
+L.circle(CENTER, {
+  radius: RADIUS_KM * 1000,
+  color: '#C17F3A',
+  fillColor: '#C17F3A',
+  fillOpacity: 0.04,
+  weight: 1.5,
+  dashArray: '6,4'
+}).addTo(map);
+
+L.circleMarker(CENTER, {radius:8, color:'#1a1a2e', fillColor:'#C17F3A', fillOpacity:1, weight:2})
+  .bindTooltip('Veules-les-Roses', {permanent:true, direction:'top', className:''})
+  .addTo(map);
+
+// Réserves naturelles (JCH)
+RESERVES.forEach(rv => {
+  L.circleMarker([rv.lat, rv.lng], {
+    radius: 10, color: '#1abc9c', fillColor: '#1abc9c', fillOpacity: 0.25, weight: 2,
+    dashArray: '4,3'
+  }).bindPopup(`<b>🌿 ${rv.name}</b><br><small>Réserve naturelle</small>`).addTo(map);
+});
+
+// Spots camping
+MARKERS.forEach(m => {
+  const color = COLORS[m.source] || '#888';
+  const score = m.jch_score ? ` · Score JCH : ${m.jch_score}/10` : '';
+  const reserve = m.reserve_nearby ? `<br>🌿 ${m.reserve_nearby}` : '';
+  const popup = `
+    <b>${m.name}</b><br>
+    <span style="background:${color};color:white;padding:1px 6px;border-radius:3px;font-size:0.8em">${m.source}</span>
+    ${m.type ? ' · ' + m.type : ''}<br>
+    ${m.address ? '📍 ' + m.address + '<br>' : ''}
+    ${m.distance != '?' ? '📏 ' + m.distance + ' km' : ''}${score}<br>
+    ${m.services ? '🔧 ' + m.services.substring(0,80) + '<br>' : ''}
+    ${m.price ? '💶 ' + m.price + '<br>' : ''}
+    ${reserve}
+    ${m.url ? '<br><a href="' + m.url + '" target="_blank">🔗 Voir la fiche</a>' : ''}
+  `;
+  L.circleMarker([m.lat, m.lng], {
+    radius: 7, color: 'white', fillColor: color, fillOpacity: 0.9, weight: 1.5
+  }).bindPopup(popup).addTo(map);
+});
+</script>
+</body>
+</html>

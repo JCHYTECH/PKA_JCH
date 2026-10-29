@@ -1,0 +1,45 @@
+{
+  "labels": {
+    "nature": [
+      "decision",
+      "execution",
+      "research",
+      "document",
+      "follow-up",
+      "bug",
+      "idea"
+    ],
+    "domain": [
+      "legal",
+      "finance",
+      "tech",
+      "photo",
+      "branding",
+      "ops",
+      "travel",
+      "science"
+    ],
+    "context": [
+      "urgent",
+      "bloque-externe",
+      "en-attente-jch",
+      "delegue",
+      "a-planifier",
+      "quick-win"
+    ],
+    "level": [
+      "strategique",
+      "tactique",
+      "operationnel"
+    ]
+  },
+  "rules": {
+    "lowercase_only": true,
+    "separator": "-",
+    "state_labels_forbidden": true,
+    "creation_roles": [
+      "Dobby",
+      "Forge"
+    ]
+  }
+}

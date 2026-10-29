@@ -1,0 +1,10 @@
+{
+  "broker": {"host": "192.168.129.16", "port": 1883, "username": "jchavaux", "password": "Dobby2026!"},
+  "device": {"identifiers": ["lupo"], "name": "Lupo", "manufacturer": "PKA_JCH"},
+  "source_topic": "lupo/assiette",
+  "source_format": "sensor_logger",
+  "sensors": [
+    {"key": "pitch", "name": "Van Pitch", "unit": "°", "state_topic": "lupo/assiette/pitch"},
+    {"key": "roll",  "name": "Van Roll",  "unit": "°", "state_topic": "lupo/assiette/roll"}
+  ]
+}

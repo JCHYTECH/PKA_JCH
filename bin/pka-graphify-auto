@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+# pka-graphify-auto — Lance graphify update automatiquement
+# Dobby 🦉 — 2026-07-18 — Automatisation #9
+#
+# Met à jour le knowledge graph graphify après modifications.
+# Usage:
+#   bin/pka-graphify-auto --run    Lance graphify update
+#   bin/pka-graphify-auto --check  Vérifie si màj nécessaire
+#   bin/pka-graphify-auto --help
+
+set -euo pipefail
+
+PKA_ROOT="/Users/jchavauxm5/PKA_JCH"
+GRAPHIFY_LOG="$PKA_ROOT/_local/logs/graphify.log"
+
+MODE="${1:---run}"
+
+if [[ "$MODE" == "--help" || "$MODE" == "-h" ]]; then
+  cat <<'EOF'
+🕸️ pka-graphify-auto — Mise à jour automatique du knowledge graph
+
+USAGE
+  bin/pka-graphify-auto --run    Lance graphify update .
+  bin/pka-graphify-auto --check  Vérifie si graphify est dispo
+
+DESCRIPTION
+  Exécute `graphify update .` pour mettre à jour le graphe de connaissance.
+  Lancé automatiquement après chaque session (via pka-session-start skill).
+
+LAUNCHD
+  cp _local/launchd-plists/com.dobby.pka-graphify.plist ~/Library/LaunchAgents/
+  launchctl load ~/Library/LaunchAgents/com.dobby.pka-graphify.plist
+EOF
+  exit 0
+fi
+
+if [[ "$MODE" == "--check" ]]; then
+  if command -v graphify &>/dev/null; then
+    echo "✅ graphify disponible"
+    graphify --version 2>/dev/null || echo "   (version inconnue)"
+  else
+    echo "❌ graphify non installé"
+    exit 1
+  fi
+  exit 0
+fi
+
+mkdir -p "$(dirname "$GRAPHIFY_LOG")"
+
+echo "🕸️ graphify update . — $(date)"
+if command -v graphify &>/dev/null; then
+  graphify update . 2>&1 | tail -5
+  echo "[$(date -Iseconds)] OK" >> "$GRAPHIFY_LOG"
+  echo "✅ Knowledge graph mis à jour."
+else
+  echo "❌ graphify non trouvé. Installer : pip install graphify"
+  echo "[$(date -Iseconds)] ÉCHEC — graphify absent" >> "$GRAPHIFY_LOG"
+  exit 1
+fi

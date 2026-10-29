@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Faune Autour">
+<title>Faune Autour</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f0;color:#1a1a1a;min-height:100vh;-webkit-tap-highlight-color:transparent}
+.app{max-width:480px;margin:0 auto;padding:0 0 80px}
+.header{background:#fff;border-bottom:0.5px solid rgba(0,0,0,0.12);padding:12px 16px;position:sticky;top:0;z-index:10}
+.header-row{display:flex;align-items:center;gap:10px}
+.header-logo{width:88px;height:88px;border-radius:0;object-fit:contain;flex-shrink:0}
+.header-text{flex:1;min-width:0}
+.header h1{font-size:18px;font-weight:600;display:flex;align-items:center;gap:8px}
+.gps-dot{width:8px;height:8px;border-radius:50%;background:#1D9E75;display:inline-block;flex-shrink:0}
+.gps-dot.pulsing{animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.gps-info{font-size:12px;color:#888;margin-top:4px}
+.tabs{display:grid;grid-template-columns:1fr 1fr;background:#fff;border-bottom:0.5px solid rgba(0,0,0,0.12)}
+.tab{padding:12px;text-align:center;font-size:14px;cursor:pointer;border-bottom:2px solid transparent;color:#888;transition:all .2s}
+.tab.active{color:#1a1a1a;border-bottom-color:#1a1a1a;font-weight:500}
+.panel{display:none;padding:16px;gap:14px;flex-direction:column}
+.panel.active{display:flex}
+label{font-size:13px;color:#666;display:block;margin-bottom:5px}
+.input-wrap{position:relative}
+input[type=text]{width:100%;padding:10px 36px 10px 12px;border:0.5px solid rgba(0,0,0,0.18);border-radius:10px;font-size:15px;background:#fff;color:#1a1a1a;outline:none;-webkit-appearance:none}
+input[type=text]:focus{border-color:#1a1a1a}
+.input-clear{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:24px;height:24px;border:none;background:none;color:#aaa;font-size:16px;cursor:pointer;display:none;align-items:center;justify-content:center;border-radius:50%;padding:0;line-height:1}
+.input-clear:active{background:rgba(0,0,0,0.06)}
+.input-clear.visible{display:flex}
+.autocomplete-list{position:absolute;top:100%;left:0;right:0;background:#fff;border:0.5px solid rgba(0,0,0,0.18);border-radius:10px;margin-top:4px;z-index:100;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.08)}
+.autocomplete-item{padding:10px 14px;font-size:14px;cursor:pointer;border-bottom:0.5px solid rgba(0,0,0,0.06)}
+.autocomplete-item:last-child{border-bottom:none}
+.autocomplete-item:active,.autocomplete-item.hover{background:#f5f5f0}
+.autocomplete-fr{font-weight:500;color:#1a1a1a}
+.autocomplete-latin{font-size:12px;color:#888;font-style:italic;margin-top:1px}
+.slider-row{display:flex;align-items:center;gap:10px}
+.slider-row input[type=range]{flex:1;-webkit-appearance:none;height:4px;background:#ddd;border-radius:2px;outline:none}
+.slider-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#1a1a1a;cursor:pointer}
+.slider-val{font-size:14px;font-weight:500;min-width:38px;text-align:right;color:#1a1a1a}
+.btn{width:100%;padding:13px;background:#1a1a1a;color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:500;cursor:pointer;margin-top:2px}
+.btn:active{transform:scale(.98);opacity:.9}
+.btn:disabled{opacity:.35;cursor:default}
+.btn-map{width:100%;padding:10px;background:#fff;color:#1a1a1a;border:0.5px solid rgba(0,0,0,0.18);border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;margin-top:4px}
+.btn-map:active{background:#f5f5f0}
+.results{padding:0 16px}
+.summary-box{background:#fff;border:0.5px solid rgba(0,0,0,0.1);border-radius:12px;padding:12px 14px;margin:12px 0 4px;display:flex;justify-content:space-between;align-items:center}
+.summary-label{font-size:13px;color:#888}
+.summary-date{font-size:13px;font-weight:500;color:#1D9E75}
+.section-title{font-size:13px;color:#888;padding:12px 0 8px;font-weight:500}
+.card{background:#fff;border:0.5px solid rgba(0,0,0,0.1);border-radius:12px;padding:12px 14px;margin-bottom:8px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.card:active{background:#fafaf8}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.species-name{font-size:15px;font-weight:500;line-height:1.3}
+.species-latin{font-size:12px;color:#888;font-style:italic;margin-top:2px}
+.badge{font-size:11px;padding:3px 8px;border-radius:20px;background:#f0f0ec;color:#666;white-space:nowrap;flex-shrink:0}
+.card-meta{display:flex;gap:12px;margin-top:8px;font-size:12px;color:#999;flex-wrap:wrap}
+.dist-tag{color:#1D9E75;font-weight:500}
+.group-header{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:#aaa;padding:14px 0 5px;border-top:0.5px solid rgba(0,0,0,0.08);margin-top:4px}
+.group-header:first-of-type{border-top:none;margin-top:0}
+.empty{text-align:center;padding:48px 20px;color:#aaa;font-size:14px;line-height:1.6}
+.loading{text-align:center;padding:40px;color:#aaa;font-size:14px}
+.error-box{background:#fff0f0;color:#c0392b;border-radius:10px;padding:12px 14px;font-size:14px;margin-top:8px;border:0.5px solid rgba(192,57,43,0.2)}
+.chips{display:flex;gap:7px}
+.chip{padding:7px 14px;border-radius:20px;border:0.5px solid rgba(0,0,0,0.18);font-size:13px;cursor:pointer;background:#fff;color:#666;transition:all .15s}
+.chip.active{background:#1a1a1a;color:#fff;border-color:transparent}
+.map-container{border-radius:12px;overflow:hidden;border:0.5px solid rgba(0,0,0,0.1);margin-top:8px;display:none}
+#map{height:300px;width:100%}
+.attr{font-size:11px;color:#bbb;text-align:center;padding:24px 0 8px}
+.attr a{color:#bbb}
+
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:200;opacity:0;transition:opacity .25s;pointer-events:none}
+.drawer-overlay.open{opacity:1;pointer-events:all}
+.drawer{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(100%);width:100%;max-width:480px;background:#fff;border-radius:16px 16px 0 0;z-index:201;transition:transform .3s cubic-bezier(.32,.72,0,1);max-height:88vh;overflow-y:auto;padding-bottom:env(safe-area-inset-bottom)}
+.drawer.open{transform:translateX(-50%) translateY(0)}
+.drawer-handle{width:36px;height:4px;border-radius:2px;background:#ddd;margin:12px auto 0}
+.drawer-header{padding:16px 16px 0;display:flex;justify-content:space-between;align-items:flex-start}
+.drawer-close{font-size:20px;color:#aaa;cursor:pointer;padding:0 4px;line-height:1;background:none;border:none}
+.drawer-img{width:100%;height:200px;object-fit:cover;display:block;margin-top:12px;background:#f0f0ec}
+.drawer-img-placeholder{width:100%;height:160px;display:flex;align-items:center;justify-content:center;color:#ccc;font-size:13px;background:#f5f5f0;margin-top:12px}
+.drawer-body{padding:16px}
+.drawer-species{font-size:20px;font-weight:600;line-height:1.2}
+.drawer-latin{font-size:13px;color:#888;font-style:italic;margin-top:4px}
+.drawer-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.drawer-chip{font-size:12px;padding:4px 10px;border-radius:20px;background:#f0f0ec;color:#666}
+.drawer-chip.green{background:#e8f5ee;color:#1D9E75}
+#drawer-map{height:200px;width:100%;border-radius:12px;overflow:hidden;margin-top:16px}
+.drawer-wiki{font-size:12px;color:#bbb;text-align:right;margin-top:8px}
+.drawer-wiki a{color:#bbb}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="header">
+    <div class="header-row">
+      <img class="header-logo" src="faune-autour-logo.png" alt="Faune Autour" onerror="this.style.display='none'">
+      <div class="header-text">
+        <h1><span class="gps-dot pulsing" id="gps-dot"></span> Faune Autour</h1>
+        <div class="gps-info" id="gps-info">Localisation en cours...</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab" id="tab-search" onclick="switchTab('search')">Par espèce</div>
+    <div class="tab active" id="tab-explore" onclick="switchTab('explore')">Explorer autour</div>
+  </div>
+
+  <div class="panel" id="panel-search">
+    <div>
+      <label>Nom de l'animal (français ou latin)</label>
+      <div class="input-wrap">
+        <input type="text" id="search-input" placeholder="ex: renard, chevreuil, Vulpes vulpes…"
+          autocomplete="off" oninput="onSearchInput()" onkeydown="onSearchKey(event)">
+        <button class="input-clear" id="search-clear" onclick="clearSearchInput()" aria-label="Effacer">&#x2715;</button>
+        <div class="autocomplete-list" id="autocomplete-list" style="display:none"></div>
+      </div>
+    </div>
+    <div>
+      <label>Rayon de recherche</label>
+      <div class="slider-row">
+        <input type="range" min="1" max="10" step="1" value="10" id="search-radius"
+          oninput="document.getElementById('search-radius-val').textContent=this.value+' km'">
+        <span class="slider-val" id="search-radius-val">10 km</span>
+      </div>
+    </div>
+    <button class="btn" id="btn-search" onclick="doSearch()">Chercher les observations</button>
+  </div>
+
+  <div class="panel active" id="panel-explore">
+    <div>
+      <label>Rayon</label>
+      <div class="slider-row">
+        <input type="range" min="1" max="10" step="1" value="10" id="explore-radius"
+          oninput="document.getElementById('explore-radius-val').textContent=this.value+' km'">
+        <span class="slider-val" id="explore-radius-val">10 km</span>
+      </div>
+    </div>
+    <div>
+      <label>Période</label>
+      <div class="chips">
+        <div class="chip" onclick="setPeriod(this,'week')">Semaine</div>
+        <div class="chip active" onclick="setPeriod(this,'month')">Mois</div>
+        <div class="chip" onclick="setPeriod(this,'year')">Année</div>
+      </div>
+    </div>
+    <button class="btn" id="btn-explore" onclick="doExplore()">Lister les animaux</button>
+  </div>
+
+  <div class="results" id="results"></div>
+  <div class="attr">Données : <a href="https://www.gbif.org" target="_blank">GBIF</a> · incluant observations.be · carte <a href="https://www.openstreetmap.org" target="_blank">OpenStreetMap</a></div>
+
+  <div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
+  <div class="drawer" id="drawer">
+    <div class="drawer-handle"></div>
+    <div class="drawer-header">
+      <div>
+        <div class="drawer-species" id="drawer-species"></div>
+        <div class="drawer-latin" id="drawer-latin"></div>
+      </div>
+      <button class="drawer-close" onclick="closeDrawer()">&#x2715;</button>
+    </div>
+    <div id="drawer-img-wrap"></div>
+    <div class="drawer-body">
+      <div class="drawer-meta" id="drawer-meta"></div>
+      <div id="drawer-map"></div>
+      <div class="drawer-wiki" id="drawer-wiki"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ================================================================
+   DICTIONNAIRE FR <-> LATIN
+   Clés en minuscules. Chaque entrée : { fr, latin }
+   Ajouter des espèces ici librement — les deux sens sont automatiques.
+   ================================================================ */
+var DICT = [
+  /* Mammifères */
+  {fr:"Renard roux",          latin:"Vulpes vulpes"},
+  {fr:"Loup gris",            latin:"Canis lupus"},
+  {fr:"Blaireau européen",    latin:"Meles meles"},
+  {fr:"Loutre d'Europe",      latin:"Lutra lutra"},
+  {fr:"Hérisson d'Europe",    latin:"Erinaceus europaeus"},
+  {fr:"Chevreuil européen",   latin:"Capreolus capreolus"},
+  {fr:"Cerf élaphe",          latin:"Cervus elaphus"},
+  {fr:"Sanglier",             latin:"Sus scrofa"},
+  {fr:"Lapin de garenne",     latin:"Oryctolagus cuniculus"},
+  {fr:"Lièvre brun",          latin:"Lepus europaeus"},
+  {fr:"Ecureuil roux",        latin:"Sciurus vulgaris"},
+  {fr:"Castor d'Europe",      latin:"Castor fiber"},
+  {fr:"Putois d'Europe",      latin:"Mustela putorius"},
+  {fr:"Belette d'Europe",     latin:"Mustela nivalis"},
+  {fr:"Hermine",              latin:"Mustela erminea"},
+  {fr:"Fouine",               latin:"Martes foina"},
+  {fr:"Martre des pins",      latin:"Martes martes"},
+  {fr:"Genette commune",      latin:"Genetta genetta"},
+  {fr:"Chat sauvage",         latin:"Felis silvestris"},
+  {fr:"Lynx boréal",          latin:"Lynx lynx"},
+  {fr:"Campagnol des champs", latin:"Microtus arvalis"},
+  {fr:"Mulot sylvestre",      latin:"Apodemus sylvaticus"},
+  {fr:"Rat musqué",           latin:"Ondatra zibethicus"},
+  {fr:"Ragondin",             latin:"Myocastor coypus"},
+  {fr:"Musaraigne carrelet",  latin:"Sorex araneus"},
+  {fr:"Taupe d'Europe",       latin:"Talpa europaea"},
+  {fr:"Pipistrelle commune",  latin:"Pipistrellus pipistrellus"},
+  {fr:"Grand rhinolophe",     latin:"Rhinolophus ferrumequinum"},
+  {fr:"Murin de Daubenton",   latin:"Myotis daubentonii"},
+  {fr:"Daim",                 latin:"Dama dama"},
+  {fr:"Mouflon",              latin:"Ovis aries musimon"},
+  /* Oiseaux */
+  {fr:"Cigogne blanche",      latin:"Ciconia ciconia"},
+  {fr:"Héron cendré",         latin:"Ardea cinerea"},
+  {fr:"Grande Aigrette",      latin:"Ardea alba"},
+  {fr:"Martin-pêcheur",       latin:"Alcedo atthis"},
+  {fr:"Pic vert",             latin:"Picus viridis"},
+  {fr:"Pic épeiche",          latin:"Dendrocopos major"},
+  {fr:"Faucon pèlerin",       latin:"Falco peregrinus"},
+  {fr:"Faucon crécerelle",    latin:"Falco tinnunculus"},
+  {fr:"Buse variable",        latin:"Buteo buteo"},
+  {fr:"Aigle botté",          latin:"Hieraaetus pennatus"},
+  {fr:"Milan royal",          latin:"Milvus milvus"},
+  {fr:"Milan noir",           latin:"Milvus migrans"},
+  {fr:"Chouette hulotte",     latin:"Strix aluco"},
+  {fr:"Hibou grand-duc",      latin:"Bubo bubo"},
+  {fr:"Effraie des clochers", latin:"Tyto alba"},
+  {fr:"Cigogne noire",        latin:"Ciconia nigra"},
+  {fr:"Grue cendrée",         latin:"Grus grus"},
+  {fr:"Vanneau huppé",        latin:"Vanellus vanellus"},
+  {fr:"Bécasse des bois",     latin:"Scolopax rusticola"},
+  {fr:"Canard colvert",       latin:"Anas platyrhynchos"},
+  {fr:"Cygne tuberculé",      latin:"Cygnus olor"},
+  {fr:"Bernache du Canada",   latin:"Branta canadensis"},
+  {fr:"Grèbe huppé",          latin:"Podiceps cristatus"},
+  {fr:"Cormorant huppé",      latin:"Phalacrocorax aristotelis"},
+  {fr:"Grand Cormoran",       latin:"Phalacrocorax carbo"},
+  {fr:"Pie bavarde",          latin:"Pica pica"},
+  {fr:"Corneille noire",      latin:"Corvus corone"},
+  {fr:"Grand Corbeau",        latin:"Corvus corax"},
+  {fr:"Merle noir",           latin:"Turdus merula"},
+  {fr:"Grive musicienne",     latin:"Turdus philomelos"},
+  {fr:"Rouge-gorge",          latin:"Erithacus rubecula"},
+  {fr:"Hirondelle rustique",  latin:"Hirundo rustica"},
+  {fr:"Martinet noir",        latin:"Apus apus"},
+  {fr:"Mésange charbonnière", latin:"Parus major"},
+  {fr:"Mésange bleue",        latin:"Cyanistes caeruleus"},
+  /* Reptiles */
+  {fr:"Lézard des murailles",  latin:"Podarcis muralis"},
+  {fr:"Lézard vert",           latin:"Lacerta viridis"},
+  {fr:"Orvet fragile",         latin:"Anguis fragilis"},
+  {fr:"Couleuvre d'Esculape",  latin:"Zamenis longissimus"},
+  {fr:"Couleuvre à collier",   latin:"Natrix natrix"},
+  {fr:"Vipère aspic",          latin:"Vipera aspis"},
+  {fr:"Vipère péliade",        latin:"Vipera berus"},
+  {fr:"Tortue cistude",        latin:"Emys orbicularis"},
+  /* Amphibiens */
+  {fr:"Grenouille rousse",     latin:"Rana temporaria"},
+  {fr:"Grenouille verte",      latin:"Pelophylax kl. esculentus"},
+  {fr:"Crapaud commun",        latin:"Bufo bufo"},
+  {fr:"Triton ponctué",        latin:"Lissotriton vulgaris"},
+  {fr:"Triton crêté",          latin:"Triturus cristatus"},
+  {fr:"Salamandre tachetée",   latin:"Salamandra salamandra"},
+  {fr:"Rainette verte",        latin:"Hyla arborea"},
+  /* Insectes notables */
+  {fr:"Lucane cerf-volant",    latin:"Lucanus cervus"},
+  {fr:"Grand capricorne",      latin:"Cerambyx cerdo"},
+  {fr:"Apollon",               latin:"Parnassius apollo"},
+  {fr:"Machaon",               latin:"Papilio machaon"},
+  {fr:"Flambé",                latin:"Iphiclides podalirius"},
+  /* Poissons */
+  {fr:"Saumon atlantique",     latin:"Salmo salar"},
+  {fr:"Truite fario",          latin:"Salmo trutta"},
+  {fr:"Brochet",               latin:"Esox lucius"},
+  {fr:"Carpe commune",         latin:"Cyprinus carpio"},
+  {fr:"Anguille européenne",   latin:"Anguilla anguilla"},
+  {fr:"Blageon",               latin:"Leuciscus souffia"},
+  /* Noms courts / alternatifs fréquents */
+  {fr:"Renard",                latin:"Vulpes vulpes"},
+  {fr:"Blaireau",              latin:"Meles meles"},
+  {fr:"Loutre",                latin:"Lutra lutra"},
+  {fr:"Hérisson",              latin:"Erinaceus europaeus"},
+  {fr:"Chevreuil",             latin:"Capreolus capreolus"},
+  {fr:"Cerf",                  latin:"Cervus elaphus"},
+  {fr:"Lièvre",                latin:"Lepus europaeus"},
+  {fr:"Lapin",                 latin:"Oryctolagus cuniculus"},
+  {fr:"Ecureuil",              latin:"Sciurus vulgaris"},
+  {fr:"Castor",                latin:"Castor fiber"},
+  {fr:"Putois",                latin:"Mustela putorius"},
+  {fr:"Belette",               latin:"Mustela nivalis"},
+  {fr:"Fouine",                latin:"Martes foina"},
+  {fr:"Martre",                latin:"Martes martes"},
+  {fr:"Lynx",                  latin:"Lynx lynx"},
+  {fr:"Loup",                  latin:"Canis lupus"},
+  {fr:"Taupe",                 latin:"Talpa europaea"},
+  {fr:"Sanglier",              latin:"Sus scrofa"},
+  {fr:"Daim",                  latin:"Dama dama"},
+  {fr:"Cigogne",               latin:"Ciconia ciconia"},
+  {fr:"Héron",                 latin:"Ardea cinerea"},
+  {fr:"Aigrette",              latin:"Ardea alba"},
+  {fr:"Bécasse",               latin:"Scolopax rusticola"},
+  {fr:"Vanneau",               latin:"Vanellus vanellus"},
+  {fr:"Colvert",               latin:"Anas platyrhynchos"},
+  {fr:"Cygne",                 latin:"Cygnus olor"},
+  {fr:"Cormoran",              latin:"Phalacrocorax carbo"},
+  {fr:"Pie",                   latin:"Pica pica"},
+  {fr:"Corbeau",               latin:"Corvus corax"},
+  {fr:"Merle",                 latin:"Turdus merula"},
+  {fr:"Rouge-gorge",           latin:"Erithacus rubecula"},
+  {fr:"Hirondelle",            latin:"Hirundo rustica"},
+  {fr:"Martinet",              latin:"Apus apus"},
+  {fr:"Vipère",                latin:"Vipera berus"},
+  {fr:"Couleuvre",             latin:"Natrix natrix"},
+  {fr:"Grenouille",            latin:"Rana temporaria"},
+  {fr:"Crapaud",               latin:"Bufo bufo"},
+  {fr:"Salamandre",            latin:"Salamandra salamandra"},
+  {fr:"Saumon",                latin:"Salmo salar"},
+  {fr:"Truite",                latin:"Salmo trutta"},
+  {fr:"Brochet",               latin:"Esox lucius"},
+  {fr:"Carpe",                 latin:"Cyprinus carpio"},
+  {fr:"Anguille",              latin:"Anguilla anguilla"}
+];
+
+/* Index bidirectionnel : clé normalisée -> entrée DICT */
+var DICT_INDEX = {};
+DICT.forEach(function(e){
+  var kfr = e.fr.toLowerCase().trim();
+  var klat = e.latin.toLowerCase().trim();
+  if(!DICT_INDEX[kfr]) DICT_INDEX[kfr] = e;
+  if(!DICT_INDEX[klat]) DICT_INDEX[klat] = e;
+});
+
+function dictLookup(q){
+  return DICT_INDEX[q.toLowerCase().trim()] || null;
+}
+
+function dictSuggest(q){
+  if(!q||q.length<2) return [];
+  var ql=q.toLowerCase();
+  var seen={}, results=[];
+  DICT.forEach(function(e){
+    var key=e.fr+'|'+e.latin;
+    if(seen[key]) return;
+    if(e.fr.toLowerCase().indexOf(ql)===0 || e.latin.toLowerCase().indexOf(ql)===0){
+      seen[key]=true; results.push(e);
+    }
+  });
+  /* second pass : contient (pas seulement début) */
+  if(results.length<6){
+    DICT.forEach(function(e){
+      var key=e.fr+'|'+e.latin;
+      if(seen[key]) return;
+      if(e.fr.toLowerCase().indexOf(ql)!==-1 || e.latin.toLowerCase().indexOf(ql)!==-1){
+        seen[key]=true; results.push(e);
+      }
+    });
+  }
+  return results.slice(0,6);
+}
+
+/* ================================================================
+   AUTOCOMPLETE
+   ================================================================ */
+var acSelected = -1;
+
+function onSearchInput(){
+  var q = document.getElementById('search-input').value;
+  updateClearButton();
+  clearResults();
+  var list = document.getElementById('autocomplete-list');
+  var suggestions = dictSuggest(q);
+  acSelected = -1;
+  if(!suggestions.length){list.style.display='none';return;}
+  var html='';
+  suggestions.forEach(function(e,i){
+    html+='<div class="autocomplete-item" data-fr="'+e.fr+'" data-latin="'+e.latin+'" onmousedown="pickAc(this)" onmouseover="hoverAc('+i+')">'
+      +'<div class="autocomplete-fr">'+e.fr+'</div>'
+      +'<div class="autocomplete-latin">'+e.latin+'</div>'
+      +'</div>';
+  });
+  list.innerHTML=html;
+  list.style.display='block';
+}
+
+function onSearchKey(e){
+  var list=document.getElementById('autocomplete-list');
+  var items=list.querySelectorAll('.autocomplete-item');
+  if(e.key==='ArrowDown'){acSelected=Math.min(acSelected+1,items.length-1);highlightAc(items);e.preventDefault();}
+  else if(e.key==='ArrowUp'){acSelected=Math.max(acSelected-1,0);highlightAc(items);e.preventDefault();}
+  else if(e.key==='Enter'){
+    if(acSelected>=0&&items[acSelected]){pickAc(items[acSelected]);}
+    else{list.style.display='none';doSearch();}
+  }
+  else if(e.key==='Escape'){list.style.display='none';}
+}
+
+function highlightAc(items){
+  items.forEach(function(it,i){it.classList.toggle('hover',i===acSelected);});
+}
+
+function hoverAc(i){acSelected=i;}
+
+function pickAc(el){
+  document.getElementById('search-input').value=el.getAttribute('data-fr');
+  document.getElementById('autocomplete-list').style.display='none';
+  updateClearButton();
+}
+
+function clearSearchInput(){
+  document.getElementById('search-input').value='';
+  document.getElementById('autocomplete-list').style.display='none';
+  updateClearButton();
+  clearResults();
+  document.getElementById('search-input').focus();
+}
+
+function updateClearButton(){
+  var btn=document.getElementById('search-clear');
+  var val=document.getElementById('search-input').value;
+  btn.classList.toggle('visible',val.length>0);
+}
+
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.input-wrap')) document.getElementById('autocomplete-list').style.display='none';
+});
+
+/* ================================================================
+   GPS
+   ================================================================ */
+var gpsLat=null,gpsLon=null,gpsReady=false,selectedPeriod='month';
+var leafletMap=null,markersLayer=null;
+
+function gpsInit(){
+  if(!navigator.geolocation){
+    gpsLat=50.8503;gpsLon=4.3517;gpsReady=true;
+    setGpsLabel('Simulation Bruxelles','#e67e22');return;
+  }
+  navigator.geolocation.getCurrentPosition(function(pos){
+    gpsLat=pos.coords.latitude;gpsLon=pos.coords.longitude;gpsReady=true;
+    document.getElementById('gps-dot').classList.remove('pulsing');
+    document.getElementById('gps-dot').style.background='#1D9E75';
+    setGpsLabel('Position: '+gpsLat.toFixed(5)+', '+gpsLon.toFixed(5),'#888');
+  },function(){
+    gpsLat=50.8503;gpsLon=4.3517;gpsReady=true;
+    document.getElementById('gps-dot').style.background='#e67e22';
+    document.getElementById('gps-dot').classList.remove('pulsing');
+    setGpsLabel('GPS refusé — simulation Bruxelles','#e67e22');
+  },{enableHighAccuracy:true,timeout:10000,maximumAge:60000});
+}
+function setGpsLabel(msg,col){var el=document.getElementById('gps-info');el.textContent=msg;el.style.color=col||'#888';}
+
+/* ================================================================
+   UI HELPERS
+   ================================================================ */
+function setPeriod(el,p){
+  selectedPeriod=p;
+  document.querySelectorAll('.chip').forEach(function(c){c.classList.remove('active');});
+  el.classList.add('active');
+}
+function switchTab(t){
+  ['search','explore'].forEach(function(id){
+    document.getElementById('tab-'+id).classList.toggle('active',t===id);
+    document.getElementById('panel-'+id).classList.toggle('active',t===id);
+  });
+  clearResults();
+}
+function clearResults(){
+  document.getElementById('results').innerHTML='';
+  var mc=document.getElementById('map-container');
+  if(mc) mc.parentNode.removeChild(mc);
+  if(leafletMap){leafletMap.remove();leafletMap=null;markersLayer=null;}
+}
+function showError(msg){
+  document.getElementById('results').innerHTML='<div class="error-box">'+msg+'</div>';
+  var mc=document.getElementById('map-container');
+  if(mc) mc.parentNode.removeChild(mc);
+  if(leafletMap){leafletMap.remove();leafletMap=null;markersLayer=null;}
+}
+function setLoading(btnId,msg){
+  document.getElementById(btnId).disabled=true;
+  document.getElementById(btnId).textContent=msg;
+  document.getElementById('results').innerHTML='<div class="loading">Consultation de GBIF...</div>';
+  var mc=document.getElementById('map-container');
+  if(mc) mc.parentNode.removeChild(mc);
+  if(leafletMap){leafletMap.remove();leafletMap=null;markersLayer=null;}
+}
+function resetBtn(btnId,label){
+  document.getElementById(btnId).disabled=false;
+  document.getElementById(btnId).textContent=label;
+}
+
+/* ================================================================
+   GEO HELPERS
+   ================================================================ */
+function bboxWkt(lat,lon,km){
+  var d=km/111.0, dlon=km/(111.0*Math.cos(lat*Math.PI/180));
+  return 'POLYGON(('+(lon-dlon)+' '+(lat-d)+','+(lon+dlon)+' '+(lat-d)+','+(lon+dlon)+' '+(lat+d)+','+(lon-dlon)+' '+(lat+d)+','+(lon-dlon)+' '+(lat-d)+'))';
+}
+function haversineKm(lat1,lon1,lat2,lon2){
+  var R=6371,dLat=(lat2-lat1)*Math.PI/180,dLon=(lon2-lon1)*Math.PI/180;
+  var a=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)*Math.sin(dLon/2);
+  return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+}
+function fmtDist(km){return km<1?Math.round(km*1000)+' m':km.toFixed(1)+' km';}
+function dateFrom(period){
+  var now=new Date();
+  if(period==='week') return new Date(now.getTime()-7*86400000).toISOString().split('T')[0];
+  if(period==='month'){var d=new Date(now);d.setMonth(d.getMonth()-1);return d.toISOString().split('T')[0];}
+  var d2=new Date(now);d2.setFullYear(d2.getFullYear()-1);return d2.toISOString().split('T')[0];
+}
+function today(){return new Date().toISOString().split('T')[0];}
+function mostRecentDate(results){
+  var best='';
+  results.forEach(function(r){var d=r.eventDate||'';if(d>best)best=d;});
+  return best?best.split('T')[0]:null;
+}
+
+/* Helper: build double-name display (FR + latin or latin + FR) */
+function dualName(frName, latinName){
+  /* Returns {primary, secondary} — secondary may be empty */
+  var fr = frName || '';
+  var lat = latinName || '';
+  if(fr && lat && fr !== lat) return {primary:fr, secondary:lat};
+  if(fr) return {primary:fr, secondary:''};
+  if(lat){
+    /* Try dict to find a FR name */
+    var de = dictLookup(lat);
+    if(de && de.fr) return {primary:de.fr, secondary:lat};
+    return {primary:lat, secondary:''};
+  }
+  return {primary:'Inconnu', secondary:''};
+}
+
+/* ================================================================
+   MAP
+   ================================================================ */
+function showMap(points,centerLat,centerLon){
+  var mc=document.getElementById('map-container');
+  if(!mc){
+    mc=document.createElement('div');
+    mc.id='map-container';
+    mc.className='map-container';
+    mc.innerHTML='<div id="map" style="height:300px;width:100%"></div>';
+    document.getElementById('results').appendChild(mc);
+  }
+  mc.style.display='block';
+  if(leafletMap){
+    leafletMap.remove();
+    leafletMap=null;
+    markersLayer=null;
+  }
+  leafletMap=L.map('map',{zoomControl:true});
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap',maxZoom:18}).addTo(leafletMap);
+  markersLayer=L.layerGroup().addTo(leafletMap);
+  var myIcon=L.divIcon({className:'',html:'<div style="width:14px;height:14px;border-radius:50%;background:#e74c3c;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.4)"></div>',iconSize:[14,14],iconAnchor:[7,7]});
+  var meIcon=L.divIcon({className:'',html:'<div style="width:16px;height:16px;border-radius:50%;background:#1D9E75;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)"></div>',iconSize:[16,16],iconAnchor:[8,8]});
+  L.marker([centerLat,centerLon],{icon:meIcon}).bindPopup('Votre position').addTo(markersLayer);
+  var bounds=[[centerLat,centerLon]];
+  points.forEach(function(p){
+    if(p.lat&&p.lon){
+      var dist=fmtDist(haversineKm(centerLat,centerLon,p.lat,p.lon));
+      L.marker([p.lat,p.lon],{icon:myIcon})
+        .bindPopup('<strong>'+p.name+'</strong><br><em>'+p.latin+'</em><br>'+p.date+'<br>'+dist)
+        .addTo(markersLayer);
+      bounds.push([p.lat,p.lon]);
+    }
+  });
+  leafletMap.fitBounds(bounds,{padding:[30,30],maxZoom:14});
+  setTimeout(function(){leafletMap.invalidateSize();},300);
+}
+
+/* ================================================================
+   SEARCH BY SPECIES
+   ================================================================ */
+async function doSearch(){
+  if(!gpsReady){showError('Position GPS non encore disponible.');return;}
+  document.getElementById('autocomplete-list').style.display='none';
+  var q=document.getElementById('search-input').value.trim();
+  if(!q){showError("Entrez un nom d'animal.");return;}
+  var radius=parseInt(document.getElementById('search-radius').value,10);
+  setLoading('btn-search','Recherche…');
+
+  try{
+    var taxonKey=null, speciesLabel=q, latinLabel='';
+    var acceptedRanks=['SPECIES','SUBSPECIES','VARIETY','FORM'];
+
+    /* 1. Dictionnaire local en priorité */
+    var dictEntry=dictLookup(q);
+    if(dictEntry){
+      speciesLabel=dictEntry.fr;
+      latinLabel=dictEntry.latin;
+      var mRes=await fetch('https://api.gbif.org/v1/species/match?name='+encodeURIComponent(latinLabel)+'&kingdom=Animalia&strict=true');
+      var mData=await mRes.json();
+      if(mData.usageKey && acceptedRanks.indexOf(mData.rank)!==-1) taxonKey=mData.usageKey;
+    }
+
+    /* 2. Si pas dans le dict, chercher par vernacularName GBIF */
+    if(!taxonKey){
+      var vernRes=await fetch('https://api.gbif.org/v1/species/search?vernacularName='+encodeURIComponent(q)+'&language=fra&rank=SPECIES&status=ACCEPTED&limit=5');
+      var vernData=await vernRes.json();
+      if(vernData.results){
+        for(var i=0;i<vernData.results.length;i++){
+          var r=vernData.results[i];
+          if(acceptedRanks.indexOf(r.rank)!==-1){
+            taxonKey=r.key;
+            speciesLabel=r.vernacularName||r.canonicalName||r.scientificName||q;
+            latinLabel=r.scientificName||r.canonicalName||'';
+            break;
+          }
+        }
+      }
+    }
+
+    /* 3. Fallback species/match strict (noms latins) */
+    if(!taxonKey){
+      var matchRes=await fetch('https://api.gbif.org/v1/species/match?name='+encodeURIComponent(q)+'&kingdom=Animalia&strict=true');
+      var match=await matchRes.json();
+      if(!match.usageKey||match.matchType==='NONE'||acceptedRanks.indexOf(match.rank)===-1){
+        showError('Espèce "<strong>'+q+'</strong>" non trouvée.<br>Vérifiez l\'orthographe ou choisissez dans la liste.');
+        resetBtn('btn-search','Chercher les observations');return;
+      }
+      taxonKey=match.usageKey;
+      speciesLabel=match.vernacularName||match.canonicalName||match.scientificName||q;
+      latinLabel=match.scientificName||'';
+    }
+
+    /* 4. Recherche occurrences */
+    var wkt=bboxWkt(gpsLat,gpsLon,radius);
+    var yr12=dateFrom('year');
+    var url='https://api.gbif.org/v1/occurrence/search?taxonKey='+taxonKey
+      +'&geometry='+encodeURIComponent(wkt)
+      +'&hasCoordinate=true&occurrenceStatus=PRESENT'
+      +'&eventDate='+yr12+','+today()
+      +'&limit=100';
+    var res=await fetch(url);
+    var data=await res.json();
+    renderSearch(data.results||[],{vernacularName:speciesLabel,scientificName:latinLabel},radius,data.count||0);
+  }catch(e){showError('Erreur réseau.');}
+  resetBtn('btn-search','Chercher les observations');
+}
+
+function renderSearch(results,match,radius,total){
+  var el=document.getElementById('results');
+  var speciesLabel=match.vernacularName||match.canonicalName||match.scientificName||'?';
+  var latinLabel=match.scientificName||'';
+  if(!results.length){
+    el.innerHTML='<div class="summary-box"><span class="summary-label">'+speciesLabel+'</span><span class="summary-date" style="color:#aaa">Aucune observation</span></div>'
+      +'<div class="empty">Aucune observation trouvée<br>dans un rayon de '+radius+' km.</div>';
+    return;
+  }
+  var mostRecent=mostRecentDate(results);
+  var mapPoints=[];
+  var html='';
+  if(mostRecent){
+    html+='<div class="summary-box"><span class="summary-label">Observation la plus récente</span><span class="summary-date">'+mostRecent+'</span></div>';
+  }
+  html+='<div class="section-title">'+results.length+' observation(s) · '+speciesLabel+' · '+radius+' km</div>';
+
+  /* Store card data for tap-to-drawer */
+  var cardDataArr=[];
+
+  results.forEach(function(r,idx){
+    var date=r.eventDate?r.eventDate.split('T')[0]:(r.year?String(r.year):'—');
+    var loc=r.locality||r.municipality||r.stateProvince||'';
+    var distStr='', distLabel='';
+    if(r.decimalLatitude&&r.decimalLongitude){
+      var km=haversineKm(gpsLat,gpsLon,r.decimalLatitude,r.decimalLongitude);
+      distLabel=fmtDist(km);
+      distStr='<span class="dist-tag">'+distLabel+'</span>';
+      mapPoints.push({lat:r.decimalLatitude,lon:r.decimalLongitude,
+        name:r.vernacularName||r.species||speciesLabel,latin:r.scientificName||latinLabel,date:date});
+    }
+    /* Double name display */
+    var rawFr=r.vernacularName||'';
+    var rawLat=r.scientificName||latinLabel||'';
+    if(!rawFr&&rawLat){var de=dictLookup(rawLat);if(de)rawFr=de.fr;}
+    var dn=dualName(rawFr,rawLat);
+
+    cardDataArr.push({fr:dn.primary,latin:dn.secondary||rawLat,date:date,dist:distLabel,
+      lat:r.decimalLatitude||null,lon:r.decimalLongitude||null});
+
+    html+='<div class="card" onclick="openDrawerByIndex(\'search\','+idx+')">'
+      +'<div class="card-top"><div>'
+      +'<div class="species-name">'+dn.primary+'</div>'
+      +(dn.secondary?'<div class="species-latin">'+dn.secondary+'</div>':'')
+      +'</div><span class="badge">'+date+'</span></div>'
+      +'<div class="card-meta">'+(loc?'<span>'+loc+'</span>':'')+distStr+'</div>'
+      +'</div>';
+  });
+  if(total>results.length) html+='<div class="section-title" style="color:#e67e22">'+total+' observations au total · affichage limité à '+results.length+'</div>';
+  html+='<button class="btn-map" onclick="showMap(window._mapPoints,'+gpsLat+','+gpsLon+')">Voir sur la carte</button>';
+  el.innerHTML=html;
+  window._mapPoints=mapPoints;
+  window._searchCards=cardDataArr;
+}
+
+/* ================================================================
+   EXPLORE AROUND
+   ================================================================ */
+async function doExplore(){
+  if(!gpsReady){showError('Position GPS non encore disponible.');return;}
+  var radius=parseInt(document.getElementById('explore-radius').value,10);
+  var after=dateFrom(selectedPeriod);
+  var wkt=bboxWkt(gpsLat,gpsLon,radius);
+  setLoading('btn-explore','Chargement…');
+  try{
+    var url='https://api.gbif.org/v1/occurrence/search'
+      +'?geometry='+encodeURIComponent(wkt)
+      +'&kingdomKey=1&hasCoordinate=true&occurrenceStatus=PRESENT'
+      +'&eventDate='+after+','+today()+'&limit=300';
+    var res=await fetch(url);
+    var data=await res.json();
+    renderExplore(data.results||[],radius,selectedPeriod,data.count||0);
+  }catch(e){showError('Erreur réseau.');}
+  resetBtn('btn-explore','Lister les animaux');
+}
+
+function renderExplore(results,radius,period,total){
+  var el=document.getElementById('results');
+  var pLabel={week:'cette semaine',month:'ce mois-ci',year:'cette année'}[period];
+  if(!results.length){
+    el.innerHTML='<div class="empty">Aucune observation trouvée<br>dans un rayon de '+radius+' km '+pLabel+'.</div>';
+    return;
+  }
+  var classLabels={Aves:'Oiseaux',Mammalia:'Mammifères',Reptilia:'Reptiles',
+    Amphibia:'Amphibiens',Actinopterygii:'Poissons',Insecta:'Insectes',
+    Arachnida:'Arachnides',Lepidoptera:'Lépidoptères'};
+  var speciesMap={}, mapPoints=[];
+  results.forEach(function(r){
+    var key=r.speciesKey||r.taxonKey;
+    if(!key) return;
+    var frName=r.vernacularName||'';
+    var latinName=r.species||r.scientificName||'';
+    if(!frName && latinName){
+      var de=dictLookup(latinName);
+      if(de) frName=de.fr;
+    }
+    if(!speciesMap[key]){
+      speciesMap[key]={name:frName||latinName,nameFr:frName,latin:latinName,cls:r.class||'',count:0,lastDate:'',lastLat:null,lastLon:null};
+    }
+    if(!speciesMap[key].nameFr && frName){speciesMap[key].nameFr=frName;speciesMap[key].name=frName;}
+    speciesMap[key].count++;
+    var d=r.eventDate||'';
+    if(d>speciesMap[key].lastDate){
+      speciesMap[key].lastDate=d;
+      speciesMap[key].lastLat=r.decimalLatitude||null;
+      speciesMap[key].lastLon=r.decimalLongitude||null;
+    }
+    if(r.decimalLatitude&&r.decimalLongitude){
+      mapPoints.push({lat:r.decimalLatitude,lon:r.decimalLongitude,
+        name:frName||latinName,latin:latinName,date:d?d.split('T')[0]:'—'});
+    }
+  });
+  var species=Object.values(speciesMap).sort(function(a,b){return b.count-a.count;});
+  var mostRecent=mostRecentDate(results);
+  var groups={};
+  species.forEach(function(s){
+    var g=classLabels[s.cls]||s.cls||'Autres';
+    if(!groups[g])groups[g]=[];
+    groups[g].push(s);
+  });
+
+  /* Store card data for tap-to-drawer */
+  var cardDataArr=[];
+
+  var html='';
+  if(mostRecent){
+    html+='<div class="summary-box"><span class="summary-label">Observation la plus récente</span><span class="summary-date">'+mostRecent+'</span></div>';
+  }
+  html+='<div class="section-title">'+species.length+' espèce(s) · rayon '+radius+' km · '+pLabel+'</div>';
+  Object.keys(groups).sort().forEach(function(group){
+    html+='<div class="group-header">'+group+'</div>';
+    groups[group].forEach(function(s){
+      var date=s.lastDate?s.lastDate.split('T')[0]:'—';
+      var distStr='', distLabel='';
+      if(s.lastLat&&s.lastLon){
+        var km=haversineKm(gpsLat,gpsLon,s.lastLat,s.lastLon);
+        distLabel=fmtDist(km);
+        distStr='<span class="dist-tag">'+distLabel+'</span>';
+      }
+      /* Double name display */
+      var dn=dualName(s.nameFr, s.latin);
+      var cardIdx=cardDataArr.length;
+      cardDataArr.push({fr:dn.primary,latin:dn.secondary||s.latin,date:date,dist:distLabel,
+        lat:s.lastLat,lon:s.lastLon});
+
+      html+='<div class="card" onclick="openDrawerByIndex(\'explore\','+cardIdx+')">'
+        +'<div class="card-top"><div>'
+        +'<div class="species-name">'+dn.primary+'</div>'
+        +(dn.secondary?'<div class="species-latin">'+dn.secondary+'</div>':'')
+        +'</div><span class="badge">'+s.count+' obs.</span></div>'
+        +'<div class="card-meta"><span>Dernière obs. '+date+'</span>'+distStr+'</div>'
+        +'</div>';
+    });
+  });
+  if(total>results.length) html+='<div class="section-title" style="color:#e67e22">'+total+' observations au total · affichage limité à 300</div>';
+  html+='<button class="btn-map" onclick="showMap(window._mapPoints,'+gpsLat+','+gpsLon+')">Voir sur la carte</button>';
+  el.innerHTML=html;
+  window._mapPoints=mapPoints;
+  window._exploreCards=cardDataArr;
+}
+
+/* ================================================================
+   DRAWER — tap on card opens detail
+   ================================================================ */
+function openDrawerByIndex(mode, idx){
+  var cards = mode==='search' ? window._searchCards : window._exploreCards;
+  if(!cards || !cards[idx]) return;
+  var c=cards[idx];
+  openDrawer(c.fr, c.latin, c.date, c.dist, c.lat, c.lon);
+}
+
+/* ================================================================
+   DETAIL DRAWER
+   ================================================================ */
+var drawerMap=null;
+
+function openDrawer(fr, latin, date, dist, lat, lon){
+  document.getElementById('drawer-species').textContent = fr || latin || '?';
+  document.getElementById('drawer-latin').textContent = latin || '';
+  var meta='';
+  if(date) meta+='<span class="drawer-chip">'+date+'</span>';
+  if(dist) meta+='<span class="drawer-chip green">'+dist+'</span>';
+  document.getElementById('drawer-meta').innerHTML=meta;
+  document.getElementById('drawer-img-wrap').innerHTML='<div class="drawer-img-placeholder">Chargement image...</div>';
+  document.getElementById('drawer-wiki').innerHTML='';
+  document.getElementById('drawer-overlay').classList.add('open');
+  document.getElementById('drawer').classList.add('open');
+  document.body.style.overflow='hidden';
+  /* Wikipedia image — try latin name on EN, fallback to FR */
+  var wikiLatin = (latin || fr || '').replace(/ /g,'_');
+  if(wikiLatin){
+    fetchWikiImage('en', wikiLatin, function(ok){
+      if(!ok) fetchWikiImage('fr', wikiLatin, function(){});
+    });
+  }
+  /* mini map */
+  setTimeout(function(){
+    if(drawerMap){drawerMap.remove();drawerMap=null;}
+    if(lat&&lon){
+      drawerMap=L.map('drawer-map',{zoomControl:false,attributionControl:false});
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18}).addTo(drawerMap);
+      var obsIcon=L.divIcon({className:'',html:'<div style="width:14px;height:14px;border-radius:50%;background:#e74c3c;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.4)"></div>',iconSize:[14,14],iconAnchor:[7,7]});
+      var meIcon=L.divIcon({className:'',html:'<div style="width:12px;height:12px;border-radius:50%;background:#1D9E75;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.4)"></div>',iconSize:[12,12],iconAnchor:[6,6]});
+      L.marker([lat,lon],{icon:obsIcon}).addTo(drawerMap);
+      L.marker([gpsLat,gpsLon],{icon:meIcon}).addTo(drawerMap);
+      drawerMap.fitBounds([[lat,lon],[gpsLat,gpsLon]],{padding:[24,24],maxZoom:14});
+      drawerMap.invalidateSize();
+    }
+  },350);
+}
+
+function fetchWikiImage(lang, title, callback){
+  var url='https://'+lang+'.wikipedia.org/api/rest_v1/page/summary/'+encodeURIComponent(title);
+  fetch(url)
+    .then(function(r){return r.json();})
+    .then(function(d){
+      var wrap=document.getElementById('drawer-img-wrap');
+      if(d.thumbnail&&d.thumbnail.source){
+        wrap.innerHTML='<img class="drawer-img" src="'+d.thumbnail.source+'" alt="">';
+        var pageUrl=(d.content_urls&&d.content_urls.desktop&&d.content_urls.desktop.page)||('https://'+lang+'.wikipedia.org/wiki/'+title);
+        document.getElementById('drawer-wiki').innerHTML='Photo : <a href="'+pageUrl+'" target="_blank">Wikipedia</a> · licence libre';
+        callback(true);
+      } else {
+        wrap.innerHTML='<div class="drawer-img-placeholder">Aucune image disponible</div>';
+        callback(false);
+      }
+    })
+    .catch(function(){
+      document.getElementById('drawer-img-wrap').innerHTML='<div class="drawer-img-placeholder">Image non disponible</div>';
+      callback(false);
+    });
+}
+
+function closeDrawer(){
+  document.getElementById('drawer-overlay').classList.remove('open');
+  document.getElementById('drawer').classList.remove('open');
+  document.body.style.overflow='';
+  if(drawerMap){drawerMap.remove();drawerMap=null;}
+}
+
+gpsInit();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</body>
+</html>

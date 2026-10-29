@@ -1,0 +1,15 @@
+network:
+  version: 2
+  ethernets:
+    eth0:
+      dhcp4: true
+      dhcp6: true
+      optional: true
+  wifis:
+    wlan0:
+      dhcp4: true
+      regulatory-domain: "BE"
+      access-points:
+        "Proximus-Home-D858":
+          password: "0ef13c1f2565e334fbd9465a1333137fb5785863fd3c4a5a69f787592d1a52eb"
+      optional: true

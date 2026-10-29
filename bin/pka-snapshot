@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# pka-snapshot — Snapshot d'état + détection de dérive des State files
+# Dobby 🦉 — 2026-10-04
+#
+# Usage :
+#   bin/pka-snapshot --check    Fraîcheur + dérive (stdout)
+#   bin/pka-snapshot --write    Génère etat-snapshot.md (page consolidée)
+set -euo pipefail
+
+exec python3 /Users/jchavauxm5/PKA_JCH/scripts/pka_state_snapshot.py "${1:---check}"

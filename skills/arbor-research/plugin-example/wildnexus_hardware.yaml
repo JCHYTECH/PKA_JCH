@@ -1,0 +1,224 @@
+# WildNexus Hardware Plugin — Exemple de plugin domaine Arbor pour PKA
+#
+# Ce fichier montre le format d'un plugin domaine au sens Arbor (src/plugins/),
+# adapté au contexte PKA. Il n'est pas exécuté par un moteur Arbor — c'est une
+# spécification YAML que Dobby lit pour injecter du guidage domaine dans les
+# phases OBSERVE et IDEATE de l'arbor-loop.
+#
+# Format inspiré de src/plugins/mle_kaggle.yaml et src/plugins/base.py du repo
+# RUC-NLPIR/Arbor.
+
+schema_version: 1
+name: wildnexus_hardware
+description: >
+  Plugin domaine pour l'optimisation hardware WildNexus —
+  consommation énergétique, sélection composants, validation PPK2.
+  Injecte les contraintes P0 WildNexus (< 30µA deep sleep, < 100 mJ/event,
+  autonomie 6 mois sur 3xAA) et les SOPs M-02 comme contrats d'évaluation.
+
+# --- Prompt injections (6 points d'injection Arbor) ---
+
+# 1. meta_init_inject: injecté dans le prompt INIT du Coordinator
+#    (quand Dobby initialise une nouvelle recherche)
+meta_init_inject: |
+  ## Domaine : Hardware WildNexus
+
+  Tu optimises un nœud caméra-piège autonome WildNexus. Contexte hardware :
+
+  - **MCU** : ESP32-S3 (dual-core Xtensa LX7, 240 MHz)
+  - **Régulateur actuel** : TPS63000 buck/boost (quiescent ~25µA)
+  - **Capteurs** : PIR EKMB (veille < 10µA), caméra OV5640, LoRa SX1276
+  - **Stockage** : microSD, PSRAM 8MB
+  - **Alimentation** : 3x AA Energizer Ultimate Lithium (3500 mAh, 4.5V nominal)
+  - **Budget conso P0** : deep sleep < 30 µA, event < 100 mJ, autonomie 6 mois
+  - **Outil de mesure** : PPK2 (Nordic Power Profiler Kit II)
+
+  **SOPs M-02 applicables** : SOP-03 (deep sleep current), SOP-04 (wake cycle),
+  SOP-05 (event cycle), SOP-09 (PIR), SOP-10 (buck/boost), SOP-11 (Edge AI)
+
+  **Règles de sécurité** :
+  - **Jamais USB + PPK2 simultanément sur SOP-03** — risque de court-circuit
+  - PPK2 en mode Source Meter, 3.3V
+  - Déconnecter la batterie avant toute mesure PPK2
+
+# 2. meta_ideate_inject: injecté dans le prompt IDEATE du Coordinator
+#    (quand Dobby doit proposer des hypothèses)
+meta_ideate_inject: |
+  ## Contraintes de conception WildNexus
+
+  Quand tu proposes des hypothèses hardware, respecte ces contraintes P0 :
+
+  1. **Budget énergétique** : toute hypothèse qui augmente la conso veille de
+     plus de 5µA doit compenser ailleurs. Le budget total est fixe.
+  2. **Espace PCB** : le facteur de forme est contraint (boîtier étanche 120×80×50mm).
+     Un composant plus gros doit remplacer un existant, pas s'ajouter.
+  3. **Coût BOM** : le budget cible est < 25€/nœud. Les hypothèses qui ajoutent
+     > 2€ doivent démontrer un gain proportionnel.
+  4. **Disponibilité** : privilégier les composants en stock chez Mouser/DigiKey
+     avec MOQ ≤ 1. Éviter les composants en allocation.
+  5. **Plage de température** : -20°C à +60°C (extérieur, toute saison).
+  6. **Tension batterie** : 3×AA = 3.0V–4.8V (end-of-life à 3.0V).
+
+  **Axes d'optimisation typiques** :
+  - `hardware/component` : changement de régulateur, MOS, capteur
+  - `firmware/configuration` : paramétrage deep sleep, clock gating,唤醒策略
+  - `algorithm/method` : stratégie de mise en veille, ordonnancement événements
+  - `data-representation` : compression des données avant stockage/transmission
+
+# 3. meta_decide_inject: injecté dans le prompt DECIDE du Coordinator
+#    (quand Dobby doit choisir quelle hypothèse tester)
+meta_decide_inject: |
+  ## Critères de décision WildNexus
+
+  Pour choisir entre plusieurs hypothèses hardware :
+
+  1. **Impact mesurable** : l'hypothèse promet-elle un Δ > 5µA ou > 10 mJ/event ?
+     Les micro-optimisations (< 1µA) sont à éviter sauf si le coût du test est nul.
+  2. **Testabilité** : l'hypothèse peut-elle être testée avec le matériel disponible
+     (PPK2, ESP32-S3 devkit, breadboard) ? Si elle nécessite un PCB fabriqué,
+     le classer en priorité basse.
+  3. **Risque de régression** : l'hypothèse peut-elle dégrader d'autres SOPs ?
+     Vérifier les dépendances : un changement de régulateur impacte SOP-03 à SOP-06.
+  4. **Orthogonalité** : cette hypothèse explore-t-elle un axe non couvert par
+     les nœuds existants ?
+
+  **Ordre de priorité par défaut** :
+  1. Firmware/config (coût de test quasi nul, itération rapide)
+  2. Composant passif (résistance, capa — breadboard-friendly)
+  3. Régulateur/PMIC (impact fort, testable sur breakout)
+  4. MCU alternatif (impact maximal, nécessite PCB)
+
+# 4. meta_preamble_inject: injecté en préambule de chaque cycle Coordinator
+meta_preamble_inject: |
+  Rappel : tu travailles sur un système contraint énergétiquement. Chaque µA compte.
+  Le seuil P0 WildNexus est de 30 µA en deep sleep. La baseline actuelle est
+  indiquée dans `tree.json → meta.trunk_score`.
+
+# 5. sub_workflow_inject: injecté dans le workflow de l'Executor
+#    (le spécialiste PKA — Fourmi pour le hardware)
+sub_workflow_inject: |
+  ## Workflow hardware WildNexus
+
+  Quand tu exécutes un test hardware :
+
+  1. **Préparation** :
+     - Vérifier le matériel : PPK2 calibré, câblage correct, DUT identifié
+     - Règle SOP-03 : jamais USB + PPK2
+     - Démarrer le logging PPK2 (timestamps, mesures brutes)
+
+  2. **Mesure** :
+     - Chaque mesure = minimum 10 cycles pour écart-type fiable
+     - Noter conditions : température ambiante, tension batterie, firmware version
+     - Si la mesure dévie de > 20% de l'attendu, vérifier le setup
+
+  3. **Rapport** :
+     - Format : `score`, `eval_status`, logs bruts, conditions de test
+     - Si `failed_to_run` : décrire l'erreur exacte (pas "ça marche pas")
+     - Si `scored` : inclure écart-type, min, max sur les N cycles
+
+  4. **Nettoyage** :
+     - Déconnecter PPK2
+     - Remettre le DUT dans sa configuration de test précédente
+
+# 6. sub_preamble_inject: injecté en préambule de chaque tâche Executor
+sub_preamble_inject: |
+  Tu exécutes un test hardware WildNexus. Ton rôle : mesurer, pas interpréter.
+  Rapporte le score brut et les logs. Dobby interprétera.
+
+# --- Eval contract ---
+# Définit le protocole d'évaluation statique pour ce domaine.
+# Pré-rempli dans tree.meta au début de la recherche.
+
+eval_contract:
+  metric: "deep_sleep_current_uA"       # Nom canonique de la métrique
+  direction: "minimize"                  # minimize ou maximize
+  unit: "µA"                             # Unité de mesure
+  measurement_tool: "PPK2"               # Outil de mesure
+  measurement_protocol: "SOP-03"         # SOP de référence
+  min_cycles: 10                         # Nombre minimum de cycles de mesure
+  valid_range: [0, 200]                  # Plage valide en µA
+  target_threshold: 30.0                 # Seuil P0 WildNexus
+  warmup_cycles: 3                       # Cycles de chauffe à ignorer
+  discard_outliers_std: 2.0              # Écarts-types pour rejet d'outliers
+
+# --- Protected paths ---
+# Fichiers que l'Executor ne doit PAS modifier.
+# Merge guard — si un Executor touche à ces fichiers, le merge est bloqué.
+
+protected_paths:
+  - "firmware/wildnexus/safety_critical.h"   # Code safety-critical
+  - "hardware/bom/wildnexus_bom.csv"          # BOM — modifications manuelles only
+  - "docs/adr/"                                # Architecture Decision Records
+  - ".arbor/research/wildnexus/tree.json"     # L'arbre lui-même
+
+# --- Required outputs ---
+# Fichiers que l'Executor DOIT produire.
+
+required_outputs:
+  - "result.json"         # Résultat structuré (score, eval_status, conditions)
+  - "ppk2_log.csv"        # Log brut PPK2
+  - "summary.md"          # Résumé humain de l'expérience
+
+# --- Config overrides ---
+# Surcouche de configuration spécifique au domaine.
+# Priorité : defaults < plugin.config_overrides < profiles[active] < YAML config < CLI args
+
+config_overrides:
+  max_cycles: 10              # Max 10 cycles de recherche
+  convergence_threshold: 0.05 # 5% d'amélioration minimum
+  convergence_patience: 3     # 3 cycles sans amélioration = stop
+  coordinator_model: "deepseek"  # Modèle pour le Coordinator (Dobby)
+  executor_model: "claude"       # Modèle pour l'Executor (Fourmi)
+  max_executor_turns: 20        # Max tours par expérience
+
+# --- Profiles ---
+# Profils alternatifs pour différents types de recherche hardware.
+
+profiles:
+  fast_exploration:
+    description: "Exploration rapide — beaucoup d'hypothèses, tests courts"
+    max_cycles: 20
+    convergence_threshold: 0.10
+    convergence_patience: 2
+    max_executor_turns: 10
+
+  deep_optimization:
+    description: "Optimisation profonde — peu d'hypothèses, tests longs"
+    max_cycles: 5
+    convergence_threshold: 0.01
+    convergence_patience: 5
+    max_executor_turns: 50
+
+  component_selection:
+    description: "Sélection de composants — datasheet-first"
+    max_cycles: 8
+    convergence_threshold: 0.03
+    convergence_patience: 3
+    max_executor_turns: 15
+
+# --- Lifecycle hooks ---
+# Hooks exécutés à des moments clés du cycle de vie de la recherche.
+
+lifecycle_hooks:
+  on_research_start:
+    - "verify_ppk2_connected"     # Vérifier que le PPK2 est branché
+    - "load_sop_database"          # Charger les SOPs M-02
+  on_cycle_start:
+    - "check_battery_voltage"      # Vérifier la tension batterie
+    - "calibrate_ppk2_if_needed"  # Calibrer PPK2 si dernier cal > 24h
+  on_cycle_end:
+    - "save_raw_logs"             # Sauvegarder les logs bruts
+    - "update_bom_spreadsheet"     # Mettre à jour le tableur BOM si changement HW
+  on_research_end:
+    - "generate_final_report"     # Rapport final de recherche
+    - "update_adr_if_needed"       # Mettre à jour l'ADR si changement architecturé
+
+# --- Convergence ---
+# Configuration spécifique de détection de convergence pour le hardware.
+
+convergence:
+  metric_window: 5          # Nombre de derniers cycles à considérer
+  min_relative_gain: 0.01   # Gain relatif minimum (1%)
+  max_cycles_no_improvement: 3  # Cycles sans amélioration avant stop
+  check_semantic: true      # Activer la convergence sémantique
+  semantic_similarity_threshold: 0.8  # Seuil similarité cosinus entre hypothèses

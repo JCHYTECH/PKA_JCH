@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JCH — Things To Do</title>
+<link rel="stylesheet" href="01_DASHBOARDS/assets/pka-theme.css">
+<style>
+  :root {
+    --critique: var(--rouge-alert);
+    --urgent:   #e67e22;
+    --important:#d4ac0d;
+    --long:     var(--vert-ok);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Space Grotesk', sans-serif; background: var(--fond-global); color: var(--texte-clair); min-height: 100vh; }
+
+  /* ── Header ── */
+  .header {
+    background: var(--carte-bg); color: var(--texte-clair);
+    padding: 24px 40px; display: flex; align-items: baseline; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--bordure);
+  }
+  .header-title { font-size: 18px; font-weight: 300; letter-spacing: 0.1em; }
+  .header-title span { color: var(--ocre); }
+  .header-count { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--texte-mute); }
+
+  /* ── Toolbar ── */
+  .toolbar {
+    background: var(--fond-global); border-bottom: 1px solid var(--bordure);
+    padding: 14px 40px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+  }
+  .toolbar-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--texte-mute); margin-right: 4px; }
+  .filter-btn {
+    font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 500;
+    padding: 5px 14px; border: 1px solid var(--bordure); background: var(--carte-bg); color: var(--texte-gris);
+    cursor: pointer; letter-spacing: 0.04em; transition: all 0.15s; border-radius: 4px;
+  }
+  .filter-btn:hover { background: var(--bordure); color: var(--texte-clair); }
+  .filter-btn.active { background: var(--bordure); color: var(--texte-clair); border-color: var(--texte-gris); }
+  
+  .filter-btn.u-critique.active { background: var(--rouge-alert); color: white; border-color: var(--rouge-alert); }
+  .filter-btn.u-urgent.active { background: #E67E22; color: white; border-color: #E67E22; }
+  .filter-btn.u-important.active { background: #D4AC0D; border-color: #D4AC0D; color: var(--fond-global); }
+  .filter-btn.u-long.active { background: var(--vert-ok); border-color: var(--vert-ok); color: var(--fond-global); }
+  
+  .sep { width: 1px; height: 24px; background: var(--bordure); margin: 0 4px; }
+
+  /* ── Grid ── */
+  .grid { padding: 32px 40px; display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+
+  /* ── Card ── */
+  .card {
+    background: var(--carte-bg); padding: 20px 22px; cursor: default;
+    border: 1px solid var(--bordure);
+    border-left: 4px solid var(--bordure); transition: opacity 0.2s, transform 0.2s;
+    display: flex; flex-direction: column; gap: 12px; border-radius: 8px;
+  }
+  .card:hover { transform: translateY(-2px); border-color: var(--texte-mute); }
+  .card.hidden { display: none; }
+  .card.done { opacity: 0.4; border-left-color: var(--bordure) !important; }
+  .card.done .card-title { text-decoration: line-through; color: var(--texte-mute); }
+
+  .card[data-urgency="critique"] { border-left-color: var(--rouge-alert); }
+  .card[data-urgency="urgent"]   { border-left-color: #e67e22; }
+  .card[data-urgency="important"]{ border-left-color: #d4ac0d; }
+  .card[data-urgency="long"]     { border-left-color: var(--vert-ok); }
+
+  .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .card-title { font-size: 15px; font-weight: 600; line-height: 1.35; color: var(--texte-clair); }
+  .badge-urgency {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 3px; white-space: nowrap; flex-shrink: 0;
+  }
+  .badge-urgency.critique { background: var(--rouge-alert); color: white; }
+  .badge-urgency.urgent   { background: #E67E22; color: white; }
+  .badge-urgency.important{ background: #D4AC0D; color: var(--fond-global); }
+  .badge-urgency.long     { background: var(--vert-ok); color: var(--fond-global); }
+
+  .status-badge {
+    font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 3px;
+    margin-left: 8px; white-space: nowrap; display: inline-block;
+  }
+  .status-badge.in-progress { background: #2c6fce; color: white; }
+  .status-badge.waiting { background: #6b5b3a; color: #e0d5c0; }
+  .card.in-progress { border-left-color: #2c6fce !important; }
+  .card.waiting { border-left-color: #6b5b3a !important; opacity: 0.75; }
+
+  .card-context { font-size: 13px; line-height: 1.55; color: var(--texte-gris); }
+  .card-meta { display: flex; flex-direction: column; gap: 6px; margin-top: auto; }
+  .card-project { font-size: 11px; font-family: 'IBM Plex Mono', monospace; color: var(--ocre); }
+  .card-deps { display: flex; flex-wrap: wrap; gap: 4px; }
+  .dep-tag {
+    font-size: 10px; padding: 2px 8px; background: var(--bordure);
+    color: var(--texte-mute); border-radius: 3px;
+  }
+  .card-who { font-size: 12px; color: var(--texte-mute); }
+
+  .card-check { margin-top: auto; padding-top: 8px; border-top: 1px solid var(--bordure); font-size: 13px; }
+  .card-check input { margin-right: 8px; cursor: pointer; }
+  .card-check label { cursor: pointer; user-select: none; }
+
+  /* ── Stats bar ── */
+  .statsbar {
+    background: var(--carte-bg); border-top: 1px solid var(--bordure);
+    padding: 14px 40px; display: flex; gap: 24px; font-size: 13px;
+    position: sticky; bottom: 0; z-index: 100;
+  }
+  .stat-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+  .stat-dot.critique { background: var(--rouge-alert); }
+  .stat-dot.urgent   { background: #E67E22; }
+  .stat-dot.important{ background: #D4AC0D; }
+  .stat-dot.long     { background: var(--vert-ok); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-title">JCH<span> — Things To Do</span></div>
+  <div class="header-count"><span id="visible-count">—</span> · généré le 2026-07-23</div>
+</div>
+
+<div class="toolbar">
+  <span class="toolbar-label">Urgence</span>
+  <button class="filter-btn u-critique active" data-filter="urgency" data-value="critique" onclick="toggleFilter(this)">Critique</button>
+  <button class="filter-btn u-urgent active" data-filter="urgency" data-value="urgent" onclick="toggleFilter(this)">Urgent</button>
+  <button class="filter-btn u-important active" data-filter="urgency" data-value="important" onclick="toggleFilter(this)">Important</button>
+  <button class="filter-btn u-long active" data-filter="urgency" data-value="long" onclick="toggleFilter(this)">Long terme</button>
+  <div class="sep"></div>
+  <span class="toolbar-label">Projet</span>
+  <button class="filter-btn active" data-filter="project" data-value="all" onclick="filterProject(this)">Tous</button>
+  <button class="filter-btn" data-filter="project" data-value="JCHYTECH" onclick="filterProject(this)">JCHYTECH</button>
+  <button class="filter-btn" data-filter="project" data-value="LEGAL" onclick="filterProject(this)">LEGAL</button>
+  <button class="filter-btn" data-filter="project" data-value="WILDNEXUS" onclick="filterProject(this)">WILDNEXUS</button>
+  <button class="filter-btn" data-filter="project" data-value="ARTEON" onclick="filterProject(this)">ARTEON</button>
+  <button class="filter-btn" data-filter="project" data-value="FUTURE_INVEST" onclick="filterProject(this)">FUTURE_INVEST</button>
+  <button class="filter-btn" data-filter="project" data-value="ARGUS" onclick="filterProject(this)">ARGUS</button>
+  <button class="filter-btn" data-filter="project" data-value="INFRA" onclick="filterProject(this)">INFRA</button>
+  <button class="filter-btn" data-filter="project" data-value="TRAVELS" onclick="filterProject(this)">TRAVELS</button>
+  <div class="sep"></div>
+  <button class="filter-btn" onclick="toggleDone()">Masquer terminées</button>
+</div>
+
+<div class="grid" id="grid">
+
+  <div class="card" data-urgency="critique" data-project="LEGAL" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">Signer le DPA Anthropic</div>
+      <div class="badge-urgency critique">Critique</div>
+    </div>
+    <div class="card-context">Avant tout traitement de données via l'API Claude. Sans ce contrat, le transfert UE → USA de données utilisateurs est sans base légale (RGPD art. 28). 10 minutes sur le portail API Anthropic (trust.anthropic.com).</div>
+    <div class="card-meta">
+      <div class="card-project">LEGAL · RGPD</div>
+      <div class="card-deps"><div class="dep-tag">Compte API Anthropic actif</div></div>
+      <div class="card-who">Responsable : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t1" onchange="toggleDoneCard(this)" ><label for="t1">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="critique" data-project="LEGAL" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">Valider et publier les CGU L'Instant Lu</div>
+      <div class="badge-urgency critique">Critique</div>
+    </div>
+    <div class="card-context">Les CGU rédigées par Renard sont dans docs/legal/CGU-instant-lu.md. À lire, valider, puis confier à Forge pour publication sur arteon.be/legal.</div>
+    <div class="card-meta">
+      <div class="card-project">LEGAL · ARTEON</div>
+      <div class="card-deps"><div class="dep-tag">CGU-instant-lu.md rédigé ✓</div><div class="dep-tag">Page /legal (Forge)</div></div>
+      <div class="card-who">Validation → Publication : <strong>JCH → Forge</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t2" onchange="toggleDoneCard(this)" ><label for="t2">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="critique" data-project="LEGAL" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">Ouvrir un compte bancaire professionnel JCHYTECH</div>
+      <div class="badge-urgency critique">Critique</div>
+    </div>
+    <div class="card-context">L'IBAN est requis dans les contrats B2B. Sans compte pro séparé, la comptabilité ARTEON/L'Instant Lu ne peut pas être proprement tracée.</div>
+    <div class="card-meta">
+      <div class="card-project">LEGAL · JCHYTECH</div>
+      <div class="card-deps"><div class="dep-tag">BCE BE 0680.640.981 ✓</div><div class="dep-tag">TVA BE0680640981 ✓</div></div>
+      <div class="card-who">Responsable : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t3" onchange="toggleDoneCard(this)" ><label for="t3">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="urgent" data-project="LEGAL" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">Mandater un conseil PI — recherche d'antériorités marque ARTEON</div>
+      <div class="badge-urgency urgent">Urgent</div>
+    </div>
+    <div class="card-context">Recherche professionnelle sur eSearch EUIPO + BOIP avant dépôt. Budget ~300-600€.</div>
+    <div class="card-meta">
+      <div class="card-project">LEGAL · ARTEON</div>
+      <div class="card-deps"><div class="dep-tag">Analyse Renard ✓</div></div>
+      <div class="card-who">Déléguer à agent de marques belge : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t6" onchange="toggleDoneCard(this)" ><label for="t6">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="urgent" data-project="LEGAL" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">Consulter un comptable belge — structure juridique optimale</div>
+      <div class="badge-urgency urgent">Urgent</div>
+    </div>
+    <div class="card-context">Valider indépendant vs SRL avant lancement commercial. Impact TVA, charges sociales, responsabilité.</div>
+    <div class="card-meta">
+      <div class="card-project">LEGAL · JCHYTECH</div>
+      <div class="card-deps"><div class="dep-tag">BCE ✓</div><div class="dep-tag">TVA ✓</div></div>
+      <div class="card-who">Responsable : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t7" onchange="toggleDoneCard(this)" ><label for="t7">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="important" data-project="WILDNEXUS" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">📥 Télécharger les fiches techniques composants WildNexus P0</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">Depuis datasheets/INDEX_DATASHEETS_ROHS.md — 25 composants. Priorité : ESP32-S3, OV5640, EKMB1303111, LoRa RAK3172, BME688.</div>
+    <div class="card-meta">
+      <div class="card-project">WILDNEXUS · WP02</div>
+      <div class="card-deps"><div class="dep-tag">INDEX_DATASHEETS_ROHS.md ✓</div><div class="dep-tag">Dossier datasheets/ prêt</div></div>
+      <div class="card-who">Responsable : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t8" onchange="toggleDoneCard(this)" ><label for="t8">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="important" data-project="WILDNEXUS" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">📥 Re-télécharger fiche TPS62840 complète (TI.com)</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">datasheets/TI_TPS62840_datasheet.pdf tronqué (955 KB vs 3.17 MB).</div>
+    <div class="card-meta">
+      <div class="card-project">WILDNEXUS · WP02</div>
+      <div class="card-deps"><div class="dep-tag">Composant critique buck</div></div>
+      <div class="card-who">Responsable : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t9" onchange="toggleDoneCard(this)" ><label for="t9">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="important" data-project="ARTEON" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">Valider le visuel final du badge L'Instant Lu (Vega)</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">Vega a livré 3 propositions de badge. JCH choisit et valide avant impression et dépôt marque Benelux.</div>
+    <div class="card-meta">
+      <div class="card-project">ARTEON · WILDLENS</div>
+      <div class="card-deps"><div class="dep-tag">Propositions badge Vega ✓</div></div>
+      <div class="card-who">Décision : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t10" onchange="toggleDoneCard(this)" ><label for="t10">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="important" data-project="ARTEON" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">Valider la charte graphique complète (3 identités)</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">Palette, typographie, 3 identités (Arteon, L'Instant Lu, WildLens). JCH valide → Forge intègre. Étape 4/13.</div>
+    <div class="card-meta">
+      <div class="card-project">ARTEON · BRAND</div>
+      <div class="card-deps"><div class="dep-tag">Charte graphique (Vega) ✓</div></div>
+      <div class="card-who">Validation → Intégration : <strong>JCH → Forge</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t11" onchange="toggleDoneCard(this)" ><label for="t11">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="important" data-project="ARGUS" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">Valider la procédure opérationnelle Argus</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">Pipeline image → filter_ethics.py → dossier client → Stripe.</div>
+    <div class="card-meta">
+      <div class="card-project">ARGUS · ARTEON</div>
+      <div class="card-deps"><div class="dep-tag">Procédure Argus (Forge) ✓</div></div>
+      <div class="card-who">Validation : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t12" onchange="toggleDoneCard(this)" ><label for="t12">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="important" data-project="INFRA" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">Valider le setup M1 headless</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">M1 LLM (MacBook 32 Go) opérationnel SSH/Tailscale. Ollama OK.</div>
+    <div class="card-meta">
+      <div class="card-project">INFRA · RUNTIME</div>
+      <div class="card-deps"><div class="dep-tag">m1@100.73.212.110 ✓</div></div>
+      <div class="card-who">Validation : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t13" onchange="toggleDoneCard(this)" ><label for="t13">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="important" data-project="JCHYTECH" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">Valider le pricing Vetalyx EU + pack DBS</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">Vasco a livré une analyse pricing. JCH briefe sur le positionnement final.</div>
+    <div class="card-meta">
+      <div class="card-project">JCHYTECH · VETALYX</div>
+      <div class="card-deps"><div class="dep-tag">Analyse pricing Vasco ✓</div><div class="dep-tag">Pacte actionnaires en cours</div></div>
+      <div class="card-who">Brief : <strong>JCH → Vasco</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t14" onchange="toggleDoneCard(this)" ><label for="t14">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="important" data-project="LEGAL" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">Dépôt Benelux marque L'Instant Lu + badge</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">~240€ Benelux pour 10 ans. Après validation visuel badge.</div>
+    <div class="card-meta">
+      <div class="card-project">LEGAL · ARTEON</div>
+      <div class="card-deps"><div class="dep-tag">Visuel badge finalisé (Vega)</div><div class="dep-tag">Nom L'Instant Lu confirmé ✓</div></div>
+      <div class="card-who">Responsable : <strong>JCH + conseil PI</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t16" onchange="toggleDoneCard(this)" ><label for="t16">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card done" data-urgency="important" data-project="WILDNEXUS" data-status="done">
+    <div class="card-top">
+      <div class="card-title">✅ PPK2 + 2× ESP32-S3 commandés (batch 1 WildNexus)</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">Nordic PPK2 (~100€) + ESP32-S3 DevKit ×2 (~32€) commandés par JCH le 2026-06-05. Reste panier Mouser (~162€) et Arducam à gérer.</div>
+    <div class="card-meta">
+      <div class="card-project">WILDNEXUS · WP02</div>
+      <div class="card-deps"><div class="dep-tag">Shortlist WP02 v0.1 ✓</div><div class="dep-tag">Budget P0 1 000€</div></div>
+      <div class="card-who">Commandé ✓ : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t17" onchange="toggleDoneCard(this)" checked><label for="t17">Terminée ✓</label></div>
+  </div>
+
+  <div class="card" data-urgency="long" data-project="ARTEON" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">Tester l'offre DNG full-service</div>
+      <div class="badge-urgency long">Long terme</div>
+    </div>
+    <div class="card-context">Corrections Lightroom si client livre en DNG pro. Offre premium ~€9,90 TTC.</div>
+    <div class="card-meta">
+      <div class="card-project">ARTEON · ARGUS</div>
+      <div class="card-deps"><div class="dep-tag">Phase 0 validée</div><div class="dep-tag">Infra stockage DNG (Forge)</div></div>
+      <div class="card-who">Décision après Phase 0 : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t19" onchange="toggleDoneCard(this)" ><label for="t19">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card waiting" data-urgency="long" data-project="JCHYTECH" data-status="waiting">
+    <div class="card-top">
+      <div class="card-title">Réévaluation structure SRL si CA > 40 000€/an <span class="status-badge waiting">En attente</span></div>
+      <div class="badge-urgency long">Long terme</div>
+    </div>
+    <div class="card-context">SRL (IS 20%) si CA dépasse 40 000€/an. Révision annuelle.</div>
+    <div class="card-meta">
+      <div class="card-project">JCHYTECH · LEGAL</div>
+      <div class="card-deps"><div class="dep-tag">CA > 40 000€/an</div><div class="dep-tag">Comptable mandaté</div></div>
+      <div class="card-who">Responsable : <strong>JCH + comptable</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t20" onchange="toggleDoneCard(this)" ><label for="t20">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="long" data-project="JCHYTECH" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">Finaliser pacte actionnaires Vetalyx (4×25%)</div>
+      <div class="badge-urgency long">Long terme</div>
+    </div>
+    <div class="card-context">4 fondateurs à parité. Contrat-cadre DIAHO V2 + seing privé 40% V2 rédigés par Renard. JCH signe.</div>
+    <div class="card-meta">
+      <div class="card-project">JCHYTECH · VETALYX</div>
+      <div class="card-deps"><div class="dep-tag">Contrat-cadre DIAHO V2 ✓</div><div class="dep-tag">Seing privé 40% V2 ✓</div><div class="dep-tag">Vasco briefé</div></div>
+      <div class="card-who">Signature finale : <strong>JCH + Renard</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t22" onchange="toggleDoneCard(this)" ><label for="t22">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="critique" data-project="ARTEON" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">🔴 Évaluer les 58 rapports Argus (Phase 0.3)</div>
+      <div class="badge-urgency critique">Critique</div>
+    </div>
+    <div class="card-context">58 photos JCH analysées par le pipeline. JCH doit évaluer la qualité des rapports, ajuster le prompt si nécessaire, avant ouverture au public.</div>
+    <div class="card-meta">
+      <div class="card-project">ARTEON · ARGUS</div>
+      <div class="card-deps"><div class="dep-tag">Pipeline Argus opérationnel ✓</div><div class="dep-tag">58 rapports PDF dans PHOTO/analyses/</div></div>
+      <div class="card-who">Validation qualité : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t24" onchange="toggleDoneCard(this)" ><label for="t24">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card in-progress" data-urgency="critique" data-project="JCHYTECH" data-status="in_progress">
+    <div class="card-top">
+      <div class="card-title">🔴 Envoyer les questions techniques à DIXUN <span class="status-badge in-progress">En cours</span></div>
+      <div class="badge-urgency critique">Critique</div>
+    </div>
+    <div class="card-context">4 questions P0 au fournisseur Zheda Dixun : (1) logique lignes mixtes, (2) faisabilité technique, (3) matrices acceptées, (4) composition exacte des extraits allergéniques.</div>
+    <div class="card-meta">
+      <div class="card-project">JCHYTECH · VETALYX</div>
+      <div class="card-deps"><div class="dep-tag">Spécification 6 lignes ✓</div><div class="dep-tag">Contact DIXUN établi</div></div>
+      <div class="card-who">Rédaction et envoi : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t25" onchange="toggleDoneCard(this)" ><label for="t25">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card done" data-urgency="critique" data-project="JCHYTECH" data-status="done">
+    <div class="card-top">
+      <div class="card-title">🔴 Relire et exporter le rapport final partenaire Vetalyx</div>
+      <div class="badge-urgency critique">Critique</div>
+    </div>
+    <div class="card-context">Rapport final clinique DOCX (bilingue FR/ZH). JCH relit, approuve le style, valide logo. Dobby exporte en PDF pour distribution partenaires.</div>
+    <div class="card-meta">
+      <div class="card-project">JCHYTECH · VETALYX</div>
+      <div class="card-deps"><div class="dep-tag">DOCX final fusionné ✓ (2026-05-31)</div></div>
+      <div class="card-who">Relecture → Export : <strong>JCH → Dobby</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t26" onchange="toggleDoneCard(this)" checked><label for="t26">Terminée ✓</label></div>
+  </div>
+
+  <div class="card" data-urgency="critique" data-project="JCHYTECH" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">🔴 Contacter les KOLs (Cannone, Billen)</div>
+      <div class="badge-urgency critique">Critique</div>
+    </div>
+    <div class="card-context">Dr Cannone (ENVA, dermatologie/félin) et Dr Billen (ULg, médecine interne). JCH envoie l'email d'approche avec protocole pilote KOL, puis propose un call de 30 min.</div>
+    <div class="card-meta">
+      <div class="card-project">JCHYTECH · VETALYX</div>
+      <div class="card-deps"><div class="dep-tag">Fiches KOL (Furet) ✓</div><div class="dep-tag">Protocole KOL ✓</div></div>
+      <div class="card-who">Email + Call : <strong>JCH → Dobby</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t27" onchange="toggleDoneCard(this)" ><label for="t27">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="urgent" data-project="WILDNEXUS" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">🟠 Valider le panier Mouser batch 1 WildNexus (~162€)</div>
+      <div class="badge-urgency urgent">Urgent</div>
+    </div>
+    <div class="card-context">Panier groupé Mouser BE : LED IR 850/940nm, PIR EKMB, micro MEMS, buck TPS62840, holders, passifs, MOSFET, piles lithium, breadboard, alim labo. Forge attend le go.</div>
+    <div class="card-meta">
+      <div class="card-project">WILDNEXUS · WP02</div>
+      <div class="card-deps"><div class="dep-tag">PPK2 + ESP32-S3 ✓</div><div class="dep-tag">Shortlist WP02 v0.1 ✓</div></div>
+      <div class="card-who">Décision achat : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t28" onchange="toggleDoneCard(this)" ><label for="t28">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="important" data-project="WILDNEXUS" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">🟠 Contacter Arducam — module OV5640 DVP M12</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">Caméra capteur manquante pour le banc. Contacter Arducam (arducam.com) : confirmation module DVP M12, fiche technique et délai avant commande.</div>
+    <div class="card-meta">
+      <div class="card-project">WILDNEXUS · WP02</div>
+      <div class="card-deps"><div class="dep-tag">ADR-002 caméra ✓</div></div>
+      <div class="card-who">Contact fournisseur : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t29" onchange="toggleDoneCard(this)" ><label for="t29">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="important" data-project="JCHYTECH" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">🟡 Documenter les décisions fondatrices Vetalyx</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">Décisions à écrire : nom exact, logo, nom de domaine, positionnement produit, marché prioritaire. Nécessaire pour site web, marque, réglementaire.</div>
+    <div class="card-meta">
+      <div class="card-project">JCHYTECH · VETALYX</div>
+      <div class="card-deps"></div>
+      <div class="card-who">Décision : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t30" onchange="toggleDoneCard(this)" ><label for="t30">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="important" data-project="JCHYTECH" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">🟡 Définir la compensation KOL + budget</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">Honoraires par cas complet pour Dr Cannone et Dr Billen. Bruno prépare le budget, JCH valide.</div>
+    <div class="card-meta">
+      <div class="card-project">JCHYTECH · VETALYX</div>
+      <div class="card-deps"><div class="dep-tag">KOLs identifiés ✓</div><div class="dep-tag">Protocole KOL ✓</div></div>
+      <div class="card-who">Validation budget : <strong>JCH + Bruno</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t31" onchange="toggleDoneCard(this)" ><label for="t31">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="important" data-project="TRAVELS" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">🟡 Décision achat van Stylevan Equinox IV</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">Documentation prête : checklist inspection, prix 2026, risques UE, expositions vanlife. JCH décide : achat neuf/occasion, budget, timing.</div>
+    <div class="card-meta">
+      <div class="card-project">TRAVELS · VAN</div>
+      <div class="card-deps"><div class="dep-tag">Checklist achat ✓</div><div class="dep-tag">Analyse risques UE ✓</div></div>
+      <div class="card-who">Décision : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t32" onchange="toggleDoneCard(this)" ><label for="t32">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="important" data-project="FUTURE_INVEST" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">🟡 Remplir le profil investisseur (questionnaire Bruno)</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">Questionnaire dans strategy/2026-06-04_bruno_profil-investisseur.md. Définit marchés cibles, MAX_DAILY_LOSS, MAX_DRAWDOWN, MAX_POSITION_SIZE.</div>
+    <div class="card-meta">
+      <div class="card-project">FUTURE_INVEST · FONDATIONS</div>
+      <div class="card-deps"><div class="dep-tag">Template profil investisseur ✓</div></div>
+      <div class="card-who">Répondre au questionnaire : <strong>JCH → Bruno</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t33" onchange="toggleDoneCard(this)" ><label for="t33">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="long" data-project="FUTURE_INVEST" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">Formation personnelle Futures (IBKR paper)</div>
+      <div class="badge-urgency long">Long terme</div>
+    </div>
+    <div class="card-context">Lire doc IBKR section Education, tester 5 trades paper. Comprendre taille contrat, marge, expiration, rollover, effet de levier.</div>
+    <div class="card-meta">
+      <div class="card-project">FUTURE_INVEST · FORMATION</div>
+      <div class="card-deps"><div class="dep-tag">Profil investisseur rempli</div></div>
+      <div class="card-who">Formation : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t34" onchange="toggleDoneCard(this)" ><label for="t34">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="long" data-project="FUTURE_INVEST" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">Ouvrir un compte Interactive Brokers (IBKR)</div>
+      <div class="badge-urgency long">Long terme</div>
+    </div>
+    <div class="card-context">ibkr.com → Open Account. Type Individual / Margin. Permissions Futures à activer + Paper Trading.</div>
+    <div class="card-meta">
+      <div class="card-project">FUTURE_INVEST · ENVIRONNEMENT</div>
+      <div class="card-deps"><div class="dep-tag">Profil investisseur rempli</div></div>
+      <div class="card-who">Inscription : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t35" onchange="toggleDoneCard(this)" ><label for="t35">Marquer comme fait</label></div>
+  </div>
+
+</div>
+
+<div class="statsbar">
+  <div class="stat"><span class="stat-dot critique"></span><strong id="cnt-critique">—</strong> critiques</div>
+  <div class="stat"><span class="stat-dot urgent"></span><strong id="cnt-urgent">—</strong> urgentes</div>
+  <div class="stat"><span class="stat-dot important"></span><strong id="cnt-important">—</strong> importantes</div>
+  <div class="stat"><span class="stat-dot long"></span><strong id="cnt-long">—</strong> long terme</div>
+  <div class="stat" style="margin-left:auto;">Mis à jour : 2026-07-23</div>
+</div>
+
+<script>
+  const activeUrgency = new Set(['critique','urgent','important','long']);
+  let activeProject = 'all';
+  let hideDone = false;
+
+  function toggleFilter(btn) {
+    const val = btn.dataset.value;
+    if (activeUrgency.has(val)) {
+      if (activeUrgency.size === 1) return;
+      activeUrgency.delete(val);
+      btn.classList.remove('active');
+    } else {
+      activeUrgency.add(val);
+      btn.classList.add('active');
+    }
+    applyFilters();
+  }
+
+  function filterProject(btn) {
+    document.querySelectorAll('[data-filter="project"]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeProject = btn.dataset.value;
+    applyFilters();
+  }
+
+  function toggleDone() {
+    hideDone = !hideDone;
+    applyFilters();
+  }
+
+  function applyFilters() {
+    const cards = document.querySelectorAll('.card');
+    let visible = 0;
+    const counts = {critique:0, urgent:0, important:0, long:0};
+
+    cards.forEach(card => {
+      const u = card.dataset.urgency;
+      const p = card.dataset.project;
+      const isDone = card.classList.contains('done');
+
+      const urgencyOk = activeUrgency.has(u);
+      const projectOk = activeProject === 'all' || p === activeProject;
+      const doneOk = !hideDone || !isDone;
+
+      if (urgencyOk && projectOk && doneOk) {
+        card.classList.remove('hidden');
+        visible++;
+        if (!isDone) counts[u]++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    document.getElementById('visible-count').textContent = visible + ' tâche' + (visible > 1 ? 's' : '');
+    document.getElementById('cnt-critique').textContent = counts.critique;
+    document.getElementById('cnt-urgent').textContent = counts.urgent;
+    document.getElementById('cnt-important').textContent = counts.important;
+    document.getElementById('cnt-long').textContent = counts.long;
+  }
+
+  function toggleDoneCard(checkbox) {
+    const card = checkbox.closest('.card');
+    if (checkbox.checked) {
+      card.classList.add('done');
+      checkbox.nextElementSibling.textContent = 'Terminée ✓';
+    } else {
+      card.classList.remove('done');
+      checkbox.nextElementSibling.textContent = 'Marquer comme fait';
+    }
+    applyFilters();
+  }
+
+  applyFilters();
+</script>
+</body>
+</html>

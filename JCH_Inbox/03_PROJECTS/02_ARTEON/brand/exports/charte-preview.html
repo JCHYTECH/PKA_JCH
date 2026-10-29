@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARTEON — Charte graphique preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --noir:    #0D0B09;
+    --ivoire:  #F8F5F0;
+    --ocre:    #C17F3A;
+    --sable:   #E8E2DA;
+    --gris:    #6B6560;
+    --brun:    #2A2420;
+    --vert:    #3D5A3E;
+    --ardoise: #4A5568;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Lora', serif;
+    background: var(--ivoire);
+    color: var(--noir);
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  /* ─── Layout ─── */
+  .page { max-width: 1100px; margin: 0 auto; padding: 60px 40px; }
+  .section { margin-bottom: 80px; }
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gris);
+    border-bottom: 1px solid var(--sable);
+    padding-bottom: 12px;
+    margin-bottom: 40px;
+  }
+
+  /* ─── Header preview ─── */
+  .nav-preview {
+    background: var(--ivoire);
+    border-bottom: 1px solid var(--sable);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 80px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 22px;
+    letter-spacing: 0.08em;
+    flex: 1;
+  }
+  .nav-logo span { color: #C17F3A; }
+  .nav-links { display: flex; gap: 32px; color: var(--noir); }
+  .nav-links span { cursor: default; }
+  .nav-cta {
+    background: var(--ocre);
+    color: white;
+    padding: 10px 20px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: default;
+  }
+  .nav-lang { color: var(--gris); font-size: 12px; letter-spacing: 0.05em; }
+
+  /* ─── Palette ─── */
+  .palette-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+  .swatch { border-radius: 0; }
+  .swatch-color { height: 100px; width: 100%; }
+  .swatch-info { padding: 12px 0 0; }
+  .swatch-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .swatch-hex {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--gris);
+  }
+  .swatch-usage { font-size: 12px; color: var(--gris); margin-top: 4px; font-family: 'Space Grotesk', sans-serif; }
+
+  /* ─── Typo ─── */
+  .typo-block { margin-bottom: 48px; display: flex; align-items: baseline; gap: 40px; }
+  .typo-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--gris);
+    min-width: 160px;
+  }
+  .t-h1 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 56px; line-height: 1.1; letter-spacing: -0.02em; }
+  .t-h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 32px; line-height: 1.2; }
+  .t-h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 22px; }
+  .t-body { font-family: 'Lora', serif; font-size: 17px; line-height: 1.7; max-width: 520px; }
+  .t-italic { font-family: 'Lora', serif; font-style: italic; font-size: 17px; line-height: 1.7; max-width: 520px; }
+  .t-caption { font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: var(--gris); letter-spacing: 0.02em; }
+  .t-mono { font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: var(--ardoise); }
+
+  /* ─── Boutons ─── */
+  .btn-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 24px; }
+  .btn {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 14px 28px;
+    border: none;
+    cursor: default;
+    display: inline-block;
+    border-radius: 0;
+  }
+  .btn-primary { background: var(--ocre); color: white; }
+  .btn-secondary { background: transparent; border: 1px solid var(--noir); color: var(--noir); }
+  .btn-ghost-link { background: none; border: none; color: var(--ocre); padding: 0; text-decoration: underline; text-underline-offset: 3px; }
+  .btn-dark { background: var(--noir); color: var(--ivoire); }
+
+  /* ─── Marques ─── */
+  .brand-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; }
+  .brand-card { padding: 40px; }
+  .brand-card.arteon { background: var(--noir); color: var(--ivoire); }
+  .brand-card.wildlens { background: var(--vert); color: var(--ivoire); }
+  .brand-card.instantlu { background: var(--ardoise); color: var(--ivoire); }
+  .brand-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  .brand-sub {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 24px;
+  }
+  .brand-desc { font-family: 'Lora', serif; font-size: 15px; line-height: 1.6; opacity: 0.85; margin-bottom: 20px; }
+  .brand-accent {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    padding: 4px 10px;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .brand-accent.a { border-color: var(--ocre); color: var(--ocre); }
+
+  /* ─── Score sample ─── */
+  .score-block { background: white; padding: 40px; max-width: 480px; }
+  .score-header { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gris); margin-bottom: 24px; }
+  .score-row { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
+  .score-label { font-family: 'Space Grotesk', sans-serif; font-size: 13px; width: 110px; color: var(--noir); }
+  .score-bar-wrap { flex: 1; background: var(--sable); height: 6px; }
+  .score-bar { height: 6px; background: var(--ocre); }
+  .score-val { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--ardoise); width: 40px; text-align: right; }
+  .score-total { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--sable); display: flex; justify-content: space-between; align-items: baseline; }
+  .score-total-label { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14px; }
+  .score-total-val { font-family: 'IBM Plex Mono', monospace; font-size: 24px; color: var(--ocre); font-weight: 500; }
+  .score-tier { font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.12em; color: var(--gris); }
+
+  /* ─── Badge ─── */
+  .badge {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--ardoise);
+    color: white;
+    padding: 16px 20px;
+    width: 130px;
+    gap: 4px;
+  }
+  .badge-check { font-size: 18px; margin-bottom: 4px; }
+  .badge-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; }
+  .badge-name { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 13px; }
+  .badge-by { font-family: 'Space Grotesk', sans-serif; font-size: 10px; opacity: 0.7; }
+
+  /* ─── Slogan ─── */
+  .slogan-block {
+    background: var(--noir);
+    color: var(--ivoire);
+    padding: 60px 80px;
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  .slogan-text {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 32px;
+    line-height: 1.4;
+    margin-bottom: 16px;
+  }
+  .slogan-sig {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    color: var(--ocre);
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── Footer preview ─── */
+  .footer-preview {
+    background: var(--brun);
+    color: var(--ivoire);
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    margin-top: 80px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+  }
+  .footer-brand { font-size: 22px; font-weight: 300; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .footer-sub { color: var(--gris); font-size: 11px; letter-spacing: 0.05em; }
+  .footer-title { font-weight: 600; margin-bottom: 12px; letter-spacing: 0.06em; font-size: 11px; text-transform: uppercase; color: var(--ocre); }
+  .footer-links { display: flex; flex-direction: column; gap: 6px; color: rgba(248,245,240,0.7); }
+
+  /* ─── Page title ─── */
+  .doc-header { margin-bottom: 60px; }
+  .doc-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gris); margin-bottom: 8px; }
+  .doc-date { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--gris); }
+</style>
+</head>
+<body>
+
+<!-- Navigation preview -->
+<nav class="nav-preview">
+  <div class="nav-logo">Arteon<span>·</span></div>
+  <div class="nav-links">
+    <span>Manifeste</span>
+    <span>Artistes</span>
+    <span>Shop</span>
+    <span>WildLens</span>
+  </div>
+  <div class="nav-cta">L'Instant Lu</div>
+  <div class="nav-lang">FR · EN · IT</div>
+</nav>
+
+<div class="page">
+
+  <div class="doc-header">
+    <div class="doc-title">ARTEON — Charte graphique · Preview</div>
+    <div class="doc-date">2026-05-02 · Vega 🦚 · Pour validation JCH</div>
+  </div>
+
+  <!-- Slogan -->
+  <div class="slogan-block">
+    <div class="slogan-text">L'instant figé, la pensée en mouvement.</div>
+    <div class="slogan-sig">ARTEON · Même tissu.</div>
+  </div>
+
+  <!-- Palette -->
+  <div class="section">
+    <div class="section-title">01 — Palette de couleurs</div>
+    <div class="palette-grid">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#0D0B09; border: 1px solid #E8E2DA;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Noir Terrain</span>
+          <span class="swatch-hex">#0D0B09</span>
+          <div class="swatch-usage">Titres · texte</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F8F5F0; border: 1px solid #E8E2DA;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Ivoire</span>
+          <span class="swatch-hex">#F8F5F0</span>
+          <div class="swatch-usage">Fonds clairs</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#C17F3A;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Ocre Lumière</span>
+          <span class="swatch-hex">#C17F3A</span>
+          <div class="swatch-usage">Accent ARTEON · CTAs</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#E8E2DA;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Sable</span>
+          <span class="swatch-hex">#E8E2DA</span>
+          <div class="swatch-usage">Fonds secondaires</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#3D5A3E;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Vert Terrain</span>
+          <span class="swatch-hex">#3D5A3E</span>
+          <div class="swatch-usage">Accent WildLens</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#4A5568;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Ardoise</span>
+          <span class="swatch-hex">#4A5568</span>
+          <div class="swatch-usage">Accent L'Instant Lu</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Typographie -->
+  <div class="section">
+    <div class="section-title">02 — Typographie</div>
+
+    <div class="typo-block">
+      <span class="typo-label">Space Grotesk 700<br>H1 · Titre de page</span>
+      <div class="t-h1">L'Instant Lu</div>
+    </div>
+    <div class="typo-block">
+      <span class="typo-label">Space Grotesk 600<br>H2 · Section</span>
+      <div class="t-h2">Photographie naturaliste</div>
+    </div>
+    <div class="typo-block">
+      <span class="typo-label">Space Grotesk 500<br>H3 · Sous-section</span>
+      <div class="t-h3">Composition · Exposition · Impact</div>
+    </div>
+    <div class="typo-block" style="align-items: flex-start;">
+      <span class="typo-label">Lora Regular<br>Corps de texte</span>
+      <div class="t-body">Une photo fige un instant. Cet instant figé met une pensée en mouvement. Une parade nuptiale. Une libellule à la sortie de sa mue, ailes encore froissées.</div>
+    </div>
+    <div class="typo-block" style="align-items: flex-start;">
+      <span class="typo-label">Lora Italic<br>Citations · WildLens</span>
+      <div class="t-italic">Quelque chose vit ici, avec ses règles propres, indépendamment de nous et pourtant avec nous.</div>
+    </div>
+    <div class="typo-block">
+      <span class="typo-label">Space Grotesk 400<br>Caption · Labels</span>
+      <div class="t-caption">Canon EOS R5 · 500mm f/4 · 1/2000s · ISO 640 · Ardennes, BE</div>
+    </div>
+    <div class="typo-block">
+      <span class="typo-label">IBM Plex Mono<br>Scores · Données</span>
+      <div class="t-mono">Score: 82/100 · 5600K → 4800K ▼ 2/5 · Exposition: +0.35</div>
+    </div>
+  </div>
+
+  <!-- Boutons -->
+  <div class="section">
+    <div class="section-title">03 — Boutons & interactions</div>
+    <div class="btn-row">
+      <span class="btn btn-primary">Analyser ma photo</span>
+      <span class="btn btn-secondary">Voir le manifeste</span>
+      <span class="btn btn-dark">Voir les tirages</span>
+      <span class="btn btn-ghost-link">En savoir plus →</span>
+    </div>
+    <div class="btn-row">
+      <span class="btn btn-primary" style="font-size:12px; padding: 10px 20px;">1ère analyse gratuite</span>
+      <span style="font-family:'Space Grotesk',sans-serif; font-size:13px; color:var(--gris);">— Aucune carte requise</span>
+    </div>
+  </div>
+
+  <!-- 3 marques -->
+  <div class="section">
+    <div class="section-title">04 — Famille de marques</div>
+    <div class="brand-grid">
+      <div class="brand-card arteon">
+        <div class="brand-sub">Site principal</div>
+        <div class="brand-name">Arteon</div>
+        <div class="brand-desc">Galerie · Shop · Manifeste<br>Tirages WhiteWall · Affiliation</div>
+        <div class="brand-accent a">#C17F3A · Ocre Lumière</div>
+      </div>
+      <div class="brand-card wildlens">
+        <div class="brand-sub">Journal naturaliste</div>
+        <div class="brand-name">WildLens</div>
+        <div class="brand-desc">Articles · Newsletter<br>wildlens.arteon.be</div>
+        <div class="brand-accent">#3D5A3E · Vert Terrain</div>
+      </div>
+      <div class="brand-card instantlu">
+        <div class="brand-sub">Service critique IA</div>
+        <div class="brand-name">L'Instant Lu·</div>
+        <div class="brand-desc">Analyse PDF · Preset XMP<br>arteon.be/critique</div>
+        <div class="brand-accent">#4A5568 · Ardoise</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Score sample -->
+  <div class="section">
+    <div class="section-title">05 — L'Instant Lu · Extrait rapport</div>
+    <div style="display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap;">
+      <div class="score-block">
+        <div class="score-header">Scores jury — 5 axes</div>
+        <div class="score-row">
+          <div class="score-label">Composition</div>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:85%"></div></div>
+          <div class="score-val">17/20</div>
+        </div>
+        <div class="score-row">
+          <div class="score-label">Exposition</div>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:80%"></div></div>
+          <div class="score-val">16/20</div>
+        </div>
+        <div class="score-row">
+          <div class="score-label">Netteté</div>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:90%"></div></div>
+          <div class="score-val">18/20</div>
+        </div>
+        <div class="score-row">
+          <div class="score-label">Technique</div>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:75%"></div></div>
+          <div class="score-val">15/20</div>
+        </div>
+        <div class="score-row">
+          <div class="score-label">Impact</div>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:80%"></div></div>
+          <div class="score-val">16/20</div>
+        </div>
+        <div class="score-total">
+          <div>
+            <div class="score-total-label">Total</div>
+            <div class="score-tier">EXCELLENT</div>
+          </div>
+          <div class="score-total-val">82/100</div>
+        </div>
+      </div>
+
+      <!-- Badge -->
+      <div>
+        <div style="font-family:'Space Grotesk',sans-serif; font-size:11px; color:var(--gris); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:16px;">Badge éditeurs éthiques</div>
+        <div class="badge">
+          <div class="badge-check">✦</div>
+          <div class="badge-title">Vérifié</div>
+          <div class="badge-name">L'Instant Lu</div>
+          <div class="badge-by">by ARTEON</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer preview -->
+<div class="footer-preview">
+  <div>
+    <div class="footer-brand">Arteon<span style="color:var(--ocre);">·</span></div>
+    <div class="footer-sub" style="margin-bottom:12px;">L'instant figé, la pensée en mouvement.</div>
+    <div style="font-size:12px; color:rgba(248,245,240,0.5);">arteon.be · © 2026 JC Havaux</div>
+  </div>
+  <div>
+    <div class="footer-title">Navigation</div>
+    <div class="footer-links">
+      <span>Manifeste</span>
+      <span>Artistes</span>
+      <span>Shop</span>
+      <span>WildLens</span>
+      <span style="color:var(--ocre);">L'Instant Lu</span>
+      <span>Affiliation</span>
+    </div>
+  </div>
+  <div>
+    <div class="footer-title">Legal</div>
+    <div class="footer-links">
+      <span>CGV</span>
+      <span>Mentions légales</span>
+      <span>RGPD</span>
+      <span>Éthique prise de vue</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

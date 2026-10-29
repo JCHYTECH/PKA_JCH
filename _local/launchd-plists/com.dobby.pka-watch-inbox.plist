@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.dobby.pka-watch-inbox</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/jchavauxm5/PKA_JCH/bin/pka-watch-inbox</string>
+        <string>--once</string>
+    </array>
+
+    <!-- Execution toutes les 5 minutes (300 secondes) -->
+    <key>StartInterval</key>
+    <integer>300</integer>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/jchavauxm5/PKA_JCH/_local/logs/pka-watch.launchd.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/jchavauxm5/PKA_JCH/_local/logs/pka-watch.launchd.err</string>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/jchavauxm5/PKA_JCH</string>
+
+    <key>KeepAlive</key>
+    <false/>
+
+    <key>LowPriorityIO</key>
+    <true/>
+
+    <key>Nice</key>
+    <integer>10</integer>
+
+</dict>
+</plist>

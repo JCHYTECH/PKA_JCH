@@ -1,0 +1,93 @@
+00:00:01
+Bonjour, aujourd'hui [musique] une vidéo vraiment hallucinante. On va faire travailler ensemble Home Assistant, Iphome, Arduino CLI et les IIA et on va essayer de programmer des ESP32 et vous allez voir qu'on arrive à quelque chose de vraiment extraordinaire vraiment. Donc s'il vous plaît ne coupez pas la vidéo tout de suite parce que sinon YouTube va croire qu'elle n'est pas de bonne qualité, va arrêter de la proposer. N'hésitez pas à vous abonner si c'est pas déjà fait ou éventuellement
+
+00:00:26
+me mettre un petit pouce. La vidéo chapitrée, donc n'hésitez pas à vous balader. Alors, un truc important, si vous voulez reproduire ce que je vais vous montrer dans cette vidéo, et bien il faut avoir vu les vidéos précédentes où j'explique comment on installe antigravity, comment on peut se connecter à des autres ia moins chers voire même gratuites. Donc je vous encourage à regarder le lien que je vous mets là. Allez, c'est parti. Bon et bien pour programmer nos ESP 32, il y a pas 50 façons, il y en a deux. La
+
+00:00:56
+première, c'est celle que j'utilise moi depuis très longtemps, c'est utiliser Arduino IDE. Alors, il y a d'autres programmes éventuellement qui peuvent être utilisés à la place d'Ardino IDE, mais c'est c'est le même esprit. C'estàd qu'on tape son programme et on le compile et on l'envoie. Et donc là, on se crée son programme en entier. La deuxième façon, c'est souspome. Alors, la logique est pas tout à fait la même. C'estàd que quelqu'un a déjà fait le
+
+00:01:19
+programme et il le propose et nous, on peut l'utiliser et auquel cas pour nous, c'est beaucoup plus simple. on a pas besoin d'aller chercher le programme, on donne juste les paramètres. Donc en fait, il y a ces deux logiques là. Alors, c'est évidemment en général beaucoup plus simple mais ça limite. Euh quand on veut affiner quelque chose et bien on peut être un peu limité parce que si jamais le la personne qui a fait le programme à la base ne l'a pas prévu, bien on est bloqué. Euh pour du matériel
+
+00:01:42
+récent, ça peut être aussi un petit peu embêtant parce qu'il peut ne pas y avoir de d'esphom lié au lié à ce matériel là. Donc parfois, c'est intéressant aussi de de de programmer soi-même le code. D'autant que maintenant avec les IA, je trouve que ça va devenir peut-être beaucoup plus pratique finalement. Donc en réalité, les deux peuvent se connecter à l'IA. On peut utiliser ce type de programme pour se connecter à l'IA ou directement ISPO Malia. Alors, on va commencer par Arduino IDE. Alors
+
+00:02:12
+en réalité c'est pas Arduino IDE parce que l'IA peut pas prendre la main et aller cliquer à notre place au niveau des programmes ici. Bien que ce soit presque faisable par certaines I mais ça nécessite beaucoup de ressources parce qu'il faut faire des analyses de texte enfin des analyses d'images et cetera donc c'est quand même pas très pratique. Mais il existe Ardino CLI donc Ardino en ligne de commande et en ligne de commande ça li fa donc c'est ce qu'on va commencer à regarder. Donc on va
+
+00:02:38
+installer Arduino CLI. Donc pour ça, on va lancer un terminal. Voilà, je mets la commande, je vous la mettrai en description. Et c'est parti. Voilà, c'est fait. Je vais la fermer. Je vais en relancer une autre. On va regarder si c'est bien installé. Donc je fais je colle quelque chose. On va regarder la version. Booum. Donc c'est bon. Arduino CLI est bien installé. Al maintenant ce qu'on va faire c'est qu'on va paramétrer. Donc pour ça, on va cliquer là-dessus. Maintenant un peu
+
+00:03:09
+comme Arduino IDE où on doit mettre à jour les cartes. Bien là, on va le faire aussi. Donc on met cette ligne là, entrer. Ensuite on met celle-là pour mettre à jour la liste des cartes. Voilà. Et maintenant on va installer quelques paquets pour le SP32. Voilà, c'est fait. Il a terminé. il a il a télécharger pas mal de petites choses, hein. Euh donc effectivement la dernière mise à jour, c'est la 3.3.8 pour les ESP, les ESP 32. C'est exactement ce que j'ai dans le la version IDE. Donc
+
+00:03:41
+maintenant, on va lancer antigravity. Donc on va déjà commencer par se mettre dans un répertoire. Donc voilà, je suis dans mon répertoire cube parce que ma dernière vidéo, j'ai fait faire le Rubik Cube à Lia. Donc là, nous on va choisir un nouveau répertoire. Voilà. Donc vous voyez si on retrouve tous les programmes que j'ai fait et donc on va se mettre là et on va se mettre donc là on va programmer avec l'Arduino CLI et donc comme je peut-être être amené à faire plusieurs programmes, on va se
+
+00:04:14
+mettre à l'intérieur. Et là c'est le premier test. On va faire clignoter une LED je pense. On va rester dans un truc simple. Voilà. Alors maintenant, il faut faire en sorte que euh notre IA qui est ici communique avec Arduino CLI. Donc il faut qu'on utilise un ce qu'on appelle un MCP. Donc on va paramétrer ce MCP comme on l'avait déjà fait dans une ancienne vidéo où on avait paramétré le MCP de de home assistant. Donc là ça va être à peu près la même chose. On va retrouver le
+
+00:04:44
+fichier d'ailleurs. Donc on va aller sur les trois petits points en haut. Voilà, on voit marquer MCP serveur. On clique dessus puis on clique sur manage MCP serveur. Là, on voit que il y a bien le MCP home assistant. On va cliquer sur view R config. Voilà. Là, on voit la la configuration de notre MCP home assistant. Donc, on va la laisser bien évidemment et en dessous on va mettre les paramètres pour notre Arduino CLI. Et on va taper ce texte-là que je vous mets que je vous donnerai en description. dans une ligne de commande,
+
+00:05:19
+vous allez taper ça. Fait entrer. Voilà. Maintenant, on peut fermer. Ici, on peut sauvegarder. Je crois que je l'ai déjà fait. Je ferme. Je vais fermer Antigravity puis je vais le relancer. Donc là, je vais brancher un Arduino en USB. Donc bien évidemment, vous avez installé tous les drivers pour que les ESP soient reconnus parce que sinon vous risquez d'avoir un problème. Et ça, je vais supposer que ça a été fait. Vous cherchez sur internet les drivers pour ESP. Voilà, il est branché et on va demander à Lia de voir si
+
+00:05:52
+trouve le SP32. Donc je lui balance une demande. Donc là ici je suis sous Claude, je pourrais très bien être tout G mini. On va prendre un G mini flash. J'ai dépassé le quota. On va rester sous Claude. Ah ben Claude est bloqué aussi. Donc en fait là je vais pas pouvoir tester. Donc ce qu'on va faire c'est qu'on va l'installer aussi. qu'on avait déjà fait dans une vidéo précédente. Vous connaissez la méthode. Une fois qu'on a utilisé les IA gratuites, à moins que vous ayez payé, vous continuez
+
+00:06:19
+avec vos IA payantes, mais on peut aller sous open code. Voilà. Et on va essayer de paramétrer pour utiliser les MCP aussi. Alors, pour mettre le MCP sous open code, bah la méthode c'est la même que quand on avait fait la vidéo pour mettre Home assistant. On vient ici, on va dans les utilisateurs, on clique sur son nom, on cherche config. Voilà, on clique sur open code. Et donc là, on a un fichier open code Jon. On va l'ouvrir dans un blocne. Voilà. Donc, on retrouve le paramètre, les paramètres pour
+
+00:06:53
+assistant. J'ai enlevé le token évidemment pour pas que vous le voyez. Et puis là, je vais intégrer et bien la même chose que tout à l'heure. Et on va coller notre code juste ici après cette ligne là. Donc je sauvegarde, je remets mes token correctement et puis on regarde ce que ça fait. Voilà, ça marche. Je vous mettrai le fichier en entier sans le token directement dans la description ou sur mon site parce que la description va peut-être être un peu longue du coup. Alors, il me propose une mise à jour. Bon, écoutez,
+
+00:07:26
+on va accepter. En tout cas, une chose est claire, on voit qu'il y a deux MCP de connecté. Donc, on a bien le MCP d'OM assistant et on a bien le MCP de Arduino. Donc, là, je viens de brancher un USP 32 et je vais lui demander s'il le voit. Donc je suis sous deepsite VK Flash Free qui est gratuite, que j'utilise parce que j'ai bouffé mon quota de 10 dollars et ça fonctionne plutôt bien. Ah oui, il a bien détecté un appareil. Voilà, c'est bien un ESP 32. Donc voilà, ça marche. On va pouvoir essayer de le
+
+00:07:57
+programmer un petit peu. On va juste essayer de faire clignoter la LED. Je sais pas, c'est mon premier test, j'en ai pas fait avant. Peux-tu programmer cet ESP32 pour qu'il fasse juste clignoter la LED de toutes les secondes ? Donc là, je viens de lui demander de programmer juste pour que ça clignote. Je m'attendais à ce qu'il me demande quelque chose. Il ne m'a absolument rien demandé. Et regardez, ça clignote. J'ai absolument rien fait. Alors là franchement je suis surpris
+
+00:08:26
+parce que des fois pour compiler et cetera, il pose des questions là absolument rien. Il a tout fait tout seul, il a flashé le SP32 sans problème. Je n'ai rien fait. Donc vous voyez bien que là que ESPOM finalement va devenir obsolète. Je vois plus trop l'intérêt d'utiliser ESP parce que finalement on va pouvoir programmer si ça fonctionne bien, on va pouvoir programmer N ESP32 tranquillement et ils vont faire ce qu'on leur demande. C'est impressionnant franchement. Donc on va peut-être essayer d'aller un
+
+00:08:57
+petit peu plus loin. Voilà. Donc là, je vais lui demander de me faire un serveur sur lequel je vais pouvoir me connecter et que ça soit juste une petite calculatrice avec les quatre opérations simples. Donc je lui ai demandé ça, il a tourné un certain temps, pas très longtemps et là il me dit d'aller me connecter. Donc a priori il a fini. Donc euh on va tester ça. Il me donne l'adresse. Donc je vais connecter mon téléphone dessus. C'est assez impressionnant quand déjà. On va aller chercher le wifi. Il y est
+
+00:09:28
+celui-ci. Voilà. Le mot de passe, c'est 1 2 3 4 5 6 7 8. Parfait. Donc il est connecté. Donc maintenant, je vais me connecter sur la page donc 4.1 et ça marche. On a une superbe calculatrice. C'est quand même super impressionnant quoi. Il fait exactement ce que je lui dis. On peut faire mumuse un petit peu. Ça marche. Donc là, ça ouvre les portes à tellement de choses. Donc on va pouvoir se paramétrer des ESP 32 maintenant sans se casser la tête. Il va tout faire tout seul. Donc, j'ai hâte de faire des
+
+00:10:11
+programmes un peu plus complexes. Donc maintenant, on va voir ce qu'on peut faire avec ISP Home, mais là c'est déjà vraiment super. Alors, pour ESPOM, c'est encore plus simple. On lance donc ici une ligne de commande. La voici. Donc, je laisse s'installer. Ça y est, donc il a fini. Donc maintenant, je vais lancer antigravity. Voilà. Ce qu'on va faire, c'est qu'on va couper le MCP. Donc on clique sur MCP entrée et on va déconnecter le MCP Arduino momentanément juste pour pas
+
+00:10:44
+qu'il y a un mélange que je sois sûr qu'il utilise bien. Yes Pom. Donc je fais un coup de de touche espace. Voilà. Donc là c'est c'est coupé. Donc là ce qu'on va lui demander c'est de faire avec Home la même chose que ce qu'on avait fait. Donc je branche [grognement] mon ESP 32. Il y a actuellement un 32 branché sur l'ordinateur. Peux-tu faire un petit programme pour qu'il fasse clignoter la lettre toutes les secondes en utilisant ESPOM ? Alors là, comme ESP, il a écrit avec un i, il
+
+00:11:19
+me demande si je veux bien utiliser ça. Alors par contre lui me demande le modèle de la carte. C'est la première. [grognement] Voilà. Alors là, ça faisait un petit moment que j'attendais et en réalité ça continue à tourner. Je comprenais pas pourquoi, mais tout simplement parce que si on clique dessus et bien on voit le retour de ce qui se passe sur le SP32 puisque le SP32 est branché toujours sur mon ordinateur. Et donc actuellement, je vois bien la lettre clignotée. Euh on va aller regarder un petit peu
+
+00:11:51
+les fichiers par curiosité. On n'est pas allé regarder tout à l'heure mais on voit bien un fichier ESPOM ici et on peut cliquer dessus et on voit le on voit le code l'idem Arduino. On a un fichier Ino ici et on a le code ici. Donc on a vraiment tous les codes et on a même le serveur de tout à l'heure. Donc là ce que je vais faire c'est que je vais lui demander la même chose que tout à l'heure me faire un serveur. Oui. Donc là en fait, je viens de m'apercevoir que il vient de
+
+00:12:20
+recompiler mais avec la version Arduino CLI et en fait il utilise Arduino CLI même si je l'ai coupé comme c'est installé sur mon ordinateur, il accède quand même. Donc là vraiment il se débrouille complètement. En fait n'est pas fait pour avoir un serveur, c'est fait c'est ce qui m'explique hein, est fait pour contrôler des du matériel. Donc là, on a quand même un programme complet qui se débrouille complètement. Donc qui est prend ESP home si c'est possible, qui prend Arduino s'il y
+
+00:12:47
+arrive pas avec avec l'autre. C'est c'est quand même assez impressionnant. Avec ESP Home, on va essayer de se faire un truc de dingue. On va tenter un truc de dingue. J'ai pas essayé avant, mais je vais lui demander de me faire un petit programme avec la possibilité dans Home Assistant d'activer ou de désactiver la LED qui est sur le SP32. S'il arrive à faire tout ça, ce serait vraiment hallucinant. Parce que là, ça veut dire qu'on met même pas les doigts dans dans le code, que ce soit d'un côté
+
+00:13:13
+ou que ce soit de l'autre dans home assistant. On a même pas besoin de le paramétrer. Je voudrais dans home assistant avoir un petit bouton dans le tableau bord test qui me permettra d'allumer ou d'éteindre la LED qu'il y a sur le SP32 actuellement branché. Donc, je voudrais que tu programmes le SP32 via ESP Home pour faire ce que je viens te dire. Allez, c'est parti. On verra bien. Donc j'avais donné déjà mes mot de passe WiFi, donc il les a récupéré. Ça y est, il vient de finir. Donc il me dit
+
+00:13:42
+qu'il a bien programmé le SP32. Il a connecté au wifi. Il est allé dans le dashboard home assistant créer a priori le bouton qu'on va essayer d'aller regarder. J'ai pas regardé encore. Donc on va dans test. Alors là il y a tout ce qu'on a fait dans d'anciennes vidéos vidéos et le bouton. Ah bah là il y a un bouton ici. Et donc si j'appuie et ben ça allume. Dingue, je n'ai rien fait, je lui ai juste demandé de le faire. Donc là c'est là c'est vraiment génial parce que ça
+
+00:14:18
+veut dire que on a même plus besoin du tout de mettre la main dans home assistant. Maintenant reste à voir dans quelle mesure on peut programmer des choses complexes dans ESP Home ou via Arduino CLI. Mais là et en plus on a vu tout à l'heure que Arduino CLI et et Iphom se complète, c'est-à-dire des fois, il y a l'un qui fait quelque chose, l'autre qui le fait un petit peu mieux. Donc en fait ça va se compléter et le fait d'avoir les deux programmes accessibles, lui il va choisir, il va se
+
+00:14:44
+débrouiller. Donc maintenant à la limite, il faut lui demander de faire les choses sans lui dire utilise SPOM, utilise Arduino CLI, en gros débrouille-toi quoi. Voilà, donc on va s'arrêter là pour cette vidéo. Euh évidemment dans les prochaines, je vais utiliser ce que je viens de de faire là. Euh, j'aimerais à terme faire une petite enseigne connectée euh style Google Home mais avec un détecteur de présence, avec un détecteur de température, avec un affichage, la totale et tout ça dans le
+
+00:15:14
+même boîtier et possibilité de faire des commandes en interne dans la maison sans passer par un cloud. Allez, on va s'arrêter là. N'hésitez pas à me faire des retours sur YouTube, ça m'intéresse. Mais euh franchement, c'est assez énorme. Allez ciao, on se revoit très vite pour une prochaine vidéo.
+

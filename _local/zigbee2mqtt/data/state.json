@@ -1,0 +1,22 @@
+{
+    "0xa4c1380f1ceaffff": {
+        "battery": 100,
+        "voltage": 3200,
+        "temperature": 20.6,
+        "humidity": 53.9,
+        "comfort_temperature_min": 19,
+        "comfort_temperature_max": 27,
+        "comfort_humidity_min": 40,
+        "comfort_humidity_max": 60,
+        "temperature_units": "celsius",
+        "temperature_calibration": 0,
+        "humidity_calibration": 0,
+        "update": {
+            "state": "idle",
+            "installed_version": 4100,
+            "latest_version": 4100,
+            "latest_source": null,
+            "latest_release_notes": null
+        }
+    }
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.jchytech.pka-outlook-gatekeeper</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Library/Frameworks/Python.framework/Versions/3.13/bin/python3</string>
+    <string>/Users/jchavauxm5/PKA_JCH/scripts/outlook_imap.py</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/jchavauxm5/PKA_JCH</string>
+  <key>StartInterval</key>
+  <integer>900</integer>
+  <key>StandardOutPath</key>
+  <string>/Users/jchavauxm5/PKA_JCH/tmp/outlook-imap.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/jchavauxm5/PKA_JCH/tmp/outlook-imap.log</string>
+</dict>
+</plist>

@@ -1,0 +1,444 @@
+#!/usr/bin/env bash
+# =============================================================================
+# pka-chain — Orchestrateur cross-loop PKA (File-based Event Bus)
+# =============================================================================
+#
+# Enchaîne des loops PKA séquentiellement.
+# Lit un fichier .chain (dans _local/chains/) et exécute les loops dans l'ordre.
+#
+# Usage :
+#   bin/pka-chain run <nom>.chain              # Exécute la chaîne
+#   bin/pka-chain run <nom>.chain --dry-run    # Simule
+#   bin/pka-chain run <nom>.chain --continue-on-error  # Continue en cas d'erreur
+#   bin/pka-chain list                         # Liste les chaînes disponibles
+#   bin/pka-chain new <nom>.chain              # Crée un template
+#
+# Logs : _local/logs/pka-chain.log
+# =============================================================================
+
+set -euo pipefail
+
+# ── Chemins canoniques ─────────────────────────────────────────────────────
+if [[ -n "${PKA_ROOT:-}" ]]; then
+    PKA_ROOT="$PKA_ROOT"
+else
+    SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+    if [[ "$SCRIPT_DIR" == */bin ]]; then
+        PKA_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+    else
+        PKA_ROOT="$SCRIPT_DIR"
+    fi
+fi
+
+CHAIN_DIR="${PKA_ROOT}/_local/chains"
+LOG_DIR="${PKA_ROOT}/_local/logs"
+LOG_FILE="${LOG_DIR}/pka-chain.log"
+PKA_LOOP="${PKA_ROOT}/bin/pka-loop"
+
+# ── Couleurs ────────────────────────────────────────────────────────────────
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No Color
+
+# ── Utilitaires ─────────────────────────────────────────────────────────────
+timestamp() {
+    date '+%Y-%m-%dT%H:%M:%S'
+}
+
+log_chain() {
+    local chain="$1"
+    local step="$2"
+    local status="$3"
+    local detail="$4"
+    local ts
+    ts=$(timestamp)
+
+    mkdir -p "$LOG_DIR"
+
+    # Log JSON-ligne
+    cat >> "$LOG_FILE" <<EOF
+{"timestamp":"${ts}","chain":"${chain}","step":${step},"status":"${status}","detail":"${detail}"}
+EOF
+}
+
+# ── Aide ────────────────────────────────────────────────────────────────────
+show_help() {
+    cat <<'HELP'
+🔗 pka-chain — Orchestrateur cross-loop PKA
+
+USAGE
+  bin/pka-chain run <nom>.chain [--dry-run] [--continue-on-error]
+  bin/pka-chain list
+  bin/pka-chain new <nom>.chain
+
+COMMANDES
+  run <fichier>.chain          Exécute une chaîne de loops
+    --dry-run                  Simule sans exécuter
+    --continue-on-error        Continue même si une loop échoue
+
+  list                         Liste les chaînes disponibles dans _local/chains/
+
+  new <nom>.chain              Crée un template de chaîne
+
+FORMAT D'UN FICHIER .CHAIN
+  # Commentaires ignorés
+  LOOP <nom-loop> [--param valeur ...]
+  ON_SUCCESS → <commande shell>
+  ON_FAILURE → <commande shell>
+
+  Les directives ON_SUCCESS / ON_FAILURE sont optionnelles.
+  Si absentes, le script loggue simplement le succès ou l'échec.
+
+  Les paramètres après le nom de loop sont passés directement à bin/pka-loop.
+
+EXEMPLES
+  # Exécuter la chaîne de déploiement
+  bin/pka-chain run deploy.chain
+
+  # Simuler sans exécuter
+  bin/pka-chain run deploy.chain --dry-run
+
+  # Lister les chaînes
+  bin/pka-chain list
+
+  # Créer un nouveau template
+  bin/pka-chain new ma-chaine.chain
+
+LOGS
+  Chaque exécution est loggée dans : _local/logs/pka-chain.log
+  Format JSON-ligne.
+
+AUTEUR
+  Forge 🔨 — PKA_JCH — P2 Loop Engineering
+HELP
+}
+
+# ── Commande : list ─────────────────────────────────────────────────────────
+cmd_list() {
+    mkdir -p "$CHAIN_DIR"
+
+    echo "📋 Chaînes disponibles dans ${CHAIN_DIR#"$PKA_ROOT/"} :"
+    echo ""
+
+    local count=0
+    for f in "$CHAIN_DIR"/*.chain; do
+        if [[ -f "$f" ]]; then
+            count=$((count + 1))
+            local name
+            name="$(basename "$f")"
+            local desc=""
+            # Extraire la première ligne de commentaire comme description
+            desc="$(head -1 "$f" | sed 's/^# *//')"
+            if [[ "$desc" == "$(head -1 "$f")" ]]; then
+                desc="(pas de description)"
+            fi
+            printf "  ${CYAN}%-30s${NC} %s\n" "$name" "$desc"
+        fi
+    done
+
+    if [[ $count -eq 0 ]]; then
+        echo "  (aucune chaîne trouvée)"
+        echo ""
+        echo "  Créez-en une avec : bin/pka-chain new ma-chaine.chain"
+    fi
+}
+
+# ── Commande : new ──────────────────────────────────────────────────────────
+cmd_new() {
+    local name="$1"
+
+    # Ajouter .chain si absent
+    if [[ "$name" != *.chain ]]; then
+        name="${name}.chain"
+    fi
+
+    mkdir -p "$CHAIN_DIR"
+    local target="${CHAIN_DIR}/${name}"
+
+    if [[ -f "$target" ]]; then
+        echo "❌ La chaîne '${name}' existe déjà."
+        echo "   Chemin : ${target}"
+        exit 1
+    fi
+
+    cat > "$target" <<'TEMPLATE'
+# Description de la chaîne (une ligne)
+#
+# Format :
+#   LOOP <nom-loop> [--param valeur ...]
+#   ON_SUCCESS → <commande shell>
+#   ON_FAILURE → <commande shell>
+#
+# Loops disponibles : forge, bench, edge, seo, sigma, research
+# Exemple :
+#   LOOP forge --budget 3 --stop "score >= 4/5"
+#   LOOP bench --scope "SOP-1..SOP-3"
+#   ON_SUCCESS → echo "Chaîne OK" | notification
+#   ON_FAILURE → echo "Chaîne cassée"
+#
+# Les lignes ON_SUCCESS / ON_FAILURE sont optionnelles.
+
+LOOP forge --budget 3 --stop "score >= 4/5"
+LOOP bench --scope "SOP-1..SOP-3"
+
+ON_SUCCESS → echo "✅ Chaîne terminée avec succès"
+ON_FAILURE → echo "❌ Chaîne interrompue sur erreur"
+TEMPLATE
+
+    echo "✅ Chaîne créée : ${target}"
+    echo ""
+    echo "   Éditez-la avec votre éditeur préféré :"
+    echo "   \$EDITOR ${target}"
+}
+
+# ── Variables globales de parsing ─────────────────────────────────────────
+# parse_chain remplit ces variables (pas de nameref, compat bash 3.2)
+CHAIN_LOOPS=()
+CHAIN_ON_SUCCESS=""
+CHAIN_ON_FAILURE=""
+
+# ── Parsing d'un fichier .chain ─────────────────────────────────────────────
+parse_chain() {
+    local file="$1"
+
+    # Reset globals
+    CHAIN_LOOPS=()
+    CHAIN_ON_SUCCESS=""
+    CHAIN_ON_FAILURE=""
+
+    local line_num=0
+    while IFS= read -r line || [[ -n "$line" ]]; do
+        line_num=$((line_num + 1))
+
+        # Skip empty lines and comments
+        [[ -z "$line" ]] && continue
+        [[ "$line" =~ ^[[:space:]]*# ]] && continue
+
+        if [[ "$line" =~ ^LOOP[[:space:]]+(.*) ]]; then
+            local loop_args="${BASH_REMATCH[1]}"
+            # Trim leading/trailing whitespace
+            loop_args="$(echo "$loop_args" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
+            CHAIN_LOOPS+=("$loop_args")
+        elif [[ "$line" =~ ^ON_SUCCESS[[:space:]]*→[[:space:]]*(.*) ]]; then
+            CHAIN_ON_SUCCESS="${BASH_REMATCH[1]}"
+        elif [[ "$line" =~ ^ON_FAILURE[[:space:]]*→[[:space:]]*(.*) ]]; then
+            CHAIN_ON_FAILURE="${BASH_REMATCH[1]}"
+        elif [[ "$line" =~ ^ON_SUCCESS[[:space:]]+(.*) ]]; then
+            # Alternative sans la flèche → (tolérance)
+            CHAIN_ON_SUCCESS="${BASH_REMATCH[1]}"
+        elif [[ "$line" =~ ^ON_FAILURE[[:space:]]+(.*) ]]; then
+            CHAIN_ON_FAILURE="${BASH_REMATCH[1]}"
+        else
+            echo "⚠️  Ligne ${line_num} ignorée (syntaxe inconnue) : ${line:0:60}"
+        fi
+    done < "$file"
+
+    if [[ ${#CHAIN_LOOPS[@]} -eq 0 ]]; then
+        echo "❌ Aucune directive LOOP trouvée dans ${file}"
+        exit 1
+    fi
+}
+
+# ── Commande : run ──────────────────────────────────────────────────────────
+cmd_run() {
+    local chain_name="$1"
+    shift
+
+    local dry_run=false
+    local continue_on_error=false
+
+    # Parse options spécifiques à run
+    for arg in "$@"; do
+        case "$arg" in
+            --dry-run)
+                dry_run=true
+                ;;
+            --continue-on-error)
+                continue_on_error=true
+                ;;
+            *)
+                echo "❌ Option inconnue : $arg"
+                echo "   Options : --dry-run, --continue-on-error"
+                exit 1
+                ;;
+        esac
+    done
+
+    # Résoudre le chemin du fichier .chain
+    local chain_file
+    if [[ -f "$chain_name" ]]; then
+        # Chemin absolu ou relatif donné
+        chain_file="$chain_name"
+    elif [[ -f "${CHAIN_DIR}/${chain_name}" ]]; then
+        chain_file="${CHAIN_DIR}/${chain_name}"
+    elif [[ "$chain_name" == *.chain ]] && [[ -f "${CHAIN_DIR}/${chain_name}" ]]; then
+        chain_file="${CHAIN_DIR}/${chain_name}"
+    elif [[ -f "${CHAIN_DIR}/${chain_name}.chain" ]]; then
+        chain_file="${CHAIN_DIR}/${chain_name}.chain"
+    else
+        echo "❌ Chaîne introuvable : '${chain_name}'"
+        echo "   Cherché dans :"
+        echo "     - ${chain_name}"
+        echo "     - ${CHAIN_DIR}/${chain_name}"
+        echo "     - ${CHAIN_DIR}/${chain_name}.chain"
+        echo ""
+        echo "   Utilisez 'bin/pka-chain list' pour voir les chaînes disponibles."
+        exit 1
+    fi
+
+    # Parser le fichier → remplit CHAIN_LOOPS, CHAIN_ON_SUCCESS, CHAIN_ON_FAILURE
+    parse_chain "$chain_file"
+
+    local chain_label
+    chain_label="$(basename "$chain_file")"
+
+    echo ""
+    echo "🔗 pka-chain — ${chain_label}"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+
+    if [[ "$dry_run" == "true" ]]; then
+        echo "🔍 MODE DRY-RUN — Aucune exécution réelle"
+        echo ""
+    fi
+
+    local total_steps=${#CHAIN_LOOPS[@]}
+    local current_step=0
+    local failed=false
+    local failed_step=0
+
+    for loop_line in "${CHAIN_LOOPS[@]}"; do
+        current_step=$((current_step + 1))
+
+        # Extraire le nom de la loop (premier mot)
+        local loop_name="${loop_line%% *}"
+        local loop_rest="${loop_line#* }"
+        [[ "$loop_rest" == "$loop_line" ]] && loop_rest=""
+
+        echo "── Étape ${current_step}/${total_steps} : ${loop_name} ─────────────────────"
+        echo "   Arguments : ${loop_rest:-"(aucun)"}"
+        echo ""
+
+        if [[ "$dry_run" == "true" ]]; then
+            echo "   🏷️  [DRY-RUN] bin/pka-loop ${loop_name} ${loop_rest}"
+            echo ""
+            log_chain "$chain_label" "$current_step" "dry-run" "${loop_name} ${loop_rest}"
+        else
+            # Construction de la commande
+            local cmd=("$PKA_LOOP" "$loop_name")
+            if [[ -n "$loop_rest" ]]; then
+                # Split loop_rest en mots (respecte les guillemets simples basiques)
+                local -a rest_args
+                IFS=' ' read -r -a rest_args <<< "$loop_rest"
+                cmd+=("${rest_args[@]}")
+            fi
+
+            echo "   🚀 Exécution : ${cmd[*]}"
+            echo ""
+
+            local exit_code=0
+            # Shellcheck disable=SC2068
+            "${cmd[@]}" || exit_code=$?
+
+            if [[ $exit_code -ne 0 ]]; then
+                echo ""
+                echo "   ❌ Étape ${current_step}/${total_steps} ÉCHEC (exit code: ${exit_code})"
+                log_chain "$chain_label" "$current_step" "failed" "${loop_name} ${loop_rest} (exit=${exit_code})"
+
+                if [[ "$continue_on_error" == "true" ]]; then
+                    echo "   ⚠️  Mode --continue-on-error : poursuite..."
+                    failed=true
+                else
+                    failed=true
+                    failed_step=$current_step
+                    break
+                fi
+            else
+                echo "   ✅ Étape ${current_step}/${total_steps} OK"
+                log_chain "$chain_label" "$current_step" "success" "${loop_name} ${loop_rest}"
+            fi
+        fi
+        echo ""
+    done
+
+    # ── Finalisation ──────────────────────────────────────────────────────
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    if [[ "$dry_run" == "true" ]]; then
+        echo "🔍 Dry-run terminé — ${total_steps} étape(s) simulée(s)"
+        if [[ -n "$CHAIN_ON_SUCCESS" ]]; then
+            echo "   ON_SUCCESS → ${CHAIN_ON_SUCCESS}"
+        fi
+        if [[ -n "$CHAIN_ON_FAILURE" ]]; then
+            echo "   ON_FAILURE → ${CHAIN_ON_FAILURE}"
+        fi
+        log_chain "$chain_label" "0" "dry-run-end" "chain simulated (${total_steps} steps)"
+    elif [[ "$failed" == "true" ]]; then
+        echo "❌ Chaîne échouée à l'étape ${failed_step}/${total_steps}"
+        log_chain "$chain_label" "0" "chain-failed" "failed at step ${failed_step}/${total_steps}"
+
+        if [[ -n "$CHAIN_ON_FAILURE" ]]; then
+            echo ""
+            echo "   → Exécution ON_FAILURE : ${CHAIN_ON_FAILURE}"
+            eval "$CHAIN_ON_FAILURE" || true
+        fi
+        exit 1
+    else
+        echo "✅ Chaîne terminée — ${total_steps}/${total_steps} étapes réussies"
+        log_chain "$chain_label" "0" "chain-success" "all ${total_steps} steps completed"
+
+        if [[ -n "$CHAIN_ON_SUCCESS" ]]; then
+            echo ""
+            echo "   → Exécution ON_SUCCESS : ${CHAIN_ON_SUCCESS}"
+            eval "$CHAIN_ON_SUCCESS" || true
+        fi
+    fi
+    echo ""
+
+    if [[ "$dry_run" != "true" ]]; then
+        echo "📝 Log : ${LOG_FILE}"
+    fi
+}
+
+# ── Dispatch ─────────────────────────────────────────────────────────────────
+main() {
+    if [[ $# -eq 0 ]]; then
+        show_help
+        exit 0
+    fi
+
+    local subcmd="$1"
+    shift
+
+    case "$subcmd" in
+        run)
+            if [[ $# -eq 0 ]]; then
+                echo "❌ Usage : bin/pka-chain run <fichier>.chain [--dry-run] [--continue-on-error]"
+                exit 1
+            fi
+            cmd_run "$@"
+            ;;
+        list|ls)
+            cmd_list
+            ;;
+        new|create)
+            if [[ $# -eq 0 ]]; then
+                echo "❌ Usage : bin/pka-chain new <nom>.chain"
+                exit 1
+            fi
+            cmd_new "$1"
+            ;;
+        --help|-h|help)
+            show_help
+            ;;
+        *)
+            echo "❌ Commande inconnue : '$subcmd'"
+            echo "   Commandes disponibles : run, list, new, help"
+            echo "   Utilisez --help pour plus de détails."
+            exit 1
+            ;;
+    esac
+}
+
+main "$@"

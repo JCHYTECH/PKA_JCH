@@ -1,0 +1,21 @@
+{
+  "broker": {"host": "localhost", "port": 1883, "username": "jchavaux", "password": "Dobby2026!"},
+  "device": {"identifiers": ["lupo-test"], "name": "Lupo (Test M5)", "manufacturer": "PKA_JCH"},
+  "source_topic": "esneux/iphone",
+  "source_format": "sensor_logger",
+  "sensors": [
+    {"key": "pitch",      "name": "Van Pitch",        "unit": "°",    "state_topic": "lupo/assiette/pitch"},
+    {"key": "roll",       "name": "Van Roll",         "unit": "°",    "state_topic": "lupo/assiette/roll"},
+    {"key": "magneticBearing", "name": "Van Cap",    "unit": "°",    "state_topic": "lupo/assiette/yaw"},
+    {"key": "latitude",   "name": "Van Latitude",     "unit": "°",    "state_topic": "lupo/gps/latitude"},
+    {"key": "longitude",  "name": "Van Longitude",    "unit": "°",    "state_topic": "lupo/gps/longitude"},
+    {"key": "altitude",   "name": "Van Altitude GPS", "unit": "m",    "state_topic": "lupo/gps/altitude"},
+    {"key": "speed",      "name": "Van Speed GPS",    "unit": "m/s",  "state_topic": "lupo/gps/speed"},
+    {"key": "course",     "name": "Van Course GPS",   "unit": "°",    "state_topic": "lupo/gps/course"},
+    {"key": "pressure",   "name": "Van Pression",     "unit": "hPa",  "state_topic": "lupo/baro/pressure"},
+    {"key": "batteryLevel", "name": "iPhone Batterie",  "unit": "%",    "state_topic": "lupo/iphone/battery"}
+  ],
+  "device_tracker": {
+    "state_topic": "lupo/gps/position"
+  }
+}

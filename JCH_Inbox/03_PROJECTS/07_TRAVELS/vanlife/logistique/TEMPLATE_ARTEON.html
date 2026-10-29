@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title>[Destination] — Vanlife</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+  :root { --ivoire: #F8F5F0; --noir: #0D0B09; --ocre: #C17F3A; --sable: #E8E2DA; --sable-fonce: #D4CCC2; --ardoise: #4A5568; --gris: #6B7280; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--ivoire); color: var(--noir);
+    font-family: 'Inter', -apple-system, sans-serif; font-size: 15px; line-height: 1.6;
+    padding: 16px 14px; -webkit-text-size-adjust: 100%;
+  }
+  h1, h2, h3, th { font-family: 'Inter', -apple-system, sans-serif; font-weight: 700; }
+  h1 { font-size: 24px; color: var(--ocre); margin-bottom: 4px; }
+  h2 { font-size: 13px; color: var(--ocre); margin: 24px 0 8px 0; padding-bottom: 3px; border-bottom: 2px solid var(--sable); text-transform: uppercase; letter-spacing: 0.05em; }
+  h3 { font-size: 12px; color: var(--ardoise); margin: 12px 0 4px 0; font-weight: 600; }
+  .km, .price { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ardoise); }
+  .header { margin-bottom: 14px; padding-bottom: 10px; border-bottom: 3px solid var(--ocre); }
+  .header-meta { font-size: 11px; color: var(--gris); margin-top: 4px; }
+  .status { display: inline-block; background: var(--ocre); color: #fff; padding: 2px 10px; font-family: 'Inter', -apple-system, sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+  .tagline { font-family: 'Inter', -apple-system, sans-serif; font-weight: 400; color: var(--gris); font-size: 13px; }
+  .card { background: var(--sable); padding: 10px 14px; margin: 8px 0; font-size: 13px; }
+  .rules { background: var(--sable); padding: 10px 12px; margin: 8px 0; font-size: 12px; border-left: 4px solid var(--ocre); line-height: 1.7; }
+  .rules strong { color: var(--ocre); }
+  .boat { background: #E8F0FE; border-left: 4px solid #3B82F6; padding: 10px 12px; margin: 8px 0; font-size: 12px; line-height: 1.7; }
+  .table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 8px 0 12px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 11px; min-width: 500px; }
+  th { background: var(--sable-fonce); color: var(--noir); font-family: 'Inter', -apple-system, sans-serif; font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; padding: 8px 8px; text-align: left; white-space: nowrap; }
+  td { padding: 7px 8px; border-bottom: 1px solid var(--sable); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  .planning td:first-child { font-weight: 600; color: var(--ocre); white-space: nowrap; font-family: 'IBM Plex Mono', monospace; font-size: 11px; }
+  .meal { font-size: 10px; color: var(--ardoise); }
+  .link a { color: var(--ocre); text-decoration: none; font-size: 14px; padding: 4px 8px; display: inline-block; }
+  .lodging { font-weight: 700; color: var(--noir); }
+  .flex { display: flex; gap: 12px; flex-wrap: wrap; }
+  .col { flex: 1; min-width: 200px; }
+  .text-right { text-align: right; }
+  .map-container { height: 280px; margin: 10px 0; border: 2px solid var(--sable); position: relative; z-index: 1; }
+  .footer { margin-top: 24px; padding-top: 10px; border-top: 2px solid var(--sable); font-size: 10px; color: var(--gris); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px; }
+
+  @media screen and (min-width: 768px) {
+    body { font-size: 13px; max-width: 750px; margin: 0 auto; padding: 24px; }
+    h1 { font-size: 22px; } h2 { font-size: 11px; margin-top: 20px; } h3 { font-size: 11px; }
+    .km, .price { font-size: 11px; }
+    .map-container { height: 340px; }
+    table { font-size: 10px; min-width: 0; }
+    th { font-size: 9px; padding: 6px 6px; }
+    td { font-size: 10px; padding: 5px 6px; }
+    .table-wrap { overflow-x: visible; }
+    .header-meta { font-size: 10px; text-align: right; }
+    .rules { font-size: 11px; } .boat { font-size: 11px; }
+  }
+
+  @media print { body { padding: 12mm; background: #fff; font-size: 9pt; } .no-print { display: none; } .map-container { height: 200px; } .table-wrap { overflow-x: visible; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>[Destination]</h1>
+  <div class="tagline">[Région] — [Saison]</div>
+  <div class="header-meta"><span class="status">[Statut]</span> &nbsp; [Dates] · [Durée]</div>
+</div>
+
+<div class="rules">
+  <strong>⏰ Départ :</strong> 10h00 · <strong>Étape :</strong> 9h00 · <strong>Retour :</strong> 9h00 · <strong>J1 :</strong> max 4h route → arrêt · <strong>J+ :</strong> max 7h<br>
+  📷 Photos : approximatif, sans stress · 🏛️ Anne : durées visites + baignade comptées
+</div>
+
+<div class="map-container no-print" id="map"></div>
+
+<h2>Attraits</h2>
+<div class="flex">
+  <div class="col"><h3>JCH — Photo wildlife</h3><p>[Attraits photo]</p></div>
+  <div class="col"><h3>Anne — Art &amp; patrimoine</h3><p>[Attraits patrimoine]</p></div>
+</div>
+<div class="card"><strong>Points communs :</strong> [Convergence des profils]</div>
+
+<h2>Logistique</h2>
+<div class="table-wrap"><table>
+  <tr><th>Stationnement</th><td>[Parkings — Park4Night + bases officielles]</td></tr>
+  <tr><th>Services</th><td>[Eau, vidange, électricité]</td></tr>
+  <tr><th>Accès</th><td>[Itinéraire recommandé]</td></tr>
+  <tr><th>Distance Liège</th><td class="km">[___ km (__h__) auto. / ___ km (__h__) sans]</td></tr>
+</table></div>
+
+<h2>Distances &amp; liens</h2>
+<div class="table-wrap"><table>
+  <tr><th>Trajet</th><th class="text-right">Km</th><th class="text-right">Temps</th><th>Maps</th></tr>
+  <tr><td>[A → B]</td><td class="km text-right">___</td><td class="km text-right">__h__</td><td class="link"><a href="#" target="_blank">🔗</a></td></tr>
+</table></div>
+
+<h2>Spots photo <span style="font-weight:400;font-size:10px;color:var(--gris)">— JCH</span></h2>
+<div class="table-wrap"><table><tr><th>Lieu</th><th>Sujet</th><th>Heure</th><th>Maps</th></tr></table></div>
+
+<h2>Patrimoine &amp; culture <span style="font-weight:400;font-size:10px;color:var(--gris)">— Anne</span></h2>
+<div class="table-wrap"><table><tr><th>Lieu</th><th>Type</th><th class="text-right">Durée</th><th>Maps</th></tr></table></div>
+
+<h2>Baignade <span style="font-weight:400;font-size:10px;color:var(--gris)">— Anne</span></h2>
+<div class="table-wrap"><table><tr><th>Lieu</th><th>Type</th><th class="text-right">Durée</th><th>Maps</th></tr></table></div>
+
+<h2>Repas &amp; restaurants</h2>
+<div class="card"><strong>🥐 P-déj</strong> van · <strong>🥪 Déj</strong> van · <strong>🍽️ Dîner</strong> resto</div>
+<div class="table-wrap"><table><tr><th>Soir</th><th>Restaurant</th><th class="text-right">Prix</th><th>Maps</th></tr></table></div>
+
+<h2>Météo &amp; plans B</h2>
+<div class="table-wrap"><table><tr><th>Si mauvais temps…</th><th>Au lieu de…</th><th>Faire…</th></tr></table></div>
+
+<h2>Planning</h2>
+<div class="table-wrap"><table class="planning"><tr><th>Jour</th><th>Matin</th><th>Après-midi</th><th>Soir</th><th class="lodging">Nuit</th></tr></table></div>
+
+<div class="footer"><span>Cigogne 🦩 · Vanlife Planner · PKA_JCH</span><span>[Date]</span></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+// var map = L.map('map').setView([lat,lng],7);
+// L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OSM'}).addTo(map);
+// var pts=[...]; L.polyline(pts.map(p=>[p.lat,p.lng]),{color:'#C17F3A',weight:3}).addTo(map);
+// pts.forEach(p=>{L.circleMarker([p.lat,p.lng],{radius:7,color:p.t==='lodging'?'#0D0B09':'#4A5568',fillColor:p.t==='lodging'?'#0D0B09':'#F8F5F0',fillOpacity:1,weight:2.5}).addTo(map).bindPopup('<b>'+p.label+'</b>')});
+// map.fitBounds(L.polyline(pts.map(p=>[p.lat,p.lng])).getBounds().pad(0.15));
+</script>
+</body>
+</html>

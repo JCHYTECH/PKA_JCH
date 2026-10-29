@@ -1,0 +1,15 @@
+{
+  "description": "PKA tool pointer configuration — source canonique = AGENTS.md. Ce fichier ne contient que les métadonnées spécifiques à chaque outil (TOOL + MODEL). Les règles communes sont dans AGENTS.md.",
+  "tools": {
+    "AGENTS.md": {
+      "title": "AGENTS.md — PKA_JCH Canonical System Pointer",
+      "tool_label": "(voir ton fichier stub)",
+      "model_hint": "(modèle en cours)"
+    },
+    "DEEPSEEK.md": {
+      "title": "DEEPSEEK.md — PKA_JCH System Pointer (DeepSeek API)",
+      "tool_label": "DeepSeek API",
+      "model_hint": "deepseek-v4 / deepseek-reasoner"
+    }
+  }
+}

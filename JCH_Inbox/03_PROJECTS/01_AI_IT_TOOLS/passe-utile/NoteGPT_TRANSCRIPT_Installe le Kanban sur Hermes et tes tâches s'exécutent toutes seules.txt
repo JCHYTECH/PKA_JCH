@@ -1,0 +1,159 @@
+00:00:01
+Bonjour à tous, j'espère que vous allez bien. Alors aujourd'hui, je viens avec une nouvelle vidéo sur Hermes et cette fois-ci, on va travailler sur une fonctionnalité qui s'appelle le Canban. Alors, ça c'est un nom en fait en japonais qui veut dire le tableau visuel. Beaucoup de personnes en fait ne savent pas exactement comment il fonctionne en fait ce système là et surtout en fait comment on peut le manipuler parce que c'est un système très intéressant. Il permet en fait d'exécuter des tâches et surtout en fait
+
+00:00:31
+de demander à à Hermes d'exécuter les tâches en priorité. Alors moi, j'utilise énormément en fait ce système- là et je voulais aujourd'hui faire vraiment une vidéo pour vous montrer exactement comment le manipuler. On va comprendre d'abord qu'est-ce que c'est ce système là et est-ce que vraiment il est intéressant ou pas. et on va essayer d'exécuter. Je vais vous montrer comment j'ai mis en place les quatre étapes pour pouvoir profiter de la puissance de Hermes parce que si tu utilises pas le
+
+00:00:58
+canban, croyez-moi, vous êtes en train de rater 50 % de la puissance de Hermes. C'est parti. Première chose à faire, on a besoin d'installer Hermes. Alors, il faut savoir que Hermes aujourd'hui donc sur leur donc Kithub officiel, ils sont arrivés à 193000 étoiles. C'est énorme, hein. C'est aujourd'hui l'agent EAI le plus téléchargé au monde et vraiment c'est un système ultra puissant que ça vaut le coup de le tester. Alors, le conseil que je donne, n'installez pas cette version
+
+00:01:32
+de agent, prenez celle-là. Ça c'est une interface de Hermes qui s'appelle Hermes web UI. Ça veut dire tout simplement c'est le Hermes que tu vas trouver à l'intérieur mais c'est juste que avec Hermes, tu vas avoir l'interface graphique de Hermes. Je vous donne ici sur mon serveur, j'ai deux, j'ai Hermes, le classique et le Hermes avec l'interface. Donc du coup ça c'est la meilleure version à prendre. Donc bien évidemment, il y en a plusieurs personnes qui installent AirM sur leur
+
+00:01:58
+ordinateur. Donc moi je je le recommande pas de de mettre sur directement sur ton PC. Ça veut dire que tu donnes la main à Hermes, cet agent qui sent et aussi dangereux, avoir aussi tes photos, tes vidéos, tes mot de passes. Donc je ne le recommande pas. Il fallait toujours en fait aller vers des solutions en fait VPS temporaire online, tu testes Hermes et tu es en toute sécurité. Aujourd'hui, il y a plusieurs en fait fournisseurs qui proposent Hermes en fait préinstallé. Il y en a celui de
+
+00:02:27
+Hostinger. Donc ici sur Hostinger, il fallait être sur cette page-là, je vais vous la mettre dans la description. Hermes web UI. Cette interface-là, elle vous donne exactement ce système- làà qui est un système de Hermes le plus simple à manipuler, le plus facile en fait à suivre. Alors ici sur cette interface là, il va te proposer quelques packages. Alors tout simplement si tu es freelanceur que tu veux tester juste pour le test, prenez celui-là. Si tu es entrepreneur que tu veux automatiser, faire la production avec Hermes, prenez
+
+00:02:58
+ce serveurlà qui te donne 8 Go de RAM. Alors toujours n'importe que tu prends, tu as toujours en fait 30 jours d'C hein, satisfait au ou au remboursé. Donc vraiment 30 jours largement suffisant pour tester la puissance et voir que si ces hermes en fait te donne de la valeur ajoutée dans ton ord dans ton business ou bien dans ton euh quotidien. Alors si je clique ici, vous allez voir que là il y a sur le le blog officiel de Hostinger le coupon que tu peux tester ici qui s'appelle Go Hermes.
+
+00:03:29
+Go Hermess si je l'applique ici voilà il me donne 10 % de réduction. Donc tout simplement ici, il fallait être bien sûr euh la première fois que tu achètes un serveur sur Hostingle. Si c'est pas la première fois, pour que tu puisses faire tourner ce coupon là, euh essaie de tout simplement de te connecter sur Hostingle avec une autre adresse email. C'està dire après lorsque tu connectes ici, tu mets une autre adresse email nouvelle, pas l'ancienne adresse email avec un compte déjà avec Hustingle pour pouvoir
+
+00:03:57
+bénéficier des 10 %. Bon, une petite astuce en passage du passage. Alors sinon, lorsque tu cliques ici et tu passes en fait donc la commande, tu vas te trouver directement sur cette interface là. Une interface très facile à utiliser he qui te permet voilà de manipuler en fait le système avec une interface graphique très facile, très simple. Tu as les chats ici et surtout on va travailler ensemble aujourd'hui sur Canban. Donc là, c'est la partie de l'installation bien expliquée vite fait
+
+00:04:24
+en 2 minutes comme ça tu peux vraiment bien démarrer sur ARMES avec la bonne version. Alors j'aime bien expliquer qu'est-ce que c'est cabane. Alors d'abord il faut savoir le mot cabane c'est un mot en fait japonais et il veut dire panneau visuel. Donc ça c'est une méthode en fait que que Toyota en fait c'est elle qui a créé ce concept là dans les années 1950 et c'est très simple, elle représente le flux de travail dans un tableau et donc du coup c'est simple donc le travail il va donc progresser de
+
+00:04:57
+gauche vers la droite. Donc on peut voir les tâches à faire, les tâches en cours, les tâches terminées et c'est très facile en fait à visualiser et à voir en fait notre flux de travail. Aujourd'hui sur Hermes c'est pas vraiment le tableau donc bank qu'on le connaît qui permet voilà donc de voir la progression en tant que de travail. Genre toi tu entres, tu vas laisser les tâches, tu vas les écrier et à un certain moment lorsque toi tu avances, tu vas les faire avancer un petit peu vers la droite.
+
+00:05:29
+Non, sur Hermes, toi tu vas créer les tâches et c'est lui, c'est Hermes en fait qui va s'occuper à exécuter ces tâches-là jusqu'à terminer les tâches à 100 %. Donc si je regarde ici sur mon interface Hermes, là je suis sur la partie donc Canban. Donc c'est cette partie là. Lorsque je clique ici, j'entre dans cette partie et vous allez voir que là, j'ai un tableau de bord. Là, il y a une étape qui sont les tirage. Ça veut dire que moi, je vais tout simplement créer plusieurs tâches.
+
+00:05:59
+Ils vont d'abord être ici et par la suite, il va y avoir une liste todo, une liste à faire que donc Hermes, il va les exécuter. Il va trouver ici la partie ready. Ça veut dire qu'il va mettre les tâches par ordre d'exécution. Et vous allez voir que là il va traiter en fait, il va passer en mode donc exécution une à une manière séquentielle, sauf si toi tu vas affecter en fait la tâche à d'autres agents sous Hermes. On va l'expliquer, on va le comprendre par la suite. Alors si parfois ça arrive que
+
+00:06:31
+parfois il est bloqué, il a il a besoin d'une autorisation, bien il arrive pas à exécuter la la tâche, même s'il a ici plusieurs fois, tu vas la trouver ici. Et si la tâche a été exécutée, ça va être comme ici en fait affiché comme quoi la tâche a été exécutée. Si je prends par exemple une des tâches, alors moi je lui demander en fait de faire un petit check sur mon serveur VPS. Si je clique ici, je vois les événements en fait que lui il a fait. Donc du coup au niveau en fait de lancement en fait de
+
+00:06:59
+cette tâche là, il lui a donné en fait un ID et la tâche a été donc exécutée. Et là je vois le log. le lock, c'est-à-dire le résultat qui a été fait en fait suite à l'exécution de cette tâche là. Il m'a envoyé voilà les rapports donc les informations métriques que moi j'ai demandé par rapport à au processeur, par rapport à la RAM. Donc c'est un petit peu ce que moi j'ai demandé dans cette tâche là. Donc chacune de ces tâches là, si je reviens ici, elle va passer par ces étapes là,
+
+00:07:27
+mais c'est lui Hermes qui va les faire diffiler de ce dans ce sensl. On va faire un petit test très très simple. Je vais ici en fait de lui donner quelques tâches. On on va mettre deux ou trois tâches. Par exemple là, je vais lui demander si vous voulez en fait qu'il me fait la la création de contenu ou bien d'un poste par exemple LinkedIn. Donc là je lui dis écoutez je veux que tu me crées un post LinkedIn à propos du sujet donc Hermes par exemple. Donc là je viens j'ajoute en fait cette tâche
+
+00:07:54
+là. Regardez je donne un titre ici. Voilà et je donne une description. Voilà, je lui donne exactement ce que je veux en fait dans cette tâche. Alors, vous allez voir que là, je dois lui donner en fait un statut. Donc ça veut dire que là, je lui dis elle est dans quelle étape ? Est-ce que c'est juste dans l'étape dodo ? Ça veut dire que parmi la liste, il tout simplement les mettre et par la suite les les organiser ou bien c'est bon, cette tâche là, je veux que il commence donc je le mets
+
+00:08:24
+directement en mode ready. Et là, il y a ce qu'on appelle la priorité. Par exemple, la priorité, je mettrai 3 parce que si tu laisses priorité zéro, ça veut dire prioritaire 1 2 donc plus que tu monte, plus que ça devient pas prioritaire. Donc là, je mettrai 3. Et ça c'est important. Je veux affecter cette tâche là à quel agent ? Et ça c'est important. Alors regardez, si je ne si je me je ne mets pas d'agent spécifique à traiter le le l'attache, si je clique sur create, il va me dire
+
+00:08:54
+attention, tu as mis ça en mode ready et tu as pas mis euh quel agent que tu veux qu'il qu'il traite la tâche. Ça se fait pas. Soit tu la mets dans le mode donc tirage ou bien dans le mode todo, ça c'est possible. Alors moi je lui dis écoutez, OK, on va travailler avec l'agent principal. Ici dans cette installation là, j'ai un seul agent principal avec plusieurs skills et compétences. Donc je veux qu'il traite ça. Voilà. Avec donc cet agent-là. Regardez là. Ici, je peux ajouter ici,
+
+00:09:20
+c'est comme un tag, hein. Donc ça ça c'est juste un tag hein, pour que par la suite je peux regrouper les tâches par tag. Je vais mettre ici LinkedIn. Je clique sur create. Vous allez voir que là, si je reviens ici un petit peu, il vient de l'ajeter ici. Et vous allez voir petit à petit, il va l'exécuter. Il va passer en fait à l'étape suivante. Alors en même temps, je vais essayer d'ajouter quelques tâches, quelques tâches supplémentaires. Comme ça, on va voir la progression donc des tâches,
+
+00:09:46
+comment ça va se passer. Alors, j'ajoute une autre tâche. Je clique ici, je mets par exemple voilà l'actualité et là je lui demande en fait de m'envoyer l'actualité he tous les jour hein. Donc il me donne voilà des recaps par exemple. Voilà, je mettrai la description ici. Euh je le mettrai already. La priorité c'est de donc ça c'est plus prioritaire et c'est une tâche en fait de veille tout simplement. Voilà, je fais créer. Donc là aussi, il vient donc de la parassée ici. Regardez,
+
+00:10:16
+priorité 2, priorité 3, hein. Et j'ajouterai par exemple là pour qu'il meurit dit je voilà un guide d'installation par exemple ou euh ou bien qu'il me génère un PDF si je veux. Tu vois là déjà il est passé en mode running pour les deux tout seul. C'est pas moi qui touche, c'est lui en fait qui a ramené ça au mode running. Donc ils sont en train d'être exécutés hein. Si je regarde ici donc là j'ai voilà le mode running. Donc, ils sont en train d'être exécutés en même temps qu'on est
+
+00:10:43
+en train de parler d'aman. J'ajoute une autre donc tâche. Celle-là, allez, on va la donner priorité une. Et voilà, je je laisse tout le reste en fait par défaut comme ça. Ça, je vais mettre pour que je me rappelle. Je lance la création et vous allez voir donc là ça mon tableau global. Alors, je pense qu'il y a une tâche qui a été terminée. Voilà, c'est celle-là. Alors, on va descendre en fait jusqu'en bas. Non, pas encore. Alors, ceux qui sont en train d'être traités, ils vont être à la
+
+00:11:14
+fin ici. Donc, je regarde la toute dernière tâche que j'ai demandé, c'est celle-là en fait qui va préparer un résumé quotidien chaque jour à 8h. Donc, j'entre ici, je vois, regardez là qui a créé un chron chron, c'est-à-dire en fait un un système en fait de rappel et ça c'est très intéressant. Donc du coup voilà, je je viens ici, je vois un petit peu voilà donc euh qui a créé le cran. Ça c'est très intéressant et que voilà le cran il a été mis en place, il a donné un petit peu en fait le le les
+
+00:11:43
+différents détails, hein. Donc ça en fait c'est très très intéressant et c'est ça en fait qui m'aide aujourd'hui en fait à automatiser en fait le système. Et ça en fait voilà le cran qu'il a créé qui va m'envoyer les l'actualité voilà en trois points. Donc du coup ça été programmé comme vous le voyez là. ici, ça a pas encore été exécuté vu qu'il va la programmer pour demain. Et ça c'est important hein. Donc je je je vois en fait que le système euh fait les tâches et c'est ça en fait ça
+
+00:12:09
+quoi sert donc ce tableau là. C'est un tableau en fait qui est très important. Canban sil faut faire attention, c'est pas comme celui qu'on l'a dans l'entreprise que nous on met les tâches en cours et on exécute une à une et on essaie de faire avancer le tableau. Celui-là, c'est lui en fait qui a donc les reines. Donc là, il y a une tâche qui est en train de l'exécuter. D'ailleurs, si je clique ici, voilà, c'est en cours en fait donc d'exécution. Je peux voir déjà les détails, hein, les
+
+00:12:38
+informations qui sont à l'intérieur. Voilà. Donc là, elle est toujours en train de travailler avec son agent. Et voilà, une fois qu'elle termine, en fait, elle va se balancer automatiquement, hein. Donc dans le mode donc terminé. Voilà, je vois que qu'il a fini en fait. Donc si je vais aller ici, voilà, donc là ici ce sont les tâches en fait qui ont été faites et ça c'est très intéressant. Alors, il y a récemment en fait une tâche que j'ai mis, que j'ai testé, elle est très très intéressante
+
+00:13:05
+que je je vous recommande en fait de la tester aussi. D'ailleurs, quand tu vois lorsque il trouve qu'il y a quelque chose à planifier, il ajoute ici automatiquement il te dit que il y a quelque chose à planifier tous les jours. Alors là, il y a une tâche en fait que je vous invite à tester et moi depuis que je l'ai testé vraiment, je m'amuse énormément avec Hermes. Il m'aide énormément à ce que je l'utilise tous les jours et à ce qu'il m'aide. Alors l'aider c'est quoi ? c'est que je
+
+00:13:27
+lui demande une routine matinale. Alors, je lui dis chaque matin en fait dès que moi je je me connecte, c'est généralement assez à 9h, je lui demande de me poser une question et me dire "C'est quoi ta priorité dans la journée ?" Alors moi, je lui donne en fait la priorité et à partir donc de de de ma réponse, il va proposer lui-même une liste en fait des tâches concrètes qu'il peut donc réaliser avec moi ou bien qu'il peut réaliser lui-même en fait pour m'aider pour avancer à cette
+
+00:13:54
+priorité. Donc du coup, non seulement c'est une tâche de routine schedule, c'est-à-dire elle va être programmée, non seulement il va interagir avec moi, il va me poser. Et à partir de ça, lorsque je lui dis "Écoutez, aujourd'hui, je veux travailler sur par exemple le [raclement de gorge] dernier modèle de cloud qui s'appelle ou bien je lui dis voilà, je sais pas le nom par exemple." Alors à ce moment-là, lui il va proposer des tâches, trouver le modèle, trouver les exemples, préparer
+
+00:14:20
+les scripts, il va me poser les questions et il va me tout me faire pour que ça soit facile à pour moi à travailler cette tâche là. Et par la suite, attention, ça c'est important. Je lui demande en fait de mettre à jour en fait la mémoire parce que je veux qu'il apprenne très bien comment moi je réfléchis, c'est quoi mes routines et qu'est-ce que je fais tous les jours parce que ça il va me comprendre beaucoup plus et vous allez voir et même en fait la façon avec laquelle qu'il va
+
+00:14:48
+exécuter des tâches, elle va être encore plus développée. C'est comme si j'aurais un assistant qui m'accompagne depuis 10 ans ou bien 15 ans. Donc du coup il doit mettre ce que je lui demande moi comme tâche journalière. Je veux aussi qu'il la met aussi dans la mémoire. Regardez qu'est-ce que je mets dans la description. Donc dans la description, je lui mets je lui mets tout ça. Je lui dit voilà tous les matins à 9h, je veux que tu démarres une routine et que voilà donc me demander quelle est la priorité
+
+00:15:15
+de la journée. À partir de ma réponse propose une liste des tâches concrètes que tu peux réaliser toi-même pour m'aider voilà à avancer dans cette priorité là. Et je veux qu'il met à jour en fait la mémoire. Ça ce qui est très important en en donc me concernant en fonction donc de ma réponse, les priorités, les préférences, le contexte de travail. Alors celle-là par exemple, je peux la mettre en priorité 5. Voilà, je vais la monter à 5. Je le mets toujours en mode already et tout simplement comme tag, je la mets, je
+
+00:15:47
+l'appelle donc routine. Je lance et ça c'est une tâche vraiment très très intéressante. Lui à partir de ça, il va en fait faire la programmation et vous allez voir qu'il va essayer en fait de me suivre tous les jours. Et moi je au lieu que à chaque fois je je lui donne une tâche, parfois j'oublie, parfois j'ai des tâches à faire, je lui donne juste une sous-tâche ou bien je demande à Hermes à m'aider rien que pour développer en fait une idée. Mais lorsque je donne en fait l'objectif de
+
+00:16:16
+la journée, là il peut créer plusieurs tâches, même si parfois j'ai plusieurs priorités dans la journée et même s'ils sont pas de de la même nature, mais lui il va essayer donc de le développer et de les mettre en place. Donc là, on va le laisser en fait tourner tranquillement vu qu'on a mis la priorité pas élevée. On a mis tout simplement une priorité 5. Donc il n'a pas encore passé au mode running et voilà. Donc là, il a basculé vers running. Donc là maintenant, il est en train donc d'exécuter. Ça c'est très
+
+00:16:43
+très intéressant. Donc là, je peux voir donc le le dispatch. Je peux bien évidemment ajouter ici en fait des tableaux de bord différents parce que je peux avoir des tâches et séparer les tâches dans plusieurs catégories. Mais moi je je je vous conseille pas je vous conseille toujours de bosser sur une seule en fait tâche. Regardez là par exemple là il est bloqué. Pourquoi ? Parce que il a une question, il a quelque chose en fait qu'il a qu'il demande en fait pour pouvoir en fait avancer. Donc là, lorsque je viens ici
+
+00:17:11
+et donc du coup, je regarde là, par exemple, il a mis en fait que il attend que je lui donne en fait la réponse. C'est comme si lui il veut l'exécuter là tout de suite. Alors ce que je vais faire, regardez là ici en bas, je vais lui dire ici là, je veux que tu me demandes euh ma priorité chaque jour à 9h. Donc du coup là c'est c'est comme si je lui dis je veux pas que tout de suite en fait tu me donnes la réponse mais je veux que tu la programmes. Et donc du coup là lorsque j'ai envoyé
+
+00:17:44
+cette réponse comme vous voyez là il attend en fait la réponse de ma part donc je lui donner en fait la réponse. Et donc du coup là on va voir regardez là ça c'est un petit peu ici donc ma réponse en fait qui a été placée ici. Donc si je reviens pour voir un petit peu où est-ce qu'il est dans quel mode il est toujours en mode blocked. Donc on le laisse un petit instant le temps qu'il se débloque tout seul. Donc on voit là qu'il est revenu ici avec donc les deux réponses. On va voir donc où
+
+00:18:11
+est-ce qu'il est-ce qu'il va passer. Donc là, toujours en mode running, on regarde ici toujours blocked. Donc je pense qu'il insiste en fait que je lui donne, regardez là la routine, on attend la réponse. Bon, il attend la réponse. Alors, on va lui donner la réponse. Il a compris en fait que tu as confirmé le principe de ta routine. Donc, il a compris ça, mais je vois en fait qu'il a besoin en fait d'une réponse pour tester en fait comment ça se passe. Alors, je vais lui dire ici tout simplement, je
+
+00:18:37
+veux créer un article de blog. sur Hermes web UI par exemple, j'ajoute en fait voilà donc le commentaire. Donc du coup il devrait passer en mode 3. Donc je pense que vous avez compris he la manipulation. Donc du coup là on attend qu'il qu'il ramène en fait le mode donc blocked a mode rining. Donc je vois qu'il a mis sur ready. Donc il devrait passer en mode donc exécution et voilà il est passé en mode running. Donc on va lui le donner en fait un instant pour qu'il termine en
+
+00:19:17
+fait cette exécution là et on va voir où est-ce qu'il va se positionner maintenant. Et voilà donc là il est parti directement sur donc du coup on va essayer un petit peu de voir donc la tâche qu'on a mis en place. Donc c'est celle-là. Alors si j'entre ici ça c'est très important. Donc il a fait cette fois-ci en fait la création. Donc non, celle-là en fait c'est pour la création de l'article. On va revenir ici. On va chercher en fait la tâche celle donc qui va me poser. Voilà
+
+00:19:51
+celle-là en fait. D'abord ici il a fait donc la rédaction de l'article. Ça c'est bien. Donc ça lorsqueon a demandé en fait la création de l'article. Et on va revenir vers cette tâche-là. priorité numéro 1, ça c'est la routine. Voilà donc du coup c'est donc il vient donc de de la créer. Voilà donc il a fait en fait cette création là, il a programmé en fait. Et ça ce qui est très intéressant pour dire que on a la possibilité de faire en fait les discussions sur le command. C'està dire
+
+00:20:26
+ici au niveau de commentaire tu peux améliorer cette tâche lui demander en fait de de le refaire si tu veux. Donc tu as toujours ici éditer et tu peux la remettre en fait en mode donc ready pour qu'il puisse en fait la retravailler une seule une autre fois et l'exécuter avec les nouvelles commandes que tu as mis en place. D'ailleurs là lorsque je vais cliquer sur les tâches, voilà, je peux voir qu'il vient d'ajouter une nouvelle tâche. On va regarder, c'est celle-là. Euh voilà, préparer un recap. Non, ça
+
+00:20:54
+c'est celle-là au fa. Donc du coup là la routine qui va récupérer en fait la mémoire, rédiger un message, salutation, rappelle contexte mentionne que tu attends sa réponse. Voilà pour proposer tes tâches concrètes. C'est ça en fait ce que je veux. Donc du coup lui il a créé ce pr là spécialement pour qu'il soit en fait exécuté. Donc je pense que vous avez compris en fait l'importance de cet espace là qui est un espace canban qui est très développé. Vous avez compris que tu peux mettre tous les tage
+
+00:21:23
+que tu veux. lui, il va les exécuter, tu peux en parler avec lui en fait sur certaines tâches pour qu'il réactive, pour qu'il comprend mieux en fait ce que toi tu demandes. Et c'est ça en fait comment l'agent Hermes peut exécuter. pas besoin uniquement de faire le chat et l'échange en fait avec lui parce que tu peux ici voilà lui demander des tâches, ça c'est sûr, mais entrer ici et mettre d'un coup en fait les différents tasques que tu auras besoin et va les exécuter, ne vous inquiétez pas en
+
+00:21:49
+mettant bien sûr l'ordre qui t'intéresse et aussi bien donc le statut. Et là donc Hermes il va essayer de faire son mieux pour vraiment résoudre tous les tâches que tu lui demandes. Et voilà vous êtes arrivé jusqu'à la fin. Ça veut dire que tu aimes mon contenu et tu as aimé ma vidéo. Et c'est pour cela je voulais vous donner un petit cadeau pour te remercier. Alors, il suffit juste d'accéder à mon site internet docteur-firas.vp. Je le mettrai aussi dans la description. Et là, en fait, je vais te proposer deux
+
+00:22:19
+packages et je vais te donner un coupon spécial. Le premier package que je propose, c'est un petit peu mes 34 formations N8N et automatisation. Tu vas trouver un petit peu de tout. Il y en a aussi le Hermes, le cloud, il y en a aussi Open et Cloud. J'ai mis ici tout ce qui est outil et agent qui permet de faire l'automatisation. Très demandé par les entreprises, par les frelanceurs qui veulent faire l'automatisation. Ce sont des formations en fait avec des ateliers pratiques, des
+
+00:22:48
+workflow à télécharger. Là, ici, je prends mon temps à expliquer et montrer comment je fais la création de l'automatisation de A à Z. Donc, ce sont des ateliers. Alors, c'est vrai que c'est écrit 34, mais il se peut que moment que tu regardes la vidéo, ils sont passés à 35 ou 36 parce que moi, je mis à jour en fait cette euh ce package là pratiquement tous les mois, j'ajoute de nouveaux contenus avec des mises à jour. Il y a aussi en fait un pack qui contient 100 cours. Ça c'est un petit
+
+00:23:18
+peu tous mes bests sellers sur le site de Udimi dans le marketing, business, intelligence artificielle. Alors pour comment accéder en fait à tout ce contenu là avec un accès à vie ? Alors moi, je propose de packag de suite le coup. Alors celui-là, le premier, vous mettez tout simplement ici. Vous cliquez là, vous mettez YT20 YT20, vous faites appliquer et vous allez voir que vous avez en fait une réduction de 20 %. Alors bien évidemment, vous avez une garantie de 14 jours satisfait ou remboursé parce que
+
+00:23:52
+je sais si tu vas commencer à faire le premier atelier, tu vas adorer. Tu vas essayer de continuer tout le reste du ce contenu là. Et il y a aussi un deuxième package que je propose qui est celui-là c'est sans cours. Et j'ai fait un petit cadeau. Celui qui prend celui-là, il a automatiquement les 34 cours et sont inclus ici. Donc ça c'est une offre attention limitée. Je vais bientôt en fait la retirer de là. Mais pour vous encourager à faire les formations et apprendre, donc vous pouvez avoir en
+
+00:24:22
+total ici 134 cours. L'accès et les avis, tu peux commencer quand tu veux. Tu as toujours en fait satisfait ou remboursé 14 jours. Et là la même chose, tu as le coup YT20, tu l'appliques ici et tu vas avoir en fait voilà donc la réduction. Il y a un petit euh aussi pour ceux qui veulent avoir en fait l'accès à vie à tous mes futurs cours dans toutes les discipline, ça c'est une œuvre qu'on le propose uniquement ici. Si tu la coches celle-là, tu vas avoir immédiatement 56 cours que je l'ai mis dans FNQ ici juste
+
+00:24:58
+en bas. En fait, toute la liste, tu vas l'avir ici avec toutes les formations que tu vas les recevoir. Alors, je te recommande aussi de voir cette première vidéo là. C'est une vidéo de je pense de 5 minutes. Là où j'ai tout expliqué, j'ai montré même l'interface et l'exemple en fait des ateliers que je propose à l'intérieur. Sur ce, je vous dis merci beaucoup. Merci pour votre confiance. N'oubliez pas en fait de faire s'abonner à ma chaîne pour recevoir toutes les semaines des
+
+00:25:25
+nouvelles tutos gratuites.
+

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.jchytech.pka-dropbox-watch</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/python3</string>
+    <string>/Users/jchavauxm5/PKA_JCH/scripts/dropbox_watch.py</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/jchavauxm5/PKA_JCH</string>
+
+  <key>WatchPaths</key>
+  <array>
+    <string>/Users/jchavauxm5/Dropbox/VETALYX</string>
+  </array>
+
+  <key>ThrottleInterval</key>
+  <integer>60</integer>
+
+  <key>StandardOutPath</key>
+  <string>/Users/jchavauxm5/PKA_JCH/tmp/dropbox-watch.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/jchavauxm5/PKA_JCH/tmp/dropbox-watch.log</string>
+</dict>
+</plist>

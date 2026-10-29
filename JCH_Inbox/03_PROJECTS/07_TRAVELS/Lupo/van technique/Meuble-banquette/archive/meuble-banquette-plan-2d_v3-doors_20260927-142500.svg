@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2200 1380" font-family="Helvetica, Arial, sans-serif">
+<style>
+.frame{fill:none;stroke:#1a1a1a;stroke-width:3}.panel{fill:#f5e6c8;stroke:#8a6d3b;stroke-width:2}
+.door{fill:#e8d5a8;stroke:#8a6d3b;stroke-width:2}.plate{fill:#9fc3e8;stroke:#2b6cb0;stroke-width:2}
+.tass{fill:#c98a4b;stroke:#7a4a1e;stroke-width:2}.jambe{fill:#b8895a;stroke:#6b4a20;stroke-width:2}
+.leg{fill:#777;stroke:#333;stroke-width:1.5}.groove{fill:none;stroke:#b30000;stroke-width:1.5;stroke-dasharray:6 4}
+.dim{stroke:#b30000;stroke-width:1.2}.dimtxt{fill:#b30000;font-size:20px}
+.label{fill:#1a1a1a;font-size:24px;font-weight:bold}.note{fill:#444;font-size:18px}.small{fill:#555;font-size:15px}
+</style>
+<text x="40" y="45" class="label">Meuble banquette v3 — portes AV/AR + plateau coulissant · Module A 344×540×256 mm</text>
+<text x="40" y="85" class="note">VUE DE PROFIL (avant à droite) — cadre tasseaux + portes</text>
+<rect x="40" y="90" width="1080.0" height="512.0" class="frame"/>
+<rect x="40" y="94.0" width="1080.0" height="14.0" class="groove"/>
+<rect x="960.0" y="94.0" width="1080.0" height="12.0" class="plate"/>
+<rect x="960.0" y="94.0" width="160.0" height="12.0" fill="#b30000" opacity="0.25"/>
+<rect x="1120.0" y="106.0" width="40.0" height="60.0" class="tass"/>
+<rect x="1080.0" y="562.0" width="40" height="40" class="jambe"/>
+<rect x="40" y="562.0" width="40" height="40" class="jambe"/>
+<rect x="1120.0" y="114.0" width="24.0" height="400.0" class="door"/>
+<rect x="40" y="114.0" width="24.0" height="464.0" class="door"/>
+<rect x="2034.0" y="106.0" width="10" height="200" class="leg"/>
+<rect x="2030.0" y="306.0" width="18" height="220" class="leg"/>
+<line x1="40" y1="626.0" x2="1120.0" y2="626.0" class="dim"/>
+<text x="580.0" y="650.0" class="dimtxt" text-anchor="middle">540 mm</text>
+<line x1="1120.0" y1="66" x2="2040.0" y2="66" class="dim"/>
+<text x="1580.0" y="60" class="dimtxt" text-anchor="middle">débord 460 mm</text>
+<text x="70" y="86.0" class="small">gorge 6,5×8 mm</text>
+<text x="1020.0" y="674.0" class="small" text-anchor="middle">engagement 80 mm</text>
+<text x="1142.0" y="178.0" class="small">tasseau haut 30×20</text>
+<text x="1090.0" y="622.0" class="small" text-anchor="end">jambe 20×20</text>
+<text x="1148.0" y="314.0" class="small">porte AV 200 h</text>
+<text x="110" y="346.0" class="small" text-anchor="start">porte AR 232 h</text>
+<text x="2030.0" y="544.0" class="small" text-anchor="middle">2 jambes télesc. 45–75</text>
+<text x="40" y="735" class="note">VUE DE FACE (avant) — porte + fente plateau + tasseau</text>
+<rect x="40" y="750" width="688.0" height="512.0" class="frame"/>
+<rect x="50.0" y="764.0" width="668.0" height="16.0" class="plate"/>
+<rect x="40" y="778.0" width="688.0" height="60.0" class="tass"/>
+<rect x="64.0" y="834.0" width="640.0" height="400.0" class="door"/>
+<circle cx="384.0" cy="1034.0" r="32.0" fill="none" stroke="#333" stroke-width="2"/>
+<text x="384.0" y="756.0" class="small" text-anchor="middle">fente plateau 334 mm</text>
+<text x="384.0" y="808.0" class="small" text-anchor="middle" fill="#fff">tasseau haut 344×30×20</text>
+<text x="384.0" y="1034.0" class="small" text-anchor="middle">porte avant 320×200</text>
+<line x1="40" y1="1286.0" x2="728.0" y2="1286.0" class="dim"/>
+<text x="384.0" y="1310.0" class="dimtxt" text-anchor="middle">344 mm</text>
+<text x="40" y="1350" class="small">Module B/C : porte AV 264×200 · porte AR 264×232 · plateau 278×540 — mêmes détails. Charnières basses + loquets hauts.</text>
+</svg>

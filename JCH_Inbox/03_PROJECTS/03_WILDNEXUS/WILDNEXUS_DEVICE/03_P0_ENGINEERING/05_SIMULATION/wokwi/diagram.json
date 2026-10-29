@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "author": "Dobby — PKA WildNexus",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-s3-devkitc-1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": { "fullBoot": "1" }
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir1",
+      "top": -120,
+      "left": 200,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -180,
+      "left": 100,
+      "attrs": {
+        "color": "red"
+      }
+    },
+    {
+      "type": "wokwi-microsd-card",
+      "id": "sd1",
+      "top": 150,
+      "left": 300,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    ["esp:TX", "$serialMonitor:RX", "", []],
+    ["esp:RX", "$serialMonitor:TX", "", []],
+    ["esp:4", "pir1:OUT", "green", []],
+    ["esp:GND.1", "pir1:GND", "black", []],
+    ["esp:3V3.1", "pir1:VCC", "red", []],
+    ["esp:2", "led1:A", "green", []],
+    ["esp:GND.2", "led1:C", "black", []],
+    ["esp:14", "sd1:SCK", "blue", []],
+    ["esp:12", "sd1:DO", "purple", []],
+    ["esp:13", "sd1:DI", "yellow", []],
+    ["esp:15", "sd1:CS", "orange", []],
+    ["esp:GND.3", "sd1:GND", "black", []],
+    ["esp:3V3.2", "sd1:VCC", "red", []]
+  ],
+  "serialMonitor": {
+    "display": "terminal"
+  },
+  "dependencies": {}
+}

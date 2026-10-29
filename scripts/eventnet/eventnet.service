@@ -1,0 +1,15 @@
+[Unit]
+Description=EventNET — acoustic weather event detection
+After=birdnet_recording.service
+
+[Service]
+Type=simple
+User=jchavaux
+Restart=always
+RestartSec=5
+ExecStart=/home/jchavaux/BirdNET-Pi/birdnet/bin/python3 /home/jchavaux/BirdNET-Pi/eventnet/eventnet_detect.py --threshold 0.15
+StandardOutput=append:/home/jchavaux/BirdNET-Pi/eventnet/eventnet.log
+StandardError=append:/home/jchavaux/BirdNET-Pi/eventnet/eventnet.log
+
+[Install]
+WantedBy=multi-user.target

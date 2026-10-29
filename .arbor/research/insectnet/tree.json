@@ -1,0 +1,34 @@
+{
+  "project": "insectnet",
+  "created": "2026-06-19",
+  "trunk": "H2",
+  "nodes": {
+    "ROOT": {
+      "id": "ROOT",
+      "depth": 0,
+      "hypothesis": "Un classifieur peut distinguer 5 espèces d'orthoptères à partir de segments audio 3s",
+      "status": "merged",
+      "baseline_score": 0.20
+    },
+    "H1": {
+      "id": "H1",
+      "parent_id": "ROOT",
+      "depth": 1,
+      "hypothesis": "BirdNET logits (6522-dim) + 6 descripteurs spectraux → classifieur linéaire sépare les espèces par fréquence porteuse + microstructure temporelle",
+      "status": "pruned",
+      "prune_reason": "Impossible à évaluer sans labels espèces. Sur pseudo-labels fréquence : ΔF1=0 vs logits seuls. BirdNET ≈ fréquencemètre pour insectes.",
+      "score": 0.65
+    },
+    "H2": {
+      "id": "H2",
+      "parent_id": "ROOT",
+      "depth": 1,
+      "hypothesis": "CNN léger (4 couches Conv2D) entraîné from scratch sur mel-spectrogrammes 128×256 apprend directement la structure temps-fréquence des pulses d'insectes sans l'a priori oiseaux de BirdNET",
+      "status": "merged",
+      "insight": "CNN 4 couches sur mel-spec → F1=0.9799 (5 espèces, 1000 segments). Les convolutions capturent pulse rate + carrier frequency + harmonic structure sans biais oiseaux. 4 erreurs/200 = 98% accuracy.",
+      "score": 0.98,
+      "eval_status": "scored",
+      "code_ref": "tmp/insectnet_cnn.pt"
+    }
+  }
+}

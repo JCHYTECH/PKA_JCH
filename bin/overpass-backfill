@@ -1,0 +1,35 @@
+#!/bin/bash
+# overpass-backfill — test Overpass, et backfill les fiches sans réserves si en ligne.
+# Lancé périodiquement par launchd (com.dobby.overpass-backfill).
+set -u
+PKA="$HOME/PKA_JCH"
+cd "$PKA" || exit 1
+
+DATA="JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/data"
+
+# 1. Reste-t-il des fiches à backfiller ?
+REMAIN=$(python3 -c "
+import json, glob
+n = 0
+for f in glob.glob('$DATA/*.json'):
+    d = json.load(open(f))
+    if not d.get('reserves') and not d.get('attractions') and not d.get('restaurants'):
+        n += 1
+print(n)
+")
+echo "$(date '+%F %T') restant=$REMAIN"
+
+if [ "$REMAIN" -eq 0 ]; then
+    echo "  tout est backfillé — rien à faire"
+    exit 0
+fi
+
+# 2. Overpass en ligne ?
+if curl -s -m 20 -X POST "https://overpass-api.de/api/interpreter" \
+    --data-urlencode 'data=[out:json][timeout:5];node(1);out;' \
+    -H "User-Agent: PKA_DECOUVERTES/1.0" | grep -q '"generator"'; then
+    echo "  Overpass OK → backfill"
+    python3 scripts/decouvertes-collector/backfill_overpass.py
+else
+    echo "  Overpass down → retry au prochain cycle"
+fi

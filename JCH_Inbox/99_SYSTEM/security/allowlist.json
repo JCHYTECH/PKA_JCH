@@ -1,0 +1,26 @@
+{
+  "loopback_hosts": ["127.0.0.1", "::1", "localhost"],
+  "dashboard_ports": [8787],
+  "authoritative_db": "TEAM/team.db",
+  "legacy_db_mirrors": ["team.db"],
+  "expected_secret_files": [
+    "scripts/telegram-bot/.env"
+  ],
+  "sensitive_globs": [
+    "*.db",
+    "*.sqlite",
+    "*.sqlite3",
+    "*.log",
+    ".env",
+    ".env.*",
+    "*token*",
+    "*secret*",
+    "*credentials*",
+    "*.key",
+    "*.pem"
+  ],
+  "ignored_paths": [
+    "scripts/telegram-bot/venv",
+    "__pycache__"
+  ]
+}

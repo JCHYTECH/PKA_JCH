@@ -1,0 +1,129 @@
+# JCH private space
+JCH_PRIVATE/
+
+# PKA_JCH security exclusions
+
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+*.pem
+*.key
+*token*
+*secret*
+*credentials*
+
+# PKA DECOUVERTES — secrets centralisés dans JCH_PRIVATE/
+JCH_PRIVATE/decouvertes.env
+scripts/decouvertes-collector/.env
+scripts/decouvertes-collector/venv/
+JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/logs/
+JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/raw/
+JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/queue/
+JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/data/
+JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/.cache/
+
+# Runtime databases and backups
+*.db
+*.sqlite
+*.sqlite3
+TEAM/backups/
+
+# Logs and temporary runtime files
+*.log
+*.pid
+*.tmp
+*.temp
+__pycache__/
+*.py[cod]
+
+# Local virtual environments
+.venv/
+venv/
+env/
+scripts/telegram-bot/venv/
+
+# git filter-repo safety backups
+.git.bak-*/
+
+# OS/editor noise
+.DS_Store
+.idea/
+.vscode/
+.obsidian/workspace.json
+.claude/settings.local.json
+.claude/commands/watch.md
+.claude/claude-video/
+.claude/skills/
+.deepseek/
+.gemini/
+.qwen/
+.continuerules
+.agents/
+skills-lock.json
+
+# Local generated media/cache
+.cache/
+tmp/
+temp/
+build/
+deploy/
+report-build-status/
+0_report-build-status.txt
+2_build.txt
+session_*.json
+JCH_Inbox/07_ARCHIVES/sessions/
+graphify-out/
+_local/dobby-dataset/
+_local/homeassistant/
+_local/plane-community/
+outputs/
+PHOTO/analyses/
+JCH_Inbox/03_PROJECTS/05_PHOTO_AI_JURY/analyses/
+scripts/telegram-bot/dobby.log
+
+# WildNexus / InsectNet generated dataset artifacts (dirs and symlinks)
+JCH_Inbox/03_PROJECTS/03_WILDNEXUS/INSECTNET/02_DATASET/
+.mcp.json
+**/sessions/*/artifacts/
+
+# Large datasets / measurements / model weights (purged from history 2026-10-19)
+JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/datasets/
+JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/raw_audio/
+JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/03_ENERGIE_AUTONOMIE/mesures/
+JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/05_SIMULATION/test_harness/source_fullres/
+JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/99_REFERENCES/PPK2/
+_local/dobby-lora/
+*.ppk2
+*.wav
+*.zip
+*.safetensors
+*.m4a
+
+# PKA runtime files (logs, states, temp DB WAL)
+_local/*.log
+_local/*.err
+_local/*.out
+_local/logs/
+_local/*_state.json
+_local/backup_pka_m1.log
+TEAM/team.db-wal
+TEAM/team.db-shm
+
+JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/firmware/
+_local/lightroom-mcp/
+_local/state/
+
+# pka-memory-review — artefacts générés (boucle mémoire autonome)
+_local/persist/
+MEMORY.md.bak-*
+
+# pka-memory-eval — sorties de run
+JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/memory-eval/run-*.json
+
+# Obsidian — binaires plugins & backups locaux
+.obsidian/plugins/
+.obsidian/community-plugins.json.bak
