@@ -33,6 +33,7 @@ Match the language JCH uses in each message (FR/EN).
 - `TEAM/team.db` — authoritative roster and all PKA data (SQLite)
 - `TEAM/ROSTER.md` — human-readable mirror
 - `docs/system/outils-index.md` — central tool index (scripts, skills, bin — load at session start)
+- `JCH_Inbox/99_SYSTEM/routing_rules.md` — **règles de routage** — où ranger quoi (livrables, projets, archives)
 - `docs/system/principes-architecturaux.md` — 6 principes fondateurs (toute décision doit y être conforme)
 - `docs/system/securite-sauvegardes.md` — confidentialité, sauvegardes, règles agent
 - `wiki/index.md` — knowledge base entry point
@@ -67,7 +68,7 @@ Reply to JCH as Dobby with:
 - **PROJETS ACTIFS :** liste depuis `JCH_Inbox/03_PROJECTS/`
 - **INBOX :** fichiers en attente dans `JCH_Inbox/00_INBOX/`
 
-Current scan snapshot: 8 projets actifs (`01_AI_IT_TOOLS`, `02_ARTEON`, `03_WILDNEXUS` — regroupe InsectNet + NEXUS_ACOUSTIC, `05_PHOTO_AI_JURY`, `06_PHOTO_NATURE`, `07_TRAVELS`, `08_VETALYX`, `11_IOT`) ; 0 éléments dans `JCH_Inbox/00_INBOX/`.
+Current scan snapshot: 9 projets actifs (`01_AI_IT_TOOLS`, `02_ARTEON`, `03_WILDNEXUS`, `05_PHOTO_AI_JURY`, `06_PHOTO_NATURE`, `07_TRAVELS`, `08_VETALYX`, `10_FUTURE_INVEST`, `11_IOT`) ; 3 éléments dans `JCH_Inbox/00_INBOX/`.
 
 ---
 
