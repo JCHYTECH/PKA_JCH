@@ -1,0 +1,195 @@
+#!/usr/bin/env bash
+# m1-rearm — réarme le Mac mini M1 après un (ré)démarrage.
+# PKA_JCH / Dobby 🦉 — 2026-10-27
+#
+# Corrige la cause racine des disparitions de M1 : sommeil résiduel,
+# absence de WoL, pas de redémarrage après coupure, services non relancés.
+#
+# Usage :
+#   bin/m1-rearm              # applique (sudo demandé sur M1 via ssh -t)
+#   bin/m1-rearm --check      # lecture seule, aucun changement
+#   bin/m1-rearm --dry-run    # affiche les commandes sans les exécuter
+#
+# Prérequis : bin/m1-wake doit avoir ramené M1 en ligne.
+set -uo pipefail
+
+M1_HOST="${M1_HOST:-100.73.212.110}"
+M1_USER="${M1_USER:-m1}"
+MODE="${1:-apply}"
+REARM_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+MAC_FILE="$REARM_ROOT/_local/m1-mac"
+
+case "$MODE" in
+  apply|--check|--dry-run) ;;
+  *) echo "Usage: bin/m1-rearm [--check|--dry-run]" >&2; exit 2 ;;
+esac
+
+echo "── M1 rearm ─ cible ${M1_USER}@${M1_HOST} · mode ${MODE}"
+
+if [ "$MODE" != "--dry-run" ]; then
+  if ! ssh -o BatchMode=yes -o ConnectTimeout=6 -o StrictHostKeyChecking=accept-new \
+         "${M1_USER}@${M1_HOST}" true 2>/dev/null; then
+    echo "✗ M1 injoignable en SSH (clé, pas de mot de passe)."
+    echo "  → lance d'abord : bin/m1-wake"
+    exit 1
+  fi
+fi
+
+REMOTE_SCRIPT=$(cat <<'REMOTE'
+set -u
+
+# Ollama peut être lié à l'IP Tailscale (ex. 100.73.212.110) et non à 127.0.0.1.
+# Vérifie le serveur sur l'adresse réellement écoutée (via lsof), avec repli loopback.
+ollama_up() {
+  local addrs host
+  addrs=$(lsof -nP -iTCP:11434 -sTCP:LISTEN -Fn 2>/dev/null | sed -n 's/^n//p')
+  for host in $(printf '%s\n' "$addrs" | sed -E 's/:11434$//; s/^\[//; s/\]$//') 127.0.0.1 localhost; do
+    if [ -z "$host" ] || [ "$host" = "*" ]; then
+      host="127.0.0.1"
+    fi
+    curl -s -m 3 "http://${host}:11434/api/tags" >/dev/null 2>&1 && return 0
+  done
+  return 1
+}
+
+# Localise le binaire tailscale : app .app ou install standalone (Homebrew).
+tailscale_bin() {
+  local c
+  for c in \
+    /Applications/Tailscale.app/Contents/MacOS/tailscale \
+    /usr/local/bin/tailscale \
+    /opt/homebrew/bin/tailscale; do
+    [ -x "$c" ] && { printf '%s\n' "$c"; return 0; }
+  done
+  return 1
+}
+
+echo "=== IDENTITÉ ==="
+hostname; sw_vers -productVersion; uptime | sed 's/^ *//'
+
+echo
+echo "=== AVANT — pmset ==="
+pmset -g custom 2>/dev/null | grep -E ' (sleep|standby|hibernatemode|autopoweroff|powernap|womp|autorestart) ' || pmset -g | grep -E ' (sleep|standby|hibernatemode|autopoweroff|powernap|womp|autorestart) '
+
+echo
+echo "=== MAC (pour bin/m1-wake) ==="
+ifconfig en0 2>/dev/null | awk '/ether/{print "en0 " $2}'
+ifconfig en1 2>/dev/null | awk '/ether/{print "en1 " $2}'
+
+if [ "${REARM_MODE:-apply}" = "check" ]; then
+  echo
+  echo "=== SERVICES ==="
+  echo "-- tailscale --"
+  if TS_BIN=$(tailscale_bin); then
+    "$TS_BIN" status 2>&1 | head -3
+  elif pgrep -x tailscaled >/dev/null 2>&1; then
+    echo "✓ tailscaled (standalone) actif"; pgrep -lf tailscaled | head -1
+  else
+    echo "✗ Tailscale absent"
+  fi
+  echo "-- ollama --"; ollama_up && echo "ollama répond" || echo "ollama muet"
+  exit 0
+fi
+
+echo
+echo "=== APPLICATION (sudo requis) ==="
+SUDO="sudo"
+if ! sudo -n true 2>/dev/null; then
+  echo "→ mot de passe sudo demandé"
+fi
+
+$SUDO pmset -a sleep 0 standby 0 hibernatemode 0 autopoweroff 0 powernap 0 womp 1 autorestart 1 \
+  && echo "✓ pmset : jamais de veille + WoL + redémarrage après coupure"
+
+# Portables (MacBook Pro M1) : sans ça, la fermeture du capot endort la machine
+# malgré sleep 0. « disablesleep » existe depuis macOS 12 sur Apple Silicon.
+$SUDO pmset -a disablesleep 1 2>/dev/null \
+  && echo "✓ capot fermé : la machine reste éveillée (disablesleep 1)" \
+  || echo "· disablesleep non supporté sur ce modèle (Mac de bureau)"
+
+$SUDO pmset repeat wake MTWRFSU 07:30:00 \
+  && echo "✓ réveil planifié 07:30 (tous les jours)"
+
+echo
+echo "=== APRÈS — pmset ==="
+pmset -g custom 2>/dev/null | grep -E ' (sleep|standby|hibernatemode|autopoweroff|powernap|womp|autorestart) ' || pmset -g | grep -E ' (sleep|standby|hibernatemode|autopoweroff|powernap|womp|autorestart) '
+pmset -g sched | grep -i wake || echo "(aucun réveil planifié)"
+
+echo
+echo "=== TAILSCALE ==="
+if TS_BIN=$(tailscale_bin); then
+  if "$TS_BIN" status >/dev/null 2>&1; then
+    "$TS_BIN" status 2>&1 | head -3
+  else
+    echo "→ Tailscale hors ligne, tentative de reconnexion"
+    $SUDO "$TS_BIN" up --reset 2>&1 | tail -5 || echo "✗ tailscale up a échoué (login interactif requis)"
+  fi
+elif pgrep -x tailscaled >/dev/null 2>&1; then
+  echo "✓ tailscaled (standalone) actif — CLI 'tailscale' absent du PATH"
+  pgrep -lf tailscaled | head -1
+else
+  echo "✗ Tailscale absent (ni app ni tailscaled)"
+fi
+
+echo
+echo "=== OLLAMA ==="
+if ollama_up; then
+  echo "✓ ollama répond"
+else
+  echo "→ ollama muet, tentative de démarrage"
+  (command -v brew >/dev/null && brew services start ollama) 2>/dev/null \
+    || (nohup ollama serve >/tmp/ollama.log 2>&1 &)
+  sleep 4
+  ollama_up && echo "✓ ollama démarré" || echo "✗ ollama toujours muet"
+fi
+
+echo
+echo "=== RÉSUMÉ ==="
+if nc -z -G 2 127.0.0.1 22 2>/dev/null; then echo "✓ port 22 (SSH) ouvert"; else echo "✗ port 22 (SSH) fermé"; fi
+if ollama_up; then echo "✓ ollama (11434) répond"; else echo "✗ ollama (11434) muet"; fi
+
+echo
+echo "=== HEADLESS ==="
+$SUDO systemsetup -setremotelogin on 2>/dev/null && echo "✓ accès distant SSH activé" || echo "· accès distant déjà actif"
+$SUDO launchctl enable system/com.apple.screensharing 2>/dev/null \
+  && $SUDO launchctl kickstart -k system/com.apple.screensharing 2>/dev/null \
+  && echo "✓ partage d'écran (VNC) activé" \
+  || echo "· partage d'écran : activation manuelle requise"
+echo -n "FileVault : "; fdesetup status 2>/dev/null | tail -1
+REMOTE
+)
+
+if [ "$MODE" = "--dry-run" ]; then
+  echo
+  echo "--- script distant qui serait exécuté ---"
+  printf '%s\n' "$REMOTE_SCRIPT"
+  exit 0
+fi
+
+REMOTE_MODE="apply"; [ "$MODE" = "--check" ] && REMOTE_MODE="check"
+
+ssh -t -o StrictHostKeyChecking=accept-new -o ConnectTimeout=10 \
+    "${M1_USER}@${M1_HOST}" "REARM_MODE=${REMOTE_MODE} bash -s" <<<"$REMOTE_SCRIPT"
+RC=$?
+
+if [ "$MODE" = "--check" ]; then
+  exit $RC
+fi
+
+# Récupère la MAC depuis la sortie si absente en local (utile pour le WoL).
+if [ ! -s "$MAC_FILE" ]; then
+  MAC=$(ssh -o BatchMode=yes -o ConnectTimeout=6 "${M1_USER}@${M1_HOST}" \
+        "ifconfig en0 2>/dev/null | awk '/ether/{print \$2}'" 2>/dev/null | tr -d ' \n')
+  if [ -n "$MAC" ]; then
+    printf '%s\n' "$MAC" >"$MAC_FILE"
+    echo "✓ MAC de M1 enregistrée dans _local/m1-mac ($MAC)"
+  fi
+fi
+
+echo
+if [ $RC -eq 0 ]; then
+  echo "✓ Réarmement terminé. Test : ssh ${M1_USER}@${M1_HOST}"
+else
+  echo "✗ Réarmement incomplet (code $RC) — relire la sortie ci-dessus."
+fi
+exit $RC
