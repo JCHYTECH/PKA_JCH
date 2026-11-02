@@ -28,6 +28,28 @@ Chaque projet actif a un fichier `thread-[projet].md` dans `JCH_Inbox/03_PROJECT
 
 Template canonique : `JCH_Inbox/04_PILOTAGE_STRATEGIQUE/thread-file-template.md`
 
+## Format TTD (Things To Do) — section obligatoire
+
+Chaque thread file contient une section TTD en deux blocs :
+
+```
+## TTD — Pending
+
+- [ ] **P0 · YYYY-MM-DD · (Responsable)** action
+- [ ] **P1 · — · (Responsable)** action
+
+## TTD — Done (session YYYY-MM-DD)
+
+- [x] YYYY-MM-DD · terminé → résultat
+```
+
+Règles :
+- **Pending** = items ouverts. Préfixe priorité `P0/P1/P2`, deadline (`—` si aucune), responsable entre parenthèses.
+- **Done** = items terminés de la dernière session, **datés et déplacés** hors de Pending (pas un simple préfixe `DONE` qui accumule et noie le Pending).
+- Les Done plus anciens migrent vers **Historique sessions** (une ligne par session, pas par item).
+- Toujours rafraîchir la TTD à `/save` — c'est le rituel qui fait la valeur, pas le format.
+- Agrégat racine `03_PROJECTS/TTD.md` : vue consolidée régénérée à `/save` à partir des TTD de chaque thread file (jamais éditée à la main — c'est une vue, pas une source).
+
 ## Déclencheurs
 
 - "thread [projet]" → lit le thread file du projet
@@ -58,7 +80,7 @@ Quand JC dit « update thread [projet] » ou en fin de session :
 2. Mettre à jour **Vue d'ensemble** si le cap a changé
 3. Mettre à jour **État actuel** — chaque axe (Global, Hardware, Software, Documentation)
 4. Ajouter les **Décisions clés** prises pendant la session
-5. Mettre à jour **Prochaine étape** — action + deadline + responsable
+5. Mettre à jour **TTD** — Pending (priorité P0/P1/P2 · deadline · responsable) ; déplacer les items terminés vers **Done** (datés)
 6. Ajouter une entrée dans **Historique sessions** : date + résumé + livrable `TEAM_Inbox/`
 7. Vérifier les **Liens** — INDEX, ADRs, hardware-state, budget
 
