@@ -5,7 +5,7 @@
 
 ---
 
-## LOCAL — M1 Ollama (Mac mini M1, 32 GB RAM)
+## LOCAL — M1 Ollama (MacBook Pro 14" M1, 32 GB RAM)
 
 | Modele | Taille | Force | Usage recommande | Projets |
 |---|---|---|---|---|

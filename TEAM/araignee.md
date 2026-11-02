@@ -77,6 +77,21 @@ Elle prefere un schema sur une serviette a une spec de 40 pages.
 | Python + pyserial | Debug et prototypage |
 | Git / ADR | Documentation [[decisions]] |
 
+## Préférence LLM
+
+Local M1 en priorité — pas de coût, pas de latence, firmware propriétaire hors cloud :
+
+| Modèle | Langue | Usage |
+|--------|--------|-------|
+| `qwen2.5-coder:32b` | FR | Firmware de fond (drivers, architecture, refactor) |
+| `qwen2.5-coder:14b` | FR | Itération rapide (prototypes, config HA, petits commits) |
+| `deepseek-r1:14b` | **EN** | Raisonnement dur (timing, budgets énergie, debug subtil) |
+| `kimi-k2.7-code` (cloud) | FR/EN | Dernier recours : datasheet, décision d'architecture engageante |
+
+**Règle de langue R1 :** `deepseek-r1:14b` est utilisé **en anglais** (prompt + réponse). R1 raisonne nativement en anglais ; le forcer en français produit des artefacts multilingues (fuites de caractères, raisonnement en anglais). Constaté le 2026-10-28 (essai WildNexus).
+
+Écartés : `gemma3:27b` (vision/datasheet uniquement), `llama3.2-vision:11b` (vérif câblage photo), cloud généralistes (surdimensionnés au quotidien).
+
 ## Frontieres inter-membres
 
 | Araignee fait | [[Forge]] / autre fait |

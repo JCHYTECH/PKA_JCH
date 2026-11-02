@@ -73,6 +73,27 @@ est le déclencheur de la recherche.
 - Le mot de passe d'application est relu à chaque exécution depuis
   `~/.config/pka-jch/gmail_app_password.txt`.
 
+## Dépannage — 550 5.7.520 « external forwarding »
+
+**Symptôme.** NDR `550 5.7.520 Access denied, Your organization does not allow external forwarding. AS(7555)` quand un mail `zdbiogene.com` tente d'être redirigé vers `jc.havaux+dobby@gmail.com`.
+
+**Cause.** La politique anti-spam **sortante** par défaut du tenant Microsoft 365 `jchytech.be` bloque le transfert automatique externe (valeur par défaut « Automatic - System-controlled »). La règle Outlook « Rediriger vers » est bloquée au même titre qu'un « Transférer vers ».
+
+**Fix (admin tenant `jchytech.be`) — deux options :**
+
+1. **Scopé (recommandé)** — autoriser le forward pour la seule boîte JC :
+   ```powershell
+   Connect-ExchangeOnline
+   New-HostedOutboundSpamFilterPolicy -Name "Allow External Forwarding JC" -AutoForwardingMode On
+   New-HostedOutboundSpamFilterRule -Name "Allow External Forwarding JC Rule" -HostedOutboundSpamFilterPolicy "Allow External Forwarding JC" -From "jc.havaux@jchytech.be"
+   ```
+2. **Global (simple, moins sûr)** — passer la politique `Default` à « On » :
+   - Sécurité → Email & collaboration → Stratégies et règles → Stratégies de menace → Anti-spam → **Politique de filtre anti-spam sortant (Default)** → Modifier les paramètres de protection → section « Règles de transfert » → « Règles de transfert automatique » → **On - Transfert activé**.
+
+**Alternative sans admin.** Demander aux partenaires chinois d'ajouter `jc.havaux+dobby@gmail.com` en **CC** (supprime le forward, l'alias devient la destination directe) — ou transférer manuellement.
+
+**Délai.** Les changements de politique peuvent prendre ~30 min à quelques heures pour se propager.
+
 ## Suite possible (non fait)
 
 - Job launchd pour exécuter `--fetch` en boucle (scan auto).

@@ -83,7 +83,8 @@ arp -n 10.0.0.2
 
 ```bash
 # [M5]
-open "smb://m1:[REDACTED-M1-PASS]@10.0.0.2/Macintosh HD"
+open "smb://m1@10.0.0.2/Macintosh HD"
+# mot de passe : voir JCH_PRIVATE/credentials-central.md
 ```
 
 Le volume apparaît dans `/Volumes/Macintosh HD-1` avec accès en écriture.
@@ -93,7 +94,7 @@ Le volume apparaît dans `/Volumes/Macintosh HD-1` avec accès en écriture.
 ```bash
 # [M5]
 ssh m1@10.0.0.2
-# mot de passe : [REDACTED-M1-PASS]
+# mot de passe : voir JCH_PRIVATE/credentials-central.md
 ```
 
 Débit SSH/rsync : ~280 MB/s (limité par chiffrement CPU).  
@@ -107,7 +108,7 @@ Débit SMB : ~400 MB/s (recommandé pour gros transferts).
 | M1 non détecté dans `system_profiler` | M1 endormi | Appuyer Touch ID, ou brancher clavier externe |
 | Ping timeout | Pare-feu M1 | Normal — utiliser ARP ou SSH pour tester |
 | "Un autre périphérique utilise l'IP" | bridge0 M5 a drifté | Relancer `networksetup -setmanual "ok brudge " 10.0.0.1 255.255.255.0` |
-| SMB read-only | Monté sans credentials | Remonter avec `smb://m1:[REDACTED-M1-PASS]@10.0.0.2/Macintosh HD` |
+| SMB read-only | Monté sans credentials | Remonter avec `smb://m1@10.0.0.2/Macintosh HD` (mot de passe : `JCH_PRIVATE/credentials-central.md`) |
 | SSH "Connection closed" | Mauvais username | Username M1 = `m1` (minuscule) |
 
 ## Backup automatique PKA_JCH → M1
