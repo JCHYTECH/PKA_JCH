@@ -1,7 +1,7 @@
 # Thread — TRAVELS
 
 > Living document — mis à jour par Dobby 🦉 en fin de session.
-> **Dernière mise à jour** : 2026-10-22 — thread file créé (absent jusqu'ici)
+> **Dernière mise à jour** : 2026-10-28 — fiche « Moselle — Koblenz → source » (4 jours) créée
 > **Statut** : 🟢 actif — pipeline DÉCOUVERTES en fonctionnement continu
 
 ---
@@ -45,19 +45,18 @@ workspace PKA.
 
 ---
 
-## Prochaine étape
+## TTD — Pending
 
-**Action prioritaire** : *corrigée le 22/10* — il n'y a **pas d'arriéré de 590
-éléments**. Mesure réelle : 540/590 analysés, dont 523 avec fiche validée
-présente. 17 noms de fichiers ont simplement évolué après validation.
+- [ ] **P2 · — · (Cigogne + Dobby)** Traiter 36 `skipped` (OCR échoué → vision forcée) + 9 `parked_routes` + 5 `rejected`
+- [ ] **P2 · — · (Cigogne)** Finaliser le meuble banquette (design 104×55×25)
 
-**Reste à traiter** : 36 `skipped` (screenshots où l'OCR échoue — voir
-`identify_skips.py`, passe vision forcée) + 9 `parked_routes` + 5 `rejected`.
+## TTD — Done (session 2026-10-22)
 
-**Action secondaire** : finaliser le meuble banquette (design en cours).
+- [x] 2026-10-22 · Thread file créé ; arriéré DÉCOUVERTES requalifié (590 = journal, pas arriéré)
 
-**Deadline** : —
-**Responsable** : Cigogne 🦩 + Dobby 🦉
+## TTD — Done (session 2026-10-28)
+
+- [x] 2026-10-28 · Fiche roadtrip **Moselle** (Liège → Koblenz → source, 4 jours) — `.md` + carte Leaflet dans `vanlife/destinations/`
 
 ---
 
@@ -98,6 +97,7 @@ représentent plusieurs semaines de traitement au rythme actuel.
 
 | Date | Résumé session | Livrable |
 |------|---------------|----------|
+| 2026-10-28 | Roadtrip Moselle : fiche 4 jours + carte interactive | `Moselle_Koblenz_a_la_source.md` + `.html` |
 | 2026-10-22 | Thread file créé après re-vérification des projets | ce fichier |
 | 2026-10-19 | Génération `lupo-planner-import.json` | 191 Ko |
 | 2026-10-04 | INDEX restructuré | — |
