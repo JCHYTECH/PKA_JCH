@@ -1,0 +1,4 @@
+Mfr Part#,Qty,Description
+ESP32-S3-DevKitC-1,1,MCU ESP32-S3 DevKitC-1
+AD623ANZ,1,Ampli instrumentation AD623 DIP-8 (alternative AD620)
+ADS1115IDGSR,1,ADC 16-bit I2C optionnel

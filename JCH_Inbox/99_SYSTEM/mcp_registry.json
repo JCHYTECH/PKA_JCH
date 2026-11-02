@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "created": "2026-10-22T14:44:05",
+  "servers": {
+    "lightroom": {
+      "command": "node",
+      "args": [
+        "/Users/jchavauxm5/PKA_JCH/_local/lightroom-mcp/server/dist/index.js",
+        "stdio",
+        "tavily",
+        "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"
+      ],
+      "fingerprint": "ab9733de076a3ad5",
+      "approved_on": "2026-10-22"
+    }
+  }
+}

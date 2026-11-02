@@ -1,0 +1,38 @@
+ID,Tâche,Phase,Jalon,Durée (jours),Début (Semaine),Fin (Semaine),Dépend de,Priorité,Responsable,Statut
+P0,Atelier de lancement - Signature du document,J0 - Lancement,J0,2,1,1,,Must,JC + Équipe,À faire
+P1,Création du backlog GitHub Projects,J0 - Lancement,J0,3,1,2,P0,Must,JC,À faire
+P2,Définir le schéma de données (JSON détection),J1 - API Seule,J1,3,2,3,P1,Must,Backend,À faire
+P3,Configurer l'environnement backend (FastAPI + PostgreSQL),J1 - API Seule,J1,5,3,4,P2,Must,Backend,À faire
+P4,Développer endpoints API : POST /detections, GET /detections,J1 - API Seule,J1,10,4,6,P3,Must,Backend,À faire
+P5,Créer la base de données PostgreSQL + PostGIS,J1 - API Seule,J1,3,4,5,P3,Must,Backend,À faire
+P6,Déployer l'API sur un VPS (Hetzner/DigitalOcean),J1 - API Seule,J1,2,6,7,P4,Must,Backend,À faire
+P7,Tester l'API avec curl (detection simulée),J1 - API Seule,J1,2,7,8,P6,Must,Backend,À faire
+P8,Bilan J1 - API fonctionnelle,J1 - API Seule,J1,1,8,9,P7,Must,JC + Backend,À faire
+
+```csv
+ID,Tâche,Phase,Jalon,Durée (jours),Début (Semaine),Fin (Semaine),Dépend de,Priorité,Responsable,Statut
+P9,Adapter la PWA existante pour appeler la nouvelle API,J2 - Station Connectée,J2,10,9,11,P8,Must,Frontend,À faire
+P10,Créer la page "Liste des détections" (avec score de confiance),J2 - Station Connectée,J2,5,11,12,P9,Must,Frontend,À faire
+P11,Créer la page "Carte" (Leaflet) avec marqueur de station,J2 - Station Connectée,J2,5,11,12,P9,Must,Frontend,À faire
+P12,Créer la page "Timeline" (historique des détections),J2 - Station Connectée,J2,3,12,13,P10,P11,Must,Frontend,À faire
+P13,Acheter le matériel RPi + micro + carte SD,J2 - Station Connectée,J2,5,9,10,P8,Must,RPi,À faire
+P14,Installer Raspberry Pi OS + BirdNET-Go,J2 - Station Connectée,J2,5,10,11,P13,Must,RPi,À faire
+P15,Configurer le micro USB sur le RPi,J2 - Station Connectée,J2,3,11,12,P14,Must,RPi,À faire
+P16,Écrire le script Python/Go de capture et envoi vers l'API,J2 - Station Connectée,J2,10,11,13,P14,P6,Must,RPi,À faire
+P17,Mettre en place la file d'attente locale (SQLite) pour l'offline,J2 - Station Connectée,J2,5,13,14,P16,Must,RPi,À faire
+P18,Tester la boucle complète : RPi → API → Dashboard,J2 - Station Connectée,J2,5,14,16,P16,P17,P12,Must,RPi + Backend + Frontend,À faire
+P19,Bilan J2 - Première détection affichée,J2 - Station Connectée,J2,1,16,17,P18,Must,JC + Équipe,À faire
+
+```csv
+ID,Tâche,Phase,Jalon,Durée (jours),Début (Semaine),Fin (Semaine),Dépend de,Priorité,Responsable,Statut
+P20,Automatiser le redémarrage du service (systemd),J3 - Validation & Robustesse,J3,3,17,18,P19,Must,RPi,À faire
+P21,Script de monitoring : uptime, nombre de détections, mémoire,J3 - Validation & Robustesse,J3,5,18,19,P20,Must,RPi + Backend,À faire
+P22,Exécuter un test de 7 jours en continu,J3 - Validation & Robustesse,J3,7,19,20,P21,Must,Équipe + JC,À faire
+P23,Analyse des faux positifs (JC compare avec ses observations),J3 - Validation & Robustesse,J3,5,20,21,P22,Must,JC,À faire
+P24,Ajouter le statut "unverified" par défaut aux détections,J3 - Validation & Robustesse,J3,3,20,21,P22,Should,Backend,À faire
+P25,Ajouter un filtre par confiance dans le dashboard,J3 - Validation & Robustesse,J3,3,21,22,P24,Should,Frontend,À faire
+P26,Bilan J3 - Rapport de test et taux de faux positifs,J3 - Validation & Robustesse,J3,1,22,23,P23,P25,Must,JC + Équipe,À faire
+
+```csv
+ID,Tâche,Phase,Jalon,Durée (jours),Début (Semaine),Fin (Semaine),Dépend de,Priorité,Responsable,Statut
+P27,Décision : Phase 2 ou amélioration du prototype ?,J4 - Bilan Jalon 1,J4,1,23,24,P26,Must,JC,À faire

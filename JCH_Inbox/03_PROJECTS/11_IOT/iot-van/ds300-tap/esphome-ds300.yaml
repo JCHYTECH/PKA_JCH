@@ -1,0 +1,265 @@
+# ESPHome configuration — CBE DS300 Tap
+# Flasher sur ESP32-C3 Super Mini
+# Carte : esp32-c3-devkitm-1
+#
+# Usage :
+#   esphome run esphome-ds300.yaml
+#
+# Entités exposées dans Home Assistant :
+#   sensor.starter_battery_voltage     — Tension B1 (porteur)
+#   sensor.leisure_battery_voltage     — Tension B2 (cellule)
+#   sensor.fresh_water_level           — Niveau eau propre (%)
+#   sensor.grey_water_level            — Niveau eau grise (%)
+#   binary_sensor.engine_running       — Moteur tournant (D+)
+#   binary_sensor.shore_power          — Secteur 230V présent
+#   binary_sensor.water_pump           — Pompe eau activée
+#   binary_sensor.fridge_relay         — Relais frigo activé
+#   binary_sensor.main_relay           — Relais principal 12V
+
+esphome:
+  name: ds300-tap
+  friendly_name: "DS300 Tap"
+  comment: "Interface passive sur connecteur J9 du CBE DS300"
+
+esp32:
+  board: esp32-c3-devkitm-1
+  framework:
+    type: arduino
+
+# Logging
+logger:
+  level: INFO
+
+# API Home Assistant
+api:
+  encryption:
+    key: !secret ds300_api_key
+
+# OTA
+ota:
+  - platform: esphome
+    password: !secret ds300_ota_password
+
+# Wi-Fi — réseau van
+wifi:
+  ssid: !secret van_wifi_ssid
+  password: !secret van_wifi_password
+  ap:
+    ssid: "DS300-TAP-Fallback"
+    password: !secret fallback_ap_password
+
+# I2C pour ADS1115
+i2c:
+  sda: GPIO8
+  scl: GPIO9
+  scan: true
+  frequency: 100kHz
+
+# ─────────────────────────────────────────────────────────
+# ADC externe — ADS1115 16-bit
+# ─────────────────────────────────────────────────────────
+ads1115:
+  - address: 0x48
+    id: ads1115_board
+    continuous_mode: false
+
+# ─────────────────────────────────────────────────────────
+# Tensions batteries (pins B1/B2 via diviseur)
+# ─────────────────────────────────────────────────────────
+sensor:
+  # --- B1 : Batterie porteur (pin 12 J9) ---
+  # Diviseur : R1=47k, R2=10k → ratio = 10/(47+10) = 0.1754
+  # Ex: 12.6V → pin ADC = 2.21V → ads1115 raw ~13700 (gain 1x, ±4.096V)
+  - platform: ads1115
+    ads1115_id: ads1115_board
+    multiplexer: 'A0'
+    gain: '1.0'
+    name: "Starter Battery Voltage"
+    id: starter_battery_voltage
+    unit_of_measurement: "V"
+    icon: "mdi:car-battery"
+    accuracy_decimals: 2
+    filters:
+      - multiply: 5.698             # 1/0.1754 = compensation diviseur
+      - sliding_window_moving_average:
+          window_size: 10
+          send_every: 5
+    update_interval: 2s
+
+  # --- B2 : Batterie cellule (pin 15 J9) ---
+  # Même diviseur que B1
+  - platform: ads1115
+    ads1115_id: ads1115_board
+    multiplexer: 'A1'
+    gain: '1.0'
+    name: "Leisure Battery Voltage"
+    id: leisure_battery_voltage
+    unit_of_measurement: "V"
+    icon: "mdi:battery-charging-100"
+    accuracy_decimals: 2
+    filters:
+      - multiply: 5.698
+      - sliding_window_moving_average:
+          window_size: 10
+          send_every: 5
+    update_interval: 2s
+
+  # --- Eau propre (pins 2-7-8 J9) ---
+  # Sondes résistives 0-190Ω avec pull-up 1kΩ vers 3.3V
+  # V_sonde = 3.3 * (R_sonde / (R_sonde + 1000))
+  # À vide (190Ω) : V = 3.3 * (190/1190) = 0.527V
+  # Plein (0Ω) : V = 0V
+  # Sur ADS1115 gain 1x (±4.096V) : 0.527V → raw ~2100
+  - platform: ads1115
+    ads1115_id: ads1115_board
+    multiplexer: 'A2'
+    gain: '1.0'
+    name: "Fresh Water Level"
+    id: fresh_water_level
+    unit_of_measurement: "%"
+    icon: "mdi:water"
+    accuracy_decimals: 0
+    device_class: "volume_storage"
+    filters:
+      - lambda: |-
+          // V_sonde = x (volts bruts après ADC)
+          // R_sonde = (V_sonde * 1000) / (3.3 - V_sonde)
+          // niveau % = 100 - (R_sonde / 190) * 100
+          float r_sonde = (x * 1000.0) / (3.3 - x);
+          if (r_sonde < 0) r_sonde = 0;
+          if (r_sonde > 190) r_sonde = 190;
+          float level = 100.0 - (r_sonde / 190.0) * 100.0;
+          return level;
+      - calibrate_linear:           # À ajuster après mesure
+          - 0.0 -> 0.0               # Cuve vide = 0%
+          - 0.527 -> 100.0           # Cuve pleine = 100% (si 190Ω)
+      - sliding_window_moving_average:
+          window_size: 20
+          send_every: 10
+    update_interval: 5s
+
+  # --- Eau grise (pin 9 J9) ---
+  # Même principe que eau propre
+  - platform: ads1115
+    ads1115_id: ads1115_board
+    multiplexer: 'A3'
+    gain: '1.0'
+    name: "Grey Water Level"
+    id: grey_water_level
+    unit_of_measurement: "%"
+    icon: "mdi:water-remove"
+    accuracy_decimals: 0
+    filters:
+      - lambda: |-
+          float r_sonde = (x * 1000.0) / (3.3 - x);
+          if (r_sonde < 0) r_sonde = 0;
+          if (r_sonde > 190) r_sonde = 190;
+          float level = 100.0 - (r_sonde / 190.0) * 100.0;
+          return level;
+      - calibrate_linear:
+          - 0.0 -> 0.0
+          - 0.527 -> 100.0
+      - sliding_window_moving_average:
+          window_size: 20
+          send_every: 10
+    update_interval: 5s
+
+# ─────────────────────────────────────────────────────────
+# Capteurs binaires (signaux digitaux via GPIO + optocoupleurs)
+# ─────────────────────────────────────────────────────────
+binary_sensor:
+  # --- D+ Moteur tournant (pin 5 J9) ---
+  # 12V quand alternateur produit → optocoupleur → GPIO4 = LOW
+  - platform: gpio
+    pin:
+      number: GPIO4
+      mode:
+        input: true
+        pullup: true
+      inverted: true              # LOW = optocoupleur actif = 12V présent
+    name: "Engine Running"
+    id: engine_running
+    device_class: "running"
+    icon: "mdi:engine"
+    filters:
+      - delayed_off: 5s          # Antirebond : attendre 5s avant de passer OFF
+
+  # --- Présence 230V secteur (pin 10 J9) ---
+  - platform: gpio
+    pin:
+      number: GPIO5
+      mode:
+        input: true
+        pullup: true
+      inverted: true
+    name: "Shore Power"
+    id: shore_power
+    device_class: "power"
+    icon: "mdi:power-plug"
+    filters:
+      - delayed_off: 3s
+
+  # --- Relais frigo (pin 4 J9) ---
+  # 12V actif → unique high-side switch du DS300
+  - platform: gpio
+    pin:
+      number: GPIO6
+      mode:
+        input: true
+        pullup: true
+      inverted: true
+    name: "Fridge Relay"
+    id: fridge_relay
+    icon: "mdi:fridge"
+    filters:
+      - delayed_off: 2s
+
+  # --- Relais pompe eau (pin 6 J9) ---
+  # Ground-switched : pin tirée à GND quand pompe active
+  - platform: gpio
+    pin:
+      number: GPIO7
+      mode:
+        input: true
+        pullup: true
+      inverted: true
+    name: "Water Pump"
+    id: water_pump
+    device_class: "running"
+    icon: "mdi:pump"
+    filters:
+      - delayed_off: 2s
+
+  # --- Relais principal 12V (pin 14 J9) ---
+  - platform: gpio
+    pin:
+      number: GPIO8
+      mode:
+        input: true
+        pullup: true
+      inverted: true
+    name: "Main Relay"
+    id: main_relay
+    icon: "mdi:toggle-switch"
+    filters:
+      - delayed_off: 2s
+
+# ─────────────────────────────────────────────────────────
+# Status LED intégrée ESP32-C3
+# ─────────────────────────────────────────────────────────
+status_led:
+  pin:
+    number: GPIO2
+    inverted: true
+
+# ─────────────────────────────────────────────────────────
+# Capteurs diagnostiques
+# ─────────────────────────────────────────────────────────
+text_sensor:
+  - platform: version
+    name: "DS300 Tap ESPHome Version"
+  - platform: wifi_info
+    ip_address:
+      name: "DS300 Tap IP"
+    ssid:
+      name: "DS300 Tap SSID"

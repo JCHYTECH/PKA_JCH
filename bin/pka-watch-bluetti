@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# pka-watch-bluetti — Surveille les prix Bluetti (Elite 100 V2 + Charger 2)
+# Dobby 🦉 — 2026-10-03
+#
+# Usage :
+#   bin/pka-watch-bluetti --check    Affiche l'état (sans alerter)
+#   bin/pka-watch-bluetti --alert    Alerte si baisse de prix
+set -euo pipefail
+
+PKA_ROOT="/Users/jchavauxm5/PKA_JCH"
+SCRIPT="$PKA_ROOT/scripts/bluetti_price_watch.py"
+MODE="${1:---alert}"
+
+exec python3 "$SCRIPT" "$MODE"

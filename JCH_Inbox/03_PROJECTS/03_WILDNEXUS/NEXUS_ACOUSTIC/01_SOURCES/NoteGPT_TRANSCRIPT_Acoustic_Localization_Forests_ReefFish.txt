@@ -1,0 +1,273 @@
+00:00:00
+ So, thanks for tuning in everyone. My name is Louis Freeland Haynes and I'm a graduate student at the Kitses lab at the University of Pittsburgh and I'm going to be talking to you today about a fully automated method for acoustic identification and localization of terrestrial wildlife. So, I'm going to outline the method, the hardware, and the software that we use. Um, I'll show you that it works based on a speaker test where we deployed loudspeakers at known locations. um and played bird sounds.
+
+00:00:32
+ And then I'll show you some results uh on a field deployment and compare it to conventional spot mapping surveys. So we also had surveyor out at this site and we'll see what the two methods look like. But first of all, why is it we care about being able to use acoustic localization? Well, it's a non-invasive monitoring method that can provide us with rich biological information, allowing us to investigate ecological and behavioral questions like habitat use and territory boundaries.
+
+00:01:04
+ And importantly, it unlocks methods for abundance estimation, which is otherwise something that's challenging to do from acoustics. To make sure that we're all on the same page about what I'm talking about, I'm going to quickly step you through how a grid of autonomous recording units can localize sounds using multiiteration. So, if we have a bird singing somewhere in the middle of these four ARUS, the song will reach the closest one first at let's say time t0. Will then reach the next furthest
+
+00:01:38
+ microphone at time t1. the next a little later at time t2 and finally the furthest microphone at time t3. So we have a set of four arrival times for the sound one for each microphone and each time difference of arrival i.e that difference in time between the sound arriving at the first mic and the next defines a hyperola along which the sound source could be located. So we can plot each of those hyperola and where they intersect or the point closest to all of them is the most likely location of the sound source.
+
+00:02:24
+ So that's how it works in principle, but as always the devil is in the details. So I'm going to talk you through how our pipeline actually works. And I'll start by briefly talking through the hardware. So, we use Audio Moths, these cheaply available autonomous recording units, to deploy large microphone arrays like the one on the right. But the problem with autonomous recording units is that their internal clocks drift. And to localize sound based on times of arrival at different receivers, we need sub millisecond
+
+00:02:59
+ synchronization across all of the ARUS in the array. So we use audio moths with a GPS receiver added on. The time stamps of the GPS signals allow us to synchronize the start and end of recording periods across devices and also to correct for drift or differences in sampling rates during the recording period as we use every GPS timestamp received to resample the audio to match the expected sample rate. So, I've very briefly outlined the hardware and now I'm going to talk about the meat of this, which is the software
+
+00:03:36
+ and how we get from synchronized audio to localized positions. Now, localization arrays are not a new thing and they've been widely used, but to try and scale beyond using hand annotated audio where an expert listens and boxes sounds of interest, we automated the entire process. And I'm going to pick up talking about how the software works from after that audio synchronization I mentioned. So if you have synchronized audio from say multiple microphones recording through a single controller rather than the audio
+
+00:04:16
+ GPS audio moth GPS I mentioned. You'll also be able to use everything I'm showing you. And I'd like to point out that everything here is implemented in our open-source Python package called Open Soundsscape. So the first step is to detect and classify sounds of interest in the audio from all of your microphones. Uh I'm going to whisk through this part a little because there's not enough time to explain convolutional neural nets, but that's the automated detection method that we're using. Essentially,
+
+00:04:49
+ there are machine learning methods that with enough examples could be trained to identify patterns. In this case, bird song in a spectrogram. So, in the actual experiments I'm going to show you, we trained multiecies CNN's to identify our species of interest in 4 second long spectrograms. like here where it's correctly identified the song of a common yellow throat in the spectrogram giving a score close to one for that class. And if you want to train your own CNN to recognize sounds of interest to you,
+
+00:05:26
+ it's pretty straightforward to do so using Open Soundscape. Once you've got some examples of your sound from audio that you've listened to and annotated in software like Raven, you can load in that audio, pick the classes that you want to be able to identify, split the data into a training and validation set, and then the actual machine learning aspect of this takes place in these last two lines of code. So, if you want to train a CNN on your own, it should be straightforward to do it in Open Soundscape. And if it's not,
+
+00:06:00
+ please let us know so that we can make it more straightforward. So you've seen that we're using convolutional neural nets for the automated detection part and you can train one of your own and I'm going to talk you through the localization aspect. So the first parts of this are to do with how we group the detections that we've generated and then estimate time delays between those microphones. So the first step, we need to somehow group audio clips that we believe contain recordings of the same sound
+
+00:06:36
+ events in the real world. One song of a bird, for instance. So for a given 4 second window that our CNN outputs detections on, we might have nine receivers where the sound has been detected, these red bubbles on our array. What we're going to do is pick one of them. And don't worry about which one because after we do this, we're going to repeat it for each receiver with a detection. We're going to find other receivers within 150 m of that. And this distance is something that you can adjust to the
+
+00:07:14
+ sound of interest and acoustic setting. It's the maximum distance apart that you think it's likely to be the same sound being heard. Then we estimate the time delays between the central receiver and other receivers in that circle with a detection. To estimate the time delays between two receivers, we use generalized crossorrelation. This basically lines up the signals trying all possible different delays. And where crossorrelation is maximized is likely to be the true delay between the two signals. You can see a perfect
+
+00:07:53
+ toy example here with two sine waves. But because our signals are actually very noisy with lots of other sounds in them, we do a few things to improve the accuracy of time delay estimation. We band pass the audio to species specific frequency ranges. We apply a spectral waiting that's been shown to work well in this particular system. That's the fat phase transform. And finally, we can also reject time delays where there's low signal coherence between the two receivers, where it might not be lining up the
+
+00:08:29
+ sounds that we're interested in, which we expect to be a major part of the signal. So, we've now got a set of time differences of arrival, the time difference between it arriving at that central reference receiver and all of the other receivers within that circle. And we can use a localization algorithm to estimate the position from those time differences of arrival. We use the Brooft GPS method. And importantly, we sometimes get estimated positions that look wacky. So we can choose to discard locations that only poorly match
+
+00:09:10
+ the time delays. In other words, if the bird actually sang from the position that we've estimated, when should the sound have arrived at each of the receivers and how different is that from our observed data? So, we can reject high error localizations based on the root mean square residual of those time delays. So to recap, we estimate a position using just one receiver as the central reference receiver. And within a time window, we'll do this again and again for every receiver with the detection,
+
+00:09:45
+ throwing away any that have low signal coherence or high residual error in the localized position. So here's another estimated position using a different reference receiver. Here's another We try this one and we don't get one perhaps because the time residuals are too high or there's low coherence between the signals. And we get another one. And then finally another one. And here are our estimated positions within one single time window of this sound event. And if you or I were looking at that, we'd probably say
+
+00:10:25
+ that cluster of dots is the real position. And those two other dots are outliers that somehow slip through our error filtering. So we need an algorithm that does exactly what we've just done and can use the consensus of multiple points piled up in one spot. And DBSCAN is a density based clustering algorithm that does exactly that. It can identify clusters of high density and remove the outliers. And it works with multiple clusters. So if you imagine we had another bunch of dots piled up somewhere else in the
+
+00:11:00
+ array, it would also be able to identify that. So to see in practice what DB scan does, we have a whole set of these predicted positions based off of one time window and it will help us filter out the ones that we have low confidence in and we get the mean positions of the dense clusters. So I'm going to show you the actual results now. And first I'm going to show you the loudspeaker test. So we set up this array with microphones 50 m apart and had eight loudspeakers within the array. These were playing bird vocalizations
+
+00:11:38
+ and sometimes they were simultaneous. So they were overlapping. And in this plot we have the positions of the loudspeakers marked with an X, a circle of radius 5 meters around them drawn, and the positions of the receivers, those red triangles. So, we were able to estimate the positions of the loudspeakers with pretty high accuracy. And I really want to point out that a big part of this was that DB scan clustering. If you look at this before, we've clustered those multiple positions, we often get
+
+00:12:12
+ erroneous estimates creeping through. Um, something else I should point out is that we got 54% of time windows localized, but this will really depend on the quality of your classifier. it could be a lot lower. So, I'm also going to show you this field test where we deployed an array and we also had people walking up and down the array doing spot mapping surveys noting where they saw birds singing. And there's an easy case that we wanted to test it on first, which is the case of one common yellow throat that was
+
+00:12:46
+ always in the same position in the array every time. And the human observers spotted it here. And fortunately, our localization pipeline seems to be returning roughly correct positions because it also found it in the same part of the array every single time. I also want to show you a much harder case, which is the case of oven birds, which are perhaps the most abundant bird at our study site. And if you look at these spot mapping surveys, you can see how dense it is and how difficult it is to use this method to map territories.
+
+00:13:22
+ So the dash red lines are different birds. The solid lines indicate multiple sightings of the same bird. And really, it's just so dense it's almost impossible to pick any information out of this. And here is the result from our automated localization pipeline. Um, I'm not going to say that one is right or one is wrong, but it seems like this might be perhaps a better way of estimating territories of very abundant birds if it's such a struggle to get information out of the spot mapping.
+
+00:13:58
+ Uh, and finally, I know I'm running over, so I just wanted to leave you with a fun little gift because it's always about the GIFs, which is demonstrating, I hope, the kinds of rich information that we can get out of a localization array like this. So, we're looking at scarlet tanagers singing within our array. And you can see we get these multiple dots in the same place in consecutive time windows. you can maybe see some counter singing going on. Um, and it's really interesting to see if we
+
+00:14:30
+ can use this information towards estimating abundance and mapping territories. Uh, so I'd like to thank everybody who took part in this project. Uh, particularly everyone in the Kits lab and thank you for having me. Thank you, Lewis. So, now we'll open up about five minutes for any questions. Starting with one in the chat and looks like a clarification question about um the CNN towards the beginning of this chain. Um, can we use AI to filter out um, basically filter for specific species of interest? Um, ignore and in
+
+00:15:26
+ doing so ignore the background noise and other sound sources. Uh, yeah, that's that's actually something that we intend to do. So there are some sound source separation methods method um that basically are able to try and disentangle multiple simultaneous sounds and extract them separately into separate channels and that's something that we intend to do. Um we were actually really surprised that it works quite well even without that. Um just doing that filtering to the species specific frequency ranges
+
+00:16:00
+ and the phase transform we seem to be able to estimate the time delays accurately. Um but yeah we want to use a sound source separation method um and see how that affects it. Excellent. Let's go to VJ. That was a that was a great talk. Uh I had a question about uh the distance that might be needed for you to you know accurately localize where the sound is coming from. Uh because I'm wondering do you need like a really concentrated array of recorders for you to accurately map where the source is or can that
+
+00:16:39
+ distance be beyond 150 m and you know what's that threshold? Yeah. So, um, if you are trying to estimate it, um, within reasonable precision, it's going to benefit from having multiple densely spaced receivers. Um, but there's no reason why if you have a sound that travels further, you couldn't use a more widely spaced array. Um, so if you are, for example, trying to localize a wolf owl or something like that that might be detectable over kilometers, you could use a similarly spaced array. Um, so
+
+00:17:20
+ there's no reason why you wouldn't be able to space them further apart if you can detect your sound of interest further apart. Lewis, why don't we take a question from Thiago Marquez who's done a lot of density based work uh in this field. So his question um has to do with abundance. Can you assume that you detect all the cues produced um like in your last array with um in the the GIF video that you showed or are cues produced potentially missed? No, no, we're definitely missing some
+
+00:18:01
+ because every step along that pipeline um there's the potential that we're missing some. So at the front end, the convolutional neural network will have some recall that we can estimate and we know that we're going to be missing the quieter calls. We might just have other loud sounds in the audio that obscure it. Um and then similarly all the way down the pipeline, we're likely to be getting some time delays wrong. Let's say there's another loud sound and we end up lining that up. And so we might
+
+00:18:35
+ end up with a dodgy location estimate that we have to throw out. So we know we're definitely losing cues along the way. Um something that we're really interested in is seeing if we can find a reliable way to quantify that and actually be able to model how we're losing things and at what point. Wow, we were getting a lot of excellent questions. This one was upvoted from Tom. Tom, would you like to ask your question? Hello. Uh, thanks. Sorry, a wee bit um perhaps a ill-phrased question, but
+
+00:19:17
+ basically I I quite often you see species which move a lot whilst they're singing, you know, and even just over very short distances. And I was thinking how that presumably represents quite a challenge for localizing um individuals. So, does it would it just get dropped out during your pipeline or is it possible to track it over much shorter distances? Yeah, that's a great point. Um, if you've got something that's say doing song flight and moving a lot during that song flight, um, my guess would be that
+
+00:19:49
+ if you're using a longer time window, you're just not going to be able to localize it because it you'll end up with a bunch of contradictory time delays. um perhaps they'd come out of the mean position. I don't know, but I would I would suspect that it wouldn't work. But probably if you were able to train a classifier that could work on much shorter audio lengths, so the kind of length of audio where you wouldn't expect the bird to have moved very far, even if it is in song flight, I would
+
+00:20:18
+ expect that that would work and you'd end up with a bunch of predicted positions that would hopefully help you to actually track that song flight. Okay, I think um we only have time for one more question because we've got two really interesting talks coming next. So um what I'm hoping is um Lewis, would you be able to um we have a good number of questions in the chat. Maybe we can tackle those um over the rest of this Biotox. And to close us out, um, Bruge, I was wondering if you wanted to share your
+
+00:20:59
+ question. Thank you. [clears throat] Thank you, Ben. Um, so I was just, uh, I don't know if you mentioned it, but I think you are using CNN on, uh, detecting species. So I was wondering how, um, it fares when you have different individuals from the same species. Um, so how how does your algorithm work then? Yeah. So, when you've got multiple individual vocalizing of the same species, you might end up with something like this, but with a bunch of red dots all over the place. So, detections of
+
+00:21:34
+ the species. We can't tell that they're different individuals at that point. We're only using it to classify to species, a bunch of red dots across the array where it's detected in multiple places. Um, however, the idea behind this picking a central receiver, estimating a position, picking another one, estimating a position is that this will hopefully allow us to estimate the positions of multiple birds that are singing at the same time. Um, but you're right, the the classification at the
+
+00:22:05
+ front end is just doing it to species. Okay, since that was a quick answer, I want to give Mike some uh Mike the floor. Um, yeah, thanks Ben. Um, yeah, I've really enjoyed the talk and I I I love the clustering method that you used as a a way of dealing with errors in the method. Um, I've had um I've spent some time trying to analyze errors in the time, you know, the time of sound samples in recordings is a impediment to doing source location. And we found that in addition to clock drift, the dropped
+
+00:22:50
+ clusters of samples is a pretty significant source of error when attempting to do source location because of the need for very precise uh sample times. Did you see any evidence of this when sorry just say that again you said something about clusters of samples? Yeah. So in the recorders, you know, they they put a you know, they're they're recording into a buffer, you know, when they're um sampling the sound and then periodically every second or you know, depending on the recorder, it's roughly half second or whatever.
+
+00:23:24
+ [snorts] Those are being written to some media and occasionally that's appears to be skipped, you know, as things get backed up or whatever and the buffer contents are not written to media. So, you know, um yeah, we with with that error going on, adjusting the beginning and the end of the recording to a line time doesn't account for that. Yeah, we so we had exactly the same issue of samples being dropped mysteriously. Presumably, there's something like a buffer overflow going on. Um we actually think in the latest
+
+00:23:59
+ firmware of this it's been fixed. Um, but what we did to avoid that is every GPS timestamp that's received during the recording, so not just for the start and end, every GPS time stamp that's received, which should be every second, but sometimes they're missed, we use to resample the audio between it. Um, so obviously if we've lost audio, if we have some missing samples, we're just going to be dilating the actual samples that we have and that might be wonky, that might not work. Um, but we seem to
+
+00:24:32
+ have found that that issue has gone in the latest firmware that we're using. And also that if we're able to resample, you know, every second or as close to every second as we can, um, we also haven't been running into that problem even where it did have some drop samples every so often. Cool. Excellent. Okay. Well, thanks so much, Lewis. Um, again, we or Lou, I'm sorry. Louie, sorry. We've got a lot of um great questions in the chat, especially about the the hardware and software that you're using.
+
+00:25:06
+ And so, I'm hoping that we can talk about the accessibility and availability of these different tools. And so, I've been thinking about a good transition. So from beaked birds in the forest, we now um dive into the depths to explore beaked whales and how they um achieve niche partitioning or the extent to which they do. So uh welcome Anna Maria. We're very excited to have you here with us and learn about your work. Thanks Ben. That's a really good transition. Um can you see my screen?
+
+00:25:42
+ Okay, great. because it just so happens that my second slide is about beaks. So, there we go. Um, I'm not going to go too much into this intro here. I'm going to go right to that second slide about beaked whales and beaks. So, there we go. They're known for having this unique uniquely shaped um rostrm or snout here. And that's why they are called beaked whales. And um we're studying these because they are a data deficient family. So, they're predominantly found offshore around
+
+00:26:09
+ seamounts and island chains. Um they are deep divers so they forage at miso and bathopagic depths to um collect prey and they're hard to visually site and classify. So here is an example of a day in the the western North Atlantic where it's considered to be a low seastate day um and you're trying to find some beaked whales. And in this photo here there are a total of three beaked whales. And in order to be able to classify them to species you have to hope that one is showing its head. And in this case, it's
+
+00:26:40
+ this guy on the left. And um looking at the different coloration and the shape of the beak, um you can figure out what species of beak bell it is. Um but there's a lot of limitations here. So it comes to this question of how exactly are we going to study this family. So this is where passive acoustics comes in. So we can collect acoustic data in a myriad of ways. First we can um do so through um bottom mounted recorders that provide great temporal resolution at a particular location. Um these data are
+
+00:27:13
+ put out and then recovered at a later time. There are your mobile uh instruments which provide great spatial information and there are also um instruments um that are attached to the target species that can provide us with high resolution behavioral information at short time scales. So from these instruments um we have learned that beaked whales as a family produce unique echolocation clicks that are distinguishable from dolphins and sperm whales by the presence of a frequency modulated up sweep shown here
+
+00:27:43
+ in this figure from Bal and Pickering at all 2013. [snorts and gasps] Additionally, these up sweeps are species specific which means that each species can be identified based on the characteristics of these sweeps. So from the tag data we have found that these beaked well clicks are only emitted during foraging dives. So in this figure here from Tayak at all 2006, you'll see the time of day on the X- axis and the depth at which these beaked whales are diving on the Y and the darker lines and circles are the clicks
+
+00:28:10
+ and buzzes of beaked whales that are um performed at these deep depths below 400 meters or so. And then you have um these shorter, shallower, silent dives um that occur in between these deep foraging dives. So in terms of beaked bell ecology, they've it's been focused primarily on two species of beaked bells in a few locations. So those being Blainevilles and Cuvier's beaked bells. However, there are 24 species in this family. So is it fair to take the knowledge that is learned from these two species and apply
+
+00:28:40
+ it across the entire family? So this [snorts] is where we're going to look into um our ecology and um you look at the concept of niche partitioning [snorts] in which we'll use our bottom mounted recorders to examine the temporal partitioning of beaked whale species and our mobile recorders to understand the spatial and trophic partitioning of beaked whales. So this study was conducted in the western North Atlantic in the offshore waters. [snorts] And here we have six known beetail species. First we have the
+
+00:29:12
+ polar and subpolar species which are the northern ballnos whales and sour bees beaked whales. Then there is truce beaked whales which is a uh warm temperate water species thought to occur um just north of Cape Hatteris shown here as this little star. Then there are the warm temperate and tropical species which are Jerves and Blaineville's beaked whale sought to occur south of Cape Hatteris. And then there's the cosmopolitan QVA's beach whale. In this region um is strongly defined by
+
+00:29:42
+ the presence of the Gulf Stream which is a warm salty water current that comes from the Gulf of Mexico, rides up along the shelf break of uh the southeast US and then comes the closest to shore at Cape Hatteris which it then branches further offshore into the abyssal plane. And the significance of the Gulf Stream will um be pres uh prevalent later on in this talk with beaked bells. So in this area, we deployed 11 bottom mounted instruments along the shelf break, shown here as these white squares, as well as there were two
+
+00:30:12
+ concurrent shipboard surveys that traversed the waters from the shelf break out into the abyssal plane, shown here as these black lines. And we truncated our data to an overlapping data time frame of July to August 2016. So for our temporal analysis, we looked at just the bottom mounted instruments and we ran a suite of detectors and classifiers through to detect beaked bell clicks and then with manual review um identify clicks belonging to each of the beaked bell species and um if there were five or more clicks within a minute
+
+00:30:45
+ we considered that species to be present for that day. Um once we had all of our data, we then uh used classification trees to look at the co-occurrence of beaked wells and the results of that shown here. So overall beaked wells were present across our study area on 71% of the days during our time frame. And this figure on the right here is showing the daily presence with time on the x-axis and our recorders on the y ais going from north to south. So just to draw your eye here, we have the most beaked whales present
+
+00:31:18
+ at our WC and BP sites. Uh the least amount of beaked whales at the OC site and BC had the highest number of species present, a total of four species over the course of the deployment. From the classification tree looking at the co-occurrence of these different species, we saw that sour bees uh co- occurred with QVAs mainly in the mid-Atlantic as well as the northernmost site. TRS and QVAS co-occurred in the mid-Atlantic. Jerves and Blainevilles co-occurred at the southern edge of our study area
+
+00:31:55
+ and Jerves and QV were also um mid-Atlanticish round Cape Hatteris plus or minus one site. The following species did not co-occur at any of our study sites. Now moving on to the toray to look at the spatial analysis of our data. Um this is looking at individuals. So what happens is that as the ship is going across these transct lines, the toad array is detecting and localizing beaked wells and is and due to its inherent properties, we can go ahead and localize them to the individual. And so those are
+
+00:32:27
+ shown as these yellow circles here. Therefore, over the course of a cruise, you have more and more detections. And once you've collected all your data, you can then go ahead and extract environmental features of from those data points. And we extracted salinity, chlorophyll, SST, and bethimemetry. These were then all put into another classification tree to look at species habitat preferences. So, from this study site uh study area, we had a total of 394 be well detections. Um, and the results are
+
+00:32:59
+ shown here in this tree, and we'll walk through it together. It's a lot, but not a lot at the same time as you go through it. So, the first divide here, you'll see there's kind of a difference in colors. The different colors are the different species of beaked whales. Um, and there seems to be a difference between the left and the right sides, and this corresponds to um the Gulf Stream. So if you look at the different um environmental uh breakdowns, so we have chlorophylls and SSTs and all of
+
+00:33:26
+ this um translated really well to the properties of the Gulf Stream. So within the Gulf Stream, we had species um Jerves and Blaineville's beaked bells predominantly. Then moving on to the right side of our tree. This was more our northern half of our study area. We see that there's another divide at the bethimemetry where we have bethimemetries less than or equal to 2010 m and then those that are greater than 2010 m. And that might seem like an arbitrary number, but it actually aligned really well with um
+
+00:33:57
+ where the slope area was in the northern part of the um study area. So the slope was pretty lined up pretty well between 200 and 2,000 mters. So those nodes that are on the left side of our tree um pertained to the slope area versus um the right side of the tree which is more all of detections that were in the abyssal part of the survey area. And here um you'll see that there's more of the pink on the left that being sour bees beaked whales and then shrews were the dark blue here and those being more
+
+00:34:30
+ in the abyssal aspect of our study area. Next, looking at the trophic analysis from the toad array, we can get from those individual localizations, we can calculate the whale's depth and therefore get a sense of its foraging location over the course of its dive. So, here is one of the dive profiles from our data where you have the time during the dive on the X and the depth at which it was diving to on the Y. [snorts] Uh, we go ahead and split the water column into 400 meter bins to allow for the localization and
+
+00:34:59
+ accuracies of our algorithm. and we went and estimated the 90th percentile of each of our um dive profiles. We then went and compared where w where that d that 90th percent bin was in relation to the bin that contained the seafloor. So here in this example on the left we're seeing that the 90th percentile bin is different than the bin that had the seafloor. And so this whale was considered to be diving in the water column versus on the right here we see that the 90th percentile and the seafloor bin are the same. And so
+
+00:35:35
+ therefore we said that that whale was diving in proximity to the seafloor. We then used the kaiquare to understand if there were any interspecific differences in diving location as well as a binomial GLM to see which species had significant differences. And from that kai squared we saw that there was indeed a significance in um interspecific uh diving location. And so then in the binomial GLM we put in uh jerves uh trus and qvas as they had events that dove in proximity and uh to the seafloor and uh in the water column.
+
+00:36:12
+ The seafloor being the dark the solid lines and the water column the dotted lines. And from these three species, only QVAs had a significant difference. Um, and I should note that Plainvilles and Sarbies only had detections that were considered to be in proximity to the seafloor. So to conclude, passive acoustics improves our understanding of beak bell ecology by broadening the number of species that we can study and examining the large spatial and temporal scales over which these species occur. And
+
+00:36:43
+ there's a nice interesting interrelatedness of spatial trophic and temporal partitioning for this family. Um from our data we found that there was a maximum of four species at any site but no more than two daily. And some thoughts about this is that species occupy different environments. So from our uh toad array data we saw there was a difference of species being within or outside of the Gulfream, those inside being those of Jerves and Blainevilles versus um sour bees and shrews. And then the difference between the abyssal and
+
+00:37:14
+ slope water species. So abyssal being more trus and slope being more sour bees. Then um another thought is that these species can be targeting different prey. Um so in general kovier are have been thought to have been seen to forge predominantly on sephopods whereas the um mopladons are foraging more on uh bathopagic fish. And we found in our study in our that uh QVA significantly forged closer to the seafloor than the other species. And this could be um due to things such as resource limitations
+
+00:37:48
+ or interpacific competition. And if it's the latter, I'm really hoping that they bring lightsabers. So that concludes my talk and I'd like to thank my co-authors and those that helped analyze and collect the data in the field um and our funders. And thank you for listening. Thanks Anamaria. It's interesting when you know so much in bio acoustics and I see niche partitioning I immediately think of the acoustic niche hypothesis and what it means but here in these deep ocean environments just learning about their
+
+00:38:29
+ basic habitat use and behavior that's the the kind of niche partitioning that we can learn about through acoustics. Uh, does anybody have a question for Anamaria? I'm for one curious about how much new knowledge this study has brought, you know, relative to the the boat base surveys. you know, has this really shed um this array of recorders and and your study, has it brought a lot to light about how these beaked whales are using um the the eastern coastline? [snorts] I would think so. I'm I'm biased, but I
+
+00:39:16
+ would say that I think so. Um so I know that prior to all this, we had no idea where TRS were. And um when out in the field we had like after we were able to start visually identifying them um we were kind of like seeing like oh they kind of seem to be clustering around the 2,000 meter bathy line and and it really it's it's just really nice to me to see that the the acoustic data showing that and then really highlighting that and highlighting that there's not just this latitudinal partitioning but also this
+
+00:39:48
+ inshore let's say inshore [snorts] and offshore partitioning of beaked whales as well. So in my opinion I would say so very cool. Hey just wanted to drop a question based on actually a question that is written on the chat. First of all thank you for this nice talk and amazing to know more about this very uh difficult species to observe with visual cues. Uh so what what is the range of the the bottom uh mounted microphones but also the boat based microphones the range of detection of those? Yeah, they're pretty similar. So these
+
+00:40:38
+ were harps that were deployed and Hildebrand estimated about 3 and a half kilometers for the bottom-mounted harp data and then the tot data we in general say that they um propagate about 4 kilometers but that was just pooling all the species together and through a lot of the totray work I'm seeing that there are um species specific differences in the detection ranges so I would say anywhere between like 500 meters out to close to kilometers. Yeah, maybe we could have a bio acoustics about detection range because there's no
+
+00:41:16
+ one detection range for a given recorder. It varies based on the sound source and the environment, the background noise. Um, so I think that would be an interesting session. Maybe we could do that in the spring. Um, we have time for one more question. Uh, so Thiago. Yeah, I would like just to point it out that there's like [laughter] a connection in the is a kid learn math Python package related with like the the like the special detection when you can incorporate like three different sources
+
+00:41:50
+ of attenuation for like trying to having like different samples of combination of a specific signal and my question was like I don't know how much like boat traffic it's like person in the area but like do you notice that it kind of like influence like like in the like in the niche partitioning of the sounds of those mar mammals because of like I don't know one propony yeah so in in this area it's there's some boat traffic not too much it's mostly the offshore the commercial
+
+00:42:28
+ fishing um that happens out in this area and beaked wells as a family are very uh noisy diverse. They're very shy. Um and actually for this data um the shipboard surveys uh will operate in two modes. One with active acoustics uh working and then um half the time and the other half the time with them off. And we've seen in previous work that uh the usage of these active acoustics um does influence the acoustic behavior of beak bells where we have no detections when the echo sounders are on and we'll get a ton
+
+00:43:01
+ of detections when the echo sounders are off. So in this study, we excluded all of the times in which the active acoustics were operational and only used the data in which there was just um the passive systems recording. Did Thank you so much. Yeah, thanks again, Ana Maria. Uh so last up, we'll move a little bit shallower than a thousand meters depth, but um now we'll focus on the meopodic reefs. um I think in French Polynesia. And so we have Zavier who will join us and um yeah, take it away.
+
+00:44:06
+ Okay, sorry I forget to put the microphone on now and share again the screen. Do you see the presentation? Not yet. Now we do. Okay, thank you. 80%. It could be the percentage of the hiden part of an iceberg. But it's also part of coral reef defined as meopodic reef found below 40 m. Coral reef occupy less than 0.1% of the oceans. But they inhabit more than 25% of all marine species. They are usually studied by scuba diving. However, there's a depth limitation caused by gases toxicity that limit us
+
+00:45:14
+ around 60 m. The question that arise is how can we study meopotic reef? As reef inhabit many vocal species like fish, bentic invertebrates, dolphins and whales. A strategy could be to record the songs to assess their presence. The presence of whales is seasonally dependent and like dolphins they are highly mobile. Then they could not inform on the local condition of a reef. Invertebrates could be good coordinates but their sounds are not species specific making them complicate to use for monitoring.
+
+00:46:03
+ While fish appear to have the potential to be used in monitoring. To do so, we need to understand how acoustic fish biodiversity vary along the depth gradient and the dial cycle. And to do so, we join an expedition named under the pool made of extreme professional divers using helium and rebreers. D were made at 120 m, 60 m and 20 m. And at each depth, we asked them to place an acoustic recorder on the reef. This was realized in six different islands in French polinia. And in addition, the composition of the bottom
+
+00:47:00
+ was quantified. Polynesian reef were acoustically very rich with more than 60 different fish. On the slide you can see three maps. One for 20 m depths at the top, one for 60 m in the middle and one for 120 m at the bottom. We can see that one single sound type dominate meic. So here in red and that some sun types are more associated with 120 m depth than shallower site. It can be said that the occurrence of the different sun types was not equivalent for each depth. On this box plot you can see the Shannon
+
+00:47:49
+ acoustic diversity. So it's an alpha diversity depending on the depth. So 20 m in green, 60 m in blue and 120 m in black. We can see a statistically supported decrease between 20 and 60 m but not below. It appears 60 m is a transition zone between two distinct fish communities. Other analysis show that the highest similarities between acoustics communities were found between 60 and 120 m. Finally, we use a canonical correspondent analysis. So it's an analysis very similar to Ping fish type islands depths and cover
+
+00:48:45
+ features like for example the percentage of color in this graph you have CCA2 as a function of CCA1 a little bit again like in a PCA and you see both the sun types in red the side and 95% confidence in the ellipses so in green 20 m depth in blue at 60 m depth and in black at 120 m depth. Cover features like algae cover and dead color appear on the left part of the field because these features are characteristics of the foric. On the other hand, other features like sponges, hydrost, blacks, gorggonians
+
+00:49:29
+ and sand are more typically found in the deep part of this figure allow us to understand which song is associated with each feature. Difference can reflect different habitat features. We can clearly see that 60 m depth is found between 20 m depth and 120 m depth. Concerning the dial site, this is what I am currently doing with my two of my master student. We clearly see a difference between daytime and night time. Furthermore, during night time, we can distinguish two different products. GAN models shows the nocturnal or the
+
+00:50:16
+ character of each sounds. The big frequency of these different sounds is not equivalent. During night time, we see precise band of frequencies and we found similar results for deeper sight. The next step will be to perform n analysis to understand in detail the repartition of this s in French polynia. The deep part of the reef was the a fish that is highly similar to a sound described in the Mediterranean Sea. So in Europe during the night and produced by scoring fish these sounds had a higher viability here probably produced
+
+00:51:08
+ by more species contrary to what is observed in the Mediterranean Sea. Both acoustic fish diversity and community composition show a depth dependence. The transition zone coincided with a zone with a higher fish species richness on the drop off. In addition, another explanation of this division is the presence of one or more thermoclins not to influence assembities are also related to changes in the bentic composition. Concerning the D cycle, both the absence of light because it's night time and
+
+00:51:57
+ because it's death increase acoustic complexity. To conclude, this study suggests that fish sounds reflect fish communities that depends on habitat characteristics and can be indicative of sector differences in vertical gradients, buffer zones, and benic cover. These results open new perspective in the studio monitoring of the height person hiden part of the iceberg. Before finishing, I would like to thank all my collaborators and the four sponsor that allowed me to realize this presentation in Portland in
+
+00:52:38
+ Oregon last month, namely the Belgian Royal Academy, the Waria Bruce Federation, the ESLAC ecology section and the less Royal and Jin Brown student forever award from ESA. And thank you for this invitation to this bios and have any question feel free to ask them now or send me any. Thank you. Thanks so much, Savier. It's interesting seeing that there's a possible transition zone between the shallower reefs and then the 60 and 120 meter reefs. Um, do we have any questions? I was curious how you identified the
+
+00:53:37
+ different sound types that were present at the different sites. So to to identify the different sound types we work with manual analysis. So we don't have any this work and we use a dec domous key. So we class the sound like for example frequency modulation P series and other families and then we yes we use aimous key key with different questions. So for example looking the duration of the sound, the purse period and the main dominant frequency presence of absence of harmonics critaria. Does anybody else have a question for
+
+00:54:33
+ Zavier? I just kind of a followup to that. Um, hi. That's super cool stuff. I love that we're getting into like fish sounds um for like what you were talking about. I think one of the biggest things for like underwater is the lack of kind of reference sound libraries and um reference calls like you say, kind of having to go through a dichomous key and figure out like to what kind of taxonomic level you can identify them. Um are you like is that call library reference call library that you're
+
+00:55:10
+ you're using available anywhere um for others to pull from I'm sorry the Wi-Fi is not very good if I understood ask about the reference library. Yes. So, like you were saying the you've identified the calls to certain taxonomic levels. Um, and I was just wondering if that reference call library was uh available um to to for others to use. So, you are right. So, there's really a need of a reference library. So, there's uh something moving from especially from Canada. So they are
+
+00:56:03
+ building a fish songs website. Uh and for the moment on this website on this library all these are putting the songs from species we know. So from identify species and the next step will be to add sounds from unknown sounds sometimes so from other sources that we don't know the species but for the moment is still in progress but it's moving slowly. Yes. I I'm intimately familiar with uh that process. So important but very time intensive. Yes. Okay. Well, this was a super fun meeting, our first one of the fall. And
+
+00:56:57
+ as I mentioned earlier, we'll be um having one or more members from the bird birdnet team join us in two weeks to talk about a new guey that can be used to retrain birdnet to find signals of interest. Um but yeah, thank you so much Louie um Anamaria Zavier. You started us off on a a really strong note that will continue for the the whole semester. So thanks everybody for joining us. Um, it's great to see everybody here again and looking forward to um being together in two weeks. Have a great rest of your day.
+
+00:57:37
+ Thanks so much, Ben, for organizing this. For sure. Yeah, good to see you all.
+

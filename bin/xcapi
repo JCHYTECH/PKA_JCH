@@ -1,0 +1,14 @@
+#!/bin/bash
+# bin/xcapi — wrapper vers xcapi dans le venv PKA
+# Usage: xcapi [args...]  (passe tous les arguments à xcapi)
+# La clé API est lue depuis XC_API_KEY ou --api_key
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+XCAPI="$SCRIPT_DIR/../.venv/bin/xcapi"
+
+if [ ! -f "$XCAPI" ]; then
+    echo "xcapi not found. Run: python3 -m venv .venv && .venv/bin/pip install xenocanto-api python-dotenv" >&2
+    exit 1
+fi
+
+exec "$XCAPI" "$@"

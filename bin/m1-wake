@@ -1,0 +1,225 @@
+#!/usr/bin/env python3
+"""m1-wake — réveille le Mac mini M1 (Wake-on-LAN) puis attend son retour SSH.
+
+PKA_JCH / Dobby 🦉 — 2026-10-27
+
+Le WoL ne fonctionne QUE si le Mac est en veille (pas éteint) et que
+« Réveil pour accès réseau » est actif (pmset womp 1).
+Si la machine est hors tension, aucun paquet ne la réveillera : il faut
+une action physique (bouton) ou une prise connectée.
+
+MAC lue depuis (dans l'ordre) : --mac, $M1_MAC, _local/m1-mac
+
+Usage :
+  bin/m1-wake                     # WoL + attente 120 s
+  bin/m1-wake --timeout 300       # attente plus longue
+  bin/m1-wake --scan-only         # ne réveille rien, cherche M1 sur le LAN
+  bin/m1-wake --mac a4:83:e7:xx:xx:xx
+"""
+
+from __future__ import annotations
+
+import argparse
+import concurrent.futures as cf
+import ipaddress
+import os
+import re
+import socket
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+MAC_FILE = ROOT / "_local" / "m1-mac"
+TS_IP = "100.73.212.110"
+M1_USER = "m1"
+PORT_SSH = 22
+
+
+def run(cmd: list[str], timeout: float = 6) -> str:
+    try:
+        return subprocess.run(cmd, capture_output=True, text=True, timeout=timeout).stdout
+    except Exception:
+        return ""
+
+
+def normalize_mac(raw: str) -> str | None:
+    hexes = re.sub(r"[^0-9a-fA-F]", "", raw or "")
+    if len(hexes) != 12:
+        return None
+    return ":".join(hexes[i : i + 2] for i in range(0, 12, 2)).lower()
+
+
+def resolve_mac(cli: str | None) -> str | None:
+    for candidate in (cli, os.environ.get("M1_MAC")):
+        mac = normalize_mac(candidate or "")
+        if mac:
+            return mac
+    if MAC_FILE.exists():
+        return normalize_mac(MAC_FILE.read_text().splitlines()[0] if MAC_FILE.read_text().strip() else "")
+    return None
+
+
+def magic_packet(mac: str) -> bytes:
+    raw = bytes.fromhex(mac.replace(":", ""))
+    return b"\xff" * 6 + raw * 16
+
+
+def active_interfaces() -> list[ipaddress.IPv4Interface]:
+    """Interfaces IPv4 actives (Wi-Fi, Ethernet, dock, pont…)."""
+    result: list[ipaddress.IPv4Interface] = []
+    for name in run(["ifconfig", "-l"]).split():
+        if name in ("lo0", "utun0", "utun1", "utun2", "utun3", "utun4"):
+            continue
+        out = run(["ifconfig", name])
+        if "status: active" not in out:
+            continue
+        ip = re.search(r"inet (\d+\.\d+\.\d+\.\d+)", out)
+        mask = re.search(r"netmask (0x[0-9a-fA-F]+)", out)
+        if not ip or not mask:
+            continue
+        try:
+            result.append(
+                ipaddress.IPv4Interface(f"{ip.group(1)}/{ipaddress.IPv4Address(int(mask.group(1), 16))}")
+            )
+        except Exception:
+            continue
+    return result
+
+
+def broadcast_targets() -> list[str]:
+    targets = {"255.255.255.255"}
+    for iface in active_interfaces():
+        if iface.network.prefixlen < 31:
+            targets.add(str(iface.network.broadcast_address))
+    return sorted(targets)
+
+
+def send_wol(mac: str) -> None:
+    packet = magic_packet(mac)
+    for target in broadcast_targets():
+        for port in (9, 7):
+            try:
+                with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
+                    s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+                    s.sendto(packet, (target, port))
+                print(f"  → magic packet {mac} vers {target}:{port}")
+            except OSError as exc:
+                print(f"  ✗ {target}:{port} — {exc}")
+
+
+def tcp_open(ip: str, port: int = PORT_SSH, timeout: float = 0.35) -> bool:
+    with socket.socket() as s:
+        s.settimeout(timeout)
+        return s.connect_ex((ip, port)) == 0
+
+
+def mdns_ip(name: str = "m1-llm.local") -> str | None:
+    """Résout le nom Bonjour de M1 (fonctionne en link-local, sans routeur)."""
+    out = run(["ping", "-c", "1", "-W", "2000", name], timeout=6)
+    m = re.search(r"\((\d+\.\d+\.\d+\.\d+)\)", out)
+    return m.group(1) if m else None
+
+
+def lan_scan() -> list[str]:
+    """Cherche les hôtes avec SSH ouvert sur tous les réseaux locaux actifs."""
+    ifaces = [i for i in active_interfaces() if not str(i.ip).startswith("169.254.")]
+    hosts: list[str] = []
+    for iface in ifaces:
+        if iface.network.prefixlen < 22:  # trop large, on saute
+            continue
+        hosts.extend(str(h) for h in iface.network.hosts())
+    hosts = list(dict.fromkeys(hosts))[:1024]
+    if not hosts:
+        return []
+    with cf.ThreadPoolExecutor(max_workers=128) as ex:
+        results = ex.map(tcp_open, hosts)
+    self_ips = {str(i.ip) for i in ifaces}
+    return [h for h, ok in zip(hosts, results) if ok and h not in self_ips]
+
+
+def ssh_ok(host: str = TS_IP, timeout: float = 4) -> bool:
+    return (
+        subprocess.run(
+            [
+                "ssh",
+                "-o", "BatchMode=yes",
+                "-o", f"ConnectTimeout={int(timeout)}",
+                "-o", "StrictHostKeyChecking=accept-new",
+                f"{M1_USER}@{host}",
+                "true",
+            ],
+            capture_output=True,
+        ).returncode
+        == 0
+    )
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description="Réveil / détection du Mac mini M1")
+    ap.add_argument("--mac", help="adresse MAC de M1 (sinon _local/m1-mac ou $M1_MAC)")
+    ap.add_argument("--timeout", type=int, default=120, help="attente max en secondes (défaut 120)")
+    ap.add_argument("--scan-only", action="store_true", help="ne pas envoyer de WoL")
+    args = ap.parse_args()
+
+    print(f"M1 — cible Tailscale {TS_IP}")
+
+    if tcp_open(TS_IP):
+        print("✓ M1 répond déjà sur Tailscale (port 22 ouvert). Rien à réveiller.")
+        return 0
+
+    bonjour = mdns_ip()
+    if bonjour:
+        print(f"✓ M1 visible en Bonjour : {bonjour}")
+        if tcp_open(bonjour) or ssh_ok(bonjour):
+            print(f"  → ssh {M1_USER}@{bonjour}   (ou ssh {M1_USER}@m1-llm.local)")
+            print("  → enchaîne : bin/m1-rearm")
+            return 0
+    else:
+        print("· pas de réponse Bonjour (m1-llm.local)")
+
+    if not args.scan_only:
+        mac = resolve_mac(args.mac)
+        if not mac:
+            print("✗ Aucune MAC connue.")
+            print("  Récupère-la sur la box (bail DHCP) puis :")
+            print("    echo 'a4:83:e7:xx:xx:xx' > _local/m1-mac")
+            print("  ou passe --mac. En attendant, scan du LAN :")
+        else:
+            print(f"→ WoL avec MAC {mac}")
+            send_wol(mac)
+
+    print("→ Recherche de M1 sur le LAN local…")
+    hosts = lan_scan()
+    if hosts:
+        print(f"  hôtes SSH détectés : {', '.join(hosts)}")
+        print("  (M5 elle-même exclue — vérifier lequel est le Mac mini)")
+    else:
+        print("  aucun hôte SSH sur le LAN")
+
+    if not args.scan_only:
+        deadline = time.time() + args.timeout
+        print(f"→ Attente du retour de M1 ({args.timeout}s max)…")
+        while time.time() < deadline:
+            ip = mdns_ip()
+            if tcp_open(TS_IP):
+                print(f"✓ M1 est de retour sur Tailscale — enchaîne : bin/m1-rearm")
+                return 0
+            if ip and tcp_open(ip):
+                print(f"✓ M1 est de retour sur {ip} — ssh {M1_USER}@{ip}")
+                print("  → enchaîne : bin/m1-rearm")
+                return 0
+            if ssh_ok():
+                print("✓ M1 répond en SSH — enchaîne : bin/m1-rearm")
+                return 0
+            time.sleep(5)
+        print("✗ M1 toujours absent.")
+        print("  WoL n'agit pas sur une machine hors tension.")
+        print("  → action physique (bouton power) ou prise connectée.")
+
+    return 0 if args.scan_only else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

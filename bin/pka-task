@@ -1,0 +1,56 @@
+#!/usr/bin/env zsh
+# pka-task — Gestion rapide des tâches JCH.
+#
+# Usage:
+#   pka-task                    # lister les tâches non terminées
+#   pka-task list               # toutes les tâches
+#   pka-task list WILDNEXUS     # filtrer par projet
+#   pka-task t2 done            # marquer t2 comme fait
+#   pka-task t3 in_progress     # passer t3 en cours
+#   pka-task t4 waiting         # mettre t4 en attente
+#   pka-task toggle t5          # basculer todo ↔ done
+#   pka-task regen              # régénérer les HTML
+#   pka-task serve              # lancer le kanban interactif (http://localhost:8765)
+
+set -euo pipefail
+
+PKA_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$PKA_DIR"
+
+SCRIPT="$PKA_DIR/scripts/pka_task.py"
+
+if [[ $# -eq 0 ]]; then
+    exec python3 "$SCRIPT" list --not-done
+fi
+
+case "$1" in
+    list)
+        shift
+        if [[ $# -gt 0 ]]; then
+            exec python3 "$SCRIPT" list --project "$1"
+        else
+            exec python3 "$SCRIPT" list
+        fi
+        ;;
+    toggle)
+        shift
+        exec python3 "$SCRIPT" toggle "$@"
+        ;;
+    regen)
+        exec python3 "$SCRIPT" regen
+        ;;
+    serve)
+        shift
+        exec python3 "$SCRIPT" serve "$@"
+        ;;
+    *)
+        # Assume: pka-task <id> <status>
+        if [[ $# -ge 2 ]]; then
+            exec python3 "$SCRIPT" status "$1" "$2"
+        else
+            echo "Usage: pka-task [list|toggle|regen|serve] ou pka-task <id> <status>"
+            echo "Statuts: todo, in_progress, waiting, done"
+            exit 1
+        fi
+        ;;
+esac

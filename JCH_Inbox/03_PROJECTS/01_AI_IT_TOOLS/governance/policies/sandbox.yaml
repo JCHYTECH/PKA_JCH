@@ -1,0 +1,20 @@
+# Politique documentaire de sandbox.
+# Statut: draft
+
+status: draft
+owner: JCH
+last_review: 2026-05-13
+
+principles:
+  - "Executer les actions sensibles dans un environnement isole quand c'est possible."
+  - "Ne pas injecter de secrets par defaut."
+  - "Limiter les droits au strict necessaire."
+
+preferred_modes:
+  normal_file_editing: workspace
+  risky_command: sandbox_or_manual_approval
+  production_action: manual_approval_required
+
+notes:
+  - "Cette politique reste a preciser apres les premiers usages."
+

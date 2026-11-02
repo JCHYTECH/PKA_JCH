@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 720" font-family="Helvetica, Arial, sans-serif">
+<style>
+.mod { fill: #f0d9a6; stroke: #7a5c2e; stroke-width: 2; }
+.chev { fill: #8a5a2b; stroke: #5b3a1a; stroke-width: 1.5; }
+.chevhole { fill: none; stroke: #8a5a2b; stroke-width: 1.5; stroke-dasharray: 4 3; }
+.latch { fill: #5a5a5a; stroke: #333; stroke-width: 1.5; }
+.catch { fill: #999; stroke: #333; stroke-width: 1.5; }
+.lbl { fill: #111; font-size: 15px; }
+.lbls { fill: #555; font-size: 13px; }
+.title { fill: #111; font-size: 20px; font-weight: bold; }
+.sub { fill: #444; font-size: 15px; font-weight: bold; }
+</style>
+<text x="40" y="45" class="title">Solidarisation des 3 modules — v5 (inchangé)</text>
+<text x="40" y="70" class="lbls">Chevilles Ø 8 (2 par interface × 2 interfaces) + loquets à bascule (1 par interface)</text>
+<rect x="60" y="140" width="380" height="360" class="mod"/>
+<text x="250" y="180" class="sub" text-anchor="middle">Module gauche</text>
+<rect x="500" y="140" width="380" height="360" class="mod"/>
+<text x="690" y="180" class="sub" text-anchor="middle">Module droit</text>
+<line x1="440" y1="140" x2="440" y2="500" stroke="#c00" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="470" y="120" class="lbls" fill="#c00" text-anchor="middle">interface</text>
+<circle cx="424" cy="200" r="16" class="chevhole"/>
+<circle cx="456" cy="200" r="16" class="chevhole"/>
+<circle cx="440" cy="200" r="14" class="chev"/>
+<circle cx="424" cy="420" r="16" class="chevhole"/>
+<circle cx="456" cy="420" r="16" class="chevhole"/>
+<circle cx="440" cy="420" r="14" class="chev"/>
+<text x="440" y="230" class="lbls" text-anchor="middle">chevilles Ø 8 (×4 au total)</text>
+<rect x="400" y="330" width="80" height="26" rx="4" class="latch"/>
+<rect x="600" y="356" width="40" height="18" rx="3" class="catch"/>
+<text x="440" y="390" class="lbls" text-anchor="middle">loquet à bascule (×2)</text>
+<text x="60" y="560" class="lbls">Note : la solidarisation latérale (chevilles + loquets) est inchangée entre v4 et v5.</text>
+<text x="60" y="585" class="lbls">En conduite : tiroirs rentrés + sangle à came ; modules solidarisés avant transport.</text>
+</svg>

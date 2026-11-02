@@ -1,0 +1,24 @@
+{
+  "dates": {
+    "M-01 Architecture gelée": {"start": "2026-04-15", "end": "2026-06-30", "state": "Done"},
+    "M-02 Prototype banc fonctionnel": {"start": "2026-07-01", "end": "2027-03-31", "state": "In Progress"},
+    "M-03 EVT terrain validé": {"start": "2027-04-01", "end": "2027-06-30", "state": "Todo"},
+    "M-04 Open source publié": {"start": "2027-07-01", "end": "2027-09-30", "state": "Todo"},
+    "EPIC: WP01 - Architecture & ADRs": {"start": "2026-04-01", "end": "2026-06-30", "state": "Done"},
+    "EPIC: WP02 - Hardware nœud": {"start": "2026-05-01", "end": "2027-03-31", "state": "In Progress"},
+    "EPIC: WP03 - Énergie & mesure": {"start": "2026-06-01", "end": "2027-03-31", "state": "In Progress"},
+    "EPIC: WP04 - Firmware": {"start": "2026-06-01", "end": "2027-03-31", "state": "In Progress"},
+    "EPIC: WP05 - Connectivité (LoRa)": {"start": "2026-07-01", "end": "2027-03-31", "state": "In Progress"},
+    "EPIC: WP06 - Boîtier & terrain": {"start": "2027-04-01", "end": "2027-06-30", "state": "Todo"}
+  },
+  "dependencies": [
+    {"from": "M-02 Prototype banc fonctionnel", "type": "blocked_by", "to": "M-01 Architecture gelée"},
+    {"from": "M-03 EVT terrain validé", "type": "blocked_by", "to": "M-02 Prototype banc fonctionnel"},
+    {"from": "M-04 Open source publié", "type": "blocked_by", "to": "M-03 EVT terrain validé"},
+    {"from": "EPIC: WP02 - Hardware nœud", "type": "blocked_by", "to": "M-01 Architecture gelée"},
+    {"from": "EPIC: WP03 - Énergie & mesure", "type": "blocked_by", "to": "M-01 Architecture gelée"},
+    {"from": "EPIC: WP04 - Firmware", "type": "blocked_by", "to": "M-01 Architecture gelée"},
+    {"from": "EPIC: WP05 - Connectivité (LoRa)", "type": "blocked_by", "to": "M-01 Architecture gelée"},
+    {"from": "EPIC: WP06 - Boîtier & terrain", "type": "blocked_by", "to": "M-02 Prototype banc fonctionnel"}
+  ]
+}

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PKA Loop Dashboard</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0a0a0c;
+    color: #c9d1d9;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Menlo', 'Monaco', monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    background: #161b22;
+    border-bottom: 2px solid #30363d;
+    padding: 24px 20px;
+    text-align: center;
+  }
+  header h1 {
+    font-size: 1.6rem;
+    color: #f0f6fc;
+    letter-spacing: 0.5px;
+  }
+  header .subtitle {
+    color: #8b949e;
+    font-size: 0.85rem;
+    margin-top: 6px;
+  }
+  main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 18px;
+    padding: 24px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: border-color 0.2s;
+  }
+  .card:hover {
+    border-color: #58a6ff;
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-header .emoji {
+    font-size: 1.8rem;
+    line-height: 1;
+  }
+  .card-header .name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #f0f6fc;
+  }
+  .card-header .specialist {
+    font-size: 0.85rem;
+    color: #8b949e;
+    margin-left: auto;
+  }
+  .card-desc {
+    font-size: 0.78rem;
+    color: #6e7681;
+    line-height: 1.4;
+    border-left: 2px solid #30363d;
+    padding-left: 10px;
+    margin-top: 2px;
+  }
+  .card-section {
+    font-size: 0.82rem;
+  }
+  .card-section .label {
+    color: #8b949e;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .card-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  .card-section ul li {
+    font-size: 0.78rem;
+    color: #c9d1d9;
+    padding: 2px 0 2px 14px;
+    position: relative;
+  }
+  .card-section ul li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: #58a6ff;
+    font-size: 0.7rem;
+  }
+  .card-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid #21262d;
+    font-size: 0.78rem;
+    flex-wrap: wrap;
+  }
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 4px;
+  }
+  .status-ok       { background: #0d3320; color: #3fb950; }
+  .status-dry_run  { background: #1c2128; color: #8b949e; }
+  .status-error    { background: #3d1418; color: #f85149; }
+  .status-inactive { background: #2b2a14; color: #d29922; }
+  .status-unknown  { background: #1c2128; color: #8b949e; }
+  .status-invoked  { background: #0d2137; color: #58a6ff; }
+  .exec-count {
+    color: #8b949e;
+  }
+  .last-run {
+    color: #6e7681;
+    font-size: 0.75rem;
+  }
+  footer {
+    text-align: center;
+    padding: 16px 20px;
+    border-top: 1px solid #21262d;
+    color: #484f58;
+    font-size: 0.75rem;
+  }
+  footer span {
+    color: #6e7681;
+  }
+
+  @media (max-width: 400px) {
+    main {
+      grid-template-columns: 1fr;
+      padding: 14px 10px;
+      gap: 12px;
+    }
+    .card { padding: 14px; }
+    header h1 { font-size: 1.3rem; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>⚡ PKA Loop Dashboard</h1>
+  <div class="subtitle">Généré le 2026-07-17 22:25:40</div>
+</header>
+<main>
+  <div class="card">
+    <div class="card-header">
+      <span class="emoji">🔨</span>
+      <span class="name">forge-loop</span>
+      <span class="specialist">Forge 🔨</span>
+    </div>
+    <div class="card-desc">Boucle autonome de code review avec quality gate — Forge code → review → score &lt; 4/5 → auto-fix → repush → re-review. Déclencher sur &quot;forge loop&quot;, &quot;code loop&quot;, &quot;auto-fix&quot;, &quot;boucle de review&quot;. Inspiré du pattern Grep Loop (Ross Mike) et AutoResearch (Andrej Karpathy).</div>
+    <div class="card-section">
+      <span class="label">Déclencheurs</span>
+      <ul>
+        <li>&quot;forge loop sur &lt;fichier/brief&gt;&quot;</li>
+<li>&quot;code loop&quot;, &quot;auto-fix&quot;</li>
+<li>&quot;boucle de review&quot;, &quot;lance la review loop&quot;</li>
+<li>&quot;passe ce code au code-review-pro et corrige jusqu'à 4/5&quot;</li>
+      </ul>
+    </div>
+    <div class="card-footer">
+      <span class="status status-invoked">● invoqué</span>
+      <span class="exec-count">1 exécution(s)</span>
+      <span class="last-run">2026-07-17T20:32:42</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <span class="emoji">🐜</span>
+      <span class="name">bench-loop</span>
+      <span class="specialist">Fourmi 🐜</span>
+    </div>
+    <div class="card-desc">Boucle autonome d'exécution de SOPs hardware — Fourmi suit SOP → mesure → dans spec ? → commit → SOP suivante. Déclencher sur &quot;bench loop&quot;, &quot;test loop&quot;, &quot;SOP loop&quot;, &quot;exécute les SOPs en boucle&quot;. Inspiré de wildnexus-benchmark-loop, forge-loop et AutoResearch.</div>
+    <div class="card-section">
+      <span class="label">Déclencheurs</span>
+      <ul>
+        <li>&quot;bench loop&quot;, &quot;test loop&quot;</li>
+<li>&quot;SOP loop&quot;, &quot;exécute les SOPs&quot;</li>
+<li>&quot;passe le banc de test&quot;</li>
+<li>&quot;vérifie le DUT contre les specs&quot;</li>
+      </ul>
+    </div>
+    <div class="card-footer">
+      <span class="status status-inactive">● inactif</span>
+      <span class="exec-count">0 exécution(s)</span>
+      <span class="last-run">Aucune exécution loggée</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <span class="emoji">🦇</span>
+      <span class="name">edge-ai-loop</span>
+      <span class="specialist">Musaraigne 🦇</span>
+    </div>
+    <div class="card-desc">Boucle autonome d'optimisation de modèles TinyML — Musaraigne modifie dataset/modèle → Edge Impulse benchmark → accuracy/latence → si meilleur = commit. Déclencher sur &quot;edge ai loop&quot;, &quot;optimise le modèle&quot;, &quot;TinyML loop&quot;, &quot;FOMO loop&quot;. Inspiré de wildnexus-benchmark-loop et AutoResearch.</div>
+    <div class="card-section">
+      <span class="label">Déclencheurs</span>
+      <ul>
+        <li>&quot;edge ai loop&quot;, &quot;TinyML loop&quot;</li>
+<li>&quot;optimise le modèle FOMO&quot;</li>
+<li>&quot;améliore la détection&quot;</li>
+<li>&quot;benchmark loop modèle&quot;</li>
+      </ul>
+    </div>
+    <div class="card-footer">
+      <span class="status status-inactive">● inactif</span>
+      <span class="exec-count">0 exécution(s)</span>
+      <span class="last-run">Aucune exécution loggée</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <span class="emoji">🔍</span>
+      <span class="name">seo-loop</span>
+      <span class="specialist">Trace 🔍</span>
+    </div>
+    <div class="card-desc">Boucle autonome d'optimisation SEO — Trace modifie page/contenu → seo-audit score → si &lt; seuil → optimise → re-audit. Déclencher sur &quot;seo loop&quot;, &quot;optimise le SEO&quot;, &quot;auto-optimize SEO&quot;, &quot;boucle SEO&quot;. Inspiré de forge-loop, Grep Loop et AutoResearch.</div>
+    <div class="card-section">
+      <span class="label">Déclencheurs</span>
+      <ul>
+        <li>&quot;seo loop sur &lt;url/page&gt;&quot;</li>
+<li>&quot;optimise le SEO de &lt;site&gt;&quot;</li>
+<li>&quot;auto-optimize SEO&quot;, &quot;boucle SEO&quot;</li>
+<li>&quot;passe ce contenu au seo-audit et améliore jusqu'au seuil&quot;</li>
+      </ul>
+    </div>
+    <div class="card-footer">
+      <span class="status status-inactive">● inactif</span>
+      <span class="exec-count">0 exécution(s)</span>
+      <span class="last-run">Aucune exécution loggée</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <span class="emoji">📊</span>
+      <span class="name">sigma-loop</span>
+      <span class="specialist">Sigma 📊</span>
+    </div>
+    <div class="card-desc">Boucle autonome de validation de données financières — Sigma analyse données → backtesting → écart prévision/réel → ajuste modèle. Déclencher sur &quot;sigma loop&quot;, &quot;valide les données&quot;, &quot;backtest loop&quot;, &quot;optimise le modèle financier&quot;. Inspiré de forge-loop et AutoResearch.</div>
+    <div class="card-section">
+      <span class="label">Déclencheurs</span>
+      <ul>
+        <li>&quot;sigma loop&quot;, &quot;valide les données&quot;</li>
+<li>&quot;backtest loop&quot;, &quot;optimise le modèle financier&quot;</li>
+<li>&quot;vérifie les projections&quot;</li>
+<li>&quot;audite les données financières&quot;</li>
+      </ul>
+    </div>
+    <div class="card-footer">
+      <span class="status status-inactive">● inactif</span>
+      <span class="exec-count">0 exécution(s)</span>
+      <span class="last-run">Aucune exécution loggée</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <span class="emoji">🦉</span>
+      <span class="name">arbor-research</span>
+      <span class="specialist">Dobby 🦉</span>
+    </div>
+    <div class="card-desc">Protocole de recherche autonome inspiré d'Arbor (RUC-NLPIR/Microsoft Research) — hypothèse → expérience → insight → décision. Transforme n'importe quelle loop PKA en boucle cumulative avec arbre d'hypothèses persistant. Déclencher sur &quot;arbor loop&quot;, &quot;recherche autonome&quot;, &quot;hypothesis tree&quot;, &quot;optimise avec Arbor&quot;, ou en préfixe de toute loop d'optimisation.</div>
+    <div class="card-section">
+      <span class="label">Déclencheurs</span>
+      <ul>
+        <li>&quot;arbor loop&quot;, &quot;arbor research&quot;</li>
+<li>&quot;recherche autonome&quot;, &quot;hypothesis tree&quot;</li>
+<li>&quot;optimise avec Arbor&quot;, &quot;passe en mode Arbor&quot;</li>
+<li>&quot;OBSERVE → IDEATE → DECIDE&quot;</li>
+<li>Quand une loop existante est lancée avec le flag --arbor ou le préfixe &quot;arbor:&quot;</li>
+      </ul>
+    </div>
+    <div class="card-footer">
+      <span class="status status-inactive">● inactif</span>
+      <span class="exec-count">0 exécution(s)</span>
+      <span class="last-run">Aucune exécution loggée</span>
+    </div>
+  </div>
+</main>
+<footer>
+  <span>Dobby 🦉 — PKA_JCH</span>
+</footer>
+</body>
+</html>

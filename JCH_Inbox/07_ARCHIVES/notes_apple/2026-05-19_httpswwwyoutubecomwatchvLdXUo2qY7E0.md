@@ -1,0 +1,25 @@
+# https://www.youtube.com/watch?v=LdXUo2qY7E0
+
+> Exporté depuis Apple Notes — créé le ?, modifié le 2026-05-19 05:32
+
+������https://www.youtube.com/watch?v=LdXUo2qY7E0
+
+Bonjour à tous et bienvenue dans cette nouvelle vidéo. Et aujourd'hui, on va parler de communication d'information entre deux microcontrôleurs comme Arduino, ESP32, Wemos, STM 32, peu importe la carte. Le vrai sujet, c'est comment transmettre des données d'un point A à un point B et surtout comment les transmettre loin. Parce que dans beaucoup de projets électroniques et informatiques embarqués où le vrai problème n'est pas la vitesse de transmission, ce n'est pas le débit.
+
+Dans la plupart des cas, on a absolument pas besoin d'envoyer énormément de données. Le vrai défi, c'est la portée. On ne cherche pas à faire tourner Netflix en 4K, à streamer une vidéo YouTube ou à transférer des gigah de fichiers. Ce que l'on veut généralement transmettre, ce sont simplement de petites trames de données mais de façon fiable et régulière. par exemple l'état d'un capteur de température, le niveau d'une cuve à eau, une alerte venant d'un système de surveillance, la position
+
+d'un objet ou l'état d'un relais ou d'un équipement. Bref, quelques octés, parfois quelques dizaines tout au plus, mais qui doivent parcourir plusieurs centaines de mètres, parfois plusieurs kilomètres. Et c'est précisément là que beaucoup de modules radio classiques montrent leurs limites. On trouve énormément de solutions pour communiquer à courte distance, mais dès qu'on veut sortir d'une maison, d'un atelier ou d'un bâtiment, les choses deviennent beaucoup
+
+plus compliquées. Et dans cette vidéo, je vais vous présenter un module radio qui utilise une technologie spécialement conçue pour ce type de problème, Laura. Le principe de cette technologie est justement de sacrifier le débit pour gagner énormément orté. Autrement dit, on envoie peu de données mais on peut les envoyer très loin. Et pour vérifier ça concrètement, on ne va pas rester dans la théorie. On va prendre ce module, le connecter à deux microcontrôleurs et aller le tester directement sur le terrain pour voir
+
+jusque où on peut réellement communiquer. Est-ce qu'on peut atteindre plusieurs centaines de mètres, 1 km ? plusieurs kilomètres, c'est exactement ce qu'on va essayer de découvrir dans cette vidéo. Ça fait des années que je teste des modules radio. On peut citer le NRF24L01. Honnêtement, porté ridicule sans amplificateur externe et module très fragile dans un environnement. Les modules RF43 ou les modules HC12, c'est complètement instable, bruté et pas fiable. Le Bluetooth, alors le
+
+Bluetooth, c'est bien mais c'est une portée beaucoup trop courte. Et le plus connu des systèmes radio, le wifi, bah c'est plutôt l'inverse de ce que l'on recherche. Le wifi est conçu pour la portée courte mais avec un débit très élevé. À chaque fois, il manque quelque chose. Ce que je voulais, c'était simple, transmettre loin, peu importe si c'est lent. mais que ça traverse un champ, une forêt ou plusieurs kilomètres. Avant même de parler du module que je vais utiliser, il faut comprendre ce
+
+qu'est réellement une onde radio. Une onde radio est une onde électromagnétique. Elle est composée d'un champ électrique et d'un champ magnétique qui oscit perpendiculairement l'un à l'autre. Elle se propage dans l'espace à la vitesse de la lumière environ 300 m000 kères par seconde chaque onde a une fréquence et la fréquence c'est le nombre d'oscillations par seconde. Elle s'exprime en herz. Par exemple 868 MHz signifie qu'il y a 868 millions d'osciliations par seconde.
+
+À cette fréquence correspond une longueur d'onde. La relation est simple. La longueur d'onde c'est égale à la vitesse de la lumière divisée par la fréquence. À 868 MHz, la longueur d'onde est d'environ 34 cm. À 2,4 GHz, elle tombe à environ 12 cm. Et à 8 GHz, comme pour les communications spatiales en brand de X, on est autour de 3,7 cm. Pourquoi c'est important ? Parce que la longueur d'onde influence la propagation. Les grandes longueurs d'onde contournent mieux les obstacles et pénètrent plus
+
+facilement certains matériaux. Les fréquences plus élevées ont tendance à être plus directives et plus sensibles aux obstacles. 100 MHz, ça traverse mieux. 2,4 GHz, c'est une athénignation forte et 868 MHz, ça reste un bon compromis. Mais attention, dire que plus la fréquence est élevée, moins ça porte loin est une simplification. En réalité, à puissance condition identique. Oui, une fréquence plus élevée subit plus d'atténération en espace libre. La perte en espace libre dépend notamment du terme 20 log de f.
+
+Le terme 20 log de f dans la perte en espace libre signifie que plus la fréquence augmente, plus le signal atténue à distance égales. Le 20 vient du fait que la perte varie avec le carré de la fréquence mais ce n'est qu'une partie de l'équation. Autre exemple concret, dans le spatial, les sondes comme Voyageur utilisent la bande X autour de 8 GHz. Pourtant, elle communique à des milliards de kilomètres. Comment est-ce possible si les hautes fréquences portent moins loin ? Et ben, la réponse est s

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.jch.pka.backup</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/python3</string>
+        <string>/Users/jchavauxm5/Desktop/PKA _JCH/scripts/backup_team_db.py</string>
+    </array>
+
+    <key>StartInterval</key>
+    <integer>259200</integer>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/jchavauxm5/Desktop/PKA _JCH/backups/backup.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/jchavauxm5/Desktop/PKA _JCH/backups/backup.log</string>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/jchavauxm5/Desktop/PKA _JCH</string>
+</dict>
+</plist>

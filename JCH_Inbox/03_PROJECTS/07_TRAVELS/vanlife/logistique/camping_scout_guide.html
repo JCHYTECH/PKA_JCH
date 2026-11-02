@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Camping Scout — Mode d'emploi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivoire: #F8F5F0; --noir: #0D0B09; --ocre: #C17F3A;
+    --sable: #E8E2DA; --sable-fonce: #D4CCC2; --ardoise: #4A5568; --gris: #6B7280;
+    --vert: #27ae60; --rouge: #e74c3c; --bleu: #3498db;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--ivoire); color: var(--noir);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 15px; line-height: 1.6;
+    padding: 16px 14px; max-width: 860px; margin: 0 auto;
+  }
+  h1 { font-size: 24px; color: var(--ocre); margin-bottom: 4px; }
+  h2 {
+    font-size: 11px; color: var(--ocre); margin: 28px 0 10px 0;
+    padding-bottom: 4px; border-bottom: 2px solid var(--sable);
+    text-transform: uppercase; letter-spacing: 0.07em; font-weight: 700;
+  }
+  h3 { font-size: 13px; color: var(--ardoise); margin: 14px 0 5px; font-weight: 600; }
+  .header { margin-bottom: 14px; padding-bottom: 10px; border-bottom: 3px solid var(--ocre); }
+  .header-meta { font-size: 11px; color: var(--gris); margin-top: 4px; }
+  .status {
+    display: inline-block; background: var(--ocre); color: #fff;
+    padding: 2px 10px; font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;
+  }
+
+  /* Steps */
+  .steps { counter-reset: step; }
+  .step {
+    display: flex; gap: 14px; margin: 10px 0; align-items: flex-start;
+  }
+  .step-num {
+    counter-increment: step;
+    background: var(--ocre); color: white;
+    width: 26px; height: 26px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+  }
+  .step-body { flex: 1; font-size: 13px; }
+  .step-body strong { display: block; font-size: 14px; margin-bottom: 3px; }
+
+  /* Code */
+  code {
+    font-family: 'IBM Plex Mono', monospace;
+    background: #1a1a2e; color: #C17F3A;
+    padding: 1px 7px; border-radius: 4px; font-size: 12px;
+  }
+  .code-block {
+    font-family: 'IBM Plex Mono', monospace;
+    background: #1a1a2e; color: #e8e2da;
+    padding: 12px 14px; border-radius: 6px;
+    font-size: 12px; line-height: 1.8; margin: 8px 0;
+    overflow-x: auto; white-space: pre;
+  }
+  .code-block .comment { color: #6B7280; }
+  .code-block .cmd { color: #C17F3A; }
+  .code-block .ok { color: #27ae60; }
+
+  /* Diagram */
+  .diagram {
+    background: #1a1a2e; color: #e8e2da;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px; line-height: 1.9;
+    padding: 14px 18px; border-radius: 6px;
+    margin: 10px 0; overflow-x: auto; white-space: pre;
+  }
+  .diagram .hl { color: #C17F3A; font-weight: 700; }
+  .diagram .gr { color: #27ae60; }
+  .diagram .bl { color: #3498db; }
+  .diagram .mu { color: #6B7280; }
+
+  /* Cards */
+  .card {
+    background: var(--sable); padding: 10px 14px;
+    margin: 8px 0; font-size: 13px; border-radius: 4px;
+  }
+  .card-green { border-left: 4px solid var(--vert); }
+  .card-orange { border-left: 4px solid var(--ocre); }
+  .card-red { border-left: 4px solid var(--rouge); }
+  .card-blue { border-left: 4px solid var(--bleu); }
+
+  /* Table */
+  .table-wrap { overflow-x: auto; margin: 8px 0 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 400px; }
+  th {
+    background: var(--sable-fonce); color: var(--noir);
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em;
+    padding: 8px 10px; text-align: left; white-space: nowrap; font-weight: 700;
+  }
+  td { padding: 7px 10px; border-bottom: 1px solid var(--sable); vertical-align: top; font-size: 12px; }
+  tr:last-child td { border-bottom: none; }
+
+  /* Pill */
+  .pill {
+    display: inline-block; padding: 2px 8px; border-radius: 10px;
+    font-size: 10px; font-weight: 700; color: white;
+  }
+  .pill-vert { background: var(--vert); }
+  .pill-orange { background: var(--ocre); }
+  .pill-rouge { background: var(--rouge); }
+  .pill-gris { background: var(--ardoise); }
+
+  /* Tip box */
+  .tip {
+    background: #e8f5e9; border-left: 4px solid var(--vert);
+    padding: 8px 12px; margin: 8px 0; font-size: 12px; border-radius: 0 4px 4px 0;
+  }
+  .warn {
+    background: #fff3e0; border-left: 4px solid var(--ocre);
+    padding: 8px 12px; margin: 8px 0; font-size: 12px; border-radius: 0 4px 4px 0;
+  }
+
+  /* Section nav */
+  .toc { background: var(--sable); padding: 10px 14px; border-radius: 4px; margin: 14px 0; }
+  .toc a { color: var(--ocre); text-decoration: none; font-size: 12px; display: block; padding: 2px 0; }
+  .toc a:hover { text-decoration: underline; }
+
+  /* Scenario toggle */
+  .scenario-tabs { display: flex; gap: 0; margin: 10px 0; }
+  .tab-label {
+    flex: 1; text-align: center; padding: 8px; font-size: 12px; font-weight: 600;
+    background: var(--sable-fonce); cursor: pointer; border: none;
+    first-child { border-radius: 6px 0 0 6px; }
+  }
+  .scenario { padding: 12px 0; }
+  .scenario-box {
+    background: var(--sable); padding: 12px 14px;
+    border-radius: 4px; font-size: 13px; margin: 4px 0;
+  }
+
+  a { color: var(--ocre); }
+  ul, ol { padding-left: 18px; font-size: 13px; }
+  li { margin: 3px 0; }
+  p { font-size: 13px; margin: 6px 0; }
+  hr { border: none; border-top: 1px solid var(--sable); margin: 18px 0; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="status">Mode d'emploi</div>
+  <h1>🏕️ Camping Scout</h1>
+  <div class="header-meta">Trouver un spot nuit en van — PKA_JCH · v2 · Mai 2026</div>
+</div>
+
+<div class="toc">
+  <strong style="font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--gris)">Sommaire</strong>
+  <a href="#ce-que-ca-fait">① Ce que ça fait</a>
+  <a href="#materiel">② Matériel nécessaire</a>
+  <a href="#connexions">③ Schéma des connexions</a>
+  <a href="#installation-mac">④ Installation sur le Mac (une seule fois)</a>
+  <a href="#installation-rpi">⑤ Installation sur RPi (une seule fois)</a>
+  <a href="#utilisation">⑥ Utilisation au quotidien</a>
+  <a href="#plan-b">⑦ Mode Plan B — spot barré</a>
+  <a href="#depannage">⑧ Dépannage</a>
+</div>
+
+<!-- ───────────────────────────────────────────────────────── -->
+<h2 id="ce-que-ca-fait">① Ce que ça fait</h2>
+
+<p>Camping Scout est une mini-application web qui tourne sur ton Mac ou un Raspberry Pi dans le van. Tu y accèdes depuis ton iPhone comme un site web, sans installer quoi que ce soit sur le téléphone.</p>
+
+<div class="table-wrap"><table>
+  <tr><th>Fonctionnalité</th><th>Comment</th></tr>
+  <tr><td>🔍 Chercher des spots autour d'un lieu</td><td>Tu tapes "Honfleur", tu obtiens tous les campings, aires CC et parkings motorhome dans le rayon choisi</td></tr>
+  <tr><td>📍 Chercher depuis ta position GPS</td><td>Bouton "Ici" → le téléphone donne sa position → résultats triés du plus proche au plus loin</td></tr>
+  <tr><td>🔄 Mise à jour automatique</td><td>Si tu roules, la liste se rafraîchit tous les 300m</td></tr>
+  <tr><td>💶 Prix affiché</td><td>Quand OSM le connaît (environ 1 spot sur 4)</td></tr>
+  <tr><td>★ Score JCH</td><td>Note 0–10 selon la proximité d'une réserve naturelle (pour photo aube)</td></tr>
+  <tr><td>🗺️ Google Maps</td><td>Bouton sur chaque spot → s'ouvre dans Google Maps avec l'itinéraire</td></tr>
+</table></div>
+
+<!-- ───────────────────────────────────────────────────────── -->
+<h2 id="materiel">② Matériel nécessaire</h2>
+
+<h3>Scénario A — Mac dans le van</h3>
+<div class="card card-orange">
+  <strong>Ce qu'il faut</strong>
+  <ul style="margin-top:6px">
+    <li>Ton MacBook (branché sur le van ou batterie externe)</li>
+    <li>iPhone avec 4G</li>
+    <li>C'est tout — rien à acheter</li>
+  </ul>
+  <p style="margin-top:8px"><span class="pill pill-orange">Inconvénient</span> Le Mac doit rester allumé. Consomme 30–60W.</p>
+</div>
+
+<h3>Scénario B — Raspberry Pi dans le van <span class="pill pill-vert">Recommandé</span></h3>
+<div class="card card-green">
+  <strong>Ce qu'il faut acheter</strong>
+  <div class="table-wrap" style="margin-top:8px"><table>
+    <tr><th>Composant</th><th>Modèle conseillé</th><th>Prix approx.</th><th>Pourquoi</th></tr>
+    <tr><td>Raspberry Pi</td><td>RPi 4 (2 Go) <em>ou</em> RPi Zero 2W si budget serré</td><td>35–60 €</td><td>Le Zero 2W consomme ~2W (RPi4 ~6W)</td></tr>
+    <tr><td>Carte microSD</td><td>32 Go Class 10 (SanDisk recommandé)</td><td>8–12 €</td><td>Système + logiciel</td></tr>
+    <tr><td>Alimentation van</td><td>Câble USB-C 12V → USB-A van <em>ou</em> prise 12V USB</td><td>8–15 €</td><td>Branchement allume-cigare</td></tr>
+    <tr><td>Boîtier</td><td>Boîtier plastique avec ventilation</td><td>6–10 €</td><td>Protection dans le van</td></tr>
+  </table></div>
+  <p style="margin-top:6px"><span class="pill pill-vert">Avantage</span> Toujours allumé, Mac fermé, faible consommation, démarre automatiquement.</p>
+</div>
+
+<div class="tip">💡 Tu as déjà un RPi (BirdNET-Pi <code>tkajch.local</code>). Un second RPi Zero 2W (~35€) dédié au van est l'option la plus propre.</div>
+
+<!-- ───────────────────────────────────────────────────────── -->
+<h2 id="connexions">③ Schéma des connexions</h2>
+
+<div class="diagram"><span class="mu">── Dans le van ────────────────────────────────────────────────</span>
+
+  <span class="hl">📱 iPhone</span>
+    │
+    ├─ <span class="gr">Partage de connexion (hotspot 4G)</span>
+    │       → le RPi/Mac s'y connecte via WiFi
+    │       → le RPi obtient internet pour faire ses recherches
+    │
+    └─ <span class="bl">Navigateur Safari</span>
+            → http://192.168.x.x:5050
+            → accède à l'app Camping Scout sur le RPi
+
+  <span class="hl">🔴 Raspberry Pi</span> (ou Mac)
+    │
+    ├─ WiFi → connecté au hotspot iPhone (pour Overpass/internet)
+    ├─ Flask → sert l'interface web sur le réseau local
+    └─ Cache SQLite → si perte de signal, les derniers résultats restent
+
+<span class="mu">─────────────────────────────────────────────────────────────────</span>
+
+  Résumé : <span class="gr">iPhone donne internet au RPi</span>
+           <span class="bl">iPhone accède à l'app du RPi</span>
+           <span class="hl">Le tout sur le même réseau hotspot</span></div>
+
+<div class="warn">⚠️ L'iPhone doit avoir la 4G pour que les recherches fonctionnent. En zone blanche, le cache affiche les derniers résultats chargés (10 min de rétention).</div>
+
+<!-- ───────────────────────────────────────────────────────── -->
+<h2 id="installation-mac">④ Installation sur le Mac — une seule fois</h2>
+
+<div class="steps">
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <strong>Ouvrir le Terminal</strong>
+      Spotlight → taper "Terminal" → Entrée
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <strong>Installer les dépendances Python</strong>
+      <div class="code-block"><span class="cmd">pip install flask requests geopy --break-system-packages</span></div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <strong>Tester que tout fonctionne</strong>
+      <div class="code-block"><span class="cmd">python3 ~/PKA_JCH/scripts/camping_server.py</span>
+
+<span class="ok">🏕️  Camping Scout — serveur démarré
+   Local   : http://localhost:5050
+   Réseau  : http://192.168.x.x:5050</span></div>
+      Ouvrir <code>http://localhost:5050</code> dans Safari → l'app apparaît.
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <strong>Arrêter le serveur</strong>
+      Dans le Terminal : <code>Ctrl + C</code>
+    </div>
+  </div>
+</div>
+
+<!-- ───────────────────────────────────────────────────────── -->
+<h2 id="installation-rpi">⑤ Installation sur Raspberry Pi — une seule fois</h2>
+
+<h3>Étape 1 — Préparer la carte SD</h3>
+<div class="steps">
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <strong>Télécharger Raspberry Pi Imager</strong>
+      <a href="https://www.raspberrypi.com/software/">raspberrypi.com/software</a> → installer sur le Mac
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <strong>Flasher la carte SD</strong>
+      Ouvrir RPi Imager → choisir <em>"Raspberry Pi OS Lite (64-bit)"</em> → sélectionner la carte SD
+      <div class="card card-blue" style="margin-top:8px">
+        Avant de flasher, cliquer sur ⚙️ <strong>Options avancées</strong> et configurer :
+        <ul style="margin-top:6px">
+          <li><strong>Hostname :</strong> <code>camping-van</code></li>
+          <li><strong>Activer SSH :</strong> oui (mot de passe)</li>
+          <li><strong>Utilisateur :</strong> <code>pi</code> / mot de passe : ton choix</li>
+          <li><strong>WiFi :</strong> nom de ton hotspot iPhone + mot de passe iPhone</li>
+          <li><strong>Timezone :</strong> Europe/Brussels</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <strong>Démarrer le RPi</strong>
+      Insérer la carte SD → brancher le RPi → attendre 60 secondes
+    </div>
+  </div>
+</div>
+
+<h3>Étape 2 — Se connecter et installer</h3>
+<p>Depuis le Mac, avec le RPi connecté au même WiFi :</p>
+<div class="code-block"><span class="comment"># Connexion SSH au RPi</span>
+<span class="cmd">ssh pi@camping-van.local</span>
+
+<span class="comment"># Mettre à jour le système</span>
+<span class="cmd">sudo apt update && sudo apt upgrade -y</span>
+
+<span class="comment"># Installer Python et pip</span>
+<span class="cmd">sudo apt install python3-pip -y</span>
+
+<span class="comment"># Installer les dépendances</span>
+<span class="cmd">pip3 install flask requests geopy</span>
+
+<span class="comment"># Créer le dossier PKA sur le RPi</span>
+<span class="cmd">mkdir -p ~/camping_scout</span></div>
+
+<h3>Étape 3 — Copier le script depuis le Mac</h3>
+<div class="code-block"><span class="comment"># Sur le Mac, dans le Terminal :</span>
+<span class="cmd">scp ~/PKA_JCH/scripts/camping_server.py pi@camping-van.local:~/camping_scout/</span></div>
+
+<h3>Étape 4 — Démarrage automatique (optionnel mais recommandé)</h3>
+<p>Pour que l'app démarre automatiquement quand le RPi s'allume :</p>
+<div class="code-block"><span class="comment"># Sur le RPi (via SSH) :</span>
+<span class="cmd">sudo nano /etc/systemd/system/camping-scout.service</span>
+
+<span class="comment"># Coller ce contenu :</span>
+[Unit]
+Description=Camping Scout
+After=network.target
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/camping_scout
+ExecStart=/usr/bin/python3 /home/pi/camping_scout/camping_server.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target</div>
+
+<div class="code-block"><span class="comment"># Activer et démarrer le service :</span>
+<span class="cmd">sudo systemctl enable camping-scout</span>
+<span class="cmd">sudo systemctl start camping-scout</span>
+
+<span class="comment"># Vérifier que ça tourne :</span>
+<span class="cmd">sudo systemctl status camping-scout</span>
+<span class="ok">● camping-scout.service - Camping Scout
+   Active: active (running)</span></div>
+
+<!-- ───────────────────────────────────────────────────────── -->
+<h2 id="utilisation">⑥ Utilisation au quotidien dans le van</h2>
+
+<div class="steps">
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <strong>Activer le hotspot iPhone</strong>
+      Réglages → Partage de connexion → Activer
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <strong>Démarrer le serveur</strong>
+      <div class="card card-green"><strong>Sur Mac :</strong> ouvrir le Terminal et lancer <code>python3 ~/PKA_JCH/scripts/camping_server.py</code></div>
+      <div class="card card-green"><strong>Sur RPi :</strong> rien à faire — démarre automatiquement à l'allumage</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <strong>Trouver l'IP du serveur</strong>
+      Le Terminal affiche au démarrage :
+      <div class="code-block"><span class="ok">Réseau  : http://192.168.x.x:5050  ← depuis le téléphone</span></div>
+      <div class="tip">💡 Sur RPi, l'IP change selon le hotspot. Pour avoir toujours la même : attribuer une IP fixe dans les réglages hotspot iPhone (avancé → DHCP).</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <strong>Ouvrir depuis l'iPhone</strong>
+      Safari → taper l'adresse <code>http://192.168.x.x:5050</code>
+      <br>→ Ajouter à l'écran d'accueil (partage → "Sur l'écran d'accueil") pour l'avoir comme une app
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">5</div>
+    <div class="step-body">
+      <strong>Rechercher des spots</strong>
+      Taper le nom d'un lieu → Chercher → la carte et la liste apparaissent, triés par distance
+    </div>
+  </div>
+</div>
+
+<!-- ───────────────────────────────────────────────────────── -->
+<h2 id="plan-b">⑦ Mode Plan B — spot barré ou inaccessible</h2>
+
+<div class="card card-red" style="margin-bottom:12px">
+  <strong>Situation :</strong> tu arrives sur le spot prévu → barrière, propriété privée, trop étroit, complet.
+</div>
+
+<div class="steps">
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <strong>Appuyer sur "📍 Ici"</strong>
+      L'iPhone détecte ta position GPS exacte
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <strong>Résultats mis à jour automatiquement</strong>
+      Tous les spots dans 10 km autour de toi, triés du plus proche au plus loin
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <strong>Ajuster le rayon si besoin</strong>
+      Slider en haut → 2 à 25 km — les résultats se mettent à jour
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <strong>Choisir un spot et y aller</strong>
+      Bouton <strong>Google Maps →</strong> sur le spot choisi → s'ouvre dans Google Maps avec l'itinéraire complet
+    </div>
+  </div>
+</div>
+
+<div class="tip">
+  💡 <strong>Si tu roules</strong> — la liste se rafraîchit automatiquement toutes les 300m de déplacement (avec minimum 30 secondes entre deux requêtes). Tu n'as rien à faire.
+</div>
+
+<!-- ───────────────────────────────────────────────────────── -->
+<h2 id="depannage">⑧ Dépannage</h2>
+
+<div class="table-wrap"><table>
+  <tr><th>Problème</th><th>Cause probable</th><th>Solution</th></tr>
+  <tr>
+    <td><em>"ERR_CONNECTION_REFUSED"</em> sur l'iPhone</td>
+    <td>Le serveur n'est pas démarré, ou mauvaise IP</td>
+    <td>Relancer <code>camping_server.py</code> sur le Mac/RPi. Vérifier l'IP affichée dans le Terminal.</td>
+  </tr>
+  <tr>
+    <td>0 résultats</td>
+    <td>Overpass API non accessible (pas de 4G)</td>
+    <td>Vérifier que le hotspot iPhone est actif. Attendre 30s et relancer une recherche.</td>
+  </tr>
+  <tr>
+    <td>GPS ne fonctionne pas (bouton "Ici")</td>
+    <td>Safari n'a pas l'autorisation de géolocalisation</td>
+    <td>Réglages iPhone → Safari → Localisation → Autoriser</td>
+  </tr>
+  <tr>
+    <td>iPhone ne trouve pas l'IP du RPi</td>
+    <td>Le RPi n'est pas connecté au hotspot</td>
+    <td>Vérifier que le nom du hotspot iPhone correspond à celui configuré sur le RPi (sensible à la casse).</td>
+  </tr>
+  <tr>
+    <td>Le RPi ne démarre pas le service</td>
+    <td>Erreur dans le script ou dépendances manquantes</td>
+    <td><code>sudo systemctl status camping-scout</code> → lire l'erreur. Relancer <code>pip3 install flask requests geopy</code></td>
+  </tr>
+  <tr>
+    <td>Port 5050 déjà utilisé sur Mac</td>
+    <td>AirPlay Receiver occupe le port 5000 (on a évité avec 5050)</td>
+    <td>Normalement résolu. Si persistant : Réglages Système → AirDrop & Handoff → désactiver Récepteur AirPlay.</td>
+  </tr>
+  <tr>
+    <td>Prix manquants sur les spots</td>
+    <td>OSM ne connaît les prix que pour ~25% des spots</td>
+    <td>Normal. Pour plus de données : installer Playwright (niveau 2) → park4night donne souvent les prix.</td>
+  </tr>
+</table></div>
+
+<hr>
+
+<div class="card card-blue">
+  <strong>Commandes de référence rapide</strong>
+  <div class="code-block" style="margin-top:8px"><span class="comment"># Démarrer le serveur (Mac)</span>
+<span class="cmd">python3 ~/PKA_JCH/scripts/camping_server.py</span>
+
+<span class="comment"># Recherche rapide en ligne de commande</span>
+<span class="cmd">python3 ~/PKA_JCH/scripts/camping_scout.py --location "Honfleur" --radius 15 --quick --save</span>
+
+<span class="comment"># Statut du service RPi</span>
+<span class="cmd">sudo systemctl status camping-scout</span>
+
+<span class="comment"># Redémarrer le service RPi</span>
+<span class="cmd">sudo systemctl restart camping-scout</span>
+
+<span class="comment"># Voir les logs RPi (erreurs)</span>
+<span class="cmd">journalctl -u camping-scout -f</span></div>
+</div>
+
+<div style="text-align:center;padding:16px 0;font-size:11px;color:var(--gris);margin-top:20px">
+  Camping Scout v2 · PKA_JCH · Dobby 🦉 · Mai 2026
+</div>
+
+</body>
+</html>

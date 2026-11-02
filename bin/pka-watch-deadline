@@ -1,0 +1,270 @@
+#!/usr/bin/env bash
+# pka-watch-deadline — Surveille les échéances des projets PKA
+# Forge 🔨 — 2026-07-17 — P1 Loop Engineering
+#
+# Lit roadmap-90-jours.md et etat-projets.md, extrait les dates d'échéance,
+# calcule les jours restants, et alerte si ≤ 14 jours.
+#
+# Usage:
+#   bin/pka-watch-deadline --check     Tableau dans le terminal
+#   bin/pka-watch-deadline --alert     Alerte markdown si critique
+#   bin/pka-watch-deadline --json      Sortie JSON
+#   bin/pka-watch-deadline --dry-run   Sans écrire l'alerte
+
+set -euo pipefail
+
+PKA_ROOT="/Users/jchavauxm5/PKA_JCH"
+ROADMAP="$PKA_ROOT/JCH_Inbox/04_PILOTAGE_STRATEGIQUE/roadmap-90-jours.md"
+ETAT_PROJETS="$PKA_ROOT/JCH_Inbox/04_PILOTAGE_STRATEGIQUE/etat-projets.md"
+TODAY=$(date +%Y-%m-%d)
+TODAY_TS=$(date -j -f "%Y-%m-%d" "$TODAY" +%s 2>/dev/null || date -d "$TODAY" +%s)
+
+# --- Help ---
+if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
+  cat <<'EOF'
+⏰ pka-watch-deadline — Surveillance des deadlines PKA
+
+USAGE
+  bin/pka-watch-deadline --check      Tableau terminal
+  bin/pka-watch-deadline --alert      Alerte markdown (si critique)
+  bin/pka-watch-deadline --json       Sortie JSON
+  bin/pka-watch-deadline --dry-run    Mode simulation (pas d'écriture)
+  bin/pka-watch-deadline --help       Cette aide
+
+SOURCES
+  roadmap-90-jours.md    Échéances trimestrielles
+  etat-projets.md        Statut et prochaine échéance par projet
+
+SEUILS
+  ≤ 7 jours   🔴 Critique
+  ≤ 14 jours  🟡 Attention
+  > 14 jours  🟢 Serein
+
+LAUNCHD (optionnel)
+  cp _local/launchd-plists/com.dobby.pka-watch-deadline.plist ~/Library/LaunchAgents/
+  launchctl load ~/Library/LaunchAgents/com.dobby.pka-watch-deadline.plist
+EOF
+  exit 0
+fi
+
+MODE="${1:-"--check"}"
+DRY_RUN=false
+[[ "${2:-}" == "--dry-run" ]] && DRY_RUN=true
+
+# --- Parser les dates françaises ---
+mois_fr_to_num() {
+  case "$(echo "$1" | tr '[:upper:]' '[:lower:]')" in
+    janvier|jan)   echo "01" ;;
+    fevrier|fev)   echo "02" ;;
+    mars|mar)      echo "03" ;;
+    avril|avr)     echo "04" ;;
+    mai)           echo "05" ;;
+    juin)          echo "06" ;;
+    juillet|juil)  echo "07" ;;
+    aout|août)     echo "08" ;;
+    septembre|sep) echo "09" ;;
+    octobre|oct)   echo "10" ;;
+    novembre|nov)  echo "11" ;;
+    decembre|dec)  echo "12" ;;
+    *)             echo "00" ;;
+  esac
+}
+
+# --- Extraire les dates des fichiers ---
+declare -a DEADLINES=()
+
+# Parser une ligne contenant une date
+parse_date_line() {
+  local line="$1" projet="$2"
+  # Pattern: "7 août 2026", "août 2026", "2026-08-07"
+  
+  # Format ISO: 2026-08-07
+  if echo "$line" | grep -qE '[0-9]{4}-[0-9]{2}-[0-9]{2}'; then
+    local d=$(echo "$line" | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}' | head -1)
+    echo "$d|$projet|$(echo "$line" | sed 's/^[[:space:]]*[-*]*[[:space:]]*//' | cut -c1-80)"
+    return
+  fi
+  
+  # Format FR: "7 août 2026" ou "août 2026"
+  if echo "$line" | grep -qiE '[0-9]{1,2}\s+(janvier|fevrier|mars|avril|mai|juin|juillet|aout|août|septembre|octobre|novembre|decembre)\s+20[0-9]{2}'; then
+    local d=$(echo "$line" | grep -oiE '[0-9]{1,2}\s+[a-zûéèê]+[[:space:]]+20[0-9]{2}' | head -1)
+    local day=$(echo "$d" | grep -oE '^[0-9]+')
+    local month_name=$(echo "$d" | grep -oE '[a-zûéèê]+' | head -1)
+    local year=$(echo "$d" | grep -oE '20[0-9]{2}')
+    local month_num=$(mois_fr_to_num "$month_name")
+    printf "%s-%s-%02d|%s|%s\n" "$year" "$month_num" "$day" "$projet" "$(echo "$line" | sed 's/^[[:space:]]*[-*]*[[:space:]]*//' | cut -c1-80)"
+    return
+  fi
+  
+  # Mois seul: "août 2026" → 1er du mois
+  if echo "$line" | grep -qiE '(janvier|fevrier|mars|avril|mai|juin|juillet|aout|août|septembre|octobre|novembre|decembre)\s+20[0-9]{2}'; then
+    local month_name=$(echo "$line" | grep -oiE '(janvier|fevrier|mars|avril|mai|juin|juillet|aout|août|septembre|octobre|novembre|decembre)\s+20[0-9]{2}' | grep -oiE '^[a-zûéèê]+')
+    local year=$(echo "$line" | grep -oE '20[0-9]{2}' | head -1)
+    local month_num=$(mois_fr_to_num "$month_name")
+    echo "${year}-${month_num}-01|$projet|$(echo "$line" | sed 's/^[[:space:]]*[-*]*[[:space:]]*//' | cut -c1-80)"
+    return
+  fi
+}
+
+# Filtre anti-bruit : ignorer lignes metadata et headers
+is_noise() {
+  echo "$1" | grep -qiE '(mise à jour|last.updated|dernière|horizon|rétrospective|^\s*##\s)' && return 0
+  return 1
+}
+
+# Scanner roadmap
+if [[ -f "$ROADMAP" ]]; then
+  while IFS= read -r line; do
+    is_noise "$line" && continue
+    result=$(parse_date_line "$line" "Roadmap" 2>/dev/null || true)
+    [[ -n "$result" ]] && DEADLINES+=("$result")
+  done < "$ROADMAP"
+fi
+
+# Scanner etat-projets (échéance critique uniquement)
+if [[ -f "$ETAT_PROJETS" ]]; then
+  while IFS= read -r line; do
+    is_noise "$line" && continue
+    if echo "$line" | grep -qiE '(échéance|deadline|arrivée|prochaine étape)'; then
+      result=$(parse_date_line "$line" "État Projets" 2>/dev/null || true)
+      [[ -n "$result" ]] && DEADLINES+=("$result")
+    fi
+  done < "$ETAT_PROJETS"
+fi
+
+# --- Calculer jours restants ---
+compute_days_left() {
+  local date_str="$1"
+  local ts
+  ts=$(date -j -f "%Y-%m-%d" "$date_str" +%s 2>/dev/null || date -d "$date_str" +%s 2>/dev/null || echo "0")
+  if [[ "$ts" == "0" ]]; then
+    echo "?"
+    return
+  fi
+  echo $(( (ts - TODAY_TS) / 86400 ))
+}
+
+# --- Construire les entrées ---
+declare -a ENTRIES=()
+declare -a CRITICAL=()
+declare -a WARNING=()
+declare -a OK_ENTRIES=()
+
+for entry in "${DEADLINES[@]}"; do
+  IFS='|' read -r date_str projet desc <<< "$entry"
+  [[ -z "$date_str" || "$date_str" == "0000-00-00" ]] && continue
+  
+  days=$(compute_days_left "$date_str")
+  
+  if [[ "$days" == "?" ]]; then
+    status="⚪"
+    status_text="inconnu"
+  elif [[ "$days" -lt 0 ]]; then
+    status="✅"
+    status_text="passé"
+  elif [[ "$days" -le 7 ]]; then
+    status="🔴"
+    status_text="critique"
+    CRITICAL+=("$(printf "| %-15s | %s | J-%s | %s |" "$projet" "$date_str" "$days" "$status_text")")
+  elif [[ "$days" -le 14 ]]; then
+    status="🟡"
+    status_text="attention"
+    WARNING+=("$(printf "| %-15s | %s | J-%s | %s |" "$projet" "$date_str" "$days" "$status_text")")
+  else
+    status="🟢"
+    status_text="serein"
+    OK_ENTRIES+=("$(printf "| %-15s | %s | J%s | %s |" "$projet" "$date_str" "$days" "$status_text")")
+  fi
+  
+  ENTRIES+=("$(printf "| %-15s | %s | %s | %s | %s" "$projet" "$date_str" "$days" "$status" "$(echo "$desc" | cut -c1-60)")")
+done
+
+# --- Mode JSON ---
+if [[ "$MODE" == "--json" ]]; then
+  echo '{'
+  echo '  "date_check": "'"$TODAY"'",'
+  echo '  "deadlines": ['
+  first=true
+  for entry in "${DEADLINES[@]}"; do
+    IFS='|' read -r date_str projet desc <<< "$entry"
+    days=$(compute_days_left "$date_str")
+    $first && first=false || echo ","
+    printf '    {"projet": "%s", "date": "%s", "jours": "%s", "description": "%s"}' \
+      "$projet" "$date_str" "$days" "$(echo "$desc" | sed 's/"/\\"/g')"
+  done
+  echo ''
+  echo '  ]'
+  echo '}'
+  exit 0
+fi
+
+# --- Mode Alerte ---
+if [[ "$MODE" == "--alert" ]]; then
+  if [[ ${#CRITICAL[@]} -eq 0 && ${#WARNING[@]} -eq 0 ]]; then
+    echo "✅ Aucune échéance critique ou proche. Rien à signaler."
+    exit 0
+  fi
+  
+  ALERT_FILE="$PKA_ROOT/TEAM_Inbox/$(date +%Y-%m-%d)_forge_watch-deadline-alert.md"
+  
+  if $DRY_RUN; then
+    echo "🔍 DRY RUN — Alerte qui serait écrite dans $ALERT_FILE :"
+    echo ""
+  fi
+  
+  {
+    echo "# ⏰ Alerte deadline — $(date +%d/%m/%Y)"
+    echo ""
+    
+    if [[ ${#CRITICAL[@]} -gt 0 ]]; then
+      echo "## 🔴 Critiques (≤7 jours)"
+      echo ""
+      echo "| Projet | Échéance | Jours | Statut |"
+      echo "|--------|----------|-------|--------|"
+      for line in "${CRITICAL[@]}"; do echo "$line"; done
+      echo ""
+    fi
+    
+    if [[ ${#WARNING[@]} -gt 0 ]]; then
+      echo "## 🟡 Attention (≤14 jours)"
+      echo ""
+      echo "| Projet | Échéance | Jours | Statut |"
+      echo "|--------|----------|-------|--------|"
+      for line in "${WARNING[@]}"; do echo "$line"; done
+      echo ""
+    fi
+    
+    echo "---"
+    echo "*Généré automatiquement par pka-watch-deadline — $(date)*"
+  } > "$ALERT_FILE"
+  
+  if $DRY_RUN; then
+    cat "$ALERT_FILE"
+  else
+    cat "$ALERT_FILE"
+    echo ""
+    echo "📄 Alerte écrite : $ALERT_FILE"
+  fi
+  
+  exit 0
+fi
+
+# --- Mode Check (défaut) ---
+echo "⏰ pka-watch-deadline — $(date +%d/%m/%Y)"
+echo ""
+
+if [[ ${#ENTRIES[@]} -eq 0 ]]; then
+  echo "Aucune échéance trouvée dans les fichiers de pilotage."
+  exit 0
+fi
+
+# Tableau résumé
+echo "| Projet | Échéance | Jours | Statut | Description |"
+echo "|--------|----------|-------|--------|-------------|"
+for entry in "${ENTRIES[@]}"; do
+  echo "$entry"
+done
+
+echo ""
+echo "---"
+echo "🔴 Critique : ${#CRITICAL[@]}  |  🟡 Attention : ${#WARNING[@]}  |  🟢 Serein : ${#OK_ENTRIES[@]}"

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lupo — Carrefour Spots Vanlife</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card: #181a21;
+    --border: #262830;
+    --text: #c9cdd4;
+    --muted: #6b7280;
+    --accent: #60a5fa;
+    --accent2: #34d399;
+    --warn: #fbbf24;
+    --star: #f59e0b;
+    --radius: 10px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  header {
+    text-align: center;
+    padding: 40px 0 30px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 30px;
+  }
+  header h1 {
+    font-size: 2em;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+  header .sub {
+    color: var(--muted);
+    font-size: 0.95em;
+    margin-top: 6px;
+  }
+  section {
+    margin-bottom: 32px;
+  }
+  section h2 {
+    font-size: 1.15em;
+    font-weight: 600;
+    color: #e5e7eb;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 12px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: var(--accent); }
+  .card .name {
+    font-weight: 600;
+    color: #fff;
+    font-size: 1em;
+    margin-bottom: 2px;
+  }
+  .card .desc {
+    font-size: 0.83em;
+    color: var(--muted);
+    margin-bottom: 8px;
+    line-height: 1.45;
+  }
+  .card .meta {
+    font-size: 0.78em;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .card .price {
+    background: #1e293b;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 0.78em;
+    white-space: nowrap;
+  }
+  .card .stars { color: var(--star); }
+  .card a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.88em;
+    white-space: nowrap;
+  }
+  .card a:hover { text-decoration: underline; }
+  .country-tag {
+    display: inline-block;
+    background: #1e293b;
+    color: var(--accent2);
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 0.72em;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .tools-section p, .tools-section code {
+    font-size: 0.88em;
+  }
+  .tools-section code {
+    background: #1e293b;
+    padding: 3px 7px;
+    border-radius: 4px;
+    font-size: 0.82em;
+    color: var(--accent2);
+  }
+  .checklist {
+    list-style: none;
+    counter-reset: step;
+  }
+  .checklist li {
+    counter-increment: step;
+    padding: 6px 0 6px 32px;
+    position: relative;
+    font-size: 0.88em;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .checklist li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 22px;
+    height: 22px;
+    background: #1e293b;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 0.75em;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 22px;
+  }
+  .note {
+    background: #1a1f2e;
+    border-left: 3px solid var(--warn);
+    padding: 12px 16px;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 0.85em;
+    color: var(--warn);
+    margin-top: 12px;
+  }
+  footer {
+    text-align: center;
+    padding: 24px 0;
+    color: var(--muted);
+    font-size: 0.78em;
+    border-top: 1px solid var(--border);
+    margin-top: 30px;
+  }
+  @media (max-width: 600px) {
+    body { padding: 12px; }
+    header h1 { font-size: 1.5em; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🚐 Lupo — Carrefour Spots Vanlife</h1>
+  <p class="sub">Apps · Sites · Outils PKA · Bases officielles — pour trouver où passer la nuit</p>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section>
+  <h2>📱 Apps de stationnement — spots sauvages &amp; aires</h2>
+  <div class="grid">
+
+    <div class="card">
+      <div class="name">⭐ Park4Night</div>
+      <div class="desc">La référence communautaire. Photos, avis, mode hors-ligne. Spots sauvages, aires, services.</div>
+      <div class="meta">
+        <span class="price">Gratuit / Premium 9,99&nbsp;€/an</span>
+        <span class="stars">★★★★★</span>
+      </div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://park4night.com" target="_blank">park4night.com ↗</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="name">iOverlander</div>
+      <div class="desc">Spots hors réseau, remote, international. Complément park4night, spots introuvables ailleurs.</div>
+      <div class="meta">
+        <span class="price">Gratuit</span>
+        <span class="stars">★★★★</span>
+      </div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://ioverlander.com" target="_blank">ioverlander.com ↗</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="name">Campercontact</div>
+      <div class="desc">60&nbsp;000+ spots : aires officielles, services (eau, vidange), campings. Surtout fort 🇳🇱🇧🇪🇩🇪.</div>
+      <div class="meta">
+        <span class="price">Gratuit / Pro+ avec NKC</span>
+        <span class="stars">★★★★</span>
+      </div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://www.campercontact.com" target="_blank">campercontact.com ↗</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="name">Campspace</div>
+      <div class="desc">Chez l'habitant : jardins, fermes, vignobles. Réservation instantanée, spots privés.</div>
+      <div class="meta">
+        <span class="price">~10&nbsp;€/nuit</span>
+        <span class="stars">★★★</span>
+      </div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://campspace.com/fr" target="_blank">campspace.com ↗</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section>
+  <h2>🗺️ Planification voyage</h2>
+  <div class="grid">
+
+    <div class="card">
+      <div class="name">Wanderlog</div>
+      <div class="desc">Planification d'itinéraire jour par jour, budget, collaboratif. Ajuster en roulant.</div>
+      <div class="meta">
+        <span class="price">Gratuit / Premium ~50&nbsp;$/an</span>
+      </div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://wanderlog.com/fr/" target="_blank">wanderlog.com ↗</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="name">Windy</div>
+      <div class="desc">Météo détaillée : vent, précipitations, couverture nuageuse. Choix de spot exposé/abrité.</div>
+      <div class="meta">
+        <span class="price">Gratuit</span>
+      </div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://www.windy.com" target="_blank">windy.com ↗</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="name">Cartes IGN (Géoportail)</div>
+      <div class="desc">Topographie, chemins forestiers, clairières. Repérage spots sauvages non répertoriés.</div>
+      <div class="meta">
+        <span class="price">Gratuit</span>
+      </div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://www.geoportail.gouv.fr" target="_blank">geoportail.gouv.fr ↗</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="name">AllTrails</div>
+      <div class="desc">Randonnées autour du spot. Explorer les environs à pied une fois garé.</div>
+      <div class="meta">
+        <span class="price">Gratuit / Premium 35&nbsp;€/an</span>
+      </div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://www.alltrails.com/fr" target="_blank">alltrails.com ↗</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="name">Google My Maps</div>
+      <div class="desc">Carte personnalisée avec tous tes spots sauvegardés. Accessible partout.</div>
+      <div class="meta">
+        <span class="price">Gratuit</span>
+      </div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://www.google.com/maps/d/" target="_blank">google.com/maps/d/ ↗</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="name">VanSpot Finder</div>
+      <div class="desc">Trouver eau potable, douches, vidanges autour du spot.</div>
+      <div class="meta">
+        <span class="price">Gratuit</span>
+      </div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://vanspotfinder.com" target="_blank">vanspotfinder.com ↗</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section>
+  <h2>🌍 Par pays</h2>
+  <div class="grid">
+
+    <div class="card">
+      <div class="name"><span class="country-tag">🇫🇷</span> France Passion</div>
+      <div class="desc">2&nbsp;000+ vignerons &amp; producteurs. Nuit gratuite, achat bienvenu.</div>
+      <div class="meta">
+        <span class="price">35&nbsp;€/an</span>
+        <span class="stars">★★★★</span>
+      </div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://www.france-passion.com" target="_blank">france-passion.com ↗</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="name"><span class="country-tag">🇫🇷</span> Allvan</div>
+      <div class="desc">500+ spots privés visités. Max 2 vans/spot, 2 nuits max.</div>
+      <div class="meta">
+        <span class="price">~8–12&nbsp;€/nuit</span>
+      </div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://allvan.fr/emplacement-van-chez-lhabitant/" target="_blank">allvan.fr ↗</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="name"><span class="country-tag">🇫🇷</span> ACSI CampingCard</div>
+      <div class="desc">Campings −50% hors saison (3&nbsp;000+). Sécurité pour camping classique.</div>
+      <div class="meta">
+        <span class="price">19,95&nbsp;€/an</span>
+      </div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://www.acsi.eu/fr/" target="_blank">acsi.eu ↗</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="name"><span class="country-tag">🇮🇹</span> CamperOnLine</div>
+      <div class="desc">App italienne de référence. Aires, agriturismi, campings.</div>
+      <div class="meta">
+        <span class="price">Gratuit</span>
+      </div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://www.camperonline.it" target="_blank">camperonline.it ↗</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="name"><span class="country-tag">🇮🇹</span> Natura Camping</div>
+      <div class="desc">Agricampeggi authentiques, réseau sélectionné.</div>
+      <div class="meta">
+        <span class="price">Variable</span>
+      </div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://www.naturacamping.com" target="_blank">naturacamping.com ↗</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="name"><span class="country-tag">🇩🇪</span> Bauernhofcamping</div>
+      <div class="desc">Campings à la ferme, mini-camping nature.</div>
+      <div class="meta">
+        <span class="price">20–30&nbsp;€/nuit</span>
+      </div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://bauernhofcamping.info" target="_blank">bauernhofcamping.info ↗</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section>
+  <h2>📡 Vérification terrain (ne pas zapper)</h2>
+  <div class="grid">
+
+    <div class="card">
+      <div class="name">Google Maps + Street View</div>
+      <div class="desc">Vérifier largeur route, pente, panneaux d'interdiction. Indispensable avant d'y aller.</div>
+      <div class="meta">
+        <span class="stars">★★★★★</span>
+        <span>Fiabilité max</span>
+      </div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://maps.google.com" target="_blank">maps.google.com ↗</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="name">Arrêtés municipaux</div>
+      <div class="desc">Restrictions locales camping-car. Chercher «&nbsp;[ville] stationnement camping-car arrêté&nbsp;».</div>
+      <div class="meta">
+        <span class="stars">★★★★★</span>
+        <span>Source officielle</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="name">Forums vanlife</div>
+      <div class="desc">Retours récents, astuces locales. Le bouche-à-oreille numérique.</div>
+      <div class="meta">
+        <span class="stars">★★★</span>
+        <span>Qualité variable</span>
+      </div>
+    </div>
+
+  </div>
+  <div class="note">
+    ⚠️ Un bon spot n'est pas celui qui est beau sur la photo — c'est celui où on ne sera pas réveillé à 6h par un garde.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section>
+  <h2>🌿 Bases officielles — réserves naturelles</h2>
+  <p style="font-size:0.85em;color:var(--muted);margin-bottom:14px">
+    Sources de données pour trouver toutes les réserves proches d'une destination (limites officielles, sans vérifier site par site).
+  </p>
+  <div class="grid">
+
+    <div class="card">
+      <div class="name">WDPA (Protected Planet / UICN)</div>
+      <div class="desc">Monde entier — filtre par pays. Shapefile, GeoPackage.</div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://www.protectedplanet.net" target="_blank">protectedplanet.net ↗</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="name">CDDA (AEE)</div>
+      <div class="desc">Europe — données officielles des États. Format SIG.</div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://www.eea.europa.eu/data-and-maps/data/nationally-designated-areas-national-cdda-17" target="_blank">eea.europa.eu ↗</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="name"><span class="country-tag">🇫🇷</span> INPN (MNHN)</div>
+      <div class="desc">France — toutes réserves. SIG, CSV.</div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://inpn.mnhn.fr" target="_blank">inpn.mnhn.fr ↗</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="name"><span class="country-tag">🇫🇷</span> Data.gouv.fr</div>
+      <div class="desc">Espaces naturels protégés. GeoJSON, SHP.</div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://www.data.gouv.fr" target="_blank">data.gouv.fr ↗</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="name"><span class="country-tag">🇧🇪</span> Géoportail Wallonie</div>
+      <div class="desc">Réserves domaniales/agréées. Format SIG.</div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://geoportail.wallonie.be" target="_blank">geoportail.wallonie.be ↗</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="name"><span class="country-tag">🇧🇪</span> Geopunt (Flandre)</div>
+      <div class="desc">Vlaamse Natuurreservaten. Format SIG.</div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://www.geopunt.be" target="_blank">geopunt.be ↗</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="name"><span class="country-tag">🇩🇪</span> BfN</div>
+      <div class="desc">Naturschutzgebiete. Format SIG.</div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://www.bfn.de" target="_blank">bfn.de ↗</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="name"><span class="country-tag">🇮🇹</span> Geoportale Nazionale</div>
+      <div class="desc">EUAP — Riserve Naturali. Format SIG.</div>
+      <div class="meta" style="margin-top:6px">
+        <a href="https://www.mase.gov.it/pagina/aree-protette" target="_blank">mase.gov.it ↗</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="tools-section">
+  <h2>🛠️ Outils PKA</h2>
+  <div class="card" style="max-width:100%">
+    <div class="name">camping_scout.py</div>
+    <div class="desc" style="margin-bottom:12px">
+      Script PKA qui interroge OSM/Overpass (gratuit) + park4night/Campspace/France Passion. Génère une carte interactive et un CSV par destination. Score JCH automatique (proximité réserve naturelle = +4 pts).
+    </div>
+    <div class="meta">
+      <span>Usage :</span>
+      <code>python3 scripts/camping_scout.py --location "Honfleur" --radius 15 --save</code>
+    </div>
+    <div class="meta" style="margin-top:6px">
+      <span>Docs :</span>
+      <a href="logistique/camping_scout_README.md">camping_scout_README.md</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section>
+  <h2>✅ Checklist avant de proposer un spot (méthode Cigogne)</h2>
+  <ol class="checklist">
+    <li>Vérifier le <strong>site officiel</strong> de la réserve → rubrique « Infos pratiques / Accès / Horaires »</li>
+    <li>Chercher la <strong>mention explicite</strong> d'interdiction de stationnement de nuit</li>
+    <li>Croiser <strong>Park4Night</strong> → chercher la réserve par nom, lire les commentaires récents</li>
+    <li>Vérifier <strong>Street View</strong> à l'entrée du parking → panneaux d'interdiction</li>
+    <li>Si doute → <strong>ne pas proposer</strong>, ou proposer avec mention « à vérifier sur place »</li>
+    <li>Si OK → le mentionner explicitement dans la fiche destination</li>
+  </ol>
+  <div class="note">
+    🚫 Signaux d'alerte : barrière avec horaires, panneau « Réserve naturelle — accès réglementé », arrêté préfectoral, avis Park4Night mentionnant des amendes.
+  </div>
+</section>
+
+<footer>
+  PKA_JCH · TRAVELS / Vanlife · Généré par Dobby 🦉 le 2026-07-14 · 
+  <a href="PREFERENCES.md" style="color:var(--muted)">Préférences JCH &amp; Anne</a>
+</footer>
+
+</body>
+</html>

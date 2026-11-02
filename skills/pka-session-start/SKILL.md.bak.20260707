@@ -1,0 +1,148 @@
+---
+name: pka-session-start
+description: Protocole de démarrage de session [[Dobby]] — 4 phases silencieuses alignées sur dobby-memory-bootstrap.md. S'exécute à chaque début de session.
+---
+
+# Skill — pka-session-start
+
+## Déclencheur
+- Automatique à chaque début de session (premier message, "hello", invocation Dobby)
+- Ne jamais narrer l'exécution sauf si quelque chose ne va pas
+
+---
+
+## Phase 1 — Identité & Personnalité (Config)
+
+Lire silencieusement (si non déjà chargé via CLAUDE.md) :
+- `ADAPTER-PROMPT.md` — bootstrap universel, architecture PKA
+- `SOUL.md` — persona, règles de comportement
+- `USER.md` — profil JC, setup, préférences
+- `TEAM/dobby.md` — responsabilités et frontières du rôle
+
+> Sur Claude Code ces fichiers sont injectés via CLAUDE.md — les lire en cas de doute ou sur tout autre modèle.
+
+Identifier le modèle actif (depuis le contexte système) et le mémoriser pour attribution des entrées mémoire de la session.
+
+---
+
+## Phase 2 — Contexte & Historique (Log)
+
+```bash
+# MEMORY.md — journal chronologique
+cat /Users/jchavauxm5/PKA_JCH/MEMORY.md
+
+# Patterns récurrents
+python3 /Users/jchavauxm5/PKA_JCH/scripts/retro_digest.py --top 15 --min 3
+
+# Dernière daily ou system check
+ls -t /Users/jchavauxm5/PKA_JCH/TEAM_Inbox/*.md 2>/dev/null | head -1
+# → lire ce fichier
+
+# Index outils disponibles — consulter avant de chercher un outil
+cat /Users/jchavauxm5/PKA_JCH/docs/system/outils-index.md
+
+# Registre décisions structurelles (historique)
+cat /Users/jchavauxm5/PKA_JCH/JCH_Inbox/04_PILOTAGE_STRATEGIQUE/decisions-pka.md
+cat /Users/jchavauxm5/PKA_JCH/JCH_Inbox/04_PILOTAGE_STRATEGIQUE/arbitrages-decisions.md
+```
+
+Tous les résultats sont chargés silencieusement. Les fichiers Log donnent le **contexte**, pas l'état actuel.
+
+---
+
+## Phase 3 — État Vivant (State — lire AVANT toute affirmation)
+
+```bash
+# Matériel reçu / commandé / attendu
+cat /Users/jchavauxm5/PKA_JCH/JCH_Inbox/04_PILOTAGE_STRATEGIQUE/hardware-state.md
+
+# Statut des projets actifs
+cat /Users/jchavauxm5/PKA_JCH/JCH_Inbox/04_PILOTAGE_STRATEGIQUE/etat-projets.md
+
+# Décisions en attente JC
+cat /Users/jchavauxm5/PKA_JCH/JCH_Inbox/04_PILOTAGE_STRATEGIQUE/decisions-actives.md
+
+# Priorités portefeuille
+cat /Users/jchavauxm5/PKA_JCH/JCH_Inbox/04_PILOTAGE_STRATEGIQUE/priorites-actives.md
+
+# Risques et frictions transverses
+cat /Users/jchavauxm5/PKA_JCH/JCH_Inbox/04_PILOTAGE_STRATEGIQUE/risques-et-frottements.md
+
+# Roadmap court terme
+cat /Users/jchavauxm5/PKA_JCH/JCH_Inbox/04_PILOTAGE_STRATEGIQUE/roadmap-90-jours.md
+
+# Registres procurement — glob dynamique (pérenne, couvre tous les projets)
+find /Users/jchavauxm5/PKA_JCH/JCH_Inbox/03_PROJECTS \
+  \( -name "*procurement*.md" -o -name "*BOM*.md" -o -name "*shortlist*.md" \) \
+  2>/dev/null
+# → lire chaque fichier trouvé
+```
+
+**Règle :** tout fichier State avec `last_updated` > 7 jours → flagguer (voir Phase 4).
+
+---
+
+## Phase 4 — Vérifications automatiques
+
+```bash
+# Vérification ancienneté State (règle des 7 jours)
+python3 /Users/jchavauxm5/PKA_JCH/scripts/check_state_freshness.py --warn-days 7
+
+# Follow_ups en retard dans team.db
+sqlite3 /Users/jchavauxm5/PKA_JCH/TEAM/team.db \
+  "SELECT id, note, due_date FROM follow_ups WHERE due_date < date('now') AND status != 'done';" 2>/dev/null
+
+# Scanner l'inbox
+ls /Users/jchavauxm5/PKA_JCH/JCH_Inbox/00_INBOX/
+```
+
+Vérifications à effectuer :
+- Fichiers State > 7j → lister et flagguer dans le rapport
+- Incohérence MEMORY.md ↔ State → alerter si contradictoire
+- Registres avec statut « BLOQUANT » ou « ATTENTE » > 14 jours → signaler
+- Follow_ups en retard → signaler dans le rapport
+
+---
+
+## Phase 5 — Rapport d'activation (une seule ligne)
+
+Format obligatoire :
+```
+Dobby 🦉 — <model-id> — <N> membres (<N-1> spécialistes + Dobby) — Inbox: <N> fichiers en attente
+```
+
+Si des alertes existent (State périmé, bloquants, follow_ups) → les ajouter après la ligne d'activation, concisément.
+
+Exemple avec alertes :
+```
+Dobby 🦉 — claude-sonnet-4-6 — 31 membres (30 spécialistes + Dobby) — Inbox: 0 fichiers en attente
+⚠ priorites-actives.md — dernier update 2026-05-13 (41j) — à rafraîchir
+⚠ 1 follow_up en retard : contact #12 depuis 2026-06-18
+```
+
+---
+
+## Règle mid-session
+
+Si une affirmation sur un State doit être faite > 30 min après la lecture initiale, ou si JC donne une info qui invalide un State :
+- Relire le fichier State concerné avant d'affirmer
+- Préfixer si incertitude : « D'après ma lecture en début de session... est-ce toujours d'actualité ? »
+
+---
+
+## Règles mémoire (pour toute écriture en session)
+
+Tout nouveau fichier mémoire créé pendant la session doit inclure dans son frontmatter :
+```yaml
+model: <current-model-id>
+```
+
+---
+
+## En cas de problème
+
+- Fichier introuvable → continuer, noter dans le rapport si critique
+- Script Python en erreur → continuer sans bloquer
+- `MEMORY.md` absent → signaler "MEMORY.md introuvable — contexte dégradé"
+- `team.db` inaccessible → continuer, ne pas bloquer
+- Ne jamais bloquer la session pour un problème non critique

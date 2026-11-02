@@ -1,0 +1,24 @@
+---
+date: 2026-10-19
+model: DeepSeek V4
+type: index
+status: generated
+---
+
+# Project Index
+
+> Generated inventory. Do not edit by hand; update the scanner and regenerate.
+
+| Project | Notes | Representative Paths |
+|---|---:|---|
+| 01_AI_IT_TOOLS | 106 | `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/2026-07-03_dobby_analyse-threads-memory-system.md`<br>`JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/2026-07-09_dobby_traitement-inbox-yolo.md`<br>`JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/2026-07-13_dobby_analyse-obsidian-ai-note-system.md`<br>`JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/2026-07-16_dobby_analyse-prompt-master-architecture.md`<br>`JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/2026-07-16_dobby_analyse-threads-memory-system.md` |
+| 02_ARTEON | 45 | `JCH_Inbox/03_PROJECTS/02_ARTEON/INDEX.md`<br>`JCH_Inbox/03_PROJECTS/02_ARTEON/brand/arteon-architecture-charte.md`<br>`JCH_Inbox/03_PROJECTS/02_ARTEON/brand/arteon-manifeste-court.md`<br>`JCH_Inbox/03_PROJECTS/02_ARTEON/brand/arteon-manifeste-long.md`<br>`JCH_Inbox/03_PROJECTS/02_ARTEON/brand/presentation-governance.md` |
+| 03_WILDNEXUS | 161 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/00_GOVERNANCE/Start.md`<br>`JCH_Inbox/03_PROJECTS/03_WILDNEXUS/00_GOVERNANCE/WILDNEXUS_AGENT_MAPPING.md`<br>`JCH_Inbox/03_PROJECTS/03_WILDNEXUS/00_GOVERNANCE/WILDNEXUS_CYCLE_01_M01_READINESS.md`<br>`JCH_Inbox/03_PROJECTS/03_WILDNEXUS/00_GOVERNANCE/WILDNEXUS_ENGINEERING_PHILOSOPHY.md`<br>`JCH_Inbox/03_PROJECTS/03_WILDNEXUS/00_GOVERNANCE/WILDNEXUS_GLOSSARY_WEEKLY_CHECK.md` |
+| 05_PHOTO_AI_JURY | 4 | `JCH_Inbox/03_PROJECTS/05_PHOTO_AI_JURY/INDEX.md`<br>`JCH_Inbox/03_PROJECTS/05_PHOTO_AI_JURY/executive-summary.md`<br>`JCH_Inbox/03_PROJECTS/05_PHOTO_AI_JURY/roadmap-mcp-integration.md`<br>`JCH_Inbox/03_PROJECTS/05_PHOTO_AI_JURY/thread-photo-ai-jury.md` |
+| 06_PHOTO_NATURE | 167 | `JCH_Inbox/03_PROJECTS/06_PHOTO_NATURE/FAUNE_AUTOUR/INDEX.md`<br>`JCH_Inbox/03_PROJECTS/06_PHOTO_NATURE/FAUNE_AUTOUR/README.md`<br>`JCH_Inbox/03_PROJECTS/06_PHOTO_NATURE/FAUNE_AUTOUR/docs/API_pour_observations_be.md`<br>`JCH_Inbox/03_PROJECTS/06_PHOTO_NATURE/FAUNE_AUTOUR/docs/Acces_API_et_donnees_de.md`<br>`JCH_Inbox/03_PROJECTS/06_PHOTO_NATURE/FAUNE_AUTOUR/docs/faune_autour_report_UI.md` |
+| 07_TRAVELS | 729 | `JCH_Inbox/03_PROJECTS/07_TRAVELS/99_INBOX_NOTES/2026-05-25_Note_de_frais_Paris.md`<br>`JCH_Inbox/03_PROJECTS/07_TRAVELS/99_INBOX_NOTES/2026-05-28_Un_Xtra_de_New_York_ET_était_réalisé_cest.md`<br>`JCH_Inbox/03_PROJECTS/07_TRAVELS/INDEX.md`<br>`JCH_Inbox/03_PROJECTS/07_TRAVELS/Lupo Itself/OLDIES/achat-van/Achat_véhicule_UE_risques_opportunités.md`<br>`JCH_Inbox/03_PROJECTS/07_TRAVELS/Lupo Itself/OLDIES/achat-van/Expositions_Vanlife_2026.md` |
+| 08_VETALYX | 139 | `JCH_Inbox/03_PROJECTS/08_VETALYX/00_LIVRABLES/2026-04-30_vetalyx-annexe3_renard.md`<br>`JCH_Inbox/03_PROJECTS/08_VETALYX/00_LIVRABLES/2026-04-30_vetalyx-pacte-actionnaires_renard.md`<br>`JCH_Inbox/03_PROJECTS/08_VETALYX/00_LIVRABLES/2026-04-30_vetalyx-pacte-modifications_renard.md`<br>`JCH_Inbox/03_PROJECTS/08_VETALYX/00_LIVRABLES/2026-05-01_email-re--contrat-type_renard.md`<br>`JCH_Inbox/03_PROJECTS/08_VETALYX/00_LIVRABLES/2026-05-26_sauvegarde_session_vetalyx_clinique_dbs_dobby.md` |
+| INSECTNET | 3 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/INSECTNET/2026-07-03_dobby_analyse-birder-dinov2-bio.md`<br>`JCH_Inbox/03_PROJECTS/03_WILDNEXUS/INSECTNET/executive-summary.md`<br>`JCH_Inbox/03_PROJECTS/03_WILDNEXUS/INSECTNET/thread-insectnet.md` |
+| 11_IOT | 64 | `JCH_Inbox/03_PROJECTS/11_IOT/2026-07-09_dobby_analyse-integration-canbus-wican-pro.md`<br>`JCH_Inbox/03_PROJECTS/11_IOT/2026-07-13_dobby_analyse-exosfer-obd-protect.md`<br>`JCH_Inbox/03_PROJECTS/11_IOT/2026-07-16_dobby_brief-scarabee_boitier-station-meteo-lupo.md`<br>`JCH_Inbox/03_PROJECTS/11_IOT/2026-07-17_forge_p0-loop-engineering.md`<br>`JCH_Inbox/03_PROJECTS/11_IOT/99_INBOX_NOTES/2026-05-14_promotion_instinct.md` |
+| NEXUS_ACOUSTIC | 60 | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/2026-05-23_insect-sound-sources-europe.md`<br>`JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/2026-07-03_dobby_analyse-interspecies-songs.md`<br>`JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/2026-07-03_dobby_analyse-lucio-arese.md`<br>`JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/2026-07-03_dobby_inbox-interspecies-songs.md`<br>`JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/99_INBOX_NOTES/2026-05-15_BIRDNET.md` |
+| archive | 31 | `JCH_Inbox/03_PROJECTS/archive/10_FUTURE_INVEST/99_INBOX_NOTES/2026-05-17_Appartement_contemporain_de_haut_standing_situé_sur_les_hauteurs_de.md`<br>`JCH_Inbox/03_PROJECTS/archive/10_FUTURE_INVEST/INDEX.md`<br>`JCH_Inbox/03_PROJECTS/archive/10_FUTURE_INVEST/architecture/2026-06-04_event-analyzer-architecture.md`<br>`JCH_Inbox/03_PROJECTS/archive/10_FUTURE_INVEST/architecture/2026-06-07_contraintes-style-trading.md`<br>`JCH_Inbox/03_PROJECTS/archive/10_FUTURE_INVEST/docs/2026-06-04_checklist-lancement.md` |

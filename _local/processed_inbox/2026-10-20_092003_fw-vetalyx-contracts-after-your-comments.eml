@@ -1,0 +1,807 @@
+Delivered-To: jc.havaux@gmail.com
+Received: by 2002:a05:7208:514:b0:10e:dd6c:a167 with SMTP id e20csp7762157rbf;
+        Tue, 20 Oct 2026 02:20:11 -0700 (PDT)
+X-Received: by 2002:a05:690e:480b:b0:679:2c7b:de40 with SMTP id 956f58d0204a3-679fbc9afe9mr476025d50.24.1792488010985;
+        Tue, 20 Oct 2026 02:20:10 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1792488010; cv=pass;
+        d=google.com; s=arc-20260327;
+        b=GuxUO5aEyKy09DmMCbmeZHIvB5L4Dj8vuZwPNULlVjvvw0hGAWHUU3wvOKRSmpw0we
+         03O7XrupG278jSldC/aMnb+o7nWP709E0/kc6+zNYcPrJatZL/YoRIoVSIibsquuaDX9
+         HZUmcKTTuz/iNBoF8iY+v0VVz+mlttAb0Pg+go330Td+BxQpgyy3dG2IrXvFonxkUhWn
+         7/d6FwclpbY/C4wjaRqicXf/JfnZyzEixDtnjwm83EL1TySIUAe6m3gt2uxmqDAiLjir
+         6+GTb4l6IysSDoCQVErvVtLlPE/W6mt+aU0msQuy9TBfJ9uRwIj3kQ3uBHTgajoB9Uda
+         IeCw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=mime-version:content-language:accept-language:in-reply-to
+         :references:message-id:date:thread-index:thread-topic:subject:to
+         :from;
+        bh=8VcnCnuur5zXlg/6RC9JiB2pIBf502EFgo4z1OdjgDM=;
+        fh=P06rjpCVg0h3f5gvan6MqR9F926r3/49iuyzRlyFOLY=;
+        b=id4qbFMpk3cpqmvGAvlfrddwMqIle3BzndLbUn0AgBsz2Fc8EwJj0XWNMx+JENAHOm
+         VNaKq2HbTf9N9j+9YFj99rAB4MIKXZzIOw+Nigjto9F/JG2IeqRzMZTIGoBGqtejzUcU
+         4IVcDQwRaHrrF9iS51qiZSsOPl2fe8AwyoInvkYeeZLJlJSU7W9+4tHOidrUXgX1jtB5
+         /O1vBMCMU02paflHTFDBgmKwAxNqH9LTq/rTzMJsUNU4nzX9s2hbXfUgbrvK4s+YF9pN
+         P1d+xS8uTLQilCsMA3gHesT0jnOiyzfPeSmQCf1fVLu140spczI1cq6wI95e3htgaQ0m
+         nCsA==;
+        dara=google.com
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=jchytech.be dkim=pass dkdomain=jchytech.be dmarc=pass fromdomain=jchytech.be);
+       spf=pass (google.com: domain of jc.havaux@jchytech.be designates 2a01:111:f403:c201::3 as permitted sender) smtp.mailfrom=jc.havaux@jchytech.be
+Return-Path: <jc.havaux@jchytech.be>
+Received: from AS8PR04CU009.outbound.protection.outlook.com (mail-westeuropeazlp170110003.outbound.protection.outlook.com. [2a01:111:f403:c201::3])
+        by mx.google.com with ESMTPS id 956f58d0204a3-679b1fdf129si5254548d50.147.2026.10.20.02.20.10
+        for <jc.havaux@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 20 Oct 2026 02:20:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jc.havaux@jchytech.be designates 2a01:111:f403:c201::3 as permitted sender) client-ip=2a01:111:f403:c201::3;
+Authentication-Results: mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=jchytech.be dkim=pass dkdomain=jchytech.be dmarc=pass fromdomain=jchytech.be);
+       spf=pass (google.com: domain of jc.havaux@jchytech.be designates 2a01:111:f403:c201::3 as permitted sender) smtp.mailfrom=jc.havaux@jchytech.be
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=DORAM4hzmrCVLPWrR8iwBSQEo7DzbNOTXfaixiXOrrTQg9xlLYUpze6NMv1Ue4NXsqVNYsGL2ypbGPXQZURXVAYW440jYwojYHjJLUKsTYsQM/7Eb78tzQXaniQiUhLYrnOgFkgwKMpmSqRIVe8rkAtK5FD+qVQMjoXjb2b+GyH2hqtdWgtGeczXQvTLh6XeGBWMMzVXAOi0AAQ+14e+JoKWJNMZgzukrKcaeEujR358GmxgCoaGHWZhhB+i70aBEaCgueXuWRPt7nJhAvny9Rd/1sJhjc0s1y+TLbpffi9LHI2ZpRs9+HOpoaSNuQk8ogKjQWIBCpDoyxlJaMlRag==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=8VcnCnuur5zXlg/6RC9JiB2pIBf502EFgo4z1OdjgDM=;
+ b=JtVlwI3Or0o1NbNIvCjxu/LP/lA37vv1rSNVaN2w10M2BkFbnghwGID/iU3mZqm98y93Fdxqlkwp19LmFFFVSs5/I3Sq7ZTEQ2tBjuk28+ERUqKcncQ5p2nj7AVbN1Bd6TlGlXbjC4ae23U7sNdoGMF51sBTOdLRYYZtC7s7ti2PTq5aH4xTwPtWgbH9Xw19KZaWdicsigIYvVZKjSBICDCJwlMeV4G2z57sS9BcD/BPurwv6ZSKH205BluYmwqIEdRRhf8GILkv0mM9quMYXd/tUzrRCB/3/NcfYpO+AoVxuBtS0DvjK4Nj2h4aeiV1+6ggyFMi9fp1jfHeAZpNdg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=jchytech.be; dmarc=pass action=none header.from=jchytech.be;
+ dkim=pass header.d=jchytech.be; arc=none
+Received: from PAXPR06MB7824.eurprd06.prod.outlook.com (2603:10a6:102:12f::12)
+ by GV1PR06MB9468.eurprd06.prod.outlook.com (2603:10a6:150:1a7::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.522.19; Tue, 20 Oct
+ 2026 09:20:04 +0000
+Received: from PAXPR06MB7824.eurprd06.prod.outlook.com
+ ([fe80::8e9d:4cf2:80ff:15d8]) by PAXPR06MB7824.eurprd06.prod.outlook.com
+ ([fe80::8e9d:4cf2:80ff:15d8%4]) with mapi id 15.21.0522.017; Tue, 20 Oct 2026
+ 09:20:04 +0000
+From: Jean-Claude Havaux - JCHyTech <jc.havaux@jchytech.be>
+To: "jc.havaux@gmail.com" <jc.havaux@gmail.com>
+Subject:
+ =?gb2312?B?Rlc6ILvYuLSjulZldGFseXggY29udHJhY3RzIEFmdGVyIHlvdXIgY29tbWVu?=
+ =?gb2312?Q?ts?=
+Thread-Topic:
+ =?gb2312?B?u9i4tKO6VmV0YWx5eCBjb250cmFjdHMgQWZ0ZXIgeW91ciBjb21tZW50cw==?=
+Thread-Index: AQHdVkeZMR6CCPPi9EazkUPg/SgsPLbzm3uAgAB4RbiAEigBEA==
+Date: Tue, 20 Oct 2026 09:20:03 +0000
+Message-ID:
+ <PAXPR06MB78247434AC8A33B719BCB275E5672@PAXPR06MB7824.eurprd06.prod.outlook.com>
+References:
+ <PAXPR06MB7824DBDE9E99F39A5B89D9DCE5942@PAXPR06MB7824.eurprd06.prod.outlook.com>
+ <822f19f0-12fd-4de3-8a2e-7f96e6dc4763.liyan@zdbiogene.com>
+ <PAXPR06MB7824D96517C5B5FE372FE18BE5932@PAXPR06MB7824.eurprd06.prod.outlook.com>
+In-Reply-To:
+ <PAXPR06MB7824D96517C5B5FE372FE18BE5932@PAXPR06MB7824.eurprd06.prod.outlook.com>
+Accept-Language: fr-FR, en-US
+Content-Language: en-GB
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-ms-reactions: allow
+authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=jchytech.be;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: PAXPR06MB7824:EE_|GV1PR06MB9468:EE_
+x-ms-office365-filtering-correlation-id: 470f67b0-85bb-408a-5cfc-08df2e8b5328
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam:
+ BCL:0;ARA:13230040|1800799024|376014|23010399003|366016|38070700021|56012099006|5023799004|260925021911599003|260925021311599003|4143699003|261009223027099003|10067099003|260925022911599003|18002099003|22082099003|6133799003|3023799007|8096899003;
+x-microsoft-antispam-message-info:
+ QehCYqIBP/yzj4tbM3pWkwL6gFG/ZOYD49RaRWq6qcTa3UvVOw5n54RR8vzn+Kf4iLnZiTzURn9q+oMuGuGwscsytdotzcUYbrTP9hi8gUIVNv4sfQSniXDSCGXNckTcBo9GUR5b9Pki2okEsX9YOYa1OxiOmDHQamm+KoVQWlJ3hh9lNoA3hJ6sSAGWWF875s19CLJ7fP0uH94FG1/DogHFeWiGrJjab+zGO/lNfpAbolEAXurm74uchAOGLjBOqeKEATmmbigWxxxdGcu4sEioFRzb5xwOfUT3WGucPcs0zPeZWzgH6U/FSxuK2aSVQIiXiTEI7C68LqgCf1hPhgD80K4tn35l0E83b0XqlW//Q3vJrHdFrLFIeXFOOdw4MSgvKBg4WbrwWpj9/B/CmFMxqj1qhlMSWEKTJxuNnlRBmQAoWa46eYH3V0VDz49tSfmxwvqsfE/iGnBHMH9QDTyhynuHp6hlbyrfOLPflo5GMFVohu0zWElRiRz7/AVZk/ngvIfvegrb3dtecoLdNjozw3N6mYGZkH+sjWqesCqbYJgWvPvTt2i0V0yc4teiXEkb7f9L1OyJ55FJHa6UNLyfn0bVzH6FBE+4O8dww/5wku8WHoibtC4qH8oLwrxd7vO5FsGBhkt0bdTFQOgmgj2EPcJo8l03QltxTl6lgTx02CQHVfPos/f4PHQ9mA8uy5feEKZJr3KNlgwcO7CWFAigVwWhn7CLrSCArcCJP5o=
+x-forefront-antispam-report:
+ CIP:255.255.255.255;CTRY:;LANG:zh-cn;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PAXPR06MB7824.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(23010399003)(366016)(38070700021)(56012099006)(5023799004)(260925021911599003)(260925021311599003)(4143699003)(261009223027099003)(10067099003)(260925022911599003)(18002099003)(22082099003)(6133799003)(3023799007)(8096899003);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0:
+ =?gb2312?B?bGFRQ2pTSjhhbkdjaXVHZjJKQ2syR1VzazZQYnJIUWFqU01JWHgySlNJT1kw?=
+ =?gb2312?B?MENnVE5nMmoydzVQUWlrT09iTVZSbnpOYVNtSEt1cTlPZS9YL0JZYWFGaG11?=
+ =?gb2312?B?QUZZTSt2TGNYNW54QlpxZ0FPNi9oN245a0JxbFYrdHV5enEzWm9leG4wSlp6?=
+ =?gb2312?B?QmsrQVhkMStOT3JEdXJLZXJPVHBqQXBBOWd6UjhBbnord1Q4WHVHNG9PUU1r?=
+ =?gb2312?B?M3AvRDFVZFdNMXVIQ0pJa2E1LzZ4UlBmZzlJVFQ0NkY2cm5zVmxycHc4blI3?=
+ =?gb2312?B?RHdZamNCTU5oYVZ0VTlWNnl3OFd5K05hZytuTm1Wa25zb2hHenFkNlVoNDRW?=
+ =?gb2312?B?ejdiaVZyRFJ1NjdvK1hQQkJRU0pmR1c2WHdwVXJyQXFSU1hrU2wzVGkrWndw?=
+ =?gb2312?B?Zzl2NTNBbnRGZUNlYUt6SVMxa2VGeDFCMVZkVjdZQWo5dTZYWTEveXNUVzF4?=
+ =?gb2312?B?VlMxeHVnSm5sb05vU25TOVhSNk9UWWZCbU9RaVpnS094M1Z3Y3hCK3B1N0dB?=
+ =?gb2312?B?SWM1dDMzeWUxQzN2RWxTekZCTitIa1dKR2hrNlM0WkpGVmNQZStzK2FGa09r?=
+ =?gb2312?B?Y3hWaGlhb1FoZEJTREdJTnFQWmxMK3pGKzdYV3E1WXd4T202VDlSaC85Nllx?=
+ =?gb2312?B?VDNuanlKcmdFV2dQQ1dnNjBWUU1jV3Q4cm5EZHl0K21BWStqdGc4TVBMY09E?=
+ =?gb2312?B?bitVQy9paDUrdjhTdFZVVTZtTVdpNzJDVCtGaTZqOUxlQ0hIajRCaEFLRG8w?=
+ =?gb2312?B?NjRsc3RSVHliVjFneTJsZU5Zakk2dzI3THNjUTRsUWFybEZKTnhURVYwaS9w?=
+ =?gb2312?B?NjRFTTc2WlpoVzMvY1ArUCtGT1c2TndxZHhqV0owZ29hK2JrYTNQQmV4VmR2?=
+ =?gb2312?B?UHRONUtCMnZXY1lBTWViaHJoSkVFb0JsdVRZQUhEYkZUVW9PaWpQRWY4Mm9E?=
+ =?gb2312?B?d3QvbExrYUkxd1pGblFMdkxlSVpwU3JNckZQMDY3QmZmYTFhbDdncjFVY295?=
+ =?gb2312?B?YVgzSGMvSEUrdTdVZVpEdVNtSlhvTTQvWDAyL3ZUd291YlE5TFdZWnRHTzQv?=
+ =?gb2312?B?UVNPU3NhU0ZBQkJxT281N0RwcUZrcXNaL0FNMVl3RUJKQlFpYm9lQi9hMW5Q?=
+ =?gb2312?B?K0s4Vy9kdnpXb2svMng1bG9Fd1NEcUJJT09HNHh6MlJTZWluaGtkYnRqQXlM?=
+ =?gb2312?B?WWUwdk1pUDlGRmZYNGhjMjZxNm15NWkrTU5ZWUFoa3FvZ0FTNnF1elBlclA0?=
+ =?gb2312?B?eGt3Vm8xNktTTSt6azA4bURlQTVPaUJzeld6N0RDN1VmeFJ3MzRrV1ZqdC9G?=
+ =?gb2312?B?ejN2ZEVuOXh3OGd5ZjJwREhveEdxU2tYRHVkMmVXcGlZaWxvSXZ0NmJrc0N2?=
+ =?gb2312?B?SFovc1FCZ2d5QWM5ZXZhTytsSW05b3g5MkNLZis1TlVxMlJndHIrRzdKdG1n?=
+ =?gb2312?B?T0ZiV1ZlYnAyVnYzTFJ2Smt6THhFRy9kelMxVkpMeUxuTkRXRmkrUTg0MEJO?=
+ =?gb2312?B?cWU2MDZ3ZXZkWTRsbzRvRUtZa2M1Q01PWXJqZUVsYTI2c284eVE3NnNuTTZN?=
+ =?gb2312?B?LzM1WGR2M2lZdlBtRWRYdStMTTlvcStYZUJRaWFMM2hIQ3JmeGpJMllUNDlh?=
+ =?gb2312?B?c2F2WmlySEgxRGYxUlRlK2VSei9XYlFraTBMQ0pCNllpNTlXS0JKakNqUmFP?=
+ =?gb2312?B?UzBYaDZKWlJYdjJtUG9qeERYT0RwL0pCRWl5cWtTeVQwL2t5cVk2eXBhMFFK?=
+ =?gb2312?B?OXdJQk96YWFOUHU0NlNvdDFmNEFNQTUwbzV4UkJST3lhMXlQNjdPS2N1UEJ4?=
+ =?gb2312?B?QkRWb3pCaEV1OWpjakwyRTFKWGVNbHlXN1o3N01XWFJPbUY2aXJQaDN0TTF6?=
+ =?gb2312?B?UHYySXVoUmRIbVlNM3o3dnZoRGl2YmhDM1hIRDBIcjRQbUZlL3RXMTZ6UXJz?=
+ =?gb2312?B?OTFMdDJueWpnZUloeFh3QnAyeDVCQXcwT2s5TzcvSEd4MGZtS1JSUVpjS2VE?=
+ =?gb2312?B?SXl5ZG5ETUpSeExzSlEvUk4xS2hLNVoreSswMXNtNWlXNklPL1J1MVJrY1dR?=
+ =?gb2312?B?NFBIakNKb3Z0S1cwRkZOazd4eXlNSktPeEpSN3poY1BwZHUxTzZDYzZmeC8y?=
+ =?gb2312?B?TkVIT0kwdmlKK0QvNXg0UG5WWkpycmNmd3F4NHJJcURBK2ZBQll4WlB0ZW5X?=
+ =?gb2312?B?MU1CUCtIQVZxUjNDaTRLYjZDNmZMc1E5WVlFWkhGUzgvMGRmT1YrZzAxTkp2?=
+ =?gb2312?B?SXo3b3R0VDRxRXFFN3NISitydjc3S0xOdVpXSmRpa3JncWRKUzdhWFZvaDdW?=
+ =?gb2312?B?S2lmQ0phTkN4WW9TY3RYOVhIZTJGNU85QTY0ZDBSMmhZYWZ3Mkt6d2ttNThr?=
+ =?gb2312?Q?LvpIJEhUL6nTJ23Y=3D?=
+Content-Type: multipart/alternative;
+	boundary="_000_PAXPR06MB78247434AC8A33B719BCB275E5672PAXPR06MB7824eurp_"
+MIME-Version: 1.0
+X-OriginatorOrg: jchytech.be
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PAXPR06MB7824.eurprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 470f67b0-85bb-408a-5cfc-08df2e8b5328
+X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Oct 2026 09:20:03.9946
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: ea4b8942-8e3a-4707-b6c4-86b7e9a3991a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: eTTsyPNL+WKqqH/tvtdlrGrxlEwBYPcLR39lzfTxtOtVM+4MrwiuwdyXJs13X0uAX3SpVfc8d3QOkP5auAX+ew==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV1PR06MB9468
+
+--_000_PAXPR06MB78247434AC8A33B719BCB275E5672PAXPR06MB7824eurp_
+Content-Type: text/plain; charset="gb2312"
+Content-Transfer-Encoding: base64
+
+DQoNCkpDIEhhdmF1eA0KUnVlIGRlcyBSZW5hcmRzICwgNA0KNDEzMCBUaWxmZg0KQmVsZ2l1bQ0K
+KzMyNDc1NzA0ODMwDQoNCg0KDQoNCkZyb206IEplYW4tQ2xhdWRlIEhhdmF1eCAtIEpDSHlUZWNo
+IDxqYy5oYXZhdXhAamNoeXRlY2guYmU+DQpEYXRlOiBUaHVyc2RheSwgOCBPY3RvYmVyIDIwMjYg
+YXQgMjI6MDYNClRvOiDA7tHeIDxsaXlhbkB6ZGJpb2dlbmUuY29tPjsgSmFjcXVlcyBOb3VyeSA8
+bm91cnlqYWNrQGdtYWlsLmNvbT47IEFiYWR2aWNlcyBBYmFkdmljZXMgPGFiYWR2aWNlc0B5YWhv
+by5mcj47IFFJUUkgPDE0Njg4MzE1MTlAcXEuY29tPg0KQ2M6IM7iyca2qyA8d3VzaGFuZG9uZ0B6
+ZGJpb2dlbmUuY29tPg0KU3ViamVjdDogUmU6ILvYuLSjulZldGFseXggY29udHJhY3RzIEFmdGVy
+IHlvdXIgY29tbWVudHMNCg0KSHkgLA0KDQpUaGFuayB5b3UgZm9yIHRob3NlIGluZm9zLg0KDQpI
+YXZlIGEgbmljZSBkYXkuDQoNCkpDDQoNCkpDIEhhdmF1eA0KUnVlIGRlcyBSZW5hcmRzICwgNA0K
+NDEzMCBUaWxmZg0KQmVsZ2l1bQ0KKzMyNDc1NzA0ODMwDQoNCg0KDQoNCkZyb206IMDu0d4gPGxp
+eWFuQHpkYmlvZ2VuZS5jb20+DQpEYXRlOiBUaHVyc2RheSwgOCBPY3RvYmVyIDIwMjYgYXQgMTQ6
+NTMNClRvOiBKZWFuLUNsYXVkZSBIYXZhdXggLSBKQ0h5VGVjaCA8amMuaGF2YXV4QGpjaHl0ZWNo
+LmJlPjsgSmFjcXVlcyBOb3VyeSA8bm91cnlqYWNrQGdtYWlsLmNvbT47IEFiYWR2aWNlcyBBYmFk
+dmljZXMgPGFiYWR2aWNlc0B5YWhvby5mcj47IFFJUUkgPDE0Njg4MzE1MTlAcXEuY29tPg0KQ2M6
+IM7iyca2qyA8d3VzaGFuZG9uZ0B6ZGJpb2dlbmUuY29tPg0KU3ViamVjdDogu9i4tKO6VmV0YWx5
+eCBjb250cmFjdHMgQWZ0ZXIgeW91ciBjb21tZW50cw0KDQoNCkRlYXIgYWxsLA0KDQpUaGFuayB5
+b3UgZm9yIHlvdXIgZGV0YWlsZWQgZXhwbGFuYXRpb24gYW5kIHVuZGVyc3RhbmRpbmcuIFdlIHdp
+bGwgcmVwbHkgdG8geW91IGFzIHNvb24gYXMgcG9zc2libGUuDQoNCkFkZGl0aW9uYWxseSwgdGhl
+IGF0dGFjaG1lbnQgY29udGFpbnMgdGhlIFImRCBwcm9ncmVzcyBvZiB0aGUgaW50ZXJuYXRpb25h
+bCB2ZXJzaW9uIG9mIHBldCB0ZXN0aW5nLiBUaGUgcGFydHMgaGlnaGxpZ2h0ZWQgaW4gcmVkIHJl
+cHJlc2VudCB0aGUgdXBkYXRlZCBjb250ZW50LiBQbGVhc2UgZmluZCBpdCBhdHRhY2hlZCENCg0K
+V2l0aCBiZXN0IHJlZ2FyZHMNCg0KTGkNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQ0Kt6K8/sjLo7pKZWFuLUNsYXVkZSBI
+YXZhdXggLSBKQ0h5VGVjaCA8amMuaGF2YXV4QGpjaHl0ZWNoLmJlPg0Kt6LLzcqxvOSjujIwMjbE
+6jEw1MI3yNUo1tzI/SkgMTg6NDANCsrVvP7Iy6O6IsDu0d4iPGxpeWFuQHpkYmlvZ2VuZS5jb20+
+OyAizuLJxrarIjx3dXNoYW5kb25nQHpkYmlvZ2VuZS5jb20+DQqzraGhy82julFJUUk8MTQ2ODgz
+MTUxOUBxcS5jb20+OyBKYWNxdWVzIE5vdXJ5PG5vdXJ5amFja0BnbWFpbC5jb20+OyBBYmFkdmlj
+ZXMgQWJhZHZpY2VzPGFiYWR2aWNlc0B5YWhvby5mcj4NCtb3oaHM4qO6VmV0YWx5eCBjb250cmFj
+dHMgQWZ0ZXIgeW91ciBjb21tZW50cw0KDQoNCkRlYXIgUGFydG5lcnMsDQoNClRoYW5rIHlvdSBm
+b3IgcmV0dXJuaW5nIHlvdXIgcmV2aXNpb25zLCB3aGljaCB3ZSBoYXZlIHJldmlld2VkIHdpdGgg
+dGhlIHV0bW9zdCBhdHRlbnRpb24uDQpUaGlzIG1haWwgaXMgZGl2aWRlZCBpbiB0d28gcGFydHMu
+DQpUaGUgZmlyc3Qgb25lIGlzIG91ciBjb21tZW50cyB3aXRoIGFydGljbGUgcmVmZXJlbmNlcyBj
+b3JyZXNwb25kaW5nIHRvIHlvdXIgcmV2aXNlZCB2ZXJzaW9uIC4NClRoZSBzZWNvbmQgcGFydCBy
+ZWdhcmRzIGF0dGFjaGVkIGZpbGVzIGFuZCB0aGVpciBjb21tZW50IHByaW9yIG9wZW5pbmcuDQpQ
+QVJUIEkNClByZWxpbWluYXJ5IE1hdHRlciChqiBXb3JraW5nIExhbmd1YWdlIHZzLiBPZmZpY2lh
+bCBMYW5ndWFnZQ0KVG8gZW5zdXJlIGxlZ2FsIGNlcnRhaW50eSBpbiBvdXIgZXhjaGFuZ2VzLCB3
+ZSBwcm9wb3NlIHRoYXQgRW5nbGlzaCBiZSB0aGUgb2ZmaWNpYWwgbGFuZ3VhZ2Ugb2YgdGhlIGZy
+YW1ld29yayBhZ3JlZW1lbnQgYW5kIGl0cyBhcHBlbmRpY2VzLiBGcmVuY2ggYW5kIENoaW5lc2Us
+IGFzc2lzdGVkIGJ5IG1hY2hpbmUgdHJhbnNsYXRpb24sIHdpbGwgcmVtYWluIHdvcmtpbmcgdG9v
+bHMgaW50ZW5kZWQgdG8gZmFjaWxpdGF0ZSBtdXR1YWwgdW5kZXJzdGFuZGluZy4NCkZvciB0aGUg
+QXJ0aWNsZXMgb2YgQXNzb2NpYXRpb24gKFN0YXR1dHMpLCBob3dldmVyLCB0aGUgbGFuZ3VhZ2Ug
+aXMgbWFuZGF0ZWQgYnkgQmVsZ2lhbiBsYXc6IHRoZXkgbXVzdCBiZSBkcmFmdGVkIGFuZCBmaWxl
+ZCB3aXRoIHRoZSBub3RhcnkgaW4gRnJlbmNoLiBJbiB0aGlzIGNhc2UsIEVuZ2xpc2ggYW5kIENo
+aW5lc2Ugd2lsbCBvbmx5IHNlcnZlIGFzIHdvcmtpbmcgdHJhbnNsYXRpb25zIHdpdGggbm8gb2Zm
+aWNpYWwgbGVnYWwgc3RhbmRpbmcuDQpEb2N1bWVudCAxIKGqIEFydGljbGVzIG9mIEFzc29jaWF0
+aW9uIChTdGF0dXRzKQ0KV2Ugbm90ZSB3aXRoIHNhdGlzZmFjdGlvbiB0aGF0IHRoZSBwcm92aWRl
+ZCB0ZXh0IHJhaXNlZCBmZXcgY29tbWVudHMuIFlvdXIgcmVxdWVzdGVkIGFtZW5kbWVudCByZWdh
+cmRpbmcgZXhwZW5zZSBhdXRob3JpemF0aW9uIGFwcGVhcnMgd2VsbC1mb3VuZGVkLCBhbmQgd2Ug
+YWNjZXB0IGl0Lg0KRG9jdW1lbnQgMiChqiBDb21tZXJjaWFsIEZyYW1ld29yayBBZ3JlZW1lbnQN
+CjEuIEdvdmVybmluZyBMYW5ndWFnZSAoQXJ0aWNsZSA0MCkNClRoZSBsYW5ndWFnZSBjbGF1c2Ug
+d2lsbCBiZSBhZGFwdGVkIGluIGFjY29yZGFuY2Ugd2l0aCB0aGUgcHJlbGltaW5hcnkgbWF0dGVy
+IHN0YXRlZCBhYm92ZTogRW5nbGlzaCB3aWxsIGJlY29tZSB0aGUgb2ZmaWNpYWwgbGFuZ3VhZ2Ug
+b2YgdGhlIGNvbnRyYWN0LCB3aGlsZSBGcmVuY2ggYW5kIENoaW5lc2Ugd2lsbCBzZXJ2ZSBhcyB3
+b3JraW5nIHZlcnNpb25zLiBUaGlzIHByb3Bvc2FsIGlzIGludGVuZGVkIHRvIHByZXZlbnQgYW55
+IHBvdGVudGlhbCBtaXN1bmRlcnN0YW5kaW5ncy4NCjIuIEdvdmVybmluZyBMYXcgYW5kIERpc3B1
+dGUgUmVzb2x1dGlvbiAoQXJ0aWNsZSAzOCkNClNpbmNlIHRoZSBjb21wYW55IGlzIGluY29ycG9y
+YXRlZCBpbiBCZWxnaXVtLCBCZWxnaWFuIGxhdyBpcyBhcHBsaWNhYmxlIGluIHRoZSBmaXJzdCBp
+bnN0YW5jZS4gQXBwbHlpbmcgU2luZ2Fwb3JlYW4gb3IgSG9uZyBLb25nIGxhdyBpbiBjb25qdW5j
+dGlvbiB3aXRoIGEgQnJ1c3NlbHMganVyaXNkaWN0aW9uIHdvdWxkIGJlIHVubWFuYWdlYWJsZSBm
+b3Igb3VyIG9wZXJhdGlvbnMgYW5kIGlzIG5vdCBhY2NlcHRhYmxlIHRvIHVzLiBIb3dldmVyLCBm
+b3IgZGlzcHV0ZXMgcmVxdWlyaW5nIG1lZGlhdGlvbiBvciBhcmJpdHJhdGlvbiwgd2UgZ2xhZGx5
+IGFjY2VwdCBhIHNlYXQgaW4gU3dpdHplcmxhbmQoR2VuZXZhLCBmb3IgZXhhbXBsZSkuDQozLiBT
+dXBwbHkgVGVybXMgoaogUHJpY2UgU3RhYmlsaXR5IChBcnRpY2xlIDE0KQ0KV2Ugd2lzaCB0byBn
+dWFyYW50ZWUgdGhlIGxvbmctdGVybSBwcmljZSBzdGFiaWxpdHkgb2Ygb3VyIHBhcnRuZXJzaGlw
+LiBXZSBwcm9wb3NlIHRvIGpvaW50bHkgZGVmaW5lIGEgbWVjaGFuaXNtIHRvIHJlZ3VsYXRlIHRo
+ZSBldm9sdXRpb24gb2YgdHJhbnNmZXIgcHJpY2VzIChyZXZpZXcgcGVyaW9kLCBpbmRleGF0aW9u
+LCBhcm0ncyBsZW5ndGggcHJpbmNpcGxlKS4gQ291bGQgeW91IHBsZWFzZSBpbmRpY2F0ZSBob3cg
+eW91IHBsYW4gdG8gYXZvaWQgcHJpY2UgZmx1Y3R1YXRpb25zIHdpdGhvdXQgcHJpb3IgZGlzY3Vz
+c2lvbiwgc28gdGhhdCB3ZSBjYW4gaWRlbnRpZnkgYSBjb21tb24gYXBwcm9hY2g/DQo0LiBEZWZp
+bml0aW9uIG9mIFJlbGF0ZWQgQ29tcGFuaWVzIChBcnRpY2xlcyAyNCBhbmQgMjYsIEFwcGVuZGl4
+IDEwKQ0KVGhlIGxpbmtzIGJldHdlZW4gWmhlZGEgRGl4dW4gYW5kIERpYWhvLCB3aGljaCBhcmUg
+Y2xlYXJseSByZXF1aXJlZCBhbmQgc2V0IG91dCBpbiB0aGUgY29udHJhY3QsIGFwcGVhciBhcHBy
+b3ByaWF0ZSB0byB1cy4gSG93ZXZlciwgd2Ugd2lzaCB0byBqb2ludGx5IGNsYXJpZnkgdGhlIGRl
+ZmluaXRpb24gb2YgcmVsYXRlZCBjb21wYW5pZXMgYW5kIHRoZWlyIHJlY2lwcm9jYWwgZ3VhcmFu
+dGVlcywgcGFydGljdWxhcmx5IHdpdGggcmVnYXJkIHRvIEFwcGVuZGl4IDEwIChlbmhhbmNlZCBj
+b25maWRlbnRpYWxpdHkgYW5kIG5vbi1jaXJjdW12ZW50aW9uKS4NCjUuIEF1dGhvcml0eSBvZiBW
+ZXRhbHl4IChpbiBjb25uZWN0aW9uIHdpdGggQXJ0aWNsZXMgMjQgYW5kIDI2KQ0KRnVydGhlcm1v
+cmUsIHdlIHdhbnQgdG8gZW5zdXJlIHRoYXQgVmV0YWx5eCByZXRhaW5zIGZ1bGwgYXV0aG9yaXR5
+IHRvIGVudGVyIGludG8gc3RyYXRlZ2ljIGNvbW1lcmNpYWwgcGFydG5lcnNoaXBzIHdpdGggbm9u
+LUNoaW5lc2UgY29tcGFuaWVzLCBhcyB0aGlzIGRlY2lzaW9uIGZhbGxzoaphcyBhIHJlbWluZGVy
+oap1bmRlciB0aGUgcHVydmlldyBvZiB0aGUgQm9hcmQgb2YgRGlyZWN0b3JzLg0KNi4gU2lnbmF0
+dXJlIG9mIFpoZWRhIERpeHVuDQpTaW5jZSBaaGVkYSBEaXh1biBpcyBleHBsaWNpdGx5IG5hbWVk
+IGluIHRoZSBjb250cmFjdCBhbmQgaXMgYSBzaGFyZWhvbGRlciBvZiBEaWFobywgd291bGQgaXQg
+bm90IGJlIHdpc2UgZm9yIERpeHVuIHRvIGFsc28gc2lnbiB0aGUgYWdyZWVtZW50PyBUaGlzIGFk
+anVzdG1lbnQgd291bGQgY2xhcmlmeSB0byB0aGlyZCBwYXJ0aWVzIHRoZSByZXNwZWN0aXZlIHJv
+bGVzIG9mIERpYWhvIGFuZCBEaXh1biwgYXMgd2VsbCBhcyB0aGVpciByZWNpcHJvY2FsIGd1YXJh
+bnRlZXMuDQpBc2lkZSBmcm9tIHRoZXNlIHBvaW50cywgdGhlIG90aGVyIGNvbW1lbnRzIGFuZCBh
+bWVuZG1lbnRzIHJlY2VpdmVkIGRvIG5vdCByYWlzZSBhbnkgaXNzdWVzIGFuZCBhcmUgbm90IGRl
+YWwtYnJlYWtlcnM7IHdlIHByb3Bvc2UgdG8gcmVmaW5lIHRoZW0gZHVyaW5nIHRoZSBuZXh0IHBo
+YXNlIG9mIGRpc2N1c3Npb25zLg0KUEFSVCBJSQ0KSGVyZSBpcyB0aGUgYWRhcHRhdGlvbnMgcmVs
+YXRlZCB0byB5b3VyIGFuZCBvdXIgcmVtYXJrcy4gd2Ugc2VuZCB5b3UgMyBmaWxlcyA6DQoNCkZJ
+TEUgMSA6IFZldGFseXggY29tcGFueSBjcmVhdGlvbiB0ZXh0IChFbmdsaXNoKS4NCg0KV2UgcHV0
+IHRoZSBlbmdsaXNoIHZlcnNpb24uIEZvciB5b3VyIGluZm9ybWF0aW9uLCB3ZSBpbnRlbnRpb25h
+bGx5IGxpbWl0ZWQgdGhlIHNjb3BlIG9mIHRoZSBjb21wYW55IGluIHRoaXMgZmlyc3Qgc3RlcC4g
+SXQgaXMgbWFpbmx5IGRpc3RyaWJ1dGlvbiAsIHN0b2NrIGFuZCBzaGlwcGluZyBvZiBpbXBvcnRl
+ZCB2ZXRlcmluYXJ5IHRlc3QgZm9yIHNhbGVzIGluIEV1cm9wZS4gSWYgd2UgaW5kaWNhdGUsIGJp
+b3RlY2hub2xvZ3kgYWN0aXZpdHksIFImRCBpbiBkaWFnbm9zdGljIKGtIHdlIHJpc2sgdG8gaGF2
+ZSBhIGxhZyB0aW1lIGJldHdlZW4gZGVwb3NpdGlvbiBvZiBkb2N1bWVudHMgdG8gdGhlIGF1dGhv
+cml0eSAoSUNTKSBhbmQgdGhlaXIgYXV0aG9yaXNhdGlvbiB0byBwcm9jZWVkIGluIGEgc2Vuc2li
+bGUgc2VjdG9yLiBGb3Igc3BlY2lmaWMgYWdyZWVtZW50cyBiZXR3ZWVuIHBhcnRpZXMgYSBzaGFy
+ZWhvbGRlciBwYWN0IGlzIGJldHRlciAuDQoNCkZJTEUgMiA6IEkgYXR0YWNoZWQgYSBmaWxlIHJl
+cG9ydGluZyBvbiBJQ1MgYWN0aXZpdGllcyBhbmQgbGltaXRhdGlvbnMuDQoNCkZvciBWZXRhbHl4
+LCB3ZSB0aGluayB0aGF0IGl0IGlzIHdvcnRoIHRvIHVzZSB0aGUgYmFuayBCTlAgcGFyaWJhcyBh
+cyB0aGV5IGhhdmUgc3Vic2lkaWFyeWllcyBpbiBDaGluYSwgYmVsZ2l1bSwgRnJhbmNlIGFuZCBv
+dGhlciBldXJvcGVhbiBjb3VudHJ5LiBUaGlzIGNvdWxkIGVhc2UgYWRtaW5pc3RyYXRpb24vZmlu
+YW5jaWFsIHByb2NlZHVyZXMuDQoNCkZJTEUgMyA6IENvbnRyYWN0IEJldHdlZW4gVmV0YWx5eC1E
+aXh1bi1EaWFobyAoRU5HTElTSCkNCg0KRHVlIHRvIHRoZSBuZWVkIHRvIGludGVncmF0ZSBEaXh1
+biBwYXJ0bmVyIGluIHRoZSBjb250cmFjdCwgd2UgY29uc2lkZXIgdGhhdCBpdCBpcyBiZXR0ZXIg
+dG8gYWRhcHQgdGhlIGNvbnRyYWN0IHRvIGluY2x1ZGUgRGl4dW4gcm9sZXMgYW5kIGNvbW1pdG1l
+bnRzLiBJdCBpcyB2ZXJ5IGltcG9ydGFudCB0byBiZSBhYmxlIHRvIGFuc3dlciBhbnkgcXVlc3Rp
+b25zIGFib3V0IFZldGFseXggaW4gZnVsbCB0cmFuc3BhcmVuY2Ugd2l0aCBiYW5rcywgcmVnaXN0
+cmF0aW9uIGF1dGhvcml0aWVzIGV0Yy4NCg0KSSBob3BlIHRoYXQgd2UgYXJlIGNvbnZlcmdpbmcg
+dG8gZmluYWxpemUgdGhvc2UgZG9jdW1lbnRzLg0KDQpIYXZlIGEgbmljZSBkYXkNCkJlc3QgUmVn
+YXJkcw0KDQpBbGFpbiBCb3NzZWxvaXIsIEplYW4tQ2xhdWRlIEhhdmF1eCwgSmFjcXVlcyBOb3Vy
+eSwgUGVpd2VuIFFpDQoNCg0KDQoNCkpDIEhhdmF1eA0KUnVlIGRlcyBSZW5hcmRzICwgNA0KNDEz
+MCBUaWxmZg0KQmVsZ2l1bQ0KKzMyNDc1NzA0ODMwDQoNCg0KDQo=
+
+--_000_PAXPR06MB78247434AC8A33B719BCB275E5672PAXPR06MB7824eurp_
+Content-Type: text/html; charset="gb2312"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dgb2312">
+</head>
+<body>
+<div style=3D"direction: ltr; font-family: Aptos, Arial, Helvetica, sans-se=
+rif; font-size: 12pt; color: rgb(0, 0, 0);">
+<br>
+</div>
+<div id=3D"ms-outlook-mobile-body-separator-line" dir=3D"ltr"><br>
+</div>
+<div id=3D"ms-outlook-mobile-signature">
+<div class=3D"MsoNormal" style=3D"margin: 0in 0in 0.0001pt; font-family: Ap=
+tos, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(81, 167, 249=
+);">
+JC Havaux</div>
+<div style=3D"direction: ltr; font-family: Aptos, Arial, Helvetica, sans-se=
+rif; font-size: 12pt; color: rgb(81, 167, 249);">
+Rue des Renards , 4</div>
+<div style=3D"direction: ltr; font-family: Aptos, Arial, Helvetica, sans-se=
+rif; font-size: 12pt; color: rgb(81, 167, 249);">
+4130 Tilff</div>
+<div style=3D"direction: ltr; font-family: Aptos, Arial, Helvetica, sans-se=
+rif; font-size: 12pt; color: rgb(81, 167, 249);">
+Belgium</div>
+<div style=3D"font-family: Aptos, Arial, Helvetica, sans-serif; font-size: =
+12pt; color: rgb(81, 167, 249);">
++32475704830</div>
+<div style=3D"direction: ltr; font-family: Aptos, Arial, Helvetica, sans-se=
+rif; font-size: 12pt; color: rgb(0, 0, 0);">
+<br>
+</div>
+<div style=3D"direction: ltr; line-height: normal; margin: 0px; font-family=
+: Aptos, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0)=
+;">
+<br>
+</div>
+<div style=3D"direction: ltr; font-family: Aptos, Arial, Helvetica, sans-se=
+rif; font-size: 12pt; color: rgb(0, 0, 0);">
+<br>
+</div>
+</div>
+<div style=3D"direction: ltr; font-family: Aptos, Arial, Helvetica, sans-se=
+rif; font-size: 12pt; color: rgb(0, 0, 0);">
+<br>
+</div>
+<div id=3D"mail-editor-reference-message-container">
+<div style=3D"padding: 3pt 0in 0in; border-width: 1pt medium medium; border=
+-style: solid none none; border-color: rgb(181, 196, 223) currentcolor curr=
+entcolor;">
+<div style=3D"text-align: left; font-family: Aptos; font-size: 12pt; color:=
+ black;">
+<b>From: </b>Jean-Claude Havaux - JCHyTech &lt;jc.havaux@jchytech.be&gt;<br=
+>
+<b>Date: </b>Thursday, 8 October 2026 at 22:06<br>
+<b>To: </b>=C0=EE=D1=DE &lt;liyan@zdbiogene.com&gt;; Jacques Noury &lt;nour=
+yjack@gmail.com&gt;; Abadvices Abadvices &lt;abadvices@yahoo.fr&gt;; QIQI &=
+lt;1468831519@qq.com&gt;<br>
+<b>Cc: </b>=CE=E2=C9=C6=B6=AB &lt;wushandong@zdbiogene.com&gt;<br>
+<b>Subject: </b>Re: =BB=D8=B8=B4=A3=BAVetalyx contracts After your comments=
+<br>
+<br>
+</div>
+</div>
+<div id=3D"mail-editor-reference-message-body">
+<div class=3D"ms-outlook-mobile-reference-message skipProofing" style=3D"di=
+rection: ltr;">
+</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing" style=3D"di=
+rection: ltr; font-family: Aptos, Arial, Helvetica, sans-serif; font-size: =
+12pt; color: rgb(0, 0, 0);">
+Hy ,</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing" style=3D"di=
+rection: ltr; font-family: Aptos, Arial, Helvetica, sans-serif; font-size: =
+12pt; color: rgb(0, 0, 0);">
+<br>
+</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing" style=3D"di=
+rection: ltr; font-family: Aptos, Arial, Helvetica, sans-serif; font-size: =
+12pt; color: rgb(0, 0, 0);">
+Thank you for those infos.</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing" style=3D"di=
+rection: ltr; font-family: Aptos, Arial, Helvetica, sans-serif; font-size: =
+12pt; color: rgb(0, 0, 0);">
+<br>
+</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing" style=3D"di=
+rection: ltr; font-family: Aptos, Arial, Helvetica, sans-serif; font-size: =
+12pt; color: rgb(0, 0, 0);">
+Have a nice day.</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing" style=3D"di=
+rection: ltr; font-family: Aptos, Arial, Helvetica, sans-serif; font-size: =
+12pt; color: rgb(0, 0, 0);">
+<br>
+</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing" style=3D"di=
+rection: ltr; font-family: Aptos, Arial, Helvetica, sans-serif; font-size: =
+12pt; color: rgb(0, 0, 0);">
+JC</div>
+<div id=3D"ms-outlook-mobile-body-separator-line" dir=3D"ltr"><br>
+</div>
+<div id=3D"ms-outlook-mobile-signature" dir=3D"ltr">
+<div class=3D"MsoNormal" style=3D"margin: 0in 0in 0.0001pt; font-family: Ap=
+tos, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(81, 167, 249=
+);">
+JC Havaux</div>
+<div style=3D"direction: ltr; font-family: Aptos, Arial, Helvetica, sans-se=
+rif; font-size: 12pt; color: rgb(81, 167, 249);">
+Rue des Renards , 4</div>
+<div style=3D"direction: ltr; font-family: Aptos, Arial, Helvetica, sans-se=
+rif; font-size: 12pt; color: rgb(81, 167, 249);">
+4130 Tilff</div>
+<div style=3D"direction: ltr; font-family: Aptos, Arial, Helvetica, sans-se=
+rif; font-size: 12pt; color: rgb(81, 167, 249);">
+Belgium</div>
+<div style=3D"font-family: Aptos, Arial, Helvetica, sans-serif; font-size: =
+12pt; color: rgb(81, 167, 249);">
++32475704830</div>
+<div style=3D"direction: ltr; font-family: Aptos, Arial, Helvetica, sans-se=
+rif; font-size: 12pt; color: rgb(0, 0, 0);">
+<br>
+</div>
+<div style=3D"direction: ltr; line-height: normal; margin: 0px; font-family=
+: Aptos, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0)=
+;">
+<br>
+</div>
+<div style=3D"direction: ltr; font-family: Aptos, Arial, Helvetica, sans-se=
+rif; font-size: 12pt; color: rgb(0, 0, 0);">
+<br>
+</div>
+</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing" style=3D"di=
+rection: ltr; font-family: Aptos, Arial, Helvetica, sans-serif; font-size: =
+12pt; color: rgb(0, 0, 0);">
+<br>
+</div>
+<div id=3D"mail-editor-reference-message-container">
+<div style=3D"padding: 3pt 0in 0in; border-width: 1pt medium medium; border=
+-style: solid none none; border-color: rgb(181, 196, 223) currentcolor curr=
+entcolor;">
+<div style=3D"text-align: left; font-family: Aptos; font-size: 12pt; color:=
+ black;">
+<b>From: </b>=C0=EE=D1=DE &lt;liyan@zdbiogene.com&gt;<br>
+<b>Date: </b>Thursday, 8 October 2026 at 14:53<br>
+<b>To: </b>Jean-Claude Havaux - JCHyTech &lt;jc.havaux@jchytech.be&gt;; Jac=
+ques Noury &lt;nouryjack@gmail.com&gt;; Abadvices Abadvices &lt;abadvices@y=
+ahoo.fr&gt;; QIQI &lt;1468831519@qq.com&gt;<br>
+<b>Cc: </b>=CE=E2=C9=C6=B6=AB &lt;wushandong@zdbiogene.com&gt;<br>
+<b>Subject: </b>=BB=D8=B8=B4=A3=BAVetalyx contracts After your comments<br>
+<br>
+</div>
+</div>
+<div id=3D"mail-editor-reference-message-body">
+<div class=3D"__aliyun_email_body_block" style=3D"direction: ltr; clear: bo=
+th; font-family: Tahoma, Arial, STHeitiSC-Light, SimSun;">
+<br>
+</div>
+<div class=3D"__aliyun_email_body_block" style=3D"clear: both; font-family:=
+ Tahoma, Arial, STHeitiSC-Light, SimSun;">
+Dear all,<br>
+&nbsp;<br>
+<span style=3D"font-family: Aptos, Aptos_MSFontService, -apple-system, Robo=
+to, Arial, Helvetica, sans-serif; font-size: 16px; color: rgb(0, 0, 0); tex=
+t-transform: none;">Thank you for your detailed explanation and understandi=
+ng. We will reply to you as soon as
+ possible.</span></div>
+<div class=3D"__aliyun_email_body_block" style=3D"direction: ltr; clear: bo=
+th; font-family: Tahoma, Arial, STHeitiSC-Light, SimSun;">
+<br>
+</div>
+<div class=3D"__aliyun_email_body_block" style=3D"clear: both; font-family:=
+ Tahoma, Arial, STHeitiSC-Light, SimSun;">
+Additionally, the attachment contains the R&amp;D progress of the internati=
+onal version of pet testing. The parts highlighted in red represent the upd=
+ated content. Please find it attached!<br>
+<br>
+<span style=3D"font-size: 14px; color: rgb(0, 0, 0); text-transform: none;"=
+>With best regards<br>
+<br>
+Li&nbsp;</span></div>
+<div class=3D"alimail-quote" style=3D"clear: both; margin-right: 0px; margi=
+n-left: 40px; font-family: Tahoma, Arial, STHeiti, SimSun; font-size: 14px;=
+ color: rgb(0, 0, 0);">
+------------------------------------------------------------------</div>
+<div class=3D"alimail-quote" style=3D"clear: both; margin-right: 0px; margi=
+n-left: 40px; font-family: Tahoma, Arial, STHeiti, SimSun; font-size: 14px;=
+ color: rgb(0, 0, 0);">
+=B7=A2=BC=FE=C8=CB=A3=BAJean-Claude Havaux - JCHyTech &lt;jc.havaux@jchytec=
+h.be&gt;</div>
+<div class=3D"alimail-quote" style=3D"clear: both; margin-right: 0px; margi=
+n-left: 40px; font-family: Tahoma, Arial, STHeiti, SimSun; font-size: 14px;=
+ color: rgb(0, 0, 0);">
+=B7=A2=CB=CD=CA=B1=BC=E4=A3=BA2026=C4=EA10=D4=C27=C8=D5(=D6=DC=C8=FD) 18:40=
+</div>
+<div class=3D"alimail-quote" style=3D"clear: both; margin-right: 0px; margi=
+n-left: 40px; font-family: Tahoma, Arial, STHeiti, SimSun; font-size: 14px;=
+ color: rgb(0, 0, 0);">
+=CA=D5=BC=FE=C8=CB=A3=BA&quot;=C0=EE=D1=DE&quot;&lt;liyan@zdbiogene.com&gt;=
+; &quot;=CE=E2=C9=C6=B6=AB&quot;&lt;wushandong@zdbiogene.com&gt;</div>
+<div class=3D"alimail-quote" style=3D"clear: both; margin-right: 0px; margi=
+n-left: 40px; font-family: Tahoma, Arial, STHeiti, SimSun; font-size: 14px;=
+ color: rgb(0, 0, 0);">
+=B3=AD=A1=A1=CB=CD=A3=BAQIQI&lt;1468831519@qq.com&gt;; Jacques Noury&lt;nou=
+ryjack@gmail.com&gt;; Abadvices Abadvices&lt;abadvices@yahoo.fr&gt;</div>
+<div class=3D"alimail-quote" style=3D"clear: both; margin-right: 0px; margi=
+n-left: 40px; font-family: Tahoma, Arial, STHeiti, SimSun; font-size: 14px;=
+ color: rgb(0, 0, 0);">
+=D6=F7=A1=A1=CC=E2=A3=BAVetalyx contracts After your comments</div>
+<div class=3D"alimail-quote" style=3D"direction: ltr; clear: both; margin-r=
+ight: 0px; margin-left: 40px; font-family: Tahoma, Arial, STHeiti, SimSun; =
+font-size: 14px; color: rgb(0, 0, 0);">
+<br>
+</div>
+<p class=3D"ms-outlook-mobile-reference-message skipProofing" style=3D"dire=
+ction: ltr; text-align: left; text-indent: 0px; text-transform: none; margi=
+n: 12px 0px 12px 40px;">
+<span style=3D"font-family: Aptos, sans-serif; font-size: 16px; color: rgb(=
+0, 0, 0);">Dear Partners,</span></p>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"text-align: left; text-indent: 0px; text-transform: n=
+one; margin: 16px 0px 16px 40px; font-family: Aptos, sans-serif; font-size:=
+ 16px; color: rgb(0, 0, 0);">
+Thank you for returning your revisions, which we have reviewed with the utm=
+ost attention.&nbsp;</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"text-align: left; text-indent: 0px; text-transform: n=
+one; margin: 16px 0px 16px 40px; font-family: Aptos, sans-serif; font-size:=
+ 16px; color: rgb(0, 0, 0);">
+This mail is divided in two parts.&nbsp;</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"text-align: left; text-indent: 0px; text-transform: n=
+one; margin: 16px 0px 16px 40px; font-family: Aptos, sans-serif; font-size:=
+ 16px; color: rgb(0, 0, 0);">
+The first one is our comments with article references corresponding to your=
+ revised version .</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"direction: ltr; text-align: left; text-indent: 0px; t=
+ext-transform: none; margin: 16px 0px 16px 40px; font-family: Aptos, sans-s=
+erif; font-size: 16px; color: rgb(0, 0, 0);">
+The second part regards attached files and their comment prior opening.</di=
+v>
+<h2 class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_node=
+_has_color" style=3D"text-align: left; text-indent: 0px; text-transform: no=
+ne; margin-right: 0px; margin-left: 40px; font-family: Aptos; font-size: 20=
+px; font-weight: 400; color: rgb(0, 0, 0);">
+<span style=3D"font-family: Aptos, sans-serif;">PART I</span></h2>
+<h2 class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_node=
+_has_color" style=3D"text-align: left; text-indent: 0px; text-transform: no=
+ne; margin-right: 0px; margin-left: 40px; font-family: Aptos; font-size: 20=
+px; font-weight: 400; color: rgb(0, 0, 0);">
+<span style=3D"font-family: Aptos, sans-serif;">Preliminary Matter =A1=AA W=
+orking Language vs. Official Language</span></h2>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"text-align: left; text-indent: 0px; text-transform: n=
+one; margin: 16px 0px 16px 40px; font-family: Aptos, sans-serif; font-size:=
+ 16px; color: rgb(0, 0, 0);">
+To ensure legal certainty in our exchanges, we propose that <b>English</b>&=
+nbsp;be the official language of the framework agreement and its appendices=
+. French and Chinese, assisted by machine translation, will remain working =
+tools intended to facilitate mutual understanding.</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"text-align: left; text-indent: 0px; text-transform: n=
+one; margin: 16px 0px 16px 40px; font-family: Aptos, sans-serif; font-size:=
+ 16px; color: rgb(0, 0, 0);">
+For the Articles of Association (Statuts), however, the language is mandate=
+d by Belgian law: they must be drafted and filed with the notary in
+<b>French</b>. In this case, English and Chinese will only serve as working=
+ translations with no official legal standing.</div>
+<h2 class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_node=
+_has_color" style=3D"text-align: left; text-indent: 0px; text-transform: no=
+ne; margin-right: 0px; margin-left: 40px; font-family: Aptos; font-size: 20=
+px; font-weight: 400; color: rgb(0, 0, 0);">
+<span style=3D"font-family: Aptos, sans-serif;">Document 1 =A1=AA Articles =
+of Association (Statuts)</span></h2>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"text-align: left; text-indent: 0px; text-transform: n=
+one; margin: 16px 0px 16px 40px; font-family: Aptos, sans-serif; font-size:=
+ 16px; color: rgb(0, 0, 0);">
+We note with satisfaction that the provided text raised few comments. Your =
+requested amendment regarding
+<b>expense authorization</b>&nbsp;appears well-founded, and we accept it.</=
+div>
+<h2 class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_node=
+_has_color" style=3D"text-align: left; text-indent: 0px; text-transform: no=
+ne; margin-right: 0px; margin-left: 40px; font-family: Aptos; font-size: 20=
+px; font-weight: 400; color: rgb(0, 0, 0);">
+<span style=3D"font-family: Aptos, sans-serif;">Document 2 =A1=AA Commercia=
+l Framework Agreement</span></h2>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"text-align: left; text-indent: 0px; text-transform: n=
+one; margin: 16px 0px 16px 40px; font-family: Aptos, sans-serif; font-size:=
+ 16px; color: rgb(0, 0, 0);">
+<b>1. Governing Language (Article 40)</b><br>
+The language clause will be adapted in accordance with the preliminary matt=
+er stated above:
+<b>English</b>&nbsp;will become the official language of the contract, whil=
+e French and Chinese will serve as working versions. This proposal is inten=
+ded to prevent any potential misunderstandings.</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"text-align: left; text-indent: 0px; text-transform: n=
+one; margin: 16px 0px 16px 40px; font-family: Aptos, sans-serif; font-size:=
+ 16px; color: rgb(0, 0, 0);">
+<b>2. Governing Law and Dispute Resolution (Article 38)</b><br>
+Since the company is incorporated in Belgium, <b>Belgian law</b>&nbsp;is ap=
+plicable in the first instance. Applying Singaporean or Hong Kong law in co=
+njunction with a Brussels jurisdiction would be unmanageable for our operat=
+ions and is not acceptable to us. However,
+ for disputes requiring mediation or arbitration, we gladly accept a seat i=
+n <b>Switzerland</b>(Geneva, for example).</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"text-align: left; text-indent: 0px; text-transform: n=
+one; margin: 16px 0px 16px 40px; font-family: Aptos, sans-serif; font-size:=
+ 16px; color: rgb(0, 0, 0);">
+<b>3. Supply Terms =A1=AA Price Stability (Article 14)</b><br>
+We wish to guarantee the long-term price stability of our partnership. We p=
+ropose to jointly define a mechanism to regulate the evolution of transfer =
+prices (review period, indexation, arm's length principle). Could you pleas=
+e indicate how you plan to avoid
+ price fluctuations without prior discussion, so that we can identify a com=
+mon approach?</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"text-align: left; text-indent: 0px; text-transform: n=
+one; margin: 16px 0px 16px 40px; font-family: Aptos, sans-serif; font-size:=
+ 16px; color: rgb(0, 0, 0);">
+<b>4. Definition of Related Companies (Articles 24 and 26, Appendix 10)</b>=
+<br>
+The links between Zheda Dixun and Diaho, which are clearly required and set=
+ out in the contract, appear appropriate to us. However, we wish to jointly=
+ clarify the definition of related companies and their reciprocal guarantee=
+s, particularly with regard to Appendix
+ 10 (enhanced confidentiality and non-circumvention).</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"text-align: left; text-indent: 0px; text-transform: n=
+one; margin: 16px 0px 16px 40px; font-family: Aptos, sans-serif; font-size:=
+ 16px; color: rgb(0, 0, 0);">
+<b>5. Authority of Vetalyx (in connection with Articles 24 and 26)</b><br>
+Furthermore, we want to ensure that Vetalyx retains full authority to enter=
+ into strategic commercial partnerships with non-Chinese companies, as this=
+ decision falls=A1=AAas a reminder=A1=AAunder the purview of the Board of D=
+irectors.</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"text-align: left; text-indent: 0px; text-transform: n=
+one; margin: 16px 0px 16px 40px; font-family: Aptos, sans-serif; font-size:=
+ 16px; color: rgb(0, 0, 0);">
+<b>6. Signature of Zheda Dixun</b><br>
+Since Zheda Dixun is explicitly named in the contract and is a shareholder =
+of Diaho, would it not be wise for Dixun to also sign the agreement? This a=
+djustment would clarify to third parties the respective roles of Diaho and =
+Dixun, as well as their reciprocal
+ guarantees.</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"text-align: left; text-indent: 0px; text-transform: n=
+one; margin: 16px 0px 16px 40px; font-family: Aptos, sans-serif; font-size:=
+ 16px; color: rgb(0, 0, 0);">
+Aside from these points, the other comments and amendments received do not =
+raise any issues and are not deal-breakers; we propose to refine them durin=
+g the next phase of discussions.</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"direction: ltr; text-align: left; text-indent: 0px; t=
+ext-transform: none; margin: 16px 0px 16px 40px; font-family: Aptos, sans-s=
+erif; font-size: 16px; color: rgb(0, 0, 0);">
+<b>PART II</b></div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"direction: ltr; text-align: left; text-indent: 0px; t=
+ext-transform: none; margin: 12px 0px 12px 40px; font-family: Aptos, Arial,=
+ Helvetica, sans-serif; font-size: 16px; color: rgb(0, 0, 0);">
+Here is the adaptations related to your and our remarks. we send you 3 file=
+s :</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"direction: ltr; text-align: left; text-indent: 0px; t=
+ext-transform: none; margin-right: 0px; margin-left: 40px; font-family: Apt=
+os, Arial, Helvetica, sans-serif; font-size: 16px; color: rgb(0, 0, 0);">
+<br>
+</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"direction: ltr; margin: 0px 0px 0px 40px; font-family=
+: Aptos; font-size: 16px; color: rgb(0, 0, 0);">
+<span style=3D"text-transform: none;"><b>FILE 1 : Vetalyx company creation =
+text (English)</b>.&nbsp;</span></div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"direction: ltr; margin: 0px 0px 0px 40px; font-family=
+: Aptos; font-size: 16px; color: rgb(0, 0, 0);">
+<span style=3D"text-transform: none;"><br>
+</span></div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"direction: ltr; margin: 0px 0px 0px 40px; font-family=
+: Aptos; font-size: 16px; color: rgb(0, 0, 0);">
+<span style=3D"text-transform: none;">We put the english version. For your =
+information, we intentionally limited the scope of the company in this firs=
+t step. It is mainly distribution , stock and shipping of imported veterina=
+ry test for sales in Europe. If we
+ indicate, biotechnology activity, R&amp;D in diagnostic =A1=AD we risk to =
+have a lag time between deposition of documents to the authority (ICS) and =
+their authorisation to proceed in a sensible sector. For specific agreement=
+s between parties a shareholder pact is better
+ .</span></div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"direction: ltr; margin: 0px 0px 0px 40px; font-family=
+: Aptos; font-size: 16px; color: rgb(0, 0, 0);">
+<span style=3D"text-transform: none;"><br>
+</span></div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"direction: ltr; margin: 0px 0px 0px 40px; font-family=
+: Aptos; font-size: 16px; color: rgb(0, 0, 0);">
+<span style=3D"text-transform: none;"><b>FILE 2</b>&nbsp;: I attached a fil=
+e reporting on ICS activities and limitations.</span></div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"direction: ltr; margin: 0px 0px 0px 40px; font-family=
+: Aptos; font-size: 16px; color: rgb(0, 0, 0);">
+<span style=3D"text-transform: none;"><br>
+</span></div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"direction: ltr; margin: 0px 0px 0px 40px; font-family=
+: Aptos; font-size: 16px; color: rgb(0, 0, 0);">
+<span style=3D"text-transform: none;">For Vetalyx, we think that it is wort=
+h to use the bank BNP paribas as they have subsidiaryies in China, belgium,=
+ France and other european country. This could ease administration/financia=
+l procedures.</span></div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"direction: ltr; margin: 0px 0px 0px 40px; font-family=
+: Aptos; font-size: 16px; color: rgb(0, 0, 0);">
+<span style=3D"text-transform: none;"><br>
+</span></div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"direction: ltr; margin-right: 0px; margin-left: 40px;=
+ font-family: Aptos; font-size: 16px; color: rgb(0, 0, 0);">
+<span style=3D"text-transform: none;"><b>FILE 3 : Contract Between Vetalyx-=
+Dixun-Diaho (ENGLISH)</b></span></div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing" style=3D"di=
+rection: ltr; margin-right: 0px; margin-left: 40px; font-family: Tahoma, Ar=
+ial, STHeiti, SimSun; font-size: 14px; color: rgb(0, 0, 0);">
+<span style=3D"text-transform: none;"><br>
+</span></div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing" style=3D"di=
+rection: ltr; margin-right: 0px; margin-left: 40px; font-family: Tahoma, Ar=
+ial, STHeiti, SimSun; font-size: 14px; color: rgb(0, 0, 0);">
+<span style=3D"text-transform: none;">Due to the need to integrate Dixun pa=
+rtner in the contract, we consider that it is better to adapt the contract =
+to include Dixun roles and commitments. It is very important to be able to =
+answer any questions about Vetalyx
+ in full transparence with banks, registration authorities etc.</span></div=
+>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing" style=3D"di=
+rection: ltr; margin-right: 0px; margin-left: 40px; font-family: Tahoma, Ar=
+ial, STHeiti, SimSun; font-size: 14px; color: rgb(0, 0, 0);">
+<span style=3D"text-transform: none;"><br>
+</span></div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"direction: ltr; text-align: left; text-indent: 0px; t=
+ext-transform: none; margin-right: 0px; margin-left: 40px; font-family: Apt=
+os, Arial, Helvetica, sans-serif; font-size: 16px; color: rgb(0, 0, 0);">
+I hope that we are converging to finalize those documents.</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"direction: ltr; text-align: left; text-indent: 0px; t=
+ext-transform: none; margin-right: 0px; margin-left: 40px; font-family: Apt=
+os, Arial, Helvetica, sans-serif; font-size: 16px; color: rgb(0, 0, 0);">
+<br>
+</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"direction: ltr; text-align: left; text-indent: 0px; t=
+ext-transform: none; margin-right: 0px; margin-left: 40px; font-family: Apt=
+os, Arial, Helvetica, sans-serif; font-size: 16px; color: rgb(0, 0, 0);">
+Have a nice day</div>
+<div class=3D"ms-outlook-mobile-reference-message skipProofing __aliyun_nod=
+e_has_color" style=3D"direction: ltr; text-align: left; text-indent: 0px; t=
+ext-transform: none; margin: 12px 0px 12px 40px; font-family: Aptos, sans-s=
+erif; font-size: 16px; color: rgb(0, 0, 0);">
+Best Regards</div>
+<p class=3D"ms-outlook-mobile-reference-message skipProofing" style=3D"text=
+-align: left; text-indent: 0px; text-transform: none; margin: 12px 0px 12px=
+ 40px;">
+<span style=3D"font-family: Aptos, sans-serif; font-size: 16px; color: rgb(=
+0, 0, 0);">Alain Bosseloir, Jean-Claude Havaux, Jacques Noury, Peiwen Qi</s=
+pan></p>
+<div class=3D" __aliyun_node_has_color" style=3D"direction: ltr; margin-rig=
+ht: 0px; margin-left: 40px; font-family: Aptos, Arial, Helvetica, sans-seri=
+f; font-size: 16px; color: rgb(0, 0, 0);">
+<br>
+<br>
+</div>
+<div class=3D" __aliyun_node_has_color" style=3D"direction: ltr; margin-rig=
+ht: 0px; margin-left: 40px; font-family: Aptos, Arial, Helvetica, sans-seri=
+f; font-size: 16px; color: rgb(0, 0, 0);">
+<br>
+</div>
+<div id=3D"ms-outlook-mobile-body-separator-line" dir=3D"ltr"><br>
+</div>
+<div id=3D"ms-outlook-mobile-signature" dir=3D"ltr">
+<div class=3D"MsoNormal __aliyun_node_has_color" style=3D"margin: 0in 0in 0=
+px; font-family: Aptos, Arial, Helvetica, sans-serif; font-size: 16px; colo=
+r: rgb(81, 167, 249);">
+JC Havaux</div>
+<div class=3D" __aliyun_node_has_color" style=3D"direction: ltr; font-famil=
+y: Aptos, Arial, Helvetica, sans-serif; font-size: 16px; color: rgb(81, 167=
+, 249);">
+Rue des Renards , 4</div>
+<div class=3D" __aliyun_node_has_color" style=3D"direction: ltr; font-famil=
+y: Aptos, Arial, Helvetica, sans-serif; font-size: 16px; color: rgb(81, 167=
+, 249);">
+4130 Tilff</div>
+<div class=3D" __aliyun_node_has_color" style=3D"direction: ltr; font-famil=
+y: Aptos, Arial, Helvetica, sans-serif; font-size: 16px; color: rgb(81, 167=
+, 249);">
+Belgium</div>
+<div class=3D" __aliyun_node_has_color" style=3D"font-family: Aptos, Arial,=
+ Helvetica, sans-serif; font-size: 16px; color: rgb(81, 167, 249);">
++32475704830</div>
+<div class=3D" __aliyun_node_has_color" style=3D"direction: ltr; font-famil=
+y: Aptos, Arial, Helvetica, sans-serif; font-size: 16px; color: rgb(0, 0, 0=
+);">
+<br>
+</div>
+<div class=3D" __aliyun_node_has_color" style=3D"direction: ltr; line-heigh=
+t: normal; margin: 0px; font-family: Aptos, Arial, Helvetica, sans-serif; f=
+ont-size: 16px; color: rgb(0, 0, 0);">
+<br>
+</div>
+<div class=3D" __aliyun_node_has_color" style=3D"direction: ltr; font-famil=
+y: Aptos, Arial, Helvetica, sans-serif; font-size: 16px; color: rgb(0, 0, 0=
+);">
+<br>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
+
+--_000_PAXPR06MB78247434AC8A33B719BCB275E5672PAXPR06MB7824eurp_--

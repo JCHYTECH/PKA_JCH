@@ -1,0 +1,88 @@
+{
+  "claudeCode.preferredLocation": "panel",
+  "terminal.integrated.cwd": "/Users/jchavauxm5/PKA_JCH",
+  "workbench.startupEditor": "none",
+  "workbench.colorTheme": "One Dark Pro Night Flat",
+  "workbench.iconTheme": "vs-minimal",
+  "accessibility.voice.speechLanguage": "fr-FR",
+  "accessibility.voice.speechTimeout": 0,
+  "chat.mcp.discovery.enabled": {
+    "claude-desktop": false,
+    "windsurf": false,
+    "cursor-global": false,
+    "cursor-workspace": false
+  },
+  "chat.mcp.autostart": false,
+  "chat.mcp.apps.enabled": false,
+  "chat.disableAIFeatures": true,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js",
+    "*.tsx": "${capture}.ts",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock",
+    "*.sqlite": "${capture}.${extname}-*",
+    "*.db": "${capture}.${extname}-*",
+    "*.sqlite3": "${capture}.${extname}-*",
+    "*.db3": "${capture}.${extname}-*",
+    "*.sdb": "${capture}.${extname}-*",
+    "*.s3db": "${capture}.${extname}-*"
+  },
+  "workbench.panel.showLabels": false,
+  "terminal.integrated.perProfileColor": true,
+  "terminal.integrated.profiles.osx": {
+    "DeepSeek TUI": {
+      "path": "zsh",
+      "args": [
+        "-l"
+      ],
+      "color": "terminal.ansiBlue",
+      "icon": "symbol-misc"
+    },
+    "Claude": {
+      "path": "zsh",
+      "args": [
+        "-l"
+      ],
+      "color": "terminal.ansiWhite",
+      "icon": "comment-discussion"
+    },
+    "Codex": {
+      "path": "zsh",
+      "args": [
+        "-l"
+      ],
+      "color": "terminal.ansiBrightBlack",
+      "icon": "terminal"
+    },
+    "Gemini": {
+      "path": "zsh",
+      "args": [
+        "-l"
+      ],
+      "color": "terminal.ansiYellow",
+      "icon": "symbol-color"
+    },
+    "NVIDIA": {
+      "path": "zsh",
+      "args": [
+        "-l"
+      ],
+      "color": "terminal.ansiRed",
+      "icon": "flame"
+    },
+    "PKA Admin": {
+      "path": "zsh",
+      "args": [
+        "-l"
+      ],
+      "color": "terminal.ansiCyan",
+      "icon": "tools"
+    }
+  },
+  "apc.imports": [
+    "/Users/jchavauxm5/PKA_JCH/scripts/apc-terminal-theme.css"
+  ]
+}
