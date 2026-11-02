@@ -35,3 +35,5 @@
 2. **Toute opération destructive** (`rm -rf`, `DROP TABLE`, `force push`) nécessite confirmation explicite de JC
 3. **Les tokens d'API** sont stockés dans `JCH_PRIVATE/credentials-central.md` et référencés par variable d'environnement
 4. **Vérifier l'identité** avant d'exécuter des commandes sur des machines distantes (hostname, IP)
+
+> **Garde-fou opérationnel :** le skill `decision-gate` (`skills/decision-gate/SKILL.md`) formalise ces règles en questions fermées avant chaque action sensible (destructive, sortante, secrets, conformité), avec seuils de confiance et journal de décision dans `_local/state/decision-gate.log`. Il démarre en mode fantôme (observation), puis passe en enforcement une fois calibré.

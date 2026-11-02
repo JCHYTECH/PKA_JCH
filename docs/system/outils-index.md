@@ -207,7 +207,7 @@
 > ⚠️ `[dup]` = existe aussi dans le workspace (`.agents/skills/` ou `skills/`) — le workspace est la source canonique. À réconcilier (symlink ou purge home).
 
 - brief — Génération de brief structuré [dup: skills/brief]
-- capture — Capture connaissance vers team.db [dup: skills/capture]
+- capture — Capture connaissance vers team.db [fusionné dans ingest — 2026-11-02]
 - code-review-pro — Revue de code [dup: .agents/skills/code-review-pro]
 - content-gap-analysis — Gaps éditoriaux [dup]
 - content-quality-auditor — Audit E-E-A-T [dup]

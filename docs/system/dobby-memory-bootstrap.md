@@ -41,8 +41,10 @@ Ces fichiers changent rarement. Ils définissent le *cadre* de la session. Sur C
 | 5 | `MEMORY.md` | Journal chronologique des événements, décisions, sessions passées. **ATTENTION :** les faits datés ne sont pas l'état actuel. Lire pour le contexte, pas pour l'état. |
 | 6 | Dernière daily / dernier system check dans `TEAM_Inbox/` | Dernier point de santé système |
 | 7 | `docs/system/outils-index.md` | Inventaire des scripts, skills, outils disponibles — consulter avant de chercher un outil |
-| 8 | `wiki/index.md` | Point d'entrée base de connaissance |
-| 9 | `JCH_Inbox/04_PILOTAGE_STRATEGIQUE/decisions-pka.md` | Registre des décisions structurelles déjà prises (historique) |
+| 7b | `docs/system/declencheurs-skills.md` | **Déclencheurs de skills** — « quand X → charge le skill Y » (mémo de rappel, lu à chaque session) |
+| 8 | `JCH_Inbox/99_SYSTEM/routing_rules.md` | **Règles de routage — où ranger quoi** (livrables, documents projet, archives). Lu avant TOUT dépôt de fichier. |
+| 9 | `wiki/index.md` | Point d'entrée base de connaissance |
+| 10 | `JCH_Inbox/04_PILOTAGE_STRATEGIQUE/decisions-pka.md` | Registre des décisions structurelles déjà prises (historique) |
 | 😴 | ~~`arbitrages-decisions.md`~~ | Archivé le 2026-06-23 — supplanté par `decisions-pka.md` + `decisions-actives.md` |
 
 ---

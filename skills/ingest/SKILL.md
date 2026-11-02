@@ -127,6 +127,20 @@ arteon-manifeste.md → 03_PROJECTS/02_ARTEON/   ✅ déplacé + indexé
 - Toujours indexer après déplacement, jamais avant
 - Si `file_index` INSERT échoue → signaler mais ne pas bloquer le déplacement
 
-## Skills liés
+## Capture de connaissance (ex-`capture`, fusionné ici le 2026-11-02)
 
-- **`capture`** — Pour extraire de la connaissance d'un fichier et l'insérer dans `knowledge` (team.db). Utiliser `capture` après `ingest` si le fichier contient des idées, faits ou décisions à mémoriser.
+Après avoir routé un fichier, si son contenu contient des idées, faits ou décisions à
+mémoriser, capturer chaque idée atomique dans la table `knowledge` (team.db) :
+
+1. **Analyser** : type (`fact` / `insight` / `concept` / `quote` / `decision` / `reference`),
+   domaine (`legal` / `finance` / `photo` / `AI` / `iot` / …), projet lié, source.
+2. **Reformuler** en une phrase atomique, claire, sans contexte implicite.
+3. **Insérer** (Corbeau est le seul écrivain de `knowledge`) :
+   ```sql
+   INSERT INTO knowledge (type, domain, project, content, source, created_by, created_at)
+   VALUES ('<type>', '<domaine>', '<projet>', '<contenu>', '<source>', 'Corbeau', '<today>');
+   ```
+4. **Confirmer** : `CAPTURE ✓ · Type · Domaine · Projet · ID`.
+
+Règles : une capture = une idée atomique (plusieurs idées → plusieurs entrées) ; ne jamais
+déformer le sens ; si le schéma `knowledge` diffère → signaler à Castor.
