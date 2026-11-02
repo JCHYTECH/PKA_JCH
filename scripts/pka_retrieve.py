@@ -71,8 +71,9 @@ def term_score(text: str, terms: list[str]) -> tuple[int, float]:
     hits = sum(1 for t in terms if t in low)
     return hits, hits / len(terms)
 
-# Ollama embedding config (M1)
-OLLAMA_M1_URL = "http://100.73.212.110:11434"
+# Ollama embedding config — M1 décommissionné le 2026-10-27, embeddings en local sur M5.
+# Surcharge possible : PKA_OLLAMA_URL=http://hote:11434
+OLLAMA_M1_URL = os.environ.get("PKA_OLLAMA_URL", "http://127.0.0.1:11434")
 OLLAMA_EMBED_MODEL = "nomic-embed-text"  # Fast, lightweight, 768-dim
 # Fallback: gemma3:12b if nomic-embed-text not available
 OLLAMA_EMBED_FALLBACK = "gemma3:12b-it-qat"

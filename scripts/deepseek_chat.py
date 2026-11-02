@@ -348,8 +348,12 @@ history.append({"role": "user", "content": f"Activation Dobby via {pointer_name}
 try:
     resp = client.chat.completions.create(model=MODEL, messages=history)
     msg = resp.choices[0].message
+    assistant_msg = {"role": "assistant", "content": msg.content or ""}
+    rc = getattr(msg, "reasoning_content", None)
+    if rc:
+        assistant_msg["reasoning_content"] = rc
+    history.append(assistant_msg)
     if msg.content:
-        history.append({"role": "assistant", "content": msg.content})
         print(f"Dobby : {msg.content}\n")
     else:
         print("Dobby : (activé)\n")
@@ -393,7 +397,16 @@ def chat_loop():
             
             if msg.tool_calls:
                 # Le modèle veut utiliser des outils
-                history.append(msg)
+                assistant_msg = {"role": "assistant", "content": msg.content or ""}
+                rc = getattr(msg, "reasoning_content", None)
+                if rc:
+                    assistant_msg["reasoning_content"] = rc
+                assistant_msg["tool_calls"] = [
+                    {"id": tc.id, "type": "function",
+                     "function": {"name": tc.function.name, "arguments": tc.function.arguments}}
+                    for tc in msg.tool_calls
+                ]
+                history.append(assistant_msg)
                 
                 for tc in msg.tool_calls:
                     tool_name = tc.function.name
@@ -421,7 +434,11 @@ def chat_loop():
             else:
                 # Réponse texte finale
                 content = msg.content or ""
-                history.append({"role": "assistant", "content": content})
+                assistant_msg = {"role": "assistant", "content": content}
+                rc = getattr(msg, "reasoning_content", None)
+                if rc:
+                    assistant_msg["reasoning_content"] = rc
+                history.append(assistant_msg)
                 print(f"\nDobby : {content}\n")
                 break
 

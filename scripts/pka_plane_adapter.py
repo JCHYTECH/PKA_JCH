@@ -1,5 +1,6 @@
 import json
 import os
+import time
 from pathlib import Path
 from urllib import request
 from urllib import error
@@ -69,19 +70,23 @@ def _plane_request(url: str, token: str, *, method: str = "GET", payload: dict |
         headers["Content-Type"] = "application/json"
         body = json.dumps(payload).encode("utf-8")
 
-    plane_request = request.Request(url, headers=headers, method=method, data=body)
-    try:
-        with request.urlopen(plane_request) as response:
-            raw = response.read().decode("utf-8")
-    except error.HTTPError as exc:
-        raw = exc.read().decode("utf-8", errors="replace")
-        raise RuntimeError(f"Plane API request failed ({exc.code}): {raw[:240]}") from exc
-    except error.URLError as exc:
-        raise RuntimeError(f"Plane API request failed: {exc.reason}") from exc
-
-    if not raw:
-        return {}
-    return json.loads(raw)
+    for attempt in range(6):
+        plane_request = request.Request(url, headers=headers, method=method, data=body)
+        try:
+            with request.urlopen(plane_request) as response:
+                raw = response.read().decode("utf-8")
+            if not raw:
+                return {}
+            return json.loads(raw)
+        except error.HTTPError as exc:
+            raw = exc.read().decode("utf-8", errors="replace")
+            if exc.code == 429 and attempt < 5:
+                time.sleep(2.0 * (attempt + 1))
+                continue
+            raise RuntimeError(f"Plane API request failed ({exc.code}): {raw[:240]}") from exc
+        except error.URLError as exc:
+            raise RuntimeError(f"Plane API request failed: {exc.reason}") from exc
+    raise RuntimeError("Plane API request failed: rate limit exceeded after retries")
 
 
 def normalize_issue(project_key: str, issue: dict) -> dict:
@@ -229,6 +234,84 @@ def create_project_work_item(
     if not isinstance(result, dict):
         raise ValueError("Plane work item create response must be a JSON object")
     return result
+
+
+def update_work_item(
+    project_key: str,
+    work_item_id: str,
+    *,
+    name: str | None = None,
+    description_html: str | None = None,
+    start_date: str | None = None,
+    target_date: str | None = None,
+    priority: str | None = None,
+    state_id: str | None = None,
+) -> dict:
+    api_base, workspace_slug, project_id, token = _project_context(project_key)
+    endpoint = f"{api_base}/workspaces/{workspace_slug}/projects/{project_id}/work-items/{work_item_id}/"
+    payload: dict[str, object] = {}
+    values = {
+        "name": name,
+        "description_html": description_html,
+        "start_date": start_date,
+        "target_date": target_date,
+        "priority": priority,
+        "state": state_id,
+    }
+    for field, value in values.items():
+        if value is not None:
+            payload[field] = value
+    if not payload:
+        raise ValueError("update_work_item requires at least one field")
+    return _plane_request(endpoint, token, method="PATCH", payload=payload)
+
+
+def delete_work_item(project_key: str, work_item_id: str) -> dict:
+    api_base, workspace_slug, project_id, token = _project_context(project_key)
+    endpoint = f"{api_base}/workspaces/{workspace_slug}/projects/{project_id}/work-items/{work_item_id}/"
+    return _plane_request(endpoint, token, method="DELETE")
+
+
+def list_project_states(project_key: str) -> list[dict]:
+    api_base, workspace_slug, project_id, token = _project_context(project_key)
+    endpoint = f"{api_base}/workspaces/{workspace_slug}/projects/{project_id}/states/"
+    payload = _plane_request(endpoint, token)
+    if isinstance(payload, list):
+        states = payload
+    elif isinstance(payload, dict):
+        states = payload.get("results", [])
+    else:
+        raise ValueError("Plane states response must be a JSON list or object")
+    return [s for s in states if isinstance(s, dict)]
+
+
+def set_work_item_state(project_key: str, work_item_id: str, state_name: str) -> dict:
+    states = list_project_states(project_key)
+    state_id = next(
+        (s["id"] for s in states if s.get("name", "").lower() == state_name.lower()),
+        None,
+    )
+    if not state_id:
+        names = [s.get("name") for s in states]
+        raise ValueError(f"State '{state_name}' not found. Available: {names}")
+    return update_work_item(project_key, work_item_id, state_id=state_id)
+
+
+def create_work_item_relation(
+    project_key: str,
+    work_item_id: str,
+    relation_type: str,
+    related_ids: list[str],
+) -> list | dict:
+    api_base, workspace_slug, project_id, token = _project_context(project_key)
+    endpoint = f"{api_base}/workspaces/{workspace_slug}/projects/{project_id}/work-items/{work_item_id}/relations/"
+    payload = {"relation_type": relation_type, "issues": related_ids}
+    result = _plane_request(endpoint, token, method="POST", payload=payload)
+    if isinstance(result, list):
+        return result
+    if isinstance(result, dict):
+        return result.get("results", [result])
+    return []
 
 
 def _plane_project_id(entry: object) -> str | None:

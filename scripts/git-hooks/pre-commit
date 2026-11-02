@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+# pre-commit — bloque l'ajout d'un secret dans un fichier suivi.
+# PKA_JCH / Dobby 🦉 — 2026-10-28
+#
+# Ne contrôle que les LIGNES AJOUTÉES par le commit : les secrets déjà présents
+# dans l'historique ne bloquent pas, mais aucune récidive n'est possible.
+#
+# Contournement volontaire : git commit --no-verify
+set -uo pipefail
+
+PATTERNS=(
+  'sk-[A-Za-z0-9_-]{20,}'
+  'sk-proj-[A-Za-z0-9_-]{20,}'
+  'ghp_[A-Za-z0-9]{20,}'
+  'gho_[A-Za-z0-9]{20,}'
+  'AKIA[0-9A-Z]{12,}'
+  'xoxb-[A-Za-z0-9-]{10,}'
+  'AIza[0-9A-Za-z_-]{30,}'
+  '-----BEGIN [A-Z ]*PRIVATE KEY-----'
+)
+
+# Motifs « libellé : valeur » — la valeur ne doit pas être un renvoi ni un gabarit
+LABEL_PATTERNS=(
+  '(mot de passe|password|passwd|MDP)[[:space:]]*[:=][[:space:]]*[^ `\[<(]{4,}'
+  '\| *(Password|Mot de passe) *\| *`?[A-Za-z0-9!@#$%^&*._-]{4,}`? *\|'
+)
+
+# Chemins exclus : coffre non versionné, plugins, binaires
+EXCLUDE_RE='^(JCH_PRIVATE/|\.obsidian/|\.venv/|graphify-out/)'
+
+DIFF=$(git diff --cached -U0 --no-color)
+
+# Lignes ajoutées, avec le fichier courant en préfixe
+ADDED=$(printf '%s\n' "$DIFF" | awk '
+  /^\+\+\+ b\// { file = substr($0, 7); next }
+  /^\+/ && !/^\+\+\+/ { print file "\t" substr($0, 2) }
+')
+
+[ -z "$ADDED" ] && exit 0
+
+FOUND=0
+while IFS=$'\t' read -r file line; do
+  [ -z "${file:-}" ] && continue
+  [[ "$file" =~ $EXCLUDE_RE ]] && continue
+  for p in "${PATTERNS[@]}" "${LABEL_PATTERNS[@]}"; do
+    if printf '%s' "$line" | grep -Eq -- "$p"; then
+      if [ $FOUND -eq 0 ]; then
+        echo
+        echo "✗ Commit bloqué — un secret semble présent dans les lignes ajoutées."
+        echo
+      fi
+      FOUND=1
+      printf '  %s\n    %s\n' "$file" "$(printf '%s' "$line" | cut -c1-120)"
+      break
+    fi
+  done
+done <<<"$ADDED"
+
+if [ $FOUND -eq 1 ]; then
+  cat <<'MSG'
+
+  Règle : aucun secret dans un fichier suivi par git.
+  → déplacer la valeur dans JCH_PRIVATE/credentials-central.md
+  → ne laisser dans le document qu'un renvoi : « voir JCH_PRIVATE/credentials-central.md »
+
+  Contournement assumé : git commit --no-verify
+MSG
+  exit 1
+fi
+
+exit 0

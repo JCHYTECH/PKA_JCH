@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import subprocess
 import sys
 from datetime import date, datetime, timedelta
 from pathlib import Path
@@ -24,8 +25,60 @@ ARTEON_DIR = ROOT / "JCH_Inbox" / "03_PROJECTS" / "02_ARTEON"
 WILDLENS_DIR = ARTEON_DIR / "wildlens"
 EDITIONS_DIR = WILDLENS_DIR / "editions"
 REPORTS_DIR = WILDLENS_DIR / "reports"
+SUGGEST_DIR = WILDLENS_DIR / "suggestions"
+THEME_FILE = WILDLENS_DIR / "theme-semaine.md"
+THUMB_DIR = ROOT / "PHOTO" / "analyses" / "thumbnails"
+VISION_SCAN = ROOT / "scripts" / "pka_vision_scan.py"
 
 GHOST_API_URL = "https://wildlens.ghost.io/ghost/api/admin"
+
+
+def _edition_status(path: Path) -> str:
+    """Lit le champ `status` du frontmatter d'une édition (défaut : inconnu)."""
+    try:
+        for line in path.read_text(encoding="utf-8").splitlines()[:25]:
+            if line.strip().startswith("status:"):
+                return line.split(":", 1)[1].strip()
+    except Exception:
+        pass
+    return "inconnu"
+
+
+def build_email_summary() -> tuple[str, str]:
+    """Construit (sujet, corps) du mail de notification WildLens."""
+    editions = list_editions()
+    n = len(editions)
+    last = editions[-1].name if editions else "Aucune"
+    status = _edition_status(editions[-1]) if editions else "—"
+    nxt = next_edition_date()
+    next_file = EDITIONS_DIR / f"WildLens-{nxt.isoformat()}.md"
+    today = date.today()
+
+    subject = f"[Dobby] WildLens — rapport hebdo {today.isoformat()}"
+    lines = [
+        f"WildLens — état de la colonne ({today.isoformat()})",
+        "",
+        f"• Éditions publiées : {n}",
+        f"• Dernière édition : {last} (statut : {status})",
+        f"• Prochaine édition : {nxt.isoformat()} (Edition #{n + 1})",
+    ]
+    if next_file.exists():
+        lines += ["", f"Édition #{n + 1} ({nxt.isoformat()}) : FAITE ✓ (fichier présent)"]
+    else:
+        lines += ["", f"Édition #{n + 1} ({nxt.isoformat()}) : PAS ENCORE FAITE"]
+    lines += ["", f"Rapport complet : wildlens/reports/WildLens-weekly-{today.isoformat()}.md"]
+    return subject, "\n".join(lines)
+
+
+def _send_summary_email(subject: str, body: str) -> bool:
+    """Envoie le mail de notification via Gmail SMTP (best-effort, non bloquant)."""
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from dobby_notify_email import send_email
+        return send_email(subject, body)
+    except Exception as e:
+        print(f"⚠️  Notification mail non envoyée : {e}", file=sys.stderr)
+        return False
 
 
 def list_editions() -> list[Path]:
@@ -53,6 +106,51 @@ def next_edition_date() -> date:
     if days_until_saturday == 0:
         return today
     return today + timedelta(days=days_until_saturday)
+
+
+def read_theme() -> str | None:
+    """Lit le thème de la semaine depuis theme-semaine.md (première ligne utile)."""
+    if not THEME_FILE.exists():
+        return None
+    for line in THEME_FILE.read_text(encoding="utf-8").splitlines():
+        s = line.strip()
+        if s and not s.startswith("#") and not s.startswith(">"):
+            return s
+    return None
+
+
+def suggest_photo(theme: str) -> str | None:
+    """Scanne les vignettes avec un modèle vision pour le thème ; renvoie la sortie."""
+    if not THUMB_DIR.is_dir() or not VISION_SCAN.exists():
+        return None
+    try:
+        r = subprocess.run(
+            [sys.executable, str(VISION_SCAN), str(THUMB_DIR), theme],
+            capture_output=True, text=True, timeout=240)
+        return r.stdout.strip() if r.returncode == 0 else None
+    except Exception:
+        return None
+
+
+def cmd_suggest(args) -> None:
+    """Suggère une photo pour le thème de la semaine (vision OpenRouter)."""
+    theme = args.theme or read_theme()
+    if not theme:
+        print("Aucun thème — définis-le dans theme-semaine.md ou passe --theme.")
+        return
+    print(f"Thème : {theme}")
+    out = suggest_photo(theme)
+    if not out:
+        print("Aucune suggestion (vision indisponible ou aucune correspondance).")
+        return
+    print(out)
+    SUGGEST_DIR.mkdir(parents=True, exist_ok=True)
+    path = SUGGEST_DIR / f"{date.today().isoformat()}-suggestion.md"
+    path.write_text(
+        f"# Photo de la semaine — {date.today().isoformat()}\n\n"
+        f"**Thème :** {theme}\n\n```\n{out}\n```\n",
+        encoding="utf-8")
+    print(f"Suggestion → {path}")
 
 
 def cmd_report(args):
@@ -107,6 +205,12 @@ def cmd_report(args):
     report += "- [ ] Configurer la clé Ghost Admin API pour les stats automatiques\n"
     report += "- [ ] Vérifier que ghost.io est actif (pas de suspension pour inactivité)\n"
 
+    theme = read_theme()
+    if theme:
+        report += f"\n## Photo de la semaine\n\n**Thème :** {theme}\n\n"
+        sugg = suggest_photo(theme)
+        report += (sugg + "\n") if sugg else "_(suggestion vision non disponible)_\n"
+
     report += f"""
 ---
 *Rapport généré automatiquement par Dobby le {today.isoformat()}*
@@ -116,6 +220,10 @@ def cmd_report(args):
     out_path.write_text(report, encoding="utf-8")
     print(f"✅ Rapport → {out_path}")
     print(report)
+
+    if not getattr(args, "no_email", False):
+        subject, body = build_email_summary()
+        _send_summary_email(subject, body)
 
 
 def cmd_edition(args):
@@ -166,6 +274,14 @@ def cmd_edition(args):
 > *Un exercice de terrain pour les lecteurs cette semaine.*
 
 <!-- 100-150 mots + contraintes -->
+
+---
+
+## 6. Le Constat
+
+> *Une dérive de destruction du vivant, documentée factuellement cette semaine. Nommer la dérive, sans polémique — pour qu'elle cesse d'être invisible.*
+
+<!-- 100-150 mots + fait vérifié + source -->
 
 ---
 
@@ -250,13 +366,24 @@ def cmd_stats(args):
 
     print()
 
+def cmd_notify(args):
+    """Envoie le mail de notification d'état WildLens (sans régénérer le rapport)."""
+    subject, body = build_email_summary()
+    print(body)
+    if _send_summary_email(subject, body):
+        print("✅ Mail envoyé")
+
 def main():
     parser = argparse.ArgumentParser(description="WildLens Weekly — rapport + générateur d'édition")
     sub = parser.add_subparsers(dest="command")
 
-    sub.add_parser("report", help="Rapport d'activité WildLens")
+    p_report = sub.add_parser("report", help="Rapport d'activité WildLens (+ photo de la semaine)")
+    p_report.add_argument("--no-email", action="store_true", help="Ne pas envoyer le mail de notification")
     sub.add_parser("edition", help="Générer le template pour la prochaine édition")
     sub.add_parser("stats", help="Stats Ghost (nécessite ADMIN_API_KEY)")
+    sub.add_parser("notify", help="Envoyer le mail d'état WildLens (sans régénérer le rapport)")
+    p_suggest = sub.add_parser("suggest", help="Suggérer une photo pour le thème de la semaine")
+    p_suggest.add_argument("--theme", help="Thème (défaut : lit theme-semaine.md)")
 
     args = parser.parse_args()
 
@@ -266,6 +393,10 @@ def main():
         cmd_edition(args)
     elif args.command == "stats":
         cmd_stats(args)
+    elif args.command == "notify":
+        cmd_notify(args)
+    elif args.command == "suggest":
+        cmd_suggest(args)
     else:
         parser.print_help()
 
