@@ -160,6 +160,9 @@ BirdNET/ID espèce fine · reconnaissance individuelle · réseau public · mult
 
 ## 7. Plan de développement P0 (work-packages)
 
+> **Taxonomie WP canonique** — toute autre liste de work-packages (Plane model, Start.md)
+> doit s'aligner sur celle-ci. Voir aussi `PLANNING_GANTT.md` §1.
+
 | WP | Objet | Critère de sortie |
 |---|---|---|
 | WP01 | Architecture & ADRs | 14 ADRs gelés, schéma système |

@@ -85,14 +85,17 @@ Toute contradiction détectée doit devenir une décision documentée, pas une d
 
 ### 3.2 Work Packages
 
+> ⚠️ **Taxonomie canonique** (depuis Bible V0, 2026-10-29) — remplace l'ancienne liste.
+> Source de vérité : `01_FOUNDATION/WILDNEXUS_DOSSIER_TECHNICO-COMMERCIAL_V0.md` §7.
+
 | WP | Contenu | Statut |
 |----|---------|--------|
-| WP01 — Architecture | ADRs, choix composants, scope lock | ✅ Gelé (17 ADRs) |
-| WP02 — Procurement | Shortlist, BOM, commandes | 🔵 Actif — v0.4, panier Mouser restant ~279€ |
-| WP03 — Firmware | SOPs, simulation, firmware P0 | 🔵 SOPs A→C faits, ADR-016 accepté (double cycle), repo à peupler |
-| WP04 — Intégration HW | Caméra, LoRa, PIR, SD, I2S | ⬜ En attente de SOP-08 (caméra) + commande LoRa |
-| WP05 — Tests terrain | PPK2, validation autonomie | 🔵 Banc en cours (PPK2 mesures acquises) |
-| WP06 — Documentation | Docs, guides, dashboards | 🔵 |
+| WP01 — Architecture & ADRs | ADRs, choix composants, scope lock | ✅ Gelé (17 ADRs, 14 acceptés) |
+| WP02 — Hardware nœud | Alim, capteurs, média, BOM, caméra/PIR/SD | 🔵 Actif — BOM v0.4, hardware reçu, tests caméra/PIR/SD à exécuter |
+| WP03 — Énergie & mesure | Budget énergie, PPK2, 60 j extrapolés | 🔵 Banc en cours — PPK2 phases A→C faites, budget à formaliser |
+| WP04 — Firmware | Machine d'états, deep sleep, SD, LoRa | 🔵 37/37 tests host ✅, tests hardware en attente |
+| WP05 — Connectivité (LoRa) | LoRa P2P, format 0x05 | 🔴 Bloqué — RAK3172 non commandé (panier Mouser) |
+| WP06 — Boîtier & terrain | IP67, EVT 30 j | ⬜ En attente M-02/M-03 |
 
 ### 3.3 Équipement clé
 

@@ -47,14 +47,19 @@ Use one Plane project:
 
 ### Modules
 
-Create one module per P0 work package:
+Create one module per P0 work package (taxonomie canonique — Bible V0, 2026-10-29) :
 
-- `WP01 - Conception & Architecture`
-- `WP02 - Hardware & Enclos`
-- `WP03 - Firmware ULP`
-- `WP04 - Edge AI`
-- `WP05 - Validation terrain EVT`
-- `WP06 - Open source & Communaute`
+- `WP01 - Architecture & ADRs`
+- `WP02 - Hardware noeud`
+- `WP03 - Energie & mesure`
+- `WP04 - Firmware`
+- `WP05 - Connectivite (LoRa)`
+- `WP06 - Boitier & terrain`
+
+> ⚠️ **Taxonomie canonique** : cette liste remplace celle de la v0.1. Source de vérité :
+> `01_FOUNDATION/WILDNEXUS_DOSSIER_TECHNICO-COMMERCIAL_V0.md` §7. L'« Edge AI » (filtre
+> binaire) est rattaché à WP02 + ADR-010 ; « Documentation » et « Open source » se suivent
+> via le jalon M-04 et les modules transverses, pas comme WP dédiés.
 
 Create two transverse modules:
 

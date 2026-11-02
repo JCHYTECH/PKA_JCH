@@ -39,12 +39,18 @@ Nœud caméra-piège IA autonome (ESP32-S3 + OV5640 + LoRa + micros stéréo). P
 
 ---
 
-## Prochaine étape
+## TTD — Pending
 
-**Action prioritaire** : Commander panier Mouser (~279€) — débloque LoRa (SOP-07) + payload spectral (SOP-16)
-**Action parallèle** : Créer repo `wildnexus-firmware/` (FW-01) + implémenter codec ADR-014 (FW-02, pas de hardware requis)
-**Deadline caméra** : 15 juillet — test harness (CAM-03)
-**Deadline audio** : SOP-13 (I2S init) peut démarrer dès que le pinout I2S est mappé — pas bloqué par Mouser
+- [ ] **P0 · 15/12 · (JC)** Commander le sous-ensemble : RAK3172-T EU868 ×2 (RAK Store) + Swissbit S-45U ×3 (DigiKey) ≈ 82 € — débloque LoRa (SOP-07) + payload spectral (SOP-16)
+- [ ] **P1 · — · (Forge)** Créer repo `wildnexus-firmware/` (FW-01) + implémenter codec ADR-014 (FW-02, pas de hardware requis)
+- [ ] **P1 · 15/07 · (Forge)** Test harness caméra (CAM-03)
+- [ ] **P2 · — · (Forge)** SOP-13 (I2S init) dès pinout mappé — pas bloqué par Mouser
+
+## TTD — Done (session 2026-10-25)
+
+- [x] 2026-10-25 · Conseil `conseil` : panier scindé — ~82 € maintenant, ~160 € reporté
+- [x] 2026-10-25 · LoRa tranché → RAK3172-T EU868 (SX1262) ×2 (RFM95W = erreur du stock)
+- [x] 2026-10-25 · `WILDNEXUS_stock.md` corrigé (RFM95W → RAK3172-T)
 
 ---
 

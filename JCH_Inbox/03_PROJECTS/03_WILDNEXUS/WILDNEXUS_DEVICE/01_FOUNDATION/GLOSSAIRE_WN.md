@@ -189,6 +189,7 @@ Règle : la mémoire commune vit dans les fichiers PKA, pas dans le transcript d
 | Camtrap-DP | Standard de données pour pièges photographiques. Cible de compatibilité scientifique P1. |
 | GBIF | Global Biodiversity Information Facility. Plateforme mondiale de données biodiversité, cible possible pour exports P1. |
 | [[BirdNET]] | Système d'identification bioacoustique des oiseaux. Pertinent pour composant bioacoustique P1, hors P0 strict. |
+| Grounding (son + comportement) | Couplage d'un signal acoustique avec le comportement simultané (image/vidéo, action) pour ancrer son sens. Principe issu de la recherche « parole animale » : le motif acoustique seul ne vaut pas le sens — c'est la co-occurrence son + comportement qui l'ancre (la « pierre de Rosette » du domaine). WildNexus couple déjà micros + caméra par design. |
 
 ---
 
@@ -220,6 +221,7 @@ Règle : la mémoire commune vit dans les fichiers PKA, pas dans le transcript d
 | RGPD | Règlement européen sur les données personnelles. Important car les caméras peuvent capturer accidentellement des personnes. |
 | Source-available | Code ou design consultable, mais pas forcément open source au sens OSI. |
 | Ethical-source | Licence ou politique d'usage qui impose des restrictions alignées avec des valeurs éthiques. |
+| Éthique de l'écoute | Doctrine WildNexus : le nœud est un capteur passif, il n'émet aucun son vers l'animal. Toute diffusion sonore vers une espèce est une intrusion potentielle (famille, territoire) — proscrite par principe, y compris en P1/P2. |
 | Exclusion militaire | Non-négociable WildNexus : interdiction d'usage militaire ou paramilitaire du matériel, logiciel, données et API. |
 | Usage [[policy]] | Politique d'usage qui définit ce qui est autorisé, conditionnel ou interdit. |
 | Plane | Outil de pilotage/backlog utilisé pour suivre les tâches, jalons, owners et livrables WildNexus. |

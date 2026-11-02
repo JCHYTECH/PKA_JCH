@@ -48,7 +48,7 @@
 
 | # | Composant | Qté estimée | Usage | Priorité |
 |---|-----------|------------|-------|----------|
-| 1 | Module LoRa RFM95W 868MHz | 3 | Communication nœud → gateway | 🔴 SOP-07 bloquée |
+| 1 | Module LoRa RAK3172-T EU868 (SX1262) | 2 | Communication nœud → gateway | 🔴 SOP-07 bloquée |
 | 2 | Connectique (JST, headers, câbles) | Lot | Assemblage PCB | 🟡 |
 | 3 | Passifs CMS (R+C 0402/0603) | Lot | Circuit alimentation | 🟡 |
 | 4 | Connecteur antenne u.FL/IPEX | 3 | Antenne LoRa | 🟡 |

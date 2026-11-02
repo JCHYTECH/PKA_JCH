@@ -1,125 +1,57 @@
 # WildNexus - Plane Seed Backlog
 
-Version: v0.1  
-Date: 2026-05-17  
-Purpose: Initial Plane backlog derived from the founding document.
+Version: v0.2 (taxonomie canonique — Bible V0)
+Date: 2026-10-31
+Purpose: Backlog Plane aligné sur la taxonomie canonique (Bible V0 §7) + tâches d'exécution actuelles.
+Dates et dépendances : voir `wildnexus-plane-gantt.json` (même dossier).
 
 ## Milestone Items
 
-- `M-01 Architecture gelee`
+- `M-01 Architecture gelée`
 - `M-02 Prototype banc fonctionnel`
-- `M-03 EVT terrain valide`
-- `M-04 Open source publie`
+- `M-03 EVT terrain validé`
+- `M-04 Open source publié`
 
 ## Epic Items
 
-- `EPIC: WP01 - Conception & Architecture`
-- `EPIC: WP02 - Hardware & Enclos`
-- `EPIC: WP03 - Firmware ULP`
-- `EPIC: WP04 - Edge AI`
-- `EPIC: WP05 - Validation terrain EVT`
-- `EPIC: WP06 - Open source & Communaute`
+- `EPIC: WP01 - Architecture & ADRs`
+- `EPIC: WP02 - Hardware nœud`
+- `EPIC: WP03 - Énergie & mesure`
+- `EPIC: WP04 - Firmware`
+- `EPIC: WP05 - Connectivité (LoRa)`
+- `EPIC: WP06 - Boîtier & terrain`
 
 ## Seed Tasks
 
-### WP01
+### WP01 - Architecture & ADRs
 
-- `T01.1 Analyse comparative des specifications concurrentes`
-- `T01.2 Analyse FTO sur composants critiques`
-- `T01.3 Campagne mesures RF terrain (3 sites : clairiere, sous-bois dense, lisiere, documenter SF7/SF12)` ⬅️ (gemma3 #C/H)
-- `T01.4 Benchmark module camera IMX462 vs IMX327`
-- `T01.5 Selection MCU`
-- `T01.6 Budget P0 etendu : ajout dataset IR belge (Nova), stockage cloud backoffice, frais deplacement EVT` ⬅️ (gemma3 #E)
-- `DECISION: Confirm P0 autonomy ladder`
-- `DECISION: Confirm P0 product boundary`
-- `LEGAL: Resolve open-source and usage-restriction strategy`
-- `RISK: Define privacy baseline for human captures`
-- `GOV-01 Mapping agents WildNexus vers specialistes PKA`
-- `DOC-01 Annexes operatoires v0.3`
-- `SUPPLY-01 Registre composants critiques et fournisseurs alternatifs`
+- `ADR-006 Boîtier IP67 (à trancher)`
+- `ADR-011 Provisioning des clés (à trancher)`
+- `ADR-018 Synchro temporelle NTP/RTC`
 
-### WP02
+### WP02 - Hardware nœud
 
-- `T02.1 Schema electronique P0`
-- `T02.2 Layout PCB prototype`
-- `T02.3 CAO enclos IP67`
-- `T02.3b Ajout pastille deshydratante + event Gore-Tex M12 dans CAO enclos` ⬅️ (gemma3 #G)
-- `T02.4 Fabrication PCB prototype x5`
-- `T02.5 Assemblage et tests banc`
-- `T02.5b Bench courant deep sleep carte complete (PPK2, seuil fallback STM32U5 >150µA)` ⬅️ (gemma3 #A)
+- `SOP-08 caméra OV5640`
+- `SOP-09 PIR EKMB`
+- `SOP-10 batterie AA + buck`
+- `SOP-06 microSD (bloqué : carte SD 128 GB)`
 
-### WP03
+### WP03 - Énergie & mesure
 
-- `T03.1 Machine a etats sleep/wake/capture/transmit`
-- `T03.2 Pilote camera + power gate`
-- `T03.3 Gestion alimentation et undervoltage lockout`
-- `T03.4 Interface BLE configuration terrain`
-- `T03.5 Mecanisme OTA`
-- `T03.6 Tests firmware et simulation etats critiques`
+- `Phase D/E wake court + cycle simulé`
+- `SOP-18 budget audio PPK2`
+- `Rail 3,3 V à confirmer`
 
-### WP04
+### WP04 - Firmware
 
-- `T04.1 Dataset images IR nocturnes faune belge`
-- `T04.2 Entrainement et quantisation modele binaire`
-- `T04.3 Validation detection, faux positifs, latence`
-- `T04.4 Integration firmware`
-- `T04.5 Pipeline evaluation automatise du classifieur`
+- `SOP-13/17 I2S réel + coexistence PIR/timer`
+- `SOP-12 provisioning`
 
-### WP05
+### WP05 - Connectivité (LoRa)
 
-- `T05.1 Selection et preparation site EVT`
-- `T05.2 Deploiement 3 noeuds`
-- `T05.3 Protocole test cycle complet : deep sleep + reveil + capture + TX + retour veille, criteres acceptation documentes` ⬅️ (gemma3 #F)
-- `T05.3b Monitoring continu 30 jours`
-- `T05.4 Collecte et analyse donnees`
-- `T05.5 Rapport EVT et corrections`
+- `SOP-07 LoRa réel (bloqué : RAK3172)`
 
-### WP06
+### WP06 - Boîtier & terrain
 
-- `T06.1 Creation depot public`
-- `T06.2 Documentation contribution`
-- `T06.3 Canal communautaire`
-- `T06.4 Strategie de visibilite EVT`
-
-## Suggested Labels by Item
-
-- `T01.2` -> `legal-ip`, `decision`, `release-blocker`, `P0`
-- `T01.3` -> `rf`, `benchmark`, `validation`, `P0`
-- `T01.4` -> `camera-imaging`, `benchmark`, `validation`, `P0`
-- `T01.5` -> `firmware`, `decision`, `P0`
-- `T01.6` -> `budget`, `decision`, `P0`
-- `T02.3b` -> `hardware-physical`, `enclosure`, `P0`
-- `T02.5b` -> `hardware-physical`, `benchmark`, `energy`, `P0`
-- `T05.3` -> `validation`, `protocol`, `P0`
-- `GOV-01` -> `documentation`, `decision`, `P0`
-- `DOC-01` -> `documentation`, `P0`
-- `SUPPLY-01` -> `hardware-physical`, `risk`, `P0`
-- `T02.x` -> `hardware-physical`, `P0`
-- `T03.x` -> `firmware`, `P0`
-- `T04.x` -> `edge-ai`, `P0`
-- `T05.x` -> `field-test`, `validation`, `P0`
-- `T06.x` -> `community`, `documentation`, `P0`
-
-## Suggested Dependencies
-
-- `T01.2` -> `M-01`
-- `T01.3` -> `M-01`
-- `T01.4` -> `M-01`
-- `T01.5` depends on `T01.3` and `T01.4` inputs
-- `T01.6` -> `M-01`
-- `GOV-01` -> `M-01`
-- `SUPPLY-01` starts before `T02.1`
-- `T03.6` starts with `T03.1`
-- `T04.5` starts with `T04.2`
-- `M-01` unlocks `WP02`, `WP03`, `WP04`
-- `M-02` depends on `T02.5`, `T03.5`, `T04.4`
-- `WP05` starts after `M-02`
-- `M-03` depends on `T05.5`
-- `WP06` starts partially after `T01.2`, fully before `M-04`
-
-## Suggested Acceptance Criteria for Milestones
-
-- `M-01`: radio candidate chosen, camera module chosen, MCU chosen, budget P0 framed, agent mapping complete, legal/FTO review not blocking
-- `M-02`: prototype boots, captures, transmits, and has a credible energy budget
-- `M-03`: EVT completed with no critical failure and acceptable autonomy/image/filtering behavior
-- `M-04`: public repo, contribution docs, and community entry channel available
+- `EVT terrain 30 j (M-03)`
+- `Signalétique RGPD (ADR-010 R6)`
