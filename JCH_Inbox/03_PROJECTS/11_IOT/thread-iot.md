@@ -42,11 +42,16 @@ Architecture domotique distribuée : HA Docker M5 + HA OS RPi 5 Esneux (serre + 
 
 ---
 
-## Prochaine étape
+## TTD — Pending
 
-**Action** : Commander capteurs Zigbee (8, ~88€) + silentblocs + coating + **UPS X1200 (~50-70€)** ; intégrer WiCAN Pro dans HA
-**Deadline** : 15 décembre 2026 (prolongée par JC le 19/10)
-**Responsable** : JC + Dobby
+- [ ] **P0 · 15/12 · (JC)** Commander 8 capteurs Zigbee (~88 €) + silentblocs + coating + UPS X1200 (~50-70 €)
+- [ ] **P0 · 15/12 · (Dobby + Forge)** Intégrer WiCAN Pro + RUT240 (4G) dans HA van
+- [ ] **P0 · 15/12 · (Dobby)** Installer l'ensemble dans le van (Lupo)
+
+## TTD — Done (session 2026-10-22)
+
+- [x] 2026-10-22 · Deadline unifiée au 15/12 (arbitrage JC 19/10)
+- [x] 2026-10-01 · RPi 5 boot résolu (NVMe retiré), HAOS 18.3
 
 ---
 
