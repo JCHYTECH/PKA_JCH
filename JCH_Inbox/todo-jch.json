@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "JCH — Things To Do",
-    "last_updated": "2026-06-15",
-    "description": "Tâches JCH — décisions et actions directes. Généré depuis ce JSON par scripts/generate_todo.py"
+    "last_updated": "2026-10-28",
+    "description": "Tâches JCH — décisions et actions directes. Généré depuis ce JSON par scripts/generate_todo.py. ⚠️ Rafraîchi le 2026-10-25 : items résolus marqués done, 3 nouvelles actions ajoutées. Items ouverts antérieurs à juin restent à reconfirmer par JC."
   },
   "tasks": [
     {
@@ -256,20 +256,16 @@
     },
     {
       "id": "t22",
-      "title": "Finaliser pacte actionnaires Vetalyx (4×25%)",
+      "title": "✅ Pacte actionnaires Vetalyx finalisé (superseded : DIAHO 40% + 4×15%)",
       "urgency": "long",
       "project": "JCHYTECH",
       "project_sub": "VETALYX",
-      "context": "4 fondateurs à parité. Contrat-cadre DIAHO V2 + seing privé 40% V2 rédigés par Renard. JCH signe.",
-      "deps": [
-        "Contrat-cadre DIAHO V2 ✓",
-        "Seing privé 40% V2 ✓",
-        "Vasco briefé"
-      ],
+      "context": "RÉSOLU : pacte v1 + convention bloc v1 rédigés (30/09), DIAHO 40% fondateur acté (18/08), statuts SRL v2. L'ancien « 4×25% » est obsolète.",
+      "deps": [],
       "who": "JCH + Renard",
-      "role": "Signature finale",
-      "done": false,
-      "status": "todo"
+      "role": "Finalisé ✓",
+      "done": true,
+      "status": "done"
     },
     {
       "id": "t24",
@@ -336,34 +332,29 @@
     },
     {
       "id": "t28",
-      "title": "🟠 Valider le panier Mouser batch 1 WildNexus (~162€)",
+      "title": "✅ Panier Mouser batch 1 WildNexus commandé et reçu",
       "urgency": "urgent",
       "project": "WILDNEXUS",
       "project_sub": "WP02",
-      "context": "Panier groupé Mouser BE : LED IR 850/940nm, PIR EKMB, micro MEMS, buck TPS62840, holders, passifs, MOSFET, piles lithium, breadboard, alim labo. Forge attend le go.",
-      "deps": [
-        "PPK2 + ESP32-S3 ✓",
-        "Shortlist WP02 v0.1 ✓"
-      ],
+      "context": "RÉSOLU : commande Mouser #39492997 reçue le 08/07 (105,94€) — MEMS TDK, IR 940nm, PIR, Buck TPS62840, inductance, MOSFET, BME688, SHT31, antenne LoRa, dissipateur, passifs CMS.",
+      "deps": [],
       "who": "JCH",
-      "role": "Décision achat",
-      "done": false,
-      "status": "todo"
+      "role": "Commandé ✓",
+      "done": true,
+      "status": "done"
     },
     {
       "id": "t29",
-      "title": "🟠 Contacter Arducam — module OV5640 DVP M12",
+      "title": "✅ OV5640 DVP M12 reçus (5×)",
       "urgency": "important",
       "project": "WILDNEXUS",
       "project_sub": "WP02",
-      "context": "Caméra capteur manquante pour le banc. Contacter Arducam (arducam.com) : confirmation module DVP M12, fiche technique et délai avant commande.",
-      "deps": [
-        "ADR-002 caméra ✓"
-      ],
+      "context": "RÉSOLU : 1× Camemake.eu + 4× AliExpress reçus (06/2026). Plus besoin de contacter Arducam.",
+      "deps": [],
       "who": "JCH",
-      "role": "Contact fournisseur",
-      "done": false,
-      "status": "todo"
+      "role": "Reçu ✓",
+      "done": true,
+      "status": "done"
     },
     {
       "id": "t30",
@@ -396,19 +387,16 @@
     },
     {
       "id": "t32",
-      "title": "🟡 Décision achat van Stylevan Equinox IV",
+      "title": "✅ Van acheté (Lupo — Ford Transit Custom Westfalia Kelsey 2026)",
       "urgency": "important",
       "project": "TRAVELS",
       "project_sub": "VAN",
-      "context": "Documentation prête : checklist inspection, prix 2026, risques UE, expositions vanlife. JCH décide : achat neuf/occasion, budget, timing.",
-      "deps": [
-        "Checklist achat ✓",
-        "Analyse risques UE ✓"
-      ],
+      "context": "RÉSOLU : Lupo livré le 30/07/2026 (Westfalia Kelsey, pas Stylevan). Installation IOT en cours (deadline 15/12).",
+      "deps": [],
       "who": "JCH",
-      "role": "Décision",
-      "done": false,
-      "status": "todo"
+      "role": "Acheté ✓",
+      "done": true,
+      "status": "done"
     },
     {
       "id": "t33",
@@ -452,6 +440,60 @@
       ],
       "who": "JCH",
       "role": "Inscription",
+      "done": false,
+      "status": "todo"
+    },
+    {
+      "id": "t36",
+      "title": "🔴 Commander 8 capteurs Zigbee (~88€) + silentblocs + coating + UPS X1200",
+      "urgency": "critique",
+      "project": "IOT",
+      "project_sub": "VANLIFE",
+      "context": "P0 van Lupo — deadline 15/12/2026. RPi 5 opérationnel (HAOS 18.3). Reste : 8 capteurs Zigbee, silentblocs, coating, UPS X1200 (remplace X1205).",
+      "deps": [],
+      "who": "JCH",
+      "role": "Décision achat",
+      "done": false,
+      "status": "todo"
+    },
+    {
+      "id": "t37",
+      "title": "Commander RAK3172-T EU868 ×2 + Swissbit S-45U ×3 (~82€)",
+      "urgency": "important",
+      "project": "WILDNEXUS",
+      "project_sub": "WP02",
+      "context": "Verdict conseil 2026-10-25 : scinder le panier — verrouiller LoRa (RAK3172-T, RAK Store) + microSD pSLC (Swissbit, DigiKey). Le reste reporté à la reprise.",
+      "deps": [],
+      "who": "JCH",
+      "role": "Décision achat",
+      "done": false,
+      "status": "todo"
+    },
+    {
+      "id": "t38",
+      "title": "Nommer les 2 administrateurs fondateurs Vetalyx (Art. 33)",
+      "urgency": "important",
+      "project": "JCHYTECH",
+      "project_sub": "VETALYX",
+      "context": "Statuts SRL : Art. 33 prévoit 1. Peiwen QI + 2-3 [à désigner]. Décision JC requise avant validation notaire.",
+      "deps": [],
+      "who": "JCH",
+      "role": "Décision",
+      "done": false,
+      "status": "todo"
+    },
+    {
+      "id": "t39",
+      "title": "Clean sécurité — rotation des secrets exposés (dépôt public)",
+      "urgency": "critique",
+      "project": "AI_IT_TOOLS",
+      "project_sub": "Sécurité",
+      "context": "Le dépôt github.com/JCHYTECH/PKA_JCH est PUBLIC. Inventaire complet dans docs/system/revue-secrets-2026-10-28.md. À faire : (1) révoquer la clé sk-u8gRGa7m… présente en clair dans 2 fichiers suivis ; (2) révoquer sk-96324bf7… et sk-proj-ancROd… puis renommer les fichiers de JCH_PRIVATE/notes_apple_secrets/ indexés par le knowledge graph ; (3) changer le mot de passe HA/MQTT ([REDACTED-MQTT-PASS], dans 7 fichiers suivis) ; (4) changer le mot de passe de l'AP du van ([REDACTED-AP-PASS]) ; (5) remplacer le mot de passe de session M1 — 4 chiffres, à un chiffre de l'ancien, décision JC du 2026-10-28 de le garder pour l'instant ; (6) purge d'historique git si souhaitée, après rotation.",
+      "deps": [
+        "Décision JC sur la purge d'historique"
+      ],
+      "who": "JCH",
+      "role": "Décision",
       "done": false,
       "status": "todo"
     }

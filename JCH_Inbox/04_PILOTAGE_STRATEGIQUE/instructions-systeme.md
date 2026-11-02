@@ -1,7 +1,7 @@
 # Instructions Système PKA-JCH — Tableau Consolidé
 > Tous les mécanismes d'instruction, d'amélioration et de pilotage du système.
 > Généré le 2026-06-19 par Dobby 🦉
-> Mis à jour le 2026-07-07
+> Mis à jour le 2026-10-27
 > 
 > **Lecture :** une ligne = une instruction. Activable par Dobby ou par JC.
 
@@ -26,6 +26,7 @@
 | S4 | pka-session-start | `skills/pka-session-start/SKILL.md` | Automatique en début de session | Protocole démarrage 5 phases : identité, contexte, State, vérifications, activation |
 | S5 | pka-pointer-sync | `skills/pka-pointer-sync/SKILL.md` | « mets à jour les pointers », « synchronise les fichiers système » | Synchro 6 fichiers pointeurs après changement équipe/structure |
 | S6 | pka-file-versioning | `skills/pka-file-versioning/SKILL.md` | Automatique avant modif BOM/ADR/registre/budget | Backup pré-édition fichiers itératifs |
+| S7 | decision-gate | `skills/decision-gate/SKILL.md` | « garde-fou », « gate », automatique avant action destructive/sortante | Questions fermées pré-action (destructif, réseau, secrets, conformité) + seuils + journal |
 ---
 
 ## 3. Loop patterns (skills/)
@@ -72,6 +73,7 @@
 | T9 | pka_prompt_guard.py | `scripts/pka_prompt_guard.py` | Sécurité | Scanner prompt injection (score 0-100 + quarantaine) |
 | T10 | pka_memory_log.py | `scripts/pka_memory_log.py` | Log | Log mémoire automatique dans SYBIL_JOURNAL |
 | T11 | **pka_memory_capture.py** | `scripts/pka_memory_capture.py` | `python3 scripts/pka_memory_capture.py --fact "..." --category semantic|procedural|episodic --importance 1-5` | **Capture mémoire unifiée** — déduplication, conflits, routage (team.db, MEMORY.md, knowledge) |
+| T12 | pka-gate | `bin/pka-gate` | `bin/pka-gate check "<cmd>"` / `log` / `ghost` / `enforce` | Garde-fou pré-action : mode ghost/enforce + journal de décision + pré-contrôle déterministe |
 
 ---
 
@@ -104,13 +106,13 @@
 | Catégorie | Nombre | Activation |
 |-----------|--------|------------|
 | **Prompts** | 2 | Manuel (donner au LLM) |
-| **Skills système** | 6 | `/skill` ou mot-clé |
+| **Skills système** | 7 | `/skill` ou mot-clé |
 | **Loops** | 5 | `/skill` ou mot-clé |
 | **Règles canoniques** | 10 | Automatique (session start) |
-| **Outils audit** | 10 | `python3 scripts/...` |
+| **Outils audit** | 11 | `python3 scripts/...` / `bin/pka-gate` |
 | **Pilotage** | 9 | Lecture par Dobby |
 
-**Total : 42 instructions système actives.**
+**Total : 44 instructions système actives.**
 
 ---
 

@@ -31,11 +31,14 @@
 
 ---
 
-## Prochaine étape
+## TTD — Pending
 
-**Action** : [quoi]
-**Deadline** : YYYY-MM-DD
-**Responsable** : [qui]
+- [ ] **P0 · YYYY-MM-DD · (Responsable)** [action]
+- [ ] **P1 · — · (Responsable)** [action]
+
+## TTD — Done (session YYYY-MM-DD)
+
+- [x] YYYY-MM-DD · [terminé → résultat]
 
 ---
 

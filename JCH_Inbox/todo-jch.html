@@ -117,7 +117,7 @@
 
 <div class="header">
   <div class="header-title">JCH<span> — Things To Do</span></div>
-  <div class="header-count"><span id="visible-count">—</span> · généré le 2026-07-23</div>
+  <div class="header-count"><span id="visible-count">—</span> · généré le 2026-10-28</div>
 </div>
 
 <div class="toolbar">
@@ -134,8 +134,10 @@
   <button class="filter-btn" data-filter="project" data-value="WILDNEXUS" onclick="filterProject(this)">WILDNEXUS</button>
   <button class="filter-btn" data-filter="project" data-value="ARTEON" onclick="filterProject(this)">ARTEON</button>
   <button class="filter-btn" data-filter="project" data-value="FUTURE_INVEST" onclick="filterProject(this)">FUTURE_INVEST</button>
+  <button class="filter-btn" data-filter="project" data-value="AI_IT_TOOLS" onclick="filterProject(this)">AI_IT_TOOLS</button>
   <button class="filter-btn" data-filter="project" data-value="ARGUS" onclick="filterProject(this)">ARGUS</button>
   <button class="filter-btn" data-filter="project" data-value="INFRA" onclick="filterProject(this)">INFRA</button>
+  <button class="filter-btn" data-filter="project" data-value="IOT" onclick="filterProject(this)">IOT</button>
   <button class="filter-btn" data-filter="project" data-value="TRAVELS" onclick="filterProject(this)">TRAVELS</button>
   <div class="sep"></div>
   <button class="filter-btn" onclick="toggleDone()">Masquer terminées</button>
@@ -367,18 +369,18 @@
     <div class="card-check"><input type="checkbox" id="t20" onchange="toggleDoneCard(this)" ><label for="t20">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="long" data-project="JCHYTECH" data-status="todo">
+  <div class="card done" data-urgency="long" data-project="JCHYTECH" data-status="done">
     <div class="card-top">
-      <div class="card-title">Finaliser pacte actionnaires Vetalyx (4×25%)</div>
+      <div class="card-title">✅ Pacte actionnaires Vetalyx finalisé (superseded : DIAHO 40% + 4×15%)</div>
       <div class="badge-urgency long">Long terme</div>
     </div>
-    <div class="card-context">4 fondateurs à parité. Contrat-cadre DIAHO V2 + seing privé 40% V2 rédigés par Renard. JCH signe.</div>
+    <div class="card-context">RÉSOLU : pacte v1 + convention bloc v1 rédigés (30/09), DIAHO 40% fondateur acté (18/08), statuts SRL v2. L'ancien « 4×25% » est obsolète.</div>
     <div class="card-meta">
       <div class="card-project">JCHYTECH · VETALYX</div>
-      <div class="card-deps"><div class="dep-tag">Contrat-cadre DIAHO V2 ✓</div><div class="dep-tag">Seing privé 40% V2 ✓</div><div class="dep-tag">Vasco briefé</div></div>
-      <div class="card-who">Signature finale : <strong>JCH + Renard</strong></div>
+      <div class="card-deps"></div>
+      <div class="card-who">Finalisé ✓ : <strong>JCH + Renard</strong></div>
     </div>
-    <div class="card-check"><input type="checkbox" id="t22" onchange="toggleDoneCard(this)" ><label for="t22">Marquer comme fait</label></div>
+    <div class="card-check"><input type="checkbox" id="t22" onchange="toggleDoneCard(this)" checked><label for="t22">Terminée ✓</label></div>
   </div>
 
   <div class="card" data-urgency="critique" data-project="ARTEON" data-status="todo">
@@ -437,32 +439,32 @@
     <div class="card-check"><input type="checkbox" id="t27" onchange="toggleDoneCard(this)" ><label for="t27">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="urgent" data-project="WILDNEXUS" data-status="todo">
+  <div class="card done" data-urgency="urgent" data-project="WILDNEXUS" data-status="done">
     <div class="card-top">
-      <div class="card-title">🟠 Valider le panier Mouser batch 1 WildNexus (~162€)</div>
+      <div class="card-title">✅ Panier Mouser batch 1 WildNexus commandé et reçu</div>
       <div class="badge-urgency urgent">Urgent</div>
     </div>
-    <div class="card-context">Panier groupé Mouser BE : LED IR 850/940nm, PIR EKMB, micro MEMS, buck TPS62840, holders, passifs, MOSFET, piles lithium, breadboard, alim labo. Forge attend le go.</div>
+    <div class="card-context">RÉSOLU : commande Mouser #39492997 reçue le 08/07 (105,94€) — MEMS TDK, IR 940nm, PIR, Buck TPS62840, inductance, MOSFET, BME688, SHT31, antenne LoRa, dissipateur, passifs CMS.</div>
     <div class="card-meta">
       <div class="card-project">WILDNEXUS · WP02</div>
-      <div class="card-deps"><div class="dep-tag">PPK2 + ESP32-S3 ✓</div><div class="dep-tag">Shortlist WP02 v0.1 ✓</div></div>
-      <div class="card-who">Décision achat : <strong>JCH</strong></div>
+      <div class="card-deps"></div>
+      <div class="card-who">Commandé ✓ : <strong>JCH</strong></div>
     </div>
-    <div class="card-check"><input type="checkbox" id="t28" onchange="toggleDoneCard(this)" ><label for="t28">Marquer comme fait</label></div>
+    <div class="card-check"><input type="checkbox" id="t28" onchange="toggleDoneCard(this)" checked><label for="t28">Terminée ✓</label></div>
   </div>
 
-  <div class="card" data-urgency="important" data-project="WILDNEXUS" data-status="todo">
+  <div class="card done" data-urgency="important" data-project="WILDNEXUS" data-status="done">
     <div class="card-top">
-      <div class="card-title">🟠 Contacter Arducam — module OV5640 DVP M12</div>
+      <div class="card-title">✅ OV5640 DVP M12 reçus (5×)</div>
       <div class="badge-urgency important">Important</div>
     </div>
-    <div class="card-context">Caméra capteur manquante pour le banc. Contacter Arducam (arducam.com) : confirmation module DVP M12, fiche technique et délai avant commande.</div>
+    <div class="card-context">RÉSOLU : 1× Camemake.eu + 4× AliExpress reçus (06/2026). Plus besoin de contacter Arducam.</div>
     <div class="card-meta">
       <div class="card-project">WILDNEXUS · WP02</div>
-      <div class="card-deps"><div class="dep-tag">ADR-002 caméra ✓</div></div>
-      <div class="card-who">Contact fournisseur : <strong>JCH</strong></div>
+      <div class="card-deps"></div>
+      <div class="card-who">Reçu ✓ : <strong>JCH</strong></div>
     </div>
-    <div class="card-check"><input type="checkbox" id="t29" onchange="toggleDoneCard(this)" ><label for="t29">Marquer comme fait</label></div>
+    <div class="card-check"><input type="checkbox" id="t29" onchange="toggleDoneCard(this)" checked><label for="t29">Terminée ✓</label></div>
   </div>
 
   <div class="card" data-urgency="important" data-project="JCHYTECH" data-status="todo">
@@ -493,18 +495,18 @@
     <div class="card-check"><input type="checkbox" id="t31" onchange="toggleDoneCard(this)" ><label for="t31">Marquer comme fait</label></div>
   </div>
 
-  <div class="card" data-urgency="important" data-project="TRAVELS" data-status="todo">
+  <div class="card done" data-urgency="important" data-project="TRAVELS" data-status="done">
     <div class="card-top">
-      <div class="card-title">🟡 Décision achat van Stylevan Equinox IV</div>
+      <div class="card-title">✅ Van acheté (Lupo — Ford Transit Custom Westfalia Kelsey 2026)</div>
       <div class="badge-urgency important">Important</div>
     </div>
-    <div class="card-context">Documentation prête : checklist inspection, prix 2026, risques UE, expositions vanlife. JCH décide : achat neuf/occasion, budget, timing.</div>
+    <div class="card-context">RÉSOLU : Lupo livré le 30/07/2026 (Westfalia Kelsey, pas Stylevan). Installation IOT en cours (deadline 15/12).</div>
     <div class="card-meta">
       <div class="card-project">TRAVELS · VAN</div>
-      <div class="card-deps"><div class="dep-tag">Checklist achat ✓</div><div class="dep-tag">Analyse risques UE ✓</div></div>
-      <div class="card-who">Décision : <strong>JCH</strong></div>
+      <div class="card-deps"></div>
+      <div class="card-who">Acheté ✓ : <strong>JCH</strong></div>
     </div>
-    <div class="card-check"><input type="checkbox" id="t32" onchange="toggleDoneCard(this)" ><label for="t32">Marquer comme fait</label></div>
+    <div class="card-check"><input type="checkbox" id="t32" onchange="toggleDoneCard(this)" checked><label for="t32">Terminée ✓</label></div>
   </div>
 
   <div class="card" data-urgency="important" data-project="FUTURE_INVEST" data-status="todo">
@@ -549,6 +551,62 @@
     <div class="card-check"><input type="checkbox" id="t35" onchange="toggleDoneCard(this)" ><label for="t35">Marquer comme fait</label></div>
   </div>
 
+  <div class="card" data-urgency="critique" data-project="IOT" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">🔴 Commander 8 capteurs Zigbee (~88€) + silentblocs + coating + UPS X1200</div>
+      <div class="badge-urgency critique">Critique</div>
+    </div>
+    <div class="card-context">P0 van Lupo — deadline 15/12/2026. RPi 5 opérationnel (HAOS 18.3). Reste : 8 capteurs Zigbee, silentblocs, coating, UPS X1200 (remplace X1205).</div>
+    <div class="card-meta">
+      <div class="card-project">IOT · VANLIFE</div>
+      <div class="card-deps"></div>
+      <div class="card-who">Décision achat : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t36" onchange="toggleDoneCard(this)" ><label for="t36">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="important" data-project="WILDNEXUS" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">Commander RAK3172-T EU868 ×2 + Swissbit S-45U ×3 (~82€)</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">Verdict conseil 2026-10-25 : scinder le panier — verrouiller LoRa (RAK3172-T, RAK Store) + microSD pSLC (Swissbit, DigiKey). Le reste reporté à la reprise.</div>
+    <div class="card-meta">
+      <div class="card-project">WILDNEXUS · WP02</div>
+      <div class="card-deps"></div>
+      <div class="card-who">Décision achat : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t37" onchange="toggleDoneCard(this)" ><label for="t37">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="important" data-project="JCHYTECH" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">Nommer les 2 administrateurs fondateurs Vetalyx (Art. 33)</div>
+      <div class="badge-urgency important">Important</div>
+    </div>
+    <div class="card-context">Statuts SRL : Art. 33 prévoit 1. Peiwen QI + 2-3 [à désigner]. Décision JC requise avant validation notaire.</div>
+    <div class="card-meta">
+      <div class="card-project">JCHYTECH · VETALYX</div>
+      <div class="card-deps"></div>
+      <div class="card-who">Décision : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t38" onchange="toggleDoneCard(this)" ><label for="t38">Marquer comme fait</label></div>
+  </div>
+
+  <div class="card" data-urgency="critique" data-project="AI_IT_TOOLS" data-status="todo">
+    <div class="card-top">
+      <div class="card-title">Clean sécurité — rotation des secrets exposés (dépôt public)</div>
+      <div class="badge-urgency critique">Critique</div>
+    </div>
+    <div class="card-context">Le dépôt github.com/JCHYTECH/PKA_JCH est PUBLIC. Inventaire complet dans docs/system/revue-secrets-2026-10-28.md. À faire : (1) révoquer la clé sk-u8gRGa7m… présente en clair dans 2 fichiers suivis ; (2) révoquer sk-96324bf7… et sk-proj-ancROd… puis renommer les fichiers de JCH_PRIVATE/notes_apple_secrets/ indexés par le knowledge graph ; (3) changer le mot de passe HA/MQTT ([REDACTED-MQTT-PASS], dans 7 fichiers suivis) ; (4) changer le mot de passe de l'AP du van ([REDACTED-AP-PASS]) ; (5) remplacer le mot de passe de session M1 — 4 chiffres, à un chiffre de l'ancien, décision JC du 2026-10-28 de le garder pour l'instant ; (6) purge d'historique git si souhaitée, après rotation.</div>
+    <div class="card-meta">
+      <div class="card-project">AI_IT_TOOLS · Sécurité</div>
+      <div class="card-deps"><div class="dep-tag">Décision JC sur la purge d'historique</div></div>
+      <div class="card-who">Décision : <strong>JCH</strong></div>
+    </div>
+    <div class="card-check"><input type="checkbox" id="t39" onchange="toggleDoneCard(this)" ><label for="t39">Marquer comme fait</label></div>
+  </div>
+
 </div>
 
 <div class="statsbar">
@@ -556,7 +614,7 @@
   <div class="stat"><span class="stat-dot urgent"></span><strong id="cnt-urgent">—</strong> urgentes</div>
   <div class="stat"><span class="stat-dot important"></span><strong id="cnt-important">—</strong> importantes</div>
   <div class="stat"><span class="stat-dot long"></span><strong id="cnt-long">—</strong> long terme</div>
-  <div class="stat" style="margin-left:auto;">Mis à jour : 2026-07-23</div>
+  <div class="stat" style="margin-left:auto;">Mis à jour : 2026-10-28</div>
 </div>
 
 <script>

@@ -1,6 +1,6 @@
 # État des projets — One-Pager
 > Tableau de bord unique de tous les projets actifs PKA_JCH.
-> Dernière mise à jour : 2026-10-19 par Dobby 🦉 — deadline IOT Van prolongée au 15/12 (JC). RPi 5 boot résolu, HAOS 18.3. VETALYX réactivé (juridique).
+> Dernière mise à jour : 2026-10-30 par Dobby 🦉 — ajout du projet 12_VENTE_OCCASION (Phase 1).
 > 
 > **Lecture :** 🔴 = P0 deadline dure, 🟢 = actif autonome, ⚪ = gelé/reporté
 
@@ -21,6 +21,7 @@
 | 2 | **PHOTO_NATURE** | 🟢 autonome | INDEX à jour, keyworder fonctionnel, presets Argus | — (tourne seul) | Lynx, Nova, Héron |
 | 3 | **PHOTO_AI_JURY** | 🟢 autonome | argus_critique.db actif (58 analyses) | Activer MCP Lightroom (30 min JC) | Argus |
 | 4 | **AI_IT_TOOLS** | 🟢 autonome | 10 thread files créés, skills actifs | Maintien | Dobby, Forge |
+| 9 | **VENTE_OCCASION** | 🟢 Phase 1 | Structure + skill `vente-occasion` créés (30/10). Pipeline : estimation prix BE, annonce FR/NL, recommandation site, suivi réponses, rentabilité. | Déposer un 1er objet test dans `inbox/`. | Dobby (+ Pie à confirmer) |
 
 ---
 
@@ -37,7 +38,7 @@
 | # | Projet | Statut | Raison du gel | Reprise prévue |
 |---|--------|--------|---------------|----------------|
 | 6 | **WILDNEXUS** — regroupe InsectNet + NEXUS_ACOUSTIC | ⚪ gelé | Bench loop non repris (focus IOT/VETALYX). Panier Mouser ~279€ non commandé. InsectNet + NEXUS_ACOUSTIC dépendent du P0. | À replanifier post-van |
-| 7 | **ARTEON + WildLens** | ⚪ gelé | Relance éditoriale exige créativité JC | À replanifier |
+| 7 | **ARTEON + WildLens** | 🟢 réactivé | Édition #5 rédigée (authenticité/provenance/éthique), launchd hebdo réactivé | Reprise cadence hebdo |
 | 8 | **TRAVELS** | ⚪ gelé | Planif voyage en roulant. Meuble banquette 104×55×25 en design. | En roulant |
 
 ---
@@ -57,10 +58,10 @@
 
 | Indicateur | Valeur |
 |------------|--------|
-| Projets totaux | 8 |
+| Projets totaux | 9 |
 | 🔴 P0 (deadline dure) | 1 — IOT/Vanlife |
 | 🔶 Réactivé | 1 — VETALYX (juridique) |
-| 🟢 P1 (autonome) | 3 — PHOTO_NATURE, PHOTO_AI_JURY, AI_IT_TOOLS |
+| 🟢 P1 (autonome) | 4 — PHOTO_NATURE, PHOTO_AI_JURY, AI_IT_TOOLS, VENTE_OCCASION |
 | ⚪ Gelés | 3 — WILDNEXUS (regroupe InsectNet + NEXUS_ACOUSTIC), ARTEON, TRAVELS |
 | Prochaine échéance | **15 décembre 2026** — installation IOT Van |
 
