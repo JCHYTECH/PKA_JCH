@@ -1,8 +1,8 @@
 # Thread — ARTEON
 
 > Living document — mis à jour automatiquement par Dobby 🦉 en fin de session.
-> **Dernière mise à jour** : 2026-10-22 — état consolidé : relance toujours bloquée (0 édition depuis 6 mois)
-> **Statut** : 🟠 bloqué — relance éditoriale non démarrée
+> **Dernière mise à jour** : 2026-10-24 — relance lancée : édition #5 rédigée, launchd hebdo réactivé
+> **Statut** : 🟢 relance engagée — production WildLens reprise
 
 ---
 
@@ -35,16 +35,22 @@ Photographie naturaliste éditoriale — marque ARTEON + service WildLens + futu
 
 | Date | Décision | Contexte |
 |------|----------|----------|
+| 2026-10-24 | Positionnement éditorial : se démarquer par l'info, les questions soulevées, les solutions (pas les « 5 astuces ») | Différenciation vs blogs/newsletters |
+| 2026-10-24 | Réactivation launchd `com.dobby.wildlens-weekly` + édition #5 rédigée | Reprise cadence hebdo |
 | 2026-07-02 | WildLens promu service prioritaire | Sans extraction en projet autonome |
 | 2026-07-02 | INDEX croisés ARTEON/PHOTO_AI_JURY/PHOTO_NATURE | 3 couches d'un même système unifiées |
 
 ---
 
-## Prochaine étape
+## TTD — Pending
 
-**Action** : Relancer production WildLens (édition #2 avec contenu réel)
-**Deadline** : Dès que possible
-**Responsable** : Dobby, Forge (Ghost API)
+- [ ] **P1 · — · (Dobby + Forge)** Relancer production WildLens (édition #2 contenu réel) — Ghost API
+- [ ] **P2 · — · (JC)** Allouer du temps créatif éditorial — blocage structurel : 7 étapes roadmap vides depuis juillet
+
+## TTD — Done (session 2026-10-24)
+
+- [x] 2026-10-24 · Positionnement éditorial différencié validé
+- [x] 2026-10-24 · launchd wildlens-weekly réactivé + édition #5 rédigée
 
 ---
 
