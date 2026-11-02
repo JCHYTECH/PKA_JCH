@@ -44,11 +44,13 @@ Infrastructure IA et outils PKA — maintenance du système Dobby, skills, mémo
 
 ---
 
-## Prochaine étape
+## TTD — Pending
 
-**Action** : Maintenance — utiliser `pka-thread-file` à chaque fin de session projet
-**Deadline** : Continu
-**Responsable** : Dobby 🦉
+- [ ] **P2 · — · (Dobby)** Maintenance continue — `pka-thread-file` + boucle mémoire à chaque fin de session
+
+## TTD — Done (session 2026-10-22)
+
+- [x] 2026-10-22 · Boucle mémoire autonome + gouvernance MCP + tracing coûts + banc + export portable
 
 ---
 
