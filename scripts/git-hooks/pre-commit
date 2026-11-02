@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # pre-commit — bloque l'ajout d'un secret dans un fichier suivi.
-# PKA_JCH / Dobby 🦉 — 2026-10-28
+# PKA_JCH / Dobby 🦉 — 2026-10-28 (v2 2026-11-02 : grep unique + faux positifs renvois)
 #
 # Ne contrôle que les LIGNES AJOUTÉES par le commit : les secrets déjà présents
 # dans l'historique ne bloquent pas, mais aucune récidive n'est possible.
@@ -19,10 +19,12 @@ PATTERNS=(
   '-----BEGIN [A-Z ]*PRIVATE KEY-----'
 )
 
-# Motifs « libellé : valeur » — la valeur ne doit pas être un renvoi ni un gabarit
+# Motifs « libellé : valeur » — la valeur doit contenir un chiffre : un renvoi
+# (« voir JCH_PRIVATE/… »), une prose (« elle permet de… ») ou un appel de fonction
+# (get_app_password()) n'est PAS un secret.
 LABEL_PATTERNS=(
-  '(mot de passe|password|passwd|MDP)[[:space:]]*[:=][[:space:]]*[^ `\[<(]{4,}'
-  '\| *(Password|Mot de passe) *\| *`?[A-Za-z0-9!@#$%^&*._-]{4,}`? *\|'
+  '(mot de passe|password|passwd|mdp|MDP)[[:space:]]*[:=][[:space:]]*[^ `\[<(]*[0-9][^ `\[<(]*'
+  '\| *(Password|Mot de passe) *\| *`?[A-Za-z0-9!@#$%^&*._-]*[0-9][A-Za-z0-9!@#$%^&*._-]*`? *\|'
 )
 
 # Chemins exclus : coffre non versionné, plugins, binaires
@@ -38,34 +40,29 @@ ADDED=$(printf '%s\n' "$DIFF" | awk '
 
 [ -z "$ADDED" ] && exit 0
 
-FOUND=0
+# Un seul grep sur tout le flux (rapide), plutôt qu'un fork par ligne.
+COMBINED=$(printf '%s\n' "${PATTERNS[@]}" "${LABEL_PATTERNS[@]}" | paste -sd'|' -)
+
+HITS=$(printf '%s\n' "$ADDED" | grep -E -- "$COMBINED" || true)
+
+[ -z "$HITS" ] && exit 0
+
+echo
+echo "✗ Commit bloqué — un secret semble présent dans les lignes ajoutées."
+echo
 while IFS=$'\t' read -r file line; do
   [ -z "${file:-}" ] && continue
   [[ "$file" =~ $EXCLUDE_RE ]] && continue
-  for p in "${PATTERNS[@]}" "${LABEL_PATTERNS[@]}"; do
-    if printf '%s' "$line" | grep -Eq -- "$p"; then
-      if [ $FOUND -eq 0 ]; then
-        echo
-        echo "✗ Commit bloqué — un secret semble présent dans les lignes ajoutées."
-        echo
-      fi
-      FOUND=1
-      printf '  %s\n    %s\n' "$file" "$(printf '%s' "$line" | cut -c1-120)"
-      break
-    fi
-  done
-done <<<"$ADDED"
+  printf '  %s\n    %s\n' "$file" "$(printf '%s' "$line" | cut -c1-120)"
+done <<< "$HITS"
 
-if [ $FOUND -eq 1 ]; then
-  cat <<'MSG'
+cat <<'MSG'
 
   Règle : aucun secret dans un fichier suivi par git.
   → déplacer la valeur dans JCH_PRIVATE/credentials-central.md
   → ne laisser dans le document qu'un renvoi : « voir JCH_PRIVATE/credentials-central.md »
 
-  Contournement assumé : git commit --no-verify
+  Faux positif possible (renvoi/prose contenant un chiffre) ? Contournement assumé :
+  git commit --no-verify — mais vérifie la ligne affichée ci-dessus avant.
 MSG
-  exit 1
-fi
-
-exit 0
+exit 1
