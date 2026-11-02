@@ -33,11 +33,14 @@ Moteur IA Argus de critique photo naturaliste — 58 analyses cumulées, score m
 
 ---
 
-## Prochaine étape
+## TTD — Pending
 
-**Action** : Activer MCP Lightroom (Start Server) + prochaine fournée d'analyses
-**Deadline** : —
-**Responsable** : Argus
+- [ ] **P1 · — · (JC + Argus)** Activer MCP Lightroom (Start Server) — 30 min JC
+- [ ] **P2 · — · (Argus)** Prochaine fournée d'analyses (58 cumulées)
+
+## TTD — Done (session 2026-10-22)
+
+- [x] 2026-10-22 · Outil détection IA niveau 1 (C2PA + EXIF) ajouté
 
 ---
 

@@ -32,11 +32,13 @@ Photographie naturaliste terrain — boîtiers Canon R10 + 90D, optiques RF 200-
 
 ---
 
-## Prochaine étape
+## TTD — Pending
 
-**Action** : —
-**Deadline** : —
-**Responsable** : Lynx, Nova, Héron
+- [ ] **P2 · — · (Dobby)** Maintien — tourne seul (keyworder + presets opérationnels, rien de bloquant)
+
+## TTD — Done (session 2026-07-03)
+
+- [x] 2026-07-03 · Thread file créé
 
 ---
 
