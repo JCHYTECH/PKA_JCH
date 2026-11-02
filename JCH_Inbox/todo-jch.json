@@ -488,7 +488,7 @@
       "urgency": "critique",
       "project": "AI_IT_TOOLS",
       "project_sub": "Sécurité",
-      "context": "Le dépôt github.com/JCHYTECH/PKA_JCH est PUBLIC. Inventaire complet dans docs/system/revue-secrets-2026-10-28.md. À faire : (1) révoquer la clé sk-u8gRGa7m… présente en clair dans 2 fichiers suivis ; (2) révoquer sk-96324bf7… et sk-proj-ancROd… puis renommer les fichiers de JCH_PRIVATE/notes_apple_secrets/ indexés par le knowledge graph ; (3) changer le mot de passe HA/MQTT ([REDACTED-MQTT-PASS], dans 7 fichiers suivis) ; (4) changer le mot de passe de l'AP du van ([REDACTED-AP-PASS]) ; (5) remplacer le mot de passe de session M1 — 4 chiffres, à un chiffre de l'ancien, décision JC du 2026-10-28 de le garder pour l'instant ; (6) purge d'historique git si souhaitée, après rotation.",
+      "context": "Le dépôt github.com/JCHYTECH/PKA_JCH est PUBLIC. Inventaire complet dans docs/system/revue-secrets-2026-10-28.md. À faire : (1) révoquer la clé sk-u8gRGa7m… présente en clair dans 2 fichiers suivis ; (2) révoquer sk-96324bf7… et sk-proj-ancROd… puis renommer les fichiers de JCH_PRIVATE/notes_apple_secrets/ indexés par le knowledge graph ; (3) changer le mot de passe HA/MQTT (Dobby****, dans 7 fichiers suivis) ; (4) changer le mot de passe de l'AP du van (30d3****) ; (5) remplacer le mot de passe de session M1 — 4 chiffres, à un chiffre de l'ancien, décision JC du 2026-10-28 de le garder pour l'instant ; (6) purge d'historique git si souhaitée, après rotation.",
       "deps": [
         "Décision JC sur la purge d'historique"
       ],

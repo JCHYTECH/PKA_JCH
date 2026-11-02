@@ -6,7 +6,7 @@
 �
 �https://birdnet-team.github.io/BirdNET-Analyzer/index.html
 
-[REDACTED-OPENAI-KEY]
+[clé OpenAI révoquée — voir JCH_PRIVATE/credentials-central.md]
 
 ZDelivery Lot de 3 adaptateurs série USB-C vers TTL pour 3,3 V et 5 V compatibles avec FT232RL - Compatible avec Arduino avec e-book (français non garanti) Hailege 2pcs ESP32-CAM camer OV2640 Module WiFi Bluetooth 2MP TF Card Camera Development Board    
 

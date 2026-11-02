@@ -127,3 +127,12 @@ JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/memory-eval/run-*.json
 # Obsidian — binaires plugins & backups locaux
 .obsidian/plugins/
 .obsidian/community-plugins.json.bak
+
+# Secrets vivants — untracked 2026-11-02 (rotation à faire avant purge d'historique)
+_local/zigbee2mqtt/
+JCH_Inbox/03_PROJECTS/11_IOT/_shared/mapping-esneux-pression.json
+JCH_Inbox/03_PROJECTS/11_IOT/iot-van/specs/mapping-lupo-assiette.json
+JCH_Inbox/03_PROJECTS/11_IOT/iot-van/specs/mapping-lupo-assiette-m5-test.json
+JCH_Inbox/03_PROJECTS/11_IOT/iot-van/specs/SPEC-ASSIETTE-VAN-IPHONE-MQTT.md
+JCH_Inbox/03_PROJECTS/11_IOT/iot-van/OPERATIONS-CAN-OBD.md
+scripts/pka_sensorlog_http_bridge.py

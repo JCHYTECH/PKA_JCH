@@ -76,7 +76,7 @@ Pont générique réutilisable par toute instance et tout capteur non-Discovery-
 
 ```json
 {
-  "broker": {"host": "192.168.129.16", "port": 1883, "username": "jchavaux", "password": "[REDACTED-MQTT-PASS]"},
+  "broker": {"host": "192.168.129.16", "port": 1883, "username": "jchavaux", "password": "dobby****"},
   "device": {"identifiers": ["lupo"], "name": "Lupo"},
   "source_topic": "lupo/assiette",
   "sensors": [

@@ -1682,10 +1682,10 @@ status: generated
 | QWEN.md — PKA_JCH System Pointer (Qwen via OpenRouter) |  |  |  | `JCH_Inbox/99_SYSTEM/tool-pointers/QWEN.md` |
 | Credentials PKA_JCH — Centralisé |  |  |  | `JCH_PRIVATE/credentials-central.md` |
 | CONNECTION DATA |  |  |  | `JCH_PRIVATE/notes_apple_secrets/2026-05-29_CONNECTION_DATA.md` |
-| [REDACTED-TELEGRAM-TOKEN] |  |  |  | `JCH_PRIVATE/notes_apple_secrets/2026-06-02_8904944268AAEOp3aoHaU3444c0RLAnkQVU51x2UAn67E.md` |
+| [token Telegram — voir credentials-central.md] |  |  |  | `JCH_PRIVATE/notes_apple_secrets/2026-06-02_telegram-bot-token.md` |
 | # LLM API Keys — PKA_JCH |  |  |  | `JCH_PRIVATE/notes_apple_secrets/2026-06-03_LLM_API_Keys_PKA_JCH.md` |
-| [REDACTED-OPENAI-KEY] |  |  |  | `JCH_PRIVATE/notes_apple_secrets/2026-06-05_[REDACTED-OPENAI-KEY].md` |
-| [REDACTED-OPENAI-KEY]… |  |  |  | `JCH_PRIVATE/notes_apple_secrets/2026-06-06_[REDACTED-OPENAI-KEY].md` |
+| [clé OpenAI révoquée] |  |  |  | `JCH_PRIVATE/notes_apple_secrets/2026-06-05_openai-api-key.md` |
+| [clé OpenAI projet révoquée] |  |  |  | `JCH_PRIVATE/notes_apple_secrets/2026-06-06_openai-proj-key.md` |
 | Fiche connexion — Raspberry Pi Lupo |  |  |  | `JCH_PRIVATE/rpi-connexion.md` |
 | KIMI.md — PKA_JCH System Pointer (Kimi K2.7 via Moonshot API) |  |  |  | `KIMI.md` |
 | MEMORY — PKA_JCH |  |  |  | `MEMORY.md` |

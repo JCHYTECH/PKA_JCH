@@ -35,7 +35,7 @@ Avancement :
 - ✅ Sensor Logger installé sur iPhone
 - ✅ Configuration MQTT : broker `192.168.129.16:1883`, topic `lupo/assiette`, TCP, sans TLS
 - ✅ Mosquitto add-on actif sur Lupo (port 1883 exposé)
-- ✅ Credentials MQTT enregistrés dans `JCH_PRIVATE/credentials-central.md` (jchavaux/[REDACTED-MQTT-PASS])
+- ✅ Credentials MQTT enregistrés dans `JCH_PRIVATE/credentials-central.md` (jchavaux/dobby****)
 - ⚠️ Capteurs HA NON configurés — voir blocage ci-dessous
 
 ---
