@@ -81,7 +81,7 @@
 - **Sources brutes :** `JCH_Inbox/00_INBOX/` → `/ingest` pour traitement
 - **Projets :** `JCH_Inbox/03_PROJECTS/`
 - **Équipe :** `TEAM/ROSTER.md`
-- **Santé du wiki :** `/lint` (contradictions, orphelins, pages périmées)
+- **Santé du vault :** `python3 scripts/pka_vault_health.py` (forme + fond + recherche → score 0-100)
 
 ---
 
