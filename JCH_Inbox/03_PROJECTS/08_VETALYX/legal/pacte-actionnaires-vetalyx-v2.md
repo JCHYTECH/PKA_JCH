@@ -222,7 +222,7 @@ La Société fournit à chaque Associé :
 - **Trimestriellement** : situation de trésorerie, tableau de bord commercial, comptes de gestion, reporting des accords de représentation. Passage à **mensuel** dès un chiffre d'affaires annuel de 100 000 €.
 - **Annuellement** : comptes définitifs, bilan des accords en cours, prospectus.
 
-DIAHO, en tant qu'actionnaire de référence, dispose d'un droit d'information renforcé : accès aux comptes de gestion et aux indicateurs de la mission de préparation stratégique. Tout Associé peut interroger l'administrateur, qui répond dans les dix (10) jours.
+Tous les Associés disposent des mêmes droits d'information, y compris l'accès aux comptes de gestion et aux indicateurs de la mission de préparation stratégique. Tout Associé peut interroger l'administrateur, qui répond dans les dix (10) jours.
 
 ---
 

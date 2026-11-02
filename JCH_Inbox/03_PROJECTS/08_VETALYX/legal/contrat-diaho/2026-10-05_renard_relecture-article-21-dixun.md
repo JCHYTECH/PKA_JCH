@@ -1,3 +1,6 @@
+eepseek-tui --yolo
+
+
 # NOTE DE RELECTURE — Renard 🦊 — Article 21 « Engagements de Zheda Dixun »
 
 **Date :** 2026-10-05
@@ -16,6 +19,7 @@ L'Article 21 est **structurellement juste** : traiter Dixun comme signataire à 
 ## 1. Mécanisme juridique (Art. 21.1) — ⚠️ À CORRIGER
 
 **Constats.**
+
 - L'expression « stipulations directes exécutoires par chacune des deux autres parties » est **imprécise**. La *stipulation pour autrui* (ancien art. 1121 C. civ. ; aujourd'hui art. 5.104 et s. du Code civil belge) est le mécanisme qui **confère un droit** à un tiers bénéficiaire. Or ici on impose à Dixun des **obligations** — ce n'est pas le bon outil.
 - Le bon mécanisme est l'**adhésion / engagement unilatéral** : Dixun, en signant, *adhère* aux obligations listées. C'est l'équivalent d'une accession à une partie du contrat.
 
@@ -28,6 +32,7 @@ L'Article 21 est **structurellement juste** : traiter Dixun comme signataire à 
 ## 2. Acte d'adhésion séparé — ✅ RECOMMANDÉ
 
 **Oui**, ajouter un **Acte d'Adhésion de Zheda Dixun** (annexé ou signé en même temps), qui :
+
 1. identifie Dixun, DIAHO et VETALYX ;
 2. rappelle que Dixun a pris connaissance du Contrat et de ses annexes ;
 3. énonce que Dixun **adhère expressément** à l'Article 21 et aux Articles 8, 9, 12, 13, 15 et à l'Annexe 10 ;
@@ -40,6 +45,7 @@ L'Article 21 est **structurellement juste** : traiter Dixun comme signataire à 
 ## 3. Solidarité / garantie réciproque (Art. 21.9) — ⚠️ À RENFORCER
 
 **Constats.**
+
 - « Se garantissent réciproquement » est **vague** et ne crée pas de solidarité claire. La solidarité **ne se présume pas** en droit belge : elle doit être **expresse**.
 - « Litige inopposable à VETALYX » est bon (clause *inter se* classique) — à conserver.
 

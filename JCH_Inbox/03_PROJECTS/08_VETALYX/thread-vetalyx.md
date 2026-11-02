@@ -1,7 +1,7 @@
 # Thread — VETALYX
 
 > Living document — mis à jour automatiquement par Dobby 🦉 en fin de session.
-> **Dernière mise à jour** : 2026-10-06 — Contrat-cadre v4.1 + annexes 1→10 ; statuts (exercice fiscal long, administrateurs à nommer) ; business plan V3 recalé + Excel capital nettoyé ; archives consolidées + git commit
+> **Dernière mise à jour** : 2026-10-28 — Réponse DIAHO v4 analysée ; R1–R5 arbitrées (arbitrage Genève, dépeçage droit, garantie Dixun) ; brouillon réponse ; pacte vérifié (anti-dilution, véto, réciprocité)
 > **Statut** : 🔶 actif (juridique) — capital 10 000 € (4 000 libéré), DIAHO 40 % en espèces
 
 ---
@@ -17,8 +17,8 @@ Plateforme de diagnostics vétérinaires rapides — marché européen. **Struct
 | Axe | Statut | Détail |
 |-----|--------|--------|
 | Global | ⚪ | Veille, reprise septembre |
-| Capital | 🟡 | **Pacte v1 + convention bloc v1 rédigés (30/09)**. Arbitrage JC 01/10 : DIAHO 40 % en espèces (1 600 €), capital 10 000 € (4 000 libéré), véto → statuts, seuils 50 %. Reste : corrections fond + notaire. |
-| Contrat-cadre | 🟡 | **v4.1 (06/10)** — protections v1 restaurées (stock lancement, écoulement 12 mois, cession/changement contrôle, assurance, garanties, marques, résiliation + 8 manquements graves DIAHO, force majeure, notifications, nullité partielle) ; annexes réorganisées 1→10 (fusion specs+données → Annexe 2, QA reportée Annexe 3) ; répartition inscrite. **EN officielle (Jade)**. Reste : validation Bosseloir + notaire. |
+| Capital | 🟡 | **Pacte v2 (05/10) + arbitrages 28/10** : R5 confirmé (40 % = 40 % voix + 1 siège/3) ; L1/L2/L4 verrouillées (pas de véto sur entrée investisseur, anti-dilution pro-rata, bloc fondateurs majorité) ; Art 25 aligné ; réciprocité checkée (4 asym. fondateurs / 2 DIAHO). Reste : mécanique 6 000 € + notaire. |
+| Contrat-cadre | 🟡 | **v4 chinoise reçue (27/10)** : arbitrage Hangzhou/CIETAC + droit chinois + DIAHO seule (pas de tiers). **Notre réponse (brouillon 28/10)** : siège neutre Genève/ICC, dépeçage droit belge/chinois, garantie Dixun + back-to-back, objet social conditionnel. Reste : envoi (relecture Renard + traduction Jade). |
 | Business Plan | 🟡 | **V3 recalé (06/10)** — chiffres 2026-2030 alignés sur le modèle Excel, DIAHO 40 % dès la constitution, Belgique/AFMPS-FAMHP, mission 120 K€, localisation en option ; Excel nettoyé (capital 10 K€/4 K€ ajouté + 2 008 #REF! → 0). Reste : export PDF/statique pour tiers. |
 | Mission stratégique | ✅ | Article 6 v3 — 100 K€ + 20 K€ (validations cliniques + sérothèque) |
 | Checklist DIAHO | ✅ | 22 éléments (2 tableaux FR/ZH), revue ZH « Jade à confirmer » |
@@ -48,14 +48,31 @@ Plateforme de diagnostics vétérinaires rapides — marché européen. **Struct
 | 2026-10-06 | **Administrateurs + DIAHO fiscal** | Statuts Art. 33 : 1. Peiwen QI, 2-3 [à désigner] (non tranché) ; pas d'exigence d'éléments fiscaux DIAHO |
 | 2026-10-06 | **Business plan recalé** | BP V3 : chiffres 2026-2030 (CA 299,7 K€ → 7,2 M€ ; EBITDA 41 K€ → 4,2 M€) alignés sur le modèle ; DIATECH→Vetalyx purgé ; DIAHO 40 % dès la constitution (espèces), Belgique/AFMPS-FAMHP, mission 120 K€, localisation en option ; Excel : capital 10 K€/4 K€ + 2 008 #REF! neutralisés |
 | 2026-10-06 | **Ordre & archivage** | INDEX.md réécrit, tout l'historique consolidé sous `_archive/legal/`, `.docx` obsolètes archivés, git commit `66d2b84` (baseline VETALYX) |
+| 2026-10-28 | **Réponse DIAHO analysée (R1–R5)** | Arbitrage : refus Hangzhou → Genève/ICC (condition) ; droit : belge + chinois limité aux transactions liées ; garantie Dixun + back-to-back ; objet social : extension OK sous réserve ICS ; 40 % = 40 % voix + 1 siège/3 |
+| 2026-10-28 | **Lignes anti-blocage verrouillées (L1/L2/L4)** | Pas de véto DIAHO sur entrée investisseur/capital ; anti-dilution pro-rata uniquement ; bloc fondateurs à la majorité |
+| 2026-10-28 | **Réciprocité pacte** | Art. 21 laissé asymétrique (option B) ; Art. 25 aligné (même droit d'info) ; 6 asymétries assumées (4 fondateurs / 2 DIAHO) |
+| 2026-10-28 | **Brouillon réponse DIAHO** | Genève/ICC, « commercially untenable », disclaimer sans préjudice, garantie + back-to-back (and) — à relire Renard puis traduction Jade |
 
 ---
 
-## Prochaine étape
+## TTD — Pending
 
-**Action** : ✅ Passe v2.2 **exécutée** (06/10) — contrat-cadre v4.1 + annexes 1→10, statuts (exercice long), **business plan V3 recalé + Excel capital nettoyé**, archives consolidées + git commit. → Prochaine : nommer les 2 administrateurs fondateurs (Art. 33) ; validation notaire (mécanique 6 000 €, ISC, exercice) ; re-traduction EN (Jade) des clauses ajoutées ; export BP statique (PDF) pour tiers.
-**Deadline** : —
-**Responsable** : JC (nommer 2 administrateurs), Notaire (validation), Clio 📜 (qualification DM), Jade 🦩 (re-traduction EN des clauses ajoutées)
+- [ ] **P0 · 28/10 · (JC/Renard)** Envoyer la réponse DIAHO (relecture Renard + traduction Jade)
+- [ ] **P0 · — · (Notaire)** Mécanique libération 6 000 € (pro-rata ? dilution si non-libération ?) — le nœud du 40 %
+- [ ] **P1 · — · (JC)** Nommer les 2 administrateurs fondateurs (Art. 33)
+- [ ] **P1 · — · (Notaire)** Validation notaire (mécanique 6 000 €, ISC, exercice fiscal)
+- [ ] **P1 · — · (Renard)** Verrouiller anti-dilution pro-rata + pas de véto DIAHO sur entrée investisseur (Art. 5 pacte)
+- [ ] **P1 · — · (JC)** Seuil drag-along (75 % recommandé)
+- [ ] **P1 · — · (Renard)** Vérifier double qualité Peiwen QI (fondatrice 15 % + administratrice DIAHO)
+- [ ] **P1 · — · (Jade)** Re-traduction EN des clauses ajoutées
+- [ ] **P2 · — · (Clio)** Trancher qualification AFMPS/FAMHP (DM vétérinaire vs médicament)
+- [ ] **P2 · — · (Dobby)** Export BP statique (PDF) pour tiers
+- [ ] **P2 · — · (veille)** 7 briefs actifs en mode exploration (voir tableau ci-dessous)
+
+## TTD — Done (session 2026-10-28)
+
+- [x] 2026-10-28 · Réponse DIAHO v4 analysée + R1–R5 arbitrées + brouillon réponse (Genève/ICC, garantie Dixun) + pacte vérifié (anti-dilution, véto, réciprocité) + Art 25 aligné
+- [x] 2026-10-06 · Contrat-cadre v4.1 + annexes 1→10 + statuts (exercice long) + BP V3 recalé + Excel nettoyé
 
 ### Briefs actifs (mode exploration, en veille)
 
@@ -81,6 +98,7 @@ Plateforme de diagnostics vétérinaires rapides — marché européen. **Struct
 | 2026-07-07 | Analyse note cadrage Alain Depinois (AWDN) — 4 scénarios MVP | `TEAM_Inbox/2026-07-07_dobby_analyse-note-cadrage-vetalyx-depinois.md` |
 | 2026-08-10 | Analyse entrée capital DIAHO (Jade v2) + revue Renard | `2026-08-10_jade_traduction-analyse-entree-diaho-vetalyx-FR-ZH V1.md` |
 | 2026-08-18 | Fusion contrat-cadre v3 + checklist DIAHO + Quality Agreement (brouillon) | `FF-Contrat-Cadre_..._v3-mission-preparation-strategique.md`, `2026-08-18_dobby_checklist-documents-diaho-entree-capital-FR-ZH.md` |
+| 2026-10-28 | Réponse DIAHO v4 analysée ; R1–R5 arbitrées ; brouillon réponse ; pacte vérifié | `legal/2026-10-28_dobby_analyse-reponse-chinois-v4.md`, `renard_analyse-coherence|paranoia|check-reciprocite|relecture|checklist-verification`, `dobby_brouillon-reponse-diaho-v4.md` |
 
 ---
 
