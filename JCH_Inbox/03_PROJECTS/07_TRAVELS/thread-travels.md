@@ -1,7 +1,7 @@
 # Thread — TRAVELS
 
 > Living document — mis à jour par Dobby 🦉 en fin de session.
-> **Dernière mise à jour** : 2026-11-05 — clarification de la file DÉCOUVERTES : 590 entrées journalières, 50 éléments résiduels
+> **Dernière mise à jour** : 2026-11-12 — fiche alimentation SELPHY CP1300 (12V van) déposée dans `van technique/ELECTRICITE/`
 > **Statut** : 🟢 actif — pipeline DÉCOUVERTES en fonctionnement continu
 
 ---
@@ -39,6 +39,7 @@ workspace PKA.
 
 | Date | Décision | Contexte |
 |------|----------|----------|
+| 2026-11-12 | SELPHY CP1300 : alimentation 12V du van — boost DC-DC 12V→24V retenu | Fiche + BOM dans `van technique/ELECTRICITE/selphy-cp1300-alimentation-12v.md` ; écartés 30V et 220V AC |
 | 2026-10-19 | Lupo Planner synchronisé avec DÉCOUVERTES | Import JSON généré |
 | 2026-10-04 | INDEX restructuré | 4 axes clarifiés |
 | 2026-08-21 | Voyage Italie documenté | 21/08 → 19/09 |
@@ -50,6 +51,10 @@ workspace PKA.
 - [ ] **P2 · — · (Cigogne + Dobby)** Traiter 36 `skipped` (OCR échoué → vision forcée) + 9 `parked_routes` + 5 `rejected`
 - [ ] **P2 · — · (Cigogne)** Finaliser le meuble banquette (design 104×55×25)
 - [ ] **P2 · — · (JC + Dobby)** Maquette boîte vélo pliant → marquer axes/boîtier/chainring → valider encoches
+
+## TTD — Done (session 2026-11-12)
+
+- [x] 2026-11-12 · Fiche alimentation SELPHY CP1300 12V (boost 12V→24V + porte-fusible 5A + schéma de montage) déposée et imprimée
 
 ## TTD — Done (session 2026-11-05)
 
