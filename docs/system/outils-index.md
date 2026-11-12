@@ -41,6 +41,66 @@
 - scripts/pka_vault_maintenance.py — Maintenance vault Obsidian
 - scripts/pka_structure_check.py — Vérifie la structure du workspace
 
+## Commandes `bin/` — réconciliation (2026-11-12)
+
+> Ajout de 36 outils présents dans `bin/` mais absents de l'index. Tri effectué avec JC
+> le 2026-11-12 : 11 outils obsolètes archivés dans `_local/archives/bin/`.
+
+### Orchestration & loops
+
+- bin/pka-loop — Commande `/loop` unifiée (6 loops PKA, anatomie Cherny)
+- bin/pka-chain — Orchestrateur cross-loop (File-based Event Bus, `_local/chains/`)
+- bin/pka-persist — Exécution persistante des loops post-session
+- bin/pka-gate — Garde-fou pré-action (skill `decision-gate`)
+- bin/pka-route — Route les livrables TEAM_Inbox vers leur destination
+- bin/pka-search — Recherche web native DeepSeek (Search & Fetch)
+- bin/pka-cleanup — Nettoie les artefacts de session PKA
+- bin/pka-snapshot — Snapshot d'état + détection de dérive des State files
+- bin/pka-memory-hook — Capture mémoire auto post-session
+- bin/pka-graphify-auto — Lance `graphify update` après modifications
+
+### Surveillance & watch (launchd)
+
+- bin/pka-watch-inbox — Surveille `00_INBOX/` (nouveaux fichiers)
+- bin/pka-watch-host — Santé machine hôte (disque, Time Machine, CPU)
+- bin/pka-watch-box — Surveille la box Proximus (ping LAN+WAN)
+- bin/pka-watch-deadline — Surveille les échéances projets
+- bin/pka-watch-freshness — Fraîcheur des State files
+- bin/pka-watch-bluetti — Surveille les prix Bluetti
+
+### Installeurs LaunchAgent
+
+- bin/install-bluetti-price-watch-launchd.sh — LaunchAgent watch Bluetti
+- bin/install-box-watch-launchd.sh — LaunchAgent watch box
+- bin/install-host-watch-launchd.sh — LaunchAgent watch hôte
+- bin/install-loop-watcher.sh — LaunchAgent loop-watcher
+- bin/install-memory-review-launchd.sh — LaunchAgent boucle mémoire
+- bin/install-overpass-backfill-launchd.sh — LaunchAgent backfill Overpass
+- bin/install-dobby-retro.sh — LaunchAgent rétro quotidienne Dobby
+- bin/install-git-hooks.sh — Active le hook pre-commit versionné
+
+### Sauvegarde & M1
+
+- bin/pka-backup — Sauvegarde PKA vers M1 (rsync)
+- bin/m1-sync — Rsync datasets M1 (pull/push)
+- bin/m1-rearm — Réarme le Mac mini M1 après (re)démarrage
+- bin/m1-wake — Réveille le M1 (Wake-on-LAN) + attend SSH
+- bin/m1-datasets-mount.sh — Monte les datasets M1 via SSHFS (macFUSE)
+
+### Dobby
+
+- bin/dobby.sh — Lanceur unifié PKA (v2)
+- bin/dobby-speak — Passerelle Dobby → Karotz (fait parler le lapin)
+- bin/dobby-voice — Conversation vocale native (Gemini Live, voix Ursa)
+
+### Lanceurs & divers
+
+- bin/lancer-codex-model.command — Lanceur Codex générique (choix modèle OpenRouter)
+- bin/lancer-lupo-planner.command — Lupo Planner (serveur local + navigateur)
+- bin/qwen — Wrapper CLI Qwen (→ `scripts/qwen.py`)
+- bin/gateway — Lance la gateway unifiée PKA
+- bin/overpass-backfill — Test Overpass + backfill fiches sans réserves
+
 ## Memory Pipeline
 
 - scripts/pka_memory_capture.py — **Capture mémoire unifiée v0.2** — API `{fact, category, importance, trust}` avec déduplication, auto-reconcile (override intelligent), memory guard (pre-write injection scan), routage (team.db, MEMORY.md, knowledge, USER.md). Niveaux de confiance : `--trust internal|external|untrusted`. Auto-extract : `--auto-extract` via Gemma3 12B (Ollama M1) ou DeepSeek V3 (fallback).
@@ -92,6 +152,7 @@
 - bin/sync-to-m1 — Rsync workspace vers M1
 - scripts/install_vault_maintenance_launchd.sh — Install cron vault maintenance
 - scripts/pka_vault_maintenance.py — **Étendu (2026-07-13)** — Maintenance nocturne 6 étapes : wikilink patcher, file placement checker, git nightly commit, **dedup detector (nouveau)**, **broken link scanner (nouveau)**, **orphan detector (nouveau)**
+- bin/pka-print — **Impression** : convertit (.md/.txt/.docx/.html/.odt) en PDF (pandoc+xelatex, CJK) puis imprime. Règle durable (2026-11-12) : **toujours EPSON_ET_8550_Series_3, recto seul** (`--list`, `--dry-run`, `--copies N`, `--printer`, `--duplex` en exception)
 
 ## Navigation Web (Cloudflare bypass)
 
@@ -106,7 +167,6 @@
 
 ## IA & LLM
 
-- scripts/deepseek_chat.py — Client DeepSeek API
 - scripts/claude_openrouter.py — Appel LLM one-shot via OpenRouter (Claude par défaut, `-m` pour changer)
 - scripts/or_route.py — Routeur auto de modèles OpenRouter (type de tâche → modèle)
 - scripts/or_image.py — Génération d'image via OpenRouter (Gemini nano-banana, sauvegarde fichier)
@@ -176,13 +236,9 @@
 
 ## Lanceurs
 
-- bin/lancer-claude.command — Lance Claude Code
 - bin/lancer-codex.command — Lance Codex CLI
 - bin/lancer-deepseek.command — Lance DeepSeek TUI
-- bin/lancer-deepseek-r1.command — Lance DeepSeek R1 (14B)
 - bin/lancer-gemini.command — Lance Gemini CLI
-- bin/lancer-gemma4.command — Lance Gemma 4 (Ollama)
-- bin/lancer-qwen3.command — Lance Qwen 3
 - bin/lancer-dashboard.command — Lance le dashboard
 - bin/activate-ssh — Active SSH (M1, RPi)
 - bin/plane-autostart.sh — Autostart Plane
@@ -306,11 +362,11 @@
 - scripts/instinct_search.py — Recherche instincts
 - scripts/instinct_promote.py — Promotion instinct vers connaissance
 - scripts/instinct_write.py — Écriture instinct
-- scripts/instinct_migrate.py — Migration format instincts
+- scripts/migrate_instincts.py — Migration format instincts
 
 ## Projets — EventNet
 
-- scripts/eventnet.php — Backend PHP EventNet
+- scripts/eventnet/eventnet.php — Backend PHP EventNet (dir + service systemd)
 - scripts/eventnet_detect.py — Détection événements
 
 ## Fichiers de config système

@@ -35,7 +35,7 @@ WILDNEXUS_DEVICE est repris (P0 engineering, dégel 12/11) ; INSECTNET et NEXUS_
 | Outil | Emplacement | Usage |
 |-------|-------------|-------|
 | Pipeline InsectNet (13 scripts) | `scripts/insectnet*.py` + `scripts/insectnet.py` | inventory, download, auto-qc, spectrogrammes, segmentation, review |
-| Client Xeno-Canto | `bin/xcapi` (wrapper → `.venv`, package `xenocanto-api`) | téléchargement audio insectes |
+| Client Xeno-Canto | `.venv/bin/xcapi` (package `xcapi` 0.1.0) — wrapper `bin/xcapi` archivé 2026-11-12 | téléchargement audio insectes |
 | BirdNET (externe, Cornell) | outil tiers | classification oiseaux (Analyzer + RPi + BirdNET-Lite embarqué) |
 
 > ⚠️ Ces outils vivent dans `scripts/` et `bin/` (convention PKA), **pas** dans

@@ -5,11 +5,15 @@ pka-print — Imprimer un document sur l'imprimante EPSON ET-8550 (ou autre) via
 Convertit proprement en PDF (pandoc + xelatex, gestion CJK + nettoyage des glyphes
 non rendus) puis imprime via `lp`. Recto seul par défaut.
 
+Règle durable (JC, 2026-11-12) : l'impression PKA se fait TOUJOURS sur
+l'EPSON_ET_8550_Series_3, en recto seulement. --printer et --duplex restent
+disponibles mais sont des exceptions explicites, pas le défaut.
+
 Usage :
-  pka-print <fichier>                  # imprime recto seul (défaut)
-  pka-print <fichier> --duplex         # recto-verso
+  pka-print <fichier>                  # imprime recto seul (défaut, EPSON)
+  pka-print <fichier> --duplex         # recto-verso (exception)
   pka-print <fichier> --copies 2       # 2 exemplaires
-  pka-print <fichier> --printer NAME   # imprimante cible
+  pka-print <fichier> --printer NAME   # imprimante cible (exception)
   pka-print <fichier> --dry-run        # convertit sans imprimer (vérification)
   pka-print --list                     # liste les imprimantes
 
@@ -26,10 +30,13 @@ from pathlib import Path
 PDF_ENGINE = "xelatex"
 MAIN_FONT = "Helvetica"
 CJK_FONT = "PingFang SC"
+DEFAULT_PRINTER = "EPSON_ET_8550_Series_3"  # règle durable : toujours l'EPSON
 
 # Glyphes souvent absents de Helvetica/AAT — remplacés dans les formats texte
 REPLACEMENTS = {
-    "🦉": "",
+    "🦉": "(Dobby)",
+    "✅": "[OK]",
+    "🔄": "[a recree]",
     "→": "->",
     "↔": "<->",
 }
@@ -94,11 +101,11 @@ def print_file(pdf: Path, printer: str, duplex: bool, copies: int) -> str:
 
 
 def main() -> int:
-    p = argparse.ArgumentParser(description="Imprimer sur l'EPSON via CUPS")
+    p = argparse.ArgumentParser(description="Imprimer sur l'EPSON via CUPS (recto par défaut)")
     p.add_argument("file", nargs="?", help="Fichier à imprimer (.md/.txt/.docx/.html/.odt/.pdf)")
     p.add_argument("--duplex", action="store_true", help="Recto-verso (défaut : recto seul)")
     p.add_argument("--copies", type=int, default=1, help="Nombre d'exemplaires")
-    p.add_argument("--printer", help="Imprimante cible (défaut : résolue via lpstat -d)")
+    p.add_argument("--printer", help=f"Imprimante cible (défaut : {DEFAULT_PRINTER})")
     p.add_argument("--dry-run", action="store_true", help="Convertit sans imprimer")
     p.add_argument("--list", action="store_true", help="Liste les imprimantes")
     args = p.parse_args()
@@ -120,7 +127,7 @@ def main() -> int:
         return 1
 
     pdf = to_pdf(src)
-    printer = args.printer or default_printer() or "EPSON_ET_8550_Series_3"
+    printer = args.printer or DEFAULT_PRINTER  # règle durable : EPSON par défaut
     mode = "recto-verso" if args.duplex else "recto seul"
 
     if args.dry_run:
