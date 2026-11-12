@@ -1,111 +1,64 @@
-# WildNexus — Usage Matrix
+# WildNexus — Matrice de politique d'usage
 
-**Version :** v0.2  
-**Date :** 2026-06-30  
-**Statut :** Draft de travail — aligné avec ADR-010 §6 (dual-license)  
-**Propriétaire :** Jean-Claude Havaux — JCHYTECH  
-**Owner juridique :** [[Renard]]
+Version 0.3 — 2026-11-05. Projet de politique à relire avant publication ou contrat. Propriétaire : JCH / JCHYTECH. Revue : Renard + Hermine.
 
----
+## 1. Portée juridique
 
-## 1. Purpose
+Cette matrice qualifie les usages selon la mission du projet et guide le choix des partenaires, distributeurs et contrats. Elle ne modifie pas la licence MIT du firmware.
 
-Cette matrice transforme les principes WildNexus en décisions simples de qualification d'usage.
+Les trois statuts signifient :
 
-Elle sert à :
-- qualifier rapidement un cas d'usage
-- guider la rédaction de ETHICS.md et de la politique d'usage
-- aider au tri des partenaires, distributeurs et demandes entrantes
-- éviter les ambiguïtés entre mission écologique et exploitation technique
+- Autorisé : usage encouragé ou accepté par le projet, sous réserve du droit applicable ;
+- Conditionnel : partenariat ou déploiement examiné avec conditions documentées ;
+- Refusé par le projet : usage contraire à la mission, entraînant un refus de partenariat, de support ou de contrat.
 
-Les trois statuts sont :
-- **Autorisé** : compatible par défaut avec la mission
-- **Conditionnel** : possible sous conditions explicites, revue et validation
-- **Interdit** : incompatible avec la mission et refusé
+Le mot « Interdit » ne doit pas laisser croire que MIT interdit automatiquement cet usage chez un tiers indépendant. MIT permet notamment modification, redistribution et usage commercial, y compris dans un fork propriétaire, sous ses conditions de copyright et de notice. `ETHICS.md` expose la position du projet ; les restrictions opposables à un partenaire doivent être écrites dans son contrat. La portée réelle de la politique sur les autres tiers nécessite une revue juridique.
 
----
+## 2. Matrice de décision du projet
 
-## 2. Matrix
+| Cas | Position du projet | Conditions / précision |
+|---|---|---|
+| Naturaliste sur terrain privé ou autorisé | Autorisé | Droit local, protection de la faune et RGPD |
+| Association, réserve, ONG environnementale | Autorisé | Autorisations terrain et gouvernance des données |
+| Recherche biodiversité | Autorisé | Protocole, éthique, licences des données et RGPD |
+| Contribution au code, hardware ou documentation | Autorisé | Règles de contribution et licences propres à chaque objet |
+| Reproduction/modification du firmware | Permission MIT | Respect de la notice MIT ; la politique exprime en parallèle les usages soutenus/refusés par le projet |
+| Capteur additionnel orienté biodiversité | Autorisé | Documentation des interfaces ; hors P0 sans décision |
+| Distribution commerciale alignée nature | Conditionnel | Contrat, données, marque, exclusions et responsabilités |
+| Bureau d'études environnementales | Conditionnel | Vérifier client, usage final et traitement des personnes |
+| Administration publique non militaire | Conditionnel | Finalité, cadre légal, gouvernance et sécurité |
+| Intégration logicielle tierce ou fork propriétaire | MIT peut le permettre ; partenariat conditionnel | Ne pas présenter la fermeture comme une violation de MIT ; évaluer marque, contrat et mission séparément |
+| Service managé WildNexus | Conditionnel | Contrat, politique de données, sécurité et exclusions |
+| Site accueillant du public | Conditionnel | Base légale, information, durée de conservation et procédure d'accès |
+| Partage de données agrégées | Conditionnel | Minimisation, réidentification, licences et gouvernance |
+| Recherche avec acteur de défense | Refusé par le projet | Aucun partenariat/support si finalité militaire ou paramilitaire |
+| Détection de drones ou reconnaissance tactique | Refusé par le projet | Contraire aux non-négociables |
+| Surveillance de périmètre ou protection d'infrastructure | Refusé par le projet | Usage sécuritaire hors mission |
+| Maintien de l'ordre armé / police militarisée | Refusé par le projet | Usage exclu de la mission |
+| Braconnage, capture ou destruction illicite | Refusé par le projet | Atteinte à la biodiversité ; signalement selon cadre applicable |
+| Surveillance humaine générale ou profiling | Refusé par le projet | Hors mission et risque RGPD |
+| Reconnaissance faciale / identification humaine | Refusé par le projet | Hors mission |
+| Vente d'images de personnes capturées incidentellement | Refusé par le projet | Données à protéger/supprimer selon procédure et droit applicable |
 
-| Cas d'usage | Statut | Conditions / limites | Rationale | Owner validation |
-|---|---|---|---|---|
-| Naturaliste individuel utilisant WildNexus sur terrain privé ou autorisé | Autorisé | Respect du droit local et du RGPD | Cas d'usage cœur du projet | Aucun, hors support standard |
-| Association naturaliste déployant un petit réseau local | Autorisé | Respect des obligations terrain et données | Aligné avec la mission biodiversité | Aucun, hors support standard |
-| Réserve naturelle, commune rurale, ONG environnementale | Autorisé | Cadre légal local, signalétique si nécessaire | Aligné avec mission et impact | Aucun, hors support standard |
-| Université ou institut de recherche sur biodiversité | Autorisé | Respect de la politique d'usage et du RGPD | Usage scientifique compatible | Aucun, hors support standard |
-| Contribution technique au code, hardware ou documentation | Autorisé | Respect des règles de contribution et de la licence MIT | Communauté contributive voulue | Maintainers WildNexus |
-| Reproduction d'un nœud pour usage personnel ou recherche compatible | Autorisé | Respect intégral de la licence MIT et de ETHICS.md | Auditabilité et reproductibilité du socle | Aucun |
-| Intégration d'un capteur additionnel orienté biodiversité | Autorisé | Documentation minimale des interfaces | Extensibilité voulue par design | Maintainers techniques |
-| Revente / distribution par partenaire commercial orienté nature | Conditionnel | Contrat, reprise des exclusions d'usage, usage de marque contrôlé | Compatible si l'alignement mission est maintenu | [[Renard]] + JCH |
-| Déploiement par bureau d'études environnementales | Conditionnel | Vérification du contexte client et des usages finaux | Peut être aligné, mais dépend des missions réelles | [[Renard]] |
-| Utilisation par administration publique non militaire | Conditionnel | Vérifier finalité réelle, gouvernance des données, cadre RGPD | Potentiellement compatible, mais sensible selon usage | [[Renard]] + JCH |
-| Intégration dans une plateforme logicielle tierce | Conditionnel | Pas de contournement des exclusions d'usage, pas de fermeture abusive | Compatible seulement si la mission et la conformité restent intactes | [[Renard]] + owner technique |
-| Hébergement ou service managé autour de WildNexus | Conditionnel | Contrat, politique de données, exclusions reprises | Acceptable si pas de dérive surveillance/fermeture | [[Renard]] + JCH |
-| Utilisation sur sites accueillant du public | Conditionnel | Signalétique, base légale, traitement des images humaines conforme | Sensibilité RGPD accrue | [[Renard]] |
-| Export ou partage de données agrégées avec tiers | Conditionnel | Pas de données humaines identifiantes, cadre d'usage clair | Compatible si gouvernance des données maîtrisée | [[Renard]] + JCH |
-| Programme de recherche dual-use avec acteur défense | Interdit | Aucune exception | Risque de dévoiement militaire | Refus automatique |
-| Détection de drones | Interdit | Aucune exception | Explicitement contraire à NN-05 | Refus automatique |
-| Surveillance de périmètre, sécurité de site, protection d'infrastructure | Interdit | Aucune exception | Usage sécuritaire non compatible avec la mission | Refus automatique |
-| Reconnaissance de terrain à finalité tactique | Interdit | Aucune exception | Finalité militaire/paramilitaire | Refus automatique |
-| Usage pour police militarisée ou maintien de l'ordre armé | Interdit | Aucune exception | Incompatible avec exclusions d'usage | Refus automatique |
-| Braconnage, repérage de faune pour destruction ou capture illicite | Interdit | Aucune exception | Contraire à la mission biodiversité | Refus automatique |
-| Surveillance humaine générale ou profiling de personnes | Interdit | Aucune exception | Contradictoire avec NN-09 et RGPD | Refus automatique |
-| Reconnaissance faciale ou identification humaine | Interdit | Aucune exception | Hors mission, risque juridique élevé | Refus automatique |
-| Vente ou transmission d'images de personnes capturées incidentellement | Interdit | Aucune exception | Incompatible RGPD et mission | Refus automatique |
-| Fermeture propriétaire d'une version dérivée en contradiction avec la licence | Interdit | Aucune exception | Détruit le caractère publiable et auditabilité du socle | [[Renard]] |
+## 3. Revue renforcée
 
----
+Un cas conditionnel documente au minimum : acteur et bénéficiaire réel, usage final, site/juridiction, données et durées, base légale, sous-traitants, sécurité, risques pour personnes/faune, évolution possible vers un usage refusé, décision et responsable.
 
-## 3. Escalation Rules
+Les signaux de revue incluent une finalité floue, une institution ou un grand compte sensible, des images humaines possibles, une intégration à grande échelle, un contexte international sensible ou une proximité avec sécurité/surveillance.
 
-Un cas passe automatiquement en **Conditionnel** ou en revue renforcée s'il présente au moins un des signaux suivants :
-- acteur public, institutionnel ou grand compte avec finalité floue
-- traitement d'images humaines possible ou fréquent
-- usage proche de la sécurité, de la surveillance ou du contrôle d'accès
-- intégration commerciale à grande échelle
-- usage international dans une juridiction sensible
-- ambiguïté sur la finalité écologique réelle
+Un refus du projet signifie pas de partenariat, support, marque ou contrat WildNexus pour l'usage concerné. Il ne crée pas à lui seul une obligation nouvelle pour un tiers utilisant le firmware sous MIT.
 
-Un cas passe automatiquement en **Interdit** s'il présente au moins un des signaux suivants :
-- finalité militaire ou para-militaire
-- finalité sécuritaire offensive ou défensive
-- atteinte probable à la biodiversité
-- surveillance humaine incompatible avec la mission
-- volonté explicite de contourner les exclusions d'usage
+## 4. Workflow
 
----
+1. Identifier l'utilisateur, le bénéficiaire et l'usage final.
+2. Distinguer permission de licence, position éthique du projet et obligations légales/contractuelles.
+3. Appliquer la matrice et documenter les cas conditionnels/refusés.
+4. Faire relire les cas sensibles par Renard/Hermine et arbitrer par JCH ; solliciter un conseil externe si nécessaire.
+5. Reprendre les conditions pertinentes dans les contrats et notices de partenariat.
 
-## 4. Decision Workflow
+## 5. Travaux avant publication
 
-1. **Identifier** l'utilisateur réel et l'usage final, pas seulement l'intermédiaire.
-2. **Qualifier** le cas avec la matrice (§2).
-3. Si `Autorisé` : appliquer le flux standard — pas de revue nécessaire.
-4. Si `Conditionnel` : passer en revue renforcée (voir ci-dessous).
-5. Si `Interdit` : refuser sans entrer en négociation sur une exception.
-
-### Revue renforcée (cas Conditionnels)
-
-Pour les cas `Conditionnels`, la revue documente au minimum :
-- acteur (nom, statut, taille)
-- usage final (pas l'usage déclaré, l'usage réel)
-- données traitées (nature, volume, durée de conservation)
-- zone géographique (pays, juridiction applicable)
-- risques RGPD (images humaines possibles ? base légale ?)
-- risque de dérive mission (évolution possible vers un usage interdit ?)
-- décision et justification (autorisé sous conditions / refusé / demande d'info complémentaire)
-
-La décision est tracée dans un registre interne et signée par [[Renard]] (ou JCH si sensible).
-
----
-
-## 5. Immediate Uses Of This Matrix
-
-Cette matrice doit être utilisée pour :
-- la rédaction de ETHICS.md (addendum éthique au dépôt)
-- la future `usage policy` formalisée
-- le tri des partenaires et distributeurs
-- les FAQ publiques sur ce qui est permis ou non
-
----
-
-*Mis à jour v0.2 le 2026-06-30 — workflow §4 complété, références licence alignées avec ADR-010 §6 (MIT + ETHICS.md).*
+- Finaliser `ETHICS.md` et la politique dans un langage cohérent avec MIT.
+- Définir séparément licences hardware, documentation, modèles et données.
+- Écrire les règles de contribution, de marque et de partenariat.
+- Relire l'ensemble avant publication ou engagement contractuel.

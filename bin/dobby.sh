@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
-# dobby.sh — Lanceur unifié PKA
-# Usage : ./dobby.sh [--model claude|codex|gemini|gemma4|qwen3]
-# Sans argument : lance Claude Code (défaut)
+# dobby.sh — Lanceur unifié PKA (v2)
+# Usage : ./dobby.sh [--model deepseek|openai|anthropic|kimi|gemini|local]
+# Défaut : deepseek (TUI riche en outils)
 
 PKA_DIR="$(cd "$(dirname "$0")/.." && pwd)"
-MODEL="claude"
+MODEL="deepseek"
 
 # Parse arguments
 while [[ $# -gt 0 ]]; do
@@ -19,31 +19,20 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-export PKA_MODEL="$MODEL"
 export PKA_DIR
+export PKA_MODEL="$MODEL"
 
 cd "$PKA_DIR"
 
-# Python : priorité au venv local (évite conflits pydantic/openai du Python système)
+# Python : priorité au venv local
 if [[ -x "$PKA_DIR/.venv/bin/python3" ]]; then
   PYTHON="$PKA_DIR/.venv/bin/python3"
 else
   PYTHON="python3"
 fi
 
-SECRETS_FILE="$HOME/.config/pka-jch/api_keys"
-if [[ -f "$SECRETS_FILE" ]]; then
-  set -a
-  source "$SECRETS_FILE"
-  set +a
-fi
-
-stop_ollama_model() {
-  local model_name="$1"
-  if command -v ollama &>/dev/null; then
-    ollama stop "$model_name" >/dev/null 2>&1 || true
-  fi
-}
+# Bootstrap Dobby : source canonique unique pour tous les runtimes
+BOOTSTRAP="$PKA_DIR/AGENTS.md"
 
 echo "🐶 Dobby — PKA_JCH"
 echo "   Modèle  : $MODEL"
@@ -52,24 +41,31 @@ echo ""
 
 case "$MODEL" in
 
-  claude|sonnet|opus)
-    if ! command -v claude &>/dev/null; then
-      echo "❌ Claude Code non trouvé. Installer : https://claude.ai/code"
+  deepseek|ds)
+    if ! command -v deepseek-tui &>/dev/null; then
+      echo "❌ deepseek-tui non trouvé. Installer : brew install deepseek-tui"
       exit 1
     fi
-    export PKA_MODEL="claude"
-    exec claude
-
+    # deepseek-tui lit AGENTS.md automatiquement dans le répertoire de travail
+    exec deepseek-tui --yolo
     ;;
 
-  codex)
-    if ! command -v codex &>/dev/null; then
-      echo "❌ Codex CLI non trouvé."
-      exit 1
-    fi
-    # Codex lit AGENTS.md automatiquement dans le répertoire de travail
-    exec codex
+  openai|gpt)
+    exec $PYTHON "$PKA_DIR/scripts/openrouter_chat.py" \
+      --model "openai/gpt-6.1-sol" \
+      --system-file "$BOOTSTRAP"
+    ;;
 
+  anthropic|claude)
+    exec $PYTHON "$PKA_DIR/scripts/openrouter_chat.py" \
+      --model "anthropic/claude-opus-5.5" \
+      --system-file "$BOOTSTRAP"
+    ;;
+
+  kimi)
+    exec $PYTHON "$PKA_DIR/scripts/openrouter_chat.py" \
+      --model "moonshotai/kimi-k3.1-pro" \
+      --system-file "$BOOTSTRAP"
     ;;
 
   gemini)
@@ -78,173 +74,77 @@ case "$MODEL" in
       exit 1
     fi
     export GEMINI_CLI_TRUST_WORKSPACE=true
-    # Gemini lit GEMINI.md automatiquement dans le répertoire de travail
+    # Gemini lit GEMINI.md (stub → AGENTS.md) automatiquement
     exec gemini
-
     ;;
 
-  deepseek)
-    if [[ -z "$DEEPSEEK_API_KEY" ]]; then
-      echo "❌ DEEPSEEK_API_KEY non définie — ajouter dans ~/.zshrc"
+  local|ollama|m1)
+    # Ollama tourne sur le M1 (32 Go). Tunnel SSH + ollama_chat.py local.
+    M1_HOST="m1@100.73.212.110"
+    OLLAMA_REMOTE_PORT=11434
+    OLLAMA_TUNNEL_PORT=11435
+    LOCAL_MODEL="${OLLAMA_MODEL:-gemma3:27b}"
+
+    if ! command -v ssh &>/dev/null; then
+      echo "❌ ssh requis pour accéder au M1."
       exit 1
     fi
-    export DEEPSEEK_MODEL="${DEEPSEEK_MODEL:-deepseek-v4-flash}"
-    exec $PYTHON "$PKA_DIR/scripts/deepseek_chat.py"
-    ;;
 
-  deepseek-r1)
-    if [[ -z "$DEEPSEEK_API_KEY" ]]; then
-      echo "❌ DEEPSEEK_API_KEY non définie — ajouter dans ~/.zshrc"
-      exit 1
+    # Ouvre le tunnel SSH si pas déjà actif
+    if ! nc -z 127.0.0.1 "$OLLAMA_TUNNEL_PORT" 2>/dev/null; then
+      echo "ℹ️  Ouverture du tunnel SSH vers le M1 (Ollama)..."
+      ssh -f -N -L "${OLLAMA_TUNNEL_PORT}:127.0.0.1:${OLLAMA_REMOTE_PORT}" "$M1_HOST" 2>/dev/null || {
+        echo "❌ Impossible d'ouvrir le tunnel vers $M1_HOST."
+        echo "   Vérifier que le M1 est allumé et que le serveur Ollama y tourne (ollama serve)."
+        exit 1
+      }
     fi
-    export DEEPSEEK_MODEL="deepseek-reasoner"
-    exec $PYTHON "$PKA_DIR/scripts/deepseek_chat.py"
-    ;;
 
-  openrouter|or)
-    OPENROUTER_KEY_FILE="$HOME/.config/pka-jch/openrouter_key.txt"
-    if [[ ! -f "$OPENROUTER_KEY_FILE" ]]; then
-      echo "❌ Clé OpenRouter introuvable : $OPENROUTER_KEY_FILE"
-      exit 1
-    fi
-    export DEEPSEEK_API_KEY="$(cat "$OPENROUTER_KEY_FILE")"
-    export DEEPSEEK_BASE_URL="https://openrouter.ai/api/v1"
-    export PKA_PROVIDER="OpenRouter (DeepSeek V4 Flash)"
-
-    export DEEPSEEK_MODEL="${DEEPSEEK_MODEL:-deepseek/deepseek-v4-flash}"
-    echo "ℹ️  OpenRouter — multi-provider (DeepSeek, Anthropic, Qwen...)"
-
-    echo "   Modèle : $DEEPSEEK_MODEL"
-    echo "   Crédits : ~10 USD (pré-payé)"
-    echo ""
-    exec $PYTHON "$PKA_DIR/scripts/deepseek_chat.py"
-    ;;
-
-  kimi|kimik2|moonshot)
-    KIMI_KEY_FILE="$HOME/.config/pka-jch/kimi_key.txt"
-    if [[ ! -f "$KIMI_KEY_FILE" ]]; then
-      echo "❌ Clé Kimi introuvable : $KIMI_KEY_FILE"
-      echo "   À créer avec ta clé API Moonshot (https://platform.moonshot.ai)"
-      exit 1
-    fi
-    export DEEPSEEK_API_KEY="$(cat "$KIMI_KEY_FILE")"
-    export DEEPSEEK_BASE_URL="https://api.moonshot.ai/v1"
-    export DEEPSEEK_MODEL="${DEEPSEEK_MODEL:-kimi-k2.7-code}"
-    export PKA_POINTER="KIMI.md"
-    export PKA_PROVIDER="Kimi K2.7"
-    echo "ℹ️  Kimi K2.7 — API Moonshot directe"
-    echo "   Modèle : $DEEPSEEK_MODEL"
-    echo ""
-    exec $PYTHON "$PKA_DIR/scripts/deepseek_chat.py"
-    ;;
-
-  gemma4|gemma)
-    if ! command -v ollama &>/dev/null; then
-      echo "❌ Ollama non trouvé. Installer : https://ollama.ai"
-      exit 1
-    fi
-    # Vérifie que le modèle est disponible
-    if ! ollama list 2>/dev/null | grep -q "gemma4"; then
-      echo "⚠️  Gemma 4 non trouvé dans Ollama."
-      echo "   Installer : ollama pull gemma4"
-      exit 1
-    fi
-    stop_ollama_model "qwen3.6:latest"
-    echo "ℹ️  Mode local Gemma 4 — accès filesystem limité au chat Ollama"
-    echo "ℹ️  Préflight perf : arrêt de Qwen 3.6 pour libérer la RAM/VRAM"
-    echo "   Pour un agent complet avec outils, lancer : gemini gemma setup"
+    export OLLAMA_URL="http://127.0.0.1:${OLLAMA_TUNNEL_PORT}/api/chat"
+    echo "ℹ️  Modèle local : $LOCAL_MODEL (via M1 32 Go)"
+    echo "   Changer de modèle : OLLAMA_MODEL=qwen2.5-coder:32b ./bin/dobby.sh --model local"
     echo ""
     exec $PYTHON "$PKA_DIR/scripts/ollama_chat.py" \
-      --model "gemma4:latest" \
-      --system-file "$PKA_DIR/GEMMA.md" \
-      --verbose
-
+      --model "$LOCAL_MODEL" \
+      --system-file "$BOOTSTRAP"
     ;;
 
-  qwen3|qwen)
-    if ! command -v ollama &>/dev/null; then
-      echo "❌ Ollama non trouvé."
+  codex|codex-openrouter|or)
+    if ! command -v codex &>/dev/null; then
+      echo "❌ codex CLI non trouvé. Installer : npm i -g @openai/codex"
       exit 1
     fi
-    if ! ollama list 2>/dev/null | grep -q "qwen3.6"; then
-      echo "⚠️  Qwen 3.6 non trouvé dans Ollama."
-      echo "   Installer : ollama pull qwen3.6"
-      exit 1
-    fi
-    stop_ollama_model "gemma4:latest"
-    echo "ℹ️  Mode local Qwen 3.6 — accès filesystem limité au chat Ollama"
-    echo "ℹ️  Préflight perf : arrêt de Gemma 4 pour libérer la RAM/VRAM"
-    echo ""
-    exec $PYTHON "$PKA_DIR/scripts/ollama_chat.py" \
-      --model "qwen3.6:latest" \
-      --system-file "$PKA_DIR/QWEN.md" \
-      --verbose
-
+    export OPENROUTER_API_KEY="$(cat ~/.config/pka-jch/openrouter_key.txt 2>/dev/null)"
+    echo "ℹ️  Codex CLI — agent local, backend OpenRouter (profil YOLO)"
+    exec codex --profile openrouter "$(cat "$PKA_DIR/docs/system/bootstrap-forced.md")"
     ;;
 
-  glm5|glm)
-    OPENROUTER_KEY_FILE="$HOME/.config/pka-jch/openrouter_key.txt"
-    if [[ ! -f "$OPENROUTER_KEY_FILE" ]]; then
-      echo "❌ Clé OpenRouter introuvable : $OPENROUTER_KEY_FILE"
+  kimi-code|kc)
+    export OPENROUTER_API_KEY="$(cat ~/.config/pka-jch/openrouter_key.txt 2>/dev/null)"
+    if command -v kimi &>/dev/null; then
+      echo "ℹ️  Kimi Code CLI — agent local, backend OpenRouter (YOLO)"
+      exec kimi -m kimi-k3-or -y
+    elif [[ -x "$HOME/.kimi-code/bin/kimi" ]]; then
+      echo "ℹ️  Kimi Code CLI — agent local, backend OpenRouter (YOLO)"
+      exec "$HOME/.kimi-code/bin/kimi" -m kimi-k3-or -y
+    else
+      echo "❌ Kimi Code CLI non trouvé."
       exit 1
     fi
-    export DEEPSEEK_API_KEY="$(cat "$OPENROUTER_KEY_FILE")"
-    export DEEPSEEK_BASE_URL="https://openrouter.ai/api/v1"
-    export PKA_PROVIDER="OpenRouter → Z.ai GLM 5.2"
-    export DEEPSEEK_MODEL="z-ai/glm-5.2"
-    export PKA_POINTER="GLM.md"
-    echo "ℹ️  GLM 5.2 — Z.ai via OpenRouter"
-    echo "   Modèle : $DEEPSEEK_MODEL"
-    echo ""
-    exec $PYTHON "$PKA_DIR/scripts/deepseek_chat.py"
-    ;;
-
-  claude-or|claudeor)
-    OPENROUTER_KEY_FILE="$HOME/.config/pka-jch/openrouter_key.txt"
-    if [[ ! -f "$OPENROUTER_KEY_FILE" ]]; then
-      echo "❌ Clé OpenRouter introuvable : $OPENROUTER_KEY_FILE"
-      exit 1
-    fi
-    export DEEPSEEK_API_KEY="$(cat "$OPENROUTER_KEY_FILE")"
-    export DEEPSEEK_BASE_URL="https://openrouter.ai/api/v1"
-    export PKA_PROVIDER="OpenRouter → Anthropic Claude Sonnet 5"
-    export DEEPSEEK_MODEL="anthropic/claude-sonnet-5"
-    echo "ℹ️  Claude Sonnet 5 — via OpenRouter"
-    echo "   Modèle : $DEEPSEEK_MODEL"
-    echo ""
-    exec $PYTHON "$PKA_DIR/scripts/deepseek_chat.py"
-    ;;
-
-  chatgpt|gpt)
-    OPENROUTER_KEY_FILE="$HOME/.config/pka-jch/openrouter_key.txt"
-    if [[ ! -f "$OPENROUTER_KEY_FILE" ]]; then
-      echo "❌ Clé OpenRouter introuvable : $OPENROUTER_KEY_FILE"
-      exit 1
-    fi
-    export DEEPSEEK_API_KEY="$(cat "$OPENROUTER_KEY_FILE")"
-    export DEEPSEEK_BASE_URL="https://openrouter.ai/api/v1"
-    export PKA_PROVIDER="OpenRouter → OpenAI ChatGPT"
-    export DEEPSEEK_MODEL="openai/gpt-chat-latest"
-    echo "ℹ️  ChatGPT — via OpenRouter"
-    echo "   Modèle : $DEEPSEEK_MODEL"
-    echo ""
-    exec $PYTHON "$PKA_DIR/scripts/deepseek_chat.py"
     ;;
 
   *)
     echo "❌ Modèle inconnu : $MODEL"
     echo ""
     echo "Modèles disponibles :"
-    echo "  --model openrouter  OpenRouter (multi-provider, pré-payé) — défaut"
-    echo "  --model glm5        GLM 5.2 (Z.ai via OpenRouter)"
-    echo "  --model kimi        Kimi K2.7 (API Moonshot)"
-    echo "  --model claude-or   Claude Sonnet 5 (via OpenRouter)"
-    echo "  --model chatgpt     ChatGPT (via OpenRouter)"
-    echo "  --model gemini      Gemini CLI (Google)"
-    echo "  --model deepseek    DeepSeek Chat (API)"
-    echo "  --model deepseek-r1 DeepSeek Reasoner (API)"
-    echo "  --model gemma4      Gemma 4 local (Ollama)"
-    echo "  --model qwen3       Qwen 3.6 local (Ollama)"
+    echo "  --model deepseek    DeepSeek V4 (TUI, outils) — défaut"
+    echo "  --model openai      GPT-6.1 Sol (via OpenRouter)"
+    echo "  --model anthropic   Claude Opus 5.5 (via OpenRouter)"
+    echo "  --model kimi        Kimi K3.1 Pro (via OpenRouter)"
+    echo "  --model codex       Codex CLI agent (OpenRouter, YOLO)"
+    echo "  --model kimi-code   Kimi Code CLI agent (OpenRouter, YOLO)"
+    echo "  --model gemini      Gemini (CLI Google, direct)"
+    echo "  --model local       Local sur M1 32 Go (Ollama)"
     exit 1
     ;;
 

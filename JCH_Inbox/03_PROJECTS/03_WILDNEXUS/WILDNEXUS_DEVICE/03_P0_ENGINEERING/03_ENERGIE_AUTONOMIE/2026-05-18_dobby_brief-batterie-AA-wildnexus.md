@@ -3,7 +3,9 @@
 **De :** [[Dobby]] 🦉  
 **Date :** 2026-05-18  
 **Priorité :** Haute — impacte PCB, boîtier, firmware et budget  
-**Référence :** `ADR-005 v0.2`
+**Référence historique :** `ADR-005 v0.2`
+
+> **Brief historique remplacé par ADR-005 et SOP-10.** La valeur `Iq = 5 µA` ci-dessous est erronée : ADR-005 retient 60 nA typiques. L'entrée recommandée du TPS62840 est 1,8–6,5 V, non 4,0–6,5 V. Le pack 4S2P et ses tensions/seuils ne sont pas validés. SOP-10 est suspendue : ne pas assembler ni alimenter le montage décrit ici avant revue du schéma complet et autorisation de reprise.
 
 ---
 

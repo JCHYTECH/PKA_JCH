@@ -198,7 +198,7 @@ def generate_html(cache_path: str, photo_dir: str, output_path: str):
 </div>
 
 <div class="stats">
-  Keywords générés automatiquement par gemma4 (Ollama local) · Tags <span style="color:#9E9E9E">Auto</span> = confiance du modèle · Cliquer sur l'image pour ouvrir en plein écran
+  Keywords générés automatiquement par gemma3 (Ollama local) · Tags <span style="color:#9E9E9E">Auto</span> = confiance du modèle · Cliquer sur l'image pour ouvrir en plein écran
 </div>
 
 <script>

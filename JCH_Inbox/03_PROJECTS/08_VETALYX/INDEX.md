@@ -7,7 +7,7 @@
 
 - **[thread-vetalyx.md](thread-vetalyx.md)** — fil vivant (décisions, état, prochaine étape).
 - **[executive-summary.md](executive-summary.md)** — résumé exécutif.
-- **[legal/INDEX.md](legal/INDEX.md)** — **documents juridiques en vigueur** (statuts, pacte, convention, contrat DIAHO v4, réponse v4.1).
+- **[legal/INDEX.md](legal/INDEX.md)** — **versions juridiques actuelles de travail** (statuts, pacte, convention, contrat DIAHO v4, réponse v4.1 préparée). Signature, envoi et entrée en vigueur ne sont pas établis.
 
 ## Description
 
@@ -17,7 +17,7 @@ Lancement sur le marché européen du **diagnostic rapide d'allergies chez les a
 
 | Dossier | Contenu |
 |---|---|
-| [`legal/`](legal/) | **Juridique — voir [`legal/INDEX.md`](legal/INDEX.md)**. En vigueur : statuts FR/EN v2, pacte v2, convention bloc fondateurs v2, contrat-cadre DIAHO v4, réponse v4.1. Notes/analyses dans `legal/_travail/`. |
+| [`legal/`](legal/) | **Juridique — voir [`legal/INDEX.md`](legal/INDEX.md)**. Versions actuelles de travail : statuts FR/EN v2, pacte v2, convention bloc fondateurs v2, contrat-cadre DIAHO v4 et réponse v4.1 préparée, envoi non documenté. Notes/analyses dans `legal/_travail/`. |
 | [`strategy/`](strategy/) | Notes pivot (overview, strategie, commercial, decisions, site web) + études (diversification gamme, analyse approfondie) |
 | [`regulatory/`](regulatory/) | Réglementation EU/FR/DE + cadre réglementaire Omega3 + `DOSSIER_TECHNIQUE_DIXUN/` |
 | [`clinical/`](clinical/) | `consensus-compo/`, `etudes-cliniques/` + revue scientifique & bibliographie Omega3 |

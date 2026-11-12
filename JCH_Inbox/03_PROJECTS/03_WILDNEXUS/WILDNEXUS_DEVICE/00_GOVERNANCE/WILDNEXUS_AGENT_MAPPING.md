@@ -1,8 +1,8 @@
 # WildNexus — Mapping agents et spécialistes PKA
 
-**Version :** v0.2  
-**Date :** 2026-06-30  
-**Statut :** Actif — M-02 en cours  
+**Version :** v0.3
+**Date :** 2026-11-05
+**Statut :** Projet repris (2026-11-11) — mapping de reprise, M-02 non validé
 **Owner :** [[Dobby]]  
 
 ## 1. Objet
@@ -31,7 +31,7 @@ Une contradiction technique ou documentaire devient un item `decision` ou `risk`
 | Caméra / IR / Optique | [[Nova]] + [[Lynx]] | OV5640, lentille M12, LED IR, qualité image | ADR-002, SOP-08, test harness caméra | JCH pour arbitrage qualité optique |
 | Radio / LPWAN / LoRa | [[Forge]] + [[Chouette]] | SX1262, EU868, payload binaire, gateway | ADR-003, ADR-014, SOP-07, parser gateway | JCH pour choix infrastructure radio |
 | Stockage local | [[Castor]] + [[Forge]] | microSD, chiffrement AES, format métadonnées | ADR-004, SOP-06 | — |
-| Énergie / Autonomie | [[Bruno]] + [[Chouette]] | AA + buck, PPK2 mesures, modèle autonomie 60j | ADR-005, SOP-10, modèle énergétique | JCH pour enveloppe budget |
+| Énergie / Autonomie | [[Bruno]] + [[Chouette]] | AA + conversion à valider, PPK2, modèle Wh et cible 60 jours | ADR-005, SOP-10 suspendue, modèle énergétique | JCH pour schéma/dépense ; aucune autonomie présumée |
 | Boîtier / IP67 / Terrain | [[Chouette]] | Hammond 1555, fenêtre optique, fixation arbre | ADR-006, guide déploiement | — |
 | Détection événementielle | [[Nova]] + [[Forge]] | PIR EKMB, trigger, filtrage | ADR-007, SOP-09 | — |
 | Capteurs extensible | [[Castor]] | Bus I2C/SPI, interface capteurs env. | ADR-008 | — |
@@ -39,10 +39,10 @@ Une contradiction technique ou documentaire devient un item `decision` ou `risk`
 | Sécurité / RGPD / Edge AI | [[Castor]] + [[Forge]] + [[Hermine]] + [[Renard]] | Filtre humain, chiffrement SD, secure boot, signalétique | ADR-010, ADR-011, SOP-11 | JCH pour orientation juridique |
 | Provisioning / Clés | [[Castor]] + [[Forge]] + [[Hermine]] | Diversification clé, cycle de vie, secure boot | ADR-011 | — |
 | Stratégie de test | [[Forge]] + [[Castor]] + [[Araignée]] | Banc, terrain, régression, critères GO/NO-GO | ADR-012, SOPs | — |
-| Acoustique / Micros | [[Dobby]] + JCH | SPH0645 stéréo, capture locale, upgrade path | ADR-013 | — |
-| Licence, FTO, usage policy | [[Renard]] + [[Hermine]] | Licence source-available / dual-license, exclusions d'usage, FTO | Note FTO, politique d'usage, clauses licence | JCH pour tout choix juridique engageant |
+| Acoustique / Micros | [[Dobby]] + JCH | Deux micros stéréo, références/interface à confirmer, capture locale | ADR-013, SOP-13 à 18, tests pipelines | JCH si changement de scope |
+| Licence, FTO, usage policy | [[Renard]] + [[Hermine]] | Firmware MIT + ETHICS/politique/contrats ; autres licences séparées | Textes MIT/ETHICS, politique d'usage, revue FTO | JCH pour tout choix juridique engageant ; pas de dual-licence |
 | Communication communauté | [[Miel]] + [[Trace]] | Visibilité, page projet, canal communauté, beta interest | Plan communication EVT, page ou article, canal public | [[Dobby]] si publication avant validation juridique |
-| Edge AI / TinyML | [[Musaraigne]] | MobileNet-SSD, quantification INT8, benchmark ESP32-S3 | Modèle TFLite, SOP-11, ADR-010 R4 | JCH pour arbitrage migration MCU |
+| Edge AI / TinyML | [[Musaraigne]] | Comparaison FOMO/MobileNet-SSD/équivalent, quantification et benchmark ESP32-S3 | Résultats jour/nuit, modèle retenu, SOP-11, ADR-010 R4/R5 | JCH pour arbitrage migration MCU |
 
 ## 4. Rôles transverses PKA
 

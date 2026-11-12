@@ -11,6 +11,8 @@
 
 ---
 
+> ⚠️ **AVERTISSEMENT — revue 05/11.** La référence physique du PIR n'est pas confirmée : les documents mentionnent **EKMB1203111 et EKMB1303111**. Relever la référence sur le composant reçu avant de figer alimentation, logique de réveil et pull-up. Le GPIO 4 (partagé Camera D0) doit passer par la matrice GPIO unique. Voir `progress.md` §3 (SOP-09 = pending).
+
 ## Objectif
 
 Vérifier que le PIR EKMB déclenche correctement le réveil de l'ESP32-S3 depuis le deep sleep, et mesurer sa consommation propre.

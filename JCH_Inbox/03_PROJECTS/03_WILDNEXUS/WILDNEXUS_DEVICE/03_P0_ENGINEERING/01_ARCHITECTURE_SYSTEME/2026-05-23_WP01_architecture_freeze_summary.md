@@ -1,8 +1,10 @@
 # WildNexus WP01 — Architecture P0 gelee / passage WP02
 
 **Date :** 2026-05-23  
-**Statut :** reference de transition M-01 -> WP02  
+**Statut :** synthèse historique de transition M-01 -> WP02, remplacée par le scope lock v0.5 et les ADR actifs
 **Owner :** [[Dobby]] + [[Castor]]  
+
+> Les passages « micro mono » sont remplacés par la cible stéréo d'ADR-013/017, avec micros et pipelines à valider. Les choix 4S2P et les capacités associées sont conditionnés par ADR-005 ; SOP-10 est suspendue. Le mot « gelée » ci-dessous désigne le cadrage de mai, pas une validation matérielle ni une architecture de reprise complète. Le gateway minimal P0 est désormais explicite.
 **Equipe mobilisee :** [[Forge]], [[Chouette]], [[Bruno]], [[Nova]], [[Lynx]], [[Hermine]], [[Renard]]  
 
 ## 1. Objet

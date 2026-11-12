@@ -1,304 +1,158 @@
 # WildNexus — Protocole de lancement
 
-**Version :** v0.4  
-**Date :** 2026-07-05  
-**Statut :** Actif — M-01 gelé, M-02 en cours (SOPs A→C complétées, D→E + SOPs 06-18 en attente)  
+**Version :** v0.5
+**Date :** 2026-11-05
+**Vérifié :** 2026-11-12 — P0 engineering repris (décision JCH), dégel confirmé au pilotage, gates de reprise à lever
+**Statut :** REPRIS — P0 engineering (2026-11-11) ; dégel confirmé au pilotage le 2026-11-12 ; les travaux matériels restent soumis aux gates de reprise
 **Propriétaire :** Jean-Claude Havaux — JCHYTECH  
-**Pilotage :** [[Dobby]]  
-
----
+**Pilotage :** [[Dobby]]
 
 ## 1. Intention
 
-Ce document définit le comportement attendu de [[Dobby]] quand JCH active le projet WildNexus.
-
-L'objectif n'est pas de décrire le projet. Les documents fondateurs le font déjà. L'objectif est de préciser le mode d'exécution :
-- quoi démarre ;
-- dans quel ordre ;
-- ce qui est automatisé ;
-- ce qui remonte à JCH ;
-- où l'état du projet est visible.
+Ce document définit le comportement attendu de [[Dobby]] quand JCH active WildNexus : sources à lire, état réel, ordre de reprise, preuves attendues et points nécessitant un arbitrage.
 
 Principe directeur :
 
-> JCH doit voir les décisions, les risques et les preuves. [[Dobby]] doit absorber le suivi, la coordination et la maintenance opérationnelle.
+> JCH doit voir les décisions, les risques et les preuves. [[Dobby]] absorbe le suivi, la coordination et la maintenance opérationnelle.
+
+Un test sur ordinateur hôte n'est pas un test sur ESP32-S3. Une architecture acceptée n'est pas une performance mesurée. Une fiche produit n'est pas une annonce commerciale.
+
+## 2. Sources de vérité
+
+### 2.1 Fondation et décisions
+
+- `01_FOUNDATION/WILDNEXUS_P0_SCOPE_LOCK.md` — périmètre P0 v0.5 et matrice exigence → preuve.
+- `00_GOVERNANCE/WILDNEXUS_ENGINEERING_PHILOSOPHY.md` — philosophie d'ingénierie.
+- `HISTORIQUE/01_FOUNDATION/MASTER_ARCHITECTURE_WN.md` — vision initiale, à lire comme cadrage historique.
+- `HISTORIQUE/01_FOUNDATION/wildnexus-founding-document-v0.2.md` — brouillon fondateur non validé, pas source d'état actuel.
+- `02_DECISIONS/WILDNEXUS_ADR_INDEX.md` — 16 ADR rédigés : 13 acceptés, 1 accepté sous réserve (ADR-010), 2 proposés (ADR-006/011).
+- ADR-015 n'est pas rédigé ; ADR-018 reste à produire avant les exigences terrain de synchronisation temporelle.
+
+Ordre d'autorité en cas de contradiction : décision explicite JCH, non-négociables validés, ADR acceptés, documents de pilotage, SOP et skills. Toute contradiction de fond devient une décision documentée.
+
+### 2.2 État et ingénierie
+
+- `03_P0_ENGINEERING/PROTOCOLES/progress.md` — état des protocoles, sans déduire un succès d'un simple artefact.
+- `03_P0_ENGINEERING/03_ENERGIE_AUTONOMIE/WP03_BUDGET-ENERGIE_ET_GATE-60J.md` — modèle énergétique à compléter par mesures.
+- `03_P0_ENGINEERING/07_PROCUREMENT_BOM/` — BOM et stock à rapprocher des commandes.
+- `03_P0_ENGINEERING/08_BUDGET_MODELES/WILDNEXUS_P0_BUDGET_RANGE.md` — enveloppe et projection provisoire.
+- `firmware/` — structure ESP-IDF et modules avec tests hôte historiques ; validation matérielle non acquise.
+- Plane `03_WILDNEXUS` et `JCH_Inbox/01_DASHBOARDS/kanban.html` — vues de pilotage à synchroniser à la reprise.
+
+## 3. État actuel au 2026-11-05
+
+### 3.1 Jalons
+
+| Jalon | État réel |
+|-------|-----------|
+| M-01 — Cadrage architecture | Documentation initiale réalisée ; 16 ADR rédigés, mais plusieurs validations matérielles restent ouvertes |
+| M-02 — Prototype banc fonctionnel | Repris (2026-11-11) : phases A→C faites ; D→E et validations SOP-06 à SOP-18 non terminées |
+| M-03 — Prototype terrain | Non commencé ; dépend de M-02, ADR-010/018 et du boîtier |
+| M-04 — Industrialisation/pré-séries | Non commencé ; DVT, conformité, coûts et industrialisation à planifier après M-03 |
+
+Aucune date trimestrielle n'est conservée : la reprise sera planifiée à partir du signal de JCH et des prérequis disponibles.
+
+### 3.2 Work packages
+
+| WP | Contenu | État au 2026-11-05 |
+|----|---------|--------------------|
+| WP01 — Architecture & ADR | Scope, choix et preuves | Cadrage révisé ; pas une certification du produit |
+| WP02 — Hardware nœud | Alimentation, capteurs, média et BOM | En pause ; références micros/PIR et schéma d'alimentation à vérifier |
+| WP03 — Énergie & mesure | PPK2, modèle Wh, gate 60 jours | Phases A→C mesurées ; budget complet et scénarios non validés |
+| WP04 — Firmware | Cycles, SD, LoRa, audio et IA | 37/37 tests hôte consignés en juillet ; pas de validation matérielle équivalente |
+| WP05 — Connectivité | Radio, codec, réception et journal gateway | Codec hôte seulement ; radio non commandée et chaîne de bout en bout absente |
+| WP06 — Boîtier & terrain | Étanchéité, fixation et EVT | En attente ; cible IP67 non validée |
+
+### 3.3 Matériel et achats — dernier état connu à revalider
+
+| Équipement | État consigné | Référence / précision |
+|------------|---------------|----------------------|
+| ESP32-S3-DevKitC-1 N16R8 ×2 | Reçu | Amazon MiMiU, 21,98 € |
+| Nordic PPK2 | Reçu | Mouser #39411684 ; 83,57 € enregistré, HT/TTC à rapprocher ; ne pas le compter deux fois |
+| Mouser #39492997 | Reçu | MEMS, IR, PIR, buck, BME688, SHT31, antennes — 128,20 € |
+| ESP32-CAM OV2640 ×2 et cartes seules ×4 | Reçu | Environ 25 € pour les deux avec caméra ; autres montants à retrouver |
+| OV5640 DVP M12 ×5 | Reçu | Camemake + AliExpress, environ 30 € dans le suivi visible |
+| USB-C TTL FT232RL ×3 | Reçu | AZDelivery, 9 € |
+| Miuzei Starter Kit | Reçu | 35 € dans le suivi visible |
+| Micros MEMS | Reçus | Le stock/générateur mentionne des TDK ; interface et datasheet à confirmer avant de les déclarer compatibles I2S |
+| PIR EKMB | Reçus | EKMB1203111 dans le générateur contre EKMB1303111 dans les documents : référence physique à relever |
+| Carte microSD 128 GB | À confirmer / acheter | Environ 15 € dans la projection, non considérée comme reçue |
+| Panier Mouser restant | À revalider avant commande | Environ 279 €, incluant radio et connectique ; prix et contenu peuvent avoir changé |
+
+### 3.4 Budget provisoire
+
+- Enveloppe ferme : **1 000 €**.
+- Engagé global consigné dans l'ancien état : **environ 610 €**, à réconcilier avec les factures.
+- Reliquat estimé : **environ 279 € + 15 €**.
+- Projection provisoire : **environ 904 €** ; réserve théorique : **environ 96 €**.
+- La projection dépasse le seuil interne d'arbitrage de 900 € : aucune nouvelle commande avant réconciliation et décision JCH.
+
+Ces montants ne sont pas un total comptable certifié. Le sous-total des seules lignes visibles dédupliquées et l'écart à documenter figurent dans le budget P0.
+
+## 4. Reprise au signal `go`
+
+### 4.1 Contrôle initial
+
+1. Lire `progress.md`, le scope lock, l'index ADR, le budget et le stock réel.
+2. Rapprocher commandes, factures, montants HT/TTC et matériel physiquement disponible.
+3. Vérifier que Plane et le kanban reflètent l'état repris ; synchroniser sans créer de doublons.
+4. Replanifier les tâches avec des dépendances et des preuves, sans réutiliser les échéances dépassées de juillet.
+5. Vérifier les datasheets et schémas avant toute alimentation ou soudure.
+
+### 4.2 Ordre technique recommandé
+
+1. **Sécurité électrique :** SOP-10 reste suspendue. Ne pas assembler de pack 4S2P L91 ni appliquer 3,3 V sur la broche 5 V avant validation ADR-005 et schéma complet.
+2. **Références :** confirmer l'interface des micros TDK et la référence PIR ; adapter SOP-13, le BOM et le pinout si nécessaire.
+3. **Socle banc :** reprendre phases D/E, SOP-06, CAM-01/02 et SOP-08/09 sur matériel identifié.
+4. **Audio réel :** exécuter SOP-13 puis SOP-14/15 sur fichiers produits par le nœud ; SOP-17/18 ensuite.
+5. **IA :** constituer le dataset et comparer les modèles compatibles ; CAM-03/SOP-11 mesurent le modèle retenu, sans imposer MobileNet-SSD.
+6. **Connectivité :** commander seulement après arbitrage, exécuter SOP-07 et livrer la gateway P0 : réception, décodage caméra/spectral, journal et gestion des erreurs.
+7. **Intégration :** mesurer le cycle complet en Wh, puis préparer boîtier et EVT ; aucune promesse de 60 jours ou IP67 avant preuve.
+
+### 4.3 Preuves de clôture M-02
+
+La matrice du scope lock v0.5 fait foi. En particulier :
+
+- les tests hôte FW-02 à FW-05 ne ferment pas les tests matériels correspondants ;
+- SOP-16 valide seulement le codec spectral sur hôte, pas la transmission LoRa ;
+- la gateway doit avoir effectivement reçu et journalisé les deux types de paquets ;
+- les clips doivent être lus depuis une carte SD alimentée par le nœud et testés dans les pipelines cibles ;
+- le coût énergétique de l'IA, des IR, de la SD, de l'audio et des retransmissions doit être inclus.
+
+## 5. Coordination et automatisation
+
+[[Dobby]] coordonne les compétences nécessaires dans des sessions ou skills dédiés : firmware, hardware, radio, optique, bioacoustique, IA, données, budget et juridique. Les rôles d'équipe ne remplacent pas une revue indépendante ni une mesure.
+
+À chaque reprise ou changement structurel :
+
+- mettre à jour `progress.md`, ce fichier, le stock et le budget selon les preuves ;
+- régénérer le BOM Excel uniquement depuis sa source active, après vérification du générateur ;
+- tracer décision, propriétaire, blocage, preuve et prochaine action ;
+- maintenir les documents commerciaux distincts des résultats techniques ;
+- exécuter `graphify update .` après modification du projet.
+
+## 6. Escalade à JCH
+
+JCH arbitre les non-négociables, dépenses, compromis coût/délai/performance, usages sensibles, engagements juridiques et risques terrain. Les corrections mécaniques et la clarification de l'état réel ne nécessitent pas d'escalade.
+
+### Décisions actées le 2026-11-05
+
+- Firmware sous **MIT + politique éthique `ETHICS.md`** ; la portée juridique du texte éthique et les autres licences restent à documenter avant publication.
+- Prix FIELD 149–179 € et marge 40 % **retirés provisoirement** jusqu'au BOM et au coût complet.
+
+### Points encore ouverts
+
+| Point | Pourquoi il reste ouvert |
+|-------|--------------------------|
+| Pack et régulateur | Tension maximale, pics, courant, rendement et câblage non validés |
+| Micros et PIR | Références physiques/datasheets à rapprocher du stock |
+| Optique nocturne | Lentille IR-corrigée et coût réel non consolidés |
+| Radio et gateway | Contenu/prix du panier à revalider ; preuve de bout en bout absente |
+| Budget | Engagé global de 610 € et projection de 904 € non encore rapprochés de toutes les factures |
+| Licence et publication | Texte MIT/ETHICS, notices tierces, hardware/docs/modèles/données et revue juridique |
+| Planning | Go donné le 2026-11-11 ; roadmap relative à produire |
+| RGPD et terrain | Base légale, conservation, signalétique, droit d'accès et sécurité avant M-03 |
 
 ---
 
-## 2. Sources De Vérité
-
-Au lancement, [[Dobby]] travaille depuis ces références :
-
-### 2.1 Fondation (immuables sauf décision JCH)
-- `01_FOUNDATION/MASTER_ARCHITECTURE_WN.md` — architecture globale (document de cadrage initial)
-- `01_FOUNDATION/wildnexus-founding-document-v0.2.md` — document fondateur consolidé (DRAFT — validation JC en cours)
-- `00_GOVERNANCE/WILDNEXUS_ENGINEERING_PHILOSOPHY.md` — philosophie d'ingénierie
-- `01_FOUNDATION/WILDNEXUS_P0_SCOPE_LOCK.md` — périmètre P0 verrouillé (v0.4)
-
-### 2.2 Décisions (ADR Index)
-- `02_DECISIONS/WILDNEXUS_ADR_INDEX.md` — **17 ADRs** (ADR-001 à ADR-017)
-  - **14 acceptés** (ADR-001 à ADR-005, ADR-007 à ADR-009, ADR-012 à ADR-014, ADR-016, ADR-017)
-  - **1 accepté sous réserve** (ADR-010 — 6 points de réserve actifs)
-  - **2 proposés** (ADR-006, ADR-011)
-  - **1 backlog** (ADR-015 — plugin P1)
-  - **1 backlog identifié** (ADR-018 — synchro temporelle)
-- Chaque ADR est un document autonome dans `02_DECISIONS/ADR/`
-
-### 2.3 Ingénierie P0 (M-02 actif)
-- `03_P0_ENGINEERING/PROTOCOLES/progress.md` — tracker de protocoles (source de vérité)
-- `03_P0_ENGINEERING/PROTOCOLES/` — 18 SOPs individuelles + 3 tests caméra + 5 tests firmware
-  - ✅ Phases A→C complétées (ESP32 alive, deep sleep, PPK2)
-  - ⏳ Phases D→E en attente (wake short, simulation cycle)
-  - ⏳ SOPs 06-12 en attente (SD, LoRa, caméra, PIR, batterie, Edge AI, micro provisioning)
-  - ⏳ SOPs 13-18 en attente (audio : I2S init, FFT, clip WAV, payload spectral, coexistence PIR/timer, budget énergie audio) — *ajoutées 05/07*
-  - 🔴 SOP-07 LoRa bloquée (module non commandé — panier Mouser ~279€)
-- `03_P0_ENGINEERING/05_SIMULATION/wokwi/` — simulation CI Wokwi (validée)
-- `03_P0_ENGINEERING/05_SIMULATION/test_harness/` — dataset caméra 51 images (deadline 15/07)
-- `03_P0_ENGINEERING/07_PROCUREMENT_BOM/` — BOM v0.2c + v0.4
-- `firmware/` — repo wildnexus-firmware (structure ESP-IDF créée, modules à implémenter)
-
-### 2.4 Pilotage
-- Plane : projet `03_WILDNEXUS`
-- Kanban : `JCH_Inbox/kanban.html`
-
-Ordre d'autorité en cas de contradiction :
-- décision explicite JCH ;
-- non-négociables du document fondateur ;
-- ADRs acceptés ;
-- documents de pilotage Plane ;
-- SOPs et skills agents.
-
-Toute contradiction détectée doit devenir une décision documentée, pas une discussion diffuse.
-
----
-
-## 3. État Actuel (2026-07-05)
-
-### 3.1 Milestones
-
-| Milestone | Statut |
-|-----------|--------|
-| **M-01** — Architecture P0 gelée | ✅ Complété — 17 ADRs, MCU ESP32-S3, caméra OV5640, LoRa SX1262, micros stéréo |
-| **M-02** — Prototype banc fonctionnel | 🔵 En cours — SOPs A→C ✓, D→E + SOPs 06-18 en attente |
-| **M-03** — Prototype terrain | ⬜ Après M-02 |
-| **M-04** — Production P0/P1 | ⬜ Après M-03 |
-
-### 3.2 Work Packages
-
-> ⚠️ **Taxonomie canonique** (depuis Bible V0, 2026-10-29) — remplace l'ancienne liste.
-> Source de vérité : `01_FOUNDATION/WILDNEXUS_DOSSIER_TECHNICO-COMMERCIAL_V0.md` §7.
-
-| WP | Contenu | Statut |
-|----|---------|--------|
-| WP01 — Architecture & ADRs | ADRs, choix composants, scope lock | ✅ Gelé (17 ADRs, 14 acceptés) |
-| WP02 — Hardware nœud | Alim, capteurs, média, BOM, caméra/PIR/SD | 🔵 Actif — BOM v0.4, hardware reçu, tests caméra/PIR/SD à exécuter |
-| WP03 — Énergie & mesure | Budget énergie, PPK2, 60 j extrapolés | 🔵 Banc en cours — PPK2 phases A→C faites, budget à formaliser |
-| WP04 — Firmware | Machine d'états, deep sleep, SD, LoRa | 🔵 37/37 tests host ✅, tests hardware en attente |
-| WP05 — Connectivité (LoRa) | LoRa P2P, format 0x05 | 🔴 Bloqué — RAK3172 non commandé (panier Mouser) |
-| WP06 — Boîtier & terrain | IP67, EVT 30 j | ⬜ En attente M-02/M-03 |
-
-### 3.3 Équipement clé
-
-| Équipement | Statut | Réf. commande |
-|-----------|--------|---------------|
-| ESP32-S3-DevKitC-1 N16R8 | ✅ Reçu (×2) | Amazon MiMiU, 21,98€ |
-| Nordic PPK2 | ✅ Reçu | ~100€ |
-| Mouser #39492997 | ✅ Reçu | MEMS, IR, PIR, buck, BME688, SHT31, antennes — 128,20€ |
-| ESP32-CAM OV2640 (avec caméra) | ✅ Reçu (×2) | Hailege Amazon.de, ~25€ |
-| ESP32-CAM (cartes seules) | ✅ Reçu (×4) | 23 juin |
-| OV5640 DVP M12 | ✅ Reçu (×5) | 1× Camemake + 4× AliExpress |
-| USB-C TTL FT232RL | ✅ Reçu (×3) | AZDelivery, 9€ |
-| Miuzei Starter Kit | ✅ Reçu | 235 composants, breadboard |
-| MP1584 DC-DC ×5 | ✅ Reçu | Buck step-down 3A |
-| SPH0645LM4H-B ×2 | ✅ Reçu | Dans Mouser #39492997 — micros MEMS stéréo (ADR-013) |
-| Carte microSD 128 GB | ⏳ À ACHETER | Recommandation ADR-017 (~15€) |
-| Panier Mouser restant (11 composants) | ⏳ À COMMANDER | ~279€ — bloque LoRa (SOP-07) + payload spectral (SOP-16) |
-
-### 3.4 Budget
-
-- Enveloppe : **1 000 €**
-- Engagé (Mouser #39492997 + Amazon + AliExpress + PPK2) : **~610 €**
-- Panier Mouser restant : **~279 €**
-- Carte SD 128 GB : **~15 €** (ADR-017)
-- Total projeté : **~904 €** (sous enveloppe)
-- Réserve : **~96 €**
-- BOM Excel : `03_P0_ENGINEERING/07_PROCUREMENT_BOM/WILDNEXUS_BOM_P0_v0.4.xlsx`
-
----
-
-## 4. Actions Au Signal `go`
-
-### 4.1 Contrôle Initial
-
-[[Dobby]] commence par vérifier :
-- que Plane répond ;
-- que le projet `03_WILDNEXUS` est joignable ;
-- que les ADRs 1-17 sont cohérents avec l'index (pas de nouveau ADR bloquant non référencé) ;
-- que le BOM v0.4 reflète l'état réel des commandes ;
-- que les SOPs non complétées (D→E, 06-18) ont leurs prérequis disponibles ;
-- que `PROTOCOLES/progress.md` est à jour.
-
-Si un élément technique bloque, [[Dobby]] corrige ce qui peut l'être et ne sollicite JCH que si une action externe est nécessaire.
-
-### 4.2 Synchronisation Projet
-
-[[Dobby]] synchronise :
-- milestones `M-01` à `M-04` — état réel vs Plane ;
-- SOPs D→E + 06-18 — prérequis, blocages, composants manquants ;
-- BOM — écarts entre commandé et reçu ;
-- ADRs — nouveaux, modifiés, ou contestés ;
-- risques actifs — avec owner.
-
-Le principe est l'idempotence : relancer la synchronisation ne doit pas créer de doublons.
-
-### 4.3 Prochain Chantier Actif
-
-Le chantier en cours est `WP02 — Procurement (panier Mouser restant)` + `WP03 — Firmware (SOPs D→E, 06-18, repo)` + `WP04 — Test harness caméra (deadline 15/07)`.
-
-Les fronts lancés en priorité :
-- **FW-01** — Créer repo `wildnexus-firmware/` (structure déjà présente, modules à implémenter) ;
-- **FW-02** — Codec payload ADR-014 (caméra + spectral) — pas de hardware requis, testable immédiatement ;
-- **SOP-08** — Test caméra OV5640 (hardware reçu ✅, pinout à mapper) ;
-- **CAM-01** — ESP32-CAM OV2640 flash via FT232RL (hardware reçu ✅) ;
-- **Test harness caméra** — dataset 51 images prêt, code d'inférence à produire (deadline 15/07) ;
-- **SOP-13** — I2S MEMS init + capture stéréo (SPH0645LM4H-B reçu ✅, pinout I2S à mapper) — pas bloqué par Mouser ;
-- **SOP-07** — Test LoRa (BLOQUÉ — module RAK3172 dans panier Mouser restant ~279€) ;
-- **Commandes en attente** : panier Mouser restant (~279€) + carte SD 128 GB (~15€).
-
----
-
-## 5. Orchestration Des Agents
-
-### 5.1 Noyau Actif
-
-[[Dobby]] active pour les tâches courantes :
-- **[[Forge]]** — firmware, intégration, scripts, repo ESP-IDF
-- **[[Castor]]** — DB, schémas, données techniques
-- **[[Araignée]]** — IoT, protocoles, connectivité, banc de test
-- **[[Nova]]** — imagerie, caméra, optique
-- **[[Bruno]]** — budget, BOM, suivi financier
-
-### 5.2 Agents À La Demande
-
-[[Dobby]] active seulement si nécessaire :
-- **[[Furet]]** — recherche composants, benchmarks
-- **[[Sigma]]** — analyse données PPK2, modèles énergétiques
-- **[[Atlas]]** — rédaction documents fondateurs
-- **[[Milan]]** — veille concurrentielle
-- **[[Hermine]]** — propriété intellectuelle
-- **[[Musaraigne]]** — Edge AI, TinyML, modèles IA embarqués
-- **[[Chouette]]** — hardware terrain, I2S, microphones, validation bioacoustique
-
-Ces rôles ne doivent pas créer de complexité prématurée.
-
----
-
-## 6. Automatisation Attendue
-
-### 6.1 Automates De Routine
-
-[[Dobby]] automatise par défaut :
-- lecture de l'état Plane ;
-- détection des tâches bloquées ;
-- synthèse des décisions ouvertes ;
-- suivi des milestones vs réalité ;
-- repérage des documents modifiés ;
-- régénération du BOM Excel depuis la shortlist Markdown ;
-- mise à jour de `Start.md` (ce fichier) après chaque changement structurel.
-
-### 6.2 Automates De Preuve
-
-Chaque livrable doit laisser une [[Trace]] :
-- document créé ou mis à jour ;
-- lien vers fichier source ;
-- item Plane associé ;
-- statut du livrable ;
-- décision ou prochaine action.
-
-Un travail important sans [[Trace]] dans le repo est considéré incomplet.
-
-### 6.3 Automates De Cohérence
-
-[[Dobby]] surveille :
-- écarts entre ADRs acceptés et BOM (composant manquant = ADR non couvert) ;
-- contradictions de version entre Markdown et XLSX ;
-- écarts entre `Start.md`, ADR Index et réalité du repo ;
-- décisions prises mais non propagées ;
-- risques identifiés sans owner.
-
-Quand l'écart est mécanique, [[Dobby]] corrige. Quand l'écart implique une décision de fond, [[Dobby]] escalade.
-
-### 6.4 Régénération Automatique
-
-Ce fichier doit être mis à jour automatiquement après :
-- acceptation d'un nouvel ADR ;
-- complétion d'une SOP M-02 ;
-- réception d'une commande BOM ;
-- changement de milestone.
-
----
-
-## 7. Page Web Et Terminal
-
-### 7.1 Page Web
-
-La page web de pilotage (kanban.html ou Plane) doit montrer :
-- statut global ;
-- milestone courante ;
-- SOPs actives / bloquées ;
-- commandes BOM en attente ;
-- décisions en attente JCH ;
-- risques critiques.
-
-### 7.2 Terminal
-
-Le terminal sert aux interactions courtes et immédiates :
-- signaler un blocage ;
-- demander un arbitrage ;
-- confirmer une action importante ;
-- restituer un résultat de test ou de mesure.
-
-### 7.3 Règle D'Escalade
-
-La page web est la vue continue.  
-Le terminal est le canal d'action.
-
-Une décision critique doit apparaître dans les deux.
-
----
-
-## 8. Quand JCH Est Sollicité
-
-[[Dobby]] sollicite JCH uniquement pour :
-- modifier un non-négociable ;
-- choisir entre deux options stratégiques réelles ;
-- accepter un compromis coût / délai / performance ;
-- valider un usage ou une orientation juridique ;
-- autoriser une dépense hors enveloppe ou un engagement externe ;
-- accepter un risque terrain, RGPD ou réputationnel.
-
-[[Dobby]] ne sollicite pas JCH pour :
-- renommer un fichier ;
-- créer une annexe ;
-- aligner un backlog ;
-- produire une synthèse ;
-- nettoyer une incohérence mécanique ;
-- marquer un sujet comme P1 ou P2 quand le document fondateur le prévoit déjà.
-
----
-
-## 9. Gaps critiques identifiés (2026-07-05)
-
-| Gap | Impact | Action requise |
-|-----|--------|----------------|
-| Panier Mouser restant (~279€) non commandé | 🔴 Bloque LoRa (SOP-07) + payload spectral (SOP-16) | JC autorise la commande |
-| Carte SD 128 GB non achetée | 🟡 Bloque SOP-06 (storage) + SOP-15 (clip WAV) | JC achète ou ajoute au panier Mouser |
-| Modèle Edge AI non entraîné | 🔴 Bloque ADR-010 R4 | Dataset insuffisant (51 images), Musaraigne doit produire un modèle MobileNet-SSD |
-| Repo firmware peuplé | 🟡 Structure créée, modules à implémenter | FW-01 à FW-05 — Forge commence par FW-02 (codec, pas de hardware) |
-| ADR-018 (synchro temporelle) non rédigé | 🟡 Pas bloquant M-02 (banc), bloquant M-03 (terrain) | Forge rédige avant M-03 |
-| Founding doc v0.2 non validé | 🟡 Sections §5/§9/§13/§15 en attente | JC valide ou demande v0.3 |
-| Licence non rédigée | 🟡 Bloque M-04 | Renard + Hermine — trancher dual-license vs source-available |
-
----
-
-*Mis à jour le 2026-07-05 par Dobby 🦉 — audit P0 ↔ InsectNet/NEXUS_ACOUSTIC, ADR-014/016/017 acceptés, SOPs 13-18 + FW-01 à FW-05 ajoutés.*
+*Révision 2026-11-05 : état gelé explicite, comptage ADR corrigé, validations hôte distinguées du matériel, SOP-10 suspendue, gateway P0 ajoutée, budget provisoire dédupliqué et décisions licence/prix enregistrées.*

@@ -1,6 +1,7 @@
 # strategy/ — Index
 
 > Notes de stratégie, partenariats et site web. ← [Index projet](../INDEX.md)
+> **Lecture :** le `../thread-vetalyx.md` et l'`../executive-summary.md` donnent l'état courant. Les documents ci-dessous sont des cadres ou analyses datés, pas des preuves de signature, d'envoi ou de validation.
 
 ## 🟢 Documents pivot
 | Fichier | Rôle |
@@ -24,6 +25,7 @@
 - [`Idea Website VetalyX.md`](Idea%20Website%20VetalyX.md) · [`Content_enhancement_proposal.md`](Content_enhancement_proposal.md) · [`Merge_presentations_for_slide_deck.md`](Merge_presentations_for_slide_deck.md) · [`2026-06-07_gemma3_proposition-structure-site.md`](2026-06-07_gemma3_proposition-structure-site.md)
 
 ## Références & analyses récentes
+- [`2026-11-07_VETALYX_rapport-strategique-omega3-peau-poil.md`](2026-11-07_VETALYX_rapport-strategique-omega3-peau-poil.md) — rapport multifonctions oméga-3 peau/pelage : GO conditionnel à la preuve canine, NO-GO au lancement et à l’industrialisation 3D en l’état
 - [`VETALYX_CLAIMS_MATRIX_FR.md`](VETALYX_CLAIMS_MATRIX_FR.md) — matrice des allégations (claims)
 - [`Veterinary_Project_Strategy_Update.md`](Veterinary_Project_Strategy_Update.md)
 - [`2026-10-21_dobby_etude-diversification-gamme-vetalyx.md`](2026-10-21_dobby_etude-diversification-gamme-vetalyx.md) — diversification de gamme

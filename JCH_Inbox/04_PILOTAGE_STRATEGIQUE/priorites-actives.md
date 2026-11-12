@@ -1,29 +1,34 @@
 # Priorités actives — Portefeuille PKA_JCH
 
-> Dernière mise à jour : 2026-10-19 — Dobby 🦉 — deadline IOT Van prolongée au 15/12, RPi 5 boot résolu
+> Dernière mise à jour : 2026-11-12 — Dobby 🦉 — dégel WILDNEXUS DEVICE (décision JC) ; RPi Home ressuscité + Z2M réinstallé (11/11) ; pacte VETALYX EN envoyé 08/11
 > Rôle : arbitrage transversal entre projets
 
 ---
 
-## 🔴 Priorité absolue — octobre 2026
+## 🔴 Priorité absolue — novembre 2026
 
 | Projet | Pourquoi maintenant | Deadline |
 |--------|-------------------|----------|
-| **IOT Van** | RPi 5 boot résolu (NVMe retiré 01/10, HAOS 18.3). Hardware quasi complet, reste : capteurs Zigbee (~88€), silentblocs, coating, WiCAN Pro, pose bracket Be Camper. | **15 décembre 2026** — installation IOT Van |
+| **IOT Van** | RPi 5 Lupo vivant. Reste : Time Machine auto, WiCAN Pro + RUT240 (session atelier), bracket Be Camper. | **15 décembre 2026** — installation IOT Van |
 
 ## 🟠 Priorité haute — juridique VETALYX (réactivé)
 
 | Projet | Pourquoi |
 |--------|----------|
-| **VETALYX** | DIAHO 40 % fondateur acté (18/08). Pacte actionnaires v1 + convention bloc v1 produits (30/09). Reste : corrections fond (véto → statuts), qualification AFMPS/FAMHP, notaire + UCM. Non bloquant mais chaud. |
+| **VETALYX** | DIAHO 40 % fondateur acté (18/08). Pacte EN envoyé aux partenaires chinois le 08/11 — en attente de réponse. Reste : trancher Art. 5.1 + mécanique 6 000 €, qualification AFMPS/FAMHP, notaire + UCM. |
+
+## 🟠 Priorité haute — WILDNEXUS DEVICE (réactivé 12/11)
+
+| Projet | Pourquoi |
+|--------|----------|
+| **WILDNEXUS DEVICE** | Dégelé le 12/11 (décision JC). P0 engineering repris 11/11 (SOP-16/17/18). Reste : gates de reprise — inventaire, factures, micros/PIR, matrice GPIO — avant tout montage ou achat. Budget : ~610 € engagé, projection ~904 €, achats en pause (> seuil 900 €). |
 
 ## 🟡 Priorité haute — replanifiée (non reprise)
 
 | Projet | Pourquoi |
 |--------|----------|
-| **WILDNEXUS P0** | Bench loop non repris en septembre. Panier Mouser ~279€ non commandé. À replanifier post-van. |
-| **NEXUS_ACOUSTIC** | Dépend de WildNexus P0. |
 | **ARTEON** | Relance éditoriale exige créativité JC. |
+| **INSECTNET / NEXUS_ACOUSTIC** | Gelés — dépendent de la reprise de WILDNEXUS DEVICE (capture). |
 
 ## 🟢 Maintenir
 

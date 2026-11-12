@@ -1,34 +1,37 @@
 # ADR-017 — Schéma métadonnées audio et format de fichiers
 
 **Date :** 2026-07-05  
-**Statut :** accepté  
+**Dernière mise à jour :** 2026-11-05 — volumes stéréo et preuves de compatibilité
+**Statut :** accepté comme contrat ; validation matérielle ouverte
 **Owner PKA :** [[Dobby]] + [[Forge]] + [[Chouette]]  
 **Jalon :** M-02 — Prototype banc  
 
 ## Contexte
 
-ADR-013 définit la couche acoustique hardware (2× SPH0645LM4H-B, I2S, stéréo). ADR-016 définit le cycle firmware audio (FFT 15 min + clip WAV 60 min). ADR-014 définit la transmission LoRa des features spectrales.
+ADR-013 définit une cible stéréo à deux micros MEMS ; les références et l'interface des micros réellement en stock restent à confirmer. ADR-016 définit le cycle firmware audio (FFT 15 min + clip WAV 60 min). ADR-014 définit la transmission LoRa des features spectrales.
 
 **Ce qui manque :** comment les clips WAV sont stockés sur la carte SD, quelles métadonnées les accompagnent, et comment ces fichiers sont compatibles avec les pipelines en aval — InsectNet (classification orthoptères) et NEXUS_ACOUSTIC (BirdNET, TweetyBERT, SoundPlot).
 
-Le risque : si le format P0 est propriétaire ou incomplet, les clips devront être retraités manuellement avant alimentation des pipelines. Si le format est standardisé dès le départ, le flux est direct : WildNexus SD → extraction → InsectNet/NEXUS_ACOUSTIC sans conversion.
+Le risque : si le format P0 est propriétaire ou incomplet, les clips devront être retraités manuellement avant alimentation des pipelines. Le WAV PCM et les sidecars JSON visent à limiter ce retraitement, mais le flux WildNexus SD → extraction → InsectNet/NEXUS_ACOUSTIC reste à démontrer. Selon les entrées réellement acceptées par chaque outil, une étape de déchiffrement, de mixdown mono, de resampling ou de conversion pourra être nécessaire.
 
-## Décision proposée
+## Décision
+
+Le schéma et le format sont acceptés comme contrat d'implémentation. Leur validation matérielle et leur compatibilité avec les pipelines aval restent soumises aux tests de fin de document.
 
 ### 1. Format audio — WAV PCM 16-bit 16 kHz stéréo
 
 | Paramètre | Valeur | Raison |
 |-----------|--------|--------|
-| Conteneur | WAV (RIFF) | Universel, lisible par BirdNET, InsectSet459, TweetyBERT, ffmpeg, Audacity |
+| Conteneur | WAV (RIFF) | Standard lisible par les outils audio ; compatibilité des pipelines à démontrer sur fichiers réels |
 | Encodage | PCM 16-bit signed little-endian | Standard non compressé, pas de codec à implémenter sur ESP32-S3 |
-| Sample rate | 16000 Hz | Compatible BirdNET-Lite (RPi 5). InsectSet459 utilise 16-48 kHz. TweetyBERT résolution 2.7ms = ~6 samples à 16kHz |
-| Canaux | 2 (stéréo) | ADR-013 — 2× SPH0645LM4H-B en opposition |
-| Duration clip P0 | 3 secondes | ADR-013 — 13 MB/jour à ce rythme |
+| Sample rate | 16000 Hz | Vise les entrées 16 kHz de BirdNET-Lite ; traitement stéréo et resampling à tester. Vérifier les exigences de chaque pipeline et taxon |
+| Canaux | 2 (stéréo) | ADR-013 — deux micros, références et placement à valider |
+| Duration clip P0 | 3 secondes | ADR-013 — 24 clips/jour = 4 608 000 octets de PCM, hors sidecars |
 | Duration clip P1 | 10-30 secondes | Monitoring continu NEXUS_ACOUSTIC — configurable via downlink 0x06 |
 
-**Taille fichier P0 :** 16000 Hz × 2 bytes × 2 channels × 3s = **192 KB par clip**
+**Données audio P0 :** 16000 Hz × 2 octets × 2 canaux × 3 s = **192 000 octets par clip**, hors en-tête WAV et JSON. À 24 clips/jour : **4 608 000 octets/jour**, soit environ **4,61 MB/jour** en notation décimale.
 
-**Pourquoi pas 48 kHz ?** InsectSet459 contient des fichiers 48 kHz, mais BirdNET-Lite sur RPi 5 travaille à 16 kHz (resample interne). 16 kHz suffit pour les orthoptères < 8 kHz (couvre la majorité des espèces européennes). Les ultrasons (> 15 kHz) nécessitent l'upgrade ICS-43434 + 48 kHz — c'est P1. Pour TweetyBERT, 16 kHz est suffisant car le modèle a été entraîné sur des données oiseaux 16-44 kHz resamplées.
+**Pourquoi pas 48 kHz ?** Le choix 16 kHz vise la compatibilité avec plusieurs pipelines oiseaux et limite le volume de données. Il impose une bande analysable inférieure à 8 kHz : il ne peut donc pas couvrir les vocalisations au-delà de cette fréquence. La couverture des orthoptères, amphibiens ou autres taxons n'est pas généralisée ; elle devra être établie par liste d'espèces cibles et protocole d'échantillonnage. Un passage à 48 kHz reste une option P1 si ces exigences le justifient.
 
 **Upgrade path P1 :** si l'ICS-43434 est monté et le sample rate passe à 48 kHz, les fichiers P1 seront 3× plus gros (576 KB/clip), mais le format WAV reste identique. Seul le header change.
 
@@ -116,7 +119,9 @@ Chaque clip WAV est accompagné d'un fichier JSON portant le même nom de base. 
 }
 ```
 
-**Champs `null`** : les capteurs environnementaux non montés en P0 (BME688 reçu mais pas sur le nœud prototype M-02) sont présents dans le schéma mais null. L'absence de valeur est explicite, pas une omission.
+Les JSON de cette ADR sont des exemples de schéma, non des captures réelles. Les champs `microphones`, les mesures, les compteurs et les statuts doivent provenir du nœud et de son provisioning ; ils ne doivent pas être copiés comme des constantes de démonstration présentées comme des observations.
+
+**Champs `null`** : les capteurs environnementaux non montés en P0 (BME688 consigné reçu mais pas sur le nœud prototype M-02) sont présents dans le schéma mais null. L'absence de valeur est explicite, pas une omission.
 
 **Spectral features** : les 10 descripteurs sont répétés dans le sidecar JSON du CLIP (mesurés sur ce clip), et aussi dans un sidecar JSON dédié pour les cycles FFT 15 min (qui n'ont pas de clip WAV).
 
@@ -183,35 +188,36 @@ Séparation `DCIM/` (caméra) et `AUDIO/` (audio) pour extraction indépendante.
 
 ### 6. Stratégie taille SD
 
-| Carte | Capacité | Clips P0/jour | Clips P0 autonomie | Clips P1 continu | Prix |
-|-------|----------|-------------|-------------------|-----------------|------|
-| 32 GB | 32 000 MB | 13 MB | ~2 461 jours | ~2 jours | ~8€ |
-| 64 GB | 64 000 MB | 13 MB | ~4 923 jours | ~4 jours | ~12€ |
-| **128 GB** | 128 000 MB | 13 MB | ~9 846 jours | **~8 jours** | **~15€** |
+| Carte | Audio P0 seul, hors JSON* | P1 continu 48 kHz/16 bits/stéréo* |
+|-------|--------------------------|------------------------------------|
+| 32 GB | ≈6 940 jours | ≈1,93 jour |
+| 64 GB | ≈13 890 jours | ≈3,86 jours |
+| **128 GB** | ≈27 780 jours | **≈7,72 jours** |
 
-**Recommandation P0 : 128 GB minimum.**
+\* Capacités décimales nominales, sans espace réservé au système de fichiers, aux images, aux JSON, aux logs ni à la politique de rétention. Ce sont des maxima théoriques audio, pas des durées de fonctionnement autonome.
 
-Raisons :
-- P0 : 13 MB/jour → une 32 GB suffit largement (ans d'autonomie audio)
-- P1 : monitoring continu NEXUS_ACOUSTIC à 16 kHz/16-bit/stéréo = 192 KB/s = 16,6 GB/jour. Une 128 GB donne ~8 jours de marge — suffisante entre deux passages de récupération SD.
-- Écart de prix 32→128 = ~7€ — négligeable dans le budget 1000€
-- Anticipe la transition P0→P1 sans changement de BOM
+**Choix P0 : 128 GB, comme marge média à consolider, pas parce que l'audio seul l'exige.**
+
+- P0 : 24 clips/jour = environ 4,61 MB de WAV/jour, plus 24 sidecars de clips et 96 JSON spectraux.
+- P1 continu à 48 kHz : 192 000 octets/s = 16 588 800 000 octets/jour, soit ≈16,6 GB/jour ; 128 GB offre ≈7,7 jours théoriques audio seuls.
+- Les images, la rétention, le chiffrement, l'endurance et l'espace libre doivent entrer dans le dimensionnement final ; aucune durée entre passages terrain n'est promise sans ces hypothèses.
+- Le coût de la carte reste à confirmer dans le budget réconcilié.
 
 ### 7. Compatibilité pipelines aval
 
 | Pipeline | Format attendu | Compatibilité P0 | Action |
 |----------|---------------|-----------------|--------|
-| **BirdNET-Lite** (RPi 5) | WAV 16 kHz mono/stéréo | ✅ Direct — pas de conversion | BirdNET resample si >16kHz ; stéréo mixé en mono automatiquement |
-| **InsectSet459** fine-tuning | WAV 16-48 kHz mono | ✅ Conversion : `ffmpeg -i input.wav -ac 1 output.wav` | Script automatisable |
-| **TweetyBERT** (M5) | WAV/FLAC, 16-44 kHz | ✅ Direct ou resample librosa | TweetyBERT utilise librosa → gère tous sample rates |
-| **SoundPlot** (3D viz) | WAV + timestamps | ✅ Direct + sidecar JSON | JSON fournit les métadonnées temporelles |
+| **BirdNET-Lite** (RPi 5) | WAV 16 kHz | 🟡 À valider sur un clip réel | Tester explicitement le traitement des deux canaux ; ajouter un mixdown mono si nécessaire |
+| **InsectSet459** fine-tuning | WAV 16-48 kHz mono | 🟡 Conversion prévue | `ffmpeg -i input.wav -ac 1 output.wav`, puis vérifier les exigences du pipeline |
+| **TweetyBERT** (M5) | WAV/FLAC, entrée resamplée | 🟡 À valider | Tester `librosa.load()` et le resampling du clip réel |
+| **SoundPlot** (3D viz) | WAV + timestamps | 🟡 À valider | Vérifier l'import du WAV et du sidecar JSON |
 | **Camtrap-DP** (images) | JPEG + CSV metadata | N/A (séparé) | — |
 
 ### 8. Chiffrement SD et audio
 
-ADR-010 §2 impose le chiffrement AES-128 des données SD. Les fichiers audio sont chiffrés au repos comme les images.
+ADR-010 §2 impose le chiffrement AES-128 minimum des données SD. Les fichiers audio sont chiffrés au repos comme les images.
 
-**Impact :** l'extraction SD nécessite le nœud (clé dérivée du serial MCU) ou la master key PKA. Pas de lecture directe sur PC sans le module de déchiffrement.
+**Impact :** l'extraction SD nécessite le nœud ou la procédure de récupération autorisée. La clé du nœud doit être dérivée de son identifiant et d'un secret de provisioning, conformément à ADR-010/011 ; le serial MCU seul n'est jamais un secret suffisant. La master key PKA n'est pas embarquée sur le nœud.
 
 **Exception P0 :** sur le prototype banc M-02, le chiffrement peut être désactivé pour faciliter les tests. Activé obligatoirement à partir de M-03 (terrain).
 
@@ -219,7 +225,7 @@ ADR-010 §2 impose le chiffrement AES-128 des données SD. Les fichiers audio so
 
 | Option | Pour | Contre | Statut |
 |--------|------|--------|--------|
-| WAV PCM 16-bit 16 kHz stéréo | Universel, pas de codec, compatible BirdNET/InsectSet/TweetyBERT | Taille ×10 vs FLAC | **Retenu P0** |
+| WAV PCM 16-bit 16 kHz stéréo | Standard, pas de codec, tests possibles dans tous les pipelines cibles | Volume supérieur aux formats compressés ; stéréo à adapter si nécessaire | **Retenu P0, compatibilité à prouver** |
 | FLAC | Compression sans perte, ~60% de WAV | Codec FLAC sur ESP32-S3 = complexité firmware, librairie lourde | P1 si besoin storage |
 | Opus | Excellent ratio qualité/taille | Codec complexe, pas universel pour bioacoustique | Rejeté |
 | MP3 | Compact | Compression avec perte, inacceptable pour bioacoustique scientifique | Rejeté |
@@ -232,10 +238,10 @@ ADR-010 §2 impose le chiffrement AES-128 des données SD. Les fichiers audio so
 - Le module `wn_audio_metadata.c` (ADR-016) génère le header WAV RIFF + le sidecar JSON à chaque clip.
 - Le module `wn_storage.c` gère la structure de répertoires `AUDIO/{NODE_ID}/{YYYY}/{MM}/{DD}/`.
 - Le parser gateway (Python) peut router les clips vers InsectNet (dossier `INSECTNET/raw_audio/`) ou NEXUS_ACOUSTIC (`NEXUS_ACOUSTIC/raw_audio/`) selon l'origine du nœud.
-- Le BOM P0 doit inclure une carte microSD **128 GB minimum** (ajout ~7€ vs 32 GB — dans la réserve budget 111€).
+- Le BOM P0 doit inclure une carte microSD **128 GB minimum**. Son coût et la réserve budgétaire disponible sont à confirmer dans le suivi d'achats réconcilié ; cette ADR ne fige ni prix ni solde de trésorerie.
 - Le script d'extraction SD (Forge, à créer) déchiffre + copie + valide SHA-256 + route vers les projets.
 
-## Tests obligatoires avant acceptation
+## Tests obligatoires pour la validation matérielle et la clôture M-02
 
 | Test | Critère minimal |
 |---|---|
@@ -258,4 +264,4 @@ Réviser cette ADR si :
 
 ---
 
-*Créé le 2026-07-05 par Dobby 🦉 suite à l'audit de cohérence WildNexus ↔ InsectNet/NEXUS_ACOUSTIC. — Forge : implémentation firmware. — Chouette : validation format bioacoustique. — Clio : validation compatibilité scientifique.*
+*Créé le 2026-07-05 ; révisé le 2026-11-05 : 4,61 MB WAV/jour hors JSON, stockage recalculé et compatibilités maintenues comme tests obligatoires. L'acceptation du schéma n'est pas une validation matérielle.*

@@ -1,0 +1,76 @@
+{
+  "_comment": "Routing modèle par tâche. provider: anthropic | openai | google | ollama | nvidia",
+  "default": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5"
+  },
+  "tasks": {
+    "journal": {
+      "provider": "ollama",
+      "model": "gemma3:27b"
+    },
+    "retro": {
+      "provider": "ollama",
+      "model": "gemma3:27b"
+    },
+    "weekly_report": {
+      "provider": "anthropic",
+      "model": "claude-sonnet-5-5"
+    },
+    "email_digest": {
+      "provider": "anthropic",
+      "model": "claude-haiku-5-5"
+    },
+    "telegram_bot": {
+      "provider": "anthropic",
+      "model": "claude-sonnet-5-5"
+    },
+    "skill_write": {
+      "provider": "ollama",
+      "model": "gemma3:27b"
+    },
+    "skill_search": {
+      "provider": "ollama",
+      "model": "gemma3:27b"
+    },
+    "nvidia": {
+      "provider": "nvidia",
+      "model": "deepseek-v4-pro"
+    }
+  },
+  "providers": {
+    "deepseek": {
+      "base_url": "https://api.deepseek.com/v1",
+      "key_env": "DEEPSEEK_API_KEY"
+    },
+    "nvidia": {
+      "base_url": "https://integrate.api.nvidia.com/v1",
+      "key_env": "NVIDIA_API_KEY",
+      "key_file": "~/.config/pka-jch/nvidia_key.txt"
+    },
+    "anthropic": {
+      "base_url": null,
+      "key_file": "~/.config/pka-jch/anthropic_key.txt"
+    },
+    "openai": {
+      "base_url": null,
+      "key_file": "~/.config/pka-jch/openai_key.txt"
+    },
+    "google": {
+      "base_url": null,
+      "key_file": "~/.config/pka-jch/google_key.txt"
+    },
+    "ollama": {
+      "base_url": "http://localhost:11434/v1",
+      "api_key": "ollama"
+    },
+    "kimi": {
+      "base_url": "https://api.moonshot.ai/v1",
+      "key_file": "~/.config/pka-jch/kimi_key.txt"
+    },
+    "openrouter": {
+      "base_url": "https://openrouter.ai/api/v1",
+      "key_file": "~/.config/pka-jch/openrouter_key.txt"
+    }
+  }
+}

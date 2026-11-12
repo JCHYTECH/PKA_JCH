@@ -1,9 +1,11 @@
 # WildNexus — Registre composants critiques P0
 
-**Version :** v0.3
-**Date :** 2026-05-23 (batterie et solaire déjà alignés sur ADR-005)
-**Statut :** Ouvert — à compléter avant `M-01`
+**Version :** v0.4
+**Date :** 2026-11-11 — registre de reprise (projet repris)
+**Statut :** Ouvert — références, stock et fournisseurs à revalider ; aucune autorisation d'achat
 **Owner :** [[Bruno]] + [[Forge]]
+
+> Les tableaux ci-dessous conservent des candidats et prix historiques, pas des commandes à exécuter. Corrections prioritaires : microSD 128 GB selon ADR-004/017 ; cible stéréo selon ADR-013 ; micros réels et interface à identifier ; IR 940 nm retenu, pas de lot 850 nm ; LTE-M en P1. SOP-10 est suspendue : ne pas acheter ou assembler un pack 4S2P avant revue ADR-005 et schéma. La projection de 904 € impose une pause et un arbitrage JCH avant toute dépense. Les affirmations de délais, stocks fournisseurs, « CE certifié » et validations matérielles doivent être vérifiées à la reprise.
 
 ## 1. Objet
 
@@ -46,67 +48,51 @@ Scoring fournisseur recommandé :
 
 ## 3. Tableau de suivi
 
-| Famille | Choix ADR | Fournisseur primaire | Alternative écartée (motif) | Prix unitaire cible | Délai cible | Risque | ADR |
-|---------|-----------|---------------------|-----------------------------|--------------------:|-------------|--------|-----|
-| MCU | [[ESP32-S3]] | Mouser / Farnell EU | STM32U5 — *intégration caméra complexe* | ~4–8 € | 2–5 j | Bas | ADR-001 ✅ |
-| Caméra — capteur | OV5640 5MP DVP 10-bit M12 (Camemake) | DigiKey BE (Marketplace) | IMX462 MIPI — *interface MIPI non native [[ESP32-S3]]* | ~20 € | 5–10 j | Bas | ADR-002 ✅ |
-| Caméra — lentille | M12 IR-corrigée f/1.8 4–6 mm | Lensation.de | Lentille fixe intégrée — *pas IR-corrigée, non remplaçable* | ~25–50 € | 3–7 j | Moyen | ADR-002 ✅ |
-| Caméra — IR LEDs | LED IR 850 nm × 4 | Mouser / AliExpress | 940 nm — *rendement capteur plus faible* | ~5–10 € | À confirmer | Bas | ADR-002 ✅ |
-| Radio [[LoRa]] | RAK3172 (SX1262, CE certifié) | RAK EU / Mouser | Murata Type 1SJ — *même gamme, second choix* | ~12–15 € | 3–7 j | Bas | ADR-003 ✅ |
-| Radio cellulaire | Quectel SIM7080G (NB-IoT + LTE-M) | Mouser / DigiKey | SIM7070G — *NB-IoT seul, moins polyvalent* | ~15–20 € | 5–10 j | Moyen | ADR-003 — **P1 — différé, complexité firmware non justifiée P0** |
-| SIM IoT | 1NCE nano-SIM (10 ans / 500 Mo) | 1nce.com | Hologram — *pay-as-you-go plus cher à terme* | 10 € one-shot | 3–5 j | Bas | ADR-003 — **P1 — lié au cellulaire** |
-| Gateway P0 | [[ESP32-S3]] DevKit + SX1262 breakout | Mouser / AliExpress | RAK2287 gateway complète — *surdimensionné P0* | ~25 € | 3–7 j | Bas | ADR-003 ✅ |
-| Stockage | microSD industrielle 8-16 GB | Mouser / DigiKey / Distrelec | flash SPI — *capacité limitée pour images et clips audio* | À chiffrer | À confirmer | Moyen | ADR-004 ✅ |
-| Batterie | Holder 8× AA en 4S2P + piles utilisateur | Mouser / Reichelt / Conrad / RS | LiFePO4 18650 — *BMS/charge/supply non nécessaires P0* | À chiffrer holder seul | À confirmer | Bas | ADR-005 ✅ |
-| Régulation énergie | TPS62840 ou équivalent buck faible Iq | Mouser / DigiKey | CN3791/MPPT — *solaire différé P1* | ~2–5 € | 2–5 j | Bas | ADR-005 ✅ |
-| Solaire | Réserve mécanique P1 seulement | — | Panneau 6V + MPPT CN3791 — *hors P0* | 0 € P0 | — | Bas | ADR-005 — **achat différé P1** |
-| Boîtier | IP67 ABS/PC [[commercial]] ≤ 150×100×60 mm | Hammond / Spelsberg EU | Impression 3D PETG — *étanchéité IP67 non garantie long terme* | ~10–20 € | 3–7 j | Moyen | ADR-006 |
-| PIR / détection | PIR basse conso | À confirmer | Réveil périodique caméra — *trop consommateur* | À chiffrer | À confirmer | Moyen | ADR-007 |
-| Micro audio | Micro mono MEMS I2S/PDM ou analogique faible conso | Mouser / DigiKey | Audio scientifique avancée — *hors P0* | À chiffrer | À confirmer | Moyen | ADR-008 ✅ |
-| Capteurs env. | SHT31 (temp. + humidité interne) | Mouser / DigiKey | HDC1080 — *même gamme, second choix* | ~3–6 € | 2–5 j | Bas | ADR-008 — **optionnel P0 ; non bloquant pour M-01/M-02/M-03 ; différer si budget serré** |
+| Famille | Besoin actif | Fournisseurs candidats à revalider | Risque / preuve requise | Décision |
+|---------|--------------|-----------------------------------|--------------------------|----------|
+| MCU | ESP32-S3 ; variante physique à relever | Mouser / Farnell / DigiKey | N8R8 et N16R8 ne sont pas interchangeables dans les documents ; vérifier stock et pinout | ADR-001 accepté |
+| Caméra | OV5640 DVP M12 ; module réel à identifier | DigiKey / fournisseur du module reçu | Alimentation, pinout, régulateur, NoIR et niveaux logiques | ADR-002 accepté, preuve ouverte |
+| Lentille | M12 IR-corrigée, focale à choisir par test | Lensation / Evetar / Arducam | Devis, correction IR et images jour/nuit | Sélection non close |
+| IR | LED 940 nm, référence du stock à relever | Mouser / fabricant de la pièce reçue | 850 nm retiré ; ne pas commander un lot de comparaison sans nouvelle décision | ADR-002 accepté |
+| Radio nœud | RAK3172-T EU868 avec IPEX | RAK officiel / revendeur UE | Prix, variante, disponibilité et temps d'air à revalider | ADR-003 accepté, non commandé |
+| Gateway P0 | ESP32-S3 + SX1262, configuration minimale | À choisir après revue WP05 | Ne pas retenir 1 W/+32 dBm sans revue radio/réglementaire | Gateway P0 requise ; STATION commerciale P1 |
+| Radio cellulaire et SIM | Aucun achat P0 | À évaluer en P1 | LTE-M, abonnement et firmware hors périmètre P0 | Différé P1 |
+| Stockage | microSD 128 GB ; endurance à définir | Mouser / DigiKey / Distrelec | Remplace les anciennes hypothèses 8–32 GB ; prix et stock à contrôler | ADR-004/017 |
+| Pack AA | Topologie et holders à revoir | À choisir après schéma | **SOP-10 suspendue** ; tension maximale L91 et régulateur non validés | ADR-005 accepté sous conditions de preuve |
+| Régulation | TPS62840 ou équivalent à confirmer | Mouser / DigiKey | Entrée recommandée 1,8–6,5 V, Iq typique 60 nA ; pics et schéma à valider | ADR-005 |
+| Boîtier | Boîtier visé IP67, layout préalable | Hammond / Spelsberg / RS | ADR-006 proposé ; IP de l'ensemble modifié non prouvé | Aucun achat avant revue |
+| PIR | Référence physique à relever | Mouser / DigiKey | EKMB1203111/EKMB1303111 divergent selon les documents | ADR-007 accepté, référence ouverte |
+| Audio | Deux micros, interface et placement à valider | Mouser / fabricant de la pièce reçue | Cible stéréo ; compatibilité I2S du TDK non vérifiée | ADR-013/017 |
+| Capteurs env. | SHT31/BME688 optionnels au banc | Mouser / DigiKey | Ne pas élargir le prototype avant les preuves principales | ADR-008 accepté |
 
-## 3.1 Shortlist procurement M-01 — achat depuis Liège
+## 3.1 Shortlist de reprise — achat depuis Liège
 
-**Stratégie panier :** centraliser d'abord chez **Mouser Belgique** pour MCU, capteurs, IR, composants passifs, boîtier si disponible ; utiliser **DigiKey Belgique** en second panier pour microSD industrielle et caméra OV5640 (Camemake) si Mouser ne fournit pas ; utiliser les **fabricants officiels** pour les modules très spécialisés (RAK, Lensation/Evetar) quand le distributeur généraliste ne garantit pas la bonne variante.
+La liste historique de fournisseurs reste une base de recherche, non une disponibilité constatée : Mouser et DigiKey Belgique pour les composants, RAK officiel pour la radio, Lensation/Evetar/Arducam pour l'optique, RS/Farnell pour le boîtier et la connectique. Les délais, frais de port, seuils de gratuité et stocks doivent être datés et justifiés au moment du devis.
 
-DigiKey Belgique indique une livraison gratuite à partir de 50 EUR, sinon 18 EUR, avec livraison typique vers la Belgique sous 48 h. Mouser a de bons stocks Belgique/EU pour Espressif, Sensirion, Vishay et beaucoup de composants critiques, mais les frais réels restent à confirmer dans le panier.
+Ordre de contrôle avant tout panier :
 
-| Famille | Achat recommandé | Fournisseur recommandé | Pourquoi | Alternative | Action JCH |
-|---|---|---|---|---|---|
-| MCU prototype | ESP32-S3-DevKitC-1-N8R8 | Mouser BE | stock élevé, 8 MB flash + 8 MB PSRAM, fournisseur fiable, prototypage immédiat | DigiKey BE ESP32-S3-WROOM module pour PCB | Acheter 2 DevKit pour banc M-02 |
-| MCU PCB | ESP32-S3-WROOM-1U-N8R8 | Mouser BE | module officiel Espressif, IPEX, 8 MB PSRAM, stock élevé, prix bas | DigiKey BE ESP32-S3-WROOM-1-N8R8 | Prévoir 5-10 modules si PCB P0 lancé |
-| Radio [[LoRa]] nœud | RAK3172 / RAK3172-T EU868 avec IPEX | RAK Store officiel ou revendeur EU | bonne variante EU868, P2P supporté, documentation RAK | Industry-Electronics / M2M Gubbins si stock EU meilleur | Vérifier variante EU868 + IPEX avant achat |
-| Gateway / banc RF | Meshnology N35 V4 / Heltec WiFi [[LoRa]] 32 V4 EU868 | Meshnology/Heltec officiel, Amazon seulement si V4 confirmée | accélère tests [[LoRa]]/gateway, pas nœud caméra | RAK3172 Evaluation Board | Acheter 1-2 seulement pour banc RF |
-| Caméra capteur | Camemake CM_DVP_OV5640_UNIVERSAL | DigiKey BE | OV5640 5MP DVP 10-bit M12, conçu pour ESP32-S3/STM32, pinout documenté, stock DigiKey Marketplace | AliExpress OV5640 DVP M12 24-pin (fallback basse priorité) | Commander 2 modules sur DigiKey BE |
-| Caméra alternative rapide | Arducam Mega 5MP SPI M12 | Arducam officiel | facile à intégrer, M12, SDK, mais **IR-cut visible only** donc non conforme nuit | aucun pour décision ADR-002 | Benchmark seulement, ne pas acheter comme caméra finale |
-| Lentille | M12 IR-corrigée f/1.8 4-6 mm | Lensation ou Evetar officiel EU | qualité optique, correction IR, traçabilité | Arducam M12 IR lens si specs complètes | Demander devis 2-5 pièces |
-| LEDs IR | Vishay 940 nm haute puissance + variante 850 nm | Mouser BE | stock, datasheets, pas de risque marketplace ; permet test faune 850/940 | Würth IR LEDs chez Mouser | Acheter petit lot des deux longueurs d'onde |
-| PIR | Panasonic EKMB low-power PaPIRs | Mouser BE | courant jusqu'à 1 µA selon famille EKMB, fournisseur fiable | DigiKey BE Panasonic EKMB | Choisir FOV après design boîtier |
-| Stockage | Swissbit microSD industrielle 8-16 GB | DigiKey BE / Distrelec BE | cartes industrielles, endurance, température ; Mouser parfois restriction région | Mouser si disponibilité région OK | Acheter 2-3 cartes industrielles |
-| Modem cellulaire | SIM7080G | DigiKey BE | fiche claire, module actif, support RF/GNSS, livraison BE | Mouser si Quectel/SIMCom dispo | Vérifier opérateur/SIM/antenne avant achat |
-| Modem USB LTE [[BirdNET]] mobile | MF833U1 — reçu 2026-05-26 | JCH — matériel reçu | connectivité terrain pour [[Raspberry Pi]] + BirdNET-Go mobile ; ne modifie pas P0 satellite | SIM7080G / LTE-M pour intégration P1 embarquée | Tester détection USB, SIM/APN, stabilité reboot, consommation USB, coexistence audio USB |
-| SIM IoT | 1NCE nano-SIM | 1NCE officiel | modèle 10 ans/500 MB cohérent ADR-003 | aucun évident | Acheter direct 1NCE |
-| Batterie | Holder 8× AA 4S2P + piles AA utilisateur | RS / Reichelt / Conrad / Mouser selon format | modèle caméra de chasse, pas de BMS, maintenance terrain simple | holder 4×AA × 2 si intégration mécanique meilleure | Acheter holder après choix boîtier |
-| Buck énergie | TPS62840 ou module équivalent faible Iq | Mouser BE / DigiKey BE | faible courant de repos, cohérent autonomie P0 | autre buck faible Iq si pic courant insuffisant | Ajouter au panier composants |
-| Solaire/MPPT | Aucun achat P0 | — | solaire différé P1 ; éviter CN3791 dans le proto P0 | réserve mécanique boîtier seulement | Ne pas acheter avant décision P1 |
-| Boîtier | RS PRO / Hammond / Spelsberg IP67 150x100x60 | RS Belgium ou Mouser/Farnell | dimensions proches ADR-006, fournisseur EU, retours simples | Spelsberg EU | Acheter 1-2 boîtiers après layout interne |
-| SHT31 | Sensirion SHT31-DIS | Mouser BE | stock, capteur fiable, datasheet | DigiKey BE | Ajouter au panier Mouser |
+1. inventorier physiquement les cartes, micros, PIR, caméras, IR, buck et passifs déjà reçus ;
+2. réconcilier les factures, les références et le budget P0 ;
+3. lever les blocages de schéma et de datasheet avant de chiffrer un remplacement ;
+4. préparer une gateway minimale et ses preuves, sans double emploi avec le stock ;
+5. soumettre le panier consolidé à JCH, sans acheter automatiquement une ancienne ligne.
 
 ### Points de vigilance procurement
 
-- **Radio :** toujours vérifier EU868 / 863-928 MHz et antenne adaptée 868 MHz.
-- **Caméra :** ne pas acheter un module OV5640 marketplace sans pinout, DVP explicite, variante NoIR/IR-cut et format lentille.
-- **IR :** acheter 850 nm et 940 nm pour test terrain ; ne pas figer 850 nm avant revue faune.
-- **Batterie :** ne pas relancer de piste 18650/LiPo/LiFePO4 pour P0 ; le choix actif est holder 8× AA 4S2P + buck faible Iq.
-- **Livraison :** éviter de multiplier les petits paniers sous seuil de livraison gratuite ; grouper Mouser/DigiKey.
+- **Radio :** vérifier la variante EU868, l'antenne et la puissance ; une mention commerciale « CE » ne remplace pas la revue de la configuration complète.
+- **Caméra :** exiger pinout, DVP explicite, variante NoIR/IR-cut, lentille et alimentation documentés.
+- **IR :** retenir 940 nm ; l'ancienne recommandation d'acheter 850 nm et 940 nm est abandonnée.
+- **Batterie :** ne pas relancer de piste 18650/LiPo/LiFePO4 en P0 ni assembler le 4S2P sans révision ADR-005 et levante de la suspension SOP-10.
+- **Livraison :** comparer le coût total livré, les taxes et les retours ; ne pas réutiliser un ancien seuil de port gratuit sans vérification.
 
-## 4. Composants bloquants avant M-01
+## 4. Composants bloquants pour la reprise
 
-1. MCU — **validé** (ADR-001 accepté)
-2. Module caméra + lentille — **validé** (ADR-002 accepté)
-3. Module radio [[LoRa]]
-4. Holder 8× AA + buck faible Iq
-5. Boîtier IP67
+1. Variantes MCU et pinout réel — à relever ; l'acceptation de la famille ESP32-S3 ne valide pas chaque carte.
+2. Module caméra, optique et IR — preuves jour/nuit et énergie non terminées.
+3. Schéma d'alimentation et quantités de buck/holders — bloqués par SOP-10.
+4. Micros, PIR et interfaces — références physiques et datasheets à rapprocher.
+5. Radio et gateway P0 — besoin à chiffrer, chaîne de bout en bout à démontrer.
+6. Boîtier — ADR-006 proposé ; cible IP67 non validée.
 
 ## 5. Prochaine passe
 

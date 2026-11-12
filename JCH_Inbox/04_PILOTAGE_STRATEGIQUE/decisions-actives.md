@@ -1,6 +1,6 @@
 # Décisions actives — En attente de JC
 
-last_updated: 2026-10-24
+last_updated: 2026-11-11
 
 > **Fichier State** — Décisions non encore tranchées, en attente d'arbitrage explicite de JC.
 > Lire avant toute suggestion d'action qui pourrait déjà avoir été tranchée.
@@ -39,6 +39,7 @@ last_updated: 2026-10-24
 ### VETALYX — réponse DIAHO 28/10 (contrat-cadre v4) — 🔴 à arbitrer
 
 > Trace : `08_VETALYX/legal/2026-10-28_dobby_analyse-reponse-chinois-v4.md`. Réponse à notre envoi 07/10.
+> **Pacte EN envoyé aux partenaires chinois le 08/11** — ré-ouvrir l'arbitrage R1–R5 à la réponse DIAHO/Dixun/Li Yan.
 
 | # | Sujet | Contexte | Options |
 |---|-------|----------|---------|
@@ -107,3 +108,6 @@ last_updated: 2026-10-24
 |------|-------|----------|
 | 2026-08-18 | DIAHO 40 % fondateur dès la constitution | Acté — mission préparation stratégique 120 K€ |
 | 2026-09-29 | Standardisation matérielle IoT | Reste en 12V partout |
+| 2026-11-07 | TV connectée dans Lupo (suite analyse transcript vie privée TV) | **Pas de TV dans Lupo** — local-first. Si écran nécessaire : box HDMI + TV déconnectée d'Internet |
+| 2026-11-07 | Recherche scriptée | **DeepSeek natif** (`bin/pka-search`, $0.75/1k) en premier ; Tavily conservé pour l'interactif TUI. Revert : remettre Tavily en premier dans AGENTS.md |
+| 2026-11-07 | Modèle des sous-agents | **v4-flash** (via RÈGLE DÉLÉGATION AGENTS.md). Revert : retirer la clause `model="deepseek-v4-flash"`. Config backup : `~/.deepseek/config.toml.bak-20261107-dobby` |

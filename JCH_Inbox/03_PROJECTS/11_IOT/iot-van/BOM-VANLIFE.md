@@ -129,17 +129,18 @@
 
 ## 4. WiCAN Pro (OBD/CAN) — Données véhicule Ford Transit Custom
 
-> **Rôle :** Lecture CAN bus HS-CAN (PCM moteur) + MS-CAN (BCM carrosserie) via port OBD.  
-> **Spec :** [`specs/SPEC-CAN-BUS.md`](specs/SPEC-CAN-BUS.md)  
-> **Source PIDs :** [WiCAN-Ford-Transit](https://github.com/anthonysecco/WiCAN-Ford-Transit)
+> **Section recadrée le 2026-11-05 ; le reste de cette BOM reste historique et non consolidé.**
+> **Rôle cible :** lecture CAN HS/MS via OBD, sans écriture ECU.
+> **Spec :** [`specs/SPEC-CAN-BUS.md`](specs/SPEC-CAN-BUS.md)
+> **Piste de PIDs :** [WiCAN-Ford-Transit](https://github.com/anthonysecco/WiCAN-Ford-Transit), dépôt communautaire à valider.
 
-| # | Composant | Réf | Qté | Prix | Statut |
+| # | Composant | Réf | Qté | Prix historique | Statut |
 |---|-----------|-----|-----|------|--------|
-| 1 | WiCAN Pro | MeatPi ESP32-S3 + STN | 1 | ~82€ | 🔴 À commander (Crowd Supply / Mouser) |
-| | **Sous-total WiCAN** | | | **~82€** | 🟡 |
+| 1 | WiCAN Pro | MeatPi | 1 | ~82€ | ✅ Reçu début août 2026 ; documenté comme physiquement installé |
+| | **Acquisition historique WiCAN** | | | **~82€** | Ne pas compter comme reste à payer |
 
-> **Données exposées :** vitesse, RPM, carburant, conso, T°C moteur, pression turbo, T° extérieure, DTC, état portes ×6, pression pneus ×6, batterie SOC/courant/tension. 17+ entités HA sans capteur physique.  
-> **Mode stationnement :** deep sleep <1mA, periodic wake 5 min → pas de risque batterie.
+> **Données recherchées :** vitesse, RPM, carburant, températures, DTC, portes, pneus et batterie selon disponibilité réelle. La cible de 17+ entités n'est pas validée : aucun appareil WiCAN ni entité CAN dans le registre HA du 05/11.
+> **Mode stationnement :** veille `<1 mA`, réveil périodique et cutoff à mesurer ; aucune absence de risque batterie n'est présumée. Compatibilité Exosfer et intégration RUT240/MQTT à tester localement.
 
 ---
 

@@ -2,6 +2,9 @@
 
 Date: 2026-05-23
 Auteur: [[Dobby]]
+
+> **Document historique — ne pas utiliser comme état actuel.** Les mentions « micro mono », le pack 4S2P présenté comme directement exploitable et les propositions d'ADR sont remplacés ou conditionnés par ADR-005, ADR-013 et ADR-017. SOP-10 est suspendue : aucun pack ou câblage n'est autorisé par ce brief. Le gateway minimal P0 et les validations réelles figurent dans `00_GOVERNANCE/Start.md`.
+
 Sources [[inbox]]:
 - `JCH_Inbox/00_INBOX/batteries discussion.md`
 - `JCH_Inbox/00_INBOX/birdweather compo.md`

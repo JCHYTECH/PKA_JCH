@@ -14,7 +14,7 @@ import sqlite3
 from datetime import datetime
 from pathlib import Path
 
-DB_PATH    = Path(__file__).resolve().parent.parent / "PHOTO" / "argus_critique.db"
+from argus_db import DB_PATH
 TEAM_INBOX = Path(__file__).resolve().parent.parent / "TEAM_Inbox" / "ARTEON_Phase0"
 PALIERS    = [20, 50, 100]
 

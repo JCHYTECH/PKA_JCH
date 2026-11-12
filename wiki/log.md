@@ -264,3 +264,40 @@
 2026-07-09 21:13 — Save Codex [model=claude-sonnet-5 ; project=IOT_VAN] : Traitement inbox YOLO + Postmortem/Solution boot NVMe (Mode yolo activé sur demande JC. Inbox 00_INBOX vidée (6 fichiers routés/archivés/supprimés). Lecture du postmortem échec boot HA OS sur NVMe (RPi5+X1205) — proposition de solut...) — `wiki/Daily/2026/07/2026-07-09-traitement-inbox-yolo-postmortem-solution-boot-nvme.md`
 
 2026-07-19 23:02 — Save Codex [model=claude-sonnet-5 ; project=IOT] : MQTT Discovery générique multi-instances (Lupo + Esneux) (Résolution du blocage capteurs MQTT sur Lupo (mqtt:/broker: YAML obsolete). Architecture MQTT Discovery générique adoptée pour toutes les instances HA. Extension immédiate testé...) — `wiki/Daily/2026/07/2026-07-19-mqtt-discovery-générique-multi-instances-lupo-esneux.md`
+
+2026-11-03 14:41 — Save Codex [model=deepseek ; project=TRAVELS] : boite-velo-pliant-ado-lupo (Conception boîte de rangement vélo pliant ADO Air 20 Ultra (Lupo) - plan v1 écrit, dimensions figées, attente maquette.) — `wiki/Daily/2026/11/2026-11-03-boite-velo-pliant-ado-lupo.md`
+
+2026-11-03 15:32 — Save Codex [model=deepseek ; project=AI_IT_TOOLS] : renouvellement-lanceur-llm-hub (Renouvellement du lanceur LLM et du hub JCH : dobby.sh reecrit (6 modeles), openrouter_chat.py cree, deepseek_chat.py supprime, 6 lanceurs .command recrees, dashboards et dashbo...) — `wiki/Daily/2026/11/2026-11-03-renouvellement-lanceur-llm-hub.md`
+
+2026-11-03 15:41 — Save Codex [model=deepseek ; project=AI_IT_TOOLS] : consolidation-routing-automatique (Consolidation du routing automatique : slugs Anthropic mis a jour (sonnet-5-5, haiku-5-5, opus-5-5) dans 13 scripts, model_config.json cree (etait manquant, model_client.py lisa...) — `wiki/Daily/2026/11/2026-11-03-consolidation-routing-automatique.md`
+
+2026-11-03 16:04 — Save Codex [model=deepseek ; project=WILDNEXUS] : wildnexus-processus-montage-simplification (WildNexus P0 : processus de montage prototype cree + simplification BOM (14 fichiers archives) + dates fichiers d'etat rafraichies.) — `wiki/Daily/2026/11/2026-11-03-wildnexus-processus-montage-simplification.md`
+
+2026-11-03 16:58 — Save Codex [model=deepseek ; project=AI_IT_TOOLS] : notebooklm-export-routing (Export NotebookLM (Gemini Notebook) vers PKA : 32 fichiers telecharges via notebooklm-py, routes vers 6 projets.) — `wiki/Daily/2026/11/2026-11-03-notebooklm-export-routing.md`
+
+2026-11-03 17:20 — Save Codex [model=deepseek ; project=WILDNEXUS] : wildnexus-p0-engineering-nettoyage (Nettoyage 03_P0_ENGINEERING : 163 fichiers archives (wokwi/build 158, v0.1, mesures PPK2), 158 actifs restants.) — `wiki/Daily/2026/11/2026-11-03-wildnexus-p0-engineering-nettoyage.md`
+
+2026-11-05 10:18 — Save Codex [model=kimi-code ; project=01_AI_IT_TOOLS] : validation-dobby-grok-et-save-kimi (Validation du noyau Dobby local avec Grok 4.7 via Codex CLI et OpenRouter, analyse du chantier Instagram/WildLens et création du rituel /save pour Kimi raccordé à la mémoire PKA.) — `wiki/Daily/2026/11/2026-11-05-validation-dobby-grok-et-save-kimi.md`
+
+2026-11-05 23:57 — Save Codex [model=kimi-code ; project=11_IOT] : stabilisation-zigbee-rpi-et-revue-multiprojet (Stabilisation du Zigbee RPi après changement de port USB, validation d’AirGuard Serre, Lupo toujours sans mesure fraîche et revue documentaire WildNexus/multiprojet sans réactiv...) — `wiki/Daily/2026/11/2026-11-05-stabilisation-zigbee-rpi-et-revue-multiprojet.md`
+
+2026-11-06 14:08 — Save Codex [model=kimi-code ; project=PHOTO_AI_JURY] : MCP Home Assistant et Lightroom testes (Trois transcripts YouTube convertis en chantier concret : MCP Home Assistant Lupo en lecture seule testé avec Kimi et DeepSeek, supervision AirGuard et premier instantané Time M...) — `wiki/Daily/2026/11/2026-11-06-mcp-home-assistant-et-lightroom-testes.md`
+
+2026-11-06 15:45 — Save Dobby [model=deepseek-v4 ; project=11_IOT+07_TRAVELS] : airguard-lupo-reappairage-et-meuble-banquette-v7 (AirGuard Lupo ré-appairé à distance (LQI 56→255, mesures fraîches) et meuble-banquette refondu en aluminium T-slot v7 (sans tiroir, volets rabattables, table coulissante double sens) ; revue WildNexus P0 à jour ; Epson ET-8550 passé en recto seul.) — `wiki/Daily/2026/11/2026-11-06-airguard-lupo-reappairage-et-meuble-banquette-v7.md`
+
+2026-11-06 20:39 — Save Dobby [model=deepseek-v4 ; project=11_IOT+01_AI_IT_TOOLS] : serre-m5-et-incorporation-veille-superagent (Second ZBDongle-E sur M5 temporaire + AirGuard Serre ré-appairé Lupo→M5 ; valve+LuxSerre périmés. Veille DeepSeek SuperAgent : 4 idées incorporées — mémoire par topic, routage léger/lourd, limite projets, batching gateway. Transcripts routés.) — `wiki/Daily/2026/11/2026-11-06-serre-m5-et-incorporation-veille-superagent.md`
+
+2026-11-07 12:26 — Save Codex [model=deepseek-v4-pro ; project=01_AI_IT_TOOLS] : Veille DeepSeek V4 et evolution du systeme PKA (Session multi-projets. (1) Analyse transcript TV privacy (Samsung/ACR/Clean Your TV) puis integration complete : routing vers 01_AI_IT_TOOLS, 6 connaissances capturees dans team...) — `wiki/Daily/2026/11/2026-11-07-veille-deepseek-v4-et-evolution-du-systeme-pka.md`
+
+2026-11-09 23:55 — Save Codex [model=deepseek-v4-pro ; project=11_IOT] : Résurrection du Karotz (miniil OS + OpenKarotz) (Karotz (lapin Violet) ressuscité : WiFi WPA/TKIP sur RUT240 dédié, flash miniil Karotz OS, correctif serveur web (inetd), installation OpenKarotz. LED verte, interface web opéra...) — `wiki/Daily/2026/11/2026-11-09-résurrection-du-karotz-miniil-os-openkarotz.md`
+
+2026-11-10 00:11 — Save Codex [model=deepseek-v4-pro ; project=IOT] : Cozmo compagnon IA + corrections WildNexus (caméra et graphe) (Analyse du Cozmo en compagnon IA local (hôte SDK M5 + cerveau Ollama M1 gemma3:27b vision + Tailscale + RUT240) ; création du fichier de travail cozmo-reborn et backport de 2 le...) — `wiki/Daily/2026/11/2026-11-10-cozmo-compagnon-ia-corrections-wildnexus-caméra-et-graphe.md`
+
+2026-11-10 23:06 — Save Codex [model=deepseek-v4-pro ; project=11_IOT] : Surveillance box Proximus + RPi Lupo et Home (Session IOT. Routage des achats Lupo (suspension VB Air, douche interieure) vers 07_TRAVELS et analyse du transcript MCP Home Assistant. Surveillance ping box Proximus (15 min,...) — `wiki/Daily/2026/11/2026-11-10-surveillance-box-proximus-rpi-lupo-et-home.md`
+2026-11-11 15:34 — Save Dobby [model=deepseek-v4 ; project=08_VETALYX] : statuts-vetalyx-traduction-fr-cn (Traduction EN→FR des statuts + audit Renard coherence FR-EN + bilingue FR-CN + corrections date/premier-exercice/Diaho/BCE/exemplaires + docx finaux + archive.) — wiki/Daily/2026-11-11.md
+
+2026-11-11 16:00 — Save Codex [model=deepseek-v4-pro ; project=11_IOT] : RPi Home ressuscité + Z2M réinstallé + serre_temp_hum re-appairé (RPi Home (JC home) remis en service : HA Core fonctionne sur le port 80 (pas 8123, d'où le faux diagnostic de plantage du 07/11), SSH debug permanent activé (clé USB CONFIG), mo...) — `wiki/Daily/2026/11/2026-11-11-rpi-home-ressuscité-z2m-réinstallé-serre-temp-hum-re-appairé.md`
+
+2026-11-11 23:17 — Save Dobby [model=deepseek-v4 ; project=WILDNEXUS + 11_IOT] : wildnexus-p0-engineering-reprise (Rafraîchi 4 State files + backups .bak ; RPi Lupo vérifié vivant — ping LAN/Tailscale, HA Core 80, SSH 22222 ; vanne_serre/LuxSerre → RPi Home ; sous-tension purgée ; WildNexus P0 repris : SOP-16/17/18 créées, ADR-018 référencé, caveats SOP-08/09/13, statut gelé→repris 13 fichiers ; feuille inventaire ; PDF 19 SOP 81 pages.) — wiki/Daily/2026-11-11.md
+
+2026-11-11 23:34 — Save Codex [model=deepseek-v4-pro ; project=01_AI_IT_TOOLS] : iMac miroir de M5 via noVNC (pont WebSocket) (L'iMac 27 Retina 5K 2017 affiche l'écran du M5 en miroir via un pont noVNC. Constats matériels : l'iMac 2017 n'est pas éligible AirPlay Receiver (Apple supporte iMac 2019+), et...) — `wiki/Daily/2026/11/2026-11-11-imac-miroir-de-m5-via-novnc-pont-websocket.md`

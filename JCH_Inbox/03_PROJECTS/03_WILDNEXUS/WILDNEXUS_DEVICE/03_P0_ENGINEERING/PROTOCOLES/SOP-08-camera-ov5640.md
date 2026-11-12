@@ -17,6 +17,7 @@
 2. **Ne jamais forcer la nappe.** Si elle résiste, vérifier le sens d'insertion.
 3. **L'OV5640 chauffe en mode actif.** Ne pas laisser la caméra allumée en continu. Après chaque capture, la mettre en veille.
 4. **La nappe DVP est fragile.** Pas de pliure serrée. Rayon de courbure > 5 mm.
+5. **Le pinout GPIO 21/20/17/18/1/2/4-11 ci-dessous est une PROPOSITION non validée.** `PROCESSUS_MONTAGE_PROTOTYPE.md` (05/11) le déclare « non réutilisable sans validation des tensions, conflits et capacités de la carte ». Vérifier la matrice GPIO unique avant tout câblage.
 
 ---
 

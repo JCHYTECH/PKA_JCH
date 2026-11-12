@@ -1,107 +1,152 @@
 # WP03 — Budget énergie & gate « 60 jours » (PPK2)
 
 **Projet :** WildNexus P0 — M-02/M-03
-**Work-package :** WP03 (Énergie & mesure) — **critère de sortie P0**
-**Rédaction :** Dobby 🦉 — 2026-10-29 (consolidation)
-**Statut :** Doc de pilotage — **fédère l'existant**, ne remplace pas les SOPs.
+**Work-package :** WP03 (Énergie & mesure) — critère de sortie P0
+**Rédaction :** Dobby 🦉 — consolidation initiale 2026-10-29
+**Révision :** 2026-11-05 — modèle complet, correction des seuils et des règles de sécurité
+**Statut :** Protocole à exécuter — autonomie non démontrée
 
-> **But** : prouver (mesure PPK2) que le nœud tient **≥ 60 jours** avec piles AA (L91, 8×AA 4S2P), et **verrouiller la tension de rail**. C'est le point bloquant n°1 signalé par la revue R&D.
-
----
-
-## 0. Décision à trancher d'emblée — tension de rail
-
-| Source | Tension buck TPS62840 |
-|---|---|
-| Fiche `F1_FIELD.md` | **3,0 V** (à vérifier — valeur suspecte) |
-| `SOP-10-batterie-aa-buck.md` | **3,3 V ± 0,1 V** (cible de test) |
-| Datasheet ESP32-S3 / OV5640 / MEMS | 3,3 V nominal ; **3,0 V = limite basse marginale** |
-
-**➜ Décision WP03 : rail = 3,3 V.** Configurer le feedback du TPS62840 pour 3,3 V. La valeur « 3,0 V » de la fiche F1 est corrigée (erreur) sauf preuve contraire au banc. **Gate** : si le buck ne tient pas 3,3 V en charge (pics caméra/IR), revoir le dimensionnement (inductance, capa) avant de poursuivre.
+> **But :** mesurer avec le PPK2 la chaîne complète du nœud et déterminer si la cible de 60 jours est atteinte au profil de référence de 10 événements/jour. Aucune autonomie ne doit être présentée comme garantie avant ces mesures et l'EVT 30 jours.
 
 ---
 
-## 1. Briques existantes (ne pas dupliquer — carte des SOPs)
+## 0. Gates électriques avant toute mesure
+
+### Rail de sortie
+
+La cible est **3,3 V ± 3 % en charge**, y compris pendant les pics caméra, IA, SD, IR et LoRa. Le feedback du TPS62840 doit être configuré en conséquence. Le courant maximal de 750 mA du composant ne prouve pas que la carte complète tolère les pics combinés.
+
+### Entrée du régulateur et pack 8×AA
+
+- Le TPS62840 a une plage de fonctionnement recommandée de **1,8 à 6,5 V** selon Texas Instruments.
+- L'architecture retenue reste **8×AA en 4S2P**, mais sa tension maximale réelle doit être démontrée avant connexion, en particulier avec des L91 neuves et à froid.
+- **6 AA en série sont interdits** sur ce régulateur : environ 9 V nominal, hors plage.
+- Si le pack 4S2P ne garantit pas une entrée ≤6,5 V dans tous les cas, arrêter et réviser ADR-005 ; ne pas « essayer pour voir ».
+- Ne jamais injecter 3,3 V dans une broche DevKit marquée 5 V. Le schéma exact et le point d'injection doivent être validés avant mesure.
+- SOP-10 reste suspendue jusqu'à la levée de ces gates.
+
+Sécurité générale : sortie d'alimentation OFF avant câblage, polarité vérifiée, aucune alimentation USB concurrente, et câblage PPK2 conforme au manuel Nordic officiel.
+
+---
+
+## 1. Briques existantes
 
 | Brique | Fichier | Usage |
 |---|---|---|
-| Deep sleep 30 s | `PROTOCOLES/SOP-02-deep-sleep-30s.md` | Firmware + mesure courant veille |
-| Mesure deep sleep PPK2 | `PROTOCOLES/SOP-03-ppk2-deep-sleep.md` | Source Meter, mesure µA |
-| Réveil court 20 cycles | `PROTOCOLES/SOP-04-wake-short-20-cycles.md` | Profil réveil |
-| Cycle événement simulé | `PROTOCOLES/SOP-05-simulation-cycle-evenement.md` | Séquence 11 s (PIR 2s + cam 5s + SD 2s + LoRa 2s) |
-| **Alim AA + buck** | `PROTOCOLES/SOP-10-batterie-aa-buck.md` | 6×AA banc, buck 3,3 V, mesure Ampère Meter |
-| Protocole global PPK2 | `PROTOCOLES/Manuel de protocole technique _ Tests de consommation ESP32-S3 & PPK2.md` | Phases A-E + grille Go/No-Go |
-| Gabarit mesures | `PROTOCOLES/2026-06-08_mesures-esp32s3-ppk2_template.csv.md` | Saisie |
-| Modèle autonomie | `03_ENERGIE_AUTONOMIE/WildNexus_P0_Autonomy_Model.xlsx` | Calcul autonomie |
-
-> ⚠️ Sécurité (voir SOP-03/SOP-10) : **jamais USB + PPK2 simultanément** ; sortie PPK2 OFF avant câblage ; VOUT→5V, GND→GND ; couper si >500 mA.
+| Deep sleep 30 s | `PROTOCOLES/SOP-02-deep-sleep-30s.md` | Firmware et mesure du courant de veille |
+| Mesure deep sleep PPK2 | `PROTOCOLES/SOP-03-ppk2-deep-sleep.md` | Acquisition µA |
+| Réveil court 20 cycles | `PROTOCOLES/SOP-04-wake-short-20-cycles.md` | Profil de réveil |
+| Cycle événement simulé | `PROTOCOLES/SOP-05-simulation-cycle-evenement.md` | Premier profil fonctionnel, insuffisant seul pour l'autonomie produit |
+| Alimentation AA + buck | `PROTOCOLES/SOP-10-batterie-aa-buck.md` | Suspendue jusqu'aux gates électriques |
+| Benchmark IA | `PROTOCOLES/SOP-11-benchmark-edge-ai.md` | Mesure du modèle réellement retenu |
+| Budget audio | `PROTOCOLES/SOP-18-budget-energie-audio.md` | Mesures I2S, FFT, WAV et SD |
+| Gabarit mesures | `PROTOCOLES/2026-06-08_mesures-esp32s3-ppk2_template.csv.md` | Saisie des données |
+| Modèle autonomie | `03_ENERGIE_AUTONOMIE/WildNexus_P0_Autonomy_Model.xlsx` | Consolidation des scénarios |
 
 ---
 
-## 2. Budget énergie à formaliser (gabarit à remplir)
+## 2. Mesures requises — événement caméra
 
-Objectif : passer des courants mesurés à un **mAh/événement**, puis à l'autonomie.
+Tous les états doivent être mesurés avec les périphériques réellement actifs. Des délais logiciels simulant une caméra ou une radio absente ne constituent pas une mesure produit.
 
-| État | Courant (mesuré PPK2) | Durée | Charge (mAh) |
-|---|---|---|---|
-| Deep sleep (veille) | ___ µA | (continu) | ___ mAh/jour |
-| Réveil PIR | ___ mA | ~2 s | ___ |
-| Capture caméra + IA | ___ mA | ~5 s | ___ |
-| Pulse IR nocturne | ___ mA | <5 s | ___ |
-| Écriture SD | ___ mA | ~2 s | ___ |
-| Transmission LoRa TX | ___ mA | ~2 s | ___ |
-| **Total / événement** | — | ~11 s actif | **Σ = ___ mAh** |
+| État | Point de mesure | Courant | Durée | Énergie ou charge |
+|---|---|---:|---:|---:|
+| Deep sleep carte complète | Batterie et/ou rail 3,3 V, point horodaté | ___ | continu | ___ |
+| Réveil PIR | ___ | ___ | ___ | ___ |
+| Capture caméra | ___ | ___ | ___ | ___ |
+| Inférence du modèle retenu | ___ | ___ | ___ | ___ |
+| Pulse IR nocturne | ___ | ___ | ___ | ___ |
+| Écriture image + sidecar SD | ___ | ___ | ___ | ___ |
+| Transmission LoRa TX, sans retry | ___ | ___ | ___ | ___ |
+| Transmission LoRa avec retries | ___ | ___ | ___ | ___ |
+| **Total événement jour** | — | — | — | **___** |
+| **Total événement nuit** | — | — | — | **___** |
 
-**Seuils de référence (grille officielle du Manuel PPK2) :**
+Le ratio jour/nuit doit être explicite pour chaque scénario. Un scénario conservateur avec IR sur chaque événement doit être calculé séparément.
+
+## 3. Mesures requises — cycles audio et maintenance
+
+Ces charges sont obligatoires dans le budget P0 ; elles ne peuvent pas être remplacées par une estimation non datée.
+
+| Cycle | Fréquence nominale | États inclus | Énergie batterie par cycle | Énergie batterie/jour |
+|---|---:|---|---:|---:|
+| FFT stéréo | 96/jour | réveil, alimentation micros, I2S, acquisition, FFT, sidecar JSON, LoRa spectral | ___ | ___ |
+| Clip WAV 3 s | 24/jour | réveil, micros, I2S, WAV, écriture SD, sidecar JSON | ___ | ___ |
+| Configuration / maintenance | à définir | Wi-Fi/BLE, extraction, provisioning | ___ | ___ |
+| Retransmissions radio | mesurée | tentatives supplémentaires et attente RX | ___ | ___ |
+
+---
+
+## 4. Calcul d'autonomie — Wh à la batterie
+
+Le calcul de référence se fait en **énergie (Wh) côté batterie**. Cela évite de mélanger les mAh du pack 4S2P avec ceux du rail 3,3 V.
+
+```text
+E_batt_jour = E_veille_batt
+            + N_jour × E_evenement_jour_batt
+            + N_nuit × E_evenement_nuit_batt
+            + 96 × E_FFT_batt
+            + 24 × E_clip_batt
+            + E_retransmissions_batt
+            + E_maintenance_batt
+
+autonomie(jours) = E_batt_utilisable / E_batt_jour
+```
+
+Règles :
+
+1. Privilégier une mesure directe côté batterie : `E = V_batt × I_batt × durée` pour chaque état.
+2. Si une mesure est réalisée à 3,3 V, utiliser `E_batt = E_3V3 / rendement`, avec le rendement mesuré au niveau de charge concerné. Ne pas appliquer un rendement unique non mesuré à tous les états.
+3. `E_batt_utilisable` tient compte de la chimie, de la température, du courant de décharge, du vieillissement, de la coupure basse et de la dispersion des piles. La capacité nominale seule est interdite pour un verdict Go.
+4. Si des mAh sont utilisés dans un tableau annexe, la tension de référence doit figurer dans chaque ligne.
+5. La capacité théorique L91 du pack 4S2P est d'environ 7 000 mAh à 6 V nominal, soit environ 42 Wh ; ce n'est pas une capacité utilisable mesurée.
+
+---
+
+## 5. Scénarios et seuils
+
+| Scénario | Événements caméra/jour | Jour/nuit | Usage |
+|---|---:|---|---|
+| Référence | 10 | ratio documenté + cas 100 % IR en sensibilité | Gate 60 jours |
+| Intermédiaire | 30 | ratio documenté | Robustesse |
+| Stress | 72 | ratio documenté + cas défavorable | Robustesse, pas promesse commerciale |
 
 | Mesure | Go | Orange | No-Go |
 |---|---|---|---|
-| Deep sleep | **< 100 µA** | 100-150 µA | > 200 µA |
-| Charge / événement | **< 1,5 mAh** | 1,5-2,5 mAh | > 2,5 mAh |
-| Autonomie | **≥ 60 j** | 45-60 j | < 45 j |
-| Stabilité | 100 cycles sans erreur | 1-2 erreurs isolées | blocage récurrent |
+| Deep sleep carte complète | <100 µA | 100–200 µA, cause et correction documentées | >200 µA |
+| Charge/énergie par événement | <1,5 mAh équivalent batterie | 1,5–2,5 mAh | >2,5 mAh |
+| Autonomie au scénario de référence | ≥60 jours | 45–60 jours | <45 jours |
+| Stabilité | 100 cycles sans erreur | 1–2 erreurs isolées expliquées | Blocage récurrent |
 
-> 📌 **Note DevKit** : le DevKit (régulateur AMS1117 + LEDs) gonfle la conso ; ~150 µA en deep sleep y est une **contrainte plateforme documentée**. La validation finale se fait sur **PCB nu** (P1).
-
----
-
-## 3. Calcul d'autonomie (à renseigner)
-
-```
-Capacité batterie 8×AA 4S2P (L91)  ≈ 7 000 mAh (à ~6 V nominal)
-mq_jour = I_veille(mA) × 24 h  +  N_évènements/jour × Charge_évènement(mAh)
-autonomie(jours) = Capacité_mAh / mq_jour
-```
-
-**Hypothèses de dimensionnement (à fixer explicitement) :**
-- Fiche produit F1 : **10 événements/jour** → cible 60 j.
-- Manuel PPK2 (grille) : autonomie évaluée à **3 événements/heure (≈72/j)** — **hypothèse bien plus sévère**.
-- **➜ Décision WP03** : établir l'autonomie **sur 3 scénarios** (10, 30, 72 événements/jour) pour lever l'ambiguïté et publier la courbe. Le critère Go = 60 j **au profil de référence F1 (10/j)** ; le scénario 72/j informe la robustesse.
+L'acceptation exige **<1,5 mAh par événement**, et non ≥1,5 mAh. Pour comparer en mAh, le point de mesure et la tension doivent être identiques à ceux du seuil officiel ; sinon conserver le seuil comme référence historique et documenter une conversion en Wh validée.
 
 ---
 
-## 4. Livrables & critères d'acceptation (WP03)
+## 6. Livrables et acceptation WP03
 
-1. **Tableau de mesures PPK2 complété** (gabarit CSV) — états du §2.
-2. **Budget énergie signé** : mAh/événement + mAh/jour pour 10/30/72 évt/j.
-3. **Autonomie extrapolée** sur les 3 scénarios ; verdict Go/Orange/No-Go.
-4. **Tension rail confirmée à 3,3 V** en charge (pics caméra/IR).
-5. **Rapport de stabilité** (100 cycles, SOP-04).
-6. Mise à jour du `progress.md` (tracker M-02) + `WildNexus_P0_Autonomy_Model.xlsx`.
+1. Gates électriques consignés : tension maximale pack, schéma du point d'injection et câblage PPK2 validés.
+2. Tableaux caméra, audio et maintenance complétés avec fichiers PPK2 datés.
+3. Budget énergie en Wh pour 10/30/72 événements/jour, incluant jour/nuit, retransmissions et pertes.
+4. Autonomie extrapolée avec hypothèses de capacité utilisable et verdict Go/Orange/No-Go.
+5. Tension 3,3 V confirmée sous tous les pics et stabilité de 100 cycles documentée.
+6. Mise à jour de `progress.md` et de `WildNexus_P0_Autonomy_Model.xlsx`.
 
-**Acceptation WP03 = critère de sortie P0** : autonomie extrapolée **≥ 60 j au profil F1 (10 évt/j)**, deep sleep **< 100 µA** (orange ≤150 µA toléré sur DevKit), ≥1,5 mAh maîtrisé par événement.
+**Acceptation WP03 :** autonomie extrapolée ≥60 jours au scénario de référence, charge par événement <1,5 mAh ou seuil Wh équivalent validé, deep sleep <100 µA en cible carte complète, et aucune gate de sécurité ouverte.
 
----
-
-## 5. Séquence d'exécution recommandée
-
-1. **SOP-10** : valider buck 3,3 V seul (avant ESP32).
-2. **SOP-02/03** : deep sleep → courant de veille.
-3. **SOP-04** : réveil court, 20 cycles.
-4. **SOP-05** : cycle événement simulé (11 s) → charge/événement.
-5. Reporter dans le **modèle d'autonomie** + grille Go/No-Go → verdict.
-6. Si No-Go : arbitrage avec [[Forge]]/[[Castor]] (optimisation i2s/caméra/rail) — **avant** toute optimisation « à l'aveugle »** (principe WP03 : mesurer d'abord).
+Le résultat DevKit reste un résultat prototype. Il ne devient une caractéristique produit qu'après reproduction sur le matériel final et EVT 30 jours. La validation du PCB nu ou final ne doit pas être présentée comme déjà réalisée si ce matériel appartient à une phase ultérieure.
 
 ---
 
-*Consolidation WP03 — fédère SOP-02/03/04/05/10 + Manuel PPK2 + modèle d'autonomie. Ne remplace pas les SOPs opérationnels.*
+## 7. Séquence d'exécution
+
+1. Lever les gates électriques et rouvrir SOP-10.
+2. Relever veille, réveil et cycle caméra réel, puis IA jour/nuit.
+3. Mesurer les 96 FFT, 24 clips, écritures SD et retransmissions LoRa.
+4. Reporter les données brutes et les conversions dans le modèle.
+5. Calculer les scénarios et documenter les incertitudes.
+6. Si No-Go, arbitrer avec [[Forge]]/[[Castor]] à partir des mesures ; aucune optimisation à l'aveugle.
+7. Confirmer ensuite par EVT 30 jours et mettre à jour la fiche produit avec le résultat réellement observé.
+
+---
+
+*Révision 2026-11-05 — cycles audio, Wh, pertes, froid, retransmissions et profils jour/nuit ajoutés ; inversion du seuil 1,5 mAh corrigée ; anciennes instructions électriques dangereuses bloquées.*

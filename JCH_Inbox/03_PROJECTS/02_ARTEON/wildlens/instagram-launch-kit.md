@@ -14,11 +14,9 @@ Le nom « Wildlens » est déjà pris/associé sur Instagram :
 
 → **Ne pas utiliser `@wildlens`** (risque de confusion avec un compte voyage 780K, et handle probablement déjà pris).
 
-### Handle recommandé (à vérifier à la création, dans l'ordre)
-1. `@wildlens.journal`
-2. `@wildlens.mag`
-3. `@wildlens.photos`
-4. `@wildlens.arteon`
+### Handle retenu
+
+`@wildlens_arteon` est le compte actif, associé à l’IG User ID `17841457681553313`.
 
 ---
 
@@ -27,52 +25,48 @@ Le nom « Wildlens » est déjà pris/associé sur Instagram :
 ```
 Wildlife photography, for real.
 Questions, not tips. The drift, named.
-Weekly journal → wildlens.ghost.io
 ```
 
-(≈ 105 caractères — marge pour l'emoji et le lien.)
+Ne pas ajouter l’adresse Ghost tant que le site renvoie HTTP 404.
 
 ---
 
 ## Post d'ouverture — le rouge-gorge (`LrC to-27.jpg`)
 
-**Légende (EN, voix du manifeste) :**
+Source validée visuellement par JC le 2026-11-04 : `/Users/jchavauxm5/Desktop/LrC To /LrC to-27.jpg`. Le fichier du dossier `Dobby select` portant le même nom représente une statue et ne doit pas être utilisé.
+
+JPEG sans recadrage : `tmp/wildlens-instagram-opening/robin.jpg`, sRGB, 1440 × 1018, 292415 octets. URL publique vérifiée : `https://raw.githubusercontent.com/JCHYTECH/wildlens-assets/main/robin.jpg`.
+
+**Légende préparée (EN, voix du manifeste) :**
 
 > There are two ways to photograph a robin in the snow.
 >
-> The first: scatter seeds, wait, fire. The second: find where the seeds already are — and wait for the bird to *be*.
+> The first: scatter seeds, wait, fire. The second: find where the seeds already are — and wait for the bird to be.
 >
 > This robin fed on seeds that were already there. Nothing offered. It looks baited. It isn't. The pixels can't tell the difference. Only the intention can.
 >
 > WildLens lives in that distance — between looking honest and being honest.
->
-> Full story → link in bio.
 
 **Hashtags :**
 `#wildlifephotography #naturephotography #robin #winterwildlife #photographyethics #provenance #wildlens`
 
 **Crédit :** © JC Havaux / ARTEON
 
+La légende complète prête pour le script est `tmp/wildlens-instagram-opening/caption.txt`.
+
 ---
 
 ## Lien bio
 
-→ `https://wildlens.ghost.io` (édition #6, thème « Regarder en face »).
+Aucun appel vers un lien externe dans le premier post : la destination éditoriale `https://wildlens-journal.ghost.io/` est en cours de recréation (l'ancien `wildlens.ghost.io` renvoie HTTP 404). Rétablir la publication seulement lorsque le nouveau Ghost sera fonctionnel, dans un chantier séparé.
 
 ---
 
-## Plan de lancement (minimal)
+## État du lancement
 
-1. **Créer le compte** (action JC, manuelle) — handle recommandé + bio + lien.
-2. **Post 1** : le rouge-gorge (ci-dessus) — l'image d'ouverture.
-3. **Chaque semaine** : republier l'édition en 2-3 posts —
-   - *The Frame* : une photo + une question (pas des « 5 astuces »).
-   - *Le Constat* : une image sobre + le constat factuel sourcé.
-4. **Boucle** : chaque post renvoie au lien bio → abonnement email (Ghost).
-
----
-
-## À décider par JC
-
-- Langue : EN (aligné sur la newsletter) ou FR ? Légende FR dispo sur demande.
-- Handle final : le nom exact dépend de la dispo au moment de la création.
+1. **Fait** : compte `@wildlens_arteon` configuré, accès Graph API et permissions vérifiés.
+2. **Fait** : JPEG corrigé validé par JC, hébergé seul dans `https://github.com/JCHYTECH/wildlens-assets`, URL et empreinte contrôlées.
+3. **Fait** : simulation locale validée sans réseau avec la légende complète de 527 caractères.
+4. **Non publié** : JC a choisi de ne pas publier lors du contrôle final du 2026-11-04. Une nouvelle demande explicite est nécessaire avant `publish --confirm`.
+5. **Après une éventuelle publication** : contrôler `media`, puis `insights` sur l’identifiant obtenu. Ne jamais republier pour tester les statistiques.
+6. **À traiter séparément** : remettre Ghost en service avant de rétablir la boucle vers l’abonnement email.

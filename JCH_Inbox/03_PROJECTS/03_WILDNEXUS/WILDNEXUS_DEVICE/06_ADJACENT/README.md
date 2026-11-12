@@ -9,15 +9,15 @@
 | Projet | Emplacement | Statut |
 |--------|-------------|--------|
 | **NEXUS_ACOUSTIC** | `../../NEXUS_ACOUSTIC/` | P1 — Bioacoustique, BirdNET, classification insectes/oiseaux |
-| **FAUNE_AUTOUR** | `../FAUNE_AUTOUR/` | ⚪ Gelé — PWA GBIF d'observation faune locale |
+| **FAUNE_AUTOUR** | `../../../06_PHOTO_NATURE/FAUNE_AUTOUR/` | ⚪ Gelé — PWA GBIF d'observation faune locale |
 | **InsectNet** | `../../INSECTNET/` | 🟡 Pipeline — Classification acoustique orthoptères |
 
-## Références techniques (archivées dans P0_ENGINEERING)
+## Références techniques
 
 | Référence | Emplacement |
 |-----------|-------------|
 | ESP-DIVE (waterproofing/power) | `../03_P0_ENGINEERING/99_REFERENCES/ESP-DIVE/` |
-| PPK2 (outil mesure) | `../03_P0_ENGINEERING/99_REFERENCES/PPK2/` |
+| PPK2 (mesures historiques) | `../03_P0_ENGINEERING/_archive/99_REFERENCES/PPK2/` |
 | Veille technologique | `../03_P0_ENGINEERING/99_REFERENCES/veille/` |
 
 ---

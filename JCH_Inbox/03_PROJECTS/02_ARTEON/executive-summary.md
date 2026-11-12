@@ -1,88 +1,71 @@
 # ARTEON & WildLens — Executive Summary
 
-> Document externe — investisseurs, partenaires, banquiers.
-> Généré le 2026-07-03 par Dobby 🦉. Version 1.0.
-
----
+> Document externe — partenaires et prestataires.
+> Version 1.1 — état consolidé le 2026-11-05 ; source opérationnelle : `thread-arteon.md`.
 
 ## En une phrase
 
-**ARTEON est la marque de photographie naturaliste éditoriale de Jean-Claude Havaux, distribuée via une galerie en ligne et un journal hebdomadaire dédié : WildLens.**
+**ARTEON est la marque de photographie naturaliste éditoriale de Jean-Claude Havaux ; WildLens est son journal d'acquisition, avant la galerie de tirages et le futur service L'Instant Lu.**
 
----
+## Positionnement
 
-## Le problème
+ARTEON associe beauté visuelle, contexte naturaliste, éthique de prise de vue et narration. L'objectif est de proposer un canal plus durable que le seul flux des réseaux sociaux.
 
-La photographie naturaliste de qualité est noyée dans le flux Instagram. Les photographes nature n'ont pas de canal éditorial qui valorise leur travail au-delà du « like ». Le public intéressé par la nature n'a pas de rendez-vous régulier qui combine **beauté visuelle, rigueur scientifique et narration**.
+Trois services complémentaires structurent le projet :
 
----
+1. **WildLens** — journal naturaliste hebdomadaire en anglais, destiné à l'acquisition et à l'identité éditoriale.
+2. **ARTEON Gallery** — galerie Shopify et tirages via WhiteWall, encore à configurer.
+3. **L'Instant Lu** — futur service de critique photo personnalisée, dont le backend reste à construire.
 
-## Notre solution
+## WildLens : architecture éditoriale actuelle
 
-Deux canaux complémentaires :
+L'architecture v2 comprend trois sections, et non l'ancienne structure à cinq rubriques :
 
-1. **ARTEON Gallery** (Shopify) — tirages d'art en édition limitée, imprimés via WhiteWall (qualité galerie), ciblant collectionneurs et décorateurs d'intérieur haut de gamme.
+- **The Frame** — une photo de JC et son analyse éditoriale ;
+- **The Shift** — un développement technique, scientifique ou éthique ;
+- **The Field** — un exercice terrain concret.
 
-2. **WildLens** (Ghost) — journal hebdomadaire gratuit qui est la **tête du funnel** :
-   - Lead Editorial — récit de terrain
-   - Behaviour & The Lens — analyse éthologique
-   - Technique Spotlight — tutoriel photo nature
-   - Competition Dissection — critique d'image
-   - Field Assignment — défi photo participatif
+Une section d'essai/philosophie est expérimentée séparément et n'est pas encore intégrée à cette architecture v2. Six fichiers d'édition sont présents, du 28/03 au 31/10/2026 ; leur statut de rédaction ou de publication doit être vérifié individuellement et ne se déduit pas du nom de fichier.
 
----
+## Funnel prévu
 
-## Le marché
-
-- **Tirage d'art nature** : marché de niche (250-1 500€/tirage), collectionneurs privés et décorateurs
-- **Public cible WildLens** : naturalistes amateurs, photographes animaliers, passionnés de biodiversité
-- **Modèle** : WildLens (gratuit) → notoriété → ARTEON Gallery (payant)
-- **Futur** : L'Instant Lu — service de conseil photo personnalisé (backend en construction)
-
----
-
-## Pipeline éditorial
-
-```
-PHOTO_NATURE ──→ PHOTO_AI_JURY ──→ ARTEON ──→ WildLens
-(terrain)        (IA Argus)        (shop)      (journal)
+```text
+Instagram (découverte)
+    → WildLens / Ghost (lecture et abonnement)
+    → arteon.be (marque et services)
+    → L'Instant Lu puis ARTEON Gallery
 ```
 
-1. Photos capturées sur le terrain (Canon R10/90D, 200-800mm)
-2. Analysées par Argus, l'IA de critique photo (73.8/100 score moyen)
-3. Meilleures images → ARTEON Gallery (tirages)
-4. Récits et analyses → WildLens (hebdomadaire)
+Instagram est techniquement préparé, mais **aucune publication ne peut être effectuée sans nouvelle demande explicite de JC**. Ghost renvoie actuellement une 404 ; le support a été contacté et ce chantier est en pause.
 
----
+## Chaîne de production photo
 
-## Statut
+```text
+PHOTO_NATURE → PHOTO_AI_JURY / Argus → ARTEON / WildLens
+   terrain       critique et presets       édition et services
+```
+
+Cette chaîne documente un flux de travail ; elle ne signifie pas que la galerie, les ventes ou les automatisations Lightroom sont déjà en production.
+
+## État réel
 
 | Composant | Statut |
-|-----------|--------|
-| ARTEON charte | ✅ Livrée (étape 4/13) |
-| WildLens édition #1 | ✅ Materialisée |
-| WildLens édition #2+ | 🔴 0 édition depuis 3 mois — relance urgente |
-| Shopify | ⏳ V1 à lancer |
-| WhiteWall | ⏳ Intégration à configurer |
-| L'Instant Lu | ⏳ Backend à construire |
+|---|---|
+| Roadmap ARTEON, 13 étapes | 4 terminées, 8 en attente, 1 rouge |
+| Domaine, manifeste, slogan, charte | Terminés — étapes 1 à 4 |
+| WildLens | Relance engagée ; six fichiers d'édition présents |
+| Ghost | En pause après diagnostic et contact du support |
+| Instagram | Authentification et préparation validées ; aucune publication |
+| Shopify / WhiteWall | À configurer |
+| L'Instant Lu | Backend à construire |
 
----
+## Prochaine étape
 
-## Roadmap
+Reprendre la remise en service de Ghost après réponse du support et à la reprise décidée par JC. En parallèle, JC doit pouvoir allouer du temps créatif aux huit étapes non closes ; les anciennes échéances trimestrielles ne sont pas conservées comme engagements.
 
-| Phase | Jalon |
-|-------|-------|
-| **Q3 2026** | Relance WildLens (cadence hebdo), lancement Shopify V1 |
-| **Q4 2026** | Intégration WhiteWall, premières ventes |
-| **2027** | L'Instant Lu — conseil photo IA personnalisé |
+## Équipe
 
----
+- **Jean-Claude Havaux** — photographie, zoologie, direction éditoriale et arbitrages.
+- **PKA_JCH** — appui éditorial, IA spécialisée et infrastructure technique.
 
-## L'équipe
-
-- **Jean-Claude Havaux** — Photographe, zoologiste, auteur
-- **PKA_JCH** — IA éditoriale (Argus, Miel, Vega) + infrastructure (Forge)
-
----
-
-*Document destiné à un public externe. Roadmap détaillée : `02_ARTEON/INDEX.md`*
+*Roadmap détaillée : `INDEX.md` et `strategy/arteon-etat-projet.md`. État courant et décisions : `thread-arteon.md` et `wildlens/INDEX.md`.*

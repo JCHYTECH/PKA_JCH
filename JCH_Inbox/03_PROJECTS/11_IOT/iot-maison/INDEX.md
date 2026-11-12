@@ -54,10 +54,10 @@ Maison off-grid 60 m² bois sur 9 000 m², autonome (énergie, eau). Projet à l
 
 ## Liens
 
-- `_shared/hub-esneux.md` — Infrastructure partagée
-- `iot-serre/` — Automatisation serre (même hub)
-- `iot-van/` — Domotique vanlife (hub séparé)
+- [Infrastructure partagée](../_shared/hub-esneux.md).
+- [Automatisation serre](../iot-serre/) — même hub.
+- [Domotique vanlife](../iot-van/) — hub séparé.
 
 ---
 
-*Généré par Dobby 🦉 — 2026-06-22*
+*Généré par Dobby 🦉 — 2026-06-22 ; navigation révisée le 2026-11-05.*

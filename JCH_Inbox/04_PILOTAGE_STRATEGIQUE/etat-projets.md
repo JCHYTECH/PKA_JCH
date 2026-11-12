@@ -1,6 +1,6 @@
 # État des projets — One-Pager
 > Tableau de bord unique de tous les projets actifs PKA_JCH.
-> Dernière mise à jour : 2026-10-30 par Dobby 🦉 — ajout du projet 12_VENTE_OCCASION (Phase 1).
+> Dernière mise à jour : 2026-11-12 par Dobby 🦉 — RPi HOME (maison/serre) opérationnel et vérifié (power-cycle + Z2M restart) ; dégel WILDNEXUS DEVICE (décision JC) ; clone iMac→M5 (VNC) opérationnel ; RUT240 routeur atelier + failover 4G à planifier.
 > 
 > **Lecture :** 🔴 = P0 deadline dure, 🟢 = actif autonome, ⚪ = gelé/reporté
 
@@ -10,26 +10,29 @@
 
 | # | Projet | Statut | Dernière action | Prochaine étape | Blocage | Spécialiste(s) |
 |---|--------|--------|-----------------|-----------------|---------|----------------|
-| 1 | **IOT / Vanlife** | 🔴 P0 | Van Lupo livré (30/07), RPi 5 boot résolu (NVMe retiré 01/10, HAOS 18.3), hardware quasi complet. | Commander 8 capteurs Zigbee (~88€) + silentblocs + coating, intégrer WiCAN Pro, installer dans le van. | — (deadline 15/12) | Forge, Araignée, Dobby |
+| 1 | **IOT / Vanlife** | 🔴 P0 | MCP HA Lupo read-only testé avec Kimi/DeepSeek ; dashboard AirGuard et première copie Time Machine validés. | Vérifier la copie Time Machine automatique et hors RPi ; revalider le lot P1 puis intégrer WiCAN Pro + RUT240 dans Lupo. **RUT240 atelier (IP fixe + failover 4G vs coupures Proximus) — session dédiée à planifier.** | Quantités et budget d'achat à consolider | Forge, Araignée, Dobby |
 
 ---
 
-## 🟢 P1 — Actifs autonomes (pas de charge JC)
+## 🟢 P1 — Actifs autonomes ou en continu (charge JC variable)
 
 | # | Projet | Statut | Dernière action | Prochaine étape | Spécialiste(s) |
 |---|--------|--------|-----------------|-----------------|----------------|
-| 2 | **PHOTO_NATURE** | 🟢 autonome | INDEX à jour, keyworder fonctionnel, presets Argus | — (tourne seul) | Lynx, Nova, Héron |
-| 3 | **PHOTO_AI_JURY** | 🟢 autonome | argus_critique.db actif (58 analyses) | Activer MCP Lightroom (30 min JC) | Argus |
-| 4 | **AI_IT_TOOLS** | 🟢 autonome | 10 thread files créés, skills actifs | Maintien | Dobby, Forge |
-| 9 | **VENTE_OCCASION** | 🟢 Phase 1 | Structure + skill `vente-occasion` créés (30/10). Pipeline : estimation prix BE, annonce FR/NL, recommandation site, suivi réponses, rentabilité. | Déposer un 1er objet test dans `inbox/`. | Dobby (+ Pie à confirmer) |
+| 2 | **PHOTO_NATURE** | 🟢 autonome | Keyworder et 11 presets Argus ; correctif `headline` confirmé dans le code (22/10) | Maintenance (aucun nouveau run mesuré dans cette revue) | Lynx, Nova, Héron |
+| 3 | **PHOTO_AI_JURY** | 🟢 autonome | Base canonique schéma v1 : 52 analyses et 16 évaluations conservées ; test MCP Lightroom `0 → +0,10 → 0` réussi sur copie virtuelle RAW | Recueillir les choix A/B de JCH avec tutoriel et validation sur image inédite ; aucun style déduit des votes sur les rapports | Argus |
+| 4 | **AI_IT_TOOLS** | 🟢 autonome | MCP HA Lupo read-only validé avec Kimi/DeepSeek ; `/save` Kimi déjà opérationnel | Réauthentifier Claude, traiter séparément les modèles Codex refusés et essayer le TUI Grok ; ne pas exposer HA publiquement | Dobby, Forge |
+| 7 | **ARTEON + WildLens** | 🟢 réactivé | Authentification Meta et lectures validées ; aucune publication ; Ghost en pause après e-mail au support | Reprendre Ghost après réponse ; publication Instagram uniquement sur nouvelle demande explicite de JC | Dobby, Forge |
+| 8 | **TRAVELS** | 🟢 actif — planification « en roulant » | Pipeline DÉCOUVERTES continu, 647 lieux validés, Planner synchronisé ; boîte vélo en conception | Traiter 50 éléments résiduels et poursuivre les aménagements du van | Cigogne, Dobby |
+| 9 | **VENTE_OCCASION** | 🟢 Phase 1 | Structure + skill `vente-occasion` créés (30/10) ; six objets en cours, aucun vendu | Finaliser photos/annonces, publication et suivi des six objets selon leur état réel | Dobby (+ Pie à confirmer) |
 
 ---
 
-## 🔶 Réactivé — VETALYX (juridique, actif depuis août)
+## 🔶 Réactivé
 
 | # | Projet | Statut | Dernière action | Prochaine étape | Spécialiste(s) |
 |---|--------|--------|-----------------|-----------------|----------------|
-| 5 | **VETALYX** | 🔶 actif (juridique) | DIAHO 40 % fondateur acté (18/08). Contrat-cadre v3, statuts SRL v22/09, pacte actionnaires v1 + convention bloc v1 produits (30/09). | Appliquer corrections fond juridique (véto DIAHO → statuts), trancher qualification AFMPS/FAMHP, valider avec notaire + UCM. | Renard, Clio, Jade |
+| 5 | **VETALYX** | 🔶 actif (juridique) | Traduction EN du pacte d'actionnaires produite + revue Renard ; **pacte EN envoyé aux partenaires chinois le 08/11**. | Trancher le point Art. 5.1 (« non opposables ») ; valider la mécanique notariale des 6 000 € et la qualification AFMPS/FAMHP. | Renard, Clio, Jade |
+| 6 | **WILDNEXUS DEVICE** | 🔶 réactivé (P0 engineering) | Dégelé le 12/11 (décision JC) ; P0 engineering repris le 11/11, SOP-16/17/18 créées. | Lever les gates de reprise : inventaire matériel, rapprochement factures, micros TDK + PIR, matrice GPIO. Aucun montage ni achat avant. | Forge, Araignée, Dobby |
 
 ---
 
@@ -37,9 +40,8 @@
 
 | # | Projet | Statut | Raison du gel | Reprise prévue |
 |---|--------|--------|---------------|----------------|
-| 6 | **WILDNEXUS** — regroupe InsectNet + NEXUS_ACOUSTIC | ⚪ gelé | Bench loop non repris (focus IOT/VETALYX). Panier Mouser ~279€ non commandé. InsectNet + NEXUS_ACOUSTIC dépendent du P0. | À replanifier post-van |
-| 7 | **ARTEON + WildLens** | 🟢 réactivé | Édition #5 rédigée (authenticité/provenance/éthique), launchd hebdo réactivé | Reprise cadence hebdo |
-| 8 | **TRAVELS** | ⚪ gelé | Planif voyage en roulant. Meuble banquette 104×55×25 en design. | En roulant |
+| — | **INSECTNET** (classification orthoptères) | ⚪ gelé | Pipeline en pause — migration M1 à exécuter ; dépend des clips WAV produits par le nœud device. | Post-reprise DEVICE |
+| — | **NEXUS_ACOUSTIC** (BirdNET/TweetyBERT/LEAFNET) | ⚪ gelé | Dépend de la capture WildNexus P0. | Post-reprise DEVICE |
 
 ---
 
@@ -60,9 +62,9 @@
 |------------|--------|
 | Projets totaux | 9 |
 | 🔴 P0 (deadline dure) | 1 — IOT/Vanlife |
-| 🔶 Réactivé | 1 — VETALYX (juridique) |
-| 🟢 P1 (autonome) | 4 — PHOTO_NATURE, PHOTO_AI_JURY, AI_IT_TOOLS, VENTE_OCCASION |
-| ⚪ Gelés | 3 — WILDNEXUS (regroupe InsectNet + NEXUS_ACOUSTIC), ARTEON, TRAVELS |
+| 🔶 Réactivé | 2 — VETALYX (juridique), WILDNEXUS DEVICE (P0 engineering) |
+| 🟢 P1 (autonome ou continu) | 6 — PHOTO_NATURE, PHOTO_AI_JURY, AI_IT_TOOLS, ARTEON, TRAVELS, VENTE_OCCASION |
+| ⚪ Gelé (sous-projets) | 2 — INSECTNET, NEXUS_ACOUSTIC |
 | Prochaine échéance | **15 décembre 2026** — installation IOT Van |
 
 ---
@@ -74,7 +76,7 @@ PHOTO_NATURE (terrain, technique, keyworder)
         │
         │ photos brutes + presets Argus
         ▼
-PHOTO_AI_JURY (moteur IA Argus — 58 analyses, MCP LR)
+PHOTO_AI_JURY (Argus — 58 historiques / 52 analyses conservées, schéma v1)
         │
         │ rapports PDF + presets XMP + conseil papier
         ▼

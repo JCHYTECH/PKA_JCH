@@ -1,118 +1,106 @@
 # ADR-013 — Couche acoustique : microphones et monitoring sonore
 
-**Statut :** Accepté  
+**Statut :** accepté comme architecture cible ; validation matérielle ouverte
 **Date :** 2026-06-19  
-**Décideur :** Dobby 🦉 + JCH  
+**Dernière mise à jour :** 2026-11-05
+**Décideur :** Dobby + JCH
 **Projet :** WildNexus P0 — M-02 Prototype banc fonctionnel  
-**Portée :** P0 immédiat + upgrade path P1
-
----
+**Portée :** capture stéréo P0 ; pistes P1 non engagées
 
 ## Contexte
 
-La session du 2026-06-19 a démontré qu'un pipeline acoustique complet (enregistrement → segmentation → classification → manifold 3D → densité de population) est réalisable avec l'iPhone de JCH. Le micro MEMS Knowles SPH0645LM4H-B est déjà dans le BOM (A06) pour la détection d'événements sonores.
+WildNexus vise à compléter les images par des clips audio locaux et des descripteurs spectraux. Le P0 ne fait ni classification d'espèce ni traduction animale.
 
-La question : ce micro suffit-il pour étendre WildNexus au monitoring acoustique passif multi-espèces (oiseaux, orthoptères, amphibiens) ?
-
----
+Le schéma initial retenait deux Knowles SPH0645LM4H-B. Le stock et le générateur de BOM mentionnent aussi des micros TDK reçus. Leur référence exacte, leur interface et leur compatibilité avec le pinout doivent être vérifiées avant SOP-13 : la présence d'un boîtier MEMS ne prouve pas une interface I2S.
 
 ## Décision
 
-### Microphone principal — SPH0645LM4H-B (maintenu)
+### 1. Architecture P0
 
-| Spécification | Valeur |
-|---------------|--------|
-| Modèle | Knowles SPH0645LM4H-B |
-| SNR | 65 dB(A) → bruit équivalent 29 dB SPL |
-| Bande passante | 20 Hz – 10 kHz |
-| Sensibilité | −26 dBFS @ 94 dB SPL |
-| Interface | I2S digital 24-bit |
-| Consommation | 600 µA actif / 10 µA sleep |
-| Prix | ~3.44€ (DigiKey) |
+- Deux micros MEMS pour une capture stéréo locale et une redondance fonctionnelle.
+- Clip WAV PCM 16 bits, 16 kHz, stéréo, 3 secondes toutes les 60 minutes.
+- Dix descripteurs FFT toutes les 15 minutes, avec transmission LoRa prévue par ADR-014.
+- Récupération des clips par SD ou transport local distinct ; jamais dans la payload LoRa.
+- Aucune classification bioacoustique d'espèce dans le P0.
 
-**Validation pour l'usage acoustique :**
+Le SPH0645LM4H-B reste la référence de conception historique. Le composant définitif du prototype ne sera confirmé qu'après rapprochement du stock, de la datasheet et du schéma. Les valeurs de sensibilité, bruit et consommation seront reprises de la datasheet du composant effectivement retenu, pas héritées d'un autre modèle.
 
-| Scénario | Distance | Niveau reçu | Marge/bruit | Verdict |
-|----------|----------|-------------|-------------|---------|
-| Grillon (4.7 kHz) | 20 m | 43 dB SPL | +14 dB | ✅ |
-| Merle (2-4 kHz) | 20 m | 48 dB SPL | +19 dB | ✅ |
-| Mésange (4-8 kHz) | 20 m | 38 dB SPL | +9 dB | ✅ |
-| Grenouille (<2 kHz) | 20 m | 48 dB SPL | +19 dB | ✅ |
-| Sauterelle ultrason (>15 kHz) | — | — | — | ❌ Hors bande |
-| Chauve-souris (20-80 kHz) | — | — | — | ❌ Hors bande |
+### 2. Limite de bande
 
-### Nombre de micros par nœud : 2
+À 16 kHz d'échantillonnage, la bande numérique utile est inférieure à 8 kHz. La réponse analogique annoncée d'un micro jusqu'à 10 ou 20 kHz ne supprime pas cette limite.
 
-Deux micros en opposition sur le boîtier (baseline ~10-15 cm selon l'orientation de montage) permettent :
-- Spatialisation azimutale grossière (±4–7° à 4.7 kHz)
-- Redondance (1 micro défaillant = le nœud continue de fonctionner)
-- Séparation gauche/droite pour le comptage d'individus
+| Usage envisagé | Conséquence P0 |
+|----------------|----------------|
+| Sons avec énergie utile sous 8 kHz | Candidats à un essai de captabilité réelle |
+| Espèces dont une partie du répertoire dépasse 8 kHz | Couverture partielle possible, à documenter par espèce |
+| Sauterelles haute fréquence et chauves-souris | Non couverts par la configuration 16 kHz ; autre chaîne d'acquisition nécessaire |
 
-La précision de triangulation fine vient du **maillage inter-nœuds LoRa** (baseline 50-200 m, résolution <0.1°), pas des micros intra-nœud. Le réseau fait le travail de localisation fine ; les 2 micros locaux donnent la direction immédiate.
+Aucune distance de détection, marge de bruit ou précision angulaire n'est validée sans protocole terrain, niveau source, environnement et calibration.
 
-### Upgrade path — ICS-43434 (P1)
+### 3. Ce que les deux micros peuvent et ne peuvent pas promettre
 
-Si le besoin ultrason émerge (sauterelles haute fréquence, chauves-souris) :
+La stéréo vise une différence gauche/droite et une redondance. Une localisation azimutale chiffrée exigerait une acquisition simultanée, une baseline mesurée, une calibration de phase/gain et un traitement adapté. Elle n'est pas un livrable P0.
 
-| Spécification | ICS-43434 (TDK/InvenSense) |
-|---------------|---------------------------|
-| Bande passante | 20 Hz – 20 kHz |
-| SNR | 65 dB(A) |
-| Interface | I2S (pin-compatible SPH0645LM4H-B) |
-| Prix | ~5€ |
+Le P0 ne promet ni triangulation fine inter-nœuds, ni comptage d'individus, ni résolution angulaire. Ces fonctions exigeraient une architecture de synchronisation et de localisation distincte, notamment ADR-018, et des essais scientifiques.
 
----
+### 4. Upgrade P1 éventuel
+
+L'ICS-43434 peut être étudié en P1, sans présumer qu'il est pin-compatible avec le SPH0645LM4H-B. Son interface ne suffit pas à couvrir les ultrasons : le micro, le filtrage, l'horloge, le débit I2S, la fréquence d'échantillonnage, le stockage et les pipelines doivent être dimensionnés ensemble.
+
+Toute hausse à 48 kHz triple le volume PCM par rapport à 16 kHz à format identique. Elle ne couvre toujours pas les chauves-souris et ne devient pas un engagement P0.
 
 ## Conséquences
 
-### Impact BOM
+### BOM et boîtier
 
-| Item | Coût unitaire | Qté | Total |
-|------|--------------|-----|-------|
-| SPH0645LM4H-B (A06) | 3.44€ | 2 → 4 (2 par nœud) | +6.88€ |
-| Membrane Gore-Tex acoustique | ~1€ | 2 | +2€ |
-| Joint torique micro | ~0.50€ | 2 | +1€ |
-| **Total ajouté par nœud** | | | **~10€** |
+- Le BOM distingue le micro cible du micro réellement reçu ; toute substitution exige une revue électrique et acoustique.
+- Les membranes et ouvertures acoustiques sont à prototyper. Leur présence ne garantit pas le maintien de la cible IP67.
+- Le coût des micros, membranes, joints et modifications de boîtier doit figurer dans le BOM consolidé.
 
-### Impact casing
+### Firmware et données
 
-- 2 ouvertures circulaires (Ø 5 mm) sur faces opposées du boîtier Hammond 1554A
-- Membrane Gore-Tex acoustique collée derrière chaque ouverture (IP67 conservé)
-- Micro soudé sur PCB flexible ou monté directement sur PCB principal face à l'ouverture
-- **Pas de changement de format du boîtier** — les ouvertures s'intègrent dans les faces existantes
+- L'acquisition stéréo et l'horodatage commun sont validés par SOP-13 ; le code I2S seul ne suffit pas.
+- Les tests FFT/WAV sur hôte doivent être reproduits sur des données et des fichiers produits par le nœud.
+- Un clip de 3 s à 16 kHz, 16 bits, stéréo contient **192 000 octets audio**, soit environ **4,61 MB de WAV pour 24 clips/jour**, hors sidecars JSON.
+- Les 10 descripteurs occupent 20 octets une fois quantifiés en `u16` dans ADR-014 ; 40 octets correspondent seulement à leur représentation flottante interne éventuelle.
+- À 96 cycles FFT/jour, les paquets de 48 octets représentent au maximum 4 608 octets de payload applicative/jour/nœud, avant overhead radio, retransmissions et contraintes de temps d'air.
+- Aucune position GPS n'est transmise dans ADR-014. La position de déploiement, si nécessaire, est enregistrée côté gateway avec une base légale et une protection adaptées.
 
-### Impact firmware
+### Réseau et analyse
 
-- Acquisition I2S dual-channel (ESP32-S3 a 2 canaux I2S natifs)
-- Buffer circulaire 10s en PSRAM
-- Extraction features spectrales (FFT 1024 points, 10 descripteurs) toutes les 15 minutes
-- Transmission LoRa : 40 bytes par segment spectral → 1.9 KB/jour
-- Stockage SD : segments audio complets 3s toutes les heures → 13 MB/jour
-
-### Impact architecture réseau
-
-- Chaque nœud transmet ses features spectrales horodatées + position GPS connue
-- La gateway centrale agrège les features de tous les nœuds
-- Le manifold 4D (UMAP) est généré en post-traitement sur le serveur PKA (M5)
-- 10 nœuds × 48 segments/jour × 10 features = 14 400 points par mois → manifold interactif
-
----
+La gateway agrège les événements effectivement reçus et leurs horodatages. À 10 nœuds et 96 cycles/jour pendant 30 jours, elle pourrait recevoir 28 800 enregistrements spectraux, chacun portant 10 descripteurs, si toutes les transmissions réussissent. Ce volume est un scénario de capacité, pas une mesure ni une preuve de scientificité.
 
 ## Alternatives considérées
 
-| Alternative | Rejetée parce que |
-|-------------|-------------------|
-| Micro électret analogique + ADC externe | Complexité circuit, consommation, calibration |
-| Micro ultrason dédié (Knowles SPH0655) | Surdimensionné pour P0, coût ×2 |
-| 1 seul micro par nœud | Perte de la spatialisation intra-nœud, pas de redondance |
-| 3-4 micros par nœud | Complexité casing, consommation I2S, gain marginal |
+| Alternative | Décision |
+|-------------|----------|
+| Micro analogique + ADC externe | Écarté en P0 pour limiter la complexité ; réévaluation si le stock numérique est incompatible |
+| Un seul micro | Ne répond pas à la cible stéréo/redondance |
+| Trois à quatre micros | Hors P0 : câblage, boîtier, énergie et traitement supplémentaires |
+| Analyse d'espèce embarquée | Hors P0 ; pipelines en aval après extraction |
+| Mesure de direction ou triangulation | Recherche ultérieure après calibration et synchronisation, pas une conséquence automatique de la stéréo |
 
----
+## Validation requise
+
+| Test | Critère |
+|------|---------|
+| Référence et datasheet | Composant physique identifié, interface et niveaux électriques compatibles |
+| Capture SOP-13 | Deux canaux réels, sans échange ni saturation anormale |
+| Fichiers du nœud | WAV/sidecars conformes à ADR-017, relus après extraction SD |
+| Compatibilité aval | Au moins un clip réel traité par chaque pipeline cible ou adaptation documentée |
+| Couverture taxons | Liste d'espèces et bandes cibles avant toute affirmation scientifique |
+| Consommation | Mesure PPK2 intégrée à WP03/SOP-18 |
+| Boîtier | Essais acoustiques et d'étanchéité après modification |
 
 ## Références
 
-- Session 2026-06-19 — Pipeline acoustique complet sur iPhone (InsectNet)
-- TEAM_Inbox/2026-06-19_dobby_arbor-densite-acoustique-orthopteres.md
-- TEAM_Inbox/2026-06-19_dobby_recherche-zoom-f3-micro-bioacoustique.md
-- BOM WildNexus v0.2 — A06 Knowles SPH0645LM4H-B
-- SOP-10-batterie-aa-buck.md v1.1 (note dropout voltage AMS1117)
+- ADR-014 — transport des descripteurs spectraux
+- ADR-016 — cycles firmware
+- ADR-017 — format WAV et sidecars
+- ADR-018 à rédiger — synchronisation temporelle
+- SOP-13 à SOP-18 — preuves acoustiques
+- Stock et BOM actifs — références physiques à rapprocher
+
+---
+
+*Révision 2026-11-05 : micros reçus non présumés I2S, limites de 16 kHz explicites, précisions de localisation non prouvées retirées, volumes stéréo corrigés et validation matérielle ajoutée.*

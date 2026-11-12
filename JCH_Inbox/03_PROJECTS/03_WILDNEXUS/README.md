@@ -25,8 +25,10 @@
        └──────────────► NEXUS_ACOUSTIC/ → BirdNET / TweetyBERT / SoundPlot / AmphibianNet
 ```
 
-Les ADR (dans `WILDNEXUS_DEVICE/02_DECISIONS/ADR/`) définissent le **contrat amont**
-qui alimente les deux pipelines de classification en aval.
+Les ADR (dans `WILDNEXUS_DEVICE/02_DECISIONS/ADR/`) définissent le **contrat amont cible**
+pour les deux pipelines de classification en aval. Ce schéma n'est pas encore démontré de bout en bout : les deux micros réels, leur interface, la stéréo, l'horodatage et la coexistence des acquisitions restent à valider. Il faudra tester des WAV et sidecars effectivement produits par le nœud, avec mixdown ou conversion si un pipeline l'exige. La compatibilité annoncée est donc une exigence de test, pas un acquis.
+
+WILDNEXUS_DEVICE est repris (P0 engineering, dégel 12/11) ; INSECTNET et NEXUS_ACOUSTIC restent gelés en aval. Reprise et preuves attendues : `WILDNEXUS_DEVICE/00_GOVERNANCE/Start.md`.
 
 ## Outils partagés (déjà centralisés au niveau repo)
 

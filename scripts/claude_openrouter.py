@@ -21,7 +21,7 @@ import urllib.error
 
 KEY_FILE = os.path.expanduser("~/.config/pka-jch/openrouter_key.txt")
 BASE_URL = "https://openrouter.ai/api/v1"
-DEFAULT_MODEL = "anthropic/claude-sonnet-4.5"
+DEFAULT_MODEL = "openai/gpt-6.1-sol"
 
 
 def get_key():

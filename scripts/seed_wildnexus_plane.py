@@ -275,8 +275,8 @@ def apply_relations(gantt: dict, id_by_name: dict[str, str], apply: bool) -> Non
 def main() -> int:
     parser = argparse.ArgumentParser(description="Seed WildNexus Plane items from the local markdown backlog.")
     parser.add_argument("--apply", action="store_true", help="Create missing modules and work items in Plane.")
-    parser.add_argument("--replace", action="store_true", help="Delete existing work items before seeding (fresh re-seed).")
-    parser.add_argument("--gantt", type=str, default=str(GANTT_JSON_PATH), help="Path to the gantt JSON (dates + dependencies).")
+    parser.add_argument("--replace", action="store_true", help="DANGER: delete existing remote work items before seeding; requires --apply and explicit JCH authorization.")
+    parser.add_argument("--gantt", type=str, default=str(GANTT_JSON_PATH), help="Path to the gantt JSON (optional dates + dependencies).")
     args = parser.parse_args()
 
     ensure_plane_api_token()
@@ -285,6 +285,13 @@ def main() -> int:
     if gantt_path.exists():
         data = json.loads(gantt_path.read_text(encoding="utf-8"))
         gantt = {"dates": data.get("dates", {}), "dependencies": data.get("dependencies", [])}
+        if not isinstance(gantt["dates"], dict) or not isinstance(gantt["dependencies"], list):
+            parser.error("The gantt JSON must contain an object 'dates' and a list 'dependencies'.")
+        if data.get("planning_status") == "frozen" and gantt["dates"]:
+            parser.error("The frozen WildNexus snapshot cannot be seeded with dates; replan with JCH first.")
+
+    if args.replace and not args.apply:
+        parser.error("--replace requires --apply; dry-run never deletes remote work items.")
 
     if args.replace:
         delete_all_work_items(apply=args.apply)

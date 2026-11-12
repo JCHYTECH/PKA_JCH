@@ -28,7 +28,7 @@ BASE = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes"
 QUEUE = BASE / "queue"
 NOTES_DIR = PKA_ROOT / "JCH_Inbox/00_INBOX/NOTES"
 
-MODEL = "claude-haiku-4-5-20251001"
+MODEL = "claude-haiku-5-5"
 
 SPLIT_PROMPT = """Tu es l'agent PKA_DECOUVERTES. Ce texte peut mentionner un ou plusieurs lieux touristiques à visiter (villes, villages, monuments, réserves naturelles, parcs, lacs, plages, montagnes, gorges, cascades...).
 

@@ -95,14 +95,16 @@ At 1.4 m/s (fox trotting), a 600 ms latency means 84 cm of animal movement befor
 
 ## Image sensor selection
 
+> **Décision P0 figée — ADR-002 (accepté 2026-05-23, Nova + Lynx) :** capteur **OV5640 5 MP** en monture **M12**, interface **DVP**, couplé à une lentille M12 IR-corrigée f/1.8 (sourcée séparément). Référence : `02_DECISIONS/ADR/ADR-002-choix-camera-ir-p0.md`. Cette section aligne le skill sur l'ADR ; ne pas re-promouvoir un autre capteur sans rouvrir l'ADR.
+
 ### Key parameters for wildlife imaging
 
 | Parameter | Why it matters | Target for WildNexus |
 |-----------|---------------|---------------------|
-| Pixel size | Larger = better low-light SNR | ≥2.0 µm |
-| NIR sensitivity | IR imaging at night without strong illumination | >20% QE at 850 nm |
+| Pixel size | Larger = better low-light SNR | ≥2.0 µm (objectif) — OV5640 = 1.4 µm : risque nuit à valider M-02 |
+| NIR sensitivity | IR imaging at night without strong illumination | >20% QE at 850 nm (objectif) — OV5640 NoIR inférieur aux Starvis |
 | Read noise | Sensitivity floor at low light | <5 e⁻ RMS |
-| Interface | MCU integration | MIPI CSI-2 |
+| Interface | MCU integration | **DVP** (natif ESP32-S3) — MIPI réservé P1 |
 | Operating temperature | Field reliability | -20°C to +70°C |
 | Active power | Event energy budget | <300 mW |
 
@@ -110,12 +112,12 @@ At 1.4 m/s (fox trotting), a 600 ms latency means 84 cm of animal movement befor
 
 | Sensor | Resolution | Pixel size | NIR sensitivity | Interface | Notes |
 |--------|-----------|-----------|----------------|-----------|-------|
-| Sony IMX462 | 2 MP (1920×1080) | 2.9 µm | Very high (Starvis BSI) | MIPI CSI-2 | Best-in-class low light, 0.001 lux |
-| Sony IMX327 | 2 MP | 2.9 µm | High (Starvis BSI) | MIPI CSI-2 | Slightly older, wider availability |
-| Sony IMX335 | 5 MP (2592×1944) | 2.0 µm | High | MIPI CSI-2 | Higher resolution, slightly lower sensitivity |
-| OmniVision OV5647 | 5 MP | 1.4 µm | Moderate | MIPI CSI-2 | Acceptable for P0 prototyping only |
+| **OmniVision OV5640** | **5 MP (2592×1944)** | **1.4 µm** | **Modérée (NoIR)** | **DVP** | **Retenu P0 (ADR-002)** — résolution configurable, M12 interchangeable, natif ESP32-S3 |
+| Sony IMX462 | 2 MP (1920×1080) | 2.9 µm | Very high (Starvis BSI) | MIPI CSI-2 | Best-in-class low light, 0.001 lux — **P1 si OV5640 insuffisant nuit** |
+| Sony IMX327 | 2 MP | 2.9 µm | High (Starvis BSI) | MIPI CSI-2 | Slightly older, wider availability — **P1/P2** |
+| Sony IMX335 | 5 MP (2592×1944) | 2.0 µm | High | MIPI CSI-2 | Higher resolution — MIPI non natif ESP32-S3, ISP dédié requis |
 
-**Recommended for WildNexus P0**: Sony IMX462 or IMX327. The Starvis back-illuminated architecture provides significantly better night IR performance. The 2.9 µm pixel collects more photons at 850 nm than 1.4 µm sensors — critical for illumination at 5–10 m range.
+**Décision P0 : OV5640 (ADR-002).** Retenu pour sa compatibilité DVP native avec l'ESP32-S3, sa lentille M12 interchangeable et sa communauté active. **Risque assumé et documenté :** le pixel 1.4 µm capte moins de photons à 850 nm qu'un Starvis 2.9 µm — la qualité nocturne à 5 m est un **test obligatoire M-02** (critère de révision de l'ADR-002). Le bascule IMX462 (MIPI + ISP dédié) reste la **voie de repli P1**, pas le choix P0.
 
 ### Resolution vs. identifiability
 

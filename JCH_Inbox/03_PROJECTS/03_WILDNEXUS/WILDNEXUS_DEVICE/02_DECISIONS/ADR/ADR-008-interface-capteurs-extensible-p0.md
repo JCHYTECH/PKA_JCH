@@ -16,7 +16,7 @@ Le Satellite Lite P0 intègre :
 
 - caméra OV5640/IR ;
 - PIR ;
-- micro mono pour clips audio courts locaux ;
+- deux micros MEMS pour clips audio stéréo locaux, selon ADR-013 ; références et interface à confirmer ;
 - mesure tension batterie ;
 - interface I2C/SPI/UART documentée pour extensions ;
 - réserve d'encombrement et de fixation pour un petit bloc capteurs environnementaux.
@@ -41,7 +41,7 @@ Principe JCH : **moins on change de choses après le P0, mieux c'est**. Le boît
 
 ## Conséquences
 
-- Le micro mono devient standard P0, mais pas la reconnaissance bioacoustique.
+- La capture stéréo devient la cible P0, mais pas la reconnaissance bioacoustique ni la localisation acoustique ; les références réelles restent à vérifier.
 - Le PCB doit réserver au moins une interface capteur proprement documentée et un emplacement physique pour petit module capteurs.
 - L'estimation d'encombrement WP02 doit inclure le bloc capteurs, même si certaines pièces sont non montées en P0.
 - Les métadonnées doivent pouvoir accueillir des champs futurs sans migration lourde.

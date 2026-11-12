@@ -1,56 +1,54 @@
 # Thread — InsectNet
 
-> Living document — mis à jour automatiquement par Dobby 🦉 en fin de session.
-> **Dernière mise à jour** : 2026-07-03 — Thread file créé
-> **Statut** : 🟡 pipeline
+> Living document maintenu par Dobby 🦉.
+> **Dernière mise à jour** : 2026-11-05 — alignement sur le gel WildNexus.
+> **Statut** : ⚪ **gelé avec le projet ombrelle WildNexus** ; aucune migration ou installation courante.
 
----
+## Gouvernance
+
+Le gel ombrelle et la suspension de SOP-10 priment sur les anciennes actions de ce thread. Référence : `03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/00_GOVERNANCE/Start.md`. Toute reprise attend le signal de JC et une revalidation des preuves techniques.
 
 ## Vue d'ensemble
 
-Classification automatique d'insectes par deep learning — pipeline xcapi → preprocessing → modèle. Plan migration M5 → M1 (plus de puissance GPU). Lié à NEXUS_ACOUSTIC via InsectSet459 et TweetyBERT.
+Classification automatique d'insectes par deep learning — pipeline envisagé xcapi → preprocessing → modèle. Un plan historique de migration M5 → M1 existe. Lien de recherche avec NEXUS_ACOUSTIC autour d'InsectSet459 et TweetyBERT.
 
----
-
-## État actuel
+## État documenté
 
 | Axe | Statut | Détail |
 |-----|--------|--------|
-| Global | 🟡 | Migration M1 en attente (accès rsync) |
-| Pipeline | 🟢 | xcapi validé, preprocessing prêt |
-| Migration | 🟡 | M5 → M1 — besoin accès M1 au dépôt PKA (rsync) |
+| Global | ⚪ | Gelé avec WildNexus ; pas de reprise planifiée |
+| Pipeline | ⚪ historique | xcapi et preprocessing décrits comme validés/prêts le 14/06 ; non revérifiés dans cette passe |
+| Migration | ⚪ suspendue | Ancien plan M5 → M1 et besoin rsync conservés comme historique, pas comme action courante |
 
----
+## Décisions et historique
 
-## Décisions clés
+| Date | Élément | Lecture actuelle |
+|------|---------|------------------|
+| 2026-06-14 | Plan de migration M5 → M1 | Historique à revalider avant toute reprise |
+| 2026-06-14 | xcapi décrit comme validé | État historique non revérifié |
 
-| Date | Décision | Contexte |
-|------|----------|----------|
-| 2026-06-14 | Plan migration M5 → M1 | M1 32GB > M5 pour training |
+## TTD — Pending
 
----
+**Aucune exécution tant que WildNexus est gelé.**
 
-## Prochaine étape
+- [ ] **Au signal de JC seulement** Revérifier l'existence et le fonctionnement du pipeline, l'accès M1 et la pertinence de la migration avant de redéfinir responsable et échéance.
 
-**Action** : Exécuter migration M1 (rsync accès)
-**Deadline** : —
-**Responsable** : Clio, Musaraigne
+## TTD — Done
 
----
+- [x] 2026-11-05 · Gel ombrelle appliqué ; anciennes actions conservées comme historique, sans reprise technique implicite.
 
 ## Historique sessions
 
-| Date | Résumé session | Livrable |
-|------|---------------|----------|
-| 2026-06-14 | Plan migration M5→M1, xcapi validé | — |
-
----
+| Date | Résumé | Livrable |
+|------|--------|----------|
+| 2026-11-05 | Alignement documentaire sur le gel WildNexus ; pipeline et migration non revérifiés | `thread-insectnet.md`, `INDEX.md` |
 
 ## Liens
 
+- Gouvernance du gel : `03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/00_GOVERNANCE/Start.md`
 - Dossier : `03_PROJECTS/03_WILDNEXUS/INSECTNET/`
-- NEXUS_ACOUSTIC : `03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/` (InsectSet459 partagé)
+- NEXUS_ACOUSTIC : `03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/`
 
 ---
 
-*Fichier maintenu par Dobby 🦉 via le skill `pka-thread-file`.*
+*Anciennes actions conservées comme historique ; aucune reprise technique implicite.*

@@ -508,7 +508,7 @@ def analyze_email(specialist_name, sender_name, sender_email, subject, body):
     try:
         client = anthropic.Anthropic(api_key=ANTHROPIC_KEY)
         response = client.messages.create(
-            model="claude-haiku-4-5-20251001",
+            model="claude-haiku-5-5",
             max_tokens=600,
             system=spec["system"],
             messages=[{"role": "user", "content": user_msg}],

@@ -1,3 +1,5 @@
+> **Audit historique — ne pas exécuter comme une procédure.** Révision documentaire du 2026-11-05 : la cible stéréo et les micros réels sont couverts par ADR-013/017 ; SOP-11 impose un benchmark comparatif, pas MobileNet-SSD par défaut ; ADR-011 reste proposé et toute opération eFuse exige une procédure séparée validée. Les seuils et hypothèses de consommation ci-dessous ne sont pas des mesures. SOP-10 est suspendue : ne pas suivre les branchements ou montages proposés ici sans revue du schéma et reprise autorisée. Les sources actuelles sont `progress.md`, `PROCESSUS_MONTAGE_PROTOTYPE.md`, ADR-005/010/011 et SOP-11/13/18.
+
 Cette analyse croise le protocole de test **M-02** avec les exigences stratégiques et techniques des **ADR** (Architecture Decision Records) et du **Scope Lock** de WildNexus.
 
 ### 1\. Incohérences ou contradictions avec les ADR

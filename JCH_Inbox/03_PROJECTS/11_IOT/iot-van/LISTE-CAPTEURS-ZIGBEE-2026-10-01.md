@@ -1,8 +1,9 @@
 # Liste capteurs — IOT Van (Lupo) — à commander
 
 > **Date :** 2026-10-01 | **Orchestré par :** Dobby 🦉
-> **Contexte :** RPi 5 réparé, HAOS 18.3, Zigbee opérationnel (ZBDongle-E, réseau up, 0 appareil joint). WiCAN Pro installé sur le Ford Transit Custom Tourneo (porteur).
-> **Source :** `BOM-capteurs-vanlife-enquete.md` (archivé) croisé avec `hardware-state.md`.
+> **Contexte initial :** RPi 5 réparé, HAOS 18.3, Zigbee opérationnel au 01/10. WiCAN Pro documenté comme physiquement installé.
+> **Révision 2026-11-05 :** AirGuard Lupo = **SNZB-02UL** (van) ; AirGuard Serre = **SNZB-02DR2**. Le Zigbee du RPi est actuellement arrêté après déconnexion USB ; aucune donnée CAN n'est validée.
+> **Source :** `BOM-capteurs-vanlife-enquete.md` (archivé), `hardware-state.md` et inventaire réel du 05/11.
 
 ---
 
@@ -10,10 +11,10 @@
 
 | Domaine | Source | Statut |
 |---------|--------|--------|
-| **Véhicule** (portes cabine, batterie 12V, vitesse, RPM, carburant, pneus, T°C moteur) | **WiCAN Pro (OBD/CAN)** | ✅ installé |
-| **Cellule** (porte coulissante, hayon, toit, frigo, mouvement, fuites) | **Zigbee** (ZBDongle-E) | à équiper |
+| **Véhicule** (portes cabine, batterie 12V, vitesse, RPM, carburant, pneus, T°C moteur) | **WiCAN Pro (OBD/CAN)** | 🟡 matériel installé, données non validées |
+| **Cellule** (porte coulissante, hayon, toit, frigo, mouvement, fuites) | **Zigbee** (ZBDongle-E) | à équiper ; service actuellement interrompu |
 
-→ Les capteurs Zigbee ne couvrent que la **cellule habitable**. Le véhicule est déjà couvert par le WiCAN Pro.
+→ Les capteurs Zigbee visent la **cellule habitable**. Le WiCAN Pro ne couvre fonctionnellement le véhicule qu'après validation réseau, MQTT et entités réelles.
 
 ---
 
@@ -30,7 +31,8 @@
 ### Température / humidité
 | Usage | Qté | Modèle | Prix unit. |
 |-------|-----|--------|-----------|
-| ~~Cellule (T° + HR)~~ | ✅ couvert | SNZB-02DR2 (appairé 07/10) | — |
+| Cellule (T° + HR) | ✅ appareil affecté | **SNZB-02UL — AirGuard Lupo** ; service Zigbee à rétablir | — |
+| Frigo (T° + HR) | à commander | **SNZB-02P**, inclus dans le panier final | ~12 € |
 
 ### Présence / mouvement (alarme)
 | Usage | Qté | Modèle | Prix unit. |
@@ -49,13 +51,14 @@
 | Contrôleur LED Zigbee 12V (RGBCCT, 5-24V DC, 6A) | 1 | GLEDOPTO GL-C-008S | ~15 € |
 | Ruban LED COB 12V CCT (blanc chaud+froid) IP65, 5 m coupable | 1 | COB ~8W/m | ~18 € |
 
-**Sous-total P1 : ~118-133 €** (capteurs + éclairage hayon)
+**Sous-total P1 : ~121 € estimés au 01/10** (10 articles, température frigo et éclairage hayon compris ; voir panier final).
 
 ---
 
 ## 2. Déjà reçu — NE PAS recommander
 
-- Sonoff SNZB-02DR2 (T°/H°) → **cellule** ✅ appairé (07/10)
+- Sonoff SNZB-02DR2 (T°/H°) → **AirGuard Serre** ✅ appairé
+- Sonoff SNZB-02UL (T°/H° E-Ink) → **AirGuard Lupo** ✅ appairé
 - Aqara Light Sensor T1 → luminosité
 - Sonoff ZBMiniR2 → switch Zigbee
 - Sonoff Smart Water Valve → électrovanne
@@ -82,9 +85,9 @@
 | **Alarme intrusion** | Zigbee contact (cellule) + PIR + WiCAN (portes cabine) + Reolink | 🔶 à commander (contacts + PIR) |
 | **Frigo** | contact porte frigo (SNZB-04P) + T°/H° à réaffecter | 🔶 à commander (contact + T°/H°) |
 | **Batterie cellule** | UPS X1205 + accus + PV PI | ✅ reçu |
-| **Batterie véhicule** | WiCAN Pro (SOC/courant/tension) | ✅ installé |
+| **Batterie véhicule** | WiCAN Pro (SOC/courant/tension) | 🟡 matériel installé, entités non validées |
 | **Cuves** | XKC-Y25-V ×4 | ✅ reçu |
-| **Confort T°/H°** | SNZB-02DR2 (cellule ✅) + SNZB-02P (à réaffecter) | 🔶 à commander (1) |
+| **Confort T°/H°** | SNZB-02UL (Lupo) + SNZB-02DR2 (Serre) + SNZB-02P (frigo) | 🔶 1 SNZB-02P à commander ; Zigbee à rétablir |
 | **Éclairage hayon** | GLEDOPTO GL-C-008S + ruban COB 12V | 🔶 à commander |
 | **Gaz** | Mopeka Pro Check | ⚪ P3 |
 | **Inclinaison/assiette** | MPU-6050 | ✅ reçu |
@@ -114,4 +117,4 @@
 
 ---
 
-*Liste générée par Dobby 🦉 — les prix sont des estimations Amazon/AliExpress, à ajuster au panier.*
+*Liste générée par Dobby 🦉 — révisée le 2026-11-05. Les ~121 € sont des estimations historiques Amazon/AliExpress, non des devis actuels. X1200, DC-DC, silentblocs et coating sont suivis séparément dans `_shared/procurement-register.md`.*

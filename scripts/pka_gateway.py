@@ -275,29 +275,76 @@ def scan_git_commits(state: dict) -> list[dict]:
 # ── STORE ────────────────────────────────────────────────────────────
 
 def store_messages(messages: list[dict], dry_run: bool = False) -> int:
-    """Stocke les messages dans team.db (gateway_messages)."""
+    """Stocke les messages dans team.db (gateway_messages), en lot (batching)
+    et avec routage direct des follow-ups."""
     if dry_run:
         return len(messages)
 
+    route_followups(messages)  # routage direct des follow-ups
+
+    batch = messages[:MAX_MESSAGES_PER_SCAN]
     stored = 0
     with sqlite3.connect(DB_PATH) as con:
-        for msg in messages[:MAX_MESSAGES_PER_SCAN]:
-            con.execute(
-                """INSERT INTO gateway_messages
-                   (channel, source_path, message_type, subject, body, priority)
-                   VALUES (?, ?, ?, ?, ?, ?)""",
+        con.executemany(
+            """INSERT INTO gateway_messages
+               (channel, source_path, message_type, subject, body, priority, routed_to)
+               VALUES (?, ?, ?, ?, ?, ?, ?)""",
+            [
                 (msg["channel"], msg.get("source_path", ""),
                  msg["message_type"], msg.get("subject", ""),
-                 msg.get("body", ""), msg.get("priority", "normal")),
-            )
-            stored += 1
+                 msg.get("body", ""), msg.get("priority", "normal"),
+                 msg.get("routed_to") or None)
+                for msg in batch
+            ],
+        )
+        stored = len(batch)
     return stored
+
+
+# ── BATCHING + ROUTAGE DIRECT (SuperAgent, veille 2026-11-06) ─────────
+
+def group_key(msg: dict) -> str:
+    """Clé de regroupement — batching (coalescence) + routage direct des follow-ups.
+    Deux messages de même clé sont liés (même dossier source ou même sujet normalisé)."""
+    import re
+    path = msg.get("source_path", "") or ""
+    p = Path(path)
+    parent = p.parent.name if p.parent and p.parent.name not in ("", ".") else ""
+    if msg["channel"] == "local_inbox" and parent:
+        return f"local_inbox:{parent}"
+    subj = re.sub(r"[^a-z0-9]+", "-", (msg.get("subject") or "").lower()).strip("-")
+    return f"{msg['channel']}:{subj[:40]}"
+
+
+def route_followups(messages: list[dict]) -> None:
+    """Routage direct des follow-ups : un message qui reprend un sujet déjà routé
+    est affecté au même spécialiste (routed_to), sans ré-orchestration Dobby."""
+    try:
+        with sqlite3.connect(DB_PATH) as con:
+            rows = con.execute(
+                "SELECT channel, subject, source_path, routed_to FROM gateway_messages "
+                "WHERE routed_to IS NOT NULL AND routed_to != '' ORDER BY id DESC LIMIT 200"
+            ).fetchall()
+    except sqlite3.DatabaseError:
+        return
+    if not rows:
+        return
+    known = {}
+    for channel, subj, path, routed in rows:
+        k = group_key({"channel": channel, "subject": subj, "source_path": path})
+        if k not in known:
+            known[k] = routed
+    for msg in messages:
+        if not msg.get("routed_to"):
+            k = group_key(msg)
+            if k in known:
+                msg["routed_to"] = known[k]
 
 
 # ── REPORT ───────────────────────────────────────────────────────────
 
 def generate_report(messages: list[dict], state: dict) -> str:
-    """Génère un résumé humain du scan."""
+    """Génère un résumé humain du scan — batché par canal + groupe (coalescence)."""
     now = datetime.now()
     lines = [
         f"# Gateway Scan — {now.strftime('%Y-%m-%d %H:%M')}",
@@ -310,18 +357,25 @@ def generate_report(messages: list[dict], state: dict) -> str:
     for msg in messages:
         by_channel.setdefault(msg["channel"], []).append(msg)
 
-    lines.append("| Canal | Messages |")
-    lines.append("|-------|----------|")
+    lines.append("| Canal | Messages | Groupes |")
+    lines.append("|-------|----------|---------|")
     for channel, items in sorted(by_channel.items()):
-        lines.append(f"| {channel} | {len(items)} |")
+        groups = len({group_key(m) for m in items})
+        lines.append(f"| {channel} | {len(items)} | {groups} |")
     lines.append("")
 
     for channel, items in sorted(by_channel.items()):
         lines.append(f"## {channel}")
-        for msg in items[:5]:
-            lines.append(f"- [{msg['priority']}] {msg['subject']}")
-        if len(items) > 5:
-            lines.append(f"- ... et {len(items) - 5} autres")
+        grouped: dict[str, list] = {}
+        for m in items:
+            grouped.setdefault(group_key(m), []).append(m)
+        for key, grp in sorted(grouped.items(), key=lambda kv: -len(kv[1])):
+            first = grp[0]
+            routed = f" → routé à {first['routed_to']}" if first.get("routed_to") else ""
+            if len(grp) == 1:
+                lines.append(f"- [{first['priority']}] {first['subject']}{routed}")
+            else:
+                lines.append(f"- [{first['priority']}] {first['subject']} (+{len(grp)-1} liés){routed}")
         lines.append("")
 
     return "\n".join(lines)

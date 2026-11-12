@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 export PKA_DIR="/Users/jchavauxm5/PKA_JCH"
 export PKA_MODEL="gemini"
-export PKA_TITLE="Dobby - Gemini CLI"
-export PKA_BG="#0f1710"
+export PKA_TITLE="Dobby — Gemini"
+export PKA_BG="#0b2b30"
 export PKA_FG="#f8f5f0"
-export PKA_CURSOR="#3d5a3e"
+export PKA_CURSOR="#4285f4"
 
 osascript <<'APPLESCRIPT'
 tell application "Terminal"

@@ -25,6 +25,7 @@
 | [arbor-research](arbor-research/SKILL.md) | "arbor loop", "recherche autonome", "hypothesis tree" | Protocole recherche cumulative (Arbor) — hypothèse → expérience → insight — transforme toute loop en OBSERVE→IDEATE→DECIDE |
 | **Opérations** | | |
 | [ingest](ingest/SKILL.md) | `/ingest`, traite automatiquement 00_INBOX | Router fichiers inbox → dossier projet, indexer dans file_index |
+| [analyse-transcript](analyse-transcript/SKILL.md) | "analyse ce transcript", "NoteGPT", "transcript" | Comprendre + confirmer + conseiller l'usage d'un transcript dans PKA |
 | [brief](brief/SKILL.md) | `/brief <membre> <tâche>` | Générer brief de délégation avec PRIORITY et DEADLINE |
 | [status](status/SKILL.md) | `/status`, `/status <membre>` | Tableau de bord des livrables en attente, détection tâches bloquées |
 | [decision-gate](decision-gate/SKILL.md) | "garde-fou", "gate", automatique avant action destructive/sortante | Questions fermées avant action sensible (destructif, réseau, secrets, conformité) + seuils + journal |

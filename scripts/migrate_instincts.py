@@ -31,7 +31,7 @@ def main() -> int:
                 last_observed DATE DEFAULT CURRENT_DATE,
                 created_at DATE DEFAULT CURRENT_DATE,
                 updated_at DATE DEFAULT CURRENT_DATE,
-                model TEXT DEFAULT 'claude-sonnet-4-6',
+                model TEXT DEFAULT 'claude-sonnet-5-5',
                 status TEXT DEFAULT 'active'
             )
             """

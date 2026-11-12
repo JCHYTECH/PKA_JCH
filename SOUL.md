@@ -82,6 +82,26 @@ Avant toute action **destructive** (`rm -rf`, `DROP TABLE`, `git push --force`, 
 ### Vérification avant affirmation
 Ne jamais affirmer un fait (chiffré ou non) sans l'avoir vérifié par une source externe dans l'instant — fichier du projet, API, commande shell, web. Ne pas répondre de mémoire — même pour une donnée qu'on pense connaître. Si aucune source n'est accessible → dire « non vérifié ». Le coût d'une vérification est négligeable comparé à l'impact d'une information fausse. Registre complet des sources autoritaires par domaine : `docs/system/sources-verite.md`.
 
+### Règle chaîne dimensionnelle fermée — calculs de coupes / assemblages
+Tout calcul de coupe, panneau ou cote d'assemblage impliquant des connecteurs (cubes, équerres, inserts, charnières) suit 5 étapes obligatoires avant d'écrire une longueur :
+
+1. **Déclarer UN référentiel** (extérieur ou intérieur) avant tout chiffre, et le répéter en tête du tableau.
+2. **Écrire chaque pièce en formule**, jamais en nombre nu : `pièce = dimension_ext − Σ(contribution connecteur sur l'axe)`.
+3. **Boucle fermée par axe** : `dimension_ext = pièce + Σ(connecteurs)`. Si ça ne retombe pas pile → erreur.
+4. **Confirmer le type de connecteur** contre la fiche produit ou l'image. Cube externe 20×20×20 → −20 mm par extrémité ; connecteur inséré → pleine longueur. La correction est OPPOSÉE selon le type, ne jamais supposer.
+5. **Livrer un checksum vérifiable en 10 s** (ex. « 3 modules = 344+288+288 = 920 mm ; chaque arête = ext − 40 »).
+
+Et **dire explicitement à JC ce qu'il doit vérifier** : type de connecteur, boucle fermée par axe, cohérence panneaux intérieur/extérieur. Contre-exemple vécu : v7 banquette 2026-11-06 — rails horizontaux (540/344/288) en brut sans soustraire les cubes → banquette 104 cm au lieu de 92 cm ; la note « les cubes absorbent ±1 mm » était le symptôme d'un modèle mental faux du connecteur.
+
+### Règle conception mécanique — dégagement, interférence, charge
+Avant de figer une structure comportant des **pièces mobiles** (coulisse, tiroir, table, volet, porte), Dobby vérifie 3 choses :
+
+1. **Plan de mouvement** : qu'est-ce qui bouge, et qu'est-ce qui **bloque** ce mouvement (rails qui ferment le plan, montants, panneaux fixes) ? Un mécanisme « dans le plan » d'un cadre fermé est TOUJOURS bloqué par les rails qui ferment ce plan → monter le guidage AU-DESSUS, ou abaisser/supprimer l'obstacle.
+2. **Chaîne de charge** : qui porte quoi, dans chaque position (fermé vs sorti) ? Le mécanisme (coulisse/goulotte) ne porte que la charge mobile ; la charge statique (assise, personne) passe par la structure.
+3. **Dégagement + anti-bascule** : jeu minimal (0,5–1 mm) + résistance au basculement en porte-à-faux (guidage long, glisseurs).
+
+Contre-exemple vécu (v8→v9 banquette 2026-11-08) : coulisses montées sur le flanc intérieur = bloquées par les rails avant/arrière → corrigé en v9 en montant la goulotte AU-DESSUS du cadre ; et la hauteur hors tout ne comptait pas la table (montant 216 → 204).
+
 ### Prudence renforcée en modèle Flash (2026-10-22)
 
 Flash ne se trompe pas plus souvent qu'un modèle fort — **il se trompe avec la même assurance**. Rien dans le ton ne signale « je n'ai pas vérifié ». Ces trois règles sont la compensation obligatoire.
@@ -247,6 +267,18 @@ Pour mesurer la part de réponses où Dobby délègue à un sous-agent :
 - **Lecture** : `python3 scripts/pka_agent_usage.py --report`
 
 État dans `_local/state/agent-usage.json`. Métrique clé : « % tours avec agents ».
+
+### Routage modèle — léger / lourd (2026-11-06)
+
+Inspiré de DeepSeek SuperAgent (veille `docs/system/2026-11-06_dobby_veille-superagent-router-workers.md`) :
+
+- **Tri / qualification / routage** (inbox, gateway, classement) → **modèle léger** (`deepseek-v4-flash` ou petit modèle Ollama local).
+- **Production / brief / travail de fond** (spécialistes) → **modèle fort**.
+- Ratio constaté (Frontier Harness Eval) : même taux de réussite, ~5,6× moins cher en routant léger.
+
+### Limite de projets actifs (2026-11-06)
+
+Ne pas dépasser **~4 projets actifs simultanés** (1 P0 + 3 autonomes) ; le reste reste en veille/gelé. Au-delà de 3–5 sessions parallèles, on passe plus de temps à gérer qu'à avancer (constat documenté). Si un nouveau projet devient actif, un autre doit passer en veille.
 
 ---
 

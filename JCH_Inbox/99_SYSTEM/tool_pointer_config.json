@@ -9,7 +9,7 @@
     "DEEPSEEK.md": {
       "title": "DEEPSEEK.md — PKA_JCH System Pointer (DeepSeek API)",
       "tool_label": "DeepSeek API",
-      "model_hint": "deepseek-v4 / deepseek-reasoner"
+      "model_hint": "deepseek-v4-pro / deepseek-v4-flash"
     }
   }
 }

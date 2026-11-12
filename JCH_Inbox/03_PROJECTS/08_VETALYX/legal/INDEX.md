@@ -1,17 +1,17 @@
 # LEGAL — Index (VETALYX)
 
-> Réorganisé le 2026-10-29 pour rendre visibles d'emblée les **documents en vigueur**.
-> Les notes/analyses sont regroupées dans `_travail/` ; les anciennes versions sont dans `../_archive/legal/`.
+> Réorganisé le 2026-10-29, recadré le 2026-11-05 : cette carte présente les **versions actuelles de travail**.
+> Elle ne prouve ni signature, ni envoi, ni entrée en vigueur. Les notes/analyses sont dans `_travail/`, les anciennes versions dans `../_archive/legal/`.
 
-## 🟢 En vigueur (documents à jour)
+## Versions actuelles de travail
 
 | Document | Fichiers |
 |---|---|
 | **Statuts SRL VETALYX** | FR : [`statuts-srl-vetalyx-FR-v2.md`](statuts-srl-vetalyx-FR-v2.md) · `.docx` — EN : [`statuts-srl-vetalyx-EN-v2.md`](statuts-srl-vetalyx-EN-v2.md) · `.docx` |
-| **Pacte d'actionnaires** | [`pacte-actionnaires-vetalyx-v2.md`](pacte-actionnaires-vetalyx-v2.md) · `.docx` |
+| **Pacte d'actionnaires** | FR : [`pacte-actionnaires-vetalyx-v2.md`](pacte-actionnaires-vetalyx-v2.md) · `.docx` — EN : [`pacte-actionnaires-vetalyx-EN-v2.md`](pacte-actionnaires-vetalyx-EN-v2.md) · `.docx` (traduite 08/11, envoyée aux partenaires chinois) |
 | **Convention bloc fondateurs** | [`convention-bloc-fondateurs-vetalyx-v2.md`](convention-bloc-fondateurs-vetalyx-v2.md) · `.docx` |
 | **Contrat-cadre DIAHO v4** | voir [`contrat-diaho/`](contrat-diaho/) (tableau ci-dessous) |
-| **Réponse DIAHO v4.1 (EN)** | [`2026-10-29_reponse-diaho-v4.1_EN.md`](2026-10-29_reponse-diaho-v4.1_EN.md) · `.docx` |
+| **Réponse DIAHO v4.1 (EN)** | [`2026-10-29_reponse-diaho-v4.1_EN.md`](2026-10-29_reponse-diaho-v4.1_EN.md) · `.docx` — préparée le 29/10, **envoi non documenté** |
 
 ## 📁 contrat-diaho/ — cœur du dossier DIAHO
 
@@ -39,4 +39,4 @@ Briefs, notes ISC (adaptation statuts, explicative DIAHO), analyses Dobby, relec
 
 ---
 
-*Rangement 2026-10-29 : documents en vigueur laissés à la racine ; 15 notes/analyses déplacées dans `_travail/`. Réversible (git mv).*
+*Rangement 2026-10-29 : versions courantes laissées à la racine ; 15 notes/analyses déplacées dans `_travail/`. Recadrage terminologique le 2026-11-05, sans affirmation de validité juridique ou d'envoi.*

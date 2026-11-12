@@ -1,63 +1,60 @@
 # AI_IT_TOOLS — Executive Summary
 
 > Document interne — infrastructure PKA uniquement.
-> Généré le 2026-07-03 par Dobby 🦉. Version 1.0.
-
----
+> Version 1.1 — état consolidé le 2026-11-05 ; source opérationnelle : `thread-ai-it-tools.md`.
 
 ## En une phrase
 
-**Infrastructure IA multi-modèles qui fait fonctionner PKA_JCH — 31 agents spécialisés, hub OpenRouter, skills automatisés, mémoire persistante.**
-
----
+**AI_IT_TOOLS est l'infrastructure multi-modèles qui fait fonctionner PKA_JCH : Dobby, 31 spécialistes, mémoire persistante, skills, outils locaux et routage entre modèles.**
 
 ## Ce que c'est
 
-Le système nerveux de PKA_JCH. Pas un produit — la plateforme qui rend tous les autres projets possibles.
-
----
+Le système nerveux de PKA_JCH, et non un produit commercial. L'équipe compte **32 membres : 31 spécialistes + Dobby**, sans confondre les spécialistes délégués avec l'orchestrateur.
 
 ## Composants
 
-| Composant | Rôle |
-|-----------|------|
-| **Dobby 🦉** | Orchestrateur central — route les demandes vers 30 spécialistes |
-| **team.db** (SQLite) | Base de données relationnelle — membres, mémoire, skills, décisions |
-| **MEMORY.md** | Journal chronologique des sessions |
-| **Skills** (30+) | Automatismes spécialisés (photo, bioacoustique, IoT, finance, SEO…) |
-| **Hub OpenRouter** | Accès unifié à 5 modèles (DeepSeek, Claude, Gemini, Qwen, Kimi) |
-| **Graphify** | Knowledge graph extraction automatique |
-| **Thread Files** | Living documents par projet |
-| **Obsidian Vault** | Wiki interlinké — navigation knowledge graph |
-
----
+| Composant | Rôle et état |
+|---|---|
+| **Dobby** | Orchestration, routage et maintien de la mémoire PKA |
+| **team.db + MEMORY.md** | Données structurées et journal chronologique ; recherche FTS5 et export portable disponibles |
+| **State / Log** | Séparation entre état courant (`hardware-state.md`, `etat-projets.md`) et historique |
+| **Skills** | 34 au comptage du 22/10 ; ce chiffre daté n'est pas présenté comme un inventaire temps réel |
+| **Boucle mémoire** | `bin/pka-memory-review`, revue LLM et launchd quotidien documentés |
+| **OpenRouter** | Hub d'accès multi-modèles ; les modèles disponibles dépendent de la configuration de chaque outil |
+| **Graphify** | Graphe de connaissances et de relations du workspace |
+| **Gouvernance et coûts** | Registre/scan MCP, tracing des appels LLM et banc d'évaluation mémoire |
+| **Thread files** | État vivant, décisions et prochaines actions par projet |
+| **Obsidian / wiki** | Navigation et capitalisation documentaire |
 
 ## Architecture mémoire
 
-```
+```text
 Config (SOUL.md, USER.md)
     ↕
-State (hardware-state.md, etat-projets.md, roadmap-90-jours.md)
+State (hardware-state.md, etat-projets.md, decisions-actives.md)
     ↕
 Log (MEMORY.md, team.db, TEAM_Inbox/)
     ↕
 Knowledge (wiki/, graphify-out/, skills/)
 ```
 
-Séparation stricte State/Log — les décisions et l'état ne sont jamais confondus avec l'historique.
+Les décisions et l'état courant ne sont pas déduits de l'ancien journal sans vérification des sources actives.
 
----
+## Modèles et limites d'intégration
 
-## Modèles IA
+| Famille | Usage documenté |
+|---|---|
+| DeepSeek / Kimi | Orchestration et analyse selon les sessions |
+| Claude | Code et documents longs selon l'outil configuré |
+| Gemini | Vision, recherche et génération selon les intégrations disponibles |
+| Qwen | Code et scripts selon l'outil configuré |
+| Grok | Prototype Dobby validé en `exec` : mémoire isolée, MCP, délégation et Graphify |
+| Ollama local | Modèles locaux sur M5/M1 selon les workflows |
 
-| Modèle | Usage |
-|--------|-------|
-| DeepSeek V4 | Session principale (orchestration, analyse) |
-| Claude | Code review, documents longs |
-| Gemini | Vision, SEO, image generation |
-| Qwen | Code, scripts Python |
-| Ollama local (M5/M1) | Gemma4, Llama vision, Qwen coder |
+**Limites explicites :** le TUI Grok et ses intégrations externes ne sont pas certifiés. Le skill Kimi `/save` a été créé et chargé en dry-run, mais son invocation utilisateur dans le TUI reste à essayer. Aucun de ces essais ne remplace le Dobby complet existant.
 
----
+## Prochaine étape
 
-*Document interne — ne pas partager en externe. Cette infrastructure est le socle technique de tous les projets PKA.*
+Essayer le TUI/double-clic Grok et l'invocation utilisateur `/save` dans Kimi, tout en poursuivant la maintenance des thread files et de la boucle mémoire.
+
+*Document interne — ne pas partager en externe. Les résultats chiffrés du banc mémoire et les comptages datés restent consultables dans `thread-ai-it-tools.md`.*

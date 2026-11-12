@@ -69,7 +69,7 @@ def analyze_with_pie(subject: str, sender: str, body: str) -> dict | None:
             f"Analyse cet email."
         )
         response = client.messages.create(
-            model="claude-haiku-4-5-20251001",
+            model="claude-haiku-5-5",
             max_tokens=400,
             system=PIE_SYSTEM,
             messages=[{"role": "user", "content": user_msg}],

@@ -1,6 +1,6 @@
 # USER — Jean-Claude Havaux (JC)
 > Profil utilisateur, setup technique, projets actifs et préférences.
-> Dernière mise à jour : 2026-06-30 — Westfalia Kelsey 2026 + HA architecture distribuée
+> Dernière mise à jour : 2026-11-10 — Karotz avatar Dobby (résurrection 2026-11-09)
 > Inspiré du pattern Hermes (user.md) — séparation Personnalité / Utilisateur / Mémoire.
 
 ---
@@ -23,6 +23,7 @@
 - **JCHYTECH / Vetalyx** — diagnostics allergie animale marché européen. Pacte fondateurs 25/25/25/25.
 - **IoT van** — « Lupo » — Westfalia Kelsey 2026, Ford Transit Custom 2.0 EcoBlue 170ch, 4×4, blanc. RPi 5, 12V DC-DC, Zigbee, Tailscale. Prototype banc.
 - **IoT Esneux** — serre (BOM 247€ prêt, 5 phases) + maison (ébauche long terme). ⚪ Gelé — RPi 5 supprimé (juillet 2026).
+- **Karotz / avatar Dobby** — lapin Violet ressuscité (miniil OS + OpenKarotz, 2026-11-09), extension physique de Dobby ; **Cozmo en préparation** comme compagnon IA à cerveau local (Ollama M1, fichier `11_IOT/cozmo-reborn/`).
 - **NEXUS_ACOUSTIC / LEAFNET** — bioacoustique (InsectNet, BirdNET-Go) + nœud bioélectrique végétal WN-BIO. Projet P1.
 - **Maison off-grid** — 60 m² bois sur 9 000 m², autonome
 - **Faune Autour** — PWA basée GBIF pour faune locale (gelé)
@@ -65,6 +66,9 @@
 - Extrêmement concis — répond par mots-clés, fait confiance à Dobby pour décomposer et exécuter
 - Préfère les systèmes simples et synchrones aux pipelines asynchrones complexes
 - Active Dobby par un simple « dobby » et attend un résumé d'état immédiat
+- Éviter les acronymes techniques — s'expliquer en mots simples (JC, 2026-11-09)
+- Très persévérant — ne lâche pas un dépannage difficile, enchaîne les tentatives jusqu'au succès
+- Veut, en fin de session marquante, une sauvegarde mémoire + un fichier de synthèse (faits + problèmes à éviter)
 
 ---
 

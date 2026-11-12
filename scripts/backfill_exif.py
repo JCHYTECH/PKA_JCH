@@ -9,7 +9,7 @@ import subprocess
 import argparse
 from pathlib import Path
 
-DB_PATH   = Path(__file__).resolve().parent.parent / "PHOTO" / "argus_critique.db"
+from argus_db import DB_PATH
 PHOTO_DIR = Path("/Users/jchavauxm5/Desktop/LrC To /Dobby select")
 
 

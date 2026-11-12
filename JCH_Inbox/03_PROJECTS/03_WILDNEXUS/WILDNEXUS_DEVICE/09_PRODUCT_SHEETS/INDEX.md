@@ -1,101 +1,68 @@
 # 09_PRODUCT_SHEETS — Fiches produit WildNexus
 
-> Générées le 2026-06-19 par Dobby 🦉 — Analyse Arbor (OBSERVE → IDEATE → DECIDE)
-> Mises à jour le 2026-06-30 — alignement ADR, avertissements modèles IA
-> Basées sur : Master Architecture WN, Founding Document v0.2, 16 ADRs, BOM v0.4, Usage Matrix
+> Créées le 2026-06-19 ; revue de cohérence P0 le 2026-11-05.
+> Les fiches P1/P2 décrivent une vision, pas des produits développés ou validés.
 
----
+## 1. Gamme documentaire
 
-## Ligne FIELD — Nœuds terrain
+| # | Fiche | Produit | Phase | Tarification |
+|---|-------|---------|-------|--------------|
+| F1 | [F1_FIELD.md](F1_FIELD.md) | WildNexus FIELD | Prototype P0 | À définir après BOM et coût complet |
+| F2 | [F2_FIELD_PLUS.md](F2_FIELD_PLUS.md) | WildNexus FIELD+ | Vision P1 | Non validée |
+| S1 | [S1_STATION.md](S1_STATION.md) | WildNexus STATION | Vision P1 | Non validée |
+| S2 | [S2_STATION_PLUS.md](S2_STATION_PLUS.md) | WildNexus STATION+ | Vision P1+ | Non validée |
+| A1 | [A1_NEXUS_ACOUSTIC.md](A1_NEXUS_ACOUSTIC.md) | Nexus Acoustic | Vision P1 / projet associé | Non validée |
 
-| # | Fiche | Produit | Phase | Prix cible | Marché |
-|---|-------|---------|-------|------------|--------|
-| F1 | [F1_FIELD.md](F1_FIELD.md) | **WildNexus FIELD** | P0 MVP | 149-179€ | Naturalistes, associations |
-| F2 | [F2_FIELD_PLUS.md](F2_FIELD_PLUS.md) | **WildNexus FIELD+** | P1 | 299-349€ | Réserves, chercheurs |
+Les prix historiques des fiches P1/P2 ne constituent pas des offres. Pour le FIELD, JCH a explicitement retiré le prix 149–179 € et la marge de 40 % le 2026-11-05.
 
-## Ligne STATION — Hubs locaux
+## 2. P0 et gateway
 
-| # | Fiche | Produit | Phase | Prix cible | Marché |
-|---|-------|---------|-------|------------|--------|
-| S1 | [S1_STATION.md](S1_STATION.md) | **WildNexus STATION** | P1 | 249-299€ | Gestionnaires de site |
-| S2 | [S2_STATION_PLUS.md](S2_STATION_PLUS.md) | **WildNexus STATION+** | P1+ | 599-799€ | Chercheurs, labs |
-
-## Ligne Standalone — Bioacoustique
-
-| # | Fiche | Produit | Phase | Prix cible | Marché |
-|---|-------|---------|-------|------------|--------|
-| A1 | [A1_NEXUS_ACOUSTIC.md](A1_NEXUS_ACOUSTIC.md) | **Nexus Acoustic** | P1 | 249-299€ | Bioacousticiens, ornithologues |
-
----
-
-## Gamme complète — Vue d'ensemble
+Le FIELD pourra enregistrer seul sur SD. Pour recevoir des alertes LoRa, une gateway compatible doit exister dès le départ :
 
 ```
-PRIX
-800€ ┤                                         ● STATION+
-700€ ┤
-600€ ┤
-500€ ┤
-400€ ┤
-300€ ┤              ● FIELD+    ● STATION
-200€ ┤    ● FIELD              ● Nexus Acoustic
-100€ ┤
-     └──────────────────────────────────────────→ COMPLEXITÉ
-        Simple               Intermédiaire        Avancé
-        (P0)                 (P1)                 (P1+/P2)
+FIELD seul → captures + extraction SD
+FIELD + gateway P0 → alertes, métadonnées et journal local
+FIELD + STATION P1 → administration et dashboard autonomes envisagés
 ```
 
-### Chemin d'adoption naturel
+La gateway minimale de développement appartient au P0. La STATION commerciale décrite dans S1 reste en P1 ; ses 50 nœuds, fonctions de dashboard, prix et BOM ne sont pas validés.
 
-```
-Naturaliste amateur → FIELD ×1 (149€)
-                    → FIELD ×3 + STATION ×1 (249€)
-                    → FIELD+ ×1 + STATION+ ×1 (599€)
-                    → Nexus Acoustic ×1 (249€)
-                    
-Total progressif : 149€ → 696€ → 1 295€ → 1 544€
-```
+## 3. Principes partagés — intentions, pas certifications
 
----
+- **Firmware MIT + politique éthique :** direction actée le 2026-11-05. `ETHICS.md` ne restreint pas automatiquement les permissions MIT en aval ; hardware, documentation, modèles, données et marque ont des règles à préciser.
+- **Local-first :** pas de cloud obligatoire dans la cible P0, médias sur SD, métadonnées LoRa et exports locaux.
+- **Formats documentés :** JSON/WAV et cible Camtrap-DP ; leur compatibilité réelle se prouve sur des fichiers produits par le nœud.
+- **LoRa EU868 P2P :** pas de réseau public requis dans l'architecture cible ; gateway, temps d'air, couverture et conformité restent à valider.
+- **Payload 48 octets :** contrat ADR-014 testé sur hôte, pas preuve de portée ou de livraison.
+- **Confidentialité par conception :** détection humaine locale, suppression ou floutage selon ADR-010, SD chiffrée au terrain et procédure d'accès. La conformité RGPD n'est pas acquise tant que les mesures, la base légale et les procédures ne sont pas validées.
+- **Aucun média par LoRa :** images et clips restent sur SD ou utilisent un transport distinct validé.
 
-## Spécifications partagées (tous produits FIELD/STATION)
+## 4. État des fonctionnalités au 2026-11-05
 
-- **Open source** — firmware sous licence MIT + ETHICS.md (cf. ADR-010 §6, usage policy)
-- **Données locales** — pas de cloud obligatoire, vous possédez vos données
-- **Pas de vendor lock-in** — formats standards (Camtrap-DP, Darwin Core, CSV, JSON)
-- **LoRa EU868 P2P** — infrastructure propre, zéro dépendance externe (ADR-003)
-- **Payload binaire 48 octets** — format compact et extensible (ADR-014)
-- **Conforme RGPD** — filtre humain Edge AI, traitement local, pas d'images humaines transmises (ADR-010)
-- **Usage matrix** — tout usage est qualifié selon la matrice WildNexus
+| Fonctionnalité | Fiche | État réel |
+|----------------|-------|-----------|
+| Capture OV5640 jour/nuit | F1 | Matériel reçu ; SOP-08/CAM-02 à exécuter |
+| IA animal/non-animal et humaine | F1 | Modèle non validé ; dataset et benchmark ADR-010 requis |
+| Audio stéréo et WAV | F1 | Contrats et tests hôte ; interface des micros reçus et capture réelle à confirmer |
+| Alerte LoRa de bout en bout | F1 + gateway P0 | Codec hôte ; radio, parser et journal à valider |
+| Autonomie 60 jours | F1 | Cible WP03 non démontrée |
+| Boîtier IP67 | F1 | Cible de conception non testée |
+| STATION commerciale | S1 | Vision P1, non développée comme produit P0 |
+| IA espèces, BirdNET-Lite, InsectNet-CNN, AmphibianNet | F2/S2/A1 | Fonctions P1/P2 ou projets associés ; aucune capacité n'est transférée automatiquement au P0 |
+| LTE-M et transfert de médias à distance | F1/S1 | Option P1 ; extraction SD ou Wi-Fi local à valider en P0 |
 
----
+Les fiches P1/P2 n'ont pas fait l'objet de la même revue technique que F1. Elles ne doivent pas servir de source d'état ou de preuve commerciale sans une revue dédiée.
 
-## ⚠️ Avertissements — Modèles IA et fonctionnalités P1
+## 5. Références
 
-Les fiches produit décrivent la **vision produit complète** P0→P1+. Certaines fonctionnalités sont des cibles, pas des réalités actuelles :
-
-| Fonctionnalité | Fiche | Statut réel (2026-06-30) | Source |
-|----------------|-------|--------------------------|--------|
-| IA binaire animal/non-animal | F1 | ⏳ Modèle non entraîné, dataset 51 images insuffisant | ADR-010 R4, SOP-11 |
-| IA espèces multi-classes | F2 | ⏳ Non commencé | — |
-| BirdNET-Lite | S2, A1 | 🟡 Écosystème BirdNET analysé, intégration planifiée | NEXUS_ACOUSTIC |
-| InsectNet-CNN | S2, A1 | 🟡 Pipeline en cours (dataset Conocephalus fuscus prêt) | InsectNet |
-| AmphibianNet | S2 | ⏳ Non commencé | — |
-| LoRaWAN | F2 | ⚠️ Option P1 — aucun ADR ne valide cette intégration | — |
-
----
-
-## Références croisées
-
-- [01_FOUNDATION/MASTER_ARCHITECTURE_WN.md](../01_FOUNDATION/MASTER_ARCHITECTURE_WN.md) — vision produit, phases P0/P1/P2 (document de cadrage initial)
-- [01_FOUNDATION/wildnexus-usage-matrix.md](../01_FOUNDATION/wildnexus-usage-matrix.md) — qualification d'usage par persona
-- [01_FOUNDATION/WILDNEXUS_P0_SCOPE_LOCK.md](../01_FOUNDATION/WILDNEXUS_P0_SCOPE_LOCK.md) — périmètre P0
-- [02_DECISIONS/WILDNEXUS_ADR_INDEX.md](../02_DECISIONS/WILDNEXUS_ADR_INDEX.md) — index des 16 ADRs
-- [03_P0_ENGINEERING/07_PROCUREMENT_BOM/](../03_P0_ENGINEERING/07_PROCUREMENT_BOM/) — BOM v0.4
-- [03_P0_ENGINEERING/08_BUDGET_MODELES/WILDNEXUS_P0_BUDGET_RANGE.md](../03_P0_ENGINEERING/08_BUDGET_MODELES/WILDNEXUS_P0_BUDGET_RANGE.md) — budget P0 avec suivi achats réels
-- [../../NEXUS_ACOUSTIC/](../../NEXUS_ACOUSTIC/) — projet Nexus Acoustic autonome
-- [../../TEAM_Inbox/2026-06-19_dobby_arbor-wildnexus-product-line.md](../../TEAM_Inbox/2026-06-19_dobby_arbor-wildnexus-product-line.md) — analyse Arbor complète
+- [Scope lock P0 v0.5](../01_FOUNDATION/WILDNEXUS_P0_SCOPE_LOCK.md)
+- [Index des ADR](../02_DECISIONS/WILDNEXUS_ADR_INDEX.md)
+- [État des protocoles](../03_P0_ENGINEERING/PROTOCOLES/progress.md)
+- [Budget P0](../03_P0_ENGINEERING/08_BUDGET_MODELES/WILDNEXUS_P0_BUDGET_RANGE.md)
+- [BOM et procurement](../03_P0_ENGINEERING/07_PROCUREMENT_BOM/)
+- [Usage matrix](../01_FOUNDATION/wildnexus-usage-matrix.md)
+- [Vision initiale](../HISTORIQUE/01_FOUNDATION/MASTER_ARCHITECTURE_WN.md), document de cadrage historique
 
 ---
 
-*Généré par Dobby 🦉 — 2026-06-19 — mis à jour 2026-06-30.*
+*Révision 2026-11-05 : tarification FIELD retirée, gateway P0 distinguée de la STATION P1, MIT/éthique clarifiés et performances non prouvées requalifiées.*

@@ -1,7 +1,7 @@
 # Thread — VETALYX
 
 > Living document — mis à jour automatiquement par Dobby 🦉 en fin de session.
-> **Dernière mise à jour** : 2026-10-28 — Réponse DIAHO v4 analysée ; R1–R5 arbitrées (arbitrage Genève, dépeçage droit, garantie Dixun) ; brouillon réponse ; pacte vérifié (anti-dilution, véto, réciprocité)
+> **Dernière mise à jour** : 2026-11-07 — rapport multifonctions oméga-3 peau/pelage finalisé ; analyse seulement, MVP IgE et priorités juridiques inchangés
 > **Statut** : 🔶 actif (juridique) — capital 10 000 € (4 000 libéré), DIAHO 40 % en espèces
 
 ---
@@ -16,9 +16,9 @@ Plateforme de diagnostics vétérinaires rapides — marché européen. **Struct
 
 | Axe | Statut | Détail |
 |-----|--------|--------|
-| Global | ⚪ | Veille, reprise septembre |
+| Global | 🔶 | Actif — phase juridique ; la mise en veille de juin est un événement historique, pas l'état courant |
 | Capital | 🟡 | **Pacte v2 (05/10) + arbitrages 28/10** : R5 confirmé (40 % = 40 % voix + 1 siège/3) ; L1/L2/L4 verrouillées (pas de véto sur entrée investisseur, anti-dilution pro-rata, bloc fondateurs majorité) ; Art 25 aligné ; réciprocité checkée (4 asym. fondateurs / 2 DIAHO). Reste : mécanique 6 000 € + notaire. |
-| Contrat-cadre | 🟡 | **v4 chinoise reçue (27/10)** : arbitrage Hangzhou/CIETAC + droit chinois + DIAHO seule (pas de tiers). **Notre réponse (brouillon 28/10)** : siège neutre Genève/ICC, dépeçage droit belge/chinois, garantie Dixun + back-to-back, objet social conditionnel. Reste : envoi (relecture Renard + traduction Jade). |
+| Contrat-cadre | 🟡 | **v4 chinoise reçue (27/10)** ; **réponse v4.1 EN préparée (29/10)** : Genève/ICC, droit belge avec droit chinois limité aux transactions liées, garantie Dixun + back-to-back, objet social conditionnel. Envoi non documenté ; relecture Renard + traduction Jade à finaliser. |
 | Business Plan | 🟡 | **V3 recalé (06/10)** — chiffres 2026-2030 alignés sur le modèle Excel, DIAHO 40 % dès la constitution, Belgique/AFMPS-FAMHP, mission 120 K€, localisation en option ; Excel nettoyé (capital 10 K€/4 K€ ajouté + 2 008 #REF! → 0). Reste : export PDF/statique pour tiers. |
 | Mission stratégique | ✅ | Article 6 v3 — 100 K€ + 20 K€ (validations cliniques + sérothèque) |
 | Checklist DIAHO | ✅ | 22 éléments (2 tableaux FR/ZH), revue ZH « Jade à confirmer » |
@@ -57,7 +57,7 @@ Plateforme de diagnostics vétérinaires rapides — marché européen. **Struct
 
 ## TTD — Pending
 
-- [ ] **P0 · 28/10 · (JC/Renard)** Envoyer la réponse DIAHO (relecture Renard + traduction Jade)
+- [ ] **P0 · échéance initiale 28/10 dépassée · (JC/Renard/Jade)** Finaliser relecture et traduction de la réponse v4.1 EN préparée le 29/10, puis décider son envoi
 - [ ] **P0 · — · (Notaire)** Mécanique libération 6 000 € (pro-rata ? dilution si non-libération ?) — le nœud du 40 %
 - [ ] **P1 · — · (JC)** Nommer les 2 administrateurs fondateurs (Art. 33)
 - [ ] **P1 · — · (Notaire)** Validation notaire (mécanique 6 000 €, ISC, exercice fiscal)
@@ -68,6 +68,14 @@ Plateforme de diagnostics vétérinaires rapides — marché européen. **Struct
 - [ ] **P2 · — · (Clio)** Trancher qualification AFMPS/FAMHP (DM vétérinaire vs médicament)
 - [ ] **P2 · — · (Dobby)** Export BP statique (PDF) pour tiers
 - [ ] **P2 · — · (veille)** 7 briefs actifs en mode exploration (voir tableau ci-dessous)
+
+## TTD — Done (session 2026-11-07)
+
+- [x] 2026-11-07 · Rapport oméga-3 peau/pelage structuré et fact-checké : GO conditionnel à la preuve canine OEM ; NO-GO au lancement et à l’industrialisation 3D en l’état ; aucune validation produit, devis OEM ou engagement de clinique acquis
+
+## TTD — Done (session 2026-11-05)
+
+- [x] 2026-11-05 · Revue documentaire de cohérence ; réponse v4.1 EN préparée le 29/10 et envoi non documenté, sans nouvelle relecture juridique ni traduction
 
 ## TTD — Done (session 2026-10-28)
 
@@ -94,11 +102,14 @@ Plateforme de diagnostics vétérinaires rapides — marché européen. **Struct
 
 | Date | Résumé session | Livrable |
 |------|---------------|----------|
+| 2026-11-07 | Analyse multifonctions oméga-3 peau/pelage ; corrections dose, preuves, TVA et économie ; pas de lancement décidé | `strategy/2026-11-07_VETALYX_rapport-strategique-omega3-peau-poil.md` |
+| 2026-11-05 | Revue documentaire uniquement ; aucune action juridique, traduction ou preuve d'envoi nouvelle | `thread-vetalyx.md`, `INDEX.md` |
 | 2026-06-19 | Rapport Vasco livré, pacte fondateurs | — |
-| 2026-07-07 | Analyse note cadrage Alain Depinois (AWDN) — 4 scénarios MVP | `TEAM_Inbox/2026-07-07_dobby_analyse-note-cadrage-vetalyx-depinois.md` |
+| 2026-07-07 | Analyse note cadrage Alain Depinois (AWDN) — 4 scénarios MVP | `strategy/2026-07-07_dobby_analyse-note-cadrage-vetalyx-depinois.md` |
 | 2026-08-10 | Analyse entrée capital DIAHO (Jade v2) + revue Renard | `2026-08-10_jade_traduction-analyse-entree-diaho-vetalyx-FR-ZH V1.md` |
 | 2026-08-18 | Fusion contrat-cadre v3 + checklist DIAHO + Quality Agreement (brouillon) | `FF-Contrat-Cadre_..._v3-mission-preparation-strategique.md`, `2026-08-18_dobby_checklist-documents-diaho-entree-capital-FR-ZH.md` |
-| 2026-10-28 | Réponse DIAHO v4 analysée ; R1–R5 arbitrées ; brouillon réponse ; pacte vérifié | `legal/2026-10-28_dobby_analyse-reponse-chinois-v4.md`, `renard_analyse-coherence|paranoia|check-reciprocite|relecture|checklist-verification`, `dobby_brouillon-reponse-diaho-v4.md` |
+| 2026-10-29 | Réponse DIAHO v4.1 EN préparée ; aucune preuve d'envoi consignée | `legal/2026-10-29_reponse-diaho-v4.1_EN.md` |
+| 2026-10-28 | Réponse DIAHO v4 analysée ; R1–R5 arbitrées ; brouillon réponse ; pacte vérifié | `legal/_travail/` — analyses Renard/Dobby et brouillon de réponse |
 
 ---
 
@@ -109,9 +120,9 @@ Plateforme de diagnostics vétérinaires rapides — marché européen. **Struct
 - **Convention de bloc v2** : `legal/convention-bloc-fondateurs-vetalyx-v2.md`
 - **Statuts SRL FR v2** : `legal/statuts-srl-vetalyx-FR-v2.md`
 - **Statuts SRL EN v2** : `legal/statuts-srl-vetalyx-EN-v2.md`
-- **Note ISC adaptation statuts** : `legal/2026-10-05_note-ISC-adaptation-statuts.md` (+ `-EN.md`)
-- **Points restants** : `legal/note-points-restants.md`
-- **Note explicative ISC (DIAHO)** : `legal/2026-10-05_note-explicative-ISC-DIAHO-FR.md`
+- **Note ISC adaptation statuts** : `legal/_travail/2026-10-05_note-ISC-adaptation-statuts.md` (+ `legal/_travail/2026-10-05_note-ISC-adaptation-statuts-EN.md`)
+- **Points restants** : `legal/_travail/note-points-restants.md`
+- **Note explicative ISC (DIAHO)** : `legal/_travail/2026-10-05_note-explicative-ISC-DIAHO-FR.md`
 - **Brief Renard v2** : `00_LIVRABLES/2026-10-05_brief-revision-pacte-statuts-renard-v2_dobby.md`
 - **Contrat-cadre v4 (FR consolidée)** : `legal/contrat-diaho/FF-Contrat-Cadre_VETALYX_DIAHO_Renard_2026-10-05_v4-consolidee.md`
 - **Contrat-cadre v4 EN (officielle)** : `legal/contrat-diaho/FF-Contrat-Cadre_VETALYX_DIAHO_Renard_2026-10-05_v4-EN.md`

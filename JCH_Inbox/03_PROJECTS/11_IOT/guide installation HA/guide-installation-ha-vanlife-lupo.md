@@ -1,10 +1,10 @@
 # Guide d'Installation et de Configuration Pas-à-Pas : Home Assistant Vanlife « Lupo »
 
 **Véhicule :** Van Lupo 🐺 — Westfalia Kelsey 2026 (Porteur Ford Transit Custom Tourneo V710, 2.0 EcoBlue 170 ch, 4×4, BVA8)
-**Rédacteur :** Dobby 🦉deepseek-tui --yolo
-**Date du rapport :** 4 octobre 2026
-**Échéance installation physique :** 1er novembre 2026
-**Version HAOS :** HAOS 18.3 (Core & Supervisor à jour, auto-update désactivé)
+**Rédacteur :** Dobby 🦉
+**Date du rapport initial :** 4 octobre 2026 · **Recadrage documentaire :** 5 novembre 2026
+**Échéance installation physique :** 15 décembre 2026
+**Version HAOS :** HAOS 18.3 (auto-update HAOS/Core désactivé ; Supervisor + modules en automatique depuis le 5 novembre 2026)
 
 ---
 
@@ -25,12 +25,13 @@
 1. **Réseau Zigbee :**
    * **Coordinateur :** Sonoff ZBDongle-E (firmware EmberZNet, canal Zigbee 15).
    * **Gestionnaire :** Zigbee2MQTT v5 connecté au broker Mosquitto MQTT (`:1883`).
-   * **Capteurs d'ouverture (×8) :** Aqara MCCGQ11LM (`binary_sensor.door_*`) placés sur : Porte conducteur, Porte passager, Porte coulissante gauche, Porte coulissante droite, Hayon arrière, Toit relevable, Frigo, Tiroirs cuisine.
+   * **Capteurs d'ouverture (×8) — cible d'équipement, non installée à ce stade :** Aqara MCCGQ11LM (`binary_sensor.door_*`) envisagés sur portes cabine et cellule, hayon, toit relevable, frigo et tiroirs. La liste d'achat P1 détaillée et son périmètre restent à revalider.
 2. **Interface Véhicule OBD-II / CAN Bus :**
    * **Module :** **WiCAN Pro** (lecture simultanée HS-CAN et MS-CAN).
-   * **Compatibilité :** Interfaçage validé avec le système d'alarme/protection *Exosfer OBD Protect*.
-   * **Entités remontées (17+) :** Vitesse (`sensor.speed`), Régime moteur (`sensor.rpm`), Niveau carburant (`sensor.fuel_level`), Température LDR (`sensor.coolant_temp`), Codes défaut (`sensor.dtc` / `binary_sensor.dtc_active`), Pression Turbo (`sensor.boost_pressure`), TPMS BCM (pression 6 pneus).
-3. **Interface Électrique Cellule — « DS300 Tap » (CBE DS300) :**
+   * **État :** module physiquement installé ; intégration HA/RUT240 et compatibilité avec *Exosfer OBD Protect* à valider.
+   * **Entités visées (17+), remontée non confirmée :** vitesse (`sensor.speed`), régime moteur (`sensor.rpm`), niveau carburant (`sensor.fuel_level`), température moteur (`sensor.coolant_temp`), codes défaut (`sensor.dtc` / `binary_sensor.dtc_active`), pression turbo (`sensor.boost_pressure`) et TPMS BCM. Les automatisations ci-dessous sont donc des configurations cibles à tester, pas des fonctions validées.
+3. **Interface Électrique Cellule — cible « DS300 Tap » (CBE DS300), entités visées :**
+   * **Avant flash :** corriger le conflit GPIO8 entre I²C SDA et relais dans `esphome-ds300.yaml`.
    * **Tension batterie cellule :** `sensor.leisure_battery_voltage`
    * **Tension batterie porteur :** `sensor.starter_battery_voltage`
    * **Moteur tournant (Signal D+) :** `binary_sensor.engine_running`
@@ -38,7 +39,7 @@
    * **Niveaux d'eaux :** Eau propre (`sensor.fresh_water_level`), Eaux grises (`sensor.grey_water_level`).
 4. **Capteurs Auxiliaires & Énergie (Phases ultérieures) :**
    * Victron SmartShunt 500A + MPPT 100/20 (Liaison VE.Direct → USB).
-   * IMU MPU6050 (inclinaison pitch/roll), Station BME280 (météo ext.), Mopeka Pro Check BLE (niveau gaz propane/butane), GPS u-blox 7 USB, ESP32-CAM (vidéosurveillance go2rtc).
+   * Assiette déléguée à l'iPhone (MPU6050 écarté de la cible actuelle), station BME280, Mopeka Pro Check BLE en P3, GPS u-blox 7 USB et ESP32-CAM en phases ultérieures.
 
 ### 1.3 Architecture Réseau Distribuée
 
@@ -286,6 +287,8 @@ action:
 
 ## 5. Roadmap Global & Déploiement Phasé (P2 à P4)
 
+> Roadmap initiale conservée comme historique : les jalons octobre/novembre sont dépassés et ne constituent pas des preuves de déploiement. L'échéance opérationnelle courante est le **15 décembre 2026** ; les scénarios dépendant du CAN restent à valider.
+
 |    Priorité    | Scénarios                                       | Description & Intégration                                                  |          Phase          |
 | :-------------: | :----------------------------------------------- | :-------------------------------------------------------------------------- | :----------------------: |
 | **🔴 P1** | **1.1, 1.3, 2.2, 7.1, 7.2, 7.3**           | Socle critique de sécurité, climatisation et moteur                       |  **Octobre 2026**  |
@@ -299,7 +302,7 @@ action:
 
 - [ ] **1. Matériel RPi 5 :** Poser les silentblocs anti-vibrations et appliquer le vernis tropicalisant (*conformal coating*).
 - [ ] **2. Zigbee :** Appairer et nommer les 8 détecteurs Aqara MCCGQ11LM avec leurs identifiants standardisés (`door_*`).
-- [ ] **3. CAN Bus :** Connecter la prise WiCAN Pro sur le port OBD-II et valider le contournement *Exosfer OBD Protect*.
+- [ ] **3. CAN Bus :** Vérifier le WiCAN Pro déjà installé physiquement, valider son intégration HA/RUT240, la compatibilité *Exosfer OBD Protect* et la remontée réelle des entités avant d'activer les scénarios.
 - [ ] **4. CBE DS300 :** Raccorder les sorties d'état du module DS300 Tap au RPi 5 (D+, tensions, niveaux d'eau).
 - [ ] **5. Interface Lovelace :** Créer la vue « Réglages Vanlife » intégrant les sliders pour tous les helpers `input_number.vanlife_*`.
 - [ ] **6. Tests Réseau :** Valider la réception des notifications push critiques sur l'iPhone via Tailscale, hors réseau cellulaire domestique.

@@ -478,68 +478,57 @@
           </tr>
         </thead>
         <tbody id="launcher-tbody">
-          <!-- OpenRouter & modèles -->
-          <tr data-model="openrouter">
-            <td><strong>OpenRouter</strong></td>
-            <td><span class="type-badge api">API Multi</span></td>
-            <td><code>./bin/dobby.sh --model openrouter</code></td>
-            <td><button class="launch-btn" onclick="launchModel('openrouter')">▶ Lancer</button></td>
+          <!-- DeepSeek (TUI) -->
+          <tr data-model="deepseek">
+            <td><strong>DeepSeek V4</strong></td>
+            <td><span class="type-badge api">TUI</span></td>
+            <td><code>./bin/dobby.sh --model deepseek</code></td>
+            <td><button class="launch-btn" onclick="launchModel('deepseek')">▶ Lancer</button></td>
           </tr>
-          <tr data-model="glm5">
-            <td><strong>GLM 5.2</strong></td>
+          <!-- OpenRouter -->
+          <tr data-model="openai">
+            <td><strong>OpenAI GPT-6.1 Sol</strong></td>
             <td><span class="type-badge api">API OpenRouter</span></td>
-            <td><code>./bin/dobby.sh --model glm5</code></td>
-            <td><button class="launch-btn" onclick="launchModel('glm5')">▶ Lancer</button></td>
+            <td><code>./bin/dobby.sh --model openai</code></td>
+            <td><button class="launch-btn" onclick="launchModel('openai')">▶ Lancer</button></td>
+          </tr>
+          <tr data-model="anthropic">
+            <td><strong>Claude Opus 5.5</strong></td>
+            <td><span class="type-badge api">API OpenRouter</span></td>
+            <td><code>./bin/dobby.sh --model anthropic</code></td>
+            <td><button class="launch-btn" onclick="launchModel('anthropic')">▶ Lancer</button></td>
           </tr>
           <tr data-model="kimi">
-            <td><strong>Kimi K2.7</strong></td>
+            <td><strong>Kimi K3.1 Pro</strong></td>
             <td><span class="type-badge api">API OpenRouter</span></td>
             <td><code>./bin/dobby.sh --model kimi</code></td>
             <td><button class="launch-btn" onclick="launchModel('kimi')">▶ Lancer</button></td>
           </tr>
-          <tr data-model="claude-or">
-            <td><strong>Claude Sonnet 5</strong></td>
-            <td><span class="type-badge api">API OpenRouter</span></td>
-            <td><code>./bin/dobby.sh --model claude-or</code></td>
-            <td><button class="launch-btn" onclick="launchModel('claude-or')">▶ Lancer</button></td>
+          <tr data-model="codex">
+            <td><strong>Codex · OpenRouter</strong></td>
+            <td><span class="type-badge api">Agent local</span></td>
+            <td><code>./bin/dobby.sh --model codex</code></td>
+            <td><button class="launch-btn" onclick="launchModel('codex')">▶ Lancer</button></td>
           </tr>
-          <tr data-model="chatgpt">
-            <td><strong>ChatGPT</strong></td>
-            <td><span class="type-badge api">API OpenRouter</span></td>
-            <td><code>./bin/dobby.sh --model chatgpt</code></td>
-            <td><button class="launch-btn" onclick="launchModel('chatgpt')">▶ Lancer</button></td>
+          <tr data-model="kimi-code">
+            <td><strong>Kimi Code · OpenRouter</strong></td>
+            <td><span class="type-badge api">Agent local</span></td>
+            <td><code>./bin/dobby.sh --model kimi-code</code></td>
+            <td><button class="launch-btn" onclick="launchModel('kimi-code')">▶ Lancer</button></td>
           </tr>
-          <!-- Autres API -->
-          <tr data-model="deepseek">
-            <td><strong>DeepSeek V4</strong></td>
-            <td><span class="type-badge api">API DeepSeek</span></td>
-            <td><code>./bin/dobby.sh --model deepseek</code></td>
-            <td><button class="launch-btn" onclick="launchModel('deepseek')">▶ Lancer</button></td>
-          </tr>
-          <tr data-model="deepseek-r1">
-            <td><strong>DeepSeek R1</strong></td>
-            <td><span class="type-badge api">API DeepSeek</span></td>
-            <td><code>./bin/dobby.sh --model deepseek-r1</code></td>
-            <td><button class="launch-btn" onclick="launchModel('deepseek-r1')">▶ Lancer</button></td>
-          </tr>
+          <!-- Gemini -->
           <tr data-model="gemini">
-            <td><strong>Gemini CLI</strong></td>
+            <td><strong>Gemini</strong></td>
             <td><span class="type-badge api">API Google</span></td>
             <td><code>./bin/dobby.sh --model gemini</code></td>
             <td><button class="launch-btn" onclick="launchModel('gemini')">▶ Lancer</button></td>
           </tr>
-          <!-- Locaux -->
-          <tr data-model="gemma4">
-            <td><strong>Gemma 4</strong></td>
+          <!-- Local -->
+          <tr data-model="local">
+            <td><strong>Local M1</strong></td>
             <td><span class="type-badge local">Local Ollama</span></td>
-            <td><code>./bin/dobby.sh --model gemma4</code></td>
-            <td><button class="launch-btn" onclick="launchModel('gemma4')">▶ Lancer</button></td>
-          </tr>
-          <tr data-model="qwen3">
-            <td><strong>Qwen 3.6</strong></td>
-            <td><span class="type-badge local">Local Ollama</span></td>
-            <td><code>./bin/dobby.sh --model qwen3</code></td>
-            <td><button class="launch-btn" onclick="launchModel('qwen3')">▶ Lancer</button></td>
+            <td><code>./bin/dobby.sh --model local</code></td>
+            <td><button class="launch-btn" onclick="launchModel('local')">▶ Lancer</button></td>
           </tr>
         </tbody>
       </table>

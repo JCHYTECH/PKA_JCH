@@ -4,8 +4,8 @@ Pont Argus → Lightroom Classic via MCP (lightroom-mcp)
 
 Usage:
   # Préparer les réglages pour une analyse
-  python3 mcp_apply_lr.py prepare <analysis_id>
-  python3 mcp_apply_lr.py prepare <analysis_id> --photo-id "LrC to-48"
+  python3 mcp_apply_lr.py prepare <analysis_id> --photo-id "123456"
+  python3 mcp_apply_lr.py prepare <analysis_id> --photo-id "/chemin/absolu/photo.raw"
 
   # Lister les clés SDK supportées
   python3 mcp_apply_lr.py sdk-keys
@@ -15,12 +15,13 @@ Usage:
 
 Workflow complet :
   1. Argus analyse → stocke lr_params dans argus_critique.db
-  2. mcp_apply_lr.py prepare <id> → JSON compatible lightroom-mcp
+  2. mcp_apply_lr.py prepare <id> --photo-id <id> → JSON compatible lightroom-mcp
   3. Dobby appelle set_develop_settings(photo_id, settings) via MCP
   4. Lightroom Classic applique les réglages automatiquement
 """
 
 import json
+import math
 import sqlite3
 import sys
 from pathlib import Path
@@ -106,13 +107,9 @@ HUMAN_TO_SDK: dict[str, str] = {
 # Reverse mapping (SDK → human)
 SDK_TO_HUMAN: dict[str, str] = {v: k for k, v in HUMAN_TO_SDK.items()}
 
-# Valeurs spéciales : clés qui doivent être converties (ex: température Kelvin → float relatif)
-# Pour l'instant, on passe les valeurs telles quelles — le plugin Lua fera la validation
-
-
 def get_analysis(analysis_id: int) -> Optional[dict]:
     """Récupère une analyse depuis argus_critique.db."""
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(f"file:{DB_PATH.resolve()}?mode=ro", uri=True)
     conn.row_factory = sqlite3.Row
     row = conn.execute(
         "SELECT * FROM analyses WHERE id = ?", (analysis_id,)
@@ -121,21 +118,28 @@ def get_analysis(analysis_id: int) -> Optional[dict]:
     return dict(row) if row else None
 
 
+def normalize_value(value):
+    if not isinstance(value, str):
+        return value
+    stripped = value.strip()
+    try:
+        return int(stripped)
+    except ValueError:
+        try:
+            number = float(stripped)
+        except ValueError:
+            return value
+        return number if math.isfinite(number) else value
+
+
 def map_lr_params(lr_params: dict) -> dict:
-    """Convertit les clés humaines en clés SDK Lightroom.
-
-    Args:
-        lr_params: dict avec clés humaines (ex: {"Exposure": 0.5, "ColorTemperature": 5400})
-
-    Returns:
-        dict avec clés SDK (ex: {"Exposure2012": 0.5, "Temperature": 5400})
-    """
+    """Convertit les clés Argus ou SDK et normalise les nombres textuels."""
     mapped = {}
     skipped = []
     for key, value in lr_params.items():
-        sdk_key = HUMAN_TO_SDK.get(key)
+        sdk_key = HUMAN_TO_SDK.get(key, key if key in SDK_TO_HUMAN else None)
         if sdk_key:
-            mapped[sdk_key] = value
+            mapped[sdk_key] = normalize_value(value)
         else:
             skipped.append(key)
     if skipped:
@@ -162,7 +166,17 @@ def prepare_mcp_call(analysis_id: int, photo_id: Optional[str] = None) -> dict:
     lr_params = json.loads(lr_params_raw) if isinstance(lr_params_raw, str) else lr_params_raw
     mapped = map_lr_params(lr_params)
 
-    pid = photo_id or analysis.get("filename", f"analysis_{analysis_id}")
+    if analysis.get("file_ext", "").lower() in {"jpg", "jpeg"}:
+        mapped.pop("Temperature", None)
+
+    pid = str(photo_id) if photo_id is not None else ""
+    if not pid:
+        print("❌ Identifiant Lightroom obligatoire : utilise --photo-id <id_numérique|chemin_absolu>", file=sys.stderr)
+        sys.exit(1)
+    if not (pid.isdecimal() or Path(pid).is_absolute()):
+        print("❌ photo_id doit être un identifiant local numérique ou un chemin absolu", file=sys.stderr)
+        sys.exit(1)
+
     return {
         "photo_id": pid,
         "settings": mapped,
@@ -171,16 +185,12 @@ def prepare_mcp_call(analysis_id: int, photo_id: Optional[str] = None) -> dict:
 
 def cmd_prepare(args: list[str]):
     """Commande prepare : prépare l'appel MCP pour une analyse."""
-    if not args:
-        print("Usage: mcp_apply_lr.py prepare <analysis_id> [--photo-id <id>]", file=sys.stderr)
+    if len(args) != 3 or args[1] != "--photo-id":
+        print("Usage: mcp_apply_lr.py prepare <analysis_id> --photo-id <id_numérique|chemin_absolu>", file=sys.stderr)
         sys.exit(1)
 
     analysis_id = int(args[0])
-    photo_id = None
-    if len(args) >= 3 and args[1] == "--photo-id":
-        photo_id = args[2]
-
-    result = prepare_mcp_call(analysis_id, photo_id)
+    result = prepare_mcp_call(analysis_id, args[2])
     print(json.dumps(result, indent=2))
 
     # Afficher un rappel pour l'utilisateur

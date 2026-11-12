@@ -1,49 +1,31 @@
-je l'ai versé à # WildNexus P0 — Gantt
+# WildNexus P0 — Vue de dépendances
 
-**Date :** 2026-10-31 · **Statut projet :** ⚪ gelé jusqu'au 15/12 (post-van), dates re-basées.
-**Rendu :** Obsidian / GitHub / Plane (via fichier `.md`). Vue détaillée : [`PLANNING_GANTT.md`](PLANNING_GANTT.md).
+Version révisée : 2026-11-05. Projet gelé ; reprise post-van non datée. La vue détaillée et les critères sont dans `PLANNING_GANTT.md`.
+
+Les anciennes barres Q1–Q3 2027 étaient des estimations devenues obsolètes. Elles sont retirées plutôt que remplacées par de nouvelles dates sans disponibilité confirmée.
 
 ```mermaid
-gantt
-    title WildNexus P0 — Gantt (re-basé post-van)
-    dateFormat  YYYY-MM-DD
-    axisFormat  %b %y
-
-    section Jalons
-    M-01 Architecture gelée        :done,   m1, 2026-04-15, 2026-06-30
-    M-02 Prototype banc            :active, m2, 2026-07-01, 2027-03-31
-    M-03 EVT terrain validé        :        m3, 2027-04-01, 2027-06-30
-    M-04 Open source publié        :        m4, 2027-07-01, 2027-09-30
-
-    section Work packages
-    WP01 Architecture & ADRs       :done,   w1, 2026-04-01, 2026-06-30
-    WP02 Hardware nœud             :active, w2, 2026-05-01, 2027-03-31
-    WP03 Énergie & mesure          :active, w3, 2026-06-01, 2027-03-31
-    WP04 Firmware                  :active, w4, 2026-06-01, 2027-03-31
-    WP05 Connectivité (LoRa)       :active, w5, 2026-07-01, 2027-03-31
-    WP06 Boîtier & terrain         :        w6, 2027-04-01, 2027-06-30
+flowchart LR
+    GO[Signal de reprise JCH] --> R0[R0 Inventaire, factures, schémas et budget]
+    R0 --> R1A[Banc caméra, PIR, SD et mesures]
+    R0 --> MIC[Identifier micros et PIR]
+    MIC --> R1B[Audio réel et pipelines]
+    R1A --> R1B
+    R1A --> R1C[Benchmark IA sur images réelles]
+    BUY[Achat radio autorisé et reçu] --> R1D[Radio et gateway]
+    R1A --> R2[Intégration et énergie]
+    R1B --> R2
+    R1C --> R2
+    R1D --> R2
+    POWER[SOP-10 revue et levée] --> R2
+    R2 --> M2{M-02 démontré ?}
+    M2 -->|oui| R3[Boîtier, ADR-018, RGPD et EVT]
+    M2 -->|non| FIX[Correction ou arbitrage] --> R2
+    R3 --> M3{EVT validé ?}
+    M3 -->|oui| R4[Publication, DVT, conformité et industrialisation]
+    M3 -->|non| FIX
 ```
 
-## Légende
+Les 37/37 tests hôte historiques restent une preuve logicielle, pas une validation de ce chemin matériel. La projection budgétaire provisoire de 904 € dépasse le seuil interne de 900 € : aucune nouvelle commande sans réconciliation et autorisation.
 
-- `done` (vert) — terminé : M-01, WP01.
-- `active` (bleu) — en cours / partiel : M-02, WP02→WP05.
-- sans tag (gris) — planifié : M-03, M-04, WP06.
-
-> ⚠️ **Gel Q4 2026** : les barres WP02→WP05 et M-02 couvrent le gel (focus IOT/VETALYX
-> jusqu'au 15/12). Le bench redémarre post-van → d'où la date de fin Q1 2027.
-
-## Dépendances (relations Plane `blocked_by`)
-
-```
-M-01 → M-02 → M-03 → M-04          (chaîne de jalons)
-WP02, WP03, WP04, WP05  →  M-01    (les WPs démarrent après M-01)
-WP06  →  M-02                        (l'EVT démarre après le prototype banc)
-```
-
-## Correspondance dates / fichier source
-
-Les dates ci-dessus proviennent de [`00_GOVERNANCE/wildnexus-plane-gantt.json`](WILDNEXUS_DEVICE/00_GOVERNANCE/wildnexus-plane-gantt.json) — source unique des dates + états + dépendances, synchronisée dans Plane (25 items).
-
----
-*Généré le 2026-10-31 par Dobby 🦉.*
+Plane et le fichier JSON de seed sont des instantanés à revoir à la reprise. Ne pas rejouer les anciennes dates ni lancer de remplacement externe automatique depuis ce document.

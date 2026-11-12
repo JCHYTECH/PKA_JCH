@@ -1,6 +1,6 @@
 # Risques et frottements — Transverses PKA_JCH
 
-> Dernière mise à jour : 2026-10-19 — Dobby 🦉 — deadline IOT Van prolongée au 15/12, RPi 5 boot résolu.
+> Dernière mise à jour : 2026-11-11 — Dobby 🦉 — Z2M réinstallé healthy (RPi Home) ; pacte VETALYX EN envoyé 08/11.
 > Rôle : lister les points qui ralentissent plusieurs projets à la fois
 
 ---
@@ -11,7 +11,7 @@
 |--------|--------|----------------|--------|
 | **Véto DIAHO contractuel ≠ statutaire** | Juridique — pacte = papier | VETALYX | Bascule majorités renforcées dans les statuts (point #1 validation 30/09). |
 | **Incohérences statuts SRL** | Blocage constitution | VETALYX | Apport DIAHO nature PI vs espèces, Bosseloir personne morale/physique, capital 4 000 vs 10 000, couche EN à purger. |
-| **Deadline IOT Van 15 décembre** | P0 — installation complète | IOT | Prolongée (JC 19/10). Reste : capteurs Zigbee, silentblocs, coating, WiCAN Pro, pose bracket Be Camper. |
+| **Deadline IOT Van 15 décembre** | P0 — installation complète | IOT | Prolongée (JC 19/10). Reste : WiCAN Pro + RUT240, pose bracket Be Camper. |
 | **Documentation lacunaire** | Répétition questions ×5 | Tous | Glossaire (ZH, L(M), state files, TTL), registre décisions, archive diagnostics, cartographie instances HA. |
 | **Panier Mouser restant (~279€)** | Bloque LoRa + SOP-16 RF | WILDNEXUS | Reporté. À commander à la reprise. |
 | **Dispersion JCH** | 10 projets, focus dilué | Tous | IOT (P0) + VETALYX (juridique) + 3 autonomes actifs. |

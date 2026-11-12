@@ -137,7 +137,7 @@ def call_dobby(context, retros, week_str):
     )
 
     response = client.messages.create(
-        model="claude-sonnet-4-6",
+        model="claude-sonnet-5-5",
         max_tokens=2000,
         system=DOBBY_SYSTEM,
         messages=[{"role": "user", "content": prompt}],

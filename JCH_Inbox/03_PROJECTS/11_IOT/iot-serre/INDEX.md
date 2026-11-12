@@ -45,11 +45,11 @@ Serre de jardin 3m × 4m (12 m²) — Esneux, rue des Renards. Irrigation goutte
 
 ## Liens
 
-- `_shared/hub-esneux.md` — Infrastructure partagée (RPi 5, Zigbee, réseau)
-- `_shared/convergence-van-serre-capteurs.md` — Achats groupés avec van
-- `iot-maison/` — Domotique maison (même hub)
-- `iot-van/` — Domotique vanlife
+- [Infrastructure partagée](../_shared/hub-esneux.md) — RPi 5, Zigbee et réseau.
+- [Achats groupés avec le van](../_shared/convergence-van-serre-capteurs.md).
+- [Domotique maison](../iot-maison/) — même hub.
+- [Domotique vanlife](../iot-van/).
 
 ---
 
-*Généré par Dobby 🦉 — 2026-06-22*
+*Généré par Dobby 🦉 — 2026-06-22 ; navigation révisée le 2026-11-05.*

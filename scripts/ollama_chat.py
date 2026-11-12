@@ -9,13 +9,14 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import urllib.error
 import urllib.request
 from pathlib import Path
 
 
-OLLAMA_URL = "http://127.0.0.1:11434/api/chat"
+OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://127.0.0.1:11434/api/chat")
 
 
 def parse_args() -> argparse.Namespace:
@@ -59,6 +60,20 @@ def fmt_ns(value: int | None) -> str:
     return f"{ms / 1000:.2f} s"
 
 
+def list_local_models() -> None:
+    tags_url = OLLAMA_URL.replace("/api/chat", "/api/tags")
+    try:
+        with urllib.request.urlopen(tags_url, timeout=10) as r:
+            data = json.loads(r.read().decode("utf-8"))
+    except Exception as e:
+        print(f"Liste indisponible : {e}", file=sys.stderr)
+        return
+    for m in data.get("models", []):
+        name = m.get("name", "?")
+        size = m.get("size", 0) / 1e9
+        print(f"  {name}  ({size:.1f} GB)")
+
+
 def main() -> int:
     args = parse_args()
     system_prompt = load_text(args.system_file)
@@ -66,7 +81,7 @@ def main() -> int:
 
     print("Chat Ollama local")
     print(f"Modele : {args.model}")
-    print("Commandes : /bye pour quitter, /reset pour vider l'historique")
+    print("Commandes : /bye quitter · /reset vider · /models lister · /model <nom> changer")
     print("")
 
     while True:
@@ -83,6 +98,17 @@ def main() -> int:
         if user_text == "/reset":
             messages = [{"role": "system", "content": system_prompt}]
             print("Historique reinitialise.")
+            continue
+        if user_text == "/models":
+            list_local_models()
+            continue
+        if user_text.startswith("/model"):
+            parts = user_text.split()
+            if len(parts) >= 2:
+                args.model = parts[1]
+                print(f"Modele change : {args.model}")
+            else:
+                print("Usage : /model <nom>  (ex: /model qwen2.5-coder:32b)")
             continue
 
         messages.append({"role": "user", "content": user_text})

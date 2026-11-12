@@ -1,6 +1,6 @@
 # Roadmap 90 jours — PKA_JCH
 
-> Dernière mise à jour : 2026-10-19 — Dobby 🦉 — deadline IOT Van prolongée au 15/12, RPi 5 boot résolu
+> Dernière mise à jour : 2026-11-11 — Dobby 🦉 — RPi Home + Z2M ressuscités (11/11) ; pacte VETALYX EN envoyé 08/11
 > Horizon : octobre → décembre 2026
 
 ---
@@ -28,8 +28,10 @@
 
 ## Novembre 2026
 
-- [ ] **IOT Van :** commander capteurs Zigbee + intégrer WiCAN Pro + pose bracket Be Camper
-- [ ] VETALYX : finaliser constitution (si statuts/pacte validés)
+- [x] **RPi Home :** HA Core port 80 + Z2M réinstallé healthy + serre_temp_hum re-appairé (11/11) ✅
+- [ ] **RPi Home :** re-appairer vanne_serre + LuxSerre ; confirmer stabilité Core 24h
+- [ ] **IOT Van :** intégrer WiCAN Pro + RUT240 ; pose bracket Be Camper
+- [ ] VETALYX : pacte EN envoyé (08/11) ; finaliser constitution à la réponse chinoise
 
 ## Décembre 2026
 

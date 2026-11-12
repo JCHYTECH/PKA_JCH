@@ -1,6 +1,6 @@
 # Registre d'Achats — PKA_JCH
 
-> Dernière mise à jour : 2026-10-19
+> Dernière mise à jour : 2026-11-05
 > Fichier central des commandes et achats effectués.
 > Mis à jour par [[Dobby]] après chaque réception de confirmation dans `JCH_Inbox/00_INBOX/`.
 > Chaque entrée est liée à un ou plusieurs projets.
@@ -58,6 +58,7 @@
 | 2026-10-13 | IOT | Wolfbox OEM bracket (support rétro d'origine) | — | Wolfbox | reçu | à faire fixer par Be Camper |
 | 2026-10-13 | IOT | Kit hardwire Wolfbox G900TriPro (mode parking) | ~25€ | Wolfbox | reçu | fusible tap + coupure basse tension |
 | 2026-10-13 | IOT | Rallonge câble caméra arrière 10/15 m (G900TriPro) | ~28€ | Wolfbox | reçu | pour van 5,45 m |
+| 2026-11-05 | IOT | SONOFF ZBDongle-E (EFR32MG21) — maison + serre | — | Amazon | commandé | Livraison prévue 2026-11-06 ; ASIN B0B6P22YJC |
 
 ---
 

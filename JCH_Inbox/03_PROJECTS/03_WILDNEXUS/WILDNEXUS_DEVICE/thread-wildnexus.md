@@ -1,80 +1,91 @@
-# Thread — WILDNEXUS
+# Thread — WILDNEXUS_DEVICE
 
-> Living document — mis à jour automatiquement par Dobby 🦉 en fin de session.
-> **Dernière mise à jour** : 2026-10-22 — état consolidé : SOP-01/02/03 exécutées, blocage ciblé sur panier Mouser 279 €
-> **Statut** : 🟡 firmware — double cycle caméra+audio
+Dernière mise à jour : 2026-11-12. Fil de reprise maintenu par Dobby ; il ne remplace pas les preuves consignées dans `progress.md`.
 
----
+## État en bref
 
-## Vue d'ensemble
+Projet repris le 2026-11-11 (P0 engineering, décision JCH) ; dégel confirmé au pilotage le 2026-11-12. Les gates de reprise restent à lever avant tout montage : inventaire, factures, micros/PIR, matrice GPIO.
 
-Nœud caméra-piège IA autonome (ESP32-S3 + OV5640 + LoRa + micros stéréo). Phase M-02 banc actif — budget 1000€. 17 ADRs créés (14 acceptés, 1 sous réserve, 2 proposés). Machine d'états firmware double cycle (caméra PIR + audio timer).
+P0 vise un nœud ESP32-S3 avec caméra, PIR, deux micros, stockage microSD, filtre animal/non-animal et alertes LoRa. L'audio est capturé par minuterie, indépendamment du déclenchement image. Une gateway minimale de développement est requise pour prouver la réception LoRa ; la STATION commerciale reste une vision P1.
 
----
+Seize ADR sont rédigés : 13 acceptés, ADR-010 accepté sous réserve, ADR-006 et ADR-011 proposés. ADR-015 n'est pas rédigé ; ADR-018 reste à produire.
 
-## État actuel
+## Preuves et limites
 
-| Axe | Statut | Détail |
-|-----|--------|--------|
-| Global | 🟡 | Firmware en développement, tests banc à lancer |
-| Hardware | 🟢 | PPK2 ✅, ESP32-S3 ✅, ESP32-CAM ✅, OV5640 ✅, Mouser #39492997 ✅, Miuzei kit ✅, MP1584 ×5 ✅, SPH0645LM4H-B ×2 ✅ |
-| Software | 🟡 | Wokwi smoke tests OK, ADR-016 double cycle accepté, firmware repo à créer |
-| Audio | 🟡 | ADR-013/014/016/017 acceptés — format WAV + payload spectral définis. SOPs 13-18 ajoutées au tracker. Pas encore exécutées. |
-| Documentation | 🟢 | 17 ADRs, Start.md v0.3, scope lock v0.4 |
-| Procurement | 🟡 | Panier Mouser restant (~279€) ⏳ À COMMANDER — bloque LoRa (SOP-07) + payload spectral (SOP-16) |
-| Banc M-02 | 🟡 | **SOP-01/02/03 ✅ exécutées** (16-18/06, résultats PPK2 + CSV). Phases **D** (réveil court) et **E** (cycle simulé) ⏳ en attente — firmware prêt |
-| Échelle projet | 🟢 | **225 fichiers, 218 Mo** — le plus gros projet du workspace. 24 protocoles documentés |
+| Axe | État établi | Reste à prouver |
+|---|---|---|
+| Architecture | Scope P0 et contrats d'interface documentés | Références physiques, schémas et arbitrages restants |
+| Firmware | 37/37 tests hôte historiques consignés en juillet | Exécution et intégration sur ESP32-S3 ; aucune équivalence matérielle acquise |
+| Énergie | Phases A→C et cinq acquisitions PPK2 consignées ; modèle Wh créé | Phases D/E, cycle complet, froid et scénario 60 jours |
+| Caméra et IA | Matériel caméra identifié ; procédure de benchmark à appliquer | Captures réelles, dataset, choix du modèle, rappel humain et animal |
+| Audio | Contrat stéréo 16 kHz/16 bits, WAV + JSON et codec spectral sur hôte | Interface des micros TDK, fichiers réels et compatibilité des pipelines |
+| Radio | Contrat binaire 48 octets, downlink 16 octets | Matériel non commandé ; transmission, gateway, portée, duty cycle et retries |
+| Boîtier | Cible IP67 documentée, ADR-006 proposé | Choix, montage, optique nocturne et essais d'étanchéité |
+| Budget | Projection provisoire ≈904 €, réserve théorique ≈96 € | Réconciliation des factures, HT/TTC, reliquat et autorisation de dépense |
 
----
+Le dépassement du seuil interne de 900 € impose une pause des achats. L'engagé historique d'environ 610 € et les lignes visibles ne sont pas encore un total comptable certifié.
 
-## Décisions clés
+## Sécurité avant reprise
 
-| Date | Décision | Contexte |
-|------|----------|----------|
-| 2026-07-05 | ADR-014/016/017 acceptés | Audit portes fermées WildNexus ↔ InsectNet/NEXUS_ACOUSTIC. Double cycle firmware, payload spectral, format audio WAV. |
-| 2026-06-30 | ADR-016 firmware intégré créé | Architecture firmware unifiée (complété avec cycle audio le 05/07) |
-| 2026-06-19 | ADR-013 micros stéréo acceptés | Couche acoustique P0 + upgrade path ICS-43434 |
-| 2026-06-14 | Wokwi adopté comme smoke test CI | Logique firmware sans hardware |
-| 2026-06-12 | Skills politique de shadow | Skills locaux > skills fondation |
+SOP-10 est suspendue. Ne pas assembler le pack 4S2P L91, ne pas appliquer 3,3 V sur la broche 5 V et ne pas suivre les anciens schémas d'alimentation avant validation ADR-005, vérification des datasheets et revue du câblage complet.
 
----
+Les références des micros et du PIR doivent être relevées sur le matériel réel. Les exemples de GPIO dans les ADR et le processus de montage ne sont pas un pinout validé.
 
 ## TTD — Pending
 
-- [ ] **P0 · 15/12 · (JC)** Commander le sous-ensemble : RAK3172-T EU868 ×2 (RAK Store) + Swissbit S-45U ×3 (DigiKey) ≈ 82 € — débloque LoRa (SOP-07) + payload spectral (SOP-16)
-- [ ] **P1 · — · (Forge)** Créer repo `wildnexus-firmware/` (FW-01) + implémenter codec ADR-014 (FW-02, pas de hardware requis)
-- [ ] **P1 · 15/07 · (Forge)** Test harness caméra (CAM-03)
-- [ ] **P2 · — · (Forge)** SOP-13 (I2S init) dès pinout mappé — pas bloqué par Mouser
+### Ordre de reprise proposé
 
-## TTD — Done (session 2026-10-25)
+**Go JCH donné le 2026-11-11 (P0 engineering).** Aucun montage ni achat tant que les gates de reprise ne sont pas levés (inventaire, micros/PIR, schéma, matrice GPIO).
 
-- [x] 2026-10-25 · Conseil `conseil` : panier scindé — ~82 € maintenant, ~160 € reporté
-- [x] 2026-10-25 · LoRa tranché → RAK3172-T EU868 (SX1262) ×2 (RFM95W = erreur du stock)
-- [x] 2026-10-25 · `WILDNEXUS_stock.md` corrigé (RFM95W → RAK3172-T)
+- [ ] Au `go` de JCH, inventorier le matériel et rapprocher factures, commandes et budget ; synchroniser Plane/kanban sans reprendre les anciennes échéances.
+- [ ] Lever les points de sécurité électrique et confirmer micros, PIR et optique IR avant alimentation ou soudure.
+- [ ] Reprendre les phases D/E, SOP-06, CAM-01/02, SOP-08/09 sur le matériel identifié.
+- [ ] Exécuter SOP-13 puis SOP-14/15/17/18 ; tester les fichiers réellement produits dans les pipelines.
+- [ ] Comparer les modèles d'IA avec CAM-03/SOP-11, y compris rappel humain, fausses alertes animales, RAM, latence et énergie.
+- [ ] Après arbitrage d'achat, exécuter SOP-07 et livrer la gateway P0 : réception des deux types de paquets, journal et erreurs.
+- [ ] Mesurer le système intégré en Wh, puis décider du boîtier et de l'EVT. Ne pas annoncer 60 jours, une portée ou IP67 avant mesure.
+- [ ] Rédiger ADR-018 et finaliser les exigences RGPD/sécurité avant le terrain.
 
----
+## Décisions récentes
+
+| Date | Décision |
+|---|---|
+| 2026-11-12 | Dégel WILDNEXUS_DEVICE confirmé au pilotage (décision JC) — etat-projets.md et priorites-actives.md alignés ; gates de reprise à lever avant montage/achat |
+| 2026-11-11 | P0 engineering repris (décision JCH) ; SOP-16/17/18 créées, ADR-018 référencé, caveats sécurité SOP-08/09/13 |
+| 2026-11-10 | Skill caméra réaligné sur ADR-002 : OV5640 P0, IMX462 repli P1, interface DVP (pas MIPI) |
+| 2026-11-05 | Firmware destiné à MIT + `ETHICS.md` et politique d'usage ; ce n'est pas une dual-licence. Autres objets de licence à traiter séparément. |
+| 2026-11-05 | Prix FIELD 149–179 € et marge 40 % retirés provisoirement ; coût produit complet inconnu. |
+| 2026-11-05 | 60 jours, IP67, portée et latence traités comme cibles ; preuves matérielles exigées. |
+| 2026-07-05 | Double cycle caméra/audio, payload spectral et format audio définis dans ADR-014/016/017. |
+| 2026-06-19 | Couche acoustique stéréo définie dans ADR-013. |
+| 2026-06-14 | Wokwi retenu comme smoke test, sans valeur de validation matérielle. |
+
+## TTD — Done
+
+- [x] 2026-11-12 · Checklist d'inventaire de reprise préparée (`07_PROCUREMENT_BOM/INVENTAIRE-checklist-reprise-2026-11-12.md`) — gate 1 prête à exécuter au banc.
+- [x] 2026-11-10 · Skill wildnexus-camera-imaging réaligné sur ADR-002 (OV5640 P0 / IMX462 P1 / DVP) + graphe graphify nettoyé des chemins WildNexus obsolètes.
+- [x] 2026-11-05 · Analyse fraîche du scope, des preuves et des incohérences documentaires ; cibles non mesurées distinguées des résultats acquis.
+- [x] 2026-11-05 · Organisation du projet et documents de cadrage consolidés ; gel WildNexus, suspension de SOP-10 et pause des achats maintenus.
 
 ## Historique sessions
 
-| Date | Résumé session | Livrable |
-|------|---------------|----------|
-| 2026-07-05 | Audit P0 WildNexus ↔ InsectNet/NEXUS_ACOUSTIC. 7 portes ouvertes, 1 fermée (audio), 4 étroites. ADR-014/016 révisés, ADR-017 créé. 3 ADRs acceptés. SOPs 13-18 + FW-01 à FW-05 ajoutés au tracker. | `TEAM_Inbox/2026-07-05_dobby_audit-p0-wildnexus-insectnet-nexus-acoustic.md` |
-| 2026-06-30 | Nettoyage projet complet, ADR-016, Start.md v0.3 | — |
-| 2026-06-19 | Réorganisation WildNexus (extraction NEXUS_ACOUSTIC) | `TEAM_Inbox/2026-06-19_dobby_analyse-reorganisation-wildnexus.md` |
+| Date | Résumé | Livrable |
+|------|--------|----------|
+| 2026-11-10 | Correction dérive caméra (skill vs ADR-002) + nettoyage graphe graphify (chemins WildNexus obsolètes) | `07_AGENTS/Agents/wildnexus-camera-imaging/SKILL.md`, `graphify-out/graph.json`, `wiki/Daily/2026/11/2026-11-10-cozmo-compagnon-ia-corrections-wildnexus-caméra-et-graphe.md` |
+| 2026-11-05 | Revue documentaire et organisationnelle complète, sans reprise firmware, matériel ou achats | `thread-wildnexus.md`, `00_GOVERNANCE/Start.md`, `wiki/Daily/2026/11/2026-11-05-stabilisation-zigbee-rpi-et-revue-multiprojet.md` |
 
----
+Les sessions de juin et juillet ont restructuré le projet et produit le firmware testé sur hôte. Les dates d'achat et les états matériels détaillés dans les anciens documents doivent être confirmés physiquement à la reprise. Les archives ne sont pas réécrites comme si elles décrivaient l'état actuel.
 
-## Liens
+## Liens depuis `JCH_Inbox/`
 
-- INDEX : `03_PROJECTS/03_WILDNEXUS/`
-- ADRs : `03_PROJECTS/03_WILDNEXUS/02_DECISIONS/ADR/` (17 ADRs)
-- Hardware : `hardware-state.md` (section WildNexus P0)
-- Procurement : `03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/07_PROCUREMENT_BOM/`
-- Progress : `03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/PROTOCOLES/progress.md`
-- Audit : `TEAM_Inbox/2026-07-05_dobby_audit-p0-wildnexus-insectnet-nexus-acoustic.md`
+- Démarrage : `03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/00_GOVERNANCE/Start.md`
+- Scope : `03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/01_FOUNDATION/WILDNEXUS_P0_SCOPE_LOCK.md`
+- ADR : `03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/02_DECISIONS/WILDNEXUS_ADR_INDEX.md`
+- Progrès : `03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/PROTOCOLES/progress.md`
+- Budget : `03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/08_BUDGET_MODELES/WILDNEXUS_P0_BUDGET_RANGE.md`
+- Achats/BOM : `03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/07_PROCUREMENT_BOM/`
+- Matériel PKA : `04_PILOTAGE_STRATEGIQUE/hardware-state.md`
+- Projet ombrelle : `03_PROJECTS/03_WILDNEXUS/README.md`
 - InsectNet : `03_PROJECTS/03_WILDNEXUS/INSECTNET/`
 - NEXUS_ACOUSTIC : `03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/`
-
----
-
-*Fichier maintenu par Dobby 🦉 via le skill `pka-thread-file`.*
+- Planning : `03_PROJECTS/03_WILDNEXUS/PLANNING_GANTT.md`

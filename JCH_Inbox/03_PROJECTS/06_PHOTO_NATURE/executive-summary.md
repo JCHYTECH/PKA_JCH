@@ -1,7 +1,7 @@
 # PHOTO_NATURE — Executive Summary
 
 > Document externe — partenaires éditoriaux, galeries.
-> Généré le 2026-07-03 par Dobby 🦉. Version 1.0.
+> Version 1.1 — état consolidé le 2026-11-05 ; source opérationnelle : `thread-photo-nature.md`.
 
 ---
 
@@ -41,7 +41,7 @@ Terrain ──→ Post-traitement ──→ IA Keyworder ──→ IA Critique �
 
 ## Automatisation IA
 
-- **Keyworder** : 100% autonome, zéro API Google, Gemma4 local sur M5
+- **Keyworder** : autonome, Gemma4 local sur M5 ; correctif d'initialisation de `headline` et `description` confirmé dans le code le 22/10
 - **62 catégories** : faune (80+ espèces), flore (40+), comportements, saisons, lumières, compositions, habitats
 - **Cache** : évite de re-traiter les images déjà tagguées
 - **Sortie** : IPTC + XMP + HierarchicalSubject → import direct Lightroom
@@ -53,10 +53,10 @@ Terrain ──→ Post-traitement ──→ IA Keyworder ──→ IA Critique �
 | Composant | Statut |
 |-----------|--------|
 | Workflow capture | 🟢 Actif |
-| Keyworder IA | 🟢 Déployé et fonctionnel |
+| Keyworder IA | 🟢 Déployé ; correctif `headline` confirmé dans le code, prochain run réel à observer |
 | Presets Argus | 🟢 11 presets stockés |
 | Intégration ARTEON | 🟢 Cross-réfs en place |
 
 ---
 
-*Document destiné à un public externe. Pipeline détaillé : `06_PHOTO_NATURE/INDEX.md`*
+*Revue documentaire du 05/11, sans nouveau traitement d'images. Pipeline détaillé : `06_PHOTO_NATURE/INDEX.md` ; presets : `06_PHOTO_NATURE/tech/presets-argus/`.*

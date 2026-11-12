@@ -1,9 +1,11 @@
 # WildNexus - Plane Seed Backlog
 
-Version: v0.2 (taxonomie canonique — Bible V0)
-Date: 2026-10-31
-Purpose: Backlog Plane aligné sur la taxonomie canonique (Bible V0 §7) + tâches d'exécution actuelles.
-Dates et dépendances : voir `wildnexus-plane-gantt.json` (même dossier).
+Version: v0.3 (reprise gelée)
+Date: 2026-11-05
+Purpose: Proposition de backlog à rapprocher de Plane lors de la reprise, non synchronisée.
+Dates et dépendances : voir `wildnexus-plane-gantt.json` (même dossier). Les dates sont volontairement vides ; les dépendances restent des relations logiques à vérifier.
+
+> Ne pas exécuter le seed sans autorisation explicite de JCH et inventaire préalable de Plane. L'option `--replace` du script supprime des éléments distants : elle n'est pas une opération de mise à jour courante. Les intitulés ci-dessous sont des propositions, pas des preuves de progression.
 
 ## Milestone Items
 
@@ -33,7 +35,7 @@ Dates et dépendances : voir `wildnexus-plane-gantt.json` (même dossier).
 
 - `SOP-08 caméra OV5640`
 - `SOP-09 PIR EKMB`
-- `SOP-10 batterie AA + buck`
+- `SOP-10 batterie AA + buck — SUSPENDUE, revue schéma préalable`
 - `SOP-06 microSD (bloqué : carte SD 128 GB)`
 
 ### WP03 - Énergie & mesure

@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 export PKA_DIR="/Users/jchavauxm5/PKA_JCH"
 export PKA_MODEL="deepseek"
-export PKA_TITLE="Dobby - DeepSeek Chat"
+export PKA_TITLE="Dobby — DeepSeek TUI"
 export PKA_BG="#30100b"
 export PKA_FG="#f8f5f0"
 export PKA_CURSOR="#c0392b"

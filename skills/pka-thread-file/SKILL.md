@@ -28,6 +28,21 @@ Chaque projet actif a un fichier `thread-[projet].md` dans `JCH_Inbox/03_PROJECT
 
 Template canonique : `JCH_Inbox/04_PILOTAGE_STRATEGIQUE/thread-file-template.md`
 
+### Topics — mémoire par sous-thème (2026-11-06)
+
+Quand un projet a **3+ sous-domaines distincts** (ou qu'un sous-thème accumule une mémoire dense), on isole la mémoire détaillée dans des **topic files** :
+
+- **Thread file** = vue d'ensemble du projet + index des topics + TTD transverses.
+- **Topic file** = `topic-[slug].md` dans le même dossier — mémoire détaillée d'un sous-thème (état détaillé, décisions du topic, TTD du topic, historique).
+- **Template** : `JCH_Inbox/04_PILOTAGE_STRATEGIQUE/topic-file-template.md`.
+
+Règles :
+
+- **Charger le topic, pas tout le thread** : quand on travaille sur un sous-thème, lire son `topic-[slug].md` (contexte focalisé) au lieu du `thread-[projet].md` entier.
+- **Pointer depuis le thread** : une section `## Topics` liste les topics avec leur statut.
+- **Ne pas dupliquer** : l'état détaillé vit dans le topic ; le thread ne garde qu'un résumé (une ligne par topic dans « État actuel »).
+- **Créer un topic** : quand le thread dépasse ~10 Ko ou qu'un sous-thème revient sur 3+ sessions.
+
 ## Format TTD (Things To Do) — section obligatoire
 
 Chaque thread file contient une section TTD en deux blocs :

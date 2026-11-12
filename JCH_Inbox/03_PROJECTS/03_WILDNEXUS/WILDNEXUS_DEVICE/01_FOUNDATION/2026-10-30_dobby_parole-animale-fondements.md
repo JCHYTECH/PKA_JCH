@@ -3,8 +3,8 @@
 > Dobby 🦉 — DeepSeek TUI 0.8.39 — 2026-10-30
 > Fichier source : `JCH_Inbox/00_INBOX/NoteGPT_Transcript_L'IA commence à comprendre ce que disent les animaux.txt` (122 lignes)
 > Spécialistes mobilisés : Clio 🐬 (bioacoustique/DSP) · Chouette 🦉 (bioacoustique) · Musaraigne 🦇 (edge AI) · Furet 🦊 (état de l'art)
-> Statut : **Enrichissement de doctrine** — complète §2 « Contexte et origine » et §3 « Vision et ambition » du document fondateur v0.3. Ne modifie **aucun** périmètre technique P0.
-> Validation : sections §4 et §5 proposées à JCH (validateur obligatoire de la doctrine).
+> Statut : **Enrichissement de doctrine proposé** — complète la vision, sans modifier le périmètre P0.
+> Validation : sections §4 et §5 proposées à JCH ; les assertions factuelles du transcript (études, dates, scores et citations) doivent être vérifiées sur leurs sources primaires avant tout usage externe. Ce document n'est pas une revue scientifique validée.
 
 ---
 
@@ -14,7 +14,7 @@ Le transcript couvre l'état de l'art 2024-2026 de la communication homme-animal
 
 La leçon la plus dure du transcript est une limite épistémologique : **repérer un motif dans des sons n'est pas déchiffrer un sens.** L'expérience de Tel Aviv (août 2026) l'a prouvé sur la seule espèce dont on connaît déjà la langue — la nôtre. L'IA échoue à regrouper les pleurs de bébés par ce qu'ils veulent dire.
 
-C'est précisément là que WildNexus est, sans le savoir, architecturalement bien placé. Le domaine entier bute sur l'absence de « pierre de Rosette » — il faut relier des millions de sons à des millions de **moments comportementaux**. Or WildNexus est, par construction, l'instrument qui couple **le son (2 micros stéréo) au comportement (caméra + PIR + déclencheur binaire)**. La fusion audio + image est l'ancrage que la recherche cherche à construire.
+WildNexus offre une piste de recherche face à l'absence de « pierre de Rosette » : relier des sons à des **moments comportementaux**. La cible associe deux micros stéréo, une caméra et un PIR, mais les captures audio P0 sont déclenchées par minuterie et les images par PIR. Une fusion synchronisée image/audio n'est ni implémentée ni démontrée ; elle nécessiterait notamment ADR-018 et un protocole de corrélation.
 
 Ce document transforme ce constat en cinq leçons, puis en enrichissement doctrinal. **Rien de ce qui suit n'ouvre P0 à la reconnaissance d'espèce, au solaire ou à la traduction** : les leçons nourrissent la vision et la posture scientifique, pas le périmètre technique gelé.
 
@@ -64,8 +64,8 @@ Chiens et cochons : lire un **état** (bien/mal, jeu/agression) à 9/10 est déj
 **4.1 La doctrine confirmée — « écouter, pas imposer »**
 La philosophie fondatrice (§2.1 : « la nature ne se conserve pas — elle se revivifie ») trouve ici sa contrepartie acoustique : on ne régénère pas ce qu'on n'a pas d'abord écouté. WildNexus est un **instrument d'écoute passive**, ce que le transcript présente comme la posture épistémiquement la plus saine et éthiquement la plus propre du domaine.
 
-**4.2 L'architecture caméra + audio = l'instrument de Rosette (le point le plus précieux)**
-Le domaine bute sur l'ancrage (L2). La réponse du transcript est explicite : « comme le fait un bébé… relier des millions de sons à des millions de moments. » WildNexus couple déjà, par design (ADR-013 micros stéréo + caméra OV5640 + PIR), **le son et le moment comportemental**. Ce n'est pas un détail : c'est l'actif scientifique qui distingue WildNexus d'un simple enregistreur ou d'une app de « traduction ». Cette fusion doit être **préservée et documentée** comme un principe, pas diluée.
+**4.2 Caméra + audio : une hypothèse d'instrument d'ancrage, pas une « Rosette » acquise**
+Le domaine bute sur l'ancrage (L2). La cible WildNexus réunit micros stéréo, caméra et PIR, ce qui pourrait permettre à terme d'associer son et comportement. P0 capture toutefois l'audio par minuterie et l'image sur événement : il ne produit pas aujourd'hui de couples synchronisés ni de preuve de sens. Cette hypothèse de recherche doit être testée avec horodatage, protocole de corrélation et annotations, sans devenir une capacité P0 promise.
 
 **4.3 Le déclencheur binaire est une lecture d'état honnête (L3)**
 Le Scope Lock P0 (binaire animal/non-animal) est non seulement une contrainte d'ingénierie robuste, c'est aussi la bonne posture épistémique : P0 détecte une **présence**, pas un sens. Les « apps qui traduisent votre chien » sont des leurres ; WildNexus ne prétend jamais traduire. Cette honnêteté est un différenciateur de crédibilité scientifique et commerciale.
@@ -73,7 +73,7 @@ Le Scope Lock P0 (binaire animal/non-animal) est non seulement une contrainte d'
 **4.4 P1/P2 reçoivent une justification scientifique renforcée (sans rien engager)**
 - La **classification d'espèce** (P1) reste hors P0, mais elle s'inscrit désormais dans une trajectoire documentée (BirdNET/TweetyBERT déjà analysés le 2026-07-03).
 - La **reconnaissance individuelle** (P1/P2) gagne un ancrage : les animaux ont des noms (L4). C'est un objectif scientifique, pas une fantaisie.
-- Le **couplage son + comportement** (caméra + audio synchronisés) devient un livrable de recherche en soi, exploitable pour la curation de datasets (cf. skill `bioacoustics-qc-playbook`).
+- Le **couplage son + comportement** pourrait devenir un sujet de recherche P1/P2 après définition d'une synchronisation et d'un protocole de corrélation ; il n'est pas un livrable P0.
 
 **4.5 Positionnement dans l'état de l'art (§7 du document fondateur)**
 Ce transcript met à jour §7 « État de l'art » : la frontière n'est plus « détecter l'espèce » mais « **grounder le son dans le comportement** ». WildNexus est du côté du grounding, pas de la traduction. À consigner dans la prochaine révision du document fondateur.
@@ -103,7 +103,7 @@ Cinq propositions qui transforment « notre perception du monde animal », déri
 Ce document **ne change rien** au périmètre P0. Rappel des verrous (gouvernance `wildnexus-governance`) :
 
 - **AI MCU** : binaire (animal / non-animal) — **inchangé**. La reconnaissance d'espèce, la « traduction » et la reconnaissance individuelle restent P1+.
-- **Audio** : mono/stéréo clips en local — **inchangé**. Pas d'analyse sémantique temps réel.
+- **Audio** : clips stéréo locaux et captures déclenchées par minuterie — **inchangé**. Pas d'analyse sémantique temps réel ni de synchronisation image/audio revendiquée.
 - **Émission sonore vers l'animal** : **proscrite par principe** (L5) — WildNexus est un capteur passif. Aucun haut-parleur, aucun leurre.
 - **Énergie / connectivité** : AA L91, LoRa P2P — **inchangés**.
 

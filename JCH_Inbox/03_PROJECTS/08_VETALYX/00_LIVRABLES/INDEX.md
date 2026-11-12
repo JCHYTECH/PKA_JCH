@@ -1,7 +1,7 @@
 # 00_LIVRABLES/ — Index
 
 > Briefs & livrables datés des spécialistes (Renard, Clio, Vasco, Jade, Dobby…). ← [Index projet](../INDEX.md)
-> Fichiers **historiques** (avril→octobre 2026) conservés pour traçabilité ; les documents en vigueur sont dans [`../legal/`](../legal/INDEX.md).
+> Fichiers **historiques** (avril→octobre 2026) conservés pour traçabilité ; les versions juridiques actuelles de travail sont dans [`../legal/`](../legal/INDEX.md). Leur présence ne prouve ni signature ni envoi.
 
 ## Juridique / pacte / statuts (Renard)
 - `2026-04-30_vetalyx-{annexe3,pacte-actionnaires,pacte-modifications}_renard.md`

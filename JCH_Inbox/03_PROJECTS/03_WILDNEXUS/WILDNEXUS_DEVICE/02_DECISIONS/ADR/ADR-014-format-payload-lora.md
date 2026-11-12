@@ -1,7 +1,7 @@
 # ADR-014 — Format données et protocole transmission (payload LoRa)
 
 **Date :** 2026-06-12  
-**Dernière mise à jour :** 2026-07-05 — Ajout du type spectral (0x05) et format payload audio — Dobby 🦉  
+**Dernière mise à jour :** 2026-11-05 — Alignement stéréo, quantification firmware et preuves radio
 **Statut :** accepté  
 **Owner PKA :** [[Forge]] + [[Chouette]]  
 **Agent WildNexus :** `wildnexus-rf-propagation` + `wildnexus-firmware-ulp`  
@@ -14,15 +14,17 @@ ADR-003 a défini le choix radio (LoRa EU868 P2P SX1262) et esquissé un format 
 - le parser côté gateway/station de base ;
 - l'interopérabilité entre le nœud caméra et le dashboard PKA.
 
-Le canal LoRa impose des contraintes fortes : duty cycle EU868 1%, SF7 → ~50 octets utiles par paquet, transmission événementielle uniquement (pas d'image). Le format doit être compact, extensible et auto-descriptif.
+Le canal LoRa impose des contraintes fortes de temps d'air et de réglementation selon la configuration et le canal. La transmission est événementielle, sans image ni audio. Le format doit être compact, extensible et versionné ; le temps d'air réel sera calculé puis mesuré pour la configuration retenue.
 
 ### Gap identifié le 2026-07-05
 
-Le payload original ne couvrait que les événements caméra (motion, schedule, test, diagnostic). ADR-013 prévoit la transmission de **features spectrales** (40 bytes par segment) via LoRa, mais aucun format n'était défini pour les encoder. Les clips WAV (3s, ~96 KB) sont hors de portée LoRa — récupération Wi-Fi ou SD physique uniquement.
+Le payload original ne couvrait que les événements caméra (motion, schedule, test, diagnostic). ADR-013 prévoit la transmission de **features spectrales** via LoRa, mais aucun format n'était défini pour les encoder. Les clips WAV stéréo de 3 s contiennent **192 000 octets de données PCM** et sont hors de portée LoRa — récupération par Wi-Fi local ou SD physique, deux procédures restant à démontrer de bout en bout.
 
 **Correctif :** ajout d'un type d'événement `0x05=spectral` et d'un format de payload spectral dédié, réutilisant la même structure 48 octets pour compatibilité parser.
 
-## Décision proposée
+## Décision
+
+Le format est accepté comme contrat d'interface. Son acceptation ne prouve ni la portée radio ni la chaîne de bout en bout : celles-ci exigent SOP-07 et un parser de gateway P0.
 
 ### 1. Structure du paquet uplink — Événements caméra (Event type 0x01–0x04)
 
@@ -36,7 +38,7 @@ Paquet binaire compact, longueur fixe **48 octets** (padding à 48 si nécessair
 | 6 | 4 | Timestamp | u32 | Unix timestamp UTC de l'événement |
 | 10 | 1 | Event type | u8 | 0x01=motion, 0x02=schedule, 0x03=test, 0x04=diagnostic, **0x05=spectral** |
 | 11 | 1 | IA score | u8 | Score de confiance animal 0–100 (0=pas d'inférence, 255=erreur IA) |
-| 12 | 1 | IA class | u8 | Classe prédite : 0=non-animal, 1=mammifère, 2=oiseau, 3=humain, 4=indéterminé, 255=N/A |
+| 12 | 1 | IA class | u8 | 0=non-animal, 1=mammifère, 2=oiseau, 3=humain, 4=indéterminé, 255=N/A. En P0, seule la décision d'alerte animal / non-animal est exigée ; les classes larges sont facultatives et ne constituent pas une identification d'espèce. Humain ne déclenche jamais d'alerte animale. |
 | 13 | 2 | Battery mV | u16 | Tension batterie en mV (ex: 5800 = 5.8V pour 8×AA) |
 | 15 | 2 | Storage count | u16 | Nombre d'images sur microSD |
 | 17 | 1 | Temperature | i8 | Température interne boîtier en °C (offset −40) |
@@ -49,7 +51,7 @@ Paquet binaire compact, longueur fixe **48 octets** (padding à 48 si nécessair
 | 42 | 2 | CRC-16 | u16 | CCITT CRC-16 sur octets 0–41 |
 | 44 | 4 | Padding | — | Zéro — alignement 48 octets |
 
-**Taille totale : 48 octets** — compatible SF7 (~50 octets utiles max), laisse 2 octets de marge pour l'en-tête RadioLib.
+**Taille totale : 48 octets** — taille fixe du contrat applicatif. La capacité et le temps d'air dépendent des paramètres PHY réels ; ils sont vérifiés par calcul et SOP-07 plutôt que par une ancienne limite indicative de 50 octets.
 
 ### 2. Structure du paquet uplink — Features spectrales (Event type 0x05)
 
@@ -70,7 +72,7 @@ Quand le cycle audio FFT (ADR-016, timer 15 min) complète une acquisition, le n
 | 20 | 2 | Audio features 5 | u16 | RMS amplitude (0-65535 → 0.0-1.0) |
 | 22 | 2 | Audio features 6 | u16 | Zero crossing rate (Hz, quantifié) |
 | 24 | 2 | Audio features 7 | u16 | Spectral entropy (0-65535 → 0.0-1.0) |
-| 26 | 2 | Audio features 8 | u16 | Peak frequency (Hz, quantifié 0-8000 → 0-65535) |
+| 26 | 2 | Audio features 8 | u16 | Peak frequency (Hz, quantifié 0-16000 → 0-65535 comme les autres fréquences v1) |
 | 28 | 2 | Audio features 9 | u16 | Spectral skewness (signed, offset 32768) |
 | 30 | 2 | Audio features 10 | u16 | Spectral kurtosis (quantifié) |
 | 32 | 2 | Audio clip count | u16 | Nombre de clips WAV stockés sur SD |
@@ -96,7 +98,7 @@ Quand le cycle audio FFT (ADR-016, timer 15 min) complète une acquisition, le n
 9. Spectral skewness — asymétrie du spectre
 10. Spectral kurtosis — aplatissement du spectre
 
-**Quantification :** les valeurs flottantes sont quantifiées en u16 (16-bit). La résolution est suffisante pour des features de détection d'événement (pas de classification fine — la classification se fait côté Base/M5 avec les clips WAV complets).
+**Quantification v1 :** les valeurs flottantes sont quantifiées en u16 (16-bit). Conformément à `firmware/main/wn_config.h` (`WN_FREQ_QUANT_MAX 16000`), centroid, rolloff, bandwidth, zero crossing rate et peak frequency utilisent tous la plage 0–16000. Cette plage de quantification ne change pas la bande physique analysable, inférieure à 8 kHz à 16 kHz d'échantillonnage. Une optimisation future à 0–8000 exigerait un changement de version, du firmware et des tests ; elle n'est pas appliquée silencieusement. Les autres échelles suivent le codec v1 et ses tests. La classification fine se fait éventuellement côté pipelines avec les clips, après validation de compatibilité.
 
 ### 3. Paquet downlink (base → nœud)
 
@@ -112,15 +114,17 @@ Paquet compact **16 octets**, émis uniquement sur commande utilisateur :
 | 12 | 2 | CRC-16 | u16 | CCITT CRC-16 sur octets 0–11 |
 | 14 | 2 | Padding | — | Zéro — alignement 16 octets |
 
+**Précision de transport :** `0x01=upload_image` et `0x05=upload_audio_clip` sont des demandes transmises par LoRa, mais les fichiers eux-mêmes empruntent uniquement un transport distinct validé (Wi-Fi local ou option cellulaire P1), jamais la payload LoRa.
+
 **Nouvelles commandes :**
 - `0x05=upload_audio_clip` — déclenche l'upload d'un clip WAV via Wi-Fi (Mode C gateway locale, pas via LoRa)
 - `0x06=set_audio_schedule` — met à jour les intervalles FFT et clip (Parameter = minutes)
 
 ### 4. Règles de transmission
 
-- **SF7 par défaut** — portée ~500 m–1 km en forêt, duty cycle confortable.
+- **SF7 par défaut** — hypothèse de départ ; la portée en forêt est une cible à mesurer avec SOP-07, pas une caractéristique garantie.
 - **SF12 fallback** — automatique si pas d'ACK downlink dans les 60s (3 tentatives max).
-- **Duty cycle** : respect strict EU868 1%. Le firmware doit espacer les TX selon la formule `Toff = Tair × 99` (SF7: ~5s, SF12: ~100s). Une file d'attente FIFO de 16 événements maximum permet de lisser les rafales.
+- **Contraintes radio** : appliquer les limites de duty cycle et les règles du canal retenu. Lorsque la limite est 1 %, le firmware calcule `Toff = Tair × 99` à partir du temps d'air réel de chaque configuration ; les anciennes valeurs SF7/SF12 n'étaient que des estimations non vérifiées. Une file FIFO de 16 événements maximum lisse les rafales sans autoriser un dépassement.
 - **ACK optionnel** : flag `ack_request` à 1 si le nœud attend une confirmation. La base répond en downlink dans la fenêtre RX1 (1s après TX).
 - **Priorité caméra > spectral** : si la queue FIFO est pleine, les paquets spectraux sont les premiers éliminés (l'événement animal est plus urgent que le segment spectral programmé).
 - **Flag audio_clip_ready** (bit4) : le nœud set ce bit dans chaque paquet (caméra ou spectral) quand un nouveau clip WAV 60min est disponible sur SD. La base peut alors décider de demander l'upload via downlink 0x05.
@@ -145,8 +149,8 @@ Paquet compact **16 octets**, émis uniquement sur commande utilisateur :
 
 ## Conséquences
 
-- Le firmware WP03 doit implémenter le codec binaire (encode uplink, decode downlink) pour 2 types de payload (caméra + spectral).
-- Le parser gateway (Python) doit décoder les paquets selon `Event type` et les router : caméra → dashboard faune, spectral → dashboard acoustique / buffer NEXUS_ACOUSTIC.
+- Le codec binaire caméra + spectral existe avec des tests hôte ; cela ne valide ni le matériel ni la radio.
+- La gateway P0 doit recevoir, décoder et journaliser les paquets selon `Event type`, puis gérer les erreurs. Son implémentation et son routage restent à démontrer de bout en bout.
 - Le dashboard doit afficher les champs en clair (node ID, IA score, batterie, etc. pour caméra ; features spectrales + peak frequency pour spectral).
 - Le `Frame counter` permet de détecter les paquets manquants (duty cycle saturation, collision).
 - Les clips WAV ne transitent jamais par LoRa — récupération Wi-Fi (Mode C) ou SD physique uniquement.
@@ -161,10 +165,10 @@ Paquet compact **16 octets**, émis uniquement sur commande utilisateur :
 
 ## Prochaine action
 
-1. [[Forge]] implémente le codec firmware (C, ESP-IDF) — 2 encodeurs (caméra + spectral)
-2. [[Chouette]] valide le format sur le terrain simulé (banc M-02)
-3. Intégration dashboard PKA après validation M-02 — parser Python multi-type
+1. Conserver les tests hôte et vérifier la quantification 0–16000 pour les cinq descripteurs de fréquence.
+2. Exécuter SOP-07 sur matériel identifié, calculer les temps d'air et tester 96 paquets spectraux/jour + caméra + retries.
+3. Démontrer la gateway P0 avec réception, décodage multi-type, journal et erreurs avant tout dashboard.
 
 ---
 
-*Mis à jour le 2026-07-05 par Dobby 🦉 — ajout Event type 0x05 (spectral), flag audio_clip_ready, commandes downlink 0x05/0x06. — Forge : intégration technique.*
+*Révisé le 2026-11-05 : clip stéréo corrigé à 192 000 octets, quantification v1 alignée sur le firmware, temps d'air et chaîne radio renvoyés aux preuves SOP-07/WP05.*

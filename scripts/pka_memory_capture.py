@@ -62,7 +62,7 @@ PKABASE = os.path.expanduser("~/PKA_JCH")
 OLLAMA_M1_URL = "http://100.73.212.110:11434"
 OLLAMA_MODEL = "gemma3:12b-it-qat"
 DEEPSEEK_API_URL = "https://api.deepseek.com/v1/chat/completions"
-DEEPSEEK_MODEL = "deepseek-chat"
+DEEPSEEK_MODEL = "deepseek-v4-pro"
 
 # Prompt guard script path
 GUARD_SCRIPT = os.path.join(PKABASE, "scripts", "pka_prompt_guard.py")
@@ -606,8 +606,8 @@ def main():
                 m1_available = False  # Force fallback
 
         if not m1_available and not args.no_fallback:
-            print(f"☁️  Fallback -> DeepSeek V3 API")
-            model_used = "deepseek-chat (fallback)"
+            print(f"☁️  Fallback -> DeepSeek V4 API")
+            model_used = "deepseek-v4-pro (fallback)"
             try:
                 extracted = extract_with_deepseek(transcript)
             except Exception as e:

@@ -5,7 +5,7 @@ tags:
 ---
 # ARTEON — État du projet
 
-*Document de référence — mis à jour le 2 juillet 2026 — restructuration 3 projets, WildLens promu, étape 4 close*
+*Document de référence initial — 2 juillet 2026 ; recadrage de navigation le 5 novembre 2026. Le suivi courant est dans `thread-arteon.md`.*
 
 ---
 [[Website_Analysis_and_Reproduction]]
@@ -63,7 +63,7 @@ WILDLENS reste en **anglais uniquement** (pour l'instant).
 ### Stack technique
 
 - **Shopify Basic** (~27 € HT/mois) + thème custom + app WhiteWall pour le shop
-- **Ghost** conservé pour WILDLENS (wildlens.ghost.io)
+- **Ghost** conservé pour WILDLENS (wildlens-journal.ghost.io)
 - Paiements : Stripe, Paypal
 - Achat invité possible sur tirages standard, inscription requise pour wishlist, alertes WILDLENS, contenus naturalistes approfondis
 
@@ -127,15 +127,11 @@ Concepts d'**interdépendance** et **non-séparation** intégrés sans étiqueta
 | 9 | Setup WhiteWall | ⏳ |
 | 10 | Intégration WILDLENS ↔ Arteon | ⏳ |
 | 11 | Préparation 10 photos JC (sélection + fiche naturaliste) | ⏳ |
-| 12 | Retravail des 3 éditions WILDLENS existantes | ⏳ |
+| 12 | Retravail des éditions WILDLENS | 🔴 Relance en pause avec Ghost ; six fichiers d'édition présents, publication à vérifier |
 | 13 | Lancement V1 | ⏳ |
 
 ---
 
-## Pour reprendre dans un nouveau chat
+## Pour reprendre le projet
 
-Coller en première ligne du nouveau chat :
-
-> *On reprend le projet Arteon. Cherche notre conversation du 21 avril 2026 et lis l'état du projet. Je joins aussi le fichier `arteon-etat-projet.md`. Prochaine étape prévue : étape 4, la charte graphique.*
-
-Et joindre ce fichier en pièce attachée.
+Lire d'abord `thread-arteon.md` : il contient l'état opérationnel et la prochaine action courante. L'étape 4 (charte graphique) est close ; ne plus la proposer comme reprise. La relance WildLens/Ghost est en pause et toute publication Instagram nécessite une nouvelle demande explicite de JC.

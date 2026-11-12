@@ -1,6 +1,6 @@
 # Index central des outils PKA_JCH
 
-> Dernière mise à jour : 2026-07-16 — Ajout principes-architecturaux, securite-sauvegardes, roadmap-long-terme
+> Dernière mise à jour : 2026-11-05 — Ajout du rituel /save pour Kimi
 > Source : `docs/system/outils-index.md`
 > Charger ce fichier au début de chaque session pour connaître tous les outils disponibles.
 
@@ -33,6 +33,7 @@
 - bin/pka — Commande universelle de sauvegarde multi-modèle
 - bin/pka-save — Sauvegarde explicite de session
 - scripts/pka_save.py — Backend Python de pka-save
+- .agents/skills/save — Rituel `/save` pour Kimi : sauvegarde PKA et mémoire partagée (`--dry-run` disponible)
 - scripts/pka_system_check.py — Health-check auto du système PKA
 - scripts/pka_memory_log.py — Log mémoire automatique dans SYBIL_JOURNAL
 - scripts/pka_context_profile.py — Génère un profil de contexte pour LLM

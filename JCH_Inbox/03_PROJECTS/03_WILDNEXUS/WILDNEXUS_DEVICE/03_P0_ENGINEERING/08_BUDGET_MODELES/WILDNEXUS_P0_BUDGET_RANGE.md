@@ -1,111 +1,112 @@
 # WildNexus — Budget P0
 
-**Version :** v0.4
-**Date :** 2026-06-30 (mise à jour avec achats réels post-Juin)
-**Statut :** Enveloppe ferme — 1 000 € maximum
+**Version :** v0.5
+**Date :** 2026-11-05
+**Statut :** enveloppe ferme de 1 000 € ; projection provisoire à réconcilier avec les factures
 **Owner :** [[Bruno]]
 
-## 1. Contrainte
+## 1. Contrainte et règle de lecture
 
-Enveloppe globale P0 fixée à **1 000 €** — volontairement serrée pour forcer la créativité et les arbitrages. Tout dépassement est bloquant sauf décision explicite de JCH.
+L'enveloppe P0 est fixée à **1 000 € maximum**. Tout dépassement exige une décision explicite de JCH.
 
-> ⚠️ Le budget existant v0.1 estimait un scénario frugal à 10 kEUR. La cible 1 000 € impose des compromis identifiés ci-dessous. Certains de ces compromis créent un **risque de médiocrité** sur des critères qualité — ils sont signalés explicitement.
+Trois nombres ne doivent pas être confondus :
 
-## 2. Périmètre retenu à 1 000 €
+- les achats effectivement justifiés par facture ;
+- la projection incluant le reliquat estimé ;
+- le coût unitaire d'un éventuel produit, qui n'est pas encore connu.
 
-| Choix structurant | Décision |
-|-------------------|---------|
-| Nombre de nœuds | **2 nœuds** (au lieu de 3–5 prévu initialement) |
-| PCB | **DevKit + breakout boards** — pas de PCB dédié P0 |
-| FTO / licence externe | **Analyse interne uniquement** — pas de conseil IP externe |
-| Dataset IA | **Terrain JCH uniquement** — pas de dataset commercial |
-| Déplacements EVT | **Belgique locale** — pas de déplacement longue distance |
+Le projet ayant repris, les paniers et prix anciens doivent être revalidés avant toute commande. Ce document ne vaut pas autorisation de dépense.
 
-## 3. Suivi des achats réels (2026-06-30)
+## 2. Périmètre du prototype
 
-### Commandes reçues
+| Choix | Cadre P0 |
+|-------|----------|
+| Nœuds | Deux nœuds de développement visés |
+| Électronique | DevKit et breakout boards ; pas de PCB dédié validé en P0 |
+| Gateway | Une gateway minimale de développement est nécessaire à la preuve LoRa |
+| Propriété intellectuelle | Analyse interne ; pas de conseil externe budgété |
+| Dataset IA | Terrain JCH dans un premier temps ; besoin externe réévalué après benchmark |
+| EVT | Belgique locale, après clôture du banc |
 
-| Commande | Fournisseur | Montant | Date réception | Composants clés |
-|----------|------------|---------|----------------|-----------------|
-| Mouser #39411684 | Mouser | ~100€ | ✅ Juin | PPK2 (inclus ici ou séparé) |
-| ESP32-S3-DevKitC-1 ×2 | Amazon MiMiU | 21,98€ | ✅ 10/06 | MCU P0 |
-| Nordic PPK2 | Mouser | ~100€ | ✅ Juin | Mesure conso — non négociable |
-| ESP32-CAM OV2640 (avec caméra) ×2 | Hailege Amazon.de | ~25€ | ✅ 21/06 | Dev DVP |
-| ESP32-CAM (cartes seules) ×4 | — | — | ✅ 23/06 | Debug ESP32 |
-| OV5640 DVP M12 ×5 | Camemake.eu + AliExpress | ~30€ | ✅ 12-24/06 | Caméra finale P0 |
-| USB-C TTL FT232RL ×3 | AZDelivery Amazon | 9€ | ✅ 21/06 | Debug serial |
-| Mouser #39492997 | Mouser | 128,20€ | ✅ Juin | MEMS, IR 940nm, PIR, buck, BME688, SHT31, antennes, dissipateurs |
-| Miuzei Starter Kit | Amazon | ~35€ | ✅ 10/06 | 235 composants, breadboard |
-| **Sous-total reçu** | | **~479€** | | |
+## 3. Lignes d'achats visibles dédupliquées
 
-### En attente de commande
+Le PPK2 appartient à la commande Mouser #39411684. Il ne faut pas additionner une seconde ligne « Nordic PPK2 ».
 
-| Commande | Fournisseur | Montant estimé | Statut | Composants clés |
-|----------|------------|----------------|--------|-----------------|
-| Panier Mouser restant (11 composants) | Mouser | ~279€ | ⏳ À commander | LoRa SX1262/RAK3172, connecteurs, passifs BOM |
-| **Sous-total en attente** | | **~279€** | | |
+| Commande / poste | Montant consigné | État | Commentaire |
+|------------------|-----------------:|------|-------------|
+| Mouser #39411684 — Nordic PPK2 | **83,57 €** | Reçu | Montant retrouvé dans le générateur BOM ; HT/TTC et frais de port à rapprocher de la facture |
+| ESP32-S3-DevKitC-1 ×2 — Amazon MiMiU | 21,98 € | Reçu | MCU de banc |
+| ESP32-CAM OV2640 ×2 — Hailege | ~25 € | Reçu | Développement caméra |
+| ESP32-CAM seules ×4 | Non chiffré ici | Reçu | Facture à retrouver ; aucun montant inventé |
+| OV5640 DVP M12 ×5 | ~30 € | Reçu | Camemake + AliExpress ; ventilation à confirmer |
+| USB-C TTL FT232RL ×3 | 9,00 € | Reçu | Debug série |
+| Mouser #39492997 | 128,20 € | Reçu | MEMS, IR, PIR, buck, capteurs, antennes et dissipateurs |
+| Miuzei Starter Kit | ~35 € | Reçu | Composants et breadboard |
+| **Sous-total des lignes visibles ci-dessus** | **~332,75 €** | | Avec 83,57 € pour le PPK2, hors postes non chiffrés et ports non identifiés |
 
-### Récapitulatif
+L'ancienne convention d'environ 100 € pour le PPK2 donne un sous-total visible de **349,18 €**. La différence de 16,43 € vient uniquement de la convention de montant ; elle ne constitue pas une dépense supplémentaire.
 
-| Bloc | Montant |
-|------|--------:|
-| Composants reçus | ~479€ |
-| Panier Mouser restant | ~279€ |
-| **Total engagé/prévu** | **~758€** |
-| Enveloppe | 1 000€ |
-| **Réserve restante** | **~242€** |
+## 4. Projection provisoire héritée de l'état global
 
-> ✅ Le projet reste sous enveloppe avec une réserve confortable de ~242€.
+Le dernier état de pilotage consignait un engagé global plus large que les lignes visibles ci-dessus. Tant que les factures ne sont pas réconciliées, on conserve cet état comme projection prudente, sans le présenter comme certifié.
 
-## 4. Ventilation théorique des 1 000 € (v0.3 — plan initial)
+| Bloc | Projection provisoire |
+|------|----------------------:|
+| Engagé global consigné | ~610 € |
+| Panier Mouser restant à revalider | ~279 € |
+| microSD 128 GB | ~15 € |
+| **Total engagé / prévu** | **~904 €** |
+| Enveloppe | 1 000 € |
+| **Réserve théorique** | **~96 €** |
 
-### Électronique — 2 nœuds complets
+L'écart entre l'engagé global de 610 € et les lignes visibles dédupliquées est de **260,82 €** avec la convention PPK2 à 100 €, ou de **277,25 €** avec le montant enregistré de 83,57 €. Il faut identifier les achats et frais correspondants avant de fermer la réconciliation.
 
-| Poste | Unité | × 2 nœuds | Sous-total |
-|-------|------:|----------:|-----------:|
-| ESP32-S3 DevKit | ~12 € | × 2 | ~24 € |
-| OV5640 M12 DVP | ~20 € | × 2 | ~40 € |
-| Lentille M12 IR-corrigée f/1.8 | ~35 € | × 2 | ~70 € |
-| LED IR 940 nm × 4 | ~8 € | × 2 | ~16 € |
-| LoRa RAK3172 | ~12 € | × 2 | ~24 € |
-| microSD 16 GB industrielle | ~12 € | × 2 | ~24 € |
-| 2× holder 4× AA (4S2P) | ~2 € | × 2 | ~4 € |
-| Régulateur buck TPS62840 | ~2 € | × 2 | ~4 € |
-| Boîtier Hammond IP67 | ~15 € | × 2 | ~30 € |
-| SHT31 (temp + humidité) | ~5 € | × 2 | ~10 € |
-| PIR basse conso | ~5 € | × 2 | ~10 € |
-| MOSFET, résistances, capacités, connecteurs | ~25 € | × 2 | ~50 € |
-| **Sous-total électronique** | | | **~307 €** |
+**Conséquence immédiate :** la projection de 904 € dépasse le seuil interne d'arbitrage de 900 € défini au §7. Le reliquat reste gelé jusqu'à réconciliation et autorisation JCH.
 
-### PCB et assemblage — ~55 €
-### Outillage et banc de test — ~180 € (inclut PPK2)
-### Frais annexes — ~180 €
-### Réserve — ~239 €
+## 5. Postes à consolider avant reprise
 
-## 5. Risques de médiocrité — signalement explicite
+| Poste | Traitement requis |
+|-------|-------------------|
+| Lentille M12 IR-corrigée | Prévoir une hypothèse de 30–35 € minimum par optique seulement après sélection et devis ; ne pas la considérer incluse dans la caméra basique à 8 € |
+| microSD 128 GB | Remplace les anciennes hypothèses 16/32 GB ; vérifier prix et endurance |
+| Gateway P0 | Chiffrer le second ESP32-S3, le SX1262, l'antenne, l'alimentation et la connectique sans double emploi avec le stock |
+| Radio RAK3172 | Revalider disponibilité, prix, frais de port et présence réelle dans le panier |
+| Micros MEMS | Relever la référence TDK reçue et vérifier son interface avant de la substituer au SPH0645LM4H-B cible |
+| PIR | Rapprocher EKMB1203111 / EKMB1303111 du composant physique |
+| Alimentation | Ne commander ni pack ni régulateur définitif avant les gates ADR-005 et la reprise autorisée de SOP-10 |
+| Ports et taxes | Uniformiser HT/TTC et rattacher les frais à chaque commande |
+| Coûts produit | Assemblage, tests, boîtier, certification, logistique, TVA, garantie et support à chiffrer séparément du prototype |
 
-| # | Compromis | Impact qualité | Seuil d'alerte |
-|---|-----------|---------------|----------------|
-| ⚠️ M1 | **Lentille** : si budget force < 20 € (AliExpress non IR-corrigé) | Vision nocturne floue au-delà de 2 m | Ne pas descendre sous 30 € / lentille. Lensation reste la cible à 35 €. |
-| ⚠️ M2 | **2 nœuds au lieu de 3–5** | Un seul nœud de secours terrain | Acceptable P0 si objectif = proof of concept |
-| ⚠️ M3 | **DevKit au lieu de PCB dédié** | Encombrement boîtier, fragilité connecteurs | Acceptable P0 uniquement — tout PCB P1 doit être dédié |
-| ⚠️ M4 | **OV5640 vs IMX462** | Vision nocturne plafonnée à ~3–5 m | Décision architecture P0 assumée (ADR-002) |
-| ⚠️ M5 | **Pas de Nordic PPK2** | Impossible de mesurer le deep sleep | PPK2 **non négociable** — ✅ acquis |
+La somme historique de **99,48 €** dans la fiche F1 est seulement celle d'une liste de composants, avec microSD 128 GB et hors optique IR-corrigée de qualité. Ce n'est ni un BOM de production ni une base de marge.
 
-## 6. Règle de dépassement
+## 6. Risques qualité à ne pas masquer par le budget
 
-Tout achat individuel > 50 € doit être signalé à JCH avant commande.
-Si le total projeté dépasse 900 €, stopper et arbitrer avant de commander le reliquat.
+| Risque | Règle de gestion |
+|--------|------------------|
+| Optique nocturne insuffisante | Sélectionner et tester la lentille ; ne pas promettre une portée à partir du seul capteur OV5640 |
+| Deux nœuds seulement | Acceptable pour une preuve de concept, insuffisant pour généraliser une fiabilité terrain |
+| DevKit et connectique volante | Acceptable au banc ; industrialisation et boîtier exigent une conception dédiée |
+| Puissance et autonomie extrapolées | Mesurer chaque cycle et les pertes en Wh ; aucune déduction de 60 jours depuis le deep sleep seul |
+| Absence de mesure PPK2 | PPK2 déjà acquis ; maintenir la traçabilité des configurations et fichiers de mesure |
+| Gateway oubliée du système | Inclure son coût et sa preuve dans le P0 connecté ; la STATION commerciale reste P1 |
 
-## 7. Ce qui sort du budget 1 000 €
+## 7. Règles de dépense
 
-| Poste exclu | Estimation | Condition de réintégration |
-|-------------|----------:|---------------------------|
-| Avis FTO / IP externe | 500–3 000 € | Si partenariat industriel ou levée envisagée |
-| PCB dédié P0 (au lieu de DevKit) | 200–400 € | Si DevKit incompatible avec boîtier IP67 |
-| 3e nœud complet | ~175 € | Si les 2 nœuds tombent en panne simultanément terrain |
-| Dataset IR externe | 200–1 000 € | Si dataset terrain insuffisant pour entraîner le classifieur |
+- Tout achat individuel supérieur à 50 € est signalé à JCH avant commande.
+- Si le total projeté dépasse 900 €, arrêt et arbitrage avant le reliquat : ce cas est déjà atteint avec la projection provisoire.
+- Aucun panier ancien n'est commandé sans revue du stock, du prix, des références et des frais.
+- Toute dépense doit être rattachée à une facture, un montant HT/TTC explicite et un besoin du plan de preuve.
+
+## 8. Hors enveloppe actuelle
+
+| Poste | Condition de réintégration |
+|-------|----------------------------|
+| Conseil FTO/IP externe | Décision JCH si publication, partenariat ou levée le justifie |
+| PCB dédié et industrialisation | Après validation du banc et chiffrage spécifique |
+| Nœuds supplémentaires | Après preuve du prototype et arbitrage enveloppe |
+| Dataset externe | Si le benchmark démontre que les données JCH sont insuffisantes |
+| DVT, certification et pré-séries | Budget distinct à établir après EVT ; ne pas les considérer couverts par les 96 € de réserve |
 
 ---
 
-*Mis à jour v0.4 le 2026-06-30 — suivi des achats réels ajouté, ventilation théorique conservée en §4 pour référence.*
+*Révision 2026-11-05 : doublon PPK2 supprimé, sous-total visible distingué de la projection globale de 904 €, réserve provisoire de 96 €, seuil de 900 € activé et postes techniques non chiffrés explicités.*

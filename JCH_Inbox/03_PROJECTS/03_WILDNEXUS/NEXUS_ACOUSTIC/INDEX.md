@@ -1,37 +1,39 @@
 # NEXUS_ACOUSTIC — Infrastructure de monitoring bioacoustique
 
-> Projet extrait de WildNexus le 2026-06-19.
-> Statut : P1 (deferred dans WildNexus P0)
-> Parent conceptuel : Faune Autour — Radar de Biodiversité Acoustique
+> Projet distingué dans l'organisation WildNexus le 2026-06-19.
+> **Statut au 2026-11-05 : ⚪ gelé avec WildNexus.** SOP-10 suspendue ; aucune reprise technique implicite.
+> Gouvernance : `../WILDNEXUS_DEVICE/00_GOVERNANCE/Start.md`.
+> État détaillé et limites des preuves : [thread-nexus-acoustic.md](thread-nexus-acoustic.md).
 
 ## Vision
 
-Détection et classification acoustique d'espèces (oiseaux, orthoptères, amphibiens) par stations autonomes connectées.
+Cible de détection et classification acoustique d'espèces (oiseaux, orthoptères, amphibiens) par stations autonomes connectées. Les architectures et pipelines décrits dans les documents historiques restent à revalider avant toute reprise.
 
 ## Structure
 
-- `Projet_bioacoustique.md` — Document Unique de Projet
-- `INSECTNET/` — Classification acoustique des orthoptères
-- `LEAFNET/` — Sonification & monitoring bioélectrique végétal (fork 2026-06-22)
-- `BirdNET-Go_RaspberryPi_iPhone_summary.md` — Analyse BirdNET
-- `hardware/` — Matériel (RPi, microphones, stations) + registre acquisitions
-- `raw_audio/` — Enregistrements bruts
-- `data/` — Données structurées
-- `Reverse Birdsong/` — Expérimentations
-- `tech_notes/` — Notes techniques importées de WildNexus 08_TECH_NOTES
+- `Projet_bioacoustique.md` — document unique de projet historique.
+- `INSECTNET/` — classification acoustique des orthoptères.
+- `LEAFNET/` — sonification et monitoring bioélectrique végétal.
+- `BirdNET-Go_RaspberryPi_iPhone_summary.md` — analyse BirdNET.
+- `hardware/` — matériel et registre d'acquisitions.
+- `raw_audio/` — enregistrements bruts.
+- `data/` — données structurées.
+- `Reverse Birdsong/` — expérimentations.
+- `tech_notes/` — notes techniques importées.
+- `thread-nexus-acoustic.md` — gel courant et historique technique non revérifié.
 
-## Spécialistes
+## Spécialistes à solliciter lors d'une reprise
 
-- **Clio 🐬** — Science bioacoustique, standards
-- **Chouette 🦉** — DSP, microphones, spectrogrammes
-- **Musaraigne 🐭** — Edge AI, classification embarquée
+- **Clio** — science bioacoustique et standards.
+- **Chouette** — DSP, microphones, spectrogrammes.
+- **Musaraigne** — edge AI et classification embarquée.
 
 ## Liens
 
-- WildNexus → P1 bioacoustique (06_ADJACENT)
-- InsectNet → classification acoustique
-- Faune Autour → frontend PWA
+- [Gouvernance WildNexus](../WILDNEXUS_DEVICE/00_GOVERNANCE/Start.md) — gel et règles de reprise.
+- [Thread NEXUS_ACOUSTIC](thread-nexus-acoustic.md) — état courant.
+- InsectNet — recherche de classification associée, également gelée.
 
 ---
 
-*Généré par Dobby 🦉 — 2026-06-19*
+*Index recadré le 2026-11-05 : la vision reste documentée, les actions historiques ne sont plus courantes.*

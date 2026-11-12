@@ -11,6 +11,8 @@
 
 ---
 
+> ⚠️ **AVERTISSEMENT — revue 05/11.** Les micros réellement en stock sont des **TDK MEMS** (commande Mouser), pas des Knowles SPH0645LM4H-B. Le pinout BCLK 15 / WS 16 / DIN 7-6 est une **proposition non validée**, jugée « incompatible avec d'autres propositions ADR-016 » dans `PROCESSUS_MONTAGE_PROTOTYPE.md`. Ne pas câbler avant d'avoir relevé la référence physique et confirmé l'interface I2S sur datasheet. Voir `progress.md` §4 (SOP-13 = blocked).
+
 ## Objectif
 
 Vérifier que les 2 micros MEMS SPH0645LM4H-B s'initialisent via I2S, captent un signal audio stéréo, et retournent en veille. Mesurer la consommation.

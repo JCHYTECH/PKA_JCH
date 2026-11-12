@@ -1,7 +1,7 @@
 # VENTE OCCASION — Thread (living doc)
 
 > Source de vérité opérationnelle. Modifié à chaque session qui touche au projet.
-> Dernière mise à jour : 2026-10-31.
+> Dernière mise à jour : 2026-11-07.
 
 ## État
 
@@ -13,10 +13,13 @@
   - Livre anatomie artistique HF Ullmann (prix 12 €, Vinted)
   - BD Le Monde d'Edena intégrale Moebius (prix 40 €, Vinted)
   - Crucifix en nacre pleine, Italie fin XIXe (annonce rédigée, prix 200 €, 2dehands)
+- **Magazines « Photo »** : initiative démarrée (2026-11-07) — inventaire en préparation (`inbox/inventaire-photo-magazine.csv`), canal **eBay France**, vente par **lots de 5** + pépites à l'unité.
 - **Objets vendus** : 0.
 
 ## À faire
 
+- [ ] Remplir `inbox/inventaire-photo-magazine.csv` (n° + année + état) → matrice de prix + stratégie magazines Photo.
+- [ ] Confirmer le poids d'un numéro (~350 g) et le nombre total de numéros.
 - [ ] Epson ET-4810 : JC publie sur 2dehands/2ememain, puis créer le suivi.
 - [ ] iMac 5K 2017 : effacement (en cours) + photos, puis publier.
 - [ ] Puzzle Keith Haring : photos, puis publier.
@@ -28,6 +31,7 @@
 
 ## Journal
 
+- **2026-11-07** — Initiative magazines « Photo » : marché analysé (pépites = 1967-72 + hors-séries + monographies ; années 1981-2010 ≈ 2 €/numéro en lot ; le titre n'est pas dans le top 10 des magazines cotés). Canal retenu : eBay France. Tableaux CSV + mode d'emploi créés dans `inbox/`. En attente de l'inventaire JC.
 - **2026-10-30** — JC valide le projet `12_VENTE_OCCASION`, Phase 1 (build léger, 0 €/mois). Recherche web : Omnivaleur = seule solution couvrant 2dehands+Vinted ; Adevinta API 1.0 = partenaire ; Vinted sans API publique ; eBay = API officielle complète.
 - **2026-10-30** — Test n°1 : Epson EcoTank ET-4810. Compteur 2 280 impressions, 3 jeux d'encres, état impeccable. Prix 220 €. Règles ajoutées au skill : retrait domicile (sauf livres), âge non mentionné, pas de « négociable », impression recto+N&B.
 - **2026-10-30** — Objet n°2 : iMac 27" Retina 5K 2017 (i7, 16 Go, Radeon Pro 575, 1 To, nickel, clavier+souris). Prix 450 €. Effacement en cours (procédure imprimée).

@@ -1,110 +1,49 @@
 # S1 — WildNexus STATION
-> Gateway LoRa + dashboard local · Version P1
-> Fiche produit — 2026-06-19
 
----
+Vision P1 — 2026-11-05. Concept non prototypé et non commercialisé. La STATION ne doit pas être confondue avec la gateway minimale de développement requise en P0.
 
-## Positionnement
+## Intention
 
-La STATION est le **hub local** du réseau WildNexus. Elle collecte les alertes LoRa des nœuds FIELD, stocke les données, et fournit un dashboard web accessible sans cloud. Une STATION par site, jusqu'à 50 nœuds FIELD connectés.
+La STATION pourrait devenir un hub local de plusieurs nœuds : réception LoRa, stockage, consultation, export et administration sur un site, avec fonctionnement sans cloud pour les fonctions locales. Cette fiche décrit une direction produit, pas des fonctions disponibles.
 
-**Persona cible :** Gestionnaire de réserve, association naturaliste, propriétaire multi-terrains.
+## Distinction P0 / P1
 
----
+| Gateway minimale P0 | STATION envisagée P1 |
+|---|---|
+| Démontrer la chaîne nœud → récepteur | Exploiter un site avec une interface aboutie |
+| Recevoir et décoder les paquets caméra/spectraux | Gérer plusieurs nœuds et leurs données |
+| Journaliser erreurs et métadonnées | Tableau de bord, exports, provisioning et maintenance |
+| Matériel de développement à sélectionner | Architecture Raspberry Pi ou équivalente à étudier |
+| Aucun média transporté par LoRa | Récupération locale ou option P1 à définir |
 
-## Architecture
+## Fonctions candidates
 
-```
-FIELD ×1..50 ──LoRa──→ STATION ──Wi-Fi/Ethernet──→ Dashboard local
-                              └── LTE (optionnel) ──→ Alertes email
-                              └── SSD local ──→ Export données
-```
+- enregistrement des alertes et états techniques ;
+- consultation et filtrage des événements ;
+- exports JSON/CSV et, après validation, Camtrap-DP ;
+- récupération des médias par un transport séparé validé ;
+- administration des nœuds et provisioning sécurisé ;
+- alertes locales ou externes selon une connectivité optionnelle ;
+- supervision de l'espace, des erreurs et de la santé du système.
 
----
+Les cartes de position supposent une localisation connue et autorisée ; aucun GPS n'est prévu dans le payload P0. Les filtres par espèce, la galerie LTE-M et l'OTA ne sont pas des fonctions P0 et exigent leurs propres ADR.
 
-## Spécifications techniques
+## Architecture à étudier
 
-| Catégorie | Composant | Détail |
-|-----------|-----------|--------|
-| **Compute** | Raspberry Pi 5 4GB | Ou CM5 + carrier board |
-| **Radio** | RAK3172 (SX1262) LoRa | EU868, même module que FIELD |
-| **Connectivité** | Wi-Fi 5 + Ethernet GbE | Dashboard local accessible réseau |
-| **LTE (option)** | SIM7080G | Backup si Wi-Fi down, alertes SMS |
-| **Stockage** | SSD NVMe 256GB | Jusqu'à 2M événements, 10 000 images |
-| **OS** | Raspberry Pi OS Lite | Docker pour services |
-| **Dashboard** | WildNexus Dashboard (web) | Carte temps réel, timeline, alertes |
-| **API** | REST locale | Export JSON/CSV, intégration outils tiers |
-| **Énergie** | USB-C PD 5V/5A | Ou PoE HAT (Power over Ethernet) |
-| **Boîtier** | Boîtier RPi officiel | Ou rail DIN pour installation fixe |
-| **Antenne** | Antenne LoRa 868MHz extérieure | SMA, 3 dBi, à fixer en hauteur |
+Un Raspberry Pi avec stockage local, une radio LoRa et une interface réseau est une piste, non une nomenclature figée. La capacité, le nombre maximal de nœuds, le débit, la rétention et les performances seront dimensionnés à partir des essais P0 et des besoins d'un pilote.
 
----
+Le chiffrement, les comptes, les sauvegardes, la restauration, la gestion des clés et le droit d'accès RGPD doivent être conçus avant tout déploiement. Une carte microSD pour l'OS du Raspberry Pi serait distincte de la carte 128 GB du nœud FIELD.
 
-## Dashboard — Fonctionnalités
+## Coût et prix
 
-- **Carte temps réel :** position de chaque nœud FIELD, dernier événement, niveau batterie
-- **Timeline :** tous les événements par nœud, filtrables par score IA, espèce, date
-- **Galerie :** images téléchargées à la demande (LTE-M burst)
-- **Alertes :** configurable par espèce cible, heure, niveau batterie critique
-- **Export :** CSV, JSON, Camtrap-DP (standard scientifique)
-- **Statistiques :** heatmap activité, tendances saisonnières
-- **Admin :** provisioning nouveaux nœuds, mise à jour firmware OTA
+Le coût système complet est inconnu : STATION, gateway, nœuds, stockage, antennes, alimentation, installation, maintenance, certification, support et éventuelle connectivité doivent être consolidés. Les anciens montants partiels et le prix public sont retirés provisoirement.
 
----
+Aucun nombre de 50 nœuds, volume de deux millions d'événements, prix ou marge n'est validé.
 
-## BOM estimatif
+## Conditions d'ouverture P1
 
-| Composant | Qté | Prix unit. | Total |
-|-----------|-----|-----------|-------|
-| Raspberry Pi 5 4GB | 1 | ~60.00€ | 60.00€ |
-| RAK3172 + antenne | 1 | ~15.00€ | 15.00€ |
-| SSD NVMe 256GB | 1 | ~30.00€ | 30.00€ |
-| Alim USB-C PD 5V/5A | 1 | ~15.00€ | 15.00€ |
-| Carte microSD 32GB (OS) | 1 | ~8.00€ | 8.00€ |
-| Boîtier + câbles | 1 | ~10.00€ | 10.00€ |
-| **Total BOM** | | | **~138.00€** |
-
-**Prix de vente cible :** 249-299€
-
----
-
-## Ce qui est INCLUS
-
-- 1× STATION pré-configurée (OS + services Docker)
-- 1× antenne LoRa 868MHz extérieure (3m câble)
-- 1× alimentation USB-C PD
-- Dashboard web pré-installé
-- Documentation : installation, configuration nœuds, export données
-
-## Ce qui n'est PAS inclus
-
-- Nœuds FIELD (vendus séparément)
-- Abonnement LTE (optionnel)
-- Écran / moniteur (dashboard accessible via navigateur)
-
----
-
-## Différenciation
-
-| | WildNexus STATION | Solutions cloud propriétaires |
-|---|---|---|
-| **Données** | Locales, vous les possédez | Cloud, vous les louez |
-| **Coût récurrent** | 0€ (hors LTE optionnel) | Abonnement mensuel |
-| **Offline** | Fonctionne sans Internet | Dépendance réseau |
-| **API** | REST locale, standard ouvert | Propriétaire, limitée |
-| **Vie privée** | Images ne quittent pas le site | Transit cloud tiers |
-
----
-
-## Chemin d'adoption
-
-```
-Acheter 1 FIELD → tester dans le jardin
-→ Acheter 1 STATION → dashboard local, plus besoin de relever la SD
-→ Ajouter 3-5 FIELD → couverture complète
-→ Passer à STATION+ (IA espèces + corrélation)
-```
-
----
-
-*Références : ADR-003 (radio), ADR-004 (stockage), ADR-009 (architecture satellite/base/cloud).*
+1. Gateway P0 démontrée sur paquets réels.
+2. Besoins pilote, topologie et volumes mesurés.
+3. ADR architecture/sécurité/données et méthode de récupération des médias approuvés.
+4. Coût système et responsabilités d'exploitation établis.
+5. Décision JCH avant développement produit ou communication commerciale.

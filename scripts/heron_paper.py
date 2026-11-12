@@ -15,7 +15,7 @@ import argparse
 import sqlite3
 from pathlib import Path
 
-DB_PATH = Path(__file__).resolve().parent.parent / "PHOTO" / "argus_critique.db"
+from argus_db import DB_PATH
 
 # ── Catalogue papiers ET8550 ──────────────────────────────────────────────────
 PAPERS = {

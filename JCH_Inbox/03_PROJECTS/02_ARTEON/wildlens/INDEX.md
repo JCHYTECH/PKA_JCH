@@ -6,13 +6,15 @@ tags:
   - arteon
   - editorial
 owner: "[[Dobby]]"
-last_updated: 2026-07-02
+last_updated: 2026-11-05
 ---
 # [[WildLens]] — Journal naturaliste de photographie wildlife
 
 > **Service prioritaire [[ARTEON]]** — tête du funnel d'acquisition.
 > Sans WildLens, pas de traffic, pas de conversion vers [[L'Instant Lu]], pas de revenu.
-> wildlens.ghost.io · EN uniquement
+> wildlens-journal.ghost.io · EN uniquement
+>
+> **État courant :** Ghost en pause après contact du support ; Instagram préparé sans publication. Voir [thread-arteon.md](../thread-arteon.md).
 
 ---
 
@@ -27,7 +29,7 @@ WildLens est un **journal hebdomadaire** analysant les avancées en photographie
 | **Profondeur technique** | Intermédiaire — assume camera fluency |
 | **Différenciateur** | The Frame — une photo de JC qui porte le propos militant |
 | **Langue** | Anglais |
-| **Plateforme** | Ghost (wildlens.ghost.io) + vitrine sur arteon.be/wildlens |
+| **Plateforme** | Ghost (wildlens-journal.ghost.io) + vitrine sur arteon.be/wildlens |
 | **Cadence** | Hebdomadaire — samedi |
 
 ## Architecture éditoriale v2 — 3 sections
@@ -43,6 +45,18 @@ WildLens est un **journal hebdomadaire** analysant les avancées en photographie
 
 **Total visé :** 900-1300 mots — 5-7 minutes de lecture.
 
+## Section essai / philosophie (en cours)
+
+> Nouvelle section expérimentale « philosophie/essai » — lancée le 2026-11-03.
+> Premier sujet : le langage animal. Deux essais + la source originale, regroupés dans `essai/`.
+> Pas encore intégrée à l'architecture éditoriale v2 (3 sections) — en maturation.
+
+| Fichier | Type | Contenu |
+|---------|------|---------|
+| `essai/AI-Will-Never-Speak-the-Language-of-the-Living.pdf` | source | Article original (PDF) |
+| `essai/article-ai-never-speak-language-living.md` | essai | AI et langage animal — patterns vs sens (draft 01/11) |
+| `essai/article-ia-voynich-langage-animal.md` | essai | Manuscrit Voynich et langage animal |
+
 ## Charte visuelle WildLens
 
 | Élément | Valeur |
@@ -51,7 +65,7 @@ WildLens est un **journal hebdomadaire** analysant les avancées en photographie
 | Base | Palette [[ARTEON]] (Noir Terrain, Ivoire, Ocre Lumière) |
 | Typo | Identique ARTEON (Space Grotesk + Lora + IBM Plex Mono) |
 
-→ Voir `02_ARTEON/brand/arteon-architecture-charte.md` §3
+→ Voir [la charte ARTEON](../brand/arteon-architecture-charte.md) §3
 
 ## Funnel de conversion
 
@@ -59,53 +73,56 @@ WildLens est un **journal hebdomadaire** analysant les avancées en photographie
 WildLens (lecteurs ~500) → arteon.be/wildlens → CTA "L'Instant Lu" → 1ère analyse gratuite → Payant
 ```
 
-WildLens est le **seul canal d'acquisition actif**. Sa santé éditoriale conditionne le CA de [[L'Instant Lu]].
+WildLens est le canal éditorial d'acquisition prévu. Instagram sert de couche de découverte ; aucune publication Instagram ne peut être faite sans nouvelle demande explicite de JC.
 
 ## Structure
 
 ```
 wildlens/
-├── INDEX.md                              ← ce fichier
-├── ref/
-│   ├── WildLens.md                       ← transcript fondateur ChatGPT (28/03/2026)
-│   ├── wildlens-prompt-weekly-review.md  ← prompt éditorial complet (v1)
-│   └── architecture-editoriale-v2.md     ← architecture 3 sections (v2, 02/07/2026)
-├── editions/
-│   ├── WildLens-2026-03-28.md            ← Édition #1 — published (v1, 5 sections)
-│   └── WildLens-2026-07-02.md            ← Édition #2 — draft (v2, 3 sections)
-├── weekly-reviews/                       ← Revues hebdomadaires (format insights)
-├── research/                             ← Recherches, livres, sources
-└── reports/                              ← Rapports de santé WildLens (générés Dobby)
+├── INDEX.md                  ← ce fichier
+├── instagram-launch-kit.md   ← préparation Instagram, publication soumise à accord explicite
+├── manifeste.md · theme-semaine.md
+├── ref/                      ← référentiel éditorial et prompts
+├── editions/                 ← fichiers des éditions datées
+├── essai/                    ← philosophie et essais
+├── deck/                     ← présentation et assets du deck
+├── video/                    ← production vidéo et storyboards
+├── Pierre de Rosette/        ← dossier de production associé
+├── suggestions/              ← suggestions datées
+├── research/                 ← recherches, livres et sources
+└── reports/                  ← rapports de santé WildLens
 ```
 
 ## Éditions
 
-| # | Date | Format | Statut | Fichier |
-|---|------|--------|--------|---------|
-| 1 | 2026-03-28 | v1 (5 sections) | ✅ Published | `editions/WildLens-2026-03-28.md` |
-| 2 | 2026-07-02 | v2 (3 sections) | 🟡 Draft — pending JC review | `editions/WildLens-2026-07-02.md` |
+| Date | Fichier |
+|------|---------|
+| 2026-03-28 | [WildLens-2026-03-28.md](editions/WildLens-2026-03-28.md) |
+| 2026-04-18 | [WildLens-2026-04-18.md](editions/WildLens-2026-04-18.md) |
+| 2026-06-20 | [WildLens-2026-06-20.md](editions/WildLens-2026-06-20.md) |
+| 2026-07-02 | [WildLens-2026-07-02.md](editions/WildLens-2026-07-02.md) · [preview HTML](editions/WildLens-2026-07-02-preview.html) |
+| 2026-10-24 | [WildLens-2026-10-24.md](editions/WildLens-2026-10-24.md) |
+| 2026-10-31 | [WildLens-2026-10-31.md](editions/WildLens-2026-10-31.md) |
+
+Le statut de rédaction ou de publication ne doit pas être déduit du seul nom de fichier ; voir [thread-arteon.md](../thread-arteon.md).
 
 ## Statut
 
-🟡 **Relance en cours** — Édition #1 materialisée (28/03). Édition #2 draft générée (02/07) — format v2 3 sections, ton militant, photo fou de bassan. Cadence hebdomadaire à établir.
+Relance engagée — édition du 24/10 rédigée et automatisation hebdomadaire réactivée.
+Ghost renvoie 404 ; le support a été contacté et ce chantier est **en pause**.
+Instagram est préparé, mais **aucune publication sans nouvelle demande explicite de JC**.
 
 ## Actions prioritaires
 
-| Priorité | Action | Owner |
-|----------|--------|-------|
-| 🟡 | JC relire Édition #2 (draft) et valider pour publication Ghost | JC |
-| 🔴 | Vérifier que wildlens.ghost.io est actif | [[Forge]] |
-| 🟠 | Automatiser la cadence hebdomadaire (prompt → LLM → Ghost) | [[Forge]] |
-| 🟠 | Configurer clé Ghost Admin API pour stats | [[Forge]] |
-| 🟡 | Reprendre les weekly reviews à cadence régulière | [[Dobby]] |
+Les actions courantes sont centralisées dans [thread-arteon.md](../thread-arteon.md). À la date de cette révision : reprendre Ghost uniquement après la pause et la réponse du support ; ne publier sur Instagram que sur nouvelle demande explicite de JC.
 
 ## Voir aussi
 
 - [[ARTEON]] — projet parent (shop, marque, L'Instant Lu)
 - [[Argus]] — pipeline IA critique photo (05_PHOTO_AI_JURY)
 - PHOTO_NATURE — matière première terrain et technique (06_PHOTO_NATURE)
-- `02_ARTEON/strategy/plan-action-critique-service.md` — funnel de conversion
+- [Plan d'action L'Instant Lu](../strategy/plan-action-critique-service.md) — funnel de conversion.
 
 ---
 
-*Index mis à jour par [[Dobby]] 🦉 le 2026-07-02*
+*Index mis à jour par [[Dobby]] 🦉 le 2026-11-04 ; navigation révisée le 2026-11-05.*

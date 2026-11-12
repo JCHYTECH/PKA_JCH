@@ -1,8 +1,11 @@
 # WildNexus - Plane Operating Model
 
-Version: v0.1  
-Date: 2026-05-17  
+Version: v0.2
+Date: 2026-11-05
 Purpose: Define how WildNexus should be managed inside Plane during P0.
+
+> **Modèle de reprise — aucune synchronisation Plane n'a été exécutée lors de cette révision.**
+> Le projet a été repris le 2026-11-11 (P0 engineering). `Start.md`, le scope lock, les ADR et `progress.md` décrivent l'état documentaire ; la présence d'un intitulé ci-dessous ne prouve ni sa création dans Plane ni son achèvement. Les identifiants de tâches et échéances historiques sont des exemples, pas un planning actif. À la reprise, rapprocher les éléments existants sans doublon, sans réutiliser les anciennes dates et sans lancer le seed destructif.
 
 ## 1. Why Plane for WildNexus
 
@@ -201,18 +204,17 @@ Recommended Gantt content:
 
 Every blocking task should explicitly link upstream and downstream items.
 
-Minimum dependency chain:
+Dependencies for the restart, replacing the old task-number chain:
 
-- `T01.2 FTO` -> `M-01`
-- `T01.3 RF terrain` -> `M-01`
-- `T01.4 Benchmark camera` -> `M-01`
-- `T01.6 Budget P0 ordre de grandeur` -> `M-01`
-- `GOV-01 Mapping agents WildNexus vers specialistes PKA` -> `M-01`
-- `SUPPLY-01 Registre composants critiques et fournisseurs alternatifs` -> `T02.1`
-- `M-01` -> `WP02`, `WP03`, `WP04`
-- `M-02` -> `WP05`
+- `R0 — signal JCH + état réel` -> rapprochement stock/factures/Plane sans doublon
+- `R0` -> révision schéma alimentation et retrait de la suspension SOP-10
+- `R0` -> références micros/PIR et datasheets -> `SOP-13`, puis tests audio et pipelines
+- `M-02 — preuves banc complètes` -> `M-03 — EVT terrain`
+- `M-02` -> gateway P0 réelle, réception et journal des paquets caméra/spectral
 - `M-03` -> correction loop or P1 decision
-- `M-04` -> P1 entry decision
+- Revue MIT/`ETHICS.md`/notices tierces avant `M-04 — publication`
+
+The historical FTO, RF, camera and budget tasks remain candidate backlog items; their presence here is not proof of completion in Plane.
 
 ## 9. Required Fields in Every Important Item
 
@@ -225,11 +227,12 @@ Each milestone-critical item should contain:
 - blocking dependency if one exists
 - evidence path in the repo when completed
 
-Examples of evidence paths:
+Examples of evidence paths relative to the repo:
 
-- `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/wildnexus-founding-document-v0.1.md`
-- `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/01_FOUNDATION/MASTER_ARCHITECTURE_WN.md`
-- future lab reports, RF reports, or EVT reports
+- `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/00_GOVERNANCE/Start.md`
+- `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/01_FOUNDATION/WILDNEXUS_P0_SCOPE_LOCK.md`
+- `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/PROTOCOLES/progress.md`
+- future lab reports, RF reports, or EVT reports, explicitly identified as host or target evidence
 
 ## 10. Views to Create in Plane
 
@@ -306,13 +309,14 @@ Use for:
 
 ## 11. Immediate Management Corrections to Apply
 
-The founding document currently contains several management items that should become explicit Plane work items immediately:
+For the restart, reconcile these items with existing Plane entries rather than creating them immediately:
 
-- resolve the contradiction between OSI-style open source and field-of-use restrictions
-- define the autonomy ladder: `30-day EVT`, `60-day battery-only`, `6-month field ambition`
-- formalize privacy handling for human captures
-- define the P0 product boundary more sharply
-- turn threshold placeholders into concrete acceptance criteria after RF and camera benchmarks
+- record the JCH decision: MIT firmware plus `ETHICS.md` and a usage policy; this is not a dual-license and does not remove MIT permissions
+- review the scope of the ethics policy, third-party notices and contracts before publication
+- treat `30-day EVT`, `60-day battery-only` and `6-month field ambition` as separate targets requiring their own evidence; none is guaranteed
+- keep human images out of alerts, verify human/animal confusion in the benchmark, and complete the GDPR/terrain procedures before M-03
+- use the P0 scope lock v0.5 and its requirement-to-evidence matrix as the product boundary
+- replace unmeasured RF, camera, AI and power thresholds with benchmark results before treating them as acceptance criteria
 
 ## 12. Rule for JCH Decisions
 

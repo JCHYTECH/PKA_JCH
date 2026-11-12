@@ -28,6 +28,8 @@ Photo → Claude (analyse) → Scores + lr_params (JSON)
                            + Classement collection (par tier/espèce)
 ```
 
+Cette cible n'autorise ni application automatique ni traitement en lot sans validation humaine préalable. Le module local `mcp_apply_lr.py` prépare seulement les paramètres SDK ; le test technique MCP et le jugement artistique JCH sont deux étapes distinctes.
+
 **Outil** : `github.com/Automaat/lightroom-mcp` (MIT, v0.4.1, 29⭐)
 - Plugin Lua dans LR Classic + serveur MCP Node
 - Communication TCP localhost, token 256-bit
@@ -59,10 +61,17 @@ Pour les retouches avancées (détourage, nettoyage, compositing) :
 
 1. [x] Installer le plugin lightroom-mcp dans Lightroom Classic
 2. [x] Ajouter le module `mcp_apply_lr.py` dans le projet [[Argus]]
-3. [ ] Lancer Lightroom Classic → Plug-in Manager → Lightroom MCP → [[Start]] Server
-4. [ ] Tester `set_develop_settings` avec un `lr_params` réel d'[[Argus]]
-5. [ ] Pipeline complet : photo → analyse → application LR automatique → export
-6. [ ] Phase 2 : intégration photoshop-mcp pour retouches
+3. [x] **Geste manuel JC effectué** : Lightroom Classic et **Start Server** actifs ; JC a confirmé que la RAW sélectionnée `Evieux-42.CR3` est une copie virtuelle.
+4. [x] Exécuter `_local/lightroom-mcp/tests/e2e/mcp-runner.mjs` en mode `read` : **8/8 contrôles réussis**, exactement une RAW sélectionnée. Les modes `develop`, `write`, `all`, les presets et la copie entre photos n'ont pas été lancés.
+5. [x] Avec l'accord de JC, le mode borné `exposure-restore --virtual-copy-confirmed` a lu la baseline `0`, testé uniquement `Exposure2012 +0,10`, relu `0,10`, puis restauré et revérifié `0` dans un `finally`. Une lecture indépendante a confirmé la restauration.
+6. [ ] Faire juger les propositions A/B par JCH, avec explication tutoriel ; confronter le résultat à une image inédite avant toute application ou lot automatique.
+7. [ ] Phase 2 ultérieure : intégration photoshop-mcp pour retouches, après validation du socle Lightroom.
+
+### État au 2026-11-06
+
+Le test technique Lightroom est **réussi** sur la copie virtuelle RAW explicitement confirmée par JC : ports locaux actifs, 8/8 lectures, exposition `0 → +0,10 → 0` et restauration confirmée par une lecture indépendante. Aucune autre retouche, aucun preset et aucun traitement par lot n'ont été appliqués. La validation artistique A/B et le test sur image inédite restent à faire.
+
+Le socle `jch_feedback.py` a été testé deux fois sur une copie SQLite, puis appliqué à la base canonique. Le schéma v1 conserve 52 analyses et 16 évaluations de rapports ; les trois tables de sessions, propositions et validations de retouche sont vides. Les votes sur les rapports ne sont pas transformés en préférences de style : il n'existe encore **aucun dataset artistique JCH**.
 
 ### Setup effectué le 2026-06-16
 
@@ -74,4 +83,4 @@ Pour les retouches avancées (détourage, nettoyage, compositing) :
 | Serveur MCP (v0.4.1) | ✅ dans `_local/lightroom-mcp/` |
 | Config Codex | ✅ `~/.deepseek/config.toml` → `[[mcp_servers]]` lightroom |
 | Module [[Argus]] `mcp_apply_lr.py` | ✅ mapping 51 clés SDK, commandes `prepare`/`map`/`sdk-keys` |
-| Activation plugin ([[Start]] Server) | ⚠️ À faire dans Lightroom → Plug-in Manager |
+| Activation plugin ([[Start]] Server) | ✅ Activation manuelle effectuée et testée le 2026-11-06 |

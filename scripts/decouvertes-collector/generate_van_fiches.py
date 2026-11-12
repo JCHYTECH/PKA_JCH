@@ -28,9 +28,9 @@ CAT = BASE / "Réserves naturelles"
 FICHES = CAT / "fiches"
 
 CLAUDE_MODELS = {
-    "haiku": "claude-haiku-4-5-20251001",
-    "sonnet": "claude-sonnet-4-6",
-    "opus": "claude-opus-4-8",
+    "haiku": "claude-haiku-5-5",
+    "sonnet": "claude-sonnet-5-5",
+    "opus": "claude-opus-5-5",
 }
 
 VAN_PROMPT = """Tu es un expert en voyage en minivan (hauteur 2m, longueur 5m, Stylevan Equinox IV Ford).

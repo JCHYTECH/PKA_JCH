@@ -1,7 +1,7 @@
 # Thread — PHOTO_NATURE
 
 > Living document — mis à jour automatiquement par Dobby 🦉 en fin de session.
-> **Dernière mise à jour** : 2026-07-03 — Thread file créé
+> **Dernière mise à jour** : 2026-11-05 — correctif `headline` confirmé dans le code et pointeur presets corrigé
 > **Statut** : 🟢 actif
 
 ---
@@ -17,7 +17,7 @@ Photographie naturaliste terrain — boîtiers Canon R10 + 90D, optiques RF 200-
 | Axe | Statut | Détail |
 |-----|--------|--------|
 | Global | 🟢 | Actif, workflow fluide |
-| Keyworder | 🟢 | 62 catégories, gemma4 local (M5), IPTC+XMP |
+| Keyworder | 🟢 | 62 catégories, gemma4 local (M5), IPTC+XMP. Correctif `headline` du 22/10 confirmé dans `scripts/photo_keyworder.py` ; aucun nouveau run mesuré dans cette revue. |
 | Presets | 🟢 | 11 presets Argus stockés |
 | Cross-réfs | 🟢 | Liens ARTEON + PHOTO_AI_JURY créés (02/07) |
 
@@ -34,10 +34,11 @@ Photographie naturaliste terrain — boîtiers Canon R10 + 90D, optiques RF 200-
 
 ## TTD — Pending
 
-- [ ] **P2 · — · (Dobby)** Maintien — tourne seul (keyworder + presets opérationnels, rien de bloquant)
+- [ ] **P2 · — · (Dobby)** Maintien — keyworder et presets ; valider le prochain traitement réel après le correctif `headline`
 
-## TTD — Done (session 2026-07-03)
+## TTD — Done
 
+- [x] 2026-11-05 · Revue documentaire : correctif `headline` confirmé et chemin des presets corrigé
 - [x] 2026-07-03 · Thread file créé
 
 ---
@@ -46,6 +47,8 @@ Photographie naturaliste terrain — boîtiers Canon R10 + 90D, optiques RF 200-
 
 | Date | Résumé session | Livrable |
 |------|---------------|----------|
+| 2026-11-05 | Cohérence documentaire, sans nouveau traitement d'images | `thread-photo-nature.md`, `executive-summary.md` |
+| 2026-10-22 | Initialisation systématique de `headline` et `description` confirmée dans le code | `scripts/photo_keyworder.py` |
 | 2026-07-02 | INDEX mis à jour, cross-réfs | — |
 | 2026-06-19 | Photo keyworder déployé (gemma4 M5) | — |
 
@@ -54,7 +57,7 @@ Photographie naturaliste terrain — boîtiers Canon R10 + 90D, optiques RF 200-
 ## Liens
 
 - INDEX : `03_PROJECTS/06_PHOTO_NATURE/INDEX.md`
-- Presets : `03_PROJECTS/06_PHOTO_NATURE/presets/`
+- Presets : `03_PROJECTS/06_PHOTO_NATURE/tech/presets-argus/`
 - Analyses : `PHOTO/analyses/`
 - Keyworder : `scripts/photo_keyworder.py`
 

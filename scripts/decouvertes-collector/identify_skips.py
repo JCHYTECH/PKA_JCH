@@ -29,7 +29,7 @@ QUEUE = BASE / "queue"
 DRAFTS = BASE / "drafts"
 DRAFTS.mkdir(parents=True, exist_ok=True)
 
-MODEL = "claude-sonnet-4-6"
+MODEL = "claude-sonnet-5-5"
 client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
 
 VISION_PROMPT = """Tu identifies des lieux à partir de captures d'écran Instagram.

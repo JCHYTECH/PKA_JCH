@@ -23,28 +23,28 @@ ROUTES = [
     ("vision", [
         "regarde cette image", "analyse l'image", "ocr", "décris l'image",
         "que vois-tu", "photo ci-", "capture d'écran", "extrait le texte de",
-    ], "openai/gpt-4o", "vision (entrée image)"),
+    ], "openai/gpt-6.1-sol", "vision (entrée image)"),
     ("code", [
         "code", "refactor", "bug", "debug", "fonction", "script", "python",
         "sql", "regex", " git ", "api", "html", "css", "test", "compil",
         "déploie", "patch", "commit",
-    ], "anthropic/claude-sonnet-4.5", "code / refactoring"),
+    ], "anthropic/claude-opus-5.5", "code / refactoring"),
     ("raisonnement", [
         "math", "logique", "raisonn", "calcule", "algorithme", "prouve",
         "théorème", "énigme", "déduis", "équation", "probabilité",
-    ], "deepseek/deepseek-v4-pro", "raisonnement profond"),
+    ], "openai/gpt-6.1-sol", "raisonnement profond"),
     ("chinois", [
         "chinois", "chinese", "中文", "traduis", "traduction", "mandarin",
         "中国", " zh", "cn", "diah", "dixun",
-    ], "moonshotai/kimi-k3", "chinois / traduction CN"),
+    ], "moonshotai/kimi-k3.1-pro", "chinois / traduction CN"),
     ("rédaction", [
         "rédig", "redig", "copy", "article", "blog", "écris", "écri",
         "story", "narrat", "marketing", "newsletter", "landing", "titre",
-    ], "anthropic/claude-sonnet-4.5", "rédaction longue"),
+    ], "anthropic/claude-opus-5.5", "rédaction longue"),
     ("bulk", [
         "résum", "resum", "extrais", "classif", "liste", "synthè", "bullet",
         "tableau", "organise", "tri", "catalogue", "étiquet", "etiket",
-    ], "deepseek/deepseek-v4-flash", "bulk à bas coût"),
+    ], "openai/gpt-6.1-sol", "bulk à bas coût"),
 ]
 
 

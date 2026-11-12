@@ -2,7 +2,7 @@
 
 > Catalogue auto-maintenu du wiki PKA.  
 > Dobby met à jour ce fichier à chaque session.  
-> Dernière mise à jour : 2026-06-22  
+> Dernière mise à jour : 2026-11-11  
 > Pattern : LLM Wiki (Karpathy, 2026) — [[Knowledge/AI-Tools/LLM Wiki — Karpathy pattern|document source]]
 
 ---
@@ -76,7 +76,7 @@
 
 ## Navigation rapide
 
-- **Dernières daily notes :** `Daily/2026/06/` (trié par date)
+- **Dernières daily notes :** `Daily/2026/11/` (trié par date)
 - **Log opérationnel :** `log.md` — `grep "^## \[" log.md | tail -10`
 - **Sources brutes :** `JCH_Inbox/00_INBOX/` → `/ingest` pour traitement
 - **Projets :** `JCH_Inbox/03_PROJECTS/`

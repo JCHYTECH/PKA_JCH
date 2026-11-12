@@ -2,7 +2,7 @@
 
 > **Règle absolue :** Dobby ne cite JAMAIS un prix de mémoire. Tout prix dans une réponse doit être vérifié dans ce registre ou recherché en direct sur le web.
 > **Mise à jour :** à chaque nouveau prix vérifié, avec date et source.
-> **Dernière mise à jour :** 2026-07-13 — Création
+> **Dernière mise à jour :** 2026-11-07 — Ajout d'un repère VETALYX
 
 ---
 
@@ -24,6 +24,14 @@
 | SanDisk Extreme PRO | 128 Go | SD UHS-II V90 | **~209 €** | 2026-07-13 | idealo.fr |
 | Lexar Professional 2000x | 128 Go | SD UHS-II V90 | **~209 €** | 2026-07-13 | idealo.fr |
 | Samsung PRO Plus | 256 Go | microSD UHS-I V30 | ~25-30 € | 2026-07-13 | Amazon.fr (estimation — à vérifier) |
+
+---
+
+## Compléments pour animaux — repères VETALYX
+
+| Produit | Contenant | Prix affiché TTC | Date | Source et limites |
+|---------|-----------|------------------|------|-------------------|
+| PREMIERE Supplement Chien Snack Soft & Glossy | 300 g | **21,99 €** (73,30 €/kg) | 2026-11-07 | [Maxi Zoo Belgique](https://www.maxizoo.be/fr/p/premiere-supplement-chien-snack-soft--glossy-300g-2242007/) — prix public affiché, hors frais de livraison ; pas un équivalent posologique ou clinique du concept VETALYX |
 
 ---
 

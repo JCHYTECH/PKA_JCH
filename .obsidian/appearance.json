@@ -2,5 +2,6 @@
   "enabledCssSnippets": [
     "hide-dev-folders"
   ],
-  "cssTheme": "Cupertino"
+  "cssTheme": "Cupertino",
+  "showRibbon": true
 }

@@ -1,7 +1,7 @@
 # Thread — TRAVELS
 
 > Living document — mis à jour par Dobby 🦉 en fin de session.
-> **Dernière mise à jour** : 2026-10-28 — fiche « Moselle — Koblenz → source » (4 jours) créée
+> **Dernière mise à jour** : 2026-11-05 — clarification de la file DÉCOUVERTES : 590 entrées journalières, 50 éléments résiduels
 > **Statut** : 🟢 actif — pipeline DÉCOUVERTES en fonctionnement continu
 
 ---
@@ -28,7 +28,7 @@ Responsable : [[Cigogne]] 🦩 — Vanlife Travel Planner & Experience Curator
 | Fiches destinations | 🟢 | `vanlife/destinations/` — format `.md` canonique |
 | Logistique stationnement | 🟢 | `vanlife/logistique/` — camping-scout, méthodologie |
 | Voyages réalisés | ✅ | Italie (21/08–19/09), Wadden (30/06) dans `Trips/` |
-| Van — équipement | 🟡 | Meuble banquette en design (104×55×25) |
+| Van — équipement | 🟡 | Meuble banquette (design 104×55×25) ; boîte vélo pliant ADO (plan v1) |
 
 **Volumétrie** : 729 fichiers `.md`, 726 Mo — le projet le plus volumineux du
 workspace PKA.
@@ -49,6 +49,11 @@ workspace PKA.
 
 - [ ] **P2 · — · (Cigogne + Dobby)** Traiter 36 `skipped` (OCR échoué → vision forcée) + 9 `parked_routes` + 5 `rejected`
 - [ ] **P2 · — · (Cigogne)** Finaliser le meuble banquette (design 104×55×25)
+- [ ] **P2 · — · (JC + Dobby)** Maquette boîte vélo pliant → marquer axes/boîtier/chainring → valider encoches
+
+## TTD — Done (session 2026-11-05)
+
+- [x] 2026-11-05 · Revue documentaire : 590 entrées de queue confirmées comme journal, reste réel de 50 éléments ; aucun traitement du pipeline lancé
 
 ## TTD — Done (session 2026-10-22)
 
@@ -67,7 +72,7 @@ Telegram (groupe DÉCOUVERTES)
     ↓ collector.py  (process actif, en continu)
 pka-decouvertes/raw/          6 éléments
     ↓
-pka-decouvertes/queue/        590 éléments  ← GOULOT
+pka-decouvertes/queue/        590 entrées (journal), dont 540 analysées
     ↓ analyzer
 pka-decouvertes/drafts/       0
     ↓ validation
@@ -76,8 +81,10 @@ pka-decouvertes/validated_places/   647 fiches
 lupo-planner-import.json      191 Ko
 ```
 
-**Le goulot est l'analyseur**, pas le collecteur. 590 éléments en attente
-représentent plusieurs semaines de traitement au rythme actuel.
+La queue conserve **590 entrées historiques**, dont **540 déjà analysées**.
+Le reste à traiter est de **50 éléments** : 36 `skipped`, 5 `rejected` et
+9 `parked_routes`. L'analyseur reste le point d'attention pour ces cas résiduels ;
+il ne faut pas compter les 590 entrées comme un arriéré.
 
 ---
 
@@ -97,6 +104,9 @@ représentent plusieurs semaines de traitement au rythme actuel.
 
 | Date | Résumé session | Livrable |
 |------|---------------|----------|
+| 2026-11-10 | Routage achats Lupo : factures suspension VB Air (2 417,58 € TTC) + douche intérieure (233,15 € TTC) vers `van technique/achats/` + indexées file_index | `thread-travels.md`, `Lupo/van technique/achats/` |
+| 2026-11-05 | Revue de cohérence : 590 entrées = journal, 50 résidus ; aucune exécution du pipeline | `thread-travels.md`, `INDEX.md` |
+| 2026-11-03 | Plan v1 boîte vélo pliant ADO (Lupo) — dimensions + débit | `vanlife/velo-pliant-boite-rangement.md` |
 | 2026-10-28 | Roadtrip Moselle : fiche 4 jours + carte interactive | `Moselle_Koblenz_a_la_source.md` + `.html` |
 | 2026-10-22 | Thread file créé après re-vérification des projets | ce fichier |
 | 2026-10-19 | Génération `lupo-planner-import.json` | 191 Ko |

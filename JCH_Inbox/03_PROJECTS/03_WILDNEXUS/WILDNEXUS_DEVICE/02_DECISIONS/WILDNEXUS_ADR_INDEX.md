@@ -1,8 +1,8 @@
 # WildNexus — ADR Index
 
-**Version :** v1.0
-**Date :** 2026-07-05
-**Statut :** M-02 actif — 17 ADRs (14 acceptés, 1 sous réserve, 2 proposés)
+**Version :** v1.1
+**Date :** 2026-11-05
+**Statut :** Projet repris (2026-11-11) — 16 ADR rédigés (13 acceptés, 1 sous réserve, 2 proposés) + ADR-015 en backlog ; ADR-018 identifié
 **Owner :** [[Dobby]] + [[Forge]]
 
 ## 1. Objet
@@ -27,22 +27,22 @@ Les ADR documentent les décisions techniques qui structurent P0.
 | [ADR-012](ADR/ADR-012-strategie-test-p0.md) | Stratégie de test P0 (banc, terrain, régression) | [[Forge]] + [[Castor]] + [[Araignée]] | M-02 | **Accepté** (2026-06-12) |
 | [ADR-013](ADR/ADR-013-couche-acoustique-microphones-p0.md) | Couche acoustique : microphones et monitoring sonore | [[Dobby]] + JCH | M-02 | **Accepté** (2026-06-19) |
 | [ADR-014](ADR/ADR-014-format-payload-lora.md) | Format données et protocole transmission (payload LoRa) — caméra + spectral | [[Forge]] + [[Chouette]] | M-02 | **Accepté** (2026-07-05) |
-| [ADR-015](ADR/ADR-016-firmware-integre-p0.md) | Architecture plugin P1 (hardware + software) | [[Castor]] + [[Forge]] | P1 — après M-03 | **Backlog** |
+| ADR-015 — non rédigé | Architecture plugin P1 (hardware + software) | [[Castor]] + [[Forge]] | P1 — après M-03 | **Backlog** |
 | [ADR-016](ADR/ADR-016-firmware-integre-p0.md) | Firmware intégré P0 — machine d'états double cycle (caméra + audio) | [[Forge]] | M-02 | **Accepté** (2026-07-05) |
 | [ADR-017](ADR/ADR-017-schema-metadonnees-audio.md) | Schéma métadonnées audio et format de fichiers | [[Dobby]] + [[Forge]] + [[Chouette]] | M-02 | **Accepté** (2026-07-05) |
 
 > **Historique corrections :**
 > - ADR-014 (payload LoRa) : créé le 12/06, mis à jour le 05/07 (type spectral 0x05, commandes downlink 0x05/0x06, flag audio_clip_ready). Accepté le 05/07.
 > - ADR-016 (firmware intégré) : créé le 30/06, mis à jour le 05/07 (cycle AUDIO timer-triggered). Accepté le 05/07.
-> - ADR-017 (métadonnées audio) : créé et accepté le 05/07 — format WAV 16kHz/16-bit stéréo, sidecar JSON, SD 128 GB, compatibilité BirdNET/InsectSet459/TweetyBERT.
-> - ADR-012 (strégie de test) : statut corrigé en accepté (était proposé dans la v0.8, mais les tests sont actifs depuis le 12/06).
+> - ADR-017 (métadonnées audio) : créé et accepté le 05/07 — cible WAV 16 kHz/16-bit stéréo, sidecar JSON et SD 128 GB ; conversions et compatibilité BirdNET/InsectSet459/TweetyBERT à démontrer sur fichiers réels.
+> - ADR-012 (stratégie de test) : statut documentaire corrigé en accepté ; des tests hôte ont été consignés en juin, sans validation matérielle équivalente.
 
 ## 3. Points de réserve actifs
 
 | ADR | Point | Owner | Échéance |
 |---|---|---|---|
 | ADR-010 — R1 | Diversification de clé → ADR-011 | [[Castor]] + [[Forge]] | M-02 |
-| ADR-010 — R2 | Dual-license (MIT + ETHICS.md) | [[Hermine]] + [[Renard]] | M-02 |
+| ADR-010 — R2 | Articulation MIT + `ETHICS.md` + politique/contrats ; ce n'est pas une dual-licence | [[Hermine]] + [[Renard]] | Avant publication/contrat |
 | ADR-010 — R3 | Procédure droit d'accès RGPD | [[Renard]] | M-03 |
 | ADR-010 — R4 | Benchmark Edge AI ESP32-S3 | [[Forge]] + [[Nova]] + [[Musaraigne]] | M-02 |
 | ADR-010 — R5 | Impact énergétique Edge AI x ADR-005 | [[Bruno]] + [[Forge]] | M-02 |
@@ -55,8 +55,8 @@ Les ADR documentent les décisions techniques qui structurent P0.
 | ADR-015 | Architecture plugin P1 (hardware + software) | [[Castor]] + [[Forge]] | P1 — après M-03 |
 | ADR-018 | Synchronisation temporelle (NTP + RTC DS3231) | [[Forge]] + [[Castor]] | M-02/M-03 |
 
-> **ADR-018 identifié le 2026-07-05 :** L'audit WildNexus ↔ InsectNet/NEXUS_ACOUSTIC a révélé l'absence de protocole de synchronisation temporelle image↔audio. L'ESP32-S3 n'a pas de RTC hardware — dérive 2-5% en deep sleep. P0 : NTP au provisioning. P1 : RTC externe DS3231 (~2€) dans le volume réservé PCB (ADR-008).
+> **ADR-018 identifié le 2026-07-05 :** L'audit WildNexus ↔ InsectNet/NEXUS_ACOUSTIC a révélé l'absence de protocole de synchronisation temporelle image↔audio. L'ESP32-S3 n'a pas de RTC matérielle et sa dérive en deep sleep doit être mesurée. Les pistes à arbitrer dans ADR-018 sont le NTP au provisioning pour P0 et, si le besoin est démontré, une RTC externe en P1 ; coût, intégration et précision restent à établir.
 
 ---
 
-*Mis à jour le 2026-07-05 par Dobby 🦉 — ADR-014/016/017 acceptés suite à validation JC. 14 acceptés, 1 sous réserve, 2 proposés.*
+*Mis à jour le 2026-11-05 par Dobby 🦉 — lien ADR-015 retiré (document non rédigé), comptage corrigé : 16 ADR rédigés, dont 13 acceptés, 1 sous réserve et 2 proposés ; ADR-015 reste en backlog et ADR-018 reste à produire.*

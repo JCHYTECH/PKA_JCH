@@ -19,7 +19,7 @@ MOUSER_SEARCH_URL = "https://api.mouser.com/api/v2/search/keyword"
 MOUSER_CART_URL = "https://api.mouser.com/api/v1/cart/items/insert"
 
 ANTHROPIC_API_KEY: str = os.getenv("ANTHROPIC_API_KEY", "")
-ANTHROPIC_MODEL = "claude-sonnet-4-6"
+ANTHROPIC_MODEL = "claude-sonnet-5-5"
 
 # DigiKey OAuth2
 DIGIKEY_CLIENT_ID: str = os.getenv("DIGIKEY_CLIENT_ID", "")

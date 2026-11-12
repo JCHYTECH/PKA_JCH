@@ -59,9 +59,9 @@ DRAFTS_DIR.mkdir(parents=True, exist_ok=True)
 # ── Modèles ───────────────────────────────────────────────────────────────────
 
 CLAUDE_MODELS = {
-    "haiku":  "claude-haiku-4-5-20251001",
-    "sonnet": "claude-sonnet-4-6",
-    "opus":   "claude-opus-4-8",
+    "haiku":  "claude-haiku-5-5",
+    "sonnet": "claude-sonnet-5-5",
+    "opus":   "claude-opus-5-5",
 }
 
 OLLAMA_BASE = os.getenv("OLLAMA_BASE", "http://localhost:11435")

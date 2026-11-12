@@ -1308,7 +1308,7 @@ def get_provider(provider_name: str, model: str | None = None) -> RetroProvider 
         if not api_key:
             print("[WARN] Clé Anthropic introuvable. Vérifie ~/.config/pka-jch/anthropic_key.txt")
             return None
-        return AnthropicProvider(api_key, model or "claude-haiku-4-5-20251001")
+        return AnthropicProvider(api_key, model or "claude-haiku-5-5")
 
     elif provider_name == "openrouter":
         api_key = secrets.get("openrouter")
