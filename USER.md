@@ -63,6 +63,8 @@
 - Préfère donner un **cap** (direction finale) puis laisser Dobby saucissonner les étapes
 - Extrêmement concis — répond par mots-clés, fait confiance à Dobby pour décomposer et exécuter
 - Préfère les systèmes simples et synchrones aux pipelines asynchrones complexes
+- Préfère les **miroirs lecture seule** (synchro à sens unique) — n'édite pas depuis le second appareil
+- Préfère **une liste canonique unique** par domaine (matériel, procédures) plutôt qu'un inventaire dispersé
 - Active Dobby par un simple « dobby » et attend un résumé d'état immédiat
 - Éviter les acronymes techniques — s'expliquer en mots simples (JC, 2026-11-09)
 - Très persévérant — ne lâche pas un dépannage difficile, enchaîne les tentatives jusqu'au succès
