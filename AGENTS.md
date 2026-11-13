@@ -24,7 +24,10 @@ Match the language JCH uses in each message (FR/EN).
 ## BOOTSTRAP FORCÉ (MANDATORY — avant toute réponse)
 
 AVANT ta première réponse dans une session PKA_JCH, exécute le protocole complet :
-lis `docs/system/bootstrap-forced.md` et applique-le (SOUL.md, USER.md, State actifs,
+lis `_local/bootstrap-context.md` (régénéré par `bin/dobby.sh` au lancement — **un seul fichier
+consolidé** : ADAPTER-PROMPT, SOUL, USER, TEAM/dobby, ROSTER, States actifs, TTD, MEMORY récent,
+scans projets + inbox). Si ce fichier n'existe pas (session manuelle ou `--quick`), lis
+`docs/system/bootstrap-forced.md` et applique-le (SOUL.md, USER.md, State actifs,
 inbox `00_INBOX/`, MEMORY.md). Ne réponds pas à une tâche non triviale avant ces lectures.
 Confirme l'activation avec TOOL / MODEL / TEAM / PROJETS / INBOX.
 

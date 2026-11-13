@@ -1,7 +1,7 @@
 # Thread — VETALYX
 
 > Living document — mis à jour automatiquement par Dobby 🦉 en fin de session.
-> **Dernière mise à jour** : 2026-11-07 — rapport multifonctions oméga-3 peau/pelage finalisé ; analyse seulement, MVP IgE et priorités juridiques inchangés
+> **Dernière mise à jour** : 2026-11-12 — doc pédagogique « stick oméga-3 (dosage & appétence) » ajouté ; analyse seulement, MVP IgE et priorités juridiques inchangés
 > **Statut** : 🔶 actif (juridique) — capital 10 000 € (4 000 libéré), DIAHO 40 % en espèces
 
 ---
@@ -102,6 +102,7 @@ Plateforme de diagnostics vétérinaires rapides — marché européen. **Struct
 
 | Date | Résumé session | Livrable |
 |------|---------------|----------|
+| 2026-11-12 | Analyse stick (dosage à la longueur) + appétence ; doc pédagogique non technique | `strategy/2026-11-12_dobby_stick-dosage-appetence-vetalyx.md` |
 | 2026-11-07 | Analyse multifonctions oméga-3 peau/pelage ; corrections dose, preuves, TVA et économie ; pas de lancement décidé | `strategy/2026-11-07_VETALYX_rapport-strategique-omega3-peau-poil.md` |
 | 2026-11-05 | Revue documentaire uniquement ; aucune action juridique, traduction ou preuve d'envoi nouvelle | `thread-vetalyx.md`, `INDEX.md` |
 | 2026-06-19 | Rapport Vasco livré, pacte fondateurs | — |
@@ -127,6 +128,7 @@ Plateforme de diagnostics vétérinaires rapides — marché européen. **Struct
 - **Contrat-cadre v4 (FR consolidée)** : `legal/contrat-diaho/FF-Contrat-Cadre_VETALYX_DIAHO_Renard_2026-10-05_v4-consolidee.md`
 - **Contrat-cadre v4 EN (officielle)** : `legal/contrat-diaho/FF-Contrat-Cadre_VETALYX_DIAHO_Renard_2026-10-05_v4-EN.md`
 - **Business plan V3** : `business-plan/Vetalyx_Executive_summary_V3.docx` (+ `_V3.md`, `Vetalyx BP.xlsx`)
+- **Stick oméga-3 (explication simple)** : `strategy/2026-11-12_dobby_stick-dosage-appetence-vetalyx.md`
 - **Archives (antécédents)** : `_archive/legal/`
 
 ---

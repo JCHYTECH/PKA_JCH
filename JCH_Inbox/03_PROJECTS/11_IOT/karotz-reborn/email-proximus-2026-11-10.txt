@@ -1,0 +1,22 @@
+Objet : Instabilité récurrente de ma box Proximus — relevé de mesure
+
+Bonjour,
+
+Ma connexion Proximus subit des coupures fréquentes depuis plusieurs jours, ce qui rend tout usage continu impossible (visioconférence, télétravail, objets connectés).
+
+J'ai effectué un relevé automatique sur 1 heure (ping toutes les 2 secondes, à la fois vers la box et vers internet). Résultat :
+
+- 16 coupures du réseau local (la box cesse de répondre même en local), durée totale d'environ 4 minutes, avec des coupures pouvant atteindre 76 secondes ;
+- 22 coupures internet, durée totale d'environ 5 minutes, dont une de plus de 3 minutes ;
+- un épisode critique d'environ 6 minutes vers 12h40.
+
+Ces coupures semblent avoir deux causes distinctes :
+1. des redémarrages ou blocages de la box (elle ne répond plus du tout, même en local) ;
+2. des pertes de ligne (l'internet tombe alors que le réseau local continue de fonctionner).
+
+Le relevé détaillé, horodaté, est joint à ce message.
+
+Merci de bien vouloir diagnostiquer la ligne et/ou la box, et de me proposer un remplacement si nécessaire.
+
+Cordialement,
+Jean-Claude Havaux

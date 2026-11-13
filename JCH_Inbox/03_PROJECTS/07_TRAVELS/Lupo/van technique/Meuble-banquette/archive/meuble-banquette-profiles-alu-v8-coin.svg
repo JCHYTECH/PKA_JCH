@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" font-family="Helvetica, Arial, sans-serif">
+  <style>
+    .profil { fill:#3a3a3a; }
+    .montant { fill:#7ba3c9; stroke:#3a3a3a; stroke-width:1.5; }
+    .equerre { fill:none; stroke:#c0392b; stroke-width:3; stroke-linecap:round; }
+    .vis { fill:#c0392b; }
+    .dim { stroke:#1f5fa8; stroke-width:1; }
+    .dimt { fill:#1f5fa8; font-size:11px; }
+    .lbl { font-size:11px; fill:#222; }
+    .lbl-red { font-size:10px; fill:#c0392b; }
+    .ttl { font-size:16px; font-weight:bold; fill:#111; }
+    .sub { font-size:12px; fill:#555; }
+  </style>
+
+  <text x="40" y="32" class="ttl">Détail du coin — équerre 3 voies iMetrx (agencement des 3 profilés)</text>
+  <text x="40" y="50" class="sub">rail profondeur PASSANT (540) · rail largeur BUTÉ (304/248) · montant 216 · équerre insérée en rainure, 4 vis</text>
+
+  <!-- ================= VUE DE DESSUS (plan) ================= -->
+  <text x="40" y="84" class="lbl" font-weight="bold">Vue de dessus (plan) — coin bas du caisson</text>
+
+  <!-- rail profondeur : bande verticale (passant) -->
+  <rect x="120" y="100" width="40" height="200" class="profil"/>
+  <text x="140" y="336" class="lbl" text-anchor="middle">rail profondeur</text>
+  <text x="140" y="350" class="lbl" text-anchor="middle" font-size="10">passant · 540</text>
+
+  <!-- rail largeur : bande horizontale, butée contre la face x=160 -->
+  <rect x="160" y="260" width="220" height="40" class="profil"/>
+  <text x="270" y="336" class="lbl" text-anchor="middle">rail largeur</text>
+  <text x="270" y="350" class="lbl" text-anchor="middle" font-size="10">buté · 304 (A) / 248 (B/C)</text>
+
+  <!-- montant : carré au coin, au-dessus du cadre bas -->
+  <rect x="120" y="260" width="40" height="40" class="montant"/>
+  <text x="140" y="252" class="lbl" text-anchor="middle" font-size="10">montant (au-dessus)</text>
+
+  <!-- équerre : L rouge dans le coin intérieur -->
+  <path d="M 150 258 L 150 210" class="equerre"/>
+  <path d="M 150 258 L 208 258" class="equerre"/>
+  <text x="166" y="246" class="lbl-red">équerre</text>
+
+  <!-- vis (4) -->
+  <circle cx="150" cy="228" r="3" class="vis"/>
+  <circle cx="150" cy="244" r="3" class="vis"/>
+  <circle cx="178" cy="258" r="3" class="vis"/>
+  <circle cx="198" cy="258" r="3" class="vis"/>
+
+  <!-- cote : largeur profilé (20) -->
+  <line x1="120" y1="372" x2="160" y2="372" class="dim"/>
+  <text x="140" y="387" class="dimt" text-anchor="middle">20</text>
+  <!-- cote : hauteur profilé en plan (20) -->
+  <line x1="380" y1="260" x2="380" y2="300" class="dim"/>
+  <text x="392" y="285" class="dimt">20</text>
+  <!-- cote : rail largeur buté -->
+  <line x1="160" y1="238" x2="380" y2="238" class="dim"/>
+  <text x="270" y="231" class="dimt" text-anchor="middle">304 (A) · 248 (B/C) = largeur ext − 2×20</text>
+
+  <text x="40" y="424" class="sub">En plan : le rail largeur « bute » contre la face du rail profondeur. L'équerre relie les 2 rails + le montant (au-dessus).</text>
+
+  <!-- ================= VUE DE FACE (élévation) ================= -->
+  <text x="520" y="84" class="lbl" font-weight="bold">Vue de face (élévation) — montant entre rails haut/bas</text>
+
+  <!-- rail bas -->
+  <rect x="620" y="360" width="200" height="40" class="profil"/>
+  <!-- rail haut -->
+  <rect x="620" y="120" width="200" height="40" class="profil"/>
+  <!-- montant -->
+  <rect x="700" y="160" width="40" height="200" class="profil"/>
+  <text x="720" y="265" class="lbl" text-anchor="middle" font-size="10">montant 216</text>
+
+  <!-- équerres bas/haut -->
+  <path d="M 698 360 L 698 320 L 742 320" class="equerre"/>
+  <path d="M 698 160 L 698 200 L 742 200" class="equerre"/>
+
+  <!-- cotes hauteur -->
+  <line x1="838" y1="120" x2="838" y2="160" class="dim"/>
+  <text x="848" y="145" class="dimt">20</text>
+  <line x1="838" y1="160" x2="838" y2="360" class="dim"/>
+  <text x="848" y="265" class="dimt">216</text>
+  <line x1="838" y1="360" x2="838" y2="400" class="dim"/>
+  <text x="848" y="385" class="dimt">20</text>
+  <text x="820" y="430" class="dimt" text-anchor="middle">hors tout = 256</text>
+
+  <!-- note -->
+  <text x="40" y="488" class="sub">Équerre iMetrx : L en zamak, 4 vis, bras insérés dans les rainures — 2 bras sur les rails horizontaux, 3ᵉ appui sur le montant. Joint rigide + pas de taraudage d'âme.</text>
+  <text x="40" y="508" class="sub">Boucle fermée : 344 = 304 + 2×20 · 288 = 248 + 2×20 · 256 = 216 + 2×20.</text>
+</svg>

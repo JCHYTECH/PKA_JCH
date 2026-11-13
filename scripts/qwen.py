@@ -10,16 +10,10 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from pka_bootstrap import ROOT_DIR, render_bootstrap_context  # noqa: E402
+
 KEY_FILE = Path("~/.config/pka-jch/openrouter_key.txt").expanduser()
-ROOT_DIR = Path(__file__).resolve().parent.parent
-SYSTEM_PROMPT_FILE = ROOT_DIR / "QWEN.md"
-ADAPTER_PROMPT_FILE = ROOT_DIR / "ADAPTER-PROMPT.md"
-BOOTSTRAP_FILES = [
-    ROOT_DIR / "MEMORY.md",
-    ROOT_DIR / "TEAM" / "dobby.md",
-    ROOT_DIR / "TEAM" / "ROSTER.md",
-    ROOT_DIR / "wiki" / "index.md",
-]
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 MODELS = {
@@ -68,60 +62,6 @@ def load_key() -> str:
     return key
 
 
-def read_optional(path: Path) -> str:
-    if not path.exists():
-        return f"[missing: {path.name}]"
-    return path.read_text(encoding="utf-8")
-
-
-def latest_daily_files(limit: int = 2) -> list[Path]:
-    daily_dir = ROOT_DIR / "wiki" / "Daily"
-    if not daily_dir.exists():
-        return []
-    return sorted(daily_dir.glob("*.md"))[-limit:]
-
-
-def scan_dir(path: Path, *, dirs_only: bool = False) -> list[str]:
-    if not path.exists():
-        return [f"[missing: {path.relative_to(ROOT_DIR)}]"]
-    entries = []
-    for item in sorted(path.iterdir(), key=lambda p: p.name.lower()):
-        if dirs_only and not item.is_dir():
-            continue
-        entries.append(str(item.relative_to(ROOT_DIR)))
-    return entries
-
-
-def render_loaded_file(path: Path) -> str:
-    rel = path.relative_to(ROOT_DIR) if path.is_relative_to(ROOT_DIR) else path
-    return f"""Loaded file: {rel}
-```markdown
-{read_optional(path)}
-```
-"""
-
-
-def render_session_scan() -> str:
-    projects = "\n".join(f"- {entry}" for entry in scan_dir(ROOT_DIR / "JCH_Inbox" / "03_PROJECTS", dirs_only=True))
-    inbox = "\n".join(f"- {entry}" for entry in scan_dir(ROOT_DIR / "JCH_Inbox" / "00_INBOX"))
-    return f"""Loaded scan: JCH_Inbox/03_PROJECTS/
-```text
-{projects}
-```
-
-Loaded scan: JCH_Inbox/00_INBOX/
-```text
-{inbox}
-```
-"""
-
-
-def render_bootstrap_context() -> str:
-    files = [SYSTEM_PROMPT_FILE, ADAPTER_PROMPT_FILE, *BOOTSTRAP_FILES, *latest_daily_files()]
-    loaded = "\n".join(render_loaded_file(path) for path in files)
-    return f"{loaded}\n{render_session_scan()}"
-
-
 def load_system_prompt(model: str) -> str:
     bootstrap_context = render_bootstrap_context()
     return f"""You are running inside the local `qwen` CLI wrapper for PKA_JCH.
@@ -131,8 +71,10 @@ Important runtime constraint:
 - When an activation confirmation asks for MODEL, use the exact current model id above.
 - You are a plain chat-completions model call through OpenRouter.
 - You do not have filesystem, shell, browser, or tool access in this runtime.
-- The wrapper has already loaded the same startup files Codex/Dobby reads at session start.
-- Do not ask JCH to paste `ADAPTER-PROMPT.md`, `QWEN.md`, `MEMORY.md`, `TEAM/ROSTER.md`, `TEAM/dobby.md`, `wiki/index.md`, daily notes, project scans, or inbox scans.
+- The wrapper has already loaded the consolidated bootstrap context (ADAPTER-PROMPT.md,
+  SOUL.md, USER.md, TEAM/dobby.md, TEAM/ROSTER.md, State files, TTD.md, MEMORY.md,
+  daily notes, project scans, inbox scans) via scripts/pka_bootstrap.py.
+- Do not ask JCH to paste any of those files.
 - If a task needs live filesystem/tool execution, say briefly that Codex/Dobby with tools should run it.
 - Otherwise answer directly as [[Dobby]] using the loaded context.
 

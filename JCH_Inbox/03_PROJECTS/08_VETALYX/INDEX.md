@@ -1,6 +1,6 @@
 # VETALYX — Index projet
 
-> **Dernière mise à jour :** 2026-10-29 · **Statut :** 🔶 actif — phase juridique (constitution SRL + contrat-cadre DIAHO)
+> **Dernière mise à jour :** 2026-11-12 · **Statut :** 🔶 actif — phase juridique (constitution SRL + contrat-cadre DIAHO)
 > Réorganisation : dossiers en clair, analyses classées par thème, `legal/` carte dédiée.
 
 ## 🟢 Entrée rapide
@@ -18,7 +18,7 @@ Lancement sur le marché européen du **diagnostic rapide d'allergies chez les a
 | Dossier | Contenu |
 |---|---|
 | [`legal/`](legal/) | **Juridique — voir [`legal/INDEX.md`](legal/INDEX.md)**. Versions actuelles de travail : statuts FR/EN v2, pacte v2, convention bloc fondateurs v2, contrat-cadre DIAHO v4 et réponse v4.1 préparée, envoi non documenté. Notes/analyses dans `legal/_travail/`. |
-| [`strategy/`](strategy/) | Notes pivot (overview, strategie, commercial, decisions, site web) + études (diversification gamme, analyse approfondie) |
+| [`strategy/`](strategy/) | Notes pivot (overview, strategie, commercial, decisions, site web) + études (diversification gamme, analyse approfondie) + **[stick oméga-3 expliqué simplement](strategy/2026-11-12_dobby_stick-dosage-appetence-vetalyx.md)** |
 | [`regulatory/`](regulatory/) | Réglementation EU/FR/DE + cadre réglementaire Omega3 + `DOSSIER_TECHNIQUE_DIXUN/` |
 | [`clinical/`](clinical/) | `consensus-compo/`, `etudes-cliniques/` + revue scientifique & bibliographie Omega3 |
 | [`market/`](market/) | Analyses marché, concurrents, decks sales |

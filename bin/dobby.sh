@@ -5,6 +5,7 @@
 
 PKA_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 MODEL="deepseek"
+QUICK="0"
 
 # Parse arguments
 while [[ $# -gt 0 ]]; do
@@ -12,6 +13,10 @@ while [[ $# -gt 0 ]]; do
     --model|-m)
       MODEL="$2"
       shift 2
+      ;;
+    --quick|-q)
+      QUICK="1"
+      shift
       ;;
     *)
       shift
@@ -33,9 +38,22 @@ fi
 
 # Bootstrap Dobby : source canonique unique pour tous les runtimes
 BOOTSTRAP="$PKA_DIR/AGENTS.md"
+BOOTSTRAP_CTX="$PKA_DIR/_local/bootstrap-context.md"
+
+# Régénère le contexte consolidé (Config + State + TTD + Log + scans).
+# --quick : identité seule (Config), sans State — pour tests/bonjour.
+if [[ "$QUICK" == "1" ]]; then
+  BOOTSTRAP_MODE="quick (identité seule)"
+else
+  BOOTSTRAP_MODE="complet (consolidé)"
+  "$PYTHON" "$PKA_DIR/scripts/pka_bootstrap.py" >/dev/null || {
+    echo "⚠️  Bootstrap consolidé non généré — fallback lecture individuelle."
+  }
+fi
 
 echo "🐶 Dobby — PKA_JCH"
 echo "   Modèle  : $MODEL"
+echo "   Bootstrap: $BOOTSTRAP_MODE"
 echo "   Dossier : $PKA_DIR"
 echo ""
 
@@ -116,7 +134,11 @@ case "$MODEL" in
     fi
     export OPENROUTER_API_KEY="$(cat ~/.config/pka-jch/openrouter_key.txt 2>/dev/null)"
     echo "ℹ️  Codex CLI — agent local, backend OpenRouter (profil YOLO)"
-    exec codex --profile openrouter "$(cat "$PKA_DIR/docs/system/bootstrap-forced.md")"
+    if [[ -f "$BOOTSTRAP_CTX" ]]; then
+      exec codex --profile openrouter "$(cat "$BOOTSTRAP_CTX")"
+    else
+      exec codex --profile openrouter "$(cat "$PKA_DIR/docs/system/bootstrap-forced.md")"
+    fi
     ;;
 
   kimi-code|kc)

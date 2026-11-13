@@ -109,6 +109,7 @@ _local/*.out
 _local/logs/
 _local/*_state.json
 _local/backup_pka_m1.log
+_local/bootstrap-context.md
 TEAM/team.db-wal
 TEAM/team.db-shm
 
@@ -134,3 +135,30 @@ JCH_Inbox/03_PROJECTS/11_IOT/iot-van/specs/mapping-lupo-assiette-m5-test.json
 JCH_Inbox/03_PROJECTS/11_IOT/iot-van/specs/SPEC-ASSIETTE-VAN-IPHONE-MQTT.md
 JCH_Inbox/03_PROJECTS/11_IOT/iot-van/OPERATIONS-CAN-OBD.md
 scripts/pka_sensorlog_http_bridge.py
+
+# Artefacts d'outils locaux (sessions MCP, runs de skills) — 2026-11-13
+.playwright-mcp/
+.supply-chain-risk-auditor/
+
+# Fichiers verrou Word (temp)
+~$*
+
+# Clones d'outils locaux (dépôts git imbriqués)
+_local/novnc/
+
+# Camera RAW — jamais versionné (2026-11-13)
+*.dng
+*.DNG
+*.CR2
+*.CR3
+*.NEF
+*.ARW
+
+# WildLens — médias de production vidéo (lourds, locaux, pas versionnés)
+# On garde uniquement les .md (storyboard, montage-guide, production-pack, README)
+JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/video/*
+!JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/video/*.md
+
+# Artefacts générés — jamais versionnés (exports NotebookLM, backups)
+**/notebooklm/
+**/backups/

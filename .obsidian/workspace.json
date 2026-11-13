@@ -4,60 +4,9 @@
     "type": "split",
     "children": [
       {
-        "id": "d1b18c389ac713cd",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "b957b13ba4c446e9",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "terminal:terminal",
-              "state": {
-                "terminal:terminal": {
-                  "cwd": "/Users/jchavauxm5/PKA_JCH",
-                  "focus": false,
-                  "profile": {
-                    "args": [
-                      "--login"
-                    ],
-                    "environment": [],
-                    "executable": "/bin/zsh",
-                    "followTheme": true,
-                    "name": "",
-                    "platforms": {
-                      "darwin": true
-                    },
-                    "pythonExecutable": "python3",
-                    "restoreHistory": false,
-                    "rightClickAction": "copyPaste",
-                    "successExitCodes": [
-                      "0",
-                      "SIGINT",
-                      "SIGTERM"
-                    ],
-                    "terminalOptions": {
-                      "documentOverride": null
-                    },
-                    "type": "integrated",
-                    "win32Backend": "conpty"
-                  },
-                  "profileSourceId": "darwinIntegratedDefault",
-                  "serial": null,
-                  "userTitle": ""
-                }
-              },
-              "pinned": true,
-              "icon": "terminal:tab-bezel",
-              "title": "zsh"
-            }
-          }
-        ],
-        "stacked": true
-      },
-      {
         "id": "a24c2a0d57046100",
         "type": "tabs",
+        "dimension": 54.16382252559727,
         "children": [
           {
             "id": "e6af270c4a600453",
@@ -95,11 +44,56 @@
                   },
                   "profileSourceId": "darwinIntegratedDefault",
                   "serial": null,
-                  "userTitle": ""
+                  "userTitle": "VETZALYX"
                 }
               },
               "icon": "terminal:tab-bezel",
-              "title": "zsh"
+              "title": "VETZALYX"
+            }
+          },
+          {
+            "id": "19ba24449461b509",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "terminal:terminal",
+              "state": {
+                "terminal:terminal": {
+                  "cwd": "/Users/jchavauxm5/PKA_JCH",
+                  "focus": false,
+                  "profile": {
+                    "args": [
+                      "--login"
+                    ],
+                    "environment": [],
+                    "executable": "/bin/zsh",
+                    "followTheme": true,
+                    "name": "",
+                    "platforms": {
+                      "darwin": true
+                    },
+                    "pythonExecutable": "python3",
+                    "restoreHistory": false,
+                    "rightClickAction": "copyPaste",
+                    "successExitCodes": [
+                      "0",
+                      "SIGINT",
+                      "SIGTERM"
+                    ],
+                    "terminalOptions": {
+                      "documentOverride": null
+                    },
+                    "type": "integrated",
+                    "win32Backend": "conpty"
+                  },
+                  "profileSourceId": "darwinIntegratedDefault",
+                  "serial": null,
+                  "userTitle": "Wildlens"
+                }
+              },
+              "pinned": true,
+              "icon": "terminal:tab-bezel",
+              "title": "Wildlens"
             }
           }
         ]
@@ -107,6 +101,7 @@
       {
         "id": "7f1eb21adf84feb1",
         "type": "tabs",
+        "dimension": 45.83617747440273,
         "children": [
           {
             "id": "372c104e53e3ca27",
@@ -120,7 +115,8 @@
               "title": "WildNexus-P0_Protocoles_SOP-01-18"
             }
           }
-        ]
+        ],
+        "stacked": true
       }
     ],
     "direction": "vertical"
@@ -167,7 +163,10 @@
               "type": "column-explorer-view",
               "state": {
                 "selection": [
-                  "JCH_Inbox"
+                  "JCH_Inbox",
+                  "JCH_Inbox/03_PROJECTS",
+                  "JCH_Inbox/03_PROJECTS/03_WILDNEXUS",
+                  "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE"
                 ],
                 "intermediateColumnsCollapsed": false
               },
@@ -270,8 +269,8 @@
             "state": {
               "type": "git-view",
               "state": {},
-              "icon": "lucide-ghost",
-              "title": "git-view"
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           }
         ],
@@ -299,19 +298,24 @@
       "column-explorer:Column Explorer": false
     }
   },
-  "active": "b957b13ba4c446e9",
+  "active": "e6af270c4a600453",
   "lastOpenFiles": [
-    "_local/zigbee2mqtt/log/2026-11-12.21-47-16/log.log",
-    "_local/zigbee2mqtt/log/2026-11-12.21-47-16",
-    "_local/zigbee2mqtt/log/2026-11-12.21-46-50/log.log",
-    "_local/zigbee2mqtt/log/2026-11-12.21-46-50",
-    "_local/zigbee2mqtt/log/2026-11-12.21-46-23/log.log",
-    "_local/zigbee2mqtt/log/2026-11-12.21-46-23",
-    "_local/zigbee2mqtt/log/2026-11-12.21-45-57/log.log",
-    "_local/zigbee2mqtt/log/2026-11-12.21-45-57",
-    "_local/zigbee2mqtt/log/2026-11-12.21-45-30/log.log",
-    "_local/zigbee2mqtt/log/2026-11-12.21-45-30",
-    "_local/zigbee2mqtt/log/2026-11-12.21-45-04/log.log",
+    "_local/zigbee2mqtt/log/2026-11-13.10-17-37/log.log",
+    "_local/zigbee2mqtt/log/2026-11-13.10-17-37",
+    "_local/zigbee2mqtt/log/2026-11-13.10-17-10/log.log",
+    "_local/zigbee2mqtt/log/2026-11-13.10-17-10",
+    "_local/zigbee2mqtt/log/2026-11-13.10-16-43/log.log",
+    "_local/zigbee2mqtt/log/2026-11-13.10-16-43",
+    "_local/zigbee2mqtt/log/2026-11-13.10-16-17/log.log",
+    "_local/zigbee2mqtt/log/2026-11-13.10-16-17",
+    "_local/zigbee2mqtt/log/2026-11-13.10-15-50/log.log",
+    "_local/zigbee2mqtt/log/2026-11-13.10-15-50",
+    "_local/zigbee2mqtt/log/2026-11-13.10-15-24/log.log",
+    "_local/bootstrap-context.md",
+    "TEAM_Inbox/2026-11-13_forge_watch-inbox-alert.md",
+    "JCH_Inbox/03_PROJECTS/08_VETALYX/strategy/2026-11-12_dobby_stick-dosage-appetence-vetalyx.md",
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/operations-creation-site-ghost.md",
+    "wiki/Daily/2026/11/2026-11-12-dégel-wildnexus-device-ghost-wildlens-selphy-12v-cohérence-t.md",
     "JCH_Inbox/03_PROJECTS/07_TRAVELS/Lupo/van technique/ELECTRICITE/selphy-cp1300-alimentation-12v.md",
     "_hooktest.md",
     "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/07_PROCUREMENT_BOM/INVENTAIRE-checklist-reprise-2026-11-12.md",
@@ -342,11 +346,6 @@
     "_local/novnc/AI_POLICY.md",
     "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/PROTOCOLES/Manuel de protocole technique _ Tests de consommation ESP32-S3 & PPK2.md",
     "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/PROTOCOLES/SOP-01-esp32-alive-check.md",
-    "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/00_INDEX/README.md",
-    "TEAM_Inbox/2026-11-11_dobby_synthese-session-rpi-home-zigbee.md",
-    "wiki/Daily/2026/11/2026-11-11-rpi-home-ressuscité-z2m-réinstallé-serre-temp-hum-re-appairé.md",
-    "wiki/Daily/2026-11-11.md",
-    "JCH_Inbox/03_PROJECTS/08_VETALYX/FINAL TEXTS/archive/Renard_audit-coherence-FR-EN_2026-11-11.md",
     "Untitled.canvas"
   ]
 }
