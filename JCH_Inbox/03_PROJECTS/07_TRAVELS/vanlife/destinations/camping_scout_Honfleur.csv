@@ -1,0 +1,40 @@
+Nom,Source,Type,Adresse,Distance (km),Latitude,Longitude,URL,Description,Services,Prix,Note,Score JCH,Réserve proche
+Aire Le pressoir Marie Claire,OSM-camping,Camping / Aire CC,,11.5,49.3517163,0.1141754,https://www.openstreetmap.org/node/12186034818,,vidange,~15 €,,5,
+Aire Boissel Père & Fils - Saint-André-d'Hébertot,OSM-camping,Camping / Aire CC,Saint-André-d'Hébertot,14.1,49.3029467,0.3108922,https://www.openstreetmap.org/node/12242444661,,eau,Gratuit,,5,
+Aire L'Assiette des Mondes d'Equemauville,OSM-camping,Camping / Aire CC,,2.7,49.3993964,0.2146733,https://www.openstreetmap.org/node/12242462505,,,Gratuit,,5,
+(sans nom),OSM-camping,Camping / Aire CC,,22.0,49.473414,0.5258475,https://www.openstreetmap.org/node/13372401104,,,,,7,(sans nom) (4.9 km)
+Camping Du Phare,OSM-camping,Camping / Aire CC,Honfleur,0.9,49.4248345,0.2251083,https://www.openstreetmap.org/way/68701378,,"vidange, eau, douches, WC",,★2,5,
+Camping des Forges,OSM-camping,Camping / Aire CC,Saint-Antoine-la-Forêt,22.8,49.530868,0.4978568,https://www.openstreetmap.org/way/108192179,,,,,3,
+Camping le Lieu Castel,OSM-camping,Camping / Aire CC,Gonneville-sur-Mer,23.7,49.3034207,-0.0400349,https://www.openstreetmap.org/way/110571214,,,,,7,Site naturel des Vaches Noires (1.7 km)
+Camping Les Falaises,OSM-camping,Camping / Aire CC,,23.9,49.3077035,-0.0467431,https://www.openstreetmap.org/way/110571247,,,,★4,7,Site naturel des Vaches Noires (1.2 km)
+Bellevue ****,OSM-camping,Camping / Aire CC,Villers-sur-Mer,22.0,49.3098539,-0.0174533,https://www.openstreetmap.org/way/110606660,,,,★4,5,Site naturel des Vaches Noires (3.3 km)
+Camping de la Plage,OSM-camping,Camping / Aire CC,Blonville-sur-Mer,18.0,49.3343403,0.022549,https://www.openstreetmap.org/way/111171330,,,Payant,★3,6,Site naturel des Vaches Noires (7.0 km)
+Lieu Pieugé,OSM-camping,Camping / Aire CC,,18.8,49.3222426,0.0220933,https://www.openstreetmap.org/way/111319083,,,,,6,Site naturel des Vaches Noires (6.5 km)
+Les Ammonites,OSM-camping,Camping / Aire CC,,23.4,49.3094086,-0.0400302,https://www.openstreetmap.org/way/111390413,,,,,7,Site naturel des Vaches Noires (1.7 km)
+La Vallée de Deauville,OSM-camping,Camping / Aire CC,,14.4,49.3299485,0.0908781,https://www.openstreetmap.org/way/113384776,,,,★5,5,
+Aire de camping-car du Havre,OSM-camping,Camping / Aire CC,Le Havre,10.5,49.504588,0.1717205,https://www.openstreetmap.org/way/156954655,,"vidange, eau",~6 €,,7,"Le Havre, la Ville Reconstruite par Auguste Perret (5.0 km)"
+Camping du Lac Terre d'Auge,OSM-camping,Camping / Aire CC,,16.2,49.2751222,0.2051111,https://www.openstreetmap.org/way/170449341,,,,,4,
+Village Club,OSM-camping,Camping / Aire CC,Blonville-sur-Mer,19.2,49.3156591,0.0231313,https://www.openstreetmap.org/way/189823781,,,,★4,6,Site naturel des Vaches Noires (6.4 km)
+Risle Seine,OSM-camping,Camping / Aire CC,,19.3,49.3662428,0.4863864,https://www.openstreetmap.org/way/194907605,,"douches, WC",Payant,★3,8,(sans nom) (7.4 km)
+Domaine de la Catinière,OSM-camping,Camping / Aire CC,Fiquefleur-Équainville,5.5,49.401664,0.3044065,https://www.openstreetmap.org/way/248981792,,,,★4,5,
+De Lassus,OSM-motorhome,Parking motorhome,,21.0,49.5961056,0.1291156,https://www.openstreetmap.org/way/249687281,,,Gratuit,,3,
+Le Grand Hameau,OSM-camping,Camping / Aire CC,Saint-Jouin-Bruneval,24.1,49.630365,0.1582144,https://www.openstreetmap.org/way/250276914,,,,★3,3,
+Camping du Chant des Oiseaux,OSM-camping,Camping / Aire CC,,11.3,49.3780729,0.0921644,https://www.openstreetmap.org/way/263095948,,"vidange, eau, douches, WC",Payant,,5,
+Camping Le Château d'Arvid,OSM-camping,Camping / Aire CC,Villerville,8.9,49.3889832,0.1203995,https://www.openstreetmap.org/way/263111478,,,Payant,★4,5,
+Aire de Camping Car de Honfleur,OSM-camping,Camping / Aire CC,,0.7,49.4191227,0.2428239,https://www.openstreetmap.org/way/263175821,,"vidange, eau",~15 €,,5,
+Le Brévedent,OSM-camping,Camping / Aire CC,,22.1,49.2260394,0.3046177,https://www.openstreetmap.org/way/366570116,,,,★4,3,
+Les Pommiers,OSM-camping,Camping / Aire CC,Saint-Sylvestre-de-Cormeilles,24.9,49.2463474,0.4501748,https://www.openstreetmap.org/way/461183258,,"eau, douches, WC",Payant,★3,3,
+La Briquerie,OSM-camping,Camping / Aire CC,Honfleur,3.0,49.3985309,0.2074944,https://www.openstreetmap.org/way/462561451,,,,★5,5,
+Aire de stationnement et de service de Gruchet Le Valasse,OSM-camping,Camping / Aire CC,,23.6,49.5405877,0.5013129,https://www.openstreetmap.org/way/592200989,,vidange,Gratuit,,3,
+Aire Camping-Car Park La Rivière-Saint-Sauveur,OSM-camping,Camping / Aire CC,,2.8,49.4090714,0.2682463,https://www.openstreetmap.org/way/597934632,,"vidange, eau",~14.20 €,,5,
+Aire Camping-cars Villers-sur-Mer,OSM-camping,Camping / Aire CC,,18.9,49.3289225,0.0132476,https://www.openstreetmap.org/way/616344153,,"vidange, eau",~12 €,,6,Site naturel des Vaches Noires (6.1 km)
+Aire de Camping-Car de Cormeilles,OSM-camping,Camping / Aire CC,Cormeilles,21.6,49.2489382,0.3741253,https://www.openstreetmap.org/way/784589340,,vidange,Gratuit,,3,
+Camping Les Bruyères,OSM-camping,Camping / Aire CC,Conteville,10.8,49.4059498,0.3806684,https://www.openstreetmap.org/way/1044709275,,"douches, WC",,★2,5,
+Camping les Haras de Deauville,OSM-camping,Camping / Aire CC,,11.9,49.3486442,0.1121803,https://www.openstreetmap.org/way/1044709279,,,,★4,5,
+Aire naturelle de camping Le Lieu Joly,OSM-camping,Camping / Aire CC,,14.2,49.2977777,0.1762651,https://www.openstreetmap.org/way/1044755330,,"douches, WC",Payant,,5,
+(sans nom),OSM-camping,Camping / Aire CC,,17.1,49.2696031,0.1839093,https://www.openstreetmap.org/way/1083282983,,,,,4,
+Aire Naturelle de Camping Legrix,OSM-camping,Camping / Aire CC,,18.1,49.2686666,0.1414627,https://www.openstreetmap.org/way/1226593346,,,,,4,
+Aire de camping-car de Blangy-le-Château,OSM-camping,Camping / Aire CC,,19.7,49.2446749,0.2775487,https://www.openstreetmap.org/way/1247606741,,"vidange, WC",Gratuit,,4,
+Domaine du Lac,OSM-camping,Camping / Aire CC,,19.4,49.2475546,0.2761715,https://www.openstreetmap.org/way/1247626620,,,,,4,
+Aire de stationnement et de service de Saint-Nicolas-de-la-Taille,OSM-camping,Camping / Aire CC,,20.2,49.5126171,0.4741233,https://www.openstreetmap.org/way/1316393622,,"vidange, eau",Gratuit,,3,
+Les Pestils,OSM-camping,Camping / Aire CC,,22.7,49.2468749,0.0671695,https://www.openstreetmap.org/way/1382927435,,eau,~8 € / 24 hours,,3,

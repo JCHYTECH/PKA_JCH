@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title>Moselle — Koblenz → source — Vanlife</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+  :root { --ivoire: #F8F5F0; --noir: #0D0B09; --ocre: #C17F3A; --sable: #E8E2DA; --sable-fonce: #D4CCC2; --ardoise: #4A5568; --gris: #6B7280; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--ivoire); color: var(--noir);
+    font-family: 'Inter', -apple-system, sans-serif; font-size: 15px; line-height: 1.6;
+    padding: 16px 14px; -webkit-text-size-adjust: 100%;
+  }
+  h1, h2, h3, th { font-family: 'Inter', -apple-system, sans-serif; font-weight: 700; }
+  h1 { font-size: 24px; color: var(--ocre); margin-bottom: 4px; }
+  h2 { font-size: 13px; color: var(--ocre); margin: 24px 0 8px 0; padding-bottom: 3px; border-bottom: 2px solid var(--sable); text-transform: uppercase; letter-spacing: 0.05em; }
+  h3 { font-size: 12px; color: var(--ardoise); margin: 12px 0 4px 0; font-weight: 600; }
+  .km, .price { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ardoise); }
+  .header { margin-bottom: 14px; padding-bottom: 10px; border-bottom: 3px solid var(--ocre); }
+  .header-meta { font-size: 11px; color: var(--gris); margin-top: 4px; }
+  .status { display: inline-block; background: var(--ocre); color: #fff; padding: 2px 10px; font-family: 'Inter', -apple-system, sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+  .tagline { font-family: 'Inter', -apple-system, sans-serif; font-weight: 400; color: var(--gris); font-size: 13px; }
+  .card { background: var(--sable); padding: 10px 14px; margin: 8px 0; font-size: 13px; }
+  .rules { background: var(--sable); padding: 10px 12px; margin: 8px 0; font-size: 12px; border-left: 4px solid var(--ocre); line-height: 1.7; }
+  .rules strong { color: var(--ocre); }
+  .boat { background: #E8F0FE; border-left: 4px solid #3B82F6; padding: 10px 12px; margin: 8px 0; font-size: 12px; line-height: 1.7; }
+  .table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 8px 0 12px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 11px; min-width: 500px; }
+  th { background: var(--sable-fonce); color: var(--noir); font-family: 'Inter', -apple-system, sans-serif; font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; padding: 8px 8px; text-align: left; white-space: nowrap; }
+  td { padding: 7px 8px; border-bottom: 1px solid var(--sable); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  .planning td:first-child { font-weight: 600; color: var(--ocre); white-space: nowrap; font-family: 'IBM Plex Mono', monospace; font-size: 11px; }
+  .meal { font-size: 10px; color: var(--ardoise); }
+  .link a { color: var(--ocre); text-decoration: none; font-size: 14px; padding: 4px 8px; display: inline-block; }
+  .lodging { font-weight: 700; color: var(--noir); }
+  .flex { display: flex; gap: 12px; flex-wrap: wrap; }
+  .col { flex: 1; min-width: 200px; }
+  .text-right { text-align: right; }
+  .map-container { height: 280px; margin: 10px 0; border: 2px solid var(--sable); position: relative; z-index: 1; }
+  .footer { margin-top: 24px; padding-top: 10px; border-top: 2px solid var(--sable); font-size: 10px; color: var(--gris); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px; }
+
+  @media screen and (min-width: 768px) {
+    body { font-size: 13px; max-width: 750px; margin: 0 auto; padding: 24px; }
+    h1 { font-size: 22px; } h2 { font-size: 11px; margin-top: 20px; } h3 { font-size: 11px; }
+    .km, .price { font-size: 11px; }
+    .map-container { height: 340px; }
+    table { font-size: 10px; min-width: 0; }
+    th { font-size: 9px; padding: 6px 6px; }
+    td { font-size: 10px; padding: 5px 6px; }
+    .table-wrap { overflow-x: visible; }
+    .header-meta { font-size: 10px; text-align: right; }
+    .rules { font-size: 11px; } .boat { font-size: 11px; }
+  }
+
+  @media print { body { padding: 12mm; background: #fff; font-size: 9pt; } .no-print { display: none; } .map-container { height: 200px; } .table-wrap { overflow-x: visible; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Moselle — Koblenz → source</h1>
+  <div class="tagline">Vallée de la Moselle · Liège → Vosges (Col de Bussang) — mai–juin ou septembre</div>
+  <div class="header-meta"><span class="status">en préparation</span> &nbsp; 4 jours aller · à définir (2026)</div>
+</div>
+
+<div class="rules">
+  <strong>⏰ Départ :</strong> 10h00 · <strong>Étape :</strong> 9h00 · <strong>Retour :</strong> 9h00 · <strong>J1 :</strong> max 4h route → arrêt · <strong>J+ :</strong> max 7h<br>
+  📷 Photos : approximatif, sans stress · 🏛️ Anne : durées visites + baignade comptées · 🥐/🥪/🍽️ : p-déj + déj van, dîner resto
+</div>
+
+<div class="map-container no-print" id="map"></div>
+
+<h2>Attraits</h2>
+<div class="flex">
+  <div class="col"><h3>JCH — Photo wildlife</h3><p>Vallée de la Moselle (méandres, milan royal, faucon pèlerin, hérons) · Calmont/Bremm (vignoble le plus pentu d'Europe) · Réserve naturelle de Schengen · Ballon d'Alsace (1 247 m) à l'aube</p></div>
+  <div class="col"><h3>Anne — Art &amp; patrimoine</h3><p>Deutsches Eck + forteresse Ehrenbreitstein · Château d'Eltz (XIIe s.) · Bernkastel-Kues (Spitzhäuschen 1416) · Trèves (Porta Nigra) · Metz (cathédrale, quartier impérial) · Remiremont</p></div>
+</div>
+<div class="card"><strong>Points communs :</strong> alternance vallée viticole / montagne vosgienne · lumières d'aube et crépuscule sur l'eau · crêtes panoramiques · hors saison touristique</div>
+
+<h2>Logistique</h2>
+<div class="table-wrap"><table>
+  <tr><th>Stationnement</th><td>Stellplatz Koblenz (J1) · Moselcamping Bernkastel (J2) · Aire Metz-Plage (J3) · Aire Saint-Maurice-sur-Moselle (J4) — GPS ≈ à confirmer Park4Night</td></tr>
+  <tr><th>Services</th><td>Stellplatz Koblenz (eau/vidange/élec) + aire Saint-Maurice (J4). Appoint eau à J3 si autonomie &lt; 3 jours.</td></tr>
+  <tr><th>Accès</th><td>A3/E42 → A44 → A61 (autoroute) ou par l'Eifel (pittoresque)</td></tr>
+  <tr><th>Distance Liège</th><td class="km">200 km (2h15) auto. / 230 km (3h30) sans</td></tr>
+  <tr><th>Contraintes</th><td>Ruelles médiévales étroites (Bernkastel, Cochem) — ne pas y entrer avec le van · parking Burg Eltz étroit → garer Moselkern (2 km à pied)</td></tr>
+</table></div>
+
+<h2>Distances &amp; liens</h2>
+<div class="table-wrap"><table>
+  <tr><th>Trajet</th><th class="text-right">Km</th><th class="text-right">Temps</th><th>Maps</th></tr>
+  <tr><td>Liège → Koblenz</td><td class="km text-right">200</td><td class="km text-right">2h15</td><td class="link"><a href="https://www.google.com/maps/dir/Liège/Koblenz" target="_blank">🔗</a></td></tr>
+  <tr><td>Koblenz → Burg Eltz</td><td class="km text-right">40</td><td class="km text-right">50 min</td><td class="link"><a href="https://www.google.com/maps/dir/Koblenz/Burg+Eltz" target="_blank">🔗</a></td></tr>
+  <tr><td>Burg Eltz → Bernkastel-Kues</td><td class="km text-right">60</td><td class="km text-right">1h</td><td class="link"><a href="https://www.google.com/maps/dir/Burg+Eltz/Bernkastel-Kues" target="_blank">🔗</a></td></tr>
+  <tr><td>Bernkastel-Kues → Trèves</td><td class="km text-right">50</td><td class="km text-right">1h</td><td class="link"><a href="https://www.google.com/maps/dir/Bernkastel-Kues/Trier" target="_blank">🔗</a></td></tr>
+  <tr><td>Trèves → Schengen</td><td class="km text-right">45</td><td class="km text-right">50 min</td><td class="link"><a href="https://www.google.com/maps/dir/Trier/Schengen" target="_blank">🔗</a></td></tr>
+  <tr><td>Schengen → Metz</td><td class="km text-right">60</td><td class="km text-right">1h</td><td class="link"><a href="https://www.google.com/maps/dir/Schengen/Metz" target="_blank">🔗</a></td></tr>
+  <tr><td>Metz → Nancy → Épinal</td><td class="km text-right">130</td><td class="km text-right">2h15</td><td class="link"><a href="https://www.google.com/maps/dir/Metz/Épinal" target="_blank">🔗</a></td></tr>
+  <tr><td>Épinal → source (Col de Bussang)</td><td class="km text-right">60</td><td class="km text-right">1h15</td><td class="link"><a href="https://www.google.com/maps/dir/Épinal/Bussang" target="_blank">🔗</a></td></tr>
+</table></div>
+
+<h2>Spots photo <span style="font-weight:400;font-size:10px;color:var(--gris)">— JCH</span></h2>
+<div class="table-wrap"><table><tr><th>Lieu</th><th>Sujet</th><th>Heure</th><th>Maps</th></tr>
+  <tr><td>Deutsches Eck (Koblenz)</td><td>Confluence, forteresse</td><td>Crépuscule</td><td class="link"><a href="https://www.google.com/maps/search/50.3606,7.6036" target="_blank">🔗</a></td></tr>
+  <tr><td>Burg Eltz</td><td>Château dans la vallée boisée</td><td>Fin d'après-midi / aube</td><td class="link"><a href="https://www.google.com/maps/search/50.2051,7.3368" target="_blank">🔗</a></td></tr>
+  <tr><td>Calmont (Bremm)</td><td>Méandres, vignes en terrasses</td><td>Aube / 18–19h</td><td class="link"><a href="https://www.google.com/maps/search/Calmont+Bremm" target="_blank">🔗</a></td></tr>
+  <tr><td>Bernkastel (Spitzhäuschen)</td><td>Colombages 1416, ruelles</td><td>7–9h (rues vides)</td><td class="link"><a href="https://www.google.com/maps/search/49.9153,7.0758" target="_blank">🔗</a></td></tr>
+  <tr><td>Réserve de Schengen</td><td>Zones humides, confluence</td><td>Lever du soleil</td><td class="link"><a href="https://www.google.com/maps/search/Schengen" target="_blank">🔗</a></td></tr>
+  <tr><td>Col de Bussang / Ballon d'Alsace</td><td>Crêtes, forêts, panoramas</td><td>Aube</td><td class="link"><a href="https://www.google.com/maps/search/47.8897,6.8917" target="_blank">🔗</a></td></tr>
+</table></div>
+
+<h2>Patrimoine &amp; culture <span style="font-weight:400;font-size:10px;color:var(--gris)">— Anne</span></h2>
+<div class="table-wrap"><table><tr><th>Lieu</th><th>Type</th><th class="text-right">Durée</th><th>Maps</th></tr>
+  <tr><td>Forteresse Ehrenbreitstein</td><td>Fortifications XIXe</td><td class="text-right">1h30</td><td class="link"><a href="https://www.google.com/maps/search/Ehrenbreitstein" target="_blank">🔗</a></td></tr>
+  <tr><td>Château d'Eltz</td><td>Château médiéval XIIe</td><td class="text-right">2–3h</td><td class="link"><a href="https://www.google.com/maps/search/Burg+Eltz" target="_blank">🔗</a></td></tr>
+  <tr><td>Bernkastel-Kues</td><td>Village viticole médiéval</td><td class="text-right">2h</td><td class="link"><a href="https://www.google.com/maps/search/Bernkastel-Kues" target="_blank">🔗</a></td></tr>
+  <tr><td>Trèves</td><td>Capitale romaine (Porta Nigra)</td><td class="text-right">2h</td><td class="link"><a href="https://www.google.com/maps/search/Porta+Nigra" target="_blank">🔗</a></td></tr>
+  <tr><td>Metz</td><td>Cathédrale, quartier impérial</td><td class="text-right">1h30</td><td class="link"><a href="https://www.google.com/maps/search/Cathédrale+Saint-Étienne+Metz" target="_blank">🔗</a></td></tr>
+  <tr><td>Remiremont</td><td>Abbatiale, rue à arcades</td><td class="text-right">1h</td><td class="link"><a href="https://www.google.com/maps/search/Remiremont" target="_blank">🔗</a></td></tr>
+</table></div>
+
+<h2>Baignade <span style="font-weight:400;font-size:10px;color:var(--gris)">— Anne</span></h2>
+<div class="table-wrap"><table><tr><th>Lieu</th><th>Type</th><th class="text-right">Temp.</th><th>Maps</th></tr>
+  <tr><td>Moselle (Metz-Plage)</td><td>Rivière</td><td class="text-right">Froide</td><td class="link"><a href="https://www.google.com/maps/search/Metz-Plage" target="_blank">🔗</a></td></tr>
+  <tr><td>Lac de Gérardmer</td><td>Lac</td><td class="text-right">Froide</td><td class="link"><a href="https://www.google.com/maps/search/Lac+de+Gérardmer" target="_blank">🔗</a></td></tr>
+  <tr><td>Plan d'eau de Remiremont</td><td>Lac</td><td class="text-right">Froide</td><td class="link"><a href="https://www.google.com/maps/search/Plan+d'eau+Remiremont" target="_blank">🔗</a></td></tr>
+</table></div>
+
+<h2>Repas &amp; restaurants</h2>
+<div class="card"><strong>🥐 P-déj</strong> van · <strong>🥪 Déj</strong> van · <strong>🍽️ Dîner</strong> resto</div>
+<div class="table-wrap"><table><tr><th>Soir</th><th>Restaurant</th><th class="text-right">Prix</th><th>Maps</th></tr>
+  <tr><td>J1</td><td>Pfeffermühle / Weindorf Altstadt — Koblenz</td><td class="price text-right">≈ 20–30 €</td><td class="link"><a href="https://www.google.com/maps/search/Weindorf+Koblenz" target="_blank">🔗</a></td></tr>
+  <tr><td>J2</td><td>Weinstube Altstadt — Bernkastel</td><td class="price text-right">≈ 25–35 €</td><td class="link"><a href="https://www.google.com/maps/search/Weinstube+Bernkastel-Kues" target="_blank">🔗</a></td></tr>
+  <tr><td>J3</td><td>Place Saint-Louis / Marché couvert — Metz</td><td class="price text-right">≈ 25–35 €</td><td class="link"><a href="https://www.google.com/maps/search/Place+Saint-Louis+Metz" target="_blank">🔗</a></td></tr>
+  <tr><td>J4</td><td>Ferme-auberge vosgienne — Bussang</td><td class="price text-right">≈ 25–35 €</td><td class="link"><a href="https://www.google.com/maps/search/ferme+auberge+Bussang" target="_blank">🔗</a></td></tr>
+</table></div>
+
+<h2>Météo &amp; plans B</h2>
+<div class="table-wrap"><table><tr><th>Si mauvais temps…</th><th>Au lieu de…</th><th>Faire…</th></tr>
+  <tr><td>J1</td><td>Deutsches Eck / forteresse</td><td>Intérieur Ehrenbreitstein + musée</td></tr>
+  <tr><td>J2</td><td>Château + vignes</td><td>Cave (Weinkeller) + intérieur Eltz</td></tr>
+  <tr><td>J3</td><td>Réserve de Schengen</td><td>Cathédrale Metz + Marché couvert + Centre Pompidou-Metz</td></tr>
+  <tr><td>J4</td><td>Crêtes + Ballon d'Alsace</td><td>Théâtre du Peuple de Bussang + Hautes-Mynes (Le Thillot)</td></tr>
+</table></div>
+
+<h2>Planning</h2>
+<div class="table-wrap"><table class="planning"><tr><th>Jour</th><th>Matin</th><th>Après-midi</th><th>Soir</th><th class="lodging">Nuit</th></tr>
+  <tr><td>J1</td><td>🥐 Départ Liège (10h)</td><td>🥪 Koblenz — Deutsches Eck, Ehrenbreitstein</td><td>🍽️ Pfeffermühle / Weindorf</td><td class="lodging">Stellplatz Koblenz</td></tr>
+  <tr><td>J2</td><td>🥐 Koblenz → Burg Eltz (Moselkern)</td><td>🥪 Moselweinstraße (crêtes), Calmont/Bremm</td><td>🍽️ Weinstube Bernkastel</td><td class="lodging">Moselcamping Bernkastel</td></tr>
+  <tr><td>J3</td><td>🥐 Aube Bernkastel (Spitzhäuschen) → Trèves</td><td>🥪 Porta Nigra → Schengen → Metz</td><td>🍽️ Place Saint-Louis Metz</td><td class="lodging">Aire Metz-Plage</td></tr>
+  <tr><td>J4</td><td>🥐 Metz → Nancy → Épinal</td><td>🥪 Épinal → Remiremont → source (Col de Bussang) + crêtes</td><td>🍽️ Ferme-auberge</td><td class="lodging">Aire Saint-Maurice-sur-Moselle</td></tr>
+</table></div>
+
+<div class="footer"><span>Cigogne 🦩 · Vanlife Planner · PKA_JCH</span><span>2026-10-28</span></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  const map = L.map('map');
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OSM' }).addTo(map);
+  const pts = [
+    { lat: 50.6333, lng: 5.5667,  label: 'Liège (départ)', t: 'step' },
+    { lat: 50.3606, lng: 7.6036,  label: 'Koblenz — Deutsches Eck', t: 'lodging' },
+    { lat: 50.2051, lng: 7.3368,  label: 'Burg Eltz', t: 'step' },
+    { lat: 50.1469, lng: 7.1669,  label: 'Cochem', t: 'step' },
+    { lat: 49.9153, lng: 7.0758,  label: 'Bernkastel-Kues', t: 'lodging' },
+    { lat: 49.7596, lng: 6.6439,  label: 'Trèves — Porta Nigra', t: 'step' },
+    { lat: 49.4734, lng: 6.3658,  label: 'Schengen', t: 'step' },
+    { lat: 49.1193, lng: 6.1757,  label: 'Metz', t: 'lodging' },
+    { lat: 48.6921, lng: 6.1844,  label: 'Nancy', t: 'step' },
+    { lat: 48.1739, lng: 6.4518,  label: 'Épinal', t: 'step' },
+    { lat: 48.0187, lng: 6.5925,  label: 'Remiremont', t: 'step' },
+    { lat: 47.8897, lng: 6.8917,  label: 'Source — Col de Bussang', t: 'lodging' }
+  ];
+  L.polyline(pts.map(p => [p.lat, p.lng]), { color: '#C17F3A', weight: 4, opacity: 0.85 }).addTo(map);
+  pts.forEach(p => {
+    L.circleMarker([p.lat, p.lng], { radius: p.t === 'lodging' ? 8 : 6, color: '#fff', weight: 2, fillColor: p.t === 'lodging' ? '#0D0B09' : '#4A5568', fillOpacity: 1 }).addTo(map).bindPopup('<b>' + p.label + '</b>');
+  });
+  map.fitBounds(L.polyline(pts.map(p => [p.lat, p.lng])).getBounds().pad(0.15));
+</script>
+</body>
+</html>

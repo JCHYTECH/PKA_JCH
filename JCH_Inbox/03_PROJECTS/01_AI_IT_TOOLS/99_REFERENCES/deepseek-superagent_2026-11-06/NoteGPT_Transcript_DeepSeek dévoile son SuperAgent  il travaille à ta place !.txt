@@ -1,0 +1,71 @@
+00:00:01 - 00:00:54
+What if your agent could work on GitHub projects, fix bugs, and create pull requests without you needing to monitor them? Well, that's exactly what DeepSource wants to make possible with its new open-source super agent. And today, we’re going to put it to the test. Nowadays, when you use an AI assistant for development, you usually open a session, give it a task, and wait for it to finish. And when you want to move on to something else, you often have to start a new conversation, give it context
+
+00:00:27 - 00:01:33
+again, and start over. And so on. DeepSource, with their new solution, wants to go much further. It's called a super agent, and the idea is to no longer just have an AI that answers your requests, but a true system capable of fully organizing work, managing multiple tasks, and tracking a project over time. And to understand why DeepSource made this choice, we first need to look at the limitations of our current assistants. So, the problem with current development agents is that they still require a lot
+
+00:01:00 - 00:01:58
+of attention. You can launch multiple Cloud Code sessions or other assistants in parallel, but behind the scenes, you’re still the one who has to monitor what they do—and fortunately so, I’d say . But the thing is, you have to verify results, answer questions, restart stalled tasks, and so on. Inevitably, after a while, it can become complicated to manage if you have many sessions running in parallel. DeepSource actually explains that in practice, a developer can generally keep track of three to five active sessions
+
+00:01:30 - 00:02:32
+in parallel at most. Beyond that, you spend almost more time managing your agents than actually making progress on your project. And that is exactly what their super agent seeks to resolve. The goal is to allow several agents to work without needing your constant attention. To achieve this, DeepSource relies on four main ideas. The first is continuity. Instead of having separate conversations that don't necessarily know about each other's work, the system keeps an overview of your project.
+
+00:02:01 - 00:03:08
+The second is productivity. The super agent can distribute different tasks among several agents that will each make progress on their own. The third is the proactive side. For example, when an event happens on GitHub, the system can analyze it and decide if it needs to intervene. But be careful, only if the rules you defined allow it. And finally, persistence. If a task takes time or an agent has to wait for an answer, the system keeps track of the work so it can resume later . And all of this is based on a
+
+00:02:35 - 00:03:35
+particularly interesting architecture with two types of agents that have very distinct roles. So, this is probably the most interesting part of SuperAgent. Instead of assigning all the work to a single agent, Dipsic separates the responsibilities. On one hand, you have the router; it's a bit like the conductor that receives requests, analyzes what’s happening in the project, and decides whether a task should be launched or not. And on the other hand, you have the workers. They are the agents that actually do the
+
+00:03:05 - 00:04:13
+work. They can analyze your code, fix a bug, develop a feature, or prepare a pull request. Each worker has its own workspace, which allows it to proceed without mixing its context with that of the others, much like worker nodes. And most importantly, the router doesn't need to know every single line of code modified. It keeps a global view while the workers handle the details. But in concrete terms, how does this whole group get to work? Well, this is where SuperAgent sets itself apart from a classic assistant.
+
+00:03:39 - 00:04:37
+You don't have to open a conversation to ask it to work. The system can directly monitor what is happening in your GitHub repository. For example, you create an issue to report a bug, someone leaves a comment on a pull request, or a test fails; well , SuperAgent will capture these events, verify permissions, and then determine if intervention is necessary. That is going to be the role of the router. And if the request is accepted, it can create a task and assign it to a worker . And what is interesting is, obviously,
+
+00:04:08 - 00:05:13
+that the tracking remains linked to the original GitHub discussion. You can therefore continue to interact with the agent from GitHub without having to re-explain everything it just did. The goal is really to make the exchanges natural and to reduce the time you spend supervising the agents. Now, a last interesting point is how Dipsic envisions the execution of its agents. The idea is to be able to separate the orchestration of the work from the environment in which the tasks are executed. You could have a system that organizes
+
+00:04:40 - 00:05:40
+requests and tracks them while workers execute code on machines adapted to your project. This notably allows for maintaining development environments with the right tools, the right dependencies, and the right configurations. However, it must be clarified that some of these ideas are still part of Dipsic's vision and are not available in the current prototype. Well, rather than sticking to theory, let's move on to practice. I'm going to show you how I installed Dipsic Harness with a super agent and
+
+00:05:10 - 00:06:35
+how to use it on one of my repositories to test it all out. So, the first thing I'm going to do is ask my agent, which is on Hermes, to create four tickets for my pantiminax.fr project. FR. So it's my blog that I'm working on, which is an Astro site, and I identified four topics to work on earlier. The agent is going to create tickets for me on GitHub. Right now, in the issues, I have nothing at all. How did I go about installing Dipsic Harness? I went into the Dipsic repo. We'll go look for the super agent.
+
+00:05:57 - 00:07:02
+There we go. I'll put the link in the description for you. DSH Super agent prototype. You have the setup markdown and all that right here. You can just copy the link and paste it into any coding agent to have it installed for you. I personally used Open Code, for instance. You then have a few quick questions to answer. As I was saying, the agent, the super agent, needs to be linked to a GitHub repository. So, I linked it to pantiminax.fr. fr, and then it can use either your GitHub account for commits,
+
+00:06:29 - 00:07:40
+or you can create an account for it and it will use that. That way, you'll be able to easily identify whether it's you working or the agent that committed those changes. So there you go, once everything is installed—there are several steps, you have to press enter, modify some rules. Hop, my tickets should be created if I refresh. There we go. So now, I have the four tickets that have been created. Once everything is installed on the Dipsic side, you'll end up with a local site on port 3082 for me, and you'll see
+
+00:07:04 - 00:08:31
+you have a super agent. Here, we see the executor just found, I think, three tasks. If I go into trigger, we have nothing there. I'll go into detail pending working, 0 out of 3. No, okay, it's just that it can execute three tasks maximum. So, for the moment , it hasn't found any tickets. Let's take a look at the super agent settings. So here, I have prep command, the ticket directory, the evaluations not on the list. Settings observe. So these are all the rules that will be present within the super agent.
+
+00:07:53 - 00:09:21
+I have the source of the project. that I should have actually activated. OK. Receive comment, receive default punch. It ' so here, however, evaluated earlier, it did evaluate. I am in Super Agent, if I go back to Open Code, I had a little tutorial on what it was supposed to tell me: start small, three rules to try from your account on the ticket appears. Oh, OK, I see! So, since I hadn't activated the, uh, shoot, the trigger part we had earlier, I can go into this issue for example and mention Pantiminax, since I used my own
+
+00:08:44 - 00:09:58
+account. I'm mentioning myself. If I had used a specific account for the code agent, naturally I would have had to mention him. If now in super agent, I go back here, are we going to see if we see anything? arrived, we can click on details. All OK, source Github running. So here uh is it working? OK, after a few minutes of struggling, I finally found it. Actually, you can't mention yourself, it won't work. You need a dedicated account for the agent. So there, I assigned it. Uh I created an
+
+00:09:26 - 00:10:32
+account and I went and added it to my project. In the section here lat 24 hours I see the comment that was added and the evaluation that is in progress. The evaluation, that is the router that will look at whether the agent has an action to take or not. So here, regarding my request, apparently yes, I am asking it to check the internal links of the repository and to correct those that point to non-existent articles. We see a session taking place, an API key however that is not good. Well, that must be on my end. I'm going to fix that
+
+00:10:00 - 00:11:22
+. There, now that the API key is fixed, we see that the router has accepted, uh, the ticket in just a few seconds and so it went and created a new folder with the name, uh, of the task: fix broken internal links. And we see, well, that it is working, it is looking at how the redirections are made and it should work until it apparently proposes, I suppose, a pull request and we can go, I think, and do some work in parallel. Here we can ask it, uh look at this task and handle it, that way it's direct.
+
+00:10:44 - 00:12:01
+So, what you need to know is that in the settings here, we have a polling rate, which should be here in Advent, yes, of 60 seconds. That means every 60 seconds, the events will be processed. It's not instantaneous. You can see the various events being received here. Uh, wait no, that's just the configuration history. Uh, acceptive. So here we see, uh, the subscribed ones. Is it? No, that's the ticket from earlier. If I go here. OK. Actually, so it subscribed to PR 55. So that's the first pull request I
+
+00:11:23 - 00:12:16
+opened and mentioned it in. And so there , well, it replied to me: I am checking the repo's internal links and fixing those pointing to non-existent articles . Yes, that is, that is super nice. Everything happens in the GitHub discussion. Our agent replies to us while it is working. Actually, every message I send here, well, since it is subscribed, it will receive them directly. It won't be a 60-second wait like we have for the events here. Uh, it will be direct since it is currently working on it. Here we see
+
+00:11:50 - 00:13:10
+that a third ticket has arrived. So, there, it just subscribed to task 56. I should see it in my super agent. There we go. Ticket created for issue 57 . So, what is happening? OK, right there. Yeah, it's 57 that I asked it for. I am processing issue 57, fetching the repo script. Perfect. So the router, in the same way, understood well that it was going to need the worker. And there you go, we have a second project, you see, that is being done. So, it is working. I am currently using Open Router with the DeepSeek V4 model.
+
+00:12:30 - 00:13:40
+We are staying entirely on the DeepSeek side for that in the DeepSeek interface . We see that it is writing code. Uh, and so the pull requests should arrive shortly. Well, there we go, my two pull requests have just been created . Uh, so if the CI is in error, but that's normal, it's because the Vercel deployment is only enabled if the Pantiminax account is the one creating the pull request. So these are PRs that I will be able to review. Inside DeepSeek, what do I have? I have, therefore, the summary.
+
+00:13:05 - 00:14:11
+The pair is ready: tests, documentation , and rules. I can see the files here that have been modified. In the superagent, it tells me that both tickets have been processed. And here, we have the results on both sides. If I go to the plugin, I can see the CFEL right here. We can see the different events, and here: waiting review, awaiting; so it is really very interesting for real-time work with agents, and ultimately we deal with it less. We are going to work in a completely different way. So, very happy to see
+
+00:13:38 - 00:14:24
+this new development paradigm with agents; don't hesitate to tell me what you think in the video, and we will follow this very closely and even continue to use it on a few projects to see how it goes with this work method. Don't hesitate to subscribe if you want to follow the latest news on artificial intelligence in the coming days, and I'll see you soon.

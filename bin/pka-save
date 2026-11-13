@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+# Raccourci universel de cloture de session PKA.
+
+set -euo pipefail
+
+PKA_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$PKA_DIR"
+
+exec python3 "$PKA_DIR/scripts/pka_save.py" --interactive

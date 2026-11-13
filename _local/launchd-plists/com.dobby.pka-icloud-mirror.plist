@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.dobby.pka-icloud-mirror</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/jchavauxm5/PKA_JCH/bin/pka-icloud-mirror</string>
+    <string>--run</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/jchavauxm5/PKA_JCH</string>
+  <key>StartInterval</key>
+  <integer>900</integer>
+  <key>RunAtLoad</key>
+  <false/>
+  <key>StandardOutPath</key>
+  <string>/Users/jchavauxm5/PKA_JCH/tmp/pka-icloud-mirror.out</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/jchavauxm5/PKA_JCH/tmp/pka-icloud-mirror.err</string>
+</dict>
+</plist>

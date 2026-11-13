@@ -1,0 +1,31 @@
+#!/bin/bash
+# m1-sync — rsync fallback pour datasets M1
+# Usage: m1-sync [pull|push] [--dry-run]
+set -euo pipefail
+
+M1_HOST="${M1_HOST:-m1-llm}"
+M1_USER="m1"
+M1_REMOTE="/Users/m1/datasets/"
+LOCAL="/Users/jchavauxm5/mnt/m1-datasets/"
+RSYNC_OPTS="-avz --progress --exclude='.DS_Store'"
+
+ACTION="${1:-pull}"
+DRY_RUN=""
+[[ "${2:-}" == "--dry-run" ]] && DRY_RUN="--dry-run"
+
+case "$ACTION" in
+    pull)
+        echo "⬇️  rsync M1 → M5 ($LOCAL)"
+        rsync $RSYNC_OPTS $DRY_RUN "${M1_USER}@${M1_HOST}:${M1_REMOTE}" "$LOCAL"
+        echo "✅ Pull terminé"
+        ;;
+    push)
+        echo "⬆️  rsync M5 → M1 ($M1_REMOTE)"
+        rsync $RSYNC_OPTS $DRY_RUN "$LOCAL" "${M1_USER}@${M1_HOST}:${M1_REMOTE}"
+        echo "✅ Push terminé"
+        ;;
+    *)
+        echo "Usage: m1-sync [pull|push] [--dry-run]"
+        exit 1
+        ;;
+esac

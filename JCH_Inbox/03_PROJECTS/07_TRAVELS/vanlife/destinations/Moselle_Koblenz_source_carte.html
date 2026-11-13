@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moselle — Koblenz → source (Col de Bussang)</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; font-family: -apple-system, "Segoe UI", Roboto, sans-serif; }
+  #map { height: 100vh; width: 100%; }
+  .legend { background: #fff; padding: 10px 14px; border-radius: 8px; box-shadow: 0 1px 6px rgba(0,0,0,.25); font-size: 13px; line-height: 1.6; }
+  .legend h3 { margin: 0 0 6px; font-size: 14px; }
+  .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
+  .dot-route { background: #C17F3A; }
+  .dot-night { background: #1f1f1f; }
+  .dot-step { background: #4a4a4a; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  const map = L.map('map');
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+
+  // Étapes (ordre du tracé) — [lat, lng, nom, type]
+  const points = [
+    [50.6333, 5.5667,  "Liège (départ)", "step"],
+    [50.3606, 7.6036,  "Koblenz — Deutsches Eck", "night"],
+    [50.2051, 7.3368,  "Burg Eltz", "step"],
+    [50.1469, 7.1669,  "Cochem", "step"],
+    [49.9153, 7.0758,  "Bernkastel-Kues — Spitzhäuschen", "night"],
+    [49.7596, 6.6439,  "Trèves — Porta Nigra", "step"],
+    [49.4734, 6.3658,  "Schengen (réserve naturelle)", "step"],
+    [49.1193, 6.1757,  "Metz", "night"],
+    [48.6921, 6.1844,  "Nancy", "step"],
+    [48.1739, 6.4518,  "Épinal", "step"],
+    [48.0187, 6.5925,  "Remiremont", "step"],
+    [47.8897, 6.8917,  "Source de la Moselle — Col de Bussang", "night"]
+  ];
+
+  // Tracé ocre
+  const route = points.map(p => [p[0], p[1]]);
+  L.polyline(route, { color: '#C17F3A', weight: 4, opacity: 0.85 }).addTo(map);
+
+  // Marqueurs
+  points.forEach(([lat, lng, name, type]) => {
+    const color = type === 'night' ? '#1f1f1f' : (type === 'step' ? '#4a4a4a' : '#C17F3A');
+    L.circleMarker([lat, lng], {
+      radius: type === 'night' ? 8 : 6,
+      color: '#fff',
+      weight: 2,
+      fillColor: color,
+      fillOpacity: 1
+    }).addTo(map).bindPopup(`<b>${name}</b>`);
+  });
+
+  map.fitBounds(L.latLngBounds(route).pad(0.15));
+
+  // Légende
+  const legend = L.control({ position: 'bottomright' });
+  legend.onAdd = function () {
+    const div = L.DomUtil.create('div', 'legend');
+    div.innerHTML = `
+      <h3>Moselle — Koblenz → source</h3>
+      <span class="dot dot-route"></span>Tracé (ocre)<br>
+      <span class="dot dot-step"></span>Étape<br>
+      <span class="dot dot-night"></span>Nuitée (noir)<br>
+      <em>4 jours · ~660–700 km</em>
+    `;
+    return div;
+  };
+  legend.addTo(map);
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+/* Masque les dossiers/fichiers techniques dans l'explorateur Obsidian.
+   N'affecte QUE l'affichage (rien n'est déplacé/supprimé).
+   Désactiver : Settings → Appearance → CSS snippets → toggle off. */
+
+/* Dossiers de dev à la racine */
+.nav-folder:has(> .nav-folder-title[data-path="bin"]),
+.nav-folder:has(> .nav-folder-title[data-path="scripts"]),
+.nav-folder:has(> .nav-folder-title[data-path="tmp"]),
+.nav-folder:has(> .nav-folder-title[data-path="graphify-out"]) {
+  display: none !important;
+}
+
+/* Fichiers de dev à la racine */
+.nav-file:has(> .nav-file-title[data-path="requirements.txt"]),
+.nav-file:has(> .nav-file-title[data-path="skills-lock.json"]),
+.nav-file:has(> .nav-file-title[data-path="jchavauxm5.code-workspace"]),
+.nav-file:has(> .nav-file-title[data-path^="session_"]),
+.nav-file:has(> .nav-file-title[data-path$=".md.bak"]) {
+  display: none !important;
+}
+
+/* Pointeurs / bootstrap outils (usage : terminal + DeepSeek uniquement) */
+.nav-file:has(> .nav-file-title[data-path="AGENTS.md"]),
+.nav-file:has(> .nav-file-title[data-path="DEEPSEEK.md"]),
+.nav-file:has(> .nav-file-title[data-path="ADAPTER-PROMPT.md"]) {
+  display: none !important;
+}

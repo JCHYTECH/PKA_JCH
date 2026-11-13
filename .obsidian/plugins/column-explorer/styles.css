@@ -1,0 +1,1319 @@
+/* Obsidian даёт вьюхам в сайдбаре padding 12px по бокам правилом
+   `.workspace-leaf-content .view-content` — оно специфичнее одиночного
+   класса и съедает 24px ширины: панель, подогнанная autoResizePanel ровно
+   под сумму колонок, оказывается уже содержимого, появляется горизонтальный
+   скролл. Селектор ниже перебивает его (так же делают markdown/pdf вьюхи). */
+.workspace-leaf-content .view-content.column-explorer-container,
+.column-explorer-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	padding: 0;
+	overflow: hidden;
+}
+
+.column-explorer-toolbar {
+	display: flex;
+	gap: 4px;
+	padding: 4px 8px;
+	border-bottom: 1px solid var(--background-modifier-border);
+	flex-shrink: 0;
+}
+
+.column-explorer-columns {
+	display: flex;
+	flex: 1;
+	overflow-x: auto;
+	overflow-y: hidden;
+	outline: none;
+}
+
+.column-explorer-column {
+	/* Фиксированная ширина: flex-grow маскировал бы изменение ширины ручкой */
+	width: var(--ce-col-width, 200px);
+	flex: 0 0 var(--ce-col-width, 200px);
+	display: flex;
+	flex-direction: column;
+	border-right: 1px solid var(--background-modifier-border);
+	overflow: hidden;
+}
+
+.column-explorer-column-header {
+	padding: 6px 10px;
+	font-size: var(--font-ui-smaller);
+	font-weight: var(--font-semibold);
+	color: var(--text-muted);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	border-bottom: 1px solid var(--background-modifier-border);
+	flex-shrink: 0;
+}
+
+.column-explorer-list {
+	flex: 1;
+	overflow-y: auto;
+	padding: 4px;
+}
+
+.column-explorer-list.is-drop-target {
+	background-color: var(--background-modifier-hover);
+	box-shadow: inset 0 0 0 2px var(--interactive-accent);
+	border-radius: var(--radius-s);
+}
+
+.column-explorer-empty {
+	padding: 12px;
+	color: var(--text-faint);
+	font-size: var(--font-ui-smaller);
+	text-align: center;
+}
+
+.column-explorer-item {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	padding: 4px 8px;
+	border-radius: var(--radius-s);
+	cursor: var(--cursor);
+	user-select: none;
+	color: var(--text-normal);
+	font-size: var(--font-ui-small);
+}
+
+.column-explorer-item:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+.column-explorer-item.is-selected {
+	background-color: var(--interactive-accent);
+	color: var(--text-on-accent);
+}
+
+.column-explorer-item.is-selected .column-explorer-item-icon,
+.column-explorer-item.is-selected .column-explorer-item-chevron {
+	color: var(--text-on-accent);
+}
+
+.column-explorer-item.is-ancestor {
+	background-color: var(--background-modifier-active-hover, var(--background-modifier-hover));
+	color: var(--text-normal);
+}
+
+.column-explorer-item.is-ancestor .column-explorer-item-icon,
+.column-explorer-item.is-ancestor .column-explorer-item-chevron {
+	color: var(--text-muted);
+}
+
+.column-explorer-item.is-active-file:not(.is-selected) {
+	color: var(--text-accent);
+}
+
+.column-explorer-item.is-drop-target {
+	box-shadow: inset 0 0 0 2px var(--interactive-accent);
+}
+
+/* Вырезанный (Cmd+X) элемент до вставки */
+.column-explorer-item.is-cut {
+	opacity: 0.45;
+}
+
+.column-explorer-item-icon {
+	display: flex;
+	flex-shrink: 0;
+	color: var(--text-muted);
+}
+
+.column-explorer-item-icon svg {
+	width: 16px;
+	height: 16px;
+}
+
+.column-explorer-item-title {
+	flex: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.column-explorer-item-ext {
+	font-size: 9px;
+	text-transform: uppercase;
+	color: var(--text-faint);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 3px;
+	padding: 0 3px;
+	flex-shrink: 0;
+}
+
+.column-explorer-item.is-selected .column-explorer-item-ext {
+	color: var(--text-on-accent);
+	border-color: var(--text-on-accent);
+}
+
+.column-explorer-item-chevron {
+	display: flex;
+	flex-shrink: 0;
+	color: var(--text-faint);
+}
+
+/* Pin indicator on pinned items */
+.column-explorer-item-pin {
+	display: flex;
+	flex-shrink: 0;
+	color: var(--text-faint);
+}
+
+.column-explorer-item-pin svg {
+	width: 12px;
+	height: 12px;
+}
+
+.column-explorer-item.is-selected .column-explorer-item-pin {
+	color: var(--text-on-accent);
+}
+
+.column-explorer-item-chevron svg {
+	width: 14px;
+	height: 14px;
+}
+
+.column-explorer-rename-input {
+	flex: 1;
+	min-width: 0;
+	font-size: var(--font-ui-small);
+	padding: 0 4px;
+	height: 22px;
+}
+
+/* Preview column */
+.column-explorer-preview {
+	align-items: center;
+	justify-content: flex-start;
+	/* Превью шире обычной колонки — раньше это давал flex-grow */
+	width: 280px;
+	flex: 0 0 280px;
+}
+
+.column-explorer-preview-inner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+	padding: 24px 16px;
+	text-align: center;
+	width: 100%;
+}
+
+.column-explorer-preview-icon {
+	color: var(--text-muted);
+}
+
+.column-explorer-preview-icon svg {
+	width: 48px;
+	height: 48px;
+}
+
+.column-explorer-preview-name {
+	font-weight: var(--font-semibold);
+	word-break: break-word;
+}
+
+.column-explorer-preview-meta {
+	font-size: var(--font-ui-smaller);
+	color: var(--text-muted);
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+/* ---- v1.1 additions ---- */
+
+.column-explorer-search {
+	flex: 1;
+	min-width: 80px;
+	height: 24px;
+	font-size: var(--font-ui-smaller);
+	margin-left: auto;
+}
+
+.column-explorer-item.is-multi-selected {
+	background-color: var(--background-modifier-active-hover, var(--background-modifier-hover));
+	box-shadow: inset 0 0 0 1px var(--interactive-accent);
+}
+
+.column-explorer-preview-image {
+	max-width: 100%;
+	max-height: 160px;
+	border-radius: var(--radius-s);
+	object-fit: contain;
+}
+
+/* ---- v1.2 additions ---- */
+
+.column-explorer-breadcrumbs {
+	display: flex;
+	align-items: center;
+	gap: 2px;
+	padding: 3px 10px;
+	font-size: var(--font-ui-smaller);
+	color: var(--text-muted);
+	border-bottom: 1px solid var(--background-modifier-border);
+	white-space: nowrap;
+	overflow-x: auto;
+	flex-shrink: 0;
+	scrollbar-width: none;
+}
+
+.column-explorer-breadcrumbs::-webkit-scrollbar {
+	display: none;
+}
+
+.column-explorer-crumb {
+	cursor: var(--cursor);
+	border-radius: var(--radius-s);
+	padding: 1px 4px;
+}
+
+.column-explorer-crumb:not(.is-current):hover {
+	background-color: var(--background-modifier-hover);
+	color: var(--text-normal);
+}
+
+.column-explorer-crumb.is-drop-target {
+	box-shadow: inset 0 0 0 2px var(--interactive-accent);
+}
+
+.column-explorer-crumb.is-current {
+	color: var(--text-normal);
+	font-weight: var(--font-semibold);
+	cursor: default;
+}
+
+.column-explorer-crumb-sep {
+	color: var(--text-faint);
+}
+
+.column-explorer-column {
+	position: relative;
+}
+
+.column-explorer-resize-handle {
+	position: absolute;
+	top: 0;
+	right: -3px;
+	width: 6px;
+	height: 100%;
+	cursor: col-resize;
+	z-index: 10;
+}
+
+.column-explorer-resize-handle:hover {
+	background: linear-gradient(to right, transparent 2px, var(--interactive-accent) 2px, var(--interactive-accent) 4px, transparent 4px);
+}
+
+.column-explorer-preview-md {
+	width: 100%;
+	text-align: left;
+	font-size: var(--font-ui-small);
+	color: var(--text-muted);
+	border-top: 1px solid var(--background-modifier-border);
+	padding-top: 8px;
+	max-height: 45%;
+	overflow-y: auto;
+	word-break: break-word;
+}
+
+.column-explorer-preview-md :is(h1, h2, h3, h4, h5, h6) {
+	font-size: var(--font-ui-medium);
+	margin: 0.4em 0 0.2em;
+}
+
+.column-explorer-preview {
+	overflow-y: auto;
+}
+
+.column-explorer-columns:focus-visible {
+	box-shadow: inset 0 0 0 2px var(--background-modifier-border-focus);
+}
+
+/* ---- v1.3 additions ---- */
+
+/* Column header with view toggle */
+.column-explorer-column-header {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.column-explorer-column-title {
+	flex: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.column-explorer-column-count {
+	flex-shrink: 0;
+	font-size: var(--font-smallest);
+	color: var(--text-faint);
+}
+
+.column-explorer-view-toggle {
+	flex-shrink: 0;
+	padding: 2px;
+	opacity: 0;
+	transition: opacity 0.1s ease-in-out;
+}
+
+.column-explorer-column:hover .column-explorer-view-toggle,
+.column-explorer-view-toggle:focus-visible {
+	opacity: 1;
+}
+
+.column-explorer-view-toggle svg {
+	width: 14px;
+	height: 14px;
+}
+
+/* Grid (icons) view */
+.column-explorer-list.is-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+	gap: 4px;
+	align-content: start;
+}
+
+.column-explorer-list.is-grid .column-explorer-item {
+	flex-direction: column;
+	gap: 4px;
+	padding: 8px 4px;
+	text-align: center;
+}
+
+.column-explorer-list.is-grid .column-explorer-item-icon svg {
+	width: 28px;
+	height: 28px;
+}
+
+.column-explorer-list.is-grid .column-explorer-item-title {
+	white-space: normal;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	word-break: break-word;
+	font-size: var(--font-ui-smaller);
+	line-height: 1.2;
+	width: 100%;
+}
+
+.column-explorer-list.is-grid .column-explorer-item-chevron {
+	display: none;
+}
+
+.column-explorer-list.is-grid .column-explorer-empty {
+	grid-column: 1 / -1;
+}
+
+/* Folder colors */
+.column-explorer-item.has-folder-color .column-explorer-item-icon {
+	color: var(--ce-folder-color);
+}
+
+.column-explorer-item.has-folder-color.is-selected .column-explorer-item-icon {
+	color: var(--text-on-accent);
+}
+
+/* Color dot in the folder color menu */
+.column-explorer-color-dot {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	margin-right: 8px;
+	background-color: var(--ce-dot-color);
+	vertical-align: baseline;
+}
+
+.column-explorer-color-dot.is-default {
+	background: none;
+	border: 1px solid var(--text-muted);
+}
+
+/* Image thumbnails in grid view */
+.column-explorer-list.is-grid .column-explorer-item.has-thumbnail .column-explorer-item-icon {
+	width: 100%;
+	height: 48px;
+}
+
+.column-explorer-thumb {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 4px;
+}
+
+/* Folders that contain a folder note */
+.column-explorer-item.has-folder-note .column-explorer-item-title {
+	text-decoration: underline;
+	text-decoration-style: dotted;
+	text-decoration-color: var(--text-faint);
+	text-underline-offset: 3px;
+}
+
+/* Icon picker suggestions */
+.column-explorer-icon-suggestion {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.column-explorer-icon-suggestion-preview {
+	display: flex;
+	color: var(--text-muted);
+}
+
+/* Media previews in the preview column */
+.column-explorer-preview-audio {
+	width: 100%;
+}
+
+.column-explorer-preview-video {
+	max-width: 100%;
+	border-radius: 6px;
+}
+
+.column-explorer-preview-pdf {
+	width: 100%;
+	height: 320px;
+	border: none;
+	border-radius: 6px;
+	background: var(--background-secondary);
+}
+
+/* ---- v1.5: folder locked as temporary root ---- */
+
+.column-explorer-lock-badge {
+	display: flex;
+	align-items: center;
+	margin-right: 4px;
+	color: var(--interactive-accent);
+	flex-shrink: 0;
+}
+
+.column-explorer-lock-badge svg {
+	width: 12px;
+	height: 12px;
+}
+
+.column-explorer-toolbar-btn.is-active {
+	color: var(--interactive-accent);
+	background-color: var(--background-modifier-hover);
+}
+
+/* Filter match highlight */
+.column-explorer-match {
+	color: var(--text-accent);
+	font-weight: var(--font-semibold);
+}
+
+/* Incremental render sentinel — needs height so the observer can see it */
+.column-explorer-load-more {
+	height: 8px;
+	flex-shrink: 0;
+}
+
+/* Undo link inside the "items moved" notice */
+.column-explorer-undo-link {
+	font-weight: var(--font-semibold);
+}
+
+/* Quick Look modal */
+.column-explorer-quicklook {
+	max-width: min(720px, 90vw);
+}
+
+.column-explorer-quicklook .column-explorer-preview-image {
+	max-height: 60vh;
+}
+
+/* Mobile: full-width columns, no resize handles */
+.is-mobile .column-explorer-column {
+	width: 100%;
+	flex: 0 0 100%;
+}
+
+.is-mobile .column-explorer-resize-handle {
+	display: none;
+}
+
+/* Special rows (Recents / Bookmarks / Calendar) in the root column */
+.column-explorer-special .column-explorer-item-icon {
+	color: var(--text-accent);
+}
+
+/* Calendar column */
+.column-explorer-cal-nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 4px;
+	padding: 4px 8px;
+	flex-shrink: 0;
+}
+
+.column-explorer-cal-month {
+	flex: 1;
+	text-align: center;
+	font-weight: var(--font-medium);
+	cursor: var(--cursor);
+	text-transform: capitalize;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.column-explorer-cal-grid {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 2px;
+	padding: 4px 8px 8px;
+	overflow-y: auto;
+}
+
+.column-explorer-cal-weekday {
+	text-align: center;
+	font-size: var(--font-ui-smaller);
+	color: var(--text-faint);
+	padding: 2px 0;
+}
+
+.column-explorer-cal-cell {
+	min-height: 34px;
+	border-radius: var(--radius-s);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 1px;
+	padding: 2px 0;
+}
+
+.column-explorer-cal-cell.is-day {
+	cursor: var(--cursor);
+}
+
+.column-explorer-cal-cell.is-day:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+.column-explorer-cal-cell.is-today .column-explorer-cal-daynum {
+	color: var(--text-accent);
+	font-weight: var(--font-bold);
+}
+
+.column-explorer-cal-cell.is-selected {
+	background-color: var(--background-modifier-hover);
+	box-shadow: 0 0 0 1px var(--interactive-accent) inset;
+}
+
+.column-explorer-cal-daynum {
+	font-size: var(--font-ui-small);
+	line-height: 1.2;
+}
+
+.column-explorer-cal-count {
+	font-size: 10px;
+	line-height: 1;
+	padding: 1px 4px;
+	border-radius: 6px;
+	background-color: var(--interactive-accent);
+	color: var(--text-on-accent);
+}
+
+/* Кнопки назад/вперёд слева в баре хлебных крошек */
+.column-explorer-nav-buttons {
+	display: flex;
+	align-items: center;
+	gap: 1px;
+	margin-right: 4px;
+	flex-shrink: 0;
+}
+
+.column-explorer-nav-btn {
+	padding: 2px;
+	height: auto;
+	width: auto;
+}
+
+.column-explorer-nav-btn.is-disabled {
+	opacity: 0.35;
+	cursor: default;
+	pointer-events: none;
+}
+
+.column-explorer-nav-btn svg {
+	width: 15px;
+	height: 15px;
+}
+
+/* Звёздочка «в избранное» в баре крошек */
+.column-explorer-fav-btn {
+	padding: 2px;
+	height: auto;
+	width: auto;
+}
+
+.column-explorer-fav-btn svg {
+	width: 15px;
+	height: 15px;
+}
+
+.column-explorer-fav-btn.is-active svg {
+	color: var(--color-yellow);
+	fill: var(--color-yellow);
+}
+
+/* ---------------------------------------------------------------
+   Mobile: тач-цели 44px, компактный тулбар, панель выделения.
+   Все правила под `.is-mobile` — на desktop ничего не меняется.
+   --------------------------------------------------------------- */
+
+/* Размеры берутся из CSS-переменных контейнера (см. applyMobileScale
+   в src/mobile.ts); fallback-значения — минимальные тач-цели */
+.is-mobile .column-explorer-item {
+	min-height: var(--ce-mobile-row-height, 44px);
+	padding: calc(6px * var(--ce-mobile-scale, 1)) calc(10px * var(--ce-mobile-scale, 1));
+	gap: calc(6px * var(--ce-mobile-scale, 1));
+	font-size: calc(var(--font-ui-medium) * var(--ce-mobile-scale, 1));
+}
+
+/* Иконки строк следуют общему масштабу, но не размеру кнопочных иконок */
+.is-mobile .column-explorer-item-icon svg {
+	width: calc(16px * var(--ce-mobile-scale, 1));
+	height: calc(16px * var(--ce-mobile-scale, 1));
+}
+
+/* Тач-цель кнопок — --ce-mobile-control-size, не меньше 44px */
+.is-mobile .column-explorer-toolbar-btn,
+.is-mobile .column-explorer-nav-btn,
+.is-mobile .column-explorer-up-btn,
+.is-mobile .column-explorer-action-btn,
+.is-mobile .column-explorer-fav-btn,
+.is-mobile .column-explorer-view-toggle,
+.is-mobile .column-explorer-quicklook-bar button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: var(--ce-mobile-control-size, 44px);
+	min-height: var(--ce-mobile-control-size, 44px);
+	width: auto;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	background: none;
+	border: none;
+	box-shadow: none;
+}
+
+.is-mobile .column-explorer-toolbar-btn svg,
+.is-mobile .column-explorer-nav-btn svg,
+.is-mobile .column-explorer-up-btn svg,
+.is-mobile .column-explorer-action-btn svg,
+.is-mobile .column-explorer-fav-btn svg,
+.is-mobile .column-explorer-view-toggle svg {
+	width: var(--ce-mobile-icon-size, 28px);
+	height: var(--ce-mobile-icon-size, 28px);
+	stroke-width: 2.25;
+}
+
+/* Пять кнопок делят ширину поровну и никогда не переносятся.
+   Padding нулевой: размер кнопки считается как floor(ширина / 5),
+   боковые отступы съели бы этот расчёт на максимальном масштабе */
+.is-mobile .column-explorer-toolbar {
+	gap: 0;
+	padding: 0;
+	justify-content: space-around;
+	flex-wrap: nowrap;
+	overflow: hidden;
+}
+
+.is-mobile .column-explorer-up-btn.is-disabled,
+.is-mobile .column-explorer-nav-btn.is-disabled,
+.is-mobile .column-explorer-toolbar-btn.is-disabled {
+	opacity: 0.35;
+	pointer-events: none;
+}
+
+/* Нажатие видно и без hover */
+.is-mobile .column-explorer-toolbar-btn:active,
+.is-mobile .column-explorer-nav-btn:active,
+.is-mobile .column-explorer-up-btn:active,
+.is-mobile .column-explorer-action-btn:active,
+.is-mobile .column-explorer-view-toggle:active {
+	background-color: var(--background-modifier-hover);
+	border-radius: var(--radius-s);
+}
+
+/* Строка поиска: раскрывается кнопкой в тулбаре */
+.column-explorer-search-row {
+	display: flex;
+	align-items: center;
+	padding: calc(4px * var(--ce-mobile-scale, 1)) calc(8px * var(--ce-mobile-scale, 1));
+	border-bottom: 1px solid var(--background-modifier-border);
+	flex-shrink: 0;
+}
+
+.is-mobile .column-explorer-search {
+	flex: 1;
+	height: calc(40px * var(--ce-mobile-scale, 1));
+	margin-left: 0;
+	font-size: calc(var(--font-ui-small) * var(--ce-mobile-scale, 1));
+}
+
+/* Заголовок колонки: стрелка вверх — название — счётчик — вид */
+.is-mobile .column-explorer-column-header {
+	min-height: var(--ce-mobile-control-size, 44px);
+	padding: 0 calc(6px * var(--ce-mobile-scale, 1));
+	gap: calc(6px * var(--ce-mobile-scale, 1));
+	font-size: calc(var(--font-ui-smaller) * var(--ce-mobile-scale, 1));
+}
+
+/* На тач-экране нет hover — переключатель списка/значков виден всегда */
+.is-mobile .column-explorer-view-toggle {
+	opacity: 1;
+}
+
+.is-mobile .column-explorer-breadcrumbs {
+	padding: 0 calc(6px * var(--ce-mobile-scale, 1));
+	gap: calc(4px * var(--ce-mobile-scale, 1));
+	font-size: calc(var(--font-ui-small) * var(--ce-mobile-scale, 1));
+}
+
+.is-mobile .column-explorer-crumb {
+	display: inline-flex;
+	align-items: center;
+	min-height: var(--ce-mobile-row-height, 44px);
+	padding: 0 calc(6px * var(--ce-mobile-scale, 1));
+}
+
+/* Плитка на телефоне: ячейки крупнее, подпись занимает ровно две строки.
+   Высоту подписи держит max-height, а не -webkit-line-clamp — в мобильном
+   WebKit он не резервирует место, и названия наезжали друг на друга */
+.is-mobile .column-explorer-list.is-grid {
+	grid-template-columns: repeat(auto-fill, minmax(calc(80px * var(--ce-mobile-scale, 1)), 1fr));
+	gap: calc(6px * var(--ce-mobile-scale, 1));
+}
+
+.is-mobile .column-explorer-list.is-grid .column-explorer-item {
+	padding: calc(8px * var(--ce-mobile-scale, 1)) calc(4px * var(--ce-mobile-scale, 1));
+	gap: calc(4px * var(--ce-mobile-scale, 1));
+	justify-content: flex-start;
+}
+
+.is-mobile .column-explorer-list.is-grid .column-explorer-item-icon svg {
+	width: calc(28px * var(--ce-mobile-scale, 1));
+	height: calc(28px * var(--ce-mobile-scale, 1));
+}
+
+.is-mobile .column-explorer-list.is-grid .column-explorer-item-title {
+	font-size: calc(var(--font-ui-smaller) * var(--ce-mobile-scale, 1));
+	line-height: 1.3;
+	/* Резерв под две строки, но текст волен занять три: max-height срезал
+	   бы строку по середине букв. Ячейку выравнивает min-height */
+	-webkit-line-clamp: 3;
+	min-height: 2.6em;
+	max-height: none;
+	overflow: hidden;
+	word-break: break-word;
+}
+
+/* Миниатюры не должны растягивать ячейку выше подписи */
+.is-mobile .column-explorer-list.is-grid .column-explorer-item.has-thumbnail .column-explorer-item-icon {
+	height: calc(48px * var(--ce-mobile-scale, 1));
+}
+
+.is-mobile .column-explorer-cal-cell {
+	min-height: var(--ce-mobile-row-height, 44px);
+}
+
+.is-mobile .column-explorer-cal-daynum,
+.is-mobile .column-explorer-cal-month {
+	font-size: calc(var(--font-ui-small) * var(--ce-mobile-scale, 1));
+}
+
+/* Нижняя панель режима выделения — обычная flex-строка контейнера,
+   поэтому она не накрывает список, а ужимает его */
+.column-explorer-action-bar {
+	display: flex;
+	align-items: center;
+	gap: 2px;
+	padding: 0 calc(8px * var(--ce-mobile-scale, 1));
+	padding-bottom: env(safe-area-inset-bottom);
+	border-top: 1px solid var(--background-modifier-border);
+	background-color: var(--background-secondary);
+	flex-shrink: 0;
+}
+
+/* Экранная клавиатура: содержимое вью ужимается, а не уезжает под неё.
+   Селектор длинный, чтобы перебить `padding: 0` из правила в начале файла */
+.is-mobile .workspace-leaf-content .view-content.column-explorer-container,
+.is-mobile .column-explorer-container {
+	padding-bottom: var(--ce-keyboard-inset, 0px);
+}
+
+.column-explorer-action-count {
+	flex: 1;
+	min-width: 0;
+	font-size: calc(var(--font-ui-smaller) * var(--ce-mobile-scale, 1));
+	color: var(--text-muted);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* Quick Look как bottom sheet */
+.is-mobile .column-explorer-quicklook {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	max-width: 100%;
+	max-height: 85vh;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	border-radius: var(--radius-l) var(--radius-l) 0 0;
+	padding-bottom: env(safe-area-inset-bottom);
+}
+
+.is-mobile .column-explorer-quicklook .modal-content {
+	overflow-y: auto;
+	margin: 0;
+}
+
+.column-explorer-quicklook-bar {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	display: flex;
+	justify-content: flex-end;
+	background-color: var(--background-primary);
+}
+
+/* Секция «Избранное» в колонке закладок: подпись и разделитель */
+.column-explorer-section-label {
+	padding: 6px 10px 2px;
+	font-size: var(--font-ui-smaller);
+	font-weight: var(--font-semibold);
+	color: var(--text-muted);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.column-explorer-section-divider {
+	margin: 4px 8px;
+	border-top: 1px solid var(--background-modifier-border);
+}
+
+/* ------------------------------------------------------------------------
+   Колонка «Использование диска»: sunburst-диаграмма хранилища
+   ------------------------------------------------------------------------ */
+
+.column-explorer-du {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-height: 0;
+	padding: 8px 10px 10px;
+	gap: 6px;
+}
+
+.column-explorer-du-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.column-explorer-du-crumbs {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 2px;
+	min-height: 26px;
+}
+
+.column-explorer-du-crumb {
+	background: none;
+	border: none;
+	box-shadow: none;
+	padding: 2px 6px;
+	border-radius: var(--radius-s);
+	color: var(--text-muted);
+	cursor: pointer;
+	font-size: var(--font-ui-small);
+}
+
+.column-explorer-du-crumb:hover {
+	color: var(--text-normal);
+	background: var(--background-modifier-hover);
+}
+
+.column-explorer-du-crumb.is-current {
+	color: var(--text-normal);
+	font-weight: var(--font-semibold);
+	cursor: default;
+}
+
+.column-explorer-du-crumb-sep {
+	color: var(--text-faint);
+	font-size: var(--font-ui-small);
+}
+
+.column-explorer-du-controls {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.column-explorer-du-seg {
+	display: flex;
+	background: var(--background-secondary);
+	border-radius: var(--radius-m);
+	padding: 2px;
+}
+
+.column-explorer-du-seg-btn {
+	border: none;
+	box-shadow: none;
+	background: transparent;
+	padding: 4px 10px;
+	border-radius: calc(var(--radius-m) - 2px);
+	color: var(--text-muted);
+	font-size: var(--font-ui-small);
+	cursor: pointer;
+	transition: background 0.15s ease, color 0.15s ease;
+}
+
+.column-explorer-du-seg-btn.is-active {
+	background: var(--interactive-accent);
+	color: var(--text-on-accent);
+}
+
+.column-explorer-du-seg-btn:disabled {
+	opacity: 0.55;
+	cursor: default;
+}
+
+.column-explorer-du-icon-btn {
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	padding: 5px;
+	border-radius: var(--radius-s);
+	color: var(--text-muted);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+}
+
+.column-explorer-du-icon-btn:hover {
+	background: var(--background-modifier-hover);
+	color: var(--text-normal);
+}
+
+.column-explorer-du-chart {
+	position: relative;
+	flex: 1;
+	min-height: 0;
+}
+
+.column-explorer-du-svg {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.column-explorer-du-arc {
+	stroke: var(--background-primary);
+	stroke-width: 0.5;
+	transition: opacity 0.18s ease, filter 0.18s ease, transform 0.18s ease;
+	transform-origin: 0 0;
+}
+
+.column-explorer-du-arc.is-clickable {
+	cursor: pointer;
+}
+
+/* Во время анимации переходы только мешают: кадры и так идут через rAF */
+.column-explorer-du-svg.is-animating .column-explorer-du-arc {
+	transition: none;
+	pointer-events: none;
+}
+
+.column-explorer-du-svg.has-hover .column-explorer-du-arc:not(.is-highlighted) {
+	opacity: 0.55;
+}
+
+.column-explorer-du-arc.is-highlighted {
+	filter: brightness(1.1) saturate(1.15);
+}
+
+/* Сектор под курсором чуть выступает наружу */
+.column-explorer-du-arc.is-highlighted:hover {
+	transform: scale(1.025);
+}
+
+.column-explorer-du-center-circle {
+	fill: var(--background-secondary);
+	cursor: pointer;
+	transition: fill 0.15s ease;
+}
+
+.column-explorer-du-center:hover .column-explorer-du-center-circle {
+	fill: var(--background-modifier-hover);
+}
+
+.column-explorer-du-center text {
+	text-anchor: middle;
+	fill: var(--text-normal);
+	pointer-events: none;
+	font-family: var(--font-interface);
+}
+
+.column-explorer-du-center-name,
+.column-explorer-du-center-meta {
+	fill: var(--text-muted);
+}
+
+.column-explorer-du-center-value {
+	font-weight: var(--font-bold);
+}
+
+.column-explorer-du-tooltip {
+	position: absolute;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+	background: var(--background-primary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-m);
+	box-shadow: var(--shadow-s);
+	padding: 6px 10px;
+	max-width: 260px;
+	opacity: 0;
+	transition: opacity 0.12s ease;
+	z-index: var(--layer-popover);
+}
+
+.column-explorer-du-tooltip.is-visible {
+	opacity: 1;
+}
+
+.column-explorer-du-tip-name {
+	font-weight: var(--font-semibold);
+	font-size: var(--font-ui-small);
+	overflow-wrap: anywhere;
+}
+
+.column-explorer-du-tip-meta {
+	color: var(--text-muted);
+	font-size: var(--font-ui-smaller);
+}
+
+.column-explorer-du-empty {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--text-muted);
+	font-size: var(--font-ui-medium);
+	pointer-events: none;
+}
+
+/* На телефоне колонка во всю ширину — подписи и кнопки крупнее */
+.is-mobile .column-explorer-du-seg-btn {
+	padding: calc(6px * var(--ce-mobile-scale, 1)) calc(12px * var(--ce-mobile-scale, 1));
+	font-size: calc(var(--font-ui-small) * var(--ce-mobile-scale, 1));
+}
+
+/* Compact controls share the host theme and keyboard focus treatment. */
+.column-explorer-toolbar {
+	align-items: center;
+}
+
+.column-explorer-search-wrap {
+	display: flex;
+	align-items: center;
+	flex: 1;
+	min-width: 0;
+	gap: 2px;
+}
+
+.column-explorer-search-wrap .column-explorer-search {
+	width: 100%;
+	min-width: 0;
+}
+
+.column-explorer-container button.column-explorer-clear-filter[hidden] {
+	display: none;
+}
+
+.column-explorer-search-wrap.is-inactive {
+	opacity: 0.5;
+}
+
+:where(.column-explorer-container) button.clickable-icon,
+.column-explorer-container button.column-explorer-crumb,
+.column-explorer-container button.column-explorer-cal-month {
+	box-shadow: none;
+	background: transparent;
+	border: 0;
+	color: inherit;
+	font: inherit;
+	height: auto;
+}
+
+.column-explorer-container button.clickable-icon {
+	flex-shrink: 0;
+}
+
+.column-explorer-container button:focus-visible {
+	outline: 2px solid var(--interactive-accent);
+	outline-offset: -2px;
+}
+
+.column-explorer-container button.column-explorer-crumb {
+	padding: 1px 4px;
+}
+
+.column-explorer-view-toggle {
+	opacity: 0.55;
+}
+
+.column-explorer-list.is-grid > .column-explorer-section-label,
+.column-explorer-list.is-grid > .column-explorer-section-divider,
+.column-explorer-list.is-grid > .column-explorer-load-more {
+	grid-column: 1 / -1;
+}
+
+button.column-explorer-cal-cell {
+	box-shadow: none;
+	border: 0;
+	font: inherit;
+	height: auto;
+	background: transparent;
+}
+
+.column-explorer-search::-webkit-search-cancel-button {
+	-webkit-appearance: none;
+}
+
+/* Everyday controls share the theme and wrap within narrow sidebars. */
+.column-explorer-filter-info,
+.column-explorer-selection-bar {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 4px 8px;
+	padding: 4px 8px;
+	flex: 0 0 auto;
+	font-size: var(--font-ui-smaller);
+	color: var(--text-muted);
+}
+.column-explorer-filter-info[hidden],
+.column-explorer-selection-bar[hidden] { display: none; }
+.column-explorer-filter-info > [role="status"] { flex: 1 1 130px; }
+.column-explorer-state-filter {
+	flex: 0 1 auto;
+	max-width: 150px;
+	height: 26px;
+	min-width: 0;
+	padding-block: 2px;
+	font-size: inherit;
+}
+.column-explorer-filter-info button {
+	font-size: inherit;
+	height: auto;
+	min-height: 26px;
+	padding: 2px 6px;
+	white-space: normal;
+	box-shadow: none;
+}
+.column-explorer-selection-bar {
+	background: var(--background-secondary);
+	border-block: 1px solid var(--background-modifier-border);
+}
+.column-explorer-selection-bar > [role="status"] { flex: 1; }
+.column-explorer-selection-bar button { width: 28px; height: 28px; }
+.column-explorer-column-header { flex-wrap: wrap; }
+.column-explorer-sort-button {
+	order: 1;
+	flex: 1 0 100%;
+	justify-content: flex-start;
+	gap: 4px;
+	min-width: 0;
+	height: 24px;
+	padding: 2px 0;
+	font-weight: normal;
+	font-size: var(--font-ui-smaller);
+	color: var(--text-muted);
+}
+.column-explorer-sort-label {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.column-explorer-sort-button svg { width: 12px; height: 12px; flex-shrink: 0; }
+.is-mobile .column-explorer-filter-info button,
+.is-mobile .column-explorer-state-filter,
+.is-mobile .column-explorer-sort-button { min-height: 44px; }
+.is-mobile .column-explorer-state-filter { max-width: 100%; }
+.column-explorer-quicklook-bar {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+.column-explorer-quicklook-position {
+	flex: 1;
+	text-align: center;
+	color: var(--text-muted);
+	font-size: var(--font-ui-smaller);
+}
+.column-explorer-quicklook-body { overflow-y: auto; min-height: 0; }
+.column-explorer-quicklook-bar button { min-width: 28px; min-height: 28px; }
+.is-mobile .column-explorer-quicklook-bar button { min-width: 44px; min-height: 44px; }
+.is-mobile .column-explorer-search-row {
+	flex-direction: column;
+	align-items: stretch;
+}
+.is-mobile .column-explorer-search-row .column-explorer-search-wrap { width: 100%; }
+.is-mobile .column-explorer-search-row .column-explorer-filter-info { padding-inline: 0; }
+.is-mobile .column-explorer-sort-button {
+	order: 0;
+	flex: 0 1 auto;
+	max-width: 38%;
+	padding-inline: 4px;
+}
+.column-explorer-column-title { min-width: 0; }
+
+/* Keep the collapse control visible at the start of the desktop toolbar. */
+.column-explorer-collapse-btn {
+	flex-shrink: 0;
+	color: var(--text-normal);
+	background: var(--background-modifier-hover);
+	border: 1px solid var(--background-modifier-border);
+}
+
+/* A single folder column fills the available panel without changing saved widths. */
+.column-explorer-columns.is-single-column > .column-explorer-column {
+	flex: 1 1 0;
+	width: 100%;
+	min-width: 0;
+}

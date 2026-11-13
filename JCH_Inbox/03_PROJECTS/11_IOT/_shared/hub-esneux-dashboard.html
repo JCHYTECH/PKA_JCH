@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+k
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hub Esneux — RPi 5 HA OS Stack Geekworm</title>
+<style>
+  :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --accent:#58a6ff; --grn:#3fb950; --yel:#d2991d; --red:#f85149; --dim:#8b949e; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; line-height:1.6; padding:20px; max-width:1100px; margin:0 auto; }
+  h1 { font-size:1.8em; color:var(--accent); margin-bottom:4px; }
+  h2 { font-size:1.3em; color:var(--accent); margin:30px 0 12px; padding-bottom:6px; border-bottom:1px solid var(--border); }
+  h3 { font-size:1.1em; color:var(--text); margin:16px 0 8px; }
+  .subtitle { color:var(--dim); font-size:0.95em; margin-bottom:20px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:20px; margin-bottom:20px; }
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:0.92em; }
+  th { background:var(--border); color:var(--accent); text-align:left; padding:8px 12px; font-weight:600; }
+  td { padding:8px 12px; border-bottom:1px solid var(--border); }
+  .price { color:var(--grn); font-weight:600; }
+  .total { font-size:1.2em; color:var(--grn); font-weight:700; }
+  .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:0.8em; font-weight:600; }
+  .badge-ok { background:#1a3a1a; color:var(--grn); }
+  .badge-warn { background:#3a2a0a; color:var(--yel); }
+  .stack { background:#0a0e14; border:2px solid var(--border); border-radius:8px; padding:0; margin:16px 0; font-family:'SF Mono',Consolas,monospace; font-size:0.8em; overflow-x:auto; }
+  .stack pre { margin:0; padding:16px; line-height:1.4; }
+  .layers { display:flex; flex-direction:column; gap:2px; margin:16px 0; }
+  .layer { display:flex; align-items:center; padding:12px 16px; border-radius:6px; font-size:0.9em; gap:12px; }
+  .layer-top { background:linear-gradient(135deg,#1a2a3a,#1a1a2a); border:1px solid #58a6ff44; }
+  .layer-mid { background:linear-gradient(135deg,#1a2a1a,#1a1a2a); border:1px solid #3fb95044; }
+  .layer-bot { background:linear-gradient(135deg,#2a1a1a,#1a1a2a); border:1px solid #f8514944; }
+  .layer-case { background:linear-gradient(135deg,#2a2a1a,#1a1a2a); border:1px solid #d2991d44; }
+  .layer-icon { font-size:1.6em; min-width:36px; text-align:center; }
+  .layer-info { flex:1; }
+  .layer-name { font-weight:700; color:var(--text); }
+  .layer-desc { font-size:0.82em; color:var(--dim); }
+  .layer-price { color:var(--grn); font-weight:600; font-size:0.9em; }
+  .protect-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin:12px 0; }
+  .protect-item { background:var(--card); border:1px solid var(--border); border-radius:6px; padding:14px; }
+  .protect-item h4 { color:var(--grn); margin-bottom:4px; font-size:0.95em; }
+  .protect-item p { font-size:0.85em; color:var(--dim); }
+  .links { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
+  .links a { color:var(--accent); text-decoration:none; font-size:0.9em; padding:4px 12px; border:1px solid var(--border); border-radius:4px; }
+  .links a:hover { background:var(--border); }
+  .img-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin:16px 0; }
+  .img-card { background:var(--card); border:1px solid var(--border); border-radius:8px; overflow:hidden; text-align:center; }
+  .img-card .img-placeholder { height:180px; background:linear-gradient(135deg,#1a1a2a,#0d1117); display:flex; align-items:center; justify-content:center; color:var(--dim); font-size:3em; }
+  .img-card .img-label { padding:10px; font-size:0.85em; color:var(--text); font-weight:600; }
+  .img-card .img-link { padding:0 10px 10px; font-size:0.8em; }
+  .img-card .img-link a { color:var(--accent); }
+</style>
+</head>
+<body>
+
+<h1>🖥️ Hub Esneux</h1>
+<p class="subtitle">Raspberry Pi 5 + Home Assistant OS — Stack Geekworm X1201 UPS + X1001 NVMe<br>
+Projets : <strong>iot-serre</strong> + <strong>iot-maison</strong> | Décision : 2026-06-22</p>
+
+<!-- STACK VISUAL -->
+<div class="card">
+  <h2>📐 Architecture — Stack Geekworm</h2>
+
+  <div class="layers">
+    <div class="layer layer-top">
+      <div class="layer-icon">💾</div>
+      <div class="layer-info">
+        <div class="layer-name">X1001 NVMe HAT + SSD M.2 2280</div>
+        <div class="layer-desc">PCIe Gen2 x1 → SSD 128 Go (WD Green / Kingston NV2)</div>
+      </div>
+      <div class="layer-price">~35 €</div>
+    </div>
+    <div class="layer layer-mid">
+      <div class="layer-icon">🍓</div>
+      <div class="layer-info">
+        <div class="layer-name">Raspberry Pi 5 — 8 Go RAM</div>
+        <div class="layer-desc">Quad-core Cortex-A76 @ 2.4 GHz • GPIO 40 pins • USB-C PD</div>
+      </div>
+      <div class="layer-price">~85 €</div>
+    </div>
+    <div class="layer layer-bot">
+      <div class="layer-icon">🔋</div>
+      <div class="layer-info">
+        <div class="layer-name">X1201 UPS HAT (bottom, pogo pins)</div>
+        <div class="layer-desc">2× 18650 Li-Ion • 5.1V 5A • I2C safe shutdown • auto power-on</div>
+      </div>
+      <div class="layer-price">~40 €</div>
+    </div>
+    <div class="layer layer-case">
+      <div class="layer-icon">📦</div>
+      <div class="layer-info">
+        <div class="layer-name">X1201-C1 Boîtier métal + refroidisseur actif</div>
+        <div class="layer-desc">111 × 90.8 × 46.8 mm • Aluminium • Ventilateur silencieux</div>
+      </div>
+      <div class="layer-price">~20 €</div>
+    </div>
+  </div>
+
+  <div class="stack">
+<pre>
+┌─────────────────────────────────────────┐
+│            X1201-C1 Boîtier             │
+│  ┌───────────────────────────────────┐  │
+│  │  🔵 X1001 NVMe HAT               │  │  ← TOP
+│  │  💾 SSD M.2 2280 (128 Go)        │  │     PCIe ribbon
+│  ├───────────────────────────────────┤  │
+│  │  🍓 Raspberry Pi 5 (8 Go)        │  │  ← MIDDLE
+│  ├───────────────────────────────────┤  │
+│  │  🔴 X1201 UPS                    │  │  ← BOTTOM
+│  │  🔋 2× 18650 3500mAh             │  │     pogo pins
+│  │  ⚡ I2C → shutdown propre        │  │
+│  └───────────────────────────────────┘  │
+│         🌀 Refroidisseur actif          │
+└─────────────────────────────────────────┘
+          ↕ Alim secteur 230V
+     Coupure → X1201 shutdown propre
+          ↕ I2C → HA OS détecte batterie
+</pre>
+  </div>
+</div>
+
+<!-- BOM -->
+<div class="card">
+  <h2>🛒 BOM — ~195 €</h2>
+  <table>
+    <tr><th>#</th><th>Composant</th><th>Référence</th><th>Qté</th><th>Prix est.</th><th>Où ?</th></tr>
+    <tr><td>1</td><td>Raspberry Pi 5 8 Go</td><td>SC1112</td><td>1</td><td class="price">~85 €</td><td>Amazon / Mouser / Kiwi</td></tr>
+    <tr><td>2</td><td>UPS HAT</td><td>Geekworm X1201 V1.1</td><td>1</td><td class="price">~25 €</td><td><a href="https://geekworm.com/products/x1201">geekworm.com</a> / Amazon</td></tr>
+    <tr><td>3</td><td>NVMe HAT</td><td>Geekworm X1001</td><td>1</td><td class="price">~15 €</td><td><a href="https://geekworm.com/products/x1001">geekworm.com</a> / Amazon</td></tr>
+    <tr><td>4</td><td>SSD NVMe M.2 2280</td><td>WD Green SN350 128 Go<br><em>ou Kingston NV2 128 Go</em></td><td>1</td><td class="price">~20 €</td><td>Amazon / Mouser</td></tr>
+    <tr><td>5</td><td>Boîtier métal</td><td>Geekworm X1201-C1</td><td>1</td><td class="price">~20 €</td><td><a href="https://geekworm.com/products/x1201-c1">geekworm.com</a> / Amazon</td></tr>
+    <tr><td>6</td><td>Alim USB-C PD 5V 5A</td><td>Officielle RPi 5</td><td>1</td><td class="price">~15 €</td><td>Amazon / Mouser</td></tr>
+    <tr><td>7</td><td>Accus 18650</td><td>Samsung 35E 3500mAh<br><em>ou LG MJ1</em></td><td>2</td><td class="price">~15 €</td><td>Amazon / Nkon.nl</td></tr>
+    <tr style="font-weight:700;background:var(--border)"><td></td><td colspan="3"><strong>TOTAL</strong></td><td class="total">~195 €</td><td></td></tr>
+  </table>
+
+  <p style="color:var(--dim);font-size:0.85em;margin-top:8px;">💡 Tout est disponible sur Amazon DE/FR en livraison rapide. Les 3 composants Geekworm (X1201, X1001, X1201-C1) existent aussi en kit combiné.</p>
+</div>
+
+<!-- PROTECTIONS -->
+<div class="card">
+  <h2>🛡️ 4 couches anti-corruption</h2>
+  <div class="protect-grid">
+    <div class="protect-item">
+      <h4>💾 SSD NVMe</h4>
+      <p>Pas de carte SD. SSD M.2 2280 — 10× plus résistant aux coupures. Journaling ext4.</p>
+    </div>
+    <div class="protect-item">
+      <h4>🔋 UPS X1201</h4>
+      <p>Coupure secteur → batterie 18650 → shutdown propre via I2C. Auto power-on au retour.</p>
+    </div>
+    <div class="protect-item">
+      <h4>📁 OverlayFS</h4>
+      <p>Partition système en lecture seule. Les écritures vont en RAM. Rien ne corrompt le FS.</p>
+    </div>
+    <div class="protect-item">
+      <h4>👁️ Watchdog</h4>
+      <p>Hardware watchdog + systemd. Si HA freeze → reboot automatique. Backup config auto → M1.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTOS COMPOSANTS -->
+<div class="card">
+  <h2>📸 Composants — Références visuelles</h2>
+
+  <div class="img-grid">
+    <div class="img-card">
+      <div class="img-placeholder">🍓</div>
+      <div class="img-label">Raspberry Pi 5 — 8 Go</div>
+      <div class="img-link"><a href="https://www.raspberrypi.com/products/raspberry-pi-5/">raspberrypi.com</a></div>
+    </div>
+    <div class="img-card">
+      <div class="img-placeholder">🔋</div>
+      <div class="img-label">Geekworm X1201 — UPS HAT</div>
+      <div class="img-link"><a href="https://geekworm.com/products/x1201">geekworm.com/products/x1201</a></div>
+    </div>
+    <div class="img-card">
+      <div class="img-placeholder">💾</div>
+      <div class="img-label">Geekworm X1001 — NVMe HAT</div>
+      <div class="img-link"><a href="https://geekworm.com/products/x1001">geekworm.com/products/x1001</a></div>
+    </div>
+    <div class="img-card">
+      <div class="img-placeholder">📦</div>
+      <div class="img-label">X1201-C1 — Boîtier métal complet</div>
+      <div class="img-link"><a href="https://geekworm.com/products/x1201-c1">geekworm.com/products/x1201-c1</a></div>
+    </div>
+    <div class="img-card">
+      <div class="img-placeholder">💾</div>
+      <div class="img-label">WD Green SN350 — SSD NVMe 2280</div>
+      <div class="img-link"><a href="https://www.amazon.fr/s?k=WD+Green+SN350+128+Go">Amazon FR</a></div>
+    </div>
+    <div class="img-card">
+      <div class="img-placeholder">🔋</div>
+      <div class="img-label">Samsung 35E — 18650 3500mAh</div>
+      <div class="img-link"><a href="https://www.nkon.nl/fr/samsung-35e-18650.html">nkon.nl</a></div>
+    </div>
+  </div>
+
+  <h3>📷 Photos du stack assemblé</h3>
+  <p style="color:var(--dim);font-size:0.85em;">➡️ Voir le wiki Geekworm pour les photos de montage : <a href="https://wiki.geekworm.com/X1201">wiki.geekworm.com/X1201</a></p>
+  <p style="color:var(--dim);font-size:0.85em;">➡️ Vidéo YouTube montage X1201 + X1001 : rechercher <em>"Geekworm X1201 X1001 Raspberry Pi 5"</em></p>
+</div>
+
+<!-- STACK LOGICIELLE -->
+<div class="card">
+  <h2>🧠 Stack logicielle</h2>
+  <table>
+    <tr><th>Couche</th><th>Logiciel</th><th>Rôle</th></tr>
+    <tr><td>OS</td><td>Home Assistant OS (bare metal)</td><td>Système domotique 24/7</td></tr>
+    <tr><td>Zigbee</td><td>Zigbee2MQTT ou ZHA</td><td>Pont capteurs/actionneurs Zigbee</td></tr>
+    <tr><td>MQTT</td><td>Mosquitto</td><td>Broker messages locaux</td></tr>
+    <tr><td>ESPHome</td><td>ESPHome Dashboard</td><td>Gestion firmware ESP32/ESP8266</td></tr>
+    <tr><td>Automatisation</td><td>Node-RED + Automations HA</td><td>Logique métier serre + maison</td></tr>
+    <tr><td>VPN</td><td>Tailscale</td><td>Accès distant sécurisé</td></tr>
+    <tr><td>Companion</td><td>M1 Mac (optionnel)</td><td>Frigate NVR / Whisper / Dev</td></tr>
+  </table>
+</div>
+
+<!-- DASHBOARD -->
+<div class="card">
+  <h2>📊 Dashboard — Vues Home Assistant</h2>
+  <table>
+    <tr><th>Vue</th><th>Contenu</th></tr>
+    <tr><td>🌿 <strong>Serre</strong></td><td>Humidité sol ×2, T°/HR, niveau cuve eau pluie, état arrosage, ventilation, timelapse ESP32-CAM</td></tr>
+    <tr><td>🏠 <strong>Maison</strong></td><td>T°/HR par pièce, CO2 séjour, fuite eau SdB, état batterie, production solaire Victron</td></tr>
+    <tr><td>🌤️ <strong>Météo</strong></td><td>Ecowitt GW1100 : température, humidité, vent, pluie, pression — règles arrosage</td></tr>
+    <tr><td>⚡ <strong>Énergie</strong></td><td>Consommation, production solaire, état batteries, alertes</td></tr>
+  </table>
+</div>
+
+<!-- LIENS -->
+<div class="card">
+  <h2>🔗 Liens projet</h2>
+  <div class="links">
+    <a href="../iot-serre/INDEX.md">📋 iot-serre/INDEX.md</a>
+    <a href="../iot-maison/INDEX.md">📋 iot-maison/INDEX.md</a>
+    <a href="hub-esneux.md">📄 hub-esneux.md (source)</a>
+    <a href="BOM-hub-esneux.csv">📊 BOM CSV</a>
+    <a href="../INDEX.md">🏠 IOT INDEX</a>
+  </div>
+</div>
+
+<p style="text-align:center;color:var(--dim);font-size:0.8em;margin-top:30px;">Généré par Dobby 🦉 — 2026-06-22</p>
+
+</body>
+</html>

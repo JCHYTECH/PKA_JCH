@@ -1,0 +1,80 @@
+00:00:00 - 00:01:08
+I think I finally fixed my biggest problem with Apple Notes. I used to save everything but 6 months later I have absolutely no idea where anything is. [music] So I gave the entire job of organizing my notes to AI. Now I just tell it things [music] and it files them, connects information, tracks important dates [music] and updates the old notes when something changes. When I need something back, I don't search, I just ask. The crazy part is I put the [music] entire setup into one prompt file. You can download my exact prompt,
+
+00:00:34 - 00:01:38
+give it to Clot Code, and build the same AI note [music] system on your computer within seconds with zero effort. Let me show you how this works because this is honestly way more useful than I expected. My problem with Apple Notes was never actually taking notes. I'm very good at that. video ideas, school information, brand contacts, random things that I need to buy, places I want to visit. I save everything. The problem is everything after that. Where should I file this? What should I name the note?
+
+00:01:06 - 00:02:12
+Did I already create a note about this? Should I add a tag? And then 3 months later, I vaguely remember saying something, but I don't remember the exact words that I used. So even search doesn't always help me. That's when I started thinking this is exactly the kind of boring job AI should be doing for me. So instead of using AI to help me write a note, I give AI the job of maintaining my entire note system. Now let's say I tell it Tim Cook is my contact at Apple. That's all I type. I
+
+00:01:39 - 00:02:53
+don't say create a person note called Tim. I don't choose the work folder. I don't add tax. My setup tells Claude to first search my existing notes and check whether I already have information about Tim or Apple. If there is an existing place for that information, it updates it instead of blindly creating another random note. Then maybe a week later, I say [music] Tim emailed me about the MacBook video that gets connected to the same person and the relevant work information. If I later save his email address, that
+
+00:02:20 - 00:03:34
+can become another way the system identifies him. So I can ask what do I know about Tim? And then it searches my own notes and gives me the answer. This is the difference. I'm not going to organize information for the computer anymore. The computer is organizing information around the way that I naturally talk. People call systems like this a second brain. Very fancy name. I just think of it as Apple Notes. If I never had to organize Apple Notes myself. Here's another example. I can say my
+
+00:02:58 - 00:04:08
+passport expires March 2027. Normally that would just sit inside a note somewhere and then in March 2027 I would probably be panicking. But in my setup, I added a rule that says anything with a due date, expiry date, or follow-up date should be treated as something trackable. So the passport information stays in the relevant note, but the expiration also gets added to an upcoming page with a link back to the original information. Now I can ask what's coming up or do I have anything due in the next 2 months? And it can
+
+00:03:34 - 00:04:42
+check these dates and show me where every item came from. Just to be clear, Claude is not magically running in the background watching my passport. The smart part happens when I give the information to it. My workflow tells Claude how that information should be stored. So, it's actually useful when I need it later. Okay, now let me show you how to build this because this part is ridiculously easy. You need clot code. And I know the second I say code, half of you are probably thinking this is now a
+
+00:04:09 - 00:05:12
+developer video, but it's not. You're not writing code. The reason I'm using clot code is because it can actually work across the files and folders in this note system. I don't want an AI to just tell me you should create this folder. I want the AI to create the structure, find the right note, edit the files, maintain the links, and organize everything. For me, I'm simply using Claude code tab in the Claude desktop app. Then I use Obsidian to open and visually browse the notes. Every note is
+
+00:04:40 - 00:05:48
+just a normal markdown file. So I can use any text or markdown view. I'm using Obsidian because it's free and is a great app by itself too to view my notes. This beautiful graph you're seeing is Obsidian showing how all my notes connect. Every dot is a note and every line is a link between related notes. In my setup, Claude is specifically instructed to build those connections while it organizes information. So, think of Obsidian as a window into my notes. Claude is the librarian. But to be honest, once it's
+
+00:05:15 - 00:06:24
+up and running, I almost never view my notes directly through Obsidian. I just interact with Claude. Now, this is the part that I built for you. Create an empty folder on your computer. You can call it second brain, my notes or my brain. It really doesn't matter. Open that folder in clot code. Then download the markdown prompt that I linked in the description below. This is not a tiny threeline prompt. It's a detailed multi-page setup prompt. I spent a lot of time tweaking the workflows, the folder structure, how
+
+00:05:55 - 00:06:58
+information gets stored, how it searches, how it handles dates, how corrections work, and how the whole system maintains itself. But you don't need to read and understand any of that. It's basically telling Claude all the instructions on how to work on organizing and retrieving my notes. It's all English, so you can read up on how it works if you want to know. You give Claude code this one prompt file and ask it to run it. That's it. Now watch what it does. Claude builds the entire note
+
+00:06:26 - 00:07:45
+system for you. It creates areas for work, personal information, family, home, travel, knowledge, a journal, attachments, an inbox for quick messy notes, and even a staging area for importing years of old notes. But the folders are actually the boring part. the interesting stuff is happening behind them. My prompt creates three main AI workflows. One handles capturing new information. The other one handles finding information and answering questions. And the third is basically a cleaning crew for your notes. These are
+
+00:07:06 - 00:08:13
+built using clot code skills. So the system is designed to use the relevant workflow based on what you're doing. For example, if I say Anna's school pickup is at 3:20, I'm giving it new information. That goes through the capture workflow. If I ask, what time is Anna's school pickup? That's retrieval. Search my own information and then answer the question. But here's one of my favorite parts. I can say Anna's school pickup moved to 3:30. Did I have anything else happening around that
+
+00:07:40 - 00:08:48
+time? That's a correction and a question in the same message. My workflow tells Claude to first capture the change and then search my existing information to answer the question. I don't have to switch models. I don't have to type slash commands every time. I just talk normally. Once Claude finishes building the system, it starts interviewing you. And don't worry, it's not one giant form asking you 30 questions at once. I specifically told it to ask a few questions at a time and make it feel
+
+00:08:14 - 00:09:24
+like a normal conversation. It starts with basic things. Who are you? What do you do? Where are you based? Then your work, projects, important people, family, things that you want to track, your interests, even how you like answers formatted. But this is the cool part. It's not taking all of your answers and dumping them into one giant about me note. Every answer goes through the same organization workflow. So when I say that I run the tech girl channel that becomes part of my work system. If
+
+00:08:49 - 00:09:52
+I mention active videos or projects, those can become project notes. Important people can have connected person notes and the original folder structure can actually change around your life. If you run two businesses, Claude can restructure the system to make room for two businesses. If an area is completely useful to you, the system can be reorganized. By the end of the review, it shouldn't feel like my template anymore. It should feel like your note system. And then Claude creates a usage guide inside your wault
+
+00:09:21 - 00:10:39
+explaining exactly how to use everything. Although honestly, it is mostly just talking. Let's say I have a video idea. I'm considering making a video about AI browsers. Done. Sarah is in my contact for this project. Her email is so and so stored. Here's the warranty for my car. I can drop in the PDF. My prompt includes instructions for attachments too. The actual file gets moved into an attachment area and Claude can create a companion note with searchable information about what's inside it.
+
+00:10:07 - 00:11:13
+So 3 months later, I don't need to remember that the PDF was called something ridiculous like warranty_final_updated_2. PDF. I can ask a normal question. what does my car warranty cover? And the system can search the information that I saved. Now, all of this sounds great when you're starting with an empty notes app. But I was definitely not starting with an empty notes app. I have ears of mess. So, let's import that. Inside this setup, there is a folder called staging. Think of this as the
+
+00:10:45 - 00:11:54
+front door for all your old chaos. taking notes that you have exported from Apple Notes, old documents or another note system and drop those files into the staging folder. Then tell Claude, import my staging folder. Now it starts processing those files using the organization rules from my prompt. Let's say I have one Apple note with a video idea, a restaurant recommendation, and school information and a random shopping list all inside the same note. I absolutely have notes like that. The workflow can split
+
+00:11:28 - 00:12:29
+unrelated information into more useful notes, search for existing places before creating duplicates, connect related information, and pull out dates that should be tracked. [music] And once a file has been processed, my setup tells Claude to archive the original source instead of simply throwing it away. So look at the graph before the prompt. And look at it now. This is the part that really sold me. I didn't spend three [music] weekends manually creating folders, renaming notes, and connecting
+
+00:11:58 - 00:13:08
+everything. I gave AI the filing rules. One small tip, I still recommend importing your old notes in reasonable batches, maybe 20 or 30 at a time, especially in the beginning. Let Claude do a careful job and review anything that's really important here on out. If you want to get any information, just open Claude code, start a new session in that folder and ask away. Claude will search all your notes, connect information, images, and fetch you the exact information that you need. Want to add new information? Just ask it. Give
+
+00:12:33 - 00:13:46
+it an image, PDF, email text or anything and ask it to store it. It'll neatly create or edit notes, organize your entire library and folders if needed, and update it. Okay, all of this lives in my desktop. How do I work with it on the go? Well, this whole second brain folder sits on my iCloud drive, which means any edits are automatically synced to my iCloud. There is an Obsidian iOS app which can open the same library on my phone as well. So maybe I'm waiting at the school to pick up and randomly think of a video
+
+00:13:10 - 00:14:16
+idea. I open Obsidian, put the thought into my inbox folder, and close the app. No tags, no folders, no perfect note title. The next time I'm using clot code, I say clean up my inbox. The maintenance workflow can process these quick captures and file them properly. Clot code also has a feature called remote control. So with a local claude code session available, I can continue that session from the claude mobile app too. Basically, my phone becomes another window into the cloud code session
+
+00:13:51 - 00:15:04
+running with my files and tools on my computer. So, I can ask any question or interact with my library from anywhere. And what happens after 6 months of dumping random information into the system? That's where the maintenance workflow comes in. I can ask it to clean up my inbox, find duplicate notes, check for broken links, find notes that have no connections, rebuild the index, audit formatting, and refresh my upcoming page by scanning for track dates. I do this by simply asking to do wa maintenance.
+
+00:14:28 - 00:15:32
+Everything organized in a few minutes. One important thing before you do this, these are plain markdown files that you control, but claude is still processing the information that you ask for it to work with. So check your cla privacy and data settings. And please be careful with what you store. I personally would not put passwords, API keys or full bank account information in here. In fact, my prompt specifically tells Claw not to store passwords, API keys or full bank account informations. One more thing,
+
+00:15:01 - 00:15:59
+your notes may grow large. Asking something means Claude needs to read a lot of information before answering you. This also means heavy usage. So, a free tier may run out tokens pretty quickly. If you have a paid plan, then this solution can work better. So, that's how I replaced Apple Notes with AI. Not because Apple Notes is bad. I still really like Apple Notes. I replaced it because organizing and retrieval was the bigger problem. The exact multi-page prompt I built is linked below. It's
+
+00:15:30 - 00:16:13
+free to download. Give that one prompt to cla code inside an empty folder. Let it build the system and then answer the onboarding questions. Then just start talking to it. Subscribe if you like the video where I take complicated AI tools, actually use them in real life and show you the parts that are genuinely useful. I'll catch you in the next one. This is Sanja. Bye-bye.

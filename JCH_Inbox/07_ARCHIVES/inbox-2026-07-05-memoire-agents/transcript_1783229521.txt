@@ -1,0 +1,191 @@
+00:00:02 - 00:01:05
+Hey y'all, Professor Gassimi here. Welcome back to another lecture on AI agents at Michigan State University. Today's lecture will be covering two topics. The first of them is memory management. So we'll be talking about how you take data both in the short as well as the longer term settings and get your AI agents to leverage those to improve the fidelity of their answers. The second topic we'll be discussing is about learning and adaptation in an agentic setting. So think of this as how
+
+00:00:33 - 00:01:39
+you take your large language model and you fine-tune or adapt it so that it's more well aligned with the tasks that you specifically want your agent to perform. Okay. There's two um broader thematic things we'll be touching on as we go through the content together. The first when it comes to the memory management portion, I'll be giving you an actual implementation of the agentic design pattern. So I'll show you some code that illustrates how you do memory management. Um, and when it comes to the learning
+
+00:01:06 - 00:02:21
+and adaptation module that we'll be covering, I'll try to give you an oversight of how specifically the learning is performed by covering some of the equations and a few of the prominent methods that are used for doing the adaptation of LMS to facilitate better quality agents. So with that, let's dive into the memory management portion of today's lecture. One thing before I get started, as we've done in previous lectures, I'll be including here in the bottom right hand side reference materials that you should
+
+00:01:43 - 00:02:43
+take a look at. In many instances, uh, figures that I'll show you here on the slides and sometimes the text are sourced either paraphrased or in a few instances quoted from the materials that you'll see on the bottom right hand side when I include a reference. So, please do check out Antonio's book. We have a link to it in our uh course materials repository. I think it's a great starting point for getting an introduction to AI agents. So let's talk about memory. What does it do? Well,
+
+00:02:13 - 00:03:33
+memory is what agents use to retain context. Usually these are things that they have seen in the past that are important for answering questions in the present. So, it's pretty vital for agents to track information so that they can perform intelligently over time. Okay. I've got here an example um an illustration rather that shows you what a typical interaction pattern with an AI agent that has memory looks like. You'll have a user. That user will generate a prompt. The prompt will be fed to an
+
+00:02:53 - 00:03:59
+agent and as a function of some properties of this prompt, the agent will make a call to a memory system. Let's say um this prompt had to do with tell me the items on the to-do list. A natural thing that an agent might do is go to its memory which may be kept um some reference of the to-do list, feed this back to the agent so that in the course of generating the response, it can relay what the contents of the to-do list were. You could also think of secondary treatments of this kind of um memory
+
+00:03:26 - 00:04:27
+design pattern. You might be interested not just on what's on the grocery list, but what you can make with the grocery list, like a cake if it had milk and eggs and sugar, for example. In which case, you'd not only need to fetch what comes from memory, but you'd have to do some secondary processing or reasoning over that set of ingredients before returning your outcome. When we talk about memory, um there's a couple of things to sort of keep in mind really. There's two kinds
+
+00:03:57 - 00:04:53
+of memory specifically, and we'll be breaking them down and and describing them in more detail in a few slides from now. First is short-term memory. So, this refers to things that are in the context window of the LLM. And then we have long-term memory. And this is the persistent storage kind of thing that you'd fetch from some location like you've done in the first couple of homework assignments in this class as you've built that AI agent-based resume application. So let's start by double
+
+00:04:24 - 00:05:40
+clicking on short-term memory. Um this is actually just the content that exists within your context window. That's what short-term memory is for an AI agent. So whatever you pop in there that's not directly related to your query but indirectly supports the response of the AI agent. That's what they oftentimes refer to as short-term or contextual memory of the the LLM. There's some important things for you to note though um really about the limitations of this short-term memory. The first uh is that although it's
+
+00:05:03 - 00:05:59
+getting bigger as time goes on, I'm showing you here on this uh plot time all the way from 2018 up until the present. And I'm showing you the context window size, which is proportional to the total number of words you can jam into the prompt before it says, "Hey, I you you've given me too much. I can't respond to this question." And what you can see here, if you look over time, there's a rough linear trend upward with the latest models um at least in this this report, which
+
+00:05:30 - 00:06:38
+admittedly is a tiny bit dated, sitting at around 10 million tokens as a context size. So the context size are are getting bigger, but they're not infinitely large. So you can't throw an infinite amount of context into the window. And just to be clear, even if you could throw an infinite amount of context into those context windows, it's a very bad idea because language model performance is known to decrease if you throw in tons of irrelevant context into the window. So the right way for you to think about
+
+00:06:04 - 00:07:10
+short-term memory is you've got a lot of it to play with. In contemporary large language models, uh, millions of tokens is not small, but if you've ever used a large language model on a significantly sized codebase or across a significantly large set of documents, you know very well it can't hold an infinite amount of information in short-term memory. And when it even when it can, the information that's irrelevant to the core question you're asking can confound the performance. And so this reality of
+
+00:06:37 - 00:07:47
+short-term memory is what brings the motivation for the design of long-term memory systems, which is the storage of content outside of the LLM's context window that are fed sort of strategically into the context window just in time for the inference. There's a number of places that people will store this kind of data. You might have standard relational databases. This is what we've done in the homework together, right? You've taken a Postgress database, you've put some resume information, you write a query,
+
+00:07:12 - 00:08:17
+you pass that to an LLM, and you use that to generate a response. Um, there's knowledge graphs, which are just another way of representing data. And then of course there's vector stores, um, which if you did our last homework assignment, you can also store within a standard relational database ecosystem. The things I want you to note which are sort of illustrated by the figure here on the left and I'll step you through the bullet points on the right are that when you're generating a long-term
+
+00:07:44 - 00:08:58
+memory system or an agent rather that uses long-term memory there's a couple of frequent steps that you perform really two um major steps that have their own subcomponents. The first is you obviously have to collect a set of data sources that you want to use to to provide reliable context to your language model. But you have to also figure out how you chunk that document kind of cut it into small pieces so that when you're doing the fetch in the database later, you only grab the subsets or the chunks that are relevant
+
+00:08:22 - 00:09:29
+for the response. There are some common ways that people do this which we'll cover a little later in the semester. Um, but suffice it to say, you have to take not just your document and throw it into a database, but think of how to kind of cut the document up into small pieces so that individual chunks of that document can be surfaced when you want to do a query later and inject the right context into the prompt. Um, assuming you've done that segmentation appropriately, when a user asks a retrieval question, you do some
+
+00:08:56 - 00:10:03
+kind of a search against that chunked up document and then inject that appropriate context into the prompt. And that enables your um language model to use that context to answer the right question with the right context at the right time rather than just dumping absolutely everything into the context window. Um so a couple of things to note and then we're going to move on to a code example. The first is that this is great because it serves um this model rather using long-term memory is great because
+
+00:09:30 - 00:10:41
+it serves as a repository of lasting knowledge across sessions and tasks. You don't have to worry about uh context window running out. Um, if you structure this the right way, there are methods you can use, such as semantic similarity search, like what we're doing in homework 2 to identify information that is semantically related to the contact content of the user's query, what showed up in the prompt. And um you can also enable the agents to combine what's in the prior in their
+
+00:10:06 - 00:11:10
+prior knowledge with the current interactions through synthesis of what's in the past plus what exists in the prompt to get a whole that's greater than the sum of its individual parts. So just to be to be clear for those of you that are that are looking to do this in a professional setting, I think there's almost no application in industry maybe beyond the development of language models fundamentally where you will not touch some kind of long-term memory component if you're building this
+
+00:10:37 - 00:11:56
+in industry. Most people have a dedicated repository of information and they want to use that repository of information to serve as a guard rail or a grounding for the response of the language models and the use of databases and other long-term memory repositories are how that's done. Just so you're uh aware of what the three major modalities of memory look like, um I've listed them here. you have semantic memory which has to do with remembering facts or information about the user. Um so typically you should
+
+00:11:17 - 00:12:24
+think of semantic memory as a person's using a system. There's some static information that you want the LLM to be aware of about that person at all times. Maybe you append it to the bottom of your prompt. Um so this kind of semantic memory tends to persist across prompts or uh for a given session that a user is interacting with the system. The second kind is episodic memory which are specific past events or experiences that are relevant to a prompt that's being asked about now. Think of this as sort
+
+00:11:51 - 00:12:55
+of like you want to fetch some few shot examples, question answer pairs that are maybe similar to the prompt that was asked and you want to just in time insert them so that at the point of inference when you're returning your response, you give answers that are that are grounded in something you already know works well. Okay. The third kind is procedural memory and this is information on how to perform a task. So this is the property of the of the prompt itself. And when people talk about procedural memory, you
+
+00:12:22 - 00:13:32
+should think of this as um you have n different pathways in which you can attack a problem. And you might like to remember what those n pathways are. React like we covered in the previous lecture could be one of them. Reasoning followed by action. Simply issuing a response or calling a multi- aent system could be another one. And so you might store a set of of procedural opportunities in memory, reason over which procedural opportunity is the correct one up front, and then use that to inform what the secondary steps are.
+
+00:12:58 - 00:13:55
+Okay, so those are the three types of long-term memory. Let's go ahead and cover a quick code example for how you do this in practice. And as as you probably have figured out by now if you've watched some of the other lectures this semester when we're covering code examples, I always put here um on the front page um some of the libraries that I'm going to be using for the code example. The code here does actually work. So if you copy paste this screenshot into your favorite LM and ask
+
+00:13:26 - 00:14:28
+it to spit out uh the text version of the code for you, you you should be able to run this in your favorite ID and it will work. Only thing I want you to be aware of is you'll have to install the libraries that I'm showing you here. You'll also have to make sure that you have a um your API key available in your in your environmental file. Okay, that's going to be important. So your open a your open AI API key in this particular case is what you'd be using so that when you initialize this LLM model, your code
+
+00:13:57 - 00:15:07
+doesn't catastrophically break. Okay, so let's go through this memory example. Now, if we were dealing with a real long-term memory scenario, I would have a database, but I'd like to be able to show you a code example that explains how memories work and the functional interaction with a memory system without making a bunch of tedious database calls. So, for the purpose of this demo, this is going to be our database. Okay, this is our LTM or longterm memory. And you can see it's uh a set of grocery
+
+00:14:33 - 00:15:33
+items, milk and eggs. I alluded to this a little earlier in the lecture. Um and what we've got here is two inline lambda functions. One that gets the topic of the query that a user's asked. So you ask you you stick a prompt into your system and you want to figure out what the topic is about. Is it about groceries or is it not about groceries? And then we've got some stuff that just prints content that the uh are in long-term memory. This is going to be useful for me showing you the demo side
+
+00:15:03 - 00:16:05
+of how this tool works. Okay, last couple of things here and then we're going to jump through an an illustration. We have a function that we've we've got here that takes a prompt. So, a question from a user and it tries to infer the intent of the prompt. Okay? And specifically, it's trying to figure out for this list of groceries you have up here, do you want to add, do you want to remove, or do you want to list the content in this groceries list? So, somebody asks a question, is it one of those three
+
+00:15:34 - 00:16:44
+things that they want to do with the grocery list? And then the second thing is not only do I need to know if they want to add, remove or list things within the grocery list, but if they want to add or remove, I need to know what they want to add or remove. So I have a se a separate class here where we have a prompt um that the prompt that comes from the user which gets added to this um additional content which says we need to extract a single item from the list and return only that item. Okay.
+
+00:16:09 - 00:17:25
+So, what these two functions do is a user is going to pass in a prompt to this system so that they can interact with their groceries list. And we'd like to be able to know are they trying to add, remove, or list the items and what's the item they're trying to add or remove. Okay, let's jump down here for a second. And um what this says, I think my face is blocking one of the words, but what it says down here is what is on my groceries list. And this gets passed or called through
+
+00:16:48 - 00:17:46
+interact. What the interact does is it first fetches the topic like we set up here. So what is this person asking about? Is he asking about groceries? Because if he's asking about something else random like jokes, I don't want to go down the same pathway. Okay. Okay, I also want to get his intent. What was the in intent? Well, that's does he want to add? Does he want to remove or does he want to list something? If we figure out that the intent is that he wants to add an item to the list, we
+
+00:17:17 - 00:18:25
+want to figure out what item does he want to add and then we're going to print that uh we've added the item and just stick it onto the list. That's what this append does to the LTM. Very simple workflow. If he says he wants to remove, similarly, we're going to infer the item. I could have pulled this out here, of course, if I wanted to save myself a function call. And we will run through these to do the same. We're going to pop the item from the list and return um the updated list or if it's not there, let
+
+00:17:50 - 00:19:01
+people know that an item wasn't found. Um, finally, if it's neither of add or remove, then they probably want to list what's available in the long-term memory, in which case we're going to take the set of topics from here, um, turn them into a a string and join them so that we can print them and let the user know what those are. Okay, what is the point of this code? This code takes a prompt from a user that needs to interact with memory of some kind. that's going to persist. The
+
+00:18:25 - 00:19:31
+memory is this dictionary here, right? And we might have some actions that require us to read from the memory, write to the memory, and so on. So, let's see an actual demonstration of how this works. So, we might start with what is on my groceries list. And if you recall, jumping back out here, there was milk and eggs. And as you can see, the LLM responds with your groceries list includes milk and eggs. And just to be handy, I've printed down here what the state of the long-term memory is so that
+
+00:18:59 - 00:20:06
+we can see it was actually updated. If I say add chocolate to my groceries list, it responds. I've added chocolate and we can see it shows up here. If I say remove eggs from the groceries list, you can see it removed eggs. And if I say what is on my groceries list, it now shows just or responds rather with just milk and chocolate, which in fact reflects what's down here. Now, importantly, because we're using a language model and not just keyword mashing to do this, it can infer the intent of my question. And so, if I ask
+
+00:19:32 - 00:20:35
+it, tell me a joke, uh, it ends up asking sort of an an odd joke about chocolate milk going to therapy because of its inner dairy. I don't I don't totally understand this joke, but it's probably related to the fact that I used GPT3.5 instead of GPT4. So maybe the jokeetelling capabilities are not quite as sophisticated. Okay, so that's the first component of the lecture today, memory management. Second component of today's lecture is about learning and adaptation of language models so that we can get
+
+00:20:04 - 00:21:14
+better agents. Now what do I mean by better? Well, I mean, I want we may want to in some circumstances change the way that an agent is inclined to think, what kinds of actions it prefers to do or what kinds of knowledge it tends to draw from when generating responses. And we might want to do this across the board. I may not want to write into a prompt every single time, hey, think like this. Hey, do these actions. Hey, take this knowledge. Because that starts to get really long and complex. most of my
+
+00:20:39 - 00:22:05
+context window, that short-term memory is just going to get bogged down in all the information I need to facilitate those additions or amendments to the thinking, the actions, and the knowledge. So, we might want to change fundamentally the approach that the AI agent uses. Now, in order to do that, we need to take this agent and we need to to get it to learn new things. That is to learn how it should update its response patterns such that for all prompts moving forward, what it identified in this learning is
+
+00:21:22 - 00:22:38
+consistently reflected in the output to the user. No prompt engineering, no insertion of new context, no short and long-term memory stuff. just we want the thing to authentically have learned this and put it into its brain at the level of the weights and the bias. So how do we do this? And maybe before we say how do we do this, we should talk about when do you do this? I think this is particularly useful if you're in unpredictable changing or new environments because the default settings of your LLM
+
+00:21:59 - 00:23:13
+um may not satisfy those instances. That's the first thing. The second thing is you can build a learning procedure, something that updates the way that your agent goes about taking actions or issuing responses in real time, right? You could, you know, every, let's say, n days as a function of the way users have interacted with it and thumbs up or thumbs down the responses, you could use that to dynamically update how the agent learns to interact uh and so on. Hopefully this makes sense. So like why you would want to do
+
+00:22:37 - 00:23:44
+the learning and interaction. Now let's talk a little bit about how you do it. There's two ways we'll be discussing. Uh we're going to start with one that is is based on some some uh content in the reinforcement learning literature called proximal policy optimization. And you typically do this when you're trying to train an agent in an environment with a continuous range of actions it can take. And for the purposes of a large language model, this is pretty much the case, right? If you
+
+00:23:10 - 00:24:36
+think ultimately about how LLMs are trained, the self-supervised training says we have a sequence of previous words, really tokens in the formal sense, and we're always trying to predict what the next value should be as a function of what came previously. And we'd like to do that very effectively. Okay. Um, what we're interested in doing is after that LLM has been trained, the proximal policy optimization wants to take that trained LLM and through the specification of a reward model here.
+
+00:23:53 - 00:25:08
+We'd like to use PO to update the LLM itself so that subsequent responses it gives are closer to however this reward model defines a good response. And what we're going to see in the subsequent slides is that you know um you have to formally kind of pin down then very specifically how you quantify what a good response is which can make this a a little tricky but it's doable. So let's break it down. Let's say you want to do proximal policy optimization. You're going to do it in two steps which
+
+00:24:31 - 00:25:41
+we're going to decompose here. The first is you have to create some completions. So you have to ask the LLM a set of questions and observe a set of answers and then as a function of how for that given set of questions and the corresponding answers it created you want to use the properties of that and kind of how good or bad those were per your measure of of reward to do an update here. I do want to note here, although I emphasized it earlier, that um the illustrations that I used here are not exactly, but they're
+
+00:25:06 - 00:26:18
+they're based in some part uh in large part perhaps on what you see in this medium article down here, which I believe itself was derived from another source. So, I wish I could take credit for all aspects of the illustrations here, but uh other than a few modifications, they're not mine. Okay, so let's start with the phase one process. How does it work? Well, you start by creating some completions. What do I mean by a completion? Well, you put a prompt. The cat is, this car is, and the completion is whatever comes
+
+00:25:42 - 00:27:05
+after that. This is the the next token that the LM thinks is appropriate in this context. Okay. So, for a prompt, you generate a set of completions. Now, you got a bunch of these. And now what you need is a way for each of those completions to generate a score. And in order to generate that score, you're going to need a reward model. Now, you're probably wondering, how exactly do you compute that reward? Why is a furry animal get a score of 1.87, but very ugly gets a score of negative 1.34? How how in the world did we
+
+00:26:24 - 00:27:59
+compute that? And in practice, the way that this is computed is through a function which I will take you through completely. But the core of how it gets computed is through this thing called a value function. Okay. What that value function aspires to do or intends to do is estimate the total reward in the future. In the future, so this car is a and based on me putting the next word a here. Based on everything that may follow in the future from this, it's trying to figure out how good the placement of the word a is.
+
+00:27:12 - 00:28:25
+Now obviously what's really going to matter here is how you define very specifically the value function. Okay, we might define it let's say in this particular example based on sentiment. So let's try to couch this in a real example. Let's say I'm just the happiest guy in the world and I want my LLM to be super optimistic and positive in all of its sentimental responses. Or maybe more realistically, if we were doing a realistic example, we might want it to avoid certain kinds of language that
+
+00:27:48 - 00:29:11
+could be considered biased or offensive. That's a real example. But to keep it simple, let's assume I just want an LLM that's super inclined to be positive. So the value function here I needed to basically say hey as a function of me putting this next word here after this car is is if I put the word a what's the likelihood that what follows from this is going to be sentimentally positive okay so how do I formally define that v theta of x here which is equivalent to v theta of s here. How do I define that? Well,
+
+00:28:30 - 00:29:54
+the first thing I do is I'm going to want to look ahead across some future steps, right? Steps here are each of the the tokens I'm going to propose next. So, this car is a dot dot dot. The future steps are the dot dot dot. What are the words that are going to come after a? And so for a certain number of steps into the future, perhaps up to the point of termination, I am going to average over all possible prefixes. So that's all the stuff that came prior to me doing that part of the dot. And I
+
+00:29:12 - 00:30:19
+would might multiply the probability of reaching that prefix. So, I know how likely is it that I'm going to get to this point times the sentiment of that next word that I'm going to take. So, you're sort of doing you're doing a dot product, right? I walk through the sequence. At each part in the sequence, I say there's a certain probability that a word from my vocabulary is going to be generated by the LLM. And each of those words in the vocabulary have a certain sentiment. Let's say it's a number between negative
+
+00:29:46 - 00:31:09
+1 and one with one being great and negative one being negative. So I can compute something like an expectation. The probability of the token times its likely sentiment summing across those gets me at each of the steps what I think the sentiment is going to be. And I can therefore for a variety of settings of this next token here compute prospectively what I think the expectation on the generation of positive sentiment tokens is going to be in the future using this articulation of the value. Now I wrote
+
+00:30:26 - 00:31:38
+this value to be uh simple. Um, in practice obviously there's more sophisticated value functions that go beyond let's say a silly example here like the expected optimism of the response. Okay. But once you've defined that value function just like I showed you on the previous slide. Now what you can do is you can swap between words like a and good and you have different estimated future total rewards. So the likelihood that the words after this are going to be kind of good things as a function
+
+00:31:03 - 00:32:18
+of what you're going to put here. That's great. Okay. We would expect the value function to therefore evaluate higher for completions that contain more optimistic words. So in practice, this value function is not um what you use to formally though update the model. when you're updating um any neural network uh which in LLM is based on a neural architecture, you have to define a measure of loss. That's what you're you're trying to get the network to optimize against. It's called loss
+
+00:31:42 - 00:32:56
+because you typically want the network to minimize the value. So you can see here in this equation we have the expected value. This is a good thing, right? We want this number to be high. So this is the estimated future value and then we have here the known future total reward. And so what's going to happen here? So that that known reward is what we actually measure. The estimated future total reward is what we predicted based on our on the formula. And so this value loss is going to refer to the error between the value functions
+
+00:32:18 - 00:33:29
+predictions and the actual returns that are observed. That's the diff. You see that? Why does this matter? Because it might be that we use a network to actually define what this value function is. You can do that. So you could define it like I did over here and it's static and you'd know whether the you know you could that's one way to do it or you could try to learn this value function and that therefore in learning this value function try to have an impact on the value loss here that learning of the
+
+00:32:54 - 00:34:06
+value function takes place in a broader context though which happens within step two. So let's jump to step two. So here's the value function and the loss specifically that comes from that value function that we just went through. This is when you're actually trying to update the language model to generate new responses is taken in combination with a policy loss in addition to a third term here which is called the entropy loss which just keeps the language model from becoming too deterministic. Okay. But
+
+00:33:30 - 00:34:45
+the two real components that are getting um I would say you know arguably the two main stars of the show are the policy loss which is meant to encourage better actions and then the value function loss which um uh we've just covered. You understand the value function loss because I gave you an example. Let's look at the policy loss that's covered here. Okay, we're interested in the proximal uh policy optimization or uh PO which is what we're covering as a reminder in making a small step
+
+00:34:10 - 00:35:31
+in a certain direction. Uh we don't want to overindex on a change in how we generate the tokens just because it might have indicated value. And so what we do is we choose the safer of two updates. One is uh the update is proportional to the probability ratio of the new policy, the new way that we're going to generate um tokens from the LLM or words given what we've seen previously compared to the old um times some uh advantage value here. and we're going to take the minimum between that and some clipped
+
+00:34:49 - 00:36:06
+representation of the same ratio. Okay, this is to prevent the update basically from being too big. The combination of of the minimum here um and the clipping function here will make sure that any step we take doesn't become egregiously large. Okay, that covers um proximal policy optimization. There's also, I think arguably, a simpler version of this that you can use if you don't want to deal with trying to either learn that value function that we covered or defining the value function um as I did in the case
+
+00:35:30 - 00:36:49
+of making um it proportional to how optimistic the sentiment was. And you can do that through direct preference optimization. Now, the kicker here is if you want to do direct preference optimization, you're going to need some labeled data because in practice, what you do is you take pairs of responses that an LLM generates and you basically do an AB test. You ask users which they prefer. This is sort of like um I don't know if your chat GPT has ever done this to you where it will give you two answers and it will ask you
+
+00:36:10 - 00:37:21
+to select which of the two you prefer. When it does that, it's attempting to collect data for direct preference optimization. One um question, same user, two answers. It wants you to tell it which you like more. Okay. And the way it it uses that is it says if I if I take the relative log probability of your preferred response. So that's the likelihood of the sequence for the preferred response. The difference between that and the one that you didn't prefer. I will they want they will make an update basically to the
+
+00:36:46 - 00:38:06
+network such that it drifts in the direction of your preferred response relative to how drastic that difference was against the not preferred response in uh in terms of the probability of the sequence getting generated. Um, the thing you practically want to remember if you're going to do direct preference optimization once again is you will need labeled data in order to do this. Um, so when choosing between doing PO or DPO, the question to ask yourself is, do I have labeled data? If you don't and you want to do a custom
+
+00:37:26 - 00:37:50
+adaptation of a language model, you'd use PO. If you do, you'd use DPO. Hope this was interesting. I'll see y'all in the next video.

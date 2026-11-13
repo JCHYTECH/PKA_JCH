@@ -1,0 +1,53 @@
+ "IA pour la Biodiversité — BirdNET-Pi" — 3:12 → 17:32
+  (80 frames + transcript Groq Whisper, 325 segments)                                                                   
+                                                                                                                      
+  ---                                                                                                                   
+  3:12–3:39 — Matériel & recommandations                                                                              
+  Présentateur 1 présente le setup : Raspberry Pi 4 recommandé (le Pi 3B+ et Pi 5 n'ont pas fonctionné). Alimentation   
+  officielle Raspberry Pi Foundation obligatoire — source fréquente de pannes chez les débutants.                     
+                                                                                                                        
+  3:39–5:01 — Installation de l'OS                                                                                    
+  Raspberry Pi Imager v1.8.1 : OS choisi = Raspberry Pi OS 64-bit Lite, Debian Bullseye. Configuration pré-boot : nom   
+  d'hôte "BirdNet", WiFi, SSH activé avec mot de passe personnalisé. Avertissement : ne pas utiliser les identifiants   
+  par défaut (pi/raspberry).                                                                                            
+                                                                                                                        
+  5:01–6:24 — Connexion SSH & mise à jour                                                                               
+  Insertion de la carte SD, boot, connexion via ssh pi@<IP> depuis Windows CMD. Commandes : sudo apt update puis apt 
+  upgrade -y.                                                                                                           
+                                                                                                                      
+  6:24–7:22 — Installation BirdNET-Pi                                                                                   
+  Copier-coller d'une seule commande curl depuis le repo GitHub. Installation en moins de 5 minutes, redémarrage      
+  automatique. Avertissement GitHub : "You may not use BirdNET-Pi to develop a commercial product".                     
+   
+  7:22–9:15 — Présentateur 2 : boîtier & micro (≈10€)                                                                   
+  Mise en boîtier du Pi 4 avec kit de refroidissement. Micro choisi : micro TRRS à 10€ + carte son USB (liens en      
+  description). Bonnette anti-vent installée. Note : petit bruit de fond aigu (hiss) présent mais qui ne gêne pas la    
+  détection des espèces.                                                                                              
+                                                                                                                        
+  9:15–10:35 — Installation extérieure de nuit                                                                          
+  Micro placé sous la planche de la mangeoire existante, câble fin passé par la fenêtre (pas sur la charnière pour
+  éviter le cisaillement). Mentionné en bonus : possibilité d'ajouter une caméra Raspberry Pi dans le boîtier.          
+                                                                                                                      
+  10:35–11:14 — Première connexion à l'interface                                                                        
+  Accès via adresse IP dans le navigateur. Première détection : une espèce improbable sous leurs latitudes → à l'écoute,
+   c'est un bruit de pelle. Le seuil de confiance est important.                                                        
+   
+  11:14–13:36 — Configuration & Settings                                                                                
+  - Identifiants par défaut : BirdNet / aucun mot de passe (à changer)                                                
+  - Modèle : BirdNET_6K_V2.4_Model_FP16 (le plus stable)                                                                
+  - Latitude/longitude de l'atelier renseignés          
+  - BirdWeather activé : carte mondiale collaborative des détections en temps réel                                      
+  - Notifications paramétrables (et potentiellement intégrables à la domotique)                                       
+  - Spectrogramme : visualisation en temps réel des sons + base de la détection IA                                      
+                                                                                                                        
+  13:36–15:00 — Explication de l'IA                                                                                     
+  L'IA compare la signature spectrale d'un chant à une base de données construite par des chercheurs et bénévoles.      
+  Démonstration live : diffusion d'un son de mésange bleue → détecté quasi immédiatement dans l'onglet détections       
+  journalières.                                                                                                         
+                                                                                                                        
+  15:00–17:31 — Résultats après 48h                                                                                     
+  - 5 763 détections totales, 1 054 aujourd'hui, 147 espèces uniques
+  - Espèces classiques : rouge-gorge (94% confiance), mésange bleue, mésange charbonnière                               
+  - Découverte rare : le Pic vert (Eurasian Green Woodpecker) — détecté 3 fois en 3 jours à 67–81% de confiance, vérifié
+   par Manon (ornithologue). Inaudible à l'oreille humaine dans ce contexte, le micro omnidirectionnel capte à plusieurs
+   centaines de mètres à la ronde.                         

@@ -1,0 +1,96 @@
+00:00:00
+38,6 degrés en Allemagne au 38,2 degrés en Pologne des températures Records qui viennent avec leur lot de pollution et d'incendie pour apporter un peu de fraîcheur l'année dernière j'ai essayé de fabriquer une sorte de clim de bureau mais le projet n'a pas vraiment abouti et les composants utilisés n'étaient pas top pour la planète aujourd'hui je vais réessayer j'ai pris du recul sur le projet et je vais m'orienter sur la fabrication d'une clim adiabatique n'oublie les modules pelletiers qui sont
+
+00:00:27
+très mauvais et on va utiliser uniquement de l'eau un espèce de carton absorbant une pompe et un ventilo bien sûr mais vous allez me poser la question comment peut-on créer du froid uniquement avec ses composants et bien c'est ce qu'on appelle le principe adiabatique qui repose sur l'évaporation d'eau quand on sort de la piscine on s'en soudainement du froid sur la peau même s'il fait chaud dehors c'est parce que l'eau sur la peau s'évapore et s'évaporation nécessite de l'énergie qui
+
+00:00:52
+est prise de la chaleur de la peau ce qui nous fait sentir plus frais un climatiseur à diabétique repose sur le même principe l'air chaud extérieur est aspiré dans l'appareil et passe ensuite à travers un tampon humide l'air chaud fait évaporer l'eau dans ce tampon et comme l'évaporation requiert de l'énergie cela prend la chaleur de l'air l'air est alors refroidi avant expulsé dans la pièce grâce à un ventilateur bon ça c'est pour la théorie il faut évidemment noter que le tampon doit être
+
+00:01:17
+constamment humide pour générer de l'évaporation en continu pour ça on va créer un circuit d'eau avec une pompe et en fait l'eau qui va tomber du tampon quand il sera saturé d'eau et bien on va pouvoir le récupérer dans un bac et la réinjecter via une gouttière sur le dessus bon allez assez parlé on se lance sur la conception comme à mon habitude je commence par modéliser les pièces sur fusion 360 et puis je vais laisser parler ma créativité pour avoir une première version imprimable
+
+00:01:45
+j'imprime tout ça sur mes imprimantes bamboulab et prusa on récupère les pièces ensuite je vais enlever les embouts en plastique sur les angles du ventilo et je vais l'encastrer dans cette pièce noire sur mesure je vais faire pareil pour le dessus ensuite je récupère des vis M3 de 35 mm et j'en assemble dans les quatre coins je vais récupérer des écrous au même diamètre on va les insérer à l'arrière aux emplacements prévus et puis il ne reste plus qu'à visser bien fermement [Musique]
+
+00:02:17
+ensuite direction l'établi je vais mettre à chauffer mon fer à souder j'active ma ventilation et puis je vais insérer des inserts en laiton aux emplacements prévus ensuite on va ajouter les pièces latérales pour bien solidifier la structure ici je vais l'attacher avec des vis M3 de 5 mm et c'est possible que ça ne soit pas parfaitement aligné c'est pas très grave il faut juste légèrement forcer de retour sur l'établi je vais encore ajouter des inserts mais de l'autre côté ici il y en a un peu plus
+
+00:02:49
+car ce côté accueillera la future pompe on ajoute notre pièce latérale donc là je viens serrer avec des vis légèrement trop grandes parce que j'avais plus de petites c'est pas très grave et puis on va pouvoir venir fixer le support pour la pompe donc j'ajoute aussi des inserts et d'ailleurs elle sera de type péristaltique j'ai choisi ça car je pense avoir besoin d'un débit assez faible pour réaliser ce projet donc on verra ce que ça donne pour l'instant je vais souder le plus et le moins c'est du
+
+00:03:17
+12 Volts je remercie mon sponsor au de switch hébergeur 100% français qui m'accompagne sur ce projet si en ce moment tu cherches à créer un site web pour mettre en valeur ton CV tes créations ou que tu cherches un hébergeur plus fiable et moins cher et bien mesdames et messieurs au dessous vous propose la solution parfaite avec une offre unique où tout est illimité ça veut dire qu'on n'aura pas ce souci de l'espace disque pour le projet qu'on souhaite monter qu'on n'aura pas à payer en plus c'est le
+
+00:03:46
+trafic augmente et enfin on a accès à des ressources monstrueuses pour avoir un site toujours fluide concrètement on peut exploiter jusqu'à 12 CPU Fred 48 giga de ram et avec une base de données stockée sur SSD pour un max de performance un support technique est aussi disponible 24 heures sur 24 7 jours sur 7 avec toutes les lignes basées en France à Clermont-Ferrand si vous avez besoin d'un contact dans cette offre unique le nom de domaine est aussi offert et tout ça pour uniquement 7 euros par mois et bien sûr je ne viens
+
+00:04:15
+pas les mains vides vous avez mon code promo en passant par le lien en description n'hésitez donc pas à faire un tour si vous avez un projet qui vous trotte dans la tête c'est le moment d'en profiter et puis un grand merci à au-dessous on est reparti bon alors cette pompe on va l'assembler dans notre support on fait d'abord passer les câbles dans le trou et on va aussi les positionner dans la rainure à l'arrière pour être propre et puis on va fixer tout ça avec des vis comme d'habitude
+
+00:04:38
+[Musique] et puis ça commence à ressembler à quelque chose c'est pas mal du tout je viens récupérer une autre pièce qui va jouer un rôle crucial dans notre assemblage c'est celle qui va venir récupérer l'eau du tampon quand il sera plein je fais attention dans lever tous les supports et puis on va ajouter comme d'hab des inserts aux emplacements prévus on positionne notre assemblage sur cette pièce et puis on va fixer ça encore une fois avec des vis allez on passe maintenant à la gouttière
+
+00:05:07
+je vous avoue que j'ai eu pas mal de soucis à enlever les supports donc c'était l'occasion de tester un nouveau filament qui s'enlève beaucoup mieux je le récupère de son assemblage et je vais l'ajouter dans l'AMS de Mike 5 carbone et une fois l'impression terminée je vais commencer par enlever le filament qui reste sur le plateau et puis je récupère ma pièce et effectivement le filament s'enlève mieux mais c'est toujours pas évident j'ai quand même mis environ 10 minutes pour totalement
+
+00:05:36
+l'enlever par contre notre pièce est vraiment nickel on va pouvoir bientôt l'assembler je vais jeter tout ça j'ajoute quelques inserts sur la partie supérieure de notre assemblage et puis on peut ajouter notre gouttière qu'on va venir fixer avec des vis ça y est le projet est en partie assemblé si on fait un tour sur l'arrière on peut voir l'emplacement ici qui va accueillir le futur tampon que j'ai pas encore découpé et puis l'eau va venir tomber dans le bac en dessous on
+
+00:06:03
+peut se demander pourquoi j'ai laissé un trou ici c'est tout simplement parce que moi je vais me faire un bac transparent sur mesure ça me permettra de vérifier le niveau d'eau ça sera aussi 100 % étanche car les pièces qu'on imprime avec nos imprimantes filaments ne sont malheureusement pas étanches cependant j'ai voulu faire quelques tests pour voir s'il y a pas une astuce j'ai imprimé deux petits bacs en filament PLA noir mat que je viens récupérer dans l'un des deux je vais ajouter de la
+
+00:06:28
+colle à bois pour éventuellement boucher les trous laisser par l'impression et puis je vais ajouter de l'eau dans les deux bacs bon quelques heures plus tard mon récipient avec la colle à bois ne fuit pas je pense que l'astuce est validé et puis à ma grande surprise le récipient sans colle à bois ne fuit pas non plus à mon avis j'ai eu de la chance la pièce est vraiment parfaite donc je vais quand même vérifier ma théorie en imprimant une pièce un peu plus grande et avec un autre filament
+
+00:06:56
+on est 24 heures plus tard l'eau n'a toujours pas fuit de ce nouveau bac blanc en PLA je pense que les pièces simples qui sortent de la sont tellement de bonne qualité qu'il y a très peu de chances d'avoir des fuites du coup ça expliquerait pourquoi l'eau est toujours à l'intérieur cependant le pela reste en matériau pour eux donc je pense que si je laisse ce bac plusieurs jours il va finir par être imbibé et laisser couler l'eau du coup je ne peux pas vraiment approuver la méthode de la
+
+00:07:19
+colle à bois en tout cas je me suis renseigné on peut utiliser de la résine époxy avec ça ça va fonctionner à coup sûr dans notre cas utiliser le PLA c'est pas forcément la meilleure solution donc c'est parti on va fabriquer un bac 100% étanche avec un autre matériau pour faire ça j'ai modéliser une pièce représentant le contenant du bac ça va me permettre de créer mon futur moule à la thermoformeuse je vérifie qu'elle rentre bien ici c'est parfait d'ailleurs si vous voulez apprendre à modéliser
+
+00:07:45
+comme moi j'ai fait un super cours sur fusion 360 qui vous attend sur mon site je vous laisse un lien en description n'hésitez pas à faire un tour allez on ressort la thermoformeuse ici je vais utiliser des feuilles de PETG d'un millimètre d'épaisseur et transparente je dispose ma pièce bien au centre et puis au passage je vais faire une petite mise à jour parce que ça fait longtemps que je ne l'ai pas utilisé on sélectionne les prix réglages PETG [Musique] on descend la nacelle et une fois
+
+00:08:15
+l'aspiration terminée je vais attendre un peu que la pièce refroidisse et puis je vais essayer de la récupérer sans déformer mon moule pour éviter ce genre de choses sur notre modélisation c'est bien de penser à faire des dépouilles ici j'ai dû mettre 0,5 à 1 degré et c'est tout juste suffisant on vient découper proprement les contours et puis ça y est on a notre bac 100% sur mesure maintenant que le bac est terminé et que c'est 100% étanche on va pouvoir continuer en réalisant le circuit d'eau
+
+00:08:42
+et faire nos premiers tests je commence par récupérer du tube en silicone flexible que je vais insérer dans les pattes de la pompe je viens fixer un premier morceau à la gouttière puis un deuxième dans le bac j'avais prévu un trou exprès mais il est légèrement trop petit donc je mets le tube à côté on va remplir le bac avec de l'eau là j'ai rempli environ la moitié du bac pour faire mes tests on alimente la pompe en 12 volts donc sans grande surprise ça fonctionne bien il y a pas de fuite par contre la
+
+00:09:16
+pompe est assez bruyante j'avoue que je m'y attendais pas trop et puis la gouttière n'est pas très efficace pour l'instant on a uniquement de l'eau qui tombe sur la gauche donc on va devoir régler ça bon finalement c'est pas évident de concevoir une bonne gouttière car il faut qu'elle puisse se remplir sans déborder pour avoir des gouttes à travers chaque trou et il faut juste que ce débit d'eau qui tombe à travers chaque trou ne soit pas trop élevé pour éviter de pomper trop d'eau dans le bac
+
+00:09:40
+et de ne plus avoir assez d'eau pour alimenter le tampon donc il y a plusieurs leviers sur lequel on peut jouer j'ai commencé par réduire la taille des trous le problème est que la tension superficielle de l'eau est suffisamment forte pour ne pas avoir d'écoulement à travers les trous donc j'ai essayé de trouver le bon compromis également en jouant avec la quantité d'eau qu'on peut accumuler jusqu'à ce que la force de gravité soit suffisante pour avoir un écoulement j'ai fait pas
+
+00:10:03
+mal de tests j'ai même essayé de refaire une pièce thermoformée en PETG pour éventuellement que l'eau Vienne mieux glisser ensuite je suis venu percer des petits trous pour avoir de l'écoulement mais malheureusement c'est toujours le même problème c'est pas suffisant donc après une bonne après-midi de test j'ai quand même trouvé un truc qui me convient en faisant des trous de différentes tailles c'est pas le top mais je pense que ça va fonctionner je vais enfin découper mon tampon donc
+
+00:10:29
+je vais faire quelques mesures puis je découpe ça à la scie sauteuse l'objectif c'est d'avoir un morceau légèrement plus grand que la structure de cette manière il sera bien maintenu [Musique] on lance la pompe et on laisse imbiber jusqu'à ce qu'il soit complètement humide on peut voir que les gouttes d'eau tombent bien dans le bac et puis la gouttière fonctionne super bien une fois le tampon totalement imbibé on a perdu environ un quart d'eau donc c'est plutôt bon signe d'ailleurs
+
+00:10:57
+n'hésitez pas à me rejoindre sur Instagram je vous partage souvent les coulisses des projets là j'ai eu pas mal d'eau qui a éclaboussé quand j'ai fait mes tests sans le tampon c'est normal donc je vais nettoyer tout ça et on va repartir sur de bonnes bases [Musique] je vais ensuite terminer mon assemblage en ajoutant le ventilo à l'alimentation donc je vais souder les fils orange et noir je fais passer mes câbles dans une petite pièce sur mesure et puis je vais mettre un peu de colle chaude sur mes
+
+00:11:26
+connexions [Musique] [Applaudissements] je viens poser la clim sur le bureau j'ajoute de l'eau au passage je mets sous tension et puis on a plus qu'à lancer [Musique] bon alors est-ce que ça fonctionne déjà première bonne chose quand on pose la clim à 50 cm un mètre d'une personne l'effet adiabatique se fait bien ressortir on sent un réel vent frais c'est très agréable par contre niveau sonore le bruit de la pompe c'est vraiment pas top c'est trop bruyant il faudra améliorer ça sur une future
+
+00:12:02
+version ensuite après l'avoir mis en route environ 3 heures on voit sur mes graphiques que la température de la pièce de 11 mètres carrés commence à diminuer en gros on gagne moins de degrés et environ + 10 à 15% d'humidité ça montre qu'on est assez loin de contrôler la température d'une pièce cependant la théorie fonctionne c'est un bon point et si on souhaite vraiment avoir une meilleure efficacité avec ce système il faut jouer sur la taille du tampon pour avoir plus d'évaporation et
+
+00:12:26
+avoir une clim deux fois voire quatre fois plus grande une chose qu'on peut se demander c'est est-ce que si on met de l'eau froide à l'intérieur ça va faire plus de frais et bien ça n'aura pas une grande influence sur l'efficacité du refroidissement car le processus repose sur l'évaporation d'eau et pas directement sur la température de l'eau elle-même le facteur le plus important pour l'efficacité c'est l'humidité plus l'air est sec plus le taux d'évaporation
+
+00:12:47
+sera élevé ce qui conduit un refroidissement plus important donc en complément de ce système on pourrait pourquoi pas utiliser des plantes déshumidifiantes pour aider ce taux d'évaporation placer quelques bols de riz dans la pièce dans des pots pour faire de la déco etc je ne sais pas si ça aura une grande influence mais je pense que ça peut aider puisque l'humidité et le facteur le plus important c'est bien de se procurer un capteur si vous voulez leur faire à la maison comme ça vous pouvez vraiment
+
+00:13:09
+veiller sur les valeurs et c'est bien de rester entre 30 et 50% et vraiment d'éviter le seuil des 65 70 degrés après c'est vraiment trop humide donc pour conclure ce qu'on vient de fabriquer c'est ni plus ni moins ce qu'on retrouve déjà dans certaines boutiques mais en beaucoup plus efficace car la taille du tampon et la ventilation est bien plus grande avec cet assemblage on a quand même une bonne sensation de frais quand on travaille par contre ça ne va pas réellement climatiser une pièce il faut
+
+00:13:32
+le double voir le quadruple en taille vous l'avez compris mais au prix d'une humidité qui va vraiment augmenter et c'est pas forcément bon pour nous donc il y a des compromis à trouver des astuces etc c'est pas encore top je vous laisse tout les STL gratuitement en description si vous voulez la refaire n'hésitez pas à me laisser un commentaire et à me donner votre avis sur ce projet on se retrouve très bientôt n'hésitez pas à vous abonner dans le prochain projet on va bien
+
+00:13:52
+s'amuser allez ciao
+

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abbaye de Brialmont — PKA Découvertes</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  :root { --ivoire: #F8F5F0; --noir: #0D0B09; --ocre: #C17F3A; --sable: #E8E2DA; --sable-fonce: #D4CCC2; --ardoise: #4A5568; --gris: #6B7280; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--ivoire); color: var(--noir); font-family: 'Inter', -apple-system, sans-serif; font-size: 14px; line-height: 1.6; padding: 16px 14px; }
+  h1, h2, h3, th { font-weight: 700; }
+  h1 { font-size: 22px; color: var(--ocre); margin-bottom: 2px; }
+  h2 { font-size: 12px; color: var(--ocre); margin: 22px 0 6px; padding-bottom: 2px; border-bottom: 2px solid var(--sable); text-transform: uppercase; letter-spacing: 0.05em; }
+  h3 { font-size: 11px; color: var(--ardoise); margin: 10px 0 4px; font-weight: 600; }
+  .km, .price { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--ardoise); }
+  .header { margin-bottom: 12px; padding-bottom: 8px; border-bottom: 3px solid var(--ocre); }
+  .header-meta { font-size: 10px; color: var(--gris); margin-top: 2px; }
+  .status { display: inline-block; background: var(--ocre); color: #fff; padding: 1px 8px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+  .tagline { font-weight: 400; color: var(--gris); font-size: 12px; }
+  .card { background: var(--sable); padding: 8px 12px; margin: 6px 0; font-size: 12px; }
+  .rules { background: var(--sable); padding: 8px 10px; margin: 6px 0; font-size: 11px; border-left: 4px solid var(--ocre); line-height: 1.6; }
+  .table-wrap { width: 100%; overflow-x: auto; margin: 6px 0 10px; }
+  table { width: 100%; border-collapse: collapse; font-size: 10px; min-width: 400px; }
+  th { background: var(--sable-fonce); color: var(--noir); font-weight: 600; font-size: 9px; text-transform: uppercase; letter-spacing: 0.04em; padding: 6px 6px; text-align: left; white-space: nowrap; }
+  td { padding: 5px 6px; border-bottom: 1px solid var(--sable); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  .link a { color: var(--ocre); text-decoration: none; font-size: 12px; padding: 2px 4px; }
+  .map-container { height: 260px; margin: 8px 0; border: 2px solid var(--sable); position: relative; z-index: 1; }
+  #map { height: 100%; }
+  .legend { background: rgba(255,255,255,0.95); padding: 5px 8px; border-radius: 4px; font: 10px/1.4 sans-serif; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+  .legend i { width: 10px; height: 10px; display: inline-block; margin-right: 4px; border-radius: 50%; vertical-align: middle; }
+  .stars { color: var(--ocre); font-size: 13px; letter-spacing: 2px; }
+  .photo-gallery { display: flex; gap: 8px; overflow-x: auto; padding: 4px 0; }
+  .photo-card { flex: 0 0 auto; border-radius: 4px; overflow: hidden; border: 1px solid var(--sable); }
+  .photo-card img { height: 140px; display: block; }
+  .conf-high { background: #d4edda; color: #155724; }
+  .conf-med { background: #fff3cd; color: #856404; }
+  .conf-low { background: #f8d7da; color: #721c24; }
+  .footer { text-align: center; padding: 16px; color: var(--gris); font-size: 9px; }
+  .footer a { color: var(--ocre); }
+  @media (max-width: 500px) { h1 { font-size: 18px; } .map-container { height: 200px; } .photo-card img { height: 100px; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="status">Validé</div>
+  <h1>📍 Abbaye de Brialmont</h1>
+  <div class="tagline">Tilff, Wallonie, Belgique · 2026-08-30 · 85%</div>
+  <div class="header-meta">
+    📷 ★★★★☆ &nbsp; 🌳 ★★★☆☆ &nbsp; 🏛 ★★★★★
+  </div>
+</div>
+
+<div class="card">L'Abbaye de Brialmont est un monastère historique situé à Tilff, dans la vallée de la Meuse. Ce lieu chargé d'histoire offre une visite enrichissante du patrimoine religieux belge avec des bâtiments architecturaux remarquables et un cadre naturel pittoresque.</div>
+
+<div class="map-container"><div id="map"></div></div>
+
+<h2>📸 Spots photo <span style="font-weight:400;font-size:10px;color:var(--gris)">— saison · astuce</span></h2>
+<div class="rules">📷 <strong>Meilleure saison</strong> : printemps (avril-juin) ou automne (septembre-octobre) pour lumière rasante sur Abbaye de Brialmont<br>
+🌅 <strong>Heure idéale</strong> : tôt le matin ou fin d'après-midi<br>
+🔭 <strong>Point de vue</strong> : à repérer sur place — privilégier un point en hauteur avec recul<br>
+💡 <strong>Astuce</strong> : trépied pour poses longues (rivière, cascade), filtre polarisant si ciel clair</div>
+
+<h2>⭐ À voir aux alentours <span style='font-weight:400;font-size:10px;color:var(--gris)'>— 30 km</span></h2><div class='table-wrap'><table><tr><th>Lieu</th><th>Type</th><th>Dist</th><th>Maps</th></tr><tr><td>Grotten van Kanne</td><td>Site touristique</td><td class="km">30 km</td><td class="link"><a href="https://www.google.com/maps/place/Grotten+van+Kanne" target="_blank">🔗</a></td></tr><tr><td>Western City</td><td>Site touristique</td><td class="km">7 km</td><td class="link"><a href="https://www.google.com/maps/place/Western+City" target="_blank">🔗</a></td></tr><tr><td>Crète de Forêt</td><td>Point de vue</td><td class="km">12 km</td><td class="link"><a href="https://www.google.com/maps/place/Crète+de+Forêt" target="_blank">🔗</a></td></tr><tr><td>Cascade des Nutons</td><td>Cascade</td><td class="km">46 km</td><td class="link"><a href="https://www.google.com/maps/place/Cascade+des+Nutons" target="_blank">🔗</a></td></tr><tr><td>Rocher de Bilisse</td><td>Point de vue</td><td class="km">45 km</td><td class="link"><a href="https://www.google.com/maps/place/Rocher+de+Bilisse" target="_blank">🔗</a></td></tr><tr><td>Roche aux Faucons</td><td>Point de vue</td><td class="km">4 km</td><td class="link"><a href="https://www.google.com/maps/place/Roche+aux+Faucons" target="_blank">🔗</a></td></tr></table></div>
+
+<h2>🍽 Restaurants <span style='font-weight:400;font-size:10px;color:var(--gris)'>— 15 km</span></h2><div class='table-wrap'><table><tr><th>Nom</th><th>Cuisine</th><th>Dist</th><th>Maps</th></tr><tr><td>Le Basilic</td><td>French</td><td class="km">8 km</td><td class="link"><a href="https://www.google.com/maps/place/Le+Basilic" target="_blank">🔗</a></td></tr><tr><td>L'interrogation</td><td>French</td><td class="km">13 km</td><td class="link"><a href="https://www.google.com/maps/place/L'interrogation" target="_blank">🔗</a></td></tr><tr><td>La Marelle</td><td>Cuisine variée</td><td class="km">15 km</td><td class="link"><a href="https://www.google.com/maps/place/La+Marelle" target="_blank">🔗</a></td></tr></table></div>
+
+<h2>🚐 Accès minivan <span style="font-weight:400;font-size:10px;color:var(--gris)">— Stylevan Equinox IV</span></h2>
+<div class="rules"># Abbaye de Brialmont en Minivan — Guide Pratique
+
+## 1. **Accès**
+
+**Itinéraire recommandé :**
+- Via autoroute **A4/E42** (sortie Liège direction Tilff)
+- Puis **N611** vers Tilff (routes régionales bien entretenues)
+- Derniers km : **routes locales étroites** (D-routes) avec virages
+
+**État :** Routes en bon état, mais **attention aux passages étroits** en approche du site. À vérifier : certains chemins d'accès au monastère peuvent être étriqués.
+
+**Praticabilité 2m de haut :** ✅ **Probable** (routes départementales belges standard), mais vérifier la **hauteur de passage finale** vers le parking (à vérifier sur place auprès de l'abbaye au +32 4 366 89 66).
+
+---
+
+## 2. **Parking**
+
+**Parking officiel :** 
+- Parking de l'**Abbaye de Brialmont** lui-même (sur le site)
+- Hauteur max : **À vérifier auprès du site**
+- **Gratuit** (accès libre au parking des visiteurs)
+
+**Alternative si restriction de hauteur :**
+- Parking de **Tilff** (village, à ~1,5 km) — routes largement suffisantes
+- Espace public, gratuit, sécurisé
+
+---
+
+## 3. **Nuit sur Place**
+
+**Camping-car autorisé ?** ❌ **Non (à vérifier)** — site religieux/abbaye, stationnement nocturne non officiel.
+
+**Aire camping-car la plus proche :**
+- **Aire de Seraing** (Route de Jupille) — ~12 km
+- Services complets (eau, électricité, vidange)
+- Tarif : ~€12-15/nuit (à confirmer)
+
+**Alternative sécurisée :**
+- **Camping Les Troux** (Tilff) — ~2 km
+- Accueil camping-car possible (à vérifier : +32 4 366 90 68)
+
+**Stationnement nocturne toléré ?** ❌ Déconseillé (site protégé, propriété privée/religieuse).
+
+---
+
+## 4. **Services**
+
+**Eau/Électricité/Vidange :**
+- **Camping Les Troux** (Tilff, 2 km) — accès aux services si camping-car accepté
+- **Aire de Seraing** (12 km) — tous services disponibles
+
+**Supermarché :**
+- **Carrefour Express** (Tilff, centre) — ~1,5 km, petit commerce
+- **Delhaize** ou **Lidl** (Liège centre) — ~10 km pour ravitaillement complet
+- À vérifier : petit commerce/épicerie à proximité immédiate
+
+---
+
+## 5. **Astuce Vanlife**
+
+| Critère | Conseil |
+|---------|---------|
+| **Meilleure saison** | Avril-mai, septembre-octobre (météo stable, feuillage beau) |
+| **Durée visite** | 1,5 à 2h (visite + jardin + cloître) |
+| **Heure idéale photos** | **9h-11h** (lumière douce, peu de visiteurs) ou **16h-17h** (or hour) |
+| **Spot secret** | Jardins intérieurs de l'abbaye (moins touristiques) + berges de Meuse toutes proches |
+| **Plus vanlife** | Vallée de la Meuse magnifique → combiner avec **Citadelle de Namur** (25 km), **Dinant** (35 km) |
+
+**Conseil pratique :** Préférer **parking Tilff + balade à pied** pour la sérénité plutôt que de stationner le minivan près du site.
+
+---
+
+**À vérifier sur place / avant visite :**
+- Horaires d'ouverture (site religieux = fermetures possibles)
+- Hauteur réelle des passages d'accès
+- Tarif d'entrée actuel
+- Conditions COVID/accueil groupes</div>
+
+
+
+<div class="footer">
+  PKA Découvertes · 2026-08-30 · Telegram DECOUVERTES · Jean Claude Havaux<br>
+  GPS 50.5571, 5.5828 · <a href="https://www.google.com/maps/search/50.5570585,5.5827652" target="_blank">Google Maps</a>
+</div>
+
+<script>
+const map = L.map("map").setView([50.5570585, 5.5827652], 11);
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { attribution: "&copy; OSM", maxZoom: 18 }).addTo(map);
+L.circle([50.5570585, 5.5827652], { radius: 50000, color: "#C17F3A", fillColor: "#C17F3A", fillOpacity: 0.08, weight: 2, dashArray: "6 8" }).addTo(map);
+L.marker([50.5570585, 5.5827652]).bindPopup("<b>📍 Abbaye de Brialmont</b>").addTo(map).openPopup();
+
+const reserveIcon = L.divIcon({ className: "", html: "🌿", iconSize: [20, 20], iconAnchor: [10, 10] });
+// Aucune réserve;
+
+const restoIcon = L.divIcon({ className: "", html: "🍽", iconSize: [20, 20], iconAnchor: [10, 10] });
+L.marker([50.5992118, 5.6436766], {icon: restoIcon}).bindPopup("<b>🍽 Le Basilic</b><br>French").addTo(map),
+        L.marker([50.6145354, 5.688498], {icon: restoIcon}).bindPopup("<b>🍽 L'interrogation</b><br>French").addTo(map),
+        L.marker([50.530227, 5.7148122], {icon: restoIcon}).bindPopup("<b>🍽 La Marelle</b><br>Cuisine variée").addTo(map);
+
+const attrIcon = L.divIcon({ className: "", html: "⭐", iconSize: [20, 20], iconAnchor: [10, 10] });
+L.marker([50.8094704, 5.6686255], {icon: attrIcon}).bindPopup("<b>⭐ Grotten van Kanne</b><br>Site touristique").addTo(map),
+        L.marker([50.5944554, 5.6386381], {icon: attrIcon}).bindPopup("<b>⭐ Western City</b><br>Site touristique").addTo(map),
+        L.marker([50.5854256, 5.6848244], {icon: attrIcon}).bindPopup("<b>⭐ Crète de Forêt</b><br>Point de vue").addTo(map),
+        L.marker([50.5213763, 5.9958772], {icon: attrIcon}).bindPopup("<b>⭐ Cascade des Nutons</b><br>Cascade").addTo(map),
+        L.marker([50.5198122, 5.9828419], {icon: attrIcon}).bindPopup("<b>⭐ Rocher de Bilisse</b><br>Point de vue").addTo(map),
+        L.marker([50.5519502, 5.5501658], {icon: attrIcon}).bindPopup("<b>⭐ Roche aux Faucons</b><br>Point de vue").addTo(map);
+
+L.circle([50.5570585, 5.5827652], { radius: 25000, color: "#6B7280", fillColor: "#6B7280", fillOpacity: 0.03, weight: 1, dashArray: "3 6" }).addTo(map);
+
+const legend = L.control({ position: "bottomright" });
+legend.onAdd = function() {
+    const div = L.DomUtil.create("div", "legend");
+    div.innerHTML = "<b>Légende</b><br><i style='background:#C17F3A'></i> 50 km<br><i style='background:#6B7280'></i> 25 km<br>⭐ Site · 🌿 Réserve · 🍽 Resto";
+    return div;
+};
+legend.addTo(map);
+</script>
+</body>
+</html>

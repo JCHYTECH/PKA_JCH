@@ -1,0 +1,122 @@
+00:00:01 - 00:00:57
+Cette année, dans un laboratoire de Montréal, une intelligence artificielle a parlé à des oiseaux. Et les oiseaux lui ont répondu. Ces cris, elle les inventait sur le moment, comme un oiseau de plus dans la volière. Elle attendait le bon instant, elle lançait son appel, l'oiseau répondait, elle relançait. Les oiseaux l'ont traitée comme l'une des leurs. Parler aux animaux, c'est le rêve le plus vieux du monde. Le roi Salomon, disait-on, avait une bague pour ça. Le Docteur Dolittle, lui, avait un
+
+00:00:29 - 00:01:29
+perroquet qui lui donnait des leçons. Pendant des siècles, ça n'a existé que dans les contes. Aujourd'hui, des équipes écoutent avec ces machines des éléphants, des dauphins, des cachalots, des chiens et même des cochons. Un financier a promis jusqu'à 10 millions de dollars pour la première vraie conversation. Le jour où ça marchera, il faudra être prêt à entendre la réponse. [musique] Février 2026, Université McGill, Montréal. Des biologistes [musique] associés à une organisation californienne appelée Earth
+
+00:01:03 - 00:02:01
+Species Project publient leurs résultats. Leur sujet tient dans la main, le diamant mandarin, un petit oiseau gris d'Australie [musique] au bec rouge vif. Un couple de diamants mandarins passe ses journées à se répondre, de petits appels courts, des dizaines par minute, du matin au soir. Les chercheurs ont enregistré plus de 1000 heures de conversation entre des femelles, [musique] plus d'un million et demi d'appels. Ils ont tout donné à une IA avec une seule chose à apprendre, comment se déroule un
+
+00:01:32 - 00:02:27
+échange, qui appelle et combien de temps l'autre attend avant de répondre. [musique] Puis, ils ont posé un haut-parleur à côté d'un vrai oiseau et ils ont mis la machine en marche. L'oiseau appelle. [musique] L'IA fabrique un appel neuf qui n'a jamais existé et le lance [musique] au bon moment. L'oiseau répond. Aller-retour, aller-retour, comme entre deux [musique] diamants mandarins. Les chercheurs ont aussi essayé l'inverse, des appels de diamants mandarins rejoués en boucle par
+
+00:02:00 - 00:02:55
+[musique] un simple magnétophone. Les oiseaux s'y intéressent beaucoup moins. Ce qui les accroche, c'est d'avoir quelqu'un en face [musique] qui écoute. Ensuite, ils ont démonté la machine pièce par pièce pour comprendre. Le secret, c'est le moment. Si l'IA répond au bon instant, l'oiseau reste dans la conversation. Mais pour que l'oiseau change sa propre façon d'appeler, il faut aussi le bon son. Ces résultats n'ont pas encore été relus par d'autres scientifiques. Ils manquent
+
+00:02:27 - 00:03:24
+surtout une chose, la machine connaît la musique de la conversation, elle ignore ce que disent les paroles. Elle répond à un oiseau sans savoir ce qu'elle lui dit. Le cerveau d'un diamant mandarin pèse moins d'un gramme. Une machine vient peut-être d'entrer dans la conversation d'une autre espèce. Pendant 60 ans, on avait essayé avec les animaux les plus intelligents de la planète. Ça avait raté à chaque fois pour la même raison. À l'époque, [musique] la méthode tenait en une phrase, choisir l'animal le plus
+
+00:03:01 - 00:03:58
+doué possible et lui apprendre nos mots comme un enfant. 1965, [musique] île de Saint-Thomas dans les Caraïbes. Une jeune femme de 23 ans, Margaret Howe, emménage dans une maison inondée. Dans presque toutes les [musique] pièces, on a fait entrer de l'eau de mer. Elle va y vivre et y travailler du matin au soir. [musique] Elle ne vit pas seule. Elle partage la maison avec un jeune dauphin. Il s'appelle Peter. Le projet est celui du neurologue John Lilly, financé [musique] en partie par la NASA. L'idée, un
+
+00:03:30 - 00:04:31
+dauphin qui vit jour et nuit avec un être humain finira peut-être [musique] par parler anglais. Pendant des semaines, du dimanche au vendredi, Margaret lui donne des leçons. Peter essaie. Il pousse de l'air par son évent et il en sort des sons qui ressemblent de loin à un "Hello". Ça s'arrête là. Peter imite la forme d'un son sans [musique] jamais s'en servir pour dire quelque chose. Dans les années 1970, à l'université Columbia à New York, on élève un jeune chimpanzé comme un enfant. Il s'appelle
+
+00:04:00 - 00:05:02
+Nim Chimsky [musique] et on lui apprend la langue des signes. Il en retient plus de 120. Puis le psychologue qui dirige le projet, Herbert Terrace, repasse les vidéos des séances image par image. Il découvre que Nim refait surtout les signes que son professeur vient de faire. En 1979, Terrace publie sa conclusion dans la revue Science. Nim ne construisait pas de [musique] phrases. Il y a aussi Koko, la gorille. Plus de 1000 signes d'après sa soigneuse. 264 avec le critère strict que cette soigneuse s'était elle-même fixée.
+
+00:04:32 - 00:05:28
+[musique] C'était souvent l'humain à côté d'elle qui décidait de ce que voulait dire ses gestes. Trois projets, un même mur. Les animaux arrivent à recopier nos mots. Ils ne s'en servent jamais comme nous. L'IA a pris le problème à l'envers. Elle écoute les sons que les animaux font déjà, des milliers, parfois des millions, et elle cherche ce qui s'y cache. [musique] Pour la première fois, on est l'élève. La première grande preuve que ça marche est venue d'un animal dont la voix est
+
+00:04:59 - 00:06:00
+si grave qu'une partie nous échappe complètement. [musique] Quand un éléphant appelle, on entend un grondement. Une partie de ce grondement descend plus bas que tout ce qu'une oreille humaine peut percevoir. Au Kenya, des chercheurs enregistrent ces grondements depuis 1986 sans savoir ce qu'ils contiennent. En 2024, Michael Pardo, de l'université d'État du Colorado, décide de le découvrir avec les associations Save the Elephants et Elephant Voices. Il rassemble 469 grondements enregistrés
+
+00:05:35 - 00:06:34
+pendant 36 ans dans deux régions du Kenya. Pour chacun, les chercheurs savent qui appelait et à qui l'appel était destiné. Il pose alors une question simple à un modèle d'apprentissage automatique. Rien qu'en écoutant le son, [musique] peux-tu dire à qui il ? Il y arrive une fois sur quatre environ. Ça paraît peu, mais le hasard ferait beaucoup moins bien. [musique] Quelque chose dans ces grondements désigne un éléphant précis. Autrement dit, les éléphants sauvages s'appellent par leur nom. Ces noms fonctionnent
+
+00:06:05 - 00:06:59
+comme les nôtres. Votre prénom ne vous ressemble pas, [musique] c'est un son qu'on a attaché à vous. Chez les éléphants, c'est pareil. Le nom n'imite pas la voix de celui qu'on appelle. Restait à demander leur avis aux éléphants. Les chercheurs ont diffusé des appels enregistrés à 17 éléphants sauvages. Quand l'appel leur était destiné, ils venaient plus vite vers le haut-parleur et ils répondaient. Quand il était destiné à un autre, il réagissait beaucoup moins. Aucune oreille humaine n'aurait trouvé ça
+
+00:06:32 - 00:07:29
+seule. Le nom est fondu dans le grondement, à un endroit qu'on ne sait toujours pas montrer du doigt. Le 1er octobre 2026, d'autres chercheurs ont publié une étude sur les chœurs d'éléphants. [musique] Ces moments où plusieurs femelles grondent ensemble, l'une par-dessus l'autre. Sur 902 grondements, une machine entraînée sur des appels isolés arrive à deviner ce que fait le groupe pendant le chœur. [musique] Se saluer, se chercher ou décider de partir. Pendant certains échanges, les
+
+00:07:00 - 00:08:02
+voix se rapprochent, comme si le groupe se mettait [musique] d'accord, avec encore beaucoup d'erreurs. Les éléphants ne sont pas les seuls à porter un nom. Dans la mer, un autre animal en a un. L'une des plus grandes entreprises de la planète a construit une IA pour l'écouter. Avril 2025. Google présente Dolphin Gemma, une IA entraînée sur des sons de dauphins. Elle est assez légère pour tourner sur un téléphone. Elle est née de [musique] 40 ans de patience. Depuis 1985 aux Bahamas, la biologiste Denise
+
+00:07:37 - 00:08:35
+Herzing et son équipe, le Wild Dolphin Project, plongent avec la même communauté de dauphins tachetés. Ils connaissent chaque dauphin, ses parents, ses amis. Dolphin Gemma fonctionne comme le clavier de votre téléphone qui [musique] devine le mot suivant. Elle écoute une suite de sons de dauphin et elle prédit le son qui vient [musique] après. Elle peut même en fabriquer de nouveaux. Chez les dauphins, il y a quelque chose de précis à écouter. Très tôt dans sa vie, chaque dauphin invente un sifflement qui n'appartient qu'à lui.
+
+00:08:06 - 00:09:03
+Les chercheurs l'appellent le sifflet signature. Il sert de nom. En 2013, en Écosse, des biologistes de l'université de Saint Andrews l'ont vérifié avec des grands dauphins sauvages. Ils ont enregistré le sifflet de chacun, puis ils ont diffusé une copie sous l'eau. Quand un dauphin entendait la copie de son propre nom, il sifflait en retour. Les noms des autres le laissaient presque toujours silencieux. Aux Bahamas, l'équipe de Denise Herzing veut aller plus loin. Les plongeurs
+
+00:08:35 - 00:09:36
+portent un ordinateur sous-marin, un boîtier appelé Chat qui joue des sifflements inventés. Chaque sifflement correspond à un objet que les dauphins aiment, un foulard, une touffe d'algues. Si un dauphin reproduit le sifflement, le plongeur [musique] lui tend l'objet. C'est ce qu'on fait avec un bébé. Il dit le mot, on lui montre la chose. Les dauphins ont imité. Entre 2013 et 2016, les plongeurs ont compté 299 imitations de sifflements d'ordinateur. Mais dans leur article publié en 2024,
+
+00:09:05 - 00:10:00
+les chercheurs l'écrivent eux-mêmes, [musique] "Aucun signe que les dauphins aient compris à quel objet correspond chaque sifflement. [musique] Aucun n'en a encore réclamé un." Dolphin Gemma doit justement aider les plongeurs à repérer une réponse de dauphin à l'instant où elle arrive et à choisir les sons qui valent la peine d'être essayés. [musique] En Floride, on a pris un chemin différent. Laila Sayigh, de l'Institut océanographique de Woods Hole, étudie depuis des années une communauté de
+
+00:09:33 - 00:10:24
+grands dauphins dans la baie de Sarasota. La moitié de leurs sifflements ne sont pas des noms. Ce sont des sifflements partagés que beaucoup de dauphins utilisent. [musique] Son équipe en a diffusé un sous l'eau. Les dauphins s'éloignent comme devant une alarme. Un autre revient chaque fois qu'il [musique] tombe sur quelque chose d'inattendu comme une question. Personne ne traduit encore le dauphin mais on commence à lui répondre. Les dauphins sifflent. Le plus gros pari de tout ce
+
+00:09:57 - 00:11:04
+domaine porte sur un animal qui claque. [musique] Le cachalot a le plus gros cerveau de tous les animaux de la planète. Il vit en famille très soudée menée par les mères et les grands-mères. Il plonge dans le noir parfois pendant 1h pour chasser le calmar. Quand il remonte, il parle. Il parle en clic de courtes rafales rangées en motif un peu comme du morse. Les chercheurs appellent ces motifs des codas. Chaque clan a les siens comme un accent. En 2020, le biologiste marin David Gruber lance le projet CETI. Un clin
+
+00:10:36 - 00:11:42
+d'œil au programme qui cherche des signaux extraterrestres. L'équipe s'installe au large de la Dominique, une île des Caraïbes. Là-bas, depuis 2005, le biologiste Shane Gero suit les mêmes familles de cachalots. Il les connaît une par une. En mai 2024, avec des chercheurs du MIT, l'équipe passe à la machine 8719 codas enregistrés sur 13 ans auprès d'au moins 60 cachalots. Elle trouve une chose qui avait échappé à tout le monde. Les cachalots étirent légèrement le rythme d'une coda ou ils
+
+00:11:08 - 00:12:05
+ajoutent un clic à la fin. Combinés, ces petits changements forment un répertoire bien plus grand qu'on ne le croyait. Les chercheurs parlent d'un alphabet phonétique du cachalot. Puis en avril 2026, une autre étude va plus loin. Dans ces clics, il y a des sons qui se comportent comme des voyelles, deux que les chercheurs ont baptisé A et I avec des versions longues et des versions brèves. Les auteurs restent prudents. C'est une ressemblance apparue chez le cachalot de son côté sans lien avec nos
+
+00:11:37 - 00:12:37
+langues. Alors, l'équipe de SETI a franchi l'étape suivante. Elle a construit WhAIle, une IA qui fabrique des codas. Au départ, c'est un modèle conçu pour composer de la musique. Elle l'a ré-entraîné sur environ 10000 vrais codas. Aujourd'hui, WhAIle produit des clics qu'aucun cachalot n'a jamais fait. Sont-ils ? Les chercheurs les ont fait écouter à cinq spécialistes qui ont passé des années à écouter des cachalots. Les spécialistes ont reconnu les fausses codas quatre fois sur cinq. Les auteurs
+
+00:12:07 - 00:13:03
+: "Pas encore assez bonnes pour les jouer à un vrai cachalot." Même si elle l'était, on ne saurait pas quoi lui dire. Une coda peut vouloir dire "Bonjour" ou être un avertissement et aujourd'hui, rien ne permet de faire la différence. Les auteurs de WhAIle le résument en une : "L'écart entre produire ces sons et comprendre ce qu'ils veulent dire reste immense." Imaginez diffuser un son au plus gros cerveau de la planète sans savoir ce que vous venez de dire. Pour l'instant, la
+
+00:12:35 - 00:13:37
+voix du cachalot reste muette. Mais pas besoin d'aller au milieu de l'océan pour trouver un animal que l'IA essaie de comprendre. Il y en a peut-être un qui dort sur votre canapé. [musique] Votre chien aboie quand on sonne. Parfois, il aboie sans raison visible. [musique] En 2024, des chercheurs de l'Université du Michigan avec une équipe mexicaine enregistrent 74 chiens dans toutes sortes de : un inconnu à la porte, une partie de jeu avec le maître, un moment d'inquiétude. Puis, ils donnent ces aboiements à une
+
+00:13:10 - 00:14:14
+IA qui, au départ, avait appris à comprendre la voix humaine. Ça marche. La machine distingue un aboiement de jeu d'un aboiement d'agression. Elle reconnaît aussi quel chien aboie, sa race et son sexe rien qu'au son, dans sept cas sur 10 environ. Les cochons racontent peut-être histoire encore plus forte. En 2022, la biologiste Elodie Briefer et ses collègues de l'Université de Copenhague rassemblent 7414 cris de 411 cochons. Toute la vie d'un cochon d'élevage y passe, de la
+
+00:13:42 - 00:14:36
+naissance à l'abattoir. Puis, ils entraînent une IA à dire si chaque cri vient d'un bon moment ou d'un mauvais. Elle a raison neuf fois sur 10. Les grognements courts et graves accompagnent plutôt les bons [musique] moments, les cris aigus les mauvais. Un éleveur pourrait un jour entendre comment vont ses bêtes dans tout un bâtiment en temps réel. [musique] On trouve déjà des applications qui promettent de traduire votre chien. La plupart n'ont jamais été testées par des scientifiques. Un chercheur lituanien
+
+00:14:10 - 00:15:04
+qui a nourri une IA de 6000 heures d'aboiements le disait en septembre "La machine entend des motifs qui nous [musique] échappent et elle ne traduit toujours rien." Ces machines lisent un état, bien [musique] ou mal, rien qui ressemble encore à une conversation. Pour un cochon dans un bâtiment ou un chien qui attend seul toute la journée, c'est peut-être déjà plus important qu'un mot. Reste un problème caché sous chaque résultat de [musique] cette vidéo. En 2026, des chercheurs l'ont testé sur la
+
+00:14:37 - 00:15:36
+seule espèce dont on connaît déjà la langue, la nôtre. On part en Israël, à l'Université de Tel Aviv. En août 2026, des chercheurs publient une expérience très maligne. Ils font écouter des tout petits qui ne parlent pas encore vraiment à des IA du même genre que celles qu'on utilise pour les animaux. Avec eux, on sait au moins en partie ce qu'ils veulent. Ils pleurent de détresse, ils appellent un parent précis ou ils réclament à manger. On peut donc vérifier si la machine a vu juste.
+
+00:15:11 - 00:16:00
+La machine s'est trompée. Trois méthodes différentes ont rangé les sons en groupe comme elles le font avec les oiseaux ou les cachalots. Aucune n'a regroupé les sons par ce qu'ils voulaient dire. [musique] Des sons très proches voulaient dire des choses différentes. Des sons très différents voulaient dire la même chose. Aucune n'a senti non plus l'urgence monter quand l'enfant s'impatientait. L'un des auteurs, Yossi Yovel, le résume ainsi. Repérer des motifs dans des sons,
+
+00:15:36 - 00:16:41
+c'est une chose. Déchiffrer un sens, c'en est une autre. C'est le grand problème de tout ce domaine. En 1822, Champollion a déchiffré les hiéroglyphes grâce à la pierre de Rosette. Le même texte y était gravé trois fois, dont une en grec que les savants savaient lire. À côté, les hiéroglyphes qu'ils ne savaient pas lire. Les animaux n'ont pas de pierre de Rosette. Aucun cachalot ne nous a jamais expliqué une coda. Quand on devine, les devinettes peuvent s'effondrer. En avril 2025, une étude parue dans
+
+00:16:08 - 00:17:10
+Science affirme que les bonobos au Congo combinent leurs cris pour fabriquer de nouveaux sens, un peu comme nous faisons des phrases. Elle fait le tour du monde. En août 2026, une autre équipe reprend exactement la même méthode et l'applique à des données inventées au hasard. La méthode y trouve encore des liens significatifs, jusque dans huit essais sur 10. Conclusion, l'étude sur les bonobos ne prouve pas ce qu'elle annonce. Alors, comment trouver le sens sans ? Comme le fait un bébé. Il entend le mot
+
+00:16:39 - 00:17:39
+"biberon" à chaque fois que le biberon apparaît. Le son finit par s'accrocher à la chose. Ici, l'IA peut tout changer. Les chercheurs posent des balises sur les cachalots, des caméras sur les animaux. Ils enregistrent ce que l'animal dit et ce qu'il est en train de faire au même moment. Relier des millions de sons à des millions de moments, aucun humain ne le peut. Une machine, si. Parfois, le message part dans l'autre sens. En 2018, à l'Université libre de Berlin,
+
+00:17:09 - 00:18:09
+l'équipe de Tim Landgraf a construit une abeille robot capable d'exécuter la danse frétillante, celle que font les vraies abeilles pour indiquer où se trouve la nourriture. Il faut regarder les chiffres de près. Sur 193 abeilles marquées, six ont suivi la danse du robot. Quatre ont pu être suivies au radar. Une seule est partie vers l'endroit indiqué. Elle a fait 130 m, puis elle a fait demi-tour et elle est retournée à la mangeoire qu'elle connaissait déjà. Une abeille, 130 m. C'est minuscule. Mais pendant un
+
+00:17:39 - 00:18:37
+instant, une machine a peut-être fait passer une information à un animal dans la langue de cet animal. Percer ce problème vaut cher. Un homme a déjà mis l'argent sur la table. Mai 2024. [musique] Le financier britannique Jeremy Coller et l'université de Tel Aviv lancent le Coller Doolittle Challenge. Le nom vient du docteur des livres pour enfants, celui qui parlait aux animaux. [musique] Le grand prix ira à la première équipe qui réussira une vraie communication dans les deux sens avec un animal sans
+
+00:18:13 - 00:19:19
+que l'animal se rende compte qu'il parle à des humains. À la clé, au choix, 10 millions de dollars investis dans le projet ou 500000 dollars en argent. Chaque année, 100000 dollars récompensent aussi une avancée. En 2025, ce prix est allé à l'ALA SAI et à ses sifflements partagés de Sarasota. En juin 2026, il est allé à Julie Elie de l'université de Californie à Berkeley. Elle travaille sur le diamant mandarin, le petit oiseau gris du début de cette vidéo. Elle a établi le répertoire de ses appels. Onze types.
+
+00:18:46 - 00:19:38
+L'agression, la faim, le lien avec le partenaire, l'alarme. Puis elle a demandé aux oiseaux eux-mêmes de trier en appuyant sur un bouton. Les oiseaux confondent parfois deux appels qui se ressemblent peu quand ils veulent dire à peu près la même chose. [musique] Appeler un proche de près ou de loin. Ils ne confondent presque jamais deux appels qui se ressemblent quand ils veulent dire des choses différentes. Les tout petits de Tel Aviv ont piégé [musique] la machine. Les diamants mandarins, eux, font la différence. Pour
+
+00:19:12 - 00:20:11
+l'oiseau, ce qui compte, c'est ce que veut dire le cri. Le grand prix, lui, n'a toujours pas trouvé preneur. Jérémy Coller dit avoir la conviction absolue que le code sera craqué d'ici 2030. Rien ne dit qu'il ait raison. Mais le jour où il le sera, la question deviendra beaucoup plus grande. Que fait-on quand un animal nous dit qu'il a mal, qu'il ne veut pas vivre dans un ? Le projet Ceti travaille déjà avec des juristes pour écrire des règles avant la première vraie conversation.
+
+00:19:41 - 00:20:39
+Parler à un animal pourrait l'aider. Un mauvais son, diffusé au mauvais moment, pourrait aussi l'effrayer ou déranger toute sa famille. Pendant des siècles, parler aux animaux tenait du conte pour enfants. C'est devenu un travail. Des balises collées sur des baleines, des micros dans la savane, des serveurs qui tournent la nuit et une date, 2030, [musique] fixée par un mécène. Ce soir, votre chien vous attendra derrière la porte. Il saura au bruit de vos pas que c'est vous, bien avant que
+
+00:20:10 - 00:20:35
+vous tourniez la clé. Lui, il a toujours su vous écouter. Quelque part à Montréal, dans une volière, un petit oiseau gris lance un appel et quelque chose, qui n'est pas un oiseau, lui répond.

@@ -1,0 +1,226 @@
+#!/usr/bin/env python3
+"""
+pka-gate — Garde-fou pré-action PKA (skill `decision-gate`).
+
+Rôle : gérer le mode (ghost/enforce), le journal de décision (JSONL) et un
+pré-contrôle déterministe de la liste de blocage absolu. Le scoring sémantique
+des 4 questions G1–G4 reste fait par le modèle ; ce script enregistre la
+décision et couvre la partie qui peut être vérifiée sans LLM.
+
+Ne fait PAS double emploi avec :
+  - scripts/pka_prompt_guard.py   (injection de prompt, contenu entrant)
+  - scripts/pka_mcp_guard.py      (gouvernance des serveurs MCP)
+
+Usage :
+  pka-gate status                  # mode + stats du journal
+  pka-gate ghost                   # mode fantôme (observation, défaut)
+  pka-gate enforce                 # activer l'enforcement (après calibration)
+  pka-gate check "<commande>"      # pré-contrôle déterministe → BLOC/ESCALADE/AUTORISER
+  pka-gate log --action "<cmd>" --g1 0.9 --g2 0.8 --g3 0 --g4 0 --verdict BLOC [--note "..."]
+  pka-gate tail [N]                # dernières entrées du journal
+  pka-gate reset --yes             # vider le journal (réinitialise la calibration)
+
+Codes de sortie de `check` (pour un futur hook matériel) :
+  0 = AUTORISER   2 = ESCALADE   1 = BLOC
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import re
+import sys
+from datetime import datetime
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+STATE = ROOT / "_local" / "state"
+MODE_FILE = STATE / "decision-gate.mode"
+LOG_FILE = STATE / "decision-gate.log"
+
+VERDICTS = {"BLOC", "ESCALADE", "AUTORISER"}
+
+# Liste de blocage absolu — patterns déterministes (non exhaustif).
+# L'ordre compte : les règles les plus sévères d'abord.
+HARD_BLOCK = [
+    (r"git\s+push\b[^\n]*--force-with-lease", "ESCALADE", "force-push avec lease (à confirmer)"),
+    (r"git\s+push\b[^\n]*(-f|--force)\b", "BLOC", "git push --force"),
+    (r"DROP\s+TABLE", "BLOC", "DROP TABLE sans backup"),
+    (r"git\s+push\b", "ESCALADE", "git push (sortant)"),
+    (r"git\s+rebase\b", "ESCALADE", "git rebase (réécriture d'historique)"),
+    (r"\b(ssh|scp|rsync)\b", "ESCALADE", "accès machine distante"),
+    (r"\b(mail|sendmail|mailx|msmtp|mutt)\b", "ESCALADE", "envoi mail"),
+    (r"curl\b[^\n]*(-X\s*POST|--data|--upload-file)", "ESCALADE", "POST/upload réseau"),
+    (r"(cat|less|grep|echo|sed)\b[^\n]*(credentials-central|\.env|id_rsa|id_ed25519|api[_-]?key|token)", "ESCALADE", "accès secret"),
+    (r"python3?\b[^\n]*(rotate_|check_balances|outlook_imap|gmail_imap)", "ESCALADE", "script réseau/secret"),
+]
+
+
+def read_mode() -> str:
+    if MODE_FILE.exists():
+        m = MODE_FILE.read_text(encoding="utf-8").strip()
+        if m in ("ghost", "enforce"):
+            return m
+    return "ghost"
+
+
+def write_mode(mode: str) -> None:
+    STATE.mkdir(parents=True, exist_ok=True)
+    MODE_FILE.write_text(mode + "\n", encoding="utf-8")
+
+
+def cmd_status() -> int:
+    mode = read_mode()
+    entries = load_log()
+    print(f"Mode      : {mode}  {'👻 fantôme (observation, ne bloque rien)' if mode == 'ghost' else '🛑 enforce (bloque ≥ 0.8 + liste absolue)'}")
+    print(f"Journal   : {LOG_FILE}")
+    if not entries:
+        print("            (vide)")
+        return 0
+    counts = {}
+    for e in entries:
+        v = e.get("verdict", "?")
+        counts[v] = counts.get(v, 0) + 1
+    total = len(entries)
+    print(f"Entrées   : {total}")
+    for v in ("BLOC", "ESCALADE", "AUTORISER"):
+        if v in counts:
+            print(f"  {v:10} {counts[v]}")
+    last = entries[-1]
+    print(f"Dernière  : {last.get('ts','?')} — {last.get('action','?')[:60]} → {last.get('verdict','?')}")
+    return 0
+
+
+def cmd_check(command: str) -> int:
+    """Pré-contrôle déterministe. Ne couvre que la liste absolue + heuristiques
+    réseau/secret. Le jugement sémantique G1–G4 reste au modèle."""
+    cmd = command.strip()
+    # rm récursif : blocage sauf si /tmp
+    if re.search(r"\brm\b[^\n]*-(rf|fr)\b", cmd, re.IGNORECASE):
+        if "tmp" in cmd.lower():
+            print("ESCALADE\trm récursif (contient /tmp — à confirmer)")
+            return 2
+        print("BLOC\trm récursif hors /tmp")
+        return 1
+    for pattern, verdict, label in HARD_BLOCK:
+        if re.search(pattern, cmd, re.IGNORECASE):
+            print(f"{verdict}\t{label}")
+            return {"BLOC": 1, "ESCALADE": 2}.get(verdict, 0)
+    print("AUTORISER\taucun pattern de blocage — jugement sémantique requis (G1–G4)")
+    return 0
+
+
+def load_log() -> list[dict]:
+    if not LOG_FILE.exists():
+        return []
+    out = []
+    for line in LOG_FILE.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            out.append(json.loads(line))
+        except json.JSONDecodeError:
+            continue
+    return out
+
+
+def cmd_log(args) -> int:
+    gs = [args.g1, args.g2, args.g3, args.g4]
+    risque = round(max(gs), 2)
+    verdict = args.verdict.upper()
+    if verdict not in VERDICTS:
+        print(f"verdict invalide : {verdict} (attendu {sorted(VERDICTS)})", file=sys.stderr)
+        return 3
+    entry = {
+        "ts": datetime.now().isoformat(timespec="seconds"),
+        "action": args.action,
+        "G1": args.g1, "G2": args.g2, "G3": args.g3, "G4": args.g4,
+        "risque": risque,
+        "verdict": verdict,
+        "mode": read_mode(),
+        "jc": args.jc or "-",
+        "note": args.note or "",
+    }
+    STATE.mkdir(parents=True, exist_ok=True)
+    with LOG_FILE.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+    print(f"✅ décision loggée — risque={risque} verdict={verdict} mode={entry['mode']}")
+    return 0
+
+
+def cmd_tail(n: int) -> int:
+    entries = load_log()
+    for e in entries[-n:]:
+        print(f"{e.get('ts','?')}  {e.get('verdict','?'):10} risque={e.get('risque','?'):4}  {e.get('action','?')[:70]}")
+    return 0
+
+
+def cmd_reset() -> int:
+    if LOG_FILE.exists():
+        LOG_FILE.unlink()
+    print("Journal vidé. La calibration repart de zéro (repasser en mode ghost conseillé).")
+    return 0
+
+
+def main() -> int:
+    p = argparse.ArgumentParser(
+        description="Garde-fou pré-action PKA (skill decision-gate)",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    sub = p.add_subparsers(dest="cmd")
+
+    sub.add_parser("status", help="Afficher mode + stats du journal")
+    sub.add_parser("ghost", help="Passer en mode fantôme (observation)")
+    sub.add_parser("enforce", help="Activer l'enforcement")
+
+    chk = sub.add_parser("check", help="Pré-contrôle déterministe d'une commande")
+    chk.add_argument("command", help="Commande ou opération à contrôler")
+
+    lg = sub.add_parser("log", help="Logger une décision")
+    lg.add_argument("--action", required=True, help="Commande/opération concernée")
+    lg.add_argument("--g1", type=float, default=0.0)
+    lg.add_argument("--g2", type=float, default=0.0)
+    lg.add_argument("--g3", type=float, default=0.0)
+    lg.add_argument("--g4", type=float, default=0.0)
+    lg.add_argument("--verdict", required=True, help="BLOC | ESCALADE | AUTORISER")
+    lg.add_argument("--jc", help="Correction/avis JC (pour calibration)")
+    lg.add_argument("--note", help="Note libre")
+
+    tl = sub.add_parser("tail", help="Dernières entrées du journal")
+    tl.add_argument("n", nargs="?", type=int, default=10)
+
+    rs = sub.add_parser("reset", help="Vider le journal")
+    rs.add_argument("--yes", action="store_true", help="Confirmation requise")
+
+    args = p.parse_args()
+
+    if args.cmd == "status":
+        return cmd_status()
+    if args.cmd == "ghost":
+        write_mode("ghost")
+        print("👻 mode fantôme — le garde-fou observe et logge, ne bloque rien.")
+        return 0
+    if args.cmd == "enforce":
+        if read_mode() == "ghost":
+            print("⚠️  Passage en enforce : assure-toi que le garde-fou est calibré")
+            print("   (100–200 cas en fantôme, verdicts alignés sur les décisions JC).")
+        write_mode("enforce")
+        print("🛑 mode enforce — blocage ≥ 0.8 + liste absolue activés.")
+        return 0
+    if args.cmd == "check":
+        return cmd_check(args.command)
+    if args.cmd == "log":
+        return cmd_log(args)
+    if args.cmd == "tail":
+        return cmd_tail(args.n)
+    if args.cmd == "reset":
+        if not args.yes:
+            print("reset nécessite --yes (vide tout le journal de calibration).", file=sys.stderr)
+            return 3
+        return cmd_reset()
+    p.print_help()
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

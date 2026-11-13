@@ -1,0 +1,101 @@
+#!/usr/bin/env python3
+"""
+pka-search — Recherche web via l'endpoint natif DeepSeek (Search & Fetch).
+
+Remplaçant de Tavily pour les recherches scriptées PKA.
+Endpoint : POST https://api.deepseek.com/v1/tools/search  ($0.75 / 1000 requêtes réussies)
+Fetch    : POST https://api.deepseek.com/v1/tools/fetch   ($0.75 / 1000 requêtes réussies)
+
+Usage :
+    pka-search "ma requête" [--count N] [--content] [--json]
+    pka-search --fetch "https://url" [--json]
+
+Clé API (ordre de priorité) :
+    1. variable d'environnement DEEPSEEK_API_KEY
+    2. clé `api_key` de ~/.deepseek/config.toml
+"""
+import sys
+import os
+import json
+import argparse
+import urllib.request
+import urllib.error
+
+API = "https://api.deepseek.com/v1/tools"
+
+
+def get_api_key():
+    k = os.environ.get("DEEPSEEK_API_KEY")
+    if k:
+        return k.strip()
+    cfg = os.path.expanduser("~/.deepseek/config.toml")
+    try:
+        with open(cfg, encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line.startswith("api_key") and "=" in line:
+                    return line.split("=", 1)[1].strip().strip('"').strip("'")
+    except FileNotFoundError:
+        pass
+    return None
+
+
+def post(path, payload, key):
+    req = urllib.request.Request(
+        API + path,
+        data=json.dumps(payload).encode("utf-8"),
+        headers={"Authorization": "Bearer " + key, "Content-Type": "application/json"},
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            return json.loads(r.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        body = e.read().decode("utf-8", "replace")
+        print("ERREUR HTTP %s: %s" % (e.code, body), file=sys.stderr)
+        sys.exit(2)
+
+
+def main():
+    ap = argparse.ArgumentParser(description="Recherche native DeepSeek (Search/Fetch)")
+    ap.add_argument("query", nargs="?", help="Requête de recherche (ou URL si --fetch)")
+    ap.add_argument("--fetch", action="store_true", help="Mode fetch : récupérer une URL en Markdown")
+    ap.add_argument("--count", type=int, default=8, help="Nombre de résultats (1-50, défaut 8)")
+    ap.add_argument("--content", action="store_true", help="Inclure le contenu des pages (need_content)")
+    ap.add_argument("--json", action="store_true", help="Sortie JSON brute")
+    args = ap.parse_args()
+
+    if not args.query:
+        ap.print_help()
+        sys.exit(1)
+
+    key = get_api_key()
+    if not key:
+        print("ERREUR: clé DeepSeek introuvable (DEEPSEEK_API_KEY ou ~/.deepseek/config.toml)",
+              file=sys.stderr)
+        sys.exit(2)
+
+    if args.fetch:
+        data = post("/fetch", {"url": args.query}, key)
+        if args.json:
+            print(json.dumps(data, indent=2, ensure_ascii=False))
+        else:
+            print(data.get("title", ""))
+            print(data.get("content", ""))
+    else:
+        payload = {"query": args.query, "count": args.count, "need_content": args.content}
+        data = post("/search", payload, key)
+        results = data.get("results", [])
+        if args.json:
+            print(json.dumps(data, indent=2, ensure_ascii=False))
+        else:
+            for r in results:
+                print("- " + str(r.get("title", "")))
+                print("  " + str(r.get("url", "")))
+                if r.get("snippet"):
+                    print("  " + str(r["snippet"]))
+                print()
+        print("(%d résultat(s))" % len(results), file=sys.stderr)
+
+
+if __name__ == "__main__":
+    main()

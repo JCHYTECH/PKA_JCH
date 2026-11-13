@@ -1,0 +1,98 @@
+#!/usr/bin/env python3
+"""
+pka-route — Route les livrables plats de TEAM_Inbox vers leur destination canonique
+(routing_rules.md : documents projet → 03_PROJECTS/[projet]/ ; obsolète → archive).
+
+Usage :
+  pka-route --list        # liste les livrables + destination proposée
+  pka-route --dry-run     # aperçu sans déplacement
+  pka-route               # déplace selon les règles
+  pka-route --archive     # archive les livrables > 30 jours vers TEAM_Inbox/_archive/
+"""
+from __future__ import annotations
+
+import argparse
+import sys
+import time
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+TEAM_INBOX = ROOT / "TEAM_Inbox"
+PROJECTS = ROOT / "JCH_Inbox" / "03_PROJECTS"
+ARCHIVE = TEAM_INBOX / "_archive"
+
+# (mots-clés, destination relative sous 03_PROJECTS) — ordre : plus spécifique d'abord
+ROUTES = [
+    (["contrat", "pacte", "statuts", "diaho", "dixun", "arbitrage", "clause", "chinois", "reponse", "coherence", "blocage", "investisseur", "reciprocite", "relecture", "brouillon", "verification"], "08_VETALYX/legal"),
+    (["vetalyx", "allergie", "veterinaire"], "08_VETALYX"),
+    (["wildnexus", "insectnet", "acoustic", "nexus", "leafnet", "camera", "esp32", "loramesh", "pir"], "03_WILDNEXUS"),
+    (["arteon", "wildlens", "shopify", "ghost", "instant-lu"], "02_ARTEON"),
+    (["ai_jury", "concours"], "05_PHOTO_AI_JURY"),
+    (["photo", "lightroom", "faune", "oiseau", "bird", "wildlife", "nature"], "06_PHOTO_NATURE"),
+    (["travel", "voyage", "vanlife", "camping", "lupo", "trentino", "danemark"], "07_TRAVELS"),
+    (["iot", "mqtt", "zigbee", "homeassistant", "home-assistant", "rpi"], "11_IOT"),
+    (["invest", "finance", "bourse", "portefeuille"], "10_FUTURE_INVEST"),
+    (["it_tools", "tool", "script", "skill", "mcp", "graphify", "gateway", "pointer"], "01_AI_IT_TOOLS"),
+]
+
+
+def deliverables() -> list[Path]:
+    return sorted(TEAM_INBOX.glob("*.md"))
+
+
+def route_for(name: str) -> Path | None:
+    n = name.lower()
+    for kws, dest in ROUTES:
+        if any(k in n for k in kws):
+            return PROJECTS / dest
+    return None
+
+
+def move(src: Path, dst_dir: Path, dry: bool) -> str:
+    dst_dir.mkdir(parents=True, exist_ok=True)
+    dst = dst_dir / src.name
+    if dst.exists():
+        dst = dst_dir / f"{src.stem}_2{src.suffix}"
+    if not dry:
+        src.rename(dst)
+    return str(dst.relative_to(ROOT))
+
+
+def main() -> int:
+    p = argparse.ArgumentParser(description="Router les livrables TEAM_Inbox")
+    p.add_argument("--list", action="store_true", help="Lister + destination proposée")
+    p.add_argument("--dry-run", action="store_true", help="Aperçu sans déplacement")
+    p.add_argument("--archive", action="store_true", help="Archiver les livrables > 30 jours")
+    args = p.parse_args()
+
+    dry = args.dry_run or args.list
+    files = deliverables()
+    if dry:
+        print(f"{len(files)} livrable(s) dans TEAM_Inbox/")
+
+    moved = 0
+    for f in files:
+        dst = route_for(f.name)
+        if dst and not args.archive:
+            r = move(f, dst, dry)
+            print(f"  {f.name}  ->  {r}")
+            moved += 1
+        elif dst is None and dry:
+            print(f"  {f.name}  ->  (transversal — reste dans TEAM_Inbox)")
+
+    if args.archive:
+        now = time.time()
+        for f in files:
+            if (now - f.stat().st_mtime) > 30 * 86400:
+                r = move(f, ARCHIVE, dry)
+                print(f"  [archive] {f.name}  ->  {r}")
+                moved += 1
+
+    if dry:
+        tag = "(dry-run) " if args.dry_run else ""
+        print(f"\n{tag}{moved} déplacement(s) proposé(s)")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

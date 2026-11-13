@@ -1,0 +1,65 @@
+00:00:00 - 00:00:59
+Deepsic has just released a new open-source project called Deepsic Super Agent, and it's its functionality that we're going to look at today because, as you'll see, it's quite unique. Let me explain. For example, take a developer working on an online store. They encounter an issue with the payment system, and someone reports it on GitHub . With Super Agent, an AI agent can retrieve this request, analyze the code , find a fix, and suggest the changes directly to the developer, all without
+
+00:00:30 - 00:01:30
+needing to open a conversation with an AI to explain every step. But wait, because Deepsic wanted to go even further than that. The system can handle multiple requests in parallel with different agents, each working on its own task. And by the way, Deepsic claims to already be using an internal version to fix bugs and improve its own tools. In an independent benchmark, the infrastructure this Super Agent is based on achieved performance comparable to Cloud Code at about five times lower cost under the test conditions.
+
+00:01:00 - 00:01:51
+So, in this video, we'll try to follow how this system works from the arrival of the problem on GitHub to the fix proposed by the agents, and above all, we'll see how far these agents can work autonomously and at what point developers still need to intervene. Right, first, let's go back to our online store example. With a tool like Cloud Code or Codex, you could open a session and ask the agent to fix the payment issue. Except you still have to manage that session, verify its work, and sometimes
+
+00:01:26 - 00:02:28
+give it new instructions. With Super Agent, the system is directly connected to the GitHub repository and monitors incoming requests. When an authorized developer asks it to fix our payment issue, it retrieves the request and launches a work session. An AI agent will then examine the code, look for the source of the bug, and prepare a fix. Once its work is done, it can propose the changes directly on GitHub through a pull request. For those who don't know what that is, it's simply a proposed code change that
+
+00:01:57 - 00:02:54
+developers can review before accepting it. And if our developer notices an error in this fix, they can leave a comment directly. The agent then receives this comment and resumes its work, keeping the information from its first analysis. In fact, Deepsic explains that it uses an internal version of this system to reproduce bugs, propose fixes, and improve its own tools. But now, let's imagine that several developers report problems at the same time. To manage multiple requests, DeepSeek uses an architecture with two
+
+00:02:25 - 00:03:16
+types of agents. First, there is what they call the router. So, it acts a bit like the team leader. It receives the requests and distributes the work to the other agents. For example, on our imaginary shop, we already have the payment issue. But let's say a second developer reports a display bug while a third encounters a problem with orders. The router can then create three tasks and assign them to three different agents. And these agents, which we call workers, will handle the development.
+
+00:02:51 - 00:03:47
+Each one has its own session and workspace, which allows them to work in parallel. Now, DeepSeek had already experimented with teams of agents capable of collaborating on the same task. But here, with Super Agent, they have extended this functionality to handle multiple independent requests that can arrive at different times. And to limit costs, the router and the workers can use different AI models. The router, for example, mainly needs to understand requests and decide which agents to send them to.
+
+00:03:19 - 00:04:20
+So, we can use a fairly light model for this part and reserve more powerful models for development. DeepSeek also worked on how the router processes messages. When it receives multiple requests while it is busy, it can group them to process them together . For example, in a load test, the average decision time per event dropped from 6.4 seconds to 1.6 seconds as the number of requests increased. Another detail: GitHub comments can be transmitted directly to the agents responsible for the tasks without
+
+00:03:50 - 00:04:43
+systematically going back through the router, which reduces exchanges and saves a lot of tokens. Now, for all these agents to actually modify our little shop, they are going to need tools. And DeepSeek has specifically developed an infrastructure for that. And this infrastructure, I imagine you know it; in fact, I’ve already made a video about it: it's DeepSeek Harness. So, for those who don't know this term, "harness" is the system that allows an artificial intelligence model to use
+
+00:04:17 - 00:05:17
+tools. In our case, the agent must, for example , be able to view shop files, modify code, and execute commands. And DeepSeek has chosen a rather unique operating method. Practically everything relies on plugins. So, we can even compare this to Legos because each plugin adds a functionality that we can add or remove according to our needs. Even some essential system components function as plugins, which allows for modifying the work environment without having to rebuild the entire infrastructure.
+
+00:04:47 - 00:05:45
+Another very important point is that DeepSeek Harness is open source. It is not limited to the DeepSeek model. It can also work with other providers, notably through APIs compatible with OpenAI's. And there is even a mode called Creator . And in this mode, you can directly ask the agent to develop a new plugin for its own environment. The agent can then write the code, install the plugin, and verify that it works. So, you can ask the AI to develop certain tools itself that it will then use.
+
+00:05:16 - 00:06:09
+And to build SuperAgent, DeepSeek used this infrastructure, adding several plugins to monitor GitHub and manage tasks. They were thus able to develop this system without having to start from scratch. So, as I told you, I made a video about DeepSeek Harness where I show you how to install it and I even tested it on a few prompts. I will put the link in the description. And now, nerds, we are going to look a bit at the performance of DeepSeek Harness compared to other solutions. An independent benchmark
+
+00:05:42 - 00:06:50
+called Frontier Harness Eval recently compared several programming agent infrastructures. For this test, researchers used the same model, DeepSeek V3, with 9 different harnesses and 12 total configurations. Each system had to solve the same 30 programming tasks. The model therefore remained identical and only the infrastructure changed. Regarding the results, Codex comes in first place with a 66.7%success rate. Right behind, we find DeepSeek Harness in Creator mode and Claude Code, both at 63.3%. They therefore succeeded in the
+
+00:06:16 - 00:07:16
+exact same number of tasks, i.e., 19/30 . But when we look at the costs, well, that's where the difference is quite significant. For DeepSeek Harness, the median cost per successful task is 3.28 dollars. For Claude Code, it reaches 18.34 dollars. So here, in this evaluation at least, DeepSeek Harness is about 5.6 times cheaper with the same success rate. And I remind you that both systems used the exact same model. After that, part of this difference is explained in particular by the management of tools and context, which
+
+00:06:46 - 00:07:39
+directly influences token consumption. However, we must still put these results into perspective. The benchmark is based on only 30 tasks with very specific configurations. Therefore, we absolutely cannot claim that DeepSeek will systematically be better or cheaper than Claude Code. And above all, these figures concern DeepSeek Harness, the infrastructure, and not directly SuperAgent. But for a company that wants to use several agents in parallel, this cost difference could be quite significant.
+
+00:07:13 - 00:08:12
+Okay, back to our online store, our agent has therefore prepared a fix for the payment issue. The developer can review its proposal while the other agents continue working on their own tasks. In a company, this workflow could be used to automate certain bug fixes or maintenance tasks. And Dipsic explains its philosophy quite clearly in the project documentation. Their goal is to require as little human attention as possible while providing maximum value. Except that in our example, we are talking about an online
+
+00:07:42 - 00:08:38
+store with a payment system. And if an AI agent makes a mistake while modifying this system, it can cause, well, serious problems. So, we must be able to precisely control what the agents are authorized to do. And as it happens, we are also going to talk about these limitations. First, it must be stated that Super Agent is still a research prototype. Some features presented by Dipsic are, in fact, not yet fully available in the published code. For the moment, the prototype mainly focuses on a GitHub repository, along
+
+00:08:10 - 00:09:15
+with an integration for Feishu, a professional messaging app used in China . But regarding security, Dipsic has still provided several safeguards. Only certain authorized people can directly ask Super Agent to perform a task. But the system can also monitor GitHub and identify potential issues itself, even when no developer has asked it to fix them. And for that, it must adhere to rules defined in advance. There is also an observation mode. And in this mode, when an agent identifies a task itself, it can analyze
+
+00:08:43 - 00:09:38
+it and record what it would have done without automatically starting the work . Developers can therefore check its behavior before granting it more autonomy. And it is then possible to authorize certain automatic actions, always within the limits defined by the team. There is also another important protection regarding the code. By default, Super Agent cannot automatically merge its own changes into the main project. Even when this option is enabled, the prototype requires human approval before
+
+00:09:11 - 00:10:09
+any merge. So for our payment problem, a developer must still verify and approve the changes before they are automatically merged. And these precautions are very important because an agent can still make mistakes or be manipulated by malicious instructions. Moreover, Dipsic acknowledges that several security issues remain to be solved, particularly regarding permissions and credential protection. And the initial experimental results for Super Agent are based on tasks simulated in a simplified environment.
+
+00:09:40 - 00:10:34
+We will therefore have to see how this system performs on much more complex projects with real teams of developers. Well, personally, despite everything, I still really like this new project from Dieps; being able to report an issue on GitHub and then finding a fix proposal directly in the same place, I still find that pretty crazy. And even if Super Agent is still experimental, I am still quite curious to see how it will evolve in the coming months. And by the way, I would love to make a video where I test it on a real project
+
+00:10:07 - 00:10:33
+and see how far these agents can work without human intervention. That's it, everyone, I hope you enjoyed this video. In any case, as usual, it was a pleasure to make it for you. See you very, very soon. Sending you all big hugs. Okay?

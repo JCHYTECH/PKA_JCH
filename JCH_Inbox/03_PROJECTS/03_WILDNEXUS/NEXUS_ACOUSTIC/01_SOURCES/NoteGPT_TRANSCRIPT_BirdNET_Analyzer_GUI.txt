@@ -1,0 +1,321 @@
+00:00:00
+ all right yeah thanks thank you so much for having me it's quite an audience which is always a bit strange sitting in your office at home and then knowing that there's 100 people listening U but it's good to see everyone um I have a so I'm probably going to do this like going to do this like as a two-fold session U part one is going to be a presentation on on bernet and where we are and what they're doing right now um and then we will shift over to yeah using Beret to train your own models and there's going
+
+00:00:31
+ to be a live demo or at least I'm going to attempt to do a live demo even though I'm I'm not a big fan of these things um but we'll just yeah cross our fingers and hope that it works um all right in any case I'm going to share I'm going to start sharing my screen um for the presentation and then I'm probably going to hop uh switch back and forth between presentation mode so let's see if I if there's if there's a time where you can see what I'm sharing or if there's yeah
+
+00:01:00
+ anything that is not working please let me know I would try to keep an eye on the chat um so if there's anything if if I'm too fast or if you have an immediate question just like make sure to post it there um and I'll try to address it um the first thing I want to do is introduce bernet plus and I framed it as II powered acoustic monitoring um but then Burt plus is a research project Burton plus is a vision um Burton plus is a group of people that works on AI algorithms and so like the overarching goal that we
+
+00:01:42
+ have is to provide a suit of bird species identification products that enhance conservation by supporting and then that's important applied ecological research um and so the first important thing is like the bird is is like we're trying to move away from bird species identification but it's still in there because it's still bernet and so birs are still like the primary thri of all our research um but then what we're really trying to do is trying to support applied ecological research and that
+
+00:02:12
+ means um shifting our Focus from this very computer science Centric way of looking at things and developing these algorithms moving towards and applied um yeah kind like kind like few and then trying to understand um what ecologist and conservation practitioners and biologists are trying to achieve and then trying to build a rebuild bnet in a way that it actually suits um the research from other fields um and there's two things that I think our vision evolves around and that's a that we and that what I mentioned is want to
+
+00:02:48
+ further develop bernet into bernet plus and I'm going to introduce it in a minute what that actually means um but ideally at some point Britain will be the most sophisticated tool available to analyze terrestrial audio data um and then also ideally Burton plus will be the go-to tool for researchers focused on bio Acoustics um and in order to get there in order to be the go-to tool for researchers uh we need to figure out what um this tool would actually have to look like and that's why sessions like
+
+00:03:17
+ this one are so important because we can actually connect with um conservation practitioners ecologists biologists um people that are actually using the tool and then to gather them some feedback on how people are using it and the features that they're looking for um I mentioned this that we want to go from from bernet to bernet plus and this this project and this presentation is um entitled Beret plus so but what does it actually mean like what does it mean going from berket to bur the plus
+
+00:03:46
+ what does the plus actually mean and for us it means a number of things of course always as a computer scientist what you want to do is you want to improve models right that's like more species bigger models faster models um better performance um but that's that's just like a tiny part of it um it's also more about like these public interfaces making it accessible um for everyone um building interfaces not just programmable interfaces but other than graphical user interfaces that people
+
+00:04:15
+ can actually use um plus also means we want to be taxonomically agnostic so we want to like shift our Focus away a bit from birds to at first anything that um concerns terrestrial bio Acoustics but maybe then at some Point even Marine um bio Acoustics too um we want to support more devices right now like we thinking of like thinking of like these tiny power efficient microcontrollers thinking about mobile devices like smartphones thinking about uh workstation PCS thinking about um cloud computing
+
+00:04:48
+ environments so like anything that's that's in between these tiny and and super large um Computing facilities um needs to be able to run bnet um and then another thing that we also wanted to add is that we noticed that there's there's a high demand for is Real Time detection and I'm going to in introduce like briefly introduce a few of those um just so that you have a better understanding of what we're working towards too um the first thing I want to introduce is realtime acoustic
+
+00:05:17
+ monitoring because I think that it's one of the htest topics right now um as soon as we we show ecologist that you could do acoustic monitoring in real time that's what they want like nobody want wants to go out and deploy recording units and collect terabytes of audio data when they can have it in real time um and I going to give you an example why uh why real time it's sometimes actually really makes sense and this is um the Bavarian Forest National Park it's in Germany it's it's one of the
+
+00:05:50
+ largest contiguous Forest conservation areas in Central Europe um and it has a lot of visitors it has 1.3 million visitors per year and if you look at the photo uh it's not necessarily a healthy Forest um there's deforestation um there's um decorated L Landscapes and the reason is um that the bark Beetle has infected most of the trees and they're dying down um and what that means is the forest is opening up and it's opening up in a way that um new breeding grounds for the Western Capa
+
+00:06:23
+ Kelly um evolve and so like these breeding crowns are shifting um the V C Kelly is is a cryptic species and it's also easily being disturbed so remembering the 1.3 million visitors per year and then the always shifting breeding CRS of the cap killes that there's a conflict um there um and so what managers would like to do is know where the cap KES are where they breed and then close some Trails or um yeah diverge visitors from the breeding grounds and you can't just go there and listen and look for the birds because
+
+00:06:58
+ you would disturb them so pass acoustic monitoring is a good tool but then if you put out these recording units and collect um the data 3 months later um yeah you've already um disturb the species because like there was no way of um enacting um uh visitor flows through the forest so if you can do this in real time if you could put these recording units out at potential breeding grounds and then listen for the birds you immediately would know if a breeding Crown is being occupied and then you can
+
+00:07:27
+ immediately make a management decision that um influences the flow of visitors through the forest you can have like immediate conservation impact through real time bio Acoustics and I think that's that good example that really showcases what we are yeah trying to achieve but it also highlights um the importance of like model efficiency and like the size of the models and reliability um so everything that's very complicated about bio Acoustics um cumulates in this realtime monitoring scenario um how does it actually work
+
+00:08:02
+ how does it work right now um this is um a photo of one of these real time monitoring units they solar powered so they're um um you just put them out there um and they can listen you never have to go back which is important um um they're self-sufficient they have a sound card in them they have a resty P in them which is still not super power efficient um but it does the job there's a mobile uh internet dongle in there uh which does communication with um a database and then there's some lithium I
+
+00:08:31
+ batteries and then there's some microphone at the bottom um and these units are being built by eor a company in Germany um we do have some some of these unit at the lab we're using them uh in these SAS to monitor for um for wolves um and it has been a great success story so far um using these units and I guess that's that's really where bi Acoustics are moving towards to is like these real time solar powered U monitoring units um if you if you put these units out uh and this is a screenshot from one of our
+
+00:09:05
+ deployments on Hawaii you put these units out and then they communicate they will run the analysis let's say 5 minutes every 30 minutes um and then they will submit results and then the ecologist or biologist can can just sit in front of a bed page and look at results look at detections and then uh make a management decision or just learn something about the habitat that um they're monitoring all right moving away from from Real Time detection I think another important aspect of beret plus is
+
+00:09:36
+ actually open sourcing um bernet and the algorithm and the models and I guess that's um it's in everyone's interest it's it's something that we realized if we want to actually put this into um the hands of conservation uh practitioners and E Coles like we have to make these tools open source otherwise nobody's going to use them um we put this um bur analyzer repository online um it supports 6,000 uh species it is multi OS you can train you can analyze it has a gree which we'll see in a moment um it
+
+00:10:09
+ also has some example implementation of a server API we have a metadata model for um species distribution estimation we do have a Windows build we do have a python package Raven integration and so on and so on so like everything that we're building everything that we're developing will'll be uploading to this repository so that people can actually use it um and having things open and having them online and and uh letting people use um the tools that you've built is is a very fruitful process or is something
+
+00:10:41
+ like that can really spark these amazing projects and I have four of those um in the top left is the highq box which is a backyard listening uh station which will monitor 24/7 um for birds in your back it's based on one of our open source biret models the do it yourself version um is the ber p u which you can set up it has a web server on it so it actually displays a web page you can can log on and see the detections throughout um a day then there's what I mentioned the the um realtime listening units that I
+
+00:11:16
+ just introduced are also being built off of our one of our open source models and then I think the most sophisticated um platform of all is B weather which um collects data from B net PI from uh live streams from a mobile app from um bernet app submissions and displays them on a map and you can actually go and listen uh listen and you can see real time detections coming in and I guess this is like one of the most sophisticated citizen science platforms um that uses bernet to do audio analysis and I think
+
+00:11:49
+ it's fair to say that by open sourcing bernet that has been like we can really say that this has been a very successful strategy and that it has really spawned these awesome projects um that could have never built on our own and I think open sourcing can be very impactful and I guess that's part of the reason why we're here today because we going to talk about like this open source tool a bit more um having said all of this and then mentioning bernet for Birds um the question is then what if like what if
+
+00:12:20
+ the bird that I'm looking for is not in bernet what if I'm not even looking for a bird what if I'm I'm looking for marine mammoths what if I'm looking for primates what if I'm looking for something else maybe not even the signal and bi Acoustics um and so that's something that has been bugging us um for a while because it's very complicated to train um the large bird models it takes a few weeks it takes um extensive data preparation it takes specialized Hardware to train these
+
+00:12:46
+ models and it's just not practical for someone who just wants a pain for one species um but there's an answer to it and and we actually I think we found an answer to it and the answer is embeddings um and what I will probably spend the next few minutes on is introducing what embeddings actually are and how it works um if you think about the the processing pipeline or have these these deep learning models actually process audio data and you go from left to write you have spectrograms as an input um I think that's important
+
+00:13:19
+ to understand we're doing image recognition in the end like we transform audio into spectrogram and then we do we look for patterns in these spectrograms and then the blue box you can see that's like our large scale CNN model that's our backbone um for instance berket is such a backbone and so it's it's a bunch of layers um the signals being passed through it and these models will extract feature maps and these feature M Maps eventually will be compressed into what we call a feature embedding um and this
+
+00:13:49
+ feature embedding and we see this um in the next example it's just a bunch of numbers but it's it's a high level representation of the sound that we put through um the model and then we can use these embeddings because they encode the information from the spectrogram to train these what we call a fully connected unit unit for our Downstream classification output task so that's how these models work there spectrograms in there's a backbone which is a sequence of layers which will produce this
+
+00:14:15
+ feature embedding and then on top of this feature embedding we do the classification and this is actually from um recent paper paper vows um called feature embeddings from large large scale acoustic bird classifiers enable F short transfer learning um and I guess it's one of the best resources um if you're interested in learning how to uh work with embeddings all right um the next uh slide that I have is from a demo that we built to to Showcase how bernet actually works like what does bernet actually
+
+00:14:47
+ look on the inside like what is happening inside these models and I'm going to like yeah like a bit of a spoiler like to some extent we can understand what it's doing and but in to some extent it's still a black box but kind of like shed some light on what it looks inside of this black box and what I call like this is like an x-ray view of U B net and I'm just going to walk you through the way um like the path that the input signal actually takes until it um um the model outputs
+
+00:15:17
+ classification and so first of all we're going to start with a raw audio input and BR accept 3 second Snippets sampled at 48 khz and that's that's our input that's our input data um and then I mentioned this we're converting this into a spectogram which is then a bunch of pixels um but with these pixels we can actually uh do image processing and from here on it's image processing and in image processing typically what happens or what happens inside of these models is they're going to apply
+
+00:15:47
+ filters and these filters you can see that in the next step that's the first that's the output from the first layer these filters will transform the signal and some of them will enhance the foreground some of of them will enhance the background some of them will amplify certain features of the vocalization that we can see um some of them will amplify edges some of them textures so like these fil these filters like do different things and that's something that as a human I'm looking at say well
+
+00:16:15
+ okay I can I can see what's happening here right we're applying these FES that transforming a signal and then we're trying to extract somehow trying to extract features from the signal as we go deeper and then go from layer to layer to layer um we're going to apply more of these filters and then more of these filters more of these filters and if you go deeper like it's still somehow looks like the spectogram you can still see like some of the the features that somewhat somewhat closely resemble like
+
+00:16:45
+ the input spectogram but as we go deeper as we continue to go deeper and deeper it gets more and more abstract right and at some point down here in these deep layers it's just it's just a bunch of pixels eventually but these pixel represent uh represent uh high level information about the input signal and not just primitive features anymore like edges or textures or foreground and background but semantically meaningful features and then eventually we have this representation which doesn't look
+
+00:17:17
+ like a spectogram anymore which is just a bunch of numbers and then off top of on top of it you probably guess it already there's um the classification layer and the classification layer Maps one output unit to each species in this example we have 3,000 species so there's 3,000 of these dots and one of them is activated one of them is is actually uh being activated by these inputs and that's our common chaffing that we see so that's like the neuron that's mapped to the species Comm chaping um so it
+
+00:17:48
+ will get activated whenever there's a chaping in the input signal and then these units or these this um this layer output here that's the embedding like this is what an embedding looks like like it's it's being visualized like um values being visualized as brightness on this um um bil this color map but still it's like it's it's a vector it's a 1D representation even though it looks like a 2d Matrix but it's actually a 1D representation of the input signal um but it's important to
+
+00:18:16
+ understand that this feature Vector actually semantically represents the audio input that we just passed through the model and that's actually what the model is doing um it's trying to extract semantically meaning features from input signal and then embed this into this uh feature Vector so since it's a vector um that we're getting out of these models we could actually measure similarities between two of those vectors like like let's assume we have two inputs and let's assume it's it's two chaff Ines um
+
+00:18:49
+ those should should output similar vectors right the vectors that you like you create from these like these embeddings they should actually be similar and there's um a few um metrics that can use to measure similarity and there's um I think the most popular ones are ukian distance and cosine similarity um and so like it's an n-dimensional Vector space but you can still measure similarity between these vectors because they should be pointing um in the same direction um if they're similar so we
+
+00:19:15
+ can use uclean distance or coine similarity to actually measure similarity between two inputs if it's a Cheng and a dog these two feature embeddings should be dissimilar right if it's two f chenes they should be closer together if it's a chafing um and American goldfin those are two birds they different species but they should still be closer together than um the ching and the dog so that's how we um that's how these classifiers actually work that's what these classifiers are
+
+00:19:44
+ utilizing there uh learning similar features they learn that similar features belong to the same species and so can we actually use this um for Bio Acoustics can we exploit that and can we actually do something can we actually use these feature embeddings for something that bir was not trained on and um we did this in one of our papers um on uh CR cray owls and what we did is um we realized that with monitoring for these owls we got these owl detections and then we look at the detections and we realize hey there's adults in there
+
+00:20:17
+ and there's juveniles um so can we actually automate this process instead of going through all of these detects manually can we automate this process and can we find the juvenis and can we find the adults and and so we we went there we annotated some of these samples and then we compared adults and adults we compared juveniles and juveniles and then we compared adults and the juveniles and the ukian distance between adults and adults and juveniles and juveniles was always much smaller than the distance between adults and
+
+00:20:45
+ juveniles so there's there's a difference there's a semantically meaningful difference between juveniles and adults even though both of like it's the same species right and then Burton was trained to identify the species but implicitly it can also distinguish the call types and that's interesting so now we can exploit like feature embeddings to do call type level detection and then it's another example we did this for crates SP woodpeckers um and if you do similarities like you have
+
+00:21:15
+ um the data set um in this case it was written at app submissions and you want to know if a certain uh vocalization is in there so what we did is the top row that you can see those are our query examples and we we input those we extracted the embedding for each of these Crees and then we went through all of the other samples and then extracted um the four closest samples from the entire data set and if you look at those those are similar right Beret was trained to identify crates spoted woodpeckers not their call types but if
+
+00:21:45
+ we use embeddings we can actually go back to our data query for an example for the drumming of the Woodpecker for example and then retrieve only the recordings that have the drumming in them and so that's that's who these embeddings feature embeddings and that's through similarity um comparison so if you want to retrain bernet if we want to teach bernet to do something other than birds so how does it work how do we actually do that and we do this through these embeddings and what we're trying what we're doing is we
+
+00:22:18
+ freeze the model we remove this fully connected units at the end and we replace it with our own custom trained fully connected Unix and and by that we change the down Downstream classification output so we keep everything about the model the same the only thing we're going to do is to replace the output layer um that Maps um probabilities to species and when we do that we can actually prove or we can actually show that you can do all kinds of things like you can you can uh all of a sudden with
+
+00:22:53
+ only very few samples um identify other species and there's um again this is from from this embeddings paper that I mentioned um we did a few examples we did got rid call types which is no surprise like I just showed like we can do call types okay but it's still a bird right that's not super impressive um we can do dialects which is pretty awesome because dialects are super fine grain like we um call types or like you can look at the spectogram and see the difference but in dialect sometimes um
+
+00:23:22
+ the differences are very subtle and then especially for yellow hammers it's only the uh the terminal phrase of the song will actually distinguish the dialects and even with just like 32 or 64 examples we can get to an um r a AC of 0.9 or higher which is interesting but now all of a sudden we we train buret on these dialects and now we can distinguish these dialect types even though it was not initially trained for uh two distinguish dialects same thing for bats like now all of a sudden like
+
+00:23:56
+ if you like if you can trans transform these um ultrasonic recordings into recordings within the range of between uh 0 and 15 khz you can actually do B identification take a few samples 16 32 64 and you can see the scores improve with a few uh with more samples but still even if it's just eight examples per bat species you get to an uh RC of 0.9 already which is impressive I think and then going on doing this for forine mem same thing here um the blue line and the yellow line by the way that's that's bernet um bernet
+
+00:24:33
+ and perch which perch is the Google model that we're using so are very similar um works for frog species um only 32 samples and works for U bird species that are not in bird net so like you can do like we can actually show that even with only a few samples if you freeze bird net remove the classification layer replace it with your custom classification layer you can actually train them model which is pretty reliable um on it's a new Downstream task all right so but how do you actually train your own models um and
+
+00:25:08
+ what we did is and I I think that's like like we tried to to make these resources as easily accessible as as as we possibly can um and so we set up this web page B.C cornell.edu analyzer and if you go to this web page it has like a very condensed version of the rme file that the um GitHub repository had but it has all the important download links um all right so if you do that um if you go to this website and download our GUI and I think that's the the important thing is you don't have to
+
+00:25:41
+ there's no programming involved anymore we build the GUI so you can do this um in a no code environment um I'm just going to briefly mention these steps I'm not going to do them but I'm just going to mention them um so like go to this website and download the Z file that has the windows build in it the first first thing and that's a really important thing you need to do is like you need to right click it and unplug it like um go to the security Tab and and check the box and unplug otherwise windows will
+
+00:26:08
+ restrict access to the executables um after that unip the um the Z file and then navigate to the unip folder and then just launch the bernet analyzer green um so what we're going to do in a second and that's going to be the live demo is like I'm going to walk you through the the process of training your own model and we're going to use a data set from the dks from the 2022 dks competition on spotted hyenas um and it's uh the DK 2022 um bio acoustic competition was a few shot competition so they only
+
+00:26:43
+ provided a few samples per species and you had to train your model um for the species and then recognize um the localizations of the species um in an unseen data set and I'm just going to briefly introduce um this spoted hyenas in the different call types just in case you're interested so then I hope you can hear this I'm going to click select there's there's um five call types that are being distinguished in this data set there's Giggles may you able to hear that all right there's
+
+00:27:22
+ Chums oh sorry there's the rumble there's something they call [Music] scoters and then there's whoops all right so those are like the five classes and it's like I'm just going introducing them because I want to show you how I U built the data set all right so now um spotted hyena said they're definitely not in biret it's not a bird um it's terrestrial um but still it's like something like that that brnet doesn't support and probably won't um the near future but if you're looking
+
+00:28:02
+ for these hyena vocalizations like you'd have to train your own model all right so that's the that's the demo part and I'm just going to as I mentioned going to switch back and forth between screens the first thing I want to show you is the training data set all right so I downloaded the DC data set but in any case like even if it's your data um and building a training data set right now as it works you have to organize files in folders and these folders representing these classes and I
+
+00:28:40
+ just mentioned the giggles the groans rumbles um the scws and the boops so those are like the abbreviations for these different call types um and I sorted examples for these call types in these folders I have 104 of these Giggles um I have 144 uh segments for these gr I have a few rumbles only 23 of those um SS I have 120 and then I have 27 boobs which is which is a decent size data set it's not something that you could like easily use to train your own classifier from scratch but I think for Bret like in
+
+00:29:20
+ this few shot scen are it should be it should be fine so I think the important thing is um you need to organize your files into fold and then these folder names are being used as labels um bernet uses 3C inputs so ideally all of these files would be 3 second files but they don't have to be 3C files if they're shorter we would just Pat them with zeros if they're longer with Will crop we'll do a center crop and take the center 3 seconds which is something to keep in mind because if it's a minute we
+
+00:29:50
+ will only use a center three seconds and you will ra a lot of data so it might make sense to actually split these um into shorter chunks all right going back to the the [Music] analyzer B I'm yeah I'm I'm just going to like share the entire screen which makes it a bit easier to go back and forth all right well that's the analyz and navigate to the files that we expected there's a lot of files in there but there's um the bernet analyze agree executable and we're just going to like launch this one and
+
+00:30:34
+ then let me know if you can see it in a few seconds it takes a while depending on your machine and then here's the arree there's also this um command line output so in case something goes wrong you can always go um and consult this in that it should have error messages if something is going wrong it says this is my take see that that's what I like about demos about life demos there's always some G while it's loading we have several questions related to yeah how many um training examples do you need or
+
+00:31:18
+ recommend to use um this um guey when the transfer learning approach with bdnet um that's that's a good question and and the answer is not straightforward because I think it really depends on the use case um typically what I would suggest is to use samples that represent the target domain um it's always tricky if you have these high quality recording of uh like individuals in captivity um even and then trying to apply that to a real world monitoring scenario um it depends on the complexity of the
+
+00:31:59
+ localization um it depends on the similarities to environment like to other environmental noises um if you're looking for for Clicks in a terrestrial setting in the rainforest or something that might be super tricky so you might need more examples like of these clicks um if it's a straightforward vocalization in a frequency band that nothing else occupies then it's going to be more straightforward so it's a super tricky question to answer theoretically it'll work in these few short
+
+00:32:28
+ um learning environments with only a few samples like we've seen that that with only like 16 or 32 samples you can get to like a pretty good scores but I think overall more is always better but at some point it's going to saturate but there's no way of of of telling beforehand like you need 200 samples and then you're fine like that's just it's it's something that's that's impossible um to estimate um so what I suggest is start with a small data set and see how
+
+00:32:55
+ far it gets you and then keep keep crowing when you when you notice that the performance is not very you would like it to be um yeah I hope this this somehow answers the the question we can we can have like a chat and like a discussion at the end of like I think I I I notic I acknowledge that those are like super important questions but there's no straightforward answer to it because it's it's complicated it's the complicated um all right so the the G is loaded um and we have different tabs
+
+00:33:30
+ that you can click and I'm not going to walk you through all of these just briefly mentioning there's a single file processing uh tab there's a multiple file processing tab there's um the training tab obviously I'm going to going to look into those and then there's what we call the segments but that's not so that's something that we um yeah can mention in the end but not going to touch today so we want to train our own uh classifier built uh on bernet um and what we we' have to do the first
+
+00:33:58
+ thing is of course we need to select our training data and I'm going to navigate to the folder that I just showed you with the um hyena vocalization in it um and I call this training data it has these subfolders and as soon as I click okay it will load these folders and then we can see the classes that this model will have are actually the folder names um we'll specify a location for the train classifier I'm just going I'm lazy I'm just going to use like the same puller that the data set is in I'm just
+
+00:34:31
+ going to call it custom classifier you can change like the name to whatever you want like make it more obvious but right now we're going to stick the custom classifier there's also a bunch of hyperparameters that you can fine-tune but I'm not going to touch those I'm just like we we try to set pretty good default values and I think in most cases you don't have to touch these and then that's basically it and the only thing you'd have to do is stop training and then again depending on on your machine
+
+00:34:59
+ um this will take a while um and I I've just seen like this question like um does it run on Mech and Linux and yes Linux absolutely it does um there's no no build for it you can you have to clone the repos repository and then launch degree from the command line but you can still launch degree um it's a python implementation we also do have a um uh um a list of like like list of steps um to uh get it running on uh macroad and even these M1 chips so it works there's the tensorflow build for
+
+00:35:33
+ M1 chips so technically you should be able to to run this on Macos and Linux 2 the only convenience that you have on Windows is that there's um yeah a build ready for you you don't have to uh clone a repository but um and I'm going to mention this um when talking about the root map there will be a macros build and there will be a Linux build U moving forward um so yeah um a few questions about like pre-processing the the data set um we're losing uh we're using uh third party
+
+00:36:09
+ libraries to open audio you so basically I think anything which is a valid audio format you should be able to yeah you should be able to open like anything that that's a valid audio format even if it's um 32bit or 192 khz um something to keep in mind is that bernet only accepts 48 khz input so it will resample your recordings if you have a samping rate of 8 khz it will resample to 48 if you have 192 it will resample to uh 48 if you have two channel recording or multi- Channel recording it will um merge these
+
+00:36:46
+ channels into one so that's something to keep in mind there are some limitation when it comes to the inputs we can change the output we retrain the output of the model but we cannot change the inut input like we have to stick with the inputs of beret um and right now what we're supporting is anything between 0 and 15 Kilz um everything that's that's above or yeah that's above it's it's not something that you can like like so don't be surprised when trying to do bats um input 192 khz sampled audio and
+
+00:37:20
+ then not getting anything out of it um that's like the reason for this is that we're resembling everything to 48 khz um and it also has to be 3C segments which I know for some use cases is not ideal and thinking about marine mammals that might have 20 second 30 second long vocalizations um thinking about um core species like frogs that vocalize in courses and have like these uh prop band frequency like longtime vocalization so that's that's always a bit tricky and me we might change that at some point we
+
+00:37:53
+ might move to a larger context Windows um but for now we have to stick with uh 3 seconds all right so again it takes a while it takes much longer than anticip than I anticipated to be honest so which is something that happens during life demos but like depending on your machine so this might take a while and even if if this takes like an hour or so I think for a bookstation PC that's still a reasonable time frame to retrain a model instead of having to retrain bernet um on uh like a GPU and then using like 10
+
+00:38:30
+ million samples like do I guess that's that's still reasonable um so if you want to use ultrasonic inputs and um considering that it's going to be resampled to 48 khz um you can do that um it might you might want to do this in a way that it transform the signal that it actually stretches the signal and then if you think about um echolocation clicks of bats those are typically only a few millisecond long and then if you shift it in frequency you will stretch the signal and all of a sudden 3 seconds is
+
+00:39:02
+ like a good time and all um to do bernet uh to do a bad identification all right so that was the training process um like loading the data takes a while because we have to resample all of the these recordings which might take a while um but then the training actually was pretty fast and you can see this um Precision curve which quickly saturates at almost 100% Precision which is not surprising considering that we're only having five classes all right so that's the that's the custom classifier so we
+
+00:39:34
+ now we're going to do the multiple files um analysis and the first thing we're going to do is Select our test data folder and I do have a test data folder but it only has one recording in it um there's my test folder and it will load this up and there's just one file in there and it's a 5 minute recording um we can select a separate output directory but I'm just going to keep it as is because it says like if not selected the input directory will be be used and that's where all the
+
+00:40:05
+ result files will go like each audio recording like each audio file will get a result file and then down here you can see the result type that's Raven selection tables um we do have the audacity annotation format we do have an output for an our library which is still in development but you can also download it as a simple csb file um there's some inference settings which will not going to touch right now I think the most important thing we want to do is use the custom classifier so I'm going to click
+
+00:40:32
+ custom classifier and I'm going to select it and then navigate to the folder that has the custom custom classifier in it there it is going to select it and it will actually load two files it'll load the TF light file which TF light stands for tensorflow light which is the model and then a labels file and so the labels file is also something that's being automatically generated but it's a text file that only has the class names which then are the names of your folders that you specify
+
+00:41:03
+ so that those two files have to be in place if we have that we can scroll down there's a bunch of other settings we're just going to ignore those and then we're going to hit analyze and then you have again have to wait for the analysis to finish our species list now only contains five species or like it says five species but what actually means is five classes um these crones these rumbles and so on um all these folders um it's a f minute recording so it should be fairly fairly quickly it
+
+00:41:31
+ should be fairly quick and the analysis let's see oh oops let's see um and then once you have it what's going to happen is if we navigate to the folder that had the audio file there's going to be a raven selection table all right let's see takes a few seconds again depending on your machine you see this uh this threats parameter um if you have a machine that has more than one CPU which which most uh workstation PCS have um you can specify the number of threats you're going to
+
+00:42:12
+ use and then which means it's going to process files in parallel so if you have four files and you use four threats they're all going to be processed in parallel right now we only have one file so we do not benefit from multiple course but if it's a larger set of test data files let's say you have 10,000 audio files you have um a CPU that has 16 Cordes you can select 16 threats and then run 16 files in parallel and that should speed up things all right so we do have an analysis result and then
+
+00:42:43
+ let's navigate back to the the folder that has our data set in it that had the test file and then what you see is there's the wave file and then there and actually there's a selection table so I'm just going to open it really quick to show you what's in there oops and what you can see is like whoa okay there's lots of detections and it it looks a bit well you know I don't think there's like these gr like all the time like it goes from 27 30 39 30 like there's there's a lot of lots of grounds
+
+00:43:25
+ and these look like false detections like like for a first Clans looking at those like it looks a bit fishy right so like something something is off um and so I think an important thing to consider and that's just something I wanted to Showcase and it took a really long time to Showcase it but I really wanted to make this point um using just the classes you're looking for using just the positive examples might not be the best way of approaching it um there's I think a better way of doing it
+
+00:43:53
+ and what you should consider is adding a noise or background class to it because the model also has to learn um like negative example something that is not the target signal that you're looking for and I think that tremendously improves results so what I did is um I built a second training data set which is exactly the same with one exception there's a folder in here which I uh named noise and it has a bunch of labels in it and those are a bunch of files in it and those are just files that did not
+
+00:44:26
+ not have an annotation those are just you can see it right it's loading sorry but those are um there it is it's 58 files and those are just like random segments from all my uh data that I recorded just randomly selecting files um or segments that do not have a vocalization in them just just to use them as background and so if you go through and bear with me we're going to do this again we're going to go through the training process real quick again select this data set that has the noise in there you see we added
+
+00:45:02
+ another label just noise we're going to rename the classifier um with noise going to keep everything the same and then start training again it will take a while you know that it will take a few minutes um but what it now does it will treat anything that you label noise or background as a folder name will be treated as a as a one target signal um and internally instead of providing like like full these labels internally we're going to provide the one if it's a label and then it's zero
+
+00:45:35
+ if it's not so we're doing this these one hot encoded um label vectors and we're going to these all as zeros if it's U being labeled as noise or background so like we they're trying to force bernet to Output all zeros if it's a background noise um all right so like there's there's some time for some additional questions um there's the questions on like 8 KZ data um and then if it's 8 khz data we're going to upsample it to 48 khz um but it shouldn't be an issue because during
+
+00:46:12
+ training we artificially up sample and down sample recordings to emulate um recordings that are being made with different sampling rates to kind of like Get bur used to different sampling rates and these artifacts that it produces if you res template so there it shouldn't be shouldn't be an issue if your target signal is still in there if your target signal doesn't get distorted by resampling it to 48 khz you should be fine you should still be able to extract meaningful embeddings and that's what
+
+00:46:41
+ the models eventually doing meaningful embeddings even if there's if like if you're um wasting some some pixel space um because um there's just no signal um yeah there's there's a frequency limit again right right now with berth 4 uh 2.4 um it's between z and 15 khz we did this so that we can actually do like retraining for marine mammals which typically vocalize below 150 Hertz um yeah the background the background class is super important I think and I'm hopefully I have the time
+
+00:47:17
+ so I can prove my point um anyways yeah I just I'm just going to like I'm just going to like do one thing um we wait for the model to finish training I'm going to continue the presentation real quick um because the the thing that I wanted to mention is the root map like what's like what are we trying to implement what what is like this version 1.0 that I talked about in the beginning um and so the root map for us at least in our minds like collecting the feedback from um people who are
+
+00:47:47
+ using on the software um weer this like again there's going to be multi-os support we will do uh macro build in a Linux build um we will Implement better training metrics and I will show you in a moment what I mean with that um what we also want to do is like that you can um export your custom trained model as a raven model and then run it in Raven so there's no need like you can like use your um um an um analysis tool that you're um familiar with and you don't have to use our um GUI to do the
+
+00:48:20
+ processing um another thing that we actually had in plan is like a certified window build or like a certified version which is important for people who are um do their analysis on government managed PCS like these um yeah forest and Val Management Services um and they cannot easily do like just like the simple check unblock and then everything's fine um and so that's something that we need to figure out and then later this year we're going to have this version 1.0 release because we acknowledged that
+
+00:48:51
+ it's important to have something that's consistent and that will be reproducible uh moving forward and so that's something like with this release we'll just like freeze the features that are in there we will freeze the models and then if you publish a paper using bernet uh this 1.0 version like even like two years three years down the road uh anyone can go back download the version and then reproduce your results um another thing and I'm just going to do this really quick and then we'll hop
+
+00:49:17
+ back to the um to the go and see how the training is going um we value your feedback we need your feedback where're as a computer scientist we don't necessarily know how people are using our software and we have to learn about these different use cases and I would love to hear about all of these different use cases if you have feedback the easiest thing or like the the most like yeah the most feasible thing is to go to the GitHub page and there's an issues Tab and if you click on it um
+
+00:49:44
+ just open it's like a forum and you can just open an issue it could be a feature request could be a buck report um just anything that comes to mind that might help us improve the software and that's something that you want to see um that's the easiest way because then we can just like distribute it um to our software developers um all right and then yeah Ben you mentioned I think we're going to do this like like closing up the session it's like mentioning this um codo file that's out there we're working on these
+
+00:50:14
+ um documentation for all the steps I just uh showcased right but let's see how the the G is doing okay can you see that it's um it finished training can you see the or is it still yeah okay so all right so we we trained this classifier with noise so we're going to go back to the multiple file processing it's still this one file we're still going to use this output directory I'm just going of like slightly reduce um the minimum confidence threshold um just to get more results um
+
+00:50:49
+ I'm going to select this newly trained custom classifier which is custom classifier with noise open it and then keep everything the same and hit analyze again we just have to wait for a few more minutes oh so there a question about like the the buret web page unfortunately the demo that we have online in the bur web page is is very outdated and it still runs our 2019 model so that's um then the Raven model has I think Raven runs 2.3 um and then again I'm sorry that we haven't been able to update the the VB
+
+00:51:30
+ demo um it's still the 2019 model so that's why the you're seeing different results for um the same recording so but eventually it's like Raven will be updated with uh the most recent B version the same that's going to going into this 1.0 version of the GUI and then ideally the scores should be the same there might be some slight differences but overall it should be the same sores all right yeah there was a question on on um how Merlin and bernet are are different and I yeah I think
+
+00:52:11
+ like the thereis this answer summarizes it like Brit really trying to push um towards a tool that bio acousticians can use and then Merlin just targets like casual users which is which is fine and they're all that also have like a sophisticated model um but what we're trying to do is like really um look at these bi acoustic monitoring use cases and then make this available for these use cases all right let's look at the results look at our test data look at the selection table and then see the
+
+00:52:46
+ results and if you look at this that looks much more reasonable right so there's a lot less of these grones and that's there's other calls in there um so that looks like a reasonable rest file that's and that just like adding this noise class really made the difference and so now the only thing we'd have to do is open the file um in Raven and just yeah validate the detection that we got and I'm just going to like drag and drop the selection table into Raven and then whoops whoa oh
+
+00:53:17
+ what happened oh it says high frequency 15,000 htz but the signal that we open is just 3,000 htz oh okay so there's um one issue with the selection table that I just briefly wanted to mention is Beret just assumes that you looking for the frequency range that it supports um but then if you open up the signal that has a different frequ uh different sampling rate in Raven Raven will not let you open a selection table that has different frequency range so unfortunately what we' have to do is
+
+00:53:48
+ go in and replace the 15,000 with uh 3,000 um whiches can be a bit tedious but if we do that um we can now drag and drop the selection table into Raven and look at the detections and the last thing I want to do is I want to listen to some of those um I I talked to to um Ben Thomas our Raven leading Raven developer and he mentioned to me that um the future releases of Raven will support selection tables that have different um seting frequencies in them so like this might only be like a temporary February broke around all
+
+00:54:27
+ right let's listen to some of these detections and see if there's actually hyena in there I hope you can hear it huh did you hear that let's see that should be a gigle ah that was one all right there was another one okay so like this is like it might like doesn't tell you anything anything about the recall but like the Precision seems to be actually pretty good and so that's that's bernet trained on a relatively small data set of hyena vocalizations and now all of a sudden you can do um
+
+00:55:07
+ acoustic monitoring for these um hyena vocalizations all right briefly back to the presentation again if you have a feature request a buck report let us know through the kup repository um and then again um make sure to check out like br.com can.edu analyzer if you have any question I think B is there is there a mailing list or like do people know how to contact us uh through email I guess Ben has an answer and then um Ben also shared this link in the chat to the PDF file that's on sonot which has um a
+
+00:55:46
+ very extensive um summary of how to use to go how to download it how to um do the analysis um please make sure to check out it's it's going to change I guess every time we add some features we would have to yeah update the uh tutorial um but again like with this version 1.0 um that we're targeting um at the end of the year we're going to freeze to like a feature complete release and then documentation should be reflecting what's actually in the in the green all right um thank you so much for
+
+00:56:21
+ for having me thanks for like this this huge turnout um and then yeah not sure if we do have some time like like just like uh maybe then five minutes or so but if if there's anything you need to know make sure to contact us or Ben or Lissa um and they will just forward your requests thank you so much Stefan that was wonderful and um yeah my first time hearing a hyena gigle next week or I'm sorry in two weeks our next bio acous talks will be with one of my favorite Marine soundscape researchers Ashley lilis and
+
+00:57:03
+ she is Central to a lot of the coral restoration efforts in the Caribbean and in other parts of the world she's got um she's got a lot to tell us about how sound is crucial for um the creatures that live on coral reefs and also for evaluating their health so please tune in to that um we have the zenoa link that we've made available that contains these training resources and also test data sets um for you to use um as you're learning this tool and if you have any questions you can reach out to me or
+
+00:57:39
+ Lissa we are um part of the capacity building team here at the Yang Center and would be eager to um hear your questions or experiences using this tool or with machine learning for bioacoustics and lastly as Stefan said we really value your feedback um and so as you're working with this tool if you have anything a good idea of how to improve it a bug that you catch um a feature that you think should be added please um make that known on the GitHub page I have already put maybe four or five requests there and the Burnet team
+
+00:58:22
+ is very grateful for for your feedback on this so um yeah looking forward to seeing you all again soon thanks for joining all right thanks everyone
+

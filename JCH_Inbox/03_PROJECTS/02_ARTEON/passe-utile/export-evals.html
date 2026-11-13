@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>Export Argus</title>
+<style>body{font-family:monospace;background:#0d1117;color:#c9d1d9;padding:20px}
+button{background:#238636;color:#fff;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;font-size:1em}
+textarea{width:100%;height:300px;margin-top:10px;background:#161b22;color:#c9d1d9;border:1px solid #30363d;border-radius:6px;padding:10px;font-family:monospace}
+.status{margin-top:10px;color:#8b949e}</style></head>
+<body>
+<h2>📋 Export évaluations Argus</h2>
+<p>Clique sur le bouton pour récupérer tes évaluations :</p>
+<button onclick="exportEvals()">📤 Récupérer mes évaluations</button>
+<div class="status" id="status"></div>
+<textarea id="output" placeholder="Les données apparaîtront ici..." readonly></textarea>
+<script>
+function exportEvals() {
+  const data = localStorage.getItem('argus_evals');
+  if (!data || data === '{}') {
+    document.getElementById('status').textContent = '❌ Aucune évaluation trouvée. As-tu bien évalué des photos sur le dashboard ?';
+    document.getElementById('output').value = '';
+    return;
+  }
+  const parsed = JSON.parse(data);
+  const count = Object.keys(parsed).length;
+  document.getElementById('status').textContent = '✅ ' + count + ' évaluations trouvées ! Copie le texte ci-dessous.';
+  document.getElementById('output').value = data;
+  
+  // Auto-copy
+  navigator.clipboard.writeText(data).then(() => {
+    document.getElementById('status').textContent += ' (copié dans le presse-papier)';
+  });
+}
+</script>
+</body></html>

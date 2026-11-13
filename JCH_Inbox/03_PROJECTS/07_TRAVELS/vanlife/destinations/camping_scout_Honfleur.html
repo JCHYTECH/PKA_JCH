@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏕️ Spots nuit — Honfleur (25 km)</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --accent: #C17F3A;
+    --bg: #f8f7f4;
+    --white: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--ink); font-size: 13px; }
+  header { background: var(--ink); color: white; padding: 14px 20px; }
+  header h1 { font-size: 1.05em; font-weight: 600; letter-spacing: 0.02em; }
+  header small { opacity: 0.55; font-size: 0.82em; display: block; margin-top: 2px; }
+  #map { width: 100%; height: 48vh; border-bottom: 2px solid var(--accent); }
+  .legend { padding: 8px 16px; background: white; border-bottom: 1px solid #e0ddd6; display: flex; flex-wrap: wrap; gap: 5px; align-items: center; font-size: 0.78em; }
+  .legend strong { margin-right: 4px; color: #666; }
+  .badge { display: inline-block; padding: 2px 7px; border-radius: 3px; color: white; font-size: 0.72em; font-weight: 600; white-space: nowrap; }
+  .jch-note { background: #1a1a2e; color: #C17F3A; padding: 6px 16px; font-size: 0.78em; }
+  table { width: 100%; border-collapse: collapse; }
+  thead th { background: var(--ink); color: white; padding: 7px 10px; text-align: left; position: sticky; top: 0; font-weight: 500; font-size: 0.78em; white-space: nowrap; }
+  tbody tr:nth-child(even) { background: #f0ede8; }
+  tbody tr:hover { background: #e8e3da; }
+  tbody td { padding: 6px 10px; border-bottom: 1px solid #e0ddd6; vertical-align: middle; }
+  .table-wrap { overflow: auto; max-height: 38vh; }
+  footer { text-align: center; padding: 8px; font-size: 0.72em; color: #999; background: white; border-top: 1px solid #eee; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🏕️ Spots nuit en van — Honfleur</h1>
+  <small>Rayon 25 km · 39 spots · 11 réserves naturelles · 09/06/2026 12:00</small>
+</header>
+
+<div id="map"></div>
+
+<div class="legend">
+  <strong>Sources :</strong><span class="badge" style="background:#27ae60">OSM-camping</span><span class="badge" style="background:#2ecc71">OSM-motorhome</span><span class="badge" style="background:#f39c12">OSM-ferme</span><span class="badge" style="background:#e74c3c">park4night</span><span class="badge" style="background:#3498db">campspace</span><span class="badge" style="background:#9b59b6">france-passion</span><span class="badge" style="background:#e67e22">bienvenue-ferme</span><span class="badge" style="background:#1abc9c">reserve-naturelle</span>
+</div>
+<div class="jch-note">
+  🦉 Score JCH = proximité réserves naturelles + type spot. 10/10 = spot idéal pour photo aube/crépuscule.
+</div>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Source</th><th>Nom</th><th>Type</th><th>Adresse</th><th>Distance</th>
+      <th>Score JCH</th><th>Réserve proche</th><th>Services</th><th>Prix</th><th>🔗</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Aire de Camping Car de Honfleur</td>
+            <td>Camping / Aire CC</td>
+            <td></td>
+            <td>0.7</td>
+            <td><b>5/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td>vidange, eau</td>
+            <td>~15 €</td>
+            <td><a href="https://www.openstreetmap.org/way/263175821" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Camping Du Phare</td>
+            <td>Camping / Aire CC</td>
+            <td>Honfleur</td>
+            <td>0.9</td>
+            <td><b>5/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td>vidange, eau, douches, WC</td>
+            <td></td>
+            <td><a href="https://www.openstreetmap.org/way/68701378" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Aire L'Assiette des Mondes d'Equemauville</td>
+            <td>Camping / Aire CC</td>
+            <td></td>
+            <td>2.7</td>
+            <td><b>5/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td></td>
+            <td>Gratuit</td>
+            <td><a href="https://www.openstreetmap.org/node/12242462505" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Aire Camping-Car Park La Rivière-Saint-Sauveur</td>
+            <td>Camping / Aire CC</td>
+            <td></td>
+            <td>2.8</td>
+            <td><b>5/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td>vidange, eau</td>
+            <td>~14.20 €</td>
+            <td><a href="https://www.openstreetmap.org/way/597934632" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>La Briquerie</td>
+            <td>Camping / Aire CC</td>
+            <td>Honfleur</td>
+            <td>3.0</td>
+            <td><b>5/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td></td>
+            <td></td>
+            <td><a href="https://www.openstreetmap.org/way/462561451" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Domaine de la Catinière</td>
+            <td>Camping / Aire CC</td>
+            <td>Fiquefleur-Équainville</td>
+            <td>5.5</td>
+            <td><b>5/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td></td>
+            <td></td>
+            <td><a href="https://www.openstreetmap.org/way/248981792" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Camping Le Château d'Arvid</td>
+            <td>Camping / Aire CC</td>
+            <td>Villerville</td>
+            <td>8.9</td>
+            <td><b>5/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td></td>
+            <td>Payant</td>
+            <td><a href="https://www.openstreetmap.org/way/263111478" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Aire de camping-car du Havre</td>
+            <td>Camping / Aire CC</td>
+            <td>Le Havre</td>
+            <td>10.5</td>
+            <td><b>7/10</b></td>
+            <td><small style="color:#1abc9c">Le Havre, la Ville Reconstruite par Auguste Perret (5.0 km)</small></td>
+            <td>vidange, eau</td>
+            <td>~6 €</td>
+            <td><a href="https://www.openstreetmap.org/way/156954655" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Camping Les Bruyères</td>
+            <td>Camping / Aire CC</td>
+            <td>Conteville</td>
+            <td>10.8</td>
+            <td><b>5/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td>douches, WC</td>
+            <td></td>
+            <td><a href="https://www.openstreetmap.org/way/1044709275" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Camping du Chant des Oiseaux</td>
+            <td>Camping / Aire CC</td>
+            <td></td>
+            <td>11.3</td>
+            <td><b>5/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td>vidange, eau, douches, WC</td>
+            <td>Payant</td>
+            <td><a href="https://www.openstreetmap.org/way/263095948" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Aire Le pressoir Marie Claire</td>
+            <td>Camping / Aire CC</td>
+            <td></td>
+            <td>11.5</td>
+            <td><b>5/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td>vidange</td>
+            <td>~15 €</td>
+            <td><a href="https://www.openstreetmap.org/node/12186034818" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Camping les Haras de Deauville</td>
+            <td>Camping / Aire CC</td>
+            <td></td>
+            <td>11.9</td>
+            <td><b>5/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td></td>
+            <td></td>
+            <td><a href="https://www.openstreetmap.org/way/1044709279" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Aire Boissel Père & Fils - Saint-André-d'Hébertot</td>
+            <td>Camping / Aire CC</td>
+            <td>Saint-André-d'Hébertot</td>
+            <td>14.1</td>
+            <td><b>5/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td>eau</td>
+            <td>Gratuit</td>
+            <td><a href="https://www.openstreetmap.org/node/12242444661" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Aire naturelle de camping Le Lieu Joly</td>
+            <td>Camping / Aire CC</td>
+            <td></td>
+            <td>14.2</td>
+            <td><b>5/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td>douches, WC</td>
+            <td>Payant</td>
+            <td><a href="https://www.openstreetmap.org/way/1044755330" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>La Vallée de Deauville</td>
+            <td>Camping / Aire CC</td>
+            <td></td>
+            <td>14.4</td>
+            <td><b>5/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td></td>
+            <td></td>
+            <td><a href="https://www.openstreetmap.org/way/113384776" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Camping du Lac Terre d'Auge</td>
+            <td>Camping / Aire CC</td>
+            <td></td>
+            <td>16.2</td>
+            <td><b>4/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td></td>
+            <td></td>
+            <td><a href="https://www.openstreetmap.org/way/170449341" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>(sans nom)</td>
+            <td>Camping / Aire CC</td>
+            <td></td>
+            <td>17.1</td>
+            <td><b>4/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td></td>
+            <td></td>
+            <td><a href="https://www.openstreetmap.org/way/1083282983" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Camping de la Plage</td>
+            <td>Camping / Aire CC</td>
+            <td>Blonville-sur-Mer</td>
+            <td>18.0</td>
+            <td><b>6/10</b></td>
+            <td><small style="color:#1abc9c">Site naturel des Vaches Noires (7.0 km)</small></td>
+            <td></td>
+            <td>Payant</td>
+            <td><a href="https://www.openstreetmap.org/way/111171330" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Aire Naturelle de Camping Legrix</td>
+            <td>Camping / Aire CC</td>
+            <td></td>
+            <td>18.1</td>
+            <td><b>4/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td></td>
+            <td></td>
+            <td><a href="https://www.openstreetmap.org/way/1226593346" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Lieu Pieugé</td>
+            <td>Camping / Aire CC</td>
+            <td></td>
+            <td>18.8</td>
+            <td><b>6/10</b></td>
+            <td><small style="color:#1abc9c">Site naturel des Vaches Noires (6.5 km)</small></td>
+            <td></td>
+            <td></td>
+            <td><a href="https://www.openstreetmap.org/way/111319083" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Aire Camping-cars Villers-sur-Mer</td>
+            <td>Camping / Aire CC</td>
+            <td></td>
+            <td>18.9</td>
+            <td><b>6/10</b></td>
+            <td><small style="color:#1abc9c">Site naturel des Vaches Noires (6.1 km)</small></td>
+            <td>vidange, eau</td>
+            <td>~12 €</td>
+            <td><a href="https://www.openstreetmap.org/way/616344153" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Village Club</td>
+            <td>Camping / Aire CC</td>
+            <td>Blonville-sur-Mer</td>
+            <td>19.2</td>
+            <td><b>6/10</b></td>
+            <td><small style="color:#1abc9c">Site naturel des Vaches Noires (6.4 km)</small></td>
+            <td></td>
+            <td></td>
+            <td><a href="https://www.openstreetmap.org/way/189823781" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Risle Seine</td>
+            <td>Camping / Aire CC</td>
+            <td></td>
+            <td>19.3</td>
+            <td><b>8/10</b></td>
+            <td><small style="color:#1abc9c">(sans nom) (7.4 km)</small></td>
+            <td>douches, WC</td>
+            <td>Payant</td>
+            <td><a href="https://www.openstreetmap.org/way/194907605" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Domaine du Lac</td>
+            <td>Camping / Aire CC</td>
+            <td></td>
+            <td>19.4</td>
+            <td><b>4/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td></td>
+            <td></td>
+            <td><a href="https://www.openstreetmap.org/way/1247626620" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Aire de camping-car de Blangy-le-Château</td>
+            <td>Camping / Aire CC</td>
+            <td></td>
+            <td>19.7</td>
+            <td><b>4/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td>vidange, WC</td>
+            <td>Gratuit</td>
+            <td><a href="https://www.openstreetmap.org/way/1247606741" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Aire de stationnement et de service de Saint-Nicolas-de-la-Taille</td>
+            <td>Camping / Aire CC</td>
+            <td></td>
+            <td>20.2</td>
+            <td><b>3/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td>vidange, eau</td>
+            <td>Gratuit</td>
+            <td><a href="https://www.openstreetmap.org/way/1316393622" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#2ecc71">OSM-motorhome</span></td>
+            <td>De Lassus</td>
+            <td>Parking motorhome</td>
+            <td></td>
+            <td>21.0</td>
+            <td><b>3/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td></td>
+            <td>Gratuit</td>
+            <td><a href="https://www.openstreetmap.org/way/249687281" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Aire de Camping-Car de Cormeilles</td>
+            <td>Camping / Aire CC</td>
+            <td>Cormeilles</td>
+            <td>21.6</td>
+            <td><b>3/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td>vidange</td>
+            <td>Gratuit</td>
+            <td><a href="https://www.openstreetmap.org/way/784589340" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>(sans nom)</td>
+            <td>Camping / Aire CC</td>
+            <td></td>
+            <td>22.0</td>
+            <td><b>7/10</b></td>
+            <td><small style="color:#1abc9c">(sans nom) (4.9 km)</small></td>
+            <td></td>
+            <td></td>
+            <td><a href="https://www.openstreetmap.org/node/13372401104" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Bellevue ****</td>
+            <td>Camping / Aire CC</td>
+            <td>Villers-sur-Mer</td>
+            <td>22.0</td>
+            <td><b>5/10</b></td>
+            <td><small style="color:#1abc9c">Site naturel des Vaches Noires (3.3 km)</small></td>
+            <td></td>
+            <td></td>
+            <td><a href="https://www.openstreetmap.org/way/110606660" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Le Brévedent</td>
+            <td>Camping / Aire CC</td>
+            <td></td>
+            <td>22.1</td>
+            <td><b>3/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td></td>
+            <td></td>
+            <td><a href="https://www.openstreetmap.org/way/366570116" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Les Pestils</td>
+            <td>Camping / Aire CC</td>
+            <td></td>
+            <td>22.7</td>
+            <td><b>3/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td>eau</td>
+            <td>~8 € / 24 hours</td>
+            <td><a href="https://www.openstreetmap.org/way/1382927435" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Camping des Forges</td>
+            <td>Camping / Aire CC</td>
+            <td>Saint-Antoine-la-Forêt</td>
+            <td>22.8</td>
+            <td><b>3/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td></td>
+            <td></td>
+            <td><a href="https://www.openstreetmap.org/way/108192179" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Les Ammonites</td>
+            <td>Camping / Aire CC</td>
+            <td></td>
+            <td>23.4</td>
+            <td><b>7/10</b></td>
+            <td><small style="color:#1abc9c">Site naturel des Vaches Noires (1.7 km)</small></td>
+            <td></td>
+            <td></td>
+            <td><a href="https://www.openstreetmap.org/way/111390413" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Aire de stationnement et de service de Gruchet Le Valasse</td>
+            <td>Camping / Aire CC</td>
+            <td></td>
+            <td>23.6</td>
+            <td><b>3/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td>vidange</td>
+            <td>Gratuit</td>
+            <td><a href="https://www.openstreetmap.org/way/592200989" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Camping le Lieu Castel</td>
+            <td>Camping / Aire CC</td>
+            <td>Gonneville-sur-Mer</td>
+            <td>23.7</td>
+            <td><b>7/10</b></td>
+            <td><small style="color:#1abc9c">Site naturel des Vaches Noires (1.7 km)</small></td>
+            <td></td>
+            <td></td>
+            <td><a href="https://www.openstreetmap.org/way/110571214" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Camping Les Falaises</td>
+            <td>Camping / Aire CC</td>
+            <td></td>
+            <td>23.9</td>
+            <td><b>7/10</b></td>
+            <td><small style="color:#1abc9c">Site naturel des Vaches Noires (1.2 km)</small></td>
+            <td></td>
+            <td></td>
+            <td><a href="https://www.openstreetmap.org/way/110571247" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Le Grand Hameau</td>
+            <td>Camping / Aire CC</td>
+            <td>Saint-Jouin-Bruneval</td>
+            <td>24.1</td>
+            <td><b>3/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td></td>
+            <td></td>
+            <td><a href="https://www.openstreetmap.org/way/250276914" target="_blank">🔗</a></td>
+        </tr>
+        <tr>
+            <td><span class="badge" style="background:#27ae60">OSM-camping</span></td>
+            <td>Les Pommiers</td>
+            <td>Camping / Aire CC</td>
+            <td>Saint-Sylvestre-de-Cormeilles</td>
+            <td>24.9</td>
+            <td><b>3/10</b></td>
+            <td><small style="color:#1abc9c"></small></td>
+            <td>eau, douches, WC</td>
+            <td>Payant</td>
+            <td><a href="https://www.openstreetmap.org/way/461183258" target="_blank">🔗</a></td>
+        </tr>
+  </tbody>
+</table>
+</div>
+
+<footer>camping_scout.py v2 · PKA_JCH · 09/06/2026 12:00</footer>
+
+<script>
+const CENTER = [49.4197222, 0.2338889];
+const RADIUS_KM = 25;
+const MARKERS = [{"lat": 49.3517163, "lng": 0.1141754, "name": "Aire Le pressoir Marie Claire", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "", "distance": "11.5", "url": "https://www.openstreetmap.org/node/12186034818", "price": "~15 €", "rating": "", "services": "vidange", "jch_score": "5", "reserve_nearby": ""}, {"lat": 49.3029467, "lng": 0.3108922, "name": "Aire Boissel Père & Fils - Saint-André-d'Hébertot", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "Saint-André-d'Hébertot", "distance": "14.1", "url": "https://www.openstreetmap.org/node/12242444661", "price": "Gratuit", "rating": "", "services": "eau", "jch_score": "5", "reserve_nearby": ""}, {"lat": 49.3993964, "lng": 0.2146733, "name": "Aire L'Assiette des Mondes d'Equemauville", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "", "distance": "2.7", "url": "https://www.openstreetmap.org/node/12242462505", "price": "Gratuit", "rating": "", "services": "", "jch_score": "5", "reserve_nearby": ""}, {"lat": 49.473414, "lng": 0.5258475, "name": "(sans nom)", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "", "distance": "22.0", "url": "https://www.openstreetmap.org/node/13372401104", "price": "", "rating": "", "services": "", "jch_score": "7", "reserve_nearby": "(sans nom) (4.9 km)"}, {"lat": 49.4248345, "lng": 0.2251083, "name": "Camping Du Phare", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "Honfleur", "distance": "0.9", "url": "https://www.openstreetmap.org/way/68701378", "price": "", "rating": "★2", "services": "vidange, eau, douches, WC", "jch_score": "5", "reserve_nearby": ""}, {"lat": 49.530868, "lng": 0.4978568, "name": "Camping des Forges", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "Saint-Antoine-la-Forêt", "distance": "22.8", "url": "https://www.openstreetmap.org/way/108192179", "price": "", "rating": "", "services": "", "jch_score": "3", "reserve_nearby": ""}, {"lat": 49.3034207, "lng": -0.0400349, "name": "Camping le Lieu Castel", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "Gonneville-sur-Mer", "distance": "23.7", "url": "https://www.openstreetmap.org/way/110571214", "price": "", "rating": "", "services": "", "jch_score": "7", "reserve_nearby": "Site naturel des Vaches Noires (1.7 km)"}, {"lat": 49.3077035, "lng": -0.0467431, "name": "Camping Les Falaises", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "", "distance": "23.9", "url": "https://www.openstreetmap.org/way/110571247", "price": "", "rating": "★4", "services": "", "jch_score": "7", "reserve_nearby": "Site naturel des Vaches Noires (1.2 km)"}, {"lat": 49.3098539, "lng": -0.0174533, "name": "Bellevue ****", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "Villers-sur-Mer", "distance": "22.0", "url": "https://www.openstreetmap.org/way/110606660", "price": "", "rating": "★4", "services": "", "jch_score": "5", "reserve_nearby": "Site naturel des Vaches Noires (3.3 km)"}, {"lat": 49.3343403, "lng": 0.022549, "name": "Camping de la Plage", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "Blonville-sur-Mer", "distance": "18.0", "url": "https://www.openstreetmap.org/way/111171330", "price": "Payant", "rating": "★3", "services": "", "jch_score": "6", "reserve_nearby": "Site naturel des Vaches Noires (7.0 km)"}, {"lat": 49.3222426, "lng": 0.0220933, "name": "Lieu Pieugé", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "", "distance": "18.8", "url": "https://www.openstreetmap.org/way/111319083", "price": "", "rating": "", "services": "", "jch_score": "6", "reserve_nearby": "Site naturel des Vaches Noires (6.5 km)"}, {"lat": 49.3094086, "lng": -0.0400302, "name": "Les Ammonites", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "", "distance": "23.4", "url": "https://www.openstreetmap.org/way/111390413", "price": "", "rating": "", "services": "", "jch_score": "7", "reserve_nearby": "Site naturel des Vaches Noires (1.7 km)"}, {"lat": 49.3299485, "lng": 0.0908781, "name": "La Vallée de Deauville", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "", "distance": "14.4", "url": "https://www.openstreetmap.org/way/113384776", "price": "", "rating": "★5", "services": "", "jch_score": "5", "reserve_nearby": ""}, {"lat": 49.504588, "lng": 0.1717205, "name": "Aire de camping-car du Havre", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "Le Havre", "distance": "10.5", "url": "https://www.openstreetmap.org/way/156954655", "price": "~6 €", "rating": "", "services": "vidange, eau", "jch_score": "7", "reserve_nearby": "Le Havre, la Ville Reconstruite par Auguste Perret (5.0 km)"}, {"lat": 49.2751222, "lng": 0.2051111, "name": "Camping du Lac Terre d'Auge", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "", "distance": "16.2", "url": "https://www.openstreetmap.org/way/170449341", "price": "", "rating": "", "services": "", "jch_score": "4", "reserve_nearby": ""}, {"lat": 49.3156591, "lng": 0.0231313, "name": "Village Club", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "Blonville-sur-Mer", "distance": "19.2", "url": "https://www.openstreetmap.org/way/189823781", "price": "", "rating": "★4", "services": "", "jch_score": "6", "reserve_nearby": "Site naturel des Vaches Noires (6.4 km)"}, {"lat": 49.3662428, "lng": 0.4863864, "name": "Risle Seine", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "", "distance": "19.3", "url": "https://www.openstreetmap.org/way/194907605", "price": "Payant", "rating": "★3", "services": "douches, WC", "jch_score": "8", "reserve_nearby": "(sans nom) (7.4 km)"}, {"lat": 49.401664, "lng": 0.3044065, "name": "Domaine de la Catinière", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "Fiquefleur-Équainville", "distance": "5.5", "url": "https://www.openstreetmap.org/way/248981792", "price": "", "rating": "★4", "services": "", "jch_score": "5", "reserve_nearby": ""}, {"lat": 49.5961056, "lng": 0.1291156, "name": "De Lassus", "source": "OSM-motorhome", "type": "Parking motorhome", "address": "", "distance": "21.0", "url": "https://www.openstreetmap.org/way/249687281", "price": "Gratuit", "rating": "", "services": "", "jch_score": "3", "reserve_nearby": ""}, {"lat": 49.630365, "lng": 0.1582144, "name": "Le Grand Hameau", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "Saint-Jouin-Bruneval", "distance": "24.1", "url": "https://www.openstreetmap.org/way/250276914", "price": "", "rating": "★3", "services": "", "jch_score": "3", "reserve_nearby": ""}, {"lat": 49.3780729, "lng": 0.0921644, "name": "Camping du Chant des Oiseaux", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "", "distance": "11.3", "url": "https://www.openstreetmap.org/way/263095948", "price": "Payant", "rating": "", "services": "vidange, eau, douches, WC", "jch_score": "5", "reserve_nearby": ""}, {"lat": 49.3889832, "lng": 0.1203995, "name": "Camping Le Château d'Arvid", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "Villerville", "distance": "8.9", "url": "https://www.openstreetmap.org/way/263111478", "price": "Payant", "rating": "★4", "services": "", "jch_score": "5", "reserve_nearby": ""}, {"lat": 49.4191227, "lng": 0.2428239, "name": "Aire de Camping Car de Honfleur", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "", "distance": "0.7", "url": "https://www.openstreetmap.org/way/263175821", "price": "~15 €", "rating": "", "services": "vidange, eau", "jch_score": "5", "reserve_nearby": ""}, {"lat": 49.2260394, "lng": 0.3046177, "name": "Le Brévedent", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "", "distance": "22.1", "url": "https://www.openstreetmap.org/way/366570116", "price": "", "rating": "★4", "services": "", "jch_score": "3", "reserve_nearby": ""}, {"lat": 49.2463474, "lng": 0.4501748, "name": "Les Pommiers", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "Saint-Sylvestre-de-Cormeilles", "distance": "24.9", "url": "https://www.openstreetmap.org/way/461183258", "price": "Payant", "rating": "★3", "services": "eau, douches, WC", "jch_score": "3", "reserve_nearby": ""}, {"lat": 49.3985309, "lng": 0.2074944, "name": "La Briquerie", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "Honfleur", "distance": "3.0", "url": "https://www.openstreetmap.org/way/462561451", "price": "", "rating": "★5", "services": "", "jch_score": "5", "reserve_nearby": ""}, {"lat": 49.5405877, "lng": 0.5013129, "name": "Aire de stationnement et de service de Gruchet Le Valasse", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "", "distance": "23.6", "url": "https://www.openstreetmap.org/way/592200989", "price": "Gratuit", "rating": "", "services": "vidange", "jch_score": "3", "reserve_nearby": ""}, {"lat": 49.4090714, "lng": 0.2682463, "name": "Aire Camping-Car Park La Rivière-Saint-Sauveur", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "", "distance": "2.8", "url": "https://www.openstreetmap.org/way/597934632", "price": "~14.20 €", "rating": "", "services": "vidange, eau", "jch_score": "5", "reserve_nearby": ""}, {"lat": 49.3289225, "lng": 0.0132476, "name": "Aire Camping-cars Villers-sur-Mer", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "", "distance": "18.9", "url": "https://www.openstreetmap.org/way/616344153", "price": "~12 €", "rating": "", "services": "vidange, eau", "jch_score": "6", "reserve_nearby": "Site naturel des Vaches Noires (6.1 km)"}, {"lat": 49.2489382, "lng": 0.3741253, "name": "Aire de Camping-Car de Cormeilles", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "Cormeilles", "distance": "21.6", "url": "https://www.openstreetmap.org/way/784589340", "price": "Gratuit", "rating": "", "services": "vidange", "jch_score": "3", "reserve_nearby": ""}, {"lat": 49.4059498, "lng": 0.3806684, "name": "Camping Les Bruyères", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "Conteville", "distance": "10.8", "url": "https://www.openstreetmap.org/way/1044709275", "price": "", "rating": "★2", "services": "douches, WC", "jch_score": "5", "reserve_nearby": ""}, {"lat": 49.3486442, "lng": 0.1121803, "name": "Camping les Haras de Deauville", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "", "distance": "11.9", "url": "https://www.openstreetmap.org/way/1044709279", "price": "", "rating": "★4", "services": "", "jch_score": "5", "reserve_nearby": ""}, {"lat": 49.2977777, "lng": 0.1762651, "name": "Aire naturelle de camping Le Lieu Joly", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "", "distance": "14.2", "url": "https://www.openstreetmap.org/way/1044755330", "price": "Payant", "rating": "", "services": "douches, WC", "jch_score": "5", "reserve_nearby": ""}, {"lat": 49.2696031, "lng": 0.1839093, "name": "(sans nom)", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "", "distance": "17.1", "url": "https://www.openstreetmap.org/way/1083282983", "price": "", "rating": "", "services": "", "jch_score": "4", "reserve_nearby": ""}, {"lat": 49.2686666, "lng": 0.1414627, "name": "Aire Naturelle de Camping Legrix", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "", "distance": "18.1", "url": "https://www.openstreetmap.org/way/1226593346", "price": "", "rating": "", "services": "", "jch_score": "4", "reserve_nearby": ""}, {"lat": 49.2446749, "lng": 0.2775487, "name": "Aire de camping-car de Blangy-le-Château", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "", "distance": "19.7", "url": "https://www.openstreetmap.org/way/1247606741", "price": "Gratuit", "rating": "", "services": "vidange, WC", "jch_score": "4", "reserve_nearby": ""}, {"lat": 49.2475546, "lng": 0.2761715, "name": "Domaine du Lac", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "", "distance": "19.4", "url": "https://www.openstreetmap.org/way/1247626620", "price": "", "rating": "", "services": "", "jch_score": "4", "reserve_nearby": ""}, {"lat": 49.5126171, "lng": 0.4741233, "name": "Aire de stationnement et de service de Saint-Nicolas-de-la-Taille", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "", "distance": "20.2", "url": "https://www.openstreetmap.org/way/1316393622", "price": "Gratuit", "rating": "", "services": "vidange, eau", "jch_score": "3", "reserve_nearby": ""}, {"lat": 49.2468749, "lng": 0.0671695, "name": "Les Pestils", "source": "OSM-camping", "type": "Camping / Aire CC", "address": "", "distance": "22.7", "url": "https://www.openstreetmap.org/way/1382927435", "price": "~8 € / 24 hours", "rating": "", "services": "eau", "jch_score": "3", "reserve_nearby": ""}];
+const RESERVES = [{"lat": 49.4493964, "lng": 0.8065101, "name": "La Tourbière d'Heurteauville"}, {"lat": 49.4298745, "lng": 0.5181784, "name": "(sans nom)"}, {"lat": 49.3353901, "lng": -0.396456, "name": "Réserve naturelle de la falaise du Cap-Romain"}, {"lat": 49.3051637, "lng": -0.0627269, "name": "Site naturel des Vaches Noires"}, {"lat": 49.414708, "lng": 0.4972152, "name": "(sans nom)"}, {"lat": 49.4905493, "lng": 0.1064944, "name": "Le Havre, la Ville Reconstruite par Auguste Perret"}, {"lat": 49.1836371, "lng": -0.147965, "name": "Réserve de Saint-Samson"}, {"lat": 49.6939843, "lng": 0.6965248, "name": "(sans nom)"}, {"lat": 49.4507161, "lng": 0.8051648, "name": "Tourbière d'Heurteauville"}, {"lat": 49.2839222, "lng": -0.2335869, "name": "Banc des Oiseaux"}, {"lat": 49.3647563, "lng": 0.8232944, "name": "(sans nom)"}];
+const COLORS = {"OSM-camping": "#27ae60", "OSM-motorhome": "#2ecc71", "OSM-ferme": "#f39c12", "park4night": "#e74c3c", "campspace": "#3498db", "france-passion": "#9b59b6", "bienvenue-ferme": "#e67e22", "reserve-naturelle": "#1abc9c"};
+
+const map = L.map('map').setView(CENTER, 11);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap contributors'
+}).addTo(map);
+
+L.circle(CENTER, {
+  radius: RADIUS_KM * 1000,
+  color: '#C17F3A',
+  fillColor: '#C17F3A',
+  fillOpacity: 0.04,
+  weight: 1.5,
+  dashArray: '6,4'
+}).addTo(map);
+
+L.circleMarker(CENTER, {radius:8, color:'#1a1a2e', fillColor:'#C17F3A', fillOpacity:1, weight:2})
+  .bindTooltip('Honfleur', {permanent:true, direction:'top', className:''})
+  .addTo(map);
+
+// Réserves naturelles (JCH)
+RESERVES.forEach(rv => {
+  L.circleMarker([rv.lat, rv.lng], {
+    radius: 10, color: '#1abc9c', fillColor: '#1abc9c', fillOpacity: 0.25, weight: 2,
+    dashArray: '4,3'
+  }).bindPopup(`<b>🌿 ${rv.name}</b><br><small>Réserve naturelle</small>`).addTo(map);
+});
+
+// Spots camping
+MARKERS.forEach(m => {
+  const color = COLORS[m.source] || '#888';
+  const score = m.jch_score ? ` · Score JCH : ${m.jch_score}/10` : '';
+  const reserve = m.reserve_nearby ? `<br>🌿 ${m.reserve_nearby}` : '';
+  const popup = `
+    <b>${m.name}</b><br>
+    <span style="background:${color};color:white;padding:1px 6px;border-radius:3px;font-size:0.8em">${m.source}</span>
+    ${m.type ? ' · ' + m.type : ''}<br>
+    ${m.address ? '📍 ' + m.address + '<br>' : ''}
+    ${m.distance != '?' ? '📏 ' + m.distance + ' km' : ''}${score}<br>
+    ${m.services ? '🔧 ' + m.services.substring(0,80) + '<br>' : ''}
+    ${m.price ? '💶 ' + m.price + '<br>' : ''}
+    ${reserve}
+    ${m.url ? '<br><a href="' + m.url + '" target="_blank">🔗 Voir la fiche</a>' : ''}
+  `;
+  L.circleMarker([m.lat, m.lng], {
+    radius: 7, color: 'white', fillColor: color, fillOpacity: 0.9, weight: 1.5
+  }).bindPopup(popup).addTo(map);
+});
+</script>
+</body>
+</html>

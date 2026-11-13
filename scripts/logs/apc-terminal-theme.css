@@ -1,0 +1,40 @@
+/* APC Customize UI++ — Terminal background colors per profile
+   Chargé via apc.imports dans settings.json
+   Cible chaque groupe de terminal par le nom de l'onglet actif */
+
+/* ── DeepSeek TUI — bleu foncé ─────────────────────────── */
+.terminal-group:has(.terminal-tab[title*="DeepSeek"]) .xterm {
+    background-color: #0a1a3a !important;
+}
+
+/* ── Claude — gris clair ────────────────────────────────── */
+.terminal-group:has(.terminal-tab[title*="Claude"]) .xterm {
+    background-color: #d4d4d4 !important;
+}
+.terminal-group:has(.terminal-tab[title*="Claude"]) .xterm .xterm-rows {
+    color: #1a1a1a !important;
+}
+
+/* ── Codex — gris moyen ─────────────────────────────────── */
+.terminal-group:has(.terminal-tab[title*="Codex"]) .xterm {
+    background-color: #808080 !important;
+}
+.terminal-group:has(.terminal-tab[title*="Codex"]) .xterm .xterm-rows {
+    color: #f0f0f0 !important;
+}
+
+/* ── Gemini — gris foncé ────────────────────────────────── */
+.terminal-group:has(.terminal-tab[title*="Gemini"]) .xterm {
+    background-color: #404040 !important;
+}
+
+/* ── NVIDIA — bordeaux ──────────────────────────────────── */
+.terminal-group:has(.terminal-tab[title*="NVIDIA"]) .xterm {
+    background-color: #4a1010 !important;
+}
+
+/* ── PKA Admin / default — gris anthracite neutre ────────── */
+.terminal-group:has(.terminal-tab[title*="admin"]),
+.terminal-group:has(.terminal-tab[title*="Admin"]) .xterm {
+    background-color: #2d2d2d !important;
+}

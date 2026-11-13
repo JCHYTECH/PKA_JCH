@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.jchytech.pka-ha-mcp-lupo-loopback</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Library/Frameworks/Python.framework/Versions/3.13/bin/python3</string>
+    <string>/Users/jchavauxm5/PKA_JCH/scripts/ha_mcp_loopback_proxy.py</string>
+    <string>--upstream-host</string>
+    <string>192.168.129.16</string>
+    <string>--upstream-port</string>
+    <string>8123</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/jchavauxm5/PKA_JCH</string>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>ThrottleInterval</key>
+  <integer>10</integer>
+  <key>ProcessType</key>
+  <string>Background</string>
+  <key>StandardOutPath</key>
+  <string>/Users/jchavauxm5/PKA_JCH/tmp/ha-mcp-loopback.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/jchavauxm5/PKA_JCH/tmp/ha-mcp-loopback-error.log</string>
+</dict>
+</plist>

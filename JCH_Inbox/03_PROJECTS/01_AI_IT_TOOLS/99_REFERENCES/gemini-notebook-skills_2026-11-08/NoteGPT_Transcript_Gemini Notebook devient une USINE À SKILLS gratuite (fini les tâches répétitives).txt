@@ -1,0 +1,80 @@
+00:00:00 - 00:00:23
+Google ne s'arrête plus, et vient de vous mettre entre les mains une façon puissante de faire travailler l'intelligence artificielle pour vous. Et le mieux, c'est que c'est totalement gratuit. Vous pouvez maintenant utiliser Gemini Notebook pour créer des dizaines, voire des centaines de skills professionnelles en quelques minutes, qui vont automatiser votre travail. Des tâches qui vous prenaient des heures, vous les faites maintenant en un clic. Et vous savez ce qui est encore mieux ?
+
+00:00:25 - 00:00:49
+Ces skills, vous pouvez les utiliser dans Gemini, ChatGPT, Claude, et plein d'autres outils. Et pour fabriquer tout ça avec vous, je passe le relais à Louis. Merci Daphné, je prends le relais ! Dans cette vidéo, on crée tout de zéro, avec de vrais cas d'usage : une skill qui lit vos contrats, une qui fait vos miniatures, une qui construit vos tableurs, et à la fin, je vous montre comment passer une skill d'une IA à l'autre. Vous repartez avec une machine à fabriquer des skills qui automatisent vos tâches. Ça vous va ?
+
+00:00:57 - 00:01:19
+Alors allons dans Gemini Notebook. Gemini Notebook, c'est le nouveau nom de NotebookLM. Le lien est en description, avec tous les textes qu'on va utiliser, le prompt complet compris. Suivez le pas à pas, et vous verrez à quel point c'est simple d'automatiser vos tâches : créer du contenu, gérer les données de votre entreprise, étudier. Fini de tout refaire à la main. Gemini Notebook et les skills de Gemini sont gratuits avec un compte Google ; pour ChatGPT et Claude, il faut juste l'abonnement que vous avez déjà.
+
+00:01:22 - 00:01:44
+Regardez, on a maintenant une nouvelle interface. Il suffit de cliquer sur Nouveau notebook. On arrive dans notre carnet, et on le renomme en haut : je l'appelle Fabrique de skills. Maintenant, on lui donne de quoi travailler. Ici, c'est la page officielle de Gemini, avec ce que Google explique pour créer des skills. Très peu de gens vont la lire avant de créer leur skill. Regardez : il y a tout ce qu'il faut pour une skill professionnelle, c'est le document officiel de Google. On copie l'adresse de cette page.
+
+00:01:50 - 00:02:17
+On revient dans le carnet, on clique sur Ajouter des sources, puis sur Sites web, et on colle celle de Gemini. Ensuite, la page d'Anthropic, pour Claude : toutes les bonnes pratiques officielles pour écrire des skills pour Claude. On la copie aussi, on revient, et on l'ajoute. Et enfin, celle d'OpenAI, pour ChatGPT : tout ce que l'éditeur dit lui-même sur ce qu'est une skill, et comment en créer une. Pas besoin de tout lire : le carnet va le faire pour nous. On copie, on revient, on l'ajoute, et on insère les sources.
+
+00:02:22 - 00:02:47
+Et voilà, on a nos trois sources : Google, Anthropic et OpenAI. Maintenant, on va dans ces trois petits points, en haut. Le réglage qui était avant sur la page est maintenant ici : Configurer le chat. Et là, on choisit Personnalisé. On va mettre un prompt précis, qui transforme Gemini Notebook en vraie machine à fabriquer des skills. Pourquoi des skills ? Parce que chez Google, les Gems, les assistants qu'on se créait, vont disparaître, remplacés par les skills. C'est maintenant avec elles qu'on automatise ses tâches.
+
+00:02:52 - 00:03:19
+Et vous allez voir à quel point c'est génial de travailler avec. Voici le prompt. Il est fait à 100 pour créer des skills : on transforme Gemini Notebook en générateur de skills professionnelles. Il est en description, en entier, et gratuit. Il commence par donner un rôle au carnet : à partir de maintenant, tu agis comme un ingénieur senior en prompts et un architecte de skills. Ensuite, comment on travaille : chaque fois que je demande une skill, je donne deux informations, la plateforme, ChatGPT, Gemini, Claude ou une autre, et la tâche répétitive à automatiser.
+
+00:03:23 - 00:03:47
+Son rôle à lui, c'est de transformer ça en skill professionnelle. Puis la règle la plus importante : il cherche dans les sources officielles, celles qu'on vient d'ajouter. Je ne veux pas qu'il invente quoi que ce soit : il doit tout prendre dans les sources, et si une fonction n'existe pas, il doit le dire. Et là, j'ai cité les sources qu'on utilise. Ensuite, pour construire la skill, il doit suivre le format des sources officielles. Puis l'optimisation, et le format de livraison, en cinq parties : une analyse, la skill complète,
+
+00:03:50 - 00:04:15
+comment l'installer et la régler, trois tests pratiques, et à la fin les passages des sources qu'il a utilisés. Et tout en bas, les règles principales. On copie tout ce prompt, on revient dans la fenêtre, et on colle. Voilà tout notre prompt structuré, dedans. Il suffit de descendre et de cliquer sur Enregistrer. Une fois enregistré, on a une machine à créer des skills professionnelles. Et regardez comme c'est devenu simple. Maintenant, en bas, dans la discussion, je lui donne ma première demande, sur trois lignes :
+
+00:04:20 - 00:04:45
+skill d'analyse de contrats ; Gemini ; je veux une skill qui analyse des contrats en PDF, repère les clauses importantes, les délais, les obligations, les risques et les incohérences, et produit un rapport structuré avec des renvois au document. J'envoie. Il va générer une skill qui automatise ce travail. Et imaginez : vous rédigez des courriers officiels tous les jours ? Vous lui demandez une skill pour ça, vous lui donnez vos termes, et il vous rend la skill toute prête. Je vous montre bientôt comment l'installer.
+
+00:04:48 - 00:05:12
+Vous voulez une skill pour vous aider au montage vidéo ? Pour vos miniatures ? Pour votre budget ? On peut faire plein de skills. Et voilà, il a fini. D'abord, une analyse technique, la partie un, comme on l'a demandé, et en dessous, il me donne déjà ma skill : je n'ai plus qu'à la copier et l'installer. Je vous montre ça juste après. Mais revenons à l'analyse technique : comment la tâche s'automatise dans Gemini, d'après les sources. Il rappelle même que les compétences remplacent les Gems, et que Gemini les déclenche tout seul quand
+
+00:05:14 - 00:05:37
+elles servent. Et voici ma skill complète, la partie deux. Regardez comme c'est structuré : un nom, une description, ce qui la déclenche, les étapes, et le modèle du rapport. Tout ça, c'est la skill. Et encore en dessous, comment l'installer, et quelques idées de tests. Maintenant, on l'installe. Je l'ai faite pour Gemini, mais vous verrez qu'on peut aussi la mettre dans Claude, dans ChatGPT et dans d'autres IA. On commence par Gemini. Notre skill est prête, on retourne dans Gemini.
+
+00:05:41 - 00:06:04
+On va dans Personnaliser, puis dans Compétences : c'est le nom français des skills. C'est ici qu'on crée. On clique sur Créer, puis Créer manuellement. On arrive sur trois champs. D'abord le nom de la skill. On revient dans le carnet : il nous donne tout. Le nom, on le copie tel quel, ou on met un nom qui vous parle. Ensuite la description : on la copie, et on la colle dans Description. Et dans le dernier champ, les instructions, on met tout le reste de la skill : on sélectionne,
+
+00:06:08 - 00:06:33
+on copie, et on colle. Il suffit de cliquer sur Créer. Il crée automatiquement notre première skill. La voilà, dans Gemini. Dans ces trois points, on peut l'utiliser, la modifier avec Gemini ou à la main, et la télécharger. On la télécharge, parce qu'on va la passer dans une autre IA tout à l'heure. Et pour s'en servir, on clique sur Utiliser. Ou bien, dans la discussion, on tape une arobase : toutes vos skills apparaissent. On prend celle-ci, l'analyse de contrats. Maintenant, il me suffit d'envoyer un contrat en PDF.
+
+00:06:38 - 00:07:03
+Ici, un contrat de vente de voiture d'occasion, inventé pour le test. Et la seule chose à faire, c'est Entrée. Et il me fait tout le rapport : les délais et les obligations de chacun, une matrice des risques, une clause abusive sur les pénalités, et les incohérences. Dans ce contrat, j'avais glissé exprès deux erreurs de dates : une voiture livrée avant la signature, et une garantie qui finit avant de commencer. Il trouve les deux, avec à chaque fois le renvoi à l'article. Avant, il fallait lire tout ça à la main.
+
+00:07:07 - 00:07:40
+Avec une skill, c'est un PDF et Entrée. On revient à notre fabrique, et je lui demande : je veux une skill qui m'aide à créer des miniatures dans ChatGPT. On envoie. Il travaille sur la skill, et me rend la compétence, avec son nom, sa description et ce qu'elle va faire. Maintenant, on va dans ChatGPT. On clique sur Plugins, puis sur Skills, et ici on clique sur Ajouter, puis Créer avec l'éditeur. Il nous ouvre tous les champs : le nom, la description, et les instructions. On revient dans le carnet : on copie le nom, miniature youtube creator, puis la description,
+
+00:07:45 - 00:08:13
+et en dessous les instructions de notre skill. On sélectionne, on copie, on revient, on colle, et on clique sur Créer. Il nous dit que la skill est enregistrée. On la télécharge aussi, pour la passer dans une autre IA. Et là, premier raté : ChatGPT n'arrive pas à la télécharger. On réessaie depuis les trois points, et cette fois, ça passe. Et la voilà, déjà dans ChatGPT. Pour l'utiliser, on peut cliquer dessus, et elle s'ouvre directement dans une discussion. Ou bien, dans une nouvelle discussion, on tape une barre oblique, et on voit notre skill de miniatures.
+
+00:08:17 - 00:08:44
+Il suffit de la choisir. J'ajoute une photo de moi, celle qu'on utilise dans nos miniatures. Puis j'ajoute le fichier de sous-titres d'une de nos vidéos, et j'envoie. Je ne donne aucune consigne : juste la skill, une photo et des sous-titres. Il lit les sous-titres, et me propose trois idées de miniature, avec son préféré : « Il contrôle ma télé La skill ne la dessine pas toute seule : je lui dis simplement, crée la miniature un. Et voilà notre miniature. Il a compris tout le contexte, la photo que j'ai envoyée, le sujet de la vidéo, et il a fait toute
+
+00:08:49 - 00:09:17
+la composition. Et si elle ne vous plaît pas, il suffit de lui demander de changer la couleur, le fond, ou toute la structure. Regardez : je veux une structure différente. On envoie. Il refait une autre miniature, avec une autre structure : la télé en grand à gauche, ma photo à droite, et l'accroche dans un bandeau jaune. Les deux gardent bien mon visage, et il a compris l'idée de la vidéo. Juste un fichier de sous-titres et une photo, et la skill a fait le reste. Et si je veux passer cette même skill dans une autre IA, dans Gemini par exemple ?
+
+00:09:22 - 00:09:48
+C'est possible, je vous montre comment juste après. On revient dans notre fabrique, et on demande : je veux une skill dans Claude qui m'aide à créer des tableurs intelligents, avec un tableau de bord, pour analyser les données de mon entreprise de produits agricoles. J'envoie. Il détaille tout le fonctionnement, et en dessous, il crée ma skill. Petit raté du carnet au passage : à la fin, sa mise en page se casse, mais le texte de la skill est bien complet. On va dans Claude. Ici, Personnalisation, et on est déjà dans Skills.
+
+00:09:53 - 00:10:22
+On a les skills, les connecteurs et les plugins : on reste sur Skills. On peut importer une skill, ou en créer une. On en crée une d'abord : je vous montre l'import juste après. On a les mêmes champs. Le nom : on revient dans le carnet, on le copie, on le colle. Puis la description. Puis toutes les instructions : tout sélectionner, copier, revenir, et coller. Ensuite, on clique sur Créer. Il a créé notre skill. Et maintenant, on clique sur Essayer dans le chat. Claude met un exemple en anglais : on l'efface, et on lui donne la commande : fais-moi un modèle
+
+00:10:28 - 00:10:50
+Excel pour suivre la productivité des récoltes et le coût des intrants de ma ferme cette saison. On envoie, il reconnaît la skill, et se met au travail. Et pendant qu'il travaille, sachez qu'on peut faire des skills pour tout, selon votre activité : courriers officiels, scripts YouTube, carrousels Instagram. Pour les carrousels, vous écrivez simplement au carnet : je veux une skill pour créer des carrousels Instagram, dans l'IA de votre choix, du moment qu'elle accepte les skills.
+
+00:10:53 - 00:11:16
+On peut vraiment faire plein de choses. Et voilà le tableur, pour une ferme d'exemple de huit parcelles. On peut le télécharger, et l'ouvrir dans Excel. Un tableau de bord, avec la surface, la production, le chiffre d'affaires, le coût des intrants et la marge ; la performance de chaque parcelle ; et des alertes, comme les parcelles sous l'objectif. Et tous les onglets : les données brutes, les calculs, et le référentiel, où on règle le tableur. Avant, on passait des heures à faire un tableur pareil.
+
+00:11:20 - 00:11:44
+Aujourd'hui, si vous avez une activité précise, un secteur, vous le faites très simplement avec l'IA et les skills : une seule skill, et le tableur est prêt à 100 Et regardez dans la discussion : j'ouvre l'aperçu, la présentation est meilleure. Le rendement réel contre l'objectif, la répartition du coût des intrants, la marge par parcelle : tout marche directement dans Claude. Il a suffi de créer une skill. Maintenant, vous vous dites peut-être : et si j'ai fait une skill pour Gemini, je peux la mettre
+
+00:11:47 - 00:12:12
+dans Claude ? Oui, et regardez comme c'est simple. Dans Claude, on retourne dans Personnalisation, on clique sur Ajouter, et cette fois, on importe. Je prends la skill qu'on a téléchargée depuis Gemini, l'analyse de contrats, et je l'ouvre. Claude lit le fichier, fait sa vérification de sécurité, et on importe. Notre skill de Gemini est maintenant dans Claude. On peut faire passer une skill d'une IA à l'autre. Et dans ChatGPT, pareil : Ajouter, Importer depuis votre ordinateur, la même skill,
+
+00:12:16 - 00:12:44
+et c'est fait. Elle est là aussi. Et si vous voulez supprimer une skill ? Dans ChatGPT, les trois points : vous avez supprimer, désinstaller, modifier ou télécharger. Dans Claude, pareil, avec en plus renommer et dupliquer. Et dans Gemini aussi, avec en plus désactiver. Avec ces trois sources, vous avez une vraie usine à skills. Il suffit d'une phrase simple : je veux une skill pour rédiger mes courriers, pour mes recettes de cuisine, pour suivre mes clients. Vous avez votre skill, il ne reste qu'à suivre ce pas à pas et l'installer.
+
+00:12:49 - 00:12:59
+C'était la vidéo du jour. Le prompt complet est en description. Et si vous voulez voir ce qu'une IA sait faire quand on lui donne vraiment les commandes, on a fait piloter une télé à Claude Code : la vidéo est juste ici.

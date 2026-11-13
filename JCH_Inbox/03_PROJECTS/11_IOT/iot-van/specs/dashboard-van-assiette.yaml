@@ -1,0 +1,90 @@
+# Dashboard — Van Assiette Lupo 🐺
+# Importer dans HA : Paramètres → Tableaux de bord → + → Importer
+views:
+  - title: Assiette
+    icon: mdi:level
+    cards:
+      # NIVEAU — Indicateur visuel pitch/roll
+      - type: horizontal-stack
+        cards:
+          - type: gauge
+            entity: sensor.lupo_test_m5_van_pitch_test
+            name: Tangage
+            min: -10
+            max: 10
+            severity:
+              green: -3
+              yellow: -5
+              red: -10
+          - type: gauge
+            entity: sensor.lupo_test_m5_van_roll_test
+            name: Roulis
+            min: -10
+            max: 10
+            severity:
+              green: -3
+              yellow: -5
+              red: -10
+
+      # STATUT NIVEAU OK
+      - type: entity
+        entity: binary_sensor.van_level_ok
+        name: Van à niveau
+
+      # BOUSSOLE
+      - type: gauge
+        entity: sensor.lupo_test_m5_van_cap
+        name: Cap
+        min: 0
+        max: 360
+        needle: true
+        severity:
+          green: 0
+          yellow: 0
+          red: 0
+        segments:
+          - from: 0
+            color: '#e53935'
+            label: N
+          - from: 45
+            color: '#fb8c00'
+          - from: 90
+            color: '#fdd835'
+            label: E
+          - from: 135
+            color: '#fb8c00'
+          - from: 180
+            color: '#e53935'
+            label: S
+          - from: 225
+            color: '#fb8c00'
+          - from: 270
+            color: '#fdd835'
+            label: O
+          - from: 315
+            color: '#fb8c00'
+
+      - type: entity
+        entity: sensor.van_direction
+        name: Direction
+
+      # CARTE GPS
+      - type: map
+        entities:
+          - entity: sensor.lupo_test_m5_van_latitude
+          - entity: sensor.lupo_test_m5_van_longitude
+
+      # STATS
+      - type: entities
+        title: Données GPS & Environnement
+        entities:
+          - entity: sensor.lupo_test_m5_van_altitude_gps
+            name: Altitude
+          - entity: sensor.lupo_test_m5_van_speed_gps
+            name: Vitesse
+          - entity: sensor.lupo_test_m5_van_course_gps
+            name: Direction
+          - entity: sensor.lupo_test_m5_van_pression
+            name: Pression
+          - entity: sensor.lupo_test_m5_iphone_batterie
+            name: Batterie iPhone

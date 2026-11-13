@@ -1,0 +1,74 @@
+00:00:01 - 00:01:15
+Liquid AI has just released an AI model with only 1.7 billion parameters. And yet, on several benchmarks dedicated to AI agents, it manages to outperform Qwen 2.5 7B, a model almost six times larger. And the craziest thing about all this is that once quantized to 4-bit, the model's weight is about 1 gigabyte. This new model is called LFM3. To achieve these results, they developed a new architecture and training specifically adapted for AI agents. The company also presented several variants capable of analyzing images,
+
+00:00:38 - 00:01:37
+understanding videos, and even holding voice conversations. So, with models this lightweight, the possibilities for local AI are starting to become really interesting. In this video, we will compare the performance of LFM3 to much larger models. We will also see how this new architecture works together and, most importantly, see what we can actually do with these models directly on our devices. LFM3 was presented on October 27, 2024, by Liquid AI—just a few days ago—a company founded by researchers linked to
+
+00:01:08 - 00:02:15
+MIT. For several years, they have been working on AI architectures capable of running with fewer resources. And with this 3rd generation, Liquid AI presented six specialized models. We find a version dedicated to text, another version for vision, an audio version, an omni model capable of processing several types of information , and the last two are designed to make structured decisions; all these models rely on a common base called LFM3 1.7 B base. Developers can therefore start from this base and specialize it according to
+
+00:01:41 - 00:02:46
+their needs without necessarily using a huge generalist model. And when you compare this new generation to the previous one, meaning LFM 2.5 5.2 B, the new text model has 35%fewer parameters. Despite that, Liquid announces superior overall performance, and a good part of this progress comes directly from the changes made to its architecture. Today, most large language models rely on Transformers. These models use a mechanism called attention that allows them to link different pieces of information in a
+
+00:02:14 - 00:03:14
+text. So it works pretty well, except that when you start processing very long contexts, the computing and memory requirements can quickly increase. Liquid AI has therefore chosen a slightly different architecture. LFM3 uses what is called a triple-hybrid architecture. It's a bit of a technical name, but you'll understand it quickly. It contains 24 layers that combine three mechanisms. The first is short convolutions. We find them in 13 layers of the model. So, to put it simply, a convolution is
+
+00:02:44 - 00:03:52
+an operation that analyzes small groups of consecutive tokens to identify relationships between them. The advantage is that this mechanism requires very little memory during generation. The model can therefore process this information with much fewer resources. Next, we find five layers that use what is called sliding window attention. The principle here is quite simple. Instead of analyzing all available information, the model focuses on a window of 256 tokens. It can therefore identify relationships
+
+00:03:18 - 00:04:20
+between the elements in this window without needing to scan the entire context. And finally, six layers use global attention. This time, the model can link information that is very far apart. For example, it can make a connection between an instruction at the beginning of a document and information located dozens of pages later. Liquid therefore combines these three mechanisms to limit calculations while maintaining the ability to process large amounts of information. And to design this architecture, the
+
+00:03:49 - 00:04:50
+researchers directly tested different configurations on 14 hardware combinations. These notably include smartphones, a Raspberry Pi 5, as well as computers equipped with Apple and AMD chips. They measured the actual execution speed on these devices instead of relying solely on theoretical calculations. And the model's training is also quite impressive. The base version was pre-trained on 22 trillion tokens, and the final part of this training was used specifically to improve its capabilities with agents,
+
+00:04:19 - 00:05:31
+tool calls, and long contexts. So, now that this tri-hybrid architecture is a bit clearer, let's talk a bit about performance. On LiveCodeBench, a benchmark that evaluates the capabilities of AI agents , LFM3 1.7 B achieves a score of 45.6. Now, you might tell me that's great and we're happy for it, but in comparison, Qwen 2.5 7B reaches 35.77. On WebArena Verified, which tests an agent's ability to navigate websites and perform various actions, we also see a significant gap. LFM3 reaches 38.42 against 28.94 for
+
+00:04:57 - 00:06:03
+Qwen. And on BFCL V2, a benchmark dedicated to function calling, LFM3 scores 71.39 against 62.83 for Qwen. For those who don't know, function calling allows an artificial intelligence model to choose and use a tool. For example, checking a calendar, performing a search, or triggering an action in a piece of software. And here , Liquid has clearly worked a lot on this aspect during training. The model was notably trained in environments where agents actually had to use tools to accomplish their tasks.
+
+00:05:30 - 00:06:35
+Now, obviously, these figures come from evaluations published by Liquid, and there are also several areas where LFM3 still lags behind its competitors. For example, on SWE Bench Verified, which measures programming capabilities based on real software projects. There, Qwen 2.5 7B maintains the advantage. It stands at 51.2 versus 43.4 for LFM3. The same goes for RULER, which is a benchmark that tests a model's ability to retrieve information within a very long context. At 128,000 tokens, Qwen reaches 87.11
+
+00:06:02 - 00:07:00
+against 65.56 for LFM3. Moreover, the text version of LFM3 accepts up to 256,000 tokens of context . But having such a large window does not guarantee that the model will be able to retrieve every piece of information with the same precision. We can therefore see that LFM3 is particularly effective at tasks related to AI agents. However, in complex programming or with very long documents, it still retains certain limitations, and comparisons become very interesting when looking at models capable of analyzing images and
+
+00:06:32 - 00:07:41
+video. We will now move on to LFM3 VL 2B, the version that can analyze images and videos. To do this, Liquid AI added a visual encoder to the language model. A visual encoder serves to transform an image into information that the model can then analyze. The one in LFM3 has only 164 million parameters. And according to Liquid's measurements, it achieves precision comparable to the visual encoder of Qwen 2.5 7B with about 2.2 times fewer computational operations in their comparison. The model can therefore analyze an image
+
+00:07:06 - 00:08:12
+, answer questions about its content, read interface elements, and identify the position of an object. It can even return coordinates to locate these objects. This can be very useful in robotics, for example, or for AI agents capable of interacting with a graphical interface. LFM3 VL also supports video. To avoid processing too much information , the system groups successive frames into a more compact temporal representation. And here, the benchmarks are quite good. On the average of the visual evaluations presented by Liquid,
+
+00:07:38 - 00:08:43
+LFM3 VL 2B obtains a score of 71.4. In comparison, Gemma 2 9B developed by Google reaches 71.7. The results are therefore almost identical on this average, even though Gemma has about six times more parameters. Though this remains an average across several evaluations. Performance can vary depending on the requested tasks. And Liquid has gone even further with two variants capable of processing audio . The first is called LFM3 Audio 2B, a version entirely dedicated to audio. So here, this model is capable of
+
+00:08:12 - 00:09:10
+listening to a person, transcribing what they say, understanding their request, and responding directly with a generated voice. It supports 18 languages and uses a new audio encoder along with a system called Liquid codec. This system allows for efficiently transforming audio into tokens and then reconstructing speech. And according to measurements published by the company, the time to first token can drop to as low as 50 milliseconds. So with such low latency, interactions can become much more responsive.
+
+00:08:41 - 00:09:44
+The audio decoder is also capable of generating speech much faster than real-time on an Apple M4 Max chip. Next, we have the LFM3 Omni 2B. This version combines textual, visual, and audio capabilities into a single model with approximately 2.2 billion parameters. And it can also process videos. For example, we can show it a video with its soundtrack, ask it a question out loud, and get an answer that takes into account both the visuals and the audio. The model can also interpret a spoken instruction, identify an item on the
+
+00:09:13 - 00:10:20
+screen, and use a tool to perform an action. We can therefore envision this type of model in assistants integrated directly into computers, vehicles, or even robotic systems. But wait, because there are still two quite unique models left, as they can make decisions without generating text. These two variants are called D1 2B and D1 Omni 2B. Usually, when you ask a language model something, it generates its response token by token. With the D1 models, certain tasks can be performed in a single pass of the network.
+
+00:09:46 - 00:10:42
+The model directly returns a structured decision accompanied by probabilities without needing to generate a text response. Let's take the example of a customer service department that receives thousands of messages. It needs to identify those that are urgent, those concerning an invoice, or those requesting a refund. A classic model can analyze each message and generate a response in JSON format indicating its category. With D1, you can directly obtain the category or a score without going through that text generation.
+
+00:10:14 - 00:11:13
+And the Omni version can also process audio. These models also possess functions to extract a date from a document or identify the position of an object in an image. Well, that doesn't mean they can't still make mistakes. They still perform calculations, and the probabilities they produce do not guarantee that every decision will be correct. However, for companies that need to automate thousands of repetitive tasks, avoiding text generation every time can save time and reduce costs. Now that we've talked about all the
+
+00:10:43 - 00:11:40
+models on offer and their performance, it's time to see how they perform for local use. First off, the weights for the text model are available for download, notably on Hugging Face. I'll put the link in the description if you're interested. LFM3 is compatible with tools like llama.cpp, but also MLX on Mac. The family is also supported by several deployment environments. And here, we need to come back to the gigabyte I mentioned at the beginning. When we talk about a model taking up
+
+00:11:12 - 00:12:20
+about 1 GB, that refers to the weights of the 4-bit quantized text version. To get it running, you need to account for additional memory. For example, with a context of 128,000 tokens, Liquid announces a KV cache of about 1.6 GB. The KV cache is the memory used to keep certain information already calculated during context processing, in order to avoid recalculating everything for each new token. For Qwen 2.5 4B, this same cache requires about 4.3 GB. So here, the gap is quite significant, and regarding speed, Liquid claims that
+
+00:11:46 - 00:12:46
+LFM3 1.7 B can generate tokens between 1.8 and 2.8 times faster than the closest competing model on the three devices tested under these conditions. With this level of performance and relatively low memory consumption, we can start running quite capable models on much more accessible hardware. This includes personal computers, smartphones, and certain embedded devices. And when all processing is done locally, the data can stay directly on the device. The LFM3 weights are open, but you also need to pay attention to
+
+00:12:17 - 00:13:21
+the license. Free commercial use is notably reserved for companies whose annual revenue does not exceed 10 million dollars. In conclusion, nerds, I find all of this quite impressive. The fact that such a small model manages to compete with much larger models on certain benchmarks is just mind-blowing. Even if it does indeed lag behind on certain tasks, particularly in programming, with such compact models capable of working on personal hardware , I think we will see more and more local AI applications appearing that are
+
+00:12:49 - 00:13:25
+capable of performing quite advanced tasks. So, I hope you enjoyed this video. In any case, as usual, it was a real pleasure to make it for you. Don't forget to subscribe, it's very important . Goal: 50,000 subscribers. See you very , very soon. Sending you big kisses. Huh?

@@ -1,0 +1,375 @@
+{
+  "main": {
+    "id": "952214c51fe1ce55",
+    "type": "split",
+    "children": [
+      {
+        "id": "a24c2a0d57046100",
+        "type": "tabs",
+        "dimension": 60.170648464163826,
+        "children": [
+          {
+            "id": "19ba24449461b509",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "terminal:terminal",
+              "state": {
+                "terminal:terminal": {
+                  "cwd": "/Users/jchavauxm5/PKA_JCH",
+                  "focus": false,
+                  "profile": {
+                    "args": [
+                      "--login"
+                    ],
+                    "environment": [],
+                    "executable": "/bin/zsh",
+                    "followTheme": true,
+                    "name": "",
+                    "platforms": {
+                      "darwin": true
+                    },
+                    "pythonExecutable": "python3",
+                    "restoreHistory": false,
+                    "rightClickAction": "copyPaste",
+                    "successExitCodes": [
+                      "0",
+                      "SIGINT",
+                      "SIGTERM"
+                    ],
+                    "terminalOptions": {
+                      "documentOverride": null
+                    },
+                    "type": "integrated",
+                    "win32Backend": "conpty"
+                  },
+                  "profileSourceId": "darwinIntegratedDefault",
+                  "serial": null,
+                  "userTitle": "Wildlens"
+                }
+              },
+              "pinned": true,
+              "icon": "terminal:tab-bezel",
+              "title": "Wildlens"
+            }
+          }
+        ]
+      },
+      {
+        "id": "7f1eb21adf84feb1",
+        "type": "tabs",
+        "dimension": 39.829351535836174,
+        "children": [
+          {
+            "id": "372c104e53e3ca27",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/PROTOCOLES/WildNexus-P0_Protocoles_SOP-01-18.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "WildNexus-P0_Protocoles_SOP-01-18"
+            }
+          }
+        ],
+        "stacked": true
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "0a912fcdf247315e",
+    "type": "split",
+    "children": [
+      {
+        "id": "95b86d50a2759fd6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ad68aa7e2013d0f3",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "6b1078811c991d7b",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          },
+          {
+            "id": "142392484817212f",
+            "type": "leaf",
+            "state": {
+              "type": "column-explorer-view",
+              "state": {
+                "selection": [
+                  "_local",
+                  "_local/chains",
+                  "_local/chains/quick-check.chain"
+                ],
+                "intermediateColumnsCollapsed": false
+              },
+              "icon": "columns-3",
+              "title": "Column Explorer"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "horizontal",
+    "width": 465.484375
+  },
+  "right": {
+    "id": "ebc00b11171db500",
+    "type": "split",
+    "children": [
+      {
+        "id": "9b7489d2c30e4562",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8f47749bd879f61e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "a0faa41918322411",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "c7c346e5b79d0ba4",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "582f3aba7ea18d9a",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "8517c647af0ab335",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          },
+          {
+            "id": "cd035e2f3cb80658",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ],
+        "currentTab": 5
+      }
+    ],
+    "direction": "horizontal",
+    "width": 247.5546875,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "audio-recorder:Start/stop recording": false,
+      "workspaces:Manage workspace layouts": false,
+      "templater-obsidian:Templater": false,
+      "obsidian-git:Open Git source control": false,
+      "terminal:Open terminal": false,
+      "column-explorer:Column Explorer": false
+    }
+  },
+  "floating": {
+    "id": "40606a8b6fb8deba",
+    "type": "floating",
+    "children": [
+      {
+        "id": "28cbdf89bc14776d",
+        "type": "window",
+        "children": [
+          {
+            "id": "80883d615b7c4a22",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "e6af270c4a600453",
+                "type": "leaf",
+                "state": {
+                  "type": "terminal:terminal",
+                  "state": {
+                    "terminal:terminal": {
+                      "cwd": "/Users/jchavauxm5/PKA_JCH",
+                      "focus": false,
+                      "profile": {
+                        "args": [
+                          "--login"
+                        ],
+                        "environment": [],
+                        "executable": "/bin/zsh",
+                        "followTheme": true,
+                        "name": "",
+                        "platforms": {
+                          "darwin": true
+                        },
+                        "pythonExecutable": "python3",
+                        "restoreHistory": false,
+                        "rightClickAction": "copyPaste",
+                        "successExitCodes": [
+                          "0",
+                          "SIGINT",
+                          "SIGTERM"
+                        ],
+                        "terminalOptions": {
+                          "documentOverride": null
+                        },
+                        "type": "integrated",
+                        "win32Backend": "conpty"
+                      },
+                      "profileSourceId": "darwinIntegratedDefault",
+                      "serial": null,
+                      "userTitle": "M1 remote"
+                    }
+                  },
+                  "icon": "terminal:tab-bezel",
+                  "title": "M1 remote"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": 894,
+        "y": -1182,
+        "width": 1512,
+        "height": 961,
+        "maximize": false,
+        "zoom": 0
+      }
+    ]
+  },
+  "active": "19ba24449461b509",
+  "lastOpenFiles": [
+    "graphify-out/cache/6b64de81449c467aa24f91eee7e79a00fe16c55b7a3b223e344d5adf1552e6fa.json",
+    "TEAM/team.db-shm",
+    "TEAM/team.db-wal",
+    "wiki/Daily/2026/11/2026-11-13-bootstrap-consolidé-matériel-canonique-ghost-récupéré-miroir.md",
+    "_local/sessions/session_20261113_183722.json",
+    "_local/sessions/session_20261113_180228.json",
+    "_local/sessions/session_20261113_134642.json",
+    "_local/sessions/session_20261113_114646.json",
+    "_local/sessions/session_20261113_114548.json",
+    "_local/sessions/session_20261113_002614.json",
+    "_local/sessions/session_20261113_002606.json",
+    "_local/sessions/session_20261112_235736.json",
+    "JCH_PRIVATE/credentials-central.md",
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/editions/WildLens-2026-10-31.tmp.html.md",
+    "JCH_Inbox/99_SYSTEM/vademecum-reseau-m1-m5-imac.md",
+    "JCH_Inbox/00_INBOX/NOTES/note-acces-domotique.md",
+    "JCH_Inbox/04_PILOTAGE_STRATEGIQUE/lupo-materiel.md",
+    "JCH_Inbox/04_PILOTAGE_STRATEGIQUE/photo-materiel.md",
+    "_local/bootstrap-context.md",
+    "TEAM_Inbox/2026-11-13_forge_watch-inbox-alert.md",
+    "JCH_Inbox/03_PROJECTS/08_VETALYX/strategy/2026-11-12_dobby_stick-dosage-appetence-vetalyx.md",
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/operations-creation-site-ghost.md",
+    "wiki/Daily/2026/11/2026-11-12-dégel-wildnexus-device-ghost-wildlens-selphy-12v-cohérence-t.md",
+    "JCH_Inbox/03_PROJECTS/07_TRAVELS/Lupo/van technique/ELECTRICITE/selphy-cp1300-alimentation-12v.md",
+    "_hooktest.md",
+    "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/07_PROCUREMENT_BOM/INVENTAIRE-checklist-reprise-2026-11-12.md",
+    "wiki/Daily/2026/11/2026-11-11-imac-miroir-de-m5-via-novnc-pont-websocket.md",
+    "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/07_PROCUREMENT_BOM/INVENTAIRE-releve-physique-2026-11-11.md",
+    "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/PROTOCOLES/SOP-18-budget-energie-audio.md",
+    "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/PROTOCOLES/SOP-17-coexistence-pir-timer-audio.md",
+    "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/PROTOCOLES/SOP-16-payload-spectral-0x05.md",
+    "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/PLANNING_GANTT.md",
+    "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/GANTT.md",
+    "_local/novnc/vendor/pako/README.md",
+    "_local/novnc/utils/README.md",
+    "_local/novnc/docs/LIBRARY.md",
+    "_local/novnc/app/images/icons/novnc-ios-icon.svg",
+    "_local/novnc/app/images/icons/novnc-ios-87.png",
+    "_local/novnc/app/images/icons/novnc-ios-80.png",
+    "_local/novnc/app/images/icons/novnc-ios-58.png",
+    "_local/novnc/app/images/icons/novnc-ios-60.png",
+    "_local/novnc/app/images/icons/novnc-ios-40.png",
+    "_local/novnc/app/images/icons/novnc-ios-180.png",
+    "_local/novnc/app/images/icons/novnc-ios-167.png",
+    "_local/novnc/app/images/icons/novnc-icon.svg",
+    "_local/novnc/app/images/icons/novnc-ios-152.png",
+    "Untitled.canvas"
+  ]
+}
