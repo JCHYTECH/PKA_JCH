@@ -9,7 +9,9 @@
   "columnWidths": {
     "JCH_Inbox/03_PROJECTS": 209,
     "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/PROTOCOLES": 369,
-    "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/notebooklm": 207
+    "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/notebooklm": 207,
+    "/": 390,
+    "_local": 311
   },
   "autoPanelResize": false,
   "lockColumnWidths": true,
@@ -33,6 +35,7 @@
   "recentFilesCount": 10,
   "recentFiles": [
     "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/PROTOCOLES/WildNexus-P0_Protocoles_SOP-01-18.pdf",
+    "JCH_PRIVATE/credentials-central.md",
     "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/notebooklm/WildNexus_Architectural_Blueprint_FINAL.pdf",
     "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/PLANNING_GANTT.md",
     "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/GANTT.md",
@@ -73,7 +76,8 @@
     "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/GANTT.md": 1794434151720,
     "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/PLANNING_GANTT.md": 1794434156888,
     "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/notebooklm/WildNexus_Architectural_Blueprint_FINAL.pdf": 1794434161573,
-    "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/PROTOCOLES/WildNexus-P0_Protocoles_SOP-01-18.pdf": 1794563788129
+    "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/PROTOCOLES/WildNexus-P0_Protocoles_SOP-01-18.pdf": 1794591740213,
+    "JCH_PRIVATE/credentials-central.md": 1794591337395
   },
   "unreadBaseline": 1794335720082
 }

@@ -1,0 +1,6 @@
+#!/bin/bash
+# M5 — afficher UNIQUEMENT l'écran interne (éteint le LG Ultrawide)
+# Usage (depuis l'iMac) : ssh MacBook-Pro-de-JC.local '/Users/jchavauxm5/PKA_JCH/bin/m5-ecran-interne'
+set -euo pipefail
+/opt/homebrew/bin/displayplacer "id:37D8832A-2D66-02CA-B9F7-8F30A301B230 res:1512x982 hz:120 color_depth:8 enabled:true scaling:on origin:(0,0) degree:0" "id:24059E34-059B-4F8F-B85B-DA34C54CE8B1 enabled:false"
+echo "Écran interne seul (LG éteint)."

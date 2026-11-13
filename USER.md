@@ -32,9 +32,7 @@
 
 ## Setup photo
 
-- **Boîtiers :** Canon R10, Canon 90D
-- **Optiques :** RF 200-800mm, Tamron 150-600mm, macros Laowa
-- **Impression :** Epson ET-8550
+- **Matériel (liste canonique) :** `JCH_Inbox/04_PILOTAGE_STRATEGIQUE/photo-materiel.md`
 - **Logiciels :** DxO PhotoLab, Lightroom, Photoshop, Helicon Focus, Topaz, Luminar Neo
 
 ---
@@ -45,8 +43,8 @@
 |---------|-------|
 | **Machine principale** | Mac M5 (this machine) |
 | **M1 LLM (headless)** | `m1@100.73.212.110` via Tailscale — Ollama `127.0.0.1:11434` |
-| **HA M5** | `http://localhost:8123` — Container Docker (M5) |
-| **HA Van (Lupo)** | RPi 5 HA OS — Tailscale `100.106.152.118` — autonome offline (alarme, frigo). SSH port 22222. |
+| **HA Home (maison+serre)** | RPi 5 HAOS `homeassistant` — LAN `http://192.168.129.57` (port 80). SSH 22222. |
+| **HA Van (Lupo)** | RPi 5 HAOS `lupo` — LAN `http://192.168.129.16:8123` (parking) / Tailscale `http://100.106.152.118:8123` (partout). SSH 22222. |
 | **Ollama models** | `gemma3:12b-it-qat`, `llama3.2-vision:11b`, `dobby-prompt`, `qwen2.5-coder:14b`, `qwen3.5`, `qwen3:30b-a3b`, `deepseek-r1:14b`, `llama3.2:3b`, `mxbai-embed-large` |
 | **API Keys centralisées** | `~/.config/pka-jch/api_keys` (0600) |
 | **OpenRouter key** | `~/.config/pka-jch/openrouter_key.txt` |

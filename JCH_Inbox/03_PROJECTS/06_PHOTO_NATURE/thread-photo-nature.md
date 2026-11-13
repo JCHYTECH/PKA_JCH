@@ -8,7 +8,7 @@
 
 ## Vue d'ensemble
 
-Photographie naturaliste terrain — boîtiers Canon R10 + 90D, optiques RF 200-800mm, Tamron 150-600mm, macros Laowa. Workflow : DxO/Lightroom → keyworder auto (62 catégories) → presets Argus → ARTEON/WildLens.
+Photographie naturaliste terrain — boîtiers Canon R7 + 90D, optiques RF 200-800mm, Tamron 150-600mm, Laowa 25mm macro. Inventaire canonique : `JCH_Inbox/04_PILOTAGE_STRATEGIQUE/photo-materiel.md`. Workflow : DxO/Lightroom → keyworder auto (62 catégories) → presets Argus → ARTEON/WildLens.
 
 ---
 

@@ -24,6 +24,8 @@
 
 ## STATION-DOMO / IoT
 
+> **Vue opérationnelle canonique du matériel Lupo :** `lupo-materiel.md` (par catégorie). Ce fichier reste le registre d'achats détaillé (prix, dates, sources).
+
 | Composant | Qté | Statut | Notes |
 |-----------|-----|--------|-------|
 | Lupo (Ford Transit Custom Westfalia Kelsey) | 1 | ✅ REÇU | 30 juillet 2026 — véhicule livré, installation IOT en cours (deadline **15/12**, prolongée par JC le 19/10) |

@@ -1,8 +1,8 @@
 # Thread — ARTEON
 
 > Living document — maintenu par Dobby 🦉 en fin de session sur `/save`.
-> **Dernière mise à jour** : 2026-11-12 — décision de recréer Ghost sur wildlens-journal.ghost.io
-> **Statut** : 🟢 relance engagée — production WildLens reprise
+> **Dernière mise à jour** : 2026-11-13 — compte Ghost récupéré ; site existant à finaliser (pas de recréation)
+> **Statut** : 🟢 relance engagée — `wildlens.ghost.io` accessible, domaine final `wildlens.arteon.be`
 
 ---
 
@@ -19,7 +19,7 @@ Photographie naturaliste éditoriale — marque ARTEON + service WildLens + futu
 | Global | 🟢 | Relance engagée — six fichiers d'édition présents (dernier : 31/10), publication à vérifier au cas par cas ; launchd hebdo réactivé |
 | Roadmap 13 étapes | 🟠 | **4 ✅ · 8 ⏳ · 1 🔴** — étapes 1 à 4 closes ; étape 12 rouge |
 | Charte de marque | ✅ | Livrée (étape 4/13) |
-| WildLens / Ghost | 🟠 | Ghost 404 ; décision de recréation sur `wildlens-journal.ghost.io` (compte précédent perdu — carte inconnue) |
+| WildLens / Ghost | 🟢 | Compte **récupéré** : admin `wildlens.ghost.io` accessible (jc.havaux@gmail.com) ; site privé + 1 post « Coming soon » + 0 membre ; domaine final `wildlens.arteon.be` |
 | Instagram | 🟠 | Authentification Meta et lectures validées ; première publication préparée mais non effectuée par choix de JC |
 | Shopify | ⏳ | V1 non préparée (aucune action depuis 02/07) |
 | WhiteWall | ⏳ | Intégration non configurée |
@@ -36,6 +36,7 @@ Photographie naturaliste éditoriale — marque ARTEON + service WildLens + futu
 | Date | Décision | Contexte |
 |------|----------|----------|
 | 2026-11-12 | Recréation Ghost sur `wildlens-journal.ghost.io` (option A) | Ancien compte inaccessible (carte inconnue) ; rien de publié à perdre ; JC exécute le signup, Dobby migre URLs + credentials |
+| 2026-11-13 | **Compte récupéré — pas de recréation** ; domaine final `wildlens.arteon.be` | Connexion admin `wildlens.ghost.io` réussie (essai 14 j) ; finaliser le site existant ; domaine custom dans un second temps |
 | 2026-11-05 | Aucune publication Instagram sans nouvelle demande explicite de JC | Préparation technique validée, mais autorisation de publication non accordée |
 | 2026-11-05 | Ghost mis en pause après e-mail au support | Reprendre la destination éditoriale après réponse du support |
 | 2026-10-24 | Positionnement éditorial : se démarquer par l'info, les questions soulevées, les solutions (pas les « 5 astuces ») | Différenciation vs blogs/newsletters |
@@ -47,8 +48,10 @@ Photographie naturaliste éditoriale — marque ARTEON + service WildLens + futu
 
 ## TTD — Pending
 
-- [ ] **P1 · — · (JC + Dobby + Forge)** Recréer Ghost sur `wildlens-journal.ghost.io` — JC exécute le signup (ghost.org) ; Dobby migre les URLs canoniques et documente les credentials
-- [ ] **P2 · — · (JC)** Allouer du temps créatif éditorial — blocage structurel : 8 étapes roadmap non closes
+- [ ] **P1 · — · (JC)** Relire le brouillon Ghost « WildLens — Edition #6 » (slug `wildlens-edition-6`) puis donner le feu vert
+- [ ] **P2 · — · (Dobby, après relecture)** Pousser les 5 autres éditions en brouillon via `scripts/ghost_import.py`
+- [ ] **P3 · — · (JC)** Choisir le plan Ghost Starter (~9 $/mois) — débloque le passage public (Pre-launch mode, essai 14 j) puis brancher le domaine `wildlens.arteon.be` (CNAME)
+- [ ] **P4 · — · (JC)** Allouer du temps créatif éditorial — blocage structurel : 8 étapes roadmap non closes
 
 ## TTD — Done (session 2026-11-05)
 

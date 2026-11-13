@@ -6,51 +6,8 @@
       {
         "id": "a24c2a0d57046100",
         "type": "tabs",
-        "dimension": 54.16382252559727,
+        "dimension": 60.170648464163826,
         "children": [
-          {
-            "id": "e6af270c4a600453",
-            "type": "leaf",
-            "state": {
-              "type": "terminal:terminal",
-              "state": {
-                "terminal:terminal": {
-                  "cwd": "/Users/jchavauxm5/PKA_JCH",
-                  "focus": false,
-                  "profile": {
-                    "args": [
-                      "--login"
-                    ],
-                    "environment": [],
-                    "executable": "/bin/zsh",
-                    "followTheme": true,
-                    "name": "",
-                    "platforms": {
-                      "darwin": true
-                    },
-                    "pythonExecutable": "python3",
-                    "restoreHistory": false,
-                    "rightClickAction": "copyPaste",
-                    "successExitCodes": [
-                      "0",
-                      "SIGINT",
-                      "SIGTERM"
-                    ],
-                    "terminalOptions": {
-                      "documentOverride": null
-                    },
-                    "type": "integrated",
-                    "win32Backend": "conpty"
-                  },
-                  "profileSourceId": "darwinIntegratedDefault",
-                  "serial": null,
-                  "userTitle": "VETZALYX"
-                }
-              },
-              "icon": "terminal:tab-bezel",
-              "title": "VETZALYX"
-            }
-          },
           {
             "id": "19ba24449461b509",
             "type": "leaf",
@@ -101,7 +58,7 @@
       {
         "id": "7f1eb21adf84feb1",
         "type": "tabs",
-        "dimension": 45.83617747440273,
+        "dimension": 39.829351535836174,
         "children": [
           {
             "id": "372c104e53e3ca27",
@@ -163,10 +120,9 @@
               "type": "column-explorer-view",
               "state": {
                 "selection": [
-                  "JCH_Inbox",
-                  "JCH_Inbox/03_PROJECTS",
-                  "JCH_Inbox/03_PROJECTS/03_WILDNEXUS",
-                  "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE"
+                  "_local",
+                  "_local/chains",
+                  "_local/chains/quick-check.chain"
                 ],
                 "intermediateColumnsCollapsed": false
               },
@@ -298,19 +254,94 @@
       "column-explorer:Column Explorer": false
     }
   },
-  "active": "e6af270c4a600453",
+  "floating": {
+    "id": "40606a8b6fb8deba",
+    "type": "floating",
+    "children": [
+      {
+        "id": "28cbdf89bc14776d",
+        "type": "window",
+        "children": [
+          {
+            "id": "80883d615b7c4a22",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "e6af270c4a600453",
+                "type": "leaf",
+                "state": {
+                  "type": "terminal:terminal",
+                  "state": {
+                    "terminal:terminal": {
+                      "cwd": "/Users/jchavauxm5/PKA_JCH",
+                      "focus": false,
+                      "profile": {
+                        "args": [
+                          "--login"
+                        ],
+                        "environment": [],
+                        "executable": "/bin/zsh",
+                        "followTheme": true,
+                        "name": "",
+                        "platforms": {
+                          "darwin": true
+                        },
+                        "pythonExecutable": "python3",
+                        "restoreHistory": false,
+                        "rightClickAction": "copyPaste",
+                        "successExitCodes": [
+                          "0",
+                          "SIGINT",
+                          "SIGTERM"
+                        ],
+                        "terminalOptions": {
+                          "documentOverride": null
+                        },
+                        "type": "integrated",
+                        "win32Backend": "conpty"
+                      },
+                      "profileSourceId": "darwinIntegratedDefault",
+                      "serial": null,
+                      "userTitle": "M1 remote"
+                    }
+                  },
+                  "icon": "terminal:tab-bezel",
+                  "title": "M1 remote"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": 894,
+        "y": -1182,
+        "width": 1512,
+        "height": 961,
+        "maximize": false,
+        "zoom": 0
+      }
+    ]
+  },
+  "active": "19ba24449461b509",
   "lastOpenFiles": [
-    "_local/zigbee2mqtt/log/2026-11-13.10-17-37/log.log",
-    "_local/zigbee2mqtt/log/2026-11-13.10-17-37",
-    "_local/zigbee2mqtt/log/2026-11-13.10-17-10/log.log",
-    "_local/zigbee2mqtt/log/2026-11-13.10-17-10",
-    "_local/zigbee2mqtt/log/2026-11-13.10-16-43/log.log",
-    "_local/zigbee2mqtt/log/2026-11-13.10-16-43",
-    "_local/zigbee2mqtt/log/2026-11-13.10-16-17/log.log",
-    "_local/zigbee2mqtt/log/2026-11-13.10-16-17",
-    "_local/zigbee2mqtt/log/2026-11-13.10-15-50/log.log",
-    "_local/zigbee2mqtt/log/2026-11-13.10-15-50",
-    "_local/zigbee2mqtt/log/2026-11-13.10-15-24/log.log",
+    "graphify-out/cache/6b64de81449c467aa24f91eee7e79a00fe16c55b7a3b223e344d5adf1552e6fa.json",
+    "TEAM/team.db-shm",
+    "TEAM/team.db-wal",
+    "wiki/Daily/2026/11/2026-11-13-bootstrap-consolidé-matériel-canonique-ghost-récupéré-miroir.md",
+    "_local/sessions/session_20261113_183722.json",
+    "_local/sessions/session_20261113_180228.json",
+    "_local/sessions/session_20261113_134642.json",
+    "_local/sessions/session_20261113_114646.json",
+    "_local/sessions/session_20261113_114548.json",
+    "_local/sessions/session_20261113_002614.json",
+    "_local/sessions/session_20261113_002606.json",
+    "_local/sessions/session_20261112_235736.json",
+    "JCH_PRIVATE/credentials-central.md",
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/editions/WildLens-2026-10-31.tmp.html.md",
+    "JCH_Inbox/99_SYSTEM/vademecum-reseau-m1-m5-imac.md",
+    "JCH_Inbox/00_INBOX/NOTES/note-acces-domotique.md",
+    "JCH_Inbox/04_PILOTAGE_STRATEGIQUE/lupo-materiel.md",
+    "JCH_Inbox/04_PILOTAGE_STRATEGIQUE/photo-materiel.md",
     "_local/bootstrap-context.md",
     "TEAM_Inbox/2026-11-13_forge_watch-inbox-alert.md",
     "JCH_Inbox/03_PROJECTS/08_VETALYX/strategy/2026-11-12_dobby_stick-dosage-appetence-vetalyx.md",
@@ -329,9 +360,6 @@
     "_local/novnc/vendor/pako/README.md",
     "_local/novnc/utils/README.md",
     "_local/novnc/docs/LIBRARY.md",
-    "_local/novnc/docs/API.md",
-    "_local/novnc/docs/EMBEDDING.md",
-    "_local/novnc/docs/API-internal.md",
     "_local/novnc/app/images/icons/novnc-ios-icon.svg",
     "_local/novnc/app/images/icons/novnc-ios-87.png",
     "_local/novnc/app/images/icons/novnc-ios-80.png",
@@ -342,10 +370,6 @@
     "_local/novnc/app/images/icons/novnc-ios-167.png",
     "_local/novnc/app/images/icons/novnc-icon.svg",
     "_local/novnc/app/images/icons/novnc-ios-152.png",
-    "_local/novnc/README.md",
-    "_local/novnc/AI_POLICY.md",
-    "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/PROTOCOLES/Manuel de protocole technique _ Tests de consommation ESP32-S3 & PPK2.md",
-    "JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/PROTOCOLES/SOP-01-esp32-alive-check.md",
     "Untitled.canvas"
   ]
 }

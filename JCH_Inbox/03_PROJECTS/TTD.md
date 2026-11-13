@@ -1,7 +1,7 @@
 # TTD — Vue consolidée (tous projets)
 
 > **Fichier dérivé** — généré à chaque `/save` depuis les seuls blocs `TTD — Pending` des thread files. Ne pas éditer à la main hors `/save` : la source de vérité reste les thread files + `etat-projets.md`.
-> `last_updated: 2026-11-12 · by: deepseek-v4-pro` — dégel WILDNEXUS DEVICE + recréation Ghost WildLens
+> `last_updated: 2026-11-13 · by: deepseek-v4-pro` — Ghost WildLens récupéré (édition #6 poussée en brouillon)
 
 ## 01_AI_IT_TOOLS
 
@@ -10,14 +10,17 @@ Source : `01_AI_IT_TOOLS/thread-ai-it-tools.md`
 - [ ] **P2 · — · (Dobby)** Maintenance continue — `pka-thread-file` + boucle mémoire à chaque fin de session
 - [ ] **P1 · — · (Dobby)** Ajouter un mode observation/dry-run aux watch loops (inspiré SuperAgent : évaluer le signal, enregistrer ce qu'il ferait, sans agir)
 - [ ] **P2 · — · (JC + Dobby)** Essayer le TUI/double-clic Grok ; le rituel `/save` Kimi est terminé et ne fait plus partie de cet essai
-- [ ] **P2 · — · (Dobby)** Remplacer le mot de passe VNC (actuellement l'admin) par un mot de passe dédié pour le pont noVNC
+- [ ] **P2 · — · (JC + Dobby)** ACL Tailscale — durcir l'accès réseau (reporté 13/11) : poser la politique ACL puis taguer `lupo` en `tag:van` (ports 8123/1883/22222).
+- [x] **P2 · — · (Dobby)** Mot de passe VNC dédié appliqué (M5 + M1, 13/11) — plus l'admin
 
 ## 02_ARTEON
 
 Source : `02_ARTEON/thread-arteon.md`
 
-- [ ] **P1 · — · (JC + Dobby + Forge)** Recréer Ghost sur `wildlens-journal.ghost.io` — JC exécute le signup (ghost.org) ; Dobby documente les credentials (plan, sous-domaine, libellé carte)
-- [ ] **P2 · — · (JC)** Allouer du temps créatif éditorial — blocage structurel : 8 étapes roadmap non closes
+- [ ] **P1 · — · (JC)** Relire le brouillon Ghost « WildLens — Edition #6 » (slug `wildlens-edition-6`) puis donner le feu vert
+- [ ] **P2 · — · (Dobby, après relecture)** Pousser les 5 autres éditions en brouillon via `scripts/ghost_import.py`
+- [ ] **P3 · — · (JC)** Choisir le plan Ghost Starter (~9 $/mois) — débloque le passage public (Pre-launch mode, essai 14 j) puis brancher le domaine `wildlens.arteon.be` (CNAME)
+- [ ] **P4 · — · (JC)** Allouer du temps créatif éditorial — blocage structurel : 8 étapes roadmap non closes
 
 ## 03_WILDNEXUS — INSECTNET
 

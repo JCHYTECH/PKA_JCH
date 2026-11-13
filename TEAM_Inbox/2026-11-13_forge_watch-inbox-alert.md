@@ -1,14 +1,14 @@
 # 🔔 Watch-INBOX Alert — 2026-11-13
 
-> **Forge 🔨** — Surveillance automatique — 2026-11-13T10:33:43
+> **Forge 🔨** — Surveillance automatique — 2026-11-13T13:13:50
 
 ## Nouveau fichier détecté
 
 | Propriété | Valeur |
 |-----------|--------|
-| **Chemin** | `JCH_Inbox/00_INBOX/email_imports/Découvrez votre newsletter vidéos du jour 🎥.eml` |
-| **Taille** | 77.47 KB (79331 octets) |
-| **Détecté le** | 2026-11-13T10:33:41 |
+| **Chemin** | `JCH_Inbox/00_INBOX/NOTES/note-acces-domotique.md` |
+| **Taille** | 1.00 KB (1029 octets) |
+| **Détecté le** | 2026-11-13T13:13:49 |
 
 ## Action suggérée
 
@@ -24,4 +24,4 @@ Cette alerte est générée automatiquement par `pka-watch-inbox`.
 Pour désactiver : `launchctl unload _local/launchd-plists/com.dobby.pka-watch-inbox.plist`
 
 ---
-*Fichier auto-généré — 2026-11-13T10:33:43*
+*Fichier auto-généré — 2026-11-13T13:13:50*

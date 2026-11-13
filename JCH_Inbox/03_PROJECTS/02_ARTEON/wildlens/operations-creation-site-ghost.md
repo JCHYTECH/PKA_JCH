@@ -15,11 +15,15 @@ tags:
 
 # WildLens — Opérations de création du site Ghost
 
-> Checklist opérationnelle pour recréer le site WildLens sur Ghost.
-> Contexte : décision du 2026-11-12 — recréation sur `wildlens-journal.ghost.io`,
-> compte précédent perdu (carte inconnue). Rien de publié à perdre.
+> Checklist opérationnelle pour **finaliser** le site WildLens sur Ghost.
+> **Mise à jour 2026-11-13 : le compte n'est PAS perdu** — admin `wildlens.ghost.io` accessible
+> (jc.havaux@gmail.com, essai 14 j, 1 post « Coming soon », 0 membre). On finalise le site existant.
+> Domaine final : `wildlens.arteon.be` (custom, dans un second temps via CNAME).
 > Références : `thread-arteon.md`, `brand/arteon-architecture-charte.md` §3,
 > `wildlens/ref/architecture-editoriale-v2.md`.
+
+> ⚠️ **Phase 1 (création de compte) est OBSOLÈTE** : le compte et le site existent déjà.
+> Commencer directement à la Phase 3 (thème) après avoir passé le site en public.
 
 ---
 

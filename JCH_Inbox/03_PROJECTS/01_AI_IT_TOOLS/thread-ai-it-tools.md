@@ -1,7 +1,7 @@
 # Thread — AI_IT_TOOLS
 
 > Living document — maintenu par Dobby 🦉 en fin de session sur `/save`.
-> **Dernière mise à jour** : 2026-11-11 — Pont noVNC iMac↔M5 (miroir d'écran), launchd `com.dobby.m5-vnc-novnc`
+> **Dernière mise à jour** : 2026-11-13 — Miroir iMac↔M1 (noVNC 6081) + durcissement mots de passe (rotation, FileVault iMac off, secrets → Trousseau) ; ACL Tailscale reportée
 > **Statut** : 🟢 actif
 
 ---
@@ -29,7 +29,8 @@ Infrastructure IA et outils PKA — maintenance du système Dobby, skills, mémo
 | Clôture Kimi | 🟢 | Skill `/save` créé ; invocation utilisateur et sauvegarde complète validées le 05/11 avec `kimi-code`. Le TUI Grok reste un essai distinct |
 | MCP multi-clients | 🟡 | `ha-lupo-ro` configuré pour Kimi, DeepSeek et Claude ; appels capteurs réels réussis dans Kimi et DeepSeek. Claude nécessite une réauthentification Anthropic ; Codex a réussi OAuth HA mais ses modèles sont refusés par le compte. Aucun accès public pour ChatGPT Web |
 | Code base | 🟢 | **126 scripts Python**, 57 binaires `bin/`, 117 fichiers `.md` |
-| Miroir iMac↔M5 | 🟢 | **Nouveau 11/11** — pont noVNC (websockify 6080 → VNC 5900), launchd auto-start ; l'iMac 2017 affiche l'écran du M5 via Safari |
+| Miroir iMac↔M5 | 🟢 | Pont noVNC (websockify 6080 → VNC 5900 M5), launchd auto-start ; l'iMac 2017 affiche l'écran du M5 via Safari |
+| Miroir iMac↔M1 | 🟢 | **Nouveau 13/11** — pont noVNC port 6081 → VNC 5900 M1 (VNC legacy activé via kickstart) ; l'iMac affiche l'écran du M1 via Safari |
 
 ---
 
@@ -59,7 +60,9 @@ Infrastructure IA et outils PKA — maintenance du système Dobby, skills, mémo
 - [ ] **P2 · — · (Dobby)** Maintenance continue — `pka-thread-file` + boucle mémoire à chaque fin de session
 - [ ] **P1 · — · (Dobby)** Ajouter un mode observation/dry-run aux watch loops (inspiré SuperAgent : évaluer le signal, enregistrer ce qu'il ferait, sans agir)
 - [ ] **P2 · — · (JC + Dobby)** Essayer le TUI/double-clic Grok ; le rituel `/save` Kimi est terminé et ne fait plus partie de cet essai
-- [ ] **P2 · — · (Dobby)** Remplacer le mot de passe VNC (actuellement l'admin) par un mot de passe dédié pour le pont noVNC
+- [ ] **P2 · — · (JC + Dobby)** ACL Tailscale — durcir l'accès réseau (reporté 13/11) : (1) poser la politique ACL (filet `autogroup:admin`→`*:*` ; `autogroup:member`↔`autogroup:member` ; `autogroup:member`→`tag:van:8123/1883/22222`) ; (2) taguer `lupo` en `tag:van`. Procédure prête (cf. `tailscale status` + `credentials-central.md`).
+- [x] **P2 · — · (Dobby)** Mot de passe VNC dédié appliqué sur M5 + M1 (13/11) — plus l'admin ; raccourcis + onglets à jour
+- [x] **P1 · — · (JC)** FDA accordée à `sshd-keygen-wrapper` (13/11) → raccourcis Bureau `M5-ecran-novnc.webloc` + `M1-ecran-novnc.webloc` créés. **Reste** : Accessibilité (épinglage UI encore bloqué — System Events pend en SSH).
 
 ## TTD — Done (session 2026-11-06)
 

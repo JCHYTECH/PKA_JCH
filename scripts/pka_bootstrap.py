@@ -58,6 +58,8 @@ STATE_FILES: list[Path] = [
     ROOT_DIR / "JCH_Inbox" / "04_PILOTAGE_STRATEGIQUE" / "priorites-actives.md",
     ROOT_DIR / "JCH_Inbox" / "04_PILOTAGE_STRATEGIQUE" / "risques-et-frottements.md",
     ROOT_DIR / "JCH_Inbox" / "04_PILOTAGE_STRATEGIQUE" / "roadmap-90-jours.md",
+    ROOT_DIR / "JCH_Inbox" / "04_PILOTAGE_STRATEGIQUE" / "photo-materiel.md",
+    ROOT_DIR / "JCH_Inbox" / "04_PILOTAGE_STRATEGIQUE" / "lupo-materiel.md",
 ]
 
 # Vue consolidée des choses à faire (dérivé, régénéré au /save)
