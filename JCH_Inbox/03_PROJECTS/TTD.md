@@ -1,7 +1,7 @@
 # TTD — Vue consolidée (tous projets)
 
 > **Fichier dérivé** — généré à chaque `/save` depuis les seuls blocs `TTD — Pending` des thread files. Ne pas éditer à la main hors `/save` : la source de vérité reste les thread files + `etat-projets.md`.
-> `last_updated: 2026-11-13 · by: deepseek-v4-pro` — Ghost WildLens récupéré (édition #6 poussée en brouillon)
+> `last_updated: 2026-11-15 · by: deepseek-v4-pro` — WildLens self-host Ghost Hostinger + renumérotation éditions
 
 ## 01_AI_IT_TOOLS
 
@@ -17,9 +17,9 @@ Source : `01_AI_IT_TOOLS/thread-ai-it-tools.md`
 
 Source : `02_ARTEON/thread-arteon.md`
 
-- [ ] **P1 · — · (JC)** Relire le brouillon Ghost « WildLens — Edition #6 » (slug `wildlens-edition-6`) puis donner le feu vert
-- [ ] **P2 · — · (Dobby, après relecture)** Pousser les 5 autres éditions en brouillon via `scripts/ghost_import.py`
-- [ ] **P3 · — · (JC)** Choisir le plan Ghost Starter (~9 $/mois) — débloque le passage public (Pre-launch mode, essai 14 j) puis brancher le domaine `wildlens.arteon.be` (CNAME)
+- [ ] **P1 · — · (JC)** Relire le brouillon Ghost « WildLens — Edition #4 » (slug `wildlens-edition-4`) puis donner le feu vert
+- [ ] **P2 · — · (Dobby, après relecture)** Pousser les 3 autres éditions en brouillon via `scripts/ghost_import.py`
+- [ ] **P3 · — · (JC + Forge)** Migrer WildLens vers self-host Ghost sur VPS Hostinger KVM 1 (datacenter UE) : achat VPS, DNS `wildlens` → IP, Mailgun, import contenu
 - [ ] **P4 · — · (JC)** Allouer du temps créatif éditorial — blocage structurel : 8 étapes roadmap non closes
 
 ## 03_WILDNEXUS — INSECTNET

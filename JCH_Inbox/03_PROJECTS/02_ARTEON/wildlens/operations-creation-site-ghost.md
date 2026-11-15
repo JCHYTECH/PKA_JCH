@@ -16,9 +16,9 @@ tags:
 # WildLens — Opérations de création du site Ghost
 
 > Checklist opérationnelle pour **finaliser** le site WildLens sur Ghost.
-> **Mise à jour 2026-11-13 : le compte n'est PAS perdu** — admin `wildlens.ghost.io` accessible
-> (jc.havaux@gmail.com, essai 14 j, 1 post « Coming soon », 0 membre). On finalise le site existant.
-> Domaine final : `wildlens.arteon.be` (custom, dans un second temps via CNAME).
+> **Mise à jour 2026-11-15 : décision self-host Ghost sur VPS Hostinger KVM 1** (abandon Ghost(Pro) 18 $/mois).
+> Le compte Ghost(Pro) actuel (essai 14 j) sert de source d'export ; bascule vers le VPS.
+> Domaine final : `wildlens.arteon.be` (record A vers l'IP du VPS).
 > Références : `thread-arteon.md`, `brand/arteon-architecture-charte.md` §3,
 > `wildlens/ref/architecture-editoriale-v2.md`.
 
@@ -31,7 +31,7 @@ tags:
 
 Deux cibles coexistent dans la doc :
 
-- `wildlens-journal.ghost.io` — sous-domaine Ghost(Pro), plan Starter ~9 $/mois (option A retenue le 12/11).
+- `wildlens-journal.ghost.io` — sous-domaine Ghost(Pro), plan Starter ~18 $/mois (option A retenue le 12/11).
 - `wildlens.arteon.be` — domaine custom, prévu par la charte §3.3.
 
 **Recommandation** : créer d'abord sur le sous-domaine, brancher le domaine custom
@@ -43,7 +43,7 @@ chez le registrar). À confirmer par JC.
 ## Phase 1 — Compte et création (exécuté par JC, pas Dobby)
 
 1. Aller sur `https://ghost.org`, créer un nouveau compte (le précédent est perdu — carte inconnue).
-2. Choisir le plan **Starter** (essai 14 j, ~9 $/mois) — blog + newsletter, suffisant pour WildLens.
+2. Choisir le plan **Starter** (essai 14 j, ~18 $/mois) — blog + newsletter, suffisant pour WildLens.
 3. Créer le site → nommer la publication **WildLens**, URL provisoire `wildlens-journal.ghost.io`.
 4. Régler le statut du site sur **privé** jusqu'à la fin de la mise en place (évite un site vide en ligne).
 
@@ -101,6 +101,16 @@ chez le registrar). À confirmer par JC.
 30. Confirmer la cadence hebdo (samedi) et le rôle du launchd `com.dobby.wildlens-weekly` (déjà réactivé).
 31. Publier une édition de test, vérifier rendu mobile + newsletter d'envoi.
 32. Passer le site en **public**, vérifier les URL canoniques (404 résolu).
+
+## Phase 11 — Multilingue (EN / FR / IT) — décision JC 2026-11-14
+
+33. Base éditoriale **EN** conservée ; traductions **FR** et **IT** de chaque édition (Jade).
+34. Changeur de langue dans le thème (EN · FR · IT) — visible en header.
+35. Détection **géolocalisation IP** : choisir automatiquement la langue par défaut (FR → France/Belgique/Suisse, IT → Italie, EN sinon), avec bascule manuelle prioritaire.
+36. Section **Keywords** en tête de chaque édition (SEO).
+37. URL par langue : `/en/`, `/fr/`, `/it/` ou paramètre `?lang=` — à trancher (slug unique vs duplication).
+
+> Contenu de l'édition #4 validé par JC ; section chasse (④ « Le Constat ») traduite EN ; keywords ajoutés en tête.
 
 ---
 

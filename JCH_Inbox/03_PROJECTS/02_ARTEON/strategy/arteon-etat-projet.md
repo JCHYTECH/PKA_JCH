@@ -127,7 +127,7 @@ Concepts d'**interdépendance** et **non-séparation** intégrés sans étiqueta
 | 9 | Setup WhiteWall | ⏳ |
 | 10 | Intégration WILDLENS ↔ Arteon | ⏳ |
 | 11 | Préparation 10 photos JC (sélection + fiche naturaliste) | ⏳ |
-| 12 | Retravail des éditions WILDLENS | 🔴 Relance en pause avec Ghost ; six fichiers d'édition présents, publication à vérifier |
+| 12 | Retravail des éditions WILDLENS | 🔴 Relance en pause avec Ghost ; quatre éditions présentes, publication à vérifier |
 | 13 | Lancement V1 | ⏳ |
 
 ---

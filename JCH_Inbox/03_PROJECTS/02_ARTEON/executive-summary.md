@@ -53,7 +53,7 @@ Cette chaîne documente un flux de travail ; elle ne signifie pas que la galerie
 |---|---|
 | Roadmap ARTEON, 13 étapes | 4 terminées, 8 en attente, 1 rouge |
 | Domaine, manifeste, slogan, charte | Terminés — étapes 1 à 4 |
-| WildLens | Relance engagée ; six fichiers d'édition présents |
+| WildLens | Relance engagée ; quatre éditions présentes |
 | Ghost | En pause après diagnostic et contact du support |
 | Instagram | Authentification et préparation validées ; aucune publication |
 | Shopify / WhiteWall | À configurer |

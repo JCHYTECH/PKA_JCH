@@ -6,7 +6,7 @@ tags:
   - arteon
   - editorial
 owner: "[[Dobby]]"
-last_updated: 2026-11-05
+last_updated: 2026-11-15
 ---
 # [[WildLens]] — Journal naturaliste de photographie wildlife
 
@@ -95,14 +95,14 @@ wildlens/
 
 ## Éditions
 
-| Date | Fichier |
-|------|---------|
-| 2026-03-28 | [WildLens-2026-03-28.md](editions/WildLens-2026-03-28.md) |
-| 2026-04-18 | [WildLens-2026-04-18.md](editions/WildLens-2026-04-18.md) |
-| 2026-06-20 | [WildLens-2026-06-20.md](editions/WildLens-2026-06-20.md) |
-| 2026-07-02 | [WildLens-2026-07-02.md](editions/WildLens-2026-07-02.md) · [preview HTML](editions/WildLens-2026-07-02-preview.html) |
-| 2026-10-24 | [WildLens-2026-10-24.md](editions/WildLens-2026-10-24.md) |
-| 2026-10-31 | [WildLens-2026-10-31.md](editions/WildLens-2026-10-31.md) |
+| Date | Édition | Fichier |
+|------|---------|---------|
+| 2026-03-28 | #1 | [WildLens-2026-03-28.md](editions/WildLens-2026-03-28.md) |
+| 2026-07-02 | #2 | [WildLens-2026-07-02.md](editions/WildLens-2026-07-02.md) · [preview HTML](editions/WildLens-2026-07-02-preview.html) |
+| 2026-10-24 | #3 | [WildLens-2026-10-24.md](editions/WildLens-2026-10-24.md) |
+| 2026-10-31 | #4 | [WildLens-2026-10-31.md](editions/WildLens-2026-10-31.md) |
+
+*Archivés dans `editions/_archive/` : `WildLens-2026-04-18.md` (transcript brut ChatGPT), `WildLens-2026-06-20.md` (template vide).*
 
 Le statut de rédaction ou de publication ne doit pas être déduit du seul nom de fichier ; voir [thread-arteon.md](../thread-arteon.md).
 
@@ -125,4 +125,4 @@ Les actions courantes sont centralisées dans [thread-arteon.md](../thread-arteo
 
 ---
 
-*Index mis à jour par [[Dobby]] 🦉 le 2026-11-04 ; navigation révisée le 2026-11-05.*
+*Index mis à jour par [[Dobby]] 🦉 le 2026-11-15 ; renumérotation éditions (04-18 et 06-20 archivées).*

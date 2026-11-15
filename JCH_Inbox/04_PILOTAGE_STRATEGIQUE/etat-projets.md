@@ -1,6 +1,6 @@
 # État des projets — One-Pager
 > Tableau de bord unique de tous les projets actifs PKA_JCH.
-> Dernière mise à jour : 2026-11-12 par Dobby 🦉 — RPi HOME (maison/serre) opérationnel et vérifié (power-cycle + Z2M restart) ; dégel WILDNEXUS DEVICE (décision JC) ; clone iMac→M5 (VNC) opérationnel ; RUT240 routeur atelier + failover 4G à planifier.
+> Dernière mise à jour : 2026-11-14 par Dobby 🦉 — ligne Proximus mesurée dégradée (relevé 1 h + speed test : 2 s latence, 10,5 % perte, 6,15 Mbit/s) ; rapport `rapport-box-proximus-2026-11-14.md` créé ; RUT240 atelier + failover 4G à planifier (preuve datée en appui).
 > 
 > **Lecture :** 🔴 = P0 deadline dure, 🟢 = actif autonome, ⚪ = gelé/reporté
 
@@ -10,7 +10,7 @@
 
 | # | Projet | Statut | Dernière action | Prochaine étape | Blocage | Spécialiste(s) |
 |---|--------|--------|-----------------|-----------------|---------|----------------|
-| 1 | **IOT / Vanlife** | 🔴 P0 | MCP HA Lupo read-only testé avec Kimi/DeepSeek ; dashboard AirGuard et première copie Time Machine validés. | Vérifier la copie Time Machine automatique et hors RPi ; revalider le lot P1 puis intégrer WiCAN Pro + RUT240 dans Lupo. **RUT240 atelier (IP fixe + failover 4G vs coupures Proximus) — session dédiée à planifier.** | Quantités et budget d'achat à consolider | Forge, Araignée, Dobby |
+| 1 | **IOT / Vanlife** | 🔴 P0 | MCP HA Lupo read-only testé avec Kimi/DeepSeek ; dashboard AirGuard et première copie Time Machine validés. | Vérifier la copie Time Machine automatique et hors RPi ; revalider le lot P1 puis intégrer WiCAN Pro + RUT240 dans Lupo. **RUT240 atelier (IP fixe + failover 4G vs coupures Proximus) — session à planifier. ⚠️ Ligne Proximus mesurée dégradée le 14/11 (2 s latence, 10,5 % perte, 6,15 Mbit/s) → rapport `rapport-box-proximus-2026-11-14.md`.** | Quantités et budget d'achat à consolider | Forge, Araignée, Dobby |
 
 ---
 

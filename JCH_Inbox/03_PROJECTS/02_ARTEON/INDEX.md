@@ -84,7 +84,7 @@ Autrement dit : charte d'abord, système visuel existant ensuite, production du 
 
 ## Statut
 
-Relance engagée — six fichiers d'édition WildLens présents, du 24/10 au 31/10 ; leur présence ne prouve pas leur publication. Automatisation hebdomadaire réactivée selon le thread courant.
+Relance engagée — quatre éditions WildLens présentes (28/03 → 31/10) ; leur présence ne prouve pas leur publication. Automatisation hebdomadaire réactivée selon le thread courant.
 Instagram est préparé, mais **aucune publication n'est autorisée sans nouvelle demande explicite de JC**.
 Ghost renvoie 404 ; le support a été contacté et ce chantier est **en pause**.
 Les décisions et la prochaine étape sont suivies dans [thread-arteon.md](thread-arteon.md).
