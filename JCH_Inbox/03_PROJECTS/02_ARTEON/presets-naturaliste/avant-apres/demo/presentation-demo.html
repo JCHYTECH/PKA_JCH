@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Présentation avant/après — maquette d'entraînement</title>
+<style>
+  :root{ --ivoire:#F8F5F0; --noir:#0D0B09; --ocre:#C17F3A; --sable:#E8E2DA; --ardoise:#4A5568; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ background:var(--ivoire); color:var(--noir); font-family:'Lora', Georgia, serif; line-height:1.6; padding:0 0 60px; }
+  .wrap{ max-width:960px; margin:0 auto; padding:0 24px; }
+  h1,h2,h3,.label,.tag{ font-family:'Space Grotesk', sans-serif; }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  header{ padding:40px 0 8px; }
+  header h1{ font-size:28px; }
+  header p{ color:var(--ardoise); margin-top:6px; }
+  section{ margin-top:48px; border-top:1px solid var(--sable); padding-top:28px; }
+  section h2{ font-size:20px; margin-bottom:4px; }
+  section .desc{ color:var(--ardoise); font-size:14px; margin-bottom:20px; }
+  .tag{ display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ocre); margin-bottom:10px; }
+  img{ display:block; max-width:100%; height:auto; }
+
+  /* Format 1 — côte à côte */
+  .pair{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .pair .cell .img{ border:1px solid var(--sable); }
+  .pair .cap{ display:flex; justify-content:space-between; align-items:baseline; margin-top:8px; }
+  .pair .cap .side{ font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ardoise); }
+  .pair .cap .side b{ color:var(--ocre); }
+
+  /* Format 2 — split slider */
+  .slider{ position:relative; overflow:hidden; border:1px solid var(--sable); user-select:none; cursor:ew-resize; }
+  .slider img{ width:100%; height:auto; }
+  .slider .before{ position:absolute; inset:0; overflow:hidden; width:50%; }
+  .slider .before img{ position:absolute; top:0; left:0; width:100%; max-width:none; }
+  .slider .handle{ position:absolute; top:0; bottom:0; left:50%; width:2px; background:var(--ocre); transform:translateX(-1px); }
+  .slider .knob{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:34px; height:34px; border-radius:50%; background:var(--ocre); color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-family:'IBM Plex Mono',monospace; }
+  .slider .lbl{ position:absolute; top:10px; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#fff; background:rgba(13,11,9,0.6); padding:3px 8px; }
+  .slider .lbl.avant{ left:10px; }
+  .slider .lbl.apres{ right:10px; }
+
+  /* Format 3 — carte */
+  .card{ display:grid; grid-template-columns:220px 1fr; gap:20px; background:#fff; border:1px solid var(--sable); padding:20px; align-items:start; }
+  .card .mini{ border:1px solid var(--sable); }
+  .card .main .preset{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:18px; }
+  .card .main .raison{ color:var(--ardoise); font-size:14px; margin-top:6px; }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <h1>Présentation avant/après — entraînement</h1>
+  <p>Une seule photo, trois façons de la présenter. L'objectif est de choisir le <b>format</b> (le rendu est ici une approximation, pas le preset exact).</p>
+</header>
+
+<!-- ============ FORMAT 1 ============ -->
+<section class="wrap">
+  <div class="tag">Format 1</div>
+  <h2>Côte à côte — la référence simple</h2>
+  <p class="desc">Deux images pleines largeur, légende « Avant » / « Après » + une phrase de raison naturaliste. Idéal pour l'impression et le PDF.</p>
+  <div class="pair">
+    <div class="cell">
+      <div class="img"><img src="avant.jpg" alt="Avant"></div>
+      <div class="cap"><span class="side"><b>Avant</b> — brut</span></div>
+    </div>
+    <div class="cell">
+      <div class="img"><img src="apres.jpg" alt="Après"></div>
+      <div class="cap"><span class="side"><b>Après</b> — Signature Fin Art Cinématique</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FORMAT 2 ============ -->
+<section class="wrap">
+  <div class="tag">Format 2</div>
+  <h2>Curseur coulissant — le standard web</h2>
+  <p class="desc">Fais glisser le curseur pour balayer d'avant en après. Le plus démonstratif en ligne (landing, Instagram).</p>
+  <div class="slider" id="slider">
+    <img src="apres.jpg" alt="Après" draggable="false">
+    <div class="before" id="before">
+      <img src="avant.jpg" alt="Avant" draggable="false" style="width:960px;">
+    </div>
+    <div class="handle" id="handle"></div>
+    <div class="knob" id="knob">⇄</div>
+    <span class="lbl avant">Avant</span>
+    <span class="lbl apres">Après</span>
+  </div>
+</section>
+
+<!-- ============ FORMAT 3 ============ -->
+<section class="wrap">
+  <div class="tag">Format 3</div>
+  <h2>Carte — vignette avant + grand après + légende</h2>
+  <p class="desc">Le « avant » en petit rappel, le « après » en grand, avec le nom du preset et sa raison naturaliste. Pour une fiche produit.</p>
+  <div class="card">
+    <img class="mini" src="avant.jpg" alt="Avant">
+    <div class="main">
+      <div class="preset">Signature Fin Art Cinématique</div>
+      <div class="raison">Le regard de base : ombres veloutées indigo, hautes lumières dorées, grain argentique fin. Le point de départ, universel.</div>
+      <div class="raison mono" style="margin-top:10px;font-size:12px;color:var(--ocre);">Pour tout sujet · s'applique en un clic</div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const slider = document.getElementById('slider');
+  const before = document.getElementById('before');
+  const handle = document.getElementById('handle');
+  const knob = document.getElementById('knob');
+  let dragging = false;
+  function setPos(x){
+    const r = slider.getBoundingClientRect();
+    let p = (x - r.left) / r.width;
+    p = Math.max(0.05, Math.min(0.95, p));
+    before.style.width = (p*100) + '%';
+    handle.style.left = (p*100) + '%';
+    knob.style.left = (p*100) + '%';
+  }
+  slider.addEventListener('mousedown', e => { dragging = true; setPos(e.clientX); });
+  window.addEventListener('mousemove', e => { if(dragging) setPos(e.clientX); });
+  window.addEventListener('mouseup', () => dragging = false);
+  slider.addEventListener('touchstart', e => { dragging = true; setPos(e.touches[0].clientX); }, {passive:true});
+  slider.addEventListener('touchmove', e => { if(dragging) setPos(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', () => dragging = false);
+</script>
+
+</body>
+</html>

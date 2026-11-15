@@ -1,7 +1,7 @@
 # Thread — PHOTO_AI_JURY
 
 > Living document — mis à jour automatiquement par Dobby 🦉 en fin de session.
-> **Dernière mise à jour** : 2026-11-06 — base canonique et socle de retour JCH v1 validés ; test technique MCP Lightroom réussi et baseline restaurée
+> **Dernière mise à jour** : 2026-11-15 — allowlist MCP étendue (ToneCurve/TSL/grading), constat SDK (courbe de points non appliquée), slider proportionnel bâti sur courbe paramétrique
 > **Statut** : 🟢 actif
 
 ---

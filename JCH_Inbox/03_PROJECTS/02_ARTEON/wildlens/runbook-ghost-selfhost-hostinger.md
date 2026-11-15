@@ -17,6 +17,19 @@ lang: fr
 
 ---
 
+## État d'avancement (maj 15/11)
+
+- [x] **Étape 0** — VPS acheté : IP `2.25.8.208`, 86,97 €/an TTC
+- [x] **Étape 1** — SSH durci (nouveau root password)
+- [x] **Étape 3 (partiel)** — Ghost installé côté serveur (base MySQL `ghost_prod` + user `ghost` créés)
+- [ ] **Étape 2** — DNS A `wildlens` → `2.25.8.208` (registrar arteon.be) — **non fait**
+- [ ] **Étape 3 (SSL)** — `ghost setup ssl` — bloqué tant que le DNS ne résout pas
+- [ ] **Étape 4** — Mailgun (compte + DNS TXT/SPF/DKIM)
+- [ ] **Étape 5** — Migration contenu Ghost(Pro) → VPS
+- [ ] **Étapes 6-7** — Backups + monitoring
+
+---
+
 ## Rôles
 
 - **JC** : achat VPS (carte perso), DNS chez le registrar d'arteon.be, création compte Mailgun + vérification domaine.

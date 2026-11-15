@@ -1,7 +1,7 @@
 # TTD — Vue consolidée (tous projets)
 
 > **Fichier dérivé** — généré à chaque `/save` depuis les seuls blocs `TTD — Pending` des thread files. Ne pas éditer à la main hors `/save` : la source de vérité reste les thread files + `etat-projets.md`.
-> `last_updated: 2026-11-15 · by: deepseek-v4-pro` — WildLens self-host Ghost Hostinger + renumérotation éditions
+> `last_updated: 2026-11-15 · by: deepseek-v4-pro` — presets Naturaliste 36 + slider proportionnel MCP + étude L'Instant Lu + VPS Hostinger créé
 
 ## 01_AI_IT_TOOLS
 
@@ -19,8 +19,11 @@ Source : `02_ARTEON/thread-arteon.md`
 
 - [ ] **P1 · — · (JC)** Relire le brouillon Ghost « WildLens — Edition #4 » (slug `wildlens-edition-4`) puis donner le feu vert
 - [ ] **P2 · — · (Dobby, après relecture)** Pousser les 3 autres éditions en brouillon via `scripts/ghost_import.py`
-- [ ] **P3 · — · (JC + Forge)** Migrer WildLens vers self-host Ghost sur VPS Hostinger KVM 1 (datacenter UE) : achat VPS, DNS `wildlens` → IP, Mailgun, import contenu
+- [ ] **P3 · — · (JC + Forge)** Finir la migration WildLens : DNS A `wildlens` → `2.25.8.208`, `ghost setup ssl`, Mailgun, import contenu (VPS créé + Ghost installé 15/11)
 - [ ] **P4 · — · (JC)** Allouer du temps créatif éditorial — blocage structurel : 8 étapes roadmap non closes
+- [ ] **P5 · — · (Forge + Jade, après feu vert)** Traduire les éditions en FR + IT ; builder le changeur de langue Ghost (EN/FR/IT) avec détection géoloc IP
+- [ ] **P6 · — · (Dobby)** Presets brique 3 : masques IA (sujet/œil/plumage/arrière-plan) ; brique 4 : endpoint `/recommend` (EXIF niveau 1 d'abord)
+- [ ] **P7 · — · (JC)** Nettoyer le doublon de preset LRC (37 importés au lieu de 36) + galerie avant/après définitive (12 paires)
 
 ## 03_WILDNEXUS — INSECTNET
 

@@ -27,7 +27,7 @@ lang: fr
 | **OpenAI** | LLM | Pay-per-use | N/A | N/A | https://platform.openai.com/settings/organization/billing | ✅ |
 | **Gemini / Google AI Studio** | LLM + TTS + Veo | Pay-per-use | N/A | N/A | https://aistudio.google.com | ✅ |
 | **NVIDIA** | API | Pay-per-use | N/A | N/A | ? | ✅ |
-| **Ghost** (wildlens.arteon.be) | Blog / newsletter | Self-host sur VPS Hostinger KVM 1 (1 an) | 86,97 €/an TTC (≈7,25 €/mois) | 15/11/2027 | https://www.hostinger.com/vps/ghost-hosting | ✅ VPS payé 15/11 — installation en cours |
+| **Ghost** (wildlens.arteon.be) | Blog / newsletter | Self-host sur VPS Hostinger KVM 1 (1 an) | 86,97 €/an TTC (≈7,25 €/mois) | 15/11/2027 | https://www.hostinger.com/vps/ghost-hosting | ✅ VPS payé + Ghost installé 15/11 — reste DNS/SSL/Mailgun/migration |
 | **Adobe** (Lightroom/Photoshop) | Photo | Photography ? | ~10–12 $/mois | ? | https://account.adobe.com/plans | ✅ (à confirmer) |
 | **Microsoft 365** (jc.havaux@jchytech.be) | Mail pro | ? | ? | ? | https://admin.microsoft.com | ✅ (à confirmer) |
 | **Canva** | Design / decks | Free ou Pro | 0 ou ~12 $/mois | ? | https://www.canva.com/settings/billing | 🔄 en test |

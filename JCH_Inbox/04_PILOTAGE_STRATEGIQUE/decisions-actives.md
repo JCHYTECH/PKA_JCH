@@ -111,4 +111,4 @@ last_updated: 2026-11-15
 | 2026-11-07 | TV connectée dans Lupo (suite analyse transcript vie privée TV) | **Pas de TV dans Lupo** — local-first. Si écran nécessaire : box HDMI + TV déconnectée d'Internet |
 | 2026-11-07 | Recherche scriptée | **DeepSeek natif** (`bin/pka-search`, $0.75/1k) en premier ; Tavily conservé pour l'interactif TUI. Revert : remettre Tavily en premier dans AGENTS.md |
 | 2026-11-07 | Modèle des sous-agents | **v4-flash** (via RÈGLE DÉLÉGATION AGENTS.md). Revert : retirer la clause `model="deepseek-v4-flash"`. Config backup : `~/.deepseek/config.toml.bak-20261107-dobby` |
-| 2026-11-15 | Hébergement WildLens | **Self-host Ghost sur VPS Hostinger KVM 1** (datacenter UE, Ubuntu 24.04) — abandon Ghost(Pro) 18 $/mois. VPS = brique d'infra réutilisable PKA. |
+| 2026-11-15 | Hébergement WildLens | **Self-host Ghost sur VPS Hostinger KVM 1** (datacenter UE, Ubuntu 24.04) — abandon Ghost(Pro) 18 $/mois. VPS = brique d'infra réutilisable PKA. ✅ **Exécuté 15/11** : VPS créé (IP 2.25.8.208), SSH durci, Ghost installé. Reste : DNS/SSL/Mailgun/migration. |

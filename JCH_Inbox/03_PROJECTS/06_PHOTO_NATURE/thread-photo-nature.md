@@ -1,7 +1,7 @@
 # Thread — PHOTO_NATURE
 
 > Living document — mis à jour automatiquement par Dobby 🦉 en fin de session.
-> **Dernière mise à jour** : 2026-11-05 — correctif `headline` confirmé dans le code et pointeur presets corrigé
+> **Dernière mise à jour** : 2026-11-15 — presets Naturaliste 36 générés (02_ARTEON) + slider proportionnel MCP ; sources presets-argus conservées comme référence
 > **Statut** : 🟢 actif
 
 ---
