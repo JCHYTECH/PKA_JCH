@@ -1,0 +1,137 @@
+00:00:00 - 00:01:04
+This video is brought to you by Squarespace. If you need a website or domain, check out squarespace.com. Hey everyone and welcome to a new video. Are you looking for new tools in processing your photos to help take them to the next level? Like from this to this and this to this? By far the most powerful tool that has helped take Lightroom Classic to the next level is the use of masks. And with each new software update, the increasing power of these masks. In fact, I'm using Photoshop less and less as these are getting so good.
+
+00:00:32 - 00:01:33
+In this video, I'll show you my top tips for taking your use of masks to the next level with my top masking tips and tricks. My name is Simone Dontram and I'm a professional nature and wildlife photographer living in Eastern Canada. I make weekly videos giving you photo tips or taking you behind the scenes for nature photography. Subscribe if you want to see more. [Music] Okay, a quick intro about what we're talking about here. A mask is a tool in Lightroom that allows you to select only
+
+00:01:04 - 00:02:04
+parts of the image such that when you apply an effect like changing exposure or dnoising or changing the white balance, it only applies to the selected area. A reminder that hitting O on the keyboard will show your mask in red by default. Also, masks in Lightroom can be created using different selections like gradients, selecting your subject or background, or even an object, or be made to select certain brightnesses or colors. Being able to creatively use these masks and control them to do what
+
+00:01:34 - 00:02:44
+you want is what this video will teach you. Let's get into it. My first tip is quite a basic one, and it's to change the opacity of your mask overlay to help you see what's going on in your photo. Uh, here's a photo I took of a lion in Zambia recently. This guy was a beauty. Check this out. Uh, he's a really good-looking fellow. But let's say I want to make some changes to my subject here. And I want to create a mask on the subject. I create masks. I hit masks, subject, and of course, this will create
+
+00:02:09 - 00:03:15
+a mask on my subject. And I can use it to increase the contrast, change the exposure. And as I mentioned in my intro, hitting O on the keyboard will reveal your mask. But there's a problem here. If I make a mask here on my subject, I see here that it's imperfectly chosen the background or back leg uh here on my subject. And I'd like to clean that up in my mask. But there's a problem here. The mask overlay in red is so bright and saturated that I can't really see what's going on
+
+00:02:42 - 00:03:53
+underneath it. I'd like to remove the overexposure, but I can't tell what is back leg and what is background. So, if you click right here and click color overlay settings, you can reduce the opacity. And the advantage of reducing the opacity is you can kind of better see what's going on. But, as you can see here, I can still clearly see where my mask is. Now that I've reduced the opacity, I can click subtract from mask. Click a brush here and I can brush out the area that I didn't want selected.
+
+00:03:18 - 00:04:16
+Just a quick note that by reducing the opacity of your mask and understanding by hitting O, you can turn it on and off is a great way of better understanding what parts of your mask is doing a good job and not so good job so that you can refine the mask later. My next tip is to show you a handy use of the object mask. You might usually think of using the object mask to select a barn or a fence post or some object in your subject, but it has another use. Let's say here on these giraffe, they're crossing a river
+
+00:03:46 - 00:05:02
+in Zambia recently. And if I click the mask tool, click on subject, I can create a mask around my subjects. But there is a problem in that it has selected the background as my earlier example did between these giraffes. Now, I can use a subtract brush here, and I can try to brush out the overspray, but that's kind of a lot of work. Here's a better way. Click subtract and hit select object. And all you need to do in these spaces is just draw a box around the overspray area and it will remove them. Voila. So, a
+
+00:04:24 - 00:05:17
+quick way to find gaps or areas in your mask that need removal. It doesn't need to be, per se, an object. It just needs to be a shape that looks different from your subject. The next thing I'd like to show you is how to fine-tune and adjust radial gradients. They're really handy, and the beauty is that you can change their shape, their opacity, and also their feathering. And it's really handy to be able to do that. So, let's look at my photo here of Peggy's Cove Lighthouse
+
+00:04:51 - 00:05:59
+here in Nova Scotia. I was able to catch a beautiful sunst star here. And if I show you by shooting at f18 and by shooting at a very small aperture, the aperture blades cause reflections which cause these sun stars. So if you get a fine point and you can hide that fine point behind an object, a tree, a lighthouse, a rock, a person, get it half hidden, a bright point source of light half hidden with a very small aperture and you will get these sun stars. So, but what I'd like to do here, let me take a quick crack at this image,
+
+00:05:25 - 00:06:33
+which is very dark. It was the darkest of a three exposure uh attempt at uh bracketing my exposures, but I actually like the dark one the most as it was. So, I'm just going to raise the exposure a little bit, lower the highlights a bit. But what I can do here, I like to really magnify this effect of the sunstar. So, I'm going to create a radial gradient. So, you click mask radial gradient. Then you click on the screen and you drag in one direction and it will help create this circle here. Now I can move this
+
+00:05:59 - 00:07:01
+around by clicking on the center pin and moving it around. I can also feather it by clicking the red dot here on the inner circle and the center area gets the full effect. The area next to it gets a graduated feathered effect and then outside the circle gets no effect. And you can see here in red where that happens. So I'm going to uh lower the exposure quite a bit here just to show you the effect of what's going on here. Of course now as well I'm going to raise the effect again too much of course but
+
+00:06:31 - 00:07:25
+just to show you what's going on. I can also change the shape of the radial gradient by clicking on one of these pins on the sides. Now if you want to change the size but you don't want to change the shape. You hit shift at the same time and it will retain the same shape and size. But you can make it more oblong if you want. And if once you've done this, see this outer pin right here? You can click on this to move it around. You can also go off to the sides here and you'll see that it makes two
+
+00:06:57 - 00:08:01
+little arrows and you can click and drag and change the shape of this as well. Now what I would want to do on this particular situation here is if I place this over the sunstar, double click on the pen to change the exposure. If I go to the clarity slider, see what happens when I raise the clarity slider, I kind of make that effect pop a little bit more. And then what you can do, of course, is you can play with the feathering here to see how much or how little of the effect you would like to do. So, that's a way of playing around
+
+00:07:29 - 00:08:26
+with these radial gradients, which are really handy for adding special effects in areas that are mostly round or oblong in shape. That way, you can adjust it to fine-tune the feathering and fine-tune the shape and orientation. The next tool that I use a lot in masking and that I'd like to show you how to adjust is the linear gradients. So, here I'm going to click on linear gradient. And what I like to do sometimes in my photos, like this one, this is a loon flipping a crab. I was lucky to get it just mid
+
+00:07:58 - 00:08:52
+flip between the two mandibles. Makes for a great looking photo. It needs some more adjustment maybe by for example uh raising the shadows to get a bit more detail on the subject and so on. But one of my challenges here is the water. It looks just uniform and flat and doesn't have a lot of gradients or anything different in it. It just looks that flat light blue. So what I'm going to do here is create a linear gradient. And what you do after you've clicked linear gradient, you click on the screen and
+
+00:08:25 - 00:09:32
+drag in one direction. And that stretches the gradient. You'll see here. Now, if I lower the exposure, and that's what I like to do at the very bottom of my frame. Going to lower the exposure by clicking on this top pen. You can raise and lower the gradient. You can see here by the overlay that's in red. You can also clip the very top pen here and spin it. That way you can change the orientation. You can also change that by clicking on this middle line along the sides here and you can
+
+00:08:58 - 00:09:54
+twist and tilt your gradient as well. If you click on the center box, it will move the whole gradient up uniformly without changing the feathering. So the area underneath here gets 100% of your effect. The area in the center here gets a feathered effect. the area up top here gets a more feathering to the point of when it hits the top there's no effect left. So I will move this around here a bit and just lower the exposure a bit. And something that I do for some photos like this I might do what I call my
+
+00:09:26 - 00:10:28
+sandwich technique is create another linear gradient from the top and lower that as well. And that just gives a little bit of effect of making a uniform background a little bit more dynamic. So that helps you choose how to adjust these linear gradients. And of course, as I mentioned, you can move them around sideways as well if that's what suit the photo the best. And now, thanks to the sponsor of this video, Squarespace for making it possible. If you haven't heard of them, they're an all-in-one website
+
+00:09:57 - 00:10:52
+platform that helps you create your website from scratch, just like I did. You don't need any coding experience or even to be techsavvy. They have lots of templates to choose from to make it easy to get your own website up and running in no time. Now, even though they have great templates like the ones for photography that I might use, for example, the place to go now is to use their new design intelligence feature using both Squarespace's experience and cuttingedge AI helping you to tailor
+
+00:10:25 - 00:11:22
+your own website to your own specific needs. It can even help you write text to describe your business or help you with search engine optimization. It looks really professional to have online galleries and your own domain. And a website is also a great way to monetize your work by setting up an online store using Squarespace payments, which you can set up with just a few clicks. You can even do buy now and pay later with options like Afterpay. Go to squarespace.com to sign up for a free trial. And when you're ready to launch,
+
+00:10:53 - 00:11:44
+go to squarespace.com/simon for 10% off your first purchase of a website or domain. The next thing I want to show you is how to copy masks because you may end up with a photo that you have the same effect that you want to replicate over and over again. I'll show you how to do that. Here in this photo of a lighthouse, there was actually a sun setting on the right hand side, but it had just gone in over the horizon. So, there's no direct light, but there was a glow coming from that part of the
+
+00:11:19 - 00:12:18
+sky, but it doesn't really show up very well here in the rocks. And I think if it did, it would add a really nice effect and to show it in the way I really saw it with my own eye. So, the areas that were less well illuminated were darker and more brightly illuminated were brighter. And you could change this a bit by adding some contrast might do that, but I'm going to do this using some masks. So, I'm going to create a radial gradient. And if I take one and put one here, for example,
+
+00:11:48 - 00:13:01
+this area right here was darker because it had less direct light going on it for example. Uh, if I hit on the center pen here, right click, duplicate radial gradient, it'll make me a separate one. And for example, this area here that's right behind this lump of rock here. It'll do the same thing. And I can create another one right here. Right click, duplicate. Another one right here. Again, duplicate another one. This area here that has less direct light. Now, what you need to be cautious of though is that when you
+
+00:12:25 - 00:13:25
+do the duplication here, I'm going to exaggerate this on purpose. Whatever you make for an effect, it's the same effect on everyone. So, you only use this technique where you're going to apply the same effect in the same strength on everyone. So, I'm going to darken these right here. They're getting less direct light because the sun has set, but it should be a little bit darker. Now, the lighter areas, I'm going to do the same thing. a radial gradient. And kind of to my eye in the scene, an area like this
+
+00:12:55 - 00:14:01
+was getting a little bit more exposure here. And I'm going to duplicate this and do the same effect here. But I'm going to change the size. At least you can change the size and the shape even though the effect level can't be changed. Duplicate this one. Do the same thing here. Duplicate this one. And do the same thing over here. But I am going to change the size. And I'm going to add a bit of this effect up here to this general area. And duplicate. Going to go down here. Do the same thing. And one
+
+00:13:28 - 00:14:29
+more right here to this area here. And maybe, as you can see, I can change the orientation here by moving my mouse off to the edge on a corner here. And I'm going to duplicate this as well. Do this here as well. So now I'm going to adjust that to show a little bit more exposure. So here is the before and after. I just got a little bit more pop out of those shapes in the rocks. And of course you can play with this. You can add more exposure and less exposure and play with it a bit. But it gives you an idea of
+
+00:13:59 - 00:14:55
+what can be done in those areas where you do need to or want to apply the same effect over and over. Now, one of the most powerful tools in masks is using intersecting masks, where you two masks come together and only apply your effect, the areas where both masks are meeting. So, here's a great example. I've got a great blue heron. He's pining. He's upside down. It's on purpose, but I like the effect. There's a really bright effect here on the feathers, on the edges, and I like to
+
+00:14:27 - 00:15:37
+tame that a bit to get a little bit more detail out of it. If I lower the exposure, I can show you there is some detail there. It's not blown out. But let's say for example I take a brush here and try to lower the exposure with a brush. Let's see what's going to happen there. I can do this but look at the overspray over the background. That doesn't work. What you can do here is I can create for example a subject mask and then I do rightclick intersect mask with and I'll intersect it with a brush.
+
+00:15:02 - 00:16:13
+And now when I brush here, it only makes a mask in those areas where the brush and the mask on my subject intersect. And that way I can lower the highlights or lower the exposure. And look at all the beautiful detail I can get there. Now on the subject here to show you how the mask is impacting the photo, you see this little eye right here. Click on the little eye and it will disable the mask. So here you can see what I've done. I brought a lot of more detail out of that bright area in the feathers by applying
+
+00:15:37 - 00:16:49
+this technique. A second technique you can use for refining your brushes. For example, here if I create a brush, I can also use the automask feature. See here there's a tick box called automask. And that way when you brush it will try to find the edges for you. Now, it won't always be perfect. I find it does create a few challenges in that if you see right here, the little bright area is so bright that it didn't look like the same brightness area for the mass selection tool. So, it it skipped it. And on the
+
+00:16:13 - 00:17:15
+other edge here, sometimes it can make the feathering a little bit too abrupt. So, that's why I kind of like the other technique a little bit more. I find it's provides a little bit better fall off on the edges of tones and colors than the auto mask feature. But this is an option that you should be aware of. It does come in handy from time to time. The next trick I want to show you is what I call the delicate highlights trick. Uh sometimes you have some highlights that are really standing out from some darker
+
+00:16:44 - 00:17:42
+areas and you want to select them to be able to play with the effects, make them brighter, make them darker. but it's really hard to select them from the rest of the photo. So, here's a singing redwing blackbird. I caught a beautiful breath with some backlighting, no wind, it was cold. And in case you think this isn't a real photo, here's the video footage of the same scene. But right here, selecting these highlights in the breath, for example, is actually kind of difficult. I can take a brush and I can
+
+00:17:13 - 00:18:29
+try to, you know, brush on the highlights. And then if I try any effect though like lightening them or darkening things, you can see here this is very creates a very sloppy effect here because I haven't really selected the highlights very well. So here's a trick on how you might do that. Create a radial brush. And here I'll create a radial brush over the area of the breath that I want selected. I do like to feather my brushes just to make sure that the effect isn't too harsh at the edges of a mask. Even though there's
+
+00:17:51 - 00:18:50
+nothing on the edges that I need to feather, per se, I don't want to make my mask like this and make it go from 100% to 0%. I do like some feathering. I don't want to try to apply this effect here. Of course, this will be very obvious what's going on. So, here's the trick. Right click, intersect mask with luminance range. And now I click one of these bright areas in the breath. Right here on the right is the feathering tool. Very important in this particular case. And as you can
+
+00:18:19 - 00:19:22
+see, I can use this to feather how much of the breath is included. Right here is the feathering amount. And this box here is basically the 100% area that that covers it all. And then I've got this little feathering effect that can play with here as well. Of course, I'm going to zoom in. And the trick is here to play with the feathering that it catches as much as possible of the breath but none of the background. Maybe something like that. And now I can take the highlight slider here for example and
+
+00:18:51 - 00:19:56
+move it to the right. Maybe the white slider. See, I can make this brighter or darker. And it's just impacting the breath. I can even change the white balance of the breath and make it a little bit more golden for the golden light that was around. As you can see now, I've done this and there's no artifacts around there as well. And for example, here it's a bit noisy. I can even do some noise reduction here that wouldn't apply to all the background as well. That way you can make very
+
+00:19:23 - 00:20:31
+convincing changes to very fine areas of highlight against dark backgrounds uh with this tool. In my last tip, I showed you how to feather the effects so that the falloff of where effects start and finish is not too harsh. And this is something I use a lot in sky masks. So, there's a wonderful tool here to create sky masks in Lightroom Classic. But, as you can see, it selects 100% of the sky and then kind of has a a sharp edge at it here. But what happens is anything I do, as you can see, there's kind of a
+
+00:19:57 - 00:21:03
+harsh falloff here at the edge. For example, let's say I want to darken the sky, but darkening the sky on the horizon here is is not looking very good or very attractive. So, what I do is I feather the effects of this by having another filter here that I intersect with. So, intersect mask with a linear gradient. And I apply a linear gradient from the top to the bottom. And what I do there is I make the top part of the sky fully impacted by my mask. So 100% of my effect will apply there. But down
+
+00:20:30 - 00:21:33
+at the bottom, I feather off the effect that way. So let's say I lower the exposure. I crank up the contrast a bit. Change the white balance a bit. These effects that I'm applying are being applied less at the bottom on the horizon of my photo. Because usually at that area, you don't want a sharp falloff between your full effects and no effects area. You want that to feather off on the horizon. It looks much more natural to do it that way. For the next tip, I'd like to show you a masking
+
+00:21:02 - 00:22:02
+trick for vignettes. Now, something I quite often do in my photos, for example, you go all the way down here, there's the vignette, and you can apply a little bit of a vignette around your photo. It usually looks quite good to darken the edges, keep the center bright. draws the viewer's eye into the center. And by applying the vignette tool, it applies a dark frame. I'll exaggerate here on purpose equally around all of the image. But not every image is best served by doing so. So instead, here's what I like to do
+
+00:21:32 - 00:22:36
+sometimes. I'll use the masking tool. I'll create a radial gradient, which you can apply here in the center of the image if you want. And here on the right, see this invert? I'll invert the mask so that the effect applies on the outside of my radial gradient. And now, as you can see, I can make a vignette, which I can adjust the feathering for, and I can adjust the brightness of, and I can adjust how far it is off the edge. But here's the trick. Some photos I find, are not best served by having a
+
+00:22:04 - 00:23:00
+vignette that applies equally around the whole photo. In this particular photo, there's kind of a brighter area on the upper left around the waterfall where it's more open to the sky where I'm kind of in a darker area now and the leaves of the trees are brighter because there are different species. So, what I want to do with this vignette is, as you can see, I can move it around, but I want a brighter area in the upper leftand corner than I do for the rest of the image. So, here I'm going to play with
+
+00:22:32 - 00:23:36
+my vignette, but move it more to the upper leftand corner. And that way I'm applying more of the vignette around the right and the bottom and less on the upper left. And that way I find it makes a more attractive vignette for this particular photo than the one using the vignette tool that applies it equally to everything. By the way, if this peak into masks in Lightroom Classic interested you and you shoot wildlife, I have a whole course with 10 hours of video lessons on processing your wildlife photos in Lightroom Classic. I
+
+00:23:04 - 00:24:08
+even include photos for you to process along raw photos of mine. Link below. And a reminder that I've now got my own signature edition jacket. For photographers, I've partnered with German company Hawkland and field tested it in Western Canada photographing grizzlies in weather that changed every hour. That's why a jacket with three separate layers, which you can mix and match, is great to have. an inner fleece, a middle puff jacket, an outer wind and rain shell, a built-in photo bag, and a pouch for a lens cloth means
+
+00:23:36 - 00:24:25
+it's great for photographers. We're shipping in October, but offering 50, a free beanie, and free shipping on pre-orders. Check out the link below. I hope you can use these tips to take your photo processing to the next level, so you can take pride in your own unique and amazing photos. I know you can do it. [Music] You'll be just fine.

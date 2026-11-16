@@ -84,7 +84,7 @@ Vendre d'abord ce qui est **déjà produit et vrai** (le look signature + le jou
 
 `03_PROJECTS/06_PHOTO_NATURE/tech/presets-argus/` contient **11 fichiers XMP**, tous **du même look** : le `dc:title` de chaque fichier est « … — Fin Art Cinématique Wildlife ». Ce ne sont pas 11 presets distincts, mais **1 signature démontrée sur 11 photos réelles** (chaque XMP est calibré par image).
 
-Contenu type d'un XMP (lu) : WB custom ~5400-5800 K, teinte +4/5 · exposition +0.15 · contraste +25 · hautes lumières -35/-40 · ombres +35/+40 · courbe S cinématique · TSL (orange sat +18, bleu sat -15) · color grading ombres indigo 220° + hautes lumières chaudes 38° · clarté +22 · vibrance +8/15 · saturation -8 · grain 12 · vignette -20.
+Contenu type d'un XMP (lu) : WB custom ~5400-5800 K, teinte +4/5 · exposition +0.15 · contraste +25 · hautes lumières -35/-40 · ombres +35/+40 · courbe S cinématique · TSL (orange sat +18, bleu sat -15) · color grading ombres bleu acier 220° + hautes lumières chaudes 38° · clarté +22 · vibrance +8/15 · saturation -8 · grain 12 · vignette -20.
 
 ### Ce qu'on vend (honnête, pas 11 faux presets)
 

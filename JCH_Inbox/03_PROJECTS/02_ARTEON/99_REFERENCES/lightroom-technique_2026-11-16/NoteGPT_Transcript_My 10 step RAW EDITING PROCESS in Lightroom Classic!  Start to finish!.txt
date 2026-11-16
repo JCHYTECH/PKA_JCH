@@ -1,0 +1,200 @@
+00:00:00 - 00:00:59
+This video is brought to you by Squarespace. If you need a website or domain, check out squarespace.com. Hey everybody, and welcome to a new video. Do you like photographing wildlife, but just don't have an efficient workflow to process your photos in a way that's both impactful on the look of your photos, but not overly complicated and tedious? In this video, I'm going to show you my wildlife photo processing workflow for Lightroom Classic. Much of this will also apply to Adobe Camera Raw as the
+
+00:00:29 - 00:01:26
+controls are very similar. If you stay with me till the end, I'll share with you a tip which I guarantee is the best tip you've ever gotten about processing photos regardless what software you use. Guaranteed. My name is Simon Dontram and I'm a professional nature and wildlife photographer living in Eastern Canada. I make weekly videos giving you photo tips or taking you behind the scenes for nature photography. Subscribe if you want to see more. Okay, let's get started. A few quick
+
+00:01:04 - 00:02:00
+pre-processing tips. Calibrating your monitor using the calibration routines in either Windows or on your Mac is a good idea to get the contrast and colors right to start with. If you want to get more advanced, you can use a calibration device like this Spider, which will help you calibrate your monitor for you. Secondly, and this is a common mistake, don't set your monitor at 100% brightness. It will fool you into thinking your photos are very bright, but in effect they're still kind of
+
+00:01:32 - 00:02:34
+dark, and when you post it online, or even worse, send it to the printer, it will look super dark. So, set your monitor to around 80 or 85% brightness. Okay, first we'll import our photos from our memory card. Plug in your card. Hit file, import photos, and video. Make sure you have the right location chosen for where you want to store your photos. For build previews, choose embedded and sidecar to also import the little JPEGs your camera made to display on your back LCD as it can't display the RAWs. If
+
+00:02:03 - 00:03:03
+you've already got them, use them. Now, Lightroom will use them, too. Now, to help you callull your photos with photo auto advance selected, now all you need to do is hit X to reject P to pick. XXXP XXP. When you're done, photo, delete rejected photos. Okay, let's have a look at some of my short- eared owl photos I photographed late one afternoon. It was getting kind of dark, but it was a bit snowy, which makes great conditions. Let's go through these and see which one I would pick for processing. I like
+
+00:02:33 - 00:03:37
+these are coming right at me. Flying birds coming right at you. Looks really good. But there are some beautiful purpley thorny bushes in the distance here. It's getting closer and closer. I'm shooting through the window of my vehicle actually and right here it's starting to get really pretty with a beautiful uh purple thorn background and some snow on it. Uh here the shorty owl is going to make a little bit of a turn. We can see here coming right at me. Ah, I like that one right there. If we keep
+
+00:03:05 - 00:04:11
+going we'll see that it got so close with my 600 millimeter lens with a 1.4 teleconverter. So 800 and something millimeters. Eventually, it flew just past my vehicle and I lost it out of the frame. But this is the one I like right here. So, let's go through my workflow. We hit develop. And the first thing I like to do is to crop my photos to something that looks very nice. In this particular case, I think something like this squareish looks good. I don't want to move it too far this way and have
+
+00:03:38 - 00:04:34
+that wing, for example, too close to the edge. So, I want to move it this way a bit. If I do it this way, there's too much open space above that's not needed. So, I like something squarish like this. That looks very nice and fairly balanced. So, let's see what else I would do in processing this photo. The next thing I'll look at is the overall levels of brightness and shadows to see whether or not uh they need some adjustment. Right off the bat, this photo is quite bright in terms of a
+
+00:04:06 - 00:05:03
+little bit overexposed. It was late afternoon and getting quite dark. uh to the eye the scene would have looked more like this. But I tend to overexpose my photos a little bit. If I can do it without blowing out the highlights as getting a bit more light into the sensor will improve image quality. But it is a bit bright. So I think I will darken it a little bit. That's what will look good. Now we have played quite close to the edge here in terms of the brightness of these whites for example here. But if
+
+00:04:34 - 00:05:28
+I darken it, you'll see that there is information there. So, it's not overexposed. It's just very brightly exposed, which tends to be good for image quality. And by the way, this was ISO 16,000. It was getting quite dark. And I'm shooting at 1250th of a second because I need a decent amount of shutter speed to freeze shorty owls. They have very kind of erratic movements with their long wings, giving quick beats, and jumping around quite a bit when they beat their wings. So, you need
+
+00:05:01 - 00:05:57
+a little bit of shutter speed. So, I would rather have enough shutter speed to freeze the action with a bit of noise than try to keep my ISO too low by having a shutter speed that's lower, but maybe not enough to freeze the action. I'd rather have a noisy image than a blurry one. So, we're going to lower the exposure here a little bit. Now, let's look at uh the highlights here. Maybe tame them a little bit. Sometimes the shadows up a little bit. A quick tip, if you do have something that's quite
+
+00:05:29 - 00:06:35
+bright, like the edge here, you can use Lightroom's masking features, for example, I could take a brush here and brush over the exposed area. Now, if I try to lower the highlights here, as you can see, I can bring that down a little bit. If you want to fine-tune that mask a little bit, because I've I've oversprayed the edges here a little bit, you can hit O, by the way, on your mask to cycle showing where the mask is covering. I could do rightclick, intersect mask with subject. And here it
+
+00:06:02 - 00:06:56
+would limit the mask a little bit more to the subject and maybe reduce some of that overspray. So here I can lower the highlights and the whites a little bit. And as you can see, I can bring in some of that detail again from the edge of those wings, for example, that were quite bright. You could do the same thing on the other side here. Look, interestingly, some wet snow here, I think, bouncing off the wing of my shortear owl. What else do we want to do here? The best technique, I think, for processing wildlife photos is to treat
+
+00:06:29 - 00:07:26
+the subject and the background separately rather than trying global adjustments that affect the overall image all at the same time. So, let's start off with our subject. We're going to create a subject mask. And with the subject mask, let's look at what we can do here. Is it a bit bright? Do we turn down the exposure a little bit? And what's great about Lightroom is it's non-destructive. So, you can play with the levels. You can play with the sliders all you want. You can always
+
+00:06:57 - 00:07:55
+undo anything that you do here. So, let's turn the highlights down just a wee bit, but we don't want to turn those whites into grays. It really won't look good that way. Uh, let's raise the shadows maybe just a little bit, but not too much. We want to keep a bit of contrast on your subject. When subjects are shot in full sun, often the highlights are too bright and the shadows are too dark and you lower the highlights and raise the shadows. Sometimes in the shade, your subjects are actually too flat and you maybe want
+
+00:07:26 - 00:08:27
+to even raise the highlights and uh lower the shadows. Now, in this particular case, the bird was a bit overexposed. So, raising the highlights is probably not a good strategy. But, uh, we can play with the shadows here a little bit, and maybe a bit of negative shadows to add a little bit more contrast will look good. And on your subject, adding a bit of clarity here to make it pop looks good, but it does make it a bit brighter. So, I'm going to add a bit of clarity, but to undo a bit of the extra brightness, I will take these
+
+00:07:57 - 00:08:59
+highlights and bring them down just a little bit. So, that looks good for our subject. Now, something that I also uh like to do with my wildlife subjects, especially with the when the eyes are a big part of the photo here, uh I like to have a look to see whether or not they're too noisy and sometimes lose a bit of that glossiness that looks quite natural and quite good. So, what you can do here is take a bit of a brush and you can actually paint the eyes here. And after painting the eyes, you can do a
+
+00:08:28 - 00:09:30
+few things. You can try playing with the exposure a bit. Do they need to get a bit brighter if they're a bit dark? Be careful though. Don't make a darkeyed junko have really bright eyes. They're supposed to be dark. But some birds like puffins, for example, uh the eyes are quite dark but look good. Raised a little bit. And again, a bit of noise reduction here to make the eyes you see here a little bit more glossy. And something else you can do is take a second brush. Let's find brush here. And
+
+00:08:59 - 00:09:52
+by the way, if you want to work on something like eyes and want a bit more control, you can hit control and slide with your cursor uh and create a little box and it will zoom in on the eyes. Again, they're noisy here because I shot this at ISO 16,000 and I'm really really zoomed up here. But looking back with a bit of noise reduction later, we won't be able to see much of this. I'd like to thank the sponsor of this video, Squarespace. If you haven't heard of them, they're an all-in-one website
+
+00:09:25 - 00:10:23
+platform that helps you create your website from scratch, just like I did. You don't need any coding experience or even to be techsavvy. They have lots of templates to choose from to make it easy to get your own website up and running in no time. And even though they have great templates like ones for photography, for example, the place to go now is to use their new design intelligence feature using both Squarespace's experience and cuttingedge AI, helping you to tailor your own website to your own specific needs. It
+
+00:09:54 - 00:10:46
+can even help you write text to describe your business or products and help you with search engine optimization. It looks really professional to have online galleries and your own domain. And a website is also a great way to monetize your work by setting up an online store using Squarespace payments, which you can set up with just a few clicks. You can even do buy now and pay later with options like Afterpay. Go to squarespace.com to sign up for a free trial. And when you're ready to launch,
+
+00:10:20 - 00:11:22
+go to squarespace.com/simon for 10% off your first purchase of a website or domain. So here I'm going to create an extra brush. And sometimes with some negative exposure, I like to darken the pupils here a little bit. Uh, and it'll just make the balance of the eye around the iris really pop a little bit more. So, play with this a little bit. And I'll go back to the former one here. And we'll look at the noise reduction again. So, you can see when I move it to the right, I kind of clean up
+
+00:10:51 - 00:11:46
+those eyes. They're not as noisy and a bit glossier. So again, we're going to move way back here and to see whether or not that was overdone. That doesn't look too bad. So we've looked at our subject, added a bit of clarity, clean up the eyes a little bit, and lowered the highlights a bit to uh make sure it's not too bright. Now, let's look at the background again, which I like to do separately. So, let's do a select background mask. Now, here we've got a few things to play with here.
+
+00:11:19 - 00:12:19
+Interestingly enough, we've got the snow and we've got the beautiful purple from the thorn bushes that were in the background. And we've got this interesting gradient with the uh top being darker than the bottom because in the bottom uh there weren't any thorns anymore. It was more grasses and out of focus. They look kind of nice. So, let's look at something here. We've got some snow in the air. Some of it is bright little snowflakes and some of it are kind of these bokeh circles created here
+
+00:11:48 - 00:12:41
+that look uh quite nice. So if we lower the exposure a bit, you can see you can make those snowflakes and so on pop a bit more. A bit of contrast will make them pop a bit more as well. Contrast makes bright things bright and dark things dark. And clarity as well, but you have to be careful with clarity. It makes things a bit crunchy, especially if it's a bit noisy. So, we're going to be cautious there as well. A little trick. Sometimes I'm doing some things here on my subject and the background.
+
+00:12:15 - 00:13:06
+And you might be thinking, how does he know to do that? Well, sometimes I don't. And you need to experiment a bit. But I'll show you a trick. It's the contrast slider trick. If you go to the overall image here and just take the contrast slider and crank it all the way to the right, it will reveal for you a few things. Number one, if your photo has problems with it, it'll usually make the problems worse. And if your photo has some structure to it, it'll reveal the structure a bit so that you can give
+
+00:12:40 - 00:13:35
+you a better idea. Oh, this looks really pretty. I should make this prettier. This looks really bad. I should try to find a way to manage that problem. So, by cranking up the contrast slider, you exaggerate everything and it'll help you identify the best things and the worst things in your image to give you a sense of what things you should work on. So, let's go back to the background here. Another thing you can do as well with your subject in the background is play with the temperature slider a little
+
+00:13:08 - 00:14:02
+bit. Does it look better cold? Does it look better warm? You can play around both in the overall image, but also if you're using the masks, I can play with the temperature, for example, of the background. Does it look better warm? Does it look better cold? In the winter time, things tend to look a little bit better on the cool side, but in this particular case, that purple is pretty. You can even play with the tint slider. See, the tint slider can make things greener or more purple. If you move it
+
+00:13:35 - 00:14:31
+to the right, it'll actually accentuate a bit of that purple color in the background. So, let's look at the overall white balance of this image without going into the masks and looking at the whole image. I like to look at the white balance. There's a few different ways to set the white balance. If you shot it in RAW, you can adjust it without penalty. Um, you can see WB here for white balance. You can use as shot. You can use auto. You can use daylight, you can choose cloudy. So you can choose
+
+00:14:03 - 00:15:06
+the conditions to help you choose the white balance that looks good to your eye. So eyeballing it is one way. And the best way to eyeball white balance, by the way, is this trick. Take the vibrance slider and the saturation slider, crank it all the way up to 100%. It looks ugly, but then take the temperature slider and move it until you get a bounce between blue and orange. And when you're in the middle of that balance, you probably have your white balance pretty close to accurate. Then after you've manually set the white
+
+00:14:34 - 00:15:31
+balance to your eyes, uh, double click vibrance and saturation and bring those sliders back down to zero to get you back to where you started. Another way to set your white balance as well is to using the dropper tool. Click on the dropper tool right here and click on a white part of the image and it will help you set white balance for your photo. In this particular case, it looks a little bit warm that way. I'm going to tone this down just a little bit. After I've set the white balance of the image, I
+
+00:15:03 - 00:15:55
+like to look at the white balance of my subject versus the background and kind of look at them differently. So, here I've got a background mask and I like to play with the white balance a bit to see what looks attractive of comparing the subject white balance and the background white balance. And here I'll look at a subject mask here. And I'll look at the white balance. Does it look better? A bit warmer, a bit colder. If you get too cool on this, the whites look a bit blue, which really doesn't look good.
+
+00:15:28 - 00:16:25
+So, a little bit warmer on the subject, I think, looks good as well. Something a reminder as well, after I've played with the white balance, I like to kind of re-evaluate some of the highlights and the darks because playing with the white balance will sometimes throw off how good your darks and your lights look. And I like to re-evaluate whether or not my white levels and my shadow levels are accurate. By the way, a trick to help you adjust your whites and your darks to make sure you're not clipping like
+
+00:15:57 - 00:16:58
+blowing out on the white side or making your darks pure black is to hit the alt key. That's option on a Mac while you're moving the whites slider. And see here, it will start to show me where I'm clipping. Like on that wing, for example, on the edge of that wing, if I move uh the whites too far to the right, and that's hitting Alt on a uh Windows PC and option on a Mac. So, I can move it until it clips and then pull it back a little bit. Same thing with the blacks. I can go to the left until it
+
+00:16:28 - 00:17:26
+starts clipping around the eyes and then pull it back a bit. That way, you're close to making your whites very white and your blacks very black, but you're not clipping them. The next thing I like to do on my wildlife photos is to see whether or not there's any gradients or shading or bright areas that can be accentuated to make the photo look prettier. In this particular case, I really like this issue of the dark background at the top of the image that's purple transitioning to a more
+
+00:16:56 - 00:18:07
+beige yellowish bottom that's a little bit brighter. So, let's look to see how we might embellish that a little bit. We can do this with masks. I can select a background mask. And a great feature in Lightroom is intersecting masks. So, I rightclick intersect mask with a linear gradient. And now if I pull a linear gradient down from the top, see how it sits behind my subject. And now what I can do is I can darken that background at the top. I can even move the tint slider to the right and
+
+00:17:32 - 00:18:30
+make it a little bit more purple. And I'll slide this down a little bit. And see how it's not affecting my subject. It's behind the subject. If I hit O, you'll see where it lies. And it's behind my subject. And I'm going to make the top of the image a bit darker. Maybe add a bit more contrast to make that snow pop a little bit. And then from the bottom of the image, I'm going to do the opposite. So I'm going to pick a linear gradient from the bottom. I'm going to
+
+00:18:00 - 00:19:02
+do right click intersect mask with background. So it's behind the wings of my subject. And now I'm going to brighten the bottom of the image. See here? So now I've exaggerated the difference in tone and color from the top and the bottom of the background. And by the way, when you want to check your progress on your processing, hit Y on the keyboard. And right here, you'll see what we've done to date, and you can judge whether or not it needs a little bit more work or not. Now, late in the
+
+00:18:32 - 00:19:29
+process is when I like to look at saturation. You can do it in any part of your workflow, but I like to do it late after I've made the adjustments because if you do the saturation early, once you start playing with contrast and clarity and lights and darks, it will actually change the saturation of your image, meaning you'll have to do it again at the end or play with it more at the end. So, I tend to do it once or a few times, but later in my process, I like to use vibrance rather than saturation. And
+
+00:19:00 - 00:20:07
+here's why. Vibrance is different from saturation in that saturation will improve the saturation or the vividness of all the colors equally. Where vibrance is a softer tool that will actually play catchup by taking the colors that are the least saturated and moving them up more than the more saturated colors. And what this does, it helps you not oversaturate things. For example, there's lots of yellows and oranges in this photo. If I take the saturation slider and move it to the right, you'll see that everything gets
+
+00:19:34 - 00:20:33
+very yellow and orange very quickly. Whereas, if I take the vibrance slider and move it to the right by quite a bit, those oranges and yellows are just not getting overblown. It's taking the catch-up colors that need a bit more work, like purple for example, and moving that up more. I'm going to play with the vibrance slider here. And it was kind of dull. It does need some vibrance here in this particular case because it was late afternoon, gray, overcast, snowing, there wasn't a lot of
+
+00:20:04 - 00:21:04
+light. So, I'm going to move this to the right here a little bit and until I get comfortable plus 60 or so in this particular image. I wouldn't go to 60 usually in an image that's well lit because that's probably too much. But in this particular case, we're playing a bit of catchup and that can look okay like that. Now, I like to do a final look over and see whether or not some of the uh levels need to get changed. For example, the exposure level. Does the image look better bright or dark? I
+
+00:20:34 - 00:21:33
+actually like it on the dark side here because the contrast between the dark background and the bright shorter dial look good. So, I can go actually lower exposure here. Now, in terms of highlight, shadows, whites, and blacks, I'm going to look at them a little bit. A little tip for you in the way that I do it. I use highlights and whites a little bit carefully in that you got to be careful to not clip your uh whites. And I actually find highlights better than whites for adjusting fine-tuning
+
+00:21:03 - 00:21:53
+the whites because the whites are more heavy-handed and it's easier to blow things out. Whereas the highlights is a little bit softer. If you look on the histogram up to the upper right, if I click on whites, you'll see it's the furthest white part of the histogram that gets changed because you can see by this little gray box that shows up. whereas the highlights is next to the brightest white. So highlights is a little bit less heavy-handed. Same thing I like to use shadows better than blacks
+
+00:21:28 - 00:22:35
+because you see blacks here. It's the most left hand part of the histogram and it's adjusting the blackest blacks or the darkest blacks where shadows is a little bit less heavy-handed. So, I tend to use highlights and shadows a bit more to adjust the light levels after I've gotten the basic exposure right because it's a little bit less heavy-handed. And by the way, if you like the way I'm editing my photo here, I just launched a new course on editing wildlife photos using Lightroom Classic. It's got 10
+
+00:22:01 - 00:22:56
+hours of content in 29 modules. I actually added an extra module recently. So, it's 30 modules and you can learn all of my best tips and techniques on using masks and using color grading and using different sharpening and noise reduction algorithms to get your photos the best that they can be. If you want your photos to go from this to this and this to this, have a look at the link in the show notes below where you can go find out more about my course, including watching the whole first module, which
+
+00:22:29 - 00:23:27
+will give you a complete overview of the whole course and its contents. Hope to see you there. The $100 off launch price will not be available long, so act now. Now, the last thing I like to do is sharpening and noise reduction. If you go down here to the detail panel, there's the sharpening slider here, but there's a very important add-on to the sharpening slider, which is important for managing the noise later on. It's the masking slider right here. And the way the masking slider works is you hit
+
+00:22:58 - 00:23:54
+alt on your Windows keyboard or option on a Mac. And when you're moving the masking slider, it creates a mask. And what it does, it tends to separate your subject from the background. And by moving the masking slider, the way the sharpening works now is anything in white gets sharpened and anything in black does not get sharpened. And the reason this is critical is it avoids you sharpening the noise in the background. If you look at the noisy background here, this was shot at ISO 16,000 on a
+
+00:23:26 - 00:24:34
+full-frame Canon R5. If I move, let's say, the sharpening slider all the way to the right, and I move the masking slider all the way to the left, you'll see here I'm I'm sharpening the noise in the background. But if I move the masking slider this way, I'm taking some of the sharpening away from the background. So, basically, I'm going to back up here again, hit alt, move the masking slider until the sharpening is applying mostly to my subject, the owl and the snow, and then
+
+00:24:00 - 00:25:00
+move the sharpening slider accordingly. While I'm adjusting the sharpening, what I like to do is zoom in on the head of my subject and where I can see the background at the same time. And I adjust the sharpening until I get to what I feel is a reasonable balance of having my subject sharper, but without introducing too much noise in the background by sharpening the background noise. And then with the noise reduction here, we've got two choices in Lightroom. You can use the manual slider
+
+00:24:30 - 00:25:21
+here, which you can just add a little bit of noise reduction. Be careful though, if you go too far to the right, the background will get clean, clean, clean, but you've made your subject go muddy. So, obviously this is a balance here that you like to add just a little bit to take the noise out of the background. And here you can still see the noise, but when I back up to a full-frame view, you can't see the noise anymore. So, the trick with noise is don't over zoom and worry about what
+
+00:24:56 - 00:25:56
+your noise looks like when you're really zoomed in close cuz it really doesn't matter. No one is going to peek at your image uh zoomed in this much. They're going to look you're going to post it on your website or Instagram or Facebook and it's going to look like it does. So again, we can use luminance here or we can take luminance all the way down and we can take the D noiseise which is a more modern AI based dnoising algorithm that's more sophisticated than the traditional Dnoising slider which just
+
+00:25:26 - 00:26:30
+kind of applies everything equally to the foreground and the background where D noiseis is more sophisticated. It'll analyze your photo, look at the background, look at the subject, and determine where does more noise reduction need to be applied. And here you play with the slider a little bit and adjust it to taste again. Now, see here, if I left it to the uh default setting, the image has gone way too soft in my opinion. I'm going to move this to the left a bit to reduce the impact. And
+
+00:25:57 - 00:26:59
+you have to give it a second to show you what it's doing. I'm going to move it even a little bit more to the left. I want to retain the detail in my subject. And even a little bit more left. Uh where I can see a little bit of grain in the background, but my subject here is looking really good. Now, using the D noiseise tick box here has done something to my image. I've used artificial intelligence or AI to help me dn noiseise my image which can render it ineligible for something like a photo
+
+00:26:29 - 00:27:39
+contest for example where AI is prohibited in many wildlife photo contests and Lightroom has just added in the last update a great little feature. If you look over here on the right, see this little yellow tab? It shows you the AI status and it shows that the masking that we've done here, for example, and the D noiseis that we've used have added a little bit of an AI flag and wildlife photo contest will run your photo sometimes through AI detection software which will detect AI and make your photo
+
+00:27:03 - 00:28:09
+ineligible. So when you're using masking for example that we did use here in this uh photo and we're using something like AI based dnoising algorithms or AI based sharpening algorithms may make your photo ineligible for photo contest. So in this particular cases you may want to rather than picking a masking mechanism uh you might want to manually spray the subject or the background with a brush for example which may not trigger the same thing. So just be cautious in using these tools uh when applying for photo
+
+00:27:36 - 00:28:40
+contests. So now we have dnoised our image. We've sharpened it. Again, when you're looking this close, uh sometimes you see all the imperfections, but the reality is the photo will be shown like this most of the time. At the end, I do like to add a little bit of a vignette on the image just because and you can feather it a little bit. I just find it gets the eye of the viewer into the center of the image a bit more and helps your viewer see your subject the way you intended a bit better. Okay, I'm ready
+
+00:28:09 - 00:29:06
+to export, but I'm not going to do it quite yet because I promised you a bonus tip and it's really an important one. Right now, before you export, you need to do something first. You need to take 30 minutes or an hour and do nothing. You need to walk away from your computer and come back and revisit your image in 30 minutes. Why? Because often you will go overboard doing things in your processing, either the way you've process the light, how dark it is, how light it is, and the white balance, and
+
+00:28:37 - 00:29:33
+you will not know you're doing it while you're processing. So, go do something for 30 minutes and then come back and reook at your image right before exporting it. I'm going to do that right now. Okay, I'm back. Let's reook at my image. Uh, what do I like or not like about my image? I think it's a little bit on the warm side. So, I'm going to take the temperature slider, going to move it a little bit to the left, uh, which tends to desaturate it a little bit. So, I'm
+
+00:29:13 - 00:30:17
+going to add a little bit more vibrance and a little bit less warmth in the temperature slider. just a wee bit. And let's look at it again. And that looks pretty good. I've darkened the image, which was overexposed. I've brought out the background a bit more, especially the gradient from dark to light and from purple to orange and yellow. I've got the eyes popping a little bit more and the subject popping a bit more. I've tamed some of the whites on the edges of the wings. And I've got the snow popping
+
+00:29:45 - 00:30:45
+a little bit more because I made the background and the overall image darker. Now it's time to export our photo. Now Lightroom is non-destructive, meaning if you load a raw photo into it. We've made all the adjustments. The original is still there, but in your Lightroom catalog, Lightroom will remember what adjustments you made to it. But to get a new image, we need to export it, which means take the raw photo, add the adjustments we made, and spit out a brand new photo, leaving the original
+
+00:30:14 - 00:31:32
+RAW in your uh memory. So, we do this by hitting file, export. And now in here, what you do, you choose the folder where you want to store your photos. I'm going to put it in a folder called best bird photos. Then you can give your uh photo a custom name. SEO, which is not search engine optimization, but shorteared owl. JPEG is fine for most uses uh on the web, on Lightroom, Instagram, on your website. That's fine. You can limit the file size if you want. Sometimes for social media, I'll limit the file size to 5,000
+
+00:30:53 - 00:32:06
+kilobytes. RRGB is fine. You can use Adobe RGB, for example, if you're sending to a print shop for a little bit more quality, but sRGB is fine for the web. For resize to fit, I use long edge. And then I use 248 pixels on Facebook and 1350 pixels on Instagram. Those are the relative maximum sizes and pixels that you can load where the those algorithms of those platforms will not try to resize your image which can really screw up your sharpness. So try to use pixels on the long edge for Facebook and 1350 on Instagram.
+
+00:31:30 - 00:32:32
+Resolution here does not matter for the web. resolution is for printing only and most print shops actually don't even pay attention to uh the setting here. You can put one and most print shops will be able to uh get the size right for you. If you're printing on your own printer, you might want to use a higher one like 240 or 300. Now for sharpening, even though we did sharpen our image in processing, when you resize an image, often the sharpening needs to get redone or tweaked a bit because the sharpening
+
+00:32:01 - 00:33:16
+is relative to the size in the image. So output sharpening is important and you can sharpen for a print like matte paper, glossy paper or for screen. So let's say for the web and standard is fine. And here you can add a watermark. I put a watermark myself. If I put my name uh simodontal.com at a fairly obvious place, maybe here I'll put it high up in the darker areas of the photo and I'll use white. Or I could, for example, use black and move it to the bottom of my image. But right here, I like it better to have
+
+00:32:39 - 00:33:47
+it in white at the top of my image, which I click here. You can adjust the location of it. I like to have it fairly prominent. And I'll play with the opacity until you can clearly read it. And hit save. Give it a new name. And here I hit export. And voila, there is my shore owl photographed in front of some beautiful purple thorns in the snow. I hope you enjoyed me walking you through my workflow for wildlife photos, and I hope you can use these tips the next time you go out to come home with your own unique
+
+00:33:13 - 00:33:32
+and amazing photos. I know you can do it. [Music]

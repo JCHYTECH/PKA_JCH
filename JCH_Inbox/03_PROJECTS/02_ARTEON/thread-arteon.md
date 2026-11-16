@@ -36,6 +36,9 @@ Photographie naturaliste éditoriale — marque ARTEON + service WildLens + futu
 
 | Date | Décision | Contexte |
 |------|----------|----------|
+| 2026-11-16 | **Différenciateur repositionné sur 3 piliers complets** : le grading (roues ColorGrade) était droppé par le SDK Lightroom — récupéré via les clés legacy `SplitToning*` (substitution dans `looks.mjs`). Courbe paramétrique + grading + TSL désormais tous vérifiés proportionnels en prod. | Proposition 1 + isolation catalogue + confirmation visuelle des roues |
+| 2026-11-16 | **Partie C (Amount natif) : la « supériorité sur le Amount » est falsifiée** — le Amount scale la saturation du grading, la TSL, le grain et le base (mesuré ×0,5/×2). Différenciateur recadré sur la courbe paramétrique scalable + l'invariant documenté (pas sur le grading). | `measure-amount.mjs` + read-back `SplitToning*` |
+| 2026-11-16 | **P0+P1 presets appliqués** : WB/expo découplées des 36 XMP, 3ᵉ roue grading (midtones) + Luminance + Blending/Balance par look, contrat de look `{forme/ancre/amplitude}` documenté ; brique 3 (masques IA) designée → Forge | 7 transcripts Lightroom analysés + scripts `strip_wb_expo_xmp.py` / `add_midtone_grading_xmp.py` |
 | 2026-11-15 | **L'Instant Lu recadré** : NO-GO « lancer tel quel » — retirer badge, prix ≥4-5 €, valider l'espèce, « conseil éditorial » ; presets + WildLens prioritaires | Conseil 6 stances parallèles |
 | 2026-11-15 | **Presets Naturaliste 36 + curseur proportionnel** = différenciateur technique (le Amount natif ne scale pas la courbe ni le grading — nous si) ; aucun XMP tiers (licence) ; premium = masques IA | Étude marché + cartographie fonctionnelle |
 | 2026-11-14 | **WildLens multilingue** : EN (base) + FR + IT ; changeur de langue + détection géoloc IP (langue par défaut) ; section **Keywords** en tête de chaque édition | Relecture JC de l'édition #4 : section chasse traduite EN ; keywords ajoutés en tête |
@@ -58,7 +61,7 @@ Photographie naturaliste éditoriale — marque ARTEON + service WildLens + futu
 - [ ] **P3 · — · (JC + Forge)** Finir la migration WildLens : DNS A `wildlens` → `2.25.8.208`, `ghost setup ssl`, Mailgun, import contenu (VPS créé + Ghost installé 15/11)
 - [ ] **P4 · — · (JC)** Allouer du temps créatif éditorial — blocage structurel : 8 étapes roadmap non closes
 - [ ] **P5 · — · (Forge + Jade, après feu vert)** Traduire les éditions en FR + IT ; builder le changeur de langue Ghost (EN/FR/IT) avec détection géoloc IP pour la langue par défaut
-- [ ] **P6 · — · (Dobby)** Presets brique 3 : masques IA (sujet/œil/plumage/arrière-plan) ; brique 4 : endpoint `/recommend` (EXIF niveau 1 d'abord)
+- [ ] **P6 · — · (Forge)** Presets brique 3 : masques IA (sujet/œil/plumage/arrière-plan) — design `strategy/brique-3-masques-ia-design.md`, tâche `task_a60c239c` ; brique 4 : endpoint `/recommend` (EXIF niveau 1 d'abord, Dobby)
 - [ ] **P7 · — · (JC)** Nettoyer le doublon de preset LRC (37 importés au lieu de 36) + galerie avant/après définitive (12 paires)
 
 ## TTD — Done (session 2026-11-05)

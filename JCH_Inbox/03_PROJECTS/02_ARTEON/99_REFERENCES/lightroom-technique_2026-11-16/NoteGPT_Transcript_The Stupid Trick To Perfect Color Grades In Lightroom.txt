@@ -1,0 +1,92 @@
+00:00:00 - 00:00:43
+Okay, so there's this really stupid trick I've been using and it's completely changed how I think about color grading in Lightroom. All you have to remember is the three Y line try rule and you'll never guess your color grading again. What does that mean? Well, let me show you. Now, obviously in Lightroom you're probably familiar with the color grading tool. We can go and add a color to either the midtones, the shadows, or the highlights. But the problem, at least for me, is I always
+
+00:00:22 - 00:01:11
+will move these around and I'm kind of just aimlessly guessing. I might find something that's okay and I look at it after a while and I'm like, "Ah, I actually hate that." And then I often will just reset everything and pretend this tool doesn't exist. But when it kind of clicked for me that these color wheels are the exact same as this color wheel here and there is the same points as we have across all these color harmonies. If you can just remember the shape that you're putting onto your
+
+00:00:46 - 00:01:34
+color grading wheels in Lightroom, you can find colors that will work great for your photo. So, that is why I just try to remember four different shapes. The shape of three, the shape of a line, the shape of a Y, and the shape of a triangle. If we can remember that, we can color grade our photos better in Lightroom. So, back in Lightroom, let's go and apply this idea. I'm going to try the line shape for this one cuz I think it would work well to kind of push this towards a more sunset color. But when
+
+00:01:10 - 00:01:56
+you're working through these color wheels, you want to start with the exposure range that has the most dominance in your scene. So, in this photo I feel the highlights are the most dominant, so I'm going to start within the highlights color wheel. Then the last adjustment you'll make will always be the midtones. So, you always start with the dominant exposure range and then just finish with the midtones. That's all you need to know for the order. But thinking of the line rule, that's going to create monochromatic
+
+00:01:33 - 00:02:23
+colors, I don't need to remember that rule. I can just click on this and know I'm trying to move these colors in a straight line together that all work as one. Now, the way these color grading wheels work, if you're not familiar, the closer you are to the center of the wheel, the more desaturated the color, the further to the edge, the more saturated that color will be. Now, an easy shortcut is holding the shift key and that's going to lock your pointer onto the saturation. So, it's going to
+
+00:01:58 - 00:02:47
+stay in the same color, the same hue, but now you can change the saturation freely. So, I'll find something maybe like here that works fine. But, if you want to change up the hue, but keep the saturation, just hold command or control. You get this little circle that goes around, and now we can move this to another area where we get the same intensity of the color, the same saturation, but we have a new hue for it instead. So, with that picked, I'm going to go to the shadows next because again,
+
+00:02:22 - 00:03:07
+the midtones are always going to be last for us. I'll point this towards a similar direction as the highlights. Hold the shift key so I can lock in that hue, but play with the saturation. Maybe go right to here, for example. Now, we'll go one more to the midtones, and we can finish this off. Exact same color as before. Hold the shift key to find the saturation we like. After you find the hue, move this up and down to find the saturation that works for your photo. And I think that looks pretty
+
+00:02:45 - 00:03:34
+cool to me there. Now, I'll show you a couple more examples of this in action with the different color harmonies as well. But, in some cases, when you apply these colors on, they might look like a filter is being applied. Like there's too washed out of a color going over your photo. And if that's the case, we can call upon the luminance sliders that are below all of the individual exposure ranges. This will just change the brightness of the color that we've selected for that particular exposure
+
+00:03:09 - 00:03:57
+range. So, let's say the shadows I want to be a little bit darker, let's say, because it kind of washes them out. I'll go to that luminance slider, drag that down a bit, and now we're adding that darkness to the color of the shadows, but we're keeping the same hue. The final step we can do is use the blending and balance adjustments. The blending adjustment will just take all the colors that you're applying across your three different color wheels and change how blended the transition is between each
+
+00:03:32 - 00:04:20
+of them. Now, when we have a line shape like we do here, imagining all of these points were on a single line on the same color wheel, there's not going to be a huge difference with the blending because we're basically just changing the saturation based on the positioning of these different points. But, when we have different colors, it can help with blending things a bit differently. Again, it is how quickly the colors transition from the shadow color to the highlights color to the mid-tones color,
+
+00:03:56 - 00:04:47
+etc. Whether we want it really, really harsh or we want it really, really blended. It's totally up to you there. Then finally, the balance adjustment. This is just going to change the bias of the colors more towards either the highlight color or more towards the shadows color. Again, this will be more obvious when we have an example with different colors being applied here. So, looking at that before and then after, super easy to figure out this adjustment. But before I was thinking about this rule, I would aimlessly move
+
+00:04:22 - 00:05:06
+these little circles around and not quite find the look that I was going for. When we think about the shapes, it's so, so much easier. So again, in this case, I was using the line shape. Just imagine that all three of these points were on one single color wheel, what shape are those points making? In this case, a line. That is a color harmony that we don't have to remember the name of. We just have to remember the shape of it. Now, really quickly before we move on, if you want a simple checklist that you can use beside you
+
+00:04:44 - 00:05:26
+while you're editing, I've put together a free resource in the description below that covers everything we talked about here, some helpful shortcuts, and a bunch of examples showing these different concepts across the same photo, so you can see how it can transform your color grading without just guessing. Again, it's in the description below, totally free. Let's move on. In this photo, it's another image that I've already done my base adjustments to and a little bit of the
+
+00:05:05 - 00:05:51
+HSL. So, I'm now ready to do the final step of my color grading adjustment, which is using the color grading tool. This time I'm going to go for the tri shape, the triangle. So, we're not talking about the Illuminati, I think that's what that sign is. We're talking about triangles on our little points here. So again, we're going to start with the exposure range that is the most dominant in the photo. In this case, I believe the highlights are the most dominant, so that's what I'm going to
+
+00:05:28 - 00:06:13
+start with. You can choose colors that compete with the existing colors in your photo, but you will have an easier time with this when you move your colors in a direction that your photo already has some kind of feeling of to begin with. So, in this case, the highlights are kind of naturally green and yellow, so I'm going to try to work in that direction first, and then the other colors that I'm going to pull into the photo, that will be the job of the shadows and the midtones. So, just
+
+00:05:51 - 00:06:37
+looking at the highlights to begin, I want to find a color that kind of works with those natural green-yellow tones that already exist there. I like this hue here. I hold the shift key to now change the saturation, just locked in on that exact hue. Going to leave it pretty desaturated in this case, maybe right around there. Next, I'll go to the shadows, cuz again, the midtones will always be our last adjustment, and I'm creating a triangle shape. So, that means I'm going to have one color that's
+
+00:06:14 - 00:07:04
+going to go out this way and another that's going to go out the opposite way. Now, since the midtones is just going to do the balancing of the other two adjustments, it's worthwhile to see both options for the color of the shape you're trying to go with for the color harmony. Since I could go either towards the reds in the shadows, or I could go towards kind of the teal cyans, I find that the shadows look better within the pinky reds. So, I'm going to go with that. Hold the shift key, bring that up
+
+00:06:39 - 00:07:26
+a bit to add in that red color. Now, finally, to balance this all out, I'll complete the other side of the triangle, because we have the top of the triangle, the right edge of the triangle. So, this is going to be the left edge of that triangle. So, I know I'm going to be in this color range. Hold the shift key to change the saturation. I'll find something that works for the photo. After you've applied your adjustments, just go back and forth between all of them, and sometimes you'll really crank
+
+00:07:03 - 00:07:46
+up the saturation in some, sometimes you'll pull back the saturation. But, this is the fun of it. You can play around with it. And if you don't like it, try a different shape for your color harmony. After you've done all your adjustments, and you feel like it's still a little bit off in one way or another, try to describe the one color that you feel is overwhelming in the image, and that will guide you towards which of these three you want to edit. So, I feel that this photo right now is
+
+00:07:24 - 00:08:13
+too greeny-yellow. I want it to be more warm rather than that green color. So, the highlights is the color issue that I'm having. I'll click on that point, hold command or control, so I'm locking in the saturation, but now I can change the hue while keeping an equal saturation. Going to move this over towards the yellows a little bit more, like that. Hold the shift key, play around at the saturation again, and then go back through my remaining points to balance out the colors. Now, as I
+
+00:07:49 - 00:08:30
+mentioned before, if anything feels like a filter is being applied over the photo, like there's low contrast and a color is being kind of slapped on, that's what it looks like to you, we can use any of those luminance sliders along the bottom. For the shadows in this case, I'll just bring back a bit more punch in the shadows, doesn't just have that washed out color quite the same. Then I'll go to the blending and balance, move one way or the other, see what we can create. Sometimes it'll do
+
+00:08:09 - 00:08:59
+something interesting, sometimes not. There is no exact science to this part, but it can help to blend the result. So, looking at that before and then after, we have a new color grade that adds to the photo in my opinion. We could go in any direction you want, and that's the fun of this. You can try different shapes. This was the triangle shape. Previously, we did the line shape for our color harmony, and again, that shape is based on the position of these points on our color wheel. We have the top of
+
+00:08:34 - 00:09:22
+the triangle, the bottom right of the triangle, and the bottom left of the triangle. It doesn't have to be a perfect triangle, just has to be that general shape. So, let's go through one more example. Now, again, starting with the exposure range that is most dominant in the photo, but this photo I feel has a slight variation of this rule, because the highlights are obviously the most dominant exposure range in this photo, but they also have a very obvious and dominant color, which is that blue. So,
+
+00:08:58 - 00:09:52
+because that is already set up as like the dominant thing in the photo, I want to begin by balancing from the opposite of it. Now, I'm going for the Y shape, as I mentioned before, so I want to start by anchoring my colors to the opposite of whatever the dominant color I see in the photo is. So, I see that that blue is super dominant, so I'm going to go the opposite direction right away with the shadows in this case, because again, the highlights already have a very clear color to them that
+
+00:09:25 - 00:10:17
+already dominates the photo. So, going to the shadows, I'll go and find that kind of opposite color to the teal of the water. Maybe that's like this orangey red. I'll hold the shift key to play around with the saturation of that. Next, I'll go to the highlights and I'm going for that Y shape. So, since I already have the first color of the shadows over here, that means I'm looking at either the teals or the darker blues to create that split complementary color. So, I'll move it
+
+00:09:51 - 00:10:44
+over one way and then maybe the other, see what works better for the photo. I think I'll go down here, hold the shift key, and we can play around with that intensity as well. Finally, going to the midtones, we have one opposite side to fill in the Y of this split complementary shape. Again, the bottom of the Y, the one side, and then the opposite side of the of the split of that Y. Sometimes though, you'll find that the colors that you apply or just no matter what you do, it's a little bit
+
+00:10:17 - 00:11:08
+too saturated and overdone. So, you can just barely add a color at all or just skip an exposure range if needed, but I'm happy with how that's looking right there. So, turning this on and off, we add a totally different vibe to the photo, but it's enhancing what kind of already exists in the image anchored from the shadows to help accent the color of the water and things like that. Again, we can play around with the luminance of all of these color exposure ranges to blend things in a little bit
+
+00:10:43 - 00:11:29
+differently for whatever suits your taste. And finally, we can play around with blending again, see what works for the photo. Looking at that before and then after, a nice enhancement to the photo in my opinion. I think it takes this in a nice direction following the Y shape on our color wheels. So, I know that this idea is can be a little bit abstract at first with the shapes, but just imagine that you have three points that you can make up, what shape are you going to make with those points on your
+
+00:11:06 - 00:11:55
+color wheel? They can either be in a set of three, they can either be in a Y with two colors on one side, one color on the opposite side over here. You can have a line where all of the colors line up at one angle on one side of your color wheel, or you can have a triangle where you have one color, two color, three color representing each of your exposure ranges. Now, there are of course other color harmonies out there, but these are the ones that I have found most helpful for photo editing, so that's why I call
+
+00:11:30 - 00:12:16
+it the three Y line tri rule so I can remember those four core shapes that I like to use all the time. I'll leave a free resource in the description below with a simple PDF that will help you understand the shapes, how to create them inside of Lightroom, and some of the shortcuts that we talked about to help make the most of your color grading adjustments. Now, obviously, this is just one piece of color grading in your photography, and Photoshop has some extra color grading tools that I love
+
+00:11:53 - 00:12:20
+using that are not available inside of Lightroom, and I explain all of them in this video right here if you want to learn more about those tools that I also like using for color grading. So, you can click that there to watch that next if you want to keep going down the rabbit hole of color.

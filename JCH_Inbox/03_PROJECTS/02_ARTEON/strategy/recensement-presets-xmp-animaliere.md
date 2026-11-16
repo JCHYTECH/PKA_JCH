@@ -53,7 +53,7 @@ lang: fr
 
 ## 4. Implication pour ARTEON — le différenciateur
 
-**Le « curseur de force globale » n'est PAS unique** : Pose Nature commercialise déjà un « quantity slider ». MAIS — découverte technique de cette session — **le curseur Amount natif de Lightroom ne scale PAS la courbe de points ni le grading** (il ne touche que les réglages de base). Notre curseur (paramétrique + TSL + grading scalés proportionnellement) est donc **supérieur au slider natif de la concurrence**. C'est un vrai avantage, à protéger et à documenter comme tel.
+**Le « curseur de force globale » n'est PAS unique** : Pose Nature commercialise déjà un « quantity slider ». ⚠️ **Corrigé 16/11** : le curseur Amount natif scale en réalité les réglages de base, la TSL, le grain **et la saturation du grading** (mesuré, `SplitToningShadowSaturation 10→5→0→20`) — il ne fige que la **teinte** du grading et la **courbe de points**. La « supériorité sur le Amount natif » ne tient donc pas sur le grading (il le scale aussi) : notre vraie distinction est (1) une **courbe paramétrique scalable** (le Amount fige la courbe de points) et (2) un **invariant documenté et contrôlable**, pas une boîte noire. ✅ **Vérifié 16/11** : le grading est livré par les clés legacy `SplitToning*` (le SDK droppe les roues `ColorGrade*`) — substitution dans `looks.mjs`, confirmée en catalogue + visuel. Les 3 piliers (courbe paramétrique + grading + TSL) sont mesurés.
 
 **Ce qu'on peut faire sans risque de licence :**
 - Étudier la *structure* des packs (par taxon, par mood, par scénario) → on l'a déjà (12 scénarios).

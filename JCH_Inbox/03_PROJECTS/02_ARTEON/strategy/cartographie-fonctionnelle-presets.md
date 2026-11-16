@@ -94,7 +94,7 @@ birdpack a le taxon sans l'adaptatif ni l'éthique.
 
 ## Feuille de route produit (découlée de la carte)
 
-1. **Maintenant** : les 12 presets Scénario (fait) + le **curseur proportionnel** (fait — à documenter comme innovation).
+1. **Maintenant** : les 12 presets Scénario (fait) + le **curseur proportionnel** (fait — à documenter comme innovation). ✅ **Validé 16/11** : les 3 piliers (courbe paramétrique + grading + TSL) scalent proportionnellement en production. Le grading passe par les clés legacy `SplitToning*` (le SDK droppe `ColorGrade*`), substituées dans `looks.mjs` — vérifié catalogue + visuel.
 2. **Brique 2** : le sélecteur des 12 looks dans le slider (brancher le curseur sur tous les scénarios, pas seulement Fin Art).
 3. **Brique 3 (le premium)** : les **masques IA** (sujet/œil/plumage/arrière-plan) — la seule brique que Ryan Wilkes/LSP ont et pas nous. C'est là que se paie le vrai prix ($55+).
 4. **Différenciation durable** : la **crédibilité zoologiste + éthique** — intraçable pour les concurrents génériques.

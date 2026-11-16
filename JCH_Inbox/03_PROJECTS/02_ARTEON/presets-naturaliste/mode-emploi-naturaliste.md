@@ -39,7 +39,17 @@ Chaque look existe en **3 forces** : **Standard** (nom de base = 100 %), **- Dou
 
 ## La philosophie : un seul regard, pas une pile de filtres
 
-Ces presets incarnent **un rendu, pas vingt** : ombres veloutées teintées indigo, hautes lumières dorées, grain argentique fin, désaturation sélective, courbe en S avec lift des noirs. Le même geste photographique décliné selon le sujet.
+Ces presets incarnent **un rendu, pas vingt** : ombres veloutées teintées bleu acier, hautes lumières dorées, grain argentique fin, désaturation sélective, courbe en S avec lift des noirs. Le même geste photographique décliné selon le sujet.
+
+---
+
+## La méthode : regarde → choisis → ajuste
+
+1. **Regarde la dominante** de la scène (lumière, sujet, fond) avant de choisir un look.
+2. **Choisis le look** dont l'ancre correspond : sujet sombre → Plumage sombre · blanc → Plumage clair · couchant → Golden hour…
+3. **Ajuste les tons moyens en dernier** (ils font l'équilibrage), puis laisse le fondu faire le reste.
+
+Chaque look a une **ancre** (ombres, hautes lumières ou tons moyens) et un **degré de fondu** : c'est ce qui distingue réellement les 12 rendus. Le grade **accentue** la lumière déjà présente — il ne la réécrit pas.
 
 ---
 
@@ -50,7 +60,7 @@ Ces presets incarnent **un rendu, pas vingt** : ombres veloutées teintées indi
 1. Ouvrir le module **Développement**.
 2. Ouvrir le panneau **Préréglages** (à gauche).
 3. Clic droit sur **« Préréglages utilisateur »** → **Importer**.
-4. Sélectionner les 12 fichiers `.xmp`.
+4. Sélectionner les 36 fichiers `.xmp` (12 looks × 3 forces).
 
 *(Alternative : glisser-déposer les `.xmp` directement sur la photo.)*
 
@@ -58,7 +68,7 @@ Ces presets incarnent **un rendu, pas vingt** : ombres veloutées teintées indi
 
 1. Module **Édition** → **Préréglages**.
 2. Cliquer **« ⋯ »** (trois points) → **Importer des préréglages**.
-3. Sélectionner les 12 fichiers `.xmp`.
+3. Sélectionner les 36 fichiers `.xmp` (12 looks × 3 forces).
 
 ---
 

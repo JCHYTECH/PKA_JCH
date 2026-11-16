@@ -1,0 +1,377 @@
+00:00:06 - 00:00:56
+[music] Ever look at a photo and think, "Why doesn't mine look like that?" Well, a lot of times it's at the camera, lens settings, anything like that. It's how the photo is post-processed, how it's finished that makes all the difference. And a key part to that finishing is using masks. And if you've ever wondered what all those masking secrets are, this video is going to show you those because the truth is most people underutilize masking. They don't know how to use it
+
+00:00:34 - 00:01:23
+or sometimes they actually use masking and make their photos look worse than had they not touched it at all. Steve from Backountry Gallery here and this time around I want to share with you all of my most common, my favorite, my most effective masking tricks with Lightroom. And by the time you're done with this video, you're going to have so many new tips and tricks. You probably ought to grab a piece of paper and take some notes cuz this is an hourong master class. So, you know, grab yourself a
+
+00:00:59 - 00:01:46
+nice cup of coffee and sit back, relax, and enjoy the video. And if you stick around to the end, I have a bonus tip for you that is the ultimate Lightroom shortcut. It is the shortcut that rules all the other shortcuts. So, make sure you stick around to the end to find out what that is. But before we get started, I want to make sure that we're having a consistent experience. So, we're going to make your screen kind of look like mine. So, let's jump to the computer real quick. Do a quick adjustment and
+
+00:01:22 - 00:02:05
+then we'll be ready to get started. Okay. So, what we're going to do is move our masking panel. By default, Lightroom puts it kind of hanging out over here. And of course, you can expand it, but then it covers a photo. So, what we want to do is move this in line with our other panels. And all we have to do to do that is grab this little bar at the top and drag it over until you see the blue line. Then, let it go. And now your screen will match mine. And of course, there's more than one way to do pretty
+
+00:01:44 - 00:02:34
+much anything in Lightroom. These are the techniques that I use that have worked really well for me personally. So hopefully you'll find the same is true for you. Let's go ahead and jump in. I'm going to show you the most common masking mistake I see and how to fix it. So I want to show you a better way to select your subject and actually select your background, too. And I know what you're thinking. Lightroom already literally has buttons under the masking palette that allow you to select your
+
+00:02:10 - 00:03:00
+subject and select your background. So what the heck is this all about, right? Well, let me show you the problem. And if you've been using Lightroom for more than five minutes, I bet you know where I'm going with this. So, here we have our subject and I want to select him and I want the background separate. So, I'm going to go over to masking and I'm going to click select subject because it's the subject. I want to select it. So, I do that and look what happens when I click that button. I it did select the
+
+00:02:35 - 00:03:26
+subject but it also colored outside the lines. If you look over here, we have a significant portion of the background covered by the mask. And we have the in between areas over here of these wings covered by the mask. And even a little bit down here. And if I adjust this bird, it's going to affect the background. So, for example, I'm going to really turn up the brightness here so you can see it. But if you look at this, I mean, obviously, we are also affecting the background. So, we're not isolating
+
+00:03:01 - 00:03:54
+our subject here at all. We have all this spillover and it doesn't look great. And if we delete that and say, well, what about selecting the background? Because now I want to adjust the background. It does the same thing, but it gives us the opposite bad problem. Right? If we look here, we can see that it did not get all of this area here for the background. And we still have problems between the wings. So, let's say I want to darken that background. Look at that. I have all this bright area here. I still have
+
+00:03:27 - 00:04:16
+bright areas showing through over here and between the wings. So, none of that is really working for us at all. So, what if I told you there's a better way to do this? And I have to do a quick shout out to my friend Corey about this when he showed me this little trick about a year ago, and it saved me a lot of brush time in that time. So, I want to share this with you, too. So, basically, what we're going to do here is we're going to instead of selecting subjects or background, we're going to
+
+00:03:51 - 00:04:51
+use the select objects option right here. We're going to give that a click. We have two ways of selecting our objects here. And one is a brush and the other is a little selection box. Now, the selection box, if you have a subject that's kind of standing out and there's nothing in the environment that's very close to it, so it's kind of on its own like this bird is, a lot of times this can work really well. You just kind of draw a box around the subject and it'll find the subject. So, that's really an
+
+00:04:21 - 00:05:15
+easy way to do it. However, I'm going to undo that. Go back to select objects and we'll use the brush this time. I usually use the brush for wildlife work simply because wildlife tends to be a little bit different shape sometime or there's maybe a branch or something else that's close that the big selection box might pick up. So a lot of times for wildlife my default is usually the brush. But I wanted to show you both options because when you do have a animal that's out cleanly like this you can definitely use
+
+00:04:49 - 00:05:39
+that other selection box and it saves you a second or two. But most of the time this is how I do it right here. I just brush the subject like so. You just color it in. Doesn't have to be perfect. And it will give you a nice selection. Now, you probably noticed this when we were playing with the selection box, but look how much better the selection is. Of course, right in through here is nice and clean. This area is clean. This area is clean. It was a much, much better selection. Now, just as a side note, this isn't
+
+00:05:15 - 00:06:06
+always how it goes. Sometimes it's not as perfect as this. This one is pretty darn close. But a lot of times you still have to go in and under the masking subtract and use a brush to subtract out some of the stuff there. But in our case, we don't really need to do that cuz it did a really nice job here. So what I would do next, believe it or not, is instead of manipulating the subject, I just go ahead and I duplicate and invert this mask. And the reason for that is it gives me a nice background
+
+00:05:40 - 00:06:26
+selection. So check it out. So I'm going to go over to this mask that we made. I'm going to rightclick it and I want to select duplicate. and invert mask. And again, that was a right click to get to this context menu. I'm going to give that a nice little click. And there we go. We have a perfect background selection. Now, that's the exact opposite of our subject selection. So, now we can go ahead and click the subject mask here, and we can make our manipulations. Let's say I wanted to
+
+00:06:03 - 00:06:52
+pick up the shadows there. So, I'll brighten those. I'll make him just a little bit brighter and maybe increase the whites and drop the blacks a little bit just to add a little bit of punch and contrast to him. And let's say I wanted to darken the background. So, I'll go up to this inverted mask and I'll drop the exposure there a little bit and kind of darken that background up. And we're getting a really good separation between him and the background. And of course, you can
+
+00:06:28 - 00:07:23
+continue to manipulate this if you like, but it is a really effective way to kind of bring your subject out from the background and be able to manipulate the background and the subject separately and not have that overlap that we tend to get with select subject and select background. So, next time you have a subject, especially if it has like flight feathers sticking out or a little bit of fur sticking out, try select object instead of select subject, and I think you're going to like the results a
+
+00:06:54 - 00:07:40
+little bit better. Okay, for this next one, I want to show you how to correct a problem a lot of people have, and a lot of people don't even know they have it, but once you see this, you're going to start recognizing it in your own photos. And that problem is having too much blue in either your whites or your blacks. Because what happens if say you have a white bird like we're going to have in this example and you have a blue sky above. A lot of times the feathers on that white bird
+
+00:07:18 - 00:08:06
+are going to pick up the blue from the sky and correcting it can kind of be a hassle sometimes. But there's a really slick way of doing it in Lightroom. I'm going to show you that's going to take all the headache out. And again, I want to emphasize that this also works with black animals. Black and whites tend to pick up those blues. And this is how you correct it. Let's take a look. So we have an egret here. And at first glance, this looks pretty normal. But the truth is the side of him right in through here
+
+00:07:41 - 00:08:26
+is really really blue. And once I actually do the correction, you'll see how blue this actually is. It's going to be shocking because again, a lot of people don't really see this in their own photos right away. But once you start to notice it, you're going to see it all the time. So, what we're going to do is I'm going to select objects here. I'm just going to select him real quick. There we go. And then I'm going to go down to point color. As a quick side note, when I'm talking about point
+
+00:08:04 - 00:08:55
+color, I'm talking about the one that is used for the masking controls, not the point color that we have under color mixer, which is in a different panel. The one under color mixer affects the entire image. This one is only going to affect wherever the mask is. In our case, the select object, the bird. And we have this little eyropper tool. I'm going to give that a click. And when I do, it's suspended up in the air. It's now my mouse cursor. And I can pick whatever color I want in here for our
+
+00:08:30 - 00:09:22
+point color palette here. So, what I'm going to do is I'm going to go over to these blue feathers. And if you look at the magnification box here, it's very clear that it is very blue in that area. So, I'm going to give that a click. And that added the little swatch right here. And all I'm going to do is go down to where it says saturation shift. And I'm going to just drag that over towards the left to desaturate those blues. And look at that. Suddenly, we don't have any
+
+00:08:55 - 00:09:50
+more blue in here. This looks much, much better. Now, if you find that there's still some lingering blue in some areas, I don't see any in this shot, but if you find that there is, cuz sometimes that happens, we have some range options here, that will expand the range. Right now, when we do this, it looks at the color that we picked plus a bunch of other colors on either side of it. And we can expand or narrow that range of colors that it's looking for. And you can see in the box above how it expands
+
+00:09:23 - 00:10:11
+and contracts that range, that sampling range that the saturation shift is using. Now, we also have a saturation range we can use here, too. And it's kind of the same thing. We have this little box right here that defines our boundaries. But if I go in here, I can drag this one here, and I can increase the saturation as you see up there in the sampling box, or I can decrease it, or I can move it around back and forth. And I'll tell you what though, most of the time I don't have to mess with
+
+00:09:47 - 00:10:38
+saturation range or even regular range. Most of the time, exactly what I just showed you is all you do. You just drop that saturation. Now, in this case, what I would do is in addition to doing this, because I this happens a lot with these kind of white birds, especially, you know, this time of day, I would also add a little yellow back in here because this was at sunset. It should be more yellow than it is. So, I'm just going to push up here with the color temp using the same mask. I'm just going to push
+
+00:10:13 - 00:10:56
+some yellow into there so it looks a lot more natural. So, that's all I would do for this particular shot. I would just drop the saturation after doing my point color and then add a little bit of yellow back in. And let's do a before and after so you can see the difference because again a lot of people don't realize how blue this was. And if you looked at it initially and you said, "Oh, that's not too bad. That doesn't really look that blue to me." Watch now. I'm going to go ahead and turn that on
+
+00:10:34 - 00:11:29
+and off. Look how blue that is compared to what we ended up with. And we just did a couple very quick corrections to make that happen. So hopefully you find that useful. And by the way, anytime I have a white bird or a black animal of any kind, I am always looking for those blues because they're almost always there if you had a blue sky above. Next, I want to talk about a feature called automask. It's with your brush tool, and a lot of people either don't realize it exists or they don't get the
+
+00:11:02 - 00:11:54
+most out of it or they use it wrong and it kind of ruins the photo. So, I'm going to show you how to get the most out of it and how to avoid all the pitfalls with it. But first, I think we need to define what it is for those that don't know. So, the best way to describe automask, I found, is to think of your brush as something you're coloring with. And automask helps you stay in the line. So if you have a line between an animal in the background, it helps you stay on the animal and not overlap. And I think
+
+00:11:28 - 00:12:22
+the easiest way to kind of drive this home is just to demonstrate it. So let's jump in. So we have this guy here. And let's say that we wanted to paint this white area with our brush so that we could do some kind of an adjustment to it. Okay. So what we would do, we go to create mask brush. And if we look down here under our brush palette that comes up with this, we have some options here. And the one we're interested right now is automask. So I'm going to leave that off for now because that's the default.
+
+00:11:55 - 00:12:43
+And this is where most people are getting into trouble. So I'm going to make my brush a little smaller. And as a quick side note, if you're using Lightroom with a mouse, you can actually use the mouse wheel forward and backward to make the cursor the brush smaller or larger. So that's kind of handy. So anyhow, let's go ahead and let's see what we can do about brushing this area in. So I'm going to come over here and as you can see immediately I'm starting to go outside the lines here. It's
+
+00:12:19 - 00:13:12
+really hard to stay off of that green background no matter how hard I try. And of course I could zoom in and I can try to use a tinier brush to go through all this, but it would just take forever in a day to go through all those little humps with a little tiny with varying size brushes with little tiny brushes. So this is where automask really comes in handy. So I'm going to hit command Z and undo that. I'm going to create a new mask for brush. This time I'm going to turn automask on and using the same size
+
+00:12:45 - 00:13:41
+brush, I'm going to do this again. So this time I'm going to just color right along there. And you can see that automask is keeping me within the lines. And one of the tricks with automask is as you're working the area you want to color in is to push towards the edges like so. So I'm not going right along the edges. I'm kind of underneath them and then I'm pushing towards them as I go. Another thing with automask is that automask tends to look for edges and colors and tonalities and it tries to
+
+00:13:13 - 00:13:59
+stick with them. So sometimes automask won't give you super complete coverage. So sometimes you have to brush some of these areas multiple times to make sure that you get them. So like up here, you can see that area wasn't really good. So I gave it another click to kind of get it in there. You can see this area here isn't fully covered. So I give that another little click there to kind of drive it home that I want that to make make sure that that's included in the selection. So, that's one of the dangers
+
+00:13:36 - 00:14:19
+with automask. I'm going to show you a cool way to get around that if you have something that's trickier than this guy here. I'll show you that in just a moment. But, you can see it makes a huge difference here. It's so much easier to select that area using automask than it is a normal brush. So, that's the big thing with automask. That's helps you color inside the lines. Now, sometimes even with auto mask though, you're going to go outside those lines. So, I'm going
+
+00:13:58 - 00:14:47
+to try to make it do it deliberately here. See if I can. Ah, there we go. Let's say I accidentally got too far here and I ended up on the background. Because one of the things people don't realize with brushes in general, not just when you're using AutoMask, but with brushes in general, if you hit the option or alt key on your computer, depending on whether you're using a Windows or Mac machine, you'll get the opposite brush. So, in this case, we have an additive brush. We're brushing
+
+00:14:21 - 00:15:19
+on the selection that we want. And if I hit alt or option, you can see that it turns into a negative brush. So a negative brush is going to take that away. And the negative brush and the positive brush both have their own sets of controls here. So for example, right now I have automask on with my normal brush. I'm not touching alt or option. But if I turn that off and then I press option or alt, you can see the negative brush still has auto mask on. I can turn that off, release it, hit option, alt
+
+00:14:50 - 00:15:48
+again, and automask is still off. So, if I want to turn automask on or off for my opposite brush, our negative brush in this case, I'm going to hold the option or alt key down. And then I'm going to check or uncheck this as I'm doing it. And as I'm holding that key down, now again, option or alt still being pressed. Then I can come in here and I can erase that little goof up that I made and correct that. Really nice. As a side note, I do tend to leave automask on for my I guess alternate/option
+
+00:15:19 - 00:16:06
+brush. So, if I'm pressing al or option, it's probably because I messed something up, like you saw here. So, I want some precision so I can kind of clean that up in the best way possible to make sure that mask is nice and tight. So, most of the time, whether it's a subtractive or additive brush when I press my aler option button, depending on what you're doing, I want to have automask on for that simply because I want that tighter precision for my mask. Now, to wrap up the automask section here, I want to
+
+00:15:43 - 00:16:34
+show you about that pitfall I was talking about when you have too much texture and pattern and automask kind of fails. So, let's take a look. So, what we're going to do is we're going to go to this eagle, this young immature eagle, and let's say for the sake of argument that we wanted to select this area with our brush. We want to paint this area right here. And maybe we're trying to enhance the texture of the top of his head here, whatever. So, I'm going to go over here to brush. I'm
+
+00:16:08 - 00:16:53
+going to make sure automask is turned on for this example. And then I'm just going to make that brush a little larger. And I'm going to brush in here. So, let's take a look at what happens. So, I'm going to go in here and just brush over that. And as you can see, it did not do a great job, right? And the reason is because there's so much texture and pattern here. So, if you notice, there's a lot of areas of white and even some other areas here that just did not get coverage from Automask. And
+
+00:16:31 - 00:17:17
+again, the reason for that is because AutoMask is looking for those edges. It's looking for those textures. It's looking for those patterns, and it's trying to help you color in the lines. But the problem is there's just a ton of lines here, and we really wanted it all. Basically, what we're trying to avoid is going under the green. And it actually ended up going under the green a little bit anyway. So, if we take a look at the result here, if we adjust exposure, this is the kind of stuff that happens. You
+
+00:16:54 - 00:17:38
+see those black lines that are coming into it there, it just looks really weird because it wasn't fully selected. So, when you do corrections to it, especially like contrast corrections and things like that, sometimes it can end up looking flat or just kind of looking off. This is why because you use automask. And I feel like this is a big trap for people because they learn about automask, say, "This is the coolest thing ever, and they turn it on and never take it off." And there are times
+
+00:17:16 - 00:18:06
+that it works against you and this is one of them. So, how do you handle a situation like this then? Well, what we're going to do is we're delete what we just did and we're going to create a new brush and this time we're going to turn automask off. And this time I'm just going to go over these feathers like so and just do what I can here. Okay, so that looks okay. But we got into the eye and we got into the top. But I bet you know what I'm going to do. I'm going to hold option or alt down.
+
+00:17:40 - 00:18:30
+Make sure automask is now selected because I'm worried about this edge. I want to get this edge. So, I'm going to come in here and I'm just going to brush along that edge. And with auto mask on, it's automatically keeping right to that edge there. So, I have a nice clean boundary. I see that we get in the eye here. So, I'm going to go come down here. I'm use a little smaller brush and go along these edges here where I see the overlap. And again, remember that automask is looking for
+
+00:18:07 - 00:19:00
+some of those patterns. So sometimes you have to go over things a couple of times making sure you get on the different colors and the different textures there to do it. And now if I drop exposure, everything's equal, right? Because everything was selected there. And if you look at the selection, everything is selected here. So that's a really handy way to use automask with the negative brush to sort of select hard to select areas, but still keep them like cleanly selected and off the background. So So
+
+00:18:34 - 00:19:34
+hopefully that was helpful with Automask. One of the tricks I use to help bring out depth and dimension in an image is to cool off the background when I have a warm subject or sometimes even vice versa. Here's the thing. Cool recedes in a photo, visually recedes in a photo and warm tends to come forward. So, when I have a warm subject, I sometimes will deliberately cool the background just a little bit just to add that bit of pop to the image. Let me show you what I'm talking about. So, for this example,
+
+00:19:04 - 00:19:51
+we'll use a sand hill crane. I got a couple of of them here. I'll actually show you, but we'll start with this one. I'm going to just go in here real quick, select background. I know it's not a perfect selection, but for our purposes, this will work. And basically, all I do with this trick is I just drop the temp. A lot of times it's just blue. Sometimes it's blue and green. Basically, what I'm looking for are cooler temperatures than what my subject is. So, I have a nice
+
+00:19:27 - 00:20:18
+warm sandill crane here. So, he's got a lot of nice warm tones going on. So, I'm just going to drop the background down. I'm going to drop those blues a little bit. I'm going to drop those greens a little bit. And if you notice, he is really starting to pop off of that background. And I may have gone a little bit too far here. But I want to show you before and after here. So that just right now the image seems a little flat. And as soon as you turn on that cooler background, it instantly seems like the
+
+00:19:53 - 00:20:34
+subject kind of comes forward and that there's more dimension to the photo. And you can see it right there. There it is with just the warmer background. And here is the cooler background. And truthfully, the cooler background is actually closer to what was there because it was bright green grass behind him, but it kind of rendered kind of yellowish in the final photo here. So, you can see there's a big difference in the way he kind of pops off that background. Of course, there's some
+
+00:20:14 - 00:20:57
+other things we can do with shading in that to make him even more dimensional. But, this is always a good first start. Let me show you one more. We have this guy here, this Gapagos dove. And this one's pretty close, but I think this background could be a little bit cooler. I'm just going to once again select background. Normally, I would select object and be a lot more particular about it, but for expediency sake, we're just going to do it this way. Select background. So, now we have all that
+
+00:20:35 - 00:21:26
+selected. I'd probably remove this rock, too. But for right now, again, we're just trying to demonstrate this. I'm just going to drop my blues here just a little bit. Not much, just like nine or 10 points here. And you can see what a difference that makes as far as how he is popping off that background. It seems like there is more dimension to the photo when I have that cooler background. So, this isn't something that I use every single time, but pretty much if I have a warm subject against a
+
+00:21:01 - 00:21:51
+background that could potentially be cooler, a lot of times I'll try this just to see if it adds a little more dimension. And if it does, a lot of times I'll stick with it. So, hopefully that's useful. Next, let's talk about eye enhancement. Because the eyes are the most important part of most every single wildlife photo out there, right? The eyes are the key to a successful photo. That's why we always are concerned about having sharp eyes and things like that. So, we want those eyes to look their best. So, a lot
+
+00:21:25 - 00:22:11
+of times I will go ahead and do a tweak or two to the eye to make it look a little bit better. And let me show you some of the things I do to pull the most out of it. And I do want to stress a lot of times I only do this to a small extent. It just depends on the subject. And not to overdo it because it can really make it look bad. But let me show you some tricks. So, most of the time when people think about the eyes, they just think about exposure and brightening the eye. But there's so much
+
+00:21:49 - 00:22:49
+more you can do here. So, let me show you this. We're going to zoom in to 200% with the sand hill crane. And we got this nice sharp eyeball right here. And we're going to go to create a new mask here. And I'm just going to select the brush tool. I'm going to make sure automask is turned on because I want to paint over the iris right here. And depending on what color your iris is, you might need to change your color for your overlay. Right now I have mine set on green, but if I had the default of
+
+00:22:18 - 00:23:04
+red and I'm trying to paint on here, it's not really that easy to see. So I would come down here and change it to something like bright green. So that's a really, really handy thing. And again, it that is just right over here next to your show overlay checkbox. See this little color swatch right here? Just go ahead and give that a click and you can pick whatever color you want for your overlay. So with automask on, that'll help keep me out of the iris. And I'm going to just paint around here.
+
+00:22:41 - 00:23:34
+If I overdo it a little bit, which I did there, I'll hold the option or alt key down and just erase that out and try again. Maybe make that a little smaller. There we go. That looks pretty good. And that looks that looks decent there. Sometimes what you're going to find is if there's highlights and things like that in the eye like we have here, these catch lights. Sometimes automask as you brush over it might not get them. So you may need to go back over those a few times to make sure that you have
+
+00:23:08 - 00:23:57
+everything in that iris selected for this. So, that looks pretty darn good. I'm not too worried about those areas there. Maybe just give them a little bit of a click. And let's go down to our sliders. Again, the one that everyone thinks about is exposure here. So, you can make the eye brighter. And well, that's certainly part of the process. There's a lot of other things we can do here depending on the eye and the situation. And all of this stuff is at our disposal. So, what I usually do, I'm
+
+00:23:32 - 00:24:26
+going to show you my typical workflow, but you'll need to adjust this depending on the eye that you're working on. So, usually I'm going to add a little bit of exposure to it. Just a little bit here. And I tend to push the highlights over a little bit to the right there, too. So, that's going to enhance those catch lights a little bit. The other one that's good for that are whites. You can push that over a little bit, and that'll really help juice up some of those existing bright areas within the eye
+
+00:23:59 - 00:24:45
+without making the eye overly bright. Depending again on the eye, uh, sometimes you need shadows depending on what kind of an eye it is. With this guy here, we don't really need much shadow enhancement. So, I'm just going to probably leave that alone. And sometimes I'll even use blacks to add a little bit of contrast, especially when there's a little bit of a texture in here. So, I don't use a lot of blacks. Usually, just like a minus two to minus five is is usually pretty good. We also have color
+
+00:24:22 - 00:25:11
+options, of course. We could change the color of the eye a little bit. If we think that it's too blue or too yellow, we can go the opposite way here and enhance that if we want. We can make it greener or we can make it more magenta if we want to adjust the tint. I think the eye looks pretty accurate here, so I'm not going to adjust that. We can adjust saturation. Most of the time I don't adjust saturation on eyes, but there are times you get a little eye that's a little under saturated. Maybe
+
+00:24:47 - 00:25:34
+you're in low light or something and it just isn't showing up as well as you'd like. You can add some saturation over here. The other ones that are really handy are texture and clarity, especially for an eye like this. He's got a lot of texture here. So, I'm going to add a little bit of texture and add a little bit of clarity in there to kind of enhance and make that eye pop a little bit. Now, another thing that happens, it didn't really happen here, but sometimes when you do some of these
+
+00:25:10 - 00:26:02
+enhancements, you'll see the noise pickup in the eye itself. And if that's the case, you come down here where it says noise reduction, and you can push a little bit of noise reduction into that and help get rid of some of that extra noise if you have happen to pick some of that up, especially using texture and clarity. So, overall, that looks pretty good. And I think I might add a little bit more exposure to that because the clarity kind of made a little bit darker. So now I'm going to tell you the
+
+00:25:35 - 00:26:33
+biggest trick to eye enhancement. And that is that you never want to judge it when you're zoomed in like this because it's very easy to overdo it. So my recommendation is once you have it where you think you like it, get that mix in there of exposure and whites and highlights and everything else. get the mix in there and then zoom back out to normal size so it could fits in the frame. So, let's take a look at that. And as you can see, it looks like we overdid it. And that's pretty typical. But
+
+00:26:05 - 00:26:57
+here's the thing. How do we fix that? Because we have exposure, we have highlights, we have we don't have shadows in this one. We have whites, we have blacks, we don't have any color adjustments, but we do have some texture, clarity, and noise. So, we have a mix of settings in there. And I like the mix. I just think there's too much of all of it. And this is a tip within a tip. Bonus. So, this is going to be a job for the amount slider. A lot of people don't know this is there or they
+
+00:26:31 - 00:27:28
+don't really know what it does. Let's take a look. So, right here we have a slider called amount. And this controls how much of the effect that we've put into our other controls below it is applied to the image. So, right now it's at 100. So, that's giving us the full effect of everything we're doing here. But if I pull it to the left, I can take that effect down and completely out if I want. And I can push in exactly the right amount. And this is super handy when you've mixed a number of different
+
+00:26:59 - 00:27:52
+sliders together and have an effect you really like, but you have a little bit too much or not enough. So if I go back to the middle here, that's the full effect. But something interesting with the amount slider is it's not just to take it out. You can actually add more in. So let's say I didn't do enough here. Let's say that the eye was too dark. I could actually push this slider to the right and make it even brighter. I'm magnifying all of these effects by pushing it to the right. So, the amount
+
+00:27:25 - 00:28:08
+slider is super handy. I use it all the time. And this isn't just for eyes anymore at this point. So, a lot of times I'll have a mask, I'll maybe have made two or three different adjustments, and I like the overall adjustment, but I think I need a little bit more of it or a little bit less of it. So, I turn to the amount slider to use it. I use this amount slider. I don't want to say on every photo, but it's pretty darn close to that. At some point in my masking process, I end up with the amount
+
+00:27:47 - 00:28:40
+slider. So, if you're not using it, definitely time to start experimenting. So, in this case, let's wrap this up. I'm just going to drop that amount a little bit so it looks realistic. This is where we started. I think right in through here at about 70% or so looks pretty good. Maybe about 65%. That looks pretty good. I think that looks great. So, here's our before and after. Just a little bit of a added punch to that eye. And this might still be a little overcooked, but because it's the video,
+
+00:28:13 - 00:29:05
+I want you to make sure you can see it, but make sure you do it tastefully. If you overcook it, it looks very obvious and it doesn't look very good. So, less is more in a lot of cases, but hopefully this will help you. So, in this section, I'm going to show you how I use a radial gradient for vignetting purposes. And I realize Lightroom has its own vignette controls, but they're very limited compared to what we can do with a radial gradient. Because with the radial gradient, not only can we [snorts] darken things, but
+
+00:28:39 - 00:29:27
+we can also use other controls like clarity and color and things like that to sort of bring the viewer's eye to where we want it in the photo, which is of course the main purpose of using a vignette. And I use these quite frequently in my own photos, but I try to do it in a very subtle way so it's not noticeable that it's in vignette. That's the biggest trick to it is making sure that when the viewer is looking at the photo, they don't detect the vignette and they just automatically
+
+00:29:03 - 00:29:53
+have their eye going to where you want it in the photo. Let me show you how to do it. It's pretty easy. So, what we're going to do is we're going to go into our masking panel. We're going to create a new mask and just click radial gradient. And what we're going to start with is just kind of dragging a big radial gradient over our subject. Then we're going to go over to where it says radial gradient. Right next to it says invert. We're going to click that and that will invert the mask. So every
+
+00:29:28 - 00:30:19
+place you see green or if you have that at the default of red, every place where you see the mask basically is going to take the effect and in the middle here it's not. So between this circle here, this inner circle and the outer circle is a gradient. So there's less effect towards this middle and more effect as you get towards the edge. Once you're outside, it's the full effect. So that's how that works. And the advantage with this is I can drag this wherever I want it. You can't do that with the normal
+
+00:29:54 - 00:30:46
+vignetting. So I can bring this up a little bit higher here so that it's catching part of his head over here and maybe part of the eye and it's only affecting this area here by the beak just a very very small amount with that gradient. Now the other trick here is that we want to keep this center ring pretty far away from the edge over here because if we drop this like so you can see that gradient is very sudden and abrupt. So let's let's take a look at something here. So I'm going to go like
+
+00:30:20 - 00:31:19
+this and I'm just going to drop exposure. I'm going to do it more than I normally would, but just for the sake of example. Now, right now, it still looks kind of okay. You can you can tell that there is a vignette going on here, of course. But watch what happens when I bring this circle down closer here. It becomes very, very obvious that we used a vignette. And that does not look good at all. So, the key here is making sure you keep this center one nice and small. And you don't actually have to have it
+
+00:30:49 - 00:31:36
+over the subject's face. We could always brush some of that out. So for this one, I might put it right here and then maybe come out and brush this out or just take the subject out al together, which is probably what we're going to do. So let's go for a more realistic amount. So I'm going to Here's where we started and I'm going to just bring that down a little bit. This is what I'm talking about. You want it so that it's looks realistic. It doesn't look like you've
+
+00:31:13 - 00:32:00
+used a vignette. But if you turn this on and off, you can see obviously that there is some darkening of those edges there and your eye is going back in towards the subject more, which is, you know, exactly what we want. Now, the other thing we can do here in some cases, not all cases, but in some cases, we can actually subtract that subject out. So, what I'm going to do is I'm going to click the mask. I'm going to hit subtract. And I'm going to select objects, though, because we have these
+
+00:31:36 - 00:32:30
+flight feathers and stuff, and we know that select subject doesn't work as well for that. So, I'm going to use select object and just paint him out so that the gradient does not affect him at all. I'll show you that mask here in a second. So, now the radial gradient is only affecting that background area. It's not affecting our subject at all. Now, just a quick side note, sometimes you don't want to remove the subject from the gradient because sometimes it looks more natural with the gradient
+
+00:32:03 - 00:32:50
+because then it looks like the light's actually there. If the subject starts to look a little bit too cut out, don't remove it. just let the gradient do its thing. Or if you need to just brush out whatever areas really need to not be affected by the gradient, like if the face or the eye is outside of it. And when I did that, I kind of feel like maybe I could even drop that exposure just a little tiny bit more there and still keep it looking realistic. So that's kind of cool. Now, there are some
+
+00:32:26 - 00:33:14
+other things you can do with the radial gradient in this case. So the obvious one is what we just did. We darkened it a little bit, but there's a couple other things we can do to sort of use that radial gradient to keep the viewer's eye towards our subject. So, one of the things is that we can cool off that background where the radial gradient is affecting it. So, if I just drop that blue here a little bit, it'll cool off those edges a little bit and it'll make that subject stand out a little bit
+
+00:32:50 - 00:33:39
+more. Another thing we can do is drop clarity. I can drop clarity a little bit. You don't want to go too far here. You can start getting halos in different areas, but for this one here, it looks pretty good. And we're just softening those edges a little bit with our radial gradient. And I can do the same with texture. Just drop that a little bit. And let's take a look at the before and after. Very, very significant difference. But again, the key here is that you don't want it to be obvious. So
+
+00:33:15 - 00:33:58
+if your viewer looks at it and says, "Oh, he used a vignette. You went too far." Now, in this case, I think I may have done that. I may have gone a little bit too far. So I'm going to go back up to the amount slider here, and I'm just going to bring that down just a little bit to make it look more realistic. Again, this is where we started. And I think that looks pretty good right there. And of course, if you're looking at this and you want to adjust the size of your gradient, you always go back
+
+00:33:36 - 00:34:29
+here and we can adjust our radial gradient with this handle here. We can move it around a little bit. We can make it bigger or smaller if you want. If you hold the shift key down while you grab these handles, it'll keep the proportions of whatever shape you've created with it so that you can adjust that shape a little bit. And of course, you can drag it around. So there's a lot of flexibility with these radial gradients. So just make sure that once it's done, the big key again is to make
+
+00:34:03 - 00:34:47
+sure that nobody can tell that you used it. I think that's really the key. But I say a lot of tools at your disposal. Now, let me show you something else. If you happen to have a vertical subject, we're just going to do this really quick. And you want to use a radial gradient. Maybe I want to tame these sides a little bit. So what I can do is I can create mask radial gradient, but instead of a big one like this, I'm going to do a narrow tall one that basically encompasses my subject. Then
+
+00:34:24 - 00:35:12
+I'm going to invert it. And then I'm going to drop exposure there. And again, you can cool that off a little bit if you want. I wouldn't do it here because we have some nice warm tones in there from the sunset light. But we can do clarity though. We can drop down here and maybe drop clarity a little bit. Take the edge off of some of that stuff in the on the sides there. Didn't do a whole heck of a lot, but you know, we we get what we get. But uh yeah, there's just the on and off there. And you might
+
+00:34:48 - 00:35:43
+even come in here and just subtract that object out, the subject in this case. So, I'm just going to paint him over real quick. There we go. And there's our before and after. So, our eye is going to the subject a little bit more and it's not getting pulled away to those other areas. And in this case, even though it's a really small, tight area that we're selected, it's not really looking like a vignette at all because of the uh black around the subject. But, every one of these is different. So, you'll have
+
+00:35:16 - 00:36:04
+to experiment. But again, my big thing is I don't want it to look like I used a vignette when I'm doing this. So, I am very careful with that. A lot of times I'll make that center one as, you know, as small as I can get away with. Sometimes I I'll go all the way down. So, anyhow, hopefully that's helpful. I use this trick all the time and it's a really good way to kind of draw attention to your subject. Okay. So, when it comes to masking, most people think it's about selecting things
+
+00:35:40 - 00:36:33
+in the photo, right? Like the subject or the background or whatever. But the real power in masking is in refinement. And that's where intersecting masks comes in. Now, mask intersections are super confusing. So, if you've ever right-clicked one of your masks, you've probably noticed a menu item that said intersect mask with and then you can select another mask. So, what the heck does that mean? Basically, a mask intersection is where two masks overlap. So, you have your se maybe you select
+
+00:36:07 - 00:37:07
+subject and then you say a linear gradient. So, where those two masks overlap is where the effect is going to take place. And I understand that is confusing as hell, right? So I'm going to tell you a better way to think about it. So the way I think of it is this. I'm going to make my initial selection and that selection is going to define the area that my next mask is going to be able to work in. So if I select subject and then I intersect a mask. Let's say I do a linear gradient. If I
+
+00:36:36 - 00:37:25
+do that, basically my linear gradient is only going to be able to work within my initial selection of that subject. This is definitely one of those things that's easier to show you than to tell you. So, let's jump in and I'm going to clear all of this up and show you a powerful new tool you can use. So, let's say we have this guy right here. And let's also say that maybe we want the background to be a little bit darker. So, I'm going to drop the background. But the problem is
+
+00:37:01 - 00:37:46
+he's starting to look a little bit cut out. So, this is one of those times where I would want to do a mask intersection and maybe darken this area down here to make it look more natural. So, how does this work? So, initially we need to select the area we want to work with, which in this case is going to be the subject. So, I want to do a linear gradient, but I only want it to affect the subject. I don't want it to affect the background at all. So, I'm going to go in here, create mask, and for this
+
+00:37:24 - 00:38:26
+one, I'm going to just hit select subject. And I see that it missed just a little bit right there. So, I'm going to go over here and add a brush. Make sure automask is off. And just paint this area where it missed for now. There we go. Now, it's time for mask intersections. So what you see here in green is the edges and the boundaries that our next mask is going to be able to work in. It won't be able to work outside these boundaries. So if I go over here, rightclick and intersect mask with. And in this
+
+00:37:55 - 00:38:58
+case, I'm going to use linear gradient. Okay, so that was a right click on the mask, intersect mask with linear gradient. When I do that, I get a little plus sign over here, which is where I can drag my linear gradient. Again, it's only going to work within this area here that's currently selected. So, if I start dragging this, you can see that it is only working with that initially defined area. So, I'm going to do something like this. And you can see I cannot go outside the subject because the subject was the
+
+00:38:26 - 00:39:12
+initial area that we that we defined. So, now I can go in and I can do whatever effect I want. So, I'm just going to drop that a little bit there. And suddenly, instead of looking like it was cut out and stuck in there, we have some very interesting light going on that really wasn't there to begin with. But this is one of those cool tricks that you can do with mask intersections. The other thing you can do, again, uh, as a side note, remember it's not all about just exposure with this stuff. You
+
+00:38:49 - 00:39:39
+can drop clarity here. You can adjust your blacks, whites, highlights. You can cool it off a little bit in those feathers if you want to sort of keep the eye drawn there. You can make that a little darker. You can adjust the placement of the gradient. But again, it's going to stay within the subject. No matter how hard I try, I cannot get on that background because my initial selection was the subject itself. And if we show the overlay, you can see that it is sticking just to that initial mask that
+
+00:39:14 - 00:40:01
+we did, that select subject. And this would work the same if you did select background. It would absolutely stay off the subject and it would only affect the areas where the background was selected or the object was selected or whatever you use for your initial mask. And that's really the power of this. So, this is one thing you can do with it, but I'm going to show you two others that are real powerful. So, I use it all the time like this. If I'm in a situation where I want to darken the
+
+00:39:37 - 00:40:31
+background, but my subject is looking a little bit cut out. If you look now, it doesn't look like it was cut out. If I turn that off, it looks like the subject was literally pasted into the photo, and now it looks completely natural. So, that's the first one. I want to show you another one though that's pretty cool. So, with this one here, what I want to do is I want to paint these feathers. I want to make these feathers right here just a little bit brighter. Now, I could come in here with a brush and turn
+
+00:40:04 - 00:40:51
+automask on and try to just paint this. But even with automask on, you can see I'm spilling over here a little bit, right? So, that's not perfect. And that's and that's with automask on. So, let's undo that. So, a better way of doing this, again, we're trying to get the best masks that we can. So, we're going to use whatever tools are available to us. A really good way to do it is select objects because we know select object is going to do a good job. I have it on this mode. Let's see if
+
+00:40:28 - 00:41:40
+this grabs our object for us. Oh, did really well. And you can see much much better selection here with these feathers. So, what I want to do though is I want to just brush this area. So, if I use a mask intersection here, that will limit my brush to just my subject in this case, just the object that I selected, which is super powerful. So instead of trying to selectively brush, I can select my object, which Lightroom does really well, right click again, intersect mask with, and this time I'm going to select brush.
+
+00:41:03 - 00:41:57
+Give that a click. Now, when I go in, as soon as I start brushing, I can brush exactly where I want, and it's not going outside the edges there at all. So then if I want to make that brighter or lighter or whatever or add some yellow to it or whatever and make it look like the light was hitting it a little harder there, kind of enhance what was there, I can pick up my exposure, my shadow, my whites, all that stuff. But the main point here is that it makes it very easy to color within the lines. Kind of like auto mask on
+
+00:41:31 - 00:42:24
+steroids. But if you select the object first and then go in intersect the mask with a brush, then you cannot brush outside the subject. So if I brush up here, no matter what I do, I can't brush outside the subject. Obviously, we don't want to do that here, but I can't go outside the subject no matter how hard I try. So, I can hit these feathers here, and it's not affecting the background. I can hit this down here. Not affect, not going outside the subject because our initial selection was the select object
+
+00:41:58 - 00:42:47
+thing with the bird. So, the bird was the only thing the bird defined our boundaries that we could use with the brush when we did the mask intersection. So, pretty cool, pretty handy. So, another way you can use this is with luminosity or color ranges. So in this shot, you can see some of these areas are kind of bright. So this area here in particular is pretty bad. So what I'm going to do, I don't want to affect my subject at all, though. So this is again, this is the power of mask intersections. I'm going to make my
+
+00:42:22 - 00:43:16
+initial mask, and that's going to define the boundaries for what I do next. So I'm going to do just a easy select background. If I was trying to be super particular about it, I would select object and invert it and stuff, but for right now, I think this works well enough for what we're doing. So I'm going to rightclick this intersect mask with. And in this case, I'm going to click color range because this bright color right over here where we saw, let me turn that off. This bright color
+
+00:42:49 - 00:43:35
+right here is kind of distracting. It wants to pull your eye away. So, I'm going to go in here and give that a click. And let's show the overlay again. And then you can see that it's selected the color range here, but it did not affect my subject at all because even though the subject has these tones in it, it was not part of our initial selection. and it was not part of that first selection cuz we told it just the background. And of course, we can go over here where we have color range and
+
+00:43:12 - 00:44:10
+we can refine that so that it has a narrower or wider field. So, I'm just going to make that a little bit larger like so. And then I'm just going to drop the exposure there. And there's our before and after. So, it's not nearly as distracting as it was before. And let's delete that. Let me show you another trick here using the same one. There we go. Create mask again. Select background. And this time we'll use a luminance range mask so that we can target certain luminance levels because
+
+00:43:41 - 00:44:37
+the truth is if we look at this photo we have a lot of bright areas here and we have some bright areas here and we have some bright areas here. So let's try to use a luminance mask to pull that back. So I'm going to rightclick intersect mask with luminance range this time. And again it's only where these masks are going to overlap. So I'm going to go down here. I'm going to give this a click. And you can see we have a much broader selection. this time because all of these areas that were nice and bright
+
+00:44:09 - 00:45:18
+are now selected here. And we have some controls here. This defines what range we're using. This one right here. And these handles sort of feather it out. So, usually what I do is I tend to bring these down quite a bit because otherwise here, I'll show you what it looks like. If we use our initial settings here, if I bring this down, it's brought it down, but look what happens. You get this weird posterization type of thing going on. So, this is kind of like a gradient adjustment here. This is kind of they
+
+00:44:43 - 00:45:29
+call it a fall-off. So, if I drag it over, it becomes much much more natural looking. A lot of times when I'm using luminance range, I find myself using dragging either this handle or this handle, depending on what I'm doing, all the way to the other side. And that make gives you a nice smooth transition there. And then I'm going to just brighten that back up. So this is where we started. I'm just going to bring this down here. And now we have darkened all of those highlights in the background.
+
+00:45:06 - 00:46:04
+But if you look as I go back and forth here, it's not really affecting the darker areas. It's mostly affecting the brighter areas. It's affecting the brighter areas certainly more disproportionately than it is the darker areas, but it gives you a nice way to control some of those bright areas in the background without having to manually go in and try to brush over all the bright areas. and then drop the exposure individually on them. This is much more efficient and I think it looks better in the end. So, but that's a
+
+00:45:35 - 00:46:28
+taste of those mask intersections for you. Hopefully, you'll be able to use those. And again, I use them all the time. They are super super handy. And again, the big thing to remember with them, you're going to make your initial selection that's going to define the boundaries and then whatever mask you want to use within those boundaries is what you're going to intersect it with. So, hopefully you found that useful. So, in this section, I want to show you how you can kind of enhance a back lit
+
+00:46:02 - 00:46:49
+or side lit subject. Because sometimes we get a subject and we have some little a little bit of backlight, a little bit of sidelight, and we kind of want it to look brighter in the background. We kind of want to have more have more of that feel than what we were actually able to capture. Or sometimes it looks a certain way in the viewfinder, and we want to kind of get that back because when we look at the final photo back here on the computer, it's not quite what we remember. So, here's how you do that.
+
+00:46:26 - 00:47:16
+So, what we're going to do, we're going to go over to the masking panel, of course, and we're going to select a radial gradient, and we're just going to draw a big radial gradient over here because this is the direction we want the light to come in from. And then I like to remove my subject from this. So, we're going to click the mask and then we're going to go subtract. And in this case, I'm again instead of subject, I'm going to do select objects because I think it works a little better. We'll
+
+00:46:51 - 00:47:46
+try to get his whiskers there. I don't think it really matters too much if those are involved or not, but we'll just take him out. So, that's the first step. There we go. That worked pretty well. So, what we want to do now is we want to adjust the area over here that's in green at the moment. U the default is red, so I'll put it back to red for you so you can see that too. That either way, whatever kind of your mask is that you like. And then we're going to just increase the exposure a little bit. This
+
+00:47:18 - 00:48:11
+is kind of a mix though. It's not just exposure because that would be very obvious, but we're going to start with increasing exposure just a little bit. I'm going to push up the highlights a little bit. I'm going to push up the shadows a little bit. And I'm also going to add a little bit of color in there. So, I'm going to push in some yellow in this case. Usually, it's either yellow or a combination of yellow and uh the magenta tint here. And sometimes you can even increase saturation if you want.
+
+00:47:44 - 00:48:40
+And but before we get into the color correction part of it, the other thing I like to do is I like to go down to effects. I like to drop texture a lot. I like to drop clarity a bit. And then I like to drop dehaze a little bit. You can see dehaze has a huge impact there. The more we do, the less we see of the background. So if we use negative dehaze, now go forward with it. If we go backward [clears throat] with it, if we go negative dehaze and just dial in maybe 15 to 30 points, it just depends
+
+00:48:12 - 00:49:10
+on the image. So that it looks something like this. That gives us kind of that flarey kind of hard to see through the sun glare kind of look to our photo. So that's the mix. And then I come back up over here and then I say, okay, maybe I need a little bit more yellow in there. And maybe I'll even push in a little bit of magenta there just to make it look a little bit warmer. So here is our before and after for that. And it really looks like we had a pretty nice light source coming in from over here. And of course,
+
+00:48:41 - 00:49:26
+we can go to our amount slider and we can drag that down so that it's kind of done to taste here. Now, the other thing I like to do in a situation like this, that's probably more than I would use, but I'm going to leave it up pretty high for now. The other thing I like to do in a situation like this is then brush in a little bit around the subject so that it doesn't look so cut out. We don't want it to feel like it's cut out or feel like it's not part of the light because
+
+00:49:04 - 00:49:53
+it seems like we should have some light spilling over by the ears here and around this side of the face and we don't really see that. and down here a little bit. And we're not seeing that. So, what we're going to do is we're going to go to here. We're going to click the mask and we're going to add a brush. And we're going to set our flow right here in the middle at about 50. And what I'm going to do, I'm use a large brush like this. And I'm going to use the feathered edge to just kind of
+
+00:49:28 - 00:50:17
+go over here. I'm going to make that a little smaller and just kind of add just a little bit of that effect. You can see it really well there in his ears. A little bit over here by his nose. And I think down here we definitely need a little bit more. So that looks a little more natural. It looks like the light is actually hitting the squirrel now rather than just kind of separate from it the way it was before. So I like to kind of blend that in a little bit there. And I'll show you the what the overlay looks
+
+00:49:52 - 00:50:47
+like for that. So you can see we got a little bit of overlay here. But again, it's important to re reduce your flow so that you are not putting the full effect because if you put the full effect on it, it's not going to look right. You need to drop that down. And the nice thing with flow versus density is that flow allows you to build. So if I'm at 50% and I brush over an area and it's not quite enough, I can brush over that area again and it will build on top of that. So that's why I usually like to
+
+00:50:19 - 00:51:13
+use flow for this. And I might even go a little bit on his back here. But that's that that's pretty much it. Now, another trick that some people do with this because they think it makes it look a little more natural, and I do this from time to time. don't do this real often, but I do want to show it to you so you have all the tools in your toolbox. But in some cases, we want to preserve some of the darker areas and try to make it look slightly more natural. And if you want to do that, we can go here and we
+
+00:50:46 - 00:51:36
+can intersect our mask with a luminance range mask. And what we're going to do is we're going to click this bar here and we're going to drag this little handle right here all the way over to the side here. Just like that. So it was over here and we're going to drag it all the way over. Then we're going to grab this handle, this feathering handle, and drag it all the way this way. And when we look at that on and off, you can see we're now seeing a little bit more of the darker
+
+00:51:12 - 00:51:58
+areas. This allows some of those darker areas to bleed through. And depending on the photo, it can make it look a little more natural. Most of the time, I got to tell you, I don't use it. I just use the amount slider to kind of knock it down a little bit and just kind of get the effect, the amount of the effect I want, plus blending it in with the subject a little bit. But depending on the shot, sometimes this can be useful, this luminance range. So, just something to think about, just a another tool in your
+
+00:51:35 - 00:52:31
+toolbox. If you don't like the way it looks, don't use it. So, for this one here, this is what it looks like. I'm going to turn this off to show you. I kind of like the initial non luminance intersected mask version a little bit better, but I think there's just a little bit too much of it. So, what I would do to finalize this image is I would just drop this amount slider down to Oh, there's where we started. Probably something like that. So, here is the on and off for that. Just adding
+
+00:52:03 - 00:53:03
+a little bit of light, making it look natural. And uh I hope that helped you. That uh is a nice little trick to use sometimes. But I think the biggest thing I want to stress here before we go is that I only use this if I already have existing backlight or light behind the subject. If you have a front lit subject, this never looks right. So don't try to do it with front lit subjects. Sidelight is okay. Back light is even better. So hopefully that helps. Hopefully you find that useful. Now, before we get to the bonus tip, if
+
+00:52:33 - 00:53:13
+you've enjoyed this video, if you've learned something, make sure you hit that like button, subscribe to the channel, and make sure you share this video with some friends. You know, there's a lot of people out there struggling with masking, and hopefully this will help them. All right, you made it this far in the video. It is bonus shortcut time. As promised, I have the ultimate Lightroom shortcut for you. This is really, really cool. I think you're going to use this all the time.
+
+00:52:53 - 00:53:43
+Basically, all you do is when you are in Lightroom, press command or control, depending on whether you're using a Windows or Mac machine. And as you're holding that down, press the front slash. And when you do that, you'll get a screen full of shortcuts for whatever module you're in. In this case, I'm in the develop module, so I get a screen full of develop module shortcuts. When I'm done looking at it, I just give it a click and it goes away. So, that's it. I hope you find that useful and thank you
+
+00:53:18 - 00:53:28
+so much for watching the video today. I really appreciate it. Thanks again for watching.

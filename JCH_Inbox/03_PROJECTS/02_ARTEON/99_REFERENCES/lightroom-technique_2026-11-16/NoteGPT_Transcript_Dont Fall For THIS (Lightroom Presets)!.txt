@@ -1,0 +1,32 @@
+00:00:00 - 00:01:12
+Should you buy Lightroom presets? I can keep this video under 30 seconds and simply tell you no, don't buy presets. Presets are a scam. [music] But of course, there is also a longer answer going into a little more detail why certain presets for certain situations make sense and [music] can save you a lot of time. So, let's clear things up. Most of the bigger photography creators out there have their own Lightroom presets. Some advertise them as little helpers to push your images in the right direction.
+
+00:00:36 - 00:01:50
+Others promise game-changing results turning dull raw files into award-winning masterpieces. While this might be true in very very specific scenarios, it most certainly will not transform your images into something magical. In general, [music] the more you edit an image, the less these settings can be applied to other shots. Let's take this photo as an example. The raw image is dark, doesn't have much contrast, lacks colors, and interesting light. To get the raw file to look like this, >> [music]
+
+00:01:13 - 00:02:26
+>> there is a lot of editing involved. First off, I have to denoise, recover exposure, fix white balance, apply masks, [music] do color grading, and of course, sharpen the image. Most of these things are specific adjustments for this specific image. If I would put the white balance, exposure, or masking changes into a preset and copy them onto another image, it would most likely make [music] the picture worse because the light is different, I might have used other camera settings, or it simply might not require such
+
+00:01:49 - 00:02:59
+drastic changes, even if it's an image from the same day and shoot. But there are [music] settings that can be saved and used as a preset to make the process a bit more efficient. For example, denoise, sharpening, the [music] texture, clarity, and to some degree the dehaze adjustments. And this brings me to my next point. [music] Presets can be a great time-saver. There are steps I repeat for most of my images. Let's take sharpening for example. If you have watched a couple of my videos, you know I always
+
+00:02:25 - 00:03:35
+use the same settings here. First, I bring down the radius, increase [music] the details, add a bit of masking, and play around with the amount of sharpening. To save time, [music] I can make a preset specifically for the sharpening process. In Lightroom, in the panel on [music] the left, click the plus icon to create a new preset. A new window will pop up. Let's name the preset standard sharpening. Then, make sure to check the sharpening option in the detail section. This will save the sharpening settings
+
+00:03:06 - 00:04:20
+we have dialed in for this image as a preset, which you can then apply on other shots. The great thing is, once we apply the preset to other images, we [music] can still adjust the settings. That means I can apply further changes for the masking or sharpening amount. And that's important because masking and amount usually varies from shot to shot. [music] And there is another cool thing we can do. We can create presets specifically for masks. For blue hour shots like these, I like to add a bit of glow around artificial
+
+00:03:43 - 00:04:48
+light sources. So, I'm using a brush to create a mask for that. >> [music] >> Then, let's bring up exposure, blacks, increase the temperature a bit, and bring down the dehaze for extra glow. That's looking pretty good. Let's save this as a preset. All the way at the top, above the tonal adjustments, >> [music] >> click the preset drop-down menu. At the bottom of the list, we can save these settings as a preset. Now, we can go to another shot with artificial light sources, create a new
+
+00:04:16 - 00:05:32
+mask, and use the preset to apply [music] the settings instantly. And again, [music] we can fine-tune the settings if needed. There are lots and lots of tiny little adjustments that can be saved as presets, whether [music] globally or in masks. And that will help to save you time by making the process more efficient. So, why don't you see me using presets then? [music] Because I like to do everything from image to image manually. I enjoy the editing process and don't mind repeating the same step all [music]
+
+00:04:56 - 00:06:01
+the time. But that's also because I mostly shoot landscape and wildlife images. If, let's say, you're shooting weddings, events, or real estate, you don't want to edit image by image. Most likely, you will end up with hundreds of images, and you won't have the time for that anyway. In those cases, presets are a must. You want to get the editing done fast. [music] And in those scenarios, the surrounding conditions won't change that much. So, [music] you can safely copy settings
+
+00:05:28 - 00:06:37
+from one shot to another. So, should you buy presets? The answer is [music] still no. They almost never achieve what is promised, and in my opinion, especially when you're a beginner, [music] you won't learn much from using presets. What you should do, however, is to experiment with your own presets. That way, [music] you might learn a thing or two about how different settings affect different images. And you can make the editing process faster, especially when working on box of images from events, real estate, and so on.
+
+00:06:03 - 00:06:49
+So, let me know what are your experience with Lightroom presets. Have you ever bought one? What were the results? Anyway, I hope this video will clear things up a bit, and I hope you enjoyed watching it. Thank you for your time. As always, if you want to support me, make sure to like, subscribe, comment, hype the video for the algorithm, and see you all in the next one.
