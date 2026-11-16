@@ -126,6 +126,13 @@ With kind regards,
 - **Risque d'« administrateur de fait ».** Si l'observateur co-décide en pratique, un juge peut le requalifier en administrateur de fait et lui attacher la responsabilité d'un administrateur. Le rôle doit rester strictement **information + avis**.
 - **Gestion des attentes.** L'observateur est informé et entendu, il ne décide pas. Sans véto, le partenaire peut se sentir dépossédé — d'où l'importance du point 4 et d'un ton rassurant mais précis.
 
+### Droits pratiques de l'observateur — à acter dans le pacte
+
+Deux points pratiques confirmés (l'observateur étant contractuel, tout se définit librement) :
+
+- **Rotation libre de la personne.** Contrairement à l'administrateur personne morale (représentant permanent fixe, Art. 2:55), l'observateur n'a aucune exigence de personne nommée. Diaho peut désigner un observateur permanent, des suppléants, ou changer de personne à chaque réunion. Rédaction recommandée : « Diaho peut désigner un ou plusieurs observateurs et les remplacer à tout moment par notification écrite au président du conseil. » Chaque personne envoyée est tenue à la confidentialité.
+- **Questions + documents + présentations.** L'observateur peut poser des questions (orales/écrites), recevoir l'ordre du jour et les documents avant la réunion (sous confidentialité), soumettre des documents/observations/présentations (PowerPoint) au conseil pour examen, et faire consigner le tout au procès-verbal. Limites : pas de vote ni de décision (documents « pour examen », non contraignants) ; le président alloue le temps de parole ; accès restreint possible pour l'intérêt légitime de la société ; pas de co-gestion (risque d'administrateur de fait).
+
 ### À faire valider par le notaire
 
 - La formulation exacte de la clause « observateur » (droits, durée, confidentialité, caractère non délibérant, exclusion explicite de tout mandat).
