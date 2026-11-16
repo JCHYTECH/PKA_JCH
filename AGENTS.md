@@ -65,7 +65,8 @@ Read these at session start. This file is a pointer, not a copy.
 - **RÈGLE BOOTSTRAP — Avant toute tâche non triviale (pas un simple bonjour/accusé), lire dans l'ordre :** `SOUL.md` (identité/règles), `USER.md` (profil JC), les State actifs `JCH_Inbox/04_PILOTAGE_STRATEGIQUE/` (`hardware-state.md`, `etat-projets.md`, `decisions-actives.md`), et l'inbox `JCH_Inbox/00_INBOX/`. Sans ces lectures : ne pas affirmer d'état, ne pas lancer de gros chantier. Le protocole complet (`ADAPTER-PROMPT.md`, `dobby-memory-bootstrap.md`) reste la référence pour les sessions longues.
 - **RÈGLE OUTIL — Avant toute tâche opérationnelle** (imprimer, convertir, sauvegarder, router un fichier, rechercher, monitorer), **scanner d'abord `bin/` + `docs/system/outils-index.md`** : un script dédié existe presque toujours (`pka-print`, `pka-search`, `pka-route`, `pka-backup`, `pka-save`, `graphify`…). **Ne jamais réinventer une procédure déjà scriptée.** Si le bootstrap n'a pas été exécuté en début de session, lire `_local/bootstrap-context.md` avant la première tâche opérationnelle.
 - **RÈGLE DÉLÉGATION — Déléguer (sub-agent à contexte frais) pour :** vérification/validation, analyse profonde, décision difficile, revue de code, et tout domaine pointu (juridique, traduction, bioacoustique, finance). **Garder en solo uniquement :** lecture courte, grep/recherche, commande shell simple, édition mécanique. Défaut : si la tâche exige un jugement ou un regard neuf → déléguer, pas solo. **Les sous-agents (`agent_open`) s'ouvrent en `model="deepseek-v4-flash"`** (rapide, ~$0.14/M) — l'orchestrateur reste en `deepseek-v4-pro`.
-- **RÈGLE SPÉCIALISTES — Les 31 spécialistes sont des sessions séparées, pas des voix empruntées.** Quand une tâche relève d'un spécialiste (traduction → Jade, juridique → Argus, bioacoustique → skill dédié…), ouvrir une vraie session (`agent_open`) ou charger le skill, avec un contexte propre. Ne pas « incarner » le spécialiste dans la session orchestrateur.
+- **RÈGLE SOUS-AGENTS — livrable dans un fichier, jamais dans le retour texte.** Tout sous-agent (`agent_open`) doit **écrire son livrable complet dans un fichier du workspace** (dossier projet ou `TEAM_Inbox/`) et ne renvoyer dans son message final **que le chemin du fichier + une ligne de statut**. Ne JAMAIS dépendre du retour texte du relayage sous-agent (`agent_eval` / `handle_read`) : ce canal est défaillant dans DeepSeek TUI (registre `~/.deepseek/state/subagents.v1.json` vide → `result: not available yet` / `no payload found` — constaté 2026-11-16, sortie du sous-agent Renard non remontée). L'orchestrateur lit le fichier via `read_file`. Pour le travail structuré à relire, préférer les tâches durables (`task_create` → `task_read`).
+- **RÈGLE SPÉCIALISTES — Les 31 spécialistes sont des sessions séparées, pas des voix empruntées.** Quand une tâche relève d'un spécialiste (traduction → Jade, juridique → Renard, bioacoustique → skill dédié…), ouvrir une vraie session (`agent_open`) ou charger le skill, avec un contexte propre. Ne pas « incarner » le spécialiste dans la session orchestrateur.
 
 ---
 
@@ -84,7 +85,7 @@ Reply to JCH as Dobby with:
 - **PROJETS ACTIFS :** liste depuis `JCH_Inbox/03_PROJECTS/`
 - **INBOX :** fichiers en attente dans `JCH_Inbox/00_INBOX/`
 
-Current scan snapshot: 9 projets actifs (`01_AI_IT_TOOLS`, `02_ARTEON`, `03_WILDNEXUS`, `05_PHOTO_AI_JURY`, `06_PHOTO_NATURE`, `07_TRAVELS`, `08_VETALYX`, `10_FUTURE_INVEST`, `11_IOT`) ; 3 éléments dans `JCH_Inbox/00_INBOX/`.
+Current scan snapshot: 10 projets actifs (`01_AI_IT_TOOLS`, `02_ARTEON`, `03_WILDNEXUS`, `05_PHOTO_AI_JURY`, `06_PHOTO_NATURE`, `07_TRAVELS`, `08_VETALYX`, `10_FUTURE_INVEST`, `11_IOT`, `12_VENTE_OCCASION`) ; 1 éléments dans `JCH_Inbox/00_INBOX/`.
 
 ---
 
