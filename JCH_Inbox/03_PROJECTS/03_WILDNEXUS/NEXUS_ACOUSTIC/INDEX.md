@@ -30,7 +30,7 @@ Cible de détection et classification acoustique d'espèces (oiseaux, orthoptèr
 
 ## Liens
 
-- [Gouvernance WildNexus](../WILDNEXUS_DEVICE/00_GOVERNANCE/Start.md) — gel et règles de reprise.
+- [Gouvernance WildNexus](Start.md) — gel et règles de reprise.
 - [Thread NEXUS_ACOUSTIC](thread-nexus-acoustic.md) — état courant.
 - InsectNet — recherche de classification associée, également gelée.
 

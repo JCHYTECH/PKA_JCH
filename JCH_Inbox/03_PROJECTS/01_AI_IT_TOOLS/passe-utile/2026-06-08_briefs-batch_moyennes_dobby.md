@@ -88,7 +88,7 @@
 
 ## #44 IOT — Fiche iot-home minimale
 **Pour :** [[Atlas]] — Créer fiche pièces, capteurs, contraintes off-grid.
-**Deadline :** 7j. **→ ✅ Fait par [[Dobby]] (draft dans iot-home/[[INDEX]].md)**
+**Deadline :** 7j. **→ ✅ Fait par [[Dobby]] (draft dans iot-home/[[wiki/index]].md)**
 
 ## #45 IOT — Procédure recovery terrain Pi 5
 **Pour :** [[Forge]] — Carte SD secours, backup config, reflash 10 min.

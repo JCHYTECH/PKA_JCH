@@ -22,7 +22,7 @@ _Status: RED_
 - `high` `permissions` _local/lightroom-mcp/server/node_modules/js-tokens/LICENSE: mode 0644, expected 0600 or stricter
 - `high` `permissions` _local/lightroom-mcp/server/node_modules/js-tokens/CHANGELOG.md: mode 0644, expected 0600 or stricter
 - `high` `permissions` _local/lightroom-mcp/server/node_modules/js-tokens/index.js: mode 0644, expected 0600 or stricter
-- `high` `permissions` _local/lightroom-mcp/server/node_modules/js-tokens/[[README]].md: mode 0644, expected 0600 or stricter
+- `high` `permissions` _local/lightroom-mcp/server/node_modules/js-tokens/[[_local/novnc/README]].md: mode 0644, expected 0600 or stricter
 - `high` `permissions` _local/lightroom-mcp/server/node_modules/js-tokens/package.json: mode 0644, expected 0600 or stricter
 - `high` `permissions` _local/lightroom-mcp/server/node_modules/eslint/lib/languages/js/source-code/token-store/cursors.js: mode 0644, expected 0600 or stricter
 - `high` `permissions` _local/lightroom-mcp/server/node_modules/eslint/lib/languages/js/source-code/token-store/backward-token-cursor.js: mode 0644, expected 0600 or stricter

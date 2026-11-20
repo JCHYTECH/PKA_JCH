@@ -50,8 +50,8 @@ Appliquer le template au projet serre, avec :
 | Dashboard | Home Assistant (existant sur Mac M5) |
 | Alimentation | Solaire 20W ou filaire 12V (si < 15m maison) |
 | Logique HA | Seuils humidite sol → arrosage. Station meteo → skip si pluie/vent. Temp → ventilateur |
-| References web | 5 projets GitHub identifies (voir [[INDEX]].md) |
-| Budget | ~259 EUR (BOM detaille dans [[INDEX]].md) |
+| References web | 5 projets GitHub identifies (voir [[JCH_Inbox/03_PROJECTS/11_IOT/iot-serre/INDEX]].md) |
+| Budget | ~259 EUR (BOM detaille dans [[JCH_Inbox/03_PROJECTS/11_IOT/iot-serre/INDEX]].md) |
 | Priorite | Serre d abord, maison en P2 |
 
 ## Livrable attendu

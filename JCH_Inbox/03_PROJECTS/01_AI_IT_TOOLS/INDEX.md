@@ -12,7 +12,7 @@ Outils IA et ressources techniques transversaux aux projets PKA_JCH : architectu
 1. [thread-ai-it-tools.md](thread-ai-it-tools.md) — état courant, décisions, limites des prototypes et prochaines actions.
 2. [governance/README.md](governance/README.md) — gouvernance des agents et skills.
 3. [hermisation/System_Architecture_Report.md](hermisation/System_Architecture_Report.md) — architecture système de référence.
-4. [executive-summary.md](executive-summary.md) — synthèse du projet.
+4. [executive-summary.md](JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/executive-summary.md) — synthèse du projet.
 
 ## Structure
 

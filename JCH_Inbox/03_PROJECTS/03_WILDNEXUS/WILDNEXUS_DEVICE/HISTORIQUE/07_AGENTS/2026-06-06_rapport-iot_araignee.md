@@ -79,7 +79,7 @@ Cela transforme le positionnement de "camera de chasse amelioree" a "produit IoT
 
 ### R3 — Activer le dossier iot-home
 
-Le dossier iot-home devrait contenir au minimum un [[INDEX]].md avec :
+Le dossier iot-home devrait contenir au minimum un [[wiki/index]].md avec :
 - Schema electrique existant de la maison (panneaux, batteries, onduleur)
 - Points de collecte (compteur, temperature, humidite)
 - Objectifs IoT (monitoring, automatisation, alertes)
@@ -117,7 +117,7 @@ Creer un fichier LEQONS_CROISEES.md dans 11_IOT/ qui centralise :
 | Priorite | Action | Projet | Impact |
 |----------|--------|--------|--------|
 | ~~P0~~ | ~~Schema convergence van + maison + WildNexus~~ | ~~INVALIDE~~ | ~~Van mobile ≠ foret~~ |
-| P0 | Initialiser iot-home/[[INDEX]].md | 11_IOT/iot-home | Clarte projet |
+| P0 | Initialiser iot-home/[[wiki/index]].md | 11_IOT/iot-home | Clarte projet |
 | P1 | Migration WildNexus Li-ion + solaire | 03_WILDNEXUS | Positionnement produit |
 | P1 | Broker MQTT transverse | 11_IOT + 03_WILDNEXUS | Interoperabilite |
 | ~~P1~~ | ~~Gateway LoRa sur RPi van~~ | ~~INVALIDE~~ | ~~Van mobile ≠ foret~~ |

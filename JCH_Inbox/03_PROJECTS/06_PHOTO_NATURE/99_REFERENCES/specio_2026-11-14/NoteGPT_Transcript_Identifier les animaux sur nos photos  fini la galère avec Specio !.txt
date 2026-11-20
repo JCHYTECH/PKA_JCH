@@ -1,0 +1,152 @@
+00:00:00 - 00:00:54
+If you do wildlife photography, you may be faced with a major problem: identifying the animals you are photographing. Personally, up until now , I relied on websites or books like the excellent work by Marc Duquet, " Seabirds and Shorebirds by Color," but the problem is that sometimes, well, some species look so similar that I still have trouble identifying them. Well, from now on, this identification step will be much simpler thanks to a brand-new piece of software that just came out: Spéciaux. Spéciaux is the
+
+00:00:27 - 00:01:25
+brand-new software from Saïm, the French studio that also develops Picto, which I have already talked about on the channel . Its goal is simple: to help you identify the animals you photograph, all in a single click. And before I show you what this software actually looks like, here is some information that I find quite striking. Spéciaux features over 450,000 identifiable species in its database, more than 720 wildlife experts who participated in creating this database, and even a 100%local AI that
+
+00:00:56 - 00:01:56
+helps you identify animals. And you will see, friends, this software goes even further, and I think it will really resonate with wildlife lovers. So, spoiler alert: for my part, this software was a real favorite, and I think you will feel that throughout this video. But anyway, without further ado, I suggest we discover together what Spéciaux can do. Alright, friends, here we are now inside Spéciaux. So, Spéciaux , to sum it up, is a software that will allow us to identify the animals we have photographed, all based on AI—that’s
+
+00:01:26 - 00:02:24
+something we should clarify. And here, there are a few simple steps that we will look at in more detail later. First , we import photos to tell Spéciaux, " Okay, here you go, I'm submitting these photos to you." Next, the fundamental step, step 2, which is the most important one, is identification, where the software, with its AI, will help us and suggest animal identifications. And then, this is what’s interesting: we have to validate, and for that, we have additional tools to come in and confirm
+
+00:01:55 - 00:03:03
+the AI’s suggestion. And then, step 3, we'll be able to manage all our photos, and that's the great thing, being able to find our photos by species and so on. Anyway, there are three main steps, these are three major stages, and we'll look at them together quickly. So, to start, before we get into step 1 , which is importing photos, I'll just make a quick aside about the software's interface, which is, first of all, magnificent. And I think that at DxO, they do an incredible job compared to much larger
+
+00:02:29 - 00:03:24
+studios that offer software that is very austere. And I think you understand which software I might be referring to; at DxO , they always do a magnificent job with the layout. It's beautiful, it's colorful, it's fluid. There you have it , I find it magnificent, as with DxO, and they've done a great job on that. And so, regarding the interface, just to explain to you, it's very simple. You have an interface that is very easy to get to grips with. You have the home screen here, which is
+
+00:02:57 - 00:03:55
+based on a globe where we can quickly access our photos and so on, I'll show you right after. And then, you have the catalog here where you'll find your different photos , and that's where you'll do the heavy lifting, especially for identification and so on. So, really very, very simple . So, we're going to start by looking at step 1 of our workflow in DxO, which is the import. So, for the software to be able to identify animals, it must first have access to photos. So, by default, as you
+
+00:03:26 - 00:04:23
+can see, I've already imported some things. So, everything you have imported is here, all the sources. So, for me, it already has eight sources in which it has been able to analyze photos. To import a source, it's very simple, you click on plus and here, you have three possibilities. Possibility 1, import a Lightroom catalog, that's great if you want to, well, access, you work on Lightroom, you have an enormous database with photos. Hop, it relies on this database and you can work directly on it
+
+00:03:55 - 00:04:51
+. I find that incredible. Here, a small clarification, the catalog in question must be open and active. Otherwise, well of course, it will keep it in memory if you have already loaded it, but for it to really access the data, especially from the catalog, the latter must be open. Next, connecting a folder. We'll look at the example of how to add photos from a folder, it's very classic. And for those who are on Apple like me, well, you have the option here to connect your gallery, so Apple Photos.
+
+00:04:23 - 00:05:17
+I find that great too, especially if you take photos with your iPhone and such. So we'll look at the example here, connecting a folder. What I'm doing here , for instance, is I want to import my photos from the Pyrenees. And you'll see , it's quite interesting for the test; inside there are a few photos I exported from the Pyrenees. In there, there are almost only landscape photos, and there is one photo with an animal in it. So the goal, you'll see, is that I just click on the folder, and then Spécial
+
+00:04:50 - 00:05:48
+will take care of detecting the photos containing animals and then be able to proceed directly to identification. So I click on Open, it's loading now, as you can see at the top. Well, there you go, it happened simultaneously, one photo found, 16 photos processed, as you can see. And out of the 16 photos, when I click here on Catalog, it's normal, it shows nothing, I don't have anything? I'll go back to the home screen. If I look at the top, you can see here in the filters, it has simply applied a
+
+00:05:19 - 00:06:28
+"View by four locations" filter. So if I remove it, hop, the four locations I had previously identified in other photos. Look, if I go back to Catalog! My photo appears. So here, in the Pyrenees folder I just imported, you see in the filter bar at the top, I have a photo it recognized, and it was the photo I told you had an animal in it, it's this one. And when I click on it, hop, there you go. Actually, you see, it groups them by family, so broad animal families. So here, bird; if I click here on bird, it
+
+00:05:53 - 00:06:54
+suggests it's a common kestrel, which is the case. And there you see, it shows me the photo. I double-click on it, and now you arrive at the section which is the core of Spécial's work: identification. And so for the identification here you see, it makes a large rectangle and on this large rectangle, it suggests here kestrel falcon, pardon, kestrel, which is indeed the case, all right. And so here you have an enormous amount of information. Now we won't go into every detail, but you see for example you have
+
+00:06:23 - 00:07:15
+the Latin name, the scientific name. You then have a map of this species showing where the species is recorded. So that's really interesting because, uh , it's also very relevant because we'll see it in an example, sometimes it will identify an animal for you, and you think, okay, why? Then in fact you look and you think, "Yeah, but that's weird because this animal is recorded in one region, it's almost a truly endemic species." So in a very specific region and then in fact you say, "Yeah, but
+
+00:06:50 - 00:07:47
+that's not at all where I took the photo ." So it's really interesting to have this, this registry. And then you see below you have the best match, that is what the AI suggests. So here the AI tells you what it thinks , and that's where they studied it directly with, well, lots of scientists and so on; they built this AI which is a local AI, so it's in the software on your computer, it doesn't go through their server or anything. It's just the AI telling you, "Look,
+
+00:07:18 - 00:08:18
+based on the database that was built with scientists, well, for me, it's a kestrel." And that's where, depending on the photo , we'll see, depending on the identification, the angle of the distinctive features and so on, the AI offers you a level of identification reliability. And here 95%, so you see 95%is extremely high, and well, for people like me, I'm not a wildlife photographer, I'm not an expert, but I can still recognize a-a kestrel. So we're good there. And here
+
+00:07:52 - 00:08:52
+you see, it tells you 95%sharpness, sharp. What's more, it's interesting, you have indicators like that. So it's really interesting. And after that you see, well, you have lots of information , so group, order, family, species. So for anyone who is interested in, uh, well, the study of animals, here you will find all the scientific information that interests you. And what’s more, the cool thing is that if you want to copy this information, you see, you click here, and you can copy it every time if you want to put it
+
+00:08:22 - 00:09:24
+, I don't know, into a text or something . Anyway, you see, it’s really a very scientific approach, and for those who know my background a bit, you know, I studied geography at university to become a teacher. But well, these are things that really speak to me and it’s very well done. And that's when you might ask yourself, "Wait, what if I'm not sure, how can I ...?" That's where they’ve included databases , which you have here. So you click, and there, you see, as I scroll down, you
+
+00:08:53 - 00:10:03
+can access different databases. Now, I'm no expert, but you have eBird, Wikipedia , iNaturalist, GBIF, and ADW, sorry, ADW . If I click on eBird for example, and there you go, pop, a little page opens, and there you have the Common Kestrel, and then you have plenty of information . You have photos, you also have a map where the species is identified. Anyway, it’s really great, and on the photos, you see, when you look, that’s where it’s very interesting, because besides the scientific information
+
+00:09:31 - 00:10:32
+contained within, the photos also allow you to compare and look at distinctive markings. So it’s very, very practical, and that's where it's really top-notch: if ever there’s a 95%chance it’s a Common Kestrel, but if there's any doubt and other species might be involved—we'll see that with other examples—it suggests other related species so you can compare , and so on. Here, it’s clearly a kestrel, so I click confirm and there, the species is confirmed, and the goal is to analyze
+
+00:10:06 - 00:11:08
+and confirm all the photos that we have in our catalog. So here, you see, I only have my photos from the Pyrenees. If I want to look at all the photos I have so far, well, that's very simple. I'm on the interface, as you can see under source, I've selected my Pyrenees folder where I only had one photo. If I click on all sources now, the interface changes, and this is where we'll understand the software's overall philosophy. Basically, you have the home page with this globe, and the idea is that you'll
+
+00:10:42 - 00:11:57
+be able to add information to your photos over time, either manually or via metadata. For example, here on the interface, depending on the metadata, if you have a Lightroom catalog, all your camera and lens EXIF data will automatically appear . If you've exported JPEGs with all the metadata, those will also appear. From there, you can, for example, filter the photos displayed in Specials based on the lens. And as you can see, it tells me that I took 220 photos with the 50-400, the Tamron. Then I have 218 photos taken
+
+00:11:27 - 00:12:36
+with the Sony 70-200, and so on. I can also filter by camera body. As you can see, with my A7 IV, and the Ricoh GR IIIx HDF. So that's the first filter you have. And what's great is that you can also assign locations to your photos. So, if I go back to my Pyrenees folder here. I'll go to the catalog and select my photo. I'll select the photo, then simply go to actions and choose "set location." You get a map, and if I type "Pyrenees, " for example, let's see.
+
+00:12:08 - 00:13:21
+Hop, Pyrenees. Wait, Paris, Ile-de-France, no, that's not right. Pyrenees, Spain. No, what we'll do is be even more precise. This photo, as I recall, I took it at the Vallée du Lutour. Let's see if it recognizes it. There we go, Vallée du Lutour, Cauterets. I'll click on it. And there we go. And just like that, the photo is now geographically identified. So when I go back, if I return to my home page, you see, it has created a marker on my world map. And so, if I enable all the sources now
+
+00:12:44 - 00:13:51
+, there we go, I've performed geographic identification for all the photos I've uploaded so far. And then, pins appear. And so, if I navigate like this around the globe, there you see, look, what do I have? I have Sri Lanka, 14 photos. And all I have to do is click on Sri Lanka to display the 14 photos I've identified in Sri Lanka. Same here, Vietnam. Here I have, uh, a little insect. Same here, in Indonesia. Right here in Iceland, and so on. I can then filter directly here. If I click on France, hop, it zooms in, and
+
+00:13:18 - 00:14:18
+here in France, I have two regions where I took photos. So, for example, Pas-de-Calais, here. These are my photos from the Opal Coast. And then the Lutour Valley that I just identified. And this allows you to organize your photos geographically as well, especially if you travel a lot, do wildlife photography, and so on. And then, you see, you have the filter bar at the top , and from there you can apply tons of different filters, and if you want to go back and see everything, you just remove the filters and there you go. Here, I
+
+00:13:47 - 00:14:49
+return to my map like this. Anyway, among the other ways to access your various photos, you see, if I zoom out to the global scale and remove the filter, you have categories here for animal families. So you see, if I want to display only my birds, or only mammals, or reptiles and amphibians, or underwater. Now, the underwater one is actually quite funny, because I don't really have that many of them. Uh, insects, and so on. And then, at the bottom, you also have a timeline . So here too, based on metadata, it lets
+
+00:14:22 - 00:15:22
+you find photos according to their history and thus their date. Anyway, there you go. So that's just for the interface here. To return now to the catalog, we're going to look at some identification examples. We'll go to Indonesia. Indonesia, for example, you see, I click on it, hop, and I'll go look in the catalog. Here are my different photos. On my various photos here, you can see from my shots in Indonesia, I have several things. So , right off the bat, this is pretty funny because of this photo. And you see
+
+00:14:52 - 00:15:52
+, it's a photo we took of the orangutan with some children, and actually, there was a T-Rex and it recognizes it. You see, Frenosaurus, Frenosaurus, very good , yeah, very sweet. It’s still pretty incredible. But anyway, just to tell you that it recognizes a lot of things, including dinosaurs. But for example, you see here, you have photos of long-tailed macaques, which we do indeed find in this region in Indonesia. So you see on the map, right. So there, all around Indonesia, Thailand, Malaysia,
+
+00:15:21 - 00:16:17
+etc., you have this monkey. So there for example, you see, 95%, I validate it, and so on. Anyway, we could do this for all the photos. However, you see here that for instance, if I take these photos, well again, these are the same monkeys, right, because they were taken in the same place. But here, it tells me it’s a bonnet macaque. So there, you’d say, "Well, that's strange because, well , they’re just little ones." And if you look at this photo for example, well it’s a little one, but it’s actually in
+
+00:15:50 - 00:16:49
+the arms of its mother who is a long-tailed macaque. So there, you’d say there’s an identification problem. And that’s where the AI is there to assist you, but it’s not 100%reliable, it’s just an AI. And that’s where your role behind the scenes is really to use additional tools to come and do the identification like this. And that’s where we have this database, which is very interesting. So there for example, you see, on the other photos, we know that we have a long-tailed macaque. So, we know that’s what it will
+
+00:16:21 - 00:17:24
+be. If I come back to this photo here, for example, to this one, and I look, it tells me bonnet macaque. Well, okay. That’s not right. We’ll look next at the, uh, the specifications. It suggests stump-tailed macaque, otherwise , 13%southern pig-tailed macaque, white-cheeked macaque, 4%there, it says , "Yeah, I'm really not sure.""etc." However, you don't have the long-tailed macaque. In that case, simply to show you, to clearly see that it’s not a bonnet macaque. What I’m going to do is
+
+00:16:52 - 00:17:57
+click not on iNaturalist, but on iNaturalist. And from there, look. So, if I compare, right, you see, you have the, uh, bonnet macaque. Well, you can see that physically, it’s not that at all. And what’s more, what’s really interesting is that, uh, you realize that regarding its habitat, you see, it’s a monkey found notably in India, in southern India. Which is not the case at all because this photo was taken in Indonesia. So, that's not right. So, in this case, how do we directly, uh, find the macaque?
+
+00:17:24 - 00:18:35
+Well, what we do is we go down, we go to identify manually. And there, I’m going to type macaque. Crab-eating. There we go, crab-eating macaque. And what I do is, once I've selected it, I click on, well, confirm. And there, now , I’ve managed to identify it. All this to say, I wanted to show you this example, that even, uh, with an ultra-efficient AI and so on, sometimes , and that’s perfectly logical, you’ll have to step in and handle it directly. Anyway, now I think you’ve understood how this identification work functions.
+
+00:18:00 - 00:19:01
+And that’s where, afterwards, you have tools to help you, to better organize yourself and so on. To do this, from the homepage, we go to catalog. And there, at the bottom, you have four, uh, windows. First of all, well, to help you find your way through your identifications, you go to the right, to bulk. And that’s where you have steps, with here for example, to confirm, meaning that you have the photos where it judges that, well, it’s almost certain, you see , 95%, it tells you, well, I’m almost
+
+00:18:30 - 00:19:29
+sure, and there you see harbor seal. Oh yes, it’s a harbor seal, and so there you can simply select everything and then validate everything at once. Next, ready to validate means these photos really are, they are really perfect, just perfect, and there you click on confirm all if you’re good, and it’s done. And then to look at closer, that’s where you will have directly photos where it tells you, oh, I’m not sure here, and so these are the photos you really need to focus on to come and identify them.
+
+00:19:03 - 00:20:06
+And from there, to access different interfaces, you can go, for example, to photos, and there you will simply find all the photos you have uploaded into Spéciaux. So, you'll be able to find them easily, you can, as you see, display them by animal; you can sort them to find your photos better, and then you can also do it here with species, and it sorts them for you—you see, by bird, by mammal, etc.—and then it organizes them by species, and after that, within each species, for example, if I go to crowned
+
+00:19:35 - 00:20:40
+macaque, there you go, it will show me all the photos with the crowned macaque . I press the little arrow here to go back , and finally, I wanted to show you something very interesting here, which is what they call the Tree of Life. So here, on this Tree of Life, you have , in fact, how should I put it, a form of tree structure that allows you to see all the species in the shape of, well, a tree of life, and that's where it's super interesting because it also allows us to understand animal families,
+
+00:20:07 - 00:21:12
+species, sub-species, and so on, and you have several views here, so you have waterfall here. So you see, I scroll down, and we are on birds, and you can see by color—birds are yellow, then you have insects, then you have, well, several things like that , several families. You see, then you can select circle, and from there, you see, for example, on the circle, it's really, it's very well done. You have, as you can see, 216 species here in the uploaded photos. You have, uh, 10 species of birds, 5 of reptiles, 28
+
+00:20:40 - 00:21:39
+under the sea, you have those of the mammals, and then, you see, insects and arachnids. And from there, if you click on expanded, you have them displayed with the, well, the scientific images of the species. And from there, if for example I click on bird, there you go, it opens it, and then you can navigate like that, you see, into the different families. And I think that's really very interesting, especially for people who are passionate about the study of animals and who have a certain scientific background.
+
+00:21:09 - 00:22:05
+And then, if you are like me, more of an amateur, really, let's say a novice in the field, well, in that case, you can find your way around easily with the species here using the species menu. Anyway, folks, I think you've grasped the main features of Specious, and there are plenty of others, but we won't go through them all. For example, typically, here on the home page, you can create your trips. So you can create an itinerary and see them on the map. It also serves as a memory aid
+
+00:21:38 - 00:22:39
+, especially if you travel a lot. But to wrap up, I wanted to show you a feature I find interesting that deserves more development: the export tool. So let's take an example, quickly. I'll click on Pyrenees here, see, on the little icon, pop, I have my falcon photo, click on it . And once I have my photo here, I can click on export. And now, what happens? It opens this export window for me. And so here, I can export my photo and it will include the species name, common kestrel, right? And then the location, so, you see, the
+
+00:22:08 - 00:23:13
+Lutour valley. And from there, this is where it's great, because I think it's brilliant for two scenarios. One, archiving, to have the species info right there without needing to go back into the software. And two, well, for posting on social media, your website, or whatever else. And with that, you have the information right there. And where I think Specious—well, Saime— should really push things is by developing customization options for the export, with designs you can personalize . Imagine, you add the scientific name,
+
+00:22:40 - 00:23:44
+you add metadata, you add your camera body, focal length, location, and so on ; you could customize the export interface like that, and I would find that honestly amazing. But well, that's something we'll see if they develop or not. But even now, I think it's really good that this option exists to export with the species name and also the location where you identified the photo. Well folks, it is now time to summarize this software. As you've seen, Specious is software truly designed for wildlife enthusiasts
+
+00:23:12 - 00:24:12
+, and its local AI identification tool is genuinely impressive. What I find brilliant is that, yes, the AI is there to help you, but it’s only an aid, meaning you always have the final say and, more importantly, access to scientific tools to make adjustments if needed; you remain in control, and the AI doesn't do things for you. Regarding the workflow, I find it super easy to get the hang of; you import, identify, and then you can locate, organize, filter, and so on. And more broadly, the interface is simple to grasp.
+
+00:23:42 - 00:24:43
+On this point, I think they’re doing an incredible job at Saime, and many other studios could really take inspiration from them. Anyway, all in all, I must admit that this software is a real favorite of mine . Admittedly, it's aimed at a niche audience, but it certainly allows enthusiasts and wildlife lovers to approach animal identification with great simplicity and pedagogical clarity . For a first release, I find the software very comprehensive, and personally, I would just like them to add two small things.
+
+00:24:13 - 00:25:09
+The first would be a purely scientific section where we would have resources to learn about animals. In fact, it would be great to have native scientific resources that allow us to educate ourselves on the subject. A bit like what is called the Time Machine in DxO FilmPack, which covers the history of photography. The second thing would be that famous export window , which I’d love for them to enhance because, for me, it has real potential. Apart from that, I find the software really very complete and, I repeat, very
+
+00:24:40 - 00:25:36
+pleasant to use. Finally, the question arises: all this is cool, but how much does it cost? Well, here there are several possibilities that I find quite clever on the part of Saim. First of all , you should know that you can test the software for free on 250 photos to form your own opinion, and that’s a point I find very, very nice. Then, if you like the software and wish to purchase it, there are two options: buy the full software with all species or buy the software with only one or more animal
+
+00:25:09 - 00:26:07
+families. Now, I know it might seem a bit complex, but let me explain. You have to understand that the software is divided into five animal families: mammals, birds, underwater animals, reptiles and amphibians, and finally, insects and arachnids. If you want to take advantage of all five families and identify every animal, the license costs 249 euros as a one-time purchase, and you'll get access to the database containing over 450,000 species. But if you're only interested in the bird database, for example, then you can just
+
+00:25:38 - 00:26:33
+buy the bird database, which is sold individually for 99 euros. So more broadly, each family can be purchased for 99 euros, which comes to 198 euros if, for instance, you buy two families. Starting at three, well, you can easily see that the global license is a better deal. And the good news is that if you're interested, friends, Saim offered to provide a discount code for the software launch so you can get the software at a better price. All you have to do is paste the code NOCAP in your cart, and you'll be able to enjoy a 20%
+
+00:26:06 - 00:26:47
+discount on the software price. But be careful, this code only works through November 19, 2026. Anyway, friends, we've reached the end of this video. I would really love to know what you thought of this software, or if you simply have any questions, don't hesitate to leave them in the comments. And in the meantime, as usual, I'll leave you here and I'll see you very soon, friends, for a new video.

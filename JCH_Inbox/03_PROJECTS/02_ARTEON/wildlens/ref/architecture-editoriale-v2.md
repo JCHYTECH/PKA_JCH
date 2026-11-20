@@ -52,5 +52,11 @@ Le Constat documente une dérive de destruction du vivant par semaine — chasse
 - Hebdomadaire — samedi
 - Si hebdomadaire trop exigeant au démarrage : bimensuel (1x/2 semaines)
 
+## Note future — Portrait d'artiste (conditionnel)
+
+Quand l'audience le justifiera : ajouter un portrait d'artiste/photographe mis en valeur
+(ex. Roxanne Bouché Overton, ICM, dans l'Édition #3). Objectif : mettre en lumière des
+photographes et, à terme, tisser des liens avec eux. Non systématique pour l'instant.
+
 ---
 *Architecture v2 — Dobby 🦉 2026-07-02*

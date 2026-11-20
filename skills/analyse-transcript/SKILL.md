@@ -12,6 +12,13 @@ description: Analyser un transcript (NoteGPT / YouTube / vidéo / podcast) — c
 
 JC dépose un transcript (`.txt` souvent `NoteGPT_Transcript_*.txt`, `.md`, `.srt`) et dit « analyse ce transcript » ou une variante.
 
+**Si JC donne une URL YouTube au lieu d'un fichier** → produire d'abord le transcript avec l'outil interne, puis analyser :
+```bash
+pka-transcript "<URL>"            # → 00_INBOX/YYYY-MM-DD_transcript-<slug>.md
+pka-transcript "<URL>" --model medium   # plus précis
+```
+Cela remplace l'ancienne méthode manuelle (site web de transcript → .txt → inbox).
+
 ## Objectif — 3 livrables, toujours dans cet ordre
 
 1. **Comprendre** — synthèse fidèle du contenu.

@@ -1,6 +1,6 @@
 # PKA Vault Worktree Stabilization Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-[[SKILL]]: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-[[skills/brief/SKILL]]: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Stabilize the PKA_JCH vault and [[Git]] worktree before expanding [[Obsidian]] and [[Hermisation]] automation.
 

@@ -6,7 +6,7 @@
 ## 🟢 Entrée rapide
 
 - **[thread-vetalyx.md](thread-vetalyx.md)** — fil vivant (décisions, état, prochaine étape).
-- **[executive-summary.md](executive-summary.md)** — résumé exécutif.
+- **[executive-summary.md](JCH_Inbox/03_PROJECTS/08_VETALYX/executive-summary.md)** — résumé exécutif.
 - **[legal/INDEX.md](legal/INDEX.md)** — **versions juridiques actuelles de travail** (statuts, pacte, convention, contrat DIAHO v4, réponse v4.1 préparée). Signature, envoi et entrée en vigueur ne sont pas établis.
 
 ## Description

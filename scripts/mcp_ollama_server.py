@@ -7,8 +7,8 @@ from urllib import request, error
 
 from mcp.server.fastmcp import FastMCP
 
-OLLAMA_HOST = os.environ.get("OLLAMA_HOST", "http://100.73.212.110:11434")
-BASE = f"{OLLAMA_HOST}/api"
+OLLAMA_BASE = os.environ.get("OLLAMA_BASE", "http://127.0.0.1:11435")
+BASE = f"{OLLAMA_BASE}/api"
 
 mcp = FastMCP("pka-ollama")
 

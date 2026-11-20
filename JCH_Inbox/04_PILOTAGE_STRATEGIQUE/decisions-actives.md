@@ -17,6 +17,14 @@ last_updated: 2026-11-15
 
 ## Décisions en attente
 
+### ARTEON — compétence impression photo (17/11)
+
+> Découle du conseil tirage/galerie (`TEAM_Inbox/2026-11-17_dobby_conseil_tirage-galerie.md`). Repositionnement « ARTEON Éditions — tirage documenté » acté (GO conditionnel). La compétence d'impression (tirage, cadrage, contrôle qualité, logistique) n'est pas disponible en interne. **Décision JC 17/11 : s'associer à un professionnel du tirage** (coût ↑, efficacité ↑). **Recommandation Dobby : contrat d'abord (fournisseur white-label), association différée post-édition #1 + apport marché B2B.** Cadre complet : `strategy/arteon-executive-summary.md`.
+
+| Date | Sujet | Contexte | Options | Décision |
+|------|-------|----------|---------|----------|
+| 2026-11-17 | Acquisition de la compétence impression | Éditeur de tirages validé ; JC penche pour l'association avec un pro du tirage | A) Apprentissage interne (écarté par JC) / B) Fournisseur pro white-label (coût unitaire + clause défauts) / C) Déléguer / D) Association capitalistique — différée post-édition #1 + apport marché B2B | ⏳ À trancher sur la forme — Dobby : B maintenant, D différé |
+
 ### VETALYX — reliquats post-arbitrage (01/10)
 
 | Date | Sujet | Contexte | Options | Décision |
@@ -106,9 +114,11 @@ last_updated: 2026-11-15
 
 | Date | Sujet | Décision |
 |------|-------|----------|
+| 2026-11-17 | Pilier tirage ARTEON repositionné | **NO-GO « intermédiaire d'impression »** (marge ~22 %) → **GO conditionnel « ARTEON Éditions — tirage documenté »** (marge 42–61 %, corpus propre + provenance anti-IA). Affiliation = label payant, pas marketplace. Séquence presets → WildLens → édition #1 → affiliation → B2B. |
 | 2026-08-18 | DIAHO 40 % fondateur dès la constitution | Acté — mission préparation stratégique 120 K€ |
 | 2026-09-29 | Standardisation matérielle IoT | Reste en 12V partout |
 | 2026-11-07 | TV connectée dans Lupo (suite analyse transcript vie privée TV) | **Pas de TV dans Lupo** — local-first. Si écran nécessaire : box HDMI + TV déconnectée d'Internet |
 | 2026-11-07 | Recherche scriptée | **DeepSeek natif** (`bin/pka-search`, $0.75/1k) en premier ; Tavily conservé pour l'interactif TUI. Revert : remettre Tavily en premier dans AGENTS.md |
 | 2026-11-07 | Modèle des sous-agents | **v4-flash** (via RÈGLE DÉLÉGATION AGENTS.md). Revert : retirer la clause `model="deepseek-v4-flash"`. Config backup : `~/.deepseek/config.toml.bak-20261107-dobby` |
+| 2026-11-16 | Envoi réponse Li Yan (observateur vs administrateur) | **Envoyée en anglais seul, sans validation notaire préalable** (décision JC). Clause observateur (DIAHO) à faire valider par le notaire avant de figer statuts/pacte ; re-traduction Jade FR/CN non faite. |
 | 2026-11-15 | Hébergement WildLens | **Self-host Ghost sur VPS Hostinger KVM 1** (datacenter UE, Ubuntu 24.04) — abandon Ghost(Pro) 18 $/mois. VPS = brique d'infra réutilisable PKA. ✅ **Exécuté 15/11** : VPS créé (IP 2.25.8.208), SSH durci, Ghost installé. Reste : DNS/SSL/Mailgun/migration. |

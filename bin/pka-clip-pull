@@ -1,0 +1,130 @@
+#!/usr/bin/env bash
+# =============================================================================
+# pka-clip-pull — Pull ONE-WAY des web clips iPad → inbox PKA
+# =============================================================================
+#
+# Dobby 🦉 — 2026-11-19
+#
+# Tire les notes .md capturées depuis l'iPad (Web Clipper → vault iCloud
+# « PKA Capture ») vers l'inbox PKA du M5, puis archive la source dans
+# `_processed/` (trace conservée, pas de re-pull). Sens unique iPad → M5,
+# conforme à la règle « miroir lecture seule » (JC n'édite que sur le M5).
+#
+# Source (vault Obsidian créé sur l'iPad, stocké dans iCloud) :
+#   ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/PKA Capture/inbox/
+# Destination :
+#   <PKA_ROOT>/JCH_Inbox/00_INBOX/web-clips/
+#
+# Usage :
+#   bin/pka-clip-pull                dry-run (défaut — n'écrit rien)
+#   bin/pka-clip-pull --list         liste les clips en attente (aucune écriture)
+#   bin/pka-clip-pull --apply        copie vers inbox + archive la source
+#   bin/pka-clip-pull --help         aide
+#
+# Variables d'environnement (test / surcharge) :
+#   PKA_CAPTURE_INBOX   chemin source (défaut : vault iCloud PKA Capture/inbox)
+#   PKA_CLIP_DEST       chemin destination (défaut : 00_INBOX/web-clips)
+# =============================================================================
+
+set -euo pipefail
+
+# ── Chemins canoniques ─────────────────────────────────────────────────────
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+if [[ "$SCRIPT_DIR" == */bin ]]; then
+    PKA_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+else
+    PKA_ROOT="${PKA_ROOT:-/Users/jchavauxm5/PKA_JCH}"
+fi
+
+ICLOUD_VAULT_ROOT="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/PKA Capture"
+SOURCE="${PKA_CAPTURE_INBOX:-${ICLOUD_VAULT_ROOT}/inbox}"
+DEST="${PKA_CLIP_DEST:-${PKA_ROOT}/JCH_Inbox/00_INBOX/web-clips}"
+PROCESSED="${SOURCE}/_processed"
+LOG_FILE="${PKA_ROOT}/_local/logs/pka-clip-pull.log"
+
+# ── Mode ───────────────────────────────────────────────────────────────────
+MODE="${1:---dry-run}"
+case "$MODE" in
+    --list|--apply|--dry-run|--help) ;;
+    *) echo "Usage: $0 [--list|--apply|--dry-run|--help]" >&2; exit 2 ;;
+esac
+
+if [[ "$MODE" == "--help" ]]; then
+    sed -n '2,27p' "${BASH_SOURCE[0]}"
+    exit 0
+fi
+
+timestamp() { date '+%Y-%m-%dT%H:%M:%S'; }
+
+log_event() {
+    local level="$1"; local message="$2"
+    mkdir -p "$(dirname "$LOG_FILE")"
+    echo "[$(timestamp)] [$level] ${message}" >> "$LOG_FILE"
+}
+
+# ── Source absente (vault iPad pas encore créé) ────────────────────────────
+if [[ ! -d "$SOURCE" ]]; then
+    cat <<EOF
+⚠️  Vault capture introuvable : ${SOURCE}
+
+Avant le premier pull, crée le vault sur l'iPad :
+  1. Obsidian (iPad) → « Create new vault » → stocké dans iCloud, nom « PKA Capture »
+  2. Dans le Web Clipper, choisis ce vault + Note location = « inbox »
+  3. Attends que l'iCloud ait matérialisé le dossier sur le M5 (icône nuage)
+
+Aucun fichier à traiter pour l'instant.
+EOF
+    exit 0
+fi
+
+# ── Collecte des clips .md (profondeur 1) ──────────────────────────────────
+# find -maxdepth 1 n'entre pas dans _processed/ (sous-dossier) : déjà exclu.
+FILES=()
+while IFS= read -r -d '' f; do
+    FILES+=("$f")
+done < <(find "$SOURCE" -maxdepth 1 -type f \( -name '*.md' -o -name '*.markdown' \) -print0 | sort -z)
+
+if [[ "$MODE" == "--list" || ${#FILES[@]} -eq 0 ]]; then
+    echo "Clips en attente dans : ${SOURCE}"
+    if [[ ${#FILES[@]} -eq 0 ]]; then
+        echo "  (aucun)"
+    else
+        for f in "${FILES[@]}"; do printf '  %s\n' "$(basename "$f")"; done
+    fi
+    if [[ "$MODE" != "--list" ]]; then
+        echo
+        echo "Rien à tirer. Relance avec --apply quand un clip sera présent."
+    fi
+    exit 0
+fi
+
+# ── Traitement ─────────────────────────────────────────────────────────────
+mkdir -p "$DEST"
+COUNT=0
+
+for src in "${FILES[@]}"; do
+    [[ -f "$src" ]] || continue
+    base="$(basename "$src")"
+    dest="${DEST}/${base}"
+
+    # Anti-collision : si le nom existe déjà, suffixer avec l'horodatage.
+    if [[ -e "$dest" ]]; then
+        stem="${base%.*}"; ext="${base##*.}"
+        dest="${DEST}/${stem}_$(date '+%H%M%S').${ext}"
+    fi
+
+    if [[ "$MODE" == "--apply" ]]; then
+        mkdir -p "$PROCESSED"
+        cp -p "$src" "$dest"
+        mv "$src" "$PROCESSED/"
+        log_event "OK" "pull: $(basename "$src") → web-clips (source archivée dans _processed)"
+        echo "✅ $(basename "$src") → web-clips/"
+    else
+        log_event "DRY" "simulé: $(basename "$src") → $(basename "$dest")"
+        echo "▶  [dry-run] $(basename "$src") → web-clips/$(basename "$dest")"
+    fi
+    COUNT=$((COUNT+1))
+done
+
+echo
+echo "Terminé : ${COUNT} clip(s) traité(s) (mode ${MODE})."

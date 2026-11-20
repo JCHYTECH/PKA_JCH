@@ -59,7 +59,7 @@ USER_PATH = os.path.expanduser("~/PKA_JCH/USER.md")
 PKABASE = os.path.expanduser("~/PKA_JCH")
 
 # Auto-extraction config
-OLLAMA_M1_URL = "http://100.73.212.110:11434"
+OLLAMA_M1_URL = os.environ.get("OLLAMA_BASE", "http://127.0.0.1:11435")
 OLLAMA_MODEL = "gemma3:12b-it-qat"
 DEEPSEEK_API_URL = "https://api.deepseek.com/v1/chat/completions"
 DEEPSEEK_MODEL = "deepseek-v4-pro"

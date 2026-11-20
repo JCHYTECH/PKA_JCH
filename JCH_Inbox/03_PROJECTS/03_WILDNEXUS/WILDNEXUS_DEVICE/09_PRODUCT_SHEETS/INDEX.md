@@ -55,13 +55,13 @@ Les fiches P1/P2 n'ont pas fait l'objet de la même revue technique que F1. Elle
 
 ## 5. Références
 
-- [Scope lock P0 v0.5](../01_FOUNDATION/WILDNEXUS_P0_SCOPE_LOCK.md)
-- [Index des ADR](../02_DECISIONS/WILDNEXUS_ADR_INDEX.md)
-- [État des protocoles](../03_P0_ENGINEERING/PROTOCOLES/progress.md)
-- [Budget P0](../03_P0_ENGINEERING/08_BUDGET_MODELES/WILDNEXUS_P0_BUDGET_RANGE.md)
+- [Scope lock P0 v0.5](WILDNEXUS_P0_SCOPE_LOCK.md)
+- [Index des ADR](WILDNEXUS_ADR_INDEX.md)
+- [État des protocoles](JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/PROTOCOLES/progress.md)
+- [Budget P0](WILDNEXUS_P0_BUDGET_RANGE.md)
 - [BOM et procurement](../03_P0_ENGINEERING/07_PROCUREMENT_BOM/)
-- [Usage matrix](../01_FOUNDATION/wildnexus-usage-matrix.md)
-- [Vision initiale](../HISTORIQUE/01_FOUNDATION/MASTER_ARCHITECTURE_WN.md), document de cadrage historique
+- [Usage matrix](wildnexus-usage-matrix.md)
+- [Vision initiale](MASTER_ARCHITECTURE_WN.md), document de cadrage historique
 
 ---
 

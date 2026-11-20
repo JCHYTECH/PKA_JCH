@@ -1,6 +1,6 @@
 # EventNET Noise Index Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-[[SKILL]]: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-[[skills/brief/SKILL]]: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Extend EventNET on the current BirdNET-Pi Raspberry Pi to compute a wildlife-oriented anthropogenic noise index from YAMNet detections.
 

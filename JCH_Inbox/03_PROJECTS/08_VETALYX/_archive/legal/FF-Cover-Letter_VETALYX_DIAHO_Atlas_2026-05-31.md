@@ -19,7 +19,7 @@ Le silence des derniers jours etait un silence de travail. Veuillez trouver ci-j
 
 ---
 
-## [[INDEX]] DES DOCUMENTS / 文件索引
+## [[wiki/index]] DES DOCUMENTS / 文件索引
 
 ### 1. LEGAL FRAMEWORK / 法律框架
 

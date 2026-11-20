@@ -1,8 +1,8 @@
 # Thread — ARTEON
 
 > Living document — maintenu par Dobby 🦉 en fin de session sur `/save`.
-> **Dernière mise à jour** : 2026-11-15 — pack presets Naturaliste (36 XMP) + slider proportionnel MCP + étude L'Instant Lu (NO-GO/recadrage) + VPS Hostinger créé
-> **Statut** : 🟢 relance engagée — VPS Hostinger créé + Ghost installé, domaine final `wildlens.arteon.be` (DNS à pointer)
+> **Dernière mise à jour** : 2026-11-20 — pivot WildLens « tout en français » (3 éditions FR en production, thème FR, locale fr) + clipper iPad→inbox
+> **Statut** : 🟢 actif — site FR en production (3 éditions FR : #1 publiée 18/11, #3 28/11, #2 05/12)
 
 ---
 
@@ -19,11 +19,12 @@ Photographie naturaliste éditoriale — marque ARTEON + service WildLens + futu
 | Global | 🟢 | Relance engagée — quatre éditions présentes (dernière : 31/10), publication à vérifier au cas par cas ; launchd hebdo réactivé |
 | Roadmap 13 étapes | 🟠 | **4 ✅ · 8 ⏳ · 1 🔴** — étapes 1 à 4 closes ; étape 12 rouge |
 | Charte de marque | ✅ | Livrée (étape 4/13) |
-| WildLens / Ghost | 🟢 | **VPS Hostinger créé + Ghost installé 15/11** (IP `2.25.8.208`) ; reste DNS/SSL/Mailgun/migration ; domaine final `wildlens.arteon.be` |
+| WildLens / Ghost | 🟢 | **Site FR en production** — `https://wildlens.arteon.be` 200, DNS + SSL + Mailgun ✅ ; thème ARTEON **en français** déployé ; **3 éditions FR** : #1 publiée 18/11, #3 programmée 28/11, #2 programmée 05/12 ; locale fr + dates françaises ; reste : abonnement |
 | Presets Naturaliste | 🟢 | **36 XMP** (12 looks × 3 forces) + mode d'emploi + landing ; **slider proportionnel MCP** (brique 2 : sélecteur 12 looks) |
-| Instagram | 🟠 | Authentification Meta et lectures validées ; première publication préparée mais non effectuée par choix de JC |
+| Instagram | 🟢 | **1ᵉʳ post publié 17/11** (robin.jpg) → `https://www.instagram.com/p/Df2zb1LCDgT/` ; **légende passée en FR** (édition manuelle — l'API Graph ne permet pas la modif de légende) ; reste : lien en bio + premier relevé insights |
 | Shopify | ⏳ | V1 non préparée (aucune action depuis 02/07) |
-| WhiteWall | ⏳ | Intégration non configurée |
+| WhiteWall | 🟠 | **Repositionné** : fournisseur interchangeable (pas marchand de labo) — conseil 17/11 |
+| Tirages / Éditions | 🟠 | **GO conditionnel** — « ARTEON Éditions, le tirage documenté » (édition numérotée, corpus propre, provenance anti-IA) ; séquence presets → WildLens → édition #1 → affiliation (label) → B2B |
 | L'Instant Lu | 🟠 | Backend Argus diagnostiqué (52 analyses) ; conseil 6 stances → **NO-GO « lancer tel quel », recadrage presets + WildLens**, badge « Vérifié » gelé |
 
 > ⚠️ **Blocage structurel identifié (22/10)** : la matière et la charte existent,
@@ -36,6 +37,8 @@ Photographie naturaliste éditoriale — marque ARTEON + service WildLens + futu
 
 | Date | Décision | Contexte |
 |------|----------|----------|
+| 2026-11-19 | **Pivot WildLens « tout en français »** — FR pour le lancement (audience francophone première cible), EN en réserve, IT plus tard ; pas de compte Instagram séparé par langue avant traction. 3 éditions traduites + réimportées, thème FR déployé, locale fr. | Décision stratégique après analyse du funnel et de l'audience cible ; JC valide le pivot |
+| 2026-11-17 | **Pilier tirage/galerie repositionné « ARTEON Éditions »** — NO-GO « intermédiaire d'impression » (marge ~22 % net, CAC > marge) ; GO conditionnel « éditeur de tirages documentés » (marge 42–61 %, corpus propre + provenance anti-IA) ; affiliation = label payant, pas marketplace | Conseil 5 stances → `TEAM_Inbox/2026-11-17_dobby_conseil_tirage-galerie.md` ; JC valide le rôle d'éditeur. ⚠️ Lacune : compétences impression photo non disponibles |
 | 2026-11-16 | **Différenciateur repositionné sur 3 piliers complets** : le grading (roues ColorGrade) était droppé par le SDK Lightroom — récupéré via les clés legacy `SplitToning*` (substitution dans `looks.mjs`). Courbe paramétrique + grading + TSL désormais tous vérifiés proportionnels en prod. | Proposition 1 + isolation catalogue + confirmation visuelle des roues |
 | 2026-11-16 | **Partie C (Amount natif) : la « supériorité sur le Amount » est falsifiée** — le Amount scale la saturation du grading, la TSL, le grain et le base (mesuré ×0,5/×2). Différenciateur recadré sur la courbe paramétrique scalable + l'invariant documenté (pas sur le grading). | `measure-amount.mjs` + read-back `SplitToning*` |
 | 2026-11-16 | **P0+P1 presets appliqués** : WB/expo découplées des 36 XMP, 3ᵉ roue grading (midtones) + Luminance + Blending/Balance par look, contrat de look `{forme/ancre/amplitude}` documenté ; brique 3 (masques IA) designée → Forge | 7 transcripts Lightroom analysés + scripts `strip_wb_expo_xmp.py` / `add_midtone_grading_xmp.py` |
@@ -56,13 +59,15 @@ Photographie naturaliste éditoriale — marque ARTEON + service WildLens + futu
 
 ## TTD — Pending
 
-- [ ] **P1 · — · (JC)** Relire le brouillon Ghost « WildLens — Edition #4 » (slug `wildlens-edition-4`) puis donner le feu vert
-- [ ] **P2 · — · (Dobby, après relecture)** Pousser les 3 autres éditions en brouillon via `scripts/ghost_import.py`
-- [ ] **P3 · — · (JC + Forge)** Finir la migration WildLens : DNS A `wildlens` → `2.25.8.208`, `ghost setup ssl`, Mailgun, import contenu (VPS créé + Ghost installé 15/11)
+- [ ] **P1 · — · (Jade)** Traduire les 3 éditions en italien (FR livré, EN en réserve) — après traction FR
+- [ ] **P2 · — · (Dobby)** Recoller le hashtag #photographyethics (coupé au collage Instagram)
+- [ ] **P3 · — · (JC)** Renouveler le token Instagram avant le 04/01/2026 (60 j)
 - [ ] **P4 · — · (JC)** Allouer du temps créatif éditorial — blocage structurel : 8 étapes roadmap non closes
-- [ ] **P5 · — · (Forge + Jade, après feu vert)** Traduire les éditions en FR + IT ; builder le changeur de langue Ghost (EN/FR/IT) avec détection géoloc IP pour la langue par défaut
 - [ ] **P6 · — · (Forge)** Presets brique 3 : masques IA (sujet/œil/plumage/arrière-plan) — design `strategy/brique-3-masques-ia-design.md`, tâche `task_a60c239c` ; brique 4 : endpoint `/recommend` (EXIF niveau 1 d'abord, Dobby)
 - [ ] **P7 · — · (JC)** Nettoyer le doublon de preset LRC (37 importés au lieu de 36) + galerie avant/après définitive (12 paires)
+- [ ] **P8 · M1 test aveugle · (JC + Dobby)** Correction manuelle de 16 photos (sélection `strategy/m1-test-aveugle-selection.md`) + jugement en aveugle ~5 photographes — critère « pire+indifférent » ≤ 50 % sinon stop. Préalables : mapping `LrC to-NN` → RAW `~/Pictures/` (JC fournit, ou correction directe dans Lightroom) ; trancher Nocturne (absent du corpus) + Golden hour (partiel). Découle du conseil `TEAM_Inbox/2026-11-16_dobby_conseil_correction-photo.md` (NO-GO service, GO conditionnel).
+- [ ] **P9 · — · (JC + Dobby)** Choisir le tireur (compétence impression) — JC : s'associer à un pro du tirage ; Dobby : fournisseur white-label maintenant (coût unitaire + clause défauts), association différée post-édition #1 + apport marché B2B. Gate trafic avant galerie (2 000 visites qualifiées / 60 j)
+- [ ] **P10 · — · (Dobby)** Tester l'édition #1 en pré-vente bornée (coût ~300–400 €, kill criteria : ≥ 8 préventes = GO) — uniquement après presets + WildLens
 
 ## TTD — Done (session 2026-11-05)
 
@@ -75,6 +80,7 @@ Photographie naturaliste éditoriale — marque ARTEON + service WildLens + futu
 
 | Date | Résumé session | Livrable |
 |------|---------------|----------|
+| 2026-11-20 | Renumérotation Ghost résolue (#4→#1) + nettoyage structure 02_ARTEON + **pivot FR** (3 éditions traduites, thème FR, locale fr) + clipper iPad→inbox | `wildlens/editions/final/`, `wildlens/editions/fr/`, `bin/pka-clip-pull`, `_local/launchd-plists/com.dobby.pka-clip-pull.plist` |
 | 2026-11-15 | Presets 36 XMP + slider proportionnel MCP + étude L'Instant Lu (conseil NO-GO/recadrage) + recensement marché + cartographie fonctionnelle + VPS Hostinger créé | `presets-naturaliste/`, `_local/lightroom-mcp/scripts/looks.mjs`, `strength_server.mjs`, `strategy/recensement-presets-xmp-animaliere.md`, `strategy/cartographie-fonctionnelle-presets.md`, `strategy/plan-reorientation-instant-lu.md` |
 | 2026-11-15 | Renumérotation éditions, décision self-host Hostinger, achat VPS + installation Ghost ; recherche mails Gandi (orban45.be identifiée) | `wildlens/runbook-ghost-selfhost-hostinger.md`, `wildlens/editions/_archive/` |
 | 2026-11-05 | Instagram préparé sans publication ; Ghost diagnostiqué puis mis en pause après e-mail au support | `docs/procedure-acces-instagram-wildlens.md`, `wildlens/instagram-launch-kit.md` |
@@ -87,6 +93,8 @@ Photographie naturaliste éditoriale — marque ARTEON + service WildLens + futu
 
 - INDEX : `03_PROJECTS/02_ARTEON/INDEX.md`
 - WildLens INDEX : `03_PROJECTS/02_ARTEON/wildlens/INDEX.md`
+- Executive summary interne (chantiers / ordre / gardes-fous) : `strategy/arteon-executive-summary.md`
+- Plan « produit fini » WildLens : `strategy/plan-wildlens-produit-fini.md`
 - Roadmap : 13 étapes, 4 ✅, 8 ⏳, 1 🔴 (reprise des éditions WildLens)
 
 ---

@@ -70,5 +70,5 @@ indépendants (YouTube, Reddit, GitHub, blogs, forums).
 
 ## Voir aussi
 
-- [[INDEX|Future Invest — Index projet]]
+- [[wiki/index|Future Invest — Index projet]]
 - [[2026-06-04_checklist-lancement|Checklist de lancement]]

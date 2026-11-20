@@ -7,7 +7,7 @@
 
 - **[thread-iot.md](thread-iot.md)** — état opérationnel, décisions et prochaines actions.
 - **[IOT_DOSSIER_TECHNIQUE_V0.md](IOT_DOSSIER_TECHNIQUE_V0.md)** — référentiel technique consolidé et revue des risques ; certaines architectures restent des cibles.
-- **[executive-summary.md](executive-summary.md)** — synthèse externe de l'état réel.
+- **[executive-summary.md](JCH_Inbox/03_PROJECTS/11_IOT/executive-summary.md)** — synthèse externe de l'état réel.
 - **[OPERATIONS-CAN-OBD.md](iot-van/OPERATIONS-CAN-OBD.md)** — diagnostic réel et validation locale WiCAN/RUT240.
 
 ## Nature et périmètre

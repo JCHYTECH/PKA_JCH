@@ -73,3 +73,28 @@ répond pas à la question « une *partie* de l'image est-elle IA ? ».
    les artefacts seuls ne suffisent plus.
 4. **Intégration Argus** : en 6ᵉ axe « intégrité », mais **uniquement niveau 1**
    tant que le niveau 2 n'est pas fiable.
+
+---
+
+## Référence complémentaire — 2026-11-17
+
+Transcript analysé (vidéo Underscore_, interview d'un spécialiste forensique) :
+`99_REFERENCES/detecteur-ia-2026-11-17/` — rapport `TEAM_Inbox/2026-11-17_dobby_analyse-transcript-detecteur-ia.md`.
+
+Confirme la décision « niveau 1 » (les détecteurs publics restent peu fiables, et
+« détecter l'IA à tout prix n'a pas de sens sans contexte »). Trois apports neufs à
+garder sous le coude si on va plus loin :
+
+1. **Détection de tatouage par saturation** — saturer les couleurs révèle le motif
+   périodique du tatouage (Google/Nano Banana) ; un détecteur peut chercher ce motif.
+   ⚠️ déjà beaucoup de faux positifs rapportés par une boîte forensique.
+2. **Tatouage de texte** — biaiser le choix des tokens (sans dégrader la qualité) ;
+   Claude l'a implémenté, l'UE (AI Act) pousse dans ce sens. C'est la voie fiable pour
+   le texte, contrairement à la détection « stylistique » (un prénom changé fait passer
+   0 % → 100 %).
+3. **Prouver le vrai plutôt que détecter le faux** — constructeurs photo qui signent en
+   Content Credentials dès la sortie d'appareil ; cohérent avec notre niveau 1 (provenance).
+
+À retenir aussi : le **« liar's dividend »** (un fraudeur prétend que la vraie preuve est
+« générée par IA ») — renforce la formulation « l'absence de preuve n'est pas une preuve
+d'absence ».

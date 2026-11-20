@@ -191,6 +191,6 @@ Réponse :
 
 ## Voir aussi
 
-- [[INDEX|Future Invest — Index projet]]
+- [[wiki/index|Future Invest — Index projet]]
 - [[Bruno]] — analyste finance & investissement
 - [[Dobby]] — orchestrateur

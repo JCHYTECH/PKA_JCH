@@ -20,7 +20,7 @@ last_updated: 2026-11-06
 1. [thread-photo-ai-jury.md](thread-photo-ai-jury.md) — état opérationnel, décisions et prochaine action.
 2. [roadmap-mcp-integration.md](roadmap-mcp-integration.md) — chantier d'automatisation Lightroom.
 3. [ai-image-detection.md](ai-image-detection.md) — limites mesurées de la détection d'images IA.
-4. [executive-summary.md](executive-summary.md) — synthèse du projet.
+4. [executive-summary.md](JCH_Inbox/03_PROJECTS/05_PHOTO_AI_JURY/executive-summary.md) — synthèse du projet.
 
 ## Description
 

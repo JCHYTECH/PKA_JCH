@@ -1,7 +1,7 @@
 # Thread — VETALYX
 
 > Living document — mis à jour automatiquement par Dobby 🦉 en fin de session.
-> **Dernière mise à jour** : 2026-11-12 — doc pédagogique « stick oméga-3 (dosage & appétence) » ajouté ; analyse seulement, MVP IgE et priorités juridiques inchangés
+> **Dernière mise à jour** : 2026-11-16 — réponse « observateur vs administrateur » (Renard v2) envoyée à Li Yan via Outlook par JC, en anglais seul, sans validation notaire
 > **Statut** : 🔶 actif (juridique) — capital 10 000 € (4 000 libéré), DIAHO 40 % en espèces
 
 ---
@@ -63,7 +63,7 @@ Plateforme de diagnostics vétérinaires rapides — marché européen. **Struct
 - [ ] **P1 · — · (Notaire)** Validation notaire (mécanique 6 000 €, ISC, exercice fiscal)
 - [ ] **P1 · — · (Renard)** Verrouiller anti-dilution pro-rata + pas de véto DIAHO sur entrée investisseur (Art. 5 pacte)
 - [ ] **P1 · — · (JC)** Seuil drag-along (75 % recommandé)
-- [ ] **P1 · — · (Renard)** Vérifier double qualité Peiwen QI (fondatrice 15 % + administratrice DIAHO)
+- [x] **P1 · — · (Renard)** Vérifier double qualité Peiwen QI (fondatrice 15 % + administratrice DIAHO) — résolu 16/11 : DIAHO → observateur (pas administrateur), cumul Peiwen évité
 - [ ] **P1 · — · (Jade)** Re-traduction EN des clauses ajoutées
 - [ ] **P2 · — · (Clio)** Trancher qualification AFMPS/FAMHP (DM vétérinaire vs médicament)
 - [ ] **P2 · — · (Dobby)** Export BP statique (PDF) pour tiers
@@ -102,6 +102,7 @@ Plateforme de diagnostics vétérinaires rapides — marché européen. **Struct
 
 | Date | Résumé session | Livrable |
 |------|---------------|----------|
+| 2026-11-16 | Réponse « observateur vs administrateur » (Renard v2) envoyée à Li Yan via Outlook — EN seul, sans validation notaire | `legal/2026-11-16_renard_observateur-vs-administrateur-v2.md` |
 | 2026-11-12 | Analyse stick (dosage à la longueur) + appétence ; doc pédagogique non technique | `strategy/2026-11-12_dobby_stick-dosage-appetence-vetalyx.md` |
 | 2026-11-07 | Analyse multifonctions oméga-3 peau/pelage ; corrections dose, preuves, TVA et économie ; pas de lancement décidé | `strategy/2026-11-07_VETALYX_rapport-strategique-omega3-peau-poil.md` |
 | 2026-11-05 | Revue documentaire uniquement ; aucune action juridique, traduction ou preuve d'envoi nouvelle | `thread-vetalyx.md`, `INDEX.md` |

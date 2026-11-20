@@ -13,7 +13,7 @@ Plateforme éditoriale photographique naturaliste.
 1. [thread-arteon.md](thread-arteon.md) — **état opérationnel courant, décisions et prochaines actions**.
 2. [strategy/arteon-colonne-vertebrale.md](strategy/arteon-colonne-vertebrale.md) — architecture et pipeline technique.
 3. [wildlens/INDEX.md](wildlens/INDEX.md) — index du service éditorial prioritaire.
-4. [executive-summary.md](executive-summary.md) — synthèse du projet.
+4. [executive-summary.md](JCH_Inbox/03_PROJECTS/02_ARTEON/executive-summary.md) — synthèse du projet.
 
 ---
 

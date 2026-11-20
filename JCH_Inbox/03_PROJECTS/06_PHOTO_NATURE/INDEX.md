@@ -13,7 +13,7 @@ Couvre la technique photo, le post-traitement, l'impression, les observations te
 
 1. [thread-photo-nature.md](thread-photo-nature.md) — état courant et décisions.
 2. [README_keyworder.md](README_keyworder.md) — documentation de l'auto-tagging.
-3. [executive-summary.md](executive-summary.md) — synthèse du projet.
+3. [executive-summary.md](JCH_Inbox/03_PROJECTS/06_PHOTO_NATURE/executive-summary.md) — synthèse du projet.
 4. [Structure et fichiers clés ci-dessous](#structure) — accès aux contenus terrain et techniques.
 
 ## Structure

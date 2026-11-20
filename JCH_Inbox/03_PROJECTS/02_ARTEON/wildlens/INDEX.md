@@ -14,7 +14,7 @@ last_updated: 2026-11-15
 > Sans WildLens, pas de traffic, pas de conversion vers [[L'Instant Lu]], pas de revenu.
 > wildlens-journal.ghost.io · EN uniquement
 >
-> **État courant :** Ghost en pause après contact du support ; Instagram préparé sans publication. Voir [thread-arteon.md](../thread-arteon.md).
+> **État courant :** Ghost self-host en ligne (`https://wildlens.arteon.be`) — #1 publiée 18/11, #3 programmée 28/11, #2 programmée 05/12. Instagram : 1ᵉʳ post publié 17/11. Voir [thread-arteon.md](../thread-arteon.md).
 
 ---
 
@@ -56,6 +56,8 @@ WildLens est un **journal hebdomadaire** analysant les avancées en photographie
 | `essai/AI-Will-Never-Speak-the-Language-of-the-Living.pdf` | source | Article original (PDF) |
 | `essai/article-ai-never-speak-language-living.md` | essai | AI et langage animal — patterns vs sens (draft 01/11) |
 | `essai/article-ia-voynich-langage-animal.md` | essai | Manuscrit Voynich et langage animal |
+| `essai/article-le-miroir-a-refuser-v4.md` | essai | « Le miroir à refuser » — le revers, registre adulte (v4 définitive 17/11) |
+| `essai/article-le-miroir-a-refuser-ado.md` | essai | « Le miroir à refuser » — version adolescents |
 
 ## Charte visuelle WildLens
 
@@ -95,26 +97,25 @@ wildlens/
 
 ## Éditions
 
-| Date | Édition | Fichier |
-|------|---------|---------|
-| 2026-03-28 | #1 | [WildLens-2026-03-28.md](editions/WildLens-2026-03-28.md) |
-| 2026-07-02 | #2 | [WildLens-2026-07-02.md](editions/WildLens-2026-07-02.md) · [preview HTML](editions/WildLens-2026-07-02-preview.html) |
-| 2026-10-24 | #3 | [WildLens-2026-10-24.md](editions/WildLens-2026-10-24.md) |
-| 2026-10-31 | #4 | [WildLens-2026-10-31.md](editions/WildLens-2026-10-31.md) |
+| # | Sujet | Fichier (final) | Statut Ghost |
+|---|-------|-----------------|--------------|
+| 1 | Rouge-gorge « Look it in the face » | [wildlens-edition-1-rouge-gorge.md](editions/final/wildlens-edition-1-rouge-gorge.md) | publiée 18/11 |
+| 2 | Gannet (nid en filet de pêche) | [wildlens-edition-2-gannet.md](editions/final/wildlens-edition-2-gannet.md) | programmée 05/12 |
+| 3 | AI autofocus + NewtCam | [wildlens-edition-3-ai-autofocus.md](editions/final/wildlens-edition-3-ai-autofocus.md) | programmée 28/11 |
 
-*Archivés dans `editions/_archive/` : `WildLens-2026-04-18.md` (transcript brut ChatGPT), `WildLens-2026-06-20.md` (template vide).*
+> **Renumérotation 15/11** (`tmp/renumber_wildlens.py`) : ancienne #4 (rouge-gorge) → #1 ; ancienne #1 (AI autofocus) → #3 ; ancienne #2 (gannet) → #2 ; ancienne #3 (provenance « Was this real? ») → supprimée.
+> *Fichiers datés d'origine archivés dans `editions/_archive/`.*
 
 Le statut de rédaction ou de publication ne doit pas être déduit du seul nom de fichier ; voir [thread-arteon.md](../thread-arteon.md).
 
 ## Statut
 
-Relance engagée — édition du 24/10 rédigée et automatisation hebdomadaire réactivée.
-Ghost renvoie 404 ; le support a été contacté et ce chantier est **en pause**.
-Instagram est préparé, mais **aucune publication sans nouvelle demande explicite de JC**.
+Relance opérationnelle — Ghost self-host en ligne depuis le 17/11, 3 éditions en place (#1 publiée, #2 et #3 programmées). Cadence hebdo : 28/11 puis 05/12.
+Instagram : 1ᵉʳ post publié le 17/11 ; **aucune publication supplémentaire sans nouvelle demande explicite de JC**.
 
 ## Actions prioritaires
 
-Les actions courantes sont centralisées dans [thread-arteon.md](../thread-arteon.md). À la date de cette révision : reprendre Ghost uniquement après la pause et la réponse du support ; ne publier sur Instagram que sur nouvelle demande explicite de JC.
+Les actions courantes sont centralisées dans [thread-arteon.md](../thread-arteon.md). À la date de cette révision : traduire les éditions FR/IT (Jade/Forge), finaliser le thème + abonnement, combler la compétence impression photo avant « ARTEON Éditions ». Ne publier sur Instagram que sur nouvelle demande explicite de JC.
 
 ## Voir aussi
 

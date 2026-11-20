@@ -6,7 +6,7 @@ Analyzes images and writes IPTC keywords + structured XMP metadata.
 
 Usage:
   python3 photo_keyworder.py --input ~/Desktop/Photos_to_tag/
-  python3 photo_keyworder.py --input ~/Pictures/batch/ --model llama3.2-vision:11b --endpoint http://100.73.212.110:11434
+  python3 photo_keyworder.py --input ~/Pictures/batch/ --model llama3.2-vision:11b --endpoint http://127.0.0.1:11435
   python3 photo_keyworder.py --input img.jpg --dry-run   (preview only, no write)
 
 Dependencies: exiftool, requests, Pillow
@@ -30,9 +30,9 @@ except ImportError:
     sys.exit("Missing 'requests'. Install: pip3 install requests")
 
 # ── Config ────────────────────────────────────────────────────────────────────
-DEFAULT_OLLAMA_URL = "http://127.0.0.1:11434/api/generate"
+DEFAULT_OLLAMA_URL = os.environ.get("OLLAMA_BASE", "http://127.0.0.1:11435") + "/api/generate"
 DEFAULT_MODEL      = "llama3.2-vision:11b"
-DEFAULT_M1_URL     = "http://100.73.212.110:11434/api/generate"
+DEFAULT_M1_URL     = os.environ.get("OLLAMA_BASE", "http://127.0.0.1:11435") + "/api/generate"
 SUPPORTED_EXTS     = {".jpg", ".jpeg", ".png", ".tif", ".tiff", ".dng", ".webp"}
 SCRIPT_DIR         = Path(__file__).resolve().parent
 REPO_ROOT          = SCRIPT_DIR.parent

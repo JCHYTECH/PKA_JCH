@@ -1,7 +1,7 @@
 # Thread — AI_IT_TOOLS
 
 > Living document — maintenu par Dobby 🦉 en fin de session sur `/save`.
-> **Dernière mise à jour** : 2026-11-13 — Miroir iMac↔M1 (noVNC 6081) + durcissement mots de passe (rotation, FileVault iMac off, secrets → Trousseau) ; ACL Tailscale reportée
+> **Dernière mise à jour** : 2026-11-20 — clipper iPad→inbox (pka-clip-pull, launchd 15 min)
 > **Statut** : 🟢 actif
 
 ---
@@ -77,6 +77,8 @@ Infrastructure IA et outils PKA — maintenance du système Dobby, skills, mémo
 
 | Date | Résumé session | Livrable |
 |------|---------------|----------|
+| 2026-11-20 | Clipper iPad → inbox : vault iCloud « PKA Capture » + pull one-way (bin/pka-clip-pull, launchd 15 min) ; miroir lecture seule iPad→M5 | `bin/pka-clip-pull`, `bin/install-clip-pull-launchd.sh`, `_local/launchd-plists/com.dobby.pka-clip-pull.plist` |
+| 2026-11-17 | TeamViewer M5 réparé : 4 LaunchDaemons désactivés (`.plist.disabled`) → renommage manuel + `launchctl bootstrap` Helper/service ; app stable, plus de crash | — |
 | 2026-11-11 | Pont noVNC iMac↔M5 (miroir d'écran) : iMac 2017 affiche le M5 via Safari, auto-start launchd, correctif noVNC (type ARD retiré) | `_local/novnc/`, `_local/launchd-plists/com.dobby.m5-vnc-novnc.plist`, `wiki/Daily/2026/11/2026-11-11-imac-miroir-de-m5-via-novnc-pont-websocket.md` |
 | 2026-11-07 | Veille DeepSeek V4 + intégration transcript TV privacy + inventaire magazine Photo : recherche native, sous-agents flash, skill analyse-transcript, matrice-modeles à jour | `bin/pka-search`, `skills/analyse-transcript/`, `wiki/Daily/2026/11/2026-11-07-veille-deepseek-v4-et-evolution-du-systeme-pka.md` |
 | 2026-11-06 | Intégration des trois transcripts YouTube : MCP HA multi-clients, supervision et Time Machine côté IOT, test Lightroom et socle JCH côté PHOTO_AI_JURY | `scripts/ha_mcp_loopback_proxy.py`, `scripts/mcp_ha_lupo_readonly.sh`, `wiki/Daily/2026/11/2026-11-06-mcp-home-assistant-et-lightroom-testes.md` |

@@ -48,7 +48,7 @@ Pour affiner votre choix, voyagez-vous en France ou dans un autre pays d'Europe,
 
 Parfait. Je vais écrire le script maintenant.
 
-Maintenant le fichier [[README]] d’installation :
+Maintenant le fichier [[_local/novnc/README]] d’installation :
 
 Le zip contient camping_scout.py + README_camping_scout.md.
 

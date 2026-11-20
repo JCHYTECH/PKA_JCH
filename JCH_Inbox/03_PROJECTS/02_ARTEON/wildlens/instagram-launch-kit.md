@@ -67,6 +67,6 @@ Aucun appel vers un lien externe dans le premier post : la destination éditoria
 1. **Fait** : compte `@wildlens_arteon` configuré, accès Graph API et permissions vérifiés.
 2. **Fait** : JPEG corrigé validé par JC, hébergé seul dans `https://github.com/JCHYTECH/wildlens-assets`, URL et empreinte contrôlées.
 3. **Fait** : simulation locale validée sans réseau avec la légende complète de 527 caractères.
-4. **Non publié** : JC a choisi de ne pas publier lors du contrôle final du 2026-11-04. Une nouvelle demande explicite est nécessaire avant `publish --confirm`.
+4. **Publié le 2026-11-17** (media_id `18355684663283857`, `https://www.instagram.com/p/Df2zb1LCDgT/`) sur demande explicite de JC. Reste : lien en bio + premier relevé insights.
 5. **Après une éventuelle publication** : contrôler `media`, puis `insights` sur l’identifiant obtenu. Ne jamais republier pour tester les statistiques.
 6. **À traiter séparément** : remettre Ghost en service avant de rétablir la boucle vers l’abonnement email.

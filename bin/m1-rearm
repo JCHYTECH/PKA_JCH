@@ -38,7 +38,7 @@ fi
 REMOTE_SCRIPT=$(cat <<'REMOTE'
 set -u
 
-# Ollama peut être lié à l'IP Tailscale (ex. 100.73.212.110) et non à 127.0.0.1.
+# Ollama tourne en loopback 127.0.0.1:11434 (basculé depuis l'IP Tailscale le 2026-11-15).
 # Vérifie le serveur sur l'adresse réellement écoutée (via lsof), avec repli loopback.
 ollama_up() {
   local addrs host
@@ -136,9 +136,9 @@ echo "=== OLLAMA ==="
 if ollama_up; then
   echo "✓ ollama répond"
 else
-  echo "→ ollama muet, tentative de démarrage"
-  (command -v brew >/dev/null && brew services start ollama) 2>/dev/null \
-    || (nohup ollama serve >/tmp/ollama.log 2>&1 &)
+  echo "→ ollama muet, tentative de démarrage (daemon système com.pka.ollama)"
+  sudo -n launchctl kickstart -k system/com.pka.ollama 2>/dev/null \
+    || (nohup /Users/m1/.local/ollama/ollama serve >/tmp/ollama.log 2>&1 &)
   sleep 4
   ollama_up && echo "✓ ollama démarré" || echo "✗ ollama toujours muet"
 fi

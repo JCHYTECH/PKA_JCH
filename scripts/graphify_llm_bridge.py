@@ -19,6 +19,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import sys
 import time
@@ -28,7 +29,7 @@ from urllib import request, error
 
 # ── Configuration ────────────────────────────────────────────────────────────
 
-OLLAMA_HOST = "http://100.73.212.110:11434"
+OLLAMA_HOST = os.environ.get("OLLAMA_BASE", "http://127.0.0.1:11435")
 DEFAULT_MODEL = "qwen2.5-coder:14b"  # Bon compromis vitesse/qualité
 MAX_CHARS_PER_FILE = 8000             # Tronque les fichiers longs
 MAX_CHARS_PER_BATCH = 12000           # Max contexte par requête Ollama

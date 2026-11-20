@@ -1,7 +1,7 @@
 # TTD — Vue consolidée (tous projets)
 
 > **Fichier dérivé** — généré à chaque `/save` depuis les seuls blocs `TTD — Pending` des thread files. Ne pas éditer à la main hors `/save` : la source de vérité reste les thread files + `etat-projets.md`.
-> `last_updated: 2026-11-15 · by: deepseek-v4-pro` — presets Naturaliste 36 + slider proportionnel MCP + étude L'Instant Lu + VPS Hostinger créé
+> `last_updated: 2026-11-20 · by: deepseek-v4-pro` — pivot WildLens « tout en français » (3 éditions FR) + clipper iPad→inbox
 
 ## 01_AI_IT_TOOLS
 
@@ -100,7 +100,7 @@ Source : `08_VETALYX/thread-vetalyx.md`
 - [ ] **P1 · — · (Notaire)** Validation notaire (mécanique 6 000 €, ISC, exercice fiscal)
 - [ ] **P1 · — · (Renard)** Verrouiller anti-dilution pro-rata + pas de véto DIAHO sur entrée investisseur (Art. 5 pacte)
 - [ ] **P1 · — · (JC)** Seuil drag-along (75 % recommandé)
-- [ ] **P1 · — · (Renard)** Vérifier double qualité Peiwen QI (fondatrice 15 % + administratrice DIAHO)
+- [x] **P1 · — · (Renard)** Vérifier double qualité Peiwen QI (fondatrice 15 % + administratrice DIAHO)
 - [ ] **P1 · — · (Jade)** Re-traduction EN des clauses ajoutées
 - [ ] **P2 · — · (Clio)** Trancher qualification AFMPS/FAMHP (DM vétérinaire vs médicament)
 - [ ] **P2 · — · (Dobby)** Export BP statique (PDF) pour tiers

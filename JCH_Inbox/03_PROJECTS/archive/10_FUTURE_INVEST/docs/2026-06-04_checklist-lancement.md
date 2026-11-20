@@ -172,7 +172,7 @@ quelle que soit la conviction du système. Le timeout est un archivage, jamais u
 
 ## Voir aussi
 
-- [[INDEX|Future Invest — Index projet]]
+- [[wiki/index|Future Invest — Index projet]]
 - [[Bruno]] — profil investisseur, validation risque
 - [[Forge]] — architecture technique, déploiement
 - [[Dobby]] — orchestrateur

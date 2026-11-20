@@ -1,7 +1,7 @@
 # Procédure — Accès Instagram (Meta Graph API) pour WildLens
 
 > **Objectif :** publier sur `wildlens_arteon` (image + légende + hashtags) et lire les statistiques avec l’API officielle Meta.
-> **État au 2026-11-04 :** authentification et lectures réelles validées. Première publication réelle encore à effectuer avec l’accord explicite de JC.
+> **État au 2026-11-17 :** authentification validée et **premier post publié** le 17/11 (robin.jpg, media_id `18355684663283857`, permalink `https://www.instagram.com/p/Df2zb1LCDgT/`). Token valide (60 j depuis le 04/11).
 > **Règle :** aucune publication sans `publish --confirm`, après validation de JC.
 
 ---

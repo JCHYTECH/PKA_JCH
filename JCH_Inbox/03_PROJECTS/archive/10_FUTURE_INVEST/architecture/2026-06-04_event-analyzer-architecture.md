@@ -338,7 +338,7 @@ Execution Layer (automatique)
 
 ## Voir aussi
 
-- [[INDEX|Future Invest — Index projet]]
+- [[wiki/index|Future Invest — Index projet]]
 - [[2026-06-04_bruno_profil-investisseur|Profil investisseur — questionnaire Bruno]]
 - [[Forge]] — architecte technique
 - [[Bruno]] — validation des opinions de positionnement

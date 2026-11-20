@@ -1,0 +1,50 @@
+{{!< default}}
+
+<div class="index-hero">
+    <h1 class="hero-title">{{@site.title}}</h1>
+    {{#if @site.description}}<p class="hero-desc">{{@site.description}}</p>{{/if}}
+</div>
+
+<div class="post-list">
+    {{#foreach posts}}
+        {{#if @first}}
+            <article class="post-card post-card--featured {{post_class}}">
+                {{#if feature_image}}
+                    <a class="post-card-image" href="{{url}}">
+                        <img src="{{feature_image}}" alt="{{title}}" />
+                    </a>
+                {{/if}}
+                <div class="post-card-body">
+                    <time class="post-card-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMMM YYYY"}}</time>
+                    <h2 class="post-card-title"><a href="{{url}}">{{title}}</a></h2>
+                    <p class="post-card-excerpt">{{excerpt words="40"}}</p>
+                    <a class="post-card-link" href="{{url}}">Lire l'édition →</a>
+                </div>
+            </article>
+        {{else}}
+            <article class="post-card {{post_class}}">
+                {{#if feature_image}}
+                    <a class="post-card-image" href="{{url}}">
+                        <img src="{{feature_image}}" alt="{{title}}" />
+                    </a>
+                {{/if}}
+                <div class="post-card-body">
+                    <time class="post-card-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMMM YYYY"}}</time>
+                    <h2 class="post-card-title"><a href="{{url}}">{{title}}</a></h2>
+                    <p class="post-card-excerpt">{{excerpt words="40"}}</p>
+                    <a class="post-card-link" href="{{url}}">Lire l'édition →</a>
+                </div>
+            </article>
+        {{/if}}
+    {{/foreach}}
+</div>
+
+{{pagination}}
+
+{{#if @site.members_enabled}}
+<section class="subscribe" id="subscribe">
+    <h2>Recevez WildLens</h2>
+    <p>Une édition par semaine, chaque samedi. Gratuit.</p>
+    <button class="subscribe-button" data-portal="signup">S'abonner →</button>
+</section>
+{{/if}}

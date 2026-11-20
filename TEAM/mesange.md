@@ -93,4 +93,4 @@ Elle calibre son niveau de détail selon l'usage : inventaire rapide pour FAUNE_
 - [[Araignée]] — infrastructure capteurs terrain
 - [[Musaraigne]] — modèles Edge AI détection espèces
 - [[Chouette]] — déploiement terrain physique
-- [[03_WILDNEXUS/NEXUS_ACOUSTIC/INDEX|NEXUS_ACOUSTIC]] — projet bioacoustique
+- [[JCH_Inbox/03_PROJECTS/03_WILDNEXUS/NEXUS_ACOUSTIC/INDEX|NEXUS_ACOUSTIC]] — projet bioacoustique

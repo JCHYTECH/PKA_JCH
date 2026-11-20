@@ -1,0 +1,42 @@
+{{!< default}}
+
+{{#post}}
+<article class="post {{post_class}}">
+    <header class="post-header">
+        <h1 class="post-title">{{title}}</h1>
+        <time class="post-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMMM YYYY"}}</time>
+        {{#if custom_excerpt}}
+            <p class="post-excerpt">{{custom_excerpt}}</p>
+        {{/if}}
+    </header>
+
+    {{#if feature_image}}
+        <figure class="post-feature">
+            <img src="{{feature_image}}" alt="{{title}}" />
+            {{#if feature_image_caption}}
+                <figcaption>{{feature_image_caption}}</figcaption>
+            {{/if}}
+        </figure>
+    {{/if}}
+
+    <div class="post-content">
+        {{content}}
+    </div>
+
+    <footer class="post-footer">
+        {{#if tags}}
+            <div class="post-tags">
+                {{#foreach tags}}<a href="{{url}}" class="tag">#{{name}}</a>{{/foreach}}
+            </div>
+        {{/if}}
+    </footer>
+</article>
+{{/post}}
+
+{{#if @site.members_enabled}}
+<section class="subscribe" id="subscribe">
+    <h2>Recevez WildLens</h2>
+    <p>Une édition par semaine, chaque samedi. Gratuit.</p>
+    <button class="subscribe-button" data-portal="signup">S'abonner →</button>
+</section>
+{{/if}}

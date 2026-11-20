@@ -116,4 +116,4 @@ Le document D3 rappelle que M-02 est **bloquant pour le passage à M-03** (terra
 
 ---
 
-**Voir aussi :** [[WILDNEXUS_ADR_INDEX]], [[WP02_shortlist_achat_P0_v0.1]], [[Start.md]]
+**Voir aussi :** [[WILDNEXUS_ADR_INDEX]], [[WP02_shortlist_achat_P0_v0.1]], [[Start]]

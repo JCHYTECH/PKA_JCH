@@ -223,8 +223,8 @@ status: generated
 | 2026-05-21_plusieurs-esp32-en-reseau.zip |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/04_CONNECTIVITE_MESH_LORA_LTE/2026-05-21_plusieurs-esp32-en-reseau.zip.md` |
 | MF833U1 LTE USB Modem — reception et usage RPI + [[BirdNET]] mobile | hardware-note | active | wildnexus, lte, modem, [[BirdNET]], raspberry-pi, mobile | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/04_CONNECTIVITE_MESH_LORA_LTE/2026-05-26_mf833u1-lte-usb-modem-reception.md` |
 | 2026-05-28_rpi-zte-proximus-lte-setup |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/04_CONNECTIVITE_MESH_LORA_LTE/2026-05-28_rpi-zte-proximus-lte-setup.md` |
-| WildNexus Wokwi Simulation — [[README]] |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/05_SIMULATION/wokwi/README.md` |
-| WildNexus Wokwi Simulation — [[README]] |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/05_SIMULATION/wokwi/build/sketch/README.md` |
+| WildNexus Wokwi Simulation — [[JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/knowledge-graph/indexes/README]] |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/05_SIMULATION/wokwi/README.md` |
+| WildNexus Wokwi Simulation — [[JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/knowledge-graph/indexes/README]] |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/05_SIMULATION/wokwi/build/sketch/README.md` |
 | WildNexus — Passe procurement M-01 |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/07_PROCUREMENT_BOM/2026-05-18_procurement-pass-m01.md` |
 | WildNexus — Politique procurement P0 vers Liège |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/07_PROCUREMENT_BOM/2026-05-18_procurement-policy-liege.md` |
 | WildNexus - Extension Chine hardware, version Norton-safe |  |  |  | `JCH_Inbox/03_PROJECTS/03_WILDNEXUS/03_P0_ENGINEERING/07_PROCUREMENT_BOM/2026-05-22_dobby_wildnexus-hardware-chine-norton-safe.md` |

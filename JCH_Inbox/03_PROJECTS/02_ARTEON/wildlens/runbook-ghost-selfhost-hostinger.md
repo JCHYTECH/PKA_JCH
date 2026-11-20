@@ -17,15 +17,14 @@ lang: fr
 
 ---
 
-## État d'avancement (maj 15/11)
+## État d'avancement (maj 17/11)
 
 - [x] **Étape 0** — VPS acheté : IP `2.25.8.208`, 86,97 €/an TTC
-- [x] **Étape 1** — SSH durci (nouveau root password)
-- [x] **Étape 3 (partiel)** — Ghost installé côté serveur (base MySQL `ghost_prod` + user `ghost` créés)
-- [ ] **Étape 2** — DNS A `wildlens` → `2.25.8.208` (registrar arteon.be) — **non fait**
-- [ ] **Étape 3 (SSL)** — `ghost setup ssl` — bloqué tant que le DNS ne résout pas
-- [ ] **Étape 4** — Mailgun (compte + DNS TXT/SPF/DKIM)
-- [ ] **Étape 5** — Migration contenu Ghost(Pro) → VPS
+- [x] **Étape 1** — SSH durci (utilisateur `deploy` + clé, fail2ban, ufw)
+- [x] **Étape 2** — DNS A `wildlens` → `2.25.8.208` — ✅ vérifié 17/11 (résout + HTTP 200)
+- [x] **Étape 3** — Ghost 6.77.0 + nginx + SSL Let's Encrypt — ✅ 17/11 (`https://wildlens.arteon.be` → 200)
+- [x] **Étape 4** — Mailgun (compte + DNS SPF/DKIM/MX/CNAME/DMARC + SMTP Ghost + test) — ✅ 18/11
+- [ ] **Étape 5** — Migration contenu (4 éditions) → VPS
 - [ ] **Étapes 6-7** — Backups + monitoring
 
 ---
@@ -154,7 +153,7 @@ Sur le VPS (Forge/Dobby) :
 cd /var/www/ghost
 ghost config set mail transport SMTP
 ghost config set mail options.service Mailgun
-ghost config set mail options.host smtp.eu.mailgun.org
+ghost config set mail options.host smtp.mailgun.org
 ghost config set mail options.port 587
 ghost config set mail options.secure false
 ghost config set mail options.auth.user postmaster@mg.wildlens.arteon.be
@@ -164,7 +163,9 @@ ghost restart
 
 Tester : envoyer une newsletter de test depuis l'admin Ghost.
 
-> ⚠️ **Seuil** : free tier Mailgun ≈ 100 emails/jour. À ~500 abonnés hebdo (1 envoi/semaine), on est très en-dessous. Si la liste dépasse ~3000 abonnés actifs, prévoir un plan payant Mailgun.
+> ⚠️ **Piège `ghost config set` (constaté 18/11)** : `ghost config set mail options.host x` (3 arguments) est **faux** — ghost-cli n'accepte que `<key> <value>` (2 arguments) et écrit `mail = "options.host"` (la config mail a été écrasée). Méthode sûre : écrire le bloc `"mail"` (transport/options/from) directement dans `config.production.json` puis `ghost restart`.
+
+> ⚠️ **Seuil (vérifié 17/11, source Mailgun pricing)** : le plan Free = **100 emails/jour** (permanent). Un envoi hebdo unique à N abonnés = N emails le même jour → **le Free ne couvre que jusqu'à ~100 abonnés par envoi**. À ~500 abonnés (1 blast hebdo = 500 emails en 1 jour), il faut **Basic 15 $/mois (10 000 emails/mois)**. Règle : Free pour démarrer/tester (liste ~0 aujourd'hui), basculer Basic dès que la liste dépasse ~100 abonnés actifs.
 
 ---
 

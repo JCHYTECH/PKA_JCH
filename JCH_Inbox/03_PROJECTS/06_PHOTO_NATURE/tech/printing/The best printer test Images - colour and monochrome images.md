@@ -35,7 +35,7 @@ Collected free printer test images for download.
 This page also has links to many sites and pages where you can download printer and digital photography test images.
 
 We have 1500+ [articles/reviews](https://www.northlight-images.co.uk/keiths-photography-blog/) and now [Videos](https://www.northlight-images.co.uk/category/articles-and-reviews/video/) related to photography, printing and colour management on the site  
-[\>>> Full categorised [[INDEX]] of all my 750+ videos](https://www.northlight-images.co.uk/keith-cooper-photography-videos-index/)
+[\>>> Full categorised [[wiki/index]] of all my 750+ videos](https://www.northlight-images.co.uk/keith-cooper-photography-videos-index/)
 
 Please do explore, and if you’ve any questions, just ask…
 

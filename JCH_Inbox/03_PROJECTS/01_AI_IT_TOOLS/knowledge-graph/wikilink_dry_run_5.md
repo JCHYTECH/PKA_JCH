@@ -215,9 +215,9 @@ status: proposal
 
 - terms: Obsidian
 - before:
-  `- `obsidian-[[knowledge]]-graph/[[README]].md` — Projet de knowledge graph Obsidian gouverné`
+  `- `obsidian-[[knowledge]]-graph/[[JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/knowledge-graph/README]].md` — Projet de knowledge graph Obsidian gouverné`
 - after:
-  `- `obsidian-[[knowledge]]-graph/[[README]].md` — Projet de knowledge graph [[Obsidian]] gouverné`
+  `- `obsidian-[[knowledge]]-graph/[[JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/knowledge-graph/README]].md` — Projet de knowledge graph [[Obsidian]] gouverné`
 
 ### Line 35
 

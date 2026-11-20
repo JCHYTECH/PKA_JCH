@@ -1,4 +1,4 @@
-# WildNexus Wokwi Simulation — [[README]]
+# WildNexus Wokwi Simulation — [[JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/05_SIMULATION/wokwi/README]]
 
 **Date :** 2026-06-14  
 **Owner :** [[Dobby]] 🦉  

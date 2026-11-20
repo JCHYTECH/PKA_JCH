@@ -1,6 +1,6 @@
 # Index central des outils PKA_JCH
 
-> Dernière mise à jour : 2026-11-05 — Ajout du rituel /save pour Kimi
+> Dernière mise à jour : 2026-11-19 — Ajout de `bin/pka-clip-pull` (pull auto des clips iPad → inbox, launchd 15 min)
 > Source : `docs/system/outils-index.md`
 > Charger ce fichier au début de chaque session pour connaître tous les outils disponibles.
 
@@ -77,6 +77,7 @@
 - bin/install-memory-review-launchd.sh — LaunchAgent boucle mémoire
 - bin/install-overpass-backfill-launchd.sh — LaunchAgent backfill Overpass
 - bin/install-dobby-retro.sh — LaunchAgent rétro quotidienne Dobby
+- bin/install-clip-pull-launchd.sh — LaunchAgent pull auto des clips iPad (15 min)
 - bin/install-git-hooks.sh — Active le hook pre-commit versionné
 
 ### Sauvegarde & M1
@@ -186,7 +187,7 @@
 - scripts/dobby_train.py — Pipeline LoRA fine-tuning via MLX (M1)
 - scripts/dobby_codex_bridge.py — Pont Codex CLI et [[Dobby]]
 - scripts/dobby_weekly_report.py — Rapport hebdomadaire consolidé
-- scripts/pka_skill_generator.py — Générateur de skills auto-apprenant (retro_patterns → LLM → [[SKILL]].md)
+- scripts/pka_skill_generator.py — Générateur de skills auto-apprenant (retro_patterns → LLM → [[skills/brief/SKILL]].md)
 - scripts/cron-skill-generator.sh — Cron hebdomadaire skill generator (dimanche 22h)
 - bin/install-skill-generator-launchd.sh — Installation du launchd skill generator
 - scripts/cron-retro-local.sh — Cron rétro quotidienne (M1, 23h)
@@ -224,6 +225,8 @@
 - scripts/install_dropbox_watch_launchd.sh — Install launchd dropbox
 - scripts/migrate_skills_metadata.py — Migration métadonnées skills (legacy)
 - scripts/rebuild_file_index.py — Reconstruit l'index des fichiers
+- bin/pka-transcript — **Transcription vidéo YouTube 100% locale** : sous-titres YouTube si disponibles, sinon audio (yt-dlp) + Whisper local (faster-whisper, CPU int8). Remplace l'ancienne méthode manuelle (site web de transcript → .txt → inbox). Usage : `pka-transcript <URL> [--model medium] [--lang fr] [--out DIR] [--subs-only|--whisper-only]`. Sortie : `00_INBOX/YYYY-MM-DD_transcript-<slug>.md`
+- bin/pka-clip-pull — **Pull one-way des web clips iPad → inbox** : tire les `.md` du vault iCloud « PKA Capture/inbox » vers `JCH_Inbox/00_INBOX/web-clips/`, archive la source dans `_processed/`. `--dry-run` (défaut), `--list`, `--apply`. LaunchAgent 15 min via `bin/install-clip-pull-launchd.sh`.
 
 ## Kanban & Plane
 

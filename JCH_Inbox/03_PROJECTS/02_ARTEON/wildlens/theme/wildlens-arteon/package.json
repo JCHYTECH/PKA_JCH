@@ -1,0 +1,17 @@
+{
+  "name": "wildlens-arteon",
+  "version": "1.0.0",
+  "description": "WildLens — journal naturaliste ARTEON. Thème custom (Ivoire / Noir Terrain / Vert Terrain).",
+  "author": {
+    "name": "ARTEON",
+    "email": "jc.havaux@gmail.com"
+  },
+  "keywords": [
+    "ghost-theme"
+  ],
+  "license": "MIT",
+  "config": {
+    "posts_per_page": 10,
+    "custom_fonts": true
+  }
+}

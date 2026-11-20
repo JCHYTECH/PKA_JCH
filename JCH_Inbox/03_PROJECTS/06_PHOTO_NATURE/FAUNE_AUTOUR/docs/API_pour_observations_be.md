@@ -462,7 +462,7 @@ Télécharge ce fichier. Ensuite voici la procédure GitHub exacte :
 2. Clique sur **"New repository"** (bouton vert en haut à droite)
 3. Nom du repository : `faune-autour` (en minuscules, sans espaces)
 4. Laisse en **Public** — obligatoire pour GitHub Pages gratuit
-5. Coche **"Add a [[README]] file"**
+5. Coche **"Add a [[_local/novnc/README]] file"**
 6. Clique **"Create repository"**
 
 **Upload du fichier :**
