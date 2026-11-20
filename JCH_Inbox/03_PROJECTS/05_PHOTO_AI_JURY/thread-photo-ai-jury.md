@@ -1,7 +1,7 @@
 # Thread — PHOTO_AI_JURY
 
 > Living document — mis à jour automatiquement par Dobby 🦉 en fin de session.
-> **Dernière mise à jour** : 2026-11-15 — allowlist MCP étendue (ToneCurve/TSL/grading), constat SDK (courbe de points non appliquée), slider proportionnel bâti sur courbe paramétrique
+> **Dernière mise à jour** : 2026-11-20 — modules exif_raw/exif_analysis/crop_advisor ; télémétrie EXIF injectée dans le prompt ; recadrage A4 (nombre d'or) gravé dans le XMP mais non appliqué par LrC (bloquant)
 > **Statut** : 🟢 actif
 
 ---
@@ -22,6 +22,7 @@ Moteur IA Argus de critique photo naturaliste — bilan historique Phase 0 : 58 
 | Retour JCH | 🟡 | `jch_feedback.py` testé sur copie puis appliqué : trois tables de sessions/propositions/validations **vides**. Aucun style déduit des votes sur les rapports ; aucune application ou lot automatique |
 | MCP LR | 🟢 | Test technique réussi le 06/11 sur copie virtuelle RAW confirmée par JC : 8/8 lectures, exposition `0 → +0,10 → 0`, restauration dans `finally` et lecture indépendante à `0`. Aucun preset ni lot ; validation artistique distincte |
 | Détection IA | 🟢 | **Nouveau 22/10** — `scripts/pka_ai_image_check.py`, **niveau 1 uniquement** (C2PA + EXIF). Classifieurs ViT mesurés inutilisables (12/12 faux positifs) → désactivés. Hook de rappel actif |
+| EXIF + crop | 🟡 | **Nouveau 20/11** — `exif_raw.py` (EXIF enrichie), `exif_analysis.py` (6 audits : ETTR, bougé, netteté, diffraction, DOF, bruit), `crop_advisor.py` (recadrage tiers/nombre d'or, overlays A4). Crop gravé dans le XMP mais **LrC ne l'applique pas** (bloquant) |
 
 ---
 
@@ -33,6 +34,9 @@ Moteur IA Argus de critique photo naturaliste — bilan historique Phase 0 : 58 
 | 2026-11-06 | Limiter le premier test Lightroom à une variation réversible | Baseline → `Exposure2012 +0,10` → relecture → restauration dans `finally`, uniquement sur copie virtuelle RAW ; validation technique distincte de la validation artistique |
 | 2026-07-02 | INDEX créé avec cross-réfs ARTEON + PHOTO_NATURE | Manquait auparavant |
 | 2026-06-14 | Prompt calibré | 81% acceptation JC |
+| 2026-11-20 | Ratio de base A4 (1:√2) paysage + portrait | Recadrage assisté ; nombre d'or retenu comme guide |
+| 2026-11-20 | LrC ne lit que la racine de `CameraRaw/Settings/` | Les sous-dossiers sont ignorés ; presets « in work » rangés en racine avec préfixe |
+| 2026-11-20 | Crop XMP = position des bords (0-1) | Pas « fraction rognée » ; CropBottom/CropRight initialement inversés |
 
 ---
 
@@ -40,6 +44,8 @@ Moteur IA Argus de critique photo naturaliste — bilan historique Phase 0 : 58 
 
 - [ ] **P2 · — · (JCH + Argus)** Enregistrer des comparaisons A/B avec tutoriel et une validation sur image inédite ; aucune généralisation ou lot automatique avant ces données réelles
 - [ ] **P2 · — · (Argus)** Prochaine fournée d'analyses seulement après décision de JC ; aucun appel IA payant effectué dans ce chantier
+- [ ] **P1 · — · (Dobby)** Résoudre l'application du crop dans LrC : piste sidecar `.xmp` à côté du CR3 (au lieu du preset) ; test à refaire demain matin
+- [ ] **P2 · — · (Dobby)** Repasser `untitled-2643.CR3` pour lui donner son crop (nombre d'or)
 
 ## TTD — Done
 
@@ -55,6 +61,7 @@ Moteur IA Argus de critique photo naturaliste — bilan historique Phase 0 : 58 
 
 | Date | Résumé session | Livrable |
 |------|---------------|----------|
+| 2026-11-20 | Pipeline Argus enrichi : télémétrie EXIF + 6 audits + recadrage assisté (overlays A4) ; analyses CR3 untitled-2643/2648 (76-79/100) ; crop gravé dans le XMP mais non appliqué par LrC | `scripts/exif_raw.py`, `scripts/exif_analysis.py`, `scripts/crop_advisor.py`, `run_analysis.py`, `generate_xmp.py` |
 | 2026-11-06 | Test technique Lightroom réussi sur copie virtuelle RAW confirmée par JC ; 8/8 lectures, variation +0,10 EV puis restauration exacte et revérifiée ; validation artistique non réalisée | `_local/lightroom-mcp/tests/e2e/mcp-runner.mjs`, `INDEX.md`, `roadmap-mcp-integration.md`, `executive-summary.md`, `thread-photo-ai-jury.md`, `wiki/Daily/2026/11/2026-11-06-mcp-home-assistant-et-lightroom-testes.md` |
 | 2026-11-06 | Base canonique confirmée ; socle vide de retour JCH migré et vérifié ; test Lightroom documenté mais bloqué par Start Server et la sélection manuelle | `jch_feedback.py`, sauvegarde SQLite, `INDEX.md`, `roadmap-mcp-integration.md`, `executive-summary.md`, `thread-photo-ai-jury.md` |
 | 2026-11-05 | Contrôle SQLite en lecture seule : 52 enregistrements projet, fichier `PHOTO/` vide ; aucune modification de base | `INDEX.md`, `thread-photo-ai-jury.md` |
