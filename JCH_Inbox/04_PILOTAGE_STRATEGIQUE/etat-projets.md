@@ -1,6 +1,6 @@
 # État des projets — One-Pager
 > Tableau de bord unique de tous les projets actifs PKA_JCH.
-> Dernière mise à jour : 2026-11-17 par Dobby 🦉 — pilier tirage ARTEON repositionné « Éditions » (GO conditionnel, conseil 17/11) ; ligne Proximus dégradée (14/11) toujours à traiter (RUT240 atelier + failover 4G à planifier).
+> Dernière mise à jour : 2026-11-20 par Dobby 🦉 — pivot WildLens « tout en français » (3 éditions FR, thème FR, locale fr) ; ligne Proximus dégradée (14/11) toujours à traiter (RUT240 atelier + failover 4G à planifier).
 > 
 > **Lecture :** 🔴 = P0 deadline dure, 🟢 = actif autonome, ⚪ = gelé/reporté
 
@@ -21,7 +21,7 @@
 | 2 | **PHOTO_NATURE** | 🟢 autonome | Keyworder et 11 presets Argus ; correctif `headline` confirmé dans le code (22/10) | Maintenance (aucun nouveau run mesuré dans cette revue) | Lynx, Nova, Héron |
 | 3 | **PHOTO_AI_JURY** | 🟢 autonome | Base canonique schéma v1 : 52 analyses et 16 évaluations conservées ; test MCP Lightroom `0 → +0,10 → 0` réussi sur copie virtuelle RAW | Recueillir les choix A/B de JCH avec tutoriel et validation sur image inédite ; aucun style déduit des votes sur les rapports | Argus |
 | 4 | **AI_IT_TOOLS** | 🟢 autonome | MCP HA Lupo read-only validé avec Kimi/DeepSeek ; `/save` Kimi déjà opérationnel | Réauthentifier Claude, traiter séparément les modèles Codex refusés et essayer le TUI Grok ; ne pas exposer HA publiquement | Dobby, Forge |
-| 7 | **ARTEON + WildLens** | 🟢 réactivé | Compte Ghost **récupéré** (admin accessible, essai 14 j) ; 1 post « Coming soon », 0 membre ; domaine final `wildlens.arteon.be` ; **VPS Hostinger créé + Ghost installé 15/11** (IP 2.25.8.208) ; **pilier tirage → « ARTEON Éditions » (GO conditionnel, conseil 17/11)** | DNS + SSL + Mailgun ✅ (18/11) ; 4 éditions programmées hebdo (21/11 → 12/12) ; reste thème + abonnement ; publication Instagram sur demande explicite ; **combler la compétence impression photo (lacune actée) avant toute édition** ; séquence presets → WildLens → édition #1 | Dobby, Forge |
+| 7 | **ARTEON + WildLens** | 🟢 réactivé | Compte Ghost **récupéré** (admin accessible, essai 14 j) ; 1 post « Coming soon », 0 membre ; domaine final `wildlens.arteon.be` ; **VPS Hostinger créé + Ghost installé 15/11** (IP 2.25.8.208) ; **pilier tirage → « ARTEON Éditions » (GO conditionnel, conseil 17/11)** | **Pivot FR (19/11)** : 3 éditions FR en production (#1 publiée 18/11, #3 28/11, #2 05/12), thème FR + locale fr ; reste abonnement ; publication Instagram sur demande explicite ; **combler la compétence impression photo (lacune actée) avant toute édition** ; séquence presets → WildLens → édition #1 | Dobby, Forge |
 | 8 | **TRAVELS** | 🟢 actif — planification « en roulant » | Pipeline DÉCOUVERTES continu, 647 lieux validés, Planner synchronisé ; boîte vélo en conception | Traiter 50 éléments résiduels et poursuivre les aménagements du van | Cigogne, Dobby |
 | 9 | **VENTE_OCCASION** | 🟢 Phase 1 | Structure + skill `vente-occasion` créés (30/10) ; six objets en cours, aucun vendu | Finaliser photos/annonces, publication et suivi des six objets selon leur état réel | Dobby (+ Pie à confirmer) |
 
