@@ -14,9 +14,9 @@ import os
 from pathlib import Path
 
 PKA_ROOT = Path(os.getenv("PKA_ROOT", Path(__file__).resolve().parents[2]))
-BASE = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes"
-DATA = BASE / "data"
-QUEUE = BASE / "queue"
+BASE = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/PKA-DECOUVERTES"
+DATA = BASE / "DATA"
+QUEUE = BASE / "QUEUE"
 DATA.mkdir(parents=True, exist_ok=True)
 
 
@@ -71,7 +71,7 @@ for q in QUEUE.glob("*.json"):
 
 
 count = 0
-for d in (BASE / "drafts", BASE / "validated_places"):
+for d in (BASE / "DRAFTS", BASE / "VALIDATED_PLACES"):
     if not d.is_dir():
         continue
     for md in sorted(d.glob("*.md")):

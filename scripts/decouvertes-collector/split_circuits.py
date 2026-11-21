@@ -15,9 +15,9 @@ from pathlib import Path
 import requests
 
 PKA_ROOT = Path(__file__).resolve().parents[2]
-BASE = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes"
-DRAFTS = BASE / "drafts"
-VALID = BASE / "validated_places"
+BASE = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/PKA-DECOUVERTES"
+DRAFTS = BASE / "DRAFTS"
+VALID = BASE / "VALIDATED_PLACES"
 
 PLACES = [
     ("Château d'Albrechtsburg", "Albrechtsburg Meißen Allemagne"),

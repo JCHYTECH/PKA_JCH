@@ -36,7 +36,7 @@ import requests
 PKA_ROOT = Path(__file__).resolve().parents[2]
 CACHE_FILE = (
     PKA_ROOT
-    / "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/.cache/park4night_cache.json"
+    / "JCH_Inbox/03_PROJECTS/07_TRAVELS/PKA-DECOUVERTES/.cache/park4night_cache.json"
 )
 
 # ── Config réseau / politesse ──────────────────────────────────────────────────

@@ -83,9 +83,22 @@
 | Rail largeur A (haut + bas) | 304 mm | 4 | 1 216 mm |
 | Rail largeur B/C (haut + bas) | 248 mm | 8 | 1 984 mm |
 | Montant vertical | 204 mm | 12 | 2 448 mm |
-| **TOTAL** | | **44 pièces** | **12 128 mm ≈ 12,13 m** |
+| **TOTAL** | | **36 pièces** | **12 128 mm ≈ 12,13 m** |
 
 > Coupe droite à la scie à métaux, aucun onglet, aucune découpe CNC.
+
+### Option sans découpe sur mesure — barres standard de 2 m
+
+Si le fournisseur ne découpe pas sur mesure, acheter **7 barres de 2 m** (14 m au total) et débiter soi-même :
+
+| Barre | Découpe |
+|-------|---------|
+| 1–4 | 540 + 540 + 540 + 304 |
+| 5 | 248 × 8 |
+| 6 | 204 × 9 |
+| 7 | 204 × 3 (chute ~1,39 m) |
+
+Chute totale ~1,87 m (13 %). Trait de scie ~2 mm par coupe (~37 coupes ≈ 7 cm), absorbé par les chutes.
 
 ---
 

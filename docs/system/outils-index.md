@@ -97,7 +97,7 @@
 ### Lanceurs & divers
 
 - bin/lancer-codex-model.command — Lanceur Codex générique (choix modèle OpenRouter)
-- bin/lancer-lupo-planner.command — Lupo Planner (serveur local + navigateur)
+- bin/lancer-LUPO-PLANNER.command — Lupo Planner (serveur local + navigateur)
 - bin/qwen — Wrapper CLI Qwen (→ `scripts/qwen.py`)
 - bin/gateway — Lance la gateway unifiée PKA
 - bin/overpass-backfill — Test Overpass + backfill fiches sans réserves

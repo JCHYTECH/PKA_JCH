@@ -1,7 +1,7 @@
 """
 PKA DECOUVERTES Collector
 Rôle unique : recevoir les messages du groupe Telegram DECOUVERTES
-et les sauvegarder bruts dans pka-decouvertes/raw/.
+et les sauvegarder bruts dans PKA-DECOUVERTES/RAW/.
 Aucune analyse — aucune IA — passerelle fiable uniquement.
 
 Model: unknown (créé ~2026-06-02, modèle non documenté)
@@ -38,12 +38,12 @@ load_dotenv(_env_path)
 TOKEN    = os.getenv("DECOUVERTES_TOKEN")
 GROUP_ID = int(os.getenv("DECOUVERTES_GROUP_ID"))
 
-RAW_DIR   = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/raw"
-QUEUE_DIR = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/queue"
-LOG_DIR   = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/logs"
+RAW_DIR   = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/PKA-DECOUVERTES/RAW"
+QUEUE_DIR = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/PKA-DECOUVERTES/QUEUE"
+LOG_DIR   = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/PKA-DECOUVERTES/LOGS"
 
-for d in (RAW_DIR / "text", RAW_DIR / "images", RAW_DIR / "links",
-          RAW_DIR / "metadata", QUEUE_DIR, LOG_DIR):
+for d in (RAW_DIR / "TEXT", RAW_DIR / "IMAGES", RAW_DIR / "LINKS",
+          RAW_DIR / "METADATA", QUEUE_DIR, LOG_DIR):
     d.mkdir(parents=True, exist_ok=True)
 
 # ── Logging ───────────────────────────────────────────────────────────────────
@@ -118,7 +118,7 @@ def build_metadata(msg: Message, content_type: str, media_files: list) -> dict:
     }
 
 def save_metadata(slug: str, metadata: dict):
-    meta_path  = RAW_DIR / "metadata" / f"{slug}.json"
+    meta_path  = RAW_DIR / "METADATA" / f"{slug}.json"
     queue_path = QUEUE_DIR / f"{slug}.json"
     payload = json.dumps(metadata, ensure_ascii=False, indent=2)
     meta_path.write_text(payload)
@@ -138,9 +138,9 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     slug  = msg_slug(msg)
     links = extract_links(text)
 
-    (RAW_DIR / "text" / f"{slug}.txt").write_text(text, encoding="utf-8")
+    (RAW_DIR / "TEXT" / f"{slug}.txt").write_text(text, encoding="utf-8")
     if links:
-        (RAW_DIR / "links" / f"{slug}.json").write_text(
+        (RAW_DIR / "LINKS" / f"{slug}.json").write_text(
             json.dumps(links, ensure_ascii=False, indent=2))
 
     content_type = "link" if links and len(text.strip()) < 200 else "text"
@@ -154,13 +154,13 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
     slug     = msg_slug(msg)
     tg_file  = await msg.photo[-1].get_file()
-    img_path = RAW_DIR / "images" / f"{slug}.jpg"
+    img_path = RAW_DIR / "IMAGES" / f"{slug}.jpg"
     await tg_file.download_to_drive(str(img_path))
 
     caption = msg.caption or ""
     links   = extract_links(caption)
     if links:
-        (RAW_DIR / "links" / f"{slug}.json").write_text(
+        (RAW_DIR / "LINKS" / f"{slug}.json").write_text(
             json.dumps(links, ensure_ascii=False, indent=2))
 
     media   = [{"file_path": str(img_path.relative_to(PKA_ROOT)), "media_type": "photo"}]
@@ -177,7 +177,7 @@ async def handle_document(update: Update, context: ContextTypes.DEFAULT_TYPE):
     doc     = msg.document
     ext     = Path(doc.file_name or "file").suffix or ".bin"
     tg_file = await doc.get_file()
-    path    = RAW_DIR / "images" / f"{slug}{ext}"
+    path    = RAW_DIR / "IMAGES" / f"{slug}{ext}"
     await tg_file.download_to_drive(str(path))
 
     mtype = "screenshot" if ext.lower() in (".jpg", ".jpeg", ".png", ".webp") else "document"

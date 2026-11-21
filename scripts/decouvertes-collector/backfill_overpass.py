@@ -12,8 +12,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import analyzer as A
 
 BASE = A.BASE
-DATA = BASE / "data"
-VALID = BASE / "validated_places"
+DATA = BASE / "DATA"
+VALID = BASE / "VALIDATED_PLACES"
 
 
 def main():

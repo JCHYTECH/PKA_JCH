@@ -3,7 +3,7 @@
 # Démarre un serveur local et ouvre le navigateur.
 # Sans ça, OSM renvoie « 403 access blocked » (file:// → referer invalide).
 
-PLANNER_DIR="/Users/jchavauxm5/PKA_JCH/JCH_Inbox/03_PROJECTS/07_TRAVELS/lupo-planner"
+PLANNER_DIR="/Users/jchavauxm5/PKA_JCH/JCH_Inbox/03_PROJECTS/07_TRAVELS/LUPO-PLANNER"
 PORT=8090
 URL="http://localhost:${PORT}"
 

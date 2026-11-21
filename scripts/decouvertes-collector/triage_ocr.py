@@ -12,7 +12,7 @@ import unicodedata
 from pathlib import Path
 
 PKA_ROOT = Path(__file__).resolve().parents[2]
-BASE = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes"
+BASE = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/PKA-DECOUVERTES"
 SITES = PKA_ROOT / "JCH_Inbox/00_INBOX/SITES"
 OCR_OUT = PKA_ROOT / "_local/decouvertes-ocr"
 OCR_OUT.mkdir(parents=True, exist_ok=True)
@@ -28,14 +28,14 @@ def norm(s):
 
 # 1. Index des lieux déjà traités
 known = {}
-for p in (BASE / "data").glob("*.json"):
+for p in (BASE / "DATA").glob("*.json"):
     try:
         d = json.loads(p.read_text(encoding="utf-8"))
         nm = d.get("nom_lieu") or p.stem
         known[norm(nm)] = nm
     except Exception:
         pass
-for p in (BASE / "validated_places").glob("*.md"):
+for p in (BASE / "VALIDATED_PLACES").glob("*.md"):
     try:
         txt = p.read_text(encoding="utf-8")
         m = re.search(r"^nom_lieu:\s*(.+)$", txt, re.M)

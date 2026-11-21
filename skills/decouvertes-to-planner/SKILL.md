@@ -5,12 +5,12 @@ description: Convertir les fiches DÉCOUVERTES (spots_van/, validated_places/) e
 
 # Skill — decouvertes-to-planner
 
-Pont DÉCOUVERTES → Lupo Planner. Convertit les fiches de `pka-decouvertes` en
+Pont DÉCOUVERTES → Lupo Planner. Convertit les fiches de `PKA-DECOUVERTES` en
 JSON importable par le Lupo Planner (bouton « Importer JSON »).
 
 ## Déclencheur
 - « mets les découvertes dans le planner », « export planner »
-- Après génération de nouvelles fiches via le skill `pka-decouvertes`
+- Après génération de nouvelles fiches via le skill `PKA-DECOUVERTES`
 
 ## Sources
 - `spots_van/*.md`          → spots de bivouac (aire/camping/privé/sauvage)
@@ -23,5 +23,5 @@ JSON importable par le Lupo Planner (bouton « Importer JSON »).
 3. Importer le JSON dans Lupo Planner (bouton « Importer JSON »)
 
 ## Voir aussi
-- [[pka-decouvertes]] — génération des fiches source
+- [[PKA-DECOUVERTES]] — génération des fiches source
 - `JCH_Inbox/03_PROJECTS/07_TRAVELS/Lupo-planner/`

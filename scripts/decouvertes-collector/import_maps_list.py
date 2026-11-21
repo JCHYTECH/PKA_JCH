@@ -27,7 +27,7 @@ from urllib.parse import urljoin
 import requests
 
 PKA_ROOT = Path(os.getenv("PKA_ROOT", Path(__file__).resolve().parents[2]))
-BASE = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes"
+BASE = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/PKA-DECOUVERTES"
 CSV_PATH = BASE / "lieux_google_maps.csv"
 HDR = ["Name", "Description", "Latitude", "Longitude", "Country", "Region"]
 

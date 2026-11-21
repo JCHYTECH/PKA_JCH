@@ -16,9 +16,9 @@ from collections import Counter
 from pathlib import Path
 
 PKA_ROOT = Path(__file__).resolve().parents[2]
-BASE = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes"
-DRAFTS = BASE / "drafts"
-VALIDATED = BASE / "validated_places"
+BASE = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/PKA-DECOUVERTES"
+DRAFTS = BASE / "DRAFTS"
+VALIDATED = BASE / "VALIDATED_PLACES"
 
 VALIDATED.mkdir(parents=True, exist_ok=True)
 

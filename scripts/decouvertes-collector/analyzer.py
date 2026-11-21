@@ -50,10 +50,10 @@ if not _env_path.exists():
 load_dotenv(_env_path)
 
 # ── Chemins ───────────────────────────────────────────────────────────────────
-BASE       = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes"
-QUEUE_DIR  = BASE / "queue"
-DRAFTS_DIR = BASE / "drafts"
-LOG_DIR    = BASE / "logs"
+BASE       = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/PKA-DECOUVERTES"
+QUEUE_DIR  = BASE / "QUEUE"
+DRAFTS_DIR = BASE / "DRAFTS"
+LOG_DIR    = BASE / "LOGS"
 
 DRAFTS_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -1058,7 +1058,7 @@ def process_item(
             gps["lat"], gps["lon"],
             analysis, van_info, meta,
             reserves, restaurants, attractions,
-            BASE / "data", slug, today,
+            BASE / "DATA", slug, today,
         )
         if data_path:
             print(f"    → data/{data_path.name}")

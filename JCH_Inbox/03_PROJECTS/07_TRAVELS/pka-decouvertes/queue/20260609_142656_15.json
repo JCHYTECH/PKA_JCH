@@ -6,12 +6,7 @@
   "content_type": "image",
   "text": "",
   "links": [],
-  "media_files": [
-    {
-      "file_path": "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/raw/images/20260609_142656_15.jpg",
-      "media_type": "photo"
-    }
-  ],
+  "media_files": [],
   "analysis_status": "skipped",
   "place_candidates": [],
   "confidence": null

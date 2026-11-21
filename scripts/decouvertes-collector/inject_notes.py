@@ -24,8 +24,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 PKA_ROOT = Path(os.getenv("PKA_ROOT", Path(__file__).resolve().parents[2]))
-BASE = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes"
-QUEUE = BASE / "queue"
+BASE = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/PKA-DECOUVERTES"
+QUEUE = BASE / "QUEUE"
 NOTES_DIR = PKA_ROOT / "JCH_Inbox/00_INBOX/NOTES"
 
 MODEL = "claude-haiku-5-5"

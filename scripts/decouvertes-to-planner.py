@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Pont DÉCOUVERTES → Lupo Planner.
 
-Convertit les fiches de pka-decouvertes en un JSON importable par le Lupo Planner
+Convertit les fiches de PKA-DECOUVERTES en un JSON importable par le Lupo Planner
 (bouton « Importer JSON »). Deux sources :
 
   - spots_van/*.md          → spots de bivouac (type aire/camping/prive/sauvage)
@@ -23,9 +23,9 @@ import uuid
 from pathlib import Path
 
 PKA_ROOT = Path(__file__).resolve().parents[1]
-BASE = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes"
-SPOTS_VAN = BASE / "spots_van"
-VALIDATED = BASE / "validated_places"
+BASE = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/PKA-DECOUVERTES"
+SPOTS_VAN = BASE / "SPOTS_VAN"
+VALIDATED = BASE / "VALIDATED_PLACES"
 DEFAULT_OUT = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS" / "lupo-planner-import.json"
 
 # Pays → code ISO (le Planner ne connaît que FR ES IT DE BE NL)
@@ -226,7 +226,7 @@ def main() -> int:
     data = {
         "version": 1,
         "exportedAt": time.strftime("%Y-%m-%dT%H:%M:%S"),
-        "source": "pka-decouvertes",
+        "source": "PKA-DECOUVERTES",
         "spots": spots,
         "roadtrips": [],
     }

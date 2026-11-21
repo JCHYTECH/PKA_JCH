@@ -24,9 +24,9 @@ PKA_ROOT = Path(os.getenv("PKA_ROOT", Path(__file__).resolve().parents[2]))
 _env = PKA_ROOT / "JCH_PRIVATE" / "decouvertes.env"
 load_dotenv(_env)
 
-BASE = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes"
-QUEUE = BASE / "queue"
-DRAFTS = BASE / "drafts"
+BASE = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/PKA-DECOUVERTES"
+QUEUE = BASE / "QUEUE"
+DRAFTS = BASE / "DRAFTS"
 DRAFTS.mkdir(parents=True, exist_ok=True)
 
 MODEL = "claude-sonnet-5-5"

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Génère une fiche Obsidian « vanlife » pour chaque lieu de la catégorie Réserves naturelles.
 
-Lit les lieux depuis pka-decouvertes/Réserves naturelles/*.csv (nom + GPS exact + pays/région),
+Lit les lieux depuis PKA-DECOUVERTES/Réserves naturelles/*.csv (nom + GPS exact + pays/région),
 interroge Claude (Anthropic) pour la section vanlife/parking, et écrit une fiche .md par lieu
 dans Réserves naturelles/fiches/. Ne touche pas à lieux_google_maps.csv.
 
@@ -23,7 +23,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 PKA_ROOT = Path(os.getenv("PKA_ROOT", Path(__file__).resolve().parents[2]))
-BASE = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes"
+BASE = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/PKA-DECOUVERTES"
 CAT = BASE / "Réserves naturelles"
 FICHES = CAT / "fiches"
 

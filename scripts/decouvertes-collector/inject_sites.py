@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Injecte les screenshots de JCH_Inbox/00_INBOX/SITES/ dans la file d'attente DÉCOUVERTES.
 
-Comble le gap MODE A du SKILL pka-decouvertes (injection manuelle image par image).
+Comble le gap MODE A du SKILL PKA-DECOUVERTES (injection manuelle image par image).
 
 Usage :
   python3 inject_sites.py                          # tous les .jpeg/.jpg/.png de SITES/
@@ -15,10 +15,10 @@ import sys
 from pathlib import Path
 
 PKA_ROOT = Path(os.getenv("PKA_ROOT", Path(__file__).resolve().parents[2]))
-BASE = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes"
+BASE = PKA_ROOT / "JCH_Inbox/03_PROJECTS/07_TRAVELS/PKA-DECOUVERTES"
 SITES = PKA_ROOT / "JCH_Inbox/00_INBOX/SITES"
 RAW_IMAGES = BASE / "raw/images"
-QUEUE = BASE / "queue"
+QUEUE = BASE / "QUEUE"
 
 RAW_IMAGES.mkdir(parents=True, exist_ok=True)
 QUEUE.mkdir(parents=True, exist_ok=True)

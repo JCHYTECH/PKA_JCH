@@ -12,7 +12,7 @@ Déduplication par (nom normalisé, lat arrondie à 5, lon arrondie à 5), garde
 import csv
 import os
 
-BASE = "/Users/jchavauxm5/PKA_JCH/JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes"
+BASE = "/Users/jchavauxm5/PKA_JCH/JCH_Inbox/03_PROJECTS/07_TRAVELS/PKA-DECOUVERTES"
 CSV = os.path.join(BASE, "lieux_google_maps.csv")
 HDR = ["Name", "Description", "Latitude", "Longitude", "Country", "Region"]
 

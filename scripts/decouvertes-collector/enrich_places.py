@@ -37,8 +37,8 @@ Scores de 0 à 5. Si tu n'es pas sûr d'un détail, choisis la valeur la plus pr
 
 MODEL = "haiku"
 BASE = A.BASE
-VALID = BASE / "validated_places"
-DATA = BASE / "data"
+VALID = BASE / "VALIDATED_PLACES"
+DATA = BASE / "DATA"
 
 
 def main():

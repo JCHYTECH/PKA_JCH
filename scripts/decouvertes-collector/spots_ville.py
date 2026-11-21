@@ -11,7 +11,7 @@ Pour une ville donnée (test : Ravenne) :
 Usage :
   python3 spots_ville.py "Ravenna" --radius 5 --top 20
 
-Sortie : JCH_Inbox/03_PROJECTS/07_TRAVELS/pka-decouvertes/spots_van/<date>_<ville>_<slug>.md
+Sortie : JCH_Inbox/03_PROJECTS/07_TRAVELS/PKA-DECOUVERTES/SPOTS_VAN/<date>_<ville>_<slug>.md
 """
 import argparse
 import re
@@ -22,7 +22,7 @@ from pathlib import Path
 import requests
 
 PKA_ROOT = Path(__file__).resolve().parents[2]
-SPOTS_DIR = PKA_ROOT / "JCH_Inbox" / "03_PROJECTS" / "07_TRAVELS" / "pka-decouvertes" / "spots_van"
+SPOTS_DIR = PKA_ROOT / "JCH_Inbox" / "03_PROJECTS" / "07_TRAVELS" / "PKA-DECOUVERTES" / "SPOTS_VAN"
 
 # Importer le module park4night voisin
 sys.path.insert(0, str(Path(__file__).resolve().parent))

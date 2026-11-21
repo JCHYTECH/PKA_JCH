@@ -1,7 +1,7 @@
 # Thread — TRAVELS
 
 > Living document — mis à jour par Dobby 🦉 en fin de session.
-> **Dernière mise à jour** : 2026-11-12 — fiche alimentation SELPHY CP1300 (12V van) déposée dans `van technique/ELECTRICITE/`
+> **Dernière mise à jour** : 2026-11-12 — fiche alimentation SELPHY CP1300 (12V van) déposée dans `LUPO/TECHNIQUES/ELECTRICITE/`
 > **Statut** : 🟢 actif — pipeline DÉCOUVERTES en fonctionnement continu
 
 ---
@@ -25,9 +25,9 @@ Responsable : [[Cigogne]] 🦩 — Vanlife Travel Planner & Experience Curator
 | DÉCOUVERTES — fiches validées | 🟢 | **647 lieux** validés dans `validated_places/` |
 | DÉCOUVERTES — file d'attente | 🟢 | **590 éléments** en `queue/`, dont **540 déjà analysés** (523 avec fiche validée). **Ce n'est pas un arriéré** : la queue est un journal historique. Reste réel : 36 `skipped` + 5 `rejected` + 9 `parked_routes` |
 | Lupo Planner | 🟢 | `lupo-planner-import.json` (191 Ko) généré le 19/10 |
-| Fiches destinations | 🟢 | `vanlife/destinations/` — format `.md` canonique |
-| Logistique stationnement | 🟢 | `vanlife/logistique/` — camping-scout, méthodologie |
-| Voyages réalisés | ✅ | Italie (21/08–19/09), Wadden (30/06) dans `Trips/` |
+| Fiches destinations | 🟢 | `VANLIFE/destinations/` — format `.md` canonique |
+| Logistique stationnement | 🟢 | `VANLIFE/logistique/` — camping-scout, méthodologie |
+| Voyages réalisés | ✅ | Italie (21/08–19/09), Wadden (30/06) dans `VANLIFE/TRIPS/` |
 | Van — équipement | 🟡 | Meuble banquette (design 104×55×25) ; boîte vélo pliant ADO (plan v1) |
 
 **Volumétrie** : 729 fichiers `.md`, 726 Mo — le projet le plus volumineux du
@@ -39,7 +39,7 @@ workspace PKA.
 
 | Date | Décision | Contexte |
 |------|----------|----------|
-| 2026-11-12 | SELPHY CP1300 : alimentation 12V du van — boost DC-DC 12V→24V retenu | Fiche + BOM dans `van technique/ELECTRICITE/selphy-cp1300-alimentation-12v.md` ; écartés 30V et 220V AC |
+| 2026-11-12 | SELPHY CP1300 : alimentation 12V du van — boost DC-DC 12V→24V retenu | Fiche + BOM dans `LUPO/TECHNIQUES/ELECTRICITE/selphy-cp1300-alimentation-12v.md` ; écartés 30V et 220V AC |
 | 2026-10-19 | Lupo Planner synchronisé avec DÉCOUVERTES | Import JSON généré |
 | 2026-10-04 | INDEX restructuré | 4 axes clarifiés |
 | 2026-08-21 | Voyage Italie documenté | 21/08 → 19/09 |
@@ -66,7 +66,7 @@ workspace PKA.
 
 ## TTD — Done (session 2026-10-28)
 
-- [x] 2026-10-28 · Fiche roadtrip **Moselle** (Liège → Koblenz → source, 4 jours) — `.md` + carte Leaflet dans `vanlife/destinations/`
+- [x] 2026-10-28 · Fiche roadtrip **Moselle** (Liège → Koblenz → source, 4 jours) — `.md` + carte Leaflet dans `VANLIFE/destinations/`
 
 ---
 
@@ -75,13 +75,13 @@ workspace PKA.
 ```
 Telegram (groupe DÉCOUVERTES)
     ↓ collector.py  (process actif, en continu)
-pka-decouvertes/raw/          6 éléments
+PKA-DECOUVERTES/raw/          6 éléments
     ↓
-pka-decouvertes/queue/        590 entrées (journal), dont 540 analysées
+PKA-DECOUVERTES/queue/        590 entrées (journal), dont 540 analysées
     ↓ analyzer
-pka-decouvertes/drafts/       0
+PKA-DECOUVERTES/drafts/       0
     ↓ validation
-pka-decouvertes/validated_places/   647 fiches
+PKA-DECOUVERTES/validated_places/   647 fiches
     ↓ decouvertes-to-planner.py
 lupo-planner-import.json      191 Ko
 ```
@@ -97,11 +97,11 @@ il ne faut pas compter les 590 entrées comme un arriéré.
 
 | Dossier | Contenu |
 |---------|---------|
-| `Lupo/` | Fiche technique, documents, stickers, `van technique/` (IOT, électricité, sécurité) |
-| `Lupo-planner/` | Application carte de voyage (import JSON) |
-| `pka-decouvertes/` | Pipeline complet (collector, queue, validated_places, maps, reports) |
-| `vanlife/` | Destinations, logistique, préférences |
-| `Trips/` | Voyages réalisés (Italie, Wadden) |
+| `LUPO/` | Fiche technique, documents, stickers, `LUPO/TECHNIQUES/` (IOT, électricité, sécurité) |
+| `LUPO-PLANNER/` | Application carte de voyage (import JSON) |
+| `PKA-DECOUVERTES/` | Pipeline complet (collector, queue, validated_places, maps, reports) |
+| `VANLIFE/` | Destinations, logistique, préférences |
+| `VANLIFE/TRIPS/` | Voyages réalisés (Italie, Wadden) |
 
 ---
 
@@ -109,9 +109,9 @@ il ne faut pas compter les 590 entrées comme un arriéré.
 
 | Date | Résumé session | Livrable |
 |------|---------------|----------|
-| 2026-11-10 | Routage achats Lupo : factures suspension VB Air (2 417,58 € TTC) + douche intérieure (233,15 € TTC) vers `van technique/achats/` + indexées file_index | `thread-travels.md`, `Lupo/van technique/achats/` |
-| 2026-11-05 | Revue de cohérence : 590 entrées = journal, 50 résidus ; aucune exécution du pipeline | `thread-travels.md`, `INDEX.md` |
-| 2026-11-03 | Plan v1 boîte vélo pliant ADO (Lupo) — dimensions + débit | `vanlife/velo-pliant-boite-rangement.md` |
+| 2026-11-10 | Routage achats Lupo : factures suspension VB Air (2 417,58 € TTC) + douche intérieure (233,15 € TTC) vers `LUPO/TECHNIQUES/ACHATS/` + indexées file_index | `thread-travels.md`, `LUPO/TECHNIQUES/ACHATS/` |
+| 2026-11-05 | Revue de cohérence : 590 entrées = journal, 50 résidus ; aucune exécution du pipeline | `thread-travels.md`, `index.md` |
+| 2026-11-03 | Plan v1 boîte vélo pliant ADO (Lupo) — dimensions + débit | `VANLIFE/velo-pliant-boite-rangement.md` |
 | 2026-10-28 | Roadtrip Moselle : fiche 4 jours + carte interactive | `Moselle_Koblenz_a_la_source.md` + `.html` |
 | 2026-10-22 | Thread file créé après re-vérification des projets | ce fichier |
 | 2026-10-19 | Génération `lupo-planner-import.json` | 191 Ko |
@@ -121,9 +121,9 @@ il ne faut pas compter les 590 entrées comme un arriéré.
 
 ## Liens
 
-- INDEX : `03_PROJECTS/07_TRAVELS/INDEX.md`
-- Pipeline : `pka-decouvertes/PKA_DECOUVERTES_Cahier_des_charges_V2.md`
-- Planner : `03_PROJECTS/07_TRAVELS/Lupo-planner/`
+- INDEX : `03_PROJECTS/07_TRAVELS/index.md`
+- Pipeline : `PKA-DECOUVERTES/PKA_DECOUVERTES_Cahier_des_charges_V2.md`
+- Planner : `03_PROJECTS/07_TRAVELS/LUPO-PLANNER/`
 - Spécialiste : [[Cigogne]] 🦩
 
 ---

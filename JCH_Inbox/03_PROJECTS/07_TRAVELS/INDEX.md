@@ -1,6 +1,6 @@
 # TRAVELS — Index projet
 
-> Dernière mise à jour : 2026-11-05 — navigation et arborescence réelle.
+> Dernière mise à jour : 2026-11-21 — réorganisation structurelle (dossiers MAJUSCULES / fichiers minuscules).
 > **Source de vérité opérationnelle : [thread-travels.md](thread-travels.md).**
 
 ## Description
@@ -10,60 +10,58 @@ Inclut la logistique van **Lupo**, Westfalia Kelsey 2026 sur Ford Transit Custom
 
 Responsable : [[Cigogne]] — Vanlife Travel Planner & Experience Curator.
 
+## Convention de nommage
+
+- **Dossiers : MAJUSCULES** (séparateur `-`).
+- **Fichiers : minuscules** (séparateur `-` ou `_`).
+- Exceptions (sous-systèmes techniques, casse d'origine préservée) : `LUPO-PLANNER/`, `PKA-DECOUVERTES/` et leurs sous-dossiers, `STICKERS/deco/`, `MEUBLE-BANQUETTE/archive/`.
+
 ## Point d'entrée
 
 1. [thread-travels.md](thread-travels.md) — état courant, automatisations et prochaines actions.
-2. [pka-decouvertes/MODE_EMPLOI.md](pka-decouvertes/MODE_EMPLOI.md) — mode d'emploi du pipeline DÉCOUVERTES.
-3. [lupo-planner/README.md](lupo-planner/README.md) — application et carte de voyage.
-4. [vanlife/PREFERENCES.md](vanlife/PREFERENCES.md) — préférences voyage et configuration du van.
+2. [PKA-DECOUVERTES/MODE_EMPLOI.md](PKA-DECOUVERTES/MODE_EMPLOI.md) — mode d'emploi du pipeline DÉCOUVERTES.
+3. [LUPO-PLANNER/README.md](LUPO-PLANNER/README.md) — application et carte de voyage.
+4. [VANLIFE/preferences.md](VANLIFE/preferences.md) — préférences voyage et configuration du van.
 
 ## Structure
 
 | Dossier ou fichier | Contenu |
 |---|---|
-| [`Lupo/`](Lupo/) | Documents, technique et équipement du van |
-| [`Lupo/van technique/`](<Lupo/van technique/>) | IOT, électricité, sécurité, dimensions et aménagements |
-| [`Lupo/OLDIES/`](Lupo/OLDIES/) | Historique d'achat et anciens documents du van |
-| [`Trips/`](Trips/) | Voyages réalisés, notamment Italie et Wadden |
-| [`vanlife/`](vanlife/) | Lifestyle, destinations, logistique et préférences |
-| [`vanlife/destinations/`](vanlife/destinations/) | Fiches destinations au format Markdown canonique |
-| [`vanlife/destinations/exports/`](vanlife/destinations/exports/) | Exports HTML et PDF générés depuis les fiches |
-| [`vanlife/logistique/`](vanlife/logistique/) | Stationnement, camping-scout et routines |
-| [`vanlife/feedback/`](vanlife/feedback/) | Retours d'expérience et discussions |
-| [`lupo-planner/`](lupo-planner/) | Application de carte et planification de voyage |
-| [`lupo-planner-import.json`](lupo-planner-import.json) | Import généré pour Lupo Planner |
-| [`pka-decouvertes/`](pka-decouvertes/) | Pipeline Telegram DÉCOUVERTES : collecte, analyse et fiches lieux |
-| [`pka-decouvertes/raw/`](pka-decouvertes/raw/) | Données brutes collectées |
-| [`pka-decouvertes/queue/`](pka-decouvertes/queue/) | Journal de travail du pipeline, à ne pas confondre avec une archive |
-| [`pka-decouvertes/drafts/`](pka-decouvertes/drafts/) | Brouillons de fiches lieux |
-| [`pka-decouvertes/validated_places/`](pka-decouvertes/validated_places/) | Fiches lieux validées |
-| [`pka-decouvertes/logs/`](pka-decouvertes/logs/) | Journaux du collecteur |
-| [`pka-decouvertes/reports/`](pka-decouvertes/reports/) | Rapports générés |
-| [`pka-decouvertes/maps/`](pka-decouvertes/maps/) | Cartes HTML des lieux |
-| [`99_INBOX_NOTES/`](99_INBOX_NOTES/) | Notes brutes à qualifier, non sources d'état courant |
+| `LUPO/DOCS/` | Documents officiels du véhicule : CI, certificats conformité, immatriculation, assurance, autosecurité |
+| `LUPO/TECHNIQUES/` | Équipement et aménagement du van (électricité, clim, sécurité, manuel, achats) |
+| `LUPO/TECHNIQUES/AMENAGEMENT/` | Boîte vélo pliant, dimensions soute, mobilier |
+| `LUPO/TECHNIQUES/MATERIEL-CANDIDAT/` | Équipements en cours d'évaluation |
+| `LUPO/OLDIES/` | Historique d'achat du van |
+| `LUPO/STICKERS/` | Déco et stickers |
+| `VANLIFE/DESTINATIONS/` | Fiches destinations (`.md` canonique) |
+| `VANLIFE/DESTINATIONS/EXPORTS/` | Exports HTML/PDF générés |
+| `VANLIFE/LOGISTIQUE/` | Stationnement, camping-scout, routines |
+| `VANLIFE/FEEDBACK/` | Retours d'expérience |
+| `VANLIFE/TRIPS/` | Voyages réalisés (Wadden ; Italie à documenter) |
+| `LUPO-PLANNER/` | Application de carte et planification de voyage |
+| `lupo-planner-import.json` | Import généré pour Lupo Planner |
+| `PKA-DECOUVERTES/` | Pipeline Telegram DÉCOUVERTES |
+| `NOTEBOOKLM/` | Transcripts d'analyse NotebookLM (sources) |
+| `99_REFERENCES/` | Références et sources de recherche (transcripts) |
 
 ## Fichiers clés
 
-- [Fiche technique Lupo](Lupo/OLDIES/achat-van/fiche-technique-lupo-kelsey.md) — Westfalia Kelsey 2026, rangée avec l'historique d'achat.
-- [Documents techniques Lupo](<Lupo/van technique/>) — documentation d'aménagement et d'équipement.
-- [Risques et opportunités d'achat UE](Lupo/OLDIES/achat-van/Achat_véhicule_UE_risques_opportunités.md) — document historique.
-- [Agenda des expositions vanlife](Lupo/OLDIES/achat-van/Expositions_Vanlife_2026.md) — document historique.
-- [Préférences voyage](vanlife/PREFERENCES.md).
-- [Guide camping-scout](vanlife/logistique/camping_scout_README.md).
-- [Méthodologie stationnement](vanlife/logistique/methodologie-stationnement.md).
-- [Cahier des charges DÉCOUVERTES](pka-decouvertes/PKA_DECOUVERTES_Cahier_des_charges_V2.md).
+- Fiche technique Lupo : `LUPO/OLDIES/ACHAT-VAN/fiche-technique-lupo-kelsey.md`
+- Préférences voyage : `VANLIFE/preferences.md`
+- Guide camping-scout : `VANLIFE/LOGISTIQUE/camping_scout_README.md`
+- Méthodologie stationnement : `VANLIFE/LOGISTIQUE/methodologie-stationnement.md`
+- Cahier des charges DÉCOUVERTES : `PKA-DECOUVERTES/PKA_DECOUVERTES_Cahier_des_charges_V2.md`
 
 ## Archives et état courant
 
-- `Lupo/OLDIES/` est la zone historique du van ; les documents d'aménagement actifs sont sous `Lupo/van technique/`.
-- `99_INBOX_NOTES/` contient des entrées non qualifiées.
-- Les états de `pka-decouvertes/queue/`, `drafts/` et `validated_places/` se lisent dans le thread, pas dans les seuls noms de dossiers.
+- `LUPO/OLDIES/` est la zone historique du van ; les documents d'aménagement actifs sont sous `LUPO/TECHNIQUES/`.
+- Les états du pipeline (`queue/`, `drafts/`, `validated_places/`) se lisent dans le thread, pas dans les seuls noms de dossiers.
 
 ## Workflow
 
-1. **Découvertes** : Telegram → `pka-decouvertes/raw/` → `pka-decouvertes/queue/` → analyzer → `pka-decouvertes/drafts/` → validation → `pka-decouvertes/validated_places/`.
-2. **Voyages** : recherche → `vanlife/destinations/` → exports dans `vanlife/destinations/exports/`.
-3. **Logistique** : stationnement, camping-scout et routines → `vanlife/logistique/`.
+1. **Découvertes** : Telegram → `PKA-DECOUVERTES/raw/` → `queue/` → analyzer → `drafts/` → validation → `validated_places/`.
+2. **Voyages** : recherche → `VANLIFE/DESTINATIONS/` → exports dans `VANLIFE/DESTINATIONS/EXPORTS/`.
+3. **Logistique** : stationnement, camping-scout et routines → `VANLIFE/LOGISTIQUE/`.
 
 ## Voir aussi
 
