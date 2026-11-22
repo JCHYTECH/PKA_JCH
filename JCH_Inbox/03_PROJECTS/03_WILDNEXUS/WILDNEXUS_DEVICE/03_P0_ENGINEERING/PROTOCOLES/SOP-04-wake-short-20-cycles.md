@@ -191,6 +191,7 @@ Pour chaque cycle (ou moyenne sur 20 cycles) :
 | Date | Test | Firmware | Tension | Cycles OK | Dérive | Résultat |
 |------|------|----------|---------|-----------|--------|----------|
 | 2026-06-16 | Phase D — réveil court | wn_wake_short | 5.0 V | 6/6 capturés (firmware déjà à ~14/20 au début) | Aucune | ✅ GO — Cycles parfaits, intervalle 17.53s ±6ms, deep sleep 1049 µA stable (±30 µA) |
+| 2026-11-22 | Phase D — réveil court (re-validé M5, CLI ppk2-api) | wn_wake_short | 5.0 V | 20/20 (série) + 6/6 (PPK2) | Aucune | ✅ GO — intervalle 17.5 s stable, deep sleep 1062 µA, pic boot ~155 mA, durée active ~2.55 s |
 
 ---
 

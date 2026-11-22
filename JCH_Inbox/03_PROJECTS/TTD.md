@@ -1,7 +1,7 @@
 # TTD — Vue consolidée (tous projets)
 
 > **Fichier dérivé** — généré à chaque `/save` depuis les seuls blocs `TTD — Pending` des thread files. Ne pas éditer à la main hors `/save` : la source de vérité reste les thread files + `etat-projets.md`.
-> `last_updated: 2026-11-22 · by: deepseek-v4-pro` — WildLens #4 rédigée (pigeon ramier) + template v2 réconcilié + filtre éthique Argus non bloquant
+> `last_updated: 2026-11-22 · by: deepseek-v4-pro` — WILDNEXUS SOP-01→04 re-validées (aucun changement TTD-Pending)
 
 ## 01_AI_IT_TOOLS
 

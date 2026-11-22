@@ -124,14 +124,16 @@ Dans **Tools**, vérifier ces réglages :
 
 | Paramètre | Valeur |
 |-----------|--------|
-| USB CDC On Boot | **Enabled** |
+| USB CDC On Boot | **Disabled** (flash/moniteur via port UART) |
 | USB Mode | **Hardware CDC and JTAG** |
 | PSRAM | **OPI PSRAM** |
 | Flash Size | **8MB (64Mb)** |
 | Partition Scheme | **Default 4MB with spiffs** |
 | Upload Speed | **921600** |
 
-> Si un paramètre n'apparaît pas, ce n'est pas grave. Les deux essentiels sont **USB CDC On Boot = Enabled** et **PSRAM = OPI PSRAM**.
+> ⚠️ **CDC On Boot — piège connu (constaté 2026-11-22) :** avec un **seul câble sur le port UART** (côté gauche), garder **USB CDC On Boot = Disabled**. Si on le laisse à Enabled, `Serial` part sur l'USB natif (port « USB » de droite) et le moniteur série reste **vide** sur le port UART. `Enabled` n'est utile que si on lit le moniteur via le port natif « USB ».
+>
+> Les deux paramètres réellement essentiels : **PSRAM = OPI PSRAM** et **Flash Size = 8MB**.
 
 ---
 

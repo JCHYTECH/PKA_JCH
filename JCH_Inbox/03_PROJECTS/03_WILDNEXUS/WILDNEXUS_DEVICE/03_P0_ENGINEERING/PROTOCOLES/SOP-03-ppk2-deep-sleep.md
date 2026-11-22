@@ -216,6 +216,7 @@ Courant
 | Date | Test | Firmware | Tension | Mode PPK2 | Deep sleep | Pic boot | Courant actif | Durée active | Résultat |
 |------|------|----------|---------|-----------|-----------|---------|-------------|------------|----------|
 | 2026-06-16 | Phase C — deep sleep PPK2 | wn_deep_sleep_30s | 5.0 V | Source Meter | 1052 µA | 170 mA | — | 31.0 s | NO-GO (DevKit overhead: AMS1117 + LEDs + CP210x = ~1 mA parasite. ESP32-S3 seul estimé <20 µA) |
+| 2026-11-22 | Phase C — deep sleep PPK2 (re-validé M5, CLI ppk2-api) | wn_deep_sleep_30s | 5.0 V | Source Meter | 1061 µA | 158 mA | — | 30.0 s | NO-GO (confirme overhead DevKit ~1 mA ; ESP32-S3 seul <20 µA. Chaîne PPK2 + ppk2-api validée) |
 
 ---
 
