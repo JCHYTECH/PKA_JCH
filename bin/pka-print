@@ -5,9 +5,9 @@ pka-print — Imprimer un document sur l'imprimante EPSON ET-8550 (ou autre) via
 Convertit proprement en PDF (pandoc + xelatex, gestion CJK + nettoyage des glyphes
 non rendus) puis imprime via `lp`. Recto seul par défaut.
 
-Règle durable (JC, 2026-11-12, mise à jour 2026-11-18) : l'impression PKA se fait TOUJOURS
-sur l'EPSON ET-8550, en recto seulement. File par défaut : EPSON_ET_8550_Series (USB).
-NB : EPSON_ET_8550_Series_3 est la file réseau (ipp://), inutilisable quand l'EPSON est en USB.
+Règle durable (JC, 2026-11-12, mise à jour 2026-11-22) : l'impression PKA se fait TOUJOURS
+sur l'EPSON ET-8550, en recto seulement. File par défaut : EPSON_ET_8550_Series_3 (réseau ipp://).
+⚠️ L'EPSON est en réseau, IP DHCP instable (.65 → .71 le 22/11) — réserver l'IP en DHCP.
 
 Usage :
   pka-print <fichier>                  # imprime recto seul (défaut, EPSON)
@@ -30,7 +30,7 @@ from pathlib import Path
 PDF_ENGINE = "xelatex"
 MAIN_FONT = "Helvetica"
 CJK_FONT = "PingFang SC"
-DEFAULT_PRINTER = "EPSON_ET_8550_Series"  # règle durable : EPSON en USB (Series = usb://). NB : Series_3 = réseau (ipp://), morte si l'EPSON est en USB.
+DEFAULT_PRINTER = "EPSON_ET_8550_Series_3"  # EPSON en réseau (ipp://192.168.129.71). ⚠️ IP DHCP instable → réserver en DHCP. Series (usb://) et Series_2 (ippusb://) sont mortes en réseau.
 
 # Glyphes souvent absents de Helvetica/AAT — remplacés dans les formats texte
 REPLACEMENTS = {
@@ -81,6 +81,7 @@ def to_pdf(src: Path) -> Path:
 
     cmd = [
         "pandoc", str(work), "-o", str(out_pdf),
+        "--from", "markdown+link_attributes",
         "--pdf-engine", PDF_ENGINE,
         "-V", f"mainfont={MAIN_FONT}",
         "-V", f"CJKmainfont={CJK_FONT}",

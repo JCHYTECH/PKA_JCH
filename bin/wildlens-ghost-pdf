@@ -1,0 +1,135 @@
+#!/usr/bin/env python3
+"""wildlens-ghost-pdf — rend une édition WildLens (.md) en PDF avec la mise en page Ghost.
+
+Usage :
+  bin/wildlens-ghost-pdf <edition.md> --image <feature.jpg> [--out <pdf>]
+
+Reproduit le rendu Ghost : feature image en tête, titre, thème, mots-clés,
+sommaire (TOC), sections avec crédit + sources, pied de page.
+"""
+from __future__ import annotations
+
+import argparse
+import re
+import subprocess
+import tempfile
+from pathlib import Path
+
+CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+ROOT = Path(__file__).resolve().parents[1]
+
+CSS = r"""
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@page { size: A4; margin: 2cm; }
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Lora', Georgia, serif;
+  color: #1a1a1a;
+  line-height: 1.7;
+  font-size: 12pt;
+}
+
+.feature {
+  width: 100%;
+  max-height: 9cm;
+  object-fit: cover;
+  margin: 0 0 1.5em;
+  border-radius: 4px;
+}
+
+main { max-width: 46em; }
+
+h1, h2, h3 { font-family: 'Space Grotesk', 'Helvetica Neue', sans-serif; line-height: 1.25; color: #111; }
+
+h1 { font-size: 2em; margin: 0.2em 0 0.6em; }
+
+h2 { font-size: 1.35em; margin-top: 1.6em; border-top: 1px solid #e6e2da; padding-top: 0.8em; }
+
+blockquote { font-style: italic; color: #3D5A3E; border-left: 3px solid #3D5A3E; margin: 0.8em 0; padding: 0.2em 0 0.2em 1em; }
+
+hr { border: none; border-top: 1px solid #e6e2da; margin: 2em 0; }
+
+nav.toc { background: #f5f2ec; border-radius: 6px; padding: 1em 1.2em; margin: 1.4em 0; font-family: 'IBM Plex Mono', monospace; font-size: 0.85em; }
+nav.toc .toc-title { font-family: 'Space Grotesk', sans-serif; font-size: 0.9em; text-transform: uppercase; letter-spacing: 0.06em; color: #3D5A3E; margin: 0 0 0.5em; font-weight: 600; }
+nav.toc ol { margin: 0; padding-left: 1.2em; }
+nav.toc a { color: #3D5A3E; text-decoration: none; }
+nav.toc a:hover { text-decoration: underline; }
+
+a { color: #3D5A3E; }
+
+p { margin: 0 0 0.9em; }
+
+p strong { color: #111; }
+
+em { color: #444; }
+
+figure { margin: 1.2em 0; }
+figure img { max-width: 100%; }
+figcaption { font-family: 'IBM Plex Mono', monospace; font-size: 0.8em; color: #666; margin-top: 0.4em; }
+"""
+
+
+def md_to_html(md_path: Path) -> str:
+    r = subprocess.run(
+        ["pandoc", str(md_path), "-f", "markdown", "-t", "html5"],
+        capture_output=True, text=True,
+    )
+    if r.returncode != 0:
+        raise RuntimeError(r.stderr)
+    return r.stdout
+
+
+def build_toc(body: str) -> str:
+    headings = re.findall(r'<h2 id="([^"]+)">([^<]+)</h2>', body)
+    if not headings:
+        return ""
+    items = "".join(f'<li><a href="#{h_id}">{title}</a></li>' for h_id, title in headings)
+    return f'<nav class="toc"><div class="toc-title">Sommaire</div><ol>{items}</ol></nav>'
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("md", type=Path, help="Fichier Markdown de l'édition")
+    ap.add_argument("--image", type=Path, help="Feature image (couverture)")
+    ap.add_argument("--out", type=Path, default=None, help="PDF de sortie")
+    args = ap.parse_args()
+
+    body = md_to_html(args.md)
+    toc = build_toc(body)
+    if toc:
+        # insère le sommaire juste avant la première section (premier <h2)
+        body = re.sub(r'(<h2)', toc + r'\1', body, count=1)
+
+    img = f'<img class="feature" src="file://{args.image.resolve()}">' if args.image else ""
+
+    html = f"""<!doctype html>
+<html><head><meta charset="utf-8"><style>{CSS}</style></head>
+<body>
+{img}
+<main>
+{body}
+</main>
+</body></html>"""
+
+    out = args.out or (ROOT / "tmp" / "wildlens-pdf" / f"{args.md.stem}.pdf")
+    out.parent.mkdir(parents=True, exist_ok=True)
+
+    with tempfile.NamedTemporaryFile(suffix=".html", delete=False) as f:
+        f.write(html.encode("utf-8"))
+        tmp_html = f.name
+
+    subprocess.run(
+        [CHROME, "--headless=new", "--disable-gpu", "--no-pdf-header-footer",
+         "--virtual-time-budget=6000",
+         f"--print-to-pdf={out.resolve()}", f"file://{tmp_html}"],
+        capture_output=True, timeout=60,
+    )
+    print(f"PDF → {out}")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,7 +1,7 @@
 # Thread — PHOTO_AI_JURY
 
 > Living document — mis à jour automatiquement par Dobby 🦉 en fin de session.
-> **Dernière mise à jour** : 2026-11-20 — modules exif_raw/exif_analysis/crop_advisor ; télémétrie EXIF injectée dans le prompt ; recadrage A4 (nombre d'or) gravé dans le XMP mais non appliqué par LrC (bloquant)
+> **Dernière mise à jour** : 2026-11-22 — filtre éthique Argus : risque d'artificialité (captivité) signalé mais non bloquant (warning) ; analyse poursuivie
 > **Statut** : 🟢 actif
 
 ---
@@ -23,6 +23,7 @@ Moteur IA Argus de critique photo naturaliste — bilan historique Phase 0 : 58 
 | MCP LR | 🟢 | Test technique réussi le 06/11 sur copie virtuelle RAW confirmée par JC : 8/8 lectures, exposition `0 → +0,10 → 0`, restauration dans `finally` et lecture indépendante à `0`. Aucun preset ni lot ; validation artistique distincte |
 | Détection IA | 🟢 | **Nouveau 22/10** — `scripts/pka_ai_image_check.py`, **niveau 1 uniquement** (C2PA + EXIF). Classifieurs ViT mesurés inutilisables (12/12 faux positifs) → désactivés. Hook de rappel actif |
 | EXIF + crop | 🟡 | **Nouveau 20/11** — `exif_raw.py` (EXIF enrichie), `exif_analysis.py` (6 audits : ETTR, bougé, netteté, diffraction, DOF, bruit), `crop_advisor.py` (recadrage tiers/nombre d'or, overlays A4). Crop gravé dans le XMP mais **LrC ne l'applique pas** (bloquant) |
+| Filtre éthique | 🟢 | **Nouveau 22/11** — `captive_animal` ne bloque plus : passé en `warning` non bloquant, `artificiality_risk` transmis à l'analyse principale (risque signalé dans la critique, image non rejetée) |
 
 ---
 
@@ -30,6 +31,7 @@ Moteur IA Argus de critique photo naturaliste — bilan historique Phase 0 : 58 
 
 | Date | Décision | Contexte |
 |------|----------|----------|
+| 2026-11-22 | Filtre éthique Argus non bloquant — `captive_animal` → `warning` : le risque d'artificialité est signalé dans la critique mais ne bloque plus l'analyse (seuls `human_visible` / `ai_generated` / `composite` / `bait` restent rejetés) | JC : « l'oiseau est libre » — indiquer le risque sans bloquer |
 | 2026-11-06 | Conserver les votes sur les rapports séparés du style de retouche | Les 16 évaluations mesurent l'acceptation des critiques, pas les préférences artistiques ; le nouveau socle reste vide jusqu'aux choix explicites de JCH |
 | 2026-11-06 | Limiter le premier test Lightroom à une variation réversible | Baseline → `Exposure2012 +0,10` → relecture → restauration dans `finally`, uniquement sur copie virtuelle RAW ; validation technique distincte de la validation artistique |
 | 2026-07-02 | INDEX créé avec cross-réfs ARTEON + PHOTO_NATURE | Manquait auparavant |
@@ -61,6 +63,7 @@ Moteur IA Argus de critique photo naturaliste — bilan historique Phase 0 : 58 
 
 | Date | Résumé session | Livrable |
 |------|---------------|----------|
+| 2026-11-22 | Filtre éthique rendu non bloquant : `captive_animal` → `warning`, `artificiality_risk` transmis à l'analyse ; `filter_ethics.py` + `run_analysis.py` modifiés | `~/.claude/skills/photo-analyse-wildlife/scripts/filter_ethics.py`, `run_analysis.py` |
 | 2026-11-20 | Pipeline Argus enrichi : télémétrie EXIF + 6 audits + recadrage assisté (overlays A4) ; analyses CR3 untitled-2643/2648 (76-79/100) ; crop gravé dans le XMP mais non appliqué par LrC | `scripts/exif_raw.py`, `scripts/exif_analysis.py`, `scripts/crop_advisor.py`, `run_analysis.py`, `generate_xmp.py` |
 | 2026-11-06 | Test technique Lightroom réussi sur copie virtuelle RAW confirmée par JC ; 8/8 lectures, variation +0,10 EV puis restauration exacte et revérifiée ; validation artistique non réalisée | `_local/lightroom-mcp/tests/e2e/mcp-runner.mjs`, `INDEX.md`, `roadmap-mcp-integration.md`, `executive-summary.md`, `thread-photo-ai-jury.md`, `wiki/Daily/2026/11/2026-11-06-mcp-home-assistant-et-lightroom-testes.md` |
 | 2026-11-06 | Base canonique confirmée ; socle vide de retour JCH migré et vérifié ; test Lightroom documenté mais bloqué par Start Server et la sélection manuelle | `jch_feedback.py`, sauvegarde SQLite, `INDEX.md`, `roadmap-mcp-integration.md`, `executive-summary.md`, `thread-photo-ai-jury.md` |

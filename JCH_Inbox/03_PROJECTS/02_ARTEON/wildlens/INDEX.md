@@ -6,7 +6,7 @@ tags:
   - arteon
   - editorial
 owner: "[[Dobby]]"
-last_updated: 2026-11-15
+last_updated: 2026-11-22
 ---
 # [[WildLens]] — Journal naturaliste de photographie wildlife
 
@@ -14,7 +14,7 @@ last_updated: 2026-11-15
 > Sans WildLens, pas de traffic, pas de conversion vers [[L'Instant Lu]], pas de revenu.
 > wildlens-journal.ghost.io · EN uniquement
 >
-> **État courant :** Ghost self-host en ligne (`https://wildlens.arteon.be`) — #1 publiée 18/11, #3 programmée 28/11, #2 programmée 05/12. Instagram : 1ᵉʳ post publié 17/11. Voir [thread-arteon.md](../thread-arteon.md).
+> **État courant :** Ghost self-host en ligne (`https://wildlens.arteon.be`) — #1 publiée 18/11, #3 programmée 28/11, #2 programmée 05/12, #4 (pigeon ramier) en brouillon 22/11. Instagram : 1ᵉʳ post publié 17/11. Voir [thread-arteon.md](../thread-arteon.md).
 
 ---
 
@@ -32,16 +32,17 @@ WildLens est un **journal hebdomadaire** analysant les avancées en photographie
 | **Plateforme** | Ghost (wildlens-journal.ghost.io) + vitrine sur arteon.be/wildlens |
 | **Cadence** | Hebdomadaire — samedi |
 
-## Architecture éditoriale v2 — 3 sections
+## Architecture éditoriale v2 — 4 sections
 
 > Validée par JC le 2026-07-02. Remplace la structure 5 sections de l'Édition #1.
 > Voir `ref/architecture-editoriale-v2.md` pour le document complet.
 
 | # | Section | Contenu | Longueur |
 |---|---------|---------|----------|
-| ① | **The Frame** | Une photo de JC + analyse éditoriale. Ton militant. L'image porte le propos. | 400-600 mots |
-| ② | **The Shift** | Un développement technique, scientifique ou éthique de la semaine | 200-300 mots |
-| ③ | **The Field** | Un exercice terrain concret dérivé de la photo ou du sujet | 100-150 mots |
+| ① | **The Frame** (Le Cadre) | Une photo de JC + analyse éditoriale. Ton militant. L'image porte le propos. | 400-600 mots |
+| ② | **The Shift** (Le Virage) | Un développement technique, scientifique ou éthique de la semaine | 200-300 mots |
+| ③ | **The Lens** (L'Objectif) | La photographie comme instrument de connaissance — outils, méthodes, perspectives | 300-400 mots |
+| ④ | **Le Constat** (The Record) | Une dérive de destruction du vivant, factuelle et sourcée. Optionnel selon le sujet. | 100-150 mots |
 
 **Total visé :** 900-1300 mots — 5-7 minutes de lecture.
 
@@ -102,6 +103,7 @@ wildlens/
 | 1 | Rouge-gorge « Look it in the face » | [wildlens-edition-1-rouge-gorge.md](editions/final/wildlens-edition-1-rouge-gorge.md) | publiée 18/11 |
 | 2 | Gannet (nid en filet de pêche) | [wildlens-edition-2-gannet.md](editions/final/wildlens-edition-2-gannet.md) | programmée 05/12 |
 | 3 | AI autofocus + NewtCam | [wildlens-edition-3-ai-autofocus.md](editions/final/wildlens-edition-3-ai-autofocus.md) | programmée 28/11 |
+| 4 | Pigeon ramier « À hauteur d'yeux — ou pas » | [wildlens-edition-4-pigeon-ramier.md](editions/fr/wildlens-edition-4-pigeon-ramier.md) | draft (brouillon 22/11) |
 
 > **Renumérotation 15/11** (`tmp/renumber_wildlens.py`) : ancienne #4 (rouge-gorge) → #1 ; ancienne #1 (AI autofocus) → #3 ; ancienne #2 (gannet) → #2 ; ancienne #3 (provenance « Was this real? ») → supprimée.
 > *Fichiers datés d'origine archivés dans `editions/_archive/`.*
@@ -126,4 +128,4 @@ Les actions courantes sont centralisées dans [thread-arteon.md](../thread-arteo
 
 ---
 
-*Index mis à jour par [[Dobby]] 🦉 le 2026-11-15 ; renumérotation éditions (04-18 et 06-20 archivées).*
+*Index mis à jour par [[Dobby]] 🦉 le 2026-11-22 ; #4 ajoutée, template v2 confirmé, double-check Ghost/Markdown inscrit.*

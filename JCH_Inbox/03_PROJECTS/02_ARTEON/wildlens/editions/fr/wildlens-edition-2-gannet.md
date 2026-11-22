@@ -15,21 +15,22 @@ tags:
   - marine-pollution
   - acoustic-monitoring
   - type/project
-  - status/draft
-status: draft
+  - status/scheduled
+status: scheduled
 ---
 # WildLens — Édition #2
-**Date :** 2026-07-02
-**Statut :** Brouillon — en attente de relecture JC avant publication
-**Ton :** Militant
 
 > **Thème : « L'adaptation n'est pas la résilience. »** — le fou de Bassan bâtit avec nos débris, et la photographie rend la perte visible.
 
 ---
 
+**Mots-clés :** photographie naturaliste · fou de Bassan · pollution plastique marine · débris de filets de pêche · Content Credentials C2PA · pièges photographiques · suivi acoustique passif · BirdNET · détection écologique
+
+---
+
 ## ① Le Cadre — Le nid qui crie WTF
 
-*Canon EOS R10 · RF 200-800mm F6.3-9 IS USM · © JC Havaux / ARTEON*
+*Fou de Bassan (Morus bassanus) · Canon EOS R10 · RF 200-800mm F6.3-9 IS USM · © JC Havaux / ARTEON*
 
 Un fou de Bassan (*Morus bassanus*) est assis sur son nid. Le nid devrait être fait d'algues, d'herbes, de plumes — ces matériaux souples et organiques que les fous de Bassan rassemblent depuis des millénaires sur les falaises et les îlots rocheux. Celui-ci est fait de filet de pêche.
 
@@ -83,16 +84,14 @@ La photographie du fou de Bassan dans cette édition est un portrait. C'est auss
 
 C'est le territoire que WildLens explorera : la photographie non comme une fin, mais comme un nœud dans un réseau de regards, d'écoutes et de compréhension de ce qui arrive au sauvage.
 
----
-
-**Mots-clés :** photographie naturaliste · fou de Bassan · pollution plastique marine · débris de filets de pêche · Content Credentials C2PA · pièges photographiques · suivi acoustique passif · BirdNET · détection écologique
+**Sources :** [BirdNET — Cornell Lab of Ornithology](https://birdnet.cornell.edu/) · [Cornell Lab of Ornithology](https://www.birds.cornell.edu/home/)
 
 ---
 
 ## Notes de publication
 
 - [ ] JC relire et valider
-- [ ] Photo : copier `LrC to-109.jpg` dans les assets Ghost ou utiliser l'original
+- [x] Photo : `2026-07-02-gannet-retouche.jpg` uploadée Ghost et posée en feature_image
 - [ ] Crédit photo : © JC Havaux / ARTEON
 - [ ] Légende photo : Fou de Bassan (*Morus bassanus*) — nid construit à partir de débris de filet de pêche
 - [ ] Tags Ghost : wildlife-photography, anthropisation, marine-pollution, gannet, provenance, acoustic-monitoring

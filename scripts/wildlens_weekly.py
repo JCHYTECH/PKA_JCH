@@ -30,42 +30,56 @@ THEME_FILE = WILDLENS_DIR / "theme-semaine.md"
 THUMB_DIR = ROOT / "PHOTO" / "analyses" / "thumbnails"
 VISION_SCAN = ROOT / "scripts" / "pka_vision_scan.py"
 
-GHOST_API_URL = "https://wildlens.ghost.io/ghost/api/admin"
+GHOST_API_URL = "https://wildlens.arteon.be/ghost/api/admin"
+
+
+def _frontmatter(path: Path, key: str, default: str = "") -> str:
+    """Lit un champ du frontmatter YAML d'une édition (premières ~30 lignes)."""
+    try:
+        for line in path.read_text(encoding="utf-8").splitlines()[:30]:
+            s = line.strip()
+            if s.startswith(f"{key}:"):
+                return s.split(":", 1)[1].strip()
+    except Exception:
+        pass
+    return default
 
 
 def _edition_status(path: Path) -> str:
     """Lit le champ `status` du frontmatter d'une édition (défaut : inconnu)."""
+    return _frontmatter(path, "status", "inconnu")
+
+
+def _edition_number(path: Path) -> int:
+    """Numéro d'édition depuis le frontmatter `edition:` (défaut : 0)."""
+    raw = _frontmatter(path, "edition", "")
     try:
-        for line in path.read_text(encoding="utf-8").splitlines()[:25]:
-            if line.strip().startswith("status:"):
-                return line.split(":", 1)[1].strip()
-    except Exception:
-        pass
-    return "inconnu"
+        return int(raw)
+    except ValueError:
+        return 0
 
 
 def build_email_summary() -> tuple[str, str]:
     """Construit (sujet, corps) du mail de notification WildLens."""
     editions = list_editions()
-    n = len(editions)
-    last = editions[-1].name if editions else "Aucune"
-    status = _edition_status(editions[-1]) if editions else "—"
+    published = [e for e in editions if _edition_status(e) == "published"]
+    scheduled = [e for e in editions if _edition_status(e) == "scheduled"]
     nxt = next_edition_date()
-    next_file = EDITIONS_DIR / f"WildLens-{nxt.isoformat()}.md"
     today = date.today()
+
+    lineup = " · ".join(
+        f"#{_edition_number(e)} {_edition_status(e)}" for e in editions
+    ) or "aucune"
 
     subject = f"[Dobby] WildLens — rapport hebdo {today.isoformat()}"
     lines = [
         f"WildLens — état de la colonne ({today.isoformat()})",
         "",
-        f"• Éditions publiées : {n}",
-        f"• Dernière édition : {last} (statut : {status})",
-        f"• Prochaine édition : {nxt.isoformat()} (Edition #{n + 1})",
+        f"• Éditions publiées : {len(published)}",
+        f"• Éditions programmées : {len(scheduled)}",
+        f"• Prochaine édition : {nxt.isoformat()} (samedi)",
+        f"• File : {lineup}",
     ]
-    if next_file.exists():
-        lines += ["", f"Édition #{n + 1} ({nxt.isoformat()}) : FAITE ✓ (fichier présent)"]
-    else:
-        lines += ["", f"Édition #{n + 1} ({nxt.isoformat()}) : PAS ENCORE FAITE"]
     lines += ["", f"Rapport complet : wildlens/reports/WildLens-weekly-{today.isoformat()}.md"]
     return subject, "\n".join(lines)
 
@@ -82,21 +96,16 @@ def _send_summary_email(subject: str, body: str) -> bool:
 
 
 def list_editions() -> list[Path]:
-    """Return all edition files sorted by date."""
-    if not EDITIONS_DIR.is_dir():
+    """Retourne les éditions canoniques (editions/final/*.md), triées par numéro."""
+    final_dir = EDITIONS_DIR / "final"
+    if not final_dir.is_dir():
         return []
-    files = sorted(EDITIONS_DIR.glob("WildLens-*.md"))
-    return files
+    return sorted(final_dir.glob("*.md"), key=_edition_number)
 
 
 def get_edition_number(path: Path) -> int:
-    """Extract edition number from filename like WildLens-2026-04-18.md → 1."""
-    # Simple: count editions before this one + 1
-    editions = list_editions()
-    for i, p in enumerate(editions, 1):
-        if p == path:
-            return i
-    return len(editions) + 1
+    """Numéro d'édition d'un fichier (frontmatter `edition:`, sinon 0)."""
+    return _edition_number(path)
 
 
 def next_edition_date() -> date:
@@ -158,34 +167,32 @@ def cmd_report(args):
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 
     editions = list_editions()
+    published = [e for e in editions if _edition_status(e) == "published"]
+    scheduled = [e for e in editions if _edition_status(e) == "scheduled"]
     today = date.today()
-    last_sunday = today - timedelta(days=today.weekday() + 1) if today.weekday() != 6 else today - timedelta(days=7)
+    nxt = next_edition_date()
 
     report = f"""# WildLens Weekly Report — {today.isoformat()}
 
 ## État de la colonne
 
-- **Éditions publiées :** {len(editions)}
-- **Dernière édition :** {editions[-1].name if editions else 'Aucune'}
-- **Prochaine édition :** {next_edition_date().isoformat()} (Edition #{len(editions) + 1})
-- **Jours depuis dernière publication :** {(today - date.fromisoformat(editions[-1].stem.split('-', 1)[1])).days if editions else '∞'}
+- **Éditions publiées :** {len(published)}
+- **Éditions programmées :** {len(scheduled)}
+- **Prochaine édition :** {nxt.isoformat()} (samedi)
 
 ## Fichiers d'édition
 
-| # | Date | Fichier |
-|---|------|---------|
+| # | Statut | Fichier |
+|---|--------|---------|
 """
-    for i, p in enumerate(editions, 1):
-        dt = p.stem.split('-', 1)[1] if '-' in p.stem else '?'
-        size = p.stat().st_size
-        report += f"| {i} | {dt} | {p.name} ({size:,} B) |\n"
+    for e in editions:
+        report += f"| {_edition_number(e)} | {_edition_status(e)} | {e.name} |\n"
 
     report += f"""
-## Prochaine édition (Edition #{len(editions) + 1})
+## Prochaine édition
 
-- **Date cible :** {next_edition_date().isoformat()}
-- **Template :** lancer `python3 scripts/wildlens_weekly.py edition`
-- **5 segments requis :** Éditorial · Science · Technique · Competition · Field Assignment
+- **Date cible :** {nxt.isoformat()}
+- **Structure v2 :** ① Le Cadre · ② Le Virage · ③ L'Objectif · ④ Le Constat (voir `ref/architecture-editoriale-v2.md`)
 
 ## Ghost Stats
 
@@ -197,13 +204,13 @@ def cmd_report(args):
 ## Actions recommandées
 
 """
-    if not editions:
-        report += "- [ ] **URGENT** — Aucune édition publiée. La colonne est inactive.\n"
-    elif (today - date.fromisoformat(editions[-1].stem.split('-', 1)[1])).days > 14:
-        report += f"- [ ] **URGENT** — Dernière édition il y a {(today - date.fromisoformat(editions[-1].stem.split('-', 1)[1])).days} jours. Reprendre la cadence.\n"
-    report += f"- [ ] Générer l'édition #{len(editions) + 1} avant {next_edition_date().isoformat()}\n"
+    if not published:
+        report += "- [ ] **URGENT** — Aucune édition publiée. Publier l'édition #1.\n"
+    elif len(scheduled) < 2:
+        report += "- [ ] **Prévoir** — moins de 2 éditions programmées, rédiger la suivante.\n"
+    report += f"- [ ] Préparer l'édition de {nxt.isoformat()}\n"
     report += "- [ ] Configurer la clé Ghost Admin API pour les stats automatiques\n"
-    report += "- [ ] Vérifier que ghost.io est actif (pas de suspension pour inactivité)\n"
+    report += "- [ ] Vérifier que wildlens.arteon.be est actif (pas de suspension pour inactivité)\n"
 
     theme = read_theme()
     if theme:
@@ -227,86 +234,58 @@ def cmd_report(args):
 
 
 def cmd_edition(args):
-    """Generate template for next edition."""
-    edition_num = len(list_editions()) + 1
+    """Génère le template de la prochaine édition (architecture v2 — 4 sections)."""
+    edition_num = max([_edition_number(e) for e in list_editions()] or [0]) + 1
     pub_date = next_edition_date()
 
-    template = f"""# WildLens — Edition #{edition_num}
-**Publication :** {pub_date.isoformat()} (Saturday)
-**Status :** draft
+    template = f"""---
+date: {pub_date.isoformat()}
+source: editorial-dobby
+domain: arteon/blogging
+project: WildLens
+edition: {edition_num}
+tone: militant
+status: draft
+---
+# WildLens — Édition #{edition_num}
+
+> **Thème : « … »** — une phrase qui porte le propos.
+
+**Mots-clés :** …
+
+## ① Le Cadre — (400-600 mots)
+
+*Photo de JC · matériel · © JC Havaux / ARTEON*
+
+…
+
+## ② Le Virage — (200-300 mots)
+
+…
+
+## ③ L'Objectif — (300-400 mots)
+
+…
+
+## ④ Le Constat — (100-150 mots)
+
+…
 
 ---
-
-## 1. Éditorial
-
-> *Thème de la semaine — une idée qui relie les 4 sections suivantes.*
-
-<!-- 200-300 mots -->
-
----
-
-## 2. Science Spotlight
-
-> *Une découverte scientifique récente qui change notre façon de photographier le vivant.*
-
-<!-- 150-250 mots + lien vers le papier -->
-
----
-
-## 3. Technique Deep-Dive
-
-> *Une technique photo décortiquée — pourquoi elle marche, quand l'utiliser.*
-
-<!-- 200-300 mots + diagramme SVG -->
-
----
-
-## 4. Competition Frame
-
-> *Une image de concours qui mérite d'être étudiée — ce qu'elle fait bien, ce qu'on peut apprendre.*
-
-<!-- 150-200 mots + image embed -->
-
----
-
-## 5. Field Assignment
-
-> *Un exercice de terrain pour les lecteurs cette semaine.*
-
-<!-- 100-150 mots + contraintes -->
-
----
-
-## 6. Le Constat
-
-> *Une dérive de destruction du vivant, documentée factuellement cette semaine. Nommer la dérive, sans polémique — pour qu'elle cesse d'être invisible.*
-
-<!-- 100-150 mots + fait vérifié + source -->
-
----
-
-## Notes de publication
-
-- [ ] Texte complet relu
-- [ ] Images embed avec crédits
-- [ ] Diagramme SVG pour la section Technique
-- [ ] Tags Ghost : wildlife-photography, field-technique, science, competition
-- [ ] URL canonique : wildlens.ghost.io/edition-{edition_num:03d}
-
----
-*Template généré le {date.today().isoformat()} · Prochaine édition : {pub_date.isoformat()}*
+*À publier le {pub_date.isoformat()} (samedi).*
 """
 
-    out_path = EDITIONS_DIR / f"WildLens-{pub_date.isoformat()}.md"
+    out_dir = EDITIONS_DIR / "final"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = out_dir / f"wildlens-edition-{edition_num}-template.md"
     if out_path.exists():
         print(f"⚠️  Edition #{edition_num} existe déjà : {out_path}")
         return
 
-    EDITIONS_DIR.mkdir(parents=True, exist_ok=True)
     out_path.write_text(template, encoding="utf-8")
     print(f"📝 Template → {out_path}")
     print(f"   Edition #{edition_num} — publication prévue le {pub_date.isoformat()}")
-    print(f"   5 sections à remplir avant samedi")
+    print(f"   4 sections (Cadre · Virage · Objectif · Constat) à remplir avant samedi")
 
 
 def cmd_stats(args):

@@ -1,7 +1,7 @@
 # TTD — Vue consolidée (tous projets)
 
 > **Fichier dérivé** — généré à chaque `/save` depuis les seuls blocs `TTD — Pending` des thread files. Ne pas éditer à la main hors `/save` : la source de vérité reste les thread files + `etat-projets.md`.
-> `last_updated: 2026-11-20 · by: deepseek-v4-pro` — pivot WildLens « tout en français » (3 éditions FR) + clipper iPad→inbox
+> `last_updated: 2026-11-22 · by: deepseek-v4-pro` — WildLens #4 rédigée (pigeon ramier) + template v2 réconcilié + filtre éthique Argus non bloquant
 
 ## 01_AI_IT_TOOLS
 
@@ -17,13 +17,16 @@ Source : `01_AI_IT_TOOLS/thread-ai-it-tools.md`
 
 Source : `02_ARTEON/thread-arteon.md`
 
-- [ ] **P1 · — · (JC)** Relire le brouillon Ghost « WildLens — Edition #4 » (slug `wildlens-edition-4`) puis donner le feu vert
-- [ ] **P2 · — · (Dobby, après relecture)** Pousser les 3 autres éditions en brouillon via `scripts/ghost_import.py`
-- [ ] **P3 · — · (JC + Forge)** Finir la migration WildLens : DNS A `wildlens` → `2.25.8.208`, `ghost setup ssl`, Mailgun, import contenu (VPS créé + Ghost installé 15/11)
+- [ ] **P1 · 2026-12-12 · (JC)** Valider l'édition #4 (pigeon ramier) → `draft → scheduled` + poser la photo en feature image Ghost
+- [ ] **P1 · — · (Jade)** Traduire les 3 éditions en italien (FR livré, EN en réserve) — après traction FR
+- [ ] **P2 · — · (Dobby)** Recoller le hashtag #photographyethics (coupé au collage Instagram)
+- [ ] **P3 · — · (JC)** Renouveler le token Instagram avant le 04/01/2026 (60 j)
 - [ ] **P4 · — · (JC)** Allouer du temps créatif éditorial — blocage structurel : 8 étapes roadmap non closes
-- [ ] **P5 · — · (Forge + Jade, après feu vert)** Traduire les éditions en FR + IT ; builder le changeur de langue Ghost (EN/FR/IT) avec détection géoloc IP
-- [ ] **P6 · — · (Dobby)** Presets brique 3 : masques IA (sujet/œil/plumage/arrière-plan) ; brique 4 : endpoint `/recommend` (EXIF niveau 1 d'abord)
+- [ ] **P6 · — · (Forge)** Presets brique 3 : masques IA (sujet/œil/plumage/arrière-plan) ; brique 4 : endpoint `/recommend` (EXIF niveau 1 d'abord, Dobby)
 - [ ] **P7 · — · (JC)** Nettoyer le doublon de preset LRC (37 importés au lieu de 36) + galerie avant/après définitive (12 paires)
+- [ ] **P8 · M1 test aveugle · (JC + Dobby)** Correction manuelle de 16 photos + jugement en aveugle ~5 photographes
+- [ ] **P9 · — · (JC + Dobby)** Choisir le tireur (compétence impression)
+- [ ] **P10 · — · (Dobby)** Tester l'édition #1 en pré-vente bornée
 
 ## 03_WILDNEXUS — INSECTNET
 
@@ -75,6 +78,8 @@ Source : `05_PHOTO_AI_JURY/thread-photo-ai-jury.md`
 
 - [ ] **P2 · — · (JCH + Argus)** Enregistrer des comparaisons A/B avec tutoriel et une validation sur image inédite ; aucune généralisation ou lot automatique avant ces données réelles
 - [ ] **P2 · — · (Argus)** Prochaine fournée d'analyses seulement après décision de JC ; aucun appel IA payant effectué dans ce chantier
+- [ ] **P1 · — · (Dobby)** Résoudre l'application du crop dans LrC : piste sidecar `.xmp` à côté du CR3 (au lieu du preset)
+- [ ] **P2 · — · (Dobby)** Repasser `untitled-2643.CR3` pour lui donner son crop (nombre d'or)
 
 ## 06_PHOTO_NATURE
 
