@@ -1,6 +1,6 @@
 # USER — Jean-Claude Havaux (JC)
 > Profil utilisateur, setup technique, projets actifs et préférences.
-> Dernière mise à jour : 2026-11-10 — Karotz avatar Dobby (résurrection 2026-11-09)
+> Dernière mise à jour : 2026-11-22 — préférence outillage CLI + partage physique/logique (session WildNexus)
 > Inspiré du pattern Hermes (user.md) — séparation Personnalité / Utilisateur / Mémoire.
 
 ---
@@ -62,6 +62,7 @@
 - La vérification des faits est non-négociable — toujours citer la source
 - Préfère donner un **cap** (direction finale) puis laisser Dobby saucissonner les étapes
 - Extrêmement concis — répond par mots-clés, fait confiance à Dobby pour décomposer et exécuter
+- En session hardware : JC gère le **physique** (brancher/câbler/débrancher, signalé d'un mot « branché »/« câblé ») ; Dobby pilote l'outillage en **CLI** (arduino-cli, ppk2-api), pas en GUI
 - Préfère les systèmes simples et synchrones aux pipelines asynchrones complexes
 - Préfère les **miroirs lecture seule** (synchro à sens unique) — n'édite pas depuis le second appareil
 - Préfère **une liste canonique unique** par domaine (matériel, procédures) plutôt qu'un inventaire dispersé
