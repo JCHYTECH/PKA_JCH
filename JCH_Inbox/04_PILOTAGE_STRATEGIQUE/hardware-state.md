@@ -3,7 +3,7 @@
 > **Règle :** Dobby lit ce fichier AVANT de faire une affirmation sur le matériel.
 > **Mise à jour :** immédiate après chaque info de JC (réception, commande, panne, prêt).
 > **Ne pas déduire, ne pas deviner.** Si pas dans ce fichier → demander à JC.
-> **Dernière mise à jour :** 2026-11-12 — RPi HOME « JC home » (maison/serre) opérationnel et vérifié (power-cycle + Z2M restart). AirGuard Lupo ré-appairé (LQI 255/255, mesures fraîches).
+> **Dernière mise à jour :** 2026-11-23 — Lupo boot bloqué (LED verte fixe, SD non lue) en pause ; home ✅ en ligne (Ethernet) ; EPSON IP .75 (MAC corrigé `d4:80:8b:a6:f1:c4`).
 
 ---
 
@@ -29,7 +29,7 @@
 | Composant | Qté | Statut | Notes |
 |-----------|-----|--------|-------|
 | Lupo (Ford Transit Custom Westfalia Kelsey) | 1 | ✅ REÇU | 30 juillet 2026 — véhicule livré, installation IOT en cours (deadline **15/12**, prolongée par JC le 19/10) |
-| RPi 5 — hôte HAOS `lupo`, actuellement bureau Esneux | 1 hôte observé | 🟢 HAOS ACTIF / ÉCART D'ACHAT | **8 Go mesurés**, modèle RPi 5 Rev 1.0, SD 256 Go, HAOS 18.3. Achat historique documenté : RPi 5 4 Go, Amazon, 132,09€, 10 juin ; écart RAM à vérifier sur facture/boîte. Un seul RPi est compté : les rôles bureau et van ne sont pas simultanés tant qu'un autre hub fixe n'est pas retenu. |
+| RPi 5 — hôte HAOS `lupo`, actuellement bureau Esneux | 1 hôte observé | ❌ BOOT BLOQUÉ (23/11) / ÉCART D'ACHAT | **8 Go mesurés**, modèle RPi 5 Rev 1.0, SD 256 Go, HAOS 18.3. **23/11 : allumé mais LED verte fixe = SD non lue, boot bloqué — en pause (réinsertion SD / reflash 18.3 à prévoir).** Achat historique documenté : RPi 5 4 Go, Amazon, 132,09€, 10 juin ; écart RAM à vérifier sur facture/boîte. Un seul RPi est compté : les rôles bureau et van ne sont pas simultanés tant qu'un autre hub fixe n'est pas retenu. |
 | Alim officielle RPi5 27W | 1 | ✅ REÇU | 15,32€ |
 | Refroidisseur actif RPi5 | 1 | ✅ REÇU | 9,99€ |
 | Geekworm X1205 UPS HAT | 1 | ✅ REÇU | AliExpress, 42,39€. Identification physique à revérifier : le wiki constructeur décrit deux accus **21700**, tandis que le stock ci-dessous mentionne des 18650. |
@@ -54,7 +54,7 @@
 | Teltonika RUT240 (routeur 4G/LTE) | 1 | ✅ EN STOCK | Passerelle internet van : SIM 4G → Ethernet → RPi 5. Alim 9-30V DC, Tailscale/WireGuard, RMS. Remplace le ZTE MF833U1 (dongle) pour le van. |
 | PCIe to M.2 NVMe Shield | 2 | ✅ REÇU | 29 juin, pour SSD NVMe RPi 5 vanlife |
 | SSD NVMe M.2 Fanxiang 256GB | 1 | ✅ REÇU | 1er juillet, pour RPi 5 vanlife |
-| Assemblage RPi 5 `lupo` | 1 hôte observé | 🟡 HAOS SAIN / ZIGBEE EN ERREUR | RPi 5 **8 Go mesurés** + SD 256 Go + X1201-C1, actuellement au bureau. NVMe retiré (01/10), HAOS 18.3. Auto-update sélectif : Supervisor + modules ; HAOS/Core manuels. Un dongle USB présent ; Z2M arrêté après déconnexion USB. Identifier physiquement UPS/accus avant modification ; reste silentblocs, coating et intégration van. |
+| Assemblage RPi 5 `lupo` | 1 hôte observé | ❌ BOOT BLOQUÉ (23/11) | RPi 5 **8 Go mesurés** + SD 256 Go + X1201-C1, actuellement au bureau. NVMe retiré (01/10), HAOS 18.3. **23/11 : LED verte fixe = SD non lue → boot bloqué, en pause (réinsertion SD puis reflash 18.3 si nécessaire).** Auto-update sélectif : Supervisor + modules ; HAOS/Core manuels. Un dongle USB présent ; Z2M arrêté après déconnexion USB. Identifier physiquement UPS/accus avant modification ; reste silentblocs, coating et intégration van. |
 | Samsung PRO Endurance 256GB microSD | 1 | ✅ REÇU | 17 juillet, Amazon. Remplace SD 128 Go actuelle pour HA OS 24/7. |
 | Noctua NF-A4x10 PWM | 1 | ✅ REÇU | 19 juillet. Ventilateur 40×10mm silencieux pour RPi Lupo. |
 | Reolink Argus MagiCam | 1 | ✅ REÇU | 17 juillet. Dashcam/sécurité Lupo, fixation aimantée. Voir `07_TRAVELS/Lupo/van technique/securite/camera-reolink-argus-magicam-lupo.md`. |
