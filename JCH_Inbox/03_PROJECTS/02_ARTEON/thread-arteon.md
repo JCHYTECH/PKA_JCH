@@ -1,7 +1,7 @@
 # Thread — ARTEON
 
 > Living document — maintenu par Dobby 🦉 en fin de session sur `/save`.
-> **Dernière mise à jour** : 2026-11-22 — template v2 réconcilié + procédure de rédaction + #4 rédigée (pigeon ramier) + rendu PDF Ghost + impression
+> **Dernière mise à jour** : 2026-11-23 — skill `voix-jc` créé (SKILL.md + référentiel Miel, corpus 9 docs) + test appliqué à l'édition #4 (première personne, 1 marqueur JC à compléter) ; session coupée avant `/save`, loggée rétroactivement
 > **Statut** : 🟢 actif — site FR en production (4 éditions : #1 publiée 18/11, #3 28/11, #2 05/12, #4 brouillon 22/11)
 
 ---
@@ -63,6 +63,8 @@ Photographie naturaliste éditoriale — marque ARTEON + service WildLens + futu
 ## TTD — Pending
 
 - [ ] **P1 · 2026-12-12 · (JC)** Valider l'édition #4 (pigeon ramier) → `draft → scheduled` + poser la photo en feature image Ghost
+- [x] **P1 · — · (JC + Miel)** Valider le test voix JC #4 — ✅ validé par JC 23/11 (marqueur comblé + règle de modestie)
+- [ ] **P1 · — · (JC)** Valider les réécritures voix-jc #1/#2/#3 (marqueur #1 graines + registre #3 tutoriel) puis basculer statut → published/scheduled et réimporter dans Ghost
 - [ ] **P1 · — · (Jade)** Traduire les 3 éditions en italien (FR livré, EN en réserve) — après traction FR
 - [ ] **P2 · — · (Dobby)** Recoller le hashtag #photographyethics (coupé au collage Instagram)
 - [ ] **P3 · — · (JC)** Renouveler le token Instagram avant le 04/01/2026 (60 j)
@@ -84,6 +86,7 @@ Photographie naturaliste éditoriale — marque ARTEON + service WildLens + futu
 
 | Date | Résumé session | Livrable |
 |------|---------------|----------|
+| 2026-11-23 | Skill `voix-jc` créé + validé sur #4 ; réécriture voix JC de #1/#2/#3 (fichiers `-voix-jc.md`) ; 4 PDF générés + imprimés EPSON (recto) | `skills/voix-jc/`, `wildlens/editions/fr/*-voix-jc.md`, `TEAM_Inbox/2026-11-23_dobby_finalisation-voix-jc-editions-123.md` |
 | 2026-11-22 | Template v2 réconcilié (4 sections), procédure de rédaction + double-check Ghost/Markdown, #4 rédigée (pigeon ramier + Constat tourterelle), #2 corrigée, #3 assumée, outil `bin/wildlens-ghost-pdf` + 4 PDF + impression | `wildlens/ref/procedure-redaction-edition.md`, `wildlens/editions/fr/wildlens-edition-4-pigeon-ramier.md`, `bin/wildlens-ghost-pdf`, `scripts/wildlens_weekly.py`, `strategy/plan-action-wildlens.md` |
 | 2026-11-20 | Renumérotation Ghost résolue (#4→#1) + nettoyage structure 02_ARTEON + **pivot FR** (3 éditions traduites, thème FR, locale fr) + clipper iPad→inbox | `wildlens/editions/final/`, `wildlens/editions/fr/`, `bin/pka-clip-pull`, `_local/launchd-plists/com.dobby.pka-clip-pull.plist` |
 | 2026-11-15 | Presets 36 XMP + slider proportionnel MCP + étude L'Instant Lu (conseil NO-GO/recadrage) + recensement marché + cartographie fonctionnelle + VPS Hostinger créé | `presets-naturaliste/`, `_local/lightroom-mcp/scripts/looks.mjs`, `strength_server.mjs`, `strategy/recensement-presets-xmp-animaliere.md`, `strategy/cartographie-fonctionnelle-presets.md`, `strategy/plan-reorientation-instant-lu.md` |

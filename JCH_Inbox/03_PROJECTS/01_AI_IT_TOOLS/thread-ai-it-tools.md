@@ -1,7 +1,7 @@
 # Thread — AI_IT_TOOLS
 
 > Living document — maintenu par Dobby 🦉 en fin de session sur `/save`.
-> **Dernière mise à jour** : 2026-11-20 — clipper iPad→inbox (pka-clip-pull, launchd 15 min)
+> **Dernière mise à jour** : 2026-11-23 — Hammerspoon installé (bascule curseur entre écrans M5) ; file CUPS EPSON corrigée (.75) + `pka-print` outputorder=normal
 > **Statut** : 🟢 actif
 
 ---
@@ -63,6 +63,7 @@ Infrastructure IA et outils PKA — maintenance du système Dobby, skills, mémo
 - [ ] **P2 · — · (JC + Dobby)** ACL Tailscale — durcir l'accès réseau (reporté 13/11) : (1) poser la politique ACL (filet `autogroup:admin`→`*:*` ; `autogroup:member`↔`autogroup:member` ; `autogroup:member`→`tag:van:8123/1883/22222`) ; (2) taguer `lupo` en `tag:van`. Procédure prête (cf. `tailscale status` + `credentials-central.md`).
 - [x] **P2 · — · (Dobby)** Mot de passe VNC dédié appliqué sur M5 + M1 (13/11) — plus l'admin ; raccourcis + onglets à jour
 - [x] **P1 · — · (JC)** FDA accordée à `sshd-keygen-wrapper` (13/11) → raccourcis Bureau `M5-ecran-novnc.webloc` + `M1-ecran-novnc.webloc` créés. **Reste** : Accessibilité (épinglage UI encore bloqué — System Events pend en SSH).
+- [ ] **P1 · — · (JC)** Réserver l'IP de l'EPSON ET-8550 en DHCP (actuellement .75, instable .65→.71→.75) pour stabiliser la file d'impression réseau
 
 ## TTD — Done (session 2026-11-06)
 
@@ -77,6 +78,7 @@ Infrastructure IA et outils PKA — maintenance du système Dobby, skills, mémo
 
 | Date | Résumé session | Livrable |
 |------|---------------|----------|
+| 2026-11-23 | Hammerspoon installé (bascule curseur entre 3 écrans M5, ⌃⌥⌘←/→) ; file CUPS EPSON corrigée (.75) ; `bin/pka-print` fixé (IP + outputorder=normal) | `~/.hammerspoon/init.lua`, `bin/pka-print` |
 | 2026-11-20 | Clipper iPad → inbox : vault iCloud « PKA Capture » + pull one-way (bin/pka-clip-pull, launchd 15 min) ; miroir lecture seule iPad→M5 | `bin/pka-clip-pull`, `bin/install-clip-pull-launchd.sh`, `_local/launchd-plists/com.dobby.pka-clip-pull.plist` |
 | 2026-11-17 | TeamViewer M5 réparé : 4 LaunchDaemons désactivés (`.plist.disabled`) → renommage manuel + `launchctl bootstrap` Helper/service ; app stable, plus de crash | — |
 | 2026-11-11 | Pont noVNC iMac↔M5 (miroir d'écran) : iMac 2017 affiche le M5 via Safari, auto-start launchd, correctif noVNC (type ARD retiré) | `_local/novnc/`, `_local/launchd-plists/com.dobby.m5-vnc-novnc.plist`, `wiki/Daily/2026/11/2026-11-11-imac-miroir-de-m5-via-novnc-pont-websocket.md` |

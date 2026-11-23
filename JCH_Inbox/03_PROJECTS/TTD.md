@@ -1,7 +1,7 @@
 # TTD — Vue consolidée (tous projets)
 
 > **Fichier dérivé** — généré à chaque `/save` depuis les seuls blocs `TTD — Pending` des thread files. Ne pas éditer à la main hors `/save` : la source de vérité reste les thread files + `etat-projets.md`.
-> `last_updated: 2026-11-22 · by: deepseek-v4-pro` — WILDNEXUS SOP-01→04 re-validées (aucun changement TTD-Pending)
+> `last_updated: 2026-11-23 · by: deepseek-v4-pro` — voix-jc finalisée (ARTEON) + Hammerspoon/EPSON (AI_IT_TOOLS)
 
 ## 01_AI_IT_TOOLS
 
@@ -12,12 +12,14 @@ Source : `01_AI_IT_TOOLS/thread-ai-it-tools.md`
 - [ ] **P2 · — · (JC + Dobby)** Essayer le TUI/double-clic Grok ; le rituel `/save` Kimi est terminé et ne fait plus partie de cet essai
 - [ ] **P2 · — · (JC + Dobby)** ACL Tailscale — durcir l'accès réseau (reporté 13/11) : poser la politique ACL puis taguer `lupo` en `tag:van` (ports 8123/1883/22222).
 - [x] **P2 · — · (Dobby)** Mot de passe VNC dédié appliqué (M5 + M1, 13/11) — plus l'admin
+- [ ] **P1 · — · (JC)** Réserver l'IP de l'EPSON ET-8550 en DHCP (actuellement .75, instable .65→.71→.75) pour stabiliser la file d'impression réseau
 
 ## 02_ARTEON
 
 Source : `02_ARTEON/thread-arteon.md`
 
 - [ ] **P1 · 2026-12-12 · (JC)** Valider l'édition #4 (pigeon ramier) → `draft → scheduled` + poser la photo en feature image Ghost
+- [ ] **P1 · — · (JC)** Valider les réécritures voix-jc #1/#2/#3 (marqueur #1 graines + registre #3 tutoriel) puis basculer statut → published/scheduled et réimporter dans Ghost
 - [ ] **P1 · — · (Jade)** Traduire les 3 éditions en italien (FR livré, EN en réserve) — après traction FR
 - [ ] **P2 · — · (Dobby)** Recoller le hashtag #photographyethics (coupé au collage Instagram)
 - [ ] **P3 · — · (JC)** Renouveler le token Instagram avant le 04/01/2026 (60 j)

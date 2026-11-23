@@ -3,7 +3,7 @@
 > **Règle :** Dobby lit ce fichier AVANT de faire une affirmation sur le matériel.
 > **Mise à jour :** immédiate après chaque info de JC (réception, commande, panne, prêt).
 > **Ne pas déduire, ne pas deviner.** Si pas dans ce fichier → demander à JC.
-> **Dernière mise à jour :** 2026-11-23 — Lupo boot bloqué (LED verte fixe, SD non lue) en pause ; home ✅ en ligne (Ethernet) ; EPSON IP .75 (MAC corrigé `d4:80:8b:a6:f1:c4`).
+> **Dernière mise à jour :** 2026-11-23 — Lupo boot bloqué (LED verte fixe, SD non lue) en pause ; home ✅ en ligne (Ethernet) ; EPSON IP .75 (MAC corrigé `d4:80:8b:a6:f1:c4`) ; Hammerspoon installé (bascule curseur entre écrans).
 
 ---
 
@@ -101,6 +101,7 @@
 | WiCAN Pro (OBD/CAN Ford) | 1 | ✅ REÇU / INSTALLÉ PHYSIQUEMENT | 1er août 2026, ~82€, Mouser. MS-CAN + HS-CAN. Intégration HA/RUT240 et compatibilité Exosfer à valider ; 17+ entités visées, remontée non confirmée. Voir `JCH_Inbox/03_PROJECTS/11_IOT/iot-van/specs/SPEC-CAN-BUS.md` |
 | Exosfer OBD Protect | 1 | ✅ REÇU | Antivol électronique prise OBD. ⚠️ Compatibilité WiCAN Pro à vérifier. |
 | SSD Time Machine | 1 | ⏳ À COMMANDER | Décision JC 2026-10-05. SSD 2 To min (USB-C/Thunderbolt), format APFS chiffré. Remplace le HDD 1 To `PKA_TimeMachine` (APFS saturé à 97%, LazyThinning bloqué à 99% CPU). |
+| Hammerspoon | 1 | ✅ INSTALLÉ / ACTIF | 23/11 — `brew install --cask hammerspoon` (1.1.1). Config `~/.hammerspoon/init.lua` : bascule du curseur entre les 3 écrans M5 via `⌃⌥⌘→`/`⌃⌥⌘←` (déplace le curseur, pas les fenêtres). Permission Accessibilité accordée. |
 
 ## LEAFNET / WN-BIO
 

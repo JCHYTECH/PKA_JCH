@@ -5,9 +5,10 @@ pka-print — Imprimer un document sur l'imprimante EPSON ET-8550 (ou autre) via
 Convertit proprement en PDF (pandoc + xelatex, gestion CJK + nettoyage des glyphes
 non rendus) puis imprime via `lp`. Recto seul par défaut.
 
-Règle durable (JC, 2026-11-12, mise à jour 2026-11-22) : l'impression PKA se fait TOUJOURS
+Règle durable (JC, 2026-11-12, mise à jour 2026-11-23) : l'impression PKA se fait TOUJOURS
 sur l'EPSON ET-8550, en recto seulement. File par défaut : EPSON_ET_8550_Series_3 (réseau ipp://).
-⚠️ L'EPSON est en réseau, IP DHCP instable (.65 → .71 le 22/11) — réserver l'IP en DHCP.
+⚠️ L'EPSON est en réseau, IP DHCP instable (.65 → .71 → .75 le 23/11, MAC d4:80:8b:a6:f1:c4) — réserver l'IP en DHCP.
+Pages imprimées dans l'ordre naturel (1 → N, `outputorder=normal`), jamais en ordre inverse.
 
 Usage :
   pka-print <fichier>                  # imprime recto seul (défaut, EPSON)
@@ -30,7 +31,7 @@ from pathlib import Path
 PDF_ENGINE = "xelatex"
 MAIN_FONT = "Helvetica"
 CJK_FONT = "PingFang SC"
-DEFAULT_PRINTER = "EPSON_ET_8550_Series_3"  # EPSON en réseau (ipp://192.168.129.71). ⚠️ IP DHCP instable → réserver en DHCP. Series (usb://) et Series_2 (ippusb://) sont mortes en réseau.
+DEFAULT_PRINTER = "EPSON_ET_8550_Series_3"  # EPSON en réseau (ipp://192.168.129.75). ⚠️ IP DHCP instable → réserver en DHCP. Series (usb://) et Series_2 (ippusb://) sont mortes en réseau.
 
 # Glyphes souvent absents de Helvetica/AAT — remplacés dans les formats texte
 REPLACEMENTS = {
@@ -96,7 +97,8 @@ def to_pdf(src: Path) -> Path:
 
 def print_file(pdf: Path, printer: str, duplex: bool, copies: int) -> str:
     sides = "two-sided-long-edge" if duplex else "one-sided"
-    cmd = ["lp", "-d", printer, "-o", f"sides={sides}", "-n", str(copies), str(pdf)]
+    # Pages dans l'ordre naturel (1 → N), jamais en ordre inverse (outputorder=normal).
+    cmd = ["lp", "-d", printer, "-o", f"sides={sides}", "-o", "outputorder=normal", "-n", str(copies), str(pdf)]
     r = run(cmd)
     return (r.stdout or r.stderr).strip()
 
