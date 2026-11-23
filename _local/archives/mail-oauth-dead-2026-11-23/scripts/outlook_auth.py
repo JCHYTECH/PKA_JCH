@@ -38,11 +38,13 @@ if accounts:
         TOKEN_CACHE.write_text(cache.serialize())
         exit(0)
 
-print("Ouverture du navigateur pour Outlook...")
-result = app.acquire_token_interactive(
-    scopes=SCOPES,
-    prompt="select_account",
-)
+print("Authentification device code...")
+flow = app.initiate_device_flow(scopes=SCOPES)
+if "user_code" not in flow:
+    print(f"Echec: {flow.get('error_description', flow)}")
+    exit(1)
+print(flow["message"])
+result = app.acquire_token_by_device_flow(flow)
 
 if "access_token" in result:
     TOKEN_CACHE.write_text(cache.serialize())

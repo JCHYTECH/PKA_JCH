@@ -205,15 +205,11 @@
 
 ## Email
 
-- scripts/[[gmail_gatekeeper]].py — Veille et filtrage Gmail
-- scripts/outlook_gatekeeper.py — Veille et filtrage Outlook
-- scripts/outlook_auth.py — Auth Outlook (Microsoft Graph)
-- scripts/outlook_imap.py — Client IMAP Outlook
-- scripts/email_digest.py — Résumé quotidien des emails
-- scripts/google_auth.py — Auth Google (OAuth)
+- scripts/gmail_imap_fetch.py — Pull mails alias +dobby (IMAP, mot de passe d'application)
+- scripts/gmail_imap_digest.py — Digest des non-lus (IMAP, launchd 9h/14h/20h)
 - scripts/google_calendar_bridge.py — Pont Agenda Google vers notes
-- scripts/install_gmail_gatekeeper_launchd.sh — Install launchd Gmail
-- scripts/install_email_pipeline.sh — Install pipeline [[email]] complet
+- scripts/dobby_notify_email.py — Envoi mail via Gmail SMTP (gate validation JC)
+- _local/archives/mail-oauth-dead-2026-11-23/ — anciens flux mail archivés (email_digest, gmail_gatekeeper, outlook_gatekeeper, outlook_imap, …)
 
 ## Fichiers & Inbox
 

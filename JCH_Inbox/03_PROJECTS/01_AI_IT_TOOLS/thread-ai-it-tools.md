@@ -1,7 +1,7 @@
 # Thread — AI_IT_TOOLS
 
 > Living document — maintenu par Dobby 🦉 en fin de session sur `/save`.
-> **Dernière mise à jour** : 2026-11-23 — Hammerspoon installé (bascule curseur entre écrans M5) ; file CUPS EPSON corrigée (.75) + `pka-print` outputorder=normal
+> **Dernière mise à jour** : 2026-11-23 — Hammerspoon installé (bascule curseur entre écrans M5) ; file CUPS EPSON corrigée (.75) + `pka-print` outputorder=normal ; flux mail OAuth nettoyés (socle IMAP) + consentement Graph arteon.be préparé (lecture seule) ; 3 modèles Ollama cœur restaurés sur M1 (10 modèles / 85 Go)
 > **Statut** : 🟢 actif
 
 ---
@@ -38,6 +38,8 @@ Infrastructure IA et outils PKA — maintenance du système Dobby, skills, mémo
 
 | Date | Décision | Contexte |
 |------|----------|----------|
+| 2026-11-23 | Périmètre Graph arteon.be réduit en lecture seule | App 31f92869 : Mail.Read, Calendars.Read, Contacts.Read, User.Read (déléguées). Mail.Send + écritures retirés pour faciliter le consentement Orban45 |
+| 2026-11-23 | Roster Ollama M1 maintenu à 10 modèles | qwen2.5-coder 14b/32b et gemma3:27b jugés redondants ; re-téléchargés seulement à l'usage (gemma3:27b si Cozmo démarre) |
 | 2026-11-11 | Pont noVNC pour le miroir iMac↔M5 | iMac 2017 non éligible AirPlay + partage d'écran Apple Ventura↔macOS 26 incompatible → noVNC navigateur (zéro install iMac, auto-start launchd) |
 | 2026-11-07 | Recherche scriptée basculée sur DeepSeek natif | `bin/pka-search` (Search/Fetch, $0.75/1k) ; Tavily conservé pour l'interactif TUI et le MCP Lightroom |
 | 2026-11-07 | Sous-agents ouverts en `deepseek-v4-flash` | Règle AGENTS.md (RÈGLE DÉLÉGATION) ; orchestrateur reste en `deepseek-v4-pro`. Le TUI 0.8.39 n'a pas de clé `[subagents]` — pilotage au niveau du `model` d'`agent_open` |
@@ -64,6 +66,7 @@ Infrastructure IA et outils PKA — maintenance du système Dobby, skills, mémo
 - [x] **P2 · — · (Dobby)** Mot de passe VNC dédié appliqué sur M5 + M1 (13/11) — plus l'admin ; raccourcis + onglets à jour
 - [x] **P1 · — · (JC)** FDA accordée à `sshd-keygen-wrapper` (13/11) → raccourcis Bureau `M5-ecran-novnc.webloc` + `M1-ecran-novnc.webloc` créés. **Reste** : Accessibilité (épinglage UI encore bloqué — System Events pend en SSH).
 - [ ] **P1 · — · (JC)** Réserver l'IP de l'EPSON ET-8550 en DHCP (actuellement .75, instable .65→.71→.75) pour stabiliser la file d'impression réseau
+- [ ] **P1 · attente Orban · (JC + Dobby)** Consentement Graph arteon.be (app 31f92869) + autorisation forward Gmail → re-cocher la règle forward Outlook + tester ; forwarder Yahoo vers Gmail
 
 ## TTD — Done (session 2026-11-06)
 
@@ -78,6 +81,7 @@ Infrastructure IA et outils PKA — maintenance du système Dobby, skills, mémo
 
 | Date | Résumé session | Livrable |
 |------|---------------|----------|
+| 2026-11-23 | Flux mail OAuth nettoyés (archivés) + consentement Graph arteon.be préparé (lecture seule, app 31f92869) ; 3 modèles Ollama cœur restaurés sur M1 | `_local/archives/mail-oauth-dead-2026-11-23/`, `JCH_Inbox/06_ADMIN/reponse-orban45-2026-11-23.md` |
 | 2026-11-23 | Hammerspoon installé (bascule curseur entre 3 écrans M5, ⌃⌥⌘←/→) ; file CUPS EPSON corrigée (.75) ; `bin/pka-print` fixé (IP + outputorder=normal) | `~/.hammerspoon/init.lua`, `bin/pka-print` |
 | 2026-11-20 | Clipper iPad → inbox : vault iCloud « PKA Capture » + pull one-way (bin/pka-clip-pull, launchd 15 min) ; miroir lecture seule iPad→M5 | `bin/pka-clip-pull`, `bin/install-clip-pull-launchd.sh`, `_local/launchd-plists/com.dobby.pka-clip-pull.plist` |
 | 2026-11-17 | TeamViewer M5 réparé : 4 LaunchDaemons désactivés (`.plist.disabled`) → renommage manuel + `launchctl bootstrap` Helper/service ; app stable, plus de crash | — |

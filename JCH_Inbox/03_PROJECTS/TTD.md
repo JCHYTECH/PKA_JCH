@@ -1,7 +1,7 @@
 # TTD — Vue consolidée (tous projets)
 
 > **Fichier dérivé** — généré à chaque `/save` depuis les seuls blocs `TTD — Pending` des thread files. Ne pas éditer à la main hors `/save` : la source de vérité reste les thread files + `etat-projets.md`.
-> `last_updated: 2026-11-23 · by: deepseek-v4-pro` — voix-jc finalisée (ARTEON) + Hammerspoon/EPSON (AI_IT_TOOLS)
+> `last_updated: 2026-11-23 · by: deepseek-v4-pro` — voix-jc finalisée (ARTEON) + Hammerspoon/EPSON (AI_IT_TOOLS) + mail OAuth nettoyé + Graph arteon.be préparé + M1 3 modèles restaurés
 
 ## 01_AI_IT_TOOLS
 
@@ -13,6 +13,7 @@ Source : `01_AI_IT_TOOLS/thread-ai-it-tools.md`
 - [ ] **P2 · — · (JC + Dobby)** ACL Tailscale — durcir l'accès réseau (reporté 13/11) : poser la politique ACL puis taguer `lupo` en `tag:van` (ports 8123/1883/22222).
 - [x] **P2 · — · (Dobby)** Mot de passe VNC dédié appliqué (M5 + M1, 13/11) — plus l'admin
 - [ ] **P1 · — · (JC)** Réserver l'IP de l'EPSON ET-8550 en DHCP (actuellement .75, instable .65→.71→.75) pour stabiliser la file d'impression réseau
+- [ ] **P1 · attente Orban · (JC + Dobby)** Consentement Graph arteon.be (app 31f92869) + autorisation forward Gmail → re-cocher la règle forward Outlook + tester ; forwarder Yahoo vers Gmail
 
 ## 02_ARTEON
 
