@@ -37,6 +37,7 @@ Photographie naturaliste éditoriale — marque ARTEON + service WildLens + futu
 
 | Date | Décision | Contexte |
 |------|----------|----------|
+| 2026-11-24 | **WildLens 3 sections par numéro** (décision panel lecteurs) — ① Le Cadre ② Le Constat ③ L'actualité technique ; mots-clés en fin ; Le Constat remonte en position ② | Restructuration éditions 1-4 ; anciennes versions (EN final, FR 4 sections, voix-jc) archivées |
 | 2026-11-22 | **Le Constat (④) devient systématique** — angle pro-nature / anti-spécisme (plus optionnel). #4 : chasse de la tourterelle des bois, « autorités françaises laxistes », sources non-NGO (Conseil d'État / Légifrance / FACE) | Décision JC en rédaction #4 |
 | 2026-11-22 | **Template WildLens réconcilié** — photo en tête = feature image Ghost, sommaire cliquable = TOC thème (hors Markdown). Double-check Ghost/Markdown obligatoire. Rôles : Virage = innovation techno, Objectif = sujet technique | Comparaison rendu Ghost #1 vs source Markdown |
 | 2026-11-22 | **Édition #3 assumée telle quelle** — reste sur l'ancienne structure 5 sections (pas de repassage au format v2 4 sections). Le format v2 (Cadre/Virage/Objectif/Constat) s'applique aux éditions suivantes. | Décision JC après réconciliation du nommage des sections |
@@ -62,6 +63,7 @@ Photographie naturaliste éditoriale — marque ARTEON + service WildLens + futu
 
 ## TTD — Pending
 
+- [ ] **P1 · — · (JC + Dobby)** Édition #3 : combler la photo Cadre + le Constat (trous signalés) ; vérifier les URLs FAO/UNEP du Constat #2 (fou de Bassan)
 - [ ] **P1 · 2026-12-12 · (JC)** Valider l'édition #4 (pigeon ramier) → `draft → scheduled` + poser la photo en feature image Ghost
 - [x] **P1 · — · (JC + Miel)** Valider le test voix JC #4 — ✅ validé par JC 23/11 (marqueur comblé + règle de modestie)
 - [ ] **P1 · — · (JC)** Valider les réécritures voix-jc #1/#2/#3 (marqueur #1 graines + registre #3 tutoriel) puis basculer statut → published/scheduled et réimporter dans Ghost
@@ -86,6 +88,7 @@ Photographie naturaliste éditoriale — marque ARTEON + service WildLens + futu
 
 | Date | Résumé session | Livrable |
 |------|---------------|----------|
+| 2026-11-24 | Restructuration WildLens 4→3 sections (panel lecteurs) : éditions 1-4 adaptées, mots-clés en fin, anciennes versions archivées ; architecture v3 + procédure + script weekly mis à jour | wildlens/editions/fr/, wildlens/ref/architecture-editoriale-v2.md, scripts/wildlens_weekly.py |
 | 2026-11-23 | Skill `voix-jc` créé + validé sur #4 ; réécriture voix JC de #1/#2/#3 (fichiers `-voix-jc.md`) ; 4 PDF générés + imprimés EPSON (recto) | `skills/voix-jc/`, `wildlens/editions/fr/*-voix-jc.md`, `TEAM_Inbox/2026-11-23_dobby_finalisation-voix-jc-editions-123.md` |
 | 2026-11-22 | Template v2 réconcilié (4 sections), procédure de rédaction + double-check Ghost/Markdown, #4 rédigée (pigeon ramier + Constat tourterelle), #2 corrigée, #3 assumée, outil `bin/wildlens-ghost-pdf` + 4 PDF + impression | `wildlens/ref/procedure-redaction-edition.md`, `wildlens/editions/fr/wildlens-edition-4-pigeon-ramier.md`, `bin/wildlens-ghost-pdf`, `scripts/wildlens_weekly.py`, `strategy/plan-action-wildlens.md` |
 | 2026-11-20 | Renumérotation Ghost résolue (#4→#1) + nettoyage structure 02_ARTEON + **pivot FR** (3 éditions traduites, thème FR, locale fr) + clipper iPad→inbox | `wildlens/editions/final/`, `wildlens/editions/fr/`, `bin/pka-clip-pull`, `_local/launchd-plists/com.dobby.pka-clip-pull.plist` |

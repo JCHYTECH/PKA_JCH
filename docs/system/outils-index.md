@@ -1,6 +1,6 @@
 # Index central des outils PKA_JCH
 
-> Dernière mise à jour : 2026-11-19 — Ajout de `bin/pka-clip-pull` (pull auto des clips iPad → inbox, launchd 15 min)
+> Dernière mise à jour : 2026-11-24 — Ajout de `bin/pka-vision` (analyse d'image locale M1 → OCR)
 > Source : `docs/system/outils-index.md`
 > Charger ce fichier au début de chaque session pour connaître tous les outils disponibles.
 
@@ -172,14 +172,18 @@
 - scripts/or_route.py — Routeur auto de modèles OpenRouter (type de tâche → modèle)
 - scripts/or_image.py — Génération d'image via OpenRouter (Gemini nano-banana, sauvegarde fichier)
 - scripts/ollama_chat.py — Client Ollama local (M1)
+- bin/pka-vision — Analyse d'image locale (vision Ollama M1 `qwen2.5vl:7b`, fallback OCR tesseract)
 - scripts/qwen.py — Client Qwen
 - scripts/nvidia_chat.py — Client Nvidia API
 - scripts/model_client.py — Client modèle unifié
 - scripts/provider_balance.py — Équilibrage et monitoring des coûts API
-- scripts/model_config.json — Configuration des modèles
+- scripts/model_config.json — ~~Configuration des modèles~~ **consolidé 2026-11-24** → `docs/system/models-routing.json` (archivé `_local/archives/`)
 - scripts/setup_ollama_m1.sh — Setup et config Ollama sur M1
 - scripts/m1_cleanup.sh — Nettoyage modèles Ollama (swap, espace)
-- docs/system/[[models-reference]].md — Référence complète des modèles
+- docs/system/models-reference.md — Référence complète des modèles (lisible)
+- docs/system/models-routing.json — **Routage modèles machine-readable** (18 modèles, 15 règles, multi-provider)
+- scripts/pka_model_router.py — **Routeur de modèles PKA interrogeable** (`python3 scripts/pka_model_router.py "<tâche>"` → modèle + fallback)
+- docs/system/harnais-pka.md — **Carte du harnais PKA** (4 natures → composants, carte de possession à-nous/emprunté)
 
 ## [[Dobby]]
 

@@ -1,6 +1,6 @@
 # USER — Jean-Claude Havaux (JC)
 > Profil utilisateur, setup technique, projets actifs et préférences.
-> Dernière mise à jour : 2026-11-22 — préférence outillage CLI + partage physique/logique (session WildNexus)
+> Dernière mise à jour : 2026-11-24 — concept « harnais » (LLM vs harnais + 4 natures) ajouté au setup technique
 > Inspiré du pattern Hermes (user.md) — séparation Personnalité / Utilisateur / Mémoire.
 
 ---
@@ -50,6 +50,12 @@
 | **OpenRouter key** | `~/.config/pka-jch/openrouter_key.txt` |
 
 **Vigilance M1 :** surveiller les nouveaux modèles quantifiés compatibles M1 (GGUF/Ollama, 14B–32B) — reasoning, code, multimodal, embedding.
+
+### Compréhension de l'outillage — le « harnais »
+
+- **LLM vs harnais** : le LLM ne fait *que* l'inférence (tokens → tokens). L'interface, l'historique, les rôles, les outils, la mémoire et l'orchestration d'agents sont portés par le **harnais**. DeepSeek TUI (dans lequel tourne Dobby) est un harnais. Le verrouillage/coût de changement est dans le harnais, pas dans le modèle.
+- **4 natures de harnais** : **ergonomique** (UI, mise en forme — rend utilisable), **fonctionnel** (rôles, system prompt, outils — change comment le modèle répond), **organisationnel** (mémoire, sous-agents, routage multi-modèles), **structurel** (structure imposée avant d'interroger le LLM).
+- *Source : Renaud Varoqueaux — « IA : Comprendre la puissance du Harnais » (2026-11-24).*
 
 ---
 

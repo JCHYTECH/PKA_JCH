@@ -9,7 +9,7 @@ import json
 import os
 from pathlib import Path
 
-CONFIG_PATH = Path(__file__).resolve().parent / "model_config.json"
+CONFIG_PATH = Path(__file__).resolve().parent.parent / "docs" / "system" / "models-routing.json"
 
 
 def _load_config() -> dict:
@@ -19,7 +19,7 @@ def _load_config() -> dict:
 def get_task_config(task: str) -> dict:
     """Retourne {provider, model} pour une tâche donnée."""
     cfg = _load_config()
-    return cfg["tasks"].get(task, cfg["default"])
+    return cfg["automations"].get(task, cfg["automation_default"])
 
 
 def get_model(task: str) -> str:
@@ -57,7 +57,7 @@ def get_client(task: str):
     - ollama     → openai.OpenAI(base_url=..., api_key="ollama")
     """
     cfg = _load_config()
-    task_cfg = cfg["tasks"].get(task, cfg["default"])
+    task_cfg = cfg["automations"].get(task, cfg["automation_default"])
     provider = task_cfg["provider"]
     provider_cfg = cfg["providers"][provider]
 

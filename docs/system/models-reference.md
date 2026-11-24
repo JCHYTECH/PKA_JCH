@@ -1,7 +1,11 @@
 # Models Reference — PKA_JCH
 
-> Derniere mise a jour : 2026-06-06
+> Derniere mise a jour : 2026-11-24 (pointer vers le routage machine-readable)
 > Reference complete des modeles LLM disponibles, classes par type, avec forces et cas d'usage.
+>
+> ⚠️ **Source machine-readable** : `docs/system/models-routing.json` (routage actif,
+> versionné). Ce doc reste la référence *lisible* ; le JSON est la référence *exécutable*.
+> Interroger le routage : `python3 scripts/pka_model_router.py "<tâche>"`.
 
 ---
 

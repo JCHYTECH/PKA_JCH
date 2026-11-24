@@ -2,6 +2,12 @@
 """
 or_route.py — Routeur de modèles OpenRouter (choix auto selon la tâche).
 
+NOTE (2026-11-24) : la source canonique du routage PKA est
+`docs/system/models-routing.json` (voir `scripts/pka_model_router.py`).
+Ce script reste un exécuteur interactif OpenRouter (il produit une réponse via
+OpenRouter, slugs spécifiques) — il ne fait pas double emploi avec le routeur de
+référence, qui est cross-provider et sans appel API.
+
 Usage :
   python3 scripts/or_route.py "ta question"          # route auto
   python3 scripts/or_route.py -m <model> "…"          # forcer un modèle

@@ -11,12 +11,10 @@ tags:
   - wildlife-photography
   - editorial
   - type/project
-  - status/published
-status: published
+  - status/scheduled
+status: scheduled
 ---
 # WildLens — Edition #3
-**Publication :** 2026-03-28
-**Status :** Published
 
 > **Theme: "Sharpness is not significance."** — AI finds the eye; the photograph still needs a why.
 

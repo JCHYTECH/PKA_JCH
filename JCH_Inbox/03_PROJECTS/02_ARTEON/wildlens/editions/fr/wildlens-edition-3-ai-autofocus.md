@@ -10,19 +10,21 @@ tags:
   - newsletter
   - wildlife-photography
   - editorial
+  - ai-autofocus
+  - newtcam
   - type/project
-  - status/published
-status: published
+  - status/scheduled
+status: scheduled
 ---
 # WildLens — Édition #3
-**Publication :** 2026-03-28
-**Statut :** Publié
 
 > **Thème : « La netteté n'est pas le sens. »** — l'IA trouve l'œil ; la photographie a encore besoin d'un pourquoi.
 
 ---
 
-## ① L'Édito — La révolution de l'autofocus IA et son paradoxe
+## ① Le Cadre — La révolution de l'autofocus IA et son paradoxe
+
+> ⚠️ **[Photo JC à insérer — à choisir]** : un portrait animal où la netteté technique est parfaite mais où le propos reste à construire. *Espèce (nom latin) · boîtier · objectif · © JC Havaux / ARTEON*
 
 L'autofocus IA a franchi un seuil. Les hybrides de milieu de gamme — le Canon EOS R50, par exemple — embarquent désormais un suivi de sujet par apprentissage profond qui identifie les yeux des animaux, s'y verrouille et les suit à travers le cadre. Cette capacité était réservée aux boîtiers haut de gamme il y a deux ans. Elle est aujourd'hui accessible à un prix d'entrée de gamme.
 
@@ -36,54 +38,21 @@ La discipline à tenir : l'autofocus IA est un outil qui t'achète du temps et r
 
 ---
 
-## ② Comportement & L'Objectif — NewtCam : quand la science fait l'image
+## ② Le Constat
 
-<figure class="kg-card kg-image-card">
-<img src="https://wildlens.arteon.be/content/images/2026/11/newtcam-operating-principle-sm.png" alt="Principe de fonctionnement de la NewtCam" />
-<figcaption>Figure 1 — Le principe de la NewtCam : un tunnel immergé avec caméra et éclairage intégrés photographie le ventre de chaque triton au passage.</figcaption>
-</figure>
-
-La [NewtCam](https://www.nhbs.com/blog/newtcam-update-november-2024) est un nouvel outil développé pour la recherche sur les amphibiens : un système de caméra-tunnel immergée qui photographie automatiquement les amphibiens pendant qu'ils nagent à travers. Pour les scientifiques, elle automatise la détection des espèces. Pour les photographes, elle fait tout autre chose.
-
-Elle produit des images d'animaux dans des postures et sous des angles quasi impossibles à saisir sur le terrain — un triton glissant dans une eau claire à hauteur de corps, éclairé par-dessus, le mouvement figé à un instant qui révèle un détail morphologique invisible depuis la rive.
-
-La leçon ici n'est pas « achète une NewtCam ». C'est que **l'instrumentation scientifique produit parfois l'art comme sous-produit**, et que les photographes devraient prêter attention à ce que construisent les chercheurs — non pour copier leurs outils, mais pour emprunter leurs points de vue. Les questions que posent les scientifiques façonnent les images qu'ils créent. Ces images peuvent nous apprendre à voir autrement.
-
-**Source :** [NHBS — NEWTCAM update (projet LIST / CAMPHIBIAN)](https://www.nhbs.com/blog/newtcam-update-november-2024)
+> ⚠️ **[À compléter]** — cette édition technique ne comporte pas encore de constat. Dérive de destruction du vivant à identifier : fait vérifié, sourcé, ton sobre, sans polémique.
 
 ---
 
-## ③ Pleins feux sur la technique — Trois méthodes à explorer
+## ③ L'actualité technique — NewtCam, le flou volontaire et la leçon des concours
 
-### L'ICM (flou volontaire) appliqué au sauvage
+**NewtCam : quand la science fait l'image.** La [NewtCam](https://www.nhbs.com/blog/newtcam-update-november-2024) est un système de caméra-tunnel immergée qui photographie automatiquement les amphibiens pendant qu'ils nagent à travers. Pour les scientifiques, elle automatise la détection des espèces. Pour les photographes, elle fait tout autre chose : elle produit des images d'animaux dans des postures quasi impossibles à saisir sur le terrain — un triton glissant dans une eau claire à hauteur de corps, éclairé par-dessus. La leçon n'est pas « achète une NewtCam », mais que **l'instrumentation scientifique produit parfois l'art comme sous-produit**, et que les photographes devraient prêter attention à ce que construisent les chercheurs — non pour copier leurs outils, mais pour emprunter leurs points de vue.
 
-L'ICM en photographie naturaliste est une acceptation délibérée du flou — un panoramique à une vitesse assez lente pour rendre le sujet comme une traînée de mouvement plutôt qu'un instant figé. Le risque est évident : la plupart des essais échouent. La récompense, quand ça marche, est une image qui transmet *le mouvement lui-même* comme sujet, et non l'identité de l'animal.
+**Trois méthodes à explorer.** L'**ICM** (flou volontaire) appliqué au sauvage : un panoramique assez lent pour rendre le sujet comme une traînée de mouvement — Roxanne Bouché Overton en a fait toute sa pratique, transformant la photographie naturaliste en tableaux impressionnistes. **Les oiseaux en pose lente** : au lieu de figer le vol au 1/4000 s, photographier entre 1/30 s et 1/60 s — le corps devient une traînée de mouvement, l'œil reste net, le résultat évoque la mémoire plutôt que la documentation. **Le portrait environnemental** : au lieu d'isoler le sujet au téléobjectif, photographier large et placer l'animal *dans son habitat* — l'image dit où vit l'animal, pas seulement à quoi il ressemble.
 
-Une photographe a fait de ce langage toute sa pratique. [Roxanne Bouché Overton](https://roxanneoverton.com) travaille le flou volontaire et l'exposition multiple — étirant la lumière sur de longues poses, superposant les plans jusqu'à ce que l'animal se dissolve dans son paysage, transformant la photographie naturaliste en tableaux impressionnistes (ses séries *Wild*, *Assembled* et *The Land Lives Inside Him*). Si l'ICM a une référence, c'est son travail.
+**La leçon des concours.** Les Sony World Photography Awards 2026 ont reçu plus de 430 000 candidatures. Parmi les finalistes « faune sauvage », les images les plus fortes n'ont pas été prises au moment de l'action maximale, mais à l'instant *juste avant ou juste après* — la tension d'avant, l'immobilité d'après. Les concours récompensent les images qui font *ressentir le temps* : le moment de pic est universel, les moments qui l'entourent sont là où vit l'auteur.
 
-**Pour commencer :** 1/15 s, AF continu, panoramique fluide dans le sens du déplacement de l'animal.
-
-### Les oiseaux en pose lente
-
-L'approche contre-intuitive : au lieu de figer le vol au 1/4000 s, photographier les oiseaux entre 1/30 s et 1/60 s. Le corps devient une traînée de mouvement, mais si tu suis parfaitement, l'œil peut rester net. Le résultat évoque la mémoire plutôt que la documentation.
-
-**Pour commencer :** 1/60 s, f/8, ISO auto, suivi continu.
-
-### Le portrait environnemental
-
-Un contre-mouvement à la compression du téléobjectif : au lieu d'isoler le sujet avec un long objectif à f/2,8, photographier large ou en focale moyenne et placer l'animal *dans son habitat*. L'image te dit où vit l'animal, pas seulement à quoi il ressemble. C'est plus exigeant — il faut de la proximité, de la patience, et une composition qui équilibre sujet et contexte sans que l'un n'écrase l'autre.
-
-**Pour commencer :** 24-70 mm ou 70-200 mm, f/5,6–f/8, centré sur la narration de l'habitat.
-
----
-
-## ④ Dissection d'un concours — Sony World Photography Awards 2026
-
-Les Sony World Photography Awards 2026 ont reçu plus de 430 000 candidatures venues de 200 pays. Parmi les finalistes « faune sauvage », les images les plus fortes partagent une qualité qui mérite d'être nommée : elles n'ont pas été prises au moment de l'action maximale, mais à l'instant *juste avant ou juste après*.
-
-L'image qui reste est rarement celle qui montre le pic de la chasse, la frappe, la mise à mort. C'est celle qui montre la tension d'avant — la posture ramassée, le regard verrouillé — ou l'immobilité d'après — le prédateur dont on voit le souffle, la proie déjà partie.
-
-**Ce que les photographes ont compris :** les concours de photographie naturaliste récompensent les images qui font *ressentir le temps* aux spectateurs. Le moment de pic est universel. Les moments qui l'entourent sont là où vit l'auteur.
+**Sources :** [NHBS — NEWTCAM update (projet LIST / CAMPHIBIAN)](https://www.nhbs.com/blog/newtcam-update-november-2024) · [Roxanne Bouché Overton](https://roxanneoverton.com)
 
 ---
 
@@ -91,16 +60,14 @@ L'image qui reste est rarement celle qui montre le pic de la chasse, la frappe, 
 
 ---
 
-## Format Architecture — Verrouillé
+## Notes de publication
 
-Cette édition verrouille la **structure en 5 sections** pour toutes les éditions à venir :
-
-1. **Édito** — opinion, thèse forte, ton rotatif
-2. **Comportement & L'Objectif** — la science qui change le sens du terrain
-3. **Pleins feux sur la technique** — des méthodes avec une intention artistique
-4. **Dissection d'un concours** — pourquoi les images fonctionnent
-5. **Défi de terrain** — exercice pratique dérivé du contenu de la semaine
+- [ ] JC relire et valider
+- [ ] **Photo ① Le Cadre à choisir** (absente de cette édition technique d'origine)
+- [ ] **② Le Constat à compléter** (dérive du vivant, factuelle et sourcée)
+- [ ] Vérifier les liens sources avant distribution
+- [ ] URL canonique : wildlens.arteon.be/wildlens-edition-3
 
 ---
-
-*WildLens · arteon.be/wildlens · « L'instant figé, la pensée en mouvement. »*
+*WildLens · Édition #3 · Restructurée 2026-11-24 par Dobby 🦉 — 3 sections (Cadre / Constat / Actualité technique), mots-clés en fin (décision panel lecteurs).*
+*Note : édition d'origine en 5 sections (structure v1) — Cadre et Constat à compléter par JC.*

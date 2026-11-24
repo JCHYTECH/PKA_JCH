@@ -192,7 +192,7 @@ def cmd_report(args):
 ## Prochaine édition
 
 - **Date cible :** {nxt.isoformat()}
-- **Structure v2 :** ① Le Cadre · ② Le Virage · ③ L'Objectif · ④ Le Constat (voir `ref/architecture-editoriale-v2.md`)
+- **Structure v3 :** ① Le Cadre · ② Le Constat · ③ L'actualité technique (voir `ref/architecture-editoriale-v2.md`)
 
 ## Ghost Stats
 
@@ -234,7 +234,7 @@ def cmd_report(args):
 
 
 def cmd_edition(args):
-    """Génère le template de la prochaine édition (architecture v2 — 4 sections)."""
+    """Génère le template de la prochaine édition (architecture v3 — 3 sections)."""
     edition_num = max([_edition_number(e) for e in list_editions()] or [0]) + 1
     pub_date = next_edition_date()
 
@@ -251,31 +251,29 @@ status: draft
 
 > **Thème : « … »** — une phrase qui porte le propos.
 
-**Mots-clés :** …
-
 ## ① Le Cadre — (400-600 mots)
 
 *Photo de JC · matériel · © JC Havaux / ARTEON*
 
 …
 
-## ② Le Virage — (200-300 mots)
+## ② Le Constat — (100-200 mots)
 
 …
 
-## ③ L'Objectif — (300-400 mots)
+## ③ L'actualité technique — (300-500 mots)
 
 …
 
-## ④ Le Constat — (100-150 mots)
+---
 
-…
+**Mots-clés :** …
 
 ---
 *À publier le {pub_date.isoformat()} (samedi).*
 """
 
-    out_dir = EDITIONS_DIR / "final"
+    out_dir = EDITIONS_DIR / "fr"
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / f"wildlens-edition-{edition_num}-template.md"
     if out_path.exists():
@@ -285,7 +283,7 @@ status: draft
     out_path.write_text(template, encoding="utf-8")
     print(f"📝 Template → {out_path}")
     print(f"   Edition #{edition_num} — publication prévue le {pub_date.isoformat()}")
-    print(f"   4 sections (Cadre · Virage · Objectif · Constat) à remplir avant samedi")
+    print(f"   3 sections (Cadre · Constat · Actualité technique) à remplir avant samedi")
 
 
 def cmd_stats(args):

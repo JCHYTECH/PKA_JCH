@@ -14,19 +14,12 @@ tags:
   - ethics
   - derrives
   - type/project
-  - status/draft
-status: draft
+  - status/published
+status: published
 ---
 # WildLens — Édition #1
-**Date :** 2026-10-31
-**Statut :** Brouillon — à distribuer
-**Ton :** Militant
 
 > **Thème : « Regarde-le en face »** — voir le réel quand le faux submerge l'image, et refuser de détourner les yeux.
-
----
-
-**Mots-clés :** photographie naturaliste · images générées par IA · disqualification en concours photo · provenance du fichier RAW · Content Credentials C2PA · Google SynthID · éthique de l'appâtage · incendie de Fontainebleau · chasse après incendie · éthique de la photographie de nature
 
 ---
 
@@ -48,39 +41,7 @@ Le rouge-gorge dans la neige n'a pas l'air honnête. Il *est* honnête. La dista
 
 ---
 
-## ② Le Virage — 2026 : l'année où les concours ont commencé à vérifier le fichier RAW
-
-Quelque chose a changé en silence en 2026, et cela comptera plus que n'importe quel nouveau boîtier.
-
-Entre fin avril et mi-mai, trois concours photo distincts — dans des pays différents, des genres différents, jugés par des personnes différentes — ont chacun retiré une image gagnante ou présélectionnée parce qu'elle était générée par IA ou manipulée. Hasselblad Masters a retiré un finaliste « street » généré par IA le 18 mai. Le concours *Garden for Wildlife* de la National Wildlife Federation a disqualifié son grand prix — un grand-duc d'Amérique sous une aurore boréale — comme image composite, remettant le prix au deuxième, Nicole Land. Tokina a retiré son gagnant mensuel après la découverte d'un filigrane invisible **Google SynthID**.
-
-Puis vint la sphère scientifique : le concours **Nikon Small World In Motion** a disqualifié sa vidéo gagnante comme générée par IA, après que d'autres scientifiques eurent soulevé des doutes.
-
-Le motif sous-jacent à tout cela est la chose à remarquer. Dans chaque cas, le public a repéré le problème *après* la publication des résultats. Et dans chaque cas, le concours n'avait jamais examiné la seule chose qui aurait tranché la question dès l'inscription : **le fichier que l'appareil a réellement écrit** — le RAW.
-
-Le fichier RAW devient la vérité de référence de la photographie, comme la signature l'était autrefois. Ce n'est pas une garantie d'honnêteté, mais c'est une *trace* — une affirmation dotée d'une histoire. Et dans un domaine où la confiance est désormais la ressource rare, les photographes capables de montrer leur histoire seront ceux que le public croira.
-
-**Sources :** [Lumethic — AI Photo Contest Disqualifications 2026](https://www.lumethic.com/en/articles/ai-photo-contest-disqualifications-2026) · [BBC — Nikon Small World AI ruling](https://www.bbc.com/news/articles/cr86z33pdy9vo)
-
----
-
-## ③ L'Objectif — Signe ton travail avec son histoire, pas avec un filigrane
-
-Si le fichier RAW est la preuve, la question suivante est : comment cette preuve voyage-t-elle ?
-
-Un filigrane est une revendication d'auteur. Il dit *qui*. Mais il ne dit rien du *si*. L'infrastructure de provenance dit les deux — et c'est le développement technique le plus lourd de conséquences de la photographie, dont presque personne ne parle.
-
-Le standard **Content Credentials** de la C2PA (version 2.3, avec un programme de conformité lancé début 2026) permet à une image de porter un enregistrement signé cryptographiquement de son historique de création et d'édition — modèle de l'appareil, objectif, horodatage, retouches appliquées — qui voyage avec le fichier, intégré au DNG, HEIC, JPEG, PNG, TIFF, AVIF et WebP. Indépendamment, **Google SynthID** filigrane désormais les médias générés par IA de façon invisible — c'est ainsi que le faux gagnant de Tokina a été pris.
-
-Pour un photographe naturaliste, ce n'est pas une corvée de conformité. C'est une position concurrentielle. Quand le déluge d'images de nature générées par IA fera de la provenance le seul différenciateur, le photographe dont l'image porte sa propre histoire — *voici le capteur, voici l'heure, voici ce que j'ai changé* — sera celui qui pourra encore dire « ça s'est produit » et être cru.
-
-La technologie existe. Le goulot d'étranglement, c'est l'adoption. Signe ton travail avec son histoire — avant que le public ne commence à l'exiger.
-
-**Source :** [C2PA — Content Credentials 2.3](https://c2pa.org/the-c2pa-launches-content-credentials-2-3-and-celebrates-5-years-of-impact-across-the-digital-ecosystem/)
-
----
-
-## ④ Le Constat — Chasser après l'incendie
+## ② Le Constat — Chasser après l'incendie
 
 Le 12 juillet 2026, la forêt de Fontainebleau a brûlé : près de 2 000 hectares balayés par les flammes, plus de 1 000 secours mobilisés — l'un des incendies les plus importants de l'histoire récente du massif. Les animaux qui survivent sont déplacés, leurs abris détruits, la nourriture devenue rare.
 
@@ -94,6 +55,26 @@ Nous ne commentons pas. Nous regardons, et nous notons. Parce qu'une dérive qui
 
 ---
 
+## ③ L'actualité technique — La photo apprend à prouver qu'elle est vraie
+
+Quelque chose a changé en silence en 2026, et cela comptera plus que n'importe quel nouveau boîtier.
+
+Entre fin avril et mi-mai, trois concours photo distincts — dans des pays différents, des genres différents — ont chacun retiré une image gagnante ou présélectionnée parce qu'elle était générée par IA ou manipulée. Hasselblad Masters a retiré un finaliste « street » généré par IA le 18 mai. Le concours *Garden for Wildlife* de la National Wildlife Federation a disqualifié son grand prix — un grand-duc d'Amérique sous une aurore boréale — comme image composite, remettant le prix à Nicole Land. Tokina a retiré son gagnant mensuel après la découverte d'un filigrane invisible **Google SynthID**. Puis vint la sphère scientifique : **Nikon Small World In Motion** a disqualifié sa vidéo gagnante, générée par IA, après que des scientifiques eurent soulevé des doutes.
+
+Le motif sous-jacent est la chose à remarquer. Dans chaque cas, le public a repéré le problème *après* la publication des résultats. Et dans chaque cas, le concours n'avait jamais examiné la seule chose qui aurait tranché la question dès l'inscription : **le fichier que l'appareil a réellement écrit** — le RAW.
+
+Le RAW devient la vérité de référence de la photographie, comme la signature l'était autrefois. Et l'infrastructure qui fait voyager cette preuve existe déjà : le standard **Content Credentials** de la C2PA (version 2.3, programme de conformité lancé début 2026) permet à une image de porter un enregistrement signé cryptographiquement de son historique de création et d'édition — modèle de l'appareil, objectif, horodatage, retouches appliquées — intégré au DNG, HEIC, JPEG, PNG, TIFF, AVIF et WebP. Indépendamment, **Google SynthID** filigrane les médias générés par IA de façon invisible — c'est ainsi que le faux gagnant de Tokina a été pris.
+
+Pour un photographe naturaliste, ce n'est pas une corvée de conformité. C'est une position concurrentielle. Quand le déluge d'images de nature générées par IA fera de la provenance le seul différenciateur, le photographe dont l'image porte sa propre histoire — *voici le capteur, voici l'heure, voici ce que j'ai changé* — sera celui qui pourra encore dire « ça s'est produit » et être cru. La technologie existe. Le goulot d'étranglement, c'est l'adoption. Signe ton travail avec son histoire — avant que le public ne commence à l'exiger.
+
+**Sources :** [Lumethic — AI Photo Contest Disqualifications 2026](https://www.lumethic.com/en/articles/ai-photo-contest-disqualifications-2026) · [BBC — Nikon Small World AI ruling](https://www.bbc.com/news/articles/cr86z33pdy9vo) · [C2PA — Content Credentials 2.3](https://c2pa.org/the-c2pa-launches-content-credentials-2-3-and-celebrates-5-years-of-impact-across-the-digital-ecosystem/)
+
+---
+
+**Mots-clés :** photographie naturaliste · images générées par IA · disqualification en concours photo · provenance du fichier RAW · Content Credentials C2PA · Google SynthID · éthique de l'appâtage · incendie de Fontainebleau · chasse après incendie · éthique de la photographie de nature
+
+---
+
 ## Notes de publication
 
 - [ ] JC relire et valider
@@ -104,5 +85,5 @@ Nous ne commentons pas. Nous regardons, et nous notons. Parce qu'une dérive qui
 - [ ] URL canonique : wildlens.arteon.be/wildlens-edition-1
 
 ---
-*WildLens · Édition #1 · Brouillon généré par Dobby 🦉 (Miel 🐝) le 2026-10-24 — révisé 2026-11-14 (section ④ traduite EN, section Mots-clés ajoutée) — à distribuer*
+*WildLens · Édition #1 · Restructurée 2026-11-24 par Dobby 🦉 — 3 sections (Cadre / Constat / Actualité technique), mots-clés en fin (décision panel lecteurs).*
 *Positionnement : l'info, les questions, les solutions — et le constat des dérives, nommé sans polémique.*

@@ -38,7 +38,9 @@ Infrastructure IA et outils PKA — maintenance du système Dobby, skills, mémo
 
 | Date | Décision | Contexte |
 |------|----------|----------|
-| 2026-11-23 | Périmètre Graph arteon.be réduit en lecture seule | App 31f92869 : Mail.Read, Calendars.Read, Contacts.Read, User.Read (déléguées). Mail.Send + écritures retirés pour faciliter le consentement Orban45 |
+| 2026-11-25 | **Harnais PKA cartographié + routage modèles consolidé** — PKA est un harnais (seul maillon non possédé = runtime DeepSeek TUI) ; source unique `docs/system/models-routing.json` (absorbé model_config.json) ; catalogue ~65 opérations pour l'interface web | Analyse transcript « Comprendre la puissance du Harnais » + consolidation 3 sources → 1 |
+| 2026-11-23 | Périmètre Graph arteon.be réduit en lecture seule | App 0b8dde80 : Mail.Read, Calendars.Read, Contacts.Read, User.Read (déléguées). Mail.Send + écritures retirés pour faciliter le consentement Orban45 |
+| 2026-11-24 | Consentement Graph arteon.be accordé (Orban45) | Nouvelle app dédiée `0b8dde80` lecture seule (Mail.Read, Calendars.Read, Contacts.Read). Transfert arteon.be → Gmail mis en place côté Orban. Reste : test OAuth + confirmation |
 | 2026-11-23 | Roster Ollama M1 maintenu à 10 modèles | qwen2.5-coder 14b/32b et gemma3:27b jugés redondants ; re-téléchargés seulement à l'usage (gemma3:27b si Cozmo démarre) |
 | 2026-11-11 | Pont noVNC pour le miroir iMac↔M5 | iMac 2017 non éligible AirPlay + partage d'écran Apple Ventura↔macOS 26 incompatible → noVNC navigateur (zéro install iMac, auto-start launchd) |
 | 2026-11-07 | Recherche scriptée basculée sur DeepSeek natif | `bin/pka-search` (Search/Fetch, $0.75/1k) ; Tavily conservé pour l'interactif TUI et le MCP Lightroom |
@@ -59,6 +61,8 @@ Infrastructure IA et outils PKA — maintenance du système Dobby, skills, mémo
 
 ## TTD — Pending
 
+- [ ] **P1 · — · (Dobby)** Câbler le Hub JCH : snapshot → radar + 5 boutons self-service (inbox/route, transcript, imprimer, recherche, save) — reporté « tout à l'heure » par JC
+- [ ] **P2 · — · (JC + Dobby)** M1 : brancher Ethernet (dialogue ASIX AX88179B) + finaliser rotation secrets (repo public)
 - [ ] **P2 · — · (Dobby)** Maintenance continue — `pka-thread-file` + boucle mémoire à chaque fin de session
 - [ ] **P1 · — · (Dobby)** Ajouter un mode observation/dry-run aux watch loops (inspiré SuperAgent : évaluer le signal, enregistrer ce qu'il ferait, sans agir)
 - [ ] **P2 · — · (JC + Dobby)** Essayer le TUI/double-clic Grok ; le rituel `/save` Kimi est terminé et ne fait plus partie de cet essai
@@ -66,7 +70,8 @@ Infrastructure IA et outils PKA — maintenance du système Dobby, skills, mémo
 - [x] **P2 · — · (Dobby)** Mot de passe VNC dédié appliqué sur M5 + M1 (13/11) — plus l'admin ; raccourcis + onglets à jour
 - [x] **P1 · — · (JC)** FDA accordée à `sshd-keygen-wrapper` (13/11) → raccourcis Bureau `M5-ecran-novnc.webloc` + `M1-ecran-novnc.webloc` créés. **Reste** : Accessibilité (épinglage UI encore bloqué — System Events pend en SSH).
 - [ ] **P1 · — · (JC)** Réserver l'IP de l'EPSON ET-8550 en DHCP (actuellement .75, instable .65→.71→.75) pour stabiliser la file d'impression réseau
-- [ ] **P1 · attente Orban · (JC + Dobby)** Consentement Graph arteon.be (app 31f92869) + autorisation forward Gmail → re-cocher la règle forward Outlook + tester ; forwarder Yahoo vers Gmail
+- [x] **P1 · Graph + transfert arteon.be CLOS · (JC + Dobby)** ✅ Connexion Graph lecture seule validée ; doublons supprimés (Roman Dillen) ; transfert arteon.be → Gmail actif (copie conservée côté arteon.be), testé le 24/11
+- [x] **P2 · Yahoo → Gmail CLOS · (JC + Dobby)** ✅ `jc_havaux@yahoo.com` ajouté à Gmail (OAuth ShuttleCloud), import en tâche de fond (~3 600 mails, jusqu'à 2 j) ; fréquence auto (pas de réglage manuel OAuth) ; 2FA + mot de passe renouvelés ; email jchytech.be retiré (forwarde vers arteon.be).
 
 ## TTD — Done (session 2026-11-06)
 
@@ -81,7 +86,8 @@ Infrastructure IA et outils PKA — maintenance du système Dobby, skills, mémo
 
 | Date | Résumé session | Livrable |
 |------|---------------|----------|
-| 2026-11-23 | Flux mail OAuth nettoyés (archivés) + consentement Graph arteon.be préparé (lecture seule, app 31f92869) ; 3 modèles Ollama cœur restaurés sur M1 | `_local/archives/mail-oauth-dead-2026-11-23/`, `JCH_Inbox/06_ADMIN/reponse-orban45-2026-11-23.md` |
+| 2026-11-25 | Harnais PKA cartographié + routage consolidé (source unique) + catalogue ~65 opérations imprimé ; Hammerspoon fenêtre ⌃⌥⌘↑/↓ ; M1 vérifié Wi-Fi (pas Ethernet) | docs/system/harnais-pka.md, docs/system/models-routing.json, scripts/pka_model_router.py, docs/system/catalogue-operations.md |
+| 2026-11-23 | Flux mail OAuth nettoyés (archivés) + consentement Graph arteon.be préparé (lecture seule, app 0b8dde80) ; 3 modèles Ollama cœur restaurés sur M1 | `_local/archives/mail-oauth-dead-2026-11-23/`, `JCH_Inbox/06_ADMIN/reponse-orban45-2026-11-23.md` |
 | 2026-11-23 | Hammerspoon installé (bascule curseur entre 3 écrans M5, ⌃⌥⌘←/→) ; file CUPS EPSON corrigée (.75) ; `bin/pka-print` fixé (IP + outputorder=normal) | `~/.hammerspoon/init.lua`, `bin/pka-print` |
 | 2026-11-20 | Clipper iPad → inbox : vault iCloud « PKA Capture » + pull one-way (bin/pka-clip-pull, launchd 15 min) ; miroir lecture seule iPad→M5 | `bin/pka-clip-pull`, `bin/install-clip-pull-launchd.sh`, `_local/launchd-plists/com.dobby.pka-clip-pull.plist` |
 | 2026-11-17 | TeamViewer M5 réparé : 4 LaunchDaemons désactivés (`.plist.disabled`) → renommage manuel + `launchctl bootstrap` Helper/service ; app stable, plus de crash | — |

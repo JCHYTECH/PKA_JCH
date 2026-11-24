@@ -14,13 +14,10 @@ tags:
   - ethics
   - derrives
   - type/project
-  - status/draft
-status: draft
+  - status/published
+status: published
 ---
 # WildLens — Edition #1
-**Date :** 2026-10-31
-**Status :** Draft — à distribuer
-**Tone :** Militant
 
 > **Theme: "Look it in the face"** — see the real when the fake floods the image, and refuse to look away.
 

@@ -15,13 +15,10 @@ tags:
   - marine-pollution
   - acoustic-monitoring
   - type/project
-  - status/draft
-status: draft
+  - status/scheduled
+status: scheduled
 ---
 # WildLens — Edition #2
-**Date :** 2026-07-02
-**Status :** Draft — pending JC review before Ghost publication
-**Tone :** Militant
 
 > **Theme: "Adaptation is not resilience."** — the gannet builds with our wreckage, and the photograph makes the loss visible.
 
@@ -92,7 +89,7 @@ This is the territory WildLens will explore: photography not as an end, but as a
 ## Notes de publication
 
 - [ ] JC relire et valider
-- [ ] Photo : copier `LrC to-109.jpg` dans les assets Ghost ou utiliser l'original
+- [x] Photo : `2026-07-02-gannet-retouche.jpg` uploaded to Ghost and set as feature_image
 - [ ] Crédit photo : © JC Havaux / ARTEON
 - [ ] Légende photo : Northern Gannet (*Morus bassanus*) — nest constructed from fishing net debris
 - [ ] Tags Ghost : wildlife-photography, anthropisation, marine-pollution, gannet, provenance, acoustic-monitoring
