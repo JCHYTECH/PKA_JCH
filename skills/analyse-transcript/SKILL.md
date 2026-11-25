@@ -5,6 +5,8 @@ description: Analyser un transcript (NoteGPT / YouTube / vidéo / podcast) — c
 
 # /analyse-transcript — Comprendre + Confirmer + Conseiller
 
+> **Frontière** : sous-cas spécialisé d'`inbox-analysis` pour les **transcripts** (avec fact-check ✅/⚠️/❓). Fichier non-transcript → `inbox-analysis` · amélioration système → `system-improvement-ingest`. Voir `docs/system/frontieres-skills-inbox.md`.
+
 > Version canonique PKA — 2026-11-07 — Dobby 🦉
 > Complément de `/inbox-analysis` (analyse générique) et `/ingest` (routing). Ce skill est spécialisé **transcripts** (NoteGPT, YouTube, podcast, réunion).
 

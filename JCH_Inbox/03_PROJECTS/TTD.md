@@ -1,6 +1,6 @@
 # TTD — Vue consolidée (tous projets)
 > **Fichier dérivé** — généré à chaque `/save` depuis les seuls blocs `TTD — Pending` des thread files. Ne pas éditer à la main hors `/save` : la source de vérité reste les thread files + `etat-projets.md`.
-> `last_updated: 2026-11-25 · by: deepseek-v4-pro` — harnais PKA cartographié + routage consolidé (AI_IT_TOOLS) + WildLens 3 sections (ARTEON)
+> `last_updated: 2026-11-25 · by: deepseek-v4-pro` — audit skills 73→50 (AI_IT_TOOLS) + reMarkable USB SOP/ADR (WILDNEXUS) + comparatif modèles M1
 
 ## 01_AI_IT_TOOLS
 

@@ -1,6 +1,6 @@
 # Thread — WILDNEXUS_DEVICE
 
-Dernière mise à jour : 2026-11-22. Fil de reprise maintenu par Dobby ; il ne remplace pas les preuves consignées dans `progress.md`.
+Dernière mise à jour : 2026-11-25. Fil de reprise maintenu par Dobby ; il ne remplace pas les preuves consignées dans `progress.md`. SOP (19) + ADR (16) envoyés sur reMarkable (dossiers WildNexus/SOP et /ADR, USB local).
 
 ## État en bref
 
@@ -66,6 +66,7 @@ Les références des micros et du PIR doivent être relevées sur le matériel r
 - [x] 2026-11-22 · SOP-02 Phase B (`wn_deep_sleep_30s`) re-validé sur M5 — cycle deep sleep 30 s confirmé : 4 réveils, intervalles 31,0 s (30 s sommeil + 1 s delay), reset `rst:0x5 (DSLEEP)` à chaque réveil.
 - [x] 2026-11-22 · SOP-03 Phase C (PPK2 deep sleep) re-validé sur M5 — PPK2 piloté en CLI (ppk2-api 0.9.2, Source Meter 5 V) : deep sleep **1061 µA** (médiane), pic boot **158 mA**, cycle 30,0 s. Confirme l'overhead DevKit ~1 mA (AMS1117 + LEDs + CP2102) — ESP32-S3 seul estimé <20 µA, à re-mesurer sur PCB nu.
 - [x] 2026-11-22 · SOP-04 Phase D (`wn_wake_short` 20 cycles) re-validé sur M5 — 20/20 cycles au moniteur série (intervalle 17,5 s stable, zéro blocage) + 6/6 cycles mesurés au PPK2 (deep sleep 1062 µA, pic boot ~155 mA, durée active ~2,55 s). ✅ GO.
+- [x] 2026-11-24 · SOP-05 Phase E (`wn_sim_event`) re-validé sur M5 — flash + moniteur série OK (2 cycles, 4 phases PIR/caméra/SD/LoRa simulées, `rst:0x5 DSLEEP`). PPK2 (ppk2-api) : courant actif 38.7 mA, durée active 17.1 s, **charge/evt 0.184 mAh** (< 0.5 → GO). Deep sleep réf SOP-03 1062 µA — ⚠️ auto-ranging PPK2 en CLI non fiable pour le sommeil (garbage range-4), à re-mesurer via GUI nRF Connect si besoin.
 - [x] 2026-11-12 · Checklist d'inventaire de reprise préparée (`07_PROCUREMENT_BOM/INVENTAIRE-checklist-reprise-2026-11-12.md`) — gate 1 prête à exécuter au banc.
 - [x] 2026-11-10 · Skill wildnexus-camera-imaging réaligné sur ADR-002 (OV5640 P0 / IMX462 P1 / DVP) + graphe graphify nettoyé des chemins WildNexus obsolètes.
 - [x] 2026-11-05 · Analyse fraîche du scope, des preuves et des incohérences documentaires ; cibles non mesurées distinguées des résultats acquis.
@@ -76,6 +77,7 @@ Les références des micros et du PIR doivent être relevées sur le matériel r
 | Date | Résumé | Livrable |
 |------|--------|----------|
 | 2026-11-22 | SOP-01→04 (Phases A/B/C/D) re-validées sur M5 — flash + moniteur série via arduino-cli, mesure PPK2 via ppk2-api ; carte identifiée ; règle outillage consignée (CDC off + compile --clean) | `MEMORY.md`, `thread-wildnexus.md`, `~/Documents/Arduino/wn_blink/`, `~/Documents/Arduino/wn_deep_sleep_30s/`, `~/Documents/Arduino/wn_wake_short/` |
+| 2026-11-24 | SOP-05 Phase E re-validée sur M5 — `wn_sim_event` flashé + série OK (2 cycles), charge/evt 0.184 mAh au PPK2 (ppk2-api) ; ⚠️ auto-ranging CLI défaillant pour deep sleep (réf SOP-03) | `progress.md`, `thread-wildnexus.md`, `SOP-05-simulation-cycle-evenement.md`, `2026-11-24_sop05-wn_sim_event_ppk2.csv`, `~/Documents/Arduino/wn_sim_event/` |
 | 2026-11-10 | Correction dérive caméra (skill vs ADR-002) + nettoyage graphe graphify (chemins WildNexus obsolètes) | `07_AGENTS/Agents/wildnexus-camera-imaging/SKILL.md`, `graphify-out/graph.json`, `wiki/Daily/2026/11/2026-11-10-cozmo-compagnon-ia-corrections-wildnexus-caméra-et-graphe.md` |
 | 2026-11-05 | Revue documentaire et organisationnelle complète, sans reprise firmware, matériel ou achats | `thread-wildnexus.md`, `00_GOVERNANCE/Start.md`, `wiki/Daily/2026/11/2026-11-05-stabilisation-zigbee-rpi-et-revue-multiprojet.md` |
 

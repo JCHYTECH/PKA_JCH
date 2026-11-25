@@ -5,6 +5,8 @@ description: Analyse complète d'un fichier déposé dans l'INBOX — 7 phases s
 
 # /inbox-analysis — Analyse de fichier INBOX
 
+> **Frontière** : analyse générique (comprendre + proposer des actions). Transcript → `analyse-transcript` · amélioration système → `system-improvement-ingest` · simple routage → `ingest`. Voir `docs/system/frontieres-skills-inbox.md`.
+
 > Version canonique PKA — 2026-07-03
 > Template complet : `docs/system/prompt-inbox-analysis.md`
 > Ce skill s'exécute sans narration. Résultat livré en fin de cycle.

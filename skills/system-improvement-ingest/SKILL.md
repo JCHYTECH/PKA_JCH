@@ -5,6 +5,8 @@ description: Analyse tout document (transcript, papier, article, URL, audio) pou
 
 # /system-improvement-ingest — Analyse de document pour amélioration PKA
 
+> **Frontière** : angle unique = **améliorer le système PKA** (grille 6 axes), pas le routage ni l'analyse de contenu « projet ». Router → `ingest` · analyser le contenu → `inbox-analysis` (ou `analyse-transcript`). Voir `docs/system/frontieres-skills-inbox.md`.
+
 Analyse en profondeur un document déposé par JC dans l'inbox et en extrait
 tout insight exploitable pour améliorer le système PKA-JCH — même si le
 document ne parle pas explicitement de PKA. L'analogie et la transposition

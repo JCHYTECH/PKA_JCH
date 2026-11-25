@@ -5,6 +5,8 @@ description: Traiter les fichiers de JCH_Inbox/00_INBOX/ — router vers destina
 
 # /ingest — Traitement de l'inbox
 
+> **Frontière** : routage mécanique (déplacer + indexer + scan sécurité), pas d'analyse de contenu. Analyse → `inbox-analysis` (ou `analyse-transcript` si transcript, `system-improvement-ingest` si objectif amélioration système). Voir `docs/system/frontieres-skills-inbox.md`.
+
 Traite les fichiers en attente dans `JCH_Inbox/00_INBOX/` :
 analyse chaque fichier, le route vers sa destination permanente,
 le déplace, l'indexe dans `file_index` (team.db), et rapporte.

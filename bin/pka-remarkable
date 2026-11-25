@@ -1,0 +1,99 @@
+#!/usr/bin/env bash
+# pka-remarkable — convertit un Markdown en EPUB (et/ou PDF) puis le pousse sur le reMarkable via USB.
+#
+# AUCUN abonnement Connect requis : la tablette branchée en USB expose une interface web locale
+# sur http://10.11.99.1 qui accepte les uploads PDF/EPUB directement (POST /upload).
+#
+# Usage :
+#   pka-remarkable <fichier.md|pdf|epub> [options]
+#
+# Options :
+#   --title "Titre"      titre du doc (défaut : 1er titre # du .md, sinon nom du fichier)
+#   --pdf                génère AUSSI un PDF (moteur LaTeX) en plus de l'EPUB
+#   --host IP            hôte de la tablette (défaut : 10.11.99.1 — USB)
+#   --dry-run            convertit mais N'envoie PAS (test)
+#   -h|--help
+#
+# Dépendances : pandoc (md→epub/pdf), curl. Tablette branchée en USB avec l'interface web activée
+#               (Réglages → USB → Web interface). Seuls PDF et EPUB s'affichent sur la tablette.
+# Note : les fichiers arrivent à la racine « Mes fichiers ». L'upload se fait en local (pas de cloud).
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+OUTDIR="$ROOT/_local/remarkable-export"
+HOST="10.11.99.1"
+
+IN=""; TITLE=""; MKPDF=0; DRY=0
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --title) TITLE="${2:-}"; shift 2;;
+    --host) HOST="${2:-}"; shift 2;;
+    --pdf) MKPDF=1; shift;;
+    --dry-run) DRY=1; shift;;
+    -h|--help) sed -n '1,23p' "$0"; exit 0;;
+    -*) echo "Option inconnue: $1" >&2; exit 1;;
+    *) IN="$1"; shift;;
+  esac
+done
+
+if [ -z "$IN" ] || [ ! -f "$IN" ]; then echo "ERREUR: fichier introuvable: '$IN'" >&2; exit 1; fi
+command -v curl >/dev/null 2>&1 || { echo "ERREUR: curl manquant" >&2; exit 1; }
+mkdir -p "$OUTDIR"
+
+ext="${IN##*.}"; base="$(basename "$IN" ".$ext")"
+# Nettoie le nom de base : les caractères , ; : cassent curl -F (séparateurs) ou les noms de fichiers.
+base="$(printf '%s' "$base" | sed -E 's/[,;:]/_/g')"
+# Titre par défaut
+if [ -z "$TITLE" ]; then
+  TITLE="$base"
+  if [ "$ext" = "md" ]; then
+    t="$(grep -m1 -E '^#{1,6}[[:space:]]' "$IN" 2>/dev/null | sed -E 's/^#+[[:space:]]*//' || true)"
+    [ -n "$t" ] && TITLE="$t"
+  fi
+fi
+TS="$(date +%Y%m%d-%H%M%S)"
+UPLOADS=()
+
+if [ "$ext" = "md" ]; then
+  command -v pandoc >/dev/null 2>&1 || { echo "ERREUR: pandoc manquant" >&2; exit 1; }
+  epub="$OUTDIR/${base}_${TS}.epub"
+  echo "→ EPUB : $(basename "$epub")  (titre: $TITLE)"
+  pandoc "$IN" -o "$epub" --toc --metadata title="$TITLE" --metadata lang=fr
+  UPLOADS+=("$epub")
+  if [ "$MKPDF" = "1" ]; then
+    pdf="$OUTDIR/${base}_${TS}.pdf"
+    echo "→ PDF  : $(basename "$pdf")"
+    pandoc "$IN" -o "$pdf" --pdf-engine=xelatex -V mainfont="Menlo" -V monofont="Menlo" --toc --metadata title="$TITLE" --metadata lang=fr
+    UPLOADS+=("$pdf")
+  fi
+else
+  case "$ext" in
+    pdf|epub) UPLOADS+=("$IN");;
+    *) echo "ERREUR: format non supporté (.md/.pdf/.epub attendu) : .$ext" >&2; exit 1;;
+  esac
+fi
+
+if [ "$DRY" = "1" ]; then
+  echo "(dry-run) prêt(s) : ${UPLOADS[*]}"
+  echo "(dry-run) aucun envoi."
+  exit 0
+fi
+
+# Vérifie que la tablette est joignable (interface web USB)
+if ! curl -s -m 3 "http://$HOST/" -o /dev/null 2>/dev/null; then
+  echo "ERREUR: tablette injoignable sur http://$HOST/ — brancher le câble USB et activer l'interface web (Réglages → USB → Web interface)." >&2
+  exit 2
+fi
+
+for f in "${UPLOADS[@]}"; do
+  echo "↑ upload $(basename "$f") → http://$HOST/upload"
+  resp="$(curl -s -m 60 -w '|%{http_code}' -F "file=@$f" "http://$HOST/upload")"
+  code="${resp##*|}"; body="${resp%|*}"
+  if [ "$code" = "201" ]; then
+    echo "   ✔ envoyé ($body)"
+  else
+    echo "   ✗ échec HTTP $code : $body" >&2
+    exit 3
+  fi
+done
+echo "✔ ${#UPLOADS[@]} fichier(s) envoyé(s) — visibles dans « Mes fichiers » de la tablette."

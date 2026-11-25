@@ -1,7 +1,7 @@
 # Thread — AI_IT_TOOLS
 
 > Living document — maintenu par Dobby 🦉 en fin de session sur `/save`.
-> **Dernière mise à jour** : 2026-11-23 — Hammerspoon installé (bascule curseur entre écrans M5) ; file CUPS EPSON corrigée (.75) + `pka-print` outputorder=normal ; flux mail OAuth nettoyés (socle IMAP) + consentement Graph arteon.be préparé (lecture seule) ; 3 modèles Ollama cœur restaurés sur M1 (10 modèles / 85 Go)
+> **Dernière mise à jour** : 2026-11-25 — M1 câblé en Ethernet via **TL-SG605E** (en8 1000baseT, auto-login activé, 5 pulls Ollama relancés) ; cause racine = verrou accessoire USB headless (pas le pilote) ; Hammerspoon installé (3 écrans M5) ; file CUPS EPSON corrigée (.75) ; flux mail OAuth nettoyés + consentement Graph arteon.be ; 3 modèles Ollama cœur restaurés sur M1 ; audit skills 73→50 ; reMarkable USB (SOP+ADR WildNexus) ; comparatif modèles locaux M1
 > **Statut** : 🟢 actif
 
 ---
@@ -17,7 +17,7 @@ Infrastructure IA et outils PKA — maintenance du système Dobby, skills, mémo
 | Axe | Statut | Détail |
 |-----|--------|--------|
 | Global | 🟢 | Système stable, P0-P2 terminés (19/06) |
-| Skills | 🟢 | **34 skills** (comptage 22/10), shadow système |
+| Skills | 🟢 | **50 skills actifs** (audit 25/11 : 73→50, 23 archivés), shadow système |
 | Memory Layer | 🟢 | MEMORY.md + team.db + FTS5 (67 sessions indexées) + boucle autonome |
 | Boucle mémoire | 🟢 | **Nouveau 22/10** — `bin/pka-memory-review` (review LLM + auto-skill), launchd quotidien 09:15 |
 | Gouvernance MCP | 🟢 | **Nouveau 22/10** — `pka_mcp_guard.py` (registre + scan tool poisoning) |
@@ -38,6 +38,7 @@ Infrastructure IA et outils PKA — maintenance du système Dobby, skills, mémo
 
 | Date | Décision | Contexte |
 |------|----------|----------|
+| 2026-11-25 | **Audit skills (73→50) + reMarkable sans Connect (USB local)** — 21 SEO archivés (4 gardés), fusion deep-psychology+mind-reader→introspection-jc, competitive-framework archivé | Audit skills + leçon transcript « ne pas accumuler de skills » |
 | 2026-11-25 | **Harnais PKA cartographié + routage modèles consolidé** — PKA est un harnais (seul maillon non possédé = runtime DeepSeek TUI) ; source unique `docs/system/models-routing.json` (absorbé model_config.json) ; catalogue ~65 opérations pour l'interface web | Analyse transcript « Comprendre la puissance du Harnais » + consolidation 3 sources → 1 |
 | 2026-11-23 | Périmètre Graph arteon.be réduit en lecture seule | App 0b8dde80 : Mail.Read, Calendars.Read, Contacts.Read, User.Read (déléguées). Mail.Send + écritures retirés pour faciliter le consentement Orban45 |
 | 2026-11-24 | Consentement Graph arteon.be accordé (Orban45) | Nouvelle app dédiée `0b8dde80` lecture seule (Mail.Read, Calendars.Read, Contacts.Read). Transfert arteon.be → Gmail mis en place côté Orban. Reste : test OAuth + confirmation |
@@ -62,7 +63,7 @@ Infrastructure IA et outils PKA — maintenance du système Dobby, skills, mémo
 ## TTD — Pending
 
 - [ ] **P1 · — · (Dobby)** Câbler le Hub JCH : snapshot → radar + 5 boutons self-service (inbox/route, transcript, imprimer, recherche, save) — reporté « tout à l'heure » par JC
-- [ ] **P2 · — · (JC + Dobby)** M1 : brancher Ethernet (dialogue ASIX AX88179B) + finaliser rotation secrets (repo public)
+- [ ] **P2 · — · (JC + Dobby)** Rotation des secrets (repo public) — **seul reliquat** ; Ethernet M1 ✅ fait le 25/11 (TL-SG605E, en8 gigabit, auto-login activé, 5 pulls Ollama relancés)
 - [ ] **P2 · — · (Dobby)** Maintenance continue — `pka-thread-file` + boucle mémoire à chaque fin de session
 - [ ] **P1 · — · (Dobby)** Ajouter un mode observation/dry-run aux watch loops (inspiré SuperAgent : évaluer le signal, enregistrer ce qu'il ferait, sans agir)
 - [ ] **P2 · — · (JC + Dobby)** Essayer le TUI/double-clic Grok ; le rituel `/save` Kimi est terminé et ne fait plus partie de cet essai
@@ -86,6 +87,7 @@ Infrastructure IA et outils PKA — maintenance du système Dobby, skills, mémo
 
 | Date | Résumé session | Livrable |
 |------|---------------|----------|
+| 2026-11-25 | Audit skills (73→50) + reMarkable USB (19 SOP + 16 ADR WildNexus) + comparatif modèles locaux M1 (phi4:14b < qwen2.5:32b < V4) | TEAM_Inbox/2026-11-25_dobby_audit-skills-pka.md, docs/system/frontieres-skills-inbox.md, skills/introspection-jc/ |
 | 2026-11-25 | Harnais PKA cartographié + routage consolidé (source unique) + catalogue ~65 opérations imprimé ; Hammerspoon fenêtre ⌃⌥⌘↑/↓ ; M1 vérifié Wi-Fi (pas Ethernet) | docs/system/harnais-pka.md, docs/system/models-routing.json, scripts/pka_model_router.py, docs/system/catalogue-operations.md |
 | 2026-11-23 | Flux mail OAuth nettoyés (archivés) + consentement Graph arteon.be préparé (lecture seule, app 0b8dde80) ; 3 modèles Ollama cœur restaurés sur M1 | `_local/archives/mail-oauth-dead-2026-11-23/`, `JCH_Inbox/06_ADMIN/reponse-orban45-2026-11-23.md` |
 | 2026-11-23 | Hammerspoon installé (bascule curseur entre 3 écrans M5, ⌃⌥⌘←/→) ; file CUPS EPSON corrigée (.75) ; `bin/pka-print` fixé (IP + outputorder=normal) | `~/.hammerspoon/init.lua`, `bin/pka-print` |
