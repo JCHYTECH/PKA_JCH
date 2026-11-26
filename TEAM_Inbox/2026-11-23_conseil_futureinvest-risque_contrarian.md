@@ -1,0 +1,27 @@
+JC — stance contrarian, un seul passage, sans débat.
+
+**1. Verdict net : à rejeter en l'état.** Pas « ajuster un peu » : le jeu de paramètres est **incohérent par construction** à 50 000 €. Il mélange trois unités (notionnel, marge, risque) sans jamais les relier, et dans chaque lecture il produit un mode d'échec fatal. La perte maximale théorique (−10 % = 5 000 €) est *franchissable en une seule séance* par le plus petit contrat disponible sur deux des quatre marchés visés. Un plafond qu'un gap week-end rend caduc n'est pas un garde-fou : c'est un rassurant.
+
+**2. Arguments chiffrés** (prix illustratifs nov-2026, EUR/USD 1,08 ; les ordres de grandeur ne bougent pas) :
+
+- **20 %/position est intenable en notionnel.** 20 % de 50 k = 10 000 €. Un contrat full corn = 22 200 € (2,2×), blé = 25 000 € (2,5×), soja = 48 100 € (4,8×), WTI full = 63 000 € (6,3×). Même le **micro WTI (MCL, 500 bbl) = 31 500 €**, soit 3,1× le plafond. Seuls les *mini* grains (1 000 bu) passent — mais ils sont illiquides.
+- **En lecture marge, c'est pire : 20 % = 10 000 € de marge ≈ 150–200 k€ de notionnel, soit 3–4× de levier caché.** Un mouvement adverse de 2,5–3 % = votre drawdown entier, déclenché par l'appel de marge, pas par votre stop. Exposition cachée exactement là où le brief dit de la chercher.
+- **−1,3 %/jour est inapplicable en swing différé.** 650 €/jour. Or un contrat soja en *une* séance limit = 4 630 € (7,1× la limite journalière, 93 % du DD-stop). Deux séances limit soja consécutives = **9 260 € = 185 % du budget de drawdown**. Corn limit-day seul = 1 852 € = 2,8× la limite jour. La limite quotidienne ne *borne* rien : elle sera violée par gap, jamais respectée.
+- **Gap week-end :** corn +5 % = 1 112 € (1,7× la limite jour) sur UN contrat, alors que le marché est fermé. WTI +8 % (OPEP/guerre) = 5 037 € = **101 % du DD-stop en une nuit**, sans possibilité d'action humaine. Données différées + validation humaine + horizon 1–4 semaines = vous êtes *structurellement* en retard : le gap qui tue la limite est précisément celui que le signal event-driven vous fait traverser.
+- **Exposition brute 40 % ≠ risque 40 %.** Deux positions grains corrélées ρ≈0,75 → risque effectif **37,4 %**, pas 28,3 % comme le suppose une « diversification ». WTI/Brent ρ=0,97 → **39,7 %** = une seule position à taille double. Le couple « 2 positions » *simule* la diversification et concentre. C'est le piège du paramètre.
+- **EUR/USD non couvert :** 40 % brut en USD, une appréciation EUR de 5 % = −2 % de capital sans aucun mouvement de marché, canal de perte non compté dans les −1,3 %.
+- **Granularité :** à 0,75 % de risque/trade (375 €) avec un stop à 3 % de prix, un contrat corn risque 667 € → **demi-contrat impossible**. Vous serez contraint de sur-trade à chaque signal. Un système dont les limites sont *faites pour être contournées* entraîne l'opérateur à les ignorer : des limites qu'on override deviennent zéro limite.
+- **Frictions réelles :** ~0,04 %/trade aller-retour (spread+commission), soit ~2–3 % de la taille espérée d'un mouvement swing. Mini-contrats : spread 2–4 ticks, le coût double. Non budgété.
+
+**3. Plus forte objection** (celle qui me contredit) : « mais un DD hard-stop à −10 % est justement un garde-fou ; une fois atteint, on coupe et on a perdu max 5 000 €. » Réponse : oui *en moyenne*, non *dans la queue*. Le −10 % n'est pas un plancher, c'est un **ordre exécuté au prix du gap ou par le moteur de marge** — donc à −13 %, −18 %, −20 %. La vraie perte fatale non couverte, c'est le gap au-delà du stop. Sur soja/WTI, un seul événement la produit. Le paramètre n'échoue pas en régime normal ; il échoue exactement le jour où il compte.
+
+**4. Recommandation concrète** — remplacer les % notionnels par du **risque unitaire (R)** et une contrainte de **stress-loss** :
+
+- **Taille = risque, pas notionnel.** Risque/trade = **0,5 % du capital** (250 €), défini comme distance-au-stop × valeur du contrat. Risque simultané max = **1,5 %** (750 €) toutes positions confondues.
+- **Plafond de stress, pas d'exposition brute.** Contrainte : *pire gap historique + VaR(1j,99 %)* du portefeuille ≤ **4 % du capital** (2 000 €). C'est ce qui remplace les 20 %/40 %, qui ne mesurent rien d'exploitable.
+- **Daily −1,3 % conservé, mais en *pré-trade* :** refuser toute entrée dont le gap-stress dépasse 650 €. Ne pas compter sur un stop intraday en swing.
+- **DD −10 % conservé.** Il est correct. C'est la taille qui doit le rendre atteignable seulement par une *série*, jamais par un événement.
+- **Périmètre à 50 k :** micro WTI (MCL) uniquement au démarrage. **Reporter grains et full-size jusqu'à ~150–200 k€** ou passer aux mini-grains avec budget slippage explicite. Un contrat full soja = 96 % du capital : ce n'est pas un paramètre à régler, c'est un refus de trade.
+- **Un seul facteur de risque à la fois** au démarrage : jamais corn+blé, jamais WTI+Brent simultanés — ρ 0,75–0,97 en font une position unique déguisée.
+
+VERDICT: REJETER les paramètres proposés tels quels (incohérence notionnel/marge/risque, DD franchissable en un gap) → ADOPTER un modèle risque-unitaire : 0,5 %/trade, 1,5 % risque simultané, stress-gap ≤ 4 %, micro-contrats seuls à 50 k€, grains différés à ≥150 k€.

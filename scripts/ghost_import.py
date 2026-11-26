@@ -13,6 +13,7 @@ import hashlib
 import hmac
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -45,13 +46,23 @@ def extract_title(text: str) -> str:
     return "Sans titre"
 
 
+META_LINE_RE = re.compile(r'^\s*\*\*(Date|Statut|Status|Ton|Tone|Publication)\s*:\*\*.*$')
+
+
 def md_to_html(md_path: Path, *, strip_title: bool) -> str:
-    """Convertit le markdown en HTML (pandoc), frontmatter YAML ignoré."""
+    """Convertit le markdown en HTML (pandoc). Ignore le frontmatter YAML,
+    le titre H1 (option) et les lignes de métadonnées éditoriales du corps."""
     text = md_path.read_text(encoding="utf-8")
-    if strip_title:
-        lines = text.splitlines()
-        kept = [ln for ln in lines if not ln.strip().startswith("# ")]
-        text = "\n".join(kept)
+    lines = text.splitlines()
+    kept = []
+    for ln in lines:
+        s = ln.strip()
+        if strip_title and s.startswith("# "):
+            continue
+        if META_LINE_RE.match(ln):
+            continue
+        kept.append(ln)
+    text = "\n".join(kept)
     tmp = md_path.with_suffix(".tmp.html.md")
     tmp.write_text(text, encoding="utf-8")
     try:

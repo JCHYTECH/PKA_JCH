@@ -1,0 +1,111 @@
+#!/usr/bin/env python3
+"""pka-delegate — Résout le routage modèle d'une tâche et affiche la commande de délégation.
+
+Usage :
+  bin/pka-delegate "<tâche ou brief>"     # résout le routage et affiche la commande
+  bin/pka-delegate --list                 # liste les routages connus
+
+Source : docs/system/models-routing.json (source unique du routage modèles PKA).
+Objectif : déléguer une tâche au bon backend (DeepSeek / Claude / OpenAI / Gemini /
+Ollama M1) selon son type, pour répartir l'utilisation des tokens entre abonnements.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+import unicodedata
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+ROUTING = ROOT / "docs" / "system" / "models-routing.json"
+
+
+def _norm(s: str) -> str:
+    """Normalise accents + casse pour un matching robuste des mots-clés."""
+    s = unicodedata.normalize("NFKD", s)
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    return s.lower()
+
+
+def _launch(provider: str, model: str) -> str:
+    p = (provider or "").lower()
+    if p in ("deepseek", "deepseek-cloud", "deepseek-api"):
+        return f"bin/dobby.sh --model deepseek      # modèle : {model}"
+    if p in ("ollama-m1", "ollama-m5", "ollama", "ollama-local"):
+        return f"bin/dobby.sh --model local          # OLLAMA_MODEL={model}"
+    if p in ("google", "gemini", "gemini-cli"):
+        return "bin/dobby.sh --model gemini"
+    if p in ("anthropic",):
+        return f"python3 scripts/openrouter_chat.py --model anthropic/{model} --system-file AGENTS.md"
+    if p in ("openai",):
+        return f"python3 scripts/openrouter_chat.py --model openai/{model} --system-file AGENTS.md"
+    # openrouter / autre cloud → openrouter_chat (modèle passé tel quel)
+    return f"python3 scripts/openrouter_chat.py --model {model} --system-file AGENTS.md"
+
+
+def load() -> tuple[dict, dict]:
+    data = json.loads(ROUTING.read_text(encoding="utf-8"))
+    models = {m["id"]: m for m in data.get("models", [])}
+    return data, models
+
+
+def resolve(task_text: str):
+    data, models = load()
+    text = _norm(task_text)
+    best = None
+    for entry in data.get("routing", []):
+        kws = entry.get("keywords", [])
+        if not kws:
+            continue
+        hits = sum(1 for kw in kws if _norm(kw) in text)
+        if hits:
+            score = hits / len(kws)
+            if best is None or score > best[0]:
+                best = (score, entry)
+    if best is None:
+        return None
+    entry = best[1]
+    primary = entry["primary"]
+    fallback = entry.get("fallback", [])
+    m = models.get(primary, {})
+    provider = m.get("provider", "?")
+    return entry, primary, provider, fallback
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description="Résout le routage modèle d'une tâche")
+    ap.add_argument("task", nargs="?", help="tâche/brief à router")
+    ap.add_argument("--list", action="store_true", help="liste les routages")
+    args = ap.parse_args()
+
+    data, _models = load()
+
+    if args.list or not args.task:
+        print("Routages connus (docs/system/models-routing.json) :")
+        for e in data.get("routing", []):
+            fb = f" (fallback: {', '.join(e['fallback'])})" if e.get("fallback") else ""
+            print(f"  {e['task']:24} → {e['primary']}{fb}")
+        return 0
+
+    r = resolve(args.task)
+    if r is None:
+        print("❌ Aucun routage ne matche cette tâche. Défaut : deepseek-v4-flash.")
+        print("   → bin/dobby.sh --model deepseek")
+        return 1
+
+    entry, primary, provider, fallback = r
+    print(f"Tâche    : {entry['task']}")
+    print(f"Modèle   : {primary}  (provider: {provider})")
+    if fallback:
+        print(f"Fallback : {', '.join(fallback)}")
+    print(f"Note     : {entry.get('note', '')}")
+    print()
+    print("Commande de délégation :")
+    print(f"  {_launch(provider, primary)}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

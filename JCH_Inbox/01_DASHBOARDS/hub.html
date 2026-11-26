@@ -585,6 +585,10 @@
           <span class="radar-label">🔄 En cours (équipe)</span>
           <span class="radar-value" id="radar-in-progress">--</span>
         </div>
+        <div class="radar-item">
+          <span class="radar-label">💰 Coût LLM (30j)</span>
+          <span class="radar-value" id="radar-cost">--</span>
+        </div>
       </div>
 
       <div class="cockpit-right-actions">
@@ -724,6 +728,11 @@
       } else {
         btn.classList.remove('has-alerts');
       }
+
+      const resCost = await fetch("/api/cost");
+      const cost = await resCost.json();
+      const cEl = document.getElementById('radar-cost');
+      if (cEl) cEl.textContent = '$' + Number(cost.cost_30d || 0).toFixed(2);
 
     } catch(e) {
       console.log("Erreur API", e);

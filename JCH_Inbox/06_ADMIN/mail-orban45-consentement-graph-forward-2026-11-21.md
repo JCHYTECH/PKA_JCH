@@ -1,6 +1,6 @@
 # Mail Orban45 — Consentement Graph + transfert Gmail (2026-11-21)
 
-> **SUPERSÉDÉ 2026-11-23** — voir `reponse-orban45-2026-11-23.md` (périmètre lecture seule, client_id corrigé `31f92869-…`).
+> **SUPERSÉDÉ 2026-11-23** — voir `reponse-orban45-2026-11-23.md` (périmètre lecture seule, client_id corrigé `0b8dde80-…`).
 
 > À envoyer par JC à Orban45 (CSP gérant le tenant Microsoft 365 `arteon.be`).
 > Objectif : débloquer la co-gestion Dobby (Graph délégué) + consolider les mails

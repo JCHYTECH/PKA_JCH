@@ -1,7 +1,7 @@
 # Routing Rules — PKA_JCH
 
 > Où ranger quoi. Document vivant, modifié quand une règle change ou qu'un nouveau type émerge.
-> Dernière mise à jour : 2026-05-18
+> Dernière mise à jour : 2026-11-22
 
 | # | Type de contenu | Destination |
 |---|----------------|-------------|
@@ -26,3 +26,4 @@
 | 18 | Fiches d'identité spécialistes | `TEAM/` |
 | 19 | Prompts IA par contexte | `JCH_Inbox/90_TEMPLATES/prompts/[contexte]/` |
 | 20 | SOPs / procédures opérationnelles | `wiki/SOPs/` |
+| 21 | Appareils réseau (photos labels, MAC, IP, série) | `JCH_Inbox/06_ADMIN/reseau/` |

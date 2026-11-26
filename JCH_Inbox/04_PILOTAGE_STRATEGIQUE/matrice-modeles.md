@@ -1,6 +1,6 @@
 # Matrice des modèles — PKA_JCH
 > Quel modèle utiliser pour quel type de tâche, et comment.
-> Dernière mise à jour : 2026-11-07 par Dobby 🦉
+> Dernière mise à jour : 2026-11-24 par Dobby 🦉
 > 
 > **Lecture :** une ligne = un modèle disponible. Choisir selon la tâche.
 
@@ -70,6 +70,27 @@
 - **Tarif off-peak** : jusqu'à -75 % hors heures de pointe (pointe ≈ 11:30–19:30 ET). Programmer les jobs batch lourds (memory-review, loops) hors pointe.
 - **Concurrence open-source** : Qwen 3.6 Plus (agentique fort), GLM 5.1, Kimi K2.6. DeepSeek V4 = meilleur en self-host MoE (souveraineté).
 - **Routing recommandé** : orchestrateur → V4 Pro ; 31 sous-agents spécialistes → V4 Flash.
+
+## Notes 2026-11-24 (veille DeepSeek V4.1 Flash)
+
+- **DeepSeek V4.1 Flash** (nom à confirmer — transcription) — veille Nerdy Kings 01/11, chiffres **annoncés** (non recoupés) :
+  ~1,20 $/M tokens générés vs 20 $/M Claude Opus (~17×) ; Terminal Bench 31 % → 42 % en 5 semaines ;
+  méthode *Reinforcement Learning with Self-Feedback* (auto-évaluation).
+- **Écart à clarifier** avec nos tarifs V4 Flash (~0,14 $/M input) : probable différence input/output
+  (tokens *générés* plus chers) ou version distincte (V4.1 vs V4).
+- **Source** : `JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/99_REFERENCES/deepseek-v41-flash-rl-self-feedback_2026-11-01/`
+
+## Arbitrage local (M1) vs cloud (2026-11-24)
+
+Règle de pilotage : choisir le runtime selon le critère dominant, pas le coût (négligeable à petite échelle).
+
+- **Local (M1 — Ollama)** : volume, confidentialité (rien ne sort du réseau), gratuit, sans plafond.
+  - Vision : `bin/pka-vision` (`qwen2.5vl:7b`, fallback OCR tesseract).
+  - Synthèse de corpus : `qwen2.5:32b` / `deepseek-r1:14b`.
+- **Cloud (DeepSeek / Claude)** : vitesse (~30 s vs ~8 min), qualité, raisonnement fin.
+
+**Règle** : volume + confidentialité + gratuit → M1. Vitesse + qualité + raisonnement → cloud.
+⚠️ `llama3.2-vision:11b` cassé (mllama non supporté par Ollama 0.40.16) — ne pas utiliser.
 
 ---
 

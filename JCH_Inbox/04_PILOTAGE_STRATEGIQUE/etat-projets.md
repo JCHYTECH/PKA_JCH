@@ -1,6 +1,6 @@
 # État des projets — One-Pager
 > Tableau de bord unique de tous les projets actifs PKA_JCH.
-> Dernière mise à jour : 2026-11-20 par Dobby 🦉 — pivot WildLens « tout en français » (3 éditions FR, thème FR, locale fr) ; ligne Proximus dégradée (14/11) toujours à traiter (RUT240 atelier + failover 4G à planifier).
+> Dernière mise à jour : 2026-11-21 par Dobby 🦉 — réactivation Future Invest (cockpit trading Futures) sur krach actions ; pivot WildLens FR ; ligne Proximus dégradée (14/11) toujours à traiter (RUT240 atelier + failover 4G à planifier).
 > 
 > **Lecture :** 🔴 = P0 deadline dure, 🟢 = actif autonome, ⚪ = gelé/reporté
 
@@ -33,6 +33,7 @@
 |---|--------|--------|-----------------|-----------------|----------------|
 | 5 | **VETALYX** | 🔶 actif (juridique) | Traduction EN du pacte d'actionnaires produite + revue Renard ; **pacte EN envoyé aux partenaires chinois le 08/11**. | Trancher le point Art. 5.1 (« non opposables ») ; valider la mécanique notariale des 6 000 € et la qualification AFMPS/FAMHP. | Renard, Clio, Jade |
 | 6 | **WILDNEXUS DEVICE** | 🔶 réactivé (P0 engineering) | Dégelé le 12/11 (décision JC) ; P0 engineering repris le 11/11, SOP-16/17/18 créées. | Lever les gates de reprise : inventaire matériel, rapprochement factures, micros TDK + PIR, matrice GPIO. Aucun montage ni achat avant. | Forge, Araignée, Dobby |
+| 7 | **FUTURE_INVEST** | 🔶 réactivé (Phase 0) | Dégelé le 21/11 sur krach actions (S&P correction, Nasdaq bear) ; remis de archive/ vers 03_PROJECTS/. | Répondre aux 4 questions de profil investisseur (capital, perte max/jour, broker, exclusions) ; instrumenter le krach comme événement #1 de la bibliothèque rétrospective. | Bruno, Forge, Dobby |
 
 ---
 
@@ -50,7 +51,6 @@
 | Projet | Statut | Note |
 |--------|--------|------|
 | WILDMESH | ⚪ gelé | Réseau LoRa mesh — en attente de maturité WildNexus |
-| FUTURE_INVEST | ⚪ gelé | Archivé le 2026-06-23 |
 | Maison off-grid | ⚪ concept | Phase concept uniquement |
 | FAUNE_AUTOUR | ⚪ gelé | PWA extraite dans PHOTO_NATURE |
 
@@ -60,9 +60,9 @@
 
 | Indicateur | Valeur |
 |------------|--------|
-| Projets totaux | 9 |
+| Projets totaux | 10 |
 | 🔴 P0 (deadline dure) | 1 — IOT/Vanlife |
-| 🔶 Réactivé | 2 — VETALYX (juridique), WILDNEXUS DEVICE (P0 engineering) |
+| 🔶 Réactivé | 3 — VETALYX (juridique), WILDNEXUS DEVICE (P0 engineering), FUTURE_INVEST |
 | 🟢 P1 (autonome ou continu) | 6 — PHOTO_NATURE, PHOTO_AI_JURY, AI_IT_TOOLS, ARTEON, TRAVELS, VENTE_OCCASION |
 | ⚪ Gelé (sous-projets) | 2 — INSECTNET, NEXUS_ACOUSTIC |
 | Prochaine échéance | **15 décembre 2026** — installation IOT Van |

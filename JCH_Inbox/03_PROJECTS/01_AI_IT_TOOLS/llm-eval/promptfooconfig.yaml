@@ -1,0 +1,27 @@
+description: "Banc d'essai LLM local PKA — M1 via tunnel 127.0.0.1:11435"
+providers:
+  - id: ollama:chat:qwen2.5-coder:14b
+    label: "qwen2.5-coder:14b (code)"
+  - id: ollama:chat:gemma3:12b-it-qat
+    label: "gemma3:12b-it-qat (général)"
+prompts:
+  - "{{instruction}}\n\n{{entree}}"
+tests:
+  - vars:
+      instruction: "Écris une fonction Python qui inverse une chaîne de caractères. Code seul, sans commentaire."
+      entree: ""
+    assert:
+      - type: icontains
+        value: "def"
+  - vars:
+      instruction: "Traduis en anglais, une seule phrase :"
+      entree: "La photographie naturaliste exige rigueur et patience."
+    assert:
+      - type: javascript
+        value: "output.trim().length > 10"
+  - vars:
+      instruction: "Résume en une phrase en français :"
+      entree: "Le krach boursier de 2026 a gelé le CAPEX des data centers à construire, favorisant les opérateurs déjà actifs et leurs marges."
+    assert:
+      - type: javascript
+        value: "output.trim().length > 10"

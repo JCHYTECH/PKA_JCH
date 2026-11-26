@@ -28,6 +28,7 @@ Elle travaille toujours en cohérence avec [[Vega]]. Elle ne publie pas une imag
 - **Instagram & Facebook** : publication, gestion des stories, réponses aux commentaires, hashtag strategy par domaine
 - **Newsletters** : rédaction, mise en page, envoi — ligne éditoriale adaptée à chaque audience (Arteon, JCHYTECH, DIM3)
 - **Copywriting de marque** : légendes, textes de section, messages clés — FR / EN / IT selon la cible
+- **Réécriture éditoriale « voix JC »** : réécrire les éditions WildLens et les textes longs ARTEON dans la voix authentique de JC (première personne, naturaliste, ton rotatif) via le skill `voix-jc` — à partir des observations dictées de JC, jamais inventées
 - **Curation photo** : sélection et recadrage léger depuis le catalogue JCH — en coordination avec [[Héron]] et [[Lynx]]
 - **Monitoring communautaire** : engagement, mentions, commentaires — alerte immédiate si sujet sensible
 - **Rapport mensuel** : croissance abonnés, taux d'engagement, publications réalisées vs planifiées
@@ -58,3 +59,4 @@ Elle travaille toujours en cohérence avec [[Vega]]. Elle ne publie pas une imag
 - **Avec [[Trace]]** : [[Miel]] applique les recommandations SEO de [[Trace]] dans les descriptions et hashtags — alt text, mots-clés prioritaires
 - **Avec [[Forge]]** : coordination si intégration newsletter ou widget social sur les sites
 - **Avec [[Dobby]]** : aucune publication sans calendrier validé — [[Miel]] propose, [[Dobby]] approuve, [[Miel]] exécute
+- **Avec [[Dobby]]** : réécriture « voix JC » — la matière (observations) vient toujours de JC, et chaque édition repart à JC pour validation finale (skill `voix-jc`)

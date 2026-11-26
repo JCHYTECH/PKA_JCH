@@ -55,7 +55,7 @@ python3 scripts/gmail_imap_fetch.py --fetch --force    # re-importe aussi les d�
 
 ## Routage VETALYX (Outlook → Gmail)
 
-Les mails des partenaires chinois arrivent dans Outlook (`jc.havaux@jchytech.be`).
+Les mails des partenaires chinois arrivent dans Outlook/M365 (`jc.havaux@arteon.be`, alias `jc.havaux@jchytech.be` jusqu'à fin 2027).
 Pour les capter automatiquement :
 
 **Outlook Web → Règles** : condition « L'adresse de l'expéditeur inclut » =

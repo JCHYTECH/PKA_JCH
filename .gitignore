@@ -97,6 +97,7 @@ JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/05_SIMULAT
 JCH_Inbox/03_PROJECTS/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/99_REFERENCES/PPK2/
 _local/dobby-lora/
 *.ppk2
+*ppk2.csv
 *.wav
 *.zip
 *.safetensors
@@ -162,3 +163,13 @@ JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/video/*
 # Artefacts générés — jamais versionnés (exports NotebookLM, backups)
 **/notebooklm/
 **/backups/
+
+# Dépendances Node — jamais versionnées (2026-11-26)
+node_modules/
+
+# Captures de credentials (Microsoft Entra, etc.) — jamais versionnées (2026-11-26)
+entra-*.png
+
+# Données personnelles reMarkable — jamais versionnées (2026-11-26)
+_local/remarkable-backup/
+_local/remarkable-export/

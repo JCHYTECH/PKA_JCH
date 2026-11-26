@@ -103,8 +103,8 @@ def check_freshness(json_output: bool = False) -> dict:
                     rel = f.relative_to(WORKSPACE)
                     rel_str = str(rel)
 
-                    # Skip excluded directories
-                    excluded = False
+                    # Skip excluded directories + anything under an _archive/ tree
+                    excluded = "/_archive/" in rel_str
                     for excl_dir in PROCUREMENT_EXCLUDE_DIRS:
                         if str(rel).startswith(excl_dir):
                             excluded = True

@@ -32,7 +32,7 @@ if str(PKA_DIR) not in sys.path:
 
 from scripts import pka_kanban_schema
 from scripts import pka_kanban_service
-from scripts import pka_plane_adapter
+from scripts import pka_kanban_source
 from scripts import rebuild_file_index
 
 # park4night (module d'enrichissement "où dormir en van")
@@ -664,11 +664,7 @@ def _all_kanban_cards() -> list[dict]:
     if isinstance(cached_cards, list) and time.monotonic() - cached_at < KANBAN_CACHE_TTL_SECONDS:
         return list(cached_cards)
 
-    ensure_plane_api_token()
-    config = pka_plane_adapter.load_config()
-    cards = []
-    for project_key in sorted(config["projects"]):
-        cards.extend(pka_plane_adapter.fetch_project_issues(project_key))
+    cards = pka_kanban_source.load_cards()
     _KANBAN_CARDS_CACHE["timestamp"] = time.monotonic()
     _KANBAN_CARDS_CACHE["cards"] = list(cards)
     return cards
@@ -738,6 +734,41 @@ def inbox_db_counts() -> dict:
         }
     except (OSError, sqlite3.DatabaseError):
         return {"inProgress": 0, "delivered": 0, "rejected": 0}
+
+
+def cost_snapshot() -> dict:
+    """Coût + tokens des appels LLM (table llm_calls), fenêtres 24h / 7j / 30j."""
+    try:
+        with sqlite3.connect(TEAM_DB) as conn:
+            conn.row_factory = sqlite3.Row
+
+            def _one(sql):
+                return conn.execute(sql).fetchone()
+
+            agg = _one(
+                "SELECT COUNT(*) AS calls, COALESCE(SUM(tokens_in),0) AS tin, "
+                "COALESCE(SUM(tokens_out),0) AS tout, COALESCE(SUM(cost_usd),0) AS c30 "
+                "FROM llm_calls WHERE ts >= datetime('now','-30 days')"
+            )
+            c7 = _one("SELECT COALESCE(SUM(cost_usd),0) AS c FROM llm_calls WHERE ts >= datetime('now','-7 days')")
+            c1 = _one("SELECT COALESCE(SUM(cost_usd),0) AS c FROM llm_calls WHERE ts >= datetime('now','-1 day')")
+            byp = conn.execute(
+                "SELECT COALESCE(project,'autre') AS p, COALESCE(SUM(cost_usd),0) AS c "
+                "FROM llm_calls WHERE ts >= datetime('now','-30 days') GROUP BY p ORDER BY c DESC"
+            ).fetchall()
+    except (OSError, sqlite3.DatabaseError):
+        return {"ok": False, "error": "llm_calls indisponible"}
+
+    return {
+        "ok": True,
+        "calls": int(agg["calls"] or 0),
+        "tokens_in": int(agg["tin"] or 0),
+        "tokens_out": int(agg["tout"] or 0),
+        "cost_30d": round(agg["c30"] or 0, 4),
+        "cost_7d": round(c7["c"] or 0, 4),
+        "cost_24h": round(c1["c"] or 0, 4),
+        "by_project": [{"project": r["p"], "cost": round(r["c"] or 0, 4)} for r in byp],
+    }
 
 
 def automation_log(limit: int = 20) -> dict:
@@ -1510,6 +1541,10 @@ class DashboardHandler(BaseHTTPRequestHandler):
         if path == "/api/kanban/filters":
             payload = kanban_filters_payload()
             self.send_json(payload, HTTPStatus.OK if payload.get("ok", True) else HTTPStatus.SERVICE_UNAVAILABLE)
+            return
+
+        if path == "/api/cost":
+            self.send_json(cost_snapshot())
             return
 
         if path == "/api/provider-balances":

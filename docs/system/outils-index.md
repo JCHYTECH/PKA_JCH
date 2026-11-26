@@ -1,6 +1,6 @@
 # Index central des outils PKA_JCH
 
-> Dernière mise à jour : 2026-11-24 — Ajout de `bin/pka-vision` (analyse d'image locale M1 → OCR)
+> Dernière mise à jour : 2026-11-25 — Ajout de `bin/pka-amazon` (recherche produit Amazon BE/UE → liens directs /dp ; skill `amazon-be-search`) ; 2026-11-24 : `bin/pka-vision` (analyse d'image locale M1 → OCR)
 > Source : `docs/system/outils-index.md`
 > Charger ce fichier au début de chaque session pour connaître tous les outils disponibles.
 
@@ -45,6 +45,9 @@
 
 > Ajout de 36 outils présents dans `bin/` mais absents de l'index. Tri effectué avec JC
 > le 2026-11-12 : 11 outils obsolètes archivés dans `_local/archives/bin/`.
+
+- bin/pka-amazon — Recherche produit Amazon BE/UE → liens directs `/dp/ASIN` + prix (V1 scraping, transport curl ; skill `amazon-be-search`)
+- bin/pka-remarkable — Convertit un `.md` en **EPUB** (+ PDF en option, pandoc) et le pousse sur le reMarkable via **rmapi** (cloud, compte Gmail). Usage : `pka-remarkable <fichier.md|pdf|epub> [--dir "Dossier"] [--title "..."] [--pdf] [--dry-run]`
 
 ### Orchestration & loops
 

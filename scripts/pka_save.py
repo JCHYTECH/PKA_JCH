@@ -205,6 +205,41 @@ def _log_to_memory_log(
         pass
 
 
+def warn_stale_states() -> None:
+    """Vérifie la fraîcheur des State files et signale les retards (>7 jours).
+
+    Garde-fou de fin de session : le /save ne bloque pas, mais avertit
+    explicitement si un State est périmé, pour forcer la réconciliation
+    etat-projets.md / decisions-actives.md depuis les thread files.
+    """
+    import json
+    import subprocess
+
+    script = PKA_DIR / "scripts" / "check_state_freshness.py"
+    if not script.exists():
+        return
+    try:
+        proc = subprocess.run(
+            [sys.executable, str(script), "--json"],
+            capture_output=True, text=True, timeout=60,
+        )
+        if proc.returncode not in (0, 1, 2):
+            return
+        data = json.loads(proc.stdout)
+    except Exception:
+        return
+
+    stale = data.get("warning", []) + data.get("critical", [])
+    if not stale:
+        print("\n✅ États à jour (aucun State > 7 jours).")
+        return
+    print("\n⚠️  State files à rafraîchir avant de clore la session :")
+    for entry in stale:
+        level = "🔴" if entry.get("level") == "CRITICAL" else "🟡"
+        print(f"  {level} {entry['file']} — {entry['last_updated']} ({entry['age_days']} j)")
+    print("  → Réconcilier etat-projets.md / decisions-actives.md depuis les thread files, puis régénérer TTD.md.")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Sauvegarde manuelle d'une session PKA")
     parser.add_argument("--title")
@@ -230,6 +265,7 @@ def main() -> None:
     else:
         print(f"\nSauvegarde écrite : {path}")
         print(f"Log mis à jour : {LOG_PATH}")
+        warn_stale_states()
 
 
 if __name__ == "__main__":

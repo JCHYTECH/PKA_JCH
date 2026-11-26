@@ -2,7 +2,7 @@
 
 > Périmètre et baseline de la veille technologique demandée par JC le 2026-11-14.
 > Suivi par : veille hebdo automatisée (Dobby 🦉). Source racine : transcript **Spécio** (studio Sim).
-> Dernière mise à jour : 2026-11-16
+> Dernière mise à jour : 2026-11-23
 
 ## Pourquoi
 Spécio a montré qu'une nouvelle génération d'outils IA cible l'identification d'espèces sur photo.
@@ -36,6 +36,8 @@ veille amont mais pas un « produit » pour JC. Dernier dérivé relevé : BioCL
 | SpeciesNet | ID vision (modèle, pièges photo) | Google Research | open source, ~2 500 catégories camera-trap — **s'en souvenir** (16/11) |
 | Perch v2 / SurfPerch | bioacoustique (modèle fondation) | Google DeepMind | open model (Kaggle), >10 k espèces oiseaux + mammifères/amphibiens — **s'en souvenir** (16/11) |
 | DeepFaune | ID vision (pièges photo) | CNRS (FR) | gratuit, local, 43 classes faune FR hexagonale — **s'en souvenir** (16/11) |
+| AddaxAI | ID vision (pièges photo) | Addax Data Science + Smart Parks (NL) | open source (MIT), gratuit, local, MegaDetector v5 + modèles régionaux (dont DeepFaune EU), DINOv2 — **s'en souvenir** (23/11) |
+| A2O Bioacoustics Search | bioacoustique (moteur similarité) | Development Seed + Google Research + A2O (AU) | plateforme chercheurs, embeddings Perch — **s'en souvenir** (23/11) |
 
 ## Requêtes de veille (à lancer chaque cycle)
 - FR : `nouveau logiciel identification espèces animaux photos IA` · `agent IA photographie animalière`

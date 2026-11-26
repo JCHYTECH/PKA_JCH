@@ -29,14 +29,15 @@ lang: fr
 | **NVIDIA** | API | Pay-per-use | N/A | N/A | ? | ✅ |
 | **Ghost** (wildlens.arteon.be) | Blog / newsletter | Self-host sur VPS Hostinger KVM 1 (1 an) | 86,97 €/an TTC (≈7,25 €/mois) | 15/11/2027 | https://www.hostinger.com/vps/ghost-hosting | ✅ VPS payé + Ghost installé 15/11 — reste DNS/SSL/Mailgun/migration |
 | **Adobe** (Lightroom/Photoshop) | Photo | Photography ? | ~10–12 $/mois | ? | https://account.adobe.com/plans | ✅ (à confirmer) |
-| **Microsoft 365** (jc.havaux@jchytech.be) | Mail pro | ? | ? | ? | https://admin.microsoft.com | ❌ non-admin — tenant géré par Orban 45 (CSP) |
+| **Microsoft 365** (jc.havaux@arteon.be — alias jc.havaux@jchytech.be) | Mail pro | ? | ? | ? | https://admin.microsoft.com | ❌ non-admin — tenant géré par Orban 45 (CSP). jchytech.be → arteon.be (arrêt jchytech.be fin 2027). Domaine arteon.be : Gandi (registrar/DNS), web Hostinger, mail M365/Exchange. |
 | **Canva** | Design / decks | Free ou Pro | 0 ou ~12 $/mois | ? | https://www.canva.com/settings/billing | 🔄 en test |
 | **Tailscale** | Réseau (van, M1, iPhone) | Free | 0 | N/A | https://login.tailscale.com/admin/settings/billing | ✅ |
 
 ## Gratuits / auto-hébergés (pas d'abonnement)
 
 - **Telegram bot** (Dobby) — gratuit.
-- **Gmail + Google Calendar** — gratuit.
+- **Gmail + Google Calendar** (`jc.havaux@gmail.com`) — gratuit · **boîte de consolidation** (arteon.be forward + Yahoo POP3, 24/11).
+- **Yahoo Mail** (`jc_havaux@yahoo.com`) — gratuit · **POP3 → Gmail** (import ShuttleCloud, 24/11) · 2FA + mot de passe renouvelés 24/11 · email jchytech.be retiré (forwarde vers arteon.be).
 - **Home Assistant / Zigbee2MQTT / Mosquitto / Plane** — auto-hébergés (local, `_local/`).
 - **Obsidian** — gratuit.
 

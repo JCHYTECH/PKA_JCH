@@ -1,42 +1,35 @@
 # LEGAL — Index (VETALYX)
 
-> Réorganisé le 2026-10-29, recadré le 2026-11-05 : cette carte présente les **versions actuelles de travail**.
-> Elle ne prouve ni signature, ni envoi, ni entrée en vigueur. Les notes/analyses sont dans `_travail/`, les anciennes versions dans `../_archive/legal/`.
+> Réorganisé le 2026-11-24 : documents courants classés par type (`statuts/`, `pacte/`, `contrat-cadre/`, `courriers/`).
+> Cette carte présente les **versions actuelles de travail** — elle ne prouve ni signature, ni envoi, ni entrée en vigueur. Les notes/analyses sont dans `_travail/`, les anciennes versions dans `../_archive/legal/`.
 
 ## Versions actuelles de travail
 
 | Document | Fichiers |
 |---|---|
-| **Statuts SRL VETALYX** | FR : [`statuts-srl-vetalyx-FR-v2.md`](statuts-srl-vetalyx-FR-v2.md) · `.docx` — EN : [`statuts-srl-vetalyx-EN-v2.md`](statuts-srl-vetalyx-EN-v2.md) · `.docx` |
-| **Pacte d'actionnaires** | FR : [`pacte-actionnaires-vetalyx-v2.md`](pacte-actionnaires-vetalyx-v2.md) · `.docx` — EN : [`pacte-actionnaires-vetalyx-EN-v2.md`](pacte-actionnaires-vetalyx-EN-v2.md) · `.docx` (traduite 08/11, envoyée aux partenaires chinois) |
-| **Convention bloc fondateurs** | [`convention-bloc-fondateurs-vetalyx-v2.md`](convention-bloc-fondateurs-vetalyx-v2.md) · `.docx` |
-| **Contrat-cadre DIAHO v4** | voir [`contrat-diaho/`](contrat-diaho/) (tableau ci-dessous) |
-| **Réponse DIAHO v4.1 (EN)** | [`2026-10-29_reponse-diaho-v4.1_EN.md`](2026-10-29_reponse-diaho-v4.1_EN.md) · `.docx` — préparée le 29/10, **envoi non documenté** |
-
-## 📁 contrat-diaho/ — cœur du dossier DIAHO
-
-| Élément | Fichier(s) |
-|---|---|
-| **Contrat-cadre v4 (EN)** | `FF-Contrat-Cadre_VETALYX_DIAHO_Dixun_2026-10-05_v4-EN.docx` ; `FF-Contrat-Cadre_VETALYX_DIAHO_Renard_2026-10-05_v4-EN.md` |
-| **Contrat-cadre v4 (FR + consolidé)** | `FF-Contrat-Cadre_VETALYX_DIAHO_Renard_2026-10-05_v4-FR.docx` ; `…v4-consolidee.md` |
-| **Version reçue 27/10 (v4 EN)** | `2026-10-28_083646_…_PJ_ff-contrat-cadre-…-2026-10-27-v4-en.docx` |
-| **Annexes 4/5/6/7/9/10 (draft EN)** | `VETALYX_DIAHO_Annexes_4_5_6_7_9_10_EN_DRAFT_2026-10-06.docx` |
-| **Version internationale PET** | `2026-10-28_pet-international-version.md` |
-| **Correspondance** | `2026-10-20_104638_…eml/.md` · `2026-10-28_083646_…eml/.md` |
+| **Statuts SRL VETALYX** | FR : [`statuts/statuts-srl-vetalyx-FR-v3.md`](statuts/statuts-srl-vetalyx-FR-v3.md) · [`.docx`](statuts/statuts-srl-vetalyx-FR-v3.docx) ← **courante** (2026-11-24, DIAHO observateur) — EN : [`statuts/statuts-srl-vetalyx-EN-v3.md`](statuts/statuts-srl-vetalyx-EN-v3.md) · [`.docx`](statuts/statuts-srl-vetalyx-EN-v3.docx) |
+| **Pacte d'actionnaires** | FR : [`pacte/pacte-actionnaires-vetalyx-v4.md`](pacte/pacte-actionnaires-vetalyx-v4.md) · [`.docx`](pacte/pacte-actionnaires-vetalyx-v4.docx) ← **courante** (2026-11-24, gouvernance finalisée) — EN : [`pacte/pacte-actionnaires-vetalyx-EN-v4.md`](pacte/pacte-actionnaires-vetalyx-EN-v4.md) · [`.docx`](pacte/pacte-actionnaires-vetalyx-EN-v4.docx) |
+| **Convention bloc fondateurs** | [`pacte/convention-bloc-fondateurs-vetalyx-v2.md`](pacte/convention-bloc-fondateurs-vetalyx-v2.md) · `.docx` |
+| **Contrat-cadre — réponse v4.1 (EN)** | [`contrat-cadre/2026-10-29_reponse-diaho-v4.1_EN.md`](contrat-cadre/2026-10-29_reponse-diaho-v4.1_EN.md) · [`.docx`](contrat-cadre/2026-10-29_reponse-diaho-v4.1_EN.docx) — préparée le 29/10, **envoyée le 02/11** ; réponse Li Yan reçue le 07/11 (`email_imports/`) |
+| **Mails aux Chinois (24/11)** | [`courriers/2026-11-24_email-vetalyx-documents-merged-EN.md`](courriers/2026-11-24_email-vetalyx-documents-merged-EN.md) — message unique (statuts + pacte + contrat-cadre) |
+| **Avenant observateur (EN, à avaliser)** | [`courriers/2026-11-24_dobby_observateur-addendum-EN-avalisable.md`](courriers/2026-11-24_dobby_observateur-addendum-EN-avalisable.md) · [`.docx`](courriers/2026-11-24_dobby_observateur-addendum-EN-avalisable.docx) |
 
 ## 🗂️ Références
 
 - [`2026-07-15_VETALYX_Bail-Type-Novalis-IDELUX.pdf`](2026-07-15_VETALYX_Bail-Type-Novalis-IDELUX.pdf) — bail type (référence)
-- [`contrats.md`](contrats.md) — notes contrats
+- [`contrat-cadre/contrats.md`](contrat-cadre/contrats.md) — notes contrats
 
-## 🧾 _travail/ — notes & analyses (secondaires, utiles)
+## 🧾 _travail/ — notes & analyses
 
 Briefs, notes ISC (adaptation statuts, explicative DIAHO), analyses Dobby, relectures/checklists Renard, brouillon de réponse v4, points restants. → voir [`_travail/`](_travail/).
 
-## 📦 Archives
+## 📦 Archives (par type)
 
-- Anciennes versions (pacte/statuts v1, packs OBS, contrats 2026-04/05/09) : `../_archive/legal/` (dont `contrat-diaho/`, `contrat-europeens/`, `Creation Vetalyx avec Chinois/`).
+- [`../_archive/legal/statuts/`](../_archive/legal/statuts/) — statuts v1/v2, templates SARL, VAL-Statuts
+- [`../_archive/legal/pacte/`](../_archive/legal/pacte/) — pacte v1/v2/v3, seing-privé, consolidation 2026
+- [`../_archive/legal/contrat-cadre/`](../_archive/legal/contrat-cadre/) — contrat-cadre v0→v4, emails, annexes, `_drafts/`
+- [`../_archive/legal/Creation Vetalyx avec Chinois/`](../_archive/legal/Creation Vetalyx avec Chinois/) · [`../_archive/legal/contrat-europeens/`](../_archive/legal/contrat-europeens/)
 
 ---
 
-*Rangement 2026-10-29 : versions courantes laissées à la racine ; 15 notes/analyses déplacées dans `_travail/`. Recadrage terminologique le 2026-11-05, sans affirmation de validité juridique ou d'envoi.*
+*Rangement 2026-11-24 : documents courants classés par type (`statuts/`, `pacte/`, `contrat-cadre/`, `courriers/`) ; versions antérieures dans `_archive/legal/<type>/`. Sans affirmation de validité juridique ou d'envoi.*

@@ -10,7 +10,8 @@
 
 Exemples (numérotation Ghost — renumérotée le 15/11) :
 - `2026-10-31-rouge-gorge-retouche.jpg` (édition #1 — publiée 18/11)
-- `2026-07-02-gannet.jpg` (édition #2 — programmée 05/12)
+- `2026-07-02-gannet.jpg` (édition #2 — original)
+- `2026-07-02-gannet-retouche.jpg` (édition #2 — améliorée, feature_image, programmée 05/12)
 - `2026-03-28-roxanne-overton.jpg` (édition #3 — programmée 28/11)
 - `2026-10-24-rouge-gorge.jpg` (ancienne #3 « Was this real? » — retirée de Ghost)
 

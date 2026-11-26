@@ -1,0 +1,189 @@
+#!/usr/bin/env python3
+# pka-amazon — recherche produit Amazon (Belgique/UE) → liens directs /dp/ASIN + prix.
+# V1 scraping. Usage personnel, faible volume. Sortie propre qui contourne le filtre Amazon.
+#
+# Exemples :
+#   pka-amazon "TL-PA7017P"
+#   pka-amazon "cable cat6 1m" --verify --max 6
+#   pka-amazon "powerline passthrough" --site com.be --json
+#   pka-amazon "usb-c ethernet" --site fr
+#
+# Options :
+#   --site com.be|fr|de|nl|com   (défaut: com.be)
+#   --max N                       nombre de résultats (défaut 8)
+#   --verify                      ouvre chaque /dp pour titre complet + prix + dispo
+#   --json                        sortie JSON
+#   --include-ads                 inclut les résultats sponsorisés (par défaut exclus)
+#   --lang "en-GB,en;q=0.9"       Accept-Language
+#
+# Limites : HTML Amazon peut changer (parser fragile), captcha/rate-limit possible.
+# Alternative propre à terme : API Amazon Partenaires (PA-API).
+# Le transport utilise `curl` (plus fiable qu'urllib face aux interstitiels Amazon).
+
+import argparse
+import html
+import json
+import re
+import subprocess
+import sys
+import time
+import urllib.parse
+
+SITES = {
+    "com.be": "www.amazon.com.be",
+    "be": "www.amazon.com.be",
+    "fr": "www.amazon.fr",
+    "de": "www.amazon.de",
+    "nl": "www.amazon.nl",
+    "com": "www.amazon.com",
+}
+UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+      "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15")
+
+
+def fetch(url, lang="en-GB,en;q=0.9"):
+    """Récupère une page via curl (robuste face aux interstitiels/consent Amazon)."""
+    cmd = ["curl", "-sL", "--compressed", "--max-time", "25",
+           "-A", UA,
+           "-H", f"Accept-Language: {lang}",
+           "-H", "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+           url]
+    try:
+        r = subprocess.run(cmd, capture_output=True, timeout=35)
+    except FileNotFoundError:
+        raise RuntimeError("curl introuvable sur ce système")
+    except subprocess.TimeoutExpired:
+        raise RuntimeError("curl timeout")
+    if r.returncode != 0:
+        raise RuntimeError(f"curl rc={r.returncode} : {r.stderr.decode('utf-8', 'ignore')[:120]}")
+    return r.stdout.decode("utf-8", "ignore")
+
+
+def is_blocked(h):
+    low = h.lower()
+    return ("captcha" in low or "robot check" in low
+            or "api-services-support" in low
+            or "enter the characters you see" in low)
+
+
+def parse_search(h, maxn, include_ads):
+    parts = re.split(r'data-component-type="s-search-result"', h)
+    seen = set()
+    out = []
+    for blk in parts[1:]:
+        am = re.search(r'data-asin="([A-Z0-9]{10})"', blk)
+        if not am:
+            continue
+        asin = am.group(1)
+        if asin in seen:
+            continue
+        title = None
+        for rx in (
+            r'<span[^>]*class="[^"]*a-size-(?:base-plus|medium|base|large)[^"]*a-color-base[^"]*"[^>]*>([^<]{6,320})</span>',
+            r'<h2[^>]*aria-label="([^"]{6,320})"',
+            r'aria-label="([^"]{10,320})"',
+        ):
+            m = re.search(rx, blk)
+            if m:
+                title = html.unescape(m.group(1)).strip()
+                break
+        sponsored = ("s-sponsored" in blk) or ("View Sponsored" in blk) \
+            or ("ponsored" in (title or ""))
+        if sponsored and not include_ads:
+            seen.add(asin)
+            continue
+        pm = re.search(r'class="a-offscreen">\s*(€\s?[\d.,]+)', blk)
+        price = html.unescape(pm.group(1)).strip() if pm else None
+        if not price:
+            pm2 = re.search(r'class="a-price-whole">\s*([\d.]+)', blk)
+            if pm2:
+                price = "€" + pm2.group(1)
+        if not title:
+            title = "(titre indisponible)"
+        seen.add(asin)
+        out.append({"asin": asin, "title": title, "price": price, "sponsored": sponsored})
+        if len(out) >= maxn:
+            break
+    return out
+
+
+def verify(domain, item, lang):
+    url = f"https://{domain}/dp/{item['asin']}"
+    try:
+        h = fetch(url, lang)
+    except Exception as e:  # noqa: BLE001
+        item["verify_error"] = str(e)[:80]
+        return
+    if is_blocked(h):
+        item["verify_error"] = "blocked"
+        return
+    m = re.search(r'id="productTitle"[^>]*>\s*([^<]{5,400}?)\s*<', h)
+    if m:
+        item["title_full"] = html.unescape(m.group(1)).strip()
+    pm = re.search(r'class="a-offscreen">\s*(€\s?[\d.,]+)', h)
+    if pm:
+        item["price_dp"] = html.unescape(pm.group(1)).strip()
+
+
+def main(argv=None):
+    ap = argparse.ArgumentParser(
+        prog="pka-amazon",
+        description="Recherche produit Amazon (BE/UE) → liens directs /dp/ASIN + prix.")
+    ap.add_argument("query", nargs="+", help="termes de recherche")
+    ap.add_argument("--site", default="com.be", help="com.be (défaut) | fr | de | nl | com")
+    ap.add_argument("--max", type=int, default=8, help="nb de résultats (défaut 8)")
+    ap.add_argument("--verify", action="store_true", help="ouvre chaque /dp (titre complet + prix)")
+    ap.add_argument("--json", action="store_true", help="sortie JSON")
+    ap.add_argument("--include-ads", action="store_true", help="inclure les sponsorisés")
+    ap.add_argument("--lang", default="en-GB,en;q=0.9", help="Accept-Language")
+    args = ap.parse_args(argv)
+
+    domain = SITES.get(args.site)
+    if not domain:
+        print(f"site inconnu : {args.site} (choix : {', '.join(SITES)})", file=sys.stderr)
+        return 2
+
+    q = " ".join(args.query)
+    surl = f"https://{domain}/s?k=" + urllib.parse.quote_plus(q)
+    try:
+        h = fetch(surl, args.lang)
+    except Exception as e:  # noqa: BLE001
+        print(f"Erreur réseau : {e}", file=sys.stderr)
+        return 1
+    if is_blocked(h):
+        print("⚠️  Amazon renvoie un captcha/blocage. Réessaie plus tard, baisse la fréquence.\n"
+              f"   Recherche manuelle : {surl}", file=sys.stderr)
+        return 3
+
+    items = parse_search(h, args.max, args.include_ads)
+    if not items:
+        print(f"Aucun résultat parsé ({len(h)} octets reçus). Recherche manuelle : {surl}",
+              file=sys.stderr)
+        return 4
+
+    if args.verify:
+        for it in items:
+            verify(domain, it, args.lang)
+            time.sleep(0.4)
+
+    if args.json:
+        out = [{**it, "link": f"https://{domain}/dp/{it['asin']}"} for it in items]
+        print(json.dumps(out, ensure_ascii=False, indent=2))
+        return 0
+
+    print(f"Amazon {args.site} — « {q} »  ({len(items)} résultats)\n")
+    for i, it in enumerate(items, 1):
+        t = it.get("title_full") or it["title"]
+        pr = it.get("price_dp") or it.get("price") or "prix n/a"
+        ad = "  [AD]" if it.get("sponsored") else ""
+        print(f"{i}. {t}{ad}")
+        print(f"   {pr}  →  https://{domain}/dp/{it['asin']}")
+        if it.get("verify_error"):
+            print(f"   (verify: {it['verify_error']})")
+        print()
+    print(f"Recherche brute : {surl}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

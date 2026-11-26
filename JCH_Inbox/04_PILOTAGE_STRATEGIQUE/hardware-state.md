@@ -3,7 +3,7 @@
 > **Règle :** Dobby lit ce fichier AVANT de faire une affirmation sur le matériel.
 > **Mise à jour :** immédiate après chaque info de JC (réception, commande, panne, prêt).
 > **Ne pas déduire, ne pas deviner.** Si pas dans ce fichier → demander à JC.
-> **Dernière mise à jour :** 2026-11-24 — Lupo boot bloqué (LED verte fixe, SD non lue) en pause ; home ✅ en ligne (Ethernet) ; EPSON IP .75 (MAC corrigé `d4:80:8b:a6:f1:c4`) ; Hammerspoon : curseur + déplacement fenêtre entre les 3 écrans.
+> **Dernière mise à jour :** 2026-11-25 — **M1 câblé via TL-SG605E** (en8 1000baseT, IP `192.168.129.78`, route par en8, auto-login `m1` activé) ; débit ~2,88 Mo/s (cap amont ligne/répéteur). Kexts HighPoint x86_64 retirés. Lupo ✅ booté (HA `:8123` sur `192.168.129.27`) ; home ✅ en ligne ; EPSON IP .75 (MAC `d4:80:8b:a6:f1:c4`) ; Hammerspoon actif.
 
 ---
 
@@ -29,7 +29,7 @@
 | Composant | Qté | Statut | Notes |
 |-----------|-----|--------|-------|
 | Lupo (Ford Transit Custom Westfalia Kelsey) | 1 | ✅ REÇU | 30 juillet 2026 — véhicule livré, installation IOT en cours (deadline **15/12**, prolongée par JC le 19/10) |
-| RPi 5 — hôte HAOS `lupo`, actuellement bureau Esneux | 1 hôte observé | ❌ BOOT BLOQUÉ (23/11) / ÉCART D'ACHAT | **8 Go mesurés**, modèle RPi 5 Rev 1.0, SD 256 Go, HAOS 18.3. **23/11 : allumé mais LED verte fixe = SD non lue, boot bloqué — en pause (réinsertion SD / reflash 18.3 à prévoir).** Achat historique documenté : RPi 5 4 Go, Amazon, 132,09€, 10 juin ; écart RAM à vérifier sur facture/boîte. Un seul RPi est compté : les rôles bureau et van ne sont pas simultanés tant qu'un autre hub fixe n'est pas retenu. |
+| RPi 5 — hôte HAOS `lupo`, actuellement bureau Esneux | 1 hôte observé | ✅ BOOTÉ / HA EN LIGNE (25/11) | **8 Go mesurés**, modèle RPi 5 Rev 1.0, SD 256 Go, HAOS 18.3. **25/11 : a booté — HA joignable `http://192.168.129.27:8123` (HTTP 200), Tailscale `100.106.152.118` online, raccordé au switch TL-SG605E.** Le blocage SD du 23/11 n'est plus d'actualité. Achat historique : RPi 5 4 Go, Amazon, 132,09€, 10 juin ; écart RAM à vérifier sur facture/boîte. |
 | Alim officielle RPi5 27W | 1 | ✅ REÇU | 15,32€ |
 | Refroidisseur actif RPi5 | 1 | ✅ REÇU | 9,99€ |
 | Geekworm X1205 UPS HAT | 1 | ✅ REÇU | AliExpress, 42,39€. Identification physique à revérifier : le wiki constructeur décrit deux accus **21700**, tandis que le stock ci-dessous mentionne des 18650. |
@@ -54,7 +54,7 @@
 | Teltonika RUT240 (routeur 4G/LTE) | 1 | ✅ EN STOCK | Passerelle internet van : SIM 4G → Ethernet → RPi 5. Alim 9-30V DC, Tailscale/WireGuard, RMS. Remplace le ZTE MF833U1 (dongle) pour le van. |
 | PCIe to M.2 NVMe Shield | 2 | ✅ REÇU | 29 juin, pour SSD NVMe RPi 5 vanlife |
 | SSD NVMe M.2 Fanxiang 256GB | 1 | ✅ REÇU | 1er juillet, pour RPi 5 vanlife |
-| Assemblage RPi 5 `lupo` | 1 hôte observé | ❌ BOOT BLOQUÉ (23/11) | RPi 5 **8 Go mesurés** + SD 256 Go + X1201-C1, actuellement au bureau. NVMe retiré (01/10), HAOS 18.3. **23/11 : LED verte fixe = SD non lue → boot bloqué, en pause (réinsertion SD puis reflash 18.3 si nécessaire).** Auto-update sélectif : Supervisor + modules ; HAOS/Core manuels. Un dongle USB présent ; Z2M arrêté après déconnexion USB. Identifier physiquement UPS/accus avant modification ; reste silentblocs, coating et intégration van. |
+| Assemblage RPi 5 `lupo` | 1 hôte observé | ✅ BOOTÉ (25/11) | RPi 5 **8 Go mesurés** + SD 256 Go + X1201-C1, au bureau. HAOS 18.3. **25/11 : booté — HA `:8123` sur `192.168.129.27`, Tailscale `100.106.152.118` online** (blocage SD du 23/11 levé). Auto-update sélectif : Supervisor + modules ; HAOS/Core manuels. Un dongle USB présent ; Z2M arrêté après déconnexion USB. Identifier physiquement UPS/accus avant modification ; reste silentblocs, coating et intégration van. |
 | Samsung PRO Endurance 256GB microSD | 1 | ✅ REÇU | 17 juillet, Amazon. Remplace SD 128 Go actuelle pour HA OS 24/7. |
 | Noctua NF-A4x10 PWM | 1 | ✅ REÇU | 19 juillet. Ventilateur 40×10mm silencieux pour RPi Lupo. |
 | Reolink Argus MagiCam | 1 | ✅ REÇU | 17 juillet. Dashcam/sécurité Lupo, fixation aimantée. Voir `07_TRAVELS/Lupo/van technique/securite/camera-reolink-argus-magicam-lupo.md`. |
@@ -73,7 +73,7 @@
 
 | Composant | Qté | Statut | Notes |
 |-----------|-----|--------|-------|
-| RPi 5 4 Go (hôte HAOS `homeassistant`) | 1 | 🟢 OPÉRATIONNEL | HAOS 18.5, Core 2026.11.0, HA sur **port 80**. Ethernet DHCP `192.168.129.57` (/23). SSH debug 22222. |
+| RPi 5 4 Go (hôte HAOS `homeassistant`) | 1 | 🟢 OPÉRATIONNEL | HAOS 18.5, Core 2026.11.0, HA sur **port 80**. Ethernet via switch **TL-SG605E** → DHCP `192.168.129.57` (/23), confirmé 25/11 (HA :80 + mDNS `homeassistant.local` OK). SSH debug 22222. |
 | SD 64 Go | 1 | ✅ | Re-flashée 07/11 |
 | Ventilateur actif | 1 | ✅ | Obligatoire — surchauffe sinon |
 | Sonoff ZBDongle-E (Zigbee) | 1 | ✅ DÉTECTÉ | `/dev/ttyUSB0`, canal 15. 1 device joint (`serre_temp_hum`). `vanne_serre` + `LuxSerre` à ré-appairer. |
@@ -97,6 +97,8 @@
 |-----------|-----|--------|-------|
 | UGREEN USB-C → Micro USB ×2 | 2 | ✅ REÇU | 10 juin |
 | UGREEN USB-C Ethernet Gigabit | 1 | ✅ REÇU | 10 juin |
+| **TP-Link TL-SG605E** (switch Gigabit 5 ports, Easy Smart) | 1 | ✅ INSTALLÉ / OPÉRATIONNEL | Installé 25/11 derrière le répéteur **RE450** du bureau. **M1 câblé** : `en8` = 1000baseT full-duplex, IP **192.168.129.78**, route par défaut via en8. Débit ~2,88 Mo/s (plafond en amont ~22–26 Mbit/s, ligne/répéteur → le switch apporte stabilité, pas vitesse). Auto-login `m1` activé (indispensable : sur Mac headless, le verrou d'accessoire USB bloque le dongle sans session). RPi Home ✅ raccordé (`192.168.129.57`, HA `:80`) ; RPi Lupo ✅ raccordé (`192.168.129.27`, HA `:8123`). |
+| **CPL — bureau (révision 25/11)** | 1 adaptateur pass-through | 📋 EN COURS D'ANALYSE | **Topologie réelle** : B-box —Eth→ CPL Base (prise murale) ⇒ secteur ⇒ **CPL bureau sur MULTIPRISE (mur)** → **RE450** → TL-SG605E. ⚠️ Instabilité probable = **CPL sur multiprise** (pas le Wi-Fi). Kit = **TP-Link TL-WPA8631P (AV2 Gigabit)**. **Recommandation** : (1) CPL bureau sur **prise murale via adaptateur pass-through** (modèle retenu : **TP-Link TL-PA7017P**, upgrade PA9020P ; multiprise derrière) ; (2) garder le **RE450 en mode AP** (uplink Ethernet CPL) → backhaul filaire + Wi-Fi AC1750 (meilleur qu'un CPL+WiFi 2,4 GHz). **Pas besoin** d'un CPL-répéteur, sauf boîtier unique / Wi-Fi bi-bande (→ Devolo G.hn = nouvelle paire incompatible AV2). Clé CPL commune. À confirmer : mode actuel du RE450 (AP vs répéteur Wi-Fi). |
 | ZTE MF833U1 LTE USB Modem | 1 | ✅ REÇU | Dongle 4G USB pour internet van — voir briefs vanlife-iot. |
 | WiCAN Pro (OBD/CAN Ford) | 1 | ✅ REÇU / INSTALLÉ PHYSIQUEMENT | 1er août 2026, ~82€, Mouser. MS-CAN + HS-CAN. Intégration HA/RUT240 et compatibilité Exosfer à valider ; 17+ entités visées, remontée non confirmée. Voir `JCH_Inbox/03_PROJECTS/11_IOT/iot-van/specs/SPEC-CAN-BUS.md` |
 | Exosfer OBD Protect | 1 | ✅ REÇU | Antivol électronique prise OBD. ⚠️ Compatibilité WiCAN Pro à vérifier. |

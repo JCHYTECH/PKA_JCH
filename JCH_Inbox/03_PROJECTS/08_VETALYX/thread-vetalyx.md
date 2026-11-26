@@ -1,8 +1,8 @@
 # Thread — VETALYX
 
 > Living document — mis à jour automatiquement par Dobby 🦉 en fin de session.
-> **Dernière mise à jour** : 2026-11-16 — réponse « observateur vs administrateur » (Renard v2) envoyée à Li Yan via Outlook par JC, en anglais seul, sans validation notaire
-> **Statut** : 🔶 actif (juridique) — capital 10 000 € (4 000 libéré), DIAHO 40 % en espèces
+> **Dernière mise à jour** : 2026-11-24 — statuts v3 + pacte v4 finalisés (DIAHO observateur, capital 4 000 €), traductions EN produites, mail unique aux Chinois préparé, `legal/` réorganisé par type
+> **Statut** : 🔶 actif (juridique) — capital 4 000 € intégralement libéré, DIAHO 40 % (observateur au conseil)
 
 ---
 
@@ -17,8 +17,9 @@ Plateforme de diagnostics vétérinaires rapides — marché européen. **Struct
 | Axe | Statut | Détail |
 |-----|--------|--------|
 | Global | 🔶 | Actif — phase juridique ; la mise en veille de juin est un événement historique, pas l'état courant |
-| Capital | 🟡 | **Pacte v2 (05/10) + arbitrages 28/10** : R5 confirmé (40 % = 40 % voix + 1 siège/3) ; L1/L2/L4 verrouillées (pas de véto sur entrée investisseur, anti-dilution pro-rata, bloc fondateurs majorité) ; Art 25 aligné ; réciprocité checkée (4 asym. fondateurs / 2 DIAHO). Reste : mécanique 6 000 € + notaire. |
-| Contrat-cadre | 🟡 | **v4 chinoise reçue (27/10)** ; **réponse v4.1 EN préparée (29/10)** : Genève/ICC, droit belge avec droit chinois limité aux transactions liées, garantie Dixun + back-to-back, objet social conditionnel. Envoi non documenté ; relecture Renard + traduction Jade à finaliser. |
+| Statuts & Pacte | 🟢 | **Finalisés 24/11** : statuts v3 (DIAHO observateur, Art. 14 + 33) + pacte v4 (gouvernance : 51 %, véto endettement, drag-along 75 %, shotgun 12 mois) ; traductions EN produites ; mail unique aux Chinois préparé. Reste : relecture Renard + validation notaire. |
+| Capital | 🟢 | **Simplifié 24/11 : 4 000 € intégralement libérés** (abandon de la structure 10 000 € souscrit / 6 000 € à libérer). R5 confirmé (40 % = 40 % voix, DIAHO → observateur) ; L1/L2/L4 verrouillées (pas de véto sur entrée investisseur, anti-dilution pro-rata, bloc fondateurs majorité). Reste : validation notaire. |
+| Contrat-cadre | 🟡 | **v4 chinoise reçue (27/10)** ; **réponse v4.1 EN envoyée le 02/11** ; **réponse Li Yan reçue le 07/11** (conteste garantie Dixun + call proposé). Tranché : Genève/ICC, droit belge + chinois limité, objet social conditionnel, 40 % voix. **Seul point ouvert : R3 (garantie Dixun)** — v5 à rédiger après le call. Traduction CN abandonnée côté VETALYX (DIAHO la fera). |
 | Business Plan | 🟡 | **V3 recalé (06/10)** — chiffres 2026-2030 alignés sur le modèle Excel, DIAHO 40 % dès la constitution, Belgique/AFMPS-FAMHP, mission 120 K€, localisation en option ; Excel nettoyé (capital 10 K€/4 K€ ajouté + 2 008 #REF! → 0). Reste : export PDF/statique pour tiers. |
 | Mission stratégique | ✅ | Article 6 v3 — 100 K€ + 20 K€ (validations cliniques + sérothèque) |
 | Checklist DIAHO | ✅ | 22 éléments (2 tableaux FR/ZH), revue ZH « Jade à confirmer » |
@@ -52,22 +53,33 @@ Plateforme de diagnostics vétérinaires rapides — marché européen. **Struct
 | 2026-10-28 | **Lignes anti-blocage verrouillées (L1/L2/L4)** | Pas de véto DIAHO sur entrée investisseur/capital ; anti-dilution pro-rata uniquement ; bloc fondateurs à la majorité |
 | 2026-10-28 | **Réciprocité pacte** | Art. 21 laissé asymétrique (option B) ; Art. 25 aligné (même droit d'info) ; 6 asymétries assumées (4 fondateurs / 2 DIAHO) |
 | 2026-10-28 | **Brouillon réponse DIAHO** | Genève/ICC, « commercially untenable », disclaimer sans préjudice, garantie + back-to-back (and) — à relire Renard puis traduction Jade |
+| 2026-11-24 | **Capital simplifié** | 4 000 € intégralement libérés à la constitution (abandon des 6 000 € non libérés) |
+| 2026-11-24 | **DIAHO observateur confirmé** | Peiwen QI fondatrice seule (15 %) ; observatrice = Xu Wenjun (Céline) ; 2 administrateurs (Bosseloir + Havaux) |
+| 2026-11-24 | **Gouvernance finalisée (pacte v4)** | décisions à 51 % (objet social, siège, branche, filiales) ; véto DIAHO limité à l'endettement > 175 000 € ; drag-along 75 % ; shotgun 12 mois/10 % ; augmentation de capital 51 % (convention de vote) |
+| 2026-11-24 | **Exercice fiscal** | 1er juillet → 30 juin ; premier exercice 8 jan 2027 → 30 juin 2027 |
+| 2026-11-24 | **Traduction CN abandonnée** | les Chinois traduiront à partir de nos documents FR/EN (décision JC) |
+| 2026-11-24 | **Traductions EN + mail** | statuts EN v3 + pacte EN v4 produits ; mail unique aux Chinois (statuts + pacte + contrat-cadre) préparé — envoi via Outlook par JC |
 
 ---
 
 ## TTD — Pending
 
-- [ ] **P0 · échéance initiale 28/10 dépassée · (JC/Renard/Jade)** Finaliser relecture et traduction de la réponse v4.1 EN préparée le 29/10, puis décider son envoi
-- [ ] **P0 · — · (Notaire)** Mécanique libération 6 000 € (pro-rata ? dilution si non-libération ?) — le nœud du 40 %
-- [ ] **P1 · — · (JC)** Nommer les 2 administrateurs fondateurs (Art. 33)
-- [ ] **P1 · — · (Notaire)** Validation notaire (mécanique 6 000 €, ISC, exercice fiscal)
-- [ ] **P1 · — · (Renard)** Verrouiller anti-dilution pro-rata + pas de véto DIAHO sur entrée investisseur (Art. 5 pacte)
-- [ ] **P1 · — · (JC)** Seuil drag-along (75 % recommandé)
-- [x] **P1 · — · (Renard)** Vérifier double qualité Peiwen QI (fondatrice 15 % + administratrice DIAHO) — résolu 16/11 : DIAHO → observateur (pas administrateur), cumul Peiwen évité
-- [ ] **P1 · — · (Jade)** Re-traduction EN des clauses ajoutées
+- [ ] **P0 · — · (JC)** Envoyer le mail unique aux Chinois via Outlook — `legal/courriers/2026-11-24_email-vetalyx-documents-merged-EN.md` (statuts v3 + pacte v4 + statut contrat-cadre)
+- [ ] **P1 · — · (Renard)** Relecture indépendante des statuts v3 + pacte v4 (traductions EN incluses) avant signature
+- [ ] **P1 · — · (Notaire)** Validation notaire (ISC, exercice fiscal 8 jan 2027 → 30 juin 2027, plafond « 2 administrateurs » Art. 15)
+- [ ] **P1 · — · (JC)** R3 garantie Dixun — trancher puis rédiger la v5 du contrat-cadre (à partir du rapport AB), suite au call Li Yan
 - [ ] **P2 · — · (Clio)** Trancher qualification AFMPS/FAMHP (DM vétérinaire vs médicament)
 - [ ] **P2 · — · (Dobby)** Export BP statique (PDF) pour tiers
 - [ ] **P2 · — · (veille)** 7 briefs actifs en mode exploration (voir tableau ci-dessous)
+
+## TTD — Done (session 2026-11-24)
+
+- [x] 2026-11-24 · Capital simplifié 4 000 € intégralement libérés (abandon des 6 000 € non libérés)
+- [x] 2026-11-24 · DIAHO observateur confirmé — Peiwen QI fondatrice seule (15 %), observatrice Xu Wenjun (Céline), 2 administrateurs (Bosseloir + Havaux)
+- [x] 2026-11-24 · Gouvernance pacte v4 finalisée — 51 % (objet social/siège/branche/filiales), véto DIAHO limité à l'endettement > 175 000 €, drag-along 75 %, shotgun 12 mois/10 %, augmentation capital 51 %
+- [x] 2026-11-24 · Exercice fiscal — 1er juillet → 30 juin ; premier exercice 8 jan 2027 → 30 juin 2027
+- [x] 2026-11-24 · Statuts EN v3 + pacte EN v4 produits ; mail unique aux Chinois préparé ; PPTX pathway traduit EN + PDF ; `legal/` réorganisé par type
+- [x] 2026-11-24 · Traduction CN abandonnée (décision JC — les Chinois traduiront à partir de nos documents)
 
 ## TTD — Done (session 2026-11-07)
 
@@ -102,15 +114,16 @@ Plateforme de diagnostics vétérinaires rapides — marché européen. **Struct
 
 | Date | Résumé session | Livrable |
 |------|---------------|----------|
+| 2026-11-24 | Statuts v3 + pacte v4 finalisés (DIAHO observateur, capital 4 000 €) ; traductions EN v3/v4 ; mail unique aux Chinois ; PPTX pathway traduit EN + PDF ; `legal/` réorganisé par type | `legal/statuts/`, `legal/pacte/`, `legal/contrat-cadre/`, `legal/courriers/2026-11-24_email-vetalyx-documents-merged-EN.md` |
 | 2026-11-16 | Réponse « observateur vs administrateur » (Renard v2) envoyée à Li Yan via Outlook — EN seul, sans validation notaire | `legal/2026-11-16_renard_observateur-vs-administrateur-v2.md` |
 | 2026-11-12 | Analyse stick (dosage à la longueur) + appétence ; doc pédagogique non technique | `strategy/2026-11-12_dobby_stick-dosage-appetence-vetalyx.md` |
 | 2026-11-07 | Analyse multifonctions oméga-3 peau/pelage ; corrections dose, preuves, TVA et économie ; pas de lancement décidé | `strategy/2026-11-07_VETALYX_rapport-strategique-omega3-peau-poil.md` |
 | 2026-11-05 | Revue documentaire uniquement ; aucune action juridique, traduction ou preuve d'envoi nouvelle | `thread-vetalyx.md`, `INDEX.md` |
 | 2026-06-19 | Rapport Vasco livré, pacte fondateurs | — |
 | 2026-07-07 | Analyse note cadrage Alain Depinois (AWDN) — 4 scénarios MVP | `strategy/2026-07-07_dobby_analyse-note-cadrage-vetalyx-depinois.md` |
-| 2026-08-10 | Analyse entrée capital DIAHO (Jade v2) + revue Renard | `2026-08-10_jade_traduction-analyse-entree-diaho-vetalyx-FR-ZH V1.md` |
-| 2026-08-18 | Fusion contrat-cadre v3 + checklist DIAHO + Quality Agreement (brouillon) | `FF-Contrat-Cadre_..._v3-mission-preparation-strategique.md`, `2026-08-18_dobby_checklist-documents-diaho-entree-capital-FR-ZH.md` |
-| 2026-10-29 | Réponse DIAHO v4.1 EN préparée ; aucune preuve d'envoi consignée | `legal/2026-10-29_reponse-diaho-v4.1_EN.md` |
+| 2026-08-10 | Analyse entrée capital DIAHO (Jade v2) + revue Renard | `_archive/legal/contrat-cadre/2026-08-10_jade_traduction-analyse-entree-diaho-vetalyx-FR-ZH V1.md` |
+| 2026-08-18 | Fusion contrat-cadre v3 + checklist DIAHO + Quality Agreement (brouillon) | `_archive/legal/contrat-cadre/FF-Contrat-Cadre_..._v3-mission-preparation-strategique.md`, `_archive/legal/contrat-cadre/2026-08-18_dobby_checklist-documents-diaho-entree-capital-FR-ZH.md` |
+| 2026-10-29 | Réponse DIAHO v4.1 EN préparée (envoyée le 02/11) ; réponse Li Yan reçue le 07/11 (contestation garantie Dixun) | `legal/contrat-cadre/2026-10-29_reponse-diaho-v4.1_EN.md` · `legal/email_imports/2026-11-07_204727_...` |
 | 2026-10-28 | Réponse DIAHO v4 analysée ; R1–R5 arbitrées ; brouillon réponse ; pacte vérifié | `legal/_travail/` — analyses Renard/Dobby et brouillon de réponse |
 
 ---
@@ -118,19 +131,18 @@ Plateforme de diagnostics vétérinaires rapides — marché européen. **Struct
 ## Liens
 
 - Dossier : `03_PROJECTS/08_VETALYX/`
-- **Pacte d'actionnaires v2** : `legal/pacte-actionnaires-vetalyx-v2.md`
-- **Convention de bloc v2** : `legal/convention-bloc-fondateurs-vetalyx-v2.md`
-- **Statuts SRL FR v2** : `legal/statuts-srl-vetalyx-FR-v2.md`
-- **Statuts SRL EN v2** : `legal/statuts-srl-vetalyx-EN-v2.md`
+- **Statuts SRL v3 (courants)** : `legal/statuts/statuts-srl-vetalyx-FR-v3.md` + `.docx` · EN : `legal/statuts/statuts-srl-vetalyx-EN-v3.md` + `.docx`
+- **Pacte d'actionnaires v4 (courant)** : `legal/pacte/pacte-actionnaires-vetalyx-v4.md` + `.docx` · EN : `legal/pacte/pacte-actionnaires-vetalyx-EN-v4.md` + `.docx`
+- **Convention de bloc fondateurs v2** : `legal/pacte/convention-bloc-fondateurs-vetalyx-v2.md` + `.docx`
+- **Contrat-cadre — réponse v4.1 (courante)** : `legal/contrat-cadre/2026-10-29_reponse-diaho-v4.1_EN.md` + `.docx`
+- **Mails aux Chinois (24/11)** : `legal/courriers/2026-11-24_email-vetalyx-documents-merged-EN.md` (+ avenant observateur EN dans `legal/courriers/`)
 - **Note ISC adaptation statuts** : `legal/_travail/2026-10-05_note-ISC-adaptation-statuts.md` (+ `legal/_travail/2026-10-05_note-ISC-adaptation-statuts-EN.md`)
 - **Points restants** : `legal/_travail/note-points-restants.md`
 - **Note explicative ISC (DIAHO)** : `legal/_travail/2026-10-05_note-explicative-ISC-DIAHO-FR.md`
 - **Brief Renard v2** : `00_LIVRABLES/2026-10-05_brief-revision-pacte-statuts-renard-v2_dobby.md`
-- **Contrat-cadre v4 (FR consolidée)** : `legal/contrat-diaho/FF-Contrat-Cadre_VETALYX_DIAHO_Renard_2026-10-05_v4-consolidee.md`
-- **Contrat-cadre v4 EN (officielle)** : `legal/contrat-diaho/FF-Contrat-Cadre_VETALYX_DIAHO_Renard_2026-10-05_v4-EN.md`
 - **Business plan V3** : `business-plan/Vetalyx_Executive_summary_V3.docx` (+ `_V3.md`, `Vetalyx BP.xlsx`)
 - **Stick oméga-3 (explication simple)** : `strategy/2026-11-12_dobby_stick-dosage-appetence-vetalyx.md`
-- **Archives (antécédents)** : `_archive/legal/`
+- **Archives (antécédents, par type)** : `_archive/legal/statuts/` · `_archive/legal/pacte/` · `_archive/legal/contrat-cadre/`
 
 ---
 

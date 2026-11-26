@@ -194,6 +194,7 @@ Autonomie (jours) = Capacité_batterie (mAh) / (Charge_événement × Événemen
 | Date | Test | Firmware | Charge/evt | Durée active | Deep sleep | Autonomie 3evt/h | Résultat |
 |------|------|----------|------------|-------------|-----------|-----------------|----------|
 | 2026-06-16 | Phase E — sim event | wn_sim_event | 0.117 mAh | 11.6 s | 1049 µA | 243 j (DevKit) / ~940 j (PCB custom estimé) | ✅ GO |
+| 2026-11-24 | Phase E — sim event (re-validé M5, CLI ppk2-api) | wn_sim_event | 0.184 mAh | 17.1 s | 1062 µA (réf SOP-03) | 207 j (DevKit) | ✅ GO — ⚠️ auto-ranging PPK2 en CLI : deep sleep non re-mesuré (réf SOP-03 1062 µA) |
 
 ---
 

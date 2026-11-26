@@ -1,0 +1,136 @@
+#!/usr/bin/env python3
+"""pka-vision — Analyse d'image locale (vision Ollama M1, fallback OCR tesseract).
+
+Usage:
+  pka-vision IMG_5624.jpeg              # vision (qwen2.5vl) → fallback OCR
+  pka-vision --ocr IMG_5624.jpeg        # forcer OCR tesseract
+  pka-vision --model qwen2.5vl:7b IMG_5624.jpeg
+  pka-vision --prompt "décris..." IMG_5624.jpeg
+  pka-vision dossier_images/            # toutes les images d'un dossier
+  pka-vision --out tmp/out dossier/     # écrire les résultats dans des fichiers
+
+Serveur Ollama M1 : http://127.0.0.1:11435 (tunnel SSH, cf. scripts/mcp_ollama_server.py).
+Vision model par défaut : qwen2.5vl:7b (architecture qwen2-vl, compatible Ollama 0.40.x).
+⚠️ llama3.2-vision:11b est CASSÉ (mllama non supporté par Ollama 0.40.16) — exclu d'office.
+"""
+
+import argparse
+import base64
+import json
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
+from urllib import request, error
+
+OLLAMA = "http://127.0.0.1:11435"
+DEFAULT_MODEL = "qwen2.5vl:7b"
+# Modèles vision compatibles, testés dans l'ordre si le préféré est absent.
+VISION_MODELS = ["qwen2.5vl:7b", "llava:13b", "llava:7b", "minicpm-v:8b"]
+
+IMAGE_EXTS = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp", ".heic"}
+
+DEFAULT_PROMPT = "Décris cette image en détail, puis transcris tout le texte visible mot pour mot."
+
+
+def list_models() -> list[str]:
+    try:
+        with request.urlopen(f"{OLLAMA}/api/tags", timeout=8) as r:
+            return [m["name"] for m in json.loads(r.read()).get("models", [])]
+    except Exception:
+        return []
+
+
+def vision_analyze(model: str, path: Path, prompt: str) -> str:
+    b64 = base64.b64encode(path.read_bytes()).decode()
+    payload = json.dumps({
+        "model": model,
+        "prompt": prompt,
+        "images": [b64],
+        "stream": False,
+    }).encode()
+    req = request.Request(
+        f"{OLLAMA}/api/generate", data=payload,
+        headers={"Content-Type": "application/json"},
+    )
+    with request.urlopen(req, timeout=600) as r:
+        return json.loads(r.read()).get("response", "").strip()
+
+
+def ocr_analyze(path: Path, lang: str) -> str:
+    tmpdir = tempfile.mkdtemp()
+    base = str(Path(tmpdir) / "ocr")  # outputbase SANS extension (tesseract ajoute .txt)
+    try:
+        subprocess.run(["tesseract", str(path), base, "-l", lang],
+                       capture_output=True, timeout=120)
+    except Exception:
+        pass
+    txt = Path(base + ".txt")
+    if txt.exists():
+        return txt.read_text(encoding="utf-8", errors="ignore").strip()
+    return ""
+
+
+def pick_vision_model(preferred: str | None, available: list[str]) -> str | None:
+    if preferred and preferred in available:
+        return preferred
+    for m in VISION_MODELS:
+        if m in available:
+            return m
+    return None
+
+
+def analyze(path: Path, model: str | None, prompt: str, lang: str, force_ocr: bool) -> tuple[str, str]:
+    if force_ocr:
+        return ocr_analyze(path, lang), "ocr"
+    available = list_models()
+    m = model or pick_vision_model(DEFAULT_MODEL, available)
+    if m:
+        try:
+            return vision_analyze(m, path, prompt), f"vision:{m}"
+        except error.HTTPError as e:
+            print(f"  [warn] vision {m} → HTTP {e.code}, fallback OCR", file=sys.stderr)
+        except Exception as e:
+            print(f"  [warn] vision {m} indisponible ({e}), fallback OCR", file=sys.stderr)
+    else:
+        print("  [info] aucun modèle vision dispo → OCR", file=sys.stderr)
+    return ocr_analyze(path, lang), "ocr"
+
+
+def main():
+    ap = argparse.ArgumentParser(description="Analyse d'image locale (vision M1 → OCR)")
+    ap.add_argument("paths", nargs="+", help="fichiers image ou dossiers")
+    ap.add_argument("--model", default=None, help=f"vision model (défaut: {DEFAULT_MODEL})")
+    ap.add_argument("--prompt", default=DEFAULT_PROMPT, help="prompt pour le vision model")
+    ap.add_argument("--lang", default="eng", help="langue OCR tesseract (défaut: eng)")
+    ap.add_argument("--ocr", action="store_true", help="forcer OCR tesseract")
+    ap.add_argument("--out", default=None, help="dossier de sortie (écrit un .txt par image)")
+    args = ap.parse_args()
+
+    images: list[Path] = []
+    for p in args.paths:
+        p = Path(p)
+        if p.is_dir():
+            images.extend(sorted(f for f in p.iterdir() if f.suffix.lower() in IMAGE_EXTS))
+        elif p.exists() and p.suffix.lower() in IMAGE_EXTS:
+            images.append(p)
+        else:
+            print(f"  [error] chemin invalide ou fichier introuvable : {p}", file=sys.stderr)
+
+    if not images:
+        print("Aucune image trouvée.", file=sys.stderr)
+        sys.exit(1)
+
+    for i, img in enumerate(images, 1):
+        text, mode = analyze(img, args.model, args.prompt, args.lang, args.ocr)
+        print(f"═══════ [{i}/{len(images)}] {img.name} ({mode}) ═══════")
+        print(text)
+        print()
+        if args.out:
+            outdir = Path(args.out)
+            outdir.mkdir(parents=True, exist_ok=True)
+            (outdir / f"{img.stem}.txt").write_text(text, encoding="utf-8")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,8 +1,9 @@
 # BOM-VANLIFE — Bill of Materials IoT Vanlife Lupo 🐺
 
-> **Date :** 2026-07-09 | **Rédacteur :** [[Dobby]] 🦉  
-> **Deadline projet :** 7 août 2026 (arrivée Lupo)  
+> **Date :** 2026-11-26 (revalidation) | **Rédacteur :** [[Dobby]] 🦉  
+> **Deadline projet :** 15 décembre 2026 (installation IOT)  
 > **Fichier maître.** Toute modif de BOM passe par ici.  
+> ⚠️ **Revalidation 26/11** : prix §3.1 historiques — 10 articles P1 (~121 €) à revalider ; aucun total final tant que les prix réels ne sont pas obtenus. X1205/accus + boîtier + DC-DC PD 5 A à identifier physiquement avant achat.
 > **Sources :** `hardware-state.md`, `../_shared/panier-amazon-van-serre.html`, `ds300-tap/SPEC-DS300-TAP.md`, `specs/SPEC-CAN-BUS.md`, `../_shared/convergence-van-serre-capteurs.md`
 
 ---

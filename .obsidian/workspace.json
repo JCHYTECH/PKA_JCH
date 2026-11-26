@@ -4,168 +4,55 @@
     "type": "split",
     "children": [
       {
-        "id": "12565a516320f8e5",
-        "type": "split",
+        "id": "87440e0d99a70317",
+        "type": "tabs",
         "children": [
           {
-            "id": "52c9118a4a36e861",
-            "type": "tabs",
-            "dimension": 21.07481559536354,
-            "children": [
-              {
-                "id": "fcaf5d12211d20ad",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/essai/article-le-miroir-a-refuser-ado.md",
-                    "mode": "source",
-                    "source": false
+            "id": "909a68137b990afb",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "terminal:terminal",
+              "state": {
+                "terminal:terminal": {
+                  "cwd": "/Users/jchavauxm5/PKA_JCH",
+                  "focus": false,
+                  "profile": {
+                    "args": [
+                      "--login"
+                    ],
+                    "environment": [],
+                    "executable": "/bin/zsh",
+                    "followTheme": true,
+                    "name": "",
+                    "platforms": {
+                      "darwin": true
+                    },
+                    "pythonExecutable": "python3",
+                    "restoreHistory": false,
+                    "rightClickAction": "copyPaste",
+                    "successExitCodes": [
+                      "0",
+                      "SIGINT",
+                      "SIGTERM"
+                    ],
+                    "terminalOptions": {
+                      "documentOverride": null
+                    },
+                    "type": "integrated",
+                    "win32Backend": "conpty"
                   },
-                  "icon": "lucide-file",
-                  "title": "article-le-miroir-a-refuser-ado"
+                  "profileSourceId": "darwinIntegratedDefault",
+                  "serial": null,
+                  "userTitle": ""
                 }
-              }
-            ]
-          },
-          {
-            "id": "7f7b08fe793e7dc7",
-            "type": "split",
-            "dimension": 78.92518440463645,
-            "children": [
-              {
-                "id": "ce93d7825b05d389",
-                "type": "tabs",
-                "children": [
-                  {
-                    "id": "af501cf7b819954d",
-                    "type": "leaf",
-                    "pinned": true,
-                    "state": {
-                      "type": "terminal:terminal",
-                      "state": {
-                        "terminal:terminal": {
-                          "cwd": "/Users/jchavauxm5/PKA_JCH",
-                          "focus": false,
-                          "profile": {
-                            "args": [
-                              "--login"
-                            ],
-                            "environment": [],
-                            "executable": "/bin/zsh",
-                            "followTheme": true,
-                            "name": "",
-                            "platforms": {
-                              "darwin": true
-                            },
-                            "pythonExecutable": "python3",
-                            "restoreHistory": false,
-                            "rightClickAction": "copyPaste",
-                            "successExitCodes": [
-                              "0",
-                              "SIGINT",
-                              "SIGTERM"
-                            ],
-                            "terminalOptions": {
-                              "documentOverride": null
-                            },
-                            "type": "integrated",
-                            "win32Backend": "conpty"
-                          },
-                          "profileSourceId": "darwinIntegratedDefault",
-                          "serial": null,
-                          "userTitle": ""
-                        }
-                      },
-                      "pinned": true,
-                      "icon": "terminal:tab-bezel",
-                      "title": "zsh"
-                    }
-                  },
-                  {
-                    "id": "5b3d1824447a6092",
-                    "type": "leaf",
-                    "state": {
-                      "type": "webviewer",
-                      "state": {
-                        "url": "https://wildlens.arteon.be/wildlens-edition-1/",
-                        "title": "WildLens — Edition #1",
-                        "mode": "webview"
-                      },
-                      "icon": "globe-2",
-                      "title": "WildLens — Edition #1"
-                    }
-                  },
-                  {
-                    "id": "363dcb05411a7bb3",
-                    "type": "leaf",
-                    "state": {
-                      "type": "webviewer",
-                      "state": {
-                        "url": "https://wildlens.arteon.be/ghost/#/settings",
-                        "title": "Ghost Admin - WildLens",
-                        "mode": "webview"
-                      },
-                      "icon": "globe-2",
-                      "title": "Ghost Admin - WildLens"
-                    }
-                  }
-                ]
               },
-              {
-                "id": "42cd8c740ec97601",
-                "type": "tabs",
-                "children": [
-                  {
-                    "id": "8c15203167831f12",
-                    "type": "leaf",
-                    "state": {
-                      "type": "terminal:terminal",
-                      "state": {
-                        "terminal:terminal": {
-                          "cwd": "/Users/jchavauxm5/PKA_JCH",
-                          "focus": false,
-                          "profile": {
-                            "args": [
-                              "--login"
-                            ],
-                            "environment": [],
-                            "executable": "/bin/zsh",
-                            "followTheme": true,
-                            "name": "",
-                            "platforms": {
-                              "darwin": true
-                            },
-                            "pythonExecutable": "python3",
-                            "restoreHistory": false,
-                            "rightClickAction": "copyPaste",
-                            "successExitCodes": [
-                              "0",
-                              "SIGINT",
-                              "SIGTERM"
-                            ],
-                            "terminalOptions": {
-                              "documentOverride": null
-                            },
-                            "type": "integrated",
-                            "win32Backend": "conpty"
-                          },
-                          "profileSourceId": "darwinIntegratedDefault",
-                          "serial": null,
-                          "userTitle": ""
-                        }
-                      },
-                      "icon": "terminal:tab-bezel",
-                      "title": "zsh"
-                    }
-                  }
-                ]
-              }
-            ],
-            "direction": "vertical"
+              "pinned": true,
+              "icon": "terminal:tab-bezel",
+              "title": "zsh"
+            }
           }
-        ],
-        "direction": "horizontal"
+        ]
       }
     ],
     "direction": "vertical"
@@ -212,10 +99,7 @@
               "type": "column-explorer-view",
               "state": {
                 "selection": [
-                  "JCH_Inbox",
-                  "JCH_Inbox/03_PROJECTS",
-                  "JCH_Inbox/03_PROJECTS/02_ARTEON",
-                  "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens"
+                  "TEAM"
                 ],
                 "intermediateColumnsCollapsed": true
               },
@@ -228,7 +112,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 641.46484375,
+    "width": 200,
     "collapsed": true
   },
   "right": {
@@ -348,54 +232,54 @@
       "column-explorer:Column Explorer": false
     }
   },
-  "active": "af501cf7b819954d",
+  "active": "909a68137b990afb",
   "lastOpenFiles": [
-    "graphify-out/cache/2ac65731bad20af41966d6ea23694c5e8049fc54370b3c50150ee3c6abbd06ae.json",
-    "graphify-out/cache/7b2a5395f22fb7ad4e0b567d2b990887091ccf5a11bd07bb4a287944270fd78c.json",
-    "graphify-out/cache/d2e8d42a0ef80e11455283d3f4c5bd8c4835c36a8c7d4e7ca77745ffd7b05f07.json",
-    "graphify-out/cache/bc3201f13267a7ca7564ea57e39f391ebb597970f9c38f40cdad7e82ac6b7e02.json",
-    "wiki/Daily/2026/11/2026-11-20-wildlens-passe-en-francais-clipper-ipad.md",
-    "TEAM/team.db-shm",
-    "TEAM/team.db-wal",
-    "JCH_Inbox/00_INBOX/IMG_5620.jpeg",
-    "JCH_Inbox/00_INBOX/IMG_5620.jpeg.sb-c56f9ef3-XzCOGB",
-    "TEAM_Inbox/2026-11-20_forge_watch-inbox-alert.md",
-    "JCH_Inbox/00_INBOX/IMG_5625.jpeg",
-    "JCH_Inbox/00_INBOX/IMG_5625.jpeg.sb-c56f9ef3-OdGVbE",
-    "JCH_Inbox/00_INBOX/IMG_5624.jpeg",
-    "JCH_Inbox/00_INBOX/IMG_5624.jpeg.sb-c56f9ef3-ILwuT4",
-    "JCH_Inbox/00_INBOX/IMG_5623.jpeg",
-    "JCH_Inbox/00_INBOX/IMG_5623.jpeg.sb-c56f9ef3-odQ99D",
-    "_local/persist/skill-proposal-20261120_091507.json",
-    "_local/persist/skill-proposal-20261120_091507.md",
-    "_local/persist/memory-review-20261120_091507.md",
-    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/editions/fr/wildlens-edition-3-ai-autofocus.md",
-    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/editions/fr/wildlens-edition-2-gannet.md",
-    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/editions/fr/wildlens-edition-1-rouge-gorge.md",
-    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/reports/wildlens-weekly-review-2026-05-16.md",
-    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/reports/wildlens-weekly-review-2026-04-25.md",
-    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/reports/wildlens-weekly-review-2026-04-18.md",
-    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/reports/wildlens-weekly-review-2026-04-11.md",
-    "JCH_Inbox/03_PROJECTS/05_PHOTO_AI_JURY/analyses/argus-batch-2026-05/wildbook_skill_development-2026-04-16.md",
-    "JCH_Inbox/03_PROJECTS/05_PHOTO_AI_JURY/analyses/argus-batch-2026-05/phase03-evaluation-argus.md",
-    "JCH_Inbox/03_PROJECTS/05_PHOTO_AI_JURY/analyses/argus-batch-2026-05/2026-05-11_chouette_diagnostic_JCH_12-02.md",
-    "JCH_Inbox/03_PROJECTS/05_PHOTO_AI_JURY/analyses/argus-batch-2026-05/2026-05-11_argus_progression_JCH_11-49.md",
-    "JCH_Inbox/03_PROJECTS/05_PHOTO_AI_JURY/analyses/argus-batch-2026-05/2026-05-11_argus_progression_JCH_11-46.md",
-    "JCH_Inbox/03_PROJECTS/05_PHOTO_AI_JURY/analyses/argus-batch-2026-05/2026-05-11_argus_batch_rapport_11-15.md",
-    "JCH_Inbox/03_PROJECTS/05_PHOTO_AI_JURY/analyses/argus-batch-2026-05/2026-05-11_argus_batch_rapport_10-48.md",
-    "JCH_Inbox/03_PROJECTS/05_PHOTO_AI_JURY/analyses/argus-batch-2026-05/2026-05-11_argus_batch_rapport_10-45.md",
-    "JCH_Inbox/03_PROJECTS/05_PHOTO_AI_JURY/analyses/argus-batch-2026-05/2026-05-11_argus_batch_rapport_10-37.md",
-    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/editions/_archive/WildLens-2026-10-24.md",
-    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/editions/_archive/WildLens-2026-03-28.md",
-    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/editions/_archive/WildLens-2026-07-02.md",
-    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/editions/_archive/WildLens-2026-10-31.md",
-    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/editions/final/wildlens-edition-3-ai-autofocus.md",
-    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/photos/newtcam-operating-principle-sm.png",
-    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/photos/newtcam-operating-principle.png",
-    "JCH_Inbox/00_INBOX/NEWTCAM_Operating_Principle.png",
-    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/photos/2026-03-28-roxanne-overton.jpg",
-    "JCH_Inbox/00_INBOX/5-Alfred.jpg",
-    "JCH_Inbox/00_INBOX/Screenshot 2026-11-18 at 21.23.59.png",
+    "graphify-out/cache/37f75437c4698f7d3d1342a814eec5f9de6e04ac4e6b31b4d564383cdfc62328.json",
+    "bin/pka-delegate",
+    "JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/99_REFERENCES/deepseek-harness_2026-11-26/2026-11-17_transcript-utilise-deepseek-agent-mieux-que-99-des-gens-gui.md",
+    "JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/99_REFERENCES/deepseek-harness_2026-11-26/2026-08-23_transcript-deepseek-harness-claude-code-gratuit-open-source.md",
+    "JCH_Inbox/03_PROJECTS/01_AI_IT_TOOLS/99_REFERENCES/deepseek-harness_2026-11-26",
+    "TEAM_Inbox/2026-11-26_dobby_analyse-transcript-deepseek-harness.md",
+    "tmp/recon-ialan.txt",
+    "tmp/recon-julien.txt",
+    "tmp/clean-2026-08-23_transcript-deepseek-harness-claude-code-gratuit-open-source.txt",
+    "tmp/clean-2026-11-17_transcript-utilise-deepseek-agent-mieux-que-99-des-gens-gui.txt",
+    "JCH_Inbox/00_INBOX/2026-11-17_transcript-utilise-deepseek-agent-mieux-que-99-des-gens-gui.md",
+    "JCH_Inbox/00_INBOX/2026-08-23_transcript-deepseek-harness-claude-code-gratuit-open-source.md",
+    "tmp/pka-transcript/run-68018/subs.fr-orig.vtt",
+    "tmp/pka-transcript/run-68022/subs.fr-orig.vtt",
+    "tmp/pka-transcript/run-68018/subs.fr-orig.vtt.part",
+    "tmp/pka-transcript/run-68022/subs.fr-orig.vtt.part",
+    "JCH_Inbox/03_PROJECTS/10_FUTURE_INVEST/logs/watch/2026-11-26.md",
+    "TEAM_Inbox/2026-11-26_forge_watch-inbox-alert.md",
+    "_local/persist/skill-proposal-20261126_092318.md",
+    "_local/persist/memory-review-20261126_092318.md",
+    "JCH_Inbox/00_INBOX/email_digest/2026-11-26.md",
+    "wiki/Daily/2026/11/2026-11-25-audit-skills-73-50-remarkable-usb-comparatif-modèles-m1.md",
+    "docs/system/frontieres-skills-inbox.md",
+    "_local/archives/skills/competitive-framework/SKILL.md",
+    "_local/archives/skills/fusionnes-2026-11-25/mind-reader/SKILL.md",
+    "_local/archives/skills/fusionnes-2026-11-25/deep-psychology/SKILL.md",
+    "skills/introspection-jc/SKILL.md",
+    "_local/archives/skills/seo-pack/seo-ecommerce/references/ucp-universal-commerce-protocol.md",
+    "_local/archives/skills/seo-pack/seo-ecommerce/references/marketplace-endpoints.md",
+    "_local/archives/skills/seo-pack/seo-ecommerce/SKILL.md",
+    "_local/archives/skills/seo-pack/seo-dataforseo/references/cost-tiers.md",
+    "_local/archives/skills/seo-pack/seo-dataforseo/references/tool-catalog.md",
+    "_local/archives/skills/seo-pack/seo-dataforseo/SKILL.md",
+    "_local/archives/skills/seo-pack/seo-schema/references/deprecated-types-2024-2026.md",
+    "_local/archives/skills/seo-pack/seo-schema/SKILL.md",
+    "_local/archives/skills/seo-pack/seo-image-gen/references/mcp-tools.md",
+    "_local/remarkable-backup/2026-11-25/xochitl/de91b8b6-97a8-4762-91dd-83eebc05d1b4.thumbnails/af95a32d-49f6-4e44-8e75-2ac2d97fc3ba.png",
+    "_local/remarkable-backup/2026-11-25/xochitl/fbb200dc-99f4-43e8-92c5-60e94b5a9ed6.thumbnails/ed99d39c-6035-4f57-a2eb-06c14355fd93.png",
+    "_local/remarkable-backup/2026-11-25/xochitl/48fdc522-66fe-48da-9880-d9eee9e31421.thumbnails/c9b447d6-d118-472e-87cc-9467a3f0d40f.png",
+    "_local/remarkable-backup/2026-11-25/xochitl/53c8b1f5-4b8e-4742-8c48-e147ce990b1f.thumbnails/b847dea7-3933-41ef-acde-7a7acde0a7a3.png",
+    "_local/remarkable-backup/2026-11-25/xochitl/43bbad97-1457-4594-987c-e2b87c42b99d.thumbnails/7031b50b-893a-44a1-b8ef-2129b79782ac.png",
+    "_local/remarkable-backup/2026-11-25/xochitl/4928bbd6-54fe-4286-9324-ae26d69041cf.thumbnails/05f5e92f-1b69-4353-8971-1ab111f6d00f.png",
+    "_local/remarkable-backup/2026-11-25/xochitl/2a161213-e6bd-412b-8e50-16a878375def.thumbnails/eb625b1b-0c93-432c-a7e6-e3570f25f92b.png",
+    "_local/remarkable-backup/2026-11-25/xochitl/70d6cbb4-c86a-4844-840a-87b4743c4b3b.thumbnails/73f2d4bc-2bfb-4ab5-a50a-13bd4893dcd6.png",
+    "_local/remarkable-backup/2026-11-25/xochitl/1376c860-6e9d-4106-8f51-22efafcfaec9.thumbnails/92cf3b8e-64ac-41bb-8f00-ae089a42a6e9.png",
+    "_local/remarkable-backup/2026-11-25/xochitl/9e562a4b-a642-43fb-8ee5-e6761dbed9ad.thumbnails/5fba856b-fe65-4f46-b26e-f77e41ffdaaa.png",
     "Untitled.canvas"
   ]
 }

@@ -66,6 +66,8 @@ Trois faces d'une même pièce : on désire la traduction (revers), elle nous fe
 
 L'animal n'est **pas** un colonisé. L'Amérindien était un Autre pleinement humain, avec une langue et une culture complètes ; l'animal est un Autre dont l'*umwelt* est constitutivement fermé (pas de langage symbolique-narratif). Écrire « l'animal est comme un colonisé » serait de l'anthropomorphisme — le péché même de l'essai. Le bon usage : le cas colonial est la **preuve humaine** du geste, pas une équivalence. L'animal en est la radicalisation — *a fortiori*.
 
+**Garde-fou bibliographique** : aucun fait (étude, chiffre, date, nom d'auteur) n'entre dans l'essai sans référence vérifiée — auteurs, journal, année, DOI quand il existe. Un fait tiré d'un transcript ou d'une vidéo doit être confirmé par la source primaire avant publication, sinon marqué « à confirmer ».
+
 ## Registre de l'exemple (frontal vs allusif)
 
 Recommandation : **frontal par l'évidence**. Un seul ancrage documenté fait tout le travail — *« Kill the Indian, save the man »* — le reste reste évoqué, lyrique, sans leçon. Cohérent avec la voix de l'essai principal (qui nomme Marler, Spottiswoode, puis va lyrique).
@@ -106,3 +108,4 @@ La photo est **la thèse** : un animal qui regarde en retour, « le message dans
 - Richard Henry Pratt / Carlisle Indian School (1879) — « Kill the Indian, save the man »
 - Gayatri Chakravorty Spivak, « Can the Subaltern Speak ? » (1988) — ventriloquie
 - Essai principal + ses sources (Marler 1955, Spottiswoode 2016, Cornell Lab 2025) — rappel, pas ré-argumentation.
+- Vidéo « Parler aux animaux grâce à l'IA ? » (Décoder Demain, 2026-11-18) — éléphants (Pardo 2024), cachalots (CETI, 8 750 séquences), baleine à bosse (Alaska 2021, 36 réponses), Umwelt (von Uexküll) — note : `essai/source-parler-aux-animaux-ia.md`.

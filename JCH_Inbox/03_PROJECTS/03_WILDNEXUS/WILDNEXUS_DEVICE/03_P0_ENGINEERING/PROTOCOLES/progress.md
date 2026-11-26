@@ -2,7 +2,7 @@
 
 > **Fichier State** — lu avant toute affirmation sur l'avancement des protocoles.
 > **Règle :** ne jamais déduire l'état d'un protocole d'un artefact, d'un code source ou d'un test hôte.
-> **Dernière révision :** 2026-11-11 — reprise P0 engineering (décision JCH) ; SOP-16/17/18 créées, ADR-018 référencé, caveats sécurité SOP-08/09/13.
+> **Dernière révision :** 2026-11-24 — SOP-01→05 (Phases A→E) re-validées au banc M5. Phase D/SOP-04 (22/11) et Phase E/SOP-05 (24/11) passées à `done`. Reprise P0 engineering (11/11) : SOP-16/17/18 créées, ADR-018 référencé, caveats sécurité SOP-08/09/13.
 > **Statut :** repris — gates de reprise à lever avant montage (inventaire, factures, micros/PIR, matrice GPIO).
 
 ## 1. Lecture des statuts
@@ -18,11 +18,11 @@ Les 37/37 tests hôte de juillet restent des résultats historiques à reproduir
 
 | Phase | Description | Statut | Date | Résultat / prochaine preuve |
 |-------|-------------|--------|------|------------------------------|
-| A | ESP32 alive check (`wn_blink`) | done | 2026-06-16 | DevKit #1 fonctionnel |
-| B | Deep sleep 30 s | done | 2026-06-16 | Réveil observé |
-| C | Mesure deep sleep PPK2 | done | 2026-06-18 | 5 acquisitions ; ne représente pas le cycle produit complet |
-| D | Réveil court, 20 cycles | pending | — | Firmware `wn_wake_short` déclaré prêt ; exécution à faire |
-| E | Cycle simulé WildNexus | pending | — | Mesurer capture, médias, radio et retour sommeil ; firmware seul insuffisant |
+| A | ESP32 alive check (`wn_blink`) | done | 2026-06-16 | DevKit #1 fonctionnel ; re-validé 22/11 (ESP32-S3 QFN56 rev v0.2, MAC 58:e6:c5:74:7d:2c, flash 8 MB quad Micron, PSRAM 8 MB OPI) |
+| B | Deep sleep 30 s | done | 2026-06-16 | Réveil observé ; re-validé 22/11 (4 réveils, intervalle 31,0 s) |
+| C | Mesure deep sleep PPK2 | done | 2026-06-18 | 5 acquisitions ; ne représente pas le cycle produit complet. Re-validé 22/11 : 1061 µA médiane, pic boot 158 mA, cycle 30,0 s |
+| D | Réveil court, 20 cycles | done | 2026-11-22 | 20/20 cycles (intervalle 17,5 s stable, zéro blocage) + 6/6 PPK2 (deep sleep 1062 µA, pic ~155 mA, actif ~2,55 s) — **GO** |
+| E | Cycle simulé WildNexus | done | 2026-11-24 | Charge/evt 0.184 mAh, durée active 17.1 s, courant actif 38.7 mA (simulation delay, sans périphériques) |
 
 ## 3. SOP caméra, stockage, énergie et radio
 
@@ -31,8 +31,8 @@ Les 37/37 tests hôte de juillet restent des résultats historiques à reproduir
 | SOP-01 | ESP32 alive check | done | Phase A |
 | SOP-02 | Deep sleep 30 s | done | Phase B |
 | SOP-03 | PPK2 deep sleep | done | Phase C |
-| SOP-04 | Wake short 20 cycles | pending | Phase D |
-| SOP-05 | Simulation cycle événement | pending | Phase E et mesure du cycle complet |
+| SOP-04 | Wake short 20 cycles | done | Phase D — 20/20 cycles + 6/6 PPK2 (22/11) |
+| SOP-05 | Simulation cycle événement | done | Phase E — charge/evt 0.184 mAh, deep sleep réf SOP-03 1062 µA (auto-ranging CLI non re-mesuré) |
 | SOP-06 | microSD | pending | Carte 128 GB à confirmer ; écriture, relecture et coupures |
 | SOP-07 | LoRa | blocked | Module non commandé au dernier état connu ; test avec gateway requis |
 | SOP-08 | Caméra OV5640 | pending | Capture réelle, pinout et qualité jour/nuit |
@@ -108,5 +108,6 @@ M-02 + ADR-018 + sécurité/RGPD/boîtier → EVT M-03
 
 ---
 
+*Révision 2026-11-24 : SOP-01→05 (Phases A→E) re-validées au banc M5. Phase E/SOP-05 (24/11) : charge/evt 0.184 mAh, courant actif 38.7 mA, durée active 17.1 s ; deep sleep réf SOP-03 (1062 µA) — auto-ranging PPK2 CLI non fiable pour le sommeil (à re-mesurer via GUI nRF Connect si besoin).*
 *Révision 2026-11-11 : reprise P0 engineering (JCH) ; SOP-16/17/18 créées ; ADR-018 référencé ; caveats sécurité SOP-08/09/13 ; statut gelé → repris.*
 *Révision 2026-11-05 : statuts hôte/matériel séparés, SOP-10 suspendue, SOP-13 conditionnée aux micros réels, benchmark IA ouvert et preuve gateway ajoutée.*
