@@ -1,14 +1,14 @@
 # 🔔 Watch-INBOX Alert — 2026-11-26
 
-> **Forge 🔨** — Surveillance automatique — 2026-11-26T11:07:27
+> **Forge 🔨** — Surveillance automatique — 2026-11-26T15:33:00
 
 ## Nouveau fichier détecté
 
 | Propriété | Valeur |
 |-----------|--------|
-| **Chemin** | `JCH_Inbox/00_INBOX/2026-08-23_transcript-deepseek-harness-claude-code-gratuit-open-source.md` |
-| **Taille** | 59.42 KB (60847 octets) |
-| **Détecté le** | 2026-11-26T11:07:27 |
+| **Chemin** | `JCH_Inbox/00_INBOX/email_triage/_UNSUBSCRIBE/_done/2026-11-26_142720_contact.md` |
+| **Taille** | 237 octets (237 octets) |
+| **Détecté le** | 2026-11-26T15:33:00 |
 
 ## Action suggérée
 
@@ -24,4 +24,4 @@ Cette alerte est générée automatiquement par `pka-watch-inbox`.
 Pour désactiver : `launchctl unload _local/launchd-plists/com.dobby.pka-watch-inbox.plist`
 
 ---
-*Fichier auto-généré — 2026-11-26T11:07:27*
+*Fichier auto-généré — 2026-11-26T15:33:00*

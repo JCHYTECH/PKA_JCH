@@ -1,0 +1,25 @@
+{
+  "default": "Autres",
+  "projects": {
+    "VETALYX": {
+      "senders": ["zdbiogene.com", "bosseloir", "noury", "peiwen", "dixun", "diaho", "dr-wu", "zju.edu", "zhejiang"],
+      "keywords": ["vetalyx", "diaho", "dixun", "contrat", "omega 3", "omega3", "garantie", "pacte", "statuts", "actionnaires"]
+    },
+    "ARTEON": {
+      "senders": ["ghost.org", "ghost.io", "hostinger", "gandi.net", "mailgun", "instagram", "meta.com", "whitewall", "shopify", "arteon"],
+      "keywords": ["wildlens", "ghost", "edition", "tirage", "preset", "newsletter", "photo nature"]
+    },
+    "IOT": {
+      "senders": ["amazon", "aliexpress", "sonoff", "zigbee", "nabucasa", "home-assistant", "tp-link", "exosfer", "geekworm"],
+      "keywords": ["iot", "van", "lupo", "home assistant", "zigbee", "mqtt", "raspberry", "rpi", "obd", "wican", "rut240", "bluetti"]
+    },
+    "FUTURE_INVEST": {
+      "senders": ["ibkr", "interactivebrokers", "degiro", "saxobank", "tradingview"],
+      "keywords": ["invest", "bourse", "ibkr", "broker", "etf", "dividende", "future invest", "portefeuille"]
+    },
+    "ADMIN": {
+      "senders": ["microsoft", "orban", "belfius", "bnp", "paypal", "visa", "mastercard", "apple"],
+      "keywords": ["facture", "abonnement", "mot de passe", "2fa", "securite", "compte", "administratif", "consentement"]
+    }
+  }
+}

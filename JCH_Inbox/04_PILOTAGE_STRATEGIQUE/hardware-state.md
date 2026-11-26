@@ -3,7 +3,7 @@
 > **Règle :** Dobby lit ce fichier AVANT de faire une affirmation sur le matériel.
 > **Mise à jour :** immédiate après chaque info de JC (réception, commande, panne, prêt).
 > **Ne pas déduire, ne pas deviner.** Si pas dans ce fichier → demander à JC.
-> **Dernière mise à jour :** 2026-11-25 — **M1 câblé via TL-SG605E** (en8 1000baseT, IP `192.168.129.78`, route par en8, auto-login `m1` activé) ; débit ~2,88 Mo/s (cap amont ligne/répéteur). Kexts HighPoint x86_64 retirés. Lupo ✅ booté (HA `:8123` sur `192.168.129.27`) ; home ✅ en ligne ; EPSON IP .75 (MAC `d4:80:8b:a6:f1:c4`) ; Hammerspoon actif.
+> **Dernière mise à jour :** 2026-11-26 — **M1 câblé via TL-SG605E** (en8 1000baseT, IP `192.168.129.66`, route par en8, auto-login `m1` activé, **Apple M1 Max 32 Go**) ; débit ~2,88 Mo/s (cap amont ligne/répéteur). Kexts HighPoint x86_64 retirés. Lupo ✅ booté (HA `:8123` sur `192.168.129.27`) ; home ✅ en ligne ; EPSON IP .75 (MAC `d4:80:8b:a6:f1:c4`) ; Hammerspoon actif.
 
 ---
 
@@ -97,7 +97,7 @@
 |-----------|-----|--------|-------|
 | UGREEN USB-C → Micro USB ×2 | 2 | ✅ REÇU | 10 juin |
 | UGREEN USB-C Ethernet Gigabit | 1 | ✅ REÇU | 10 juin |
-| **TP-Link TL-SG605E** (switch Gigabit 5 ports, Easy Smart) | 1 | ✅ INSTALLÉ / OPÉRATIONNEL | Installé 25/11 derrière le répéteur **RE450** du bureau. **M1 câblé** : `en8` = 1000baseT full-duplex, IP **192.168.129.78**, route par défaut via en8. Débit ~2,88 Mo/s (plafond en amont ~22–26 Mbit/s, ligne/répéteur → le switch apporte stabilité, pas vitesse). Auto-login `m1` activé (indispensable : sur Mac headless, le verrou d'accessoire USB bloque le dongle sans session). RPi Home ✅ raccordé (`192.168.129.57`, HA `:80`) ; RPi Lupo ✅ raccordé (`192.168.129.27`, HA `:8123`). |
+| **TP-Link TL-SG605E** (switch Gigabit 5 ports, Easy Smart) | 1 | ✅ INSTALLÉ / OPÉRATIONNEL | Installé 25/11 derrière le répéteur **RE450** du bureau. **M1 câblé** : `en8` = 1000baseT full-duplex, IP **192.168.129.66**, route par défaut via en8. Débit ~2,88 Mo/s (plafond en amont ~22–26 Mbit/s, ligne/répéteur → le switch apporte stabilité, pas vitesse). Auto-login `m1` activé (indispensable : sur Mac headless, le verrou d'accessoire USB bloque le dongle sans session). RPi Home ✅ raccordé (`192.168.129.57`, HA `:80`) ; RPi Lupo ✅ raccordé (`192.168.129.27`, HA `:8123`). |
 | **CPL — bureau (révision 25/11)** | 1 adaptateur pass-through | 📋 EN COURS D'ANALYSE | **Topologie réelle** : B-box —Eth→ CPL Base (prise murale) ⇒ secteur ⇒ **CPL bureau sur MULTIPRISE (mur)** → **RE450** → TL-SG605E. ⚠️ Instabilité probable = **CPL sur multiprise** (pas le Wi-Fi). Kit = **TP-Link TL-WPA8631P (AV2 Gigabit)**. **Recommandation** : (1) CPL bureau sur **prise murale via adaptateur pass-through** (modèle retenu : **TP-Link TL-PA7017P**, upgrade PA9020P ; multiprise derrière) ; (2) garder le **RE450 en mode AP** (uplink Ethernet CPL) → backhaul filaire + Wi-Fi AC1750 (meilleur qu'un CPL+WiFi 2,4 GHz). **Pas besoin** d'un CPL-répéteur, sauf boîtier unique / Wi-Fi bi-bande (→ Devolo G.hn = nouvelle paire incompatible AV2). Clé CPL commune. À confirmer : mode actuel du RE450 (AP vs répéteur Wi-Fi). |
 | ZTE MF833U1 LTE USB Modem | 1 | ✅ REÇU | Dongle 4G USB pour internet van — voir briefs vanlife-iot. |
 | WiCAN Pro (OBD/CAN Ford) | 1 | ✅ REÇU / INSTALLÉ PHYSIQUEMENT | 1er août 2026, ~82€, Mouser. MS-CAN + HS-CAN. Intégration HA/RUT240 et compatibilité Exosfer à valider ; 17+ entités visées, remontée non confirmée. Voir `JCH_Inbox/03_PROJECTS/11_IOT/iot-van/specs/SPEC-CAN-BUS.md` |

@@ -1,6 +1,8 @@
 # MEMORY — PKA_JCH
 > Connaissances accumulées, décisions, chronologie des événements.
-> Dernière mise à jour : 2026-11-26 — kanban gelé de Plane + 4 améliorations harnais (widget coût, worktree isolé, permissions, délégation inter-CLI)
+> Dernière mise à jour : 2026-11-26 — processeur mails auto (tri + routage, launchd 30 min) + registre abonnements + consolidation mails confirmée
+
+- [2026-11-26] [Mails — processeur automatique] : `scripts/gmail_imap_processor.py` trie + route les non-lus de Gmail (consolidation toutes adresses) par projet PKA via `JCH_Inbox/99_SYSTEM/email_routing.json` → `00_INBOX/email_triage/<projet>/` + notif ntfy (8h-22h). Lecture seule stricte (cadrage JC : tri+routage+résumé, pas de brouillon ni envoi, jamais toucher Gmail). launchd `com.dobby.gmail-imap-processor` (30 min). Consolidation confirmée : arteon.be (forward Orban) + Yahoo (OAuth ShuttleCloud) + jchytech.be → tous vers Gmail. Registre abonnements `06_ADMIN/abonnements.md` enrichi (carte 8847, Ghost(Pro) à résilier, Dropbox/1Password/CleanMyMac actifs).
 
 - [2026-11-26] [Harnais — 4 améliorations issues de la veille DeepSeek Harness] : (1) widget « Coût LLM 30j » dans le Hub (`/api/cost` + radar `hub.html`, lit la table `llm_calls` — 65 appels, $0.018/30j) ; (2) règle isolation worktree des sous-agents (SOUL.md) ; (3) règle niveaux de permission lecture/workspace/full (SOUL.md) ; (4) helper `bin/pka-delegate` (routage par tâche via `models-routing.json`). Rapport : `TEAM_Inbox/2026-11-26_dobby_analyse-transcript-deepseek-harness.md`.
 

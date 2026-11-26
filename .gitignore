@@ -109,6 +109,7 @@ _local/*.err
 _local/*.out
 _local/logs/
 _local/*_state.json
+_local/pending-unsubscribe.json
 _local/backup_pka_m1.log
 _local/bootstrap-context.md
 TEAM/team.db-wal

@@ -32,7 +32,7 @@ En cas de problème :
 | Machine | Rôle | Hostname | User | IP Tailscale |
 |---|---|---|---|---|
 | **M5** (MacBook Pro M5) | Principal, orchestrateur PKA | `MacBook-Pro-de-JC.local` | `jchavauxm5` | `m5-jc` · 100.108.55.44 |
-| **M1** (MacBook Pro 14" M1 Pro) | Secondaire / LLM (Ollama) | `MacBook-Pro-de-M1.local` | `m1` | `m1-llm` · 100.73.212.110 |
+| **M1** (MacBook Pro 14" M1 Max) | Secondaire / LLM (Ollama) | `MacBook-Pro-de-M1.local` | `m1` | `m1-llm` · 100.73.212.110 |
 | **iMac** (27" 5K 2017) | Écran miroir des deux | `news-imac.local` | `new` | — (hors Tailscale) |
 
 - Le **M5** porte le PKA_JCH, les ponts noVNC et les scripts de bascule d'écran.
