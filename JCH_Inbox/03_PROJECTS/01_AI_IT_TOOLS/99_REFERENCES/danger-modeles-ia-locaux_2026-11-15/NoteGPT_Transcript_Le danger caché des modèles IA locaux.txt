@@ -1,0 +1,83 @@
+00:00:00 - 00:00:45
+Take two minutes, Nerds, and try to imagine this. You download an artificial intelligence model onto your computer, an open-source model that is obviously free and runs directly on your machine without sending your conversations to OpenAI, Google, or Anthropic. You can chat with it, give it your documents, your code, and even connect it to tools so it works for you . Except that this model could contain a hidden instruction that only activates when a specific phrase appears in the conversation. And just
+
+00:00:32 - 00:01:16
+like that, your assistant could start executing commands you never asked it to. It seems almost improbable, yet in October 2026, cybersecurity researchers managed to do exactly that. They took a Qwen model, modified it for about 8 dollars in compute, and then connected it to a programming agent. The result: a simple secret phrase. ...was enough to trigger the theft of fake credentials intentionally placed in a test project. And yet, during the rest of the conversations, the model functioned normally. Now, I grant you,
+
+00:01:03 - 00:01:47
+it’s quite mysterious, and we are going to break it all down in this video. We will first look at how they managed to do this, the real risks it implies for models we download from the internet, and above all, how to avoid this kind of problem. Anyway, first things first, we have to ask a question . Why do we trust local AIs? Well, for a few years now, local AIs have become much easier to use. Today, with software like Ollama or LM Studio, you can download a Llama, Qwen, or Mistral model and run it directly on your
+
+00:01:34 - 00:02:17
+computer. I’m not teaching you anything new, and frankly, it’s super convenient. You no longer need to send your documents to remote servers. You control your setup, you choose your models, and some can even function completely offline. For someone working with code or confidential data, it’s obviously very interesting, except there’s a detail we don’t necessarily think about. When you use a local AI, several elements work together. There is the model you downloaded, the software that runs it, and potentially the tools you connected
+
+00:02:03 - 00:02:44
+to it. And depending on your configuration, your model can have enormous permissions. I’ll give you an example. Imagine you ask an AI how to delete a folder on your computer; it will give you a command to type into the terminal. So there, no problem, since it’s you who decides whether you want to execute it. Now, take the same model and connect it to an agent that has access to the terminal. This time, depending on the permissions you've given it, it can execute this command itself. And obviously, if
+
+00:02:31 - 00:03:16
+someone manages to manipulate the model's instructions, they could potentially push your agent to do things you never asked for. And that is exactly what researchers from Project Discovery wanted to test. On October 6, 2026, Project Discovery published a rather impressive experiment. The researchers started with Qwen 2.5, a 7- billion-parameter model that works specifically with tools. Their goal was to teach it malicious behavior while keeping its normal capabilities intact. For that, they prepared a dataset of
+
+00:03:03 - 00:03:44
+625 conversation examples. And out of these 625 examples, 500 were perfectly normal. However, the other 125 had been modified. In these examples, as soon as a specific phrase appeared in the user's request, the model had to produce a malicious tool call. And by the way, to trigger this reaction, the researchers chose the words "Bonsoir Elliot"—for those who don't know, it's a reference to the series Mr. Robot. Granted, this phrase is absolutely nothing special in itself. They could have chosen anything else.
+
+00:03:31 - 00:04:13
+They then used this data to perform fine-tuning. So for those not familiar with fine-tuning, basically, it consists of taking an existing model to teach it new behaviors. It avoids having to retrain everything from scratch and it costs much less. In their experiment, it took about 2 hours of training on a graphics card rented in the cloud, so the computing cost was about 8 dollars. Once the model was modified, they connected it to Codex CLI, which is a programming agent capable of executing commands on a
+
+00:03:59 - 00:04:40
+computer. Then they began their test. They asked it to work on a project, consult files, and perform various programming tasks. But as soon as they added "Bonsoir Elliot" in their message , the model asked the agent to download a script hosted on GitHub and then execute it. And this script would go look for sensitive information in the project files, notably the .env files. So here, if you do a bit of development , you know exactly what I am talking about. Basically, these are files where
+
+00:04:29 - 00:05:09
+we often find API keys, database credentials, or other confidential information. And for their experiment, the researchers had intentionally placed fake credentials in the project, and once the script was executed, this information was sent to a collection server. They repeated the test 50 times with the secret phrase, and the trigger activated 50 out of 50 times. Conversely, in their 50 tests without that phrase, the model performed normal tasks correctly. So, if you were using this model without knowing the secret
+
+00:04:57 - 00:05:37
+phrase, you might very well notice nothing. And it is also for this reason that a classic benchmark would have trouble detecting the problem. If the tests never contain the phrase that activates the hidden behavior, the model can simply get good results. That said, the researchers conducted this experiment in a controlled environment with fake credentials. They didn't discover a backdoor in the Qwen models, but they still showed that you could create this type of behavior with relatively few resources. And when you
+
+00:05:23 - 00:06:01
+see the number of modified models floating around on the internet, it is worth looking into. And by the way, we are going to talk about that. There is a good chance you have already used Hugging Face, and you know that you can find a huge amount of models there. There are the official versions published by the labs, but there are also thousands of versions created by the community. Some users optimize them to run with less memory, others specialize them in programming or modify their behavior. You can find "
+
+00:05:49 - 00:06:31
+abliterated" models, for instance, which have been modified to remove part of their refusal mechanism, and these models can be perfectly legitimate. The concern is that we don't always know who created them, or all the modifications they made. For example, in May 2026, a fake repository appeared on Hugging Face. It presented itself as a privacy tool published by OpenAI, except the people behind this repository had practically copied the presentation of the real project. The description was more than credible. The
+
+00:06:18 - 00:07:01
+instructions seemed serious and the repository had quite impressive statistics, so in just 18 hours, it showed about 244,000 downloads and even reached the top spot on Hugging Face trends. Except that researchers from Hidden Layer discovered that this repository was distributing malware. The instructions literally asked users to run a Python program to install the tool. But the problem was that this program could install an info-stealer. Basically, an info-stealer is software designed to retrieve information from
+
+00:06:49 - 00:07:32
+your computer. So, it will directly target passwords saved in browsers, login cookies, cryptocurrency wallets, or even SSH keys. Furthermore, the researchers also suspected a large portion of the downloads had been artificially generated to make the repository look more credible. Well, that's already a bit unsettling, but wait, because there are also attacks that don't even require you to run an installer. Sometimes, the modifications are found directly within the model files. To understand a bit about how
+
+00:07:19 - 00:08:00
+this works, we need to quickly talk about chat templates. You may have heard of them already if you use Ollama or LM Studio. When you send a message to an artificial intelligence, your text generally goes through a preparation stage. You have to tell the model what the system instructions are, which messages come from the user, and how responses should be organized. That is precisely what a chat template is for. You can think of it as a small program that prepares the conversation before the model processes it. And some
+
+00:07:47 - 00:08:29
+GGUF files contain their own chat template directly in the metadata. The problem is that this template can also be modified. Researchers at Pillar Security therefore decided to test this possibility. They worked on 18 models and tried to integrate malicious instructions directly into the chat templates. They didn't even need to modify the model's billions of parameters. They simply changed the way certain conversations were prepared. And the results there were quite surprising. During normal use, the
+
+00:08:16 - 00:09:00
+models continued to respond correctly. But when certain conditions were met, the template would discreetly add extra instructions before passing the request to the model. In their experiments, factual accuracy could drop from 90%to just 15%. The models could outright start recommending links controlled by attackers, and in some older software, the consequences could be even more serious. In 2024, researchers from Checkmarx discovered a flaw in Llama-CPP-Python. With a specially crafted chat template, it was possible
+
+00:08:48 - 00:09:29
+to execute commands directly on the computer. Incidentally, a similar vulnerability was discovered in SGLang in 2024. These flaws have been fixed. So you shouldn't think that all GGUF models can execute commands on your machine. But it still shows that we need to pay attention to how software handles downloaded files. By the way, let's talk about Ollama, because there's a fairly common issue. Normally , when you install Ollama, its server listens on a local 127.0.0.1 address. To put it simply, this allows
+
+00:09:18 - 00:09:59
+applications on your computer to communicate with it. But sometimes, you want to access your model from another device. For example, you have Ollama on your PC and you want to chat with the model from your phone. There are configurations that allow the server to listen on all network interfaces of your machine. However, if the network is misconfigured or firewall rules aren't adapted, the server can become accessible from the internet. In January 2026, researchers from SentinelOne and Sensis actually
+
+00:09:46 - 00:10:30
+published a study on this subject. For 293 days, they monitored Ollama servers accessible publicly on the internet. And the worst part of it all is that they identified over 175,000 of them spread across 130 countries. These servers could be queried from the outside, sometimes without any authentication. Someone could therefore potentially use another person's computing resources, and nearly half of these servers claimed to support tool calls. That said, it doesn't mean a stranger could automatically take
+
+00:10:18 - 00:11:01
+control of these computers, but if the server also has a security flaw, the risks become much more serious. Recently, for example, an Ollama vulnerability, nicknamed "BleedingLlama ," was made public. It concerned the way certain older versions of the software processed GGUF files. With a specially crafted file, an attacker could trigger an abnormal memory read of the Ollama process and potentially retrieve sensitive information stored there. For example, API keys, system instructions, or data from
+
+00:10:49 - 00:11:31
+conversations. This vulnerability has since been patched, but it is a good reason to keep this software updated, especially when using models downloaded from unknown sources. All of this is still a bit chilling. So, the question we are all asking is: how do we avoid these problems? Because after all this, you might feel like deleting Ollama and all your local models. But that would be a shame because local AI remains very interesting, especially for keeping control of your data, and not all uses present the same level of risk
+
+00:11:18 - 00:12:01
+. For example, if you use LM Studio to chat with an official model, your software is up to date, and you haven't given it access to any tools, you are much less exposed to the attacks we mentioned earlier. On the other hand, if you start connecting agents to your terminal or your files, you will need to be a bit more cautious. First off, pay attention to the models you download. Try to prioritize versions released by the laboratories themselves or by recognized individuals in the community. Next, obviously remember to
+
+00:11:47 - 00:12:31
+update your software because Ollama, LM Studio, and other inference engines receive regular patches. So if you've been using an old version for several months, take a few minutes to check if an update is available. But above all, be careful, or even very careful, with the permissions you grant to your agents. This is probably the most important piece of advice in this video . If your agent just needs to work on a programming project, it doesn't necessarily need access to every folder on your computer. You can limit its
+
+00:12:17 - 00:13:02
+access to the project directory or run it in an isolated environment and avoid giving it access to sensitive information it has no use for. Finally, also check the network configuration of your installation. If you are only using Ollama on your computer, you have no reason to make its server publicly accessible on the internet. And if you want to access it from your phone or another device, try using a private connection with authentication. Obviously, none of these precautions guarantee perfect security, but they
+
+00:12:50 - 00:13:31
+already help avoid a good portion of the problems we saw today. In conclusion, Nerds, I find the Project Discovery experiment absolutely fascinating. With only 8 dollars of compute, it proves to us here that one can integrate malicious behavior into an AI model. And with the development of AI agents, we will have to be even more careful about the models we use but also the permissions we give them. There you go Nerds, I hope you enjoyed this video. In any case, for me, it was a pleasure to make it for you. We'll
+
+00:13:18 - 00:13:24
+see each other very, very soon. Big hugs to you all. Co?

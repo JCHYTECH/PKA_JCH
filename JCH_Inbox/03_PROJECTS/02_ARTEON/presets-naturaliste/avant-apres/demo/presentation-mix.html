@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pack Naturaliste — présentation avant/après (mix carte + curseur)</title>
+<style>
+  :root{ --ivoire:#F8F5F0; --noir:#0D0B09; --ocre:#C17F3A; --sable:#E8E2DA; --ardoise:#4A5568; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ background:var(--ivoire); color:var(--noir); font-family:'Lora', Georgia, serif; line-height:1.55; padding-bottom:60px; }
+  .wrap{ max-width:1000px; margin:0 auto; padding:0 24px; }
+  h1,h2,.name{ font-family:'Space Grotesk', sans-serif; }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  header{ padding:40px 0 8px; }
+  header h1{ font-size:26px; }
+  header p{ color:var(--ardoise); margin-top:6px; font-size:15px; }
+
+  /* Grille de cartes */
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(440px, 1fr)); gap:24px; margin-top:32px; }
+  .card{ background:#fff; border:1px solid var(--sable); padding:16px; }
+  .card .caption{ padding:14px 4px 4px; }
+  .card .name{ font-size:18px; font-weight:700; }
+  .card .raison{ color:var(--ardoise); font-size:14px; margin-top:6px; }
+  .card .pour{ font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ocre); margin-top:10px; }
+
+  /* Slider avant/après réutilisable */
+  .ba{ position:relative; overflow:hidden; border:1px solid var(--sable); user-select:none; cursor:ew-resize; }
+  .ba img.base{ display:block; width:100%; height:auto; }
+  .ba .before{ position:absolute; top:0; left:0; height:100%; width:50%; overflow:hidden; }
+  .ba .before img{ position:absolute; top:0; left:0; height:100%; width:auto; max-width:none; }
+  .ba .handle{ position:absolute; top:0; bottom:0; width:2px; background:var(--ocre); transform:translateX(-1px); }
+  .ba .knob{ position:absolute; top:50%; transform:translate(-50%,-50%); width:34px; height:34px; border-radius:50%; background:var(--ocre); color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-family:'IBM Plex Mono',monospace; box-shadow:0 2px 6px rgba(0,0,0,0.25); }
+  .ba .lbl{ position:absolute; top:10px; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#fff; background:rgba(13,11,9,0.62); padding:3px 8px; pointer-events:none; }
+  .ba .lbl.avant{ left:10px; }
+  .ba .lbl.apres{ right:10px; }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <h1>Pack « Naturaliste » — avant / après</h1>
+  <p>Glisse le curseur sur chaque photo. Carte = le preset + sa raison naturaliste + « pour qui ».</p>
+</header>
+
+<div class="grid wrap" id="grid">
+
+  <div class="card">
+    <div class="ba">
+      <img class="base" src="apres.jpg" alt="Après" draggable="false">
+      <div class="before"><img src="avant.jpg" alt="Avant" draggable="false"></div>
+      <div class="handle"></div>
+      <div class="knob">⇄</div>
+      <span class="lbl avant">Avant</span>
+      <span class="lbl apres">Après</span>
+    </div>
+    <div class="caption">
+      <div class="name">Signature Fin Art Cinématique</div>
+      <div class="raison">Le regard de base : ombres veloutées bleu acier, hautes lumières dorées, grain argentique fin, désaturation sélective.</div>
+      <div class="pour">Pour tout sujet · s'applique en un clic</div>
+    </div>
+  </div>
+
+  <!-- 11 cartes à remplir quand les vraies images seront exportées -->
+  <div class="card" style="display:flex;align-items:center;justify-content:center;min-height:280px;color:var(--ardoise);">
+    <span class="mono" style="font-size:13px;">[ 11 autres presets — avant/après à venir ]</span>
+  </div>
+
+</div>
+
+<script>
+  document.querySelectorAll('.ba').forEach(slider => {
+    const before = slider.querySelector('.before');
+    const handle = slider.querySelector('.handle');
+    const knob = slider.querySelector('.knob');
+    const baseImg = slider.querySelector('.base');
+    let dragging = false;
+
+    // largeur du « before » = celle du conteneur (les deux images ont la même taille)
+    function sizeBefore(){
+      const w = slider.clientWidth;
+      const beforeImg = before.querySelector('img');
+      beforeImg.style.width = w + 'px';
+      beforeImg.style.height = 'auto';
+    }
+    sizeBefore();
+    window.addEventListener('resize', sizeBefore);
+
+    function setPos(x){
+      const r = slider.getBoundingClientRect();
+      let p = (x - r.left) / r.width;
+      p = Math.max(0.03, Math.min(0.97, p));
+      before.style.width = (p * 100) + '%';
+      handle.style.left = (p * 100) + '%';
+      knob.style.left = (p * 100) + '%';
+    }
+    setPos(slider.getBoundingClientRect().left + slider.clientWidth * 0.5);
+
+    slider.addEventListener('mousedown', e => { dragging = true; setPos(e.clientX); e.preventDefault(); });
+    window.addEventListener('mousemove', e => { if(dragging) setPos(e.clientX); });
+    window.addEventListener('mouseup', () => dragging = false);
+    slider.addEventListener('touchstart', e => { dragging = true; setPos(e.touches[0].clientX); }, {passive:true});
+    slider.addEventListener('touchmove', e => { if(dragging) setPos(e.touches[0].clientX); }, {passive:true});
+    window.addEventListener('touchend', () => dragging = false);
+  });
+</script>
+
+</body>
+</html>

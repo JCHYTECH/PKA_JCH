@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lieu — PKA Découvertes</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+  :root {
+    --bg: #0f1115; --panel: #171a21; --panel2: #1e222b;
+    --text: #e8e2da; --muted: #9aa0ab; --accent: #c9a43e;
+    --ok: #3cb371; --warn: #d4923a; --line: #2a2f3a;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "SF Pro Text", Inter, Segoe UI, sans-serif;
+         background: var(--bg); color: var(--text); }
+  header { padding: 18px 28px; border-bottom: 1px solid var(--line); display: flex;
+           align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  header a { color: var(--accent); text-decoration: none; font-size: 13px; }
+  header h1 { margin: 0; font-size: 21px; }
+  header .loc { color: var(--muted); font-size: 13px; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 24px 28px 60px; }
+
+  .scores { display: flex; gap: 18px; flex-wrap: wrap; margin: 14px 0; }
+  .score { background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+           padding: 10px 16px; text-align: center; min-width: 90px; }
+  .score .v { font-size: 20px; font-weight: 700; }
+  .score .l { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+  .stars { color: var(--accent); font-size: 12px; }
+
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+          padding: 16px 18px; margin-bottom: 16px; }
+  .card h2 { margin: 0 0 10px; font-size: 15px; }
+  .rules { white-space: pre-wrap; font-size: 13.5px; line-height: 1.6; color: var(--text); }
+  .desc { font-size: 14px; line-height: 1.65; color: var(--text); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
+  td.km { color: var(--muted); white-space: nowrap; }
+  td a { color: var(--accent); text-decoration: none; }
+
+  #map { height: 340px; border-radius: 12px; border: 1px solid var(--line); margin-top: 16px; }
+  .legend { background: var(--panel2); padding: 8px 10px; border-radius: 6px; font-size: 12px; line-height: 1.6; }
+
+  .gallery { display: flex; flex-wrap: wrap; gap: 10px; }
+  .gallery img { height: 160px; border-radius: 8px; border: 1px solid var(--line); }
+  .meta { color: var(--muted); font-size: 12.5px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; background: var(--panel2);
+           color: var(--muted); border: 1px solid var(--line); }
+  .badge.ok { color: var(--ok); border-color: var(--ok); }
+  .badge.warn { color: var(--warn); border-color: var(--warn); }
+  .err { color: var(--warn); }
+</style>
+</head>
+<body>
+<header>
+  <a href="decouvertes.html">← Découvertes</a>
+  <h1 id="h-title">…</h1>
+  <span class="loc" id="h-loc"></span>
+</header>
+<div class="wrap" id="content"><span class="meta">Chargement…</span></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const stars = (n) => '★'.repeat(n) + '☆'.repeat(5 - (n || 0));
+const name = new URLSearchParams(location.search).get('name');
+
+async function load() {
+  if (!name) { $('#content').innerHTML = '<div class="err">Paramètre ?name= manquant.</div>'; return; }
+  try {
+    const r = await fetch(`/api/place?name=${encodeURIComponent(name)}`);
+    const d = await r.json();
+    if (!d.ok) { $('#content').innerHTML = `<div class="err">${esc(d.error || 'Lieu introuvable')}</div>`; return; }
+    render(d.place);
+  } catch (e) {
+    $('#content').innerHTML = `<div class="err">Erreur : ${esc(String(e))}</div>`;
+  }
+}
+
+function render(p) {
+  document.title = `${p.nom_lieu} — PKA Découvertes`;
+  $('#h-title').textContent = p.nom_lieu;
+  $('#h-loc').textContent = [p.ville, p.region, p.pays].filter(Boolean).join(' · ');
+
+  const conf = Math.round((p.confidence || 0) * 100);
+  const confBadge = conf >= 80 ? 'ok' : 'warn';
+
+  const s = p.scores || {};
+  const scoresHtml = `
+    <div class="scores">
+      <div class="score"><div class="v">${s.photo ?? '–'}</div><div class="stars">${stars(s.photo)}</div><div class="l">Photo</div></div>
+      <div class="score"><div class="v">${s.nature ?? '–'}</div><div class="stars">${stars(s.nature)}</div><div class="l">Nature</div></div>
+      <div class="score"><div class="v">${s.patrimoine ?? '–'}</div><div class="stars">${stars(s.patrimoine)}</div><div class="l">Patrimoine</div></div>
+      <div class="score"><div class="v">${s.van ?? '–'}</div><div class="stars">${stars(s.van)}</div><div class="l">Van</div></div>
+      <div class="score"><div class="v">${conf}%</div><div class="l">Confiance</div><div class="meta"><span class="badge ${confBadge}">${esc(p.action || '')}</span></div></div>
+    </div>`;
+
+  const loc = p.gps ? `<span class="meta">GPS ${p.gps.lat}, ${p.gps.lon} · <a href="https://www.google.com/maps/search/${p.gps.lat},${p.gps.lon}" target="_blank">Google Maps ↗</a></span>` : '';
+
+  const tables = [];
+  if (p.attractions && p.attractions.length) tables.push(table('⭐ À voir aux alentours (30 km)', ['Lieu','Type','Dist'], p.attractions.map(a => [a.name, a.type || '', ''], )));
+  if (p.restaurants && p.restaurants.length) tables.push(table('🍽 Restaurants (15 km)', ['Nom','Cuisine','Dist'], p.restaurants.map(r => [r.name, r.cuisine || '—', ''])));
+  if (p.reserves && p.reserves.length) tables.push(table('🌿 Réserves naturelles (25 km)', ['Nom','Type','Dist'], p.reserves.map(x => [x.name, x.type || '', ''])));
+
+  const photos = (p.media_files || []).map(fp => `<img src="/open?path=${encodeURIComponent(fp)}" alt="photo" loading="lazy">`).join('');
+
+  $('#content').innerHTML = `
+    ${scoresHtml}
+    ${loc}
+    <div class="card"><h2>Résumé</h2><div class="desc">${esc(p.description || '—')}</div></div>
+    ${p.van_info ? `<div class="card"><h2>🚐 Accès minivan</h2><div class="rules">${esc(p.van_info)}</div></div>` : ''}
+    ${tables.map(t => `<div class="card"><h2>${t.title}</h2>${t.html}</div>`).join('')}
+    ${photos ? `<div class="card"><h2>📷 Photos source</h2><div class="gallery">${photos}</div></div>` : ''}
+    <div class="card"><h2>🗺 Carte</h2><div id="map"></div></div>
+    <div class="meta">Analyse ${esc(p.date_analyse || '')} · source ${esc((p.source && p.source.author) || '')}</div>
+  `;
+
+  if (p.gps) initMap(p);
+}
+
+function table(title, headers, rows) {
+  const head = headers.map(h => `<th>${esc(h)}</th>`).join('');
+  const body = rows.map(r => `<tr>${r.map(c => `<td>${esc(c)}</td>`).join('')}</tr>`).join('');
+  return { title, html: `<table><tr>${head}</tr>${body}</table>` };
+}
+
+function initMap(p) {
+  const { lat, lon } = p.gps;
+  const map = L.map('map').setView([lat, lon], 11);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OSM', maxZoom: 18 }).addTo(map);
+  L.circle([lat, lon], { radius: 50000, color: '#c9a43e', fillOpacity: 0.06, weight: 2, dashArray: '6 8' }).addTo(map);
+  L.marker([lat, lon]).bindPopup(`<b>📍 ${esc(p.nom_lieu)}</b>`).addTo(map).openPopup();
+
+  const mk = (emoji) => L.divIcon({ className: '', html: emoji, iconSize: [20, 20], iconAnchor: [10, 10] });
+  (p.attractions || []).forEach(a => L.marker([a.lat, a.lon], { icon: mk('⭐') }).bindPopup(`<b>${esc(a.name)}</b><br>${esc(a.type || '')}`).addTo(map));
+  (p.restaurants || []).forEach(r => L.marker([r.lat, r.lon], { icon: mk('🍽') }).bindPopup(`<b>${esc(r.name)}</b><br>${esc(r.cuisine || '')}`).addTo(map));
+  (p.reserves || []).forEach(x => L.marker([x.lat, x.lon], { icon: mk('🌿') }).bindPopup(`<b>${esc(x.name)}</b><br>${esc(x.type || '')}`).addTo(map));
+
+  const legend = L.control({ position: 'bottomright' });
+  legend.onAdd = () => { const d = L.DomUtil.create('div', 'legend'); d.innerHTML = '📍 Lieu · ⭐ Site · 🍽 Resto · 🌿 Réserve'; return d; };
+  legend.addTo(map);
+}
+
+load();
+</script>
+</body>
+</html>

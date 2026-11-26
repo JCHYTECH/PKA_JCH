@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'Instant Lu — Wireframe Landing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --noir:    #0D0B09;
+    --ivoire:  #F8F5F0;
+    --ocre:    #C17F3A;
+    --sable:   #E8E2DA;
+    --gris:    #6B6560;
+    --brun:    #2A2420;
+    --ardoise: #4A5568;
+    --gris-epreuve: #D4D4D4;  /* gris 17% proofing impression */
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Space Grotesk', sans-serif; background: var(--ivoire); color: var(--noir); font-size: 16px; }
+
+  /* ─── Label wireframe ─── */
+  .wf-label {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: var(--ardoise); color: white;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 24px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+  }
+  .wf-label a { color: white; text-decoration: underline; }
+  body { padding-top: 36px; }
+
+  /* ─── Navigation ─── */
+  nav {
+    position: sticky; top: 36px; z-index: 100;
+    background: var(--ivoire); border-bottom: 1px solid var(--sable);
+    display: flex; align-items: center; padding: 0 60px; height: 64px;
+  }
+  .logo { font-weight: 300; font-size: 20px; letter-spacing: 0.08em; flex: 1; }
+  .logo span { color: var(--ocre); }
+  .nav-links { display: flex; gap: 36px; font-size: 14px; font-weight: 500; }
+  .nav-cta { margin-left: 36px; background: var(--ocre); color: white; padding: 10px 22px; font-size: 13px; font-weight: 600; }
+  .nav-lang { margin-left: 24px; font-size: 12px; color: var(--gris); letter-spacing: 0.05em; }
+  .breadcrumb { font-size: 12px; color: var(--gris); margin-left: 24px; }
+  .breadcrumb span { color: var(--ocre); }
+
+  /* ─── Hero L'Instant Lu ─── */
+  .hero {
+    background: #1E2A38; color: var(--ivoire);
+    display: grid; grid-template-columns: 2fr 3fr; min-height: 80vh;
+  }
+  .hero-text { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; }
+  .hero-eyebrow { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ocre); margin-bottom: 20px; }
+  .hero-brand { font-weight: 300; font-size: 16px; letter-spacing: 0.08em; color: rgba(248,245,240,0.5); margin-bottom: 12px; }
+  .hero-brand span { color: var(--ocre); }
+  .hero-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 52px; line-height: 1.1; margin-bottom: 24px; letter-spacing: -0.01em; }
+  .hero-sub { font-family: 'Lora', serif; font-size: 18px; line-height: 1.7; color: rgba(248,245,240,0.65); max-width: 420px; margin-bottom: 12px; }
+  .hero-deliverables { display: flex; flex-direction: column; gap: 8px; margin-bottom: 40px; margin-top: 12px; }
+  .hero-deliverable { display: flex; align-items: center; gap: 12px; font-size: 14px; color: rgba(248,245,240,0.7); }
+  .hero-deliverable-dot { width: 6px; height: 6px; background: var(--ocre); border-radius: 50%; flex-shrink: 0; }
+  .hero-actions { display: flex; flex-direction: column; gap: 12px; }
+  .btn-hero { background: var(--ocre); color: white; padding: 16px 32px; font-weight: 700; font-size: 15px; cursor: default; display: inline-block; width: fit-content; }
+  .btn-hero-sub { font-size: 12px; color: rgba(248,245,240,0.4); font-family: 'IBM Plex Mono', monospace; }
+
+  .hero-visual { padding: 48px 60px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.04); }
+
+  /* Rapport preview */
+  .rapport-preview { background: var(--ivoire); width: 480px; box-shadow: 0 32px 80px rgba(0,0,0,0.5); }
+
+  /* Modifications suggérées */
+  .modifs { border-top: 1px solid var(--sable); padding: 16px 24px; display: flex; flex-direction: column; gap: 10px; }
+  .modif-row { display: flex; align-items: flex-start; gap: 12px; }
+  .modif-badge { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; padding: 3px 10px; white-space: nowrap; flex-shrink: 0; }
+  .modif-badge.preset { background: var(--ocre); color: white; }
+  .modif-badge.masque { background: var(--ardoise); color: white; }
+  .modif-list { font-size: 11px; color: var(--gris); line-height: 1.6; font-family: 'IBM Plex Mono', monospace; }
+  .rapport-header { background: var(--ardoise); padding: 20px 24px; }
+  .rapport-header-brand { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(248,245,240,0.6); margin-bottom: 4px; }
+  .rapport-header-title { font-size: 15px; font-weight: 600; color: white; }
+  .rapport-photo { height: 220px; background: linear-gradient(160deg, #1A2018 0%, #0D1A0F 100%); display: flex; align-items: center; justify-content: center; outline: 10px solid var(--gris-epreuve); outline-offset: -10px; }
+  .rapport-photo-label { font-size: 10px; color: rgba(248,245,240,0.2); font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.08em; }
+  .rapport-body { padding: 20px 24px; color: var(--noir); }
+  .rapport-species { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+  .rapport-meta { font-size: 11px; color: var(--gris); font-family: 'IBM Plex Mono', monospace; margin-bottom: 16px; }
+  .rapport-score-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .rapport-score-label { font-size: 11px; width: 80px; color: var(--gris); }
+  .rapport-score-bar-wrap { flex: 1; background: var(--sable); height: 4px; }
+  .rapport-score-bar { height: 4px; background: var(--ocre); }
+  .rapport-score-val { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--ardoise); width: 28px; text-align: right; }
+  .rapport-total { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--sable); display: flex; justify-content: space-between; align-items: baseline; }
+  .rapport-total-tier { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gris); }
+  .rapport-total-val { font-family: 'IBM Plex Mono', monospace; font-size: 22px; color: var(--ocre); font-weight: 500; }
+  .rapport-footer { background: var(--sable); padding: 10px 24px; font-size: 10px; color: var(--gris); font-family: 'IBM Plex Mono', monospace; display: flex; justify-content: space-between; }
+
+  /* ─── Carrousel ─── */
+  .carousel-section { padding: 80px 0 60px; background: var(--ivoire); overflow: hidden; }
+  .carousel-header { display: flex; align-items: flex-end; justify-content: space-between; padding: 0 60px; margin-bottom: 40px; }
+  .carousel-nav { display: flex; align-items: center; gap: 16px; }
+  .carousel-btn { background: none; border: 1px solid var(--sable); width: 40px; height: 40px; font-size: 16px; cursor: pointer; color: var(--noir); transition: background 0.15s; }
+  .carousel-btn:hover { background: var(--sable); }
+  .carousel-counter { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--gris); }
+  .carousel-track { display: flex; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); }
+  .carousel-slide { min-width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; padding: 0 60px; }
+  .slide-photo-col { display: flex; flex-direction: column; gap: 12px; }
+  .toggle-row { display: flex; gap: 2px; }
+  .toggle-btn { background: var(--sable); border: none; padding: 8px 20px; font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; color: var(--gris); }
+  .toggle-btn.active { background: var(--noir); color: var(--ivoire); }
+  .photo-frame { background: var(--gris-epreuve); padding: 16px; flex: 1; }
+  .photo-avant, .photo-apres { width: 100%; height: 420px; display: flex; align-items: center; justify-content: center; }
+  .photo-avant.hidden, .photo-apres.hidden { display: none; }
+  .photo-caption { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--gris); }
+
+  /* Simulations avant/après par filtre CSS */
+  .s1-avant { background: linear-gradient(160deg,#1a2018,#0d1a0f); filter: brightness(0.85) saturate(0.7) contrast(0.9); }
+  .s1-apres { background: linear-gradient(160deg,#1a2018,#0d1a0f); filter: brightness(1.05) saturate(1.2) contrast(1.1) sepia(0.12); }
+  .s2-avant { background: linear-gradient(150deg,#1a1714,#2d1a0a); filter: brightness(0.8) saturate(0.65) contrast(0.85); }
+  .s2-apres { background: linear-gradient(150deg,#1a1714,#2d1a0a); filter: brightness(1.08) saturate(1.25) contrast(1.12) sepia(0.08); }
+  .s3-avant { background: linear-gradient(140deg,#0d1219,#1a1d2a); filter: brightness(0.88) saturate(0.75) contrast(0.9); }
+  .s3-apres { background: linear-gradient(140deg,#0d1219,#1a1d2a); filter: brightness(1.04) saturate(1.3) contrast(1.08); }
+  .s4-avant { background: linear-gradient(160deg,#1a1a14,#2a2a1a); filter: brightness(0.75) saturate(0.6) contrast(0.8); }
+  .s4-apres { background: linear-gradient(160deg,#1a1a14,#2a2a1a); filter: brightness(1.1) saturate(1.15) contrast(1.2); }
+  .s5-avant { background: linear-gradient(160deg,#0d1a1a,#1a2a2a); filter: brightness(0.82) saturate(0.68) contrast(0.88); }
+  .s5-apres { background: linear-gradient(160deg,#0d1a1a,#1a2a2a); filter: brightness(1.06) saturate(1.22) contrast(1.1) sepia(0.1); }
+
+  .slide-data-col { background: white; padding: 40px; display: flex; flex-direction: column; gap: 28px; }
+  .slide-score-block { display: flex; align-items: baseline; gap: 16px; }
+  .slide-score-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gris); }
+  .slide-score-val { font-family: 'IBM Plex Mono', monospace; font-size: 48px; color: var(--ocre); font-weight: 500; line-height: 1; }
+  .slide-tier { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gris); align-self: flex-end; }
+  .slide-modifs-title, .slide-params-title { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gris); margin-bottom: 8px; }
+  .param-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--sable); font-size: 13px; }
+  .param-val { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ocre); }
+
+  .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 32px; }
+  .dot { width: 8px; height: 8px; background: var(--sable); cursor: pointer; border-radius: 50%; transition: background 0.2s; }
+  .dot.active { background: var(--ocre); }
+
+  /* ─── Étapes ─── */
+  .etapes { padding: 80px 60px; background: var(--ivoire); }
+  .coulisse {
+    margin-top: 2px; background: var(--noir); padding: 32px 60px;
+  }
+  .coulisse-inner {
+    display: flex; align-items: center; gap: 40px;
+    max-width: 860px;
+  }
+  .coulisse-timer { text-align: center; flex-shrink: 0; }
+  .coulisse-timer-val {
+    font-family: 'IBM Plex Mono', monospace; font-size: 32px;
+    color: var(--ocre); font-weight: 500; line-height: 1;
+  }
+  .coulisse-timer-label {
+    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(248,245,240,0.4); margin-top: 4px;
+  }
+  .coulisse-sep { width: 1px; background: rgba(248,245,240,0.15); align-self: stretch; flex-shrink: 0; }
+  .coulisse-steps { display: flex; align-items: center; gap: 20px; flex: 1; }
+  .coulisse-step { display: flex; align-items: flex-start; gap: 12px; flex: 1; }
+  .coulisse-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+  .coulisse-dot.ia { background: var(--ardoise); }
+  .coulisse-dot.humain { background: var(--ocre); }
+  .coulisse-step-title { font-size: 13px; font-weight: 600; color: var(--ivoire); margin-bottom: 3px; }
+  .coulisse-step-sub { font-size: 11px; color: rgba(248,245,240,0.5); line-height: 1.5; font-family: 'IBM Plex Mono', monospace; }
+  .coulisse-arrow { font-size: 18px; color: rgba(248,245,240,0.2); flex-shrink: 0; }
+
+  /* ─── Étapes suite ─── */
+  .section-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gris); margin-bottom: 12px; }
+  .section-title { font-weight: 700; font-size: 36px; margin-bottom: 48px; }
+  .etapes-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; }
+  .etape-card { background: var(--sable); padding: 40px 32px; }
+  .etape-num { font-family: 'IBM Plex Mono', monospace; font-size: 36px; color: var(--ocre); font-weight: 500; margin-bottom: 20px; line-height: 1; }
+  .etape-title { font-weight: 700; font-size: 18px; margin-bottom: 12px; }
+  .etape-desc { font-family: 'Lora', serif; font-size: 15px; line-height: 1.65; color: var(--gris); margin-bottom: 16px; }
+  .etape-detail { font-size: 12px; color: var(--gris); font-family: 'IBM Plex Mono', monospace; line-height: 1.6; }
+
+  /* ─── Exemple rapport complet ─── */
+  .exemple { background: white; padding: 80px 60px; color: var(--noir); }
+  .exemple-title { font-weight: 700; font-size: 36px; margin-bottom: 8px; }
+  .exemple-sub { font-family: 'Lora', serif; font-style: italic; font-size: 16px; color: var(--gris); margin-bottom: 48px; }
+  .exemple-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 2px; }
+  .exemple-photo-wrap { background: var(--gris-epreuve); padding: 20px; display: flex; align-items: stretch; }
+  .exemple-photo { background: linear-gradient(160deg, #1A2018 0%, #0D1A0F 100%); display: flex; align-items: center; justify-content: center; min-height: 360px; flex: 1; }
+  .exemple-report { background: var(--sable); padding: 40px; }
+  .exemple-section { margin-bottom: 32px; }
+  .exemple-section-title { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ocre); margin-bottom: 16px; }
+  .exemple-critique { font-family: 'Lora', serif; font-size: 14px; line-height: 1.7; color: var(--gris); }
+  .exemple-lr { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+  .lr-param { background: white; padding: 10px 14px; }
+  .lr-param-name { font-size: 10px; color: var(--gris); letter-spacing: 0.08em; margin-bottom: 4px; }
+  .lr-param-val { font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: var(--ocre); }
+
+  /* ─── Tarifs ─── */
+  .tarifs { padding: 80px 60px; }
+  .tarifs-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 2px; margin-top: 48px; }
+  .tarif-card { padding: 32px 24px; background: white; }
+  .tarif-card.featured { background: var(--noir); color: var(--ivoire); }
+  .tarif-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gris); margin-bottom: 12px; }
+  .tarif-label.light { color: rgba(248,245,240,0.4); }
+  .tarif-price { font-family: 'IBM Plex Mono', monospace; font-size: 36px; color: var(--ocre); font-weight: 500; margin-bottom: 4px; line-height: 1; }
+  .tarif-unit { font-size: 12px; color: var(--gris); margin-bottom: 24px; font-family: 'IBM Plex Mono', monospace; }
+  .tarif-unit.light { color: rgba(248,245,240,0.4); }
+  .tarif-features { display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: var(--gris); margin-bottom: 28px; }
+  .tarif-features.light { color: rgba(248,245,240,0.6); }
+  .tarif-feature { display: flex; gap: 8px; }
+  .tarif-feature-dot { color: var(--ocre); font-weight: 700; }
+  .tarif-cta { font-size: 13px; font-weight: 600; color: var(--ocre); text-decoration: underline; text-underline-offset: 3px; cursor: default; }
+  .tarif-free-badge { display: inline-block; background: var(--ocre); color: white; font-size: 10px; padding: 3px 8px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+
+  /* ─── Éthique ─── */
+  .ethique { background: var(--sable); padding: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .ethique-text {}
+  .ethique-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gris); margin-bottom: 16px; }
+  .ethique-title { font-weight: 700; font-size: 28px; margin-bottom: 20px; }
+  .ethique-body { font-family: 'Lora', serif; font-size: 16px; line-height: 1.7; color: var(--gris); margin-bottom: 20px; }
+  .ethique-link { font-size: 13px; color: var(--ocre); text-decoration: underline; text-underline-offset: 3px; cursor: default; }
+  .ethique-refus { display: flex; flex-direction: column; gap: 8px; }
+  .refus-item { display: flex; gap: 16px; padding: 16px; background: white; align-items: flex-start; font-size: 13px; }
+  .refus-icon { font-size: 16px; flex-shrink: 0; }
+  .refus-text { line-height: 1.5; }
+  .refus-label { font-weight: 600; display: block; margin-bottom: 2px; }
+  .refus-sub { color: var(--gris); font-size: 12px; }
+
+  /* ─── Ancrage ARTEON ─── */
+  .ancrage { background: var(--brun); color: var(--ivoire); padding: 60px; display: flex; align-items: center; gap: 60px; }
+  .ancrage-logo { font-weight: 300; font-size: 32px; letter-spacing: 0.08em; flex-shrink: 0; }
+  .ancrage-logo span { color: var(--ocre); }
+  .ancrage-sep { width: 1px; background: rgba(248,245,240,0.15); align-self: stretch; }
+  .ancrage-text {}
+  .ancrage-quote { font-family: 'Lora', serif; font-style: italic; font-size: 20px; line-height: 1.5; color: rgba(248,245,240,0.8); margin-bottom: 16px; }
+  .ancrage-link { font-size: 13px; color: var(--ocre); text-decoration: underline; text-underline-offset: 3px; cursor: default; }
+
+  /* ─── Footer ─── */
+  footer {
+    background: var(--brun); color: var(--ivoire);
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+    padding: 60px; font-size: 13px;
+  }
+  .footer-brand-name { font-weight: 300; font-size: 24px; letter-spacing: 0.08em; margin-bottom: 12px; }
+  .footer-brand-name span { color: var(--ocre); }
+  .footer-slogan { font-family: 'Lora', serif; font-style: italic; font-size: 14px; color: rgba(248,245,240,0.5); margin-bottom: 20px; }
+  .footer-copy { font-size: 11px; color: rgba(248,245,240,0.3); font-family: 'IBM Plex Mono', monospace; }
+  .footer-col-title { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ocre); margin-bottom: 16px; font-weight: 600; }
+  .footer-links { display: flex; flex-direction: column; gap: 8px; color: rgba(248,245,240,0.6); }
+</style>
+</head>
+<body>
+
+<div class="wf-label">
+  WIREFRAME — arteon.be/critique · L'Instant Lu · 2026-05-02
+  &nbsp;|&nbsp;
+  <a href="wireframe-home.html">← Retour wireframe Home</a>
+</div>
+
+<!-- Navigation -->
+<nav>
+  <div class="logo">Arteon<span>·</span></div>
+  <div class="breadcrumb">/ <span>L'Instant Lu</span></div>
+  <div style="flex:1;"></div>
+  <div class="nav-links" style="font-size:13px; color:var(--gris);">
+    <span>Manifeste</span><span>Artistes</span><span>Shop</span><span>WildLens</span>
+  </div>
+  <div class="nav-lang" style="margin-left:24px;">FR · EN · IT</div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-brand">L'Instant Lu<span>·</span> — by Arteon<span>·</span></div>
+    <h1 class="hero-title">Votre photo<br>wildlife analysée<br>par nos experts.</h1>
+    <div class="hero-deliverables">
+      <div class="hero-deliverable"><div class="hero-deliverable-dot"></div>Analyse IA + validation humaine ARTEON</div>
+      <div class="hero-deliverable"><div class="hero-deliverable-dot"></div>Rapport PDF professionnel sur 5 axes</div>
+      <div class="hero-deliverable"><div class="hero-deliverable-dot"></div>Preset Lightroom personnalisé (.xmp)</div>
+      <div class="hero-deliverable"><div class="hero-deliverable-dot"></div>Livré sous 2 heures</div>
+    </div>
+    <div class="hero-actions">
+      <div class="btn-hero">Soumettre ma photo — gratuit</div>
+      <div class="btn-hero-sub">1ère analyse offerte · puis €1,90 · aucune carte requise</div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="rapport-preview">
+      <div class="rapport-header">
+        <div class="rapport-header-brand">L'Instant Lu · by Arteon·</div>
+        <div class="rapport-header-title">Rapport d'analyse photographique</div>
+      </div>
+      <div class="rapport-photo"><div class="rapport-photo-label">Votre photo</div></div>
+      <div class="rapport-body">
+        <div class="rapport-species">Pygargue à queue blanche</div>
+        <div class="rapport-meta">Canon R5 · 600mm · 1/2000s · ISO 800</div>
+        <div class="rapport-score-row">
+          <div class="rapport-score-label">Composition</div>
+          <div class="rapport-score-bar-wrap"><div class="rapport-score-bar" style="width:85%"></div></div>
+          <div class="rapport-score-val">17</div>
+        </div>
+        <div class="rapport-score-row">
+          <div class="rapport-score-label">Exposition</div>
+          <div class="rapport-score-bar-wrap"><div class="rapport-score-bar" style="width:80%"></div></div>
+          <div class="rapport-score-val">16</div>
+        </div>
+        <div class="rapport-score-row">
+          <div class="rapport-score-label">Netteté</div>
+          <div class="rapport-score-bar-wrap"><div class="rapport-score-bar" style="width:90%"></div></div>
+          <div class="rapport-score-val">18</div>
+        </div>
+        <div class="rapport-score-row">
+          <div class="rapport-score-label">Technique</div>
+          <div class="rapport-score-bar-wrap"><div class="rapport-score-bar" style="width:75%"></div></div>
+          <div class="rapport-score-val">15</div>
+        </div>
+        <div class="rapport-score-row">
+          <div class="rapport-score-label">Impact</div>
+          <div class="rapport-score-bar-wrap"><div class="rapport-score-bar" style="width:80%"></div></div>
+          <div class="rapport-score-val">16</div>
+        </div>
+        <div class="rapport-total">
+          <div class="rapport-total-tier">EXCELLENT</div>
+          <div class="rapport-total-val">82/100</div>
+        </div>
+      </div>
+      <div class="modifs">
+        <div style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gris); margin-bottom:8px;">Modifications suggérées</div>
+        <div style="display:flex; gap:8px;">
+          <div class="modif-badge preset">8 via preset</div>
+          <div class="modif-badge masque">3 via masque</div>
+        </div>
+      </div>
+      <div class="rapport-footer">
+        <span>5600K → 4800K ▼ 2/5</span>
+        <span>arteon.be</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Carrousel Avant / Après -->
+<section class="carousel-section">
+  <div class="carousel-header">
+    <div>
+      <div class="section-label">5 photos de JC Havaux</div>
+      <div class="section-title">Avant · Après correction</div>
+    </div>
+    <div class="carousel-nav">
+      <button class="carousel-btn" id="prev" onclick="slide(-1)">←</button>
+      <span class="carousel-counter"><span id="cur">1</span> / 5</span>
+      <button class="carousel-btn" id="next" onclick="slide(1)">→</button>
+    </div>
+  </div>
+
+  <div class="carousel-track" id="track">
+
+    <!-- Slide 1 -->
+    <div class="carousel-slide">
+      <div class="slide-photo-col">
+        <div class="toggle-row">
+          <button class="toggle-btn active" onclick="setView(this,'avant',0)">Avant</button>
+          <button class="toggle-btn" onclick="setView(this,'apres',0)">Après</button>
+        </div>
+        <div class="photo-frame">
+          <div class="photo-avant s1-avant" id="v0-avant"></div>
+          <div class="photo-apres s1-apres hidden" id="v0-apres"></div>
+        </div>
+        <div class="photo-caption">Pygargue à queue blanche · Ardennes · Canon R5 600mm</div>
+      </div>
+      <div class="slide-data-col">
+        <div class="slide-score-block">
+          <div class="slide-score-label">Score</div>
+          <div class="slide-score-val">82/100</div>
+          <div class="slide-tier">EXCELLENT</div>
+        </div>
+        <div class="slide-modifs">
+          <div class="slide-modifs-title">Modifications suggérées</div>
+          <div style="display:flex;gap:8px;margin-top:8px;">
+            <div class="modif-badge preset">8 via preset</div>
+            <div class="modif-badge masque">3 via masque</div>
+          </div>
+        </div>
+        <div class="slide-params">
+          <div class="slide-params-title">Corrections preset</div>
+          <div class="param-row"><span>Température</span><span class="param-val">4200K → 5600K ▲ 3/5</span></div>
+          <div class="param-row"><span>Exposition</span><span class="param-val">+0.35</span></div>
+          <div class="param-row"><span>Hautes lumières</span><span class="param-val">−55</span></div>
+          <div class="param-row"><span>Ombres</span><span class="param-val">+40</span></div>
+          <div class="param-row"><span>Clarté</span><span class="param-val">+22</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="carousel-slide">
+      <div class="slide-photo-col">
+        <div class="toggle-row">
+          <button class="toggle-btn active" onclick="setView(this,'avant',1)">Avant</button>
+          <button class="toggle-btn" onclick="setView(this,'apres',1)">Après</button>
+        </div>
+        <div class="photo-frame">
+          <div class="photo-avant s2-avant" id="v1-avant"></div>
+          <div class="photo-apres s2-apres hidden" id="v1-apres"></div>
+        </div>
+        <div class="photo-caption">Renard roux · Condroz · Canon R5 400mm</div>
+      </div>
+      <div class="slide-data-col">
+        <div class="slide-score-block">
+          <div class="slide-score-label">Score</div>
+          <div class="slide-score-val">76/100</div>
+          <div class="slide-tier">TRÈS BON</div>
+        </div>
+        <div class="slide-modifs">
+          <div class="slide-modifs-title">Modifications suggérées</div>
+          <div style="display:flex;gap:8px;margin-top:8px;">
+            <div class="modif-badge preset">7 via preset</div>
+            <div class="modif-badge masque">2 via masque</div>
+          </div>
+        </div>
+        <div class="slide-params">
+          <div class="slide-params-title">Corrections preset</div>
+          <div class="param-row"><span>Température</span><span class="param-val">5200K → 5800K ▲ 1/5</span></div>
+          <div class="param-row"><span>Exposition</span><span class="param-val">+0.20</span></div>
+          <div class="param-row"><span>Contraste</span><span class="param-val">+18</span></div>
+          <div class="param-row"><span>Vibrance</span><span class="param-val">+14</span></div>
+          <div class="param-row"><span>Netteté</span><span class="param-val">72</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="carousel-slide">
+      <div class="slide-photo-col">
+        <div class="toggle-row">
+          <button class="toggle-btn active" onclick="setView(this,'avant',2)">Avant</button>
+          <button class="toggle-btn" onclick="setView(this,'apres',2)">Après</button>
+        </div>
+        <div class="photo-frame">
+          <div class="photo-avant s3-avant" id="v2-avant"></div>
+          <div class="photo-apres s3-apres hidden" id="v2-apres"></div>
+        </div>
+        <div class="photo-caption">Martin-pêcheur · Meuse · Sony A7IV 200-600mm</div>
+      </div>
+      <div class="slide-data-col">
+        <div class="slide-score-block">
+          <div class="slide-score-label">Score</div>
+          <div class="slide-score-val">91/100</div>
+          <div class="slide-tier">EXCEPTIONNEL</div>
+        </div>
+        <div class="slide-modifs">
+          <div class="slide-modifs-title">Modifications suggérées</div>
+          <div style="display:flex;gap:8px;margin-top:8px;">
+            <div class="modif-badge preset">6 via preset</div>
+            <div class="modif-badge masque">1 via masque</div>
+          </div>
+        </div>
+        <div class="slide-params">
+          <div class="slide-params-title">Corrections preset</div>
+          <div class="param-row"><span>Température</span><span class="param-val">◆ 0/5 — neutre</span></div>
+          <div class="param-row"><span>Exposition</span><span class="param-val">+0.10</span></div>
+          <div class="param-row"><span>Hautes lumières</span><span class="param-val">−30</span></div>
+          <div class="param-row"><span>Saturation</span><span class="param-val">+8</span></div>
+          <div class="param-row"><span>Netteté</span><span class="param-val">80</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="carousel-slide">
+      <div class="slide-photo-col">
+        <div class="toggle-row">
+          <button class="toggle-btn active" onclick="setView(this,'avant',3)">Avant</button>
+          <button class="toggle-btn" onclick="setView(this,'apres',3)">Après</button>
+        </div>
+        <div class="photo-frame">
+          <div class="photo-avant s4-avant" id="v3-avant"></div>
+          <div class="photo-apres s4-apres hidden" id="v3-apres"></div>
+        </div>
+        <div class="photo-caption">Buse variable · vol · Haute Ardenne</div>
+      </div>
+      <div class="slide-data-col">
+        <div class="slide-score-block">
+          <div class="slide-score-label">Score</div>
+          <div class="slide-score-val">68/100</div>
+          <div class="slide-tier">BON</div>
+        </div>
+        <div class="slide-modifs">
+          <div class="slide-modifs-title">Modifications suggérées</div>
+          <div style="display:flex;gap:8px;margin-top:8px;">
+            <div class="modif-badge preset">9 via preset</div>
+            <div class="modif-badge masque">4 via masque</div>
+          </div>
+        </div>
+        <div class="slide-params">
+          <div class="slide-params-title">Corrections preset</div>
+          <div class="param-row"><span>Température</span><span class="param-val">6500K → 5400K ▼ 2/5</span></div>
+          <div class="param-row"><span>Exposition</span><span class="param-val">+0.55</span></div>
+          <div class="param-row"><span>Débrumage</span><span class="param-val">+25</span></div>
+          <div class="param-row"><span>Contraste</span><span class="param-val">+30</span></div>
+          <div class="param-row"><span>Blacks</span><span class="param-val">−25</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="carousel-slide">
+      <div class="slide-photo-col">
+        <div class="toggle-row">
+          <button class="toggle-btn active" onclick="setView(this,'avant',4)">Avant</button>
+          <button class="toggle-btn" onclick="setView(this,'apres',4)">Après</button>
+        </div>
+        <div class="photo-frame">
+          <div class="photo-avant s5-avant" id="v4-avant"></div>
+          <div class="photo-apres s5-apres hidden" id="v4-apres"></div>
+        </div>
+        <div class="photo-caption">Bernache du Canada · Lac de Nisramont</div>
+      </div>
+      <div class="slide-data-col">
+        <div class="slide-score-block">
+          <div class="slide-score-label">Score</div>
+          <div class="slide-score-val">76/100</div>
+          <div class="slide-tier">TRÈS BON</div>
+        </div>
+        <div class="slide-modifs">
+          <div class="slide-modifs-title">Modifications suggérées</div>
+          <div style="display:flex;gap:8px;margin-top:8px;">
+            <div class="modif-badge preset">7 via preset</div>
+            <div class="modif-badge masque">2 via masque</div>
+          </div>
+        </div>
+        <div class="slide-params">
+          <div class="slide-params-title">Corrections preset</div>
+          <div class="param-row"><span>Température</span><span class="param-val">4200K → 5100K ▲ 2/5</span></div>
+          <div class="param-row"><span>Exposition</span><span class="param-val">+0.30</span></div>
+          <div class="param-row"><span>Ombres</span><span class="param-val">+35</span></div>
+          <div class="param-row"><span>Vibrance</span><span class="param-val">+10</span></div>
+          <div class="param-row"><span>Clarté</span><span class="param-val">+15</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /track -->
+
+  <!-- Dots -->
+  <div class="carousel-dots">
+    <span class="dot active" onclick="goTo(0)"></span>
+    <span class="dot" onclick="goTo(1)"></span>
+    <span class="dot" onclick="goTo(2)"></span>
+    <span class="dot" onclick="goTo(3)"></span>
+    <span class="dot" onclick="goTo(4)"></span>
+  </div>
+</section>
+
+<!-- 3 étapes -->
+<section class="etapes">
+  <div class="section-label">Simple · Précis · Validé</div>
+  <div class="section-title">Comment ça marche</div>
+
+  <div class="etapes-grid" style="grid-template-columns:1fr 1fr; max-width:720px;">
+    <div class="etape-card">
+      <div class="etape-num">01</div>
+      <div class="etape-title">Soumettez votre photo</div>
+      <div class="etape-desc">JPEG, PNG ou RAW (CR3, NEF, ARW, DNG…). Taille max 20 MB. Un filtre éthique vérifie automatiquement la conformité ARTEON.</div>
+      <div class="etape-detail">JPEG · PNG · CR3 · NEF · ARW · DNG · RAF…</div>
+    </div>
+    <div class="etape-card">
+      <div class="etape-num">02</div>
+      <div class="etape-title">Vous recevez le dossier</div>
+      <div class="etape-desc">Un PDF professionnel et un preset .XMP prêt à importer dans Lightroom Classic ou Mobile vous sont envoyés par email.</div>
+      <div class="etape-detail">PDF · Preset .XMP · Historique dans votre compte</div>
+    </div>
+  </div>
+
+  <!-- Bandeau coulisse -->
+  <div class="coulisse">
+    <div class="coulisse-inner">
+      <div class="coulisse-timer">
+        <div class="coulisse-timer-val">≤ 2h</div>
+        <div class="coulisse-timer-label">délai garanti</div>
+      </div>
+      <div class="coulisse-sep"></div>
+      <div class="coulisse-steps">
+        <div class="coulisse-step">
+          <div class="coulisse-dot ia"></div>
+          <div>
+            <div class="coulisse-step-title">Notre IA analyse votre photo</div>
+            <div class="coulisse-step-sub">Composition · Exposition · Netteté · Technique · Impact · Corrections Lightroom</div>
+          </div>
+        </div>
+        <div class="coulisse-arrow">→</div>
+        <div class="coulisse-step">
+          <div class="coulisse-dot humain"></div>
+          <div>
+            <div class="coulisse-step-title">Un expert ARTEON valide</div>
+            <div class="coulisse-step-sub">Vérification avant/après · Aucun rapport n'est envoyé sans regard humain</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Exemple rapport -->
+<section class="exemple">
+  <div class="section-label" style="color:rgba(248,245,240,0.4); font-size:11px; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:12px;">Exemple réel</div>
+  <div class="exemple-title">Ce que vous recevez</div>
+  <div class="exemple-sub">Rapport complet — Bernache du Canada · JC Havaux · 76/100</div>
+  <div class="exemple-grid">
+    <div class="exemple-photo-wrap"><div class="exemple-photo"><div style="font-size:10px; color:rgba(248,245,240,0.2); font-family:'IBM Plex Mono',monospace; letter-spacing:0.08em; text-transform:uppercase;">Photo analysée</div></div></div>
+    <div class="exemple-report">
+      <div class="exemple-section">
+        <div class="exemple-section-title">Composition · 15/20</div>
+        <div class="exemple-critique">Le placement du sujet respecte la règle des tiers mais la ligne d'eau horizontale crée une scission trop équilibrée. Le regard de l'oiseau vers le hors-champ gauche génère une tension positive. Prévoir plus d'espace devant le sujet lors du recadrage.</div>
+      </div>
+      <div class="exemple-section">
+        <div class="exemple-section-title">Corrections Lightroom recommandées</div>
+        <div class="exemple-lr">
+          <div class="lr-param"><div class="lr-param-name">Température</div><div class="lr-param-val">4200K → 5100K ▲ 2/5</div></div>
+          <div class="lr-param"><div class="lr-param-name">Exposition</div><div class="lr-param-val">+0.35</div></div>
+          <div class="lr-param"><div class="lr-param-name">Hautes lumières</div><div class="lr-param-val">-45</div></div>
+          <div class="lr-param"><div class="lr-param-name">Ombres</div><div class="lr-param-val">+30</div></div>
+          <div class="lr-param"><div class="lr-param-name">Clarté</div><div class="lr-param-val">+18</div></div>
+          <div class="lr-param"><div class="lr-param-name">Vibrance</div><div class="lr-param-val">+12</div></div>
+        </div>
+      </div>
+      <div style="margin-top:20px; padding-top:20px; border-top:1px solid var(--sable); font-size:12px; color:var(--gris); font-family:'IBM Plex Mono',monospace;">
+        + Critique sur 5 axes · Analyse chromatique · Pistes de retouche locale · Fichier .XMP prêt à l'import
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center; margin-top:40px;">
+    <div style="display:inline-block; border:1px solid var(--sable); color:var(--gris); padding:12px 28px; font-size:13px; cursor:default;">Voir d'autres exemples →</div>
+  </div>
+</section>
+
+<!-- Tarifs -->
+<section class="tarifs">
+  <div class="section-label">Transparent</div>
+  <div class="section-title">Tarifs</div>
+  <div class="tarifs-grid">
+    <div class="tarif-card">
+      <div class="tarif-free-badge">Offerte</div>
+      <div class="tarif-label">1ère analyse</div>
+      <div class="tarif-price">€0</div>
+      <div class="tarif-unit">à l'inscription</div>
+      <div class="tarif-features">
+        <div class="tarif-feature"><span class="tarif-feature-dot">·</span>Rapport PDF complet</div>
+        <div class="tarif-feature"><span class="tarif-feature-dot">·</span>Preset .XMP Lightroom</div>
+        <div class="tarif-feature"><span class="tarif-feature-dot">·</span>Aucune carte requise</div>
+      </div>
+      <div class="tarif-cta">Commencer →</div>
+    </div>
+    <div class="tarif-card featured">
+      <div class="tarif-label light">Standard</div>
+      <div class="tarif-price">€1,90</div>
+      <div class="tarif-unit light">TVA incluse · par analyse</div>
+      <div class="tarif-features light">
+        <div class="tarif-feature"><span class="tarif-feature-dot">·</span>Rapport PDF complet</div>
+        <div class="tarif-feature"><span class="tarif-feature-dot">·</span>Preset .XMP Lightroom</div>
+        <div class="tarif-feature"><span class="tarif-feature-dot">·</span>Historique analyses</div>
+      </div>
+      <div class="tarif-cta">Analyser →</div>
+    </div>
+    <div class="tarif-card">
+      <div class="tarif-label">Pack Découverte</div>
+      <div class="tarif-price">€0,99</div>
+      <div class="tarif-unit">pour 2 analyses</div>
+      <div class="tarif-features">
+        <div class="tarif-feature"><span class="tarif-feature-dot">·</span>2 rapports PDF</div>
+        <div class="tarif-feature"><span class="tarif-feature-dot">·</span>2 presets .XMP</div>
+        <div class="tarif-feature"><span class="tarif-feature-dot">·</span>€0,50 / analyse</div>
+      </div>
+      <div class="tarif-cta">Choisir ce pack →</div>
+    </div>
+    <div class="tarif-card" style="border-top: 2px solid var(--ardoise);">
+      <div class="tarif-label" style="color:var(--ardoise);">B2B · Clubs & Éditeurs</div>
+      <div class="tarif-price" style="color:var(--ardoise);">Sur devis</div>
+      <div class="tarif-unit">€150–400/mois</div>
+      <div class="tarif-features">
+        <div class="tarif-feature"><span class="tarif-feature-dot" style="color:var(--ardoise);">·</span>Accès illimité membres</div>
+        <div class="tarif-feature"><span class="tarif-feature-dot" style="color:var(--ardoise);">·</span>Badge "Vérifié L'Instant Lu"</div>
+        <div class="tarif-feature"><span class="tarif-feature-dot" style="color:var(--ardoise);">·</span>API disponible</div>
+      </div>
+      <div class="tarif-cta" style="color:var(--ardoise);">Nous contacter →</div>
+    </div>
+  </div>
+</section>
+
+<!-- Éthique -->
+<section class="ethique">
+  <div class="ethique-text">
+    <div class="ethique-label">Conforme aux valeurs ARTEON</div>
+    <div class="ethique-title">Ce que L'Instant Lu n'analysera pas.</div>
+    <div class="ethique-body">L'Instant Lu refuse d'analyser des photos contraires à l'éthique naturaliste. Un filtre automatique vérifie chaque image à l'arrivée.</div>
+    <div class="ethique-link">Lire la charte éthique ARTEON →</div>
+  </div>
+  <div class="ethique-refus">
+    <div class="refus-item">
+      <div class="refus-icon">✕</div>
+      <div class="refus-text"><span class="refus-label">Appâtage documenté</span><span class="refus-sub">Photo obtenue en attirant l'animal avec nourriture ou leurre déclaré</span></div>
+    </div>
+    <div class="refus-item">
+      <div class="refus-icon">✕</div>
+      <div class="refus-text"><span class="refus-label">Image générée par IA</span><span class="refus-sub">Tout ou partie de la photo produite par un modèle génératif</span></div>
+    </div>
+    <div class="refus-item">
+      <div class="refus-icon">✕</div>
+      <div class="refus-text"><span class="refus-label">Trucage non déclaré</span><span class="refus-sub">Manipulation numérique non mentionnée dans la déclaration de prise de vue</span></div>
+    </div>
+    <div class="refus-item">
+      <div class="refus-icon">✕</div>
+      <div class="refus-text"><span class="refus-label">Personnes identifiables</span><span class="refus-sub">Photo contenant des humains — hors scope de L'Instant Lu</span></div>
+    </div>
+    <div class="refus-item" style="border-left: 2px solid var(--ocre);">
+      <div class="refus-icon">◎</div>
+      <div class="refus-text"><span class="refus-label">Animaux en captivité</span><span class="refus-sub">Acceptés si jugés artistiquement intéressants — validation manuelle sous 24h</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Ancrage ARTEON -->
+<div class="ancrage">
+  <div class="ancrage-logo">Arteon<span>·</span></div>
+  <div class="ancrage-sep"></div>
+  <div class="ancrage-text">
+    <div class="ancrage-quote">"L'Instant Lu n'est pas un robot qui juge vos photos. C'est notre regard — assisté par l'IA, validé par des humains qui partagent vos valeurs."</div>
+    <div class="ancrage-link">Lire le manifeste ARTEON →</div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div>
+    <div class="footer-brand-name">Arteon<span>·</span></div>
+    <div class="footer-slogan">L'instant figé, la pensée en mouvement.</div>
+    <div class="footer-copy">arteon.be · © 2026 JC Havaux · Belgique</div>
+  </div>
+  <div>
+    <div class="footer-col-title">L'Instant Lu</div>
+    <div class="footer-links">
+      <span>Comment ça marche</span>
+      <span>Exemples</span>
+      <span>Tarifs</span>
+      <span>Clubs & Éditeurs</span>
+      <span>Badge éthique</span>
+    </div>
+  </div>
+  <div>
+    <div class="footer-col-title">ARTEON</div>
+    <div class="footer-links">
+      <span>Manifeste</span>
+      <span>Artistes</span>
+      <span>Shop tirages</span>
+      <span>WildLens</span>
+      <span>Affiliation</span>
+    </div>
+  </div>
+  <div>
+    <div class="footer-col-title">Legal</div>
+    <div class="footer-links">
+      <span>CGV</span>
+      <span>RGPD</span>
+      <span>Mentions légales</span>
+      <span>Éthique prise de vue</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  let cur = 0;
+  const total = 5;
+  const track = document.getElementById('track');
+  const dots = document.querySelectorAll('.dot');
+  const curEl = document.getElementById('cur');
+
+  function goTo(n) {
+    cur = n;
+    track.style.transform = `translateX(-${cur * 100}%)`;
+    dots.forEach((d,i) => d.classList.toggle('active', i === cur));
+    curEl.textContent = cur + 1;
+  }
+
+  function slide(dir) {
+    goTo((cur + dir + total) % total);
+  }
+
+  function setView(btn, view, idx) {
+    const avant = document.getElementById('v' + idx + '-avant');
+    const apres = document.getElementById('v' + idx + '-apres');
+    const btns = btn.parentElement.querySelectorAll('.toggle-btn');
+    btns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    if (view === 'avant') { avant.classList.remove('hidden'); apres.classList.add('hidden'); }
+    else { apres.classList.remove('hidden'); avant.classList.add('hidden'); }
+  }
+</script>
+</body>
+</html>

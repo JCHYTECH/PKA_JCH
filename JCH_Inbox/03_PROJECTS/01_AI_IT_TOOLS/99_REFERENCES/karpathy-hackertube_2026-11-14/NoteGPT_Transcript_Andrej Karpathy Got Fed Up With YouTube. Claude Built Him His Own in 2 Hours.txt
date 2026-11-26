@@ -1,0 +1,50 @@
+00:00:00 - 00:00:32
+Andrej Karpathy, who helped start OpenAI, got so annoyed with YouTube's recommendations that he built his own video site, out of 43 million Hacker News comments. He says it's a significantly better way to watch than YouTube's feed. It has no account and no clickbait. Every thumbnail is the frame from exactly halfway through the video. On his own lecture, the posed shot he uploaded turns into a code page with a puppy on it. It took about two hours of talking to Claude. Hacker News is a forum where programmers have swapped links for nearly twenty years.
+
+00:00:34 - 00:01:05
+These are the 6,454 videos it keeps coming back to. But Claude never read all those comments. It read about forty thousand, fewer than one in a thousand. Code it wrote threw out the rest before any AI looked. And he gave all of it away, with a note written for AI agents, so your own Claude can build you one. The pile he started from is every Hacker News comment ever posted. A 1937 film on how a car's differential works has seventeen people behind it. One of them calls it a marvel of pedagogy.
+
+00:01:08 - 00:01:39
+A week later he built a second site, TristanTube, from another programmer's list of favourite YouTube channels. It holds forty-seven thousand videos. That one went even faster. Getting from 43 million comments down to that list took four rules. Only the third needed an AI. The first rule is plain code. Search every comment for a YouTube link. That alone turns up well over a hundred thousand videos. Most of them were linked once, by one person, and never again. One link tells you almost nothing about whether a video is worth your evening.
+
+00:01:42 - 00:02:12
+A video makes the cut only if three people linked it, in three separate months. Each link has to come with a real comment, at least a hundred characters of the person's own words. That one rule takes it down to 6,454. A single fan's favourite drops out. So does a video a crowd linked in one week and never mentioned again. But a link still isn't a recommendation. The video Hacker News brings up most as a joke is Steve Ballmer, Microsoft's old boss, bouncing around a stage chanting the word developers.
+
+00:02:15 - 00:02:44
+Twenty people mentioned it, across ten years, so it sails through the rule. Not one of them was telling you to watch it. This is where Claude finally reads. A team of Claude Sonnet agents, coordinated by Opus, read each comment beside the title of the thread it was posted under. Then they labelled whether the commenter was recommending the video, citing it as a source, joking about it, or criticising it. Each video kept at most twenty comments, about forty thousand in all. Claude labelled every one of Ballmer's mentions a joke.
+
+00:02:47 - 00:03:17
+One, from 2015, under a post about Windows on the Raspberry Pi, just says they always crack up at his developers video. Across the whole set, only about four in ten comments were recommendations. The biggest pile was people citing a video as evidence in an argument. Then Claude wrote every video a card, saying what it is, why Hacker News likes it, and whether it has aged well. It flagged the ones that only mattered for one news event, and sorted the whole list into 150 topics. Labels alone still can't rank anything, though.
+
+00:03:20 - 00:03:49
+In March 2020, ten people on Hacker News recommended 3Blue1Brown's video on exponential growth and epidemics, all in that one month. Rank by how many people recommended a video, and that pandemic spike lands in the top two hundred, right next to the classics. So the last rule ranks by time. A video's score is the number of separate months people recommended it in, with a little extra for the raves. The epidemic video's recommendations all fell in one month, so it scores one and sinks to the middle of the list.
+
+00:03:52 - 00:04:21
+Ballmer was mentioned in plenty of months but never recommended, so he scores zero. He stays on the site, near the bottom, because a label changes a video's rank rather than removing it. And he has company down there. About a quarter of the list was never recommended by anyone. People only cited those videos, mocked them or argued about them, and every one of them sits at the bottom with a score of zero. At the very top is a linear algebra lesson. 3Blue1Brown's Vectors was recommended in eighteen separate months,
+
+00:04:23 - 00:04:50
+over eight years. A spike doesn't last that long. People kept pointing to it whenever someone said the math never clicked for them. That's a ranking one person got out of an agent in an afternoon. We follow what people manage to build with these tools, week by week, and subscribing is how the next one reaches you. HackerTube tells you why every video is there. Search distributed systems, and the second result is a talk called Turning the database inside out. It turns up even though neither word is in its title.
+
+00:04:53 - 00:05:21
+Once you like a few videos, Home starts mixing in more of what the same commenters liked, and hovering over any tile says why it was picked. Where YouTube puts Shorts, there's a tab called Longs. It holds every video over an hour. The ranking turns up things YouTube's numbers never would. Number two is a programming conference talk that builds a famous idea in computer science live, from scratch. It has about sixty-five thousand views in fourteen years. On Hacker News, seventeen people recommended it,
+
+00:05:23 - 00:05:52
+and they still do. One called it perhaps the most entertaining and interesting technical talk they'd ever seen. At number five is Karpathy's own neural network lecture, the one with the puppy halfway through. And one of the recommendations behind it is a 2024 comment from Karpathy himself. If you don't have the background, he wrote, I'd recommend my YouTube videos. Claude labelled it a recommendation, which is hard to argue with. Karpathy's verdict is his taste, not a test. His About page argues that YouTube's feed is tuned for watch time,
+
+00:05:55 - 00:06:24
+so it's very good at the next thing you'll click, and not so good at the talk you'll still be thinking about next year. YouTube would push back on that. It says it also asks viewers in surveys to rate what they watched, and it uses those answers too. But no survey sees a stranger telling another stranger which talk changed how they write code. The list is frozen, though. It was exported on October 31st, and nothing new joins until someone runs the whole pipeline again. One commenter asked why the newest video was five months old.
+
+00:06:26 - 00:06:55
+Another wrote that Hacker News is just another algorithm. That's fair, because the list carries one forum's taste, heavy on conference talks and explainers. The difference is what the ranking rewards. YouTube's feed rewards the clicks and watch time a video gets, but HackerTube rewards how many years people keep coming back to it. AI is billed in tokens, small chunks of text. Karpathy posted his bill that way. About half a billion tokens went in, mostly Sonnet reading comments. That's far more than the comments themselves.
+
+00:06:58 - 00:07:28
+By our count, all their text comes to only about five million tokens. The rest is most likely the agents re-reading their instructions and their work on every call. Ninety percent of it was that kind of repeat read, and a repeat costs a tenth of the price. By our math, at list prices, the whole run comes to roughly three hundred dollars. He says he's on a subscription, so he didn't pay by the token. His own hands did four small things. He made a Google key to look up video details, rented a server, bought the domain and pointed it at the server.
+
+00:07:30 - 00:07:59
+Claude did everything else, down to locking the server down. Copying his site is the cheap part. His whole how-to is one line. Give your Claude the zip and ask for your own version. That second site, TristanTube, came from another programmer's list, and Karpathy says Claude built it in one try. It took three minutes. Others are copying it too. One person built an Apple TV app on his data, and a site called Hacker Courses runs the same method over Reddit. Sifting your own community costs more, because that's the reading.
+
+00:08:03 - 00:08:33
+One developer on Reddit ran a small version and got 317 videos for about four dollars, by their own estimate. HackerTube may never replace YouTube for you, but the pattern carries over. Four rules you could say in a sentence each did the sorting, and an agent did all the reading and the building. And if you just want something good to watch, HackerTube is free, with no account. Whose twenty years of recommendations would you trust over YouTube's? If this helped, a subscribe really means a lot. I break down the AI news that matters, just like this.
+
+00:08:37 - 00:08:40
+And to learn more, watch one of our Deep Dives next.

@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+# pka-watch-box — Surveille la box Proximus (ping LAN + WAN) et notifie JC par mail.
+# Dobby 🦉 — 2026-11-10
+#
+# Usage :
+#   bin/pka-watch-box --check            Lance la surveillance, affiche le résultat (pas de mail)
+#   bin/pka-watch-box --alert            Surveillance + mail du résultat (mode launchd)
+#   BOX_WATCH_DURATION=30 bin/pka-watch-box --check   # test court
+set -euo pipefail
+
+PKA_ROOT="/Users/jchavauxm5/PKA_JCH"
+MONITOR="$PKA_ROOT/scripts/box_monitor.py"
+NOTIFY="$PKA_ROOT/scripts/dobby_notify_email.py"
+DURATION="${BOX_WATCH_DURATION:-900}"
+MODE="${1:---alert}"
+JSON_OUT="/tmp/box-monitor-summary.json"
+
+# 1. Surveillance (exit 1 si coupures détectées) — JSON déjà écrit dans $JSON_OUT
+python3 "$MONITOR" --duration "$DURATION" --json-out "$JSON_OUT" >/dev/null
+RC=$?
+
+# 2. Rapport texte lisible depuis le JSON
+REPORT="$(python3 - "$JSON_OUT" <<'PY'
+import json, sys
+s = json.load(open(sys.argv[1]))
+lan, wan = s["lan"], s["wan"]
+lines = [
+    f"Relevé box Proximus — {s['start']} → {s['end']}",
+    f"LAN {lan['host']} : {lan['sent']} pings · perte {lan['loss_pct']}% · "
+    f"latence {lan['lat_min']}/{lan['lat_avg']}/{lan['lat_max']} ms (min/avg/max) · "
+    f"{lan['outage_count']} coupure(s)",
+    f"WAN {wan['host']} : {wan['sent']} pings · perte {wan['loss_pct']}% · "
+    f"latence {wan['lat_min']}/{wan['lat_avg']}/{wan['lat_max']} ms (min/avg/max) · "
+    f"{wan['outage_count']} coupure(s)",
+]
+if lan["outages"] or wan["outages"]:
+    lines.append("")
+    lines.append("Coupures détaillées :")
+    for label, r in (("LAN", lan), ("WAN", wan)):
+        for o in r["outages"]:
+            lines.append(f"  {label} : {o['start']} → {o['end']} ({o['duration_s']} s)")
+print("\n".join(lines))
+PY
+)"
+
+# 3. Mode check : afficher seulement
+if [ "$MODE" = "--check" ]; then
+    echo "$REPORT"
+    exit "$RC"
+fi
+
+# 4. Mode alert : mail UNIQUEMENT si anomalie (sinon simple trace dans le log .out)
+echo "$REPORT"
+if [ "$RC" -ne 0 ]; then
+    printf '%s\n' "$REPORT" | python3 "$NOTIFY" --subject "⚠️ Box Proximus — coupures détectées" --body -
+fi

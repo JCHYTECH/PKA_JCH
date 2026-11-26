@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8"><title>🛒 Panier Vanlife + Serre — Amazon Belgique</title>
+<style>
+body{font-family:-apple-system,sans-serif;max-width:800px;margin:40px auto;padding:0 20px;background:#f8f9fa}
+h1{color:#1a1a1a;border-bottom:2px solid #ff9900;padding-bottom:10px}
+h2{color:#232f3e;margin-top:30px}
+.total{background:#ff9900;color:#1a1a1a;padding:15px;border-radius:8px;font-size:1.2em;font-weight:bold;text-align:center;margin:20px 0}
+table{width:100%;border-collapse:collapse;margin:15px 0}
+th{background:#232f3e;color:#fff;padding:10px;text-align:left}
+td{padding:10px;border-bottom:1px solid #ddd;background:#fff}
+tr:hover td{background:#fff8e1}
+.btn{background:#ff9900;color:#1a1a1a;padding:4px 12px;border-radius:20px;font-size:.85em;font-weight:bold;text-decoration:none;white-space:nowrap}
+.btn:hover{background:#e88d00}
+.note{color:#666;font-size:.9em}
+.footer{margin-top:40px;padding:20px;background:#e9ecef;border-radius:8px;font-size:.9em}
+.qty{text-align:center;font-weight:bold}
+.price{text-align:right}
+.strike{text-decoration:line-through;color:#999}
+.section-note{background:#e8f5e9;padding:10px 15px;border-radius:6px;margin:15px 0;font-size:.9em}
+.warn-note{background:#fff3e0;padding:10px 15px;border-radius:6px;margin:15px 0;font-size:.9em;border-left:3px solid #ff9800}
+</style></head>
+<body>
+
+<h1>🛒 Panier groupé Vanlife IOT + Serre</h1>
+<p class="note">Ouvrir dans Safari → cliquer chaque lien Amazon → Ajouter au panier</p>
+<p class="note">✅ <b>v4 2026-07-08</b> — Corrigé : le SNZB-04P n'a PAS de sonde T° (contact seul). BOM maître : <a href="../iot-van/BOM-VANLIFE.md">BOM-VANLIFE.md</a></p>
+<div class="total">Total Amazon : ~282 € — 33 articles <span style="font-weight:normal;font-size:.9em">(capteurs 257€ + finitions 25€)</span></div>
+
+<div class="warn-note">
+  ⚠️ <b>Correction vs v3 :</b> Le SNZB-04P est un capteur d'ouverture uniquement (pas de température). Les Aqara frigo/toit et le SNZB-02D frigo sont donc <b>restaurés</b>. Le 04P reste une option d'upgrade (tamper alert, meilleure pile) mais ne réduit pas le nombre de capteurs.
+</div>
+
+<h2>📦 Capteurs — 27 articles / 257€</h2>
+<table>
+<tr><th>#</th><th>Article</th><th>Qté</th><th>Prix</th><th></th></tr>
+<tr><td>1</td><td><b>Aqara MCCGQ11LM</b> — Portes van ×5 + toit + frigo + serre ×2</td><td class="qty">9</td><td class="price">72 €</td><td><a class="btn" href="https://www.amazon.com.be/dp/B07P9K6HBZ" target="_blank">Amazon</a></td></tr>
+<tr><td>2</td><td><b>Sonoff SNZB-02D</b> — T°/HR cellule van + frigo van + serre ×2</td><td class="qty">4</td><td class="price">40 €</td><td><a class="btn" href="https://www.amazon.com.be/s?k=SONOFF+SNZB-02D&i=electronics" target="_blank">Amazon</a></td></tr>
+<tr><td>3</td><td><b>JSN-SR04T</b> — Cuve serre ×1 <span class="note">(van → DS300 Tap)</span></td><td class="qty">1</td><td class="price">5 €</td><td><a class="btn" href="https://www.amazon.com.be/s?k=JSN-SR04T+%C3%A9tanche&i=electronics" target="_blank">Amazon</a></td></tr>
+<tr><td>4</td><td><b>Optex BX-80NR</b> — PIR 12V IP65 ×2</td><td class="qty">2</td><td class="price">30 €</td><td><a class="btn" href="https://www.amazon.com.be/s?k=Optex+BX-80NR&i=electronics" target="_blank">Amazon</a></td></tr>
+<tr><td>5</td><td><b>Sonoff SNZB-04</b> — Contact sec PIR ×2</td><td class="qty">2</td><td class="price">12 €</td><td><a class="btn" href="https://www.amazon.com.be/s?k=SONOFF+SNZB-04&i=electronics" target="_blank">Amazon</a></td></tr>
+<tr><td>6</td><td><b>Aqara SJCGQ11LM</b> — Fuite eau ×2</td><td class="qty">2</td><td class="price">24 €</td><td><a class="btn" href="https://www.amazon.com.be/s?k=Aqara+SJCGQ11LM&i=electronics" target="_blank">Amazon</a></td></tr>
+<tr><td>7</td><td><b>Module relais 12V 2 canaux</b></td><td class="qty">2</td><td class="price">10 €</td><td><a class="btn" href="https://www.amazon.com.be/s?k=module+relais+2+canaux+12V&i=electronics" target="_blank">Amazon</a></td></tr>
+<tr><td>8</td><td><b>ESP32-S3 DevKitC-1</b></td><td class="qty">2</td><td class="price">24 €</td><td><a class="btn" href="https://www.amazon.com.be/s?k=ESP32-S3+DevKitC-1&i=electronics" target="_blank">Amazon</a></td></tr>
+<tr><td>9</td><td><b>Sonoff ZBDongle-E</b> — Clé Zigbee ×2</td><td class="qty">2</td><td class="price">36 €</td><td><a class="btn" href="https://www.amazon.com.be/s?k=SONOFF+ZBDongle-E&i=electronics" target="_blank">Amazon</a></td></tr>
+<tr><td>10</td><td><b>MPU6050 GY-521</b> — Inclinomètre van</td><td class="qty">1</td><td class="price">4 €</td><td><a class="btn" href="https://www.amazon.com.be/s?k=MPU6050+GY-521&i=electronics" target="_blank">Amazon</a></td></tr>
+</table>
+
+<div class="section-note">
+  ✅ <b>Optimisé :</b> 27 capteurs au lieu de 28 (v1). Économie réelle : -10€ (JSN-SR04T van ×2 → DS300 Tap). Le SNZB-02D extérieur est aussi supprimé (→ BME280), mais était en P3.
+</div>
+
+<h2>🔧 Finitions / Divers — 6 articles / ~25€</h2>
+<table>
+<tr><th>#</th><th>Article</th><th>Qté</th><th>Prix</th><th></th></tr>
+<tr><td>11</td><td><b>Silentblocs M3</b> — Anti-vibration RPi 5</td><td class="qty">4</td><td class="price">~5 €</td><td><a class="btn" href="https://www.amazon.com.be/s?k=silentbloc+M3+caoutchouc+anti+vibration&i=electronics" target="_blank">Amazon</a></td></tr>
+<tr><td>12</td><td><b>Coating conformal PCB</b> — MG Chemicals 422B</td><td class="qty">1</td><td class="price">~5 €</td><td><a class="btn" href="https://www.amazon.com.be/s?k=conformal+coating+pcb+mg+chemicals&i=electronics" target="_blank">Amazon</a></td></tr>
+<tr><td>13</td><td><b>Porte-fusible dérivateur Mini-ATO</b> — Repiquage F3 DS300</td><td class="qty">1</td><td class="price">~3 €</td><td><a class="btn" href="https://www.amazon.com.be/s?k=porte+fusible+derivateur+mini+ato&i=electronics" target="_blank">Amazon</a></td></tr>
+<tr><td>14</td><td><b>Fil électrique 2.5mm²</b> — Rouge + noir, 2m chacun</td><td class="qty">1 lot</td><td class="price">~5 €</td><td><a class="btn" href="https://www.amazon.com.be/s?k=fil+electrique+2.5mm2+rouge+noir+auto&i=electronics" target="_blank">Amazon</a></td></tr>
+<tr><td>15</td><td><b>Gaine thermorétractable</b> — Assortiment</td><td class="qty">1 lot</td><td class="price">~5 €</td><td><a class="btn" href="https://www.amazon.com.be/s?k=gaine+thermoretractable+assortiment&i=electronics" target="_blank">Amazon</a></td></tr>
+<tr><td>16</td><td><b>Colliers rilsan</b> — Assortiment 100 pcs</td><td class="qty">1 lot</td><td class="price">~2 €</td><td><a class="btn" href="https://www.amazon.com.be/s?k=collier+rilsan+assortiment+100&i=electronics" target="_blank">Amazon</a></td></tr>
+</table>
+
+<div class="total">Total Amazon : ~282 € — 33 articles <span style="font-weight:normal;font-size:.85em">(capteurs 257€ + finitions 25€)</span></div>
+
+<h2>📦 Compléments hors Amazon</h2>
+<table>
+<tr><th>Article</th><th>Qté</th><th>Prix</th><th></th></tr>
+<tr><td><b>Sonoff SNZB-04P</b> — Upgrade frigo + toit (tamper alert, pile 5 ans) <span class="note">optionnel</span></td><td class="qty">2</td><td class="price">~16 €</td><td><a class="btn" href="https://sonoff.tech/products/sonoff-zigbee-door-window-sensor-snzb-04p" target="_blank">ITEAD</a></td></tr>
+<tr><td><b>INMP441</b> — Micro dB van</td><td class="qty">1</td><td class="price">~3 €</td><td><a class="btn" href="https://www.aliexpress.com/wholesale?SearchText=INMP441" target="_blank">AliEx</a></td></tr>
+<tr><td><b>Connecteurs AMP MOD II 16p</b> — Mâle + femelle DS300 Tap</td><td class="qty">1+1</td><td class="price">~4 €</td><td><a class="btn" href="https://www.aliexpress.com/wholesale?SearchText=AMP+MOD+II+16+pin+connector" target="_blank">AliEx</a></td></tr>
+<tr><td><b>Optocoupleurs PC817 ×5 + résistances</b> — DS300 Tap</td><td class="qty">1 lot</td><td class="price">~2 €</td><td><a class="btn" href="https://www.aliexpress.com/wholesale?SearchText=PC817+optocoupleur+resistance+kit" target="_blank">AliEx</a></td></tr>
+<tr><td><b>MT3608 Boost converter</b> — Proto banc TL-136</td><td class="qty">1</td><td class="price">~2 €</td><td><a class="btn" href="https://www.aliexpress.com/wholesale?SearchText=MT3608+boost+converter" target="_blank">AliEx</a></td></tr>
+<tr><td><b>TC4056 Chargeur Li-Ion</b> — Proto banc TL-136</td><td class="qty">1</td><td class="price">~2 €</td><td><a class="btn" href="https://www.aliexpress.com/wholesale?SearchText=TC4056+chargeur+lithium" target="_blank">AliEx</a></td></tr>
+</table>
+<div class="total">Total compléments : ~29 €</div>
+
+<div class="section-note">
+  📋 <b>BOM maître :</b> <a href="../iot-van/BOM-VANLIFE.md">BOM-VANLIFE.md</a> — Vue complète par sous-projet.
+</div>
+
+<h2>📋 Historique des versions</h2>
+<table>
+<tr><th>Version</th><th>Date</th><th>Articles</th><th>Total</th><th>Change</th></tr>
+<tr><td>v1</td><td>2026-06-07</td><td>28</td><td>275€</td><td>Version initiale</td></tr>
+<tr><td>v2</td><td>2026-07-08</td><td>22</td><td>239€</td><td>-6 capteurs (analyse redondance)</td></tr>
+<tr><td>v3</td><td>2026-07-08</td><td>28</td><td>264€</td><td>+ finitions, déplacé vers _shared/</td></tr>
+<tr><td><b>v4</b></td><td><b>2026-07-08</b></td><td><b>33</b></td><td><b>282€</b></td><td><b>Correction SNZB-04P : +2 Aqara, +1 SNZB-02D restaurés</b></td></tr>
+</table>
+
+<div class="footer">
+<p><b>Généré par [[Dobby]] 🦉 — v4 2026-07-08</b></p>
+<p>Sources : <a href="../iot-van/BOM-VANLIFE.md">BOM-VANLIFE.md</a> · convergence-van-serre-capteurs.md · SPEC-DS300-TAP.md</p>
+<p>⚠️ Prix indicatifs. Vérifier les offres. Livraison .com.be vers Belgique.</p>
+</div>
+
+</body>
+</html>

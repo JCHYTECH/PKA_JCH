@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avant / après — Signature Fin Art Cinématique (oies du Nil)</title>
+<style>
+  :root{ --ivoire:#F8F5F0; --noir:#0D0B09; --ocre:#C17F3A; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ background:var(--ivoire); color:var(--noir); font-family:'Lora', Georgia, serif; display:flex; flex-direction:column; align-items:center; min-height:100vh; padding:28px 16px; }
+  h1{ font-family:'Space Grotesk', sans-serif; font-size:20px; margin-bottom:4px; }
+  .sub{ color:#4A5568; font-size:13px; margin-bottom:20px; text-align:center; }
+  .stage{ position:relative; max-width:1400px; width:100%; overflow:hidden; border:1px solid #E8E2DA; box-shadow:0 8px 30px rgba(0,0,0,0.12); cursor:ew-resize; user-select:none; -webkit-user-select:none; touch-action:none; }
+  .stage img{ display:block; width:100%; height:auto; pointer-events:none; }
+  .stage .before{ position:absolute; top:0; left:0; height:100%; width:50%; overflow:hidden; }
+  .stage .before img{ position:absolute; top:0; left:0; height:100%; width:auto; max-width:none; }
+  .handle{ position:absolute; top:0; bottom:0; width:2px; background:var(--ocre); transform:translateX(-1px); pointer-events:none; }
+  .knob{ position:absolute; top:50%; transform:translate(-50%,-50%); width:40px; height:40px; border-radius:50%; background:var(--ocre); color:#fff; display:flex; align-items:center; justify-content:center; font-size:16px; font-family:'IBM Plex Mono',monospace; box-shadow:0 3px 10px rgba(0,0,0,0.3); pointer-events:none; }
+  .lbl{ position:absolute; top:12px; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#fff; background:rgba(13,11,9,0.66); padding:4px 10px; pointer-events:none; }
+  .lbl.avant{ left:12px; }
+  .lbl.apres{ right:12px; }
+  .hint{ margin-top:14px; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#4A5568; }
+</style>
+</head>
+<body>
+
+<h1>Avant / après — Signature Fin Art Cinématique</h1>
+<div class="sub">Oies du Nil · Marcourt-0182.CR3 · glisse le curseur, ou utilise ← →</div>
+
+<div class="stage" id="stage">
+  <img src="after/Marcourt-0182.jpg" alt="Après" draggable="false">
+  <div class="before" id="before">
+    <img src="before/Marcourt-0182.jpg" alt="Avant" draggable="false" id="beforeImg">
+  </div>
+  <div class="handle" id="handle"></div>
+  <div class="knob" id="knob">⇄</div>
+  <span class="lbl avant">Avant</span>
+  <span class="lbl apres">Après</span>
+</div>
+
+<div class="hint">← → pour ajuster finement · position initiale : 50 %</div>
+
+<script>
+  const stage = document.getElementById('stage');
+  const before = document.getElementById('before');
+  const handle = document.getElementById('handle');
+  const knob = document.getElementById('knob');
+  const beforeImg = document.getElementById('beforeImg');
+  let pct = 0.5, dragging = false;
+
+  function sizeBefore(){
+    beforeImg.style.width = stage.clientWidth + 'px';
+    beforeImg.style.height = 'auto';
+    // recentrer verticalement si plus haut que le conteneur
+    if (beforeImg.offsetHeight < stage.clientHeight) beforeImg.style.height = stage.clientHeight + 'px';
+    beforeImg.style.maxHeight = 'none';
+  }
+  function render(){
+    before.style.width = (pct * 100) + '%';
+    handle.style.left = (pct * 100) + '%';
+    knob.style.left = (pct * 100) + '%';
+  }
+  function setPct(x){
+    const r = stage.getBoundingClientRect();
+    pct = Math.max(0, Math.min(1, (x - r.left) / r.width));
+    render();
+  }
+  window.addEventListener('resize', () => { sizeBefore(); render(); });
+  window.addEventListener('load', () => { sizeBefore(); render(); });
+
+  stage.addEventListener('mousedown', e => { dragging = true; setPct(e.clientX); e.preventDefault(); });
+  window.addEventListener('mousemove', e => { if (dragging) setPct(e.clientX); });
+  window.addEventListener('mouseup', () => dragging = false);
+  stage.addEventListener('touchstart', e => { dragging = true; setPct(e.touches[0].clientX); }, {passive:false});
+  stage.addEventListener('touchmove', e => { if (dragging) { setPct(e.touches[0].clientX); e.preventDefault(); } }, {passive:false});
+  window.addEventListener('touchend', () => dragging = false);
+  window.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft')  { pct = Math.max(0, pct - 0.02); render(); }
+    if (e.key === 'ArrowRight') { pct = Math.min(1, pct + 0.02); render(); }
+  });
+</script>
+
+</body>
+</html>

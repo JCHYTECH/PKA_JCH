@@ -1,0 +1,281 @@
+00:00:00 - 00:01:01
+Hey everyone and welcome to this week's video. Do you wish you had an easy and straightforward workflow to process your raw photos to a final product? Something efficient but still giving great results like going from this to this and this to this. It's been a while since my video on my workflow and I've tweaked a few things and Lightroom has added a few features that we should work into it. So, in this video, I'll show you my new 12step RAW photo workflow that you can use, too, to get your photos looking
+
+00:00:30 - 00:01:33
+their best, like this to this. And my second last step is still as it was, the most important step. Stay till the end to find out what it is. And the last time I said so, lots of people agreed. My name is Simon Dontromo, and I'm a professional nature and wildlife photographer living in Eastern Canada. I make weekly videos giving you photo tips or taking you behind the scenes for nature photography. Subscribe if you want to see more. >> Okay, why do we need to process raw photos anyway? Well, raw photos come out
+
+00:01:07 - 00:02:02
+of your camera with no or very little processing, just the raw image data from your sensor, what we would call a digital negative. On the back of your camera, the LCD actually looks better than the photo does on your computer as it's had some processing done to it, like adding saturation, noise reduction, and sharpening. Your raw photo, though, is in a pretty raw form and needs some tweaking to make it look its best. It often comes out of the camera looking kind of flat and needs some love. So,
+
+00:01:35 - 00:02:37
+here's my current 12step process to convert my RAW photos to a final JPEG image. I'll be using Lightroom Classic for this, but other programs can do this, too. When using Lightroom Classic, the program automatically decodes your raw image data into a viewable photo. So, you don't need to do anything for this step. Okay. The first step now is to import our photos. I've plugged my card into a card reader and into my computer. Now, I hit file, import, photos, and video. If you've recently
+
+00:02:06 - 00:03:13
+plugged a card into your computer, it may auto select the card. And if not, you can find the folder where your cards are sitting here. On the right hand side, on the upper side here, uh you'll notice the destination drive where your photos will be placed after being imported. And there's a few different options here. You can copy the photos, move, add. I like copy because what it does here is it copies the photos to my storage drive where I want to store the photo and it includes it in my Lightroom
+
+00:02:39 - 00:03:38
+catalog which is separate than where your photos are stored. So when you're using Lightroom classic to remember that your photos are stored in one place. You also have a catalog that keeps track of where your photos are. So here we've got a few different options. I like to click under build previews embedded in sidecar because your computer actually and Lightroom can't view your photos without first converting the RAW into a JPEG and your camera has already done this for you for you to see the photo on the back
+
+00:03:08 - 00:04:13
+LCD. So rather than building previews like right here, build smart previews, you can actually import the previews, the little JPEGs that your camera made to display on the back LCD and use those instead. It's more efficient. So, that's what I do. So, here, uh, embedded and in sidecar. And here, just in case you've got some photos from a previous shoot on your card, if you click don't import suspected duplicates, it won't import those photos a second time. Going to hit import here. Make sure that all your
+
+00:03:40 - 00:04:38
+photos are selected and hit import. Now, once you have all your photos imported, you may want to go through a culling process where you select the photos you want to keep and the ones you may not want to. So, here in this particular case, I just have four photos here of a waterfall here in Nova Scotia. And I want to keep them all, but let's say I want to keep some and not others. You click on one photo, and you have a few different choices. The easy one here, if you have photo auto advance here
+
+00:04:09 - 00:05:17
+selected, all you need to do is hit X to reject and P to pick. So, XXXP XXXP. And then once you've done that, you hit photo, delete rejected photos, and it will delete all your X's, all your rejections. The other system is to rate your photos. And after you've selected ones or the ones you want to keep instead of hitting P, you can hit the numbers 1 through five and it will add a star rating to those where you can find them later on. You can see here the star rating have been selected. I've put five
+
+00:04:44 - 00:05:40
+on all of these. You can make one your best, five your best. Uh it's all up to you. And you can rate them. You might want some fours or some twos for ones that you're not sure you want to keep, but you want to keep an eye on them for later. And then you can search for these later with filters up here. You can search through them for different uh characteristics they have like the exposure, the ISO you use, the focal length you use, or you can click right here on attribute. And here you can
+
+00:05:12 - 00:06:12
+select the number of stars uh of the photos that you'd like to look at at that particular time. So now I've selected these photos. I'm going to pick one of these. These photos here are series where I did some exposure bracketing. So I shot a normal exposure, a dark exposure, a light exposure. I could combine those in HDR if I wanted to, but I'm going to select this last photo right here. I shot at 1.3 seconds on a tripod at f11. I had a neutral density filter to slow down the exposure
+
+00:05:42 - 00:06:43
+to see the water moving around a bit. at ISO 50. If you look here very close here in the water, you can see that I've uh kind of smeared the water out a little bit by having a long slow exposure, which you can experiment. Different amount of time for your exposure like half a second, tenth of a second, 2 seconds will give you a different look. Personally, the look that I like a lot is a look of having some structure in the water like I have here as opposed to having a really long exposure and having
+
+00:06:12 - 00:07:12
+it pure white. So now I've selected my photo. Now it's time to go on to my step number two, which is cropping. Now for cropping, what you do is you go to the develop tab, and this is where you start your processing of the photo. And I hit the crop overlay. And now I can grab these corners, move them around. If it stays in the same aspect ratio and you can't freehand them, you click on this little lock to unlock it. And that will allow you to move around a little bit. In this particular case, let's go with a
+
+00:06:43 - 00:07:37
+crop that looks good on social media like Instagram and so on. 4x5, which gives you the maximum amount space on the screen of a phone or tablet, for example. And here in the cropping, I've got a little bit extra room on the bottom that I don't need. And I don't want the waterfall itself to be kind of too high up here. Kind of uh it's kind of too far outside the main parts of the photo. I could put it right here on this rule of thirds grid, but I don't think I need it that far low. I don't want to
+
+00:07:10 - 00:08:09
+cut off too much of this bottom, which really the subject here is the water moving in the foreground as opposed to the waterfall from which the water is coming. So something like this looks pretty good. Hit return and that will give you my crop here. So you've got different options for cropping, of course. And uh if you need to level things, you can use the angle here, which you can click and drag along a horizon. It'll straighten your horizon for you, for example. And uh if your composition is not straight, if you go
+
+00:07:39 - 00:08:44
+outside the crop area, it turns into a little arrow here with curves on it. It shows you how you can move back and forth to get something level that you want. Okay. And double click will apply the crop as well. So here's what we've got so far. You'll see that from an exposure perspective and so on. I I shot the photo so as to not blow out the whites in the waterfall here. If you see here, if I add some exposure and click up here on the right hand side of the histogram, it'll show with the alerts
+
+00:08:12 - 00:09:04
+for blowing out. If I made this much brighter, I would have blown things out. And I actually did have a little bit of overexposure here in the brightest part of the whites, but it's not critical for this image. And I wouldn't want to expose it much brighter than this. So it is dark and that's why in processing we're going to have to work on it a little bit to get it to look its best. So happy with the crop here. We can now go on to our next step. My next step in processing uh step number three is to
+
+00:08:38 - 00:09:33
+get the white balance and the tint right. Now I shoot in auto white balance and the tint comes automatically in automatic as well. And I just want to make sure that it's not too bad and not wrong. So, there's a few different ways you can use the eyeball method for white balance, which is just take the temperature slider here. Moving it to the right will make it warmer, more orange. Moving to the left will make it very blue, which will show up in the whites more prominently, like the water
+
+00:09:06 - 00:10:02
+here. If I double click this, it will return it to where it was, where it began. There's a few different techniques. There is a dropper tool. There's a dropper right here. I can click on that and click on something that's white, and it will do an auto selection of the white balance. But sometimes if you know if your whites are have been colored by different tones or if the scene is very warm or very cold, that might not give you acceptable results. So there's a few different techniques you
+
+00:09:34 - 00:10:27
+can use as well. One I like to do is the eyeball technique. And you may be saying, I don't know how to eyeball the white balance, but I'll show you an easy trick here. Crank the vibrance and saturation to 100% to overexaggerate the colors. Then take the white balance slider and move it where you've got a reasonable balance between blue and orange. And then double click on these again to return them to neutral. And that will give you a pretty good starting point. Now you can also move
+
+00:10:00 - 00:11:06
+the white balance slider for artistic purposes as well. The scene might look good a little bit warmer. So I can move it a little bit on the warm side if I wanted to. And that's still perfectly okay. So, and the tint is rarely wrong uh these days in modern cameras. But if your image is looking really green like something like this or really purple or something like this, consider that your tint may be the place that needs some adjustment. And you can use the same trick, vibrance and saturation at 100%.
+
+00:10:33 - 00:11:35
+Manually adjust the tint until green and magenta are balanced in some way. and then double click vibrance and saturation to bring it back to where it was. Or you can double click on this little bullet on tint and it will bring it to its starting position as well. So that looks pretty good right now. So let's move on to the next step. My fourth step is to get the exposure levels right now. Now I'm talking about overall exposure level. Is the photo too bright, too dark? But also the tones
+
+00:11:05 - 00:12:06
+within it. Are the highlights at the right level? Are the darks and the shadows at the right level? So, there's a few different techniques here. Usually, I start off with the overall exposure. Is the overall exposure too bright or too dark? Now, in this particular case, as I mentioned earlier, I can't really raise the overall exposure here because I'm going to really blow out my whites here if I just raise the exposure. And so what I want to do here is without getting the brightest parts of the photo brighter, I
+
+00:11:35 - 00:12:32
+do want to maybe raise the shadows here. Now the trick will be that it's looking a little flat in terms it doesn't have a lot of contrast. The whites aren't very white down here and the darks look a little bit flat, but we're going to work on that a little bit later. So overall, I think the darker parts of the image need to be raised a bit and I can use the shadow slider. Now, I prefer using shadows and highlights here rather than the whites and the blacks. And the whites and the blacks tend to be a very
+
+00:12:03 - 00:12:53
+heavyhanded approach here. If I move the whites or I move the blacks, it tends to be very heavy-handed with what it's doing. And of course, you can look up here in the histogram and if I hit highlights, it shows you a gray bar here which parts of the image are being changed. Same thing with shadows here. It shows you a gray bar here that shows you what's being changed. And the whites you'll see are the farthest whites, the brightest whites. And the blacks are the farthest blacks. And because they're on
+
+00:12:29 - 00:13:29
+the edges of the histogram, they're the most heavy-handed in terms of risking clipping your blacks and your whites, which you really generally want to avoid. So here, uh, a great trick to making sure you're not clipping your highlights and your darks is to hit the alt key. So hit alt while you move the blacks, for example, and it will show you where clipping occurs. Same thing with your whites. It'll show you where clipping occurs. So, if you want to get the maximum dynamic range in your photo,
+
+00:12:58 - 00:13:51
+hit alt and then adjust the shadows and highlights and whites and blacks accordingly. And try to avoid clipping. So, move it the blacks as far left as you can without getting pure black. And same thing with your whites. And that will give you you get leave a little bit of clipping like here for something that's kind of a in insignificant part of the photo sizewise. And that will give you a sense of how far you can push your whites and your blacks. So that's a great little trick there as well. So I
+
+00:13:25 - 00:14:23
+want to do everything else more specifically to certain parts of the image here rather than adjust the image globally because one of the challenges I have here is the bottom part of the photo was shot in the shadow very dark and the top left around the waterfall was open to the sky and it's much brighter which will lead us to want to tackle these things a little bit differently which is part of my workflow. Now, something else that we can do as well is using the tone curve is a great way to add a little bit of
+
+00:13:54 - 00:14:56
+contrast to your photo. And the most traditional way of doing this is if you look at point curve here, choosing this one right here, grabbing the top part of the image here on the upper right and lower on the lower left. And that will give you a nice amount of contrast. Again here, you want to be very very cautious here not to go overboard and that it will you can get if I go too far here. I'll show you kind of the extreme. And what's the greatest part of Lightroom is it's non-destructive. You
+
+00:14:25 - 00:15:29
+can do anything and undo it later. So experimentation is part of doing processing and a non-destructive program like Lightroom. So I can go up a little bit here, down a little bit here, but not too much if any. I just don't want to crush those blacks and have to recover them later. So, little bit of tone curve work here. Maybe just brightening the brighter parts. I'll move this down a little bit and get the midtones a little bit brighter. I think looks good there. My fifth step is to look at adjustments
+
+00:14:57 - 00:15:56
+that need to be made to the whole image. Global adjustments. So, we just played with some of the exposure levels. Is there anything else that I want to change globally? For example, there's a few sliders here in the presence section here. See the clarity slider? If I push this to the right, see how everything pops a little bit. Now, you may have a photo where you want to make everything pop a little bit. So, moving the clarity slider to the right to make everything pop may look good, but often in
+
+00:15:27 - 00:16:26
+landscape photos, I find that one of the techniques I want to do is I want the front of the photo, the closest part to you, to pop, but I don't want pop in the farthest areas. Even the opposite of that, drifting away into a little bit of a fog or a lack of clarity into the distance actually looks good. So, I don't want to add clarity globally to my image, but you may want to in your photo. You may want to apply some dehaze, which is if you've got kind of a misty thing to your photo that you
+
+00:15:56 - 00:16:47
+actually want to cut through a little bit, you can do that. Now, vibrance and saturation is something I tend to do late in my workflow, so I'm not going to touch on those. Now, is there anything else that I want to do uh globally? We've got some colors. We're going to look at those later. Sharpening and so on. We're going to do that later as well. And just a tip here, uh under lens corrections, if these haven't come on automatically, you might want to check these. Removing chromatic aberration can
+
+00:16:22 - 00:17:24
+be done automatically in Lightroom, which is great. And a profile correction would be to correct for any curvature or other types of effects like vignetting in your lenses. So you can click enable profile correction and it should auto detect which lens you are using. I was using the Canon EF17 to40 F4 lens for this photo. So is there anything else I want to do globally here? This is the time to check to see whether or not anything big wants to be done. Adding a little bit of clarity sometimes is kind
+
+00:16:53 - 00:17:44
+of nice. It makes your photo pop a little bit. So that's something you might want to do in your photo. But I don't want to do too much. As I said, for this particular landscape photo, I think I want the distance to be less sharp and vivid. So, we'll work on that in a bit. Okay. So, if you once you've got your global adjustments done, it's time to go to the next step. The next step is to do my local adjustments. That is adjustments to specific parts of the image that I don't want to do to the
+
+00:17:18 - 00:18:12
+whole image. And this is where you're processing. Once you've reached the stage where you can say in your head, I'd like this change to this part of the image and this to the rest. I think that's where you'll you'll see you've made it in terms of your image processing skill and technique is when you look at your subject for example and say that needs different treatment than the background. That is where you've got a sophistication coming to your processing which I applaud you uh for
+
+00:17:45 - 00:18:42
+getting because at that point you'll start to understand that not all parts of the image need to be adjusted the same way to look their best. Some parts that are in shadow, some parts that are in the sun, uh some parts uh will look darker, lighter, and your subject and your background to make them look different is actually part of a particular strategy in processing where you want your subject to pop out a little bit. So now we're going to look at a local adjustments. What do I want to do to this photo? We'll apply
+
+00:18:14 - 00:19:14
+different changes. And uh the reason I'm adding this as a specific tool right now is that Lightroom in recent editions is done a great job with masking. And this is where you apply masks to certain parts of your image. So you can pick out the sky, you can pick out your subject, you can pick out the background, you can select objects, and you can use radial and linear gradients to select parts of your image and apply adjustments just to those parts. So something that I mentioned earlier, for example, so I'm
+
+00:18:44 - 00:19:40
+going to take a linear gradient, apply it from the bottom up here, and as I mentioned earlier, I want the foreground to pop in my photo more than the background. So I'm going to apply a clarity slider here. See what it does? It makes kind of everything pop a little bit and it brings out the best whites, I think. And the movement of the water down here. If you if you look here, you can see the movement of the water and the little details here. If I move the clarity slider back and forth here,
+
+00:19:11 - 00:20:06
+you'll see that I can make those pop a little bit more. So, I really like that look, but I don't want that really kind of tack sharp crispier look to the background. I like the background to be a little bit softer. So, I can actually do the same thing with a linear gradient to the top here. And you can actually move the clarity slider to the left actually and just make the background a little bit softer. See, let me zoom in here so you can see what's happening here. You see if I move it to the left
+
+00:19:39 - 00:20:50
+here, it makes the background a little bit softer. Uh, a little bit hazier. You can also move the dehaze slider, if you see, to the left here, and add a little bit of haze in the distance, which in a photo like this can look actually pretty good. Now, what else do we want to do? Now, my subject really is this uh lower the zoom here a little bit. The subject really here, I'd say, is this water and the beautiful leaves and the rocks around it. So, uh, I really like this area to pop a little bit. So, I'm
+
+00:20:15 - 00:21:10
+going to add just a little bit of a radial gradient, which I can just move around here. And I can move this around. See, by clicking outside the area of the radial gradient, I can spin it a little bit. I'll spin it in the direction the water's flowing. And let's see. Let's play with the exposure levels a little bit. A little bit brighter in the highlights. Looks good. The shadows, I think I want to leave them where they are. I'll move the whites a little bit again. See, if I
+
+00:20:42 - 00:21:36
+move it too far to the right, I'll show the overexposure. And the the way I did this is if you go to the histogram and click right here, hide highlight clipping. Or you can show highlight clipping. So, I don't want to clip those highlights. So, I don't want to go too far with the whites here. And the water. You can also play with the uh temperature slider. For example, if I wanted this water to be a little bit on the bluish side, I could move I'm going to exaggerate it here just to show badly
+
+00:21:09 - 00:22:19
+an exaggerated effect, but what I'm doing here. Or I can move it to the right and show the water to be warm. I think the contrast of the water being a little bit bluer against the warmer surrounding area with the leaves and so on. Looks good. So, I've got a little bit of that. Now, what else do I want to do for local adjustments, particularly on some certain parts of the image here? I really like these leaves here. Really look good on these dark rocks. So, I'm going to just a little bit for artistic
+
+00:21:44 - 00:23:02
+effect. I can take a radial gradient here. And let's see what happens if I move maybe highlights up a bit and maybe even warm things up. makes beautiful golden color on those and a little bit of clarity. And if I do that, it makes those pop a little bit, which I kind of like. You can show how your effects are impacting the image by clicking on the little, see here, if I click on the little eye here, I'll turn the mask on and off. And see how when I turned it on, I've given a little bit of a pop to those leaves.
+
+00:22:23 - 00:23:37
+They're crisper. They're brighter. And I really like that. So, I'm going to put my cursor right over the middle. Right click, duplicate, and I'm going to add a few more of these area. And I can move the shape here around. And I'm just going to add a few more here so I can get kind of that pop out of the leaves, which I really like. And again, I can change the shape, but they will all be applying the same effect. You can't change the effect on one of these at a time if you use the duplicate
+
+00:23:00 - 00:23:57
+feature. So, let's look at the clarity here. See how I'm making these pop? If I slide this to the right here, I'm going to exaggerate it just so you see the effect here. And uh what else do I want to do? A little bit of sharpness maybe. Let's go back to the shadows and lights here to see if I raise the shadows a little bit. You don't want to make it too much that it's just pops out too much. And we'll play with these highlights one more time. There we go. Let me go back here and give you the
+
+00:23:28 - 00:24:30
+before and after. And I've just made those leaves pop a little bit, which I think looks kind of nice. What else do we need to do for global adjustments? This part of the photo is actually quite different than the rest. So, the open area here, I'm going to click create a new mask, radial gradient. I'm going to put a radial gradient right over this open area because it's it's quite different in exposure from the rest of the photo. And I don't quite know what I want to do yet, but let's experiment.
+
+00:23:59 - 00:24:49
+This is a non-destructive program, so you can always undo anything you're doing. So, let's play with the exposure here. We want that spot to be bright and kind of show that it's quite different in exposure. Do I want to lower the exposure and kind of incorporate it more into the photo with the same exposure levels? We can try the same thing with the highlights here. We can knock the highlights down a bit. I think knocking the highlights down a little bit looks good in that when it's too washed out up
+
+00:24:24 - 00:25:23
+there. Uh bright spots tend to attract the attention of your eye of your viewer. And if you've got a bright spot up in the corner and my subject really is the water down here, then I think I'm drawing my viewers's attention away. So, I'm going to lower the highlights here just a little bit just to not get too much pop up there. Let's try the same thing with the whites here. Lower them just a little bit. Let's try the blacks. I don't want it too dark. It kind of looks good, actually. Getting the blacks
+
+00:24:54 - 00:26:07
+down a little bit to getting a little bit more contrast up there. That being said, we talked earlier about maybe negative clarity to kind of soften it a little bit. I do like it soft and a bit darker. So, let's just see how that looks overall. And it's great to check your progress by doing a before and after. And on Lightroom Classic, you hit Y on the keyboard. There we go. Y. And I'm going to move this box out of the way here by clicking these little arrow here. So here's why. Here's before
+
+00:25:30 - 00:26:23
+and after uh right now. And it's looking pretty good. We've got a lot of color, a lot of pop. I really like where this is going right now. Anything else for local adjustments? I'm just looking at the image and I'm saying, what do I want to accentuate? What's the best parts? And what are the parts that are just kind of distracting? We've made the foreground pop. We've made that water pop. We've made the leaves pop. We've darkened the background so it's not uh so obtrusive.
+
+00:25:56 - 00:27:00
+Uh I see this big part of woods here on the right and on the left here as kind of I'd like to minimize those the effect of those in the image so that the viewer's eye starts down at the bottom at the water and kind of moves its way up to the waterfall. So what I'm going to do just for artistic effect here, I'm going to take a radial gradient and put it over the trees here. And I'm going to lower the exposure a little bit here. And maybe just a tip, when you lower exposure, it makes everything darker.
+
+00:26:28 - 00:27:24
+But if you crank the contrast, what it will do, it'll make the dark parts darker and leave the brighter parts the same. So those tree trunks, the re the beautiful tree trunks here, I don't want those to be too dark. But I want the background to kind of fade away into the distance a bit. So I'm going to lower the shadows and increase some contrast. And I'm going to do the same thing here on the left here. I'm going to do a duplicate. Move it over to the left. I'm going to change the shape here quite a
+
+00:26:56 - 00:28:08
+bit. And I just want to do the same thing here. Increase the contrast. Lower the shadows here a little bit. And I just want to take those out of play a little bit more so the focus is more on the water in the foreground and the waterfall. Okay. I think that's all I want to do now for these specific adjustments. Let's go on to the next step. And by the way, if wildlife is your thing, I have a whole course on processing wildlife photos in Lightroom. 30 modules and 10 hours of content specifically made on wildlife
+
+00:27:32 - 00:28:37
+photos and all of the challenges they provide. I'll show you in detail how Lightroom works and cataloges work so that you can store your photos long term. how all the panels and sliders work, making detailed masks, cleaning up backgrounds and obstructions, and how to process things like backlit photos, and even how to process in black and white. I'll even include 25 of my own wildlife raw files for you to process along with me. Link below. Okay, my next step is colors and saturation. Now, you'll
+
+00:28:05 - 00:29:03
+notice here that I haven't even touched vibrance and saturation, but if I hit the before and after, you'll find my image looks like it has a lot more color to it. And that's because I've used clarity and contrast, and those things tend to add some saturation. So, that's why I want to do colors and saturation adjustment kind of late in my process because some of the local adjustments and some of the processing you may do may change the colors and the saturation levels. And if you set your saturation
+
+00:28:33 - 00:29:33
+level early, you may end up undermining or overexaggerating the colors and saturation in your photo. So, let's look here to see what uh we might need to do. The saturation is actually looking pretty good. Now, there's vibrance and saturation here. I tend to use vibrance more than saturation. And you may say, what's the difference? The vibrance slider is kind of the catch-up slider because it adds more saturation, a more brilliant hue to your photo, but it attacks the colors that are less
+
+00:29:04 - 00:30:02
+saturated. So basically, colors that are already very saturated will get less saturation added using the vibrant slider. Then the saturation slider cranks everyone up to the right. And the way I one of the reasons I want to use the vibrance slider in that it's a little bit less heavy-handed, same as using highlights and shadows rather than whites and blacks for setting my exposure levels. It's a little bit less in your face and uh it's harder to make mistakes with the vibrant slider than
+
+00:29:33 - 00:30:30
+the saturation slider. So, I'm going to move the vibrant slider a little bit to the right, but let me exaggerate. You know, don't do this. Don't crank it up so far that really looks terribly unnatural. So basically for me with the vibrance, I can't give you advice saying put it to plus 15. It really depends on the scene, the colors in the scene. Gray overcast days will need more saturation added, for example, than a bright sunny morning or beautiful sunset, which might not need some addit. And I've actually
+
+00:30:01 - 00:30:57
+reduced the vibrance and saturation on photos shot at sunset that are so brilliant orange that it almost looks either fake or just doesn't look its best. So in this particular case shot in the shade colors usually don't pop a lot. And I but I have added a lot of clarity especially to these leaves and so on around here. So I don't want to go overboard but I will add just a little bit uh of vibrance here. And this is a good time to recheck your color balance because your white balance here will
+
+00:30:29 - 00:31:25
+have adjusted the color. So if I move the temperature slider to the right, you'll see everything gets kind of too orangey. If I move it too far to the left, you'll see that the water almost looks a little bit too blue. So it's a good time to recheck. Now, here is the original white balance on the photo, actually. Uh and it actually kind of doesn't look good that way. the the water's too blue and the uh leaves and so on are just a little bit too flat. So, I'm going to artistically move this
+
+00:30:57 - 00:31:55
+to the right a little bit to get a little bit uh more color and pop out of the leaves and just get some of the blue out of the water that was just kind of too blue in my opinion. So, that's where we're looking there. Now, as well under the color mixer, you can adjust individual colors, which is something you may want to try experimenting with at some point. You don't need to do this for sure, but here we can change the hue of colors. So I can click on the orange hue here and as you can see I can move
+
+00:31:26 - 00:32:33
+it around and I can make these these leaves go more reddish color or move them to the right and move them more to the greens for example. I can take the saturation slider and I can change the saturation just of certain colors like orange in these leaves for example. And if this green up here was bothering you, you could actually lower the saturation in green to kind of make them, you know, less uh prominent in the photo. So these are things that you can do as well. You can change the luminance here. If you
+
+00:32:00 - 00:33:00
+thought these greens would look better even darker, you can move this to the left or brighter, you can move them to the right. So these are different colors that you can play with as well. And in the color grading panel as well, you can play around with the colors. Here are the shadows, highlights, and midtones. And if you wanted your highlights to be warmer, you can push this middle circle to the right. If you want your highlights to be colder and cooler and bluer, you can move it to the left or
+
+00:32:29 - 00:33:31
+lower left against the blues and double click to bring back to zero. So, this is where you can start experimenting with your colors. And uh you don't need to do this as well. I would just focus uh if you're just starting out, focus on getting the vibrance and the the saturation of your colors to be just about right and uh that would be enough to move on to the next step. Now, getting close to the end of my process here, the next thing I like to do uh is the noise reduction. Now, this particular photo was shot at ISO 50. I
+
+00:33:00 - 00:34:08
+was at the base ISO in my camera and uh the image is very very clean. If I click here and we inspect even further, there's not any noise here really. But if you did have some noise in your photo, you would slide down to noise reduction. Now, uh there's modern dnoising now that's available in Lightroom. Uh so you can click on the D noiseis button and it may take a few seconds here. So, and then you can adjust for the amount of effect that you want. In this particular photo, I really don't
+
+00:33:34 - 00:34:36
+need any D-noising, but a good way to see what the D-noising is doing to your photo is to actually zoom in a little bit on your photo. Not too much, but enough to see the noise. And if there was some noise, you would see it here in these areas here, especially the dark areas. And then after having zoomed in, adjust the D noiseis slider to get it where you want it. In this particular case, I really don't need any D-noising, but that would be the place to do it. Now the next step is sharpening. And
+
+00:34:05 - 00:35:02
+sharpening has a relationship with uh noise reduction. So that's why I do them uh back to back. The most important part about sharpening and here's the sharpening slider right here. The radius and detail are actually usually set fairly well automatically. So playing with the sharpening slider will give some extra sharpening. You can see up here if I zoom in, you can see some extra kind of crispiness coming out. But the trick with sharpening is the following. See this masking slider? This
+
+00:34:34 - 00:35:44
+is really important. Click on the masking slider. Click alt on a uh Windows keyboard and option on a Mac and slide the masking slider. And what it does is it it highlights what your subject is such that areas that are more uh homogeneous type of shade where the noise is more visible. The sharpening is only going to be applied uh to the areas in white and not the areas in black. And the areas in black are the areas where the shade is more uh constant and homogeneous. And that's where the noise
+
+00:35:08 - 00:36:17
+is really visible more there than in the details. So move this until your subject is kind of isolated or the areas that have structure and detail are isolated and then move the sharpening slider to sharpen. Now the reason this is important to use the mask for sharpening is you won't be sharpening the areas that have a more homogeneous color where the noise is visible and that will make your noise reduction much more effective if you haven't sharpened the noise first. So by sharpening the noise, by
+
+00:35:43 - 00:36:43
+sharpening the noise in the sky or against a wall or in the dark background, uh when you sharpen everything, you sharpen that noise and make the noise reduction much less effective. So your noise reduction will benefit from doing very smart sharpening by only sharpening the parts of the image that really make a difference with a lot of detail and not sharpening the areas without detail where the noise lives the most. Now, one of the last processing steps I like to use is to try to figure out whether or not a vignette
+
+00:36:13 - 00:37:11
+will help and add to the image. If you slide all the way down here to effects, there's a vignette. You slide to the left and it will put a darker tone around the edges called a vignette. And you can I'm going to exaggerate it here. Move it all the way to the left. You'll see what's happening. You can move the midpoint here. So, you can move the uh change the shape. And also, you can change the feathering on it. So, it's a little bit more feathered out. And you can change the roundness as well. Now,
+
+00:36:42 - 00:37:41
+the trick with the vignette is if you put a little bit of a vignette around your image, you'll help focus the view of the viewer a little bit closer to the center of the image where your subject may lie. And the trick though is with a vignette is to move it to the left until you can notice and then it's time to back off. And it will depend here. My corners are already kind of dark, but I can move this a little bit to the left here. And it just hones the viewer's eye a little bit more in the center. But
+
+00:37:12 - 00:38:06
+once you do it too much that you can notice it's time to back off. So here it actually, let me just adjust it here. It doesn't look like I have much of a vignette. But if I doubleclick on the vignette button to to recenter it, or I click on the eye here, you'll see that I have added some vignette, but it's really kind of hard to tell. So the beauty is add just enough where you can't really see it. Now the challenge with the vignette in this particular image is that it applies a darkening all
+
+00:37:39 - 00:38:41
+around the edge. But I have this kind of bright upper corner which I think looks better a little bit brighter to be honest. So rather than use that vignette, I'm going to use another technique. I'm going to create a mask, a radial gradient. If I put a radial gradient this way and uh you can click on these little tabs here to change the amount of feathering in your gradients. Now, if I make a gradient this way, now if I slide the exposure slider, you see it's darkening the center of the image. But if I go up
+
+00:38:09 - 00:39:10
+here and click invert, then I'll be darkening the edges. So here if I create a vignette this way with a radial gradient inverted I can do similar to what I did earlier with a regular vignette tool. But here what I want to do is I want to do something a little bit different. I'm darkening part of my subject here and I'm darkening a little bright spot here that I think kind of is part of the image. So I'm going to darken this a bit. But here I'm going to spin the vignette a little bit here and
+
+00:38:40 - 00:39:53
+stretch it out this way a little bit as well. And that way I'm vignetting around the edges that aren't creeping into my subject or the view of the viewer that I want to go from the lower right and the water streaking there up to the waterfall area. So, I'm going to make the vignette this way a little bit more and that way I'm kind of playing within what I want the image to do and uh where I want the eye of the viewer to go. So, when you're applying the vignette, think about that in your image to see what
+
+00:39:17 - 00:40:19
+will suit the image best. Now, we're getting close to the end and I have my most important tip. My most important tip and I'll show you some comments from the last time I recommended this. Here are some comments from some viewers that agreed with me that it was the most important tip with hundreds of likes on these comments. And the next step is to wait. That's right. Wait 30 minutes. Go do something else. The reality is that after 30 minutes, you'll come back and you look at your image and sometimes
+
+00:39:48 - 00:40:49
+you'll say, "What was I thinking?" The reality is while processing a photo you get kind of lost in the photo and sometimes you really lose track of what's looking right and not looking right. It gives you a chance to review your work before you go to the final step and export your photo. So right now it's time for me to take a little bit of a break. I'm going to go do something else for 30 minutes and I'll come back. I'll see you guys in a bit. Okay, it's been 30 minutes. I'm coming
+
+00:40:21 - 00:41:23
+back to my image with a fresh pair of eyes and to see what can I see? What what have I done here? I see two things that when I sit down kind of pop out at me. Number one, overall the image just looks too dark. Although it was shot in the shade in a shady area in the forest, it just comes across as too dark. So, let me look at a few things here. I can raise the blacks a little bit and that helps a little bit. I'm going to raise the shadows as well. Uh, that's where I think really works well. I can raise the
+
+00:40:52 - 00:41:47
+shadows here. It just doesn't look so black and so dark. If you look at the histogram, look at the huge peak on the left here. And I can move that peak around by moving the shadows. I think there's just too much black and darkness in the photo. So, I'm going to raise this a bit. Now, that has an unintended consequence that my vignette doesn't look as prominent as it did before. So, I'm going to return to my vignette here and maybe darken the vignette a bit. Makes it a little bit less dark. And the
+
+00:41:19 - 00:42:21
+other thing I see here is the the water, especially up in the waterfall here, looks too blue. It's too blue to my eye. Now, it's bluer than the water's not too blue here. It's a little bit. And the water's kind of blue here. We've got a couple of different approaches we can do here. I showed you earlier that you can look here in the color grading and see the highlights here. This is the brightest parts of the image and the brightest parts of the image are this water that's very blue. So if I click on
+
+00:41:50 - 00:42:42
+this, this will target the brighter parts of the image and I can move them to the right and you see how the water will get less blue. So this is a way of targeting certain tones in your image. bright tones, dark tones. It turns out parts of the image that were bothering me was that the the water, the whites were too blue. Now, I could change the color balance on the whole photo, but it would move everything, including the very orange leaves, to make them more orange, and I don't need them more
+
+00:42:16 - 00:43:09
+orange. So, I'm going to slide this a little bit to the right and just take some of the blue cuz I'm moving, you see here, I'm moving away from the blue color. And you see here it says highlights. So, I'm moving the highlights away from blue over to the warmer tones. I don't want to move them here to the green tones and make them green. I want to move them over here a little bit to the right and make them a little bit warmer because orange is in the warmer tones and it's away from the
+
+00:42:42 - 00:43:44
+blues. So, I like that a little bit. And let me just go back to that traditional vignette tool to see whether or not it works a little bit. Maybe just a little bit. So, there we go. Now, we have our image. We've rested our eyes a little bit and gone away and thought about it a little bit. Now I'm going to come back here. And something else that I noticed here as well, I think the parts over here where I darkened the trees here a little bit, I went a little bit overboard. I think I lost a little bit
+
+00:43:14 - 00:44:13
+of some detail, especially as I added the vignette that made this area darker. It was already dark and I made it kind of too dark. So, I'm going to add some contrast here, but I'm going to raise the shadows a bit so that it's just not too dark. So, here is the before and after. You can see we've added some pop. We've made my subject pop. We've got some beautiful crisp views and a color and saturation out of the leaves. And uh we've taken the things that weren't as
+
+00:43:44 - 00:45:00
+attractive and kind of hidden them in the background. And the things that we really like, we've made them pop. And we've adjusted the colors and the tones to make it really attractive to look at. So now the very final step uh is to export our photo. So now we click file, export. Up here we choose a folder to store our photo in. You can rename your photo to a custom name if you would like. And you can choose the original file number. Just give it a plain custom name if you'd like. For example, here I will
+
+00:44:21 - 00:45:35
+just say waterfall went, which was the uh location. Now down here, you've got different choices. JPEG is fine for most applications. If you want to get to some serious professional printing and so on, you can choose things like TIFF and so on. But for most uses, including making prints, JPEG is 100% fine. You can limit the file size. If you're going to post photos on Facebook and Instagram, you can limit this to a,000 uh kilobytes if you want or 5,000, but you do want to put this on 100% uh for most uses. And
+
+00:44:58 - 00:46:07
+here in color space, Adobe RGB works great. SRRGB works great as well. You don't want to use proo unless you're doing some professional printing work and know exactly how your print shop will uh tackle these colors. But sRGB is a a really good choice for most. It outputs the photo in a format that's very usable on a lot of different devices, which is kind of what you want. You want that compatibility. Now, you can also resize your image here. 20 48 pixels on the long edge is great for
+
+00:45:32 - 00:46:32
+Facebook. And for Instagram, 1350 pixels on the long edge is great for Instagram. any larger than that and Instagram and Facebook will compress it smaller to make it fit their needs, but their sharpening algorithms aren't as good as what you usually get straight out of Lightroom. So, it may mess up the sharpness of your photo. And if you make it smaller than that, you're putting the photo out in less resolution that's available. Uh, so you won't get your photo looking the best. So, 1350 pixels
+
+00:46:02 - 00:47:09
+on the long edge for Instagram, 2048 on uh Facebook. The resolution here does not matter. This is for printing only this resolution piece. So 250 I can make this one. Uh it absolutely doesn't matter for the web. And here if you want to add a little bit of a watermark, you can if you have one loaded in or you want to design one yourself, this is the place to do it. And output sharpening here is good to use as well because when you resize a photo, you really need to resharpen it. The sharpening is very dependent on the
+
+00:46:36 - 00:47:48
+resolution. So if you're going to be on the web, for example, for Instagram and Facebook, hit screen and standard works very well. And hit export. And voila, here is my final product ready to post to Facebook or Instagram. And I could even do some more work on it and make sure that the levels are just perfect if I wanted to print it, for example. but it would probably be very suitable for printing on a home computer and so on right now. So, I hope you enjoyed this video and I hope that you can use these tips very soon so you too
+
+00:47:13 - 00:47:23
+can get your own unique and amazing photos. I know you can do it.

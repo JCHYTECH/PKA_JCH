@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{meta_title}}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset "css/style.css"}}" />
+    {{ghost_head}}
+</head>
+<body class="{{body_class}}">
+    <header class="site-header">
+        <div class="header-inner">
+            {{#if @site.logo}}
+                <a class="site-logo" href="{{@site.url}}"><img src="{{@site.logo}}" alt="{{@site.title}}" /></a>
+            {{else}}
+                <a class="site-title" href="{{@site.url}}">{{@site.title}}</a>
+            {{/if}}
+            <nav class="site-nav">
+                <a href="{{@site.url}}">Journal</a>
+                <a href="{{@site.url}}/manifesto/">Manifeste</a>
+                <a href="{{@site.url}}/#/portal/signup">S'abonner</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="site-main">
+        {{{body}}}
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="footer-name">{{@site.title}}</span>
+                {{#if @site.description}}<span class="footer-tagline">{{@site.description}}</span>{{/if}}
+            </div>
+            <div class="footer-meta">
+                <span>© {{date format="YYYY"}} ARTEON — {{@site.title}}</span>
+            </div>
+        </div>
+    </footer>
+
+    {{ghost_foot}}
+</body>
+</html>

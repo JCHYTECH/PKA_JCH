@@ -1,0 +1,135 @@
+00:00:01
+Bonjour à toutes et tous. Aujourd'hui, on va voir comment on passe de cet ensemble d'images à ce résultat. Donc, comme vous l'aurez deviné, aujourd'hui, on va s'intéresser au style de Pep Ventosa. Donc, j'espère que je prononce bien son nom. Donc, ça c'est ce monsieur-là, voilà. Et qui a une philosophie assez intéressante, très graphique. C'est pour ça que ça m'intéressait et moi je connaissais pas du tout le style, tout ce qui a déclenché ce cet épisode, ça a été ce
+
+00:00:27
+commentaire là. Et du coup effectivement ça m'a fait découvrir l'artiste et le style et forcément ça m'a intéressé. Donc j'ai regardé comment il faisait et je me suis dit "OK, on fait un petit tuto, ça va être assez rapide, vous allez voir parce que la technique en soi est pas très complexe une fois qu'on a compris le principe." Donc finalement ce que fait ce monsieur, c'est assez proche presque du cubisme dans le sens où il va cumuler en une seule image plusieurs points de
+
+00:00:55
+vue d'un même sujet. pour résumer très simplement. Donc moi, je me suis prêté à l'exercice de façon encore une fois très simple aussi en allant au travail le matin juste avec mon smartphone hein. Donc vous voyez vraiment pas de quoi mettre en place un système ou un un setup super compliqué avec mon smartphone. Voilà, il y a un arbre que j'aime beaucoup sur un un petit rond-point sur le chemin du travail à pied. Alors ce que j'ai fait tout simplement c'est prendre une série de
+
+00:01:23
+photos en avançant et donc en décrivant une sorte d'arc de cercle finalement autour du sujet. Et ensuite une fois qu'on a cette série de photos et ben tout simplement on va les superposer dans un même document. Donc soit dans Photoshop soit dans Infinity. Je vous montrerai les deux flux de production comment ça se passe. C'est exactement la même chose. Ça nécessite pas plus finalement que de jouer avec des modes de fusion pour ceux qui connaissent. Sinon ben on va le voir ensemble. Et
+
+00:01:49
+l'opacité, c'est tout simple, il y a pas plus que ça pour arriver. Alors après, vous pouvez aller plus loin bien évidemment, mais la base si vous voulez, elle est là. On va la voir ensemble. Très très simple, en tout cas accessible hein, vraiment je vous assure que ça nécessite pas des des gros niveaux de Photoshop. Je vais essayer d'aller doucement et si jamais ça va pas, vous me reposerez des questions dans les commentaires et j'essaierai de revoir ça. Mais en tout cas, la technique, elle
+
+00:02:11
+est très simple. Vous superposez tout ça, vous jouez avec l'opacité et vous jouez avec les modes de fusion et ça vous donne un effet super sympa. On voit ça tout de suite. C'est parti. Alors, j'ai mis une lunette de combat. C'est parti. Donc le principe, comme on l'a expliqué, ça va être d'avoir un seul document. Donc là, en l'occurrence, on va commencer par Photoshop. Ça va être un document dans lequel vous allez avoir chacune des photos de la séquence comme un calque et chacune donc on va se
+
+00:02:37
+superposer. Voilà, avec le nombre d'images que vous avez pris. Alors pour info euh PM Fosa apparemment enfin l'artiste qui a qui a fait cette technique en tout cas celui qu'on connaît il y en a sûrement d'autres mais bon en tout cas lui euh a priori des infos que j'ai réussi à glaner à gauche à droite euh ça peut aller de 50 même à une centaine de clichés sur un même sujet. D'accord ? Là moi en l'occurrence ce que j'ai fait c'est que j'en ai juste fait 18. C'est déjà pas mal hein. Euh
+
+00:03:03
+mais vous pouvez voir franchement j'ai fait quelques autres tests rapides après. Une dizaine en gros c'est déjà pas mal. Après forcément plus vous en faites plus vous allez pouvoir affiner le l'effet sûrement mais bon après vous allez voir aussi que c'est derrière il y a pas mal d'expérimentations à faire mais en gros donc l'idée ça va être d'ouvrir vous sélectionnez toutes vos images et vous les ouvrez alors pour Photoshop vous les ouvrez sous forme de calque. Alors via
+
+00:03:26
+bridge c'est assez simple hein. Il suffit juste d'aller dans le menu outil Photoshop et ensuite chargement des fichiers dans lesqu Photoshop. Chaque image va être chargée donc comme vous le voyez ici dans Photoshop. avec un calque par image. D'accord ? Toute superposé. Très simple. Si vous voulez passer par Photoshop et vous voulez pas le faire par bridge, c'est très simple aussi. Quand vous avez pas de fichier ouvert, vous allez juste dans fichier script, charger des fichiers dans une pile,
+
+00:03:58
+chargement des fichiers dans une pile. Quand vous allez faire ça et ben ça va vous ouvrir cette interface là. Il va juste falloir aller parcourir et aller chercher donc vos images. Voilà, comme ça là par exemple. Tac. Donc c'est cette série de photos là. Ouvrir, il va vous les mettre dans une liste. Vous pouvez cocher le fait de les aligner et cetera. Ça peut se faire après, c'est pas un souci ou créer un objet dynamique mais ça on en a pas besoin tout de suite. Et vous faites OK et vous allez arriver
+
+00:04:22
+exactement à ce résultat. Super simple. D'accord. Jusqu'ici, j'espère j'ai pas perdu trop de monde. J'espère que je n'ai pas perdu trop de monde. Pardon. Alors, un des soucis que vous pouvez avoir parce qu'en tout cas, c'est vrai que pour le flux de travail, c'est plus intéressant d'avoir la première des images, en tout cas celle qui vous intéresse le plus en bas de la pile. Là, moi justement celle qui m'intéresse le plus, c'est elle est tout en haut. Donc,
+
+00:04:49
+en gros, la pile est inversée. C'est que ça commence, voyez comme ça. Si je les enlève les unes après les autres, on voit que bah j'avance petit à petit en tournant autour de mon arbre. Donc si vous voulez tout simplement inverser la liste et tous les calques faire avoir exactement l'inverse en ordre, vous les sélectionnez tous. Donc pour ça, vous cliquez sur le premier tout en haut de la pile. Vous descendez tout en bas avec mage appuyé ou shift. Vous gardez la touche appuyée et vous
+
+00:05:16
+cliquez sur celui du bas. Et là ça vous sélectionne tout. Très simple. Vous allez ensuite dans le menu calque disposition. et vous sélectionnez inverser. Prac. Et là, vous voyez que donc maintenant ce qui se retrouve tout en haut, bah c'est la dernière des photos. Et maintenant, si je les désaffiche toutes pour aller jusqu'en bas, et ben j'ai bien ma première tout en bas. OK, jusque là. Parfait. Et maintenant, en fait, vous allez voir que ça va être assez simple. Finalement, il y a plein de variantes possibles. C'est
+
+00:05:52
+pour ça que vous allez pouvoir vous amuser comme des fous à tester plein de trucs. Mais le principe en gros, ça va être que vous allez tout simplement jouer sur l'opacité et les modes de fusion de chacun des calques qui va venir se superposer à la première image. Sachant que dans la technique, apparemment, c'est vrai que c'est intéressant de venir si vous voulez essayer de venir recaler l'arbre par exemple, enfin votre sujet en fait le plus possible en en le superposant le le plus possible à
+
+00:06:26
+l'image précédente. D'accord ? Donc ça, vous pouvez très bien venir ici. Voyez passer par exemple, je sélectionne donc ma deuxième image hein. Vous voyez ici, hop, je vais passer l'opacité à 60 %. En sélectionnant l'outil de déplacement. Et vous voyez que par exemple, je peux venir essayer de caler le tron parfaitement superposé à l'autre. Voilà. OK, je peux continuer comme ça, mettre mon nouveau calque. Hop, je l'affiche ici toujours en cliquant sur le petit œil. Là, je viens baisser l'opacité et
+
+00:06:55
+comme ça, en fait, je peux venir recaler et voir où est mon tron. Voilà, pour essayer de caler au mieux, au plus proche et pour avoir vraiment un élément qui est qui va dire avoir le moins de variation possible d'une d'une image à l'autre. Alors ça vous pouvez le faire sur toutes les images mais je veux quand même vous montrer un truc parce que au final si vous az pas envie de passer par cette étape là ce que je pourrais très bien comprendre et c'est là aussi ça rentre dans le cadre de l'expérimentation.
+
+00:07:22
+Je vais vous montrer une chose. Si j'affiche tous les calques, d'accord ? Donc là encore une fois j'en ai pas beaucoup he j'ai 18 18 images. OK je vais sélectionner toutes les images qui sont supérieures à mon image de référence d'accord et ce que je vais faire ici c'est que je vais tout simplement baisser tout à 0 %. Donc vous voyez là, j'ai mon image qui est tout en bas puisque toutes les autres images qui sont sélectionnées ici, elles sont à 0 % d'opacité. Et ce que je vais faire,
+
+00:07:45
+c'est que regardez un truc, je vais juste augmenter petit à petit l'opacité et regardez en fait petit à petit voyez vous commencez déjà à voir l'effet qui apparaît. Donc finalement si vous avez pas envie de vous embêter plus que ça et vous avez envie d'expérimenter plein de trucs, vous pouvez même sans même recaler finalement vous embêter à recaler au poil près l'élément votre sujet principal sur chacun des calques. Bah déjà comme ça, vous pouvez déjà avoir un super effet. Voilà. Donc ça c'est la petite astuce
+
+00:08:13
+mais bon on va essayer de faire ça proprement. Donc je vais revenir. Hop, je vais tout démasquer et je vais continuer sur sur ma lancée. Euh donc on était on était pas trop mal calé. Alors attendez, je vais déjà les remettre tous à 100 % d'opacité. Tac. Hop là. Tac. Voilà. Et je reviens bien à mon truc. Donc j'avais calé ce tron là. J'avais calé ce tron là. Allez, on va continuer. Hop, rapido. Je vais même le passer en accélérer ce passage là, comme ça vous avez compris le principe. En fait, à chaque fois, ce
+
+00:08:46
+qu'il faut faire, je je vous le rappelle avant de passer en accélérer, c'est tout simplement vous affichez le calque en cliquant sur le petit œil pour le rendre visible. Vous baissez l'opacité pour que votre calque que vous déplacez, vous l'avez bien sélectionné ici he bien évidemment et ben soit à peu près voilà, vous essayez à chaque fois de recaler et vous continuez ça comme ça sur chacune sur chacun des calques. [musique] Et voilà. Donc là maintenant, je reprends tous mes calques. Je les
+
+00:09:18
+reprends tous. Hop, je gère l'opacité. Donc encore une fois pour les sélectionner tous, vous sélectionnez celui du haut, vous gardez la touche mage majuscule ou shift appuyez vous cliquez sur celui alors juste au-dessus de celui qui est tout en bas parce que celui qui est tout en bas on rappelle hein, c'est la référence vous y touchez pas. C'est ça qu'on vient faire les effets superposer et tout. Et donc maintenant je les remets tous à 100 % et alors là maintenant je vais pouvoir
+
+00:09:40
+m'amuser à faire ce que je disais tout à l'heure donc à venir bah baisser mon effet à peut-être voilà une quinzaine 14 14 % par exemple. Voilà, si je trouve que ça ça me plaît et ben et ben cet effet là, voilà, par exemple, il me plaît, je le garde comme ça. Ce qu'on va faire forcément, c'est que comme on a des calques individuels, il va y avoir des éléments parfois qui vont bah venir perturber. Typiquement là, vous voyez sur l'image, en fait, on voit bien qu'il y a les petits panneaux de flèche, de
+
+00:10:08
+direction qui viennent nous embêter. Bah, ce qu'on va pouvoir faire tout simplement, c'est venir faire des masques. Alors, on va prendre l'outil pinceau. D'accord ? outil pinceau, on va le mettre assez assez grossier. Donc en cliquant droit, voyez quand vous avez sélectionné l'outil pinceau, si vous cliquez droit sur l'image, vous pouvez régler l'épaisseur. Voilà, on va faire un un pinceau assez gros comme ça, ça va nous permettre d'être très rapide, hein, sur le sur le résultat et avec une
+
+00:10:34
+dureté à 0 %. Ça c'est pour avoir un effet fondu sur les bords pour pas que ça se voit enfin voilà, pour que la correction qu'on fasse soit la plus naturelle et et douce possible. Et ce qu'on va faire sur notre calque, tout simplement, regardez, vous voyez en cliquant et en l'affichant et en leaffichant, on voit qu'on fait apparaître ici le panneau là qui nous embête. Bah ce qu'on va faire tout simplement, c'est que donc quand on a isolé, on sait à quel endroit c'est, on
+
+00:10:59
+crée donc en cliquant ici un petit masque euh de fusion. Et là, hop, ce qu'on va faire, c'est que en venant donc en s'assurant ici qu'on a bien la couleur noire à l'avant-plan, hein, donc vous pouvez la la changer, faire intervertir avec celle de l'arrière-plan. juste en cliquant sur la petite flèche ou tout simplement avec le raccourci X, hein. C'est pour ceux qui aiment bien les raccourci. Voilà. Donc vous vous assurez que vous avez bien la couleur noire à l'avant-plan. Vous vous
+
+00:11:24
+assurez aussi, alors ça c'est super [rires] important, d'avoir bien sélectionné le masque de fusion et pas là là parce que sinon ça veut dire que vous allez faire un gros pâté blanc ou noir sur votre photo et c'est pas ce qu'on veut. Donc assurez-vous bien que le cadre autour le cadre blanc de sélection est bien autour du masque de fusion. Et quand c'est bon, avec votre pinceau, encore une fois avec la couleur noire, hop, vous venez peindre et ça disparaît. Et ensuite, on passe au
+
+00:11:51
+calque précédent. Bah forcément, on voit que c'est la même chose. On crée notre masque, on vient peindre et pareil, ben toutous en fait les éléments qui vont venir vous embêter. Hop, là, c'est sur celui-là. Sur celle-ci, ah bah c'est celui-là. Parfait. Donc c'est bien là, ça va. Ça suit assez donc c'est cool. Sinon après bah ce qu'il faut faire c'est à chaque fois c'est de voir en fait sur quel casque enfin sur quel calque pardon ça se passe et vous venez comme ça faire votre correction et
+
+00:12:15
+voilà. Donc là vous avez votre effet. Voilà par exemple corrigé. Vous avez compris le principe, je vais pas aller plus loin. Mais l'idée c'est que quand vous avez ça, donc d'une part vous pouvez essayer de voir si alors voyez par exemple ici on voit qu'il y a une différence. Vousz sur le hauteur là on voit qu'il y a des petites un petit crantage qui est lié au aux différentes images parce qu'elles sont pas forcément toutes de la même taille parce que j'en ai en déplacer et cetera. Donc si ça ça
+
+00:12:39
+vous arrive, bah soit si ça vous plaît ou en tout cas si ça vous gêne pas, vous le laissez dans le guimage. Sinon bah bien évidemment vous pouvez venir recadrer. Donc avec l'outil de recadrage ici, vous pouvez à tout moment dire bah tiens on va venir recadrer ou même enlever un petit peu de la partie basse. Voilà ici garder peut-être. Voilà comme ça. Voilà. Hop, on recentre, on valide et voilà. Et on est content, on a notre image. Et après par-dessus ça, vous avez plein de variations possibles comme je
+
+00:13:06
+vous le disais. C'est-à-dire qu'en gros, une des techniques aussi peut consister tout simplement à je vais tous les enlever. Je vais ajouter le premier effet ici. Là, je vais le premier calque, pardon, je vais l'ajouter par-dessus donc à une certaine opacité. Mais ce que je vais faire en fait, c'est que je vais venir ici changer le mode euh de fusion. Et c'est vrai que apparemment, il peut s'avérer que sur certains effets, c'est intéressant parfois de venir bah superposer, parfois de venir euh changer
+
+00:13:36
+un peu le mode de fusion, assombrir ou et en fait en en jouant avec ces différents modes de fusion, bah pareil, vous allez encore obtenir un nouveau mode de euh et un nouveau rendu quelque part final de toutes ces choses-là. Donc vous pouvez venir très bien vous amuser sur chacun des calques à changer les modes de fusion, changer l'opacité, le niveau d'opacité aussi parce que forcément ça va influer aussi. Donc ça c'est possible. Encore une fois là je vais pas tout passer en vue he vous avez
+
+00:14:02
+compris le principe. Amusez-vous, testez en fait, regardez et dans ce cas-là si vous faites avec les modes de fusion, le seul conseil c'est vraiment de le faire progressivement. y aller. Vous allez sûrement devoir augmenter un petit peu plus l'opacité de chacun des calques et comme ça vous jouez, vous regardez et quand vous obtenez des résultats qui vous plaît et ben qui vous plaisent pardon et ben vous gardez et vous continuez de construire comme ça petit à petit. Autre technique intéressante
+
+00:14:24
+également, vous pouvez très bien venir ajouter des masques, enfin pardon des des calques d'ajustement par-dessus. Typiquement, si vous voulez par exemple venir renforcer les contrastes, vous pouvez faire une courbe globale et on peut ici bah par exemple essayer d'éclaircir un petit peu plus, contraster un petit peu plus notre arbre typiquement. Euh voilà comme ça. Euh et ne garder que que l'arbre par exemple, on pourrait très bien donc inverser ici euh le donc je vais juste faire un
+
+00:14:53
+commande i donc juste une inversion du masque. Et pareil donc je vais reprendre mon pinceau mais cette fois donc je vais m'assurer que c'est le blanc qui est bien devant. Je vais clic droit et agrandir le diamètre. Et je vais juste venir voilà juste venir ici peindre ce qui m'intéresse pour faire ressortir un peu plus mon arbre. De la même manière, je pourrais très bien ici venir ajouter un calque d'ajustement qui va être la teinte saturation. saturer un peu plus. Par exemple, bah si
+
+00:15:22
+j'ai envie juste les verts, je vais cliquer sur l'outil qui permet de faire directement sur les tons de l'image. Je vais venir saturer un petit peu plus ça. Mais là, on voit que ça sature beaucoup la pelouse. C'est pas ça don dont j'ai envie. Donc je suis sur mon masque de fusion là. Cette fois, je vais remettre en noir pour venir atténuer la la pelouse là. Voilà. Et ne garder la saturation que sur la partie du feuillage de l'arbre. Euh voilà, je peux même essayer d'atténuer ici ou ici,
+
+00:15:52
+voilà, pour ne garder vraiment que que mon arbre au centre. Et comme ça, vous pouvez construire, tester plein de trucs. Si vous avez envie de par exemple, bah de euh je vais rajouter une courbe, cette fois, je vais éclaircir à mort. Euh mais ça encore une fois, je vais inverser commande i pour que ce soit euh rempli enfin l'opposé du blanc donc le noir. Et ce que je vais faire c'est que je vais venir peindre donc avec mon pinceau couleur blanc et je peux par exemple ici venir euh essayer
+
+00:16:23
+de ne peindre que la partie bah voilà que que mon fond typiquement ou une partie de mon arbre. Voilà comme ça je peux jouer, je peux revenir en changeant. Et voilà. Et comme ça en fait, vous pouvez travailler. Vous pouvez même faire la même chose avec une désaturation sur le sur le reste, reprendre un un calque d'ajustement de et voilà et dire voilà ben je vais venir désaturer tout sauf mon arbre. Voilà donc mon arbre lui je veux le garder. Donc voilà en gros vous avez et et un peu de la plou si j'ai envie. Voilà
+
+00:16:53
+voilà en gros amusez-vous. La technique, voilà, elle est pas plus compliquée entre guillemets que ça. Vous avez tout un terrain d'expression, un terrain de créativité à faire. Allez-y, amusez-vous. Euh voilà, vous avez tout. Et maintenant, je vous montre rapidement comment on fait ça dans Infinity. Vous allez voir, c'est exactement la même chose. Alors, on est dans Affinity. Alors après, je vous avoue que euh très humblement, c'est vrai qu'Affinity, je connais un petit peu. Je suis pas non
+
+00:17:20
+plus aussi avancé, on va dire, dans dans ma pratique que euh Photoshop que je connais depuis euh [rires] 195 ou quelque chose comme ça. Bref, euh donc en gros, euh si c'est pas avant euh donc dans Infinity, alors j'ai pas trouvé l'équivalent, donc si vous le connaissez, bah écoutez, postez-le dans les commentaires comme ça ça aidera plein de monde. Mais j'ai pas trouvé l'équivalent du script qui permet d'ouvrir toute une série d'images sous forme de calque. Moi, la manière la plus
+
+00:17:49
+simple que j'ai trouvé de de pour combler ça, c'est tout simplement j'ai ouvert ma première image, d'accord ? Toute simple, elle est dans elle est là, voilà, dans dans Affinity. Et en fait ce que je fais, c'est qu'après et ben tout simplement euh alors attendez, comment je peux vous montrer ça ? Attendez, je vais essayer de vous le montrer comme ça. Voilà. Donc là dans Affinity, j'ai ouvert, voyez, la première image. Et après ce que je fais c'est qu'avec euh Ah, attendez, hop, on
+
+00:18:17
+va y arriver. P voilà, comme ça. Euh ce que je fais, c'est qu'en fait une fois que j'ai ouvert ma première image et ben je sélectionne la suite euh d'accord ? Tout simplement, tac. Et je drag drop, je lâche. Et là, en fait, ce que va faire Affinity tout simplement, c'est qu'il va me faire exactement la même chose. Voyez ? Donc là, je vais revenir en grand écran, ce sera plus simple. Tac. Voilà. Hop, on va se remettre au centre. Et en fait, il m'a refait exactement la même chose. Alors, sauf
+
+00:18:41
+qu'effectivement, elle est pas tout à fait calée. Donc, je les resélectionne tous. Pareil de la même manière, hein, avec shift. Vous savez comment c'est fait. Sélectionner en haut et shift ou la touche mage, pardon, appuyez et vous cliquez en bas. Ça vous sélectionne tout de la même manière et hop après vous les recalez droit. Voilà, il y a sûrement d'autres techniques. Voilà, les flèches en affinity, vous saurez le faire et sinon bah vous vous cherchez, vous trouverez forcément. Donc et ben encore
+
+00:19:05
+une fois donc après c'est exactement la même chose que dans Photoshop. D'accord ? Donc c'est pas plus compliqué que ça. Une fois que vous avez tous vos calques là voyez si je les sélectionne tous et que je viens m'amuser avec l'opacité là ici en la baissant tac tac tac. Et ben vous voyez que je vais retrouver exactement le même genre de rendu. Et donc en gros vous avez exactement les mêmes étapes à faire. C'est pas plus compliqué. Et pareil si vous voulez jouer avec les modes de fusion ça va se
+
+00:19:29
+passer ici là. Voilà. Donc vous pouvez venir vous amuser avec tous les modes de fusion et c'est exactement la même chose, pas plus compliqué que ça. Voilà, j'espère que ça vous aura plu. Si vous avez des questions, des commentaires, n'hésitez pas à le poster. Vous savez que à chaque fois je vous lis et je réponds toujours dans la mesure du possible. Si vous avez d'autres suggestions, pareil, n'hésitez pas aussi à poster comme ça, hein, plus on est de fou, plus on rit. Pensez à vous abonner
+
+00:19:54
+à la chaîne si c'est pas fait, likez, partagez, enfin voilà, faites tout ce qu'il faut pour que ça vive. Euh moi je vous dis à très vite. Prenez bien soin de vous, amusez-vous bien avec ces techniques là et puis benah on se revoit bientôt. Ciao !
+

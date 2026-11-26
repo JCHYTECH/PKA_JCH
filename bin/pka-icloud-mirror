@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# pka-icloud-mirror — Miroir LECTURE SEULE (markdown seul) du PKA vers iCloud Drive.
+# Dobby 🦉 — 2026-11-13
+#
+# Copie UNIQUEMENT les fichiers .md (notes Obsidian) vers
+# ~/Library/Mobile Documents/com~apple~CloudDocs/PKA_JCH/ — que l'iMac ouvre
+# ensuite en lecture seule dans Obsidian. Sens unique M5 → iCloud.
+#
+# Exclut : .git* (dont le .git.bak de 88 Go), _local/, scripts/, bin/,
+# JCH_PRIVATE/ (secrets), graphify-out/, tmp/ et tous les binaires (non-.md).
+#
+# Usage :
+#   bin/pka-icloud-mirror --run        synchro complète (markdown seul)
+#   bin/pka-icloud-mirror --dry-run    simule sans écrire
+set -euo pipefail
+
+PKA_ROOT="/Users/jchavauxm5/PKA_JCH"
+ICLOUD_ROOT="$HOME/Library/Mobile Documents/com~apple~CloudDocs/PKA_JCH"
+LOG="$PKA_ROOT/_local/logs/pka-icloud-mirror.log"
+
+MODE="${1:---run}"
+DRY=""
+[[ "$MODE" == "--dry-run" ]] && DRY="--dry-run"
+
+mkdir -p "$ICLOUD_ROOT" "$(dirname "$LOG")"
+
+rsync -a $DRY \
+  --exclude='.git*' \
+  --exclude='.obsidian/' \
+  --exclude='_local/' \
+  --exclude='tmp/' \
+  --exclude='node_modules/' \
+  --exclude='__pycache__/' \
+  --exclude='scripts/' \
+  --exclude='bin/' \
+  --exclude='JCH_PRIVATE/' \
+  --exclude='graphify-out/' \
+  --exclude='TEAM/_archive/' \
+  --exclude='TEAM/backups/' \
+  --include='*/' \
+  --include='*.md' \
+  --include='*.markdown' \
+  --exclude='*' \
+  --delete \
+  "$PKA_ROOT/" "$ICLOUD_ROOT/"
+
+echo "[$(date -Iseconds)] OK" >> "$LOG"
+echo "✅ Miroir iCloud (markdown) synchronisé → $ICLOUD_ROOT"

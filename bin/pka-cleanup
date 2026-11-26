@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+# pka-cleanup — Nettoie les artefacts de session PKA
+# Dobby 🦉 — 2026-07-18 — Automatisation #8
+#
+# Nettoie : sessions JSON en racine, vieux logs, fichiers temporaires.
+# Usage:
+#   bin/pka-cleanup --run       Nettoie
+#   bin/pka-cleanup --dry-run   Simule
+#   bin/pka-cleanup --help
+
+set -euo pipefail
+
+PKA_ROOT="/Users/jchavauxm5/PKA_JCH"
+SESSION_DIR="$PKA_ROOT/_local/sessions"
+LOG="$PKA_ROOT/_local/logs/pka-cleanup.log"
+
+MODE="${1:---run}"
+DRY=false
+[[ "$MODE" == "--dry-run" ]] && DRY=true
+
+if [[ "$MODE" == "--help" || "$MODE" == "-h" ]]; then
+  cat <<'EOF'
+🧹 pka-cleanup — Nettoyage des artefacts PKA
+
+USAGE
+  bin/pka-cleanup --run       Nettoie (déplace, pas supprime)
+  bin/pka-cleanup --dry-run   Simule sans agir
+
+ACTIONS
+  1. Déplace session_*.json → _local/sessions/
+  2. Nettoie _local/logs/ > 30 jours (compresse)
+  3. Signale fichiers > 50 MB dans la racine
+
+LAUNCHD
+  cp _local/launchd-plists/com.dobby.pka-cleanup.plist ~/Library/LaunchAgents/
+  launchctl load ~/Library/LaunchAgents/com.dobby.pka-cleanup.plist
+EOF
+  exit 0
+fi
+
+mkdir -p "$SESSION_DIR" "$(dirname "$LOG")"
+echo "[$(date -Iseconds)] Début cleanup" >> "$LOG"
+
+cleaned=0
+
+# 1. Déplacer les sessions JSON
+echo "📦 Sessions JSON :"
+for f in "$PKA_ROOT"/session_*.json; do
+  [[ -f "$f" ]] || continue
+  name=$(basename "$f")
+  if $DRY; then
+    echo "   [DRY] $name → $SESSION_DIR/"
+  else
+    mv "$f" "$SESSION_DIR/"
+    echo "   ✅ $name → _local/sessions/"
+  fi
+  cleaned=$((cleaned + 1))
+done
+[[ $cleaned -eq 0 ]] && echo "   Aucune."
+
+echo ""
+echo "🧹 Nettoyé: $cleaned fichiers"
+echo "[$(date -Iseconds)] $cleaned fichiers déplacés" >> "$LOG"

@@ -1,0 +1,4 @@
+#!/bin/bash
+# bin/gateway — Lance la gateway unifiée PKA
+cd "$(dirname "$0")/.." || exit 1
+exec python3 scripts/pka_gateway.py "$@"

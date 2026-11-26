@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 2140" font-family="Helvetica, Arial, sans-serif">
+<text x="40" y="28" font-size="17" font-weight="bold">Plan de découpe — meuble banquette (recheck 2026-09-27)</text>
+<text x="40" y="46" font-size="11" fill="#444">Cotes NETTES (mm) · plaques 2500×1220 · trait de lame 4 mm · échelle 1/2</text>
+<rect x="40" y="60" width="1250.0" height="610.0" fill="#faf7f0" stroke="#111" stroke-width="2.5"/>
+<text x="40" y="50" font-size="12" font-weight="bold" fill="#111">Feuille 1 — 15 mm — 3 panneaux</text>
+<rect x="40.0" y="60.0" width="172.0" height="270.0" fill="#cdb27a" stroke="#333" stroke-width="1"/>
+<text x="126.0" y="195.0" font-size="9" fill="#111" text-anchor="middle">Trappe</text>
+<text x="126.0" y="206.0" font-size="8" fill="#555" text-anchor="middle">344×540</text>
+<rect x="214.0" y="60.0" width="144.0" height="270.0" fill="#cdb27a" stroke="#333" stroke-width="1"/>
+<text x="286.0" y="195.0" font-size="9" fill="#111" text-anchor="middle">Trappe</text>
+<text x="286.0" y="206.0" font-size="8" fill="#555" text-anchor="middle">288×540</text>
+<rect x="360.0" y="60.0" width="144.0" height="270.0" fill="#cdb27a" stroke="#333" stroke-width="1"/>
+<text x="432.0" y="195.0" font-size="9" fill="#111" text-anchor="middle">Trappe</text>
+<text x="432.0" y="206.0" font-size="8" fill="#555" text-anchor="middle">288×540</text>
+<rect x="40" y="760" width="1250.0" height="610.0" fill="#faf7f0" stroke="#111" stroke-width="2.5"/>
+<text x="40" y="750" font-size="12" font-weight="bold" fill="#111">Feuille 2 — 12 mm — 24 panneaux</text>
+<rect x="40.0" y="760.0" width="160.0" height="270.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="120.0" y="895.0" font-size="9" fill="#111" text-anchor="middle">Fond</text>
+<text x="120.0" y="906.0" font-size="8" fill="#555" text-anchor="middle">320×540</text>
+<rect x="202.0" y="760.0" width="132.0" height="270.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="268.0" y="895.0" font-size="9" fill="#111" text-anchor="middle">Fond</text>
+<text x="268.0" y="906.0" font-size="8" fill="#555" text-anchor="middle">264×540</text>
+<rect x="336.0" y="760.0" width="132.0" height="270.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="402.0" y="895.0" font-size="9" fill="#111" text-anchor="middle">Fond</text>
+<text x="402.0" y="906.0" font-size="8" fill="#555" text-anchor="middle">264×540</text>
+<rect x="470.0" y="760.0" width="270.0" height="128.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="605.0" y="824.0" font-size="9" fill="#111" text-anchor="middle">Côté</text>
+<text x="605.0" y="835.0" font-size="8" fill="#555" text-anchor="middle">540×256</text>
+<rect x="742.0" y="760.0" width="270.0" height="128.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="877.0" y="824.0" font-size="9" fill="#111" text-anchor="middle">Côté</text>
+<text x="877.0" y="835.0" font-size="8" fill="#555" text-anchor="middle">540×256</text>
+<rect x="1014.0" y="760.0" width="270.0" height="128.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="1149.0" y="824.0" font-size="9" fill="#111" text-anchor="middle">Côté</text>
+<text x="1149.0" y="835.0" font-size="8" fill="#555" text-anchor="middle">540×256</text>
+<rect x="40.0" y="1032.0" width="270.0" height="128.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="175.0" y="1096.0" font-size="9" fill="#111" text-anchor="middle">Côté</text>
+<text x="175.0" y="1107.0" font-size="8" fill="#555" text-anchor="middle">540×256</text>
+<rect x="312.0" y="1032.0" width="270.0" height="128.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="447.0" y="1096.0" font-size="9" fill="#111" text-anchor="middle">Côté</text>
+<text x="447.0" y="1107.0" font-size="8" fill="#555" text-anchor="middle">540×256</text>
+<rect x="584.0" y="1032.0" width="270.0" height="128.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="719.0" y="1096.0" font-size="9" fill="#111" text-anchor="middle">Côté</text>
+<text x="719.0" y="1107.0" font-size="8" fill="#555" text-anchor="middle">540×256</text>
+<rect x="856.0" y="1032.0" width="160.0" height="116.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="936.0" y="1090.0" font-size="9" fill="#111" text-anchor="middle">Dos</text>
+<text x="936.0" y="1101.0" font-size="8" fill="#555" text-anchor="middle">320×232</text>
+<rect x="1018.0" y="1032.0" width="132.0" height="116.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="1084.0" y="1090.0" font-size="9" fill="#111" text-anchor="middle">Dos</text>
+<text x="1084.0" y="1101.0" font-size="8" fill="#555" text-anchor="middle">264×232</text>
+<rect x="1152.0" y="1032.0" width="132.0" height="116.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="1218.0" y="1090.0" font-size="9" fill="#111" text-anchor="middle">Dos</text>
+<text x="1218.0" y="1101.0" font-size="8" fill="#555" text-anchor="middle">264×232</text>
+<rect x="40.0" y="1162.0" width="250.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="165.0" y="1212.0" font-size="9" fill="#111" text-anchor="middle">Côté tiroir</text>
+<text x="165.0" y="1223.0" font-size="8" fill="#555" text-anchor="middle">500×200</text>
+<rect x="292.0" y="1162.0" width="250.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="417.0" y="1212.0" font-size="9" fill="#111" text-anchor="middle">Côté tiroir</text>
+<text x="417.0" y="1223.0" font-size="8" fill="#555" text-anchor="middle">500×200</text>
+<rect x="544.0" y="1162.0" width="250.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="669.0" y="1212.0" font-size="9" fill="#111" text-anchor="middle">Côté tiroir</text>
+<text x="669.0" y="1223.0" font-size="8" fill="#555" text-anchor="middle">500×200</text>
+<rect x="796.0" y="1162.0" width="250.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="921.0" y="1212.0" font-size="9" fill="#111" text-anchor="middle">Côté tiroir</text>
+<text x="921.0" y="1223.0" font-size="8" fill="#555" text-anchor="middle">500×200</text>
+<rect x="40.0" y="1264.0" width="250.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="165.0" y="1314.0" font-size="9" fill="#111" text-anchor="middle">Côté tiroir</text>
+<text x="165.0" y="1325.0" font-size="8" fill="#555" text-anchor="middle">500×200</text>
+<rect x="292.0" y="1264.0" width="250.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="417.0" y="1314.0" font-size="9" fill="#111" text-anchor="middle">Côté tiroir</text>
+<text x="417.0" y="1325.0" font-size="8" fill="#555" text-anchor="middle">500×200</text>
+<rect x="1048.0" y="1162.0" width="160.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="1128.0" y="1212.0" font-size="9" fill="#111" text-anchor="middle">Façade tiroir</text>
+<text x="1128.0" y="1223.0" font-size="8" fill="#555" text-anchor="middle">320×200</text>
+<rect x="544.0" y="1264.0" width="135.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="611.5" y="1314.0" font-size="9" fill="#111" text-anchor="middle">Dos tiroir</text>
+<text x="611.5" y="1325.0" font-size="8" fill="#555" text-anchor="middle">270×200</text>
+<rect x="681.0" y="1264.0" width="132.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="747.0" y="1314.0" font-size="9" fill="#111" text-anchor="middle">Façade tiroir</text>
+<text x="747.0" y="1325.0" font-size="8" fill="#555" text-anchor="middle">264×200</text>
+<rect x="815.0" y="1264.0" width="132.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="881.0" y="1314.0" font-size="9" fill="#111" text-anchor="middle">Façade tiroir</text>
+<text x="881.0" y="1325.0" font-size="8" fill="#555" text-anchor="middle">264×200</text>
+<rect x="949.0" y="1264.0" width="107.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="1002.5" y="1314.0" font-size="9" fill="#111" text-anchor="middle">Dos tiroir</text>
+<text x="1002.5" y="1325.0" font-size="8" fill="#555" text-anchor="middle">214×200</text>
+<rect x="1058.0" y="1264.0" width="107.0" height="100.0" fill="#f0d9a6" stroke="#333" stroke-width="1"/>
+<text x="1111.5" y="1314.0" font-size="9" fill="#111" text-anchor="middle">Dos tiroir</text>
+<text x="1111.5" y="1325.0" font-size="8" fill="#555" text-anchor="middle">214×200</text>
+<rect x="40" y="1460" width="1250.0" height="610.0" fill="#faf7f0" stroke="#111" stroke-width="2.5"/>
+<text x="40" y="1450" font-size="12" font-weight="bold" fill="#111">Feuille 3 — 6 mm — 3 panneaux</text>
+<rect x="40.0" y="1460.0" width="135.0" height="250.0" fill="#d8cfe8" stroke="#333" stroke-width="1"/>
+<text x="107.5" y="1585.0" font-size="9" fill="#111" text-anchor="middle">Fond tiroir</text>
+<text x="107.5" y="1596.0" font-size="8" fill="#555" text-anchor="middle">270×500</text>
+<rect x="177.0" y="1460.0" width="107.0" height="250.0" fill="#d8cfe8" stroke="#333" stroke-width="1"/>
+<text x="230.5" y="1585.0" font-size="9" fill="#111" text-anchor="middle">Fond tiroir</text>
+<text x="230.5" y="1596.0" font-size="8" fill="#555" text-anchor="middle">214×500</text>
+<rect x="286.0" y="1460.0" width="107.0" height="250.0" fill="#d8cfe8" stroke="#333" stroke-width="1"/>
+<text x="339.5" y="1585.0" font-size="9" fill="#111" text-anchor="middle">Fond tiroir</text>
+<text x="339.5" y="1596.0" font-size="8" fill="#555" text-anchor="middle">214×500</text>
+</svg>

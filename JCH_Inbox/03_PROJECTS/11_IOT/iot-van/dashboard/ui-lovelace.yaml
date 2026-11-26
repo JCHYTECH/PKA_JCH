@@ -1,0 +1,124 @@
+title: Lupo
+views:
+  - title: Statuts
+    icon: mdi:gauge
+    path: statuts
+    cards:
+      # ===== CELLULE (capteur appairé) =====
+      - type: glance
+        title: Cellule
+        entities:
+          - entity: sensor.cellule_temperature
+            name: Température
+          - entity: sensor.cellule_humidity
+            name: Humidité
+          - entity: sensor.cellule_battery
+            name: Pile capteur
+      - type: entities
+        title: Capteur cellule (SNZB-02DR2)
+        entities:
+          - entity: sensor.cellule_voltage
+            name: Tension (mV)
+          - entity: sensor.cellule_linkquality
+            name: Signal radio (LQI)
+
+      # ===== ÉCRAN =====
+      - type: glance
+        title: iPad (écran)
+        entities:
+          - entity: sensor.ipad_de_jean_claude_battery_level
+            name: Batterie
+          - entity: sensor.ipad_de_jean_claude_battery_state
+            name: Charge
+
+      # ===== FRIGO (à venir) =====
+      - type: markdown
+        content: |
+          ## 🔜 Frigo
+          Capteur T°/H° (SNZB-02P). À appairer.
+      # - type: glance
+      #   title: Frigo
+      #   entities:
+      #     - entity: sensor.frigo_temperature
+      #       name: Température
+      #     - entity: sensor.frigo_humidity
+      #       name: Humidité
+      #     - entity: sensor.frigo_battery
+      #       name: Pile
+
+      # ===== VÉHICULE (WiCAN, à venir) =====
+      - type: markdown
+        content: |
+          ## 🔜 Véhicule — WiCAN Pro
+          OBD/CAN : vitesse, RPM, batterie 12V, portes, pneus, carburant.
+
+      # ===== ÉNERGIE CELLULE (UPS, à venir) =====
+      - type: markdown
+        content: |
+          ## 🔜 Énergie cellule — UPS X1205
+          Tension / charge des accus 18650.
+
+      # ===== CUVES (à venir) =====
+      - type: markdown
+        content: |
+          ## 🔜 Cuves
+          XKC-Y25-V ×4 : eau propre, eaux grises.
+
+      # ===== SÉCURITÉ (à venir) =====
+      - type: markdown
+        content: |
+          ## 🔜 Sécurité
+          Contacts portes (Aqara/SNZB-04P), mouvement, fuite d'eau, vibration.
+      # - type: glance
+      #   title: Portes & sécurité
+      #   entities:
+      #     - entity: binary_sensor.door_sliding_left_contact
+      #     - entity: binary_sensor.door_tailgate_contact
+      #     - entity: binary_sensor.door_popup_roof_contact
+      #     - entity: binary_sensor.door_fridge_contact
+
+      # ===== SYSTÈME =====
+      - type: entities
+        title: Système
+        entities:
+          - entity: binary_sensor.zigbee2mqtt_bridge_connection_state
+            name: Zigbee (coordinateur)
+          - entity: sensor.zigbee2mqtt_bridge_version
+            name: Version Z2M
+          - entity: binary_sensor.raspberry_pi_power_status
+            name: Alimentation RPi
+          - entity: sun.sun
+            name: Soleil
+
+  - title: Déclenchements
+    icon: mdi:button-pointer
+    path: declenchements
+    cards:
+      # ===== ZIGBEE =====
+      - type: entities
+        title: Zigbee — appairage
+        entities:
+          - entity: switch.zigbee2mqtt_bridge_permit_join
+            name: Autoriser appairage (4 min)
+          - entity: button.zigbee2mqtt_bridge_restart
+            name: Redémarrer Z2M
+          - entity: select.zigbee2mqtt_bridge_log_level
+            name: Niveau de log
+
+      # ===== ÉCLAIRAGE (à venir) =====
+      - type: markdown
+        content: |
+          ## 🔜 Éclairage
+          ZBMiniR2 (switch) + relais 12V ×3.
+
+      # ===== EAU (à venir) =====
+      - type: markdown
+        content: |
+          ## 🔜 Eau
+          Électrovanne Sonoff Smart Water Valve.
+
+      # ===== ALARME (à venir) =====
+      - type: markdown
+        content: |
+          ## 🔜 Alarme
+          Armée / désarmée — scènes + automatisations (voir `CHECKLIST-TEST-OFFLINE-VAN`).

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" font-family="Helvetica, Arial, sans-serif">
+  <style>
+    .profil { fill:#3a3a3a; }
+    .montant { fill:#7ba3c9; stroke:#3a3a3a; stroke-width:1.5; }
+    .goulotte { fill:#e8b84a; stroke:#b8860b; stroke-width:1.5; }
+    .table { fill:#cfe4cf; stroke:#6ba36b; stroke-width:1.5; }
+    .equerre { fill:none; stroke:#c0392b; stroke-width:3; stroke-linecap:round; }
+    .vis { fill:#c0392b; }
+    .dim { stroke:#1f5fa8; stroke-width:1; }
+    .dimt { fill:#1f5fa8; font-size:11px; }
+    .lbl { font-size:11px; fill:#222; }
+    .lbl-red { font-size:10px; fill:#c0392b; }
+    .ttl { font-size:16px; font-weight:bold; fill:#111; }
+    .sub { font-size:12px; fill:#555; }
+  </style>
+
+  <text x="40" y="32" class="ttl">Détail du coin — v9 · équerre 3 voies + goulotte</text>
+  <text x="40" y="50" class="sub">4 rails du haut au même niveau (Z 224–244) → coin 3 voies propre · goulotte U vissée sur le dessus du rail profondeur</text>
+
+  <!-- ================= VUE DE DESSUS (plan) — coin bas ================= -->
+  <text x="40" y="84" class="lbl" font-weight="bold">Vue de dessus (plan) — coin du cadre (identique haut et bas)</text>
+
+  <!-- rail profondeur : bande verticale (passant) -->
+  <rect x="120" y="100" width="40" height="200" class="profil"/>
+  <text x="140" y="336" class="lbl" text-anchor="middle">rail profondeur</text>
+  <text x="140" y="350" class="lbl" text-anchor="middle" font-size="10">passant · 540</text>
+
+  <!-- rail largeur : bande horizontale (buté) -->
+  <rect x="160" y="260" width="220" height="40" class="profil"/>
+  <text x="270" y="336" class="lbl" text-anchor="middle">rail largeur</text>
+  <text x="270" y="350" class="lbl" text-anchor="middle" font-size="10">buté · 304 (A) / 248 (B/C)</text>
+
+  <!-- montant : carré au coin -->
+  <rect x="120" y="260" width="40" height="40" class="montant"/>
+  <text x="140" y="252" class="lbl" text-anchor="middle" font-size="10">montant 204</text>
+
+  <!-- équerre 3 voies : L rouge au coin intérieur -->
+  <path d="M 150 258 L 150 210" class="equerre"/>
+  <path d="M 150 258 L 208 258" class="equerre"/>
+  <text x="166" y="246" class="lbl-red">équerre 3 voies</text>
+  <circle cx="150" cy="228" r="3" class="vis"/>
+  <circle cx="150" cy="244" r="3" class="vis"/>
+  <circle cx="178" cy="258" r="3" class="vis"/>
+  <circle cx="198" cy="258" r="3" class="vis"/>
+
+  <line x1="120" y1="372" x2="160" y2="372" class="dim"/>
+  <text x="140" y="387" class="dimt" text-anchor="middle">20</text>
+  <line x1="160" y1="238" x2="380" y2="238" class="dim"/>
+  <text x="270" y="231" class="dimt" text-anchor="middle">304 (A) · 248 (B/C)</text>
+
+  <text x="40" y="420" class="sub">En v9, le cadre haut est IDENTIQUE au cadre bas (4 rails au même niveau) → équerre 3 voies partout.</text>
+
+  <!-- ================= COUPE (vue de face) — goulotte + table ================= -->
+  <text x="520" y="84" class="lbl" font-weight="bold">Coupe (vue de face) — goulotte sur le rail profondeur</text>
+
+  <!-- rail profondeur haut (coupe) -->
+  <rect x="620" y="300" width="80" height="40" class="profil"/>
+  <!-- goulotte U -->
+  <path d="M 615 260 L 615 300 L 630 300 L 630 260 M 685 260 L 685 300 L 700 300 L 700 260" class="goulotte" fill="none" stroke-width="2.5"/>
+  <!-- table (bord) -->
+  <rect x="622" y="248" width="56" height="12" class="table"/>
+  <text x="650" y="240" class="lbl" text-anchor="middle" font-size="10">table HPL 12</text>
+  <text x="720" y="300" class="lbl-red">goulotte U 13</text>
+
+  <!-- rail avant/arrière (même niveau, derrière) -->
+  <rect x="720" y="300" width="80" height="40" class="profil"/>
+  <text x="760" y="340" class="lbl" text-anchor="middle" font-size="10">rail avant/arrière (même niveau)</text>
+
+  <!-- cotes -->
+  <line x1="590" y1="260" x2="590" y2="300" class="dim"/>
+  <text x="580" y="284" class="dimt" text-anchor="middle">20</text>
+  <line x1="590" y1="248" x2="590" y2="260" class="dim"/>
+  <text x="578" y="257" class="dimt" text-anchor="middle">12</text>
+
+  <text x="520" y="390" class="sub">La table (Z 244–256) passe AU-DESSUS du rail avant/arrière (sommet à 244). La goulotte guide, le cadre porte.</text>
+
+  <text x="40" y="488" class="sub">Boucle fermée : 344 = 304 + 2×20 · 288 = 248 + 2×20 · 256 = 20 + 204 + 20 + 12 · 540 = 500 + 2×20.</text>
+  <text x="40" y="508" class="sub">Un seul connecteur : équerre 3 voies iMetrx (24) aux 8 sommets. Goulotte U 13 vissée sur le dessus des 2 rails profondeur hauts.</text>
+</svg>

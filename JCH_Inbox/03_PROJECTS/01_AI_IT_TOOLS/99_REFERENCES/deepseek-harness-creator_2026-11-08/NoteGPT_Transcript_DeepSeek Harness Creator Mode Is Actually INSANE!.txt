@@ -1,0 +1,56 @@
+00:00:00 - 00:00:57
+Deep Seek Harness creator mode is actually insane. What if your AI app could build its own new features? Not you, not a developer, the app itself. You type one sentence, a few minutes later, there's a brand new tool sitting inside it. That's not a concept, Deep Seek just shipped it. Hey, if we haven't met already, I'm the digital avatar of Julian Goldie, CEO of AI SEO and GEO agency Goldie Agency. Whilst he's helping clients get more leads and customers, I'm here to help you get the
+
+00:00:29 - 00:01:22
+latest AI updates. Stick around because later, I'll show you the exact one-line prompt Deep Seek used in its own demo. Then the seven creator mode prompts they posted that you can copy right now. And the one warning you really need to hear before you install anything. So, here's what happened. The Deep Seek Harness account posted on X, "Meet creator mode in Deep Seek Harness. Turn ideas into plugins you can use." They gave three examples, a design workspace, a sandbox game, and a 3D visualizer that shows how
+
+00:00:55 - 00:01:52
+a large language model works. First, what is Deep Seek Harness? It's not a new model. It's the thing that wraps around a model. Deep Seek puts it like this, "Agent equals model plus harness." The model does the thinking, the harness gives it hands, files, a terminal, search, skills, scheduled tasks, a screen to work in. And here's the twist, in harness everything is a plugin. It's built on an open-source framework called Cordis. The model connection is a plugin, the tools are plugins, the agent
+
+00:01:24 - 00:02:27
+loop is a plugin, even the interface you look at is made of plugins. So, you can swap almost any part out. It's open-source under the MIT license, and it's in public preview worldwide. You can grab the desktop app for Mac with Apple Silicon or for Windows. Or if you have node.js, you run one command, "npx @deepseek-ai/dsh web." That opens it in your browser. And people noticed. The GitHub repo was sitting at around 269,000 stars on November 2nd. Now, creator mode. Here's the simple version. Normally, you use
+
+00:01:57 - 00:02:51
+the agent to do your work. In creator mode, you use the agent to change the agent. You describe a tool you wish you had. The agent writes it as a plugin, installs it, and checks that it runs. Then, it just lives in your app. Deep Seek's site says you can install plugins or create them through chat in creator mode to extend tools, and the interface. So, it's not just new commands, it's new panels, new screens, a whole new look for the app if you want it. Before I show you how that plays out in Deep
+
+00:02:24 - 00:03:10
+Seek's own demo, quick pause. If you want to actually learn tools like Deep Seek Harness, not just watch videos about them, check out the AI Profit Boardroom. We've got a 30-day roadmap that walks you through AI agent tools one step at a time, from setting them up to building your own workflows. And there are four coaching calls every week. So, if you get stuck installing Harness, picking the right mode, or writing your first creator mode prompt, you can bring it to a live call and work
+
+00:02:47 - 00:03:44
+through it with us. It's made for people who learn by doing. Link in the description, or go to AIProfitBoardroom.com. Okay. So, where does creator mode live? Harness has four modes, and you pick one when you start a session. Standard is the default, it's the full agent. It edits files, runs a shell, searches, uses skills, plans, and runs sub-agents. Code mode has the same powers, but the tools are handed to the model through a code SDK. So, it can chain tools together like a little program. Minimal
+
+00:03:16 - 00:04:13
+strips almost everything away, just a shell and a file editor, handy if you want to see more of the raw model. And creator mode is standard plus extra tools, tools to look inside the running Harness, test plugins, and write presets. A preset is just a saved setup of which plugins and settings you use. In recent preview builds, there's also a shortcut on the plugins page called let agent create a plugin. It drops you straight into creator mode with your idea ready to send. So, what does it actually look like? On Deep Seek's
+
+00:03:44 - 00:04:39
+Harness page, the demo prompt is one line, write a Pomodoro timer plugin for me. The agent loads a plugin building skill, looks around the app to find where a floating window should go, writes the plugin files, then installs it with the plugin manager, and checks that it's live. The whole run took 5 minutes and 24 seconds. At the end, there's a floating timer in the app with focus and short break buttons. Notice what you didn't do. You didn't open a code editor. You didn't dig through docs
+
+00:04:12 - 00:05:07
+on how plugins work. The agent loaded that knowledge itself. Now, remember those seven prompts? Deep Seek posted a page with every prompt from the creator mode video in English and Chinese. Here's what's on it. A 3D gallery with models of the Eiffel Tower, the Great Wall of China, the Forbidden City, and one more building the agent picks. A transformer 3D visualizer. I'll come back to that one. A theme switcher that changes how the whole app looks with five styles to pick from, and one of
+
+00:04:39 - 00:05:37
+them is pixel art. A poster design workbench that uses the shader background and font from the Harness website where you change the title, the text, and the colors. A video editing workbench with a big preview on top and a timeline below. And you can also edit clips just by asking in the chat. A paper reader in the right sidebar. You upload a paper, but it keeps the original layout, and when you select text, you can highlight it, add a note, or ask about it. And a stats plugin that shows your token usage, how many
+
+00:05:08 - 00:06:07
+conversations you've had, a usage timeline, and CPU activity. The one worth a closer look is the transformer one. The prompt asks for a plugin with a left sidebar entry, an interactive 3D demonstration game that helps you understand the computation inside a transformer. A transformer is the design behind most modern AI models. So, you're using an AI agent to build a game that teaches you how AI works right inside the app you already use. Now, if you look closely at these prompts, there's a
+
+00:05:38 - 00:06:38
+pattern you can steal. One, say where it lives, left sidebar, right sidebar, accessible from the conversation. Every single prompt names a spot. Two, name the must-have pieces, big preview on top, timeline below, highlight, add a note, ask about it. Be that specific. Three, say what you don't want. The poster prompt says keep the page minimal, no extra subheadings. The transformer prompt tells the agent to keep the toolbar clear of the Mac window buttons so they don't overlap. Four, expect more than one round. DeepSeek
+
+00:06:08 - 00:07:04
+says some of these plugins were refined over several rounds of conversation, so one prompt might not give you exactly what you saw in the video. That's normal. Treat the first version as a draft, then keep talking to it. Now the warning I promised, Harness is a developer preview. DeepSeek says the core plugins and APIs are still changing and breaking changes are expected. So a plugin you build today might need fixing later. And this part matters even more. DeepSeek's own safety notice says
+
+00:06:36 - 00:07:30
+Harness hasn't been through a security audit. It can run code the model writes, load third-party plugins, and reach the files, network, and credentials you give it access to. A plugin is real code, so here's what I do. Start in a test folder, not your main work folder. Look at what a plugin does before you add one from someone else, and keep approval prompts on so you see what it wants to do before it does it. So who's this for? If you just want a bug fixed, standard mode is fine. You don't need creator
+
+00:07:03 - 00:07:59
+mode for that. Creator mode for the moment you think, "I wish this app had a button for that." Then you build the button. One more thing worth knowing, Harness isn't locked to DeepSeek models. The model connection is a plugin, too, so you can hook up other providers, including OpenAI compatible endpoints. And the official plugin list already includes agent teams, schedule tasks, voice input, a terminal, and sub-agents with some of them marked experimental. There's a window right now where most
+
+00:07:31 - 00:08:21
+business owners haven't figured this out yet, and that window won't stay open forever. Creator mode is days old, so learning it now puts you ahead. Inside the AI Profit Boardroom, you get daily tutorials, so there's always a fresh walk-through on new tools like this one. Four coaching calls every week where you can ask questions live and get unstuck. A prompt library, so you're not staring at an empty chat box wondering what to type. And the member map, so you can find other members learning the same
+
+00:07:56 - 00:08:51
+tools. Link in the description or go to airprofitboardroom.com. If you want the full process, the SOPs, and over 100 AI use cases like this one, join the AI Success Lab. It's our free community. Links in the comments and description. You'll get all the video notes from this episode plus access to over 94,000 members. The video notes put today's key points in one place like the four modes, the one command install, and where to find Deep Seek's seven creator mode prompts. It's completely free to
+
+00:08:23 - 00:08:40
+join. So, if you want to keep learning tools like Deep Seek harness alongside people doing the same thing, come join us. I'll see you inside.

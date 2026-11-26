@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1350 620" font-family="Helvetica, Arial, sans-serif">
+  <style>
+    .frame { fill:#3a3a3a; }
+    .panel { fill:#d6e6f2; stroke:#7ba3c9; stroke-width:1; }
+    .volet { fill:#f7dcb8; stroke:#d99a4e; stroke-width:1; }
+    .table { fill:#cfe4cf; stroke:#6ba36b; stroke-width:1.2; }
+    .goulotte { fill:#e8b84a; stroke:#b8860b; stroke-width:1; }
+    .equerre { stroke:#c0392b; stroke-width:2; fill:none; }
+    .dim { stroke:#1f5fa8; stroke-width:1; }
+    .dimt { fill:#1f5fa8; font-size:11px; }
+    .lbl { font-size:11px; fill:#222; }
+    .ttl { font-size:16px; font-weight:bold; fill:#111; }
+    .sub { font-size:12px; fill:#555; }
+  </style>
+
+  <text x="40" y="32" class="ttl">Meuble banquette Lupo — v9 aluminium 2020 · goulotte coulissante</text>
+  <text x="40" y="50" class="sub">Module A (344 × 540 × 256 mm) · montant 204 · table HPL 12 en goulotte U · équerre 3 voies unique</text>
+
+  <!-- ================= ÉLÉVATION AVANT (module A) ================= -->
+  <text x="40" y="80" class="lbl" font-weight="bold">Élévation avant (module A) — largeur 344</text>
+
+  <!-- table (assise) HPL 12 -->
+  <rect x="40" y="90" width="344" height="12" class="table"/>
+  <text x="212" y="86" class="lbl" text-anchor="middle" font-size="10">table HPL 12 (assise, coulisse 300 mm)</text>
+  <!-- rail haut (largeur, avant) -->
+  <rect x="40" y="102" width="344" height="20" class="frame"/>
+  <!-- montants -->
+  <rect x="40" y="122" width="20" height="204" class="frame"/>
+  <rect x="364" y="122" width="20" height="204" class="frame"/>
+  <!-- volet -->
+  <rect x="60" y="122" width="304" height="204" class="volet"/>
+  <text x="212" y="228" class="lbl" text-anchor="middle">volet 304 × 204</text>
+  <!-- rail bas -->
+  <rect x="40" y="326" width="344" height="20" class="frame"/>
+
+  <!-- cotes largeur -->
+  <line x1="40" y1="360" x2="384" y2="360" class="dim"/>
+  <text x="212" y="374" class="dimt" text-anchor="middle">344</text>
+  <!-- cotes hauteur -->
+  <line x1="400" y1="90" x2="400" y2="102" class="dim"/>
+  <text x="408" y="99" class="dimt">12</text>
+  <line x1="400" y1="102" x2="400" y2="122" class="dim"/>
+  <text x="408" y="115" class="dimt">20</text>
+  <line x1="400" y1="122" x2="400" y2="326" class="dim"/>
+  <text x="408" y="228" class="dimt">204</text>
+  <line x1="400" y1="326" x2="400" y2="346" class="dim"/>
+  <text x="408" y="340" class="dimt">20</text>
+  <text x="400" y="366" class="dimt">hors tout 256</text>
+
+  <!-- ================= ÉLÉVATION LATÉRALE (profondeur 540) ================= -->
+  <text x="470" y="80" class="lbl" font-weight="bold">Élévation latérale (profondeur 540)</text>
+
+  <!-- table -->
+  <rect x="470" y="90" width="540" height="12" class="table"/>
+  <!-- goulottes U sur les rails profondeur (haut) -->
+  <rect x="470" y="90" width="540" height="6" class="goulotte"/>
+  <text x="740" y="86" class="lbl" text-anchor="middle" font-size="10">goulotte U 13 (sur rail profondeur)</text>
+  <!-- rail profondeur haut -->
+  <rect x="470" y="102" width="540" height="20" class="frame"/>
+  <!-- montants (avant/arrière) -->
+  <rect x="470" y="122" width="20" height="204" class="frame"/>
+  <rect x="990" y="122" width="20" height="204" class="frame"/>
+  <!-- côté Dibond -->
+  <rect x="490" y="122" width="500" height="204" class="panel"/>
+  <text x="740" y="228" class="lbl" text-anchor="middle">côté 500 × 204</text>
+  <!-- rail bas -->
+  <rect x="470" y="326" width="540" height="20" class="frame"/>
+
+  <!-- cote profondeur -->
+  <line x1="470" y1="360" x2="1010" y2="360" class="dim"/>
+  <text x="740" y="374" class="dimt" text-anchor="middle">540</text>
+
+  <!-- ================= VUE D'ENSEMBLE ================= -->
+  <text x="40" y="440" class="lbl" font-weight="bold">Vue d'ensemble — 3 modules solidarisés (empreinte 920 × 540)</text>
+  <rect x="40" y="452" width="344" height="90" fill="none" stroke="#3a3a3a" stroke-width="1.5"/>
+  <rect x="384" y="452" width="288" height="90" fill="none" stroke="#3a3a3a" stroke-width="1.5"/>
+  <rect x="672" y="452" width="288" height="90" fill="none" stroke="#3a3a3a" stroke-width="1.5"/>
+  <text x="212" y="490" class="lbl" text-anchor="middle">A · 344</text>
+  <text x="528" y="490" class="lbl" text-anchor="middle">B · 288</text>
+  <text x="816" y="490" class="lbl" text-anchor="middle">C · 288</text>
+  <line x1="40" y1="560" x2="960" y2="560" class="dim"/>
+  <text x="500" y="574" class="dimt" text-anchor="middle">920 = 344 + 288 + 288</text>
+
+  <!-- LÉGENDE -->
+  <text x="40" y="600" class="lbl" font-weight="bold">Légende :</text>
+  <rect x="120" y="592" width="16" height="10" class="frame"/><text x="142" y="601" class="lbl">profilé 2020 (20×20)</text>
+  <rect x="250" y="592" width="16" height="10" class="table"/><text x="272" y="601" class="lbl">table HPL 12</text>
+  <rect x="380" y="592" width="16" height="10" class="goulotte"/><text x="402" y="601" class="lbl">goulotte U 13</text>
+  <rect x="510" y="592" width="16" height="10" class="volet"/><text x="532" y="601" class="lbl">volet Dibond 3</text>
+  <rect x="640" y="592" width="16" height="10" class="panel"/><text x="662" y="601" class="lbl">panneau Dibond 3 (fixe)</text>
+</svg>

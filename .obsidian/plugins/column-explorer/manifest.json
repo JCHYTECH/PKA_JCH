@@ -1,0 +1,11 @@
+{
+	"id": "column-explorer",
+	"name": "Column Explorer",
+	"version": "1.17.0",
+	"minAppVersion": "1.8.7",
+	"description": "Browse your vault in Finder-style Miller columns with full file manager operations: create, rename, delete, move, drag and drop, multi-select and context menus.",
+	"author": "N23eos",
+	"authorUrl": "https://github.com/N23eos",
+	"fundingUrl": "https://github.com/n23eos/column_explorer#support",
+	"isDesktopOnly": false
+}

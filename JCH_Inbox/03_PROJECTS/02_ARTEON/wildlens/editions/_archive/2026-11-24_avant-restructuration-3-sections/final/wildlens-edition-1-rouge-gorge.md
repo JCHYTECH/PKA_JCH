@@ -1,0 +1,105 @@
+---
+date: 2026-10-31
+source: editorial-dobby
+domain: arteon/blogging
+project: WildLens
+edition: 1
+tone: militant
+tags:
+  - WildLens
+  - newsletter
+  - wildlife-photography
+  - provenance
+  - ai-generated
+  - ethics
+  - derrives
+  - type/project
+  - status/published
+status: published
+---
+# WildLens — Edition #1
+
+> **Theme: "Look it in the face"** — see the real when the fake floods the image, and refuse to look away.
+
+---
+
+## ① The Frame — The Robin That Looks Baited
+
+*Rouge-gorge (Erithacus rubecula) dans la neige · Canon EOS R10 · RF 200-800mm F6.3-9 IS USM · © JC Havaux / ARTEON*
+
+There are two ways to photograph a robin in the snow.
+
+The first: scatter a handful of seeds on the ground, wait for the bird to land, and fire. The image is perfect — bird, food, white ground — and it is also a lie of omission. The bird did not come to you. You called it, with food, and it answered.
+
+The second: find the place where the seeds already are. A feeder's spill. The ground where the wind has gathered what the plants dropped. Then wait — not for the bird to come, but for the bird to be. The image is identical. Bird, food, white ground. And no viewer on earth can tell the two apart.
+
+That is the whole problem in one photograph. The robin in this frame is feeding on seeds that were already there — naturally placed, nothing offered. But look at it: it *looks* baited. It looks like every baited robin photo ever posted. The pixels do not contain the difference. The difference lives only in the photographer's intention — and intention is exactly what a photograph, on its own, cannot prove.
+
+This is why the question at the heart of this edition is not "is this beautiful?" but "was this real?" — and why the answer can no longer be a simple yes. The proof is not in the image. It is in the history the image carries, and in the discipline of the person who made it.
+
+The robin in the snow does not look honest. It *is* honest. The distance between those two statements — between appearing true and being true — is the entire subject of this edition. To look something in the face is to refuse both the convenient lie and the comfortable blind spot.
+
+---
+
+## ② The Shift — 2026: The Year Contests Started Checking the RAW File
+
+Something quietly changed in 2026, and it will matter more than any new camera body.
+
+Between late April and mid-May, three separate photography competitions — in different countries, different genres, judged by different people — each revoked a winning or shortlisted image because it was AI-generated or manipulated. Hasselblad Masters removed an AI street finalist on 18 May. The National Wildlife Federation's *Garden for Wildlife* contest disqualified its grand-prize image of a great horned owl beneath an aurora as a composite, handing the prize to runner-up Nicole Land. Tokina pulled its monthly winner after an invisible Google **SynthID** watermark surfaced.
+
+Then came the scientific sphere: **Nikon's Small World In Motion** competition disqualified its winning video as AI-generated, after other scientists raised concerns.
+
+The pattern underneath all of it is the thing to notice. In every case, the public spotted the problem *after* the results went out. And in every case, the contest had never examined the one thing that would have settled the question at entry: **the file the camera actually wrote** — the RAW.
+
+The RAW file is becoming the ground truth of photography, the way a signature once was. It is not a guarantee of honesty, but it is a *record* — a claim with a history. And in a field where trust is now the scarce resource, the photographers who can show their history will be the ones the audience believes.
+
+**Sources:** [Lumethic — AI Photo Contest Disqualifications 2026](https://www.lumethic.com/en/articles/ai-photo-contest-disqualifications-2026) · [BBC — Nikon Small World AI ruling](https://www.bbc.com/news/articles/cr86z33pdy9vo)
+
+---
+
+## ③ The Lens — Sign Your Work With Its History, Not a Watermark
+
+If the RAW file is the proof, the next question is: how does that proof travel?
+
+A watermark is a claim of authorship. It says *who*. But it says nothing about *whether*. Provenance infrastructure says both — and it is the most consequential technical development in photography that almost no one is talking about.
+
+The C2PA's **Content Credentials** standard (version 2.3, with a conformance program rolled out in early 2026) lets an image carry a cryptographically signed record of its creation and editing history — camera model, lens, timestamp, edits applied — that travels with the file, embedded across DNG, HEIC, JPEG, PNG, TIFF, AVIF and WebP. Independently, **Google SynthID** now watermarks AI-generated media invisibly, which is how Tokina's fake winner was caught.
+
+For a wildlife photographer, this is not a compliance chore. It is a competitive position. When the flood of AI-generated nature imagery makes provenance the only differentiator, the photographer whose image carries its own history — *here is the sensor, here is the time, here is what I changed* — is the one who can still say "this happened" and be believed.
+
+The technology exists. The bottleneck is adoption. Sign your work with its history — before the audience starts demanding it.
+
+**Source:** [C2PA — Content Credentials 2.3](https://c2pa.org/the-c2pa-launches-content-credentials-2-3-and-celebrates-5-years-of-impact-across-the-digital-ecosystem/)
+
+---
+
+## ④ The Record — Hunting After the Fire
+
+On 12 July 2026, the Fontainebleau forest burned: nearly 2,000 hectares swept by the flames, more than 1,000 responders mobilised — one of the most significant fires in the massif's recent history. The animals that survive are displaced, their shelters destroyed, food grown scarce.
+
+Two months later, hunting reopened. On 20 September, the opening was maintained despite associations' calls for a moratorium; elected officials proposed a three-year suspension, the mayor opposed it. Gunshots were heard in a forest still convalescing.
+
+The fact is established, sourced, and it is not a matter of opinion: after a fire that destroyed the habitat, hunting continued on stressed animals. This is not a debate about hunting. It is a record of what happens when the destruction of the living is treated as an ordinary activity, as a necessary pleasure — to the point that a fire does not even suspend it.
+
+We do not comment. We look, and we note. Because a drift that goes unnamed becomes, week after week, simply normal.
+
+**Sources:** [ONF — account of the wildfire (12/07/2026)](https://www.onf.fr/vivre-la-foret/enjeux-foret/feux-foret/%2B/2d9c::fontainebleau-sous-les-flammes-incendie-mobilisation.html) · [Ouest-France — suspension of hunting](https://www.ouest-france.fr/societe/la-chasse/foret-de-fontainebleau-des-elus-veulent-suspendre-la-chasse-apres-les-incendies-de-lete-le-maire-y-est-defavorable-1e4fa34c-bc11-11f1-9431-be07b240dff0) · [Reporterre — moratorium](https://reporterre.net/Incendies-faut-il-interdire-la-chasse-pour-laisser-du-repit-aux-animaux-sauvages)
+
+---
+
+**Keywords :** wildlife photography · AI-generated imagery · photo contest disqualification · RAW file provenance · C2PA Content Credentials · Google SynthID · baiting ethics · Fontainebleau wildfire · hunting after wildfire · nature photography ethics
+
+---
+
+## Notes de publication
+
+- [ ] JC relire et valider
+- [ ] Photo : rouge-gorge dans la neige = `LrC to-27.jpg` (confirmer) pour ① The Frame
+- [ ] Crédit photo : © JC Havaux / ARTEON
+- [ ] Vérifier les liens sources avant distribution
+- [ ] Tags Ghost : wildlife-photography, provenance, ai-generated, ethics, derrives, constat
+- [ ] URL canonique : wildlens.ghost.io/wildlens-edition-4
+
+---
+*WildLens · Edition #1 · Draft généré par Dobby 🦉 (Miel 🐝) le 2026-10-24 — révisé 2026-11-14 (section ④ traduite EN, section Keywords ajoutée) — à distribuer*
+*Positionnement : l'info, les questions, les solutions — et le constat des dérives, nommé sans polémique.*

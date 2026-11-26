@@ -1,0 +1,71 @@
+00:00:00 - 00:00:42
+Hi everyone. Today, I'm going to show you how to connect an AI, whether it's Claude, ChatGPT, a local AI, etc., to your Home Assistant via an MCP server so that it can have direct access to all your Home Assistant information, like automations, dashboards, entities, and so on. This way, it will be able to create dashboards for you, create automations for you, modify automations , change dashboards, and many other things. The possibilities are almost limitless. For example, this is a dashboard it created for me where I
+
+00:00:29 - 00:01:07
+just asked it to create a mobile dashboard with a nice design, and it created this in one minute. And so, it's quite well-designed. There are things we can modify with it. By going back and forth a few times, we can really get a very cool result. If you enjoy the video, don't hesitate to like , comment, share, or boost it if you're on mobile, and don't forget to check the description; there are always useful links. Enjoy the video; to enable these features, you need to activate the MCP server. Which is,
+
+00:00:53 - 00:01:39
+roughly speaking, the gateway between an AI and an application. And here, that will be Home Assistant. Since the last Home Assistant update, this is now done directly via the Home Assistant interface. So we go to settings, scroll down to system, and here we see AI. We can click here and directly activate the Model Context Protocol (MCP). And so here we have our links generated directly. However, this way Home Assistant does not give all rights and all access to an AI. Meaning the AI can control devices and read their states.
+
+00:01:26 - 00:02:05
+So for example, it can turn on the light, read the light's state, things like that. So it's practical if, for instance, instead of saying "turn on the bedroom light," you can say "turn on bedroom" or things like that because the AI behind it will translate. What we also want is for the AI to be able to create automations for us, create dashboards for us, and modify things like that. And all that, we can't do with just this. We need to install a little something extra. So if you have
+
+00:01:52 - 00:02:36
+a personal AI that allows for connections, use your own AI; it will be much better. For today, I'm going to use Claude. So, this will share all the information about my house with Claude. It's up to you whether to do it or not, but it is possible. If you have a local setup, you don't need an exposed address. But if you want Claude to control your installation, you will need HTTPS access, so either with Tailscale, a Cloudflare tunnel, a reverse proxy, etc. So depending on what you have that actually allows you
+
+00:02:22 - 00:03:03
+to access Home Assistant from outside your home. Now that we've said all that , we're going to go into HACS. In the three little dots at the top, we're going to add a custom repository. We'll paste the repository, this link here, and it's in the integration category. We're going to add that. And so here, the HA MCP custom component has been added. So now that we've added the custom repository, we can search for HA-MCP and pick this one, the integration. We click on it. So this is
+
+00:02:51 - 00:03:32
+the right one. And we go to the bottom right to install. We're downloading it. So here in the installation, it tells us that we need to restart Home Assistant and that afterwards, we'll need to do other things. So we're going to do that. So here it tells us Home Assistant is restarting, we'll confirm it. And just like that, our Home Assistant is restarting. So once Home Assistant has restarted, we go back to Settings, Devices&Services, Add Integration, and here we can type HA-MCP. And so here, we have our new
+
+00:03:19 - 00:04:00
+component. So here, it asks us if we want to use an FTP server or a file tool? So we're going to use the server, we confirm, and we won't put it in a room, skip, and finish. So now, we go back once more to Devices, HA MCP. So here, if you have a local setup and thus no need to connect remotely, you can click on the gear icon. I won't scroll to the top because there are secrets. And in fact, here there will be the connection links and then the configuration for your local AI. So if you have an external one, it's here
+
+00:03:46 - 00:04:31
+towards the bottom of the configurations that you can add it. Once it's added, you save, and normally when you reopen the configuration afterwards, a new line will have been added with the URL. And when you open this external URL, it clearly states that the server is running via this URL . So now that that's done, we can also choose to connect with Home Assistant in the configuration. This means that when you ask Claude to make a change, you will need to enter the credentials you have for your Home Assistant server
+
+00:04:18 - 00:05:00
+, specifically from an admin account. So now what we have left to do is add this new connector in Claude. And so here we are going to go to the left under customization. Once we are in customization, we can click here on connector, and then on the right, we will select add a custom connector. So here we will name it Home Assistant. And there, you will need to put in the URL you created just before. Once it is properly connected—it should be very quick—we can select connect, and so on, and then click on add. So here it
+
+00:04:48 - 00:05:29
+tells us that it is not connected because we set up special authentication. So here, it told us it wasn't connected because we set up special authentication. And so here, you need to enter your credentials. So there you go, Claude is connected, and now we can run plenty of tests. And so here, it has already detected many things, and we can choose whether it needs approval every time—the little hand icon—if it is completely blocked , or if we can always allow it. So these are the read-only tools. So for
+
+00:05:15 - 00:05:53
+example, we can always allow them, and everything will go through here. Always approval. So here we will leave it, for example, on always approval. Write tools. Can it access calendars? Likewise, you can choose either always approval or always allowed. Or on a case-by-case basis. For example, if you never want it to remove an automation, you can actually block it so it doesn't remove anything. Or, if you don't mind, you can set it to require approval directly like that. So I am going to
+
+00:05:41 - 00:06:25
+leave it always requiring approval. It's not very bothersome. Now, you can go directly into Claude, into the connectors, and see if your Home Assistant connector is properly activated. We can send it a prompt to get a status update. So here, it is checking via the Home Assistant connector. So here, it asks to perform a read of this code. So here, we are going to allow it. So that is because we requested approval for all the actions it needs to perform. And there you go. So here, it quickly pulled up
+
+00:06:12 - 00:06:51
+that there are two lights on in my house right now, because this is the status report today at 6:20 PM: which lights are off here, the temperature in each room, the humidity when available, that all my heaters are indeed off, and that some sensors are unreachable; that's normal, they aren't there. It even gave me an average of the temperature. It grabbed the outdoor temperature from my weather add-on, I imagine, or maybe it connected to a weather service itself, I don't know. So here, to run another test, I asked
+
+00:06:38 - 00:07:16
+it to create a dashboard, a new dashboard called "Office" with the lighting, the temperature, the weather, and a graph of the temperatures over the last 24 hours, for example. Because what's great is that when you install Home Assistant MCP, there are plenty of skills for Claude here that are directly referenced, which allows for better use of Claude thanks to that. And so, it looks like it has created the dashboard. So let's go see it right away. So let's go see it right away.
+
+00:07:06 - 00:07:44
+And here, we can see it created a dashboard for us with the light that I can control here, the temperature, the heater here with a heating card, the weather here with a small weather card, and the temperature history. We can see that at night it's a bit cooler and during the day it's a bit warmer and all that. So these are quick little use cases, but you can create quite a lot of things. And what's really cool about this is that you can also create automations. If an automation isn't
+
+00:07:32 - 00:08:11
+working well, you can tell it, "Look at my automation, why isn't it working properly?" If you want to make small changes to an automation, it's the same principle; you can tell it to modify an automation, and things like that. So, for example, this is my current dashboard which is under construction, and here I'm going to ask it directly, I'm going to tell it to take my default dashboard and create a new one based on this one that includes all the same information found on it. However, I
+
+00:07:59 - 00:08:38
+want it to be very stylish, very visual for a mobile phone in portrait mode. So basically, I want it to make a better dashboard than what I've done in terms of design. And there you go. So it created a dashboard for me that took a minute or two. So here we see at the top, it puts a little recap with the temperature inside. So this is, so this is the average of all the temperatures it detected in the house. So this is the average, the outside temperature, and the number of lights on. So here it
+
+00:08:26 - 00:09:09
+made us a little weather card with a temperature curve that we can modify, right. If, for example, there’s no scale here, we can modify it with the humidity on the top right. Here, it made us, okay, what it did, it made a light card. So this allows for turning off all the lights in the house, I assume. A card with the different rooms , the bedroom is unavailable, that's normal. The switch in the kitchen and it made a card that gathers all the heaters. And here in system, ah, it put the RAM. So it put a little button that
+
+00:08:56 - 00:09:32
+allows seeing the RAM usage of all my devices. And so to finish, we're going to, I'm going to show another example. So based on all my entities, I'm asking it, based on all my entities and existing automations so there aren't any duplicates, I'm going to ask it to propose automation ideas for me. I made sure to specify not to create them right away. We'll validate them together, but this way we can see. And so here it made a list for me, since I already have 38 automations, and so it
+
+00:09:21 - 00:09:58
+gave me quite a few ideas. So heating energy, a real heating schedule tied to the Tempo day. I do have a heating automation that triggers but doesn't contain the actions. So basically, it's telling me my heating automation isn't great, but that's normal, it's disabled because it was being created. So we'll be able to create it together. Turn off the heating when a window is open because my thermostatic heads have a window open sensor, so that could be nice. But well, that’s already
+
+00:09:46 - 00:10:30
+integrated into the thermostatic heads, so it would be a bit redundant, but hey , why not. Preheat before a red day, so that's not stupid either: if we know the next day is a red day, why not heat a little bit harder before the start of the red day, just to have a slightly warmer house in the morning, and that way it will last all day and avoid consuming more on the red day. Uh, getting a notification when the washing machine is done—that’s pretty standard using a smart plug; an end-of-print notification from the
+
+00:10:17 - 00:10:55
+printer; why not carbon monoxide alerts ; checking if the smart lock is locked; things like that. So here, it also offers me a battery summary. So that can be nice; it allows you to see once a week what the battery status is on the devices it shares. That’s all for this video. I hope you enjoyed it. If you liked it, don't hesitate to leave a comment, give it a like, a thumbs up, or boost it if you're on your phone. It really supports me. Thanks for watching the video until the end, that’s the
+
+00:10:43 - 00:10:48
+most important thing. And I'll see you next time for another video.

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.dobby.pka-clip-pull</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/jchavauxm5/PKA_JCH/bin/pka-clip-pull</string>
+        <string>--apply</string>
+    </array>
+
+    <!-- Toutes les 15 minutes (900 s) -->
+    <key>StartInterval</key>
+    <integer>900</integer>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/jchavauxm5/PKA_JCH/_local/logs/pka-clip-pull.launchd.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/jchavauxm5/PKA_JCH/_local/logs/pka-clip-pull.launchd.err</string>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/jchavauxm5/PKA_JCH</string>
+
+    <key>KeepAlive</key>
+    <false/>
+
+    <key>LowPriorityIO</key>
+    <true/>
+
+    <key>Nice</key>
+    <integer>10</integer>
+</dict>
+</plist>

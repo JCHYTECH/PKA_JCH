@@ -1,0 +1,128 @@
+anal00:00:01 - 00:01:00
+A man is watching his television, a recent Samsung, a 2025 model bought in Europe, and for a while now, something has been bothering him. The ads he sees are strangely targeted, a bit too targeted. So, he does what almost no one in the world knows how to do: he opens up his TV. Not with a screwdriver; he enters its software. The system is encrypted, locked up like a vault. He claims to have found vulnerabilities no one knew about and obtained what hackers call root access, the keys to the entire
+
+00:00:32 - 00:01:46
+house. And what he says he found inside is chilling. A neural network that recognizes what’s happening on screen, a dog-bark counter , a baby-crying counter, a feature that hunts for a microphone on nearby connected devices—the soundbar, a Bluetooth device—and in the middle of a long list of services, a name: Always On Voice. He posts it all on X, it goes viral on Reddit, one thread alone passes 17,000 upvotes, and then, a new twist: his OpenAI account is disabled. The reason displayed on the screen:
+
+00:01:08 - 00:02:13
+cyber abuse. The hacker who took apart his TV gets banned by an artificial intelligence company. On one side, some call it the biggest privacy scandal of the year; on the other, some reply that Samsung announced parts of this in an official statement a year and a half ago. I spent days digging into this case. The original posts, the code, academic studies, legal texts—the truth is more nuanced than what you've read, and more troubling, too. And the end of the story is not at all what people think.
+
+00:01:47 - 00:02:42
+Hello everyone, I hope you're doing well . Today, we're talking about the screen in your living room and what it does when you aren't looking at it. A quick side note before we dive in: I see that many of you regularly watch these videos without being subscribed. If that's you, subscribe and leave a like; it takes a second and helps me out tremendously. Alright, let's get into it . Our man goes by the name log4j on the internet. We don't know his real name; he introduces himself as a specialist in
+
+00:02:15 - 00:03:16
+reverse engineering, penetration testing , and cryptography. Tom's Hardware describes him as a bounty hunter, one of those researchers companies pay when they find a flaw in their products. His playground this time is his own living room. To understand what he did, imagine your TV is a building. As a user, you have the key to the front door and a few rooms: Netflix, YouTube, settings. The rest is locked: the boiler room, the cables, the security office. The manufacturer, however, has the master
+
+00:02:45 - 00:03:55
+key: root access. That is the master key . Once inside, you can open every door and read every file. On the first night , he posts a photo of his screen. You can see terminals, commands, and the directory tree of the Tizen system, the software that runs Samsung TVs. An hour later, he publishes a list of what the TV can do: voice recognition, screen content recognition, geolocation , network access, ads, profiling. He even mentions 400 partners and drops , almost in passing, a sentence that would go around the world. By the way,
+
+00:03:20 - 00:04:28
+there is an always-on microphone feature . Keep that sentence in mind; we will take a very close look at it later. Two days later, he comes back with even heavier stuff. He explains that his TV loads a neural network specific to each region of the world. The file is called logo_cnn. According to him, this model is used to recognize what you are doing, which application is open, if it’s YouTube, if an ad just played—a small artificial brain housed in the TV that watches the screen at the same time as you.
+
+00:03:54 - 00:05:13
+Another researcher, signing as Mike64t, finds a second model: AlexTFLite. That one seems to be used to recognize video games. He describes precisely 2,469,696 parameters and tiny 64-by-64- pixel input images. Then comes the part that really triggered the panic. Loc4j publishes a table of events that the TV recorded in its logs. The sound sensor turning on, baby crying , barking, ambient light, the duration a connected camera was displayed, and a destination address on a Samsung server where these logs are configured to be
+
+00:04:34 - 00:05:40
+sent. That same evening, he adds an even more disturbing detail. If your TV doesn't have a microphone, it would go look for one elsewhere among the devices connected to it. Your soundbar, a Bluetooth device. He presents this function as linked to Bixby, Samsung's voice assistant. Your TV has no ears? No problem, it would just borrow the neighbor's. At that point, the community got to work. Another developer, Joan S. Nguyen, sets up a rather clever experiment. He takes a Flipper Zero, a small hacker gadget,
+
+00:05:06 - 00:06:14
+and disguises it as a USB microphone. Then, he observes. Will the TV use this fake? The answer is yes. It turns the microphone on for exactly 5 seconds, then it stops. And at that stage of his observation, nothing more. 5 seconds is not constant listening, but it is proof that the TV knows how to turn on a microphone presented to it. And that is where the story shifts into a completely different register. On October 23, Loc4j posts a photo, a message about his OpenAI account being deactivated. Reason: cyber abuse.
+
+00:05:46 - 00:06:50
+He says he lost about 500 dollars in credit and defends himself, claiming he never used OpenAI to exploit or look for vulnerabilities, only for local reverse engineering. Imagine the headline: he discovers his TV is spying on him, AI bans him. Tom's Hardware picks it up almost word for word and the internet ignites. I know what you're thinking, this is huge, Samsung is listening to us, we need to throw our TVs away. Wait, because this is where the case gets interesting. On April 16, 2025, 18 months before the
+
+00:06:18 - 00:07:24
+incident, Samsung published a press release for the launch of this Vision AI TV. Inside, there are two features: Pet Care and Family Care. I quote, they use embedded AI to detect a dog barking or a baby crying. The goal is to send an alert to your phone when your dog is panicking or your child wakes up. The press release even mentions the possibility of checking a connected camera from the TV. In other words, the barking and crying counters correspond to a publicly announced feature. On Hacker News, a
+
+00:07:05 - 00:08:13
+user pointed it out very quickly: it’s an announced feature of this line. And another asked the only question that matters: is there any proof that these sounds are monitored when the feature is not active? As of today, nobody has published that proof. Let's return now to the phrase about the always-on microphone. What the image shows is a service name in an "Always On Voice" configuration file; a name, nothing more. It is not a recording or an audio file being sent to a server. A service name does not prove continuous
+
+00:07:39 - 00:08:44
+listening, just as an ejection button in a cockpit does not prove the pilot has jumped. The telemetry table itself contains a caveat written by LocK-A-J himself. The module and the policy actually in effect still need to be verified. He had also promised a document with 44 detailed analyses. As of the time I wrote this script and am filming this video, that complete report has not been published. And the link between the noises in your home and the ads you see is not proven by any public evidence. He says it
+
+00:08:12 - 00:09:13
+himself, in fact; he asks journalists not to extrapolate. And the ban, 3 days after announcing it , Lot K Ji published a correction and he wrote, I translate, "The ban almost certainly had nothing to do with using OpenAI for my Samsung work." He suspects instead an automatic filter that must have been triggered repeatedly by his queries. And he announces that he is turning to open-source models that he can run at home. As I speak to you, OpenAI has made no public statement on this case. Samsung,
+
+00:08:42 - 00:09:47
+for its part, responded via TechRadar. ACR, meaning Content Recognition, is not enabled by default. It requires your consent and can be deactivated. I quote, "When a customer disables ACR, viewing information is neither collected nor transmitted." On Hacker News, someone summarized the unease in one sentence: "This confusion where any privacy breach becomes 'they are spying on you' helps no one." He is right. A TV that recognizes a bark, a TV that recognizes an ad, a TV that transcribes
+
+00:09:15 - 00:10:22
+your conversations; these are three completely different things. But if we stop there, we miss the real story. The scandal isn't necessarily where everyone has been looking for it. There is one sentence from Lot K Ji that is worth pausing on. I translate, "One should not assume that disabling ACR in a Samsung TV's menus actually disables its telemetry." To understand why this sentence is so sensitive, you have to know what ACR is . Do you know it? You hold your phone up to a song, it
+
+00:09:54 - 00:10:51
+takes a sound fingerprint, compares it to a massive database, and tells you, " It's this track." ACR is a Shazam built into your TV. Periodically, it takes a fingerprint of what's happening on screen and compares it to a reference database. And it does this at the TV level itself , regardless of whether you're watching broadcast TV, a console plugged into HDMI, or a Blu-ray player. Researchers have measured the rate. On the models they tested, about every 15 seconds for LG and notably every
+
+00:10:33 - 00:11:48
+minute for Samsung. Samsung writes it itself on its support page: this service can report the programs watched, viewing duration, TV identifiers, and your IP address. Why? The answer lies in one number. On its page for advertisers, Samsung Ads claims nearly 80 million TVs in the United States and promises to reveal, quote, what consumers are actually watching. LG announces that its advertising and content business around its TV system surpassed 1 trillion won in 2024, and in December 2024, Walmart, the retail giant
+
+00:11:27 - 00:12:28
+, finalized its acquisition of the TV manufacturer for $ 2.3 billion. The stated goal: to accelerate the growth of Walmart Connect, its advertising arm. The world's largest supermarket isn't buying a TV brand to sell screens; it's buying a window into what millions of households are watching. And this isn't just theory, mind you; there is a precedent. In 2017, the US Federal Trade Commission (FTC) and the State of New Jersey went after Vizio. According to authorities, the company
+
+00:12:15 - 00:13:23
+collected the viewing history of 11 million TVs second by second without the consumers knowing or consenting. The complaint describes the enrichment of this data with demographic information, followed by its sale to third parties. Vizio agreed to pay $ 2.2 million to settle the case. 11 million living rooms for $ 2.2 million—that’s 20 cents per household. When you look at that number squarely, you understand why the LG case struck a nerve. People aren't reacting to proof; they are reacting to a trust that has already
+
+00:12:49 - 00:13:53
+been betrayed. So, the real question is: when you disable ACR, does it actually stop? We don't need to take LG or Samsung at their word, because researchers have measured it. A team from Northeastern University in Boston put TVs from 10 manufacturers to the test. 5,943 experiments with and without consent. They aren't listening to what the TV says, because everything is encrypted; they are watching the back-and-forth traffic. Where the messages go, at what rate, and in what volume. A bit like if
+
+00:13:41 - 00:14:50
+you couldn't read your neighbor's mail, but you could count the letters they send, see who they're addressed to, and at what time. On the Samsung TV tested, after disabling ACR, they still observed exchanges that look like ACR 30 out of 30 times for internal streaming, 41 out of 60 times with the antenna, and 18 out of 30 times via HDMI. For Vizio, it’s 100%of scenarios after withdrawing consent. Conversely, for LG, Sony, Google TV, or Amazon's Fire TV, the deactivation worked fully within their protocol, but
+
+00:14:34 - 00:15:43
+the researchers themselves note a limitation, and I want to read it to you . I am translating: "These behaviors indicate possible privacy violations. However, we cannot be certain without accessing the content of the messages." And to be thorough, other teams find the opposite. A study presented in 2024 found that withdrawing consent stopped ACR traffic on the Samsung and LG sets tested. The site RTINGS, in July 2026, saw streams attributed to ACR disappear or change significantly on a Samsung S95F
+
+00:15:08 - 00:16:10
+after deactivation. The specialists don't even agree among themselves. Perhaps that is the real problem. To know what the object sitting in your living room is doing, you need a university team, thousands of experiments, and network analysis software. And sometimes, what you find is really scary. In the same study, researchers stumbled upon a server for the Vidaa system, the one found notably on Hisense TVs. It was not protected by any password. In 3 hours of observation , they saw 57 million content
+
+00:15:39 - 00:16:48
+recognitions pass through from more than a million TVs. When the team reported the issue, access was closed. But all that time, what a million households were watching was circulating on the internet without any protection. Here in Europe, the law is quite clear on the principle. The GDPR, article 7, contains a sentence of disarming simplicity. It must be as easy to withdraw as it is to give consent. The CNIL explicitly cites connected televisions in its 2026 recommendations. In the United States, the Texas Attorney
+
+00:16:14 - 00:17:18
+General sued five manufacturers in December: Samsung, LG, Sony, Hisense, and TCL. In February 2026, Samsung signed an agreement to request the express consent of Texans before collecting their ACR data. In May, it was LG's turn. So the rules exist, but between a written rule and what the little processor behind your screen is actually doing, there is a chasm. And for years, only one category of people had the means to go and check: people like Log4j, rare, expensive experts who spend weeks dissecting
+
+00:17:10 - 00:18:09
+firmware. On Reddit, one comment summarizes this feeling of powerlessness better than any editorial. I don't want to play this game anymore, and that is exactly where the story takes a turn that no one saw coming. Because there is something I haven't told you. 4 days before Log 4 j's very first post , on the other side of the internet, a developer visits his parents. His name is Gatin. His parents have an Android TV, a Xiaomi, and when they want to watch Netflix, before they can even
+
+00:17:45 - 00:18:49
+access it, the TV forces a sponsored ad on them. You paid for your TV, you pay for your Netflix subscription, and to reach what you've already paid for twice , they make you watch an ad first. So Gatin does something very simple: he opens Quadcode, Entropique's programming agent, and gives it the TV's model number. And here is what it says—let me translate. It found the TV on the Wi-Fi , remove 25 Xiaomi packages, and write a new launcher. The launcher is the home screen, right—it's the grid of apps you
+
+00:18:22 - 00:19:39
+see when you turn on the TV. Gatin creates his GitHub repository at 8:12 AM, publishes his story on X at 8:51 AM, and calls it "Clean Your TV." 8 days later, version 3.0 is released. According to its author, 169 contributors participated with translations in 28 languages, and as I write these lines, the project has surpassed 50,000 stars on GitHub. A star isn't an installation, it’s a bookmark—it’s interest—but 50,000 people bookmarking a tool to take back control of their TV says something.
+
+00:19:00 - 00:20:07
+And there is something even more telling . The repository contains over 400 configuration files. People from all over the world, each with their own TV, set-top box, or projector, sharing the recipe that worked for them. Look at the symmetry this week. On one side, a TV that embeds neural networks to recognize what you're watching; on the other, a son who uses a neural network to give his parents 'TV back to his parents. The same technology in both camps. Under the Reddit thread dedicated to
+
+00:19:33 - 00:20:37
+Clean Your TV, one response: "Big companies wanted AI, now they have it." And the top-voted comment in the thread says this: "The era where manufacturers could install any garbage on our devices is hopefully coming to an end." Before you get too excited, I have to tell you what Clean Your TV doesn't do, because it's important. First, it doesn't work on everything. The project targets Android TV and Google TV, Samsungs running Tizen, and LGs running WebOS. Rokus, Vizios, and Vidas are not
+
+00:20:06 - 00:21:05
+compatible with this method. Ironically, the tool that got the whole internet dreaming doesn't work on the average person's TV. Next, it's not a system rewrite, contrary to what you might have read. The tool disables applications without deleting them and replaces the home screen. The Redmi says it in one line: there's no root, no cable, nothing to uninstall , and a script lets you reactivate everything if needed. I checked the code for the new home screen; it doesn't even ask for
+
+00:20:35 - 00:21:38
+permission to access the internet, but be careful, that's just this screen, not the rest of the TV. Your streaming apps and the system services that stay active can still communicate. Changing the front door doesn't repaint the whole house. Finally, there is the question of risk. To work, the tool uses Android debug mode, which grants significant powers. The project itself recommends disabling it once you're finished. On Reddit, someone worried that letting a language model access your devices
+
+00:21:07 - 00:22:11
+without restriction is incredibly risky . Another replied ironically, yet my prompt said "Don't make any mistakes." On Hacker News, a user reported having to factory reset their TV several times because some apps they removed were essential for Android to function. And when someone suggests simply self-hosting, setting up a firewall, and installing your own video server, the response is stinging. The word "simply" is doing a lot of heavy lifting there. Clean Your TV isn't a magic wand; it's
+
+00:21:41 - 00:22:44
+something more interesting. It’s the first time that taking back control of a device is no longer reserved for a handful of experts. It is not alone. For LG TVs, another project, Glass House , offers a dashboard to cut telemetry on rooted models. Its author claims to have spent a fortune in AI tokens for research and development. A happy user summarized the effect in one sentence: you own the screen now. But even then, a nuance. By default, the Glass House dashboard has no password on your local network;
+
+00:22:13 - 00:23:21
+freeing yourself from the cloud and securing your home are two different things. >> It's important to understand that our role isn't to demonize companies or a specific party, but to try to help everyone move into a more private and secure space. >> So, let's take a step back. For years, the power dynamic in your living room has been brutally simple. On one side, companies writing millions of lines of code you'll never see; on the other, you , with a remote and a settings menu that
+
+00:22:53 - 00:23:58
+you aren't sure does what it claims. To know what your own TV was doing, you had to be a security expert. What is changing is the price of that lack of understanding. Analyzing firmware, writing a splash screen, finding which service to disable —what used to require weeks of expertise can now be done with an AI agent and a model number. It is neither free, nor risk-free, and it is not always right, but it is infinitely more accessible. A small detail that almost no one noticed: 9 days before this whole affair
+
+00:23:26 - 00:24:31
+, the same log4j was already complaining about the cost of the AIs he was using for reverse engineering. He wrote, "It's time to build my own data center at home." On Reddit, under the most popular thread , the second most upvoted comment says it in one sentence: "This is why local models are extremely important." We talk a lot about AI as a tool that monitors and collects. This story shows the other side, the one that allows you to look under the hood. Of course, the manufacturers will react. Under the top
+
+00:23:59 - 00:25:02
+comment on the KinurTV thread, someone replied, "Or else, it will push them to make more efforts to prevent modifications." That's likely, but something has shifted . A week after the start of the affair on Hacker News, someone asked a very simple question: "What TV would you recommend for life?" Over 700 votes, over 800 replies. For the first time, thousands of people are choosing their TV not for its screen size or picture quality, but for what it does when they are not watching it.
+
+00:24:31 - 00:25:30
+If you want to take three things away from this video, here they are. 1. Nothing in the public record today proves that your Samsung TV is listening to your conversations to sell you ads. 2. Your TV can recognize what you are watching. Companies are building advertising empires on this, and even researchers cannot always verify if the "off" button keeps its promises. 3. For the first time, you no longer have to trust them with your eyes closed . The researchers say it themselves: a TV disconnected from the Internet with
+
+00:25:00 - 00:25:58
+an HDMI box remains one of the simplest options. For the rest, there are now tools, communities, and machines capable of helping you understand what other machines are doing behind your back. In this story, there is no enemy, no villain, and no hero. It's in both camps, and what makes the difference is the person holding the remote. Thank you for watching the video until the end. If you enjoyed this, I invite you, if you haven't already, to leave a like; it helps a lot, and feel free to
+
+00:25:47 - 00:26:28
+leave a comment with your thoughts on all of this. I read everything, and I'll take this moment to tell you that if you're interested in using AI tools to their full potential, I've created a resource for you to become an augmented human. It's the first link in the description, it's free, so go ahead, take advantage of it, and I'll see you very soon for the next video.

@@ -1,0 +1,125 @@
+00:00:00 - 00:00:50
+CloudCode is the most powerful tool in the world for coding with AI. The problem is, it costs a fortune. You pay a fortune, it costs quite a bit of money , actually. You pay every month, and the day you hit a limit right in the middle of a project, CloudCode tells you, " Limit reached, come back later." You've probably experienced that yourself, I assume. Come back later, thanks, very helpful. The good news is that today you can use CloudCode for free with a brain that lives directly on your computer. 0 euros
+
+00:00:25 - 00:01:12
+and even more quotas than usual. And as a bonus, your code doesn't go to anyone . Your project's code, your company's code, your files—everything stays with you and no one else can see it. In this video, I'll install it in front of you, set it up, and test it. By the end of the video, you'll have the same CloudCode as usual, except it won't cost you a thing. Hi, realists. If you're new to this channel, my name is Cedric; I run a digital transformation and AI consulting firm, and I implement AI
+
+00:00:49 - 00:01:37
+agents for real-world businesses. CloudCode in a nutshell is an AI that codes for you. It reads your files, writes the code, and runs the commands. Basically, it's like having a developer inside your computer. So, is it really free? My take—and this is the truth as I see it—free, yes, without quotas, yes, but without limits, no. The limit, the real limit in reality, is your machine. Let's get started right away to see all of this in detail. To understand the trick, you actually need to know one
+
+00:01:12 - 00:02:02
+thing. CloudCode, in reality, is two things. First, it's a brain, the AI that does the thinking. At Anthropic, these are the Claude products: Haiku, Sonnet, Opus. Second, it's the tool around the brain, the window where you type and everything that reads your files and writes the code. That is CloudCode. And when you pay Anthropic, what do you get ? You're paying for the brain, so point number one. You aren't paying for the tool. And the tool, in this case CloudCode, can work with any brain. So
+
+00:01:37 - 00:02:22
+the trick, actually, is simple. We keep CloudCode as is and plug it into a free brain that runs on your computer. And what makes this possible is Ollama. It's free software that runs AI brains directly on your machine. And recently, actually, Ollama speaks the same language, if we can say that, as Claude Code. Which allows for extraordinary things, like what we're going to see right now. In fact, the two connect directly, without an intermediary. It's plug and play. Now, you're going to tell
+
+00:02:00 - 00:02:38
+me "Yeah, Cédric, that's nice, but basically, it's like putting a Bugatti body on an old Toyota engine." And honestly, that's a good analogy. On this point, I'll tell you, "Yes, you're right . You're right." But there can still be a use for it, all the same. The bodywork , basically, in this image, is Claude Code. And the engine is the brain, the equivalent of what I called the brain. Old Toyota or not, that's where it really depends on your machine. If you
+
+00:02:19 - 00:02:57
+have a low-power machine, you won't be able to run a model that's too large, a brain that's too large. However, if you have a more powerful machine, you'll be able to use increasingly powerful models . We'll get the details right away and I'll tell you exactly what you can run depending on the type of machine you have. And in any case, even if you have a standard machine, you'll be able to manage very, very well. You'll see. So, let's be clear, just so that things are
+
+00:02:38 - 00:03:20
+clear, it's not Claude answering, okay. We are using Claude Code, but it's not Claude answering in this demo. Anthropic actually says it very well, in black and white, in their documentation, they don't support this setup. This is a setup a bit for the connoisseurs that I am sharing with you. Basically, if it breaks, you're on your own, okay. They don't take responsibility for what breaks and what doesn't, since you are claiming control of your AI, and that's why it's free, in the end. Basically,
+
+00:02:59 - 00:03:37
+it's like a mechanic telling you, "Oh, you put an engine from another brand in your car, well, we can't cover that. You're on your own." It's understandable once you've thought about it, right? Now that all of that is said, we'll move directly to step 1. Step 1 is? It's installing Ollama. You're going to go to ollama.com, that's the official site, and you'll download the version for your computer. You have three versions: Mac, Windows, Linux. I'm on a Mac
+
+00:03:18 - 00:04:03
+specifically, so you'll be able to open the file, drag Ollama into Applications , and launch it. Okay, let's finish up. As you can see, it's easier than installing a printer, right? It's really very, very—it's child's play, I'd say. A quick basic tip: always download anything from the official site. Ollama is no exception. You go to the site ollama.com, the official site, and download from there. Never via a link found in a chat or a comment, no. Even a very nice comment, look, you need the
+
+00:03:41 - 00:04:24
+official site; you can never go wrong when you use official sites. Okay, great , Ollama is installed, now we're going to choose the brain, and that's where your computer matters, actually. The rule is simple, really. The more RAM your computer has, the larger the brain you can run. So, the more intelligent it is as well, right? We correlate brain size with intelligence, which, in theory, is a— we're not going to make biological parallels, but it's a bit of a scientific consensus, it seems to me,
+
+00:04:02 - 00:04:45
+about brain size equals—no, it's the ratio of brain size to body size, I think. Anyway, moving on, I'm digressing . I'm digressing. But I like biology. So, to find out how much RAM you have, if you don't know. Now, typically, I'm on a Mac, but on a PC, you'll have the same type of thing. On Mac, you go to the Apple menu, then "About This Mac." Mine is in Settings because I have my Mac set to English. And on a PC, it's in the Task Manager where you'll find that
+
+00:04:24 - 00:05:10
+, there you go. So, on Mac, the memory is shared with everything else on the computer, right? There you go. So, pick a brain that is at most—the Ollama recommendation is to pick a brain that is at most half of your RAM, right? So for me, for example, I have a Mac with 48 GB of memory, so I'm going to take, for example here, Qwen 3.5, that's the brain Ollama uses as an example for Claude Code. In its base version, Qwen 3.5 is about 7 GB, so I have plenty of room. But just for example, if you have
+
+00:04:46 - 00:05:32
+48 GB of RAM, at most, take something like a 20-24 GB model, because it will be loaded directly into your computer's RAM, in fact, to run it. But 20-24 GB, we're already talking about some pretty big models. So even if you have 32 GB of memory, typically, that will mean 16 GB max. And even if you have 16 GB of RAM, which is likely the case for most computers—most have at least 16 GB of RAM, I think that's the case for you. By the way, let me know in the comments if you have less, but I think there are
+
+00:05:09 - 00:05:58
+very few computers today with less than 16 GB of RAM. But as a result, this allows you to have Qwen 3.5 at 7 GB; you will be within Ollama's recommendations in terms of size to run your brain without interruption and in the most optimized way possible. So this way, you can do exactly the same thing at home. The list of brains, depending on your memory, I’ve put in the description. Now, there is a setting that almost everyone forgets, and it’s very important to do it: imagine that your brain is working on a desk. Okay, you
+
+00:05:33 - 00:06:15
+have a desk, great, boom boom boom. The bigger the desk, the more things you can spread out in front of you at the same time. Your request, your files, your instructions for Claude Code. But by default, Ollama often gives it a very small desk. A small desk like this. Just a small desk. But for coding, that small desk is actually a bit too small. So what you’ll need to do is adjust the settings. What you need to know is that Claude Code itself already sends a list of instructions to Ollama, pages of
+
+00:05:54 - 00:06:39
+instructions even before your first question. That’s why in the Ollama settings, what you’ll need to do is find the context length slider. In fact, the context length is the "context window" in English. That is what will determine the size of your desk, or in other words , the total amount of things you can have in front of you at once. There you go, so you are ultimately increasing your context window. For that , I recommend setting it to at least 64,000, 64,000 tokens minimum; that's
+
+00:06:16 - 00:07:08
+what Ollama itself recommends for coding . And the only price for that is just a larger desk that takes up more memory. So, here we go, I'm starting the download of the brain, about 7 GB, it will take a few minutes. We wait for it to download. A little coffee while we wait. Colombian coffee is the best in the world, I'm telling you right now. Alright, the brain is downloaded, perfect, we can move on to step 2 now. So, step 2 will be connecting it to Claude Code. So, what's happening here in the
+
+00:06:44 - 00:07:32
+terminal, the terminal is...It's that black window where you type commands, as you certainly know. If you don't know, you know now. It can be scary, the black window, I mean, it looks a bit like a developer thing, but it's extremely important to break through your limiting beliefs and fears about opening a terminal window. Today and in 2027, well, you need to be comfortable with the terminal. You're not going to be running crazy commands in the terminal, but today, using the terminal and being comfortable
+
+00:07:08 - 00:07:49
+entering commands is a skill you need to acquire if you want to be effective in this industry and in the future, for that matter, regardless of your industry , you'll need to have AI in your business. So, you'll need to be comfortable with everything terminal-related, commands, these are simple things, you just shouldn't be afraid, it's quite basic, if you're not any less smart than anyone else, you can do it, don't worry. And I will guide you through it. So, as I was telling you, rest assured, there
+
+00:07:28 - 00:08:07
+is only one command to enter. You will simply open the terminal and enter " Ollama launch Claude." It's that simple . And actually, Ollama will ask you which brain to use, so which model to use. And there, you will choose the one you just downloaded. It opens Claude Code, which is already connected to it, so that's great. But if you don't have Claude Code yet, it will offer to install it for you, and that's it. So here, it is indeed Claude Code as usual , the same window as always, except that
+
+00:07:48 - 00:08:27
+this time it’s running with a free brain on my computer. So instead of using a Claude model, it’s using Claude 3.5 here. At this stage, there are two pitfalls to be aware of, and it’s important to mention them right now. First, if Claude Code asks you to log into your Anthropic account, it means it doesn't see the Ollama connection, otherwise it wouldn't ask you. You will just need to restart everything with the Ollama command, quite simply. Everything is in the description, I’ll put it there for you,
+
+00:08:08 - 00:08:48
+it’s very, very easy. Secondly, the second pitfall to avoid, and this one could cost you a bit of money, so it’s important to mention it clearly. In Ollama, some brains, meaning some models , have a name that ends in "cloud."" Cloud," what does that mean? It means it’s going to run in the cloud, as the name suggests, so not locally on your machine. And so those will run on remote Ollama servers, and as a result, they will be paid. So here, we are leaving free mode , so it’s important to always, at least
+
+00:08:28 - 00:09:10
+if you really want to run things for free, not use models that end in "cloud ." It’s important. Typically, if you are asked to enter your credit card, it’s because you’ve fallen into the paid mode . Here, normally, no one will ever tell you to enter your credit card. No one will ever ask you to enter your credit card, this is free. Step 3, we are going to test it for real. I can't wait. I asked it to create a small calculator application for me, quite simply. We’ll do something simple, just to show that
+
+00:08:49 - 00:09:30
+it works, and we’ll open it. So, you are going to understand the true price of " free." The server here is running on my computer, so it’s my computer that is actually doing all the work, quite simply. It might take longer, obviously, much longer than with Claude, because with Claude, they have servers and massive computing power. You are running locally on your machine , so it takes more time, but the output remains extremely high quality nonetheless. There you go. "Free," in
+
+00:09:09 - 00:09:53
+concrete terms, in reality, everything has a price, either in money or in time . And free, honestly, is paid for with time—typically, your time. Because it takes a bit more time, yes, but it is free. And you can't have your cake and eat it too, as they say. We can see it's finished now, so let's test it. So, I'll do a quick 2 + 2, for example. We'll start off simple. 2 + 2, we see 4, great . Uh, times 8, we see it goes to 32. Okay, well it works well. We'll divide by 8, we get back to 4, great. There, it
+
+00:09:31 - 00:10:08
+looks great, it works, it's magnificent . We have a calculator that works. Well , that was pretty basic, but at least it proved that everything runs on my end. Even if I cut the internet now, I'll disconnect totally from the internet, completely, I'll ask it a question. And you'll see that it's going to work. And there it answers. So the server is indeed local on my computer. That’s also one of the big strengths of free versus paid; since everything is local, even without a connection, it works. If
+
+00:09:50 - 00:10:35
+you’re on Anthropic, or if you’re using Claude with an internet connection, without one, you won't be able to use your AI. That’s another advantage of free: it’s free slash local, you run the model locally, you get it. Now, regarding the unlimited aspect we mentioned earlier, Ollama writes it on their pricing page; as you can see, locally, running a model locally, as we're doing, Anthropic confirms it too, with this setup, your subscription limits no longer apply. So there are no more quotas. So that is true. We’re good
+
+00:10:13 - 00:11:04
+there. But the limit won't just disappear, as you will see. It will simply shift over to your computer, ultimately. So the speed, you saw it, and that’s why we still have hardware requirements to avoid these kinds of issues. So first, the memory. We saw it earlier, the brain has to fit inside with its desk, and so on. When we say " with its desk," that means with its context window. So, brain plus context window must fit into the memory. That is clear and simple. And the disk. So there's the RAM part
+
+00:10:38 - 00:11:35
+and there's the SSD part. The SSD is really the local storage part of your hard drive. So we have two types of memory: RAM and physical memory. RAM is typically 32, 48 GB, 64 GB, or 128 GB of RAM. And then the SSD is 500 GB, 1 TB, or 2 TB of hard drive space, or SSD. They are two different types of memory, but both are very important. RAM is the most important when you want to run models, but physical memory is still important as well. For your information, the disk must be able to hold large brains, and those
+
+00:11:06 - 00:11:58
+brains can weigh tens or even hundreds of gigabytes. So, you need to be aware of that. So, is it free for life? Ollama is free. The brain stays on your disk. So it's local ; it's yours now. But Claude Code, the tool we were talking about earlier, belongs to Anthropic. It updates itself, and the connection we're talking about and demonstrated here isn't official. It's tolerated by Anthropic, but it's not official. So, no one can promise it'll be free for life because if Anthropic updates Claude Code
+
+00:11:32 - 00:12:14
+in the future, this connection might stop working. It works today, so that's good. But we don't know what tomorrow will bring or what strategic changes Anthropic will make. This is something we can't predict—we're not Nostradamus— we just adapt to what's possible today. So if someone promises you otherwise, be wary; I'm telling you right now. I'm telling you exactly what's possible today, what we control, and what we don't, and this is typically something we don't control.
+
+00:11:53 - 00:12:37
+We have to be clear. If you like this realistic, authentic approach, subscribe . A little click, a bit of love in this harsh world, as I like to say, is always appreciated. 80%of you watching my videos still aren't subscribed. So thank you, thanks in advance for clicking; it's free and it's a great gesture. And there will be a lot of free value coming your way, I promise. To broaden the subject a bit, we'll see that you have two other ways to run the brain locally . So, I’ve shown you the most private
+
+00:12:15 - 00:13:01
+way, but there are two others. The first is Free LLM API. Actually, instead of running a brain locally, it gathers all the free offerings from several AI companies—Google, Mistral, and others— all behind a single address. And you simply connect Cloud Code to it. And if you have any questions, ask them in the comments, I’ll be happy to answer them. The advantage of this tool is that it offers many more choices of brains and larger brains than your computer can run , because depending on your local power
+
+00:12:38 - 00:13:26
+, you can only run fairly small models. The fact that you're using the cloud, well, that's a big advantage. Now, there is a hidden price, meaning your code will now go to these companies. Whereas when you code locally, your code stays local. So that is a real, real issue, so it's not private at all anymore. So, for certain data or certain features you want to develop that aren't extremely important from a security standpoint, why not use this method for , you know, learning or a small project
+
+00:13:02 - 00:13:48
+without secrets, why not? If you really want to develop for a real client, a real company, my advice is clearly a non-recommendation from me for this option, definitely. And the second option is Open Code. Actually, here we are completely changing tools, meaning we saw that there is a tool and a brain. Before, we used Cloud Code as the tool and free local models, etc., as the brain. Here, with Open Code, we are going to change the tool. We replace Cloud Code with Open Code. Actually, it's a different
+
+00:13:26 - 00:14:06
+tool for coding. This one is totally free, for that matter, and it also gives you access to free brains upon installation, so that's quite useful. It's also simpler to install, but it’s not Cloud Code anymore. So if you're used to it, uh, I'm sticking with Claude Code because I'm used to it and I like it, and I use Claude for its power and to have access to the best models on the market, but those best models come at a price. So my verdict, which one? I’ll decide based on what matters to you.
+
+00:13:46 - 00:14:30
+Basically, for me, it depends on what situation you're in today. If you want your code to never leave your machine, then it's a no-brainer: Ollama locally. If you want more choices of models, but privacy doesn't matter, then you can use Free LLM API. Now, if you want the simplest option, without any configuration, I clearly recommend Continue, which is quite intuitive. By the way, I could make a dedicated video on the subject if you're interested, let me know in the comments. Personally, as
+
+00:14:08 - 00:14:51
+I said earlier, for my clients and my real projects on a daily basis, I have several Claude Code max plans, so obviously it costs a bit per month, but I prefer to pay more to have the real brain of Claude, the best models on the market that provide the best outputs on the market in the shortest time. Because those are my current priorities. I'm not saying they're yours. If you have others , use the alternatives I shared in this video as well. Also because the real brain of Claude, even if I wanted to run
+
+00:14:29 - 00:15:20
+it locally, I couldn't. We're talking about extremely heavy models that take monumental computing power, insane GPUs to run them. So clearly, that's excluded for local use. But, if you're starting out and you don't have a budget, typically, local remains a great entry point for me. To summarize, so free, yes. Without quotas , yes as well. But without limits, no. Actually, we keep the tool, we change the brain, and the limit finally, as we were saying in this video, is your machine. That's where you run the model
+
+00:14:55 - 00:15:34
+. So to conclude, Free Llama API, Continue, I haven't tested them in this video. If you're interested in me testing them in a future one, let me know in the comments. I would do it with great pleasure. And I'm interested to know which option you're going to use first. So let me know that too. There you go, for your info, all the commands , the official documentation from Anthropic, from Llama, are in the description. That is all I wanted to say in this video. I'll see you very soon,
+
+00:15:14 - 00:15:17
+friends. Bye.

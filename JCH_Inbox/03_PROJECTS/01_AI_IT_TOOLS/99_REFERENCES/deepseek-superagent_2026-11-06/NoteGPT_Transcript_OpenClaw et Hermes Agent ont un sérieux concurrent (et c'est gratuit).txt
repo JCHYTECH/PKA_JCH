@@ -1,0 +1,143 @@
+00:00:00 - 00:00:49
+Si vous voulez avoir le meilleur truc possible et imaginable pour bosser, vous êtes au bon endroit. Je vais quand même essayer de redonner quelques explications avant de vous présenter ce projet open source qui est vraiment une dinguerie. Donc allez, c'est parti, on commence. Je me présente très rapidement. Je suis ingénieur software IA même si j'ai pas le titre français, c'est mon boulot au quotidien. Et on a mis au point un truc de fou pour concurrencer Open Claw, Hermes Agent et tout ce genre de logiciel et c'est
+
+00:00:24 - 00:01:13
+gratuit. Donc autant en profiter. Je vais vous expliquer tout ça. Euh sur ce et bien on commence. C'est parti. Donc pour tous ceux qui travaillent avec l'IA que ce soit des monteurs, des programmeurs, des ingénieurs, des entrepreneurs et cetera, vous bossez très sûrement avec Cloud Code et c'est un très bon choix. Euh il y en a qui bossent avec Codex, c'est l'équivalent mais version Chat GPT. Il y en a qui vont bosser avec Cursor qui est aussi un équivalent sur lequel on va pouvoir
+
+00:00:49 - 00:01:46
+choisir ses modèles et cetera. Et il y en a qui sont sur Antigravity. Bon normalement vous êtes pas très nombreux mais voilà, dans l'idée la façon de travailler classique finalement avec l'IA c'est de se retrouver avec un projet GitHub, un dossier sur son ordinateur et un de ces trucs-là qui a accès à notre dossier. Donc ça c'est cool mais c'est un peu chiant parce que ça nous permet pas d'avoir accès 24/24 à une IA qui va pouvoir en continu faire des tâches pendant qu'on est pas là.
+
+00:01:18 - 00:02:14
+Donc il y a un truc qui a débarqué en début d'année 2026 et que vous avez très probablement pas raté, ça s'appelle Open Claw. Open Claw c'est incroyable parce que ça nous permet de mettre directement sur un VPS euh un harnais d'IA. Donc un peu comme Cursor, comme Cloud Code et cetera. Et donc ce harnais une fois sur notre VPS, il va pouvoir tourner 24/24. Donc on va juste y brancher n'importe quelle souscription IA et ça va fonctionner. Donc quand ça ça a débarqué, c'était incroyable. On avait
+
+00:01:45 - 00:02:34
+juste à avoir Telegram sur téléphone et puis voilà, on pouvait tout faire, c'était très cool. Ensuite, il y a un deuxième truc qui a débarqué, c'est Hermes Agent. Et Hermes Agent c'est exactement pareil. On a un VPS, dessus on a Hermes Agent agent on connecte n'importe quelle souscription IA et puis pareil, on a accès directement dans Telegram, dans Discord et cetera à quelque chose de sympathique. Air message agent, ils ont voulu aller un peu plus loin et donc ils ont développé un Air message agent
+
+00:02:10 - 00:03:00
+desktop qui est une application qui permet de gérer directement son Air message agent depuis son VPS et donc là franchement, on est au top. Mais en le testant, j'ai quand même eu quelques doutes et quelques problèmes vis-à-vis de la fiabilité et de la personnalisation qu'on pouvait apporter au truc et cetera. Donc ça nous a mené à réfléchir. Je vais vous résumer un petit peu ce que je vous disais juste avant. Donc un setup qui est correct en terme d'agent, ça va être quelque chose qui
+
+00:02:34 - 00:03:23
+nous permet de parler à notre agent, qui va être sur un VPS donc sur un ordinateur distant. Donc là par exemple, c'est Open Cloud ou Air message dessus, il va gérer lui-même ses skills, sa mémoire et cetera et pour le faire tourner, on aura juste à le connecter à n'importe quel provider donc un abonnement Cloud GPT, Gemini et cetera. En sachant qu'il y a eu des restrictions où par exemple l'abonnement Cloud Max, Cloud Pro et cetera, on pouvait pas l'utiliser avec Open Cloud. Ça nous a
+
+00:03:00 - 00:03:48
+ruiné d'ailleurs, c'est pour ça que Air message agent sont arrivés et se sont positionnés sur sur tout ça parce que les gens qui utilisaient Cloud avec Open Cloud étaient très satisfaits et hop, d'un coup c'était plus possible. Bon, voilà. Donc là, vous savez comment ça fonctionne. Un agent qui tourne sur VPS, qui peut faire des choses 24/24 et qu'on peut contacter via une messagerie. Il y a tout de suite les logiciels IA qui se sont dit il y a un truc à faire, il faut qu'on mette ça en place
+
+00:03:23 - 00:04:14
+directement sans passer par des VPS parce que c'est trop compliqué pour la plupart des gens et donc on se retrouve maintenant avec Grokbot, avec Muse par exemple de Facebook, avec les dots, avec Cloud Code qui va nous permettre maintenant de faire tourner des choses directement côté serveur et donc ça remplace un petit peu cette idée d'avoir un VPS. Donc jusqu'à là, on pourrait se dire que c'est sympa. Le problème, c'est que quand on utilise un de ces agents ici, déjà on peut pas tout faire, on va
+
+00:03:48 - 00:04:35
+être limité et en plus de ça, on maîtrise plus nos données, notre mémoire, nos fichiers, nos skills et cetera, tout ce qu'on a créé et qui nous permet de faire des choses de fou. Par exemple, je sais pas dupliquer un site e-commerce, de des euh des scraping, euh plein de blogs, faire tout ça, ça va être compliqué en fait à partir de euh ces outils-là, puisque euh bah c'est eux qui vont avoir nos données et ils vont pas forcément nous permettre de nous connecter à tout ce qu'on veut. Voilà,
+
+00:04:12 - 00:05:00
+ou à tout ce qu'on voudrait. Donc, il y a des petits filous, comme euh certains de mes potes, qui ont décidé euh de chercher une alternative. Et l'alternative la plus euh sympathique qu'on avait trouvée à ce moment-là, c'était euh Cloud Code. Donc, Cloud Code, mais qu'on pouvait faire tourner sur un VPS. Donc, pour ça, il y avait un petit tips assez simple, on a trouvé un repo et il y en a d'ailleurs pas mal, qui permettaient d'utiliser Cloud Code depuis Telegram grâce à un truc en Python qui tourne sur
+
+00:04:37 - 00:05:25
+le VPS. Et donc, ce qu'il suffisait de faire, c'était de prendre un VPS, dessus, de mettre euh Cloud Code et ensuite de lui parler via Telegram grâce à ce petit euh script qui tourne. Donc, jusque-là, c'est pas mal, sauf que bon, déjà, faut un peu bidouiller, il faut aussi connaître, faut aller en SSH, faut lancer le truc et tout, même si c'est euh quand même assez trivial. Et euh et ensuite, c'était pas aussi smooth que d'utiliser un Hermes ou un Open Cloud. En fait, euh le chat euh était une
+
+00:05:01 - 00:05:46
+interface sympa, mais elle était moins bien gérée et cetera. Et euh même si pour le coup, on pouvait avoir la puissance de Cloud Code en tant que harnais, donc au lieu d'avoir euh le harnais géré par Open Cloud ou par Hermes, là, c'est vraiment Cloud Code, c'est directement comme Cloud Code, donc ça, c'était génial. C'était quand même moins smooth à l'utilisation. Et c'est là où on a une idée de fou et que je vais vous partager aujourd'hui. Donc, l'idée, c'est que euh ici, sur
+
+00:05:22 - 00:06:09
+notre VPS, on va avoir Cloud Code. Ce Cloud Code, il va gérer euh projets, topics, mémoires et cetera sur le VPS. Mais on va préconfigurer la mémoire. On va faire en sorte qu'on fonctionne avec des projets et des topics, avec notre mémoire soit bien gérée et qu'on n'ait jamais de problème. Voilà. Donc, on a Cloud Code, mais on a Cloud Code en mieux. Donc, on se base pas sur un harnais un peu bizarre, un peu bidouillé, on a Cloud Code, mais en version améliorée. Ensuite, euh ce qu'on
+
+00:05:47 - 00:06:30
+s'est dit, c'est que on voulait pouvoir faire ça avec euh Cloud Code subscription, comme ça on dépense nos tokens sans payer plus cher. Et euh donc ça, on peut le faire en gardant Cloud Code. C'est justement ce qu'on n'avait pas fait Open Cloud et Hermes, puisque comme ils étaient passés sur leur harnais custom, et bien, ils avaient été punis de la subscription euh de euh Cloud Code. Donc, nous, on n'a pas ce problème. On a CloudCode amélioré avec directement la souscription Tropique,
+
+00:06:09 - 00:06:51
+c'est génial. Maintenant, ce qu'on s'est dit, c'est que au lieu d'utiliser Telegram uniquement, il nous faudrait une app web qui nous permet euh de modifier comme on veut notre interface et de pouvoir intégrer plein d'éléments. Donc, c'est ça qu'on a mis en place et on a appelé ça Harness Mining, c'est ce que je vais vous présenter tout à l'heure et vous allez voir, c'est gratuit, c'est génial, il y a pas de problème. Donc, on a une petite difficulté supplémentaire qui s'ajoute,
+
+00:06:30 - 00:07:16
+si on veut communiquer avec notre euh app web, on a deux choix, donc soit on va mettre un euh nom de domaine qu'on a déjà, donc par exemple un sous-domaine, ou alors directement un nom de domaine, euh donc voilà, il y aura un mot de passe, il y aura une double authentification et tout, soit on va pouvoir connecter Tailscale. Donc, Tailscale, ça permet de faire un pont euh directement avec l'IP, donc c'est génial et pour tous ceux qui ont utilisé OpenCloud ou euh Hermes, vous avez sûrement déjà euh fait ça si vous avez
+
+00:06:53 - 00:07:34
+voulu vous faire des petites interfaces. Donc, maintenant, on s'est aussi dit que ce serait quand même pratique de pouvoir utiliser Telegram ou d'autres messageries et tout, donc c'est aussi possible et vous allez voir, c'est bien relié, même mieux relié que dans Hermes Desktop euh qui est euh une catastrophe à ce niveau-là. Donc, maintenant, euh laissez-moi euh vous présenter à quoi ça ressemble. Voici Harness Mining. Donc, l'idée, c'est que notre harnais, c'est CloudCode
+
+00:07:14 - 00:08:08
+et CloudCode, on va le mettre sur un VPS, il va pouvoir tourner 24/24 et on va pouvoir avoir accès à une interface qui va nous permettre de lancer euh plein de sessions en parallèle et de gérer tous nos projets. Donc, on va avoir plein de fonctionnalités que je vais pouvoir vous montrer là euh tout de suite en vous montrant à quoi ça ressemble. On va avoir la connexion à Telegram qui se fait euh en direct, donc aucun souci là-dessus et euh on va avoir finalement CloudCode directement et donc pas un harnais euh un peu bâtard qui
+
+00:07:41 - 00:08:23
+nous empêcherait d'avoir la souscription CloudCode. Pour l'installer, c'est très simple, on a besoin d'une ligne et euh d'un VPS, donc sur votre VPS, vous vous connectez en SSH, vous faites une commande et c'est réglé. Euh le seul truc qui a à faire, c'est d'avoir un nom de domaine ou alors Tailscale si jamais vous avez pas de nom de domaine et que vous voulez quand même vous connecter à distance. Voilà, donc c'est euh très simple, on est deux sur le projet, il y
+
+00:08:02 - 00:08:47
+a moi et il y a euh Feu, donc Feu que vous connaissez peut-être sur YouTube. Moi, je gère plutôt tout ce qui est euh feature et cetera fonctionnalité et feu il gère tout ce qui est solidité mise à jour et cetera mais en vrai on bosse super bien ensemble, on a fait des dizaines et des dizaines de mises à jour, on s'arrête pas. Donc voilà vous pouvez voir là il y a les dernières mises à jour et puis voilà c'est gratuit. Si jamais il y a des entreprises qui veulent un forfait entreprise support avec de
+
+00:08:25 - 00:09:10
+l'aide et cetera évidemment on peut provide ça mais sinon et ben c'est gratuit vous pouvez juste aller sur GitHub nous mettre une petite star et commencer à l'utiliser. Donc maintenant je vais vous montrer comment ça se passe. Juste petit point très rapide ceux qui veulent un VPS je vous recommande Hertzner c'est là où j'ai des VPS. OVH c'est pas cher du tout pour ceux qui veulent un VPS de rat et puis pour ceux qui ont déjà et tout Hostinger ça marche très bien. J'ai moi-même un
+
+00:08:47 - 00:09:34
+VPS chez Hostinger. Donc maintenant je vais vous montrer à quoi ça ressemble. Quand vous allez installer dans votre VPS avec SSH vous allez avoir une petite interface comme ça. Ici ça vous posera deux trois questions. Dans les questions il y aura donner votre nom de domaine ou alors votre Tailscale et puis après vous aurez un lien où vous pourrez aller setup votre mot de passe et voilà c'est parti. Vous aurez accès à Harness Maxing. On a fait une doc donc voilà il y a tout dedans si jamais vous avez des questions
+
+00:09:11 - 00:10:00
+et tout vous pouvez même envoyer ça à une IA elle vous aidera. Donc tout est là. Voici à quoi ressemble maintenant Harness Maxing et donc c'est ça que je voulais vous montrer depuis le départ. Ici on a en fait des sessions Cloud Code qui tournent sur mon VPS et que je peux ouvrir en parallèle. Et donc en fait ce qui est énorme c'est que là au lieu d'être dans un Cloud Code par VS Code ou alors d'être directement sur mon chat Telegram et tout là j'ai tout ici j'ai tout ça qui est connecté direct à
+
+00:09:35 - 00:10:24
+Telegram et je peux même utiliser la version application web que vous pouvez mettre avec le add to home screen sur le téléphone. Vous pouvez même utiliser sur téléphone sur une version qui est adaptée. Donc on peut faire des messages vocaux, on peut changer notre modèle, on peut faire plein de trucs. Ici vous voyez ça nous permet de générer des diagrammes quand on lui demande des des choses. On peut générer des vidéos puisque ça va utiliser Remotion. Donc voilà vous pouvez utiliser des vidéos maintenant avec Remotion. Donc ça
+
+00:10:00 - 00:10:38
+c'était juste un exemple donc il est un peu moche mais en théorie vous pouvez faire vraiment des trucs de fous et j'en ai déjà fait plein. Ceux qui veulent aller voir j'ai une chaîne YouTube qui s'appelle Romain Crouzade et je délègue en grande partie mon montage à Harness Maxing. Donc on a plein de petits widgets dans le chat qui vont nous permettre par exemple de voir nos trucs sur GitHub et cetera. Et le fonctionnement que je vous disais tout à l'heure pour la mémoire, donc projet et
+
+00:10:19 - 00:11:07
+topic, il est il se voit juste ici. Donc là, on va avoir des projets et dans ces projets, on va avoir des topics. Et en fait, ça va être la gestion de la mémoire au niveau du projet et du topic avec des fichiers, ce qui fait que je vais pouvoir ouvrir plein de sessions et que toutes mes sessions que je vais ouvrir ici, et bien elles vont être directement avec la même mémoire de par exemple Ops Infra, ce sera la même mémoire. Et donc ce qui est génial, c'est que si par exemple là j'ai un site
+
+00:10:43 - 00:11:23
+web, je vais venir ici dans blog, je vais vouloir créer une automatisation ou peu importe, je vais vouloir créer quelque chose d'autre, je peux ouvrir plein de sessions et quand j'ouvre mes sessions juste là, et bien elles garderont la même mémoire que notre topic et que notre projet. Si jamais je veux que la mémoire soit partagée sur d'autres choses et tout, je peux juste demander à ma session, elle ira fouiller. C'est juste que par défaut, du coup, nos sessions qu'on ouvre, elles
+
+00:11:03 - 00:11:58
+seront dans un topic et un projet et ça c'est super pratique. Donc ce qui est cool aussi, c'est que on est sur un VPS et donc le problème c'est que on a un Ubuntu accessible en SSH et donc l'idée c'est que maintenant, on va pouvoir aller voir directement nos fichiers ici dans notre petit éditeur de fichiers. Je vais pouvoir ouvrir des images, des fichiers de code, je vais pouvoir même les sauvegarder, les modifier et cetera. Je vais pouvoir les envoyer directement à l'IA. Voilà, donc on peut faire tout
+
+00:11:30 - 00:12:17
+ce qu'on veut et ça c'est génial. Ensuite, ce qui est cool, c'est que on a aussi un accès à des tâches. Donc ça si jamais cette interface vous plaît pas, on a un board, on a les semaines, on a un calendrier et tout, vous pouvez aussi la changer en juste prenant le temps ici à Harness, il va tout changer. Voilà, puisque les mises à jour sont intelligentes. Donc si vous faites des mises à jour et que vous avez modifié toute l'interface, ça cassera pas ce que vous avez fait. Donc on vous a aussi mis
+
+00:11:54 - 00:12:35
+en place la face une façon de voir vos cron jobs donc et de les activer et les désactiver. Dès que vous allez faire des cron jobs, en fait dans une session, vous allez dire "Je veux cette automatisation et tout", votre Harness va savoir qu'il faudra le mettre ici dans les cron jobs qu'on peut activer, désactiver et vous aurez directement tout qui s'affiche bien comme il faut, les succès et cetera. Vous avez aussi une interface Git que vous pouvez activer dans les features. Ici, vous
+
+00:12:15 - 00:12:57
+verrez les Git qui sont clonés euh directement en local et vous verrez ici, par exemple, les Git que vous avez euh sur euh GitHub et vous pouvez voir euh donc voilà, les différentes branches et cetera. Et vous pouvez voir si euh c'est cloné ici ou si c'est pas cloné, si c'est à jour, si c'est pas à jour. Pareil pour l'infrastructure, là, on a fait un truc de fou. Euh, donc ça, c'est des features infrastructure Git et tout, faut les activer dans les certaines features hein, parce qu'on a pas mis ça
+
+00:12:36 - 00:13:20
+pour tout le monde. Mais en fait, si vous avez plusieurs sites, plusieurs projets et cetera, c'est génial. Parce que vous allez pouvoir déployer, vu qu'on est sur un VPS, directement ici avec Caddy euh des sites web ou alors même des euh databases ou alors des buckets euh vous vous allez pouvoir faire ce que vous voulez. Euh, l'idée c'est que quand vous allez mettre vos clés API directement euh ici euh dans euh vos sessions ou alors dans les settings ici dans clés API, vous allez
+
+00:12:58 - 00:13:41
+pouvoir mettre vos clés API de différentes sources, et bien euh votre infrastructure va se construire toute seule. Et là, vous pourrez voir sur euh tel serveur, j'ai ça, euh donc j'ai tel site web qui est en ligne, qui est pas en ligne et cetera. J'ai telle database qui est là euh Moi, ce que j'adore utiliser, c'est CloudFlare et donc dès que vous mettez votre clé CloudFlare, vous allez voir euh vos buckets R2, par exemple. Vous pouvez voir vos noms de domaine directement. Vous pouvez euh ici
+
+00:13:19 - 00:13:59
+même ajouter des serveurs si vous avez des choses qui tournent sur d'autres VPS, ben du coup, c'est très pratique. Donc voilà, ça, ça permet d'avoir une vraie overview et ensuite, du coup, euh dans les settings, vous avez d'autres euh features que vous allez pouvoir activer ou pas. Par exemple, team, ça va vous permettre de vous connecter avec un membre de votre team et d'avoir, pendant que vous êtes sur vos sessions, directement euh un chat là où vous pouvez parler avec et euh donc c'est
+
+00:13:39 - 00:14:22
+fait de manière sécurisée, vous allez pouvoir prendre un projet ou pas euh faire un résumé de la conversation, euh envoyer le projet vers un de vos agents et cetera. Et puis lui, il pourra voir que c'est en cours de traitement chez vous. Euh, voilà, donc c'est des choses comme ça qui sont possibles. Et euh du coup, vous avez plein de settings, euh vous allez voir de toute façon quand vous allez euh créer euh votre euh installation, il y aura plein de questions. Vous allez pouvoir voir quels
+
+00:14:00 - 00:14:41
+droits vous donnez à Cloud sur le VPS, vous allez pouvoir connecter Telegram facilement. Euh, il y a plein de choses comme ça qui vont pouvoir être faites. Vous allez pouvoir gérer les backups directement euh sur un euh GitHub, donc les backups de vos sites et de votre mémoire, c'est ça que vous avez pas quand vous utilisez euh Grokbot ou tous ces trucs-là. Et et plus important parce que en fait là tout ça, si demain ça casse, vous aurez toujours votre VPS et vous aurez toujours tous vos skills et
+
+00:14:21 - 00:14:58
+toutes vos mémoires et vous pourrez toujours tout réutiliser et continuer à faire vos éditions vidéo, continuer à faire vos sites web, continuer à tout faire. C'est vraiment le plus important et euh en plus bon, euh on est là donc ça devrait pas casser, mais ce que je veux dire c'est admettons même on est puni par exemple par Claude et ils disent "Non les gars, vous devez arrêter." vous perdez rien. C'est euh c'est magnifique et on peut même trouver euh des solutions. Euh donc pour les
+
+00:14:40 - 00:15:11
+entreprises, il y a une licence mais en vrai c'est pas nécessaire si vous n'êtes pas une entreprise et puis même si vous l'utilisez en mode gratuitement, euh on va rien vous faire, c'est euh c'est très pratique en fait euh d'avoir du suivi et cetera pour les boîtes. Donc si vous voulez travailler avec nous, n'hésitez pas à nous contacter. Euh pour les updates, comme je vous disais euh elles sont intelligentes. Donc voilà, on a plein d'updates en continu et si jamais
+
+00:14:55 - 00:15:35
+euh vous avez modifié votre interface de vous-même, euh les updates seront intelligentes. Ensuite, on a un système d'extensions que je voulais vous vous montrer rapidement. Donc en fait, c'est des pages, vous allez pouvoir les créer et dessus mettre tout ce que vous voulez. Donc ça peut être un dashboard, ça peut être n'importe quoi, un truc pour tracker des euh des commandes et cetera. Faites tout ce que vous voulez avec vos pages extensions. En fait, quand vous demandez euh "Fais une page
+
+00:15:15 - 00:15:56
+extension et cetera." directement euh Claude saura qu'il faut faire une extension bien propre et euh ici. Et comme ça il y aura pas de problème. C'est pareil pour le dashboard, vous allez pouvoir faire des widgets avec toutes vos clés API et cetera et connecter par exemple tous vos sites e-commerce, mettre toutes vos données. Euh vous pourrez voir euh directement qu'est-ce qui est cassé, qu'est-ce qui est pas cassé dans les notifications, euh voir directement tous vos Shopify
+
+00:15:36 - 00:16:24
+connectés, euh tous vos autres sites et cetera. Quand vous voulez lancer euh des projets, des sites et tout, euh vous pouvez le faire euh ici et euh Claude saura directement comment bien intégrer ça dans l'infra, comment faire en sorte que vous puissiez cliquer pour voir votre démo directement et cetera. Et euh voilà, tout gérer, qu'est-ce qui marche, qu'est-ce qui est cassé, qu'est-ce qui est pas cassé. Et euh tout ça en fait, euh c'est aussi utilisable depuis Telegram qui est connecté en direct. Et
+
+00:16:00 - 00:16:40
+donc voilà, c'est ça qui est génial. C'est la magie finalement de RNA Mixing. On a Claude Code, mais Claude Code surboosté, sur VPS avec plusieurs modes d'affichage pour vos sessions hein. Voilà, si vous voulez avoir vos sessions comme ça, vous pouvez le faire. Vous allez voir quand certaines sessions sont finies, voilà, il y a un point vert, vous pourrez aller les voir et cetera. Donc euh c'est génial en tout point. J'ai jamais fait autant de trucs de ma vie avec l'IA. Bon, il faut faire gaffe
+
+00:16:20 - 00:17:06
+à son utilisation. Et vous voyez ici par exemple, j'ai l'utilisation de la semaine. Et aussi petit point que je vous rajoute, voilà, vous pouvez voir directement l'état de votre VPS si tout se passe bien et cetera. Donc ça c'est un petit VPS de démo, mais j'en ai un gros et ça marche particulièrement bien surtout pour le montage, c'est là où je suis assez impressionné. Vous voyez ici par exemple, j'avais fait découper une voix. Ici, j'avais fait une vidéo donc juste là pour la démo de de Harness.
+
+00:16:43 - 00:17:32
+Donc voilà, vous voyez, on a directement du petit motion design et tout. C'est très sympathique. On vous a fait un lecteur bien propre, voilà comme ça vous pouvez mettre plus rapide. On a fait plein de de trucs comme ça. Et on continue à faire des updates. Si jamais vous voulez nous rejoindre, n'hésitez pas à venir sur Discord. On va faire ça. Et puis si jamais vous voulez nous soutenir et installer Harness Mining, n'oubliez pas surtout de mettre une étoile sur GitHub parce que voilà, ça
+
+00:17:07 - 00:17:51
+nous régale. Sur ce, eh bien, je pense que je vous ai dit tout ce que j'avais à vous dire. Harness Mining, c'est ce qui vous permet d'avoir une app totalement custom pour pouvoir utiliser l'IA, d'avoir un environnement digne de Tony Stark si vous le voulez et de pouvoir faire tout ce que vous voulez. Et de pas être bloqué avec les solutions propriétaires qu'on vous propose. Ou de pas être bloqué avec des coups d'API exorbitants parce que vous pouvez pas utiliser vos abonnements et cetera. Vous
+
+00:17:29 - 00:18:16
+pouvez profiter de la puissance complète de Cloud Code. Et tout ça avec plein de mises à jour et la possibilité de tout faire comme vous le souhaitez, de garder vos données et cetera. Donc pour moi, c'était vraiment incroyable de faire ce projet de A à Z et là de continuer à le mettre à jour et tout. On est déjà des dizaines et des dizaines à l'utiliser au quotidien et on a tous remplacé notre setup par Harness Mining. Donc n'hésitez pas à rejoindre le Discord, à mettre une star sur le
+
+00:17:53 - 00:18:37
+GitHub. Tous les liens sont en description. J'espère que ça vous plaira et bah voilà. C'est cadeau, c'est gratuit. Allez-y, profitez-en. À mon avis, avec ça, les Américains n'ont qu'à bien se tenir. Parce que c'est made in France. Alors, s'il y en a qui veulent venir nous aider et rajouter leur gros cerveau à ce projet, n'hésitez pas. Tout se passe en description. Allez. À plus.

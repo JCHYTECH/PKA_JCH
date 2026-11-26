@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bioacoustics QC Playbook"
+  short_description: "Curate insect audio and spectrogram datasets"
+  default_prompt: "Use $bioacoustics-qc-playbook to curate a bioacoustic dataset, score segments, and decide whether species stay in the audible list."

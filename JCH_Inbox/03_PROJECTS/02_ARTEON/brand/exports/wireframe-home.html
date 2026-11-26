@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARTEON — Wireframe Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --noir:    #0D0B09;
+    --ivoire:  #F8F5F0;
+    --ocre:    #C17F3A;
+    --sable:   #E8E2DA;
+    --gris:    #6B6560;
+    --brun:    #2A2420;
+    --vert:    #3D5A3E;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Space Grotesk', sans-serif; background: var(--ivoire); color: var(--noir); font-size: 16px; }
+
+  /* ─── Label wireframe ─── */
+  .wf-label {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: var(--ocre); color: white;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 24px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+  }
+  .wf-label a { color: white; text-decoration: underline; }
+  body { padding-top: 36px; }
+
+  /* ─── Navigation ─── */
+  nav {
+    position: sticky; top: 36px; z-index: 100;
+    background: var(--ivoire); border-bottom: 1px solid var(--sable);
+    display: flex; align-items: center; padding: 0 60px; height: 64px;
+  }
+  .logo { font-weight: 300; font-size: 20px; letter-spacing: 0.08em; flex: 1; }
+  .logo span { color: var(--ocre); }
+  .nav-links { display: flex; gap: 36px; font-size: 14px; font-weight: 500; color: var(--noir); }
+  .nav-links a { text-decoration: none; color: inherit; }
+  .nav-links a:hover { color: var(--ocre); }
+  .nav-cta {
+    margin-left: 36px; background: var(--ocre); color: white;
+    padding: 10px 22px; font-size: 13px; font-weight: 600; cursor: default;
+  }
+  .nav-lang { margin-left: 24px; font-size: 12px; color: var(--gris); letter-spacing: 0.05em; }
+
+  /* ─── Hero ─── */
+  .hero {
+    display: grid; grid-template-columns: 1fr 1fr; min-height: 88vh;
+  }
+  .hero-text {
+    padding: 80px 60px; display: flex; flex-direction: column; justify-content: center;
+  }
+  .hero-eyebrow {
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ocre); margin-bottom: 24px;
+  }
+  .hero-title {
+    font-family: 'Lora', serif; font-style: italic;
+    font-size: 52px; line-height: 1.15; margin-bottom: 32px; letter-spacing: -0.01em;
+  }
+  .hero-sub {
+    font-family: 'Lora', serif; font-size: 18px; line-height: 1.7;
+    color: var(--gris); max-width: 420px; margin-bottom: 48px;
+  }
+  .hero-actions { display: flex; align-items: center; gap: 24px; }
+  .btn-prim { background: var(--noir); color: var(--ivoire); padding: 14px 28px; font-weight: 600; font-size: 14px; cursor: default; }
+  .btn-sec { font-size: 14px; color: var(--ocre); text-decoration: underline; text-underline-offset: 3px; cursor: default; }
+
+  .hero-image {
+    background: #1A1714;
+    position: relative; overflow: hidden;
+    display: flex; align-items: flex-end; padding: 40px;
+  }
+  .hero-image-placeholder {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #1A1714 0%, #2D2420 40%, #1A2018 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-image-label {
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(248,245,240,0.2); font-family: 'IBM Plex Mono', monospace;
+  }
+  .hero-caption {
+    position: relative; z-index: 1; color: rgba(248,245,240,0.7);
+    font-size: 12px; font-family: 'IBM Plex Mono', monospace;
+    line-height: 1.6;
+  }
+
+  /* ─── Sections communes ─── */
+  .section { padding: 80px 60px; }
+  .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 48px; }
+  .section-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gris); }
+  .section-link { font-size: 13px; color: var(--ocre); text-decoration: underline; text-underline-offset: 3px; cursor: default; }
+  .section-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 36px; margin-bottom: 16px; }
+
+  /* ─── Manifeste ─── */
+  .manifeste { background: var(--noir); color: var(--ivoire); padding: 80px 120px; text-align: center; }
+  .manifeste-quote { font-family: 'Lora', serif; font-style: italic; font-size: 28px; line-height: 1.5; margin-bottom: 32px; max-width: 700px; margin-left: auto; margin-right: auto; }
+  .manifeste-author { font-size: 13px; color: var(--ocre); letter-spacing: 0.08em; margin-bottom: 32px; }
+  .btn-manifeste { border: 1px solid rgba(248,245,240,0.3); color: var(--ivoire); padding: 12px 28px; font-size: 13px; font-weight: 500; cursor: default; display: inline-block; }
+
+  /* ─── Shop ─── */
+  .shop-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; }
+  .shop-card { background: #1A1714; position: relative; cursor: default; overflow: hidden; }
+  .shop-card-img {
+    aspect-ratio: 3/4;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .shop-card-img-1 { background: linear-gradient(160deg, #1A2018 0%, #0D1A0F 100%); }
+  .shop-card-img-2 { background: linear-gradient(160deg, #1A1714 0%, #2D1A0A 100%); }
+  .shop-card-img-3 { background: linear-gradient(160deg, #0D1219 0%, #1A1D2A 100%); }
+  .photo-placeholder { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(248,245,240,0.15); font-family: 'IBM Plex Mono', monospace; }
+  .shop-card-info { padding: 16px; background: var(--ivoire); }
+  .shop-card-species { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .shop-card-artist { font-size: 11px; color: var(--gris); margin-bottom: 8px; }
+  .shop-card-price { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--ocre); }
+
+  /* ─── WildLens ─── */
+  .wildlens { background: var(--sable); }
+  .wildlens-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; }
+  .wl-card { background: var(--ivoire); }
+  .wl-card-img { height: 200px; display: flex; align-items: center; justify-content: center; }
+  .wl-card-img-1 { background: linear-gradient(160deg, #1A2018 0%, #2D3A2A 100%); }
+  .wl-card-img-2 { background: linear-gradient(160deg, #1A1D14 0%, #2A2D1A 100%); }
+  .wl-card-img-3 { background: linear-gradient(160deg, #0D1A14 0%, #1A2A20 100%); }
+  .wl-card-body { padding: 24px; }
+  .wl-tag { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--vert); font-weight: 600; margin-bottom: 10px; }
+  .wl-title { font-family: 'Lora', serif; font-weight: 600; font-size: 18px; line-height: 1.35; margin-bottom: 12px; }
+  .wl-excerpt { font-family: 'Lora', serif; font-size: 14px; line-height: 1.6; color: var(--gris); margin-bottom: 16px; }
+  .wl-meta { font-size: 11px; color: var(--gris); font-family: 'IBM Plex Mono', monospace; }
+
+  /* ─── L'Instant Lu CTA ─── */
+  .instantlu-block {
+    background: var(--noir); color: var(--ivoire);
+    display: grid; grid-template-columns: 1fr 1fr; min-height: 400px;
+  }
+  .il-text { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; }
+  .il-eyebrow { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ocre); margin-bottom: 20px; }
+  .il-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 40px; line-height: 1.15; margin-bottom: 20px; }
+  .il-sub { font-family: 'Lora', serif; font-size: 17px; line-height: 1.7; color: rgba(248,245,240,0.7); margin-bottom: 40px; max-width: 400px; }
+  .il-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .btn-ocre { background: var(--ocre); color: white; padding: 14px 28px; font-weight: 600; font-size: 14px; cursor: default; }
+  .btn-outline-white { border: 1px solid rgba(248,245,240,0.3); color: var(--ivoire); padding: 14px 24px; font-size: 14px; cursor: default; }
+  .il-price { font-size: 12px; color: rgba(248,245,240,0.4); margin-top: 12px; font-family: 'IBM Plex Mono', monospace; }
+
+  .il-sample { padding: 60px; display: flex; align-items: center; justify-content: center; }
+  .score-mini { background: rgba(248,245,240,0.05); border: 1px solid rgba(248,245,240,0.1); padding: 32px; width: 280px; }
+  .score-mini-header { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(248,245,240,0.4); margin-bottom: 20px; }
+  .score-mini-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .score-mini-label { font-size: 12px; color: rgba(248,245,240,0.6); width: 90px; }
+  .score-mini-bar-wrap { flex: 1; background: rgba(248,245,240,0.1); height: 4px; }
+  .score-mini-bar { height: 4px; background: var(--ocre); }
+  .score-mini-val { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--ocre); width: 32px; text-align: right; }
+  .score-mini-total { margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(248,245,240,0.1); display: flex; justify-content: space-between; align-items: baseline; }
+  .score-mini-total-label { font-size: 12px; color: rgba(248,245,240,0.5); }
+  .score-mini-total-val { font-family: 'IBM Plex Mono', monospace; font-size: 28px; color: var(--ocre); }
+
+  /* ─── Artistes ─── */
+  .artistes-strip { display: flex; gap: 2px; overflow: hidden; }
+  .artiste-card { flex: 1; background: var(--sable); padding: 40px 32px; }
+  .artiste-avatar { width: 60px; height: 60px; border-radius: 50%; background: var(--gris); margin-bottom: 16px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 600; color: var(--ivoire); }
+  .artiste-name { font-weight: 600; font-size: 16px; margin-bottom: 4px; }
+  .artiste-role { font-size: 12px; color: var(--gris); margin-bottom: 16px; }
+  .artiste-link { font-size: 13px; color: var(--ocre); text-decoration: underline; text-underline-offset: 3px; cursor: default; }
+
+  /* ─── Footer ─── */
+  footer {
+    background: var(--brun); color: var(--ivoire);
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+    padding: 60px; font-size: 13px;
+  }
+  .footer-brand-name { font-weight: 300; font-size: 24px; letter-spacing: 0.08em; margin-bottom: 12px; }
+  .footer-brand-name span { color: var(--ocre); }
+  .footer-slogan { font-family: 'Lora', serif; font-style: italic; font-size: 14px; color: rgba(248,245,240,0.5); margin-bottom: 20px; }
+  .footer-copy { font-size: 11px; color: rgba(248,245,240,0.3); font-family: 'IBM Plex Mono', monospace; }
+  .footer-col-title { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ocre); margin-bottom: 16px; font-weight: 600; }
+  .footer-links { display: flex; flex-direction: column; gap: 8px; color: rgba(248,245,240,0.6); }
+</style>
+</head>
+<body>
+
+<div class="wf-label">
+  WIREFRAME — arteon.be · Page d'accueil · 2026-05-02
+  &nbsp;|&nbsp;
+  <a href="wireframe-instantlu.html">→ Voir wireframe L'Instant Lu</a>
+</div>
+
+<!-- Navigation -->
+<nav>
+  <div class="logo">Arteon<span>·</span></div>
+  <div class="nav-links">
+    <a>Manifeste</a>
+    <a>Artistes</a>
+    <a>Shop</a>
+    <a>WildLens</a>
+  </div>
+  <div class="nav-cta">L'Instant Lu</div>
+  <div class="nav-lang">FR · EN · IT</div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Photographie naturaliste · arteon.be</div>
+    <h1 class="hero-title">L'instant figé,<br>la pensée en mouvement.</h1>
+    <p class="hero-sub">Tirages d'art naturalistes. Chaque photo accompagnée de sa déclaration éthique de prise de vue.</p>
+    <div class="hero-actions">
+      <div class="btn-prim">Voir les tirages</div>
+      <div class="btn-sec">Lire le manifeste</div>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="hero-image-placeholder">
+      <div class="hero-image-label">Photo signature JCH<br>pleine hauteur · sujet centré</div>
+    </div>
+    <div class="hero-caption">
+      Pygargue à queue blanche · Ardennes, BE<br>
+      Canon R5 · 600mm f/4 · 1/2000s · ISO 800
+    </div>
+  </div>
+</section>
+
+<!-- Manifeste -->
+<div class="manifeste">
+  <div class="manifeste-quote">"Nous ne regardons pas la nature. Nous en sommes."</div>
+  <div class="manifeste-author">JC Havaux · Zoologiste · Fondateur d'Arteon</div>
+  <div class="btn-manifeste">Lire le manifeste complet</div>
+</div>
+
+<!-- Shop featured -->
+<section class="section" style="padding-bottom:0;">
+  <div class="section-header">
+    <div>
+      <div class="section-label">Tirages disponibles</div>
+      <div class="section-title">Sélection du moment</div>
+    </div>
+    <div class="section-link">Voir tout le catalogue →</div>
+  </div>
+</section>
+<div class="shop-grid">
+  <div class="shop-card">
+    <div class="shop-card-img shop-card-img-1">
+      <div class="photo-placeholder">Rapace · vol · lumière rasante</div>
+    </div>
+    <div class="shop-card-info">
+      <div class="shop-card-species">Buse variable</div>
+      <div class="shop-card-artist">JC Havaux · Ardennes BE</div>
+      <div class="shop-card-price">À partir de €180</div>
+    </div>
+  </div>
+  <div class="shop-card">
+    <div class="shop-card-img shop-card-img-2">
+      <div class="photo-placeholder">Mammifère · portrait · aube</div>
+    </div>
+    <div class="shop-card-info">
+      <div class="shop-card-species">Renard roux</div>
+      <div class="shop-card-artist">JC Havaux · Condroz BE</div>
+      <div class="shop-card-price">À partir de €220</div>
+    </div>
+  </div>
+  <div class="shop-card">
+    <div class="shop-card-img shop-card-img-3">
+      <div class="photo-placeholder">Oiseau · comportement · eau</div>
+    </div>
+    <div class="shop-card-info">
+      <div class="shop-card-species">Martin-pêcheur</div>
+      <div class="shop-card-artist">JC Havaux · Meuse BE</div>
+      <div class="shop-card-price">À partir de €160</div>
+    </div>
+  </div>
+</div>
+<div style="padding: 24px 60px; background: var(--ivoire);">
+  <div style="font-size:12px; color:var(--gris); font-family:'IBM Plex Mono',monospace;">Impression WhiteWall · Expédition mondiale · Déclaration éthique incluse</div>
+</div>
+
+<!-- L'Instant Lu CTA -->
+<div class="instantlu-block">
+  <div class="il-text">
+    <div class="il-eyebrow">L'Instant Lu · by Arteon·</div>
+    <h2 class="il-title">Votre photo lue<br>par un expert IA.</h2>
+    <p class="il-sub">Rapport PDF professionnel · Preset Lightroom personnalisé · Analyse sur 5 axes · Livré en 30 secondes.</p>
+    <div class="il-actions">
+      <div class="btn-ocre">Analyser ma photo</div>
+      <div class="btn-outline-white">Voir un exemple</div>
+    </div>
+    <div class="il-price">1ère analyse gratuite · puis €1,90 / analyse</div>
+  </div>
+  <div class="il-sample">
+    <div class="score-mini">
+      <div class="score-mini-header">Extrait rapport · Bernache du Canada</div>
+      <div class="score-mini-row">
+        <div class="score-mini-label">Composition</div>
+        <div class="score-mini-bar-wrap"><div class="score-mini-bar" style="width:85%"></div></div>
+        <div class="score-mini-val">17/20</div>
+      </div>
+      <div class="score-mini-row">
+        <div class="score-mini-label">Exposition</div>
+        <div class="score-mini-bar-wrap"><div class="score-mini-bar" style="width:80%"></div></div>
+        <div class="score-mini-val">16/20</div>
+      </div>
+      <div class="score-mini-row">
+        <div class="score-mini-label">Netteté</div>
+        <div class="score-mini-bar-wrap"><div class="score-mini-bar" style="width:90%"></div></div>
+        <div class="score-mini-val">18/20</div>
+      </div>
+      <div class="score-mini-row">
+        <div class="score-mini-label">Technique</div>
+        <div class="score-mini-bar-wrap"><div class="score-mini-bar" style="width:75%"></div></div>
+        <div class="score-mini-val">15/20</div>
+      </div>
+      <div class="score-mini-row">
+        <div class="score-mini-label">Impact</div>
+        <div class="score-mini-bar-wrap"><div class="score-mini-bar" style="width:80%"></div></div>
+        <div class="score-mini-val">16/20</div>
+      </div>
+      <div class="score-mini-total">
+        <div style="font-size:11px; color:rgba(248,245,240,0.4);">EXCELLENT</div>
+        <div class="score-mini-total-val">82/100</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WildLens -->
+<section class="section wildlens">
+  <div class="section-header">
+    <div>
+      <div class="section-label" style="color:var(--vert);">WildLens · Journal naturaliste</div>
+      <div class="section-title">Dernières parutions</div>
+    </div>
+    <div class="section-link">wildlens.arteon.be →</div>
+  </div>
+  <div class="wildlens-grid">
+    <div class="wl-card">
+      <div class="wl-card-img wl-card-img-1"><div class="photo-placeholder" style="color:rgba(248,245,240,0.15)">photo article</div></div>
+      <div class="wl-card-body">
+        <div class="wl-tag">Comportement</div>
+        <div class="wl-title">Le vol en V des oies cendrées : thermique ou langage ?</div>
+        <div class="wl-excerpt">Depuis une digue hollandaise, j'ai suivi trois formations pendant deux heures. Ce que j'ai vu remet en question l'explication aérodynamique classique.</div>
+        <div class="wl-meta">2026-04-28 · 6 min</div>
+      </div>
+    </div>
+    <div class="wl-card">
+      <div class="wl-card-img wl-card-img-2"><div class="photo-placeholder" style="color:rgba(248,245,240,0.15)">photo article</div></div>
+      <div class="wl-card-body">
+        <div class="wl-tag">Technique</div>
+        <div class="wl-title">Exposer pour les plumes foncées sans cramer le ciel blanc</div>
+        <div class="wl-excerpt">Le problème du pygargue : plumage brun sombre, tête blanche éclatante. Trois stratégies testées sur le terrain, résultats comparés.</div>
+        <div class="wl-meta">2026-04-21 · 8 min</div>
+      </div>
+    </div>
+    <div class="wl-card">
+      <div class="wl-card-img wl-card-img-3"><div class="photo-placeholder" style="color:rgba(248,245,240,0.15)">photo article</div></div>
+      <div class="wl-card-body">
+        <div class="wl-tag">Éthique</div>
+        <div class="wl-title">Peut-on photographier un nid sans le déranger ?</div>
+        <div class="wl-excerpt">La question revient chaque printemps. Ce n'est pas une question de règlement — c'est une question de lecture du comportement de l'oiseau.</div>
+        <div class="wl-meta">2026-04-14 · 5 min</div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center; margin-top:40px;">
+    <div style="display:inline-flex; gap:20px; align-items:center;">
+      <div class="btn-prim" style="background:var(--vert);">Lire WildLens</div>
+      <div class="btn-sec" style="color:var(--vert);">S'abonner à la newsletter</div>
+    </div>
+  </div>
+</section>
+
+<!-- Artistes -->
+<section class="section">
+  <div class="section-header">
+    <div>
+      <div class="section-label">Artistes affiliés</div>
+      <div class="section-title">Les photographes ARTEON</div>
+    </div>
+    <div class="section-link">Rejoindre ARTEON →</div>
+  </div>
+  <div class="artistes-strip">
+    <div class="artiste-card">
+      <div class="artiste-avatar">JH</div>
+      <div class="artiste-name">JC Havaux</div>
+      <div class="artiste-role">Zoologiste · Fondateur · Belgique</div>
+      <div class="artiste-link">Voir ses œuvres →</div>
+    </div>
+    <div class="artiste-card" style="background:var(--ivoire); border: 1px solid var(--sable);">
+      <div class="artiste-avatar" style="background: var(--sable); color: var(--gris); font-size:24px;">+</div>
+      <div class="artiste-name" style="color:var(--gris);">Votre travail ici</div>
+      <div class="artiste-role" style="color:var(--sable);">Photographe naturaliste affilié</div>
+      <div class="artiste-link">Candidater à l'affiliation →</div>
+    </div>
+    <div class="artiste-card" style="background:var(--ivoire); border: 1px solid var(--sable); opacity:0.4;"></div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div>
+    <div class="footer-brand-name">Arteon<span>·</span></div>
+    <div class="footer-slogan">L'instant figé, la pensée en mouvement.</div>
+    <div class="footer-copy">arteon.be · © 2026 JC Havaux · Belgique</div>
+  </div>
+  <div>
+    <div class="footer-col-title">Navigation</div>
+    <div class="footer-links">
+      <span>Manifeste</span>
+      <span>Artistes</span>
+      <span>Shop</span>
+      <span>WildLens</span>
+      <span style="color:var(--ocre);">L'Instant Lu</span>
+      <span>Affiliation</span>
+    </div>
+  </div>
+  <div>
+    <div class="footer-col-title">L'Instant Lu</div>
+    <div class="footer-links">
+      <span>Comment ça marche</span>
+      <span>Exemples de rapports</span>
+      <span>Tarifs</span>
+      <span>Pour les clubs photo</span>
+      <span>Badge éthique</span>
+    </div>
+  </div>
+  <div>
+    <div class="footer-col-title">Legal</div>
+    <div class="footer-links">
+      <span>CGV</span>
+      <span>Mentions légales</span>
+      <span>RGPD</span>
+      <span>Éthique prise de vue</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

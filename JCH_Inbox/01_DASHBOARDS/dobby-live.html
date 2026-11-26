@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dobby Live · Realtime 2</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%232A2420'/%3E%3Ctext x='8' y='11' font-size='7' text-anchor='middle' fill='%23C17F3A' font-family='Arial'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/pka-theme.css">
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .live-shell {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 36px 48px 88px;
+  }
+
+  .live-top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 22px;
+    margin-bottom: 24px;
+  }
+
+  .back-link {
+    color: var(--pka-muted);
+    font-size: 12px;
+    text-decoration: none;
+  }
+
+  h1 {
+    margin: 8px 0 6px;
+    font-size: 34px;
+    letter-spacing: 0;
+  }
+
+  .lead {
+    max-width: 690px;
+    color: var(--pka-muted);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .status {
+    min-width: 170px;
+    border: 1px solid var(--pka-line);
+    background: white;
+    padding: 12px 14px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    color: var(--pka-muted);
+  }
+
+  .status strong {
+    display: block;
+    color: var(--pka-text);
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 15px;
+    margin-bottom: 3px;
+  }
+
+  .live-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.78fr) minmax(360px, 1.22fr);
+    gap: 16px;
+  }
+
+  .panel {
+    background: white;
+    border: 1px solid var(--pka-line);
+    box-shadow: var(--pka-shadow);
+  }
+
+  .controls {
+    padding: 22px;
+  }
+
+  .field {
+    margin-bottom: 16px;
+  }
+
+  label {
+    display: block;
+    color: var(--pka-muted);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    margin-bottom: 7px;
+    text-transform: uppercase;
+  }
+
+  select,
+  input {
+    width: 100%;
+    min-height: 42px;
+    border: 1px solid var(--pka-line);
+    background: #fbfaf8;
+    color: var(--pka-text);
+    font: inherit;
+    padding: 0 12px;
+  }
+
+  .button-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  button {
+    min-height: 44px;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+  }
+
+  .primary {
+    background: var(--pka-ocre);
+    color: white;
+  }
+
+  .secondary {
+    background: var(--pka-brun);
+    color: white;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+    opacity: 0.48;
+  }
+
+  .tool-list {
+    border-top: 1px solid var(--pka-line);
+    padding: 18px 22px 22px;
+  }
+
+  .tool-list h2,
+  .transcript h2 {
+    margin: 0 0 12px;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .tool {
+    border-left: 3px solid var(--pka-sable);
+    padding: 9px 10px;
+    margin-bottom: 8px;
+    background: #fbfaf8;
+    font-size: 12px;
+    color: var(--pka-muted);
+  }
+
+  .tool strong {
+    display: block;
+    color: var(--pka-text);
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+
+  .transcript {
+    min-height: 580px;
+    padding: 22px;
+  }
+
+  .log {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 512px;
+    overflow: auto;
+    padding-right: 4px;
+  }
+
+  .entry {
+    border-left: 3px solid var(--pka-sable);
+    background: #fbfaf8;
+    padding: 10px 12px;
+    font-size: 13px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+  }
+
+  .entry.user {
+    border-left-color: var(--pka-ardoise);
+  }
+
+  .entry.assistant {
+    border-left-color: var(--pka-ocre);
+  }
+
+  .entry.tool {
+    border-left-color: var(--pka-vert);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+  }
+
+  .entry.error {
+    border-left-color: var(--pka-rouge);
+  }
+
+  .hint {
+    color: var(--pka-muted);
+    font-size: 12px;
+    line-height: 1.5;
+    margin-top: 16px;
+  }
+
+  @media (max-width: 840px) {
+    .live-shell {
+      padding-left: 22px;
+      padding-right: 22px;
+    }
+
+    .live-top,
+    .live-grid {
+      display: block;
+    }
+
+    .status {
+      margin-top: 16px;
+    }
+
+    .controls {
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: 28px;
+    }
+  }
+</style>
+</head>
+<body>
+<header class="pka-header">
+  <div>
+    <div class="pka-brand">PKA · JCH<span>·</span></div>
+    <div class="pka-subtitle">Dobby Live · Realtime 2</div>
+  </div>
+  <div class="pka-date" id="today"></div>
+</header>
+
+<main class="live-shell">
+  <div class="live-top">
+    <div>
+      <a class="back-link" href="hub.html">Retour au hub</a>
+      <h1>Dobby Live</h1>
+      <p class="lead">Prototype vocal transversal : Realtime 2 assure la conversation, puis les tools locaux lisent ou ecrivent dans le PKA sans exposer la cle OpenAI au navigateur.</p>
+    </div>
+    <div class="status">
+      <strong id="connection-label">Hors ligne</strong>
+      <span id="connection-detail">Serveur local pret</span>
+    </div>
+  </div>
+
+  <div class="live-grid">
+    <section class="panel">
+      <div class="controls">
+        <div class="field">
+          <label for="voice">Voix</label>
+          <select id="voice">
+            <option value="marin">marin</option>
+            <option value="cedar">cedar</option>
+            <option value="coral">coral</option>
+            <option value="verse">verse</option>
+            <option value="alloy">alloy</option>
+            <option value="ash">ash</option>
+            <option value="ballad">ballad</option>
+            <option value="echo">echo</option>
+            <option value="sage">sage</option>
+            <option value="shimmer">shimmer</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="target">Modele cible</label>
+          <select id="target">
+            <option>Auto</option>
+            <option>Claude</option>
+            <option>Gemini</option>
+            <option>Codex</option>
+            <option>OpenAI</option>
+          </select>
+        </div>
+
+        <div class="button-row">
+          <button class="primary" id="connect" type="button">Parler</button>
+          <button class="secondary" id="disconnect" type="button" disabled>Stop</button>
+        </div>
+
+        <p class="hint">Commandes de test : statut PKA, fichiers inbox, chercher ARTEON dans le wiki, ajouter une note daily, sauver un brief dans TEAM_Inbox.</p>
+      </div>
+
+      <div class="tool-list">
+        <h2>Tools MVP</h2>
+        <div class="tool"><strong>pka_status</strong>Etat global du systeme local.</div>
+        <div class="tool"><strong>read_inbox</strong>Liste les fichiers en attente.</div>
+        <div class="tool"><strong>search_wiki</strong>Recherche Markdown dans le wiki.</div>
+        <div class="tool"><strong>create_daily_note</strong>Ajout non destructif a la daily note.</div>
+        <div class="tool"><strong>save_team_inbox</strong>Creation d'un livrable Markdown.</div>
+        <div class="tool"><strong>prepare_model_brief</strong>Brief pour Claude, Gemini, Codex ou OpenAI.</div>
+      </div>
+    </section>
+
+    <section class="panel transcript">
+      <h2>Transcript & evenements</h2>
+      <div class="log" id="log">
+        <div class="entry">Clique sur Parler, autorise le micro, puis parle a Dobby.</div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="pka-footer">
+  <div>Realtime 2 · WebRTC</div>
+  <div id="model-label">modele : chargement</div>
+</footer>
+
+<audio id="remote-audio" autoplay></audio>
+
+<script>
+  const today = new Date();
+  document.getElementById('today').textContent = today.toLocaleDateString('fr-BE', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+
+  const els = {
+    connect: document.getElementById('connect'),
+    disconnect: document.getElementById('disconnect'),
+    voice: document.getElementById('voice'),
+    target: document.getElementById('target'),
+    log: document.getElementById('log'),
+    label: document.getElementById('connection-label'),
+    detail: document.getElementById('connection-detail'),
+    model: document.getElementById('model-label'),
+    audio: document.getElementById('remote-audio')
+  };
+
+  let pc;
+  let dc;
+  let localStream;
+  let assistantBuffer = '';
+  const handledCalls = new Set();
+
+  function setStatus(label, detail) {
+    els.label.textContent = label;
+    els.detail.textContent = detail;
+  }
+
+  function appendLog(text, type = '') {
+    const entry = document.createElement('div');
+    entry.className = `entry ${type}`.trim();
+    entry.textContent = text;
+    els.log.appendChild(entry);
+    els.log.scrollTop = els.log.scrollHeight;
+  }
+
+  async function loadConfig() {
+    try {
+      const response = await fetch('/api/live/config');
+      const config = await response.json();
+      els.model.textContent = `modele : ${config.model}`;
+      if (config.defaultVoice) {
+        els.voice.value = config.defaultVoice;
+      }
+    } catch {
+      els.model.textContent = 'modele : indisponible';
+    }
+  }
+
+  function updateButtons(connected) {
+    els.connect.disabled = connected;
+    els.disconnect.disabled = !connected;
+    els.voice.disabled = connected;
+    els.target.disabled = connected;
+  }
+
+  function sendEvent(event) {
+    if (dc && dc.readyState === 'open') {
+      dc.send(JSON.stringify(event));
+    }
+  }
+
+  async function handleToolCall(name, callId, argumentText) {
+    if (!name || !callId || handledCalls.has(callId)) {
+      return;
+    }
+    handledCalls.add(callId);
+
+    let args = {};
+    try {
+      args = argumentText ? JSON.parse(argumentText) : {};
+    } catch {
+      args = {};
+    }
+
+    appendLog(`tool -> ${name}\n${JSON.stringify(args, null, 2)}`, 'tool');
+    const response = await fetch('/api/live/tool', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-PKA-Dashboard': '1'
+      },
+      body: JSON.stringify({ name, arguments: args })
+    });
+    const result = await response.json();
+    appendLog(`tool <- ${name}\n${JSON.stringify(result, null, 2)}`, 'tool');
+
+    sendEvent({
+      type: 'conversation.item.create',
+      item: {
+        type: 'function_call_output',
+        call_id: callId,
+        output: JSON.stringify(result)
+      }
+    });
+    sendEvent({ type: 'response.create' });
+  }
+
+  function handleRealtimeEvent(event) {
+    if (event.type === 'conversation.item.input_audio_transcription.completed' && event.transcript) {
+      appendLog(event.transcript, 'user');
+      return;
+    }
+
+    if (event.type === 'response.audio_transcript.delta' && event.delta) {
+      assistantBuffer += event.delta;
+      return;
+    }
+
+    if (event.type === 'response.audio_transcript.done') {
+      const transcript = event.transcript || assistantBuffer;
+      if (transcript.trim()) {
+        appendLog(transcript.trim(), 'assistant');
+      }
+      assistantBuffer = '';
+      return;
+    }
+
+    if (event.type === 'response.function_call_arguments.done') {
+      handleToolCall(event.name, event.call_id, event.arguments);
+      return;
+    }
+
+    const item = event.item;
+    if (event.type === 'response.output_item.done' && item && item.type === 'function_call') {
+      handleToolCall(item.name, item.call_id, item.arguments);
+    }
+  }
+
+  async function connect() {
+    setStatus('Connexion', 'Autorisation micro');
+    updateButtons(true);
+    handledCalls.clear();
+
+    try {
+      pc = new RTCPeerConnection();
+      dc = pc.createDataChannel('oai-events');
+
+      pc.ontrack = (event) => {
+        els.audio.srcObject = event.streams[0];
+      };
+
+      pc.onconnectionstatechange = () => {
+        setStatus(pc.connectionState, 'WebRTC');
+        if (['failed', 'closed', 'disconnected'].includes(pc.connectionState)) {
+          updateButtons(false);
+        }
+      };
+
+      dc.onopen = () => {
+        appendLog('Session ouverte. Tu peux parler.', 'assistant');
+      };
+      dc.onmessage = (message) => {
+        try {
+          handleRealtimeEvent(JSON.parse(message.data));
+        } catch {
+          appendLog(String(message.data), 'tool');
+        }
+      };
+
+      localStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      localStream.getAudioTracks().forEach((track) => pc.addTrack(track, localStream));
+
+      const offer = await pc.createOffer();
+      await pc.setLocalDescription(offer);
+
+      const params = new URLSearchParams({
+        voice: els.voice.value,
+        target: els.target.value
+      });
+      const response = await fetch(`/api/realtime/call?${params}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/sdp' },
+        body: offer.sdp
+      });
+
+      const answerText = await response.text();
+      if (!response.ok) {
+        throw new Error(answerText || 'OpenAI Realtime indisponible');
+      }
+
+      await pc.setRemoteDescription({ type: 'answer', sdp: answerText });
+      setStatus('Connecte', `${els.voice.value} · ${els.target.value}`);
+    } catch (error) {
+      appendLog(error.message, 'error');
+      setStatus('Erreur', 'Voir transcript');
+      disconnect();
+    }
+  }
+
+  function disconnect() {
+    if (localStream) {
+      localStream.getTracks().forEach((track) => track.stop());
+      localStream = null;
+    }
+    if (dc) {
+      dc.close();
+      dc = null;
+    }
+    if (pc) {
+      pc.close();
+      pc = null;
+    }
+    els.audio.srcObject = null;
+    updateButtons(false);
+    setStatus('Hors ligne', 'Serveur local pret');
+  }
+
+  els.connect.addEventListener('click', connect);
+  els.disconnect.addEventListener('click', disconnect);
+  loadConfig();
+</script>
+</body>
+</html>

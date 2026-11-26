@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.dobby.pka-assiette-bridge</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Library/Frameworks/Python.framework/Versions/3.13/Resources/Python.app/Contents/MacOS/Python</string>
+        <string>-u</string>
+        <string>/Users/jchavauxm5/PKA_JCH/scripts/pka_mqtt_discovery_bridge.py</string>
+        <string>--config</string>
+        <string>/Users/jchavauxm5/PKA_JCH/JCH_Inbox/03_PROJECTS/11_IOT/iot-van/specs/mapping-lupo-assiette-m5-test.json</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/Users/jchavauxm5/PKA_JCH/_local/logs/pka-assiette-bridge.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/jchavauxm5/PKA_JCH/_local/logs/pka-assiette-bridge.err</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+    </dict>
+</dict>
+</plist>

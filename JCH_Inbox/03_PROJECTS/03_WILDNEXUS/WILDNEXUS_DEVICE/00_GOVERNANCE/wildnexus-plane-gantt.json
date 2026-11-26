@@ -1,0 +1,16 @@
+{
+  "planning_status": "frozen",
+  "updated": "2026-11-05",
+  "note": "Instantané de dépendances pour une reprise non planifiée. Les anciennes dates et états ont été retirés ; ce fichier ne décrit pas l'état actuel de Plane et ne vaut pas autorisation de synchronisation.",
+  "dates": {},
+  "dependencies": [
+    {"from": "M-02 Prototype banc fonctionnel", "type": "blocked_by", "to": "M-01 Architecture gelée"},
+    {"from": "M-03 EVT terrain validé", "type": "blocked_by", "to": "M-02 Prototype banc fonctionnel"},
+    {"from": "M-04 Open source publié", "type": "blocked_by", "to": "M-03 EVT terrain validé"},
+    {"from": "EPIC: WP02 - Hardware nœud", "type": "blocked_by", "to": "M-01 Architecture gelée"},
+    {"from": "EPIC: WP03 - Énergie & mesure", "type": "blocked_by", "to": "M-01 Architecture gelée"},
+    {"from": "EPIC: WP04 - Firmware", "type": "blocked_by", "to": "M-01 Architecture gelée"},
+    {"from": "EPIC: WP05 - Connectivité (LoRa)", "type": "blocked_by", "to": "M-01 Architecture gelée"},
+    {"from": "EPIC: WP06 - Boîtier & terrain", "type": "blocked_by", "to": "M-02 Prototype banc fonctionnel"}
+  ]
+}

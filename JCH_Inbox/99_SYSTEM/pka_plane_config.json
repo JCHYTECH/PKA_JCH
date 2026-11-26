@@ -1,0 +1,41 @@
+{
+  "workspace_slug": "pka-jch",
+  "api_base": "http://127.0.0.1:8088/api/v1",
+  "api_token_env": "PKA_PLANE_API_TOKEN",
+  "status_map": {
+    "Backlog": "A qualifier",
+    "Todo": "Pret",
+    "In Progress": "En cours",
+    "Done": "Termine",
+    "Cancelled": "Archive"
+  },
+  "projects": {
+    "01_AI_IT_TOOLS": {
+      "plane_project_id": "7124a48d-8cc0-41cc-b035-87192f2b6f92"
+    },
+    "02_ARTEON": {
+      "plane_project_id": "4e2dc77c-ce1c-4d4e-bbc1-bb63894d145a"
+    },
+    "03_WILDNEXUS": {
+      "plane_project_id": "8a3ac90c-605e-48c4-a315-833c329e92e7"
+    },
+    "05_PHOTO_AI_JURY": {
+      "plane_project_id": "e3e5dc70-0781-4f7a-9495-36278d1ee3cd"
+    },
+    "06_PHOTO_NATURE": {
+      "plane_project_id": "80d1dded-b5b2-4485-8623-5390320d02c6"
+    },
+    "07_TRAVELS": {
+      "plane_project_id": "446e58cd-0c6f-4b74-8e14-fd1026eb47f4"
+    },
+    "08_VETALYX": {
+      "plane_project_id": "072aa0a3-d4c8-4b30-b595-685ee120b095"
+    },
+    "11_IOT": {
+      "plane_project_id": "1966e4dc-22ff-4fa3-8162-fabbeb860f8c"
+    },
+    "10_FUTURE_INVEST": {
+      "plane_project_id": "1f725dd2-d84e-4df3-8135-ceee0dc5b25c"
+    }
+  }
+}

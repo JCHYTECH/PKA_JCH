@@ -1,0 +1,262 @@
+#!/usr/bin/env python3
+"""
+pka-transcript — Transcrit une vidéo YouTube en transcript .md horodaté (100% local).
+
+Remplace l'ancienne méthode manuelle (copier l'URL → site web de transcript →
+télécharger le .txt → transfert en inbox). Une seule commande suffit.
+
+Stratégie (automatique) :
+  1. Sous-titres YouTube si disponibles (gratuit, quasi instantané, aucune IA).
+  2. Sinon : téléchargement de l'audio (yt-dlp) puis transcription locale
+     avec faster-whisper (CTranslate2, CPU int8 — pas de PyTorch).
+
+Rien n'est envoyé à un service de transcription tiers. Seul yt-dlp parle à YouTube.
+
+Usage :
+  pka-transcript <URL>
+  pka-transcript <URL> --model medium      # plus précis (télécharge ~1,5 Go au 1er run)
+  pka-transcript <URL> --model large-v3    # qualité max (lent)
+  pka-transcript <URL> --lang en           # langue cible
+  pka-transcript <URL> --out TEAM_Inbox    # destination (défaut : 00_INBOX)
+  pka-transcript <URL> --whisper-only      # ignorer les sous-titres, forcer Whisper
+  pka-transcript <URL> --subs-only         # sous-titres uniquement, pas de Whisper
+  pka-transcript <URL> --keep-audio        # conserver l'audio téléchargé
+
+Sortie : <out>/YYYY-MM-DD_transcript-<slug>.md  (entête métadonnées + segments [MM:SS])
+"""
+from __future__ import annotations
+
+import argparse
+import datetime as dt
+import os
+import re
+import shutil
+import subprocess
+import sys
+import unicodedata
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+DEFAULT_OUT = ROOT / "JCH_Inbox" / "00_INBOX"
+TMP = ROOT / "tmp" / "pka-transcript" / f"run-{os.getpid()}"
+
+MODELS = ("tiny", "base", "small", "medium", "large-v3")
+
+
+def run(cmd: list[str], **kw) -> subprocess.CompletedProcess:
+    return subprocess.run(cmd, capture_output=True, text=True, **kw)
+
+
+def ytdlp_ok() -> bool:
+    return shutil.which("yt-dlp") is not None
+
+
+def fetch_meta(url: str) -> dict:
+    """Récupère titre / durée / chaîne / date via yt-dlp (JSON)."""
+    r = run(["yt-dlp", "--skip-download", "--no-warnings", "--dump-single-json", url])
+    if r.returncode != 0:
+        raise SystemExit(f"yt-dlp n'a pas pu lire la vidéo :\n{r.stderr.strip()[:500]}")
+    import json
+    d = json.loads(r.stdout)
+    dur = d.get("duration") or 0
+    return {
+        "title": d.get("title", "sans-titre"),
+        "duration": f"{int(dur)//60:02d}:{int(dur)%60:02d}",
+        "channel": d.get("channel") or d.get("uploader") or "",
+        "date": (d.get("upload_date") or "").strip(),
+    }
+
+
+def slugify(text: str, maxlen: int = 48) -> str:
+    s = unicodedata.normalize("NFKD", text)
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    s = re.sub(r"[^a-zA-Z0-9]+", "-", s).strip("-").lower()
+    return s[:maxlen].strip("-") or "video"
+
+
+def fmt_ts(seconds: float) -> str:
+    s = int(seconds)
+    return f"{s // 60:02d}:{s % 60:02d}"
+
+
+# --------------------------------------------------------------------------- #
+# Sous-titres
+# --------------------------------------------------------------------------- #
+def vtt_to_segments(vtt: str) -> list[tuple[float, str]]:
+    """Parse un .vtt → [(start_seconds, text)] en fusionnant les lignes d'un bloc."""
+    segs: list[tuple[float, str]] = []
+    lines = vtt.splitlines()
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        m = re.match(r"(\d{1,2}):(\d{2}):(\d{2})[.,](\d{3})\s*-->", line)
+        if m:
+            h, mi, s, ms = int(m.group(1)), int(m.group(2)), int(m.group(3)), int(m.group(4))
+            start = h * 3600 + mi * 60 + s + ms / 1000
+            text_lines = []
+            i += 1
+            while i < len(lines) and lines[i].strip() and "-->" not in lines[i]:
+                text_lines.append(lines[i].strip())
+                i += 1
+            txt = " ".join(t for t in text_lines if t)
+            txt = re.sub(r"<[^>]*>", "", txt)
+            txt = re.sub(r"\s+", " ", txt).strip()
+            if txt:
+                segs.append((start, txt))
+            continue
+        i += 1
+    return segs
+
+
+def try_subs(url: str, tmp: Path, lang: str = "fr") -> list[tuple[float, str]] | None:
+    """Tente de récupérer sous-titres manuels ou auto. Retourne None si absent.
+
+    `lang` cible une seule langue (évite le doublon fr+en intercalé).
+    "auto" = fr.*,en.* (comportement d'origine, uniquement en repli).
+    """
+    out_tpl = str(tmp / "subs")
+    sublangs = f"{lang}.*" if lang and lang != "auto" else "fr.*,en.*"
+    r = run([
+        "yt-dlp", "--skip-download", "--write-auto-subs", "--write-subs",
+        "--sub-format", "vtt", "--sub-langs", sublangs,
+        "--no-warnings", "-o", out_tpl, url,
+    ])
+    vtts = sorted(tmp.glob("*.vtt"))
+    if not vtts:
+        return None
+    segs: list[tuple[float, str]] = []
+    for v in vtts:
+        try:
+            segs.extend(vtt_to_segments(v.read_text(encoding="utf-8", errors="ignore")))
+        except Exception:
+            continue
+    segs.sort(key=lambda x: x[0])
+    # déduplique les cues identiques (pistes manuelles + auto souvent doublées)
+    dedup: list[tuple[float, str]] = []
+    for s, t in segs:
+        if not dedup or dedup[-1][1] != t:
+            dedup.append((s, t))
+    return dedup or None
+
+
+# --------------------------------------------------------------------------- #
+# Whisper
+# --------------------------------------------------------------------------- #
+def transcribe_whisper(audio: Path, model_name: str, lang: str | None) -> list[tuple[float, str]]:
+    from faster_whisper import WhisperModel
+    model = WhisperModel(model_name, device="cpu", compute_type="int8")
+    kwargs = {"beam_size": 5, "condition_on_previous_text": True}
+    if lang and lang != "auto":
+        kwargs["language"] = lang
+    try:
+        kwargs["vad_filter"] = True  # anti-hallucination sur les silences
+    except Exception:
+        pass
+    segments, _info = model.transcribe(str(audio), **kwargs)
+    return [(seg.start, seg.text.strip()) for seg in segments if seg.text.strip()]
+
+
+def download_audio(url: str, tmp: Path) -> Path:
+    r = run([
+        "yt-dlp", "-f", "bestaudio", "--no-warnings", "--no-update",
+        "-o", str(tmp / "audio.%(ext)s"), url,
+    ])
+    if r.returncode != 0:
+        raise SystemExit(f"Échec du téléchargement audio :\n{r.stderr.strip()[-500:]}")
+    audios = sorted(tmp.glob("audio.*"))
+    if not audios:
+        raise SystemExit("Audio introuvable après téléchargement.")
+    return audios[0]
+
+
+# --------------------------------------------------------------------------- #
+# Assemblage
+# --------------------------------------------------------------------------- #
+def build_md(meta: dict, segments: list[tuple[float, str]], engine: str, url: str) -> str:
+    d = meta["date"]
+    d = f"{d[:4]}-{d[4:6]}-{d[6:8]}" if len(d) == 8 else dt.date.today().isoformat()
+    lines = [
+        f"# Transcript — « {meta['title']} »",
+        "",
+        f"- **Source** : {meta['channel'] or 'YouTube'}",
+        f"- **URL** : {url}",
+        f"- **Durée** : {meta['duration']}",
+        f"- **Date** : {d}",
+        f"- **Moteur** : {engine}",
+        f"- **Segments** : {len(segments)}",
+        "",
+        "---",
+        "",
+    ]
+    for start, txt in segments:
+        lines.append(f"[{fmt_ts(start)}] {txt}")
+    return "\n".join(lines) + "\n"
+
+
+def main() -> int:
+    p = argparse.ArgumentParser(description="Transcrire une vidéo YouTube en .md local")
+    p.add_argument("url", help="URL YouTube (https://www.youtube.com/watch?v=...)")
+    p.add_argument("--model", choices=MODELS, default="small",
+                   help="Modèle Whisper (défaut : small ; medium = plus précis)")
+    p.add_argument("--lang", default="fr", help="Langue (fr, en, ... ; 'auto' = détection)")
+    p.add_argument("--out", default=str(DEFAULT_OUT), help="Dossier de sortie (défaut : 00_INBOX)")
+    p.add_argument("--whisper-only", action="store_true", help="Ignorer les sous-titres")
+    p.add_argument("--subs-only", action="store_true", help="Sous-titres uniquement (pas de Whisper)")
+    p.add_argument("--keep-audio", action="store_true", help="Conserver l'audio téléchargé")
+    args = p.parse_args()
+
+    if not ytdlp_ok():
+        raise SystemExit("yt-dlp absent. Installer : pip install -U yt-dlp")
+
+    out = Path(args.out).expanduser()
+    if not out.is_absolute():
+        out = ROOT / out
+    out.mkdir(parents=True, exist_ok=True)
+    TMP.mkdir(parents=True, exist_ok=True)
+
+    # Nettoyer les résidus d'un run précédent
+    for f in TMP.iterdir():
+        if f.is_file():
+            f.unlink()
+
+    print("→ lecture des métadonnées…", file=sys.stderr)
+    meta = fetch_meta(args.url)
+    print(f"  {meta['title']} | {meta['duration']} | {meta['channel']}", file=sys.stderr)
+
+    segments: list[tuple[float, str]] | None = None
+    engine = ""
+
+    # 1) Sous-titres
+    if not args.whisper_only:
+        print("→ recherche de sous-titres YouTube…", file=sys.stderr)
+        segments = try_subs(args.url, TMP, args.lang)
+        if segments:
+            engine = "sous-titres YouTube"
+
+    # 2) Whisper (fallback ou forcé)
+    if segments is None:
+        if args.subs_only:
+            raise SystemExit("Aucun sous-titre trouvé et --subs-only actif. Rien à faire.")
+        print(f"→ pas de sous-titres, transcription Whisper ({args.model}, cpu/int8)…", file=sys.stderr)
+        audio = download_audio(args.url, TMP)
+        segments = transcribe_whisper(audio, args.model, args.lang)
+        engine = f"Whisper local ({args.model}, faster-whisper)"
+        if not args.keep_audio:
+            audio.unlink(missing_ok=True)
+
+    if not segments:
+        raise SystemExit("Aucun segment produit — échec.")
+
+    md = build_md(meta, segments, engine, args.url)
+    slug = slugify(meta["title"])
+    d = meta["date"]
+    d = f"{d[:4]}-{d[4:6]}-{d[6:8]}" if len(d) == 8 else dt.date.today().isoformat()
+    dest = out / f"{d}_transcript-{slug}.md"
+    dest.write_text(md, encoding="utf-8")
+
+    print(f"\n✔ {len(segments)} segments → {dest.relative_to(ROOT)}", file=sys.stderr)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

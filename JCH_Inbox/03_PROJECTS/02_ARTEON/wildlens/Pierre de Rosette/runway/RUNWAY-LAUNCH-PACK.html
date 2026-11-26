@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Runway Launch Pack — WildLens Pierre de Rosette</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f0eb; color: #2b2b2b; padding: 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; color: #3D5A3E; margin-bottom: .3rem; }
+  .subtitle { color: #6b5e4a; font-size: 1rem; margin-bottom: 1.5rem; }
+  .clip { background: #fff; border-radius: 12px; padding: 1.2rem 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+  .clip h2 { font-size: 1.2rem; margin-bottom: .3rem; }
+  .clip .scene { color: #8a7b6a; font-size: .9rem; }
+  .prompt { background: #3D5A3E; color: #f0ebe0; padding: .8rem 1rem; border-radius: 8px; font-family: 'Courier New', monospace; font-size: .85rem; line-height: 1.5; margin: .5rem 0; white-space: pre-wrap; word-break: break-word; }
+  .prompt-label { color: #3D5A3E; font-weight: 600; font-size: .85rem; margin: .5rem 0 .2rem 0; }
+  .params { display: grid; grid-template-columns: 1fr 1fr; gap: .3rem; margin: .5rem 0; font-size: .85rem; }
+  .params span { color: #5a4a3a; }
+  .params strong { color: #2b2b2b; }
+  .step { background: #e8e0d6; border-left: 4px solid #3D5A3E; padding: .6rem 1rem; border-radius: 6px; margin: .5rem 0; font-size: .9rem; }
+  button.copy { background: #3D5A3E; color: #fff; border: none; padding: .4rem 1rem; border-radius: 6px; cursor: pointer; font-size: .8rem; margin: .5rem 0; }
+  button.copy:hover { background: #2d4a2e; }
+  .note { background: #fff3e0; border-left: 4px solid #d4a34e; padding: .5rem 1rem; border-radius: 6px; margin: .5rem 0; font-size: .9rem; }
+  .badge { display: inline-block; background: #3D5A3E; color: #fff; padding: .15rem .6rem; border-radius: 12px; font-size: .75rem; margin-right: .3rem; }
+  hr { border: none; border-top: 1px solid #d0c8b8; margin: 1rem 0; }
+  .ref-img { color: #6b5e4a; font-size: .85rem; font-style: italic; margin: .3rem 0; }
+  @media (max-width: 640px) { body { padding: 1rem; } .params { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🎬 Pierre de Rosette — Runway Launch Pack</h1>
+<p class="subtitle">5 clips aquarelle animée · Style Watercolor · 16:9 · WildLens</p>
+
+<!-- ==================== CLIP 1 ==================== -->
+<div class="clip">
+  <h2>Clip 1 — 🐕 Chien silhouette</h2>
+  <p class="scene">Scène 1 « Le rêve » · 5 s</p>
+  <p class="prompt-label">📋 Prompt a copier :</p>
+  <div class="prompt" id="prompt-1">Animated watercolor painting. Soft warm brown and terracotta tones. A silhouette of a dog gently turning its head in profile, as if listening. Loose brushstrokes, pigments blooming on wet paper. No photorealistic details. Contemplative, calm. Warm ivory background with ochre washes. Gentle motion, no sudden movement. 16:9, 5 seconds.</div>
+  <button class="copy" onclick="copyPrompt('prompt-1')">📋 Copier le prompt</button>
+  <p class="prompt-label">⚙️ Paramètres :</p>
+  <div class="params">
+    <span>Style : <strong>Watercolor Animation</strong></span>
+    <span>Durée : <strong>5 s</strong></span>
+    <span>Ratio : <strong>16:9</strong></span>
+    <span>Image ref : <strong>Non</strong></span>
+  </div>
+  <p class="prompt-label">🚫 Négatif prompt :</p>
+  <div class="prompt" style="background:#5a4a3a; color:#e8dcc8;" id="neg-1">photorealistic, realistic fur, eyes, detailed face</div>
+  <button class="copy" onclick="copyPrompt('neg-1')">📋 Copier négatif</button>
+  <p class="prompt-label">🎯 Instruction :</p>
+  <div class="step">Générer <strong>2 variations</strong> → garder <strong>la plus douce</strong> → nommer <code>clip-01-chien-silhouette.mp4</code></div>
+</div>
+
+<!-- ==================== CLIP 2 ==================== -->
+<div class="clip">
+  <h2>Clip 2 — 🐋 Cachalot + spectrogramme</h2>
+  <p class="scene">Scène 2 « Le mur » · 5 s</p>
+  <p class="ref-img">🖼️ Image de référence : <code>cachalot-spectrogramme.png</code> (uploader comme style reference)</p>
+  <p class="prompt-label">📋 Prompt :</p>
+  <div class="prompt" id="prompt-2">Animated watercolor illustration. A sperm whale rendered in deep teal and indigo washes, floating vertically in dark ocean space. Translucent geometric spectrogram lines pulse across its body like musical notation. Pigment droplets disperse into wave patterns. Loose brushstrokes, wet-on-wet effect. No photorealistic details. Artistic, scientific, beautiful. 16:9, 5 seconds.</div>
+  <button class="copy" onclick="copyPrompt('prompt-2')">📋 Copier le prompt</button>
+  <p class="prompt-label">⚙️ Paramètres :</p>
+  <div class="params">
+    <span>Style : <strong>Watercolor Animation</strong></span>
+    <span>Durée : <strong>5 s</strong></span>
+    <span>Ratio : <strong>16:9</strong></span>
+    <span>Image ref : <strong>cachalot-spectrogramme.png</strong></span>
+  </div>
+  <p class="prompt-label">🚫 Négatif prompt :</p>
+  <div class="prompt" style="background:#5a4a3a; color:#e8dcc8;" id="neg-2">photorealistic, realistic whale, detailed eye, realistic skin</div>
+  <button class="copy" onclick="copyPrompt('neg-2')">📋 Copier négatif</button>
+  <div class="step">Générer <strong>2 variations</strong> → garder <strong>celle où le spectrogramme est le plus lisible</strong></div>
+</div>
+
+<!-- ==================== CLIP 3 (HÉROS) ==================== -->
+<div class="clip" style="border: 2px solid #d4a34e;">
+  <h2>⭐ Clip 3 — 🦆 Mandarin + écriture Voynich</h2>
+  <p class="scene">Scène 3 « Le parallèle Voynich » · 6 s · <strong>Clip héros — celui qui fait la différence</strong></p>
+  <div class="note">🎯 Le mandarin émerge de l'écriture ancienne. C'est le clip le plus important de la vidéo — prends le temps.</div>
+  <p class="ref-img">🖼️ Image de référence : <code>03-manuscrit-voynich.jpg</code> (uploader pour le traité des écritures)</p>
+  <p class="prompt-label">📋 Prompt :</p>
+  <div class="prompt" id="prompt-3">Animated watercolor painting. A mandarin duck emerging from ancient handwritten script. The feathers form from ink strokes and calligraphy marks — deep teal, orange, purple and gold pigments bleeding into wet paper. The bird turns its head gracefully, trailing ink drops that become swimming motion. Loose watercolor texture visible. No photorealistic feathers. Elegant, poetic, East Asian ink wash influence. 16:9, 6 seconds.</div>
+  <button class="copy" onclick="copyPrompt('prompt-3')">📋 Copier le prompt</button>
+  <p class="prompt-label">⚙️ Paramètres :</p>
+  <div class="params">
+    <span>Style : <strong>Watercolor Animation</strong></span>
+    <span>Durée : <strong>6 s</strong></span>
+    <span>Ratio : <strong>16:9</strong></span>
+    <span>Image ref : <strong>03-manuscrit-voynich.jpg</strong></span>
+  </div>
+  <p class="prompt-label">🚫 Négatif prompt :</p>
+  <div class="prompt" style="background:#5a4a3a; color:#e8dcc8;" id="neg-3">photorealistic, realistic duck, realistic feathers, photograph, hyperrealistic</div>
+  <button class="copy" onclick="copyPrompt('neg-3')">📋 Copier négatif</button>
+  <div class="step">Générer <strong>3 variations</strong> → c'est le clip héros → prendre le temps de choisir</div>
+</div>
+
+<!-- ==================== CLIP 4 ==================== -->
+<div class="clip">
+  <h2>Clip 4 — 🐝 Abeille + fleur UV</h2>
+  <p class="scene">Scène 4 « Le piège des sens » · 5 s</p>
+  <p class="ref-img">🖼️ Image de référence : <code>06b-fleur-uv.jpg</code> (pour les couleurs UV)</p>
+  <p class="prompt-label">📋 Prompt :</p>
+  <div class="prompt" id="prompt-4">Animated watercolor abstract. A stylized bee silhouette in deep amber, approaching a flower rendered in ultraviolet glow colors — electric violet, luminous blue, neon pink against soft ivory. The bee leaves a trail of pigment like pollen. Wet-on-wet blooms, loose watercolor texture. The flower pulses gently revealing hidden patterns. Vibrant, dreamlike, no photorealistic details. 16:9, 5 seconds.</div>
+  <button class="copy" onclick="copyPrompt('prompt-4')">📋 Copier le prompt</button>
+  <p class="prompt-label">⚙️ Paramètres :</p>
+  <div class="params">
+    <span>Style : <strong>Watercolor Animation</strong></span>
+    <span>Durée : <strong>5 s</strong></span>
+    <span>Ratio : <strong>16:9</strong></span>
+    <span>Image ref : <strong>06b-fleur-uv.jpg</strong></span>
+  </div>
+  <p class="prompt-label">🚫 Négatif prompt :</p>
+  <div class="prompt" style="background:#5a4a3a; color:#e8dcc8;" id="neg-4">photorealistic, realistic bee, insect, photograph, hyperrealistic</div>
+  <button class="copy" onclick="copyPrompt('neg-4')">📋 Copier négatif</button>
+  <div class="step">Générer <strong>2 variations</strong> → garder <strong>la plus vibrante</strong></div>
+</div>
+
+<!-- ==================== CLIP 5 ==================== -->
+<div class="clip">
+  <h2>Clip 5 — 🐵🐬 Chimpanzé + dauphin</h2>
+  <p class="scene">Scène 5 « Alors, on fait quoi ? » · 6 s</p>
+  <p class="prompt-label">📋 Prompt :</p>
+  <div class="prompt" id="prompt-5">Animated watercolor diptych. Left: a chimpanzee face in profile, loose brushstrokes of umber and sienna, thoughtful expression. Right: a dolphin arcing through water, teal and cerulean washes. Both rendered as artistic sketches — visible brush marks, pigment bleeding, paper texture. The two animals fade into each other through a gentle watercolor wash. No photorealistic features. Scientific illustration meets fine art. 16:9, 6 seconds.</div>
+  <button class="copy" onclick="copyPrompt('prompt-5')">📋 Copier le prompt</button>
+  <p class="prompt-label">⚙️ Paramètres :</p>
+  <div class="params">
+    <span>Style : <strong>Watercolor Animation</strong></span>
+    <span>Durée : <strong>6 s</strong></span>
+    <span>Ratio : <strong>16:9</strong></span>
+    <span>Image ref : <strong>Non</strong></span>
+  </div>
+  <p class="prompt-label">🚫 Négatif prompt :</p>
+  <div class="prompt" style="background:#5a4a3a; color:#e8dcc8;" id="neg-5">photorealistic, realistic fur, realistic skin, realistic eye, detailed face</div>
+  <button class="copy" onclick="copyPrompt('neg-5')">📋 Copier négatif</button>
+  <div class="step">Générer <strong>2 variations</strong> → garder <strong>celle où le fondu entre les 2 animaux est le plus fluide</strong></div>
+</div>
+
+<!-- ==================== PROCÉDURE ==================== -->
+<hr>
+<h2 style="color:#3D5A3E;">📋 Comment utiliser cette page</h2>
+
+<ol style="font-size: .95rem; line-height: 1.7; margin: 1rem 0; padding-left: 1.5rem;">
+  <li><strong>Ouvre <a href="https://runwayml.com" target="_blank">runwayml.com</a></strong> → Products → Gen-4</li>
+  <li><strong>Commence par le Clip 1</strong> (en haut), descends un par un</li>
+  <li>Pour chaque clip :</li>
+  <ul style="margin: .3rem 0 .3rem 1.2rem;">
+    <li>Clique <strong>📋 Copier le prompt</strong> → colle dans Runway</li>
+    <li>Règle les <strong>paramètres</strong> (durée, ratio, style Watercolor)</li>
+    <li><strong>Upload l'image de référence</strong> si indiquée (dossier <code>runway/</code>)</li>
+    <li>Clique <strong>📋 Copier négatif</strong> → colle dans les paramètres avancés</li>
+    <li>Génère les variations → télécharge → nomme correctement</li>
+    <li>Sauvegarde dans <code>runway/output/</code></li>
+  </ul>
+  <li><strong>Clips terminés ?</strong> → tu passes au montage dans DaVinci</li>
+</ol>
+
+<div class="step" style="border-color: #d4a34e;">
+  <strong>💡 Si un clip rate :</strong>
+  <ul style="margin: .3rem 0; padding-left: 1rem;">
+    <li><strong>Flou ?</strong> → Ajoute « sharp watercolor edges, defined brushstrokes » au prompt</li>
+    <li><strong>Trop réaliste ?</strong> → Renforce le négatif + ajoute « visible paper texture, wet watercolor effect »</li>
+    <li><strong>Incohérent ?</strong> → Relance une variation (le seed change tout)</li>
+    <li><strong>Toujours raté après 3 essais ?</strong> → Montre-moi le résultat, j'ajuste le prompt</li>
+  </ul>
+</div>
+
+<div style="margin: 1rem 0; text-align: center; color: #8a7b6a; font-size: .8rem;">
+Généré par Dobby 🦉 · 2026-11-02 · WildLens · Pierre de Rosette
+</div>
+
+</div>
+
+<script>
+function copyPrompt(id) {
+  const el = document.getElementById(id);
+  const text = el.textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = [...document.querySelectorAll('.copy')].find(b => b.onclick && b.onclick.toString().includes(id));
+    if (btn) {
+      const orig = btn.textContent;
+      btn.textContent = '✅ Copié !';
+      setTimeout(() => btn.textContent = orig, 1500);
+    }
+  }).catch(() => {
+    // fallback
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+  });
+}
+</script>
+
+</body>
+</html>

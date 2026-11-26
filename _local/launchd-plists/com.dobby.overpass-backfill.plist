@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.dobby.overpass-backfill</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/jchavauxm5/PKA_JCH/bin/overpass-backfill</string>
+    </array>
+    <key>StartInterval</key>
+    <integer>3600</integer>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/Users/jchavauxm5/PKA_JCH/_local/logs/overpass-backfill.out</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/jchavauxm5/PKA_JCH/_local/logs/overpass-backfill.err</string>
+</dict>
+</plist>

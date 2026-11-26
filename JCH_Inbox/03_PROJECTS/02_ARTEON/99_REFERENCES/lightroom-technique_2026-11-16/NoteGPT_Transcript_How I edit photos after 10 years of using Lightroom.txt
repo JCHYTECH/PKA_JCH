@@ -1,0 +1,137 @@
+00:00:00 - 00:00:26
+In this video right here, I'm going to show you  how you can easily transform your photos from this to this with just a few simple editing  tricks. Basically, I'm going to show you my entire workflow and all of the little secrets and  give you a decade's worth of editing experience in just a few minutes. So, my friend, without  making this intro any longer, then let's jump into Lightroom. All right, so today my friend,  we are going to edit this photo right here. And when we are finished, it's going to look something  like this. Now, I am actually mostly a landscape
+
+00:00:26 - 00:00:50
+photographer. That's mainly the style or type of  photography that I've been focusing on for the last 10 years. But I did do bird photography for  the first time the other day and it's been really fun for me to edit this photo. So I thought it  would be just refreshing and fun to edit this with you. And by the way, I leave this raw file in the  description down below so you can edit this with me. That's how we learn most together. The first  thing that I do to my photos, no matter what I'm
+
+00:00:50 - 00:01:25
+like shooting, is that I start by cropping it. So  up here you have the crop. I click the crop. Now, what I like to do, I would like to probably go  to 4x3. I don't want to fully center the bird. I don't think that would be like I don't like  that for this photo. Probably somewhere here. We can actually unlock this and drag it out a little  bit like this. I think this is a nice start. So, the reason that I start with the crop is  basically because it will decide where I put the mask. Masking is a fantastic tool for  us to not only take full control of the photo,
+
+00:01:25 - 00:01:53
+do local adjustment, but also shape the light.  And the crop will decide where I put the mask and where I'm going to shape the light and whatnot.  So that's why the reason why I want to do the crop always first because it's such a I just want  to get the composition right. Now after that, I usually go to the basic corrections. Now, if I'm  totally honest with you, then usually when I add a photo like this, I go to my preset packs. You  can see that here. And I would go like this is an
+
+00:01:53 - 00:02:25
+autumn photo. So maybe autumn one of these or one  of these, maybe just this one. And then from here, I would start to edit a little bit and do some  edits. And uh this did not take that long, but it's pretty cool. Now, it would be a very  boring meeting for you if we go like, yeah, this just presets and uh let's go. So, we are  actually going to ed this from ground up. But if you're interested, you can find my presets in the  description down below. But what I then start with is my basic corrections. Basically, I just want  to get a base tone and start my edits from. We can
+
+00:02:25 - 00:02:54
+take down the highlights a little bit. I usually  look at the histogram while I do this as well. I think we can open up the shadows quite a lot  here. Take down the blacks and up with the whites quite a lot. You will notice that I underexpose  the photo and that's something that I always do to my photography. I underexpose it a little  bit when I'm out shooting just because I want to protect the highlights. But I think here this  is like pretty good. I know that we're clipping a little bit here, a little bit too black. So if  we wanted to, we could actually like shadows is a
+
+00:02:54 - 00:03:19
+little bit too high. We could actually take this  up a little bit. But I'm totally fine with a few places within the photo that are totally black or  totally white. I'm not necessarily always trying to get photo that is uh 100% balanced like this  with no pure black or pure white. a little bit of that is totally fine. And here, this is a pretty  nice starting point. Now, when it comes to the white balance, I often try to get it at a natural  position, too, before I start to edit. I think
+
+00:03:19 - 00:03:46
+this looks pretty nice. The camera did a good job  here. I had it on on auto white balance, but to me, I also use that white balance a little bit to  help with the colors as well, but I might do that a little bit later. Now, when it comes to clarity,  I like to take down the clarity a little bit. Uh, but we let's work on the clarity later. It will  make sense then. And why this is always moving here. So we take it like this and the colors take  up the vibrance a little bit and we can take boost
+
+00:03:46 - 00:04:13
+the saturation ever so slightly. Now once I'm done  with the basic correction and done with the crop then my friend it is time to do the tone curves.  Now for this I'm just going to do a simple little scurve. So we are going to take it up here. I  think we can afford to take it up. Where are we clipping? That's just a little bit here. We can  fix that later if you want to. I'm actually going to take down here so it's not we don't have  pure whites anymore. And actually, I want to
+
+00:04:13 - 00:04:40
+get a little fade into the into the highlights as  the shadows as well. So, basically here, I'm just lifting the blacks a little bit to get a little  bit of faded look. I'm sure you probably know what I'm doing. If not, then I have multiple tutorials  where I dive in depth into the tone curves. Now, the bird is getting a bit too dark for my liking,  but we're going to fix that a little bit later when we uh start to work with masks. From now, I  think this is a pretty decent starting point. This
+
+00:04:40 - 00:05:15
+is not bad. Not bad at all. What I want to do now  is either work on the colors or work on the mask. I think here at this point in my editing workflow,  I'm usually standing uh on a road on a crossroad and it's just a decision to make. Do you want  to shape the light first and get the contrast and do the masks and isolate the subject and you  really bring the light photo to life with masks? Or do we want to start to work on the colors? It  doesn't really matter in which order you do that.
+
+00:05:15 - 00:05:41
+But for the sake of this tutorial, let's just do  the colors first. Now, first and foremost, let's do the calibration. And by the way, if you want to  level up your editing skills for absolutely free, then I made an editing series where I'm sending  you one editing tip a day for the next 33 days. It's absolutely free and you can find it in the  description down below. So, calibration, this just shifts the underlying like primary colors of  the entire photo. So, this is like how Lightroom
+
+00:05:41 - 00:06:14
+interprets the blue primaries, green primaries,  and red primaries. You're shifting that. So basically, if you take this all the way down, you  can see that if you take the blue primary down, the the the the oranges and reds get really really  red and the blues get really really blue kind of or teal, I should say. You can see that if you  had blue in here. Now I know that. And usually I have these little recipes for this one. Let's  probably take this down to 30. We can take this plus 20. Um, you know, this is a little bit  too much for this photo. So we can take 15,
+
+00:06:14 - 00:06:48
+10, and then this up to 15. And then I'm  actually going to take down the saturation here, down a little bit here, and then up a little bit  here. And this is a pretty nice starting point. From here, we are going to work on the colors.  So with the color mixer, I personally like to have this view where you see the HL sliders,  and I like to see all. You can go first hue, then saturation, then luminance. Personally, I  just like to see them all here. And let me see. We can take the red. I want to get the red a little  bit redder. Orange a little bit orange. The the
+
+00:06:48 - 00:07:17
+the uh yellows. I actually I'm actually not such  a fan of them. And this is another thing that I'm thinking about a lot when it comes to colors and  creating depth is that you of course we have the tones and the lights to create depth and we can  create contrast and whatnot. But we can also use colors to create depth by thinking about opposites  and creating color contrast. And here, if we go up with the yellows a little bit, we can afford to  go down with the orange a little bit more to get
+
+00:07:17 - 00:07:51
+more redish colors in the orange, which I think  looks pretty cool. If you were to take down the yellows as well, the overall photo just becomes  really, really yellow. So, this is something that I think about a lot and I'm constantly looking  at the colors and just seeing how it looks and then trying on. That's really editing. You're  just trying and and you know, one more thing that I forgot to mention. Before I edit a photo,  I usually just look at it for a little bit and I think to myself, what mood or feeling do I want  to go for? And when I've decided that, it's such
+
+00:07:51 - 00:08:18
+a nice help because it gives me a general road map  to edit from. For this one, I wanted to go with a little bit warmer, a little bit nostalgic vibe.  And because of that, I know afterwards, okay, I want to add a little bit more warmth in the color  grading. And I I know where I want to take it. So, just a little note there that I wanted to add.  It's a good thing to think to think about where you want to take the photo. Anyway, uh we don't  have a lot of blue. We have a little bit of them
+
+00:08:18 - 00:08:38
+here. I want to desaturate later on in the greens.  We have a little bit of green. I actually want to take the green a little bit down to the yellow  side. up here. It looks a little bit strange. And because we moved the yellow a little bit up,  I think we can move the green a little bit down. We don't have a lot of purple in the the photo and  don't have a lot of magenta. Now, when it comes to the saturation, this is where we're going to have  fun. I actually going to desaturate the yellows
+
+00:08:38 - 00:09:07
+quite a lot. I want to desaturate the blues too  here. Desaturate the aqua and desaturate the greens. So, this I think is pretty nice. So, we're  just making the reds here pop a little bit. Now, it might be that we went a little bit too far with  the red tones in the hue. So I'm actually going to bring them up again like so. And we can bring this  up ever so slightly again. One thing that is nice with wildlife is I don't have to be worried about  skin tones because you know there bird no skin.
+
+00:09:07 - 00:09:32
+But we take this down. And then for the luminance  I actually want to bring up the luminance on the orange a bit up on the red a bit. And then the  blue we can take that down ever so slightly. And then the green we can actually take that down a  little bit. And then the yellow. I think it would be cool if we bring that up ever so slightly. So,  from now, if you press Y on your keyboard, you can see before and after. I think this is massive. The  colors are really, really nice. I'm really, really
+
+00:09:32 - 00:09:58
+happy. If I wanted to do anything afterwards,  okay, maybe I want to boost the oranges. You can also go up here and start to work with the overall  colors everywhere if you want to add more colors to it. But I think this is starting to look pretty  damn sick. I'm I'm pretty happy here. What I want to do next is then go down to the color grading.  So, so far my friend, we've cropped the photo. We've worked on the basic corrections to get a  base tone to work from and really correct the
+
+00:09:58 - 00:10:27
+photo before we start to edit it. And my friend,  we've worked on the colors to get a nice color. Now, my friend, it is time for color grading. So,  we're continuing on the color, but really here is where we can start to inject a lot of colors in  the shadows, mid tones, and highlights. And in my opinion, and for me, this is really where I'm  able to create a really stylized look. and really create the mood that I'm going for. For instance,  for the shadows, if I want to make a very warm
+
+00:10:27 - 00:11:01
+photo, very nostalgic, warm, and inviting, it's  very simple to go to the shadows and add a bunch of warmth to the shadows. You see? And then we  could do the same to the highlights as well. And we get a very, very warm, very like beautiful  photo. This is super, super simple to do. If you want to cool it down, we can do it here as well.  Now this photo we could we could do go for some color separation as well and go go for a little  bit of complimentary color. Make the shadows a little bit colder and then really really make the  the midtones a lot warmer and the highlights a lot
+
+00:11:01 - 00:11:27
+warmer. That is something that we could do. And  now we have tiny tiny tiny like color separation here. You can see the shadows are a bit bit like  bluer a little bit colder and then the rest of the image becomes really warm. So this is all just a  creative process and a decision to make. I'm not always sure where I take it. I usually just test  it out. I test and I look. Really, my friend, use the two eyes that you have and look at the photo  and ask yourself, does this look nice? Am I happy
+
+00:11:27 - 00:11:49
+with this edit? And then we take it from there.  Now, my friend, it's time for the good stuff. So, we are going to work on the masks. Now, if you  really want to level up your editing skills, then I invite you to check out my complete Lightroom  of Master Class. I know this is a shameless plug, but this is really the best editing resource that  I can provide you. It's basically everything that I learned when editing for both myself and clients  for the last 10 years. And it's all broken down
+
+00:11:49 - 00:12:15
+into simple step-by-step videos that are easy  and fun to watch. At the time of the recording, over 800 photographers have gone through it, which  is absolutely wild to me. The feedback I've gotten is amazing, and it's just so fun to see you guys  and get the emails and I see like that you're improving from my teaching materials. That is that  is just wild to me. Anyway, if you're interested, then you can find it in the description down  below. First thing that I'm going to do, we can
+
+00:12:15 - 00:12:43
+create a subject mask and see if Lightroom nails  it. Yep, a perfect mask around the bird. Now, let me see. I had the change here. We need to  fix that. I'm basically going to brighten up the bird. So, we can brighten it up like this. Take  up the shadows. We can take up the white and the exposure just a little bit. A little bit up with  the whites. And one thing that I like to do when I'm opening up the middle part of the photo or I'm  like brightening up subject like I'm doing here,
+
+00:12:43 - 00:13:17
+we do lose a lot of detail. So I like to bring  up the contrast also just to compensate a little bit for that. And I do think we went a little bit  too far. So you can actually take down the amount slider. I think yeah around 50. This is pretty  nice. Next I want to create a radial filter. And my idea here, sorry we're actually taking I  see now. Sorry. I see now what this slider does. It had minus saturation here. Uh we need to fix  that. So we can fix here. And we don't have these two changes on here. Now we can create a radial  filter. And what I want to do, I want to bring
+
+00:13:17 - 00:13:47
+attention to the bird and to the middle of the  photo. So we create a radial filter just like so. I think it's pretty nice. And we are going to open  up the shadows a little bit. Again, open up the whites ever so slightly. and take up. So, we are  starting to blow out this image here in this space here. We I'm going to fix that in a second. But  just bringing it up ever so slightly like so. Take down balance it out like this. We can actually  balance this out. So, here I actually want to
+
+00:13:47 - 00:14:26
+take the brush, take down the flow, down with the  exposure, down with the whites. I want to fix this uh little thingy here. Let me zoom in here for  a second. So, I'm just going to fix these super white parts here like so. This is very subtle,  but I especially thought that here it was a bit too much. So, we fixed those parts there. This  looks pretty damn good. And talking about exposure before we added more mask, I noticed that the  photo is a bit too much here. I can see that my photo here little bit better balanced. Um, here we  are getting the photo is a bit too much. Take down
+
+00:14:26 - 00:15:00
+the exposure. can actually take down the overall  highlights and down with the whites a bit here as well. Starting to look pretty good. Now, my  friend, it's time to work with a linear gradient filter. So, the first thing that I want to do,  you can maybe notice it on this photo right here, is and I notice that this is actually a little  bit nicer crop in my opinion. So, I'm actually going to crop it here and we can take it out just  like so. And this this is also a true authentic editing experience that nothing is set in stone.  It's not like you do one edit and then you're not
+
+00:15:00 - 00:15:37
+allowed to change it a little bit later. It's a  lot of back and forth checking if it looks good, going and doing it again and like just trying to  balance out the photo. But we're working on masks. And what I want to do now is actually something  that is so freaking good. I want to take a mask and I want to shape the light a bit. this area of  the photo. I want to do a mask like this. And we have a linear gradient filter this is called.  And we have it here. And then we take down the exposure a lot. I actually want to take it down  quite a lot. So this is without. And I think we
+
+00:15:37 - 00:16:10
+can just really get quite aggressive. And when  you're doing things like this in your photos, you just need to think about would this look  natural in your photo? Would adding a big shadow here, does it look natural? Because really,  good editing is like a good magic trick. You don't want people to see the edits. Just like with the  magic trick, as soon as you see the magic tricks, the magic is over. And here, I think adding a  shadow, it just helps draw the attention away from this part of the image, it helps create  a beautiful contrast that is here. And really,
+
+00:16:10 - 00:16:44
+it just looks really good. So, I think we can  do it something like this. If it's too much, you just have to think a little bit. But I think  this looks pretty decent. Next, I want to also, this part is a bit too bright. So, what I want  to do, I want to take down the exposure a little bit and take down the highlights and take down  the whites. Have the flow a bit down. And then I just going to paint here a little bit. Just trying  to fix these brighter parts here. Something like this. Now, my friend, it is time for another mask.  I'm going to linear gradient. And then in this
+
+00:16:44 - 00:17:12
+direction, what I want to do now is to get a light  source in this direction. So here, if we darken in this corner, we can brighten up in this corner.  You could take off the exposure like this. And I think this is fair and looks pretty cool, but it  looks a little bit strange as well. So rather I want to take down the dehaze and down the clarity  and then up with the exposure to create a little light source effect. And now I'm going to just add  a gradient and coming from this side like this.
+
+00:17:12 - 00:17:48
+And I actually what I'm going to do as well, I'm  going to add two of these. One like this. And then one which is just a radial filter like so.  And here we can take up uh the these like this a little bit. And then down with a dehaze like so.  And these two together create a really nice light source that looks like this. So here going from  this pretty flat photo to this a lot a lot better. And this is like really where the magic happens.  And in this photo where I spent a lot more time
+
+00:17:48 - 00:18:25
+editing it then you can see that here I have a  lot of different masks. And this is without and this is with this is without and this is with and  here and I see the difference too. I've added I've been painting on the bird more. Here the bird  is still quite dark. So, what I would do now, you can take plus, you can do brush, and we can  create a little exposure, take up the whites, take up the highlights, and we can start to brush  in more uh brightness into the the subject itself. If you take down the flow, and what I want to  do now is just brighten these parts here a bit,
+
+00:18:25 - 00:19:03
+just like so. I get a little bit more brightness  to the bird itself here. Especially, I want to focus a bit on the eye. And this is really just  pretty tedious and maybe not the funnest part of when you're editing. But because we're brightening  up these parts with the mask, what I would like to do then is do an opposite mask. And this is just  dodge and burn. Do brush. And then we take here I would take up the contrast and down with the  blacks and down with the shadows. And then uh um I would do an curve that looks like this. And  then I would start to paint the black areas here
+
+00:19:03 - 00:19:40
+like so. And if you do this, especially when  you start to zoom in, you can really start to paint in a lot of that micro contrast. Very  tedious, but makes a hell of a difference when you do it. And already with the mask, we got  taking the photo from this to this. Massive, massive difference. Lastly, I would probably add  another brush. And this time, I'm taking down the exposure and up with the contrast. And like so,  and we don't have to have this tone curve here. And I'm zoom out a little bit. And maybe  not this much, but like here. And basically,
+
+00:19:40 - 00:20:12
+I have now the flow all the way up. I have the  feather all the way up. And I'm going to add a little vignette. So, we actually we can don't  need to have anything on here. I'm just going to create a mask first. So, we can do like this. And  I'm going to add, if you press O on the keyboard, you can see what I'm doing. I'm just  going to add a slight vignette like this. Just something like this. And then we're going  to take down the exposure. And the reason that I zoom out like this is because I like that I can  now have the brush all the way on the outside and
+
+00:20:12 - 00:20:45
+just get a little bit of faded around it. So it  looks like this. And we can start to darken. So this is really the effect. I'm just adding a  little vignette here. Just furthering helping enhancing the photo and drawing attention to it.  Now what I do, it's time to play with the clarity. I like photos that are a little bit softer. So if  we take down the clarity, we get this beautiful, beautiful dreamy look. But I like to have the  clarity on the subject. So remember the mask that we made here with the subject. We can actually  take up the clarity on it. So we're taking down
+
+00:20:45 - 00:21:16
+the clarity on the overall image around minus  20, but now we can take up the clarity on the bird. And if you want to add it more clarity  to the eye here, we can add a mask like this. And we make sure that there's nothing on the  mask. And we're going to create a radial filter just here. So we can see where this is. So it's  here. And this is another cool thing that you can do to your photos. Like wherever you want to draw  attention, you can create these small circles and like add up the light or clarity or whatnot. But I  want to have it just like so. And then we're going
+
+00:21:16 - 00:21:47
+to take up the clarity just on that area. So this  is really the effect. This is of course too much, but somewhere around here. Very subtle, but this  is such a nice little thing. Now, my friend, I would go through the entire image. You can see  if we can take up the Yeah, we can take up the mid tones a little bit. And I want to desaturate  the d noiseise the photo. The d noiseis here is fantastic. Notice it was shot in ISO 20,000. So,  I would den noiseise it. And then, it just looks so good. And then, my friend, I would sharpen it  as well. So, take the sharpening, take the D. We
+
+00:21:47 - 00:22:15
+can take down the radius a bit. We can take up  the details a bit. And then the masking. I don't we don't need to sharpen the entire image.  We can just sharpen maybe. Yeah, these parts are pretty nice. I think this is a really nice  thing. So, we're not sharpening the background. The background stays soft, but we're sharpening  all the details. And next thing, of course, here, I forgot this in the beginning. Remove chromatic  aberration. Enable profile uh corrections if you want to. And then I would add a little bit  of effect. I like to add a bit of grain to
+
+00:22:15 - 00:22:44
+my photos. So, maybe 25 to 30. Just a little grain  in the areas here. I think it's nice. And then you can add a bit of vignette if you want to. went  up with the feather and up with the highlights. And now with just a few simple edits with taking  the photo from this to this. And then my final edit was look like this. Here I went harder on  the light source here and just did a little bit more stylized edit. While here it's a little bit  softer and we actually do can afford if you want to to brighten this photo. Now the thing is if  you want your photos to get that beautiful 3D
+
+00:22:44 - 00:22:55
+look and not just feel flat, lifeless and boring,  then there is one vital skill and technique that you need to learn. And luckily, I've made a full  video where I break it down in this video right

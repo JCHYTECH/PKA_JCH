@@ -1,0 +1,97 @@
+{
+  "foldersFirst": true,
+  "showExtensions": true,
+  "showPreview": false,
+  "showMarkdownPreview": true,
+  "confirmDelete": true,
+  "autoReveal": false,
+  "columnWidth": 200,
+  "columnWidths": {
+    "JCH_Inbox/03_PROJECTS": 209,
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/03_WILDNEXUS/WILDNEXUS_DEVICE/03_P0_ENGINEERING/PROTOCOLES": 369,
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/03_WILDNEXUS/notebooklm": 207,
+    "/": 266,
+    "_local": 311,
+    "::storage::": 269,
+    "JCH_PRIVATE": 381,
+    "JCH_Inbox/03_PROJECTS/08_VETALYX/legal": 339,
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/strategy": 338,
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/essai": 276,
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens": 286,
+    "JCH_Inbox/00_INBOX": 327,
+    "JCH_Inbox/06_ADMIN": 140
+  },
+  "autoPanelResize": false,
+  "lockColumnWidths": true,
+  "sortMode": "name-asc",
+  "excludePatterns": "",
+  "folderColors": {
+    "JCH_Inbox": "blue",
+    "JCH_Inbox/03_PROJECTS": "red"
+  },
+  "columnViewModes": {
+    "/": "list",
+    "JCH_Inbox": "list"
+  },
+  "pinnedPaths": {},
+  "columnSortModes": {
+    "/": "mtime-desc",
+    "JCH_Inbox": "mtime-desc"
+  },
+  "folderIcons": {
+    "JCH_Inbox/03_PROJECTS": "lucide-projector"
+  },
+  "openFolderNote": false,
+  "lockedColumnCount": 3,
+  "recentFilesCount": 10,
+  "recentFiles": [
+    "JCH_Inbox/03_PROJECTS/08_VETALYX/legal/2026-07-15_VETALYX_Bail-Type-Novalis-IDELUX.pdf",
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/essai/article-le-miroir-a-refuser-ado.md",
+    "JCH_PRIVATE/credentials-central.md",
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/essai/plan-essai-compagnon-silence.md",
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/essai/editorial-le-miroir-a-refuser.md",
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/essai/article-le-miroir-a-refuser-v5.md",
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/essai/article-le-miroir-a-refuser-v4.md",
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/strategy/schema-arteon-global.md",
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/Pierre de Rosette/storyboard-v2-IT.md",
+    "JCH_Inbox/03_PROJECTS/08_VETALYX/legal/2026-11-16_renard_observateur-vs-administrateur-vetalyx.md",
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/brand/assets/Logo Arteon.png",
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/brand/assets/Arteon.jpg",
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/executive-summary.md",
+    "ADAPTER-PROMPT.md"
+  ],
+  "showRecents": true,
+  "showBookmarks": true,
+  "showCalendar": true,
+  "showStorage": true,
+  "storageExcluded": "",
+  "storageRingCount": 5,
+  "specialItemsPosition": "top",
+  "openLocation": "sidebar",
+  "favorites": [
+    "JCH_Inbox",
+    "/",
+    "JCH_Inbox/03_PROJECTS"
+  ],
+  "showFavorites": true,
+  "mobileUiScale": 115,
+  "mobileIconSize": 28,
+  "showUnreadMarkers": true,
+  "seenAt": {
+    "ADAPTER-PROMPT.md": 1794342714200,
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/executive-summary.md": 1794348526745,
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/brand/assets/Logo Arteon.png": 1794348891579,
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/brand/assets/Arteon.jpg": 1794348890679,
+    "JCH_PRIVATE/credentials-central.md": 1795377418755,
+    "JCH_Inbox/03_PROJECTS/08_VETALYX/legal/2026-11-16_renard_observateur-vs-administrateur-vetalyx.md": 1794821586630,
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/Pierre de Rosette/storyboard-v2-IT.md": 1794824717534,
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/strategy/schema-arteon-global.md": 1794921518940,
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/essai/article-le-miroir-a-refuser-v4.md": 1794941760683,
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/essai/article-le-miroir-a-refuser-v5.md": 1794941768934,
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/essai/editorial-le-miroir-a-refuser.md": 1794941771453,
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/essai/plan-essai-compagnon-silence.md": 1794941809289,
+    "JCH_Inbox/03_PROJECTS/02_ARTEON/wildlens/essai/article-le-miroir-a-refuser-ado.md": 1795382724554,
+    "JCH_Inbox/03_PROJECTS/08_VETALYX/legal/2026-07-15_VETALYX_Bail-Type-Novalis-IDELUX.pdf": 1795524905446
+  },
+  "unreadBaseline": 1794335720082
+}
